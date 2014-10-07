@@ -10,3 +10,6 @@
 [submodule "platform"]
 	path = platform
 	url = git@github.com:openurp/platform.git
+[submodule "module/security"]
+	path = module/security
+	url = git@github.com:openurp/security.git

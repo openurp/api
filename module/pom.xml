@@ -13,7 +13,7 @@
   
   <modules>
     <module>base</module>
-    <!--    <module>security</module>-->
+    <module>security</module>
   </modules>
 
   <dependencies>
