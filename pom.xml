@@ -107,6 +107,11 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.openurp.security</groupId>
+        <artifactId>openurp-security-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.openurp.platform</groupId>
         <artifactId>openurp-platform-kernel</artifactId>
         <version>${project.version}</version>
