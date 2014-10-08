@@ -70,6 +70,7 @@
         <groupId>org.beangle.webmvc</groupId>
         <artifactId>beangle-webmvc-config-plugin</artifactId>
         <version>${beangle.webmvc.version}</version>
+        <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.beangle.webmvc</groupId>
@@ -107,9 +108,21 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.openurp.base</groupId>
+        <artifactId>openurp-base-core</artifactId>
+        <version>${project.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
         <groupId>org.openurp.security</groupId>
         <artifactId>openurp-security-api</artifactId>
         <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.security</groupId>
+        <artifactId>openurp-security-core</artifactId>
+        <version>${project.version}</version>
+        <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.openurp.platform</groupId>
