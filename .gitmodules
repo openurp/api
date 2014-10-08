@@ -16,3 +16,6 @@
 [submodule "api/teach-base"]
 	path = api/teach-base
 	url = git@github.com:openurp/teach-base-api.git
+[submodule "api/app"]
+	path = api/app
+	url = git@github.com:openurp/app-api.git
