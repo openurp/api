@@ -22,3 +22,6 @@
 [submodule "module/teach-base"]
 	path = module/teach-base
 	url = git@github.com:openurp/teach-base.git
+[submodule "module/app"]
+	path = module/app
+	url = git@github.com:openurp/app.git
