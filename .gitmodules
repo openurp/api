@@ -13,15 +13,15 @@
 [submodule "module/security"]
 	path = module/security
 	url = git@github.com:openurp/security.git
-[submodule "api/teach-base"]
-	path = api/teach-base
-	url = git@github.com:openurp/teach-base-api.git
 [submodule "api/app"]
 	path = api/app
 	url = git@github.com:openurp/app-api.git
-[submodule "module/teach-base"]
-	path = module/teach-base
-	url = git@github.com:openurp/teach-base.git
+[submodule "module/teach"]
+	path = module/teach
+	url = git@github.com:openurp/teach.git
+[submodule "api/teach"]
+	path = api/teach
+	url = git@github.com:openurp/teach-api.git
 [submodule "module/app"]
 	path = module/app
-	url = git@github.com:openurp/app.git
+	url = git@github.com:openurp/base.git

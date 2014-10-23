@@ -14,7 +14,7 @@
   <modules>
     <module>base</module>
     <module>security</module>
-    <module>teach-base</module>
+    <module>teach</module>
     <module>app</module>
   </modules>
   
