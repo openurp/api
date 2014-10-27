@@ -15,10 +15,10 @@
   <properties>
     <bundle.symbolicName>org.openurp.parent</bundle.symbolicName>
     <bundle.namespace>org.openurp</bundle.namespace>
-    <beangle.commons.version>4.1.1</beangle.commons.version>
-    <beangle.data.version>4.1.0-SNAPSHOT</beangle.data.version>
+    <beangle.commons.version>4.1.2</beangle.commons.version>
+    <beangle.data.version>4.1.0</beangle.data.version>
     <beangle.security.version>4.0.2-SNAPSHOT</beangle.security.version>
-    <beangle.webmvc.version>0.1.0-SNAPSHOT</beangle.webmvc.version>
+    <beangle.webmvc.version>0.1.0</beangle.webmvc.version>
     <hibernate.version>4.3.1.Final</hibernate.version>
     <hibernate.validator.version>5.0.2.Final</hibernate.validator.version>
   </properties>
