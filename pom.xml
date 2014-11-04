@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>17</version>
+    <version>18</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp</artifactId>
@@ -18,142 +18,20 @@
     <beangle.commons.version>4.1.2</beangle.commons.version>
     <beangle.data.version>4.1.0</beangle.data.version>
     <beangle.security.version>4.0.2-SNAPSHOT</beangle.security.version>
-    <beangle.webmvc.version>0.1.0</beangle.webmvc.version>
+    <beangle.webmvc.version>0.1.1</beangle.webmvc.version>
     <hibernate.version>4.3.1.Final</hibernate.version>
     <hibernate.validator.version>5.0.2.Final</hibernate.validator.version>
   </properties>
 
   <modules>
     <module>platform</module>
-    <module>api</module>
-    <module>module</module>
+    <module>api/app</module>
+    <module>api/security</module>
+    <module>api/base</module>
+    <module>api/teach</module>
+    <module>module/app</module>
+    <module>module/base</module>
+    <module>module/security</module>
+    <module>module/teach</module>
   </modules>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.beangle.commons</groupId>
-        <artifactId>beangle-commons-core</artifactId>
-        <version>${beangle.commons.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.data</groupId>
-        <artifactId>beangle-data-model</artifactId>
-        <version>${beangle.data.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.data</groupId>
-        <artifactId>beangle-data-jpa</artifactId>
-        <version>${beangle.data.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.data</groupId>
-        <artifactId>beangle-data-serializer</artifactId>
-        <version>${beangle.data.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.data</groupId>
-        <artifactId>beangle-data-jdbc</artifactId>
-        <version>${beangle.data.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.security</groupId>
-        <artifactId>beangle-security-core</artifactId>
-        <version>${beangle.security.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-webxml-plugin</artifactId>
-        <version>${beangle.webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-config-plugin</artifactId>
-        <version>${beangle.webmvc.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-hibernate-plugin</artifactId>
-        <version>${beangle.webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-core</artifactId>
-        <version>${beangle.webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-entity-plugin</artifactId>
-        <version>${beangle.webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-serializer-plugin</artifactId>
-        <version>${beangle.webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-bootstrap-ui</artifactId>
-        <version>${beangle.webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.beangle.webmvc</groupId>
-        <artifactId>beangle-webmvc-tag</artifactId>
-        <version>${beangle.webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.base</groupId>
-        <artifactId>openurp-base-api</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.base</groupId>
-        <artifactId>openurp-base-core</artifactId>
-        <version>${project.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.security</groupId>
-        <artifactId>openurp-security-api</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.security</groupId>
-        <artifactId>openurp-security-core</artifactId>
-        <version>${project.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.platform</groupId>
-        <artifactId>openurp-platform-kernel</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.platform</groupId>
-        <artifactId>openurp-platform-web</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.platform</groupId>
-        <artifactId>openurp-platform-ws</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>${hibernate.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-validator</artifactId>
-        <version>${hibernate.validator.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-ehcache</artifactId>
-        <version>${hibernate.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 </project>
