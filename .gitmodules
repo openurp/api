@@ -31,3 +31,6 @@
 [submodule "pom"]
 	path = pom
 	url = git@github.com:openurp/pom.git
+[submodule "module/eams"]
+	path = module/eams
+	url = git@github.com:openurp/eams.git
