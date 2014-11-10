@@ -1,9 +1,6 @@
 [submodule "api/base"]
 	path = api/base
 	url = git@github.com:openurp/base-api.git
-[submodule "api/security"]
-	path = api/security
-	url = git@github.com:openurp/security-api.git
 [submodule "module/base"]
 	path = module/base
 	url = git@github.com:openurp/base.git
