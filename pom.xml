@@ -25,13 +25,9 @@
 
   <modules>
     <module>platform</module>
-    <module>api/app</module>
-    <module>api/security</module>
     <module>api/base</module>
     <module>api/teach</module>
-    <module>module/app</module>
     <module>module/base</module>
-    <module>module/security</module>
     <module>module/teach</module>
   </modules>
 </project>
