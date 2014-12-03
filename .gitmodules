@@ -22,3 +22,6 @@
 [submodule "module/eams"]
 	path = module/eams
 	url = git@github.com:openurp/eams.git
+[submodule "module/trims"]
+	path = module/trims
+	url = git@github.com:openurp/trims.git
