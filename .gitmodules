@@ -25,3 +25,9 @@
 [submodule "module/trims"]
 	path = module/trims
 	url = git@github.com:openurp/trims.git
+[submodule "model/teach"]
+	path = model/teach
+	url = git@github.com:openurp/teach-model.git
+[submodule "model/base"]
+	path = model/base
+	url = git@github.com:openurp/base-model.git
