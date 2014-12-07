@@ -25,3 +25,18 @@
 [submodule "model/base"]
 	path = model/base
 	url = git@github.com:openurp/base-model.git
+[submodule "webapp/base"]
+	path = webapp/base
+	url = git@github.com:openurp/base-webapp.git
+[submodule "service/attendance"]
+	path = service/attendance
+	url = git@github.com:openurp/attendance-service.git
+[submodule "service/teach"]
+	path = service/teach
+	url = git@github.com:openurp/teach-service.git
+[submodule "webapp/trims"]
+	path = webapp/trims
+	url = git@github.com:openurp/trims.git
+[submodule "webapp/eams"]
+	path = webapp/eams
+	url = git@github.com:openurp/eams.git
