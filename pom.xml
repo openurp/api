@@ -25,9 +25,10 @@
 
   <modules>
     <module>platform</module>
-    <module>api/base</module>
-    <module>api/teach</module>
-    <module>module/base</module>
-    <module>module/teach</module>
+    <module>model/base</module>
+    <module>model/teach</module>
+    <module>service/teach</module>
+    <module>webapp/eams</module>
+    <module>webapp/trims</module>
   </modules>
 </project>
