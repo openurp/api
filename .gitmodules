@@ -28,6 +28,3 @@
 [submodule "webapp/trims"]
 	path = webapp/trims
 	url = git@github.com:openurp/trims.git
-[submodule "webapp/eams"]
-	path = webapp/eams
-	url = git@github.com:openurp/eams.git
