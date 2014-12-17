@@ -28,3 +28,6 @@
 [submodule "webapp/trims"]
 	path = webapp/trims
 	url = git@github.com:openurp/trims.git
+[submodule "model/quality"]
+	path = model/quality
+	url = git@github.com:openurp/quality-model.git
