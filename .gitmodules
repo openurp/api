@@ -31,3 +31,6 @@
 [submodule "model/quality"]
 	path = model/quality
 	url = git@github.com:openurp/quality-model.git
+[submodule "model/research"]
+	path = model/research
+	url = git@github.com:openurp/research-model.git
