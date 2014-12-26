@@ -1,11 +1,11 @@
-package org.openurp.scholarship.code.model
+package org.openurp.edu.award.code.model
 
 import org.beangle.data.model.bean.{CodedBean, IntIdBean, NamedBean, TemporalOnBean}
-import org.openurp.scholarship.code.{ScholarshipCategory, ScholarshipType}
+import org.openurp.edu.award.code.{ScholarshipCategory, ScholarshipType}
 
 class ScholarshipCategoryBean extends IntIdBean  with CodedBean with NamedBean with TemporalOnBean with ScholarshipCategory {
   
-  /**奖学金类型或级别*/
+  /**奖学金类型*/
   var scholarshipType: ScholarshipType = _
   
   /**奖学金描述*/

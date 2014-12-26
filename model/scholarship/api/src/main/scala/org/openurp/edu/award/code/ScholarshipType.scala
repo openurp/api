@@ -1,4 +1,4 @@
-package org.openurp.scholarship.code
+package org.openurp.edu.award.code
 
 import org.beangle.data.model.IntIdEntity
 

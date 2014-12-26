@@ -6,15 +6,15 @@
     <artifactId>openurp-parent</artifactId>
     <version>0.0.8</version>
   </parent>
-  <groupId>org.openurp.scholarship</groupId>
-  <artifactId>openurp-scholarship-model-parent</artifactId>
+  <groupId>org.openurp.edu.award</groupId>
+  <artifactId>openurp-edu-award-model-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>OpenURP scholarship Model Parent</name>
+  <name>OpenURP EDU AWARD Model Parent</name>
   
   <properties>
-    <bundle.symbolicName>org.openurp.scholarship.model.parent</bundle.symbolicName>
-    <bundle.namespace>org.openurp.scholarship</bundle.namespace>
+    <bundle.symbolicName>org.openurp.edu.award.model.parent</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu.award</bundle.namespace>
     <openurp.platform.version>0.0.2-SNAPSHOT</openurp.platform.version>
   </properties>
   

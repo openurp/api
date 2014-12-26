@@ -2,19 +2,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.openurp.scholarship</groupId>
-    <artifactId>openurp-scholarship-model-parent</artifactId>
+    <groupId>org.openurp.edu.award</groupId>
+    <artifactId>openurp-edu-award-model-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.scholarship</groupId>
-  <artifactId>openurp-scholarship-model</artifactId>
+  <groupId>org.openurp.edu.award</groupId>
+  <artifactId>openurp-edu-award-model</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>OpenURP Teach Model</name>
+  <name>OpenURP EDU AWARD Model</name>
   
   <properties>
-    <bundle.symbolicName>org.openurp.scholarship.model</bundle.symbolicName>
-    <bundle.namespace>org.openurp.scholarship</bundle.namespace>
+    <bundle.symbolicName>org.openurp.edu.award.model</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu.award</bundle.namespace>
   </properties>
 
   <dependencies>
@@ -28,8 +28,8 @@
       <version>${openurp.platform.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.scholarship</groupId>
-      <artifactId>openurp-scholarship-api</artifactId>
+      <groupId>org.openurp.edu.award</groupId>
+      <artifactId>openurp-edu-award-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

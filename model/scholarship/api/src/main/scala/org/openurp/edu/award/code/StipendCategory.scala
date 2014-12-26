@@ -1,25 +1,25 @@
-package org.openurp.scholarship.code
+package org.openurp.edu.award.code
 
 import org.beangle.data.model.IntIdEntity
 import java.util.Date
 
-trait ScholarshipCategory extends IntIdEntity {
-    /**奖学金代码*/
+trait StipendCategory extends IntIdEntity {
+    /**助学金代码*/
   def code: String 
   
-    /**奖学金名称*/
+    /**助学金名称*/
   def name: String 
   
-    /**设立日期*/
-  def beginOn: Date 
+//    /**设立日期*/
+//  def beginOn: Date 
+//  
+//   /**废止日期*/
+//  def endOn:Date
   
-   /**废止日期*/
-  def endOn:Date
+//  /**助学金类型*/
+//  def StipendType: StipendType 
   
-  /**奖学金类型*/
-  def scholarshipType: ScholarshipType 
-  
-  /**奖学金描述*/
+  /**助学金描述*/
   def discription: String 
   
   /**评定周期*/
