@@ -37,3 +37,6 @@
 [submodule "model/sin"]
 	path = model/sin
 	url = git@github.com:openurp/sin-model.git
+[submodule "model/edu"]
+	path = model/edu
+	url = git@github.com:openurp/edu-model.git
