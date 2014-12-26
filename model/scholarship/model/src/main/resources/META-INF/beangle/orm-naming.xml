@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<modules>
-  <module package = "org.openurp.edu.award" pluralize="true" schema="std">
-    <class annotation = "org.beangle.data.model.annotation.code" prefix="gb_" value="nation" />
-    <class annotation = "org.beangle.data.model.annotation.code" prefix="jb_" value="ministry" />
-    <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
-    <class annotation = "org.beangle.data.model.annotation.config" schema="eams" />
-  </module>
-</modules>
