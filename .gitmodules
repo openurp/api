@@ -19,9 +19,6 @@
 [submodule "service/attendance"]
 	path = service/attendance
 	url = git@github.com:openurp/attendance-service.git
-[submodule "service/teach"]
-	path = service/teach
-	url = git@github.com:openurp/teach-service.git
 [submodule "webapp/trims"]
 	path = webapp/trims
 	url = git@github.com:openurp/trims.git
@@ -34,3 +31,6 @@
 [submodule "model/edu"]
 	path = model/edu
 	url = git@github.com:openurp/edu-model.git
+[submodule "service/edu"]
+	path = service/edu
+	url = git@github.com:openurp/edu-service.git
