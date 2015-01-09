@@ -34,3 +34,6 @@
 [submodule "service/edu"]
 	path = service/edu
 	url = git@github.com:openurp/edu-service.git
+[submodule "model/hr"]
+	path = model/hr
+	url = git@github.com:openurp/hr-model.git
