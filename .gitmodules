@@ -37,3 +37,6 @@
 [submodule "model/hr"]
 	path = model/hr
 	url = git@github.com:openurp/hr-model.git
+[submodule "model/code"]
+	path = model/code
+	url = git@github.com:openurp/code.git
