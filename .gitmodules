@@ -10,9 +10,6 @@
 [submodule "module/trims"]
 	path = module/trims
 	url = git@github.com:openurp/trims.git
-[submodule "model/base"]
-	path = model/base
-	url = git@github.com:openurp/base-model.git
 [submodule "webapp/base"]
 	path = webapp/base
 	url = git@github.com:openurp/base-webapp.git
@@ -25,18 +22,21 @@
 [submodule "model/research"]
 	path = model/research
 	url = git@github.com:openurp/research-model.git
-[submodule "model/sin"]
-	path = model/sin
-	url = git@github.com:openurp/sin-model.git
-[submodule "model/edu"]
-	path = model/edu
-	url = git@github.com:openurp/edu-model.git
 [submodule "service/edu"]
 	path = service/edu
 	url = git@github.com:openurp/edu-service.git
-[submodule "model/hr"]
-	path = model/hr
-	url = git@github.com:openurp/hr-model.git
-[submodule "model/code"]
-	path = model/code
+[submodule "code"]
+	path = code
 	url = git@github.com:openurp/code.git
+[submodule "base"]
+	path = base
+	url = git@github.com:openurp/base.git
+[submodule "edu"]
+	path = edu
+	url = git@github.com:openurp/edu.git
+[submodule "hr"]
+	path = hr
+	url = git@github.com:openurp/hr.git
+[submodule "sin"]
+	path = sin
+	url = git@github.com:openurp/sin.git
