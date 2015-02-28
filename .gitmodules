@@ -10,12 +10,6 @@
 [submodule "module/trims"]
 	path = module/trims
 	url = git@github.com:openurp/trims.git
-[submodule "webapp/base"]
-	path = webapp/base
-	url = git@github.com:openurp/base-webapp.git
-[submodule "webapp/trims"]
-	path = webapp/trims
-	url = git@github.com:openurp/trims.git
 [submodule "model/research"]
 	path = model/research
 	url = git@github.com:openurp/research-model.git
