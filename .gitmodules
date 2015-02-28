@@ -13,18 +13,12 @@
 [submodule "webapp/base"]
 	path = webapp/base
 	url = git@github.com:openurp/base-webapp.git
-[submodule "service/attendance"]
-	path = service/attendance
-	url = git@github.com:openurp/attendance-service.git
 [submodule "webapp/trims"]
 	path = webapp/trims
 	url = git@github.com:openurp/trims.git
 [submodule "model/research"]
 	path = model/research
 	url = git@github.com:openurp/research-model.git
-[submodule "service/edu"]
-	path = service/edu
-	url = git@github.com:openurp/edu-service.git
 [submodule "code"]
 	path = code
 	url = git@github.com:openurp/code.git
