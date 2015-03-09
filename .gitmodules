@@ -28,3 +28,6 @@
 [submodule "sin"]
 	path = sin
 	url = git@github.com:openurp/sin.git
+[submodule "std"]
+	path = std
+	url = git@github.com:openurp/std.git
