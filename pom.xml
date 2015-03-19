@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>18</version>
+    <version>20</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp</artifactId>
@@ -25,10 +25,11 @@
 
   <modules>
     <module>platform</module>
-    <module>model/base</module>
-    <module>model/teach</module>
-    <module>service/teach</module>
-    <module>webapp/eams</module>
-    <module>webapp/trims</module>
+    <module>code</module>
+    <module>people</module>
+    <module>base</module>
+    <module>edu</module>
+    <module>hr</module>
+    <module>sin</module>
   </modules>
 </project>

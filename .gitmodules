@@ -28,3 +28,6 @@
 [submodule "sin"]
 	path = sin
 	url = git@github.com:openurp/sin.git
+[submodule "people"]
+	path = people
+	url = git@github.com:openurp/people-api.git
