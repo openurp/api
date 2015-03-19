@@ -31,3 +31,7 @@
 [submodule "people"]
 	path = people
 	url = git@github.com:openurp/people-api.git
+[submodule "std"]
+	path = std
+	url = git@github.com:openurp/std.git
+

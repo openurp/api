@@ -4,26 +4,16 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>20</version>
+    <version>22.1</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp</artifactId>
   <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>OpenURP Parent</name>
-  
-  <properties>
-    <bundle.symbolicName>org.openurp.parent</bundle.symbolicName>
-    <bundle.namespace>org.openurp</bundle.namespace>
-    <beangle.commons.version>4.1.2</beangle.commons.version>
-    <beangle.data.version>4.1.0</beangle.data.version>
-    <beangle.security.version>4.0.2-SNAPSHOT</beangle.security.version>
-    <beangle.webmvc.version>0.1.1</beangle.webmvc.version>
-    <hibernate.version>4.3.1.Final</hibernate.version>
-    <hibernate.validator.version>5.0.2.Final</hibernate.validator.version>
-  </properties>
 
   <modules>
+    <module>pom</module>
     <module>platform</module>
     <module>code</module>
     <module>people</module>
@@ -31,5 +21,6 @@
     <module>edu</module>
     <module>hr</module>
     <module>sin</module>
+    <module>std</module>
   </modules>
 </project>
