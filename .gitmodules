@@ -35,3 +35,6 @@
 	path = std
 	url = git@github.com:openurp/std.git
 
+[submodule "lg"]
+	path = lg
+	url = git@github.com:openurp/lg-api.git
