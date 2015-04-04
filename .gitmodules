@@ -1,12 +1,6 @@
-[submodule "platform"]
-	path = platform
-	url = git@github.com:openurp/platform.git
 [submodule "site"]
 	path = site
 	url = git@github.com:openurp/openurp.github.io.git
-[submodule "pom"]
-	path = pom
-	url = git@github.com:openurp/pom.git
 [submodule "module/trims"]
 	path = module/trims
 	url = git@github.com:openurp/trims.git
