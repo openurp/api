@@ -13,8 +13,6 @@
   <name>OpenURP Parent</name>
 
   <modules>
-    <module>pom</module>
-    <module>platform</module>
     <module>code</module>
     <module>people</module>
     <module>base</module>
