@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.beangle</groupId>
     <artifactId>beangle-scala</artifactId>
-    <version>22.1</version>
+    <version>22.2</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp</artifactId>
