@@ -4,25 +4,24 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.0.13-SNAPSHOT</version>
+    <version>0.0.13.Alpha</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-all</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <packaging>jar</packaging>
   <name>OpenURP API All</name>
 
   <properties>
     <bundle.symbolicName>org.openurp.api.all</bundle.symbolicName>
     <bundle.namespace>org.openurp</bundle.namespace>
-    <openurp.code.version>0.0.3-SNAPSHOT</openurp.code.version>
-    <openurp.base.version>0.0.2-SNAPSHOT</openurp.base.version>
-    <openurp.edu.version>0.0.2-SNAPSHOT</openurp.edu.version>
-    <openurp.hr.version>0.0.2-SNAPSHOT</openurp.hr.version>
-    <openurp.lg.version>0.0.2-SNAPSHOT</openurp.lg.version>
-    <openurp.ppl.version>0.0.2-SNAPSHOT</openurp.ppl.version>
-    <openurp.sin.version>0.0.2-SNAPSHOT</openurp.sin.version>
-    <openurp.std.version>0.0.2-SNAPSHOT</openurp.std.version>
+    <openurp.code.version>0.0.3</openurp.code.version>
+    <openurp.base.version>0.0.2</openurp.base.version>
+    <openurp.edu.version>0.0.2</openurp.edu.version>
+    <openurp.hr.version>0.0.2</openurp.hr.version>
+    <openurp.ppl.version>0.0.2</openurp.ppl.version>
+    <openurp.sin.version>0.0.2</openurp.sin.version>
+    <openurp.std.version>0.0.2</openurp.std.version>
   </properties>
 
   <dependencies>
@@ -130,13 +129,6 @@
       <artifactId>openurp-hr-info-model</artifactId>
       <version>${openurp.hr.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.openurp.lg.room</groupId>
-      <artifactId>openurp-lg-room-model</artifactId>
-      <version>${openurp.lg.version}</version>
-    </dependency>
-
-
     <dependency>
       <groupId>org.openurp.people.base</groupId>
       <artifactId>openurp-people-base-model</artifactId>
