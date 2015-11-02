@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns="http://www.openurp.org/schema/base/code/model" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:entity="http://www.openurp.org/schema/entity/model"
+  targetNamespace="http://www.openurp.org/schema/base/code/model" elementFormDefault="qualified">
+
+  <xs:import namespace="http://www.openurp.org/schema/entity/model"  schemaLocation="http://www.openurp.org/schema/entity/model.xsd"/>
+  
+  <xs:complexType name="Country">
+    <xs:annotation><xs:documentation>国家地区</xs:documentation></xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="entity:BaseCode"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="country" type="Country"/>
+</xs:schema>

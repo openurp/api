@@ -1,0 +1,16 @@
+
+DepartEvaluation=部门评教结果
+DepartEvaluation.staff=被评教师
+DepartEvaluation.semester=学年学期
+DepartEvaluation.score=得分
+DepartEvaluation.userName=评测人
+DepartEvaluation.updateAt=评测日期
+DepartEvaluation.course=被评课程
+
+
+QuestionnaireLesson=教学任务问卷配置
+QuestionnaireLesson.evaluateByTeacher=评教人
+QuestionnaireLesson.lesson=任务
+QuestionnaireLesson.questionnaire=问卷
+
+

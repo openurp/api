@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openurp</groupId>
+    <artifactId>openurp-api-parent</artifactId>
+    <version>0.0.5-SNAPSHOT</version>
+  </parent>
+  <groupId>org.openurp.edu</groupId>
+  <artifactId>openurp-edu-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>OpenURP Edu Parent</name>
+
+  <properties>
+    <bundle.symbolicName>org.openurp.edu.parent</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu</bundle.namespace>
+  </properties>
+
+  <modules>
+    <module>base</module>
+    <module>program</module>
+    <module>std</module>
+    <module>teach</module>
+    <module>evaluation</module>
+    <module>award</module>
+    <module>otherexam</module>
+    <module>textbook</module>
+    <module>workload</module>
+  </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.project</groupId>
+      <artifactId>openurp-base-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.beangle.data</groupId>
+      <artifactId>beangle-data-model_2.11</artifactId>
+    </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.project</groupId>
+        <artifactId>openurp-code-model-person</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.project</groupId>
+        <artifactId>openurp-code-model-sin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.project</groupId>
+        <artifactId>openurp-base-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.hr.base</groupId>
+        <artifactId>openurp-hr-base-model</artifactId>
+        <version>${openurp.hr.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.base</groupId>
+        <artifactId>openurp-edu-base-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.program</groupId>
+        <artifactId>openurp-edu-program-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.teach</groupId>
+        <artifactId>openurp-edu-teach-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.otherexam</groupId>
+        <artifactId>openurp-edu-otherexam-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.textbook</groupId>
+        <artifactId>openurp-edu-textbook-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.workload</groupId>
+        <artifactId>openurp-edu-workload-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

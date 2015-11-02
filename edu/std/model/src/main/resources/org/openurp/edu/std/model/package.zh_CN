@@ -1,0 +1,12 @@
+StdAdmission=招生信息
+StdAdmission.std=学生
+StdAdmission.ticketNo=准考证号
+StdAdmission.admissionWay=入学方式
+StdAdmission.province=报考省市
+StdAdmission.preparatory=是否预科生
+StdAdmission.formerDivision=入学前户口所在区划
+StdAdmission.currentDivision=入学后户口所在区划
+StdAdmission.householdType=原户口性质
+StdAdmission.admissionIndex=录取志愿
+StdAdmission.letterNo=录取通知书号
+StdAdmission.enrollMode=入学方式

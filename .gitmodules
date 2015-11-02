@@ -1,21 +1,3 @@
-[submodule "base"]
-	path = base
-	url = git@github.com:openurp/base-api.git
-[submodule "edu"]
-	path = edu
-	url = git@github.com:openurp/edu-api.git
-[submodule "hr"]
-	path = hr
-	url = git@github.com:openurp/hr-api.git
-[submodule "sin"]
-	path = sin
-	url = git@github.com:openurp/sin-api.git
-[submodule "people"]
-	path = people
-	url = git@github.com:openurp/people-api.git
-[submodule "std"]
-	path = std
-	url = git@github.com:openurp/std-api.git
 [submodule "lg"]
 	path = lg
 	url = git@github.com:openurp/lg-api.git

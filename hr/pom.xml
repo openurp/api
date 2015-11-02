@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openurp</groupId>
+    <artifactId>openurp-api-parent</artifactId>
+    <version>0.0.5-SNAPSHOT</version>
+  </parent>
+  <groupId>org.openurp.hr</groupId>
+  <artifactId>openurp-hr-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>OpenURP HR Parent</name>
+
+  <properties>
+    <bundle.symbolicName>org.openurp.hr.model.parent</bundle.symbolicName>
+    <bundle.namespace>org.openurp.hr</bundle.namespace>
+  </properties>
+
+  <modules>
+    <module>base</module>
+    <module>info</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.project</groupId>
+        <artifactId>openurp-base-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.project.base</groupId>
+        <artifactId>openurp-people-base-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.oproject</groupId>
+        <artifactId>openurp-code-model-hr</artifactId>
+        <version>${oproject.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.oproject</groupId>
+        <artifactId>openurp-code-model-job</artifactId>
+        <version>${oproject.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.oproject</groupId>
+        <artifactId>openurp-code-model-person</artifactId>
+        <version>${oproject.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.oproject</groupId>
+      <artifactId>openurp-code-model-job</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.oproject</groupId>
+      <artifactId>openurp-code-model-person</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.beangle.data</groupId>
+      <artifactId>beangle-data-model_2.11</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>

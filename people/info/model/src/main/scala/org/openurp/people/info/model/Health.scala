@@ -1,0 +1,33 @@
+/*
+ * OpenURP, Agile Development Scaffold and Toolkit
+ *
+ * Copyright (c) 2014-2015, OpenURP Software.
+ *
+ * OpenURP is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * OpenURP is distributed in the hope that it will be useful.
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
+ */
+package org.openurp.people.info.model
+
+import org.openurp.people.base.model.Person
+import org.openurp.code.person.model.HealthStatus
+import org.openurp.code.person.model.BloodType
+import org.beangle.data.model.LongId
+
+class Health extends LongId  {
+  
+  var person:Person=_
+  var healthStatus:HealthStatus=_
+  var bloodType:BloodType=_
+  var height:Float=_
+  var weight:Float=_
+}

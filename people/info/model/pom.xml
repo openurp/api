@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openurp.people.info</groupId>
+    <artifactId>openurp-people-info-parent</artifactId>
+    <version>0.0.4-SNAPSHOT</version>
+  </parent>
+  <artifactId>openurp-people-info-model</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP People Info Model</name>
+  
+  <properties>
+    <bundle.symbolicName>org.openurp.people.info.model</bundle.symbolicName>
+    <bundle.namespace>org.openurp.people.info</bundle.namespace>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openurp.people.base</groupId>
+      <artifactId>openurp-people-base-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-model-person</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-model-geo</artifactId>
+    </dependency>
+        <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-model-job</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-model-edu</artifactId>
+    </dependency>
+  </dependencies>
+</project>

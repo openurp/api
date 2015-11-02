@@ -7,10 +7,14 @@
     <version>22.3</version>
   </parent>
   <groupId>org.openurp</groupId>
-  <artifactId>openurp</artifactId>
+  <artifactId>openurp-api-parent</artifactId>
   <packaging>pom</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>OpenURP Parent</name>
+  <version>0.0.5-SNAPSHOT</version>
+  <name>OpenURP API Parent</name>
+
+  <prerequisites>
+    <maven>3.2</maven>
+  </prerequisites>
 
   <modules>
     <module>code</module>
@@ -21,4 +25,173 @@
     <module>sin</module>
     <module>std</module>
   </modules>
+
+  <properties>
+    <beangle.commons.version>4.4.4</beangle.commons.version>
+    <beangle.data.version>4.3.2</beangle.data.version>
+    <beangle.cdi.version>0.0.2</beangle.cdi.version>
+    <beangle.webmvc.version>0.3.3</beangle.webmvc.version>
+    <beangle.security.version>4.0.11</beangle.security.version>
+    <beangle.maven.version>0.2.2</beangle.maven.version>
+    <hibernate.version>4.3.1.Final</hibernate.version>
+    <hibernate.validator.version>5.0.2.Final</hibernate.validator.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.beangle.commons</groupId>
+        <artifactId>beangle-commons-core_2.11</artifactId>
+        <version>${beangle.commons.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.cdi</groupId>
+        <artifactId>beangle-cdi-spring_2.11</artifactId>
+        <version>${beangle.cdi.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.data</groupId>
+        <artifactId>beangle-data-model_2.11</artifactId>
+        <version>${beangle.data.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.data</groupId>
+        <artifactId>beangle-data-hibernate_2.11</artifactId>
+        <version>${beangle.data.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.data</groupId>
+        <artifactId>beangle-data-serializer_2.11</artifactId>
+        <version>${beangle.data.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.data</groupId>
+        <artifactId>beangle-data-jdbc_2.11</artifactId>
+        <version>${beangle.data.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.webmvc</groupId>
+        <artifactId>beangle-webmvc-api_2.11</artifactId>
+        <version>${beangle.webmvc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.webmvc</groupId>
+        <artifactId>beangle-webmvc-spring-plugin_2.11</artifactId>
+        <version>${beangle.webmvc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.webmvc</groupId>
+        <artifactId>beangle-webmvc-core_2.11</artifactId>
+        <version>${beangle.webmvc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.webmvc</groupId>
+        <artifactId>beangle-webmvc-entity-plugin_2.11</artifactId>
+        <version>${beangle.webmvc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.webmvc</groupId>
+        <artifactId>beangle-webmvc-serializer-plugin_2.11</artifactId>
+        <version>${beangle.webmvc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.webmvc</groupId>
+        <artifactId>beangle-webmvc-view_2.11</artifactId>
+        <version>${beangle.webmvc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.security</groupId>
+        <artifactId>beangle-security-core_2.11</artifactId>
+        <version>${beangle.security.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.security</groupId>
+        <artifactId>beangle-security-web_2.11</artifactId>
+        <version>${beangle.security.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.security</groupId>
+        <artifactId>beangle-security-cas_2.11</artifactId>
+        <version>${beangle.security.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.security</groupId>
+        <artifactId>beangle-security-session_2.11</artifactId>
+        <version>${beangle.security.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.beangle.security</groupId>
+        <artifactId>beangle-security-blueprint_2.11</artifactId>
+        <version>${beangle.security.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>${hibernate.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>${hibernate.validator.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-ehcache</artifactId>
+        <version>${hibernate.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+      <dependency>
+        <groupId>org.scala-lang.modules</groupId>
+        <artifactId>scala-xml_2.11</artifactId>
+      </dependency>
+   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.beangle.maven</groupId>
+        <artifactId>beangle-maven-plugin</artifactId>
+        <version>${beangle.maven.version}</version>
+        <configuration>
+          <dependencyIncludes>*:*</dependencyIncludes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>generate</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>gen-dependency</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <packagingExcludes>
+          %regex[WEB-INF/lib/.*[^T].jar]
+          </packagingExcludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
 </project>

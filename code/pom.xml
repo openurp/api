@@ -3,12 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.openurp</groupId>
-    <artifactId>openurp-parent</artifactId>
-    <version>0.0.15</version>
+    <artifactId>openurp-api-parent</artifactId>
+    <version>0.0.5-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.code</groupId>
   <artifactId>openurp-code-parent</artifactId>
-  <version>0.0.5-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>OpenURP Code Parent</name>
 

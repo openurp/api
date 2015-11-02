@@ -1,0 +1,9 @@
+MoralGrade=德育成绩
+MoralGrade.std=学生
+MoralGrade.semester=学年学期
+MoralGrade.score=得分
+MoralGrade.scoreText=成绩
+MoralGrade.passed=是否通过
+MoralGrade.status=状态
+MoralGrade.markStyle=记录方式
+MoralGrade.operator=操作者

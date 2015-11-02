@@ -1,0 +1,15 @@
+
+GradeRateItem=成绩分级配置项
+GradeRateItem.config=成绩配置
+GradeRateItem.grade=显示名称
+GradeRateItem.minScore=最低分
+GradeRateItem.maxScore=最高分
+GradeRateItem.gpExp=绩点表达式
+GradeRateItem.defaultScore=默认分数
+
+GradeRateConfig=成绩分级配置
+GradeRateConfig.scoreMarkStyle=成绩记录方式
+GradeRateConfig.items=成绩分级配置项
+GradeRateConfig.passScore=及格线
+GradeRateConfig.project=项目
+

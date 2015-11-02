@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openurp.hr.base</groupId>
+    <artifactId>openurp-hr-base-parent</artifactId>
+    <version>0.0.4-SNAPSHOT</version>
+  </parent>
+  <artifactId>openurp-hr-base-model</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP HR Base Model</name>
+  
+  <properties>
+    <bundle.symbolicName>org.openurp.hr.base.model</bundle.symbolicName>
+    <bundle.namespace>org.openurp.hr.base</bundle.namespace>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openurp.base</groupId>
+      <artifactId>openurp-base-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.people.base</groupId>
+      <artifactId>openurp-people-base-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-model-hr</artifactId>
+    </dependency>
+  </dependencies>
+</project>

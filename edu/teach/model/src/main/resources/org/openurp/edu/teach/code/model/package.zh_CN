@@ -1,0 +1,17 @@
+TeachLangType=授课语言类型
+
+LessonTag=任务标签
+
+GradeType=成绩类型
+
+CourseTakeType=修读类别
+CourseTakeType.retake=是否重修
+CourseTakeType.exam=是否考试
+CourseTakeType.attend=是否上课
+
+ElectionMode=选课方式
+
+ExamForm=考试形式：开卷/闭卷
+
+ExamType=考试类型
+ExamType.gradeType=成绩类型

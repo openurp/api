@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orm>
+  <mapping class="org.openurp.edu.base.model.DefaultMapping" />
+  <mapping class="org.openurp.edu.base.code.model.DefaultMapping" />
+  <naming>
+    <profile package = "org.openurp.edu.base" pluralize="true" schema="edu_base">
+       <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
+    </profile>
+  </naming>
+</orm>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns="http://www.openurp.org/schema/entity/util"
+           xmlns:em="http://www.openurp.org/schema/entity/model"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.openurp.org/schema/entity/util" elementFormDefault="qualified">
+
+  <xs:annotation><xs:documentation>工具类型定义</xs:documentation></xs:annotation>
+
+  <xs:import namespace="http://www.openurp.org/schema/entity/model" schemaLocation="http://www.openurp.org/schema/entity/model.xsd"/>
+
+  <xs:complexType name="Page">
+    <xs:annotation><xs:documentation>分页数据</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="items">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="pageSize" type="xs:unsignedInt"/>
+    <xs:attribute name="pageNo" type="xs:unsignedInt"/>
+    <xs:attribute name="total" type="xs:unsignedInt"/>
+  </xs:complexType>
+
+  <xs:element name="page" type="Page"/>
+
+</xs:schema>
