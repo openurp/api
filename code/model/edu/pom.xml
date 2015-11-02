@@ -5,7 +5,7 @@
     <groupId>org.openurp.code</groupId>
     <artifactId>openurp-code-parent</artifactId>
     <relativePath>../../pom.xml</relativePath>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
   </parent>
   <groupId>org.openurp.code</groupId>
   <artifactId>openurp-code-model-edu</artifactId>
