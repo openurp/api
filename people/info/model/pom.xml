@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.people.info</groupId>
     <artifactId>openurp-people-info-parent</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
   </parent>
   <artifactId>openurp-people-info-model</artifactId>
   <packaging>jar</packaging>
