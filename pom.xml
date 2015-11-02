@@ -20,6 +20,5 @@
     <module>hr</module>
     <module>sin</module>
     <module>std</module>
-    <module>lg</module>
   </modules>
 </project>

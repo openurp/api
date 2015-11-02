@@ -15,13 +15,13 @@
   <properties>
     <bundle.symbolicName>org.openurp.api.all</bundle.symbolicName>
     <bundle.namespace>org.openurp</bundle.namespace>
-    <openurp.code.version>0.0.3</openurp.code.version>
-    <openurp.base.version>0.0.2</openurp.base.version>
-    <openurp.edu.version>0.0.2</openurp.edu.version>
-    <openurp.hr.version>0.0.2</openurp.hr.version>
-    <openurp.ppl.version>0.0.2</openurp.ppl.version>
-    <openurp.sin.version>0.0.2</openurp.sin.version>
-    <openurp.std.version>0.0.2</openurp.std.version>
+    <openurp.code.version>0.0.5-SNAPSHOT</openurp.code.version>
+    <openurp.base.version>0.0.4-SNAPSHOT</openurp.base.version>
+    <openurp.edu.version>0.0.3-SNAPSHOT</openurp.edu.version>
+    <openurp.hr.version>0.0.3-SNAPSHOT</openurp.hr.version>
+    <openurp.ppl.version>0.0.3-SNAPSHOT</openurp.ppl.version>
+    <openurp.sin.version>0.0.3-SNAPSHOT</openurp.sin.version>
+    <openurp.std.version>0.0.3-SNAPSHOT</openurp.std.version>
   </properties>
 
   <dependencies>
@@ -89,13 +89,18 @@
       <version>${openurp.edu.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.teach</groupId>
-      <artifactId>openurp-edu-teach-model</artifactId>
+      <groupId>org.openurp.edu.lesson</groupId>
+      <artifactId>openurp-edu-lesson-model</artifactId>
       <version>${openurp.edu.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.teach</groupId>
-      <artifactId>openurp-edu-teach-domain</artifactId>
+      <groupId>org.openurp.edu.program</groupId>
+      <artifactId>openurp-edu-program-model</artifactId>
+      <version>${openurp.edu.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu.grade</groupId>
+      <artifactId>openurp-edu-grade-domain</artifactId>
       <version>${openurp.edu.version}</version>
     </dependency>
     <dependency>
