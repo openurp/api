@@ -46,14 +46,14 @@
     <dependency>
       <groupId>org.openurp.base</groupId>
       <artifactId>openurp-base-model</artifactId>
-      <version>${openurp.base.version}</version>
+      <version>${project.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.openurp.edu.award</groupId>
       <artifactId>openurp-edu-award-model</artifactId>
-      <version>${openurp.edu.version}</version>
-    </dependency
+      <version>${project.version}</version>
+    </dependency>
 
     <dependency>
       <groupId>org.openurp.edu.base</groupId>
