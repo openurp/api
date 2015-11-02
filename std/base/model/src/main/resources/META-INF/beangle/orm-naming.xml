@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules>
+  <module package = "org.openurp.std.base" pluralize="true" schema="std_base">
+  </module>
+</modules>

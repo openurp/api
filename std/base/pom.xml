@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openurp.std</groupId>
+    <artifactId>openurp-std-parent</artifactId>
+    <version>0.0.4-SNAPSHOT</version>
+  </parent>
+  <groupId>org.openurp.std.base</groupId>
+  <artifactId>openurp-std-base-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>OpenURP Std Base Model Parent</name>
+
+  <properties>
+    <bundle.symbolicName>org.openurp.std.base.parent</bundle.symbolicName>
+    <bundle.namespace>org.openurp.std.base</bundle.namespace>
+  </properties>
+
+  <modules>
+
+    <module>model</module>
+  </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openurp.base</groupId>
+      <artifactId>openurp-base-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu.base</groupId>
+      <artifactId>openurp-edu-base-model</artifactId>
+    </dependency>
+  </dependencies>
+</project>
