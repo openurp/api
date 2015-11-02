@@ -1,0 +1,8 @@
+WorkState=在职状态
+TutorType=导师类别
+EmployType=用工形式
+StaffSourceType=教职工来源
+StaffSourceType.parent=上级来源
+StaffType=教职工类别
+StaffType.parent=上级类别
+WorkStatus=在职状态

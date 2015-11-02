@@ -1,0 +1,11 @@
+Country=国家地区
+Country.alpha3Code=3位代码
+Country.alpha2Code=2位代码
+Country.shortName=简称
+
+
+Division=行政区划
+Division.parent=父类
+
+RailwayStation=火车站
+RailwayStation.jianpin=简拼

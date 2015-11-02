@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openurp</groupId>
+    <artifactId>openurp-parent</artifactId>
+    <version>0.0.15</version>
+  </parent>
+  <groupId>org.openurp.code</groupId>
+  <artifactId>openurp-code-parent</artifactId>
+  <version>0.0.5-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>OpenURP Code Parent</name>
+
+  <properties>
+    <bundle.symbolicName>org.openurp.code</bundle.symbolicName>
+    <bundle.namespace>org.openurp.code</bundle.namespace>
+  </properties>
+
+  <modules>
+    <module>api</module>
+    <module>model/person</module>
+    <module>model/edu</module>
+    <module>model/geo</module>
+    <module>model/job</module>
+    <module>model/sin</module>
+    <module>model/hr</module>
+  </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.beangle.data</groupId>
+      <artifactId>beangle-data-model_2.11</artifactId>
+    </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.openurp.code</groupId>
+        <artifactId>openurp-code-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

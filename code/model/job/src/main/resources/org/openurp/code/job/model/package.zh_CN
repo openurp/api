@@ -1,0 +1,13 @@
+DutyGrade=行政职务级别
+DutyGrade.dutyType=行政职务类别
+
+DutyType=职务类别
+DutyType.dutyType=行政职务类别
+
+PostType=岗位类别
+PostGrade=岗位等级
+ProfessionalTitle=职称
+ProfessionalTitle.grade=职称等级
+ProfessionalGrade=职称等级
+
+SocialUnitType=社会单位性质

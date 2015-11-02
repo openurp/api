@@ -1,0 +1,7 @@
+BaseCode.code=代码
+BaseCode.name=名称
+BaseCode.enName=英文名称
+BaseCode.beginOn=生效日期
+BaseCode.endOn=失效日期
+BaseCode.updatedAt=修改时间
+BaseCode.remark=备注
