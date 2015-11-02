@@ -11,7 +11,7 @@
   <version>0.0.6-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>OpenURP Std Base Model</name>
-  
+
   <properties>
     <bundle.symbolicName>org.openurp.std.base.model</bundle.symbolicName>
     <bundle.namespace>org.openurp.std.base</bundle.namespace>

@@ -33,20 +33,4 @@
       <artifactId>beangle-data-model_2.11</artifactId>
     </dependency>
   </dependencies>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.project.base</groupId>
-        <artifactId>openurp-edu-base-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.base</groupId>
-        <artifactId>openurp-base-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
 </project>
