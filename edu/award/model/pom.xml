@@ -4,22 +4,24 @@
   <parent>
     <groupId>org.openurp.edu.award</groupId>
     <artifactId>openurp-edu-award-parent</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.5-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.edu.award</groupId>
   <artifactId>openurp-edu-award-model</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Edu Award Model</name>
-  
+
   <properties>
     <bundle.symbolicName>org.openurp.edu.award.model</bundle.symbolicName>
     <bundle.namespace>org.openurp.edu.award</bundle.namespace>
   </properties>
 
   <dependencies>
+    <!--
     <dependency>
       <groupId>org.openurp.edu.teach</groupId>
       <artifactId>openurp-edu-teach-model</artifactId>
     </dependency>
+    -->
   </dependencies>
 </project>

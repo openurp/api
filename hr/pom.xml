@@ -21,48 +21,14 @@
     <module>info</module>
   </modules>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.project</groupId>
-        <artifactId>openurp-base-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.project.base</groupId>
-        <artifactId>openurp-people-base-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.oproject</groupId>
-        <artifactId>openurp-code-model-hr</artifactId>
-        <version>${oproject.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.oproject</groupId>
-        <artifactId>openurp-code-model-job</artifactId>
-        <version>${oproject.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.oproject</groupId>
-        <artifactId>openurp-code-model-person</artifactId>
-        <version>${oproject.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
     <dependency>
-      <groupId>org.oproject</groupId>
+      <groupId>org.openurp.code</groupId>
       <artifactId>openurp-code-model-job</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.oproject</groupId>
+      <groupId>org.openurp.code</groupId>
       <artifactId>openurp-code-model-person</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.beangle.data</groupId>
-      <artifactId>beangle-data-model_2.11</artifactId>
     </dependency>
   </dependencies>
 

@@ -19,8 +19,9 @@
   <modules>
     <module>base</module>
     <module>program</module>
+    <module>lesson</module>
     <module>std</module>
-    <module>teach</module>
+    <module>grade</module>
     <module>evaluation</module>
     <module>award</module>
     <module>otherexam</module>
@@ -30,7 +31,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.project</groupId>
+      <groupId>org.openurp.base</groupId>
       <artifactId>openurp-base-model</artifactId>
     </dependency>
     <dependency>
@@ -39,58 +40,4 @@
     </dependency>
   </dependencies>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.project</groupId>
-        <artifactId>openurp-code-model-person</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.project</groupId>
-        <artifactId>openurp-code-model-sin</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.project</groupId>
-        <artifactId>openurp-base-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.hr.base</groupId>
-        <artifactId>openurp-hr-base-model</artifactId>
-        <version>${openurp.hr.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.edu.base</groupId>
-        <artifactId>openurp-edu-base-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.edu.program</groupId>
-        <artifactId>openurp-edu-program-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.edu.teach</groupId>
-        <artifactId>openurp-edu-teach-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.edu.otherexam</groupId>
-        <artifactId>openurp-edu-otherexam-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.edu.textbook</groupId>
-        <artifactId>openurp-edu-textbook-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.edu.workload</groupId>
-        <artifactId>openurp-edu-workload-model</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 </project>

@@ -4,18 +4,18 @@
   <parent>
   <groupId>org.openurp.edu</groupId>
   <artifactId>openurp-edu-parent</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.5-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.edu.workload</groupId>
   <artifactId>openurp-edu-workload-parent</artifactId>
   <packaging>pom</packaging>
   <name>OpenURP Edu Workload Parent</name>
-  
+
   <properties>
     <bundle.symbolicName>org.openurp.edu.workload.model.parent</bundle.symbolicName>
     <bundle.namespace>org.openurp.edu.workload</bundle.namespace>
   </properties>
-  
+
   <modules>
     <module>model</module>
     <module>domain</module>

@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openurp.edu.grade</groupId>
+    <artifactId>openurp-edu-grade-parent</artifactId>
+    <version>0.0.5-SNAPSHOT</version>
+  </parent>
+  <artifactId>openurp-edu-grade-model</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Edu Grade Model</name>
+
+  <properties>
+    <bundle.symbolicName>org.openurp.edu.grade.model</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu.grade</bundle.namespace>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openurp.edu.base</groupId>
+      <artifactId>openurp-edu-base-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu.program</groupId>
+      <artifactId>openurp-edu-program-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu.lesson</groupId>
+      <artifactId>openurp-edu-lesson-model</artifactId>
+    </dependency>
+  </dependencies>
+</project>

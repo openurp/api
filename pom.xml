@@ -139,6 +139,86 @@
         <artifactId>hibernate-ehcache</artifactId>
         <version>${hibernate.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.openurp.code</groupId>
+        <artifactId>openurp-code-model-person</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.code</groupId>
+        <artifactId>openurp-code-model-geo</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.code</groupId>
+        <artifactId>openurp-code-model-edu</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.code</groupId>
+        <artifactId>openurp-code-model-job</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.code</groupId>
+        <artifactId>openurp-code-model-hr</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.code</groupId>
+        <artifactId>openurp-code-model-sin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.people.base</groupId>
+        <artifactId>openurp-people-base-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.base</groupId>
+        <artifactId>openurp-base-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.base</groupId>
+        <artifactId>openurp-edu-base-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.hr.base</groupId>
+        <artifactId>openurp-hr-base-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.program</groupId>
+        <artifactId>openurp-edu-program-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.lesson</groupId>
+        <artifactId>openurp-edu-lesson-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.grade</groupId>
+        <artifactId>openurp-edu-grade-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.otherexam</groupId>
+        <artifactId>openurp-edu-otherexam-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.textbook</groupId>
+        <artifactId>openurp-edu-textbook-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.edu.workload</groupId>
+        <artifactId>openurp-edu-workload-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -157,11 +237,15 @@
       <artifactId>logback-classic</artifactId>
       <scope>runtime</scope>
     </dependency>
-      <dependency>
-        <groupId>org.scala-lang.modules</groupId>
-        <artifactId>scala-xml_2.11</artifactId>
-      </dependency>
-   </dependencies>
+    <dependency>
+      <groupId>org.scala-lang.modules</groupId>
+      <artifactId>scala-xml_2.11</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.beangle.data</groupId>
+      <artifactId>beangle-data-model_2.11</artifactId>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
@@ -187,11 +271,10 @@
         <version>2.4</version>
         <configuration>
           <packagingExcludes>
-          %regex[WEB-INF/lib/.*[^T].jar]
+            %regex[WEB-INF/lib/.*[^T].jar]
           </packagingExcludes>
         </configuration>
       </plugin>
     </plugins>
   </build>
-</project>
 </project>
