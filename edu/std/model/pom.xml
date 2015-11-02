@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.edu.std</groupId>
     <artifactId>openurp-edu-std-parent</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6-SNAPSHOT</version>
   </parent>
   <artifactId>openurp-edu-std-model</artifactId>
   <packaging>jar</packaging>
