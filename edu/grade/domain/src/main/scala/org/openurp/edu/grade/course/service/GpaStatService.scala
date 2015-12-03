@@ -18,6 +18,7 @@
  */
 package org.openurp.edu.grade.course.service
 
+import org.beangle.commons.collection.Collections
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.grade.course.model.{ CourseGrade, StdGpa }
@@ -74,7 +75,7 @@ class MultiStdGpa(val unit: Any, val stdGpas: Iterable[StdGpa]) {
   val semesters: List[Semester] = statSemesters(stdGpas)
 
   def statSemesters(stdGpas: Iterable[StdGpa]): List[Semester] = {
-    val semesters = new collection.mutable.HashSet[Semester]
+    val semesters = Collections.newSet[Semester]
     for (stdGp <- stdGpas; stdSemesterGpa <- stdGp.semesterGpas) {
       semesters += stdSemesterGpa.semester
     }

@@ -32,8 +32,10 @@ class School extends IntId with Coded with Named {
  * 部门
  */
 class Department extends IntId with Coded with Named with Hierarchical[Department]
-  with TemporalOn with Updated with Remark {
+    with TemporalOn with Updated with Remark {
   var enName: String = _
   var shortName: String = _
   var category: DepartmentCategory = _
+  var teaching: Boolean = _
+  var research: Boolean = _
 }

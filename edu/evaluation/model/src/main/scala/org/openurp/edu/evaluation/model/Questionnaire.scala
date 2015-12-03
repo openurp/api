@@ -20,10 +20,10 @@ package org.openurp.edu.evaluation.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
-import scala.collection.mutable.HashSet
 import java.sql.Date
 import org.beangle.data.model.TemporalOn
 import org.beangle.data.model.Updated
+import org.beangle.commons.collection.Collections
 /**
  * 评教问卷
  */
@@ -33,7 +33,7 @@ class Questionnaire extends LongId with Updated with TemporalOn {
   /** 简单描述 */
   var description: String = _
   /** 相关联的问题 */
-  var questions: HashSet[Question] = new collection.mutable.HashSet[Question]
+  var questions = Collections.newSet[Question]
   /** 创建部门 */
   var depart: Department = _
   /** 备注 */

@@ -19,6 +19,8 @@
 package org.openurp.edu.base.model
 
 import scala.collection.mutable.{ Buffer, ListBuffer }
+
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.{ Coded, IntId, LongId, Named, TemporalOn, Updated }
 import org.beangle.data.model.annotation.code
 import org.openurp.base.model.{ Calendar, Campus, Department, School, TimeSetting }
@@ -56,7 +58,7 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   /** 是否辅修 */
   var minor: Boolean = _
 
-  var properties: collection.mutable.Map[String, String] = new collection.mutable.HashMap[String, String]
+  var properties = Collections.newMap[String, String]
 
 }
 /**

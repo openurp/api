@@ -18,10 +18,9 @@
  */
 package org.openurp.edu.evaluation.model
 
-import org.beangle.data.model.LongId
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.{ LongId, Named }
 import org.openurp.base.model.Department
-import org.beangle.data.model.Named
-import scala.collection.mutable.HashSet
 /**
  * 选项组
  *
@@ -32,7 +31,7 @@ class OptionGroup extends LongId with Named {
   var oppoVal: Float = _
 
   /** 各类选项 */
-  var options: HashSet[Option] = new collection.mutable.HashSet[Option]
+  var options = Collections.newSet[Option]
 
   /** 创建部门 */
   var depart: Department = _

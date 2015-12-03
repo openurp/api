@@ -18,22 +18,13 @@
  */
 package org.openurp.edu.base.model
 
-import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.EducationLevel
-import org.beangle.data.model.Named
-import org.openurp.edu.base.ProjectBased
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.{ Coded, LongId, Named, TemporalOn, Updated }
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.Coded
-import org.openurp.edu.base.code.model.ScoreMarkStyle
-import org.beangle.data.model.Updated
-import org.openurp.edu.base.code.model.CourseHourType
-import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.base.code.model.CourseCategory
-import org.openurp.edu.base.code.model.ExamMode
-import java.sql.Date
-import org.openurp.edu.base.code.model.CourseAbilityRate
 import org.openurp.base.model.Department
-import org.beangle.data.model.TemporalOn
+import org.openurp.code.edu.model.EducationLevel
+import org.openurp.edu.base.ProjectBased
+import org.openurp.edu.base.code.model.{ CourseAbilityRate, CourseCategory, CourseHourType, CourseType, ExamMode, ScoreMarkStyle }
 import org.openurp.hr.base.model.Staff
 
 /**
@@ -78,17 +69,15 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated 
   var markStyle: ScoreMarkStyle = _
 
   /** 能力等级 */
-  var abilityRates: collection.mutable.Set[CourseAbilityRate] = new collection.mutable.HashSet[CourseAbilityRate]
+  var abilityRates = Collections.newSet[CourseAbilityRate]
   /**针对专业*/
-  var majors: collection.mutable.Set[Major] = new collection.mutable.HashSet[Major]
+  var majors = Collections.newSet[Major]
   /**排除专业*/
-  var xmajors: collection.mutable.Set[Major] = new collection.mutable.HashSet[Major]
-  //  /**先修课程*/
-  //  var prerequisites: collection.mutable.Set[Course] = new collection.mutable.HashSet[Course]
+  var xmajors = Collections.newSet[Major]
 
-  var textbooks: collection.mutable.Set[Textbook] = new collection.mutable.HashSet[Textbook]
+  var textbooks = Collections.newSet[Textbook]
 
-  var teachers: collection.mutable.Set[Staff] = new collection.mutable.HashSet[Staff]
+  var teachers = Collections.newSet[Staff]
   /**课程备注*/
   var remark: String = _
   /** 是否计算绩点 **/

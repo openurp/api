@@ -32,7 +32,4 @@ class UserCategory extends BaseCodeBean
  * 部门分类
  */
 @code("school")
-class DepartmentCategory extends BaseCodeBean with Hierarchical[DepartmentCategory] {
-  var teaching: Boolean = _
-  var research: Boolean = _
-}
+class DepartmentCategory extends BaseCodeBean with Hierarchical[DepartmentCategory]

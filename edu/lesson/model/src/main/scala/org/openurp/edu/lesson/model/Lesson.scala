@@ -90,7 +90,7 @@ class Lesson extends LongId with ProjectBased with Updated with Cloneable with Y
   /** 审核状态 */
   var state: States.State = _
 
-  var tags: collection.mutable.Set[LessonTag] = new collection.mutable.HashSet[LessonTag]
+  var tags = Collections.newSet[LessonTag]
 
   def year: Int = {
     Integer.valueOf(semester.id.toString.substring(0, 4))
