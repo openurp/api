@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.people</groupId>
     <artifactId>openurp-people-parent</artifactId>
-    <version>0.0.6-SNAPSHOT</version>
+    <version>0.0.6</version>
   </parent>
   <groupId>org.openurp.people.base</groupId>
   <artifactId>openurp-people-base-parent</artifactId>
