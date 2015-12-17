@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.hr.info</groupId>
     <artifactId>openurp-hr-info-parent</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7-SNAPSHOT</version>
   </parent>
   <artifactId>openurp-hr-info-model</artifactId>
   <packaging>jar</packaging>

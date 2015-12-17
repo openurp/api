@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.edu.grade</groupId>
     <artifactId>openurp-edu-grade-parent</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7-SNAPSHOT</version>
   </parent>
   <artifactId>openurp-edu-grade-model</artifactId>
   <packaging>jar</packaging>

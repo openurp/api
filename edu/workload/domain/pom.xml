@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.edu.workload</groupId>
     <artifactId>openurp-edu-workload-parent</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.edu.workload</groupId>
   <artifactId>openurp-edu-workload-domain</artifactId>
