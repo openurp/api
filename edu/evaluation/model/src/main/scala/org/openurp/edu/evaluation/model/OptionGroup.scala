@@ -32,7 +32,4 @@ class OptionGroup extends LongId with Named {
 
   /** 各类选项 */
   var options = Collections.newSet[Option]
-
-  /** 创建部门 */
-  var depart: Department = _
 }

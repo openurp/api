@@ -33,7 +33,7 @@ class Questionnaire extends LongId with Updated with TemporalOn {
   /** 简单描述 */
   var description: String = _
   /** 相关联的问题 */
-  var questions = Collections.newSet[Question]
+  var questions = Collections.newBuffer[Question]
   /** 创建部门 */
   var depart: Department = _
   /** 备注 */
@@ -42,4 +42,8 @@ class Questionnaire extends LongId with Updated with TemporalOn {
   var createBy: String = _
   /** 使用状态 */
   var state: Boolean = false
+
+  def totalScore: Float = {
+    questions.foldLeft(0f)(_ + _.score)
+  }
 }

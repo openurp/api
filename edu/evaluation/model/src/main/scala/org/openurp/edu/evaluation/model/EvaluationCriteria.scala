@@ -26,7 +26,7 @@ import org.beangle.commons.collection.Collections
 class EvaluationCriteria extends LongId with Named {
 
   /** 具体分值对照项 */
-  var criteriaItems = Collections.newSet[EvaluationCriteriaItem]
+  var criteriaItems = Collections.newBuffer[EvaluationCriteriaItem]
 
   /** 制作部门 */
   var depart: Department = _

@@ -46,7 +46,7 @@ class DefaultMapping extends Mapping {
       e.code is (notnull, length(32), unique),
       e.name is (notnull, length(222)),
       e.enName is length(300),
-      e.project & e.educationLevel & e.department & e.beginOn & e.updatedAt are notnull,
+      e.project & e.department & e.beginOn & e.updatedAt are notnull,
       e.hours is (depends("course")),
       e.remark is length(500)))
 

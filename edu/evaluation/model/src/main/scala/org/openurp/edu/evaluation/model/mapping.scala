@@ -41,18 +41,16 @@ class DefaultMapping extends Mapping {
 
     bind[OptionGroup].on(e => declare(
       e.name is (length(50), notnull),
-      e.depart is notnull,
       e.options is depends("optionGroup")))
 
     bind[Question].on(e => declare(
       e.content is (length(400), notnull),
       e.remark is length(200),
-      e.questionType & e.depart & e.optionGroup are notnull))
+      e.questionType & e.depart are notnull))
 
     bind[Questionnaire].on(e => declare(
       e.depart & e.beginOn are notnull,
       e.remark is length(200),
-      e.questions is depends("questionnaire"),
       e.title is length(200),
       e.description is length(500)))
 
