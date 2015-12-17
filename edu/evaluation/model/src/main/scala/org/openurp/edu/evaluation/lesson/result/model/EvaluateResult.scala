@@ -18,8 +18,7 @@
  */
 package org.openurp.edu.evaluation.lesson.result.model
 
-import scala.collection.mutable.HashSet
-
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
 import org.openurp.edu.base.model.Student
@@ -43,7 +42,7 @@ class EvaluateResult extends LongId {
   /** 问卷信息 */
   var questionnaire: Questionnaire = _
   /** 问题评教结果 */
-  var questionResults: HashSet[QuestionResult] = new collection.mutable.HashSet[QuestionResult]
+  var questionResults = Collections.newSet[QuestionResult]
   /** 评教时间 */
   var evaluateAt: java.util.Date = _
   /**问卷状态 */

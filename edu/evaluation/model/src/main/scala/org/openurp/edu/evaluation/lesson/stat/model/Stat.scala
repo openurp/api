@@ -24,6 +24,7 @@ import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.edu.evaluation.model.{ Option, Question, QuestionType, Questionnaire }
 import org.beangle.data.model.LongIdEntity
+import org.beangle.commons.collection.Collections
 
 trait Rank {
   var rank: Int = _
@@ -61,10 +62,10 @@ trait EvalStat extends LongIdEntity {
   var questionnaire: Questionnaire = _
 
   /** 问题详细信息统计 */
-  var questionStats = new collection.mutable.HashSet[QuestionStat]
+  var questionStats = Collections.newSet[QuestionStat]
 
   /** 问题类别得分 */
-  var questionTypeStats = new collection.mutable.HashSet[QuestionTypeStat]
+  var questionTypeStats = Collections.newSet[QuestionTypeStat]
 }
 
 trait QuestionStat extends LongIdEntity {

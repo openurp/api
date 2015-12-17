@@ -18,14 +18,13 @@
  */
 package org.openurp.edu.grade.course.domain
 
-import scala.collection.mutable
-
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.{ ExamStatus, ScoreMarkStyle }
 import org.openurp.edu.base.model.Project
-import org.openurp.edu.lesson.code.model.ExamType
 import org.openurp.edu.grade.code.model.GradeType
+import org.openurp.edu.lesson.code.model.ExamType
 /**
  * 课程成绩配置
  *
@@ -37,26 +36,26 @@ class CourseGradeSetting extends LongId with ProjectBased {
   /**
    * 总评成绩的组成部分
    */
-  var endGaElements: collection.Set[GradeType] = new mutable.HashSet[GradeType]
+  var endGaElements = Collections.newSet[GradeType]
 
   /**
    * 总评成绩的组成部分
    */
-  var delayGaElements: collection.Set[GradeType] = new mutable.HashSet[GradeType]
+  var delayGaElements = Collections.newSet[GradeType]
   /**
    * 总评成绩的组成部分
    */
-  var makeupGaElements: collection.Set[GradeType] = new mutable.HashSet[GradeType]
+  var makeupGaElements = Collections.newSet[GradeType]
 
   /**
    * 允许补考考试类型
    */
-  var allowExamStatuses: collection.Set[ExamStatus] = new mutable.HashSet[ExamStatus]
+  var allowExamStatuses = Collections.newSet[ExamStatus]
 
   /**
    * 不允许录入成绩的考试类型列表
    */
-  var emptyScoreStatuses: collection.Set[ExamStatus] = new mutable.HashSet[ExamStatus]
+  var emptyScoreStatuses = Collections.newSet[ExamStatus]
 
   /**
    * 是否提交即发布

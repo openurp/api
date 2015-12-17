@@ -18,7 +18,8 @@
  */
 package org.openurp.edu.grade.course.model
 
-import org.beangle.data.model.annotation.config
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.annotation.{ code, config }
 import org.openurp.edu.base.code.model.ScoreMarkStyle
 import org.openurp.edu.grade.code.model.GradeType
 import org.openurp.edu.grade.model.{ AbstractGradeState, GradeState }
@@ -42,12 +43,12 @@ class CourseGradeState extends AbstractGradeState {
   /**
    * 可录入各成绩类型的状态设置
    */
-  var examStates: collection.mutable.Set[ExamGradeState] = new collection.mutable.HashSet[ExamGradeState]
+  var examStates = Collections.newSet[ExamGradeState]
 
   /**
    * 可录入各成绩类型的状态设置
    */
-  var gaStates: collection.mutable.Set[GaGradeState] = new collection.mutable.HashSet[GaGradeState]
+  var gaStates = Collections.newSet[GaGradeState]
 
   def this(lesson: Lesson) {
     this()

@@ -4,14 +4,14 @@
   <parent>
     <groupId>org.openurp.std.base</groupId>
     <artifactId>openurp-std-base-parent</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
   </parent>
   <groupId>org.openurp.std.base</groupId>
   <artifactId>openurp-std-base-model</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
   <packaging>jar</packaging>
   <name>OpenURP Std Base Model</name>
-  
+
   <properties>
     <bundle.symbolicName>org.openurp.std.base.model</bundle.symbolicName>
     <bundle.namespace>org.openurp.std.base</bundle.namespace>

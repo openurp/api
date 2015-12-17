@@ -19,9 +19,12 @@
 package org.openurp.edu.grade.model
 
 import java.text.NumberFormat
+
 import scala.collection.mutable.{ Buffer, ListBuffer }
-import org.beangle.data.model.annotation.config
+
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.config
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.ScoreMarkStyle
 
@@ -50,7 +53,7 @@ class GradeRateConfig extends LongId with ProjectBased {
    * 默认成绩
    */
   @transient
-  private var defaultScoreMap = new collection.mutable.HashMap[String, Float]
+  private var defaultScoreMap = Collections.newMap[String, Float]
 
   /**
    * 将字符串按照成绩记录方式转换成数字.<br>

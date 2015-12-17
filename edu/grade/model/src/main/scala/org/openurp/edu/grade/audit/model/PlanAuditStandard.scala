@@ -19,10 +19,9 @@
 package org.openurp.edu.grade.audit.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.TemporalOn
-import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.StudentScope
+import org.beangle.data.model.{ LongId, TemporalOn }
 import org.openurp.edu.base.code.model.CourseType
+import org.openurp.edu.base.model.StudentScope
 
 class PlanAuditStandard extends LongId with TemporalOn {
 
@@ -30,9 +29,9 @@ class PlanAuditStandard extends LongId with TemporalOn {
 
   var studentScope: StudentScope = new StudentScope
 
-  var disauditCourseTypes = new collection.mutable.HashSet[CourseType]
+  var disauditCourseTypes = Collections.newSet[CourseType]
 
-  var convertableCourseTypes = new collection.mutable.HashSet[CourseType]
+  var convertableCourseTypes = Collections.newSet[CourseType]
 
   var convertTarCourseType: CourseType = _
 

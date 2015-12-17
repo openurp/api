@@ -18,6 +18,7 @@
  */
 package org.openurp.edu.lesson.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
 import org.openurp.edu.base.ProjectBased
@@ -28,11 +29,11 @@ import org.openurp.edu.base.model.Classroom
  * @author chaostone
  */
 
-class DepartScheduleRoom extends LongId  with ProjectBased {
+class DepartScheduleRoom extends LongId with ProjectBased {
   /** 教室 */
   var classroom: Classroom = _
   /** 固定使用部门 */
-  var departs: collection.mutable.Set[Department] = new collection.mutable.HashSet[Department]
+  var departs = Collections.newSet[Department]
   /** 保留时间 */
   //  var reserved:List[TimeUnit]=_
 } 

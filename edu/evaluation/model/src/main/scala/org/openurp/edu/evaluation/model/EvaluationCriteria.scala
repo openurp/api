@@ -21,12 +21,12 @@ package org.openurp.edu.evaluation.model
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
 import org.beangle.data.model.Named
-import scala.collection.mutable.HashSet
+import org.beangle.commons.collection.Collections
 
 class EvaluationCriteria extends LongId with Named {
 
   /** 具体分值对照项 */
-  var criteriaItems: HashSet[EvaluationCriteriaItem] = new HashSet[EvaluationCriteriaItem]
+  var criteriaItems = Collections.newBuffer[EvaluationCriteriaItem]
 
   /** 制作部门 */
   var depart: Department = _

@@ -18,6 +18,7 @@
  */
 package org.openurp.edu.grade.audit.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.Component
 import org.openurp.edu.base.model.Course
 
@@ -31,7 +32,7 @@ class AuditStat extends Component {
 
   var numCompleted: Int = _
 
-  var passedCourses = new collection.mutable.HashSet[Course]
+  var passedCourses = Collections.newSet[Course]
 
   var creditsConverted: Float = _
 

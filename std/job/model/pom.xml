@@ -4,13 +4,12 @@
   <parent>
     <groupId>org.openurp.std.job</groupId>
     <artifactId>openurp-std-job-parent</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.6</version>
   </parent>
   <groupId>org.openurp.std.job</groupId>
   <artifactId>openurp-std-job-model</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Std Job Model</name>
-  
 
   <properties>
     <bundle.symbolicName>org.openurp.std.job.model</bundle.symbolicName>
