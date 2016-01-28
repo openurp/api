@@ -39,7 +39,7 @@ class DefaultMapping extends Mapping {
       e.remark is length(100)))
 
     bind[Classroom] on (e => declare(
-      e.room & e.classroomType are (notnull),
+      e.project & e.classroomType are notnull,
       e.name is (notnull, length(100))))
 
     bind[Course] on (e => declare(
@@ -84,7 +84,7 @@ class DefaultMapping extends Mapping {
       e.remark is length(200)))
 
     bind[Occupancy] on (e => declare(
-      e.classroom is (notnull, length(30)),
+      e.room is notnull,
       e.time.startOn & e.time.weekday & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull,
       e.usage & e.updatedAt are notnull,
       e.userid is length(100),
@@ -104,16 +104,20 @@ class DefaultMapping extends Mapping {
       e.school & e.calendar & e.beginOn & e.updatedAt are notnull,
       e.description is length(500)))
 
-    bind[ProjectClassroom] on (e => declare(
-      e.project & e.classroom & e.beginOn & e.updatedAt are notnull))
-
     bind[ProjectCode] on (e => declare(
       e.project is notnull,
       e.className is (notnull, length(100)),
       e.codeIds is (notnull, length(2000))))
 
-    bind[ProjectStaff] on (e => declare(
-      e.project & e.staff & e.beginOn & e.updatedAt are notnull))
+    bind[Teacher] on (e => declare(
+      e.project & e.person & e.beginOn & e.updatedAt are notnull,
+      e.states is depends("teacher")))
+
+    bind[TeacherState] on (e => declare(
+      e.teacher & e.department are notnull))
+
+    bind[Instructor] on (e => declare(
+      e.person & e.department are notnull))
 
     bind[Student] on (e => declare(
       e.code is (notnull, length(30), unique),

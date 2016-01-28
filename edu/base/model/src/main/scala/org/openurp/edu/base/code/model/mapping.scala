@@ -40,5 +40,6 @@ class DefaultMapping extends Mapping {
     bind[BookType]
     bind[BookAwardType]
     bind[Education]
+    bind[TeacherType]
   }
 }

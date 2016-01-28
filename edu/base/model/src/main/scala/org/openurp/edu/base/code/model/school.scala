@@ -50,7 +50,6 @@ class StdLabelType extends BaseCodeBean
 @code("school")
 class StdType extends BaseCodeBean
 
-
 /**
  * 成绩记录方式
  */
@@ -199,3 +198,11 @@ class Education extends BaseCodeBean {
   var to: EducationLevel = _
 }
 
+/**
+ * 教师类型
+ */
+@code("school")
+class TeacherType extends BaseCodeBean {
+  var external: Boolean = _
+  var parttime: Boolean = _
+}

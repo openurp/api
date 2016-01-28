@@ -22,7 +22,7 @@ import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.{ LongId, TemporalOn }
 import org.openurp.edu.base.Activity
 import org.openurp.edu.base.model.Classroom
-import org.openurp.hr.base.model.Staff
+import org.openurp.edu.base.model.Teacher
 /**
  * 教学活动
  * </p>
@@ -40,7 +40,7 @@ class CourseActivity extends LongId with Ordered[CourseActivity] with Activity {
   var time: WeekTime = _
 
   /** 授课教师列表 */
-  var teachers: collection.mutable.Set[Staff] = _
+  var teachers: collection.mutable.Set[Teacher] = _
 
   /** 教室列表 */
   var rooms: collection.mutable.Set[Classroom] = _

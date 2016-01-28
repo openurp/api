@@ -17,8 +17,6 @@ EvalStat.scores=问题类别得分
 EvalStat.questionTypeStats=问题类型详细信息统计
 
 
-
-
 OptionStat=评教选项统计结果
 OptionStat.state=问题统计明细
 OptionStat.option=选项
@@ -82,7 +80,7 @@ LessonQuestionnaireLesson.questionnaire=问卷
 LessonQuestionnaireLesson.evaluateByTeacher=是否教师评教
 
 TeacherEvalStat=教师评教问卷统计结果
-TeacherEvalStat.staff=教师
+TeacherEvalStat.teacher=教师
 TeacherEvalStat.semester=教学日历
 TeacherEvalStat.statAt=统计时间
 TeacherEvalStat.score=总得分
@@ -121,7 +119,7 @@ TeacherQuestionTypeStat.evalStat=问卷评教结果
 
 CourseEvalStat=课程评教问卷统计结果
 CourseEvalStat.course=课程
-CourseEvalStat.staff=教师
+CourseEvalStat.teacher=教师
 CourseEvalStat.semester=教学日历
 CourseEvalStat.statAt=统计时间
 CourseEvalStat.score=总得分

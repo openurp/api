@@ -9,7 +9,7 @@ QuestionResult.questionType=问题类别
 
 EvaluateResult=问卷评教结果
 EvaluateResult.lesson=教学任务
-EvaluateResult.staff=教师
+EvaluateResult.teacher=教师
 EvaluateResult.student=学生
 EvaluateResult.department=开课院系
 EvaluateResult.questionnaire=问卷信息

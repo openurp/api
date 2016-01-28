@@ -37,6 +37,7 @@ Department=部门组织机构信息
 Department.enName=英文名称
 Department.shortName=简称
 Department.teaching=是否教学部门
+Department.research=是否科研部门
 Department.parent=上级单位
 Department.children=下级部门集合
 Department.category=部门分类

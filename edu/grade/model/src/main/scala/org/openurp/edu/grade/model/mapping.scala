@@ -89,7 +89,7 @@ class DefaultMapping extends Mapping {
       e.code & e.name & e.beginOn & e.country & e.updatedAt are notnull))
 
     bind[GradeRateConfig].on(e => declare(
-      e.scoreMarkStyle is notnull,
+      e.markStyle is notnull,
       e.items is depends("config")))
 
     bind[GradeRateItem].on(e => declare(

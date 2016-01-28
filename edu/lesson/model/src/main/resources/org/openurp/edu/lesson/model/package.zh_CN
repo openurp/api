@@ -106,10 +106,8 @@ ExamActivity.state=审核状态
 ExamActivity.rooms=对应考场
 
 ExamMonitor=监考信息
-ExamMonitor.examRoom=排考活动
-ExamMonitor.staff=监考老师
+ExamMonitor.person=人员信息
 ExamMonitor.department=监考院系
-ExamMonitor.teacherName=自定义监考
 
 ExamRoom=考场
 ExamRoom.semester=学年学期

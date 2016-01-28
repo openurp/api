@@ -19,13 +19,12 @@
 package org.openurp.edu.base.model
 
 import scala.collection.mutable.{ Buffer, ListBuffer }
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.{ Coded, IntId, LongId, Named, TemporalOn, Updated }
 import org.beangle.data.model.annotation.code
 import org.openurp.base.model.{ Calendar, Campus, Department, School, TimeSetting }
 import org.openurp.edu.base.code.model.{ Education, StdLabel, StdType }
-import org.openurp.hr.base.model.Staff
+import org.openurp.base.model.Room
 /**
  * 项目
  *
@@ -46,18 +45,17 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   var educations: Buffer[Education] = new ListBuffer[Education]
   /** 学生分类列表 */
   var stdLabels: Buffer[StdLabel] = new ListBuffer[StdLabel]
-
+  /**学生类别*/
   var stdTypes: Buffer[StdType] = new ListBuffer[StdType]
-
   /** 使用校历 */
   var calendar: Calendar = _
   /** 小节设置 */
-  var timeSettings: Buffer[TimeSetting] = new ListBuffer[TimeSetting]
+  var timeSettings = Collections.newBuffer[TimeSetting]
   /** 描述 */
   var description: String = _
   /** 是否辅修 */
   var minor: Boolean = _
-
+  /**项目属性*/
   var properties = Collections.newMap[String, String]
 
 }
@@ -75,20 +73,3 @@ class ProjectCode extends LongId {
   /**代码IDs*/
   var codeIds: String = _
 }
-
-/**
- * 项目师资人员配备
- */
-class ProjectStaff extends LongId with TemporalOn with Updated {
-  var project: Project = _
-  var staff: Staff = _
-}
-
-/**
- * 项目教室配备
- */
-class ProjectClassroom extends LongId with TemporalOn with Updated {
-  var project: Project = _
-  var classroom: Classroom = _
-}
-

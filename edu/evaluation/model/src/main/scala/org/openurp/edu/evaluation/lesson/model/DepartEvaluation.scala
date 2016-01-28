@@ -19,11 +19,10 @@
 package org.openurp.edu.evaluation.lesson.model
 
 import java.util.Date
-
 import org.beangle.data.model.{ LongId, Updated }
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.model.Course
-import org.openurp.hr.base.model.Staff
+import org.openurp.edu.base.model.Teacher
 
 class DepartEvaluation extends LongId with Updated {
   /**
@@ -35,7 +34,7 @@ class DepartEvaluation extends LongId with Updated {
   /**
    * 被评教师
    */
-  var staff: Staff = _
+  var teacher: Teacher = _
 
   /**
    * 学年学期

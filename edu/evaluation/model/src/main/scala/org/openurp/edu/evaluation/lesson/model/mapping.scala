@@ -64,7 +64,7 @@ class DefaultMapping extends Mapping {
 
     // department eval and questionanire
     bind[DepartEvaluation].on(e => declare(
-      e.staff & e.semester & e.course & e.userName & e.updateAt & e.score are notnull))
+      e.teacher & e.semester & e.course & e.userName & e.updateAt & e.score are notnull))
 
     bind[QuestionnaireLesson].on(e => declare(
       e.lesson & e.questionnaire are notnull))
@@ -84,7 +84,7 @@ class DefaultMapping extends Mapping {
 
     //course stat
     bind[CourseEvalStat].on(e => declare(
-      e.course & e.staff are notnull,
+      e.course & e.teacher are notnull,
       e.questionStats is depends(classOf[CourseQuestionStat], "questionnaireStat"),
       e.questionTypeStats is depends(classOf[CourseQuestionTypeStat], "questionnaireStat")))
 
@@ -147,7 +147,7 @@ class DefaultMapping extends Mapping {
 
     //staff
     bind[TeacherEvalStat].on(e => declare(
-      e.staff is notnull,
+      e.teacher is notnull,
       e.questionStats is depends(classOf[TeacherQuestionStat], "questionnaireStat"),
       e.questionTypeStats is depends(classOf[TeacherQuestionTypeStat], "questionnaireStat")))
 

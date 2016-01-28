@@ -25,7 +25,7 @@ import org.openurp.edu.base.model.{ Course, Student }
 import org.openurp.edu.lesson.code.model.{ CourseTakeType, ElectionMode }
 import org.beangle.data.model.Updated
 
-class CourseTake extends LongId with Updated with Cloneable with Ordered[CourseTake] {
+class CourseTake extends LongId with Updated with Cloneable {
 
   /** 教学任务 */
   var lesson: Lesson = _
@@ -52,11 +52,4 @@ class CourseTake extends LongId with Updated with Cloneable with Ordered[CourseT
   /** 授课对象组 */
   var limitGroup: LessonLimitGroup = _
 
-  /** 是否临时(预选) */
-  var temporary: Boolean = _
-
-  override def compare(other: CourseTake): Int = {
-    //fix me
-    -1
-  }
 }

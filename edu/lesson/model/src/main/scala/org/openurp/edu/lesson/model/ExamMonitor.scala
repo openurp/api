@@ -20,10 +20,11 @@ package org.openurp.edu.lesson.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
-import org.openurp.hr.base.model.Staff
+import org.openurp.people.base.model.Person
+import org.beangle.data.model.TemporalOn
 
 /**
- * 监考信息
+ * 监考人员信息
  * </p>
  * 记录监考院系、教师、自定义监考人员
  *
@@ -32,27 +33,17 @@ import org.openurp.hr.base.model.Staff
  * @depend - - - Department
  * @author chaostone
  */
-class ExamMonitor extends LongId {
+class ExamMonitor extends LongId with TemporalOn {
 
-  /**
-   * 排考活动
-   */
-  var examRoom: ExamRoom = _
-
-  /**
-   * 监考老师
-   */
-  var staff: Staff = _
-
+  var person: Person = _
   /**
    * 监考院系
    */
   var department: Department = _
 
-  def this(examRoom: ExamRoom, staff: Staff, department: Department) {
+  def this(person: Person, department: Department) {
     this()
-    this.staff = staff
-    this.examRoom = examRoom
+    this.person = person
     this.department = department
   }
 

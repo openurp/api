@@ -19,10 +19,10 @@
 package org.openurp.edu.evaluation.lesson.stat.model
 
 import org.beangle.data.model.LongId
-import org.openurp.hr.base.model.Staff
+import org.openurp.edu.base.model.Teacher
 
 class TeacherEvalStat extends LongId with EvalStat with Rank {
-  var staff: Staff = _
+  var teacher: Teacher = _
 }
 
 class TeacherQuestionStat extends LongId with QuestionStat

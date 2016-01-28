@@ -35,7 +35,7 @@ class Textbook extends LongId with TemporalOn with Named {
 
   var version: String = _
 
-  var price: java.lang.Integer = 0
+  var price: java.lang.Float = _
 
   var description: String = _
 

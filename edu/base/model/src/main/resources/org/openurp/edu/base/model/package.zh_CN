@@ -24,6 +24,7 @@ Classroom.shortName=简称
 Classroom.classroomType=教室类型
 Classroom.examCapacity=考试容量
 Classroom.courseCapacity=上课容量
+Classroom.project=项目
 
 Course=课程基本信息
 Course.code=课程代码
@@ -50,8 +51,8 @@ Course.prerequisites=先修课程
 Course.remark=课程备注
 Course.calgp=是否计算绩点
 Course.project=项目
-Course.educationLevel=学历层次
 Course.teachers=上课教师
+Course.educations=学历层次列表
 
 CourseHour=课程分类课时信息
 CourseHour.period=学时/总课时
@@ -99,7 +100,7 @@ MajorJournal.education=培养层次
 MajorJournal.depart=部门
 
 Occupancy=教室占用情况
-Occupancy.classroom=教室
+Occupancy.room=教室
 Occupancy.time=时间
 Occupancy.usage=用途
 Occupancy.userid=使用者
@@ -139,14 +140,6 @@ ProjectCode=项目基础代码配置
 ProjectCode.project=项目
 ProjectCode.className=代码元
 ProjectCode.codeIds=代码ID
-
-ProjectStaff=项目师资人员配备
-ProjectStaff.staff=人员信息
-ProjectStaff.project=项目
-
-ProjectClassroom=项目师资人员配备
-ProjectClassroom.classroom=教室
-ProjectClassroom.project=项目
 
 Student=学籍信息实现
 Student.adminclass=行政班级
@@ -208,3 +201,20 @@ Textbook.publishedOn=出版日期
 Textbook.awardType=教材获奖类型
 Textbook.published=是否出版
 
+Teacher=教师信息
+Teacher.project=所在项目
+Teacher.person=人员信息
+Teacher.state=状态信息
+Teacher.teacherType=教师类型
+
+TeacherState=教师状态
+TeacherState.teacher=教师
+TeacherState.department=所在部门
+TeacherState.title=职称
+TeacherState.tutorType=导师类型
+TeacherState.degree=学位
+
+Instructor=辅导员
+Instructor.department=院系
+Instructor.project=项目
+Instructor.person=人员信息

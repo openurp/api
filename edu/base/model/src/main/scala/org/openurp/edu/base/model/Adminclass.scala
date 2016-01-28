@@ -24,7 +24,6 @@ import org.beangle.data.model.annotation.code
 import org.openurp.base.model.Department
 import org.openurp.edu.base.EducationBased
 import org.openurp.edu.base.code.model.StdType
-import org.openurp.hr.base.model.Staff
 
 /**
  * 学生行政班级信息
@@ -51,7 +50,7 @@ class Adminclass extends LongId with EducationBased with Coded with Named with T
   /** 学籍有效人数 */
   var stdCount: Int = _
   /** 辅导员 */
-  var instructor: Staff = _
+  var instructor: Instructor = _
   /** 班导师 */
-  var tutor: Staff = _
+  var tutor: Teacher = _
 }

@@ -26,7 +26,7 @@ import org.openurp.edu.base.{ ProjectBased, States }
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.lesson.code.model.{ LessonTag, TeachLangType }
-import org.openurp.hr.base.model.Staff
+import org.openurp.edu.base.model.Teacher
 /**
  * 教学任务 </p> 每学期开课任务，以此为开始作为排课、排考、成绩录入的依据。代表着从对上课对象和开课院系的完整的教学实际任务信息. <li>
  * 1、教什么（课程名称、类别）、什么时候教（学年学期），谁来教（授课学院、零个或多个教师）</li> <li>
@@ -61,7 +61,7 @@ class Lesson extends LongId with ProjectBased with Updated with Cloneable with Y
   var teachDepart: Department = _
 
   /** 授课教师 */
-  var teachers = Collections.newBuffer[Staff]
+  var teachers = Collections.newBuffer[Teacher]
 
   /** 开课校区 */
   var campus: Campus = _

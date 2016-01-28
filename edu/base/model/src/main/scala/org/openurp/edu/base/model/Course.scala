@@ -24,7 +24,6 @@ import org.beangle.data.model.annotation.code
 import org.openurp.base.model.Department
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.{ CourseAbilityRate, CourseCategory, CourseHourType, CourseType, Education, ExamMode, ScoreMarkStyle }
-import org.openurp.hr.base.model.Staff
 
 /**
  * 课程基本信息 </p>
@@ -74,7 +73,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated 
   /**推荐教材*/
   var textbooks = Collections.newSet[Textbook]
   /**教师*/
-  var teachers = Collections.newSet[Staff]
+  var teachers = Collections.newSet[Teacher]
   /**课程备注*/
   var remark: String = _
   /** 是否计算绩点 **/

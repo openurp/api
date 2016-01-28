@@ -44,7 +44,7 @@ class DefaultMapping extends Mapping {
       e.remark is length(100))).generator("date")
 
     bind[ExamMonitor].on(e => declare(
-      e.examRoom & e.department is notnull))
+      e.person & e.department is notnull))
 
     bind[ExamRoom].on(e => declare(
       e.classroom & e.semester are notnull,

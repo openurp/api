@@ -19,14 +19,13 @@
 package org.openurp.edu.lesson.model
 
 import java.sql.Date
-
 import scala.collection.mutable.{ Buffer, ListBuffer }
-
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.openurp.base.model.{ Department, Semester }
 import org.openurp.edu.base.model.Classroom
-import org.openurp.hr.base.model.Staff
+import org.openurp.edu.base.model.Teacher
+import org.beangle.commons.collection.Collections
 
 /**
  * 考场
@@ -51,16 +50,16 @@ class ExamRoom extends LongId {
   var classroom: Classroom = _
 
   /**主考教师*/
-  var examiner: Staff = _
+  var examiner: Teacher = _
 
   /**主考教师院系*/
   var department: Department = _
 
   /**考试活动*/
-  var activities: Buffer[ExamActivity] = new ListBuffer[ExamActivity]
+  var activities = Collections.newBuffer[ExamActivity]
 
   /**监考信息*/
-  var monitors: Buffer[ExamMonitor] = new ListBuffer[ExamMonitor]
+  var monitors = Collections.newSet[ExamMonitor]
 
   /**教室借用ID*/
   var roomApplyId: java.lang.Long = _

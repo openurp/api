@@ -21,14 +21,16 @@ package org.openurp.edu.base.model
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.{ LongId, Updated }
 import org.openurp.code.edu.model.ClassroomUsage
+import org.openurp.base.model.Room
 
 /**
- * 教室占用情况
+ * 房间占用情况
+ * 这里不用classroom的原因，在于跨项目的教室冲突检测需要。
  */
 class Occupancy extends LongId with Updated {
 
-  /** 教室 */
-  var classroom: Classroom = _ // 教室/考场/活动场地
+  /** 房间 */
+  var room: Room = _ // 教室/考场/活动场地
 
   /** 时间 */
   var time = new WeekTime // 时间安排

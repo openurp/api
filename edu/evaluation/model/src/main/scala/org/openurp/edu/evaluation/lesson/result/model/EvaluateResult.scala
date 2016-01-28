@@ -24,7 +24,7 @@ import org.openurp.base.model.Department
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.evaluation.model.Questionnaire
 import org.openurp.edu.lesson.model.Lesson
-import org.openurp.hr.base.model.Staff
+import org.openurp.edu.base.model.Teacher
 /**
  * 问卷评教结果
  *
@@ -34,7 +34,7 @@ class EvaluateResult extends LongId {
   /** 教学任务 */
   var lesson: Lesson = _
   /** 教师 */
-  var staff: Staff = _
+  var teacher: Teacher = _
   /** 学生 */
   var student: Student = _
   /** 开课院系 */

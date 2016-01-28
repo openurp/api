@@ -37,7 +37,7 @@ class GradeRateConfig extends LongId with ProjectBased {
   /**
    * 成绩记录方式
    */
-  var scoreMarkStyle: ScoreMarkStyle = _
+  var markStyle: ScoreMarkStyle = _
 
   /**
    * 成绩分级配置项
@@ -78,7 +78,7 @@ class GradeRateConfig extends LongId with ProjectBased {
    */
   def convert(score: java.lang.Float): String = {
     if (null == score) return ""
-    if (scoreMarkStyle.numStyle) return NumberFormat.getInstance.format(score.floatValue())
+    if (markStyle.numStyle) return NumberFormat.getInstance.format(score.floatValue())
     for (item <- items if item.contains(score)) {
       return item.grade
     }

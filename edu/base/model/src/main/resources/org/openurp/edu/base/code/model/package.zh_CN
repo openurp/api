@@ -27,8 +27,9 @@ GradeType=成绩类型
 ScoreMarkStyle=成绩记录方式
 ScoreMarkStyle.numStyle=是否为数字类型
 
-TeacherType=教职工类别
+TeacherType=教师类别
 TeacherType.parttime=是否兼职
+TeacherType.external=是否外聘
 
 TutorType=导师类型
 

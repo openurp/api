@@ -26,7 +26,6 @@ import org.openurp.base.model.{ Campus, Department }
 import org.openurp.code.edu.model.{ StudentStatus, StudyType }
 import org.openurp.edu.base.{ EducationBased, StdEnrollment }
 import org.openurp.edu.base.code.model.{ Education, StdLabel, StdLabelType, StdType }
-import org.openurp.hr.base.model.Staff
 import org.openurp.people.base.model.Person
 import org.beangle.data.model.TemporalOn
 
@@ -72,7 +71,7 @@ class Student extends LongId with EducationBased with YearId with Coded with Upd
   var studyType: StudyType = _
 
   /**导师*/
-  var tutor: Staff = _
+  var tutor: Teacher = _
 
   def year = Integer.valueOf(state.grade.substring(0, 4))
 
