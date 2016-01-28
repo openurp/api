@@ -29,7 +29,6 @@ class DefaultMapping extends Mapping {
     bind[StaffSourceType].on(e => declare(
       e.children is (depends("parent"), orderby("code"), cacheable)))
     bind[WorkStatus]
-    bind[TutorType]
     bind[EmployType]
   }
 

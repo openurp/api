@@ -33,5 +33,6 @@ class DefaultMapping extends Mapping {
       e.name.formatedName is length(100),
       e.name.middleName is length(50),
       e.formerName & e.phoneticName are length(100))).generator("auto_increment")
+
   }
 }

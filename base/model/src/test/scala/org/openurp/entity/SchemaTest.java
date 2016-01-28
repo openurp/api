@@ -20,7 +20,6 @@ package org.openurp.entity;
 
 
 import java.net.URL;
-import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

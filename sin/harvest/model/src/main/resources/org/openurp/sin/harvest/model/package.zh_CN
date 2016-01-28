@@ -46,7 +46,7 @@ PublishedSituation.publishedRange=发表范围
 PublishedSituation.translated=是否翻译
 
 Researcher=研究员
-Researcher.staff=人员
+Researcher.person=人员
 
 ThesisHarvest=论文成果
 ThesisHarvest.name=名称

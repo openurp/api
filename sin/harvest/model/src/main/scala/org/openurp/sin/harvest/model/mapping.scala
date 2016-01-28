@@ -53,7 +53,7 @@ class DefaultMapping extends Mapping {
       e.publishedDate & e.publishedRange are notnull))
 
     bind[Researcher].on(e => declare(
-      e.staff is notnull))
+      e.person is notnull))
 
     bind[ThesisHarvest].on(e => declare(
       e.researcher & e.publishedSituation & e.department is notnull,

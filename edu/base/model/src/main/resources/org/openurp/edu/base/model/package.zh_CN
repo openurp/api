@@ -204,15 +204,8 @@ Textbook.published=是否出版
 Teacher=教师信息
 Teacher.project=所在项目
 Teacher.person=人员信息
-Teacher.state=状态信息
 Teacher.teacherType=教师类型
-
-TeacherState=教师状态
-TeacherState.teacher=教师
-TeacherState.department=所在部门
-TeacherState.title=职称
-TeacherState.tutorType=导师类型
-TeacherState.degree=学位
+Teacher.department=所在部门
 
 Instructor=辅导员
 Instructor.department=院系

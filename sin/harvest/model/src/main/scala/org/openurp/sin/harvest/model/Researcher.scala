@@ -18,12 +18,12 @@
  */
 package org.openurp.sin.harvest.model
 
-import org.beangle.data.model.IntId
-import org.openurp.hr.base.model.Staff
+import org.openurp.people.base.model.Person
+import org.beangle.data.model.LongId
 
-class Researcher extends IntId {
+class Researcher extends LongId {
   /**
    * 人员信息
    */
-  var staff: Staff = _
+  var person: Person = _
 }

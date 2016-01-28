@@ -16,14 +16,30 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.people.info.model
+package org.openurp.hr.base.model
 
-import org.beangle.data.model.LongId
-import org.openurp.people.base.model.Person
+import org.beangle.data.model.{ LongId, TemporalOn }
+import org.openurp.base.model.Department
+import org.openurp.code.job.model.{ PostGrade, PostType, ProfessionalTitle }
 
-class FinanceAccount extends LongId {
-  var person: Person = _
-  var bankAccount: String = _
-  var campusCard: String = _
-  var socialSecurityNo: String = _
+/**
+ * 岗位信息
+ */
+class PostInfo extends LongId with TemporalOn {
+
+  /**教工*/
+  var staff: Staff = _
+
+  /**岗位类别*/
+  var postType: PostType = _
+
+  /**岗位等级*/
+  var postGrade: PostGrade = _
+
+  /**是否兼职*/
+  var parttime: Boolean = _
+  
+  /**辅导员类型*/
+  
+
 }

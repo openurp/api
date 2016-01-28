@@ -25,5 +25,12 @@ import org.openurp.code.BaseCodeBean
  * 社会单位性质
  * 参见教育部标准JY/T 1001 4.5.12
  */
-@code("nation")
+@code("industry")
 class SocialUnitType extends BaseCodeBean
+
+/**
+ * 导师类型
+ * 参见教育部标准JY/T 1001 4.4.4
+ */
+@code("industry")
+class TutorType extends BaseCodeBean

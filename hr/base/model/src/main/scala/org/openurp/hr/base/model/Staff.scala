@@ -22,6 +22,9 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.{ Coded, LongId, Updated }
 import org.openurp.code.hr.model.StaffType
 import org.openurp.people.base.model.Person
+import org.openurp.code.hr.model.EmployType
+import org.openurp.code.hr.model.StaffSourceType
+import java.sql.Date
 
 /**
  * 教职工信息
@@ -40,13 +43,18 @@ class Staff extends LongId with Updated with Coded {
   /**教职工类别*/
   var staffType: StaffType = _
 
-  /**职称信息*/
-  var titleInfo: TitleInfo = _
-
-  /**导师信息*/
-  var tutorInfo: TutorInfo = _
-
   /**是否在编*/
   var registed: Boolean = _
+  
+  /**教职工来源*/
+  var sourceType: StaffSourceType = _
 
+  /**参加工作日期*/
+  var workStartOn: Date = _
+
+  /**来校日期*/
+  var employOn: Date = _
+
+  /**用人形式*/
+  var employType: EmployType = _
 }

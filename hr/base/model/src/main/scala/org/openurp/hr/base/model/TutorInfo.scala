@@ -20,7 +20,7 @@ package org.openurp.hr.base.model
 
 import org.beangle.data.model.TemporalOn
 import org.beangle.data.model.LongId
-import org.openurp.code.hr.model.TutorType
+import org.openurp.code.job.model.TutorType
 
 /**
  * 导师信息

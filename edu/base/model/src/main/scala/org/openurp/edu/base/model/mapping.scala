@@ -110,11 +110,7 @@ class DefaultMapping extends Mapping {
       e.codeIds is (notnull, length(2000))))
 
     bind[Teacher] on (e => declare(
-      e.project & e.person & e.beginOn & e.updatedAt are notnull,
-      e.states is depends("teacher")))
-
-    bind[TeacherState] on (e => declare(
-      e.teacher & e.department are notnull))
+      e.project & e.person & e.beginOn & e.updatedAt are notnull))
 
     bind[Instructor] on (e => declare(
       e.person & e.department are notnull))

@@ -16,12 +16,11 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.hr.info.model
+package org.openurp.hr.base.model
 
 import org.beangle.data.model.{ LongId, TemporalOn }
 import org.openurp.base.model.Department
 import org.openurp.code.job.model.{ DutyGrade, DutyType }
-import org.openurp.hr.base.model.Staff
 
 /**
  * 行政职务信息

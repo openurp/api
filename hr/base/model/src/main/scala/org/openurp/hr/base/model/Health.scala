@@ -16,42 +16,25 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.hr.info.model
+package org.openurp.hr.base.model
 
+import org.openurp.people.base.model.Person
+import org.openurp.code.person.model.HealthStatus
+import org.openurp.code.person.model.BloodType
 import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.Degree
-import org.openurp.hr.base.model.Staff
-import java.sql.Date
-import org.beangle.data.model.TemporalOn
 
 /**
- * 教职工学位信息
+ * 健康状况
  */
-class DegreeInfo extends LongId with TemporalOn {
-
-  /**
-   * 教职工
-   */
+class Health extends LongId {
+  /**教职工*/
   var staff: Staff = _
-
-  /**
-   * 学位
-   */
-  var degree: Degree = _
-
-  /**
-   * 学位证书号
-   */
-  var certificateNo: String = _
-  
-  /**
-   * 学位专业
-   */
-  var major: String = _
-
-  /**
-   * 授予单位
-   */
-  var conferralBy: String = _
-
+  /**健康状况*/
+  var healthStatus: HealthStatus = _
+  /**血型*/
+  var bloodType: BloodType = _
+  /**身高*/
+  var height: Float = _
+  /**体重*/
+  var weight: Float = _
 }

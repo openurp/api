@@ -31,5 +31,6 @@ class DefaultMapping extends Mapping {
     bind[PostType]
     bind[PostGrade]
     bind[ProfessionalTitle]
+    bind[TutorType]
   }
 }

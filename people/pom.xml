@@ -18,7 +18,6 @@
 
   <modules>
     <module>base</module>
-    <module>info</module>
     <module>contact</module>
   </modules>
 

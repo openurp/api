@@ -49,10 +49,3 @@ class StaffSourceType extends BaseCodeBean {
 @code("industry")
 class WorkStatus extends BaseCodeBean
 
-/**
- * 导师类型
- * 参见教育部标准JY/T 1001 4.4.4
- */
-@code("industry")
-class TutorType extends BaseCodeBean
-

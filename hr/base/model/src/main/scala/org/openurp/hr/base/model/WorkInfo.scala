@@ -16,34 +16,35 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.people.info.model
+package org.openurp.hr.base.model
 
+import java.util.Date
 import org.beangle.data.model.LongId
-import org.openurp.code.person.model.{ DifficultyCause, DifficultyDegree, FamilyCategory }
 import org.openurp.people.base.model.Person
+import org.beangle.data.model.TemporalOn
+import org.openurp.code.job.model.ProfessionalTitle
 
-class FamilyFinance extends LongId {
+/**工作经历信息*/
+class WorkInfo extends LongId with TemporalOn {
 
-  var person: Person = _
-  /**家庭人口 */
-  var totalNum: Integer = _
-  /**劳动力人口 */
-  var laborNum: Integer = _
-  /**赡养人口*/
-  var supportedNum: Integer = _
+  /**教职工*/
+  var staff: Staff = _
 
-  /**家庭类别 */
-  var familyCategory: FamilyCategory = _
-  /**困难原因 */
-  var difficultyCause: DifficultyCause = _
-  /**困难程度 */
-  var difficultyDegree: DifficultyDegree = _
-  /**是否低保 */
-  var miniSecurity: Boolean = _
-  /**家庭人均月收入 */
-  var monthlyIncome: Float = _
-  /**就学地低保线*/
-  var minimumSecurity: Float = _
-  /**家庭主要收入来源*/
-  var incomeSource: String = _
+  /**工作地点*/
+  var workPlace: String = _
+
+  /**工作内容*/
+  var workContent: String = _
+
+  /**专业技术职务*/
+  var title: ProfessionalTitle = _
+
+  /**党政职务*/
+  var adminPosition: String = _
+
+  /**证明人*/
+  var witness: String = _
+
+  /**备注 */
+  var remark: String = _
 }

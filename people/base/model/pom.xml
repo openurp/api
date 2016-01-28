@@ -28,5 +28,9 @@
       <groupId>org.openurp.code</groupId>
       <artifactId>openurp-code-model-edu</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-model-job</artifactId>
+    </dependency>
   </dependencies>
 </project>
