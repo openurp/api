@@ -1,6 +1,6 @@
 AdmissionType=录取类别
 ClassroomType=教室类型
-ClassroomUsage=教室占用情况
+ActivityType=活动类型
 
 DisciplineCategory=学科门类
 Degree=学位

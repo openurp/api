@@ -29,11 +29,11 @@ import org.openurp.code.BaseCodeBean
 class AdmissionType extends BaseCodeBean
 
 /**
- * 教室占用情况
- *  参见教育部标准JY/T 1001 4.3.4
+ * 活动类型
+ *  参考教育部标准JY/T 1001 4.3.4（教室占用情况）
  */
 @code("industry")
-class ClassroomUsage extends BaseCodeBean
+class ActivityType extends BaseCodeBean
 
 /**
  * 教室类型

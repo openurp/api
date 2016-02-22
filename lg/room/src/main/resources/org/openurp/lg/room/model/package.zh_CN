@@ -1,0 +1,11 @@
+Occupancy=房间占用情况
+Occupancy.room=房间
+Occupancy.time=时间
+Occupancy.activityType=活动类型
+Occupancy.activityId=活动Id
+Occupancy.appUser=用户系统
+Occupancy.comments=说明
+
+AppUser=房间占用用户系统
+AppUser.name=名称
+AppUser.activityUrl=活动明细url

@@ -16,11 +16,11 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.lg.room.occupancy.model
+package org.openurp.lg.room.model
 
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.{ LongId, Updated }
-import org.openurp.code.edu.model.ClassroomUsage
+import org.openurp.code.edu.model.ActivityType
 import org.openurp.base.model.Room
 
 /**
@@ -35,11 +35,14 @@ class Occupancy extends LongId with Updated {
   /** 时间 */
   var time = new WeekTime // 时间安排
 
-  /** 用途 */
-  var usage: ClassroomUsage = _
+  /** 活动类型 */
+  var activityType: ActivityType = _
 
-  /** 使用者 */
-  var userid: String = _
+  /**用户系统*/
+  var appUser: AppUser = _
+
+  /** 活动ID */
+  var activityId: Long = _
 
   /** 说明 */
   var comments: String = _

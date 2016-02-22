@@ -28,7 +28,7 @@ class DefaultMapping extends Mapping {
 
  def binding(): Unit = {
     bind[AdmissionType]
-    bind[ClassroomUsage]
+    bind[ActivityType]
     bind[ClassroomType]
     bind[DisciplineCatalog]
     bind[Discipline]

@@ -20,7 +20,6 @@ package org.openurp.lg.room.model
 
 import scala.reflect.runtime.universe
 import org.beangle.data.model.bind.Mapping
-import org.openurp.lg.room.occupancy.model.Occupancy
 
 class DefaultMapping extends Mapping {
 
@@ -30,9 +29,10 @@ class DefaultMapping extends Mapping {
     bind[Occupancy] on (e => declare(
       e.room is notnull,
       e.time.startOn & e.time.weekday & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull,
-      e.usage & e.updatedAt are notnull,
-      e.userid is length(100),
+      e.activityType & e.updatedAt & e.appUser & e.activityId are notnull,
       e.comments is length(300)))
 
+    bind[AppUser] on (e => declare(
+      e.name & e.activityUrl are (length(200), notnull)))
   }
 }
