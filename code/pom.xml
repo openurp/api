@@ -18,12 +18,12 @@
 
   <modules>
     <module>api</module>
-    <module>model/person</module>
-    <module>model/edu</module>
-    <module>model/geo</module>
-    <module>model/job</module>
-    <module>model/sin</module>
-    <module>model/hr</module>
+    <module>person</module>
+    <module>edu</module>
+    <module>geo</module>
+    <module>job</module>
+    <module>sin</module>
+    <module>hr</module>
   </modules>
 
   <dependencies>

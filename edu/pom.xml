@@ -32,7 +32,7 @@
   <dependencies>
     <dependency>
       <groupId>org.openurp.base</groupId>
-      <artifactId>openurp-base-model</artifactId>
+      <artifactId>openurp-base-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.data</groupId>

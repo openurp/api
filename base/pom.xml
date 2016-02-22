@@ -17,7 +17,7 @@
   </properties>
 
   <modules>
-    <module>model</module>
+    <module>api</module>
   </modules>
 
   <dependencies>
@@ -31,17 +31,17 @@
     <dependencies>
       <dependency>
         <groupId>org.openurp.code</groupId>
-        <artifactId>openurp-code-model-person</artifactId>
+        <artifactId>openurp-code-person</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openurp.code</groupId>
-        <artifactId>openurp-code-model-edu</artifactId>
+        <artifactId>openurp-code-edu</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openurp.code</groupId>
-        <artifactId>openurp-code-model-geo</artifactId>
+        <artifactId>openurp-code-geo</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>

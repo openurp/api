@@ -25,7 +25,7 @@
   <dependencies>
     <dependency>
       <groupId>org.openurp.base</groupId>
-      <artifactId>openurp-base-model</artifactId>
+      <artifactId>openurp-base-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

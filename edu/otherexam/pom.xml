@@ -2,29 +2,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-  <groupId>org.openurp.edu</groupId>
-  <artifactId>openurp-edu-parent</artifactId>
-  <version>0.0.7-SNAPSHOT</version>
+    <groupId>org.openurp.edu</groupId>
+    <artifactId>openurp-edu-parent</artifactId>
+    <version>0.0.7-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.edu.otherexam</groupId>
-  <artifactId>openurp-edu-otherexam-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Edu OtherExam Parent</name>
-  
+  <groupId>org.openurp.edu</groupId>
+  <artifactId>openurp-edu-otherexam</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Edu OtherExam API</name>
+
   <properties>
-    <bundle.symbolicName>org.openurp.edu.otherexam.model.parent</bundle.symbolicName>
+    <bundle.symbolicName>org.openurp.edu.otherexam</bundle.symbolicName>
     <bundle.namespace>org.openurp.edu.otherexam</bundle.namespace>
   </properties>
-  
-  <modules>
-    <module>model</module>
-    <module>domain</module>
-  </modules>
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-model</artifactId>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-base</artifactId>
     </dependency>
   </dependencies>
 </project>

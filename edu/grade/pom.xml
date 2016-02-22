@@ -6,20 +6,27 @@
     <artifactId>openurp-edu-parent</artifactId>
     <version>0.0.7-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.edu.grade</groupId>
-  <artifactId>openurp-edu-grade-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Edu Grade Parent</name>
+  <artifactId>openurp-edu-grade</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Edu Grade API</name>
 
-  <modules>
-    <module>model</module>
-    <module>domain</module>
-  </modules>
+  <properties>
+    <bundle.symbolicName>org.openurp.edu.grade</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu.grade</bundle.namespace>
+  </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-model</artifactId>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-program</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-lesson</artifactId>
     </dependency>
   </dependencies>
 </project>

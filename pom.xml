@@ -24,6 +24,7 @@
     <module>hr</module>
     <module>sin</module>
     <module>std</module>
+    <module>lg</module>
   </modules>
 
   <properties>
@@ -50,82 +51,87 @@
       </dependency>
       <dependency>
         <groupId>org.openurp.code</groupId>
-        <artifactId>openurp-code-model-person</artifactId>
+        <artifactId>openurp-code-person</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openurp.code</groupId>
-        <artifactId>openurp-code-model-geo</artifactId>
+        <artifactId>openurp-code-geo</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openurp.code</groupId>
-        <artifactId>openurp-code-model-edu</artifactId>
+        <artifactId>openurp-code-edu</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openurp.code</groupId>
-        <artifactId>openurp-code-model-job</artifactId>
+        <artifactId>openurp-code-job</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openurp.code</groupId>
-        <artifactId>openurp-code-model-hr</artifactId>
+        <artifactId>openurp-code-hr</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openurp.code</groupId>
-        <artifactId>openurp-code-model-sin</artifactId>
+        <artifactId>openurp-code-sin</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.people.base</groupId>
-        <artifactId>openurp-people-base-model</artifactId>
+        <groupId>org.openurp.people</groupId>
+        <artifactId>openurp-people-base</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openurp.base</groupId>
-        <artifactId>openurp-base-model</artifactId>
+        <artifactId>openurp-base-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu.base</groupId>
-        <artifactId>openurp-edu-base-model</artifactId>
+        <groupId>org.openurp.edu</groupId>
+        <artifactId>openurp-edu-base</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.hr.base</groupId>
-        <artifactId>openurp-hr-base-model</artifactId>
+        <groupId>org.openurp.hr</groupId>
+        <artifactId>openurp-hr-base</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu.program</groupId>
-        <artifactId>openurp-edu-program-model</artifactId>
+        <groupId>org.openurp.edu</groupId>
+        <artifactId>openurp-edu-program</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu.lesson</groupId>
-        <artifactId>openurp-edu-lesson-model</artifactId>
+        <groupId>org.openurp.edu</groupId>
+        <artifactId>openurp-edu-lesson</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu.grade</groupId>
-        <artifactId>openurp-edu-grade-model</artifactId>
+        <groupId>org.openurp.edu</groupId>
+        <artifactId>openurp-edu-grade</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu.otherexam</groupId>
-        <artifactId>openurp-edu-otherexam-model</artifactId>
+        <groupId>org.openurp.edu</groupId>
+        <artifactId>openurp-edu-otherexam</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu.textbook</groupId>
-        <artifactId>openurp-edu-textbook-model</artifactId>
+        <groupId>org.openurp.edu</groupId>
+        <artifactId>openurp-edu-textbook</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu.workload</groupId>
-        <artifactId>openurp-edu-workload-model</artifactId>
+        <groupId>org.openurp.edu</groupId>
+        <artifactId>openurp-edu-workload</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.lg</groupId>
+        <artifactId>openurp-lg-room</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>

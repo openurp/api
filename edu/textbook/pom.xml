@@ -2,29 +2,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-  <groupId>org.openurp.edu</groupId>
-  <artifactId>openurp-edu-parent</artifactId>
-  <version>0.0.7-SNAPSHOT</version>
+    <groupId>org.openurp.edu</groupId>
+    <artifactId>openurp-edu-parent</artifactId>
+    <version>0.0.7-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.edu.textbook</groupId>
-  <artifactId>openurp-edu-textbook-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Edu Textbook Parent</name>
-  
+  <groupId>org.openurp.edu</groupId>
+  <artifactId>openurp-edu-textbook</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Edu Textbook API</name>
+
   <properties>
-    <bundle.symbolicName>org.openurp.edu.textbook.model.parent</bundle.symbolicName>
+    <bundle.symbolicName>org.openurp.edu.textbook</bundle.symbolicName>
     <bundle.namespace>org.openurp.edu.textbook</bundle.namespace>
   </properties>
-  
-  <modules>
-    <module>model</module>
-    <module>domain</module>
-  </modules>
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-model</artifactId>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-lesson</artifactId>
     </dependency>
   </dependencies>
 </project>

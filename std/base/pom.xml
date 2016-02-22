@@ -6,29 +6,15 @@
     <artifactId>openurp-std-parent</artifactId>
     <version>0.0.7-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.std.base</groupId>
-  <artifactId>openurp-std-base-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Std Base Model Parent</name>
+  <groupId>org.openurp.std</groupId>
+  <artifactId>openurp-std-base</artifactId>
+  <version>0.0.7-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>OpenURP Std Base API</name>
 
   <properties>
-    <bundle.symbolicName>org.openurp.std.base.parent</bundle.symbolicName>
+    <bundle.symbolicName>org.openurp.std.base</bundle.symbolicName>
     <bundle.namespace>org.openurp.std.base</bundle.namespace>
   </properties>
 
-  <modules>
-
-    <module>model</module>
-  </modules>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.openurp.base</groupId>
-      <artifactId>openurp-base-model</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-model</artifactId>
-    </dependency>
-  </dependencies>
 </project>

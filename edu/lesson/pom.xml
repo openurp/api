@@ -6,19 +6,23 @@
     <artifactId>openurp-edu-parent</artifactId>
     <version>0.0.7-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.edu.lesson</groupId>
-  <artifactId>openurp-edu-lesson-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Edu Lesson Parent</name>
+  <artifactId>openurp-edu-lesson</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Edu Lesson API</name>
 
-  <modules>
-    <module>model</module>
-  </modules>
+  <properties>
+    <bundle.symbolicName>org.openurp.edu.lesson</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu.lesson</bundle.namespace>
+  </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-model</artifactId>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.lg</groupId>
+      <artifactId>openurp-lg-room</artifactId>
     </dependency>
   </dependencies>
 </project>
