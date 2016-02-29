@@ -6,7 +6,7 @@ import org.beangle.data.model.Named
 /**
  * 房间的使用系统
  */
-class AppUser extends LongId with Named {
+class UserApp extends LongId with Named {
 
   /**活动明细url*/
   var activityUrl: String = _

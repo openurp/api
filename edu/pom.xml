@@ -20,8 +20,8 @@
     <module>base</module>
     <module>program</module>
     <module>lesson</module>
-    <module>std</module>
     <module>grade</module>
+    <module>std</module>
     <module>evaluation</module>
     <module>award</module>
     <module>otherexam</module>

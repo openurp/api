@@ -63,7 +63,7 @@ class Discipline extends BaseCodeBean {
 
 /**
  * 入学方式
- * 参见国家标准JY/T 1001 4.2.32
+ * 参见教育部推荐标准JY/T 1001 4.2.32
  */
 @code("industry")
 class EnrollMode extends BaseCodeBean

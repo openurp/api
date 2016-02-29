@@ -19,6 +19,7 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.{ Coded, IntId, Named, Remark, TemporalOn, Updated }
+import org.openurp.code.asset.model.RoomType
 
 /**
  * 校区
@@ -60,6 +61,8 @@ class Room extends IntId with Coded with Named with TemporalOn with Updated with
    */
   var building: Building = _
 
+  /**房间类型*/
+  var roomType:RoomType=_
   /**
    * 楼层
    */

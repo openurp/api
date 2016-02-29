@@ -21,10 +21,11 @@ package org.openurp.edu.base.model
 import org.beangle.data.model.{ LongId, Named, Updated }
 import org.openurp.base.model.Room
 import org.openurp.code.edu.model.ClassroomType
+import org.beangle.data.model.Coded
 /**
  * 教室
  */
-class Classroom extends LongId with Named with Updated {
+class Classroom extends LongId with Named with Coded with Updated {
 
   /**项目*/
   var project: Project = _

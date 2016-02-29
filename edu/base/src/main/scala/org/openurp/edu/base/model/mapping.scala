@@ -40,6 +40,7 @@ class DefaultMapping extends Mapping {
 
     bind[Classroom] on (e => declare(
       e.project & e.classroomType are notnull,
+      e.code is (notnull,length(20)),
       e.name is (notnull, length(100))))
 
     bind[Course] on (e => declare(
@@ -94,7 +95,7 @@ class DefaultMapping extends Mapping {
     bind[Project] on (e => declare(
       e.code is (notnull, length(10), unique),
       e.name is (notnull, length(100)),
-      e.school & e.calendar & e.beginOn & e.updatedAt are notnull,
+      e.school & e.beginOn & e.updatedAt are notnull,
       e.description is length(500)))
 
     bind[ProjectCode] on (e => declare(

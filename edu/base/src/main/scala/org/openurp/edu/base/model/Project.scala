@@ -48,7 +48,7 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   /**学生类别*/
   var stdTypes: Buffer[StdType] = new ListBuffer[StdType]
   /** 使用校历 */
-  var calendar: Calendar = _
+  var calendars = Collections.newBuffer[Calendar]
   /** 小节设置 */
   var timeSettings = Collections.newBuffer[TimeSetting]
   /** 描述 */

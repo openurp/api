@@ -16,23 +16,16 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.lg.room.model
+package org.openurp.code.asset.model
 
 import scala.reflect.runtime.universe
+import org.beangle.data.model.annotation.code
 import org.beangle.data.model.bind.Mapping
+import org.openurp.code.BaseCodeBean
 
 class DefaultMapping extends Mapping {
 
-  def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
-
-    bind[Occupancy] on (e => declare(
-      e.room is notnull,
-      e.time.startOn & e.time.weekday & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull,
-      e.activityType & e.updatedAt & e.userApp & e.activityId are notnull,
-      e.comments is length(300)))
-
-    bind[UserApp] on (e => declare(
-      e.name & e.activityUrl are (length(200), notnull)))
+ def binding(): Unit = {
+    bind[RoomType]
   }
 }

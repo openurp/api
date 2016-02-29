@@ -76,6 +76,11 @@
       </dependency>
       <dependency>
         <groupId>org.openurp.code</groupId>
+        <artifactId>openurp-code-asset</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.code</groupId>
         <artifactId>openurp-code-sin</artifactId>
         <version>${project.version}</version>
       </dependency>

@@ -30,26 +30,27 @@ import org.beangle.data.model.{ Coded, IntId, Named, Remark, TemporalOn, Updated
  * 校历（日历方案）记录了一整套学年学期的设置，是连贯性学年学期设置的集合，也可称日历方案。
  */
 class Calendar extends IntId with Coded with Named with TemporalOn with Updated {
+  
   var semesters: Buffer[Semester] = new collection.mutable.ListBuffer[Semester]
-  /**
-   * 一周中的第一天是周几
-   */
+  
+  /**一周中的第一天是周几 */
   var firstWeekday: WeekDay = _
 }
 /**
- * 学年学期 </p> 代表的是具体学年度的 学期设置，每个学期的起始日期（起始日期要以星期日作为第一天）和结束日期。
+ * 学年学期 </p> 代表的是具体学年度的 学期设置，每个学期的起始日期（起始日期beginOn第一天）和结束日期。
  */
 class Semester extends IntId with Coded with Named with TemporalOn with Remark {
 
   /**日历*/
   var calendar: Calendar = _
+
   /**学年度,一般为yyyy-yyyy或者yyyy的格式*/
   var schoolYear: String = _
 
-  def startWeek(weekDay: WeekDay): Int = {
+  def startWeek(): Int = {
     val gc = new GregorianCalendar();
+    gc.setFirstDayOfWeek(calendar.firstWeekday.index)
     gc.setTime(beginOn);
-    gc.setFirstDayOfWeek(weekDay.index)
     gc.get(java.util.Calendar.WEEK_OF_YEAR);
   }
 
