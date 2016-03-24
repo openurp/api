@@ -4,22 +4,21 @@
   <parent>
     <groupId>org.openurp.edu</groupId>
     <artifactId>openurp-edu-parent</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
   </parent>
-  <groupId>org.openurp.edu.program</groupId>
-  <artifactId>openurp-edu-program-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Edu Program Parent</name>
+  <artifactId>openurp-edu-program</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Edu Program API</name>
 
-  <modules>
-    <module>model</module>
-    <module>domain</module>
-  </modules>
+  <properties>
+    <bundle.symbolicName>org.openurp.edu.program.model</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu.program</bundle.namespace>
+  </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-model</artifactId>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-base</artifactId>
     </dependency>
   </dependencies>
 </project>

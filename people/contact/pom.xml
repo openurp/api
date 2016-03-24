@@ -4,14 +4,37 @@
   <parent>
     <groupId>org.openurp.people</groupId>
     <artifactId>openurp-people-parent</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
   </parent>
-  <groupId>org.openurp.people.contact</groupId>
-  <artifactId>openurp-people-contact-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP People Contact Parent</name>
+  <artifactId>openurp-people-contact</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP People Contact API</name>
 
-  <modules>
-    <module>model</module>
-  </modules>
+  <properties>
+    <bundle.symbolicName>org.openurp.people.contact</bundle.symbolicName>
+    <bundle.namespace>org.openurp.people.contact</bundle.namespace>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openurp.people</groupId>
+      <artifactId>openurp-people-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-person</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-geo</artifactId>
+    </dependency>
+        <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-job</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-edu</artifactId>
+    </dependency>
+  </dependencies>
 </project>

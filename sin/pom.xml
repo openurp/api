@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
   </parent>
   <groupId>org.openurp.sin</groupId>
   <artifactId>openurp-sin-parent</artifactId>
@@ -17,7 +17,6 @@
   </properties>
 
   <modules>
-    <module>base</module>
     <module>harvest</module>
   </modules>
 
@@ -25,12 +24,12 @@
     <dependencies>
       <dependency>
         <groupId>org.openurp.base</groupId>
-        <artifactId>openurp-base-model</artifactId>
+        <artifactId>openurp-base-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.hr.base</groupId>
-        <artifactId>openurp-hr-base-model</artifactId>
+        <groupId>org.openurp.hr</groupId>
+        <artifactId>openurp-hr-base</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>

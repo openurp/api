@@ -4,26 +4,22 @@
   <parent>
     <groupId>org.openurp.std</groupId>
     <artifactId>openurp-std-parent</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
   </parent>
-  <groupId>org.openurp.std.job</groupId>
-  <artifactId>openurp-std-job-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Std Job Parent</name>
+  <groupId>org.openurp.std</groupId>
+  <artifactId>openurp-std-job</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Std Job API</name>
 
   <properties>
-    <bundle.symbolicName>org.openurp.std.job.parent</bundle.symbolicName>
+    <bundle.symbolicName>org.openurp.std.job</bundle.symbolicName>
     <bundle.namespace>org.openurp.std.job</bundle.namespace>
   </properties>
 
-  <modules>
-    <module>model</module>
-  </modules>
-
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-model</artifactId>
+      <groupId>org.openurp.edu</groupId>
+      <artifactId>openurp-edu-base</artifactId>
     </dependency>
   </dependencies>
 </project>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.people.info.model.DefaultMapping" />
-  <naming>
-    <profile package = "org.openurp.people.info" pluralize="true" schema="ppl_info"/>
-  </naming>
-</orm>
