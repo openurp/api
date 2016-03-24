@@ -53,4 +53,6 @@ class Adminclass extends LongId with EducationBased with Coded with Named with T
   var instructor: Instructor = _
   /** 班导师 */
   var tutor: Teacher = _
+  /** 学生状态 */
+  var stdStates = Collections.newBuffer[StudentState]
 }

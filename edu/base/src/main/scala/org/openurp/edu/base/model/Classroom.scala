@@ -48,7 +48,7 @@ class Classroom extends LongId with Named with Coded with Updated {
   /**
    * 教室类型
    */
-  var classroomType: ClassroomType = _
+  var roomType: ClassroomType = _
 
   /**
    * 上课容量

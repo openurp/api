@@ -61,14 +61,8 @@ class Person extends LongId with Updated with Coded {
   /**首要使用语言*/
   var language: Language = _
 
-  /**婚姻状况 */
-  var maritalStatus: MaritalStatus = _
-
   /**港澳台侨外 */
   var compatriotType: CompatriotType = _
-
-  /**政治面貌 */
-  var politicalStatus: PoliticalStatus = _
 
   /**宗教信仰 */
   var religion: Religion = _

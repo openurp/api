@@ -49,9 +49,6 @@ class Student extends LongId with EducationBased with YearId with Coded with Upd
   /** 学生分类标签 */
   var labels = Collections.newMap[StdLabelType, StdLabel]
 
-  /** 校区 */
-  var campus: Campus = _
-
   /** 学制 学习年限（允许0.5年出现） */
   var duration: Float = _
 
@@ -93,6 +90,9 @@ class StudentState extends LongId with StdEnrollment with TemporalOn {
   /** 管理院系 */
   var department: Department = _
 
+  /** 专业所在院系 */
+  var majorDepart: Department = _
+
   /** 专业 */
   var major: Major = _
 
@@ -107,6 +107,9 @@ class StudentState extends LongId with StdEnrollment with TemporalOn {
 
   /** 学籍状态 */
   var status: StudentStatus = _
+
+  /** 校区 */
+  var campus: Campus = _
 
   /**培养方案*/
   var program: Program = _

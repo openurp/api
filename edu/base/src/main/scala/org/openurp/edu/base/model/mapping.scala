@@ -36,11 +36,12 @@ class DefaultMapping extends Mapping {
       e.name is (notnull, length(50)),
       e.grade is (notnull, length(10)),
       e.project & e.department & e.stdType & e.education & e.beginOn are notnull,
+      e.stdStates is one2many("adminclass"),
       e.remark is length(100)))
 
     bind[Classroom] on (e => declare(
-      e.project & e.classroomType are notnull,
-      e.code is (notnull,length(20)),
+      e.project & e.roomType are notnull,
+      e.code is (notnull, length(20)),
       e.name is (notnull, length(100))))
 
     bind[Course] on (e => declare(
@@ -48,7 +49,7 @@ class DefaultMapping extends Mapping {
       e.name is (notnull, length(222)),
       e.enName is length(300),
       e.project & e.department & e.beginOn & e.updatedAt are notnull,
-      e.hours is (depends("course")),
+      e.hours is depends("course"),
       e.remark is length(500)))
 
     bind[CourseHour].on(e => declare(
@@ -117,7 +118,7 @@ class DefaultMapping extends Mapping {
       e.remark is length(200)))
 
     bind[StudentState] on (e => declare(
-      e.std & e.grade & e.department & e.major & e.status & e.beginOn are notnull,
+      e.std & e.grade & e.department & e.majorDepart & e.major & e.status & e.beginOn are notnull,
       e.remark is length(200)))
 
     bind[Textbook] on (e => declare(
