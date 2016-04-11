@@ -4,11 +4,11 @@
   <parent>
     <groupId>org.openurp.std</groupId>
     <artifactId>openurp-std-parent</artifactId>
-    <version>0.0.7</version>
+    <version>0.0.8</version>
   </parent>
   <groupId>org.openurp.std</groupId>
   <artifactId>openurp-std-base</artifactId>
-  <version>0.0.7</version>
+  <version>0.0.8</version>
   <packaging>jar</packaging>
   <name>OpenURP Std Base API</name>
 
