@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.edu</groupId>
     <artifactId>openurp-edu-parent</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
   </parent>
   <artifactId>openurp-edu-program</artifactId>
   <packaging>jar</packaging>
