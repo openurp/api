@@ -6,7 +6,8 @@
     <artifactId>openurp-hr-parent</artifactId>
     <version>0.0.9-SNAPSHOT</version>
   </parent>
-  <artifactId>openurp-hr-base</artifactId>
+  <groupId>org.openurp.hr.base</groupId>
+  <artifactId>openurp-hr-base-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP HR Base API</name>
 
@@ -21,8 +22,8 @@
       <artifactId>openurp-base-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.openurp.people</groupId>
-      <artifactId>openurp-people-base</artifactId>
+      <groupId>org.openurp.people.base</groupId>
+      <artifactId>openurp-people-base-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.openurp.code</groupId>

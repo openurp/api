@@ -6,7 +6,8 @@
     <artifactId>openurp-edu-parent</artifactId>
     <version>0.0.9-SNAPSHOT</version>
   </parent>
-  <artifactId>openurp-edu-grade</artifactId>
+  <groupId>org.openurp.edu.grade</groupId>
+  <artifactId>openurp-edu-grade-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Edu Grade API</name>
 
@@ -17,16 +18,16 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-base</artifactId>
+      <groupId>org.openurp.edu.base</groupId>
+      <artifactId>openurp-edu-base-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-program</artifactId>
+      <groupId>org.openurp.edu.program</groupId>
+      <artifactId>openurp-edu-program-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-lesson</artifactId>
+      <groupId>org.openurp.edu.lesson</groupId>
+      <artifactId>openurp-edu-lesson-api</artifactId>
     </dependency>
   </dependencies>
 </project>

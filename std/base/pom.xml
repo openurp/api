@@ -6,8 +6,8 @@
     <artifactId>openurp-std-parent</artifactId>
     <version>0.0.9-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.std</groupId>
-  <artifactId>openurp-std-base</artifactId>
+  <groupId>org.openurp.std.base</groupId>
+  <artifactId>openurp-std-base-api</artifactId>
   <version>0.0.9-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>OpenURP Std Base API</name>

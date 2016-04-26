@@ -6,8 +6,8 @@
     <artifactId>openurp-sin-parent</artifactId>
     <version>0.0.9-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.sin</groupId>
-  <artifactId>openurp-sin-harvest</artifactId>
+  <groupId>org.openurp.sin.harvest</groupId>
+  <artifactId>openurp-sin-harvest-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Science Harvest API</name>
 
@@ -18,8 +18,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.hr</groupId>
-      <artifactId>openurp-hr-base</artifactId>
+      <groupId>org.openurp.hr.base</groupId>
+      <artifactId>openurp-hr-base-api</artifactId>
     </dependency>
   </dependencies>
 </project>

@@ -6,7 +6,8 @@
     <artifactId>openurp-edu-parent</artifactId>
     <version>0.0.9-SNAPSHOT</version>
   </parent>
-  <artifactId>openurp-edu-program</artifactId>
+  <groupId>org.openurp.edu.program</groupId>
+  <artifactId>openurp-edu-program-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Edu Program API</name>
 
@@ -17,8 +18,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-base</artifactId>
+      <groupId>org.openurp.edu.base</groupId>
+      <artifactId>openurp-edu-base-api</artifactId>
     </dependency>
   </dependencies>
 </project>

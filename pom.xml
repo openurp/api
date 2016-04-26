@@ -85,8 +85,8 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.people</groupId>
-        <artifactId>openurp-people-base</artifactId>
+        <groupId>org.openurp.people.base</groupId>
+        <artifactId>openurp-people-base-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -95,48 +95,48 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu</groupId>
-        <artifactId>openurp-edu-base</artifactId>
+        <groupId>org.openurp.edu.base</groupId>
+        <artifactId>openurp-edu-base-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.hr</groupId>
-        <artifactId>openurp-hr-base</artifactId>
+        <groupId>org.openurp.hr.base</groupId>
+        <artifactId>openurp-hr-base-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu</groupId>
-        <artifactId>openurp-edu-program</artifactId>
+        <groupId>org.openurp.edu.program</groupId>
+        <artifactId>openurp-edu-program-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu</groupId>
-        <artifactId>openurp-edu-lesson</artifactId>
+        <groupId>org.openurp.edu.lesson</groupId>
+        <artifactId>openurp-edu-lesson-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu</groupId>
-        <artifactId>openurp-edu-grade</artifactId>
+        <groupId>org.openurp.edu.grade</groupId>
+        <artifactId>openurp-edu-grade-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu</groupId>
-        <artifactId>openurp-edu-otherexam</artifactId>
+        <groupId>org.openurp.edu.otherexam</groupId>
+        <artifactId>openurp-edu-otherexam-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu</groupId>
-        <artifactId>openurp-edu-textbook</artifactId>
+        <groupId>org.openurp.edu.textbook</groupId>
+        <artifactId>openurp-edu-textbook-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu</groupId>
-        <artifactId>openurp-edu-workload</artifactId>
+        <groupId>org.openurp.edu.workload</groupId>
+        <artifactId>openurp-edu-workload-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.lg</groupId>
-        <artifactId>openurp-lg-room</artifactId>
+        <groupId>org.openurp.lg.room</groupId>
+        <artifactId>openurp-lg-room-api</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>

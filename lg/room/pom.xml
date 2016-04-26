@@ -6,7 +6,8 @@
     <artifactId>openurp-lg-parent</artifactId>
     <version>0.0.9-SNAPSHOT</version>
   </parent>
-  <artifactId>openurp-lg-room</artifactId>
+  <groupId>org.openurp.lg.room</groupId>
+  <artifactId>openurp-lg-room-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Logistic Service Room API</name>
 

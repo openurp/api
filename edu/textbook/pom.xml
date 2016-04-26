@@ -6,8 +6,8 @@
     <artifactId>openurp-edu-parent</artifactId>
     <version>0.0.9-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.edu</groupId>
-  <artifactId>openurp-edu-textbook</artifactId>
+  <groupId>org.openurp.edu.textbook</groupId>
+  <artifactId>openurp-edu-textbook-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Edu Textbook API</name>
 
@@ -18,12 +18,12 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-base</artifactId>
+      <groupId>org.openurp.edu.base</groupId>
+      <artifactId>openurp-edu-base-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-lesson</artifactId>
+      <groupId>org.openurp.edu.lesson</groupId>
+      <artifactId>openurp-edu-lesson-api</artifactId>
     </dependency>
   </dependencies>
 </project>
