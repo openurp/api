@@ -48,6 +48,8 @@ import org.openurp.edu.evaluation.lesson.stat.model.TeacherOptionStat
 import org.openurp.edu.evaluation.lesson.stat.model.TeacherQuestionTypeStat
 import org.openurp.edu.evaluation.lesson.stat.model.TeacherEvalStat
 import org.openurp.edu.evaluation.lesson.stat.model.FinalTeacherScore
+import org.openurp.edu.evaluation.lesson.model.TeacherRemessage
+import org.openurp.edu.evaluation.lesson.model.TextEvaluation
 
 class DefaultMapping extends Mapping {
 
@@ -161,6 +163,15 @@ class DefaultMapping extends Mapping {
 
     bind[TeacherQuestionTypeStat].on(e => declare(
       e.evalStat is (notnull, target[TeacherEvalStat])))
+      
+    bind[TextEvaluation].on(e => declare(
+      e.student & e.lesson & e.evaluateByTeacher & e.evaluateAt are notnull ,
+      e.teacherRemessages is (depends("textEvaluation"),table("text_evaluation_remsgs"))
+      ))
+      
+    bind[TeacherRemessage].on(e => declare(
+     e.textEvaluation & e.visible are notnull))
+
 
   }
 
