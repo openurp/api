@@ -62,10 +62,10 @@ trait EvalStat extends LongIdEntity {
   var questionnaire: Questionnaire = _
 
   /** 问题详细信息统计 */
-  var questionStats = Collections.newSet[QuestionStat]
+  var questionStats = Collections.newBuffer[QuestionStat]
 
   /** 问题类别得分 */
-  var questionTypeStats = Collections.newSet[QuestionTypeStat]
+  var questionTypeStats = Collections.newBuffer[QuestionTypeStat]
 }
 
 trait QuestionStat extends LongIdEntity {

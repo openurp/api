@@ -63,9 +63,10 @@ class DefaultMapping extends Mapping {
       e.no is length(32),
       e.project & e.course & e.courseType & e.teachDepart & e.semester & e.langType are notnull,
       e.teachers is ordered,
-      e.teachclass.name is length(500),
+      e.teachclass.name is (length(500), column("class_name")),
+      e.schedule.classroomType is (column("room_type_id")),
       e.teachclass.courseTakes & e.teachclass.examTakes & e.teachclass.groups &
-        e.schedule.activities & e.exam.activities are depends("lesson"),
+      e.schedule.activities & e.exam.activities are depends("lesson"),
       e.state & e.updatedAt & e.schedule.publishState are notnull))
 
     bind[LessonLimitGroup].on(e => declare(
