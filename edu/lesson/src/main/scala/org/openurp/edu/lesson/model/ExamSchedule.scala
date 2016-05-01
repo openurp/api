@@ -19,11 +19,9 @@
 package org.openurp.edu.lesson.model
 
 import org.beangle.data.model.Component
-import org.beangle.data.model.LongId
-import org.openurp.edu.base.code.model.ExamMode
-import org.openurp.edu.lesson.code.model.ExamForm
+import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
 
-class ExamSchedule extends  Component with Serializable with Cloneable {
+class ExamSchedule extends Component with Serializable with Cloneable {
 
   /** 具体排考结果 */
   var activities: collection.mutable.Set[ExamActivity] = _

@@ -23,7 +23,7 @@ import org.beangle.data.model.{ LongId, TemporalOn }
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.StudentScope
 
-class PlanAuditStandard extends LongId with TemporalOn {
+class AuditSetting extends LongId with TemporalOn {
 
   var name: String = _
 

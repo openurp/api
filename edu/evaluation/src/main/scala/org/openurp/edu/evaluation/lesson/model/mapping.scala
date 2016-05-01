@@ -19,37 +19,10 @@
 package org.openurp.edu.evaluation.lesson.model
 
 import scala.reflect.runtime.universe
-import org.beangle.data.model.annotation.code
+
 import org.beangle.data.model.bind.Mapping
-import org.openurp.edu.evaluation.lesson.result.model.EvaluateResult
-import org.openurp.edu.evaluation.lesson.result.model.QuestionResult
-import org.openurp.edu.evaluation.lesson.stat.model.CourseEvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.EvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.CourseQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.CourseQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.CourseOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.OptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.QuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.QuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.DepartEvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.DepartOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.DepartQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.DepartQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.LessonQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.LessonQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.LessonEvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.LessonOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.SchoolQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.SchoolQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.SchoolEvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.SchoolOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.TeacherQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.TeacherOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.TeacherQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.TeacherEvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.FinalTeacherScore
-import org.openurp.edu.evaluation.lesson.model.TeacherRemessage
-import org.openurp.edu.evaluation.lesson.model.TextEvaluation
+import org.openurp.edu.evaluation.lesson.result.model._
+import org.openurp.edu.evaluation.lesson.stat.model._
 
 class DefaultMapping extends Mapping {
 
@@ -65,13 +38,12 @@ class DefaultMapping extends Mapping {
     bind[QuestionResult].on(e => declare(
       e.result & e.questionType & e.question are notnull))
 
-
     bind[QuestionnaireLesson].on(e => declare(
       e.lesson & e.questionnaire are notnull))
     //   finalTeacherScore
     bind[FinalTeacherScore].on(e => declare(
       e.teacher & e.semester are notnull))
-      
+
     //eval stat
     bind[EvalStat].on(e => declare(
       e.semester & e.statAt & e.questionnaire are notnull))
@@ -163,15 +135,13 @@ class DefaultMapping extends Mapping {
 
     bind[TeacherQuestionTypeStat].on(e => declare(
       e.evalStat is (notnull, target[TeacherEvalStat])))
-      
-    bind[TextEvaluation].on(e => declare(
-      e.student & e.lesson & e.evaluateByTeacher & e.evaluateAt are notnull ,
-      e.teacherRemessages is (depends("textEvaluation"),table("text_evaluation_remsgs"))
-      ))
-      
-    bind[TeacherRemessage].on(e => declare(
-     e.textEvaluation & e.visible are notnull))
 
+    bind[TextEvaluation].on(e => declare(
+      e.student & e.lesson & e.evaluateByTeacher & e.evaluateAt are notnull,
+      e.teacherRemessages is (depends("textEvaluation"), table("text_evaluation_remsgs"))))
+
+    bind[TeacherRemessage].on(e => declare(
+      e.textEvaluation & e.visible are notnull))
 
   }
 

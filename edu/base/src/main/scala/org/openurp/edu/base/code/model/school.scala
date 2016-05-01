@@ -23,108 +23,16 @@ import org.openurp.code.BaseCodeBean
 import org.openurp.code.edu.model.EducationLevel
 
 /**
- * 学生分类标签
- *
- * @author chaostone
- * @since 3.0.0
+ * 教材类型
  */
 @code("school")
-class StdLabel extends BaseCodeBean {
-  var labelType: StdLabelType = _
-}
-/**
- * 学生分类标签类型
- *
- * @author chaostone
- * @since 3.0.0
- */
-@code("school")
-class StdLabelType extends BaseCodeBean
+class BookType extends BaseCodeBean
 
 /**
- * 学生类别
- *
- * @author chaostone
- * @since 3.0.0
+ * 教材获奖类型
  */
 @code("school")
-class StdType extends BaseCodeBean
-
-/**
- * 成绩记录方式
- */
-@code("school")
-class ScoreMarkStyle extends BaseCodeBean {
-
-  var numStyle: Boolean = _
-
-  def this(id: Integer) {
-    this()
-    this.id = id
-  }
-  def this(id: Integer, code: String, name: String, enName: String) {
-    this()
-    this.id = id
-    this.code = code
-    this.name = name
-    this.enName = enName
-  }
-}
-
-object ScoreMarkStyle {
-  val Percent = Integer.valueOf(1)
-}
-
-/**
- * 考试情况
- * 正常、作弊、旷考等
- *
- * @author chaostone
- * @since 2005-9-7
- */
-@code("school")
-class ExamStatus extends BaseCodeBean {
-  /**
-   * 是否参加考试
-   */
-  var attended: Boolean = _
-  /**
-   * 是否需要参加下一次缓考
-   */
-  var deferred: Boolean = _
-  /**
-   * 能否录入成绩
-   */
-  var inputable: Boolean = _
-
-  def this(id: Integer) {
-    this()
-    this.id = id
-  }
-}
-object ExamStatus {
-
-  /** 正常 */
-  val Normal = 1;
-
-  /** 缓考 */
-  val Delay = 2;
-
-  /** 旷缺 */
-  val Absent = 3;
-
-  /** 违纪 */
-  val Violation = 4;
-
-  /** 作弊 */
-  val Cheat = 5;
-
-  /**无考试资格*/
-  val Unqualify = 6;
-
-  /**其他*/
-  val Misc = 9;
-}
+class BookAwardType extends BaseCodeBean
 
 /**
  * 课程类别
@@ -138,7 +46,7 @@ class CourseType extends BaseCodeBean {
   /**是否实践课程*/
   var practical: Boolean = _
 
-  def this(id: Integer, code: String, name: String, enName: String) {
+  def this(id: Int, code: String, name: String, enName: String) {
     this()
     this.id = id
     this.code = code
@@ -150,21 +58,9 @@ class CourseType extends BaseCodeBean {
 /**
  * 课程种类
  * （一般、体育、挂牌、双语）
- *
- * @author chaostone
- * @since 2005-11-17
  */
 @code("school")
 class CourseCategory extends BaseCodeBean
-/**
- * 考核方式
- *
- * @author chaostone
- * @since 2005-9-7
- */
-@code("school")
-class ExamMode extends BaseCodeBean
-
 /**
  * 课时类别代码
  */
@@ -176,19 +72,44 @@ class CourseHourType extends BaseCodeBean
  */
 @code("school")
 class CourseAbilityRate extends BaseCodeBean
-
 /**
- * 教材类型
+ * 修课类别
+ * （重修、增修、免修不免试、主修，选修）
+ *
+ * @author chaostone
+ * @since 2005-12-2
  */
 @code("school")
-class BookType extends BaseCodeBean
+class CourseTakeType extends BaseCodeBean {
+  /** 是否重修 */
+  var retake: Boolean = _
+  /** 是否考核 */
+  var exam: Boolean = _
+  /**是否上课*/
+  var attend: Boolean = _
+  def this(id: Int, code: String, name: String, enName: String) {
+    this()
+    this.id = id
+    this.code = code
+    this.name = name
+    this.enName = enName
+  }
+}
+object CourseTakeType {
 
-/**
- * 教材获奖类型
- */
-@code("school")
-class BookAwardType extends BaseCodeBean
+  /** 正常修读  */
+  val Normal = 1;
 
+  /** 重修 */
+  val Restudy = 3;
+
+  /** 免修不免考 */
+  val Reexam = 4;
+
+  /** 免修 */
+  val Untake = 5;
+
+}
 /**
  * 培养层次
  */
@@ -197,7 +118,180 @@ class Education extends BaseCodeBean {
   var from: EducationLevel = _
   var to: EducationLevel = _
 }
+/**
+ * 考核方式
+ */
+@code("school")
+class ExamMode extends BaseCodeBean
+/**
+ * 考试情况
+ * 正常、作弊、旷考等
+ */
+@code("school")
+class ExamStatus extends BaseCodeBean {
+  /**
+   * 是否参加考试
+   */
+  var attended: Boolean = _
+  /**
+   * 是否需要参加下一次缓考
+   */
+  var deferred: Boolean = _
+  /**
+   * 是否有作弊行为
+   */
+  var cheeting: Boolean = _
 
+  def this(id: Int) {
+    this()
+    this.id = id
+  }
+}
+
+object ExamStatus {
+
+  /** 正常 */
+  val Normal = 1;
+
+  /**缺考*/
+  val Absent = 3;
+}
+
+@code("school")
+class ElectionMode extends BaseCodeBean
+
+object ElectionMode {
+  /** 指定 */
+  val Assigned = 1
+
+  /** 自选  */
+  val SelfChoose = 2
+}
+
+/**
+ * 考试方式
+ */
+@code("school")
+class ExamForm extends BaseCodeBean
+/**
+ * 考试类型
+ */
+object ExamType {
+
+  /** 期末考试 */
+  val Final = 1
+
+  /** 期中考试 */
+  val Midterm = 2
+
+  /** 补考 */
+  val Makeup = 3
+
+  /** 缓考 */
+  val Delay = 4
+}
+
+@code("school")
+class ExamType extends BaseCodeBean {
+
+  /**是否是缓考*/
+  var deferred: Boolean = _
+
+  def this(id: Int, code: String, name: String, enName: String) {
+    this()
+    this.id = id
+    this.code = code
+    this.name = name
+    this.enName = enName
+  }
+}
+/**
+ * 成绩类型
+ *
+ * @author chaostone
+ * @since 2005-9-7
+ */
+@code("school")
+class GradeType extends BaseCodeBean {
+  def isGa: Boolean = {
+    id == GradeType.EndGa || id == GradeType.MakeupGa || id == GradeType.DelayGa
+  }
+  def this(id: Int) {
+    this()
+    this.id = id
+  }
+
+  def this(id: Int, code: String, name: String, enName: String) {
+    this()
+    this.id = id
+    this.code = code
+    this.name = name
+    this.enName = enName
+  }
+}
+
+object GradeType {
+  val Final = 0
+
+  val Middle = 1
+  val End = 2
+  val Usual = 3
+  val Makeup = 4
+  val Delay = 6
+
+  val EndGa = 7
+  val DelayGa = 8
+  val MakeupGa = 9
+}
+
+/**
+ * 学生分类标签
+ */
+@code("school")
+class StdLabel extends BaseCodeBean {
+  var labelType: StdLabelType = _
+}
+/**
+ * 学生分类标签类型
+ */
+@code("school")
+class StdLabelType extends BaseCodeBean
+
+/**
+ * 学生类别
+ */
+@code("school")
+class StdType extends BaseCodeBean
+
+/**
+ * 成绩记录方式
+ */
+@code("school")
+class ScoreMarkStyle extends BaseCodeBean {
+
+  var numStyle: Boolean = _
+
+  def this(id: Int) {
+    this()
+    this.id = id
+  }
+  def this(id: Int, code: String, name: String, enName: String) {
+    this()
+    this.id = id
+    this.code = code
+    this.name = name
+    this.enName = enName
+  }
+}
+
+object ScoreMarkStyle {
+  val Percent = 1
+}
+/**
+ * 授课语言类型
+ */
+@code("school")
+class TeachLangType extends BaseCodeBean
 /**
  * 教师类型
  */

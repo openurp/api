@@ -39,7 +39,6 @@ class Name extends Component {
   /**姓名*/
   var formatedName: String = _
 
-  //FIXME 添加了tostring方法
   override def toString: String = {
     if (null != formatedName) formatedName
     else {

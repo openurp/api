@@ -19,9 +19,8 @@
 package org.openurp.edu.lesson.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.code.model.ExamStatus
+import org.openurp.edu.base.code.model.{ ExamStatus, ExamType }
 import org.openurp.edu.base.model.Student
-import org.openurp.edu.lesson.code.model.ExamType
 
 class ExamTake extends LongId with Cloneable {
 

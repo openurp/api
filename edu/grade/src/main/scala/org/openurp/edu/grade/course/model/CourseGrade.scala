@@ -18,17 +18,15 @@
  */
 package org.openurp.edu.grade.course.model
 
+import scala.collection.mutable.{ Buffer, ListBuffer }
+
+import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.ProjectBased
-import org.openurp.edu.base.code.model.{ CourseType, ExamMode, ScoreMarkStyle }
+import org.openurp.edu.base.code.model.{ CourseTakeType, CourseType, ExamMode, GradeType, ScoreMarkStyle }
 import org.openurp.edu.base.model.{ Course, Student }
-import org.openurp.edu.lesson.code.model.CourseTakeType
-import org.openurp.edu.lesson.model.Lesson
-import org.openurp.edu.grade.code.model.GradeType 
-import org.beangle.data.model.LongId
-import scala.collection.mutable.ListBuffer
-import scala.collection.mutable.Buffer
 import org.openurp.edu.grade.model.Grade
+import org.openurp.edu.lesson.model.Lesson
 
 /**
  * 课程成绩

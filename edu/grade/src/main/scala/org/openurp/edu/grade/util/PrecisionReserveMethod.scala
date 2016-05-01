@@ -16,23 +16,43 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.course.service
-
-import org.openurp.edu.base.model.Project
-import org.openurp.edu.grade.course.domain.CourseGradeSetting
+package org.openurp.edu.grade.util
 
 /**
- * 课程成绩设置服务
+ * 保留数字精确位的方法
  *
  * @author chaostone
  */
-trait CourseGradeSettings {
+trait PrecisionReserveMethod {
+
+  def reserve(num: Float, precision: Int): Float
+
+  def reserve(num: Double, precision: Int): Double
+}
+
+object PrecisionReserveMethod {
 
   /**
-   * 查询课程成绩设置
-   *
-   * @param project
-   * @return
+   * 四舍五入进位法
    */
-  def getSetting(project: Project): CourseGradeSetting
+  object MoreHalf extends PrecisionReserveMethod {
+    def reserve(value: Float, precision: Int): Float = {
+      val mutilply = Math.pow(10, precision + 1).toInt
+      var num = value
+      num *= mutilply
+      if (num % 10 >= 5) num += 10
+      num -= num % 10
+      num / mutilply
+    }
+
+    def reserve(value: Double, precision: Int): Double = {
+      val mutilply = Math.pow(10, precision + 1).toInt
+      var num = value
+      num *= mutilply
+      if (num % 10 >= 5) num += 10
+      num -= num % 10
+      num / mutilply
+    }
+  }
+
 }

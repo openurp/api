@@ -2,10 +2,6 @@ package org.openurp.edu.evaluation.department.model
 
 import scala.reflect.runtime.universe
 import org.beangle.data.model.bind.Mapping
-import org.openurp.edu.evaluation.department.model.SupervisiorQuestion
-import org.openurp.edu.evaluation.department.model.DepartQuestion
-import org.openurp.edu.evaluation.department.model.SupervisiorEvaluate
-import org.openurp.edu.evaluation.department.model.DepartEvaluate
 
 /**
  * @author xinzhou
@@ -31,7 +27,6 @@ class DefaultMapping extends Mapping {
 
     bind[SupervisiorQuestion].on(e => declare(
       e.result & e.question & e.score are notnull))
-
 
   }
 
