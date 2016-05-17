@@ -26,6 +26,8 @@ import org.openurp.base.code.model.UserCategory
  */
 class User extends LongId with Coded with Named with Updated with Remark {
 
+  var school: School=_
+
   var department: Department = _
 
   var category: UserCategory = _

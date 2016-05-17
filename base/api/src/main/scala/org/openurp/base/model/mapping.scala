@@ -33,51 +33,58 @@ class DefaultMapping extends Mapping {
       e.name is (notnull, length(50))))
 
     bind[Department] on (e => declare(
-      e.code is (notnull, length(10), unique),
+      e.code is (notnull, length(10)),
+      e.school is notnull,
       e.name is (notnull, length(80)),
       e.enName is (length(100)),
       e.shortName is (length(100)),
-      e.indexno is (notnull, length(20), unique),
+      e.indexno is (notnull, length(20)),
       e.children is (depends("parent")),
       e.remark is (length(200))))
 
     bind[Calendar] on (e => declare(
       e.semesters is (depends("calendar")),
+      e.school is notnull,
       e.code is (notnull, length(10)),
       e.name is (notnull, length(80)),
       e.firstWeekday is (notnull)))
 
     bind[Semester].on(e => declare(
-      e.code is (notnull, length(15), unique),
+      e.code is (notnull, length(15)),
       e.name is (notnull, length(10)),
       e.schoolYear is (notnull, length(10)),
       e.calendar is (notnull))).generator("code")
 
     bind[Campus] on (e => declare(
-      e.code is (notnull, length(10), unique),
+      e.code is (notnull, length(10)),
+      e.school is notnull,
       e.name is (notnull, length(80)),
       e.enName & e.shortName are (length(100)),
       e.remark is (length(200))))
 
     bind[Building] on (e => declare(
-      e.code is (notnull, length(10), unique),
+      e.code is (notnull, length(10)),
       e.name is (notnull, length(80)),
+      e.school is notnull,
       e.enName & e.shortName are (length(100)),
       e.campus is (notnull),
       e.remark is (length(200))))
 
     bind[Room] on (e => declare(
-      e.code is (notnull, length(10), unique),
+      e.code is (notnull, length(10)),
       e.name is (notnull, length(80)),
+      e.school is notnull,
       e.remark is (length(200)),
       e.campus is (notnull)))
 
     bind[Holiday] on (e => declare(
       e.name is (notnull, length(20)),
+      e.school is notnull,
       e.beginOn & e.endOn are (notnull)))
 
     bind[TimeSetting] on (e => declare(
       e.name is (notnull, length(20)),
+      e.school is notnull,
       e.units is (depends("setting"))))
 
     bind[CourseUnit] on (e => declare(
@@ -88,6 +95,7 @@ class DefaultMapping extends Mapping {
     bind[User] on (e => declare(
       e.code is (notnull, length(30)),
       e.name is (notnull, length(80)),
+      e.school is notnull,
       e.email is (length(80)),
       e.mobile is (length(15)),
       e.remark is (length(200)),

@@ -30,9 +30,11 @@ import org.beangle.data.model.{ Coded, IntId, Named, Remark, TemporalOn, Updated
  * 校历（日历方案）记录了一整套学年学期的设置，是连贯性学年学期设置的集合，也可称日历方案。
  */
 class Calendar extends IntId with Coded with Named with TemporalOn with Updated {
-  
+
+  var school: School = _
+
   var semesters: Buffer[Semester] = new collection.mutable.ListBuffer[Semester]
-  
+
   /**一周中的第一天是周几 */
   var firstWeekday: WeekDay = _
 }

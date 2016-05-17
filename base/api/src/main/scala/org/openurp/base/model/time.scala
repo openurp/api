@@ -26,12 +26,15 @@ import org.beangle.data.model.{ IntId, Named, NumId, TemporalOn }
 /**
  * 假日安排
  */
-class Holiday extends IntId with Named with TemporalOn
+class Holiday extends IntId with Named with TemporalOn{
+  var school: School =_
+}
 
 /**
  * 时间设置
  */
 class TimeSetting extends IntId with Named {
+  var school:School = _
   var units: Buffer[CourseUnit] = new collection.mutable.ListBuffer[CourseUnit]
 }
 
