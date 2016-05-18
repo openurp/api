@@ -47,7 +47,7 @@ class Person extends LongId with Updated with Coded {
   var birthday: java.sql.Date = _
 
   /**出生地*/
-  var birthplace: Division = _
+  var birthplace: String = _
 
   /**籍贯 */
   var homeTown: String = _
