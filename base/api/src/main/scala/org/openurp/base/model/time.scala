@@ -38,7 +38,7 @@ class TimeSetting extends IntId with Named {
   var units: Buffer[CourseUnit] = new collection.mutable.ListBuffer[CourseUnit]
 }
 
-class CourseUnit extends NumId[java.lang.Short] with Named {
+class CourseUnit extends IntId with Named {
   var indexno: Int = _
   var beginAt: HourMinute = _
   var endAt: HourMinute = _
