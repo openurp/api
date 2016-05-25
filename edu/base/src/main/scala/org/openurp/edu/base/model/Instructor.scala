@@ -7,13 +7,11 @@ import org.openurp.people.base.model.Person
 /**
  * 辅导员
  */
-class Instructor extends LongId with Updated with Coded with TemporalOn {
+class Instructor extends LongId with Updated with TemporalOn {
 
   var project: Project = _
 
   /**人员信息*/
-  var person: Person = _
+  var user: User = _
 
-  /** 部门 */
-  var department: Department = _
 }
