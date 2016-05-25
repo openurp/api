@@ -3,9 +3,9 @@ package org.openurp.edu.base.model
 import org.beangle.data.model.{ Coded, LongId, TemporalOn, Updated }
 import org.beangle.data.model.annotation.code
 import org.openurp.base.model.Department
+import org.openurp.base.model.User
 import org.openurp.edu.base.code.model.TeacherType
 import org.openurp.people.base.model.Person
-import org.openurp.base.model.User
 
 /**
  * 教师信息

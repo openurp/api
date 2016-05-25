@@ -2,6 +2,7 @@ package org.openurp.edu.base.model
 
 import org.beangle.data.model.{ Coded, LongId, TemporalOn, Updated }
 import org.openurp.base.model.Department
+import org.openurp.base.model.User
 import org.openurp.people.base.model.Person
 
 /**
