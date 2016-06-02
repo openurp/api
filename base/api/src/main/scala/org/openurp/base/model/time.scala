@@ -19,22 +19,22 @@
 package org.openurp.base.model
 
 import scala.collection.mutable.Buffer
-
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.{ IntId, Named, NumId, TemporalOn }
+import org.openurp.base.code.model.DayPart
 
 /**
  * 假日安排
  */
-class Holiday extends IntId with Named with TemporalOn{
-  var school: School =_
+class Holiday extends IntId with Named with TemporalOn {
+  var school: School = _
 }
 
 /**
  * 时间设置
  */
 class TimeSetting extends IntId with Named {
-  var school:School = _
+  var school: School = _
   var units: Buffer[CourseUnit] = new collection.mutable.ListBuffer[CourseUnit]
 }
 
@@ -43,6 +43,7 @@ class CourseUnit extends IntId with Named {
   var beginAt: HourMinute = _
   var endAt: HourMinute = _
   var setting: TimeSetting = _
+  var part: DayPart = _
   var enName: String = _
 }
 

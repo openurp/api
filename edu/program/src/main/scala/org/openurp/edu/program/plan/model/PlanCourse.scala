@@ -23,6 +23,7 @@ import org.beangle.data.model.LongIdEntity
 import org.openurp.base.model.Department
 import org.openurp.edu.base.code.model.ExamMode
 import org.openurp.edu.base.model.Course
+import org.openurp.edu.base.model.Terms
 
 /**
  * 培养计划中的课程.<import org.openurp.edu.program.plan.model.CourseGroup

@@ -90,7 +90,7 @@ class DefaultMapping extends Mapping {
     bind[CourseUnit] on (e => declare(
       e.enName is (notnull, length(30)),
       e.name & e.indexno are (notnull, length(20)),
-      e.beginAt & e.endAt & e.setting are (notnull)))
+      e.beginAt & e.endAt & e.setting & e.part are (notnull)))
 
     bind[User] on (e => declare(
       e.code is (notnull, length(30)),

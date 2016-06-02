@@ -23,7 +23,7 @@ import scala.collection.mutable.{ Buffer, ListBuffer }
 import org.beangle.commons.lang.{ Numbers, Strings }
 import org.beangle.data.model.{ LongId, Named }
 import org.openurp.edu.base.code.model.CourseType
-
+import org.openurp.edu.base.model.Terms
 /**
  * 课程设置中的课程组 </p>
  *

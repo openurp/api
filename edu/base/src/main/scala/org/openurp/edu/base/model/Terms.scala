@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.model
+package org.openurp.edu.base.model
 
 class Terms(val value: Int) extends Ordered[Terms] with Serializable {
 

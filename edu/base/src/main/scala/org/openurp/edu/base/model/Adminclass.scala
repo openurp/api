@@ -22,6 +22,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.{ Coded, LongId, Named, Remark, TemporalOn, Updated }
 import org.beangle.data.model.annotation.code
 import org.openurp.base.model.Department
+import org.openurp.base.model.Campus
 import org.openurp.edu.base.EducationBased
 import org.openurp.edu.base.code.model.StdType
 
@@ -55,4 +56,8 @@ class Adminclass extends LongId with EducationBased with Coded with Named with T
   var tutor: Teacher = _
   /** 学生状态 */
   var stdStates = Collections.newBuffer[StudentState]
+  /**培养方案*/
+  var program:Program=_
+  /**固定校区*/
+  var campus:Campus=_
 }

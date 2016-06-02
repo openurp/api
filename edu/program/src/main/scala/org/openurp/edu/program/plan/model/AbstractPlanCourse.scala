@@ -20,6 +20,7 @@ package org.openurp.edu.program.plan.model
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Course
+import org.openurp.edu.base.model.Terms
 
 /**
  * 抽象计划内课程

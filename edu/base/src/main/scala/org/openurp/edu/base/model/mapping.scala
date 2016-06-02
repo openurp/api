@@ -22,7 +22,6 @@ import scala.reflect.runtime.universe
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.bind.Mapping
 import org.openurp.code.BaseCodeBean
-import org.beangle.commons.lang.time.WeekState
 import org.openurp.edu.base.States
 
 class DefaultMapping extends Mapping {
@@ -128,5 +127,8 @@ class DefaultMapping extends Mapping {
       e.version is (length(50)),
       e.description is length(300),
       e.beginOn is notnull))
+
+    bind[MajorCampus].on(e => declare(
+      e.campus & e.grade & e.major & e.terms & e.education are notnull))
   }
 }

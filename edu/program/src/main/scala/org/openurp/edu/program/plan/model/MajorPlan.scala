@@ -19,8 +19,7 @@
 package org.openurp.edu.program.plan.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Program
-import org.openurp.edu.base.model.Direction
+import org.openurp.edu.base.model.{ Program, Direction, Terms}
 import org.beangle.data.model.TemporalOn
 
 /**
