@@ -32,9 +32,7 @@ import org.openurp.edu.base.code.model.Education
  */
 class Direction extends LongId with TemporalOn with Coded with Named with Updated with Remark {
 
-
   var project: Project = _
-
   /** 专业方向英文名 */
   var enName: String = _
   /** 所属专业 */

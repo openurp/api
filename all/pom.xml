@@ -18,6 +18,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.beangle.data</groupId>
+      <artifactId>beangle-data-hibernate_2.12</artifactId>
+      <version>${beangle.data.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.openurp.code</groupId>
       <artifactId>openurp-code-edu</artifactId>
       <version>${project.version}</version>

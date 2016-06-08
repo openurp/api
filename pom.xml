@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-parent</artifactId>
@@ -159,7 +159,7 @@
     </dependency>
     <dependency>
       <groupId>org.scala-lang.modules</groupId>
-      <artifactId>scala-xml_2.12.0-M3</artifactId>
+      <artifactId>scala-xml_2.12.0-M4</artifactId>
     </dependency>
     <dependency>
       <groupId>org.beangle.data</groupId>
