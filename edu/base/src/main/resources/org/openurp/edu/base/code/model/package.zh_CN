@@ -18,10 +18,11 @@ CourseType.practical=是否实践课
 ExamStatus=考试情况
 ExamMode=考核方式
 ExamStatus.attended=是否参加考试
-ExamStatus.cheating=是否有作弊行为
+ExamStatus.cheeting=是否有作弊行为
 ExamStatus.deferred=是否需要参加下一次缓考
 ExamForm=考试形式
 ExamType=考试类型
+ExamType.deferred=是否是缓考
 
 Education=培养层次
 Education.from=开始

@@ -18,6 +18,9 @@
  */
 package org.openurp.edu.base.model
 
+import org.beangle.commons.lang.annotation.value
+
+@value
 class Terms(val value: Int) extends Ordered[Terms] with Serializable {
 
   override def compare(other: Terms): Int = {
