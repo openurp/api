@@ -25,8 +25,8 @@ import org.openurp.base.code.model.UserCategory
  * 通用人员信息
  */
 class User extends LongId with Coded with Named with Updated with Remark {
-  /**人员ID*/
-  var personId: java.lang.Long = _
+
+  var school: School=_
 
   var department: Department = _
 

@@ -19,8 +19,9 @@
 package org.openurp.edu.evaluation.model
 
 import scala.reflect.runtime.universe
-import org.beangle.data.model.annotation.code
+
 import org.beangle.data.model.bind.Mapping
+import org.openurp.edu.evaluation.model._
 
 class DefaultMapping extends Mapping {
 

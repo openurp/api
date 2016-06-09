@@ -15,6 +15,8 @@ Adminclass.tutor=班导师
 Adminclass.project=项目
 Adminclass.education=培养层次
 Adminclass.shortName=简称
+Adminclass.campus=校区
+Adminclass.program=培养方案
 
 Classroom=教室
 Classroom.room=房间
@@ -67,6 +69,7 @@ Direction.name=专业方向名称
 Direction.enName=专业方向英文名
 Direction.major=所属专业
 Direction.journals=部门
+Direction.project=项目
 
 DirectionJournal=专业方向建设过程
 DirectionJournal.direction=专业方向
@@ -201,8 +204,17 @@ Teacher.project=所在项目
 Teacher.person=人员信息
 Teacher.teacherType=教师类型
 Teacher.department=所在部门
+Teacher.user=用户
 
 Instructor=辅导员
 Instructor.department=院系
 Instructor.project=项目
 Instructor.person=人员信息
+Instructor.user=用户
+
+MajorCampus=专业所在校区
+MajorCampus.campus=校区
+MajorCampus.education=培养层次
+MajorCampus.grade=年级
+MajorCampus.major=专业
+MajorCampus.terms=学期

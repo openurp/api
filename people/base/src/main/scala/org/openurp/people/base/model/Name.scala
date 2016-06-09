@@ -25,7 +25,7 @@ import org.beangle.data.model.Component
  * @see http://www.w3.org/International/questions/qa-personal-names
  * @see http://www.wikitree.com/wiki/Name_Fields
  */
-class Name extends Component{
+class Name extends Component {
 
   /**名*/
   var givenName: String = _
@@ -38,4 +38,13 @@ class Name extends Component{
 
   /**姓名*/
   var formatedName: String = _
+
+  override def toString: String = {
+    if (null != formatedName) formatedName
+    else {
+      if (null != middleName)
+        familyName + " " + middleName + " " + givenName
+      else familyName + " " + givenName
+    }
+  }
 }

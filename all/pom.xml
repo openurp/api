@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.0.7-SNAPSHOT</version>
+    <version>0.0.9</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-all</artifactId>
@@ -50,93 +50,123 @@
     </dependency>
 
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-award</artifactId>
+      <groupId>org.openurp.edu.award</groupId>
+      <artifactId>openurp-edu-award-api</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-base</artifactId>
+      <groupId>org.openurp.edu.base</groupId>
+      <artifactId>openurp-edu-base-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-evaluation</artifactId>
+      <groupId>org.openurp.edu.course</groupId>
+      <artifactId>openurp-edu-course-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-otherexam</artifactId>
+      <groupId>org.openurp.edu.evaluation</groupId>
+      <artifactId>openurp-edu-evaluation-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-std</artifactId>
+      <groupId>org.openurp.edu.otherexam</groupId>
+      <artifactId>openurp-edu-otherexam-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-lesson</artifactId>
+      <groupId>org.openurp.edu.std</groupId>
+      <artifactId>openurp-edu-std-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-program</artifactId>
+      <groupId>org.openurp.edu.lesson</groupId>
+      <artifactId>openurp-edu-lesson-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-grade</artifactId>
+      <groupId>org.openurp.edu.program</groupId>
+      <artifactId>openurp-edu-program-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-textbook</artifactId>
+      <groupId>org.openurp.edu.grade</groupId>
+      <artifactId>openurp-edu-grade-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-workload</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.openurp.hr</groupId>
-      <artifactId>openurp-hr-base</artifactId>
+      <groupId>org.openurp.edu.textbook</groupId>
+      <artifactId>openurp-edu-textbook-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.people</groupId>
-      <artifactId>openurp-people-base</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.people</groupId>
-      <artifactId>openurp-people-contact</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.sin</groupId>
-      <artifactId>openurp-sin-harvest</artifactId>
+      <groupId>org.openurp.edu.workload</groupId>
+      <artifactId>openurp-edu-workload-api</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>org.openurp.std</groupId>
-      <artifactId>openurp-std-base</artifactId>
+      <groupId>org.openurp.hr.base</groupId>
+      <artifactId>openurp-hr-base-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.std</groupId>
-      <artifactId>openurp-std-job</artifactId>
+      <groupId>org.openurp.people.base</groupId>
+      <artifactId>openurp-people-base-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.lg</groupId>
-      <artifactId>openurp-lg-room</artifactId>
+      <groupId>org.openurp.people.contact</groupId>
+      <artifactId>openurp-people-contact-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.sin.harvest</groupId>
+      <artifactId>openurp-sin-harvest-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.openurp.std.base</groupId>
+      <artifactId>openurp-std-base-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.std.job</groupId>
+      <artifactId>openurp-std-job-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.lg.room</groupId>
+      <artifactId>openurp-lg-room-api</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>src/main/assembly/assembly.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

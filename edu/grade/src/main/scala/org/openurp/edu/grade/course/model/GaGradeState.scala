@@ -19,7 +19,7 @@
 package org.openurp.edu.grade.course.model
 
 import org.beangle.data.model.annotation.config
-import org.openurp.edu.grade.code.model.GradeType
+import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.grade.model.AbstractGradeState
 /**
  * 总评成绩状态

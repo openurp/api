@@ -18,12 +18,10 @@
  */
 package org.openurp.edu.lesson.model
 
-import org.beangle.data.model.TemporalOn
-import org.beangle.data.model.LongId
+import org.beangle.data.model.{ LongId, Updated }
 import org.openurp.base.model.Semester
+import org.openurp.edu.base.code.model.{ CourseTakeType, ElectionMode }
 import org.openurp.edu.base.model.{ Course, Student }
-import org.openurp.edu.lesson.code.model.{ CourseTakeType, ElectionMode }
-import org.beangle.data.model.Updated
 
 class CourseTake extends LongId with Updated with Cloneable {
 

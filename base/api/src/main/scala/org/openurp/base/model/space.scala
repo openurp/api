@@ -27,18 +27,18 @@ import org.openurp.code.asset.model.RoomType
 class Campus extends IntId with Cloneable with Coded with Named with TemporalOn with Updated with Remark {
   var enName: String = _
   var shortName: String = _
+  var school: School = _
 }
 
 /**
  * 建筑
  */
 class Building extends IntId with Coded with Named with TemporalOn with Updated with Remark {
-  /**
-   * 所属校区
-   */
+  /**所属校区*/
   var campus: Campus = _
   var enName: String = _
   var shortName: String = _
+  var school: School = _
 }
 
 /**
@@ -46,30 +46,25 @@ class Building extends IntId with Coded with Named with TemporalOn with Updated 
  */
 class Room extends IntId with Coded with Named with TemporalOn with Updated with Remark {
 
-  /**
-   * 管理部门
-   */
+  /**所属学校*/
+  var school: School = _
+
+  /**管理部门*/
   var department: Department = _
 
-  /**
-   * 所属校区
-   */
+  /**所属校区*/
   var campus: Campus = _
 
-  /**
-   * 所属建筑
-   */
+  /**所属建筑*/
   var building: Building = _
 
   /**房间类型*/
   var roomType:RoomType=_
-  /**
-   * 楼层
-   */
+
+  /** 楼层 */
   var floor: Int = _
-  /**
-   * 容量
-   */
+
+  /** 容量*/
   var capacity: Int = _
 
 }

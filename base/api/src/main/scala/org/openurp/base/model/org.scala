@@ -25,14 +25,17 @@ import org.openurp.code.edu.model.Institution
 /**
  * 学校
  */
-class School extends IntId with Coded with Named {
+class School extends IntId with Coded with Named with TemporalOn  {
   var institution: Institution = _
+  var logoUrl: String = _
+  var shortName: String = _
 }
 /**
  * 部门
  */
 class Department extends IntId with Coded with Named with Hierarchical[Department]
     with TemporalOn with Updated with Remark {
+  var school: School =_
   var enName: String = _
   var shortName: String = _
   var category: DepartmentCategory = _

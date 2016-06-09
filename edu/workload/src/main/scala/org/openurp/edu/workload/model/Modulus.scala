@@ -19,7 +19,7 @@
 package org.openurp.edu.workload.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.lesson.code.model.TeachLangType
+import org.openurp.edu.base.code.model.TeachLangType
 import org.openurp.edu.base.code.model.CourseCategory
 
 class Modulus extends LongId {
@@ -35,6 +35,5 @@ class Modulus extends LongId {
   var minStdCount: Integer = _
 
   var modulusValue: Float = _
-
 
 }

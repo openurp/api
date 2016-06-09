@@ -4,10 +4,10 @@
   <parent>
     <groupId>org.openurp.std</groupId>
     <artifactId>openurp-std-parent</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
   </parent>
-  <groupId>org.openurp.std</groupId>
-  <artifactId>openurp-std-job</artifactId>
+  <groupId>org.openurp.std.job</groupId>
+  <artifactId>openurp-std-job-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Std Job API</name>
 
@@ -18,8 +18,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-base</artifactId>
+      <groupId>org.openurp.edu.base</groupId>
+      <artifactId>openurp-edu-base-api</artifactId>
     </dependency>
   </dependencies>
 </project>

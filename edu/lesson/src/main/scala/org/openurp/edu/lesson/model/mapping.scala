@@ -19,11 +19,10 @@
 package org.openurp.edu.lesson.model
 
 import scala.reflect.runtime.universe
-
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.bind.Mapping
-import org.openurp.edu.lesson.code.model.{ CourseTakeType, ElectionMode, ExamForm, ExamType, LessonTag, TeachLangType }
+import org.openurp.edu.lesson.code.model.LessonTag
 
 class DefaultMapping extends Mapping {
 
@@ -31,12 +30,7 @@ class DefaultMapping extends Mapping {
     defaultIdGenerator("date")
 
     //code
-    bind[ElectionMode]
-    bind[ExamType]
-    bind[CourseTakeType]
     bind[LessonTag]
-    bind[TeachLangType]
-    bind[ExamForm]
 
     //exam
     bind[ExamActivity].on(e => declare(
@@ -63,7 +57,8 @@ class DefaultMapping extends Mapping {
       e.no is length(32),
       e.project & e.course & e.courseType & e.teachDepart & e.semester & e.langType are notnull,
       e.teachers is ordered,
-      e.teachclass.name is length(500),
+      e.teachclass.name is (length(500), column("class_name")),
+      e.schedule.classroomType is (column("room_type_id")),
       e.teachclass.courseTakes & e.teachclass.examTakes & e.teachclass.groups &
         e.schedule.activities & e.exam.activities are depends("lesson"),
       e.state & e.updatedAt & e.schedule.publishState are notnull))

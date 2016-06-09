@@ -18,12 +18,10 @@
  */
 package org.openurp.edu.lesson.model
 
-import java.sql.Date
-
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
-import org.openurp.edu.lesson.code.model.ExamType
+import org.openurp.edu.base.code.model.ExamType
 
 /**
  * 考试活动 </p>

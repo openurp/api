@@ -4,9 +4,10 @@
   <parent>
     <groupId>org.openurp.edu</groupId>
     <artifactId>openurp-edu-parent</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
   </parent>
-  <artifactId>openurp-edu-base</artifactId>
+  <groupId>org.openurp.edu.base</groupId>
+  <artifactId>openurp-edu-base-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Edu Base API</name>
 
@@ -25,8 +26,8 @@
       <artifactId>openurp-code-sin</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.openurp.people</groupId>
-      <artifactId>openurp-people-base</artifactId>
+      <groupId>org.openurp.people.base</groupId>
+      <artifactId>openurp-people-base-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.openurp.code</groupId>

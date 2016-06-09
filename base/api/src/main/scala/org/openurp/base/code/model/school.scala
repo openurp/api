@@ -33,3 +33,9 @@ class UserCategory extends BaseCodeBean
  */
 @code("school")
 class DepartmentCategory extends BaseCodeBean with Hierarchical[DepartmentCategory]
+
+/**
+ * 上下午时段
+ */
+@code("school")
+class DayPart extends BaseCodeBean

@@ -27,6 +27,7 @@ class DefaultMapping extends Mapping {
 
   def binding(): Unit = {
     bind[UserCategory]
+    bind[DayPart]
     bind[DepartmentCategory].on(e => declare(
       e.children is (depends("parent"))))
   }

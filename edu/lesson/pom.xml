@@ -4,9 +4,10 @@
   <parent>
     <groupId>org.openurp.edu</groupId>
     <artifactId>openurp-edu-parent</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
   </parent>
-  <artifactId>openurp-edu-lesson</artifactId>
+  <groupId>org.openurp.edu.lesson</groupId>
+  <artifactId>openurp-edu-lesson-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Edu Lesson API</name>
 
@@ -17,12 +18,12 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.openurp.edu</groupId>
-      <artifactId>openurp-edu-base</artifactId>
+      <groupId>org.openurp.edu.base</groupId>
+      <artifactId>openurp-edu-base-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.openurp.lg</groupId>
-      <artifactId>openurp-lg-room</artifactId>
+      <groupId>org.openurp.lg.room</groupId>
+      <artifactId>openurp-lg-room-api</artifactId>
     </dependency>
   </dependencies>
 </project>

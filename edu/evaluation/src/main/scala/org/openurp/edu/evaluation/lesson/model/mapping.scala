@@ -19,34 +19,10 @@
 package org.openurp.edu.evaluation.lesson.model
 
 import scala.reflect.runtime.universe
-import org.beangle.data.model.annotation.code
+
 import org.beangle.data.model.bind.Mapping
-import org.openurp.edu.evaluation.lesson.result.model.EvaluateResult
-import org.openurp.edu.evaluation.lesson.result.model.QuestionResult
-import org.openurp.edu.evaluation.lesson.stat.model.CourseEvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.EvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.CourseQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.CourseQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.CourseOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.OptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.QuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.QuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.DepartEvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.DepartOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.DepartQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.DepartQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.LessonQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.LessonQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.LessonEvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.LessonOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.SchoolQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.SchoolQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.SchoolEvalStat
-import org.openurp.edu.evaluation.lesson.stat.model.SchoolOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.TeacherQuestionStat
-import org.openurp.edu.evaluation.lesson.stat.model.TeacherOptionStat
-import org.openurp.edu.evaluation.lesson.stat.model.TeacherQuestionTypeStat
-import org.openurp.edu.evaluation.lesson.stat.model.TeacherEvalStat
+import org.openurp.edu.evaluation.lesson.result.model._
+import org.openurp.edu.evaluation.lesson.stat.model._
 
 class DefaultMapping extends Mapping {
 
@@ -56,18 +32,17 @@ class DefaultMapping extends Mapping {
     //lesson result
     bind[EvaluateResult].on(e => declare(
       e.lesson & e.student & e.department & e.questionnaire & e.evaluateAt are notnull,
-      e.questionResults is depends("evaluateResult"),
+      e.questionResults is depends("result"),
       e.remark is length(20)))
 
     bind[QuestionResult].on(e => declare(
       e.result & e.questionType & e.question are notnull))
 
-    // department eval and questionanire
-    bind[DepartEvaluation].on(e => declare(
-      e.teacher & e.semester & e.course & e.userName & e.updateAt & e.score are notnull))
-
     bind[QuestionnaireLesson].on(e => declare(
       e.lesson & e.questionnaire are notnull))
+    //   finalTeacherScore
+    bind[FinalTeacherScore].on(e => declare(
+      e.teacher & e.semester are notnull))
 
     //eval stat
     bind[EvalStat].on(e => declare(
@@ -85,15 +60,15 @@ class DefaultMapping extends Mapping {
     //course stat
     bind[CourseEvalStat].on(e => declare(
       e.course & e.teacher are notnull,
-      e.questionStats is depends(classOf[CourseQuestionStat], "questionnaireStat"),
-      e.questionTypeStats is depends(classOf[CourseQuestionTypeStat], "questionnaireStat")))
+      e.questionStats is depends(classOf[CourseQuestionStat], "evalStat"),
+      e.questionTypeStats is depends(classOf[CourseQuestionTypeStat], "evalStat")))
 
     bind[CourseOptionStat].on(e => declare(
       e.questionStat is (notnull, target[CourseQuestionStat])))
 
     bind[CourseQuestionStat].on(e => declare(
       e.evalStat is (notnull, target[CourseEvalStat]),
-      e.optionStats is depends(classOf[CourseOptionStat], "optionStat")))
+      e.optionStats is depends(classOf[CourseOptionStat], "questionStat")))
 
     bind[CourseQuestionTypeStat].on(e => declare(
       e.evalStat is (notnull, target[CourseEvalStat])))
@@ -101,15 +76,15 @@ class DefaultMapping extends Mapping {
     //depart stat
     bind[DepartEvalStat].on(e => declare(
       e.department is notnull,
-      e.questionStats is depends(classOf[DepartQuestionStat], "questionnaireStat"),
-      e.questionTypeStats is depends(classOf[DepartQuestionTypeStat], "questionnaireStat")))
+      e.questionStats is depends(classOf[DepartQuestionStat], "evalStat"),
+      e.questionTypeStats is depends(classOf[DepartQuestionTypeStat], "evalStat")))
 
     bind[DepartOptionStat].on(e => declare(
       e.questionStat is (notnull, target[DepartQuestionStat])))
 
     bind[DepartQuestionStat].on(e => declare(
       e.evalStat is (notnull, target[DepartEvalStat]),
-      e.optionStats is depends(classOf[DepartOptionStat], "optionStat")))
+      e.optionStats is depends(classOf[DepartOptionStat], "questionStat")))
 
     bind[DepartQuestionTypeStat].on(e => declare(
       e.evalStat is (notnull, target[DepartEvalStat])))
@@ -117,30 +92,30 @@ class DefaultMapping extends Mapping {
     // lesson stat
     bind[LessonEvalStat].on(e => declare(
       e.lesson is notnull,
-      e.questionStats is depends(classOf[LessonQuestionStat], "questionnaireStat"),
-      e.questionTypeStats is depends(classOf[LessonQuestionTypeStat], "questionnaireStat")))
+      e.questionStats is depends(classOf[LessonQuestionStat], "evalStat"),
+      e.questionTypeStats is depends(classOf[LessonQuestionTypeStat], "evalStat")))
 
     bind[LessonOptionStat].on(e => declare(
       e.questionStat is (notnull, target[LessonQuestionStat])))
 
     bind[LessonQuestionStat].on(e => declare(
       e.evalStat is (notnull, target[LessonEvalStat]),
-      e.optionStats is depends(classOf[LessonOptionStat], "optionStat")))
+      e.optionStats is depends(classOf[LessonOptionStat], "questionStat")))
 
     bind[LessonQuestionTypeStat].on(e => declare(
       e.evalStat is (notnull, target[LessonEvalStat])))
 
     //school
     bind[SchoolEvalStat].on(e => declare(
-      e.questionStats is depends(classOf[SchoolQuestionStat], "questionnaireStat"),
-      e.questionTypeStats is depends(classOf[SchoolQuestionTypeStat], "questionnaireStat")))
+      e.questionStats is depends(classOf[SchoolQuestionStat], "evalStat"),
+      e.questionTypeStats is depends(classOf[SchoolQuestionTypeStat], "evalStat")))
 
     bind[SchoolOptionStat].on(e => declare(
       e.questionStat is (notnull, target[SchoolQuestionStat])))
 
     bind[SchoolQuestionStat].on(e => declare(
       e.evalStat is (notnull, target[SchoolEvalStat]),
-      e.optionStats is depends(classOf[SchoolOptionStat], "optionStat")))
+      e.optionStats is depends(classOf[SchoolOptionStat], "questionStat")))
 
     bind[SchoolQuestionTypeStat].on(e => declare(
       e.evalStat is (notnull, target[SchoolEvalStat])))
@@ -148,18 +123,25 @@ class DefaultMapping extends Mapping {
     //teacher
     bind[TeacherEvalStat].on(e => declare(
       e.teacher is notnull,
-      e.questionStats is depends(classOf[TeacherQuestionStat], "questionnaireStat"),
-      e.questionTypeStats is depends(classOf[TeacherQuestionTypeStat], "questionnaireStat")))
+      e.questionStats is depends(classOf[TeacherQuestionStat], "evalStat"),
+      e.questionTypeStats is depends(classOf[TeacherQuestionTypeStat], "evalStat")))
 
     bind[TeacherOptionStat].on(e => declare(
       e.questionStat is (notnull, target[TeacherQuestionStat])))
 
     bind[TeacherQuestionStat].on(e => declare(
       e.evalStat is (notnull, target[TeacherEvalStat]),
-      e.optionStats is depends(classOf[TeacherOptionStat], "optionStat")))
+      e.optionStats is depends(classOf[TeacherOptionStat], "questionStat")))
 
     bind[TeacherQuestionTypeStat].on(e => declare(
       e.evalStat is (notnull, target[TeacherEvalStat])))
+
+    bind[TextEvaluation].on(e => declare(
+      e.student & e.lesson & e.evaluateByTeacher & e.evaluateAt are notnull,
+      e.teacherRemessages is (depends("textEvaluation"), table("text_evaluation_remsgs"))))
+
+    bind[TeacherRemessage].on(e => declare(
+      e.textEvaluation & e.visible are notnull))
 
   }
 
