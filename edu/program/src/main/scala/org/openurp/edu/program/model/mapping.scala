@@ -19,11 +19,10 @@
 package org.openurp.edu.program.model
 
 import scala.reflect.runtime.universe
+
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.bind.Mapping
-import org.openurp.edu.program.plan.model.{ AbstractCourseGroup, MajorCourseGroup, MajorCourseSubstitution, MajorPlan, MajorPlanCourse, PlanCourse, ShareCourseGroup, SharePlan, SharePlanCourse, StdCourseGroup, StdCourseSubstitution, StdPlan, StdPlanCourse }
-import org.openurp.edu.program.plan.model.MajorPlanCourse
-import org.openurp.edu.program.plan.model.SharePlanCourse
-import org.openurp.edu.program.plan.model.StdPlanCourse
+import org.openurp.edu.program.plan.model.{ AbstractCourseGroup, AbstractPlanCourse, MajorCourseGroup, MajorCourseSubstitution, MajorPlan, MajorPlanCourse, ShareCourseGroup, SharePlan, SharePlanCourse, StdCourseGroup, StdCourseSubstitution, StdPlan, StdPlanCourse }
 
 class DefaultMapping extends Mapping {
 
@@ -35,7 +34,7 @@ class DefaultMapping extends Mapping {
       e.courseType is notnull,
       e.remark is length(200)))
 
-    bind[PlanCourse].on(e => declare(
+    bind[AbstractPlanCourse].on(e => declare(
       e.course is notnull,
       e.remark is length(200)))
 
