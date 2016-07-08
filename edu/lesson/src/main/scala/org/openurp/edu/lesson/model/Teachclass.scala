@@ -25,12 +25,12 @@ import org.beangle.data.model.{ Component, Named }
 import org.openurp.base.model.Department
 
 class Teachclass extends Cloneable with Component with Named {
-  //for hibernate must looking get/set for compoent parent parent attribute.
-  @BeanProperty /** 教学任务 */
-  var lesson: Lesson = _
 
   /** 学生所在部门 */
   var depart: Department = _
+
+  /**年级*/
+  var grade: String = _
 
   /** 学生人数 */
   var stdCount: Int = _
@@ -43,8 +43,8 @@ class Teachclass extends Cloneable with Component with Named {
    */
   var limitLocked: Boolean = false
 
-  /**性别限制*/
-  var genderLimit = new  LessonGenderLimit
+  /**男女比例*/
+  var genderRatio: GenderRatio = _
 
   /**
    * 保留人数<br>

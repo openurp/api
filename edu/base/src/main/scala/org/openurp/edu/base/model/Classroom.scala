@@ -22,6 +22,8 @@ import org.beangle.data.model.{ LongId, Named, Updated }
 import org.openurp.base.model.Room
 import org.openurp.code.edu.model.ClassroomType
 import org.beangle.data.model.Coded
+import org.openurp.base.model.Campus
+
 /**
  * 教室
  */
@@ -34,6 +36,9 @@ class Classroom extends LongId with Named with Coded with Updated {
    * 可以为空，表示虚拟房间
    */
   var room: Room = _
+
+  /**所属校区*/
+  var campus: Campus = _
 
   /**
    * 英文名
