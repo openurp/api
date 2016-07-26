@@ -78,13 +78,13 @@ class Lesson extends LongId with ProjectBased with Updated with Cloneable with Y
   var exam: ExamSchedule = _
 
   /** 备注 */
-  var remark: String = _
+  var remark: Option[String] = None
 
   /** 授课语言类型 */
   var langType: TeachLangType = _
 
   /** 所属课程组 */
-  var group: LessonGroup = _
+  var group: Option[LessonGroup] = None
 
   /** 审核状态 */
   var state: States.State = _

@@ -29,77 +29,62 @@ class DefaultMapping extends Mapping {
     defaultCache("openurp.base", "read-write")
 
     bind[School] on (e => declare(
-      e.code is (notnull, length(10), unique),
-      e.name is (notnull, length(50))))
+      e.code is (length(10), unique),
+      e.name is length(50)))
 
     bind[Department] on (e => declare(
-      e.code is (notnull, length(10)),
-      e.school is notnull,
-      e.name is (notnull, length(80)),
-      e.enName is (length(100)),
-      e.shortName is (length(100)),
-      e.indexno is (notnull, length(20)),
-      e.children is (depends("parent")),
-      e.remark is (length(200))))
+      e.code is length(10),
+      e.name is length(80),
+      e.enName is length(100),
+      e.shortName is length(100),
+      e.indexno is length(20),
+      e.children is depends("parent"),
+      e.remark is length(200)))
 
     bind[Calendar] on (e => declare(
       e.semesters is (depends("calendar")),
-      e.school is notnull,
-      e.code is (notnull, length(10)),
-      e.name is (notnull, length(80)),
-      e.firstWeekday is (notnull)))
+      e.code is length(10),
+      e.name is length(80)))
 
     bind[Semester].on(e => declare(
-      e.code is (notnull, length(15)),
-      e.name is (notnull, length(10)),
-      e.schoolYear is (notnull, length(10)),
-      e.calendar is (notnull))).generator("code")
+      e.code is (length(15)),
+      e.name & e.schoolYear are (length(10)))).generator("code")
 
     bind[Campus] on (e => declare(
-      e.code is (notnull, length(10)),
-      e.school is notnull,
-      e.name is (notnull, length(80)),
+      e.code is length(10),
+      e.name is length(80),
       e.enName & e.shortName are (length(100)),
       e.remark is (length(200))))
 
     bind[Building] on (e => declare(
-      e.code is (notnull, length(10)),
-      e.name is (notnull, length(80)),
-      e.school is notnull,
+      e.code is length(10),
+      e.name is length(80),
       e.enName & e.shortName are (length(100)),
-      e.campus is (notnull),
       e.remark is (length(200))))
 
     bind[Room] on (e => declare(
-      e.code is (notnull, length(10)),
-      e.name is (notnull, length(80)),
-      e.school is notnull,
-      e.remark is (length(200)),
-      e.campus is (notnull)))
+      e.code is length(10),
+      e.name is length(80),
+      e.remark is (length(200))))
 
     bind[Holiday] on (e => declare(
-      e.name is (notnull, length(20)),
-      e.school is notnull,
-      e.beginOn & e.endOn are (notnull)))
+      e.name is length(20),
+      e.endOn is notnull))
 
     bind[TimeSetting] on (e => declare(
-      e.name is (notnull, length(20)),
-      e.school is notnull,
+      e.name is length(20),
       e.units is (depends("setting"))))
 
     bind[CourseUnit] on (e => declare(
-      e.enName is (notnull, length(30)),
-      e.name & e.indexno are (notnull, length(20)),
-      e.beginAt & e.endAt & e.setting & e.part are (notnull)))
+      e.enName is length(30),
+      e.name & e.indexno are length(20)))
 
     bind[User] on (e => declare(
-      e.code is (notnull, length(30)),
-      e.name is (notnull, length(80)),
-      e.school is notnull,
-      e.email is (length(80)),
-      e.mobile is (length(15)),
-      e.remark is (length(200)),
-      e.department & e.category are (notnull)))
+      e.code is length(30),
+      e.name is length(80),
+      e.email is length(80),
+      e.mobile is length(15),
+      e.remark is length(200)))
   }
 
   all.except(classOf[User]).cacheable()

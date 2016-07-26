@@ -27,10 +27,10 @@ import org.openurp.base.model.Department
 class Teachclass extends Cloneable with Component with Named {
 
   /** 学生所在部门 */
-  var depart: Department = _
+  var depart: Option[Department] = None
 
   /**年级*/
-  var grade: String = _
+  var grade: Option[String] = None
 
   /** 学生人数 */
   var stdCount: Int = _
@@ -44,7 +44,7 @@ class Teachclass extends Cloneable with Component with Named {
   var limitLocked: Boolean = false
 
   /**男女比例*/
-  var genderRatio: GenderRatio = _
+  var genderRatio: GenderRatio = GenderRatio.empty
 
   /**
    * 保留人数<br>

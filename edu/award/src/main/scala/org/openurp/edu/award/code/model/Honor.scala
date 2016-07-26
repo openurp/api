@@ -28,7 +28,7 @@ class HonorCategory extends IntId with Coded with Named {
   var honorType: HonorType = _
 
   /**荣誉描述*/
-  var discription: String = _
+  var discription: Option[String] = None
 
   /**评定周期*/
   var period: String = _
@@ -58,7 +58,7 @@ class HonorLevel extends IntId with Coded with Named {
 
   /**描述*/
 
-  var discription: String = _
+  var discription: Option[String] = None
 }
 
 @code("school")

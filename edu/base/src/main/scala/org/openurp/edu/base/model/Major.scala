@@ -39,7 +39,7 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
   var enName: String = _
 
   /** 简称 */
-  var shortName: String = _
+  var shortName: Option[String] = None
 
   /** 专业方向 */
   var directions = Collections.newSet[Direction]
@@ -64,7 +64,7 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
   }
 
   def departments(date: Date): Set[Department] = {
-    journals.filter(j => date.after(j.beginOn) && (null == j.endOn || date.before(j.endOn)))
+    journals.filter(j => date.after(j.beginOn) && (None == j.endOn || date.before(j.endOn.get)))
       .map(_.depart).toSet
   }
 }
@@ -81,7 +81,7 @@ class MajorDiscipline extends LongId with TemporalOn {
   var category: DisciplineCategory = _
 
   /** 教育部代码 */
-  var disciplineCode: String = _
+  var disciplineCode: Option[String] = None
 }
 
 /**

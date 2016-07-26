@@ -28,7 +28,7 @@ class ScholarshipCategory extends IntId with Coded with Named with TemporalOn {
   var scholarshipType: ScholarshipType = _
 
   /**奖学金描述*/
-  var discription: String = _
+  var discription: Option[String] = None
 
   /**评定周期*/
   var period: String = _
@@ -58,7 +58,7 @@ class ScholarshipLevel extends IntId with Coded with Named {
 
   /**描述*/
 
-  var discription: String = _
+  var discription: Option[String] = None
 }
 
 @code("school")

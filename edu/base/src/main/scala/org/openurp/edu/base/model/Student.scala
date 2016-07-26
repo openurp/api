@@ -28,11 +28,12 @@ import org.openurp.edu.base.{ EducationBased, StdEnrollment }
 import org.openurp.edu.base.code.model.{ Education, StdLabel, StdLabelType, StdType }
 import org.openurp.people.base.model.Person
 import org.beangle.data.model.TemporalOn
+import org.beangle.data.model.Remark
 
 /**
  * 学籍信息实现
  */
-class Student extends LongId with EducationBased with YearId with Coded with Updated {
+class Student extends LongId with EducationBased with YearId with Coded with Updated with Remark {
 
   /**基本信息*/
   var person: Person = _
@@ -41,7 +42,7 @@ class Student extends LongId with EducationBased with YearId with Coded with Upd
   var stdType: StdType = _
 
   /** 学籍状态 */
-  var state: StudentState = _
+  var state: Option[StudentState] = None
 
   /** 状态 */
   var states = Collections.newBuffer[StudentState]
@@ -68,18 +69,16 @@ class Student extends LongId with EducationBased with YearId with Coded with Upd
   var studyType: StudyType = _
 
   /**导师*/
-  var tutor: Teacher = _
+  var tutor: Option[Teacher] = None
 
-  def year = Integer.valueOf(state.grade.substring(0, 4))
+  def year = Integer.valueOf(state.get.grade.substring(0, 4))
 
-  /** 备注 */
-  var remark: String = _
 }
 /**
  * 学籍状态日志
  */
 
-class StudentState extends LongId with StdEnrollment with TemporalOn {
+class StudentState extends LongId with StdEnrollment with TemporalOn with Remark {
 
   /** 学生 */
   var std: Student = _
@@ -97,10 +96,10 @@ class StudentState extends LongId with StdEnrollment with TemporalOn {
   var major: Major = _
 
   /**专业方向*/
-  var direction: Direction = _
+  var direction: Option[Direction] = None
 
   /** 行政班级 */
-  var adminclass: Adminclass = _
+  var adminclass: Option[Adminclass] = None
 
   /** 是否在校 */
   var inschool: Boolean = _
@@ -112,10 +111,7 @@ class StudentState extends LongId with StdEnrollment with TemporalOn {
   var campus: Campus = _
 
   /**培养方案*/
-  var program: Program = _
-
-  /** 备注 */
-  var remark: String = _
+  var program: Option[Program] = None
 }
 
 /**

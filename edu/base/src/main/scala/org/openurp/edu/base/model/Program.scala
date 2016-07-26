@@ -55,7 +55,7 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   /**
    * 专业方向
    */
-  var direction: Direction = _
+  var direction: Option[Direction] = None
 
   /**
    * 学制
@@ -70,7 +70,7 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   /**
    * 毕业授予学位
    */
-  var degree: Degree = _
+  var degree: Option[Degree] = None
 
   /**
    * 审核状态

@@ -41,37 +41,24 @@ class DefaultMapping extends Mapping {
     defaultIdGenerator("auto_increment")
 
     //code
-    bind[HonorCategory].on(e => declare(
-      e.honorType is notnull))
+    bind[HonorCategory]
     bind[HonorLevel]
     bind[HonorType]
 
-    bind[ScholarshipCategory].on(e => declare(
-      e.scholarshipType is notnull))
-    bind[ScholarshipLevel].on(e => declare(
-      e.scholarshipCategory is notnull))
+    bind[ScholarshipCategory]
+    bind[ScholarshipLevel]
     bind[ScholarshipType]
 
     bind[StipendCategory]
-    bind[StipendLevel].on(e => declare(
-      e.stipendCategory is notnull))
+    bind[StipendLevel]
     bind[SubsidyCategory]
-    bind[SubsidyLevel].on(e => declare(
-      e.subsidyCategory is notnull))
-
+    bind[SubsidyLevel]
+    
     //result
-    bind[ScholarshipAward].on(e => declare(
-      e.scholarshipCategory & e.scholarshipLevel & e.std & e.semester are notnull))
-
-    bind[StdHonorAward].on(e => declare(
-      e.honorCategory & e.honorLevel & e.std & e.semester are notnull))
-
-    bind[StipendAward].on(e => declare(
-      e.stipendCategory & e.stipendLevel & e.std & e.semester are notnull))
-
-    bind[SubsidyAward].on(e => declare(
-      e.subsidyCategory & e.subsidyLevel & e.std & e.semester are notnull))
-
+    bind[ScholarshipAward]
+    bind[StdHonorAward]
+    bind[StipendAward]
+    bind[SubsidyAward]
   }
 
 }

@@ -24,10 +24,11 @@ import org.beangle.data.model.{ LongId, Named, TemporalOn }
 import org.beangle.data.model.annotation.code
 import org.openurp.code.sin.model.Press
 import org.openurp.edu.base.code.model.{ BookAwardType, BookType }
+import org.beangle.data.model.Remark
 
-class Textbook extends LongId with TemporalOn with Named {
+class Textbook extends LongId with TemporalOn with Named with Remark {
 
-  var isbn: String = _
+  var isbn: Option[String] = None
 
   var author: String = _
 
@@ -35,17 +36,15 @@ class Textbook extends LongId with TemporalOn with Named {
 
   var version: String = _
 
-  var price: java.lang.Float = _
+  var price: Option[Float] = None
 
-  var description: String = _
+  var description: Option[String] = None
 
-  var remark: String = _
-
-  var bookType: BookType = _
+  var bookType: Option[BookType] = None
 
   var publishedOn: Date = _
 
-  var awardType: BookAwardType = _
+  var awardType: Option[BookAwardType] = None
 
   var published: Boolean = true
 

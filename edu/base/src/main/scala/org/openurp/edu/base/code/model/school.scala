@@ -51,7 +51,7 @@ class CourseType extends BaseCodeBean {
     this.id = id
     this.code = code
     this.name = name
-    this.enName = enName
+    this.enName = Some(enName)
   }
 }
 
@@ -92,7 +92,7 @@ class CourseTakeType extends BaseCodeBean {
     this.id = id
     this.code = code
     this.name = name
-    this.enName = enName
+    this.enName = Some(enName)
   }
 }
 object CourseTakeType {
@@ -202,7 +202,7 @@ class ExamType extends BaseCodeBean {
     this.id = id
     this.code = code
     this.name = name
-    this.enName = enName
+    this.enName = Some(enName)
   }
 }
 /**
@@ -226,7 +226,7 @@ class GradeType extends BaseCodeBean {
     this.id = id
     this.code = code
     this.name = name
-    this.enName = enName
+    this.enName = Some(enName)
   }
 }
 
@@ -280,7 +280,7 @@ class ScoreMarkStyle extends BaseCodeBean {
     this.id = id
     this.code = code
     this.name = name
-    this.enName = enName
+    this.enName = Some(enName)
   }
 }
 

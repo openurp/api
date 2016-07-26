@@ -24,6 +24,7 @@ import org.beangle.data.model.annotation.code
 import org.openurp.base.model.Department
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.{ CourseAbilityRate, CourseCategory, CourseHourType, CourseType, Education, ExamMode, ScoreMarkStyle }
+import org.beangle.data.model.Remark
 
 /**
  * 课程基本信息 </p>
@@ -39,7 +40,8 @@ import org.openurp.edu.base.code.model.{ CourseAbilityRate, CourseCategory, Cour
  * @author chaostone
  * @since 2008-09-24
  */
-class Course extends LongId with ProjectBased with Ordered[Course] with Updated with TemporalOn with Coded with Named {
+class Course extends LongId with ProjectBased with Ordered[Course] with Updated
+    with TemporalOn with Coded with Named with Remark {
   /**课程英文名*/
   var enName: String = _
   /** 学历层次 */
@@ -47,7 +49,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated 
   /**课程种类代码*/
   var category: CourseCategory = _
   /**学分*/
-  var credits: java.lang.Float = _
+  var credits: Float = _
   /** 学时/总课时 */
   var period: Int = _
   /**课程类型*/
@@ -74,8 +76,6 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated 
   var textbooks = Collections.newSet[Textbook]
   /**教师*/
   var teachers = Collections.newSet[Teacher]
-  /**课程备注*/
-  var remark: String = _
   /** 是否计算绩点 **/
   var calgp: Boolean = _
 
@@ -83,7 +83,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated 
     code.compareTo(other.code)
   }
 
-  def this(id: java.lang.Long, code: String, name: String, enName: String) {
+  def this(id: Long, code: String, name: String, enName: String) {
     this()
     this.id = id
     this.code = code

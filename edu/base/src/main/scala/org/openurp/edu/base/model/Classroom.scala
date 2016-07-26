@@ -43,12 +43,12 @@ class Classroom extends LongId with Named with Coded with Updated {
   /**
    * 英文名
    */
-  var enName: String = _
+  var enName: Option[String] = None
 
   /**
    * 简称
    */
-  var shortName: String = _
+  var shortName: Option[String] = None
 
   /**
    * 教室类型
