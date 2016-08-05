@@ -22,6 +22,7 @@ import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.code.model.ExamType
+import org.beangle.data.model.Remark
 
 /**
  * 考试活动 </p>
@@ -37,7 +38,7 @@ import org.openurp.edu.base.code.model.ExamType
  * @composed 1 has * ExamTake
  */
 
-class ExamActivity extends LongId {
+class ExamActivity extends LongId with Remark {
   /** 考试类型 */
   var examType: ExamType = _
 
@@ -55,9 +56,6 @@ class ExamActivity extends LongId {
 
   /**结束时间*/
   var endAt: HourMinute = _
-
-  /** 备注 */
-  var remark: String = _
 
   /** 考场列表 */
   var rooms: collection.mutable.Buffer[ExamRoom] = _

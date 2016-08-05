@@ -19,7 +19,7 @@
 package org.openurp.edu.program.plan.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.{ Program, Direction, Terms}
+import org.openurp.edu.base.model.{ Program, Direction, Terms }
 import org.beangle.data.model.TemporalOn
 
 /**
@@ -50,17 +50,17 @@ class MajorCourseGroup extends AbstractCourseGroup {
   /**
    * 自定义别名
    */
-  var alias: String = _
+  var alias: Option[String] = None
 
   /**
    * 该组针对的专业方向
    */
-  var direction: Direction = _
+  var direction: Option[Direction] = None
 
   def getName: String = {
     val sb = new StringBuilder()
     if (null != courseType) sb.append(courseType.name)
-    if (null != alias) sb.append(" ").append(alias)
+    if (None != alias) sb.append(" ").append(alias.get)
     sb.toString
   }
 
@@ -81,7 +81,7 @@ class MajorCourseGroup extends AbstractCourseGroup {
 class MajorPlanCourse extends AbstractPlanCourse with ExecutePlanCourse {
 
   /** 建议修读学期 */
-  var suggestTerms: Terms = _
+  var suggestTerms: Terms = Terms.empty
 
   override def toString(): String = {
     "MajorPlanCourseBean [courseGroup=" + group + ", course=" +

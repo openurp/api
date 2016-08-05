@@ -24,7 +24,7 @@ import org.openurp.code.geo.model.Country
 
 class ExchangeSchool extends LongId with Updated with TemporalOn with Coded with Named {
 
-  var enName: String = _
+  var enName: Option[String] = None
 
   var country: Country = _
 }

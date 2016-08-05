@@ -21,13 +21,15 @@ package org.openurp.edu.grade.course.model
 import org.beangle.data.model.annotation.config
 import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.grade.model.AbstractGradeState
+import org.beangle.data.model.Remark
+
 /**
  * 总评成绩状态
  *
  * @author chaostone
  */
 @config
-class GaGradeState extends AbstractGradeState {
+class GaGradeState extends AbstractGradeState with Remark {
 
   /**
    * 成绩类型
@@ -39,8 +41,4 @@ class GaGradeState extends AbstractGradeState {
    */
   var gradeState: CourseGradeState = _
 
-  /**
-   * 备注
-   */
-  var remark: String = _
 }

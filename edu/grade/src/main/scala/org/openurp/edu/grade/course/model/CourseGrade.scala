@@ -27,6 +27,7 @@ import org.openurp.edu.base.code.model.{ CourseTakeType, CourseType, ExamMode, G
 import org.openurp.edu.base.model.{ Course, Student }
 import org.openurp.edu.grade.model.Grade
 import org.openurp.edu.lesson.model.Lesson
+import org.beangle.data.model.Remark
 
 /**
  * 课程成绩
@@ -46,7 +47,7 @@ import org.openurp.edu.lesson.model.Lesson
  * @since 2006
  */
 
-class CourseGrade extends LongId with ProjectBased with Grade {
+class CourseGrade extends LongId with ProjectBased with Grade with Remark {
   /**
    * 设置学生
    */
@@ -66,7 +67,7 @@ class CourseGrade extends LongId with ProjectBased with Grade {
   /**
    * 任务序号
    */
-  var lessonNo: String = _
+  var lessonNo: Option[String] = None
   /**
    * 课程类别
    */
@@ -74,9 +75,9 @@ class CourseGrade extends LongId with ProjectBased with Grade {
   /**
    * 设置绩点
    */
-  var gp: java.lang.Float = _
+  var gp: Option[Float] = None
 
-  var bonus: java.lang.Float = _
+  var bonus: Option[Float] = None
 
   /**
    * 总评成绩
@@ -101,17 +102,20 @@ class CourseGrade extends LongId with ProjectBased with Grade {
    * 考核方式
    */
   var examMode: ExamMode = _
-  /**
-   * 备注
-   */
-  var remark: String = _
-  var score: java.lang.Float = _
+
+  var score: Option[Float] = None
+
   var scoreText: String = _
+
   var passed: Boolean = _
+
   var status: Int = _
+
   var markStyle: ScoreMarkStyle = _
+
   var operator: String = _
-  var lesson: Lesson = _
+
+  var lesson: Option[Lesson] = None
 
   def gradeType: GradeType = {
     new GradeType(GradeType.Final)

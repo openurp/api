@@ -26,9 +26,8 @@ class DefaultMapping extends Mapping {
     defaultIdGenerator("date")
 
     bind[OtherExamGrade].on(e => declare(
-      e.std & e.semester & e.subject & e.markStyle & e.examStatus are notnull,
       e.scoreText is length(5),
-      e.certificate & e.examNo & e.sessionNo are length(80)))
+      e.certificate & e.examNo are length(80)))
   }
 
 }

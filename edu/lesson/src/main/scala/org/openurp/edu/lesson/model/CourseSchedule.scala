@@ -24,21 +24,6 @@ import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.ClassroomType
 
 class CourseSchedule extends Component with Serializable with Cloneable {
-  /**
-   * 所属教学任务
-   */
-  @scala.beans.BeanProperty
-  var lesson: Lesson = _
-
-  /** 起始周 */
-  def firstWeek: Int = {
-    if (null != weekstate) weekstate.first else 0
-  }
-  /** 结束周 */
-  def lastWeek: Int = {
-    if (null != weekstate) weekstate.last else 0
-  }
-
   /** 已安排课时 */
   var period: Int = _
   /**
@@ -54,5 +39,14 @@ class CourseSchedule extends Component with Serializable with Cloneable {
 
   /** 发布状态 **/
   var publishState: SchedulePublishStates.Value = _
+
+  /** 起始周 */
+  def firstWeek: Int = {
+    if (null != weekstate) weekstate.first else 0
+  }
+  /** 结束周 */
+  def lastWeek: Int = {
+    if (null != weekstate) weekstate.last else 0
+  }
 
 }

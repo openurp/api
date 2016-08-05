@@ -21,13 +21,15 @@ package org.openurp.edu.grade.course.model
 import org.beangle.data.model.annotation.config
 import org.openurp.edu.grade.model.AbstractGradeState
 import org.openurp.edu.base.code.model.GradeType
+import org.beangle.data.model.Remark
+
 /**
  * 考试成绩状态
  *
  * @author chaostone
  */
 @config
-class ExamGradeState extends AbstractGradeState {
+class ExamGradeState extends AbstractGradeState  with Remark{
 
   /**
    * 成绩类型
@@ -40,13 +42,8 @@ class ExamGradeState extends AbstractGradeState {
   var gradeState: CourseGradeState = _
 
   /**
-   * 备注
-   */
-  var remark: String = _
-
-  /**
    * 百分比描述 <br>
    * 10% 就是 10， 20% 就是 20<br>
    */
-  var percent: java.lang.Short = _
+  var percent: Option[Short] = None
 }

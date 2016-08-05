@@ -28,8 +28,10 @@ class CourseTake extends LongId with Updated with Cloneable {
   /** 教学任务 */
   var lesson: Lesson = _
 
+  /** 课程 */
   var course: Course = _
 
+  /** 学期 */
   var semester: Semester = _
 
   /** 学生 */
@@ -41,13 +43,10 @@ class CourseTake extends LongId with Updated with Cloneable {
   /** 选课方式 **/
   var electionMode: ElectionMode = _
 
-  /** 选课轮次 */
-  var turn: Integer = _
-
   /** 备注 */
-  var remark: String = _
+  var remark: Option[String] = None
 
   /** 授课对象组 */
-  var limitGroup: LessonLimitGroup = _
+  var limitGroup: Option[LessonLimitGroup] = None
 
 }

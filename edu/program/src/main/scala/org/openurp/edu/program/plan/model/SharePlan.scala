@@ -47,13 +47,13 @@ class ShareCourseGroup extends LongId with AbstractCourseGroup {
   /**
    * 对应外语语种
    */
-  var language: Language = _
+  var language: Option[Language] = None
 
   /**
    * *
    * 要求语言等级
    */
-  var courseAbilityRate: CourseAbilityRate = _
+  var courseAbilityRate: Option[CourseAbilityRate] = None
 }
 
 /**

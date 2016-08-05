@@ -46,7 +46,7 @@ class CourseActivity extends LongId with Ordered[CourseActivity] with Activity {
   var rooms: collection.mutable.Set[Classroom] = _
 
   /** 排课备注 */
-  var remark: String = _
+  var remark: Option[String] = None
 
   override def compare(other: CourseActivity): Int = {
     //fix me

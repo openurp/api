@@ -44,9 +44,9 @@ object Grade {
  * @since 2006
  */
 trait Grade extends LongId with Ordered[Grade] with Updated {
-  def score: java.lang.Float
+  def score: Option[Float]
 
-  def score_=(s: java.lang.Float)
+  def score_=(s: Option[Float])
 
   def std: Student
 
@@ -61,35 +61,21 @@ trait Grade extends LongId with Ordered[Grade] with Updated {
   def published: Boolean = {
     status == Grade.Status.Published
   }
+
   def confirmed: Boolean = {
     status == Grade.Status.Published || status == Grade.Status.Confirmed
   }
   def status: Int
+
   def status_=(newStatus: Int)
+
   def markStyle: ScoreMarkStyle
+
   def markStyle_=(style: ScoreMarkStyle)
+
   def gradeType: GradeType
 
   def operator: String
 
   def operator_=(o: String)
 }
-
-/**
- * 课程成绩
- * </p>
- * 学生因上课取得的成绩，业务唯一主键为[学生、项目、培养类型、学期、课程]。
- * </p>
- * 课程成绩由多个考试成绩组成，一般为平时、期末、补考、缓考、总评等成绩成分。
- *
- * @depend - - - Lesson
- * @depend - - - Course
- * @depend - - - CoursEntity[java.lang.Long] eType
- * @depend - - - CourseTakeType
- * @composed 1 has * ExamGrade
- * @depend - - - Project
- * @depend - - - Education
- * @author chaostone
- * @since 2006
- */
-

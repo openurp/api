@@ -30,7 +30,7 @@ class MoralGrade extends LongId  {
 
   var std: Student=_
   var semester: Semester=_
-  var score: java.lang.Float=_
+  var score: Option[Float]=None
   var scoreText: String=_
   var passed: Boolean=_
   var status: Int=_

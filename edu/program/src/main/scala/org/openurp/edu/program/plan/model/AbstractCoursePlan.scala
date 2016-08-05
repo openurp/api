@@ -24,13 +24,15 @@ import org.beangle.commons.lang.Strings
 import org.beangle.data.model.{ TemporalOn, Updated }
 import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.CourseType
+import org.beangle.data.model.Remark
+
 /**
  * 抽象课程方案
  *
  * @author chaostone
  * @since 2009
  */
-trait AbstractCoursePlan extends CoursePlan with Updated with TemporalOn {
+trait AbstractCoursePlan extends CoursePlan with Updated with TemporalOn with Remark {
 
   /**
    * 课程组
@@ -56,8 +58,6 @@ trait AbstractCoursePlan extends CoursePlan with Updated with TemporalOn {
    * 审核状态
    */
   var state: States.State = States.Draft
-
-  var remark: String = _
 
   def terms = (endTerm - startTerm + 1).asInstanceOf[Short]
 

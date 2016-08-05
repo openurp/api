@@ -22,28 +22,27 @@ import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
 import org.openurp.people.base.model.Person
 import org.beangle.data.model.TemporalOn
+import org.openurp.base.model.User
 
 /**
  * 监考人员信息
- * </p>
  * 记录监考院系、教师、自定义监考人员
  *
- * @depend - - - ExamActivity
- * @depend - - - Person
+ * @depend - - - User
  * @depend - - - Department
  * @author chaostone
  */
 class ExamMonitor extends LongId with TemporalOn {
 
-  var person: Person = _
+  var user: User = _
   /**
    * 监考院系
    */
   var department: Department = _
 
-  def this(person: Person, department: Department) {
+  def this(user: User, department: Department) {
     this()
-    this.person = person
+    this.user = user
     this.department = department
   }
 

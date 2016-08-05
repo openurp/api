@@ -43,7 +43,7 @@ class ExamTake extends LongId with Cloneable {
   var examStatus: ExamStatus = _
 
   /** 缓考申请原因/记录处分 */
-  var remark: String = _
+  var remark: Option[String] = None
 
   /** 考场座位号 */
   var seatNo: Short = _

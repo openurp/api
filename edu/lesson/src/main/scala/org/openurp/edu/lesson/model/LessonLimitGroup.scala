@@ -43,7 +43,7 @@ class LessonLimitGroup extends LongId with Cloneable with YearId {
   var forClass: Boolean = true
 
   /** 父级菜单 */
-  var parent: LessonLimitGroup = _
+  var parent: Option[LessonLimitGroup] = None
 
   var children = Collections.newBuffer[LessonLimitGroup]
 

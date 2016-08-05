@@ -34,51 +34,39 @@ class DefaultMapping extends Mapping {
 
     //exam
     bind[ExamActivity].on(e => declare(
-      e.lesson & e.examOn & e.examType & e.beginAt & e.endAt & e.semester are notnull,
       e.remark is length(100))).generator("date")
 
-    bind[ExamMonitor].on(e => declare(
-      e.person & e.department is notnull))
-
+    bind[ExamMonitor]
     bind[ExamRoom].on(e => declare(
-      e.classroom & e.semester are notnull,
       e.monitors is depends("examRoom")))
 
     bind[ExamTake].on(e => declare(
-      e.lesson & e.std & e.examType & e.examStatus are notnull,
       e.remark is length(100)))
 
     //lesson
     bind[CourseTake].on(e => declare(
-      e.lesson & e.course & e.std & e.takeType & e.electionMode & e.semester & e.updatedAt are notnull,
       e.remark is length(100)))
 
     bind[Lesson].on(e => declare(
       e.no is length(32),
-      e.project & e.course & e.courseType & e.teachDepart & e.semester & e.langType are notnull,
       e.teachers is ordered,
       e.teachclass.name is (length(500), column("class_name")),
       e.schedule.classroomType is (column("room_type_id")),
       e.teachclass.courseTakes & e.teachclass.examTakes & e.teachclass.groups &
-        e.schedule.activities & e.exam.activities are depends("lesson"),
-      e.state & e.updatedAt & e.schedule.publishState are notnull))
+        e.schedule.activities & e.exam.activities are depends("lesson")))
 
     bind[LessonLimitGroup].on(e => declare(
-      e.lesson is notnull,
       e.items is depends("group"),
       e.children is depends("parent")))
 
-    bind[LessonLimitItem].on(e => declare(
-      e.meta & e.group & e.content are notnull))
+    bind[LessonLimitItem]
 
     //schedule
     bind[CourseActivity].on(e => declare(
-      e.lesson & e.time.startOn & e.time.weekday & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull,
       e.remark is length(200)))
 
     bind[LessonGroup].on(e => declare(
-      e.lessons is one2many("group"),
-      e.name & e.teachDepart & e.semester are notnull))
+      e.lessons is one2many("group")))
 
   }
 

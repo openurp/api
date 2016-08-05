@@ -21,15 +21,14 @@ package org.openurp.edu.program.plan.model
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.base.model.Terms
+import org.beangle.data.model.Remark
 
 /**
  * 抽象计划内课程
- * </p>
- *
  * @author chaostone
  * @since 2009
  */
-abstract class AbstractPlanCourse extends LongId with PlanCourse with Cloneable {
+abstract class AbstractPlanCourse extends LongId with PlanCourse with Cloneable with Remark {
   /**
    * 课程组
    */
@@ -49,10 +48,5 @@ abstract class AbstractPlanCourse extends LongId with PlanCourse with Cloneable 
    * 是否必修
    */
   var compulsory: Boolean = _
-
-  /**
-   * 备注
-   */
-  var remark: String = _
 
 }

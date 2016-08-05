@@ -30,12 +30,10 @@ class DefaultMapping extends Mapping {
     defaultIdGenerator("date")
 
     bind[AbstractCourseGroup].on(e => declare(
-      e.indexno is (notnull, length(20)),
-      e.courseType is notnull,
+      e.indexno is length(20),
       e.remark is length(200)))
 
     bind[AbstractPlanCourse].on(e => declare(
-      e.course is notnull,
       e.remark is length(200)))
 
     bind[MajorCourseGroup].on(e => declare(
@@ -43,11 +41,11 @@ class DefaultMapping extends Mapping {
       e.parent is target[MajorCourseGroup],
       e.children is depends(classOf[MajorCourseGroup], "parent"),
       e.planCourses is depends(classOf[MajorPlanCourse], "group"),
-      e.termCredits is (notnull, length(40)),
+      e.termCredits is length(40),
       e.alias is length(100)))
 
     bind[MajorPlan].on(e => declare(
-      e.program & e.beginOn & e.endOn are notnull,
+      e.endOn is notnull,
       e.groups is depends(classOf[MajorCourseGroup], "plan"),
       e.remark is length(200)))
 
@@ -61,7 +59,7 @@ class DefaultMapping extends Mapping {
       e.planCourses is depends(classOf[SharePlanCourse], "group")))
 
     bind[SharePlan].on(e => declare(
-      e.project & e.education & e.fromGrade & e.toGrade & e.beginOn & e.endOn are notnull,
+      e.endOn is notnull,
       e.groups is depends(classOf[ShareCourseGroup], "plan"),
       e.remark is length(200)))
 
@@ -75,7 +73,7 @@ class DefaultMapping extends Mapping {
       e.planCourses is depends(classOf[StdPlanCourse], "group")))
 
     bind[StdPlan].on(e => declare(
-      e.std & e.beginOn & e.endOn are notnull,
+      e.endOn is notnull,
       e.groups is depends(classOf[StdCourseGroup], "plan"),
       e.remark is length(200)))
 
@@ -83,11 +81,9 @@ class DefaultMapping extends Mapping {
       e.group is target[StdCourseGroup]))
 
     bind[MajorCourseSubstitution].on(e => declare(
-      e.project & e.education are notnull,
-      e.fromGrade & e.toGrade are (length(10), notnull))).table("major_course_subs")
+      e.fromGrade & e.toGrade are length(10))).table("major_course_subs")
 
-    bind[StdCourseSubstitution].on(e => declare(
-      e.std is notnull)).table("std_course_subs")
+    bind[StdCourseSubstitution].table("std_course_subs")
   }
 
 }

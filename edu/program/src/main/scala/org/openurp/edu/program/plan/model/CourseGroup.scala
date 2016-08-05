@@ -37,7 +37,7 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] with Named {
   /**
    * 获得上级组
    */
-  def parent: CourseGroup
+  def parent: Option[CourseGroup]
 
   /**
    * 获得子节点集合.
@@ -79,7 +79,7 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] with Named {
   /**
    * 获得备注.
    */
-  def remark: String
+  def remark: Option[String]
 
   /**
    * 获得每学期学分
