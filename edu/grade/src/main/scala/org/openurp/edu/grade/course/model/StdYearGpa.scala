@@ -26,7 +26,7 @@ import org.beangle.data.model.Updated
  *
  * @author chaostone
  */
-class StdYearGpa extends LongId with Updated with GpaStat{
+class StdYearGpa extends LongId with GpaStat {
 
   /**
    * 学生绩点
