@@ -100,7 +100,7 @@ trait AbstractCourseGroup extends LongId with CourseGroup with Named with Clonea
   }
 
   def addGroup(group: AbstractCourseGroup) {
-    group.parent = this
+    group.parent = Some(this)
     children += group
   }
 

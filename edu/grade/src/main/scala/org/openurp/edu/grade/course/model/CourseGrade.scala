@@ -122,8 +122,8 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
   }
   // 大的成绩放前面
   override def compare(grade: Grade): Int = {
-    if (null == score) return 1
-    else if (null == grade.score) return -1
-    return grade.score.compareTo(score)
+    if (None == score) return 1
+    else if (None == grade.score) return -1
+    return grade.score.get.compareTo(score.get)
   }
 }
