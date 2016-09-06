@@ -37,13 +37,13 @@ class Adminclass extends LongId with EducationBased with Coded with Named with T
   /** 年级,形式为yyyy-p */
   var grade: String = _
   /** 简称 */
-  var shortName: String = _
+  var shortName: Option[String] = None
   /** 院系 */
   var department: Department = _
   /** 专业 */
   var major: Major = _
   /** 方向 */
-  var direction: Direction = _
+  var direction: Option[Direction] = None
   /** 学生类别 */
   var stdType: StdType = _
   /** 计划人数 */
@@ -51,13 +51,13 @@ class Adminclass extends LongId with EducationBased with Coded with Named with T
   /** 学籍有效人数 */
   var stdCount: Int = _
   /** 辅导员 */
-  var instructor: Instructor = _
+  var instructor: Option[Instructor] = None
   /** 班导师 */
-  var tutor: Teacher = _
+  var tutor: Option[Teacher] = None
   /** 学生状态 */
   var stdStates = Collections.newBuffer[StudentState]
   /**培养方案*/
-  var program:Program=_
+  var program: Option[Program] = None
   /**固定校区*/
-  var campus:Campus=_
+  var campus: Campus = _
 }

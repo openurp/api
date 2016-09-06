@@ -39,7 +39,7 @@ trait AbstractCourseGroup extends LongId with CourseGroup with Named with Clonea
   /**
    * 上级组
    */
-  var parent: CourseGroup = _
+  var parent: Option[CourseGroup] = _
 
   /**
    * 下级组列表
@@ -74,7 +74,7 @@ trait AbstractCourseGroup extends LongId with CourseGroup with Named with Clonea
   /**
    * 备注
    */
-  var remark: String = _
+  var remark: Option[String] = _
 
   /**
    * 学期学分分布
@@ -100,7 +100,7 @@ trait AbstractCourseGroup extends LongId with CourseGroup with Named with Clonea
   }
 
   def addGroup(group: AbstractCourseGroup) {
-    group.parent = this
+    group.parent = Some(this)
     children += group
   }
 

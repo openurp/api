@@ -18,11 +18,11 @@
  */
 package org.openurp.code
 
-import org.beangle.data.model.{Coded, IntId, Named, TemporalOn, Updated}
+import org.beangle.data.model.{ Coded, IntId, Named, Remark, TemporalOn, Updated }
 
 trait BaseCode extends IntId with Named with Coded {
 
-  def enName: String
+  def enName: Option[String]
 }
 
 object BaseCodeCategory {
@@ -35,7 +35,6 @@ object BaseCodeCategory {
   val School = "school"
 }
 
-abstract class BaseCodeBean extends IntId with BaseCode with TemporalOn with Updated {
-  var enName: String = _
-  var remark: String = _
+abstract class BaseCodeBean extends IntId with BaseCode with TemporalOn with Updated with Remark {
+  var enName: Option[String] = None
 }

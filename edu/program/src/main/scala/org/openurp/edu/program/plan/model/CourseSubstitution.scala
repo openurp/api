@@ -34,7 +34,7 @@ import org.beangle.commons.collection.Collections
 trait CourseSubstitution extends LongId with Updated {
 
   /**原课程*/
-  var olds  = Collections.newSet[Course]
+  var olds = Collections.newSet[Course]
 
   /**新课程*/
   var news = Collections.newSet[Course]
@@ -51,11 +51,6 @@ class MajorCourseSubstitution extends CourseSubstitution {
   var project: Project = _
 
   /**
-   * 院系
-   */
-  var department: Department = _
-
-  /**
    * 获取培养层次
    */
   var education: Education = _
@@ -66,20 +61,26 @@ class MajorCourseSubstitution extends CourseSubstitution {
 
   /**截至年级*/
   var toGrade: String = _
+
+  /**
+   * 院系
+   */
+  var department: Option[Department] = None
+
   /**
    * 适用专业.
    */
-  var major: Major = _
+  var major: Option[Major] = None
 
   /**
    * 适用方向.
    */
-  var direction: Direction = _
+  var direction: Option[Direction] = None
 
   /**
    * 学生类别
    */
-  var stdType: StdType = _
+  var stdType: Option[StdType] = None
 }
 
 /**

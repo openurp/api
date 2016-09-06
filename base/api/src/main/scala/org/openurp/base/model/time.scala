@@ -38,6 +38,9 @@ class TimeSetting extends IntId with Named {
   var units: Buffer[CourseUnit] = new collection.mutable.ListBuffer[CourseUnit]
 }
 
+/**
+ * 课程小节
+ */
 class CourseUnit extends IntId with Named {
   var indexno: Int = _
   var beginAt: HourMinute = _
@@ -47,14 +50,7 @@ class CourseUnit extends IntId with Named {
   var enName: String = _
 }
 
-object CircleTime {
-  /**
-   * weekState保留几位
-   */
-  val Reserved: Int = 2
-
-  /** 连续周连续,单周,双周,任意*/
-  object CircleWeekTypes extends Enumeration(1) {
-    val Continuely, Odd, Even, Random = Value
-  }
+/** 连续周连续,单周,双周,任意*/
+object CircleWeekTypes extends Enumeration(1) {
+  val Continuely, Odd, Even, Random = Value
 }

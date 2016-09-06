@@ -20,7 +20,7 @@ package org.openurp.edu.grade.audit.adapters
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.program.plan.model.{CourseGroup, CoursePlan, PlanCourse}
+import org.openurp.edu.program.plan.model.{ CourseGroup, CoursePlan, PlanCourse }
 
 class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseGroup {
 
@@ -48,11 +48,14 @@ class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseG
   def addPlanCourse(arg0: PlanCourse) {
   }
 
-  def parent: CourseGroup = null
-
+  def parent: Option[CourseGroup] = None
+  def parent_=(arg0: Option[CourseGroup]) {
+  }
   def planCourses: Seq[PlanCourse] = List.empty
 
-  def remark: String = null
+  def remark: Option[String] = None
+  def remark_=(arg0: Option[String]) {
+  }
 
   def compulsory: Boolean = false
 
@@ -66,12 +69,6 @@ class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseG
   }
 
   def groupNum_=(arg0: Int) {
-  }
-
-  def parent_=(arg0: CourseGroup) {
-  }
-
-  def remark_=(arg0: String) {
   }
 
   def updateCoursePlan(arg0: CoursePlan) {

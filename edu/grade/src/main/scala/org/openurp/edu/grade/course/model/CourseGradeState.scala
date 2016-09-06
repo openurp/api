@@ -94,8 +94,11 @@ class CourseGradeState extends AbstractGradeState {
     if (null == gradeTypeState) false else gradeTypeState.status == status
   }
 
-  def getPercent(gradeType: GradeType): java.lang.Short = {
-    examStates.find(_.gradeType.id == gradeType.id).map(_.percent).orNull
+  def getPercent(gradeType: GradeType): Option[Short] = {
+    examStates.find(_.gradeType.id == gradeType.id) match {
+      case Some(es) => es.percent
+      case None     => None
+    }
   }
 
   def gradeType: GradeType = {

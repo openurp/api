@@ -25,7 +25,8 @@ import org.openurp.code.BaseCodeBean
 
 class DefaultMapping extends Mapping {
 
- def binding(): Unit = {
+  def binding(): Unit = {
     bind[RoomType]
+    bind[BuildingType]
   }
 }

@@ -50,10 +50,10 @@ class ExamRoom extends LongId {
   var classroom: Classroom = _
 
   /**主考教师*/
-  var examiner: Teacher = _
+  var examiner: Option[Teacher] = None
 
   /**主考教师院系*/
-  var department: Department = _
+  var department: Option[Department] = None
 
   /**考试活动*/
   var activities = Collections.newBuffer[ExamActivity]
@@ -62,7 +62,7 @@ class ExamRoom extends LongId {
   var monitors = Collections.newSet[ExamMonitor]
 
   /**教室借用ID*/
-  var roomApplyId: java.lang.Long = _
+  var roomApplyId: Option[Long] = None
 
   def lessons: Set[Lesson] = {
     activities.map(a => a.lesson).toSet

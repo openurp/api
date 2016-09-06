@@ -25,12 +25,11 @@ import org.openurp.edu.base.code.model.ExamStatus
 import org.openurp.edu.otherexam.code.model.OtherExamSubject
 import org.openurp.edu.base.model.Student
 
-
 class OtherExamGrade extends LongId {
 
   var std: Student = _
 
-  var score: java.lang.Float = _
+  var score: Option[Float] = _
 
   var scoreText: String = _
 
@@ -40,13 +39,13 @@ class OtherExamGrade extends LongId {
 
   var semester: Semester = _
 
-  var examNo: String = _
+  var examNo: Option[String] = _
 
-  var certificate: String = _
-  
-  var sessionNo:String=_
-  
-  var markStyle: ScoreMarkStyle=_
-  
-  var examStatus:ExamStatus=_
+  var certificate: Option[String] = _
+
+  var acquireOn: java.sql.Date = _
+
+  var markStyle: ScoreMarkStyle = _
+
+  var examStatus: ExamStatus = _
 }

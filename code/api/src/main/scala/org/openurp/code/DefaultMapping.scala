@@ -27,11 +27,10 @@ class DefaultMapping extends Mapping {
     defaultCache("openurp.code", "read-write")
 
     bind[BaseCodeBean].on(e => declare(
-      e.code is (notnull, length(20), unique),
-      e.name is (notnull, length(100)),
-      e.enName is (length(300)),
-      e.remark is (length(200)),
-      e.beginOn is (notnull))).cacheable().generator("code")
+      e.code is (length(20), unique),
+      e.name is length(100),
+      e.enName is length(300),
+      e.remark is length(200))).cacheable().generator("code")
   }
 
 }

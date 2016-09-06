@@ -22,21 +22,24 @@ import org.beangle.data.model.Named
 import org.beangle.data.model.LongId
 import org.openurp.base.model.{ Department, Semester }
 import org.openurp.edu.base.ProjectBased
+import org.openurp.edu.base.model.Course
+
 /**
  * 教学任务课程组
  *
  */
 class LessonGroup extends LongId with ProjectBased with Named {
 
+  /** 学期 */
+  var semester: Semester = _
+
+  /**开课部门*/
+  var teachDepart: Option[Department] = None
+
+  /**课程*/
+  var course: Option[Course] = None
+
   /** 任务集合 */
   var lessons: collection.mutable.Set[Lesson] = _
 
-  /** 教学任务数目 */
-  var lessonSize: Int = _
-
-  /**开课部门*/
-  var teachDepart: Department = _
-
-  /** 学期 */
-  var semester: Semester = _
 }

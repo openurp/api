@@ -22,7 +22,7 @@ import org.beangle.data.model.{ Coded, LongId, Named, Remark, Updated }
 
 class ExchangeCourse extends LongId with Updated with Named with Coded with Remark {
 
-  var enName: String = _
+  var enName: Option[String] = None
 
   var school: ExchangeSchool = _
 

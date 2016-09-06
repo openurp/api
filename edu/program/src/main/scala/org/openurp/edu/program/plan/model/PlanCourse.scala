@@ -48,12 +48,7 @@ trait PlanCourse extends LongIdEntity {
   def terms: Terms
 
   def terms_=(t: Terms)
-  /**
-   * 备注
-   */
-  def remark: String
 
-  def remark_=(r: String)
   /**
    * 课程组
    */

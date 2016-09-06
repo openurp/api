@@ -25,7 +25,7 @@ import org.beangle.data.model.annotation.code
 class SubsidyCategory extends IntId with Coded with Named {
 
   /**困难补助描述*/
-  var discription: String = _
+  var discription: Option[String] = None
 
   /**评定周期*/
   var period: String = _
@@ -54,6 +54,5 @@ class SubsidyLevel extends IntId with Coded with Named {
   var enabled: Boolean = _
 
   /**描述*/
-
-  var discription: String = _
+  var discription: Option[String] = None
 }

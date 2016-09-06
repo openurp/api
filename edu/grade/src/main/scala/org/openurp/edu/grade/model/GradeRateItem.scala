@@ -49,7 +49,7 @@ class GradeRateItem extends LongId {
   /**
    * 绩点表达式
    */
-  var gpExp: String = _
+  var gpExp: Option[String] = None
 
   /**
    * 默认分数

@@ -38,10 +38,10 @@ trait StdEnrollment {
   def major: Major
 
   /** 方向 当前修读方向 */
-  def direction: Direction
+  def direction: Option[Direction]
 
   /** 行政班级 */
-  def adminclass: Adminclass
+  def adminclass: Option[Adminclass]
 
   /** 是否在校 */
   def inschool: Boolean

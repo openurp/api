@@ -27,7 +27,7 @@ import org.beangle.data.model.Updated
  *
  * @author chaostone
  */
-class StdSemesterGpa extends LongId  with Updated with GpaStat{
+class StdSemesterGpa extends LongId with GpaStat {
 
   /**
    * 学生绩点
@@ -39,7 +39,7 @@ class StdSemesterGpa extends LongId  with Updated with GpaStat{
    */
   var semester: Semester = _
 
-  def this(semester: Semester, gpa: java.lang.Float) {
+  def this(semester: Semester, gpa: Float) {
     this()
     this.semester = semester
     this.gpa = gpa

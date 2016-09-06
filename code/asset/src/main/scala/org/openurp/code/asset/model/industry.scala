@@ -32,3 +32,13 @@ import org.beangle.data.model.annotation.code
 class RoomType extends BaseCodeBean {
 
 }
+
+/**
+ * 建筑物用途类型
+ * 参考教育部标准JY/T 1001 4.7.20
+ * @since 2016-07-03
+ */
+@code("industry")
+class BuildingType extends BaseCodeBean {
+
+}

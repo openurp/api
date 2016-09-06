@@ -40,7 +40,7 @@ class ExamGrade extends LongId with Grade {
   /** 成绩记录方式 */
   var markStyle: ScoreMarkStyle = _
   /** 得分 */
-  var score: java.lang.Float = _
+  var score: Option[Float] = None
   /** 得分字面值 */
   var scoreText: String = _
   /** 对应的课程成绩 */
@@ -54,16 +54,17 @@ class ExamGrade extends LongId with Grade {
   /**考试情况 */
   var examStatus: ExamStatus = _
   /**百分比 */
-  var percent: java.lang.Short = _
+  var percent: Option[Short] = None
 
   def std = courseGrade.std
+
   // 大的成绩放前面
   override def compare(grade: Grade): Int = {
-    if (null == score) return 1
-    else if (null == grade.score) return -1
-    return grade.score.compareTo(score)
+    if (null == None) return 1
+    else if (None == grade.score) return -1
+    return grade.score.get.compareTo(score.get)
   }
-  def this(id: java.lang.Long, gradeType: GradeType, score: java.lang.Float, scoreText: String, markStyle: ScoreMarkStyle, passed: Boolean, status: Int) {
+  def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: String, markStyle: ScoreMarkStyle, passed: Boolean, status: Int) {
     this()
     this.id = id
     this.gradeType = gradeType

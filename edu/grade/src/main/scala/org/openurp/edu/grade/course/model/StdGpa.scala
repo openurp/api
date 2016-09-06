@@ -28,29 +28,24 @@ import org.openurp.edu.base.ProjectBased
 trait GpaStat {
   /**
    * 总平均绩点
-   * =gp/credits
+   * =gp/totalCredits
    */
-  var gpa: java.lang.Float = _
-
-  /**
-   * 总绩点
-   */
-  var gp: java.lang.Float = _
+  var gpa: Float = _
 
   /**
    * 平均分
    */
-  var ga: java.lang.Float = _
+  var ga: Float = _
 
   /**
-   * 总学分
+   * 修读总学分
    */
-  var credits: java.lang.Float = _
+  var totalCredits: Float = _
 
   /**
-   * 获得学分
+   * 获得总学分
    */
-  var obtainedCredits: java.lang.Float = _
+  var credits: Float = _
 
   /**
    * 成绩的门数
@@ -85,7 +80,7 @@ class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
 
   @transient private var yearGpaCache: Map[String, StdYearGpa] = _
 
-  def this(id: java.lang.Long) {
+  def this(id: Long) {
     this()
     this.id = id
   }
@@ -101,9 +96,9 @@ class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
     this.gpa = new java.lang.Float(0)
   }
 
-  def getGpa(semester: Semester): java.lang.Float = {
+  def getGpa(semester: Semester):  Float = {
     val gpterm = getStdTermGpa(semester)
-    if (null == gpterm) null else gpterm.gpa
+    if (null == gpterm) 0 else gpterm.gpa
   }
 
   def getStdTermGpa(semester: Semester): StdSemesterGpa = {

@@ -20,6 +20,10 @@ package org.openurp.edu.base.model
 
 import org.beangle.commons.lang.annotation.value
 
+object Terms {
+  val empty = new Terms(0)
+}
+
 @value
 class Terms(val value: Int) extends Ordered[Terms] with Serializable {
 

@@ -20,25 +20,28 @@ package org.openurp.base.model
 
 import org.beangle.data.model.{ Coded, IntId, Named, Remark, TemporalOn, Updated }
 import org.openurp.code.asset.model.RoomType
+import org.openurp.code.asset.model.BuildingType
 
 /**
  * 校区
  */
 class Campus extends IntId with Cloneable with Coded with Named with TemporalOn with Updated with Remark {
-  var enName: String = _
-  var shortName: String = _
   var school: School = _
+  var enName: Option[String] = None
+  var shortName: Option[String] = None
 }
 
 /**
  * 建筑
  */
 class Building extends IntId with Coded with Named with TemporalOn with Updated with Remark {
+  var school: School = _
   /**所属校区*/
   var campus: Campus = _
-  var enName: String = _
-  var shortName: String = _
-  var school: School = _
+  var enName: Option[String] = None
+  var shortName: Option[String] = None
+  var buildingType: Option[BuildingType] = None
+  var teaching: Boolean = _
 }
 
 /**
@@ -49,17 +52,17 @@ class Room extends IntId with Coded with Named with TemporalOn with Updated with
   /**所属学校*/
   var school: School = _
 
-  /**管理部门*/
-  var department: Department = _
-
   /**所属校区*/
   var campus: Campus = _
 
+  /**管理部门*/
+  var department: Option[Department] = None
+
   /**所属建筑*/
-  var building: Building = _
+  var building: Option[Building] = None
 
   /**房间类型*/
-  var roomType:RoomType=_
+  var roomType: RoomType = _
 
   /** 楼层 */
   var floor: Int = _
