@@ -36,7 +36,7 @@ import org.openurp.edu.base.code.model.Education
 class Major extends LongId with ProjectBased with TemporalOn with Updated with Coded with Named with Remark {
 
   /** 专业英文名 */
-  var enName: String = _
+  var enName: Option[String] = None
 
   /** 简称 */
   var shortName: Option[String] = None

@@ -35,10 +35,10 @@ class Person extends LongId with Updated with Coded {
   var name: Name = new Name
 
   /**姓名拼音 */
-  var phoneticName: Option[String] = _
+  var phoneticName: Option[String] = None
 
   /**曾用名 */
-  var formerName: Option[String] = _
+  var formerName: Option[String] = None
 
   /**性别*/
   var gender: Gender = _
@@ -47,24 +47,24 @@ class Person extends LongId with Updated with Coded {
   var birthday: java.sql.Date = _
 
   /**出生地*/
-  var birthplace: Option[String] = _
+  var birthplace: Option[String] = None
 
   /**籍贯 */
-  var homeTown: Option[String] = _
+  var homeTown: Option[String] = None
 
   /**民族 */
-  var nation: Option[Nation] = _
+  var nation: Option[Nation] = None
 
   /**国籍/地区 */
-  var country: Option[Country] = _
+  var country: Option[Country] = None
 
   /**首要使用语言*/
-  var language: Option[Language] = _
+  var language: Option[Language] = None
 
   /**港澳台侨外 */
-  var compatriotType: Option[CompatriotType] = _
+  var compatriotType: Option[CompatriotType] = None
 
   /**宗教信仰 */
-  var religion: Option[Religion] = _
+  var religion: Option[Religion] = None
 
 }

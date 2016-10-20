@@ -43,7 +43,7 @@ import org.beangle.data.model.Remark
 class Course extends LongId with ProjectBased with Ordered[Course] with Updated
     with TemporalOn with Coded with Named with Remark {
   /**课程英文名*/
-  var enName: String = _
+  var enName: Option[String] = None
   /** 学历层次 */
   var educations = Collections.newBuffer[Education]
   /**课程种类代码*/
@@ -88,7 +88,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
     this.id = id
     this.code = code
     this.name = name
-    this.enName = enName
+    this.enName = Option(enName)
   }
 }
 

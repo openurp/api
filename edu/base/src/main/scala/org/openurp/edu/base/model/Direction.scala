@@ -34,7 +34,7 @@ class Direction extends LongId with TemporalOn with Coded with Named with Update
 
   var project: Project = _
   /** 专业方向英文名 */
-  var enName: String = _
+  var enName: Option[String] = None
   /** 所属专业 */
   var major: Major = _
   /** 部门 */
