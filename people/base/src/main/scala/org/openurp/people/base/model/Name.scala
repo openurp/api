@@ -28,23 +28,18 @@ import org.beangle.data.model.Component
 class Name extends Component {
 
   /**名*/
-  var givenName: String = _
+  var givenName: Option[String] = _
 
   /**中间名*/
-  var middleName: String = _
+  var middleName: Option[String] = _
 
   /**姓*/
-  var familyName: String = _
+  var familyName: Option[String] = _
 
   /**姓名*/
   var formatedName: String = _
 
   override def toString: String = {
-    if (null != formatedName) formatedName
-    else {
-      if (null != middleName)
-        familyName + " " + middleName + " " + givenName
-      else familyName + " " + givenName
-    }
+    formatedName
   }
 }
