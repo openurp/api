@@ -140,7 +140,7 @@ class ExamStatus extends BaseCodeBean {
   /**
    * 是否有作弊行为
    */
-  var cheeting: Boolean = _
+  var cheating: Boolean = _
 
   def this(id: Int) {
     this()
