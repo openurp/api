@@ -41,7 +41,7 @@ class Adminclass extends LongId with EducationBased with Coded with Named with T
   /** 院系 */
   var department: Department = _
   /** 专业 */
-  var major: Major = _
+  var major: Option[Major] = None
   /** 方向 */
   var direction: Option[Direction] = None
   /** 学生类别 */
