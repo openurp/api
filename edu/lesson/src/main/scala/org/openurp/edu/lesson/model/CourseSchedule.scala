@@ -38,7 +38,7 @@ class CourseSchedule extends Component with Serializable with Cloneable {
   var classroomType: ClassroomType = _
 
   /** 发布状态 **/
-  var publishState: SchedulePublishStates.Value = _
+  var publishState: SchedulePublishStates.State = _
 
   /** 起始周 */
   def firstWeek: Int = {
