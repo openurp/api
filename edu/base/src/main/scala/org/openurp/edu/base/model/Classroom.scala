@@ -66,11 +66,6 @@ class Classroom extends LongId with Named with Coded with Updated {
   var examCapacity: Int = _
 
 
-  /**
-   * 是否可借
-   */
-  var available: Boolean = true
-
 
 
 }

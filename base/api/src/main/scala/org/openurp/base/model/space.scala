@@ -70,4 +70,9 @@ class Room extends IntId with Coded with Named with TemporalOn with Updated with
   /** 容量*/
   var capacity: Int = _
 
+  /**
+   * 是否可借
+   */
+  var available: Boolean = true
+
 }
