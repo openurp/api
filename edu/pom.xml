@@ -22,10 +22,11 @@
     <module>program</module>
     <module>lesson</module>
     <module>grade</module>
-    <module>std</module>
+    <module>student</module>
     <module>evaluation</module>
     <module>award</module>
-    <module>otherexam</module>
+    <module>exam</module>
+    <module>extern</module>
     <module>textbook</module>
     <module>workload</module>
   </modules>

@@ -23,7 +23,7 @@ import org.openurp.base.model.Semester
 import org.openurp.edu.base.code.model.{ CourseTakeType, ElectionMode }
 import org.openurp.edu.base.model.{ Course, Student }
 
-class CourseTake extends LongId with Updated with Cloneable {
+class CourseTaker extends LongId with Updated with Cloneable {
 
   /** 教学任务 */
   var lesson: Lesson = _

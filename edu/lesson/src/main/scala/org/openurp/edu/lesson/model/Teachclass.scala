@@ -53,12 +53,12 @@ class Teachclass extends Cloneable with Component with Named {
   var reservedCount: Int = _
 
   /** 上课名单 */
-  var courseTakes = Collections.newBuffer[CourseTake]
+  var courseTakers = Collections.newBuffer[CourseTaker]
 
   /**
    * 考试名单
    */
-  var examTakes: collection.mutable.Set[ExamTake] = _
+  var examTakers: collection.mutable.Set[ExamTaker] = _
 
   /**
    * 限制条件组

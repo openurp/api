@@ -22,7 +22,7 @@ import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.{ ExamStatus, ExamType }
 import org.openurp.edu.base.model.Student
 
-class ExamTake extends LongId with Cloneable {
+class ExamTaker extends LongId with Cloneable {
 
   /** 教学任务 */
   var lesson: Lesson = _
