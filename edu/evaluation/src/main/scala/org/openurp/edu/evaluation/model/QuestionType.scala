@@ -20,6 +20,8 @@ package org.openurp.edu.evaluation.model
 
 import org.beangle.data.model.{ Named, TemporalOn, Updated }
 import org.beangle.data.model.LongId
+import org.openurp.edu.base.model.Project
+
 /**
  * 问题类型
  *
@@ -27,6 +29,7 @@ import org.beangle.data.model.LongId
  *
  */
 class QuestionType extends LongId with Named with Updated with TemporalOn {
+  var project: Project = _
   /** 英文名称 */
   var enName: String = _
   /** 备注 */

@@ -22,8 +22,10 @@ import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
 import org.beangle.data.model.Named
 import org.beangle.commons.collection.Collections
+import org.openurp.edu.base.model.Project
 
 class EvaluationCriteria extends LongId with Named {
+  var project: Project = _
 
   /** 具体分值对照项 */
   var criteriaItems = Collections.newBuffer[EvaluationCriteriaItem]

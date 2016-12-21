@@ -20,6 +20,8 @@ package org.openurp.edu.evaluation.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.Named
+import org.openurp.edu.base.model.Project
+
 /**
  * 选项
  *

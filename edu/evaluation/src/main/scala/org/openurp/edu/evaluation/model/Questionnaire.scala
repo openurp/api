@@ -24,10 +24,13 @@ import java.sql.Date
 import org.beangle.data.model.TemporalOn
 import org.beangle.data.model.Updated
 import org.beangle.commons.collection.Collections
+import org.openurp.edu.base.model.Project
+
 /**
  * 评教问卷
  */
 class Questionnaire extends LongId with Updated with TemporalOn {
+  var project: Project = _
   /** 问卷标题 */
   var title: String = _
   /** 简单描述 */

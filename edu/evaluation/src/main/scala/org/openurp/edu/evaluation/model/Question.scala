@@ -21,12 +21,15 @@ package org.openurp.edu.evaluation.model
 import org.beangle.data.model.{ TemporalOn, Updated }
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
+import org.openurp.edu.base.model.Project
+
 /**
  * 评教问题
  *
  * @author chaostone
  */
 class Question extends LongId with Updated with TemporalOn {
+  var project: Project = _
   /** 问题内容 */
   var content: String = _
   /** 问题类型 */

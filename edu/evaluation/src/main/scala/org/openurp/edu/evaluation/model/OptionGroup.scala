@@ -21,12 +21,16 @@ package org.openurp.edu.evaluation.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.{ LongId, Named }
 import org.openurp.base.model.Department
+import org.openurp.edu.base.model.Project
+
 /**
  * 选项组
  *
  * @author chaostone
  */
 class OptionGroup extends LongId with Named {
+  var project: Project = _
+  
   /** 倾向性权重 必须在0和1之间 */
   var oppoVal: Float = _
 

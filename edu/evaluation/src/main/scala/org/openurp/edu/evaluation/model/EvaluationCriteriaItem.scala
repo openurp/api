@@ -19,11 +19,9 @@
 package org.openurp.edu.evaluation.model
 
 import org.beangle.data.model.LongId
-
+import org.openurp.edu.base.model.Project
 
 class EvaluationCriteriaItem extends LongId{
-    
-    
     /** 最小分值 */
     var  min:Float=_
     
