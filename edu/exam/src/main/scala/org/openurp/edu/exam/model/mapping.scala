@@ -16,21 +16,34 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.lesson.model
+package org.openurp.edu.exam.model
 
-import org.beangle.data.model.Component
-import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
-import org.beangle.commons.lang.time.HourMinute
+import scala.reflect.runtime.universe
+import org.beangle.commons.lang.annotation.beta
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.bind.Mapping
+import org.openurp.edu.lesson.code.model.LessonTag
 
-class ExamSchedule extends Component with Serializable with Cloneable {
+class DefaultMapping extends Mapping {
 
-  var examOn: Option[java.sql.Date] = None
+  def binding(): Unit = {
+    defaultIdGenerator("auto_increment")
 
-  var beginAt: HourMinute = HourMinute.Zero
+    bind[ExamActivity].on(e => declare(
+      e.remark is length(100)))
 
-  var endAt: HourMinute = HourMinute.Zero
+    bind[ExamMonitor]
 
-  /** 考试方式 */
-  var examMode: ExamMode = _
+    bind[ExamRoom].on(e => declare(
+      e.monitors is depends("examRoom")))
+
+    bind[ExamLesson]
+
+    bind[ExamPaper]
+
+    bind[ExamStudent]
+
+    bind[ExamTask]
+  }
 
 }

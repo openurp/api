@@ -16,21 +16,36 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.lesson.model
+package org.openurp.edu.extern.grade.model
 
-import org.beangle.data.model.Component
-import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
-import org.beangle.commons.lang.time.HourMinute
+import org.beangle.data.model.LongId
+import org.openurp.edu.base.code.model.ScoreMarkStyle
+import org.openurp.base.model.Semester
+import org.openurp.edu.base.code.model.ExamStatus
+import org.openurp.edu.extern.code.model.ExternExamSubject
+import org.openurp.edu.base.model.Student
 
-class ExamSchedule extends Component with Serializable with Cloneable {
+class ExternExamGrade extends LongId {
 
-  var examOn: Option[java.sql.Date] = None
+  var std: Student = _
 
-  var beginAt: HourMinute = HourMinute.Zero
+  var score: Option[Float] = _
 
-  var endAt: HourMinute = HourMinute.Zero
+  var scoreText: String = _
 
-  /** 考试方式 */
-  var examMode: ExamMode = _
+  var passed: Boolean = _
 
+  var subject: ExternExamSubject = _
+
+  var semester: Semester = _
+
+  var examNo: Option[String] = _
+
+  var certificate: Option[String] = _
+
+  var acquireOn: java.sql.Date = _
+
+  var markStyle: ScoreMarkStyle = _
+
+  var examStatus: ExamStatus = _
 }

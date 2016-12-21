@@ -28,7 +28,7 @@ class DefaultMapping extends Mapping {
 
     bind[Occupancy] on (e => declare(
       e.room is notnull,
-      e.time.startOn & e.time.weekday & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull,
+      e.time.startOn & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull,
       e.activityType & e.updatedAt & e.userApp & e.activityId are notnull,
       e.comments is length(300)))
 

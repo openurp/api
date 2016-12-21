@@ -53,11 +53,13 @@ LessonTag.color=颜色
 
 Teachclass=教学班
 Teachclass.name = 教学班名称
+Teachclass.grade = 年级
 Teachclass.depart=学生所在部门
 Teachclass.stdCount=学生人数
 Teachclass.limitCount=人数上限
 Teachclass.limitLocked=是否锁定上限
 Teachclass.reservedCount=保留人数
+Teachclass.genderRatio=男女比
 
 CourseSchedule=课程安排
 CourseSchedule.startWeek=起始周
@@ -69,14 +71,10 @@ CourseSchedule.classroomType=教室类型
 CourseSchedule.publishState=发布状态
 
 ExamSchedule=考试安排
-ExamSchedule.examForm=考试形式
-ExamSchedule.examMode=考试方式
-
-LessonGenderLimit=教学班性别限制
-LessonGenderLimit.maleWeight=男生比重
-LessonGenderLimit.curMaleCount=当前男生人数
-LessonGenderLimit.femaleWeight=女生比重
-LessonGenderLimit.curFemaleCount=当前女生人数
+ExamSchedule.examMode=考核方式
+ExamSchedule.examOn=考试日期
+ExamSchedule.beginAt=考试开始时间
+ExamSchedule.endAt=考试结束时间
 
 CourseActivity=教学活动
 CourseActivity.lesson=教学任务
@@ -88,48 +86,16 @@ CourseActivity.remark=排课备注
 LessonGroup=教学任务组
 LessonGroup.name=组名称
 LessonGroup.lessons=任务集合
-LessonGroup.lessonSize=教学任务数目
 LessonGroup.teachDepart=开课部门
 LessonGroup.semester=学期
 LessonGroup.project=项目
-
-ExamActivity=排考活动
-ExamActivity.lesson=教学任务
-ExamActivity.semester=学年学期
-ExamActivity.examType=考试类型
-ExamActivity.beginAt=开始时间
-ExamActivity.endAt=结束时间
-ExamActivity.examOn=考试时间
-ExamActivity.remark=备注
-ExamActivity.examRooms=考场列表
-ExamActivity.state=审核状态
-ExamActivity.rooms=对应考场
-
-ExamMonitor=监考信息
-ExamMonitor.person=人员信息
-ExamMonitor.department=监考院系
-
-ExamRoom=考场
-ExamRoom.semester=学年学期
-ExamRoom.beginAt=开始时间
-ExamRoom.endAt=结束时间
-ExamRoom.classroom=教室
-ExamRoom.examiner=主考教师
-ExamRoom.department=主考教师院系
-ExamRoom.activities=考试活动
-ExamRoom.monitors=监考信息
-ExamRoom.ExamTakers=应考学生记录
-ExamRoom.roomApplyId=教室申请流水号
-ExamRoom.examOn=考试日期
+LessonGroup.course=课程
 
 ExamTaker=应考记录
 ExamTaker.lesson=教学任务
 ExamTaker.std=学生
 ExamTaker.semester=教学日历
-ExamTaker.examRoom=考场
 ExamTaker.examType=考试类型
 ExamTaker.examStatus=考试情况
-ExamTaker.seatNo=考场座位号
 ExamTaker.remark=缓考申请原因/记录处分
-ExamTaker.activity=考试活动
 

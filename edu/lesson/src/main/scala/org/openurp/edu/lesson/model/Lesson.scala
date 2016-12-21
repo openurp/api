@@ -72,10 +72,10 @@ class Lesson extends LongId with ProjectBased with Updated with Cloneable with Y
   var semester: Semester = _
 
   /** 课程安排 */
-  var schedule: CourseSchedule = _
+  var courseSchedule: CourseSchedule = _
 
   /** 考试安排 */
-  var exam: ExamSchedule = _
+  var examSchedule: ExamSchedule = _
 
   /** 备注 */
   var remark: Option[String] = None

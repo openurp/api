@@ -16,21 +16,20 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.lesson.model
+package org.openurp.edu.extern.code.model
 
-import org.beangle.data.model.Component
-import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
-import org.beangle.commons.lang.time.HourMinute
-
-class ExamSchedule extends Component with Serializable with Cloneable {
-
-  var examOn: Option[java.sql.Date] = None
-
-  var beginAt: HourMinute = HourMinute.Zero
-
-  var endAt: HourMinute = HourMinute.Zero
-
-  /** 考试方式 */
-  var examMode: ExamMode = _
-
+import org.beangle.data.model.annotation.code
+import org.openurp.code.BaseCodeBean
+/**
+ * 校外考试科目
+ */
+@code("school")
+class ExternExamSubject extends BaseCodeBean {
+  var category:ExternExamCategory=_
 }
+
+/**
+ * 校外考试种类
+ */
+@code("school")
+class ExternExamCategory extends BaseCodeBean 

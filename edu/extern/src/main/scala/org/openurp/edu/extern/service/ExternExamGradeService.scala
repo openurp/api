@@ -16,21 +16,23 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.lesson.model
+package org.openurp.edu.extern.service
 
-import org.beangle.data.model.Component
-import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
-import org.beangle.commons.lang.time.HourMinute
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.extern.grade.model.ExternExamGrade
+import org.openurp.edu.extern.code.model.ExternExamSubject
+import org.openurp.edu.extern.code.model.ExternExamCategory
 
-class ExamSchedule extends Component with Serializable with Cloneable {
 
-  var examOn: Option[java.sql.Date] = None
+trait ExternExamGradeService {
 
-  var beginAt: HourMinute = HourMinute.Zero
+  def saveOrUpdate(ExternExamGrade: ExternExamGrade): Unit
 
-  var endAt: HourMinute = HourMinute.Zero
+  def getBestGrade(std: Student, category: ExternExamCategory): ExternExamGrade
 
-  /** 考试方式 */
-  var examMode: ExamMode = _
+  def getPassGradesOf(std: Student, subjects: Iterable[ExternExamSubject]): List[ExternExamGrade]
 
+  def isPass(std: Student, subject: ExternExamSubject): Boolean
+
+  def getExternExamGrades(std: Student, best: Boolean): Iterable[ExternExamGrade]
 }

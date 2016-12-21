@@ -41,7 +41,6 @@ class Building extends IntId with Coded with Named with TemporalOn with Updated 
   var enName: Option[String] = None
   var shortName: Option[String] = None
   var buildingType: Option[BuildingType] = None
-  var teaching: Boolean = _
 }
 
 /**

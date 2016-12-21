@@ -32,11 +32,12 @@ Semester=学年学期
 Semester.schoolYear=学年度,格式2005-2006
 Semester.calendar=教学日历方案类别
 
-Building=建筑
+Building=楼房建筑物
 Building.enName=英文名称
 Building.shortName=简称
 Building.campus=所在校区
 Building.school=学校
+Building.buildingType=建筑物类型
 
 Department=部门组织机构信息
 Department.enName=英文名称

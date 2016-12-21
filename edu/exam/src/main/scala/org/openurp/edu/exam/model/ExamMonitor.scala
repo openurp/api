@@ -16,21 +16,35 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.lesson.model
+package org.openurp.edu.exam.model
 
-import org.beangle.data.model.Component
-import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
-import org.beangle.commons.lang.time.HourMinute
+import org.beangle.data.model.LongId
+import org.openurp.base.model.Department
+import org.openurp.people.base.model.Person
+import org.beangle.data.model.TemporalOn
+import org.openurp.base.model.User
+import org.openurp.edu.base.model.Teacher
 
-class ExamSchedule extends Component with Serializable with Cloneable {
+/**
+ * 监考人员信息
+ * 记录监考院系、教师、自定义监考人员
+ *
+ * @depend - - - User
+ * @depend - - - Department
+ * @author chaostone
+ */
+class ExamMonitor extends LongId with TemporalOn {
 
-  var examOn: Option[java.sql.Date] = None
+  var teacher: Teacher = _
+  /**
+   * 监考院系
+   */
+  var department: Department = _
 
-  var beginAt: HourMinute = HourMinute.Zero
-
-  var endAt: HourMinute = HourMinute.Zero
-
-  /** 考试方式 */
-  var examMode: ExamMode = _
+  def this(teacher: Teacher, department: Department) {
+    this()
+    this.teacher = teacher
+    this.department = department
+  }
 
 }

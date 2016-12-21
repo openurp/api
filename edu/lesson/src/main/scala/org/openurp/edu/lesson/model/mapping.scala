@@ -32,28 +32,22 @@ class DefaultMapping extends Mapping {
     //code
     bind[LessonTag]
 
-    //exam
-    bind[ExamActivity].on(e => declare(
-      e.remark is length(100))).generator("date")
-
-    bind[ExamMonitor]
-    bind[ExamRoom].on(e => declare(
-      e.monitors is depends("examRoom")))
-
-    bind[ExamTake].on(e => declare(
+    bind[ExamTaker].on(e => declare(
       e.remark is length(100)))
 
     //lesson
-    bind[CourseTake].on(e => declare(
+    bind[CourseTaker].on(e => declare(
       e.remark is length(100)))
 
     bind[Lesson].on(e => declare(
       e.no is length(32),
       e.teachers is ordered,
       e.teachclass.name is (length(500), column("class_name")),
-      e.schedule.classroomType is (column("room_type_id")),
-      e.teachclass.courseTakes & e.teachclass.examTakes & e.teachclass.groups &
-        e.schedule.activities & e.exam.activities are depends("lesson")))
+      e.courseSchedule.classroomType is (column("room_type_id")),
+      e.examSchedule.beginAt is column("exam_begin_at"),
+      e.examSchedule.endAt is column("exam_end_at"),
+      e.teachclass.courseTakers & e.teachclass.examTakers & e.teachclass.groups &
+        e.courseSchedule.activities are depends("lesson")))
 
     bind[LessonLimitGroup].on(e => declare(
       e.items is depends("group"),
