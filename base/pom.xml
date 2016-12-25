@@ -20,13 +20,6 @@
     <module>api</module>
   </modules>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.beangle.data</groupId>
-      <artifactId>beangle-data-model_2.12</artifactId>
-    </dependency>
-  </dependencies>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
