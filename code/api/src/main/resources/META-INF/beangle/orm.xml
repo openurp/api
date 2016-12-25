@@ -3,8 +3,8 @@
   <mapping class="org.openurp.code.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.code" pluralize="true">
-      <class annotation = "org.beangle.data.model.annotation.code" schema="code_gb"  value="nation" />
-      <class annotation = "org.beangle.data.model.annotation.code" schema="code_hb" value="industry" />
+      <class annotation = "org.beangle.commons.model.annotation.code" schema="code_gb"  value="nation" />
+      <class annotation = "org.beangle.commons.model.annotation.code" schema="code_hb" value="industry" />
     </profile>
   </naming>
 </orm>
