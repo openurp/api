@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.edu.std.model.DefaultMapping" />
-  <naming>
-    <profile package = "org.openurp.edu.std" pluralize="true" schema="edu_std">
-       <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
-    </profile>
-  </naming>
-</orm>

@@ -1,19 +1,19 @@
 /*
  * OpenURP, Agile University Resource Planning Solution
  *
- * Copyright (c) 2014-2015, OpenURP Software.
+ * Copyright (c) 2014-2016, OpenURP Software.
  *
  * OpenURP is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * OpenURP is distributed in the hope that it will be useful.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.edu.lesson.model
@@ -21,7 +21,7 @@ package org.openurp.edu.lesson.model
 import scala.beans.BeanProperty
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.{ Component, Named }
+import org.beangle.commons.model.{ Component, Named }
 import org.openurp.base.model.Department
 
 class Teachclass extends Cloneable with Component with Named {
@@ -53,12 +53,12 @@ class Teachclass extends Cloneable with Component with Named {
   var reservedCount: Int = _
 
   /** 上课名单 */
-  var courseTakes = Collections.newBuffer[CourseTake]
+  var courseTakers = Collections.newBuffer[CourseTaker]
 
   /**
    * 考试名单
    */
-  var examTakes: collection.mutable.Set[ExamTake] = _
+  var examTakers: collection.mutable.Set[ExamTaker] = _
 
   /**
    * 限制条件组

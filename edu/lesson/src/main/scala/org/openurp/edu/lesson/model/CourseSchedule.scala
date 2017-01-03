@@ -1,26 +1,26 @@
 /*
  * OpenURP, Agile University Resource Planning Solution
  *
- * Copyright (c) 2014-2015, OpenURP Software.
+ * Copyright (c) 2014-2016, OpenURP Software.
  *
  * OpenURP is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * OpenURP is distributed in the hope that it will be useful.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.edu.lesson.model
 
 import org.beangle.commons.lang.time.WeekState
-import org.beangle.data.model.Component
-import org.beangle.data.model.LongId
+import org.beangle.commons.model.Component
+import org.beangle.commons.model.LongId
 import org.openurp.code.edu.model.ClassroomType
 
 class CourseSchedule extends Component with Serializable with Cloneable {
@@ -38,7 +38,7 @@ class CourseSchedule extends Component with Serializable with Cloneable {
   var classroomType: ClassroomType = _
 
   /** 发布状态 **/
-  var publishState: SchedulePublishStates.Value = _
+  var publishState: SchedulePublishStates.State = _
 
   /** 起始周 */
   def firstWeek: Int = {

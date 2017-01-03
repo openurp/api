@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.0.10</version>
+    <version>0.0.11</version>
   </parent>
   <groupId>org.openurp.edu</groupId>
   <artifactId>openurp-edu-parent</artifactId>
@@ -22,10 +22,11 @@
     <module>program</module>
     <module>lesson</module>
     <module>grade</module>
-    <module>std</module>
+    <module>student</module>
     <module>evaluation</module>
     <module>award</module>
-    <module>otherexam</module>
+    <module>exam</module>
+    <module>extern</module>
     <module>textbook</module>
     <module>workload</module>
   </modules>
@@ -34,10 +35,6 @@
     <dependency>
       <groupId>org.openurp.base</groupId>
       <artifactId>openurp-base-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.beangle.data</groupId>
-      <artifactId>beangle-data-model_2.12</artifactId>
     </dependency>
   </dependencies>
 

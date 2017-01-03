@@ -86,8 +86,8 @@ CourseGradeState.status=成绩状态
 GpaStat.gpa=总平均绩点
 GpaStat.gp=总绩点
 GpaStat.ga=平均分
-GpaStat.credits=总学分
-GpaStat.obtainedCredits=获得学分
+GpaStat.credits=获得学分
+GpaStat.totalCredits=总学分
 GpaStat.count=门数
 
 StdGpa=学生成绩绩点统计

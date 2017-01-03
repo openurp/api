@@ -1,19 +1,19 @@
 /*
  * OpenURP, Agile University Resource Planning Solution
  *
- * Copyright (c) 2014-2015, OpenURP Software.
+ * Copyright (c) 2014-2016, OpenURP Software.
  *
  * OpenURP is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * OpenURP is distributed in the hope that it will be useful.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.edu.base.model
@@ -21,8 +21,8 @@ package org.openurp.edu.base.model
 import java.sql.Date
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.{ Coded, LongId, Named, Remark, TemporalOn, Updated }
-import org.beangle.data.model.annotation.code
+import org.beangle.commons.model.{ Coded, LongId, Named, Remark, TemporalOn, Updated }
+import org.beangle.commons.model.annotation.code
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.DisciplineCategory
 import org.openurp.edu.base.ProjectBased
@@ -36,7 +36,7 @@ import org.openurp.edu.base.code.model.Education
 class Major extends LongId with ProjectBased with TemporalOn with Updated with Coded with Named with Remark {
 
   /** 专业英文名 */
-  var enName: String = _
+  var enName: Option[String] = None
 
   /** 简称 */
   var shortName: Option[String] = None

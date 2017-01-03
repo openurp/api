@@ -27,6 +27,7 @@ Classroom.roomType=教室类型
 Classroom.examCapacity=考试容量
 Classroom.courseCapacity=上课容量
 Classroom.project=项目
+Classroom.campus=校区
 
 Course=课程基本信息
 Course.code=课程代码

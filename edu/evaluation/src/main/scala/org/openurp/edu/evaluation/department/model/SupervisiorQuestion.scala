@@ -1,7 +1,7 @@
 /*
- * OpenURP, Agile Development Scaffold and Toolkit
+ * OpenURP, Agile University Resource Planning Solution
  *
- * Copyright (c) 2014-2015, OpenURP Software.
+ * Copyright (c) 2014-2016, OpenURP Software.
  *
  * OpenURP is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.evaluation.department.model
 
-import org.beangle.data.model.LongId
+import org.beangle.commons.model.LongId
 import org.openurp.edu.evaluation.model.Question
 
 /**

@@ -1,26 +1,26 @@
 /*
  * OpenURP, Agile University Resource Planning Solution
  *
- * Copyright (c) 2014-2015, OpenURP Software.
+ * Copyright (c) 2014-2016, OpenURP Software.
  *
  * OpenURP is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * OpenURP is distributed in the hope that it will be useful.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.edu.lesson.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.{ LongId, Updated, YearId }
-import org.beangle.data.model.annotation.code
+import org.beangle.commons.model.{ LongId, Updated, YearId }
+import org.beangle.commons.model.annotation.code
 import org.openurp.base.model.{ Campus, Department, Semester }
 import org.openurp.edu.base.{ ProjectBased, States }
 import org.openurp.edu.base.code.model.{ CourseType, TeachLangType }
@@ -72,10 +72,10 @@ class Lesson extends LongId with ProjectBased with Updated with Cloneable with Y
   var semester: Semester = _
 
   /** 课程安排 */
-  var schedule: CourseSchedule = _
+  var courseSchedule: CourseSchedule = _
 
   /** 考试安排 */
-  var exam: ExamSchedule = _
+  var examSchedule: ExamSchedule = _
 
   /** 备注 */
   var remark: Option[String] = None
