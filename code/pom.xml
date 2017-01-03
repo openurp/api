@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.0.11-SNAPSHOT</version>
+    <version>0.0.11</version>
   </parent>
   <groupId>org.openurp.code</groupId>
   <artifactId>openurp-code-parent</artifactId>
@@ -26,13 +26,6 @@
     <module>hr</module>
     <module>asset</module>
   </modules>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.beangle.data</groupId>
-      <artifactId>beangle-data-model_2.12</artifactId>
-    </dependency>
-  </dependencies>
 
   <dependencyManagement>
     <dependencies>

@@ -9,7 +9,7 @@
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-parent</artifactId>
   <packaging>pom</packaging>
-  <version>0.0.11-SNAPSHOT</version>
+  <version>0.0.11</version>
   <name>OpenURP API Parent</name>
 
   <prerequisites>
@@ -162,8 +162,8 @@
       <artifactId>scala-xml_2.12</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.beangle.data</groupId>
-      <artifactId>beangle-data-model_2.12</artifactId>
+      <groupId>org.beangle.commons</groupId>
+      <artifactId>beangle-commons-model_2.12</artifactId>
     </dependency>
   </dependencies>
 
