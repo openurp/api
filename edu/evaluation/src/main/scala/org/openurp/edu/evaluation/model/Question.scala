@@ -22,13 +22,14 @@ import org.beangle.commons.model.{ TemporalOn, Updated }
 import org.beangle.commons.model.LongId
 import org.openurp.base.model.Department
 import org.openurp.edu.base.model.Project
+import org.beangle.commons.model.Remark
 
 /**
  * 评教问题
  *
  * @author chaostone
  */
-class Question extends LongId with Updated with TemporalOn {
+class Question extends LongId with Updated with TemporalOn with Remark {
   var project: Project = _
   /** 问题内容 */
   var content: String = _
@@ -40,8 +41,6 @@ class Question extends LongId with Updated with TemporalOn {
   var depart: Department = _
   /** 优先级 */
   var priority: Int = _
-  /** 注释 */
-  var remark: String = _
   /** 使用状态 */
   var state: Boolean = false
   /** 是否附加题 */

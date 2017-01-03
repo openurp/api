@@ -25,11 +25,12 @@ import org.beangle.commons.model.TemporalOn
 import org.beangle.commons.model.Updated
 import org.beangle.commons.collection.Collections
 import org.openurp.edu.base.model.Project
+import org.beangle.commons.model.Remark
 
 /**
  * 评教问卷
  */
-class Questionnaire extends LongId with Updated with TemporalOn {
+class Questionnaire extends LongId with Updated with TemporalOn with Remark {
   var project: Project = _
   /** 问卷标题 */
   var title: String = _
@@ -39,8 +40,6 @@ class Questionnaire extends LongId with Updated with TemporalOn {
   var questions = Collections.newBuffer[Question]
   /** 创建部门 */
   var depart: Department = _
-  /** 备注 */
-  var remark: String = _
   /** 创建者 */
   var createBy: String = _
   /** 使用状态 */
