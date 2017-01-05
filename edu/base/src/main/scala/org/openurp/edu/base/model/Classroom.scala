@@ -35,7 +35,7 @@ class Classroom extends LongId with Named with Coded with Updated {
    * 房间
    * 可以为空，表示虚拟房间
    */
-  var room: Room = _
+  var room: Option[Room] = None
 
   /**所属校区*/
   var campus: Campus = _
@@ -64,8 +64,5 @@ class Classroom extends LongId with Named with Coded with Updated {
    * 考试容量
    */
   var examCapacity: Int = _
-
-
-
 
 }
