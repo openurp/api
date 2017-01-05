@@ -21,6 +21,7 @@ package org.openurp.edu.evaluation.model
 import org.beangle.commons.model.{ Named, TemporalOn, Updated }
 import org.beangle.commons.model.LongId
 import org.openurp.edu.base.model.Project
+import org.beangle.commons.model.Remark
 
 /**
  * 问题类型
@@ -28,12 +29,10 @@ import org.openurp.edu.base.model.Project
  * @author cwx,chaostone
  *
  */
-class QuestionType extends LongId with Named with Updated with TemporalOn {
+class QuestionType extends LongId with Named with Updated with TemporalOn with Remark {
   var project: Project = _
   /** 英文名称 */
-  var enName: String = _
-  /** 备注 */
-  var remark: String = _
+  var enName: scala.Option[String] = None
   /** 优先级 ,越大越靠前 */
   var priority: Int = _
   /** 状态 */
