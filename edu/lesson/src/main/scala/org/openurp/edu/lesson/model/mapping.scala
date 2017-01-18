@@ -1,7 +1,7 @@
 /*
  * OpenURP, Agile University Resource Planning Solution
  *
- * Copyright (c) 2014-2016, OpenURP Software.
+ * Copyright (c) 2014-2017, OpenURP Software.
  *
  * OpenURP is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,11 +43,11 @@ class DefaultMapping extends Mapping {
       e.no is length(32),
       e.teachers is ordered,
       e.teachclass.name is (length(500), column("class_name")),
-      e.courseSchedule.classroomType is (column("room_type_id")),
-      e.examSchedule.beginAt is column("exam_begin_at"),
-      e.examSchedule.endAt is column("exam_end_at"),
+      e.schedule.classroomType is (column("room_type_id")),
+      e.exam.beginAt is column("exam_begin_at"),
+      e.exam.endAt is column("exam_end_at"),
       e.teachclass.courseTakers & e.teachclass.examTakers & e.teachclass.groups &
-        e.courseSchedule.activities are depends("lesson")))
+        e.schedule.activities are depends("lesson")))
 
     bind[LessonLimitGroup].on(e => declare(
       e.items is depends("group"),
