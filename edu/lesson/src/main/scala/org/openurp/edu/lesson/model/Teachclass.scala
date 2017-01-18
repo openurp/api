@@ -1,7 +1,7 @@
 /*
  * OpenURP, Agile University Resource Planning Solution
  *
- * Copyright (c) 2014-2016, OpenURP Software.
+ * Copyright (c) 2014-2017, OpenURP Software.
  *
  * OpenURP is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,11 +18,11 @@
  */
 package org.openurp.edu.lesson.model
 
-import scala.beans.BeanProperty
-
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.model.{ Component, Named }
 import org.openurp.base.model.Department
+import org.beangle.commons.lang.annotation.value
+import Teachclass._
 
 class Teachclass extends Cloneable with Component with Named {
 
@@ -55,14 +55,28 @@ class Teachclass extends Cloneable with Component with Named {
   /** 上课名单 */
   var courseTakers = Collections.newBuffer[CourseTaker]
 
-  /**
-   * 考试名单
-   */
+  /** 考试名单 */
   var examTakers: collection.mutable.Set[ExamTaker] = _
 
   /**
    * 限制条件组
    */
   var groups = Collections.newBuffer[LessonLimitGroup]
+
+}
+
+object Teachclass {
+  @value
+  class GenderRatio(val value: Short) extends Ordered[GenderRatio] with Serializable {
+    override def compare(other: GenderRatio): Int = {
+      if (this.value < other.value) -1
+      else if (this.value == other.value) 0
+      else 1
+    }
+  }
+
+  object GenderRatio {
+    val empty = new GenderRatio(0)
+  }
 
 }

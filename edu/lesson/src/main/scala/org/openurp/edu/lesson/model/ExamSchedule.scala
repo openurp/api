@@ -1,7 +1,7 @@
 /*
  * OpenURP, Agile University Resource Planning Solution
  *
- * Copyright (c) 2014-2016, OpenURP Software.
+ * Copyright (c) 2014-2017, OpenURP Software.
  *
  * OpenURP is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,9 @@ import org.beangle.commons.model.Component
 import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
 import org.beangle.commons.lang.time.HourMinute
 
+/**
+ * 考试安排
+ */
 class ExamSchedule extends Component with Serializable with Cloneable {
 
   var examOn: Option[java.sql.Date] = None

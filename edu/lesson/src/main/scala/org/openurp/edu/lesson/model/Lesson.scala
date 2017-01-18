@@ -1,7 +1,7 @@
 /*
  * OpenURP, Agile University Resource Planning Solution
  *
- * Copyright (c) 2014-2016, OpenURP Software.
+ * Copyright (c) 2014-2017, OpenURP Software.
  *
  * OpenURP is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -72,10 +72,10 @@ class Lesson extends LongId with ProjectBased with Updated with Cloneable with Y
   var semester: Semester = _
 
   /** 课程安排 */
-  var courseSchedule: CourseSchedule = _
+  var schedule: CourseSchedule = _
 
   /** 考试安排 */
-  var examSchedule: ExamSchedule = _
+  var exam: ExamSchedule = _
 
   /** 备注 */
   var remark: Option[String] = None
