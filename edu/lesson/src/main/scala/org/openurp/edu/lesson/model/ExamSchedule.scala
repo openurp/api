@@ -22,6 +22,9 @@ import org.beangle.commons.model.Component
 import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
 import org.beangle.commons.lang.time.HourMinute
 
+/**
+ * 考试安排
+ */
 class ExamSchedule extends Component with Serializable with Cloneable {
 
   var examOn: Option[java.sql.Date] = None
