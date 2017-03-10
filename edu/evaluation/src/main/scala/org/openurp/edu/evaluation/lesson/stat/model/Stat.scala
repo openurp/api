@@ -50,13 +50,13 @@ trait EvalStat extends LongIdEntity {
   var addScore: Double = _
 
   /**是否发布*/
-  var published: Integer = _
+  var published: Boolean = _
 
   /** 有效票数 */
-  var validTickets: Integer = _
+  var validTickets: Int = _
 
   /**所有样本*/
-  var allTickets: Integer = _
+  var allTickets: Int = _
 
   /**问卷*/
   var questionnaire: Questionnaire = _
