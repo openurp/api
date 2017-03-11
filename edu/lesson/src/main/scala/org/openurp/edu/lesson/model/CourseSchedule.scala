@@ -38,7 +38,7 @@ class CourseSchedule extends Component with Serializable with Cloneable {
   var activities: collection.mutable.Set[CourseActivity] = _
 
   /** 教室类型 */
-  var classroomType: ClassroomType = _
+  var roomType: ClassroomType = _
 
   /** 起始周 */
   def firstWeek: Int = {
