@@ -28,13 +28,13 @@ import org.beangle.commons.model.Component
 class Name extends Component {
 
   /**名*/
-  var givenName: Option[String] = _
+  var givenName: Option[String] = None
 
   /**中间名*/
-  var middleName: Option[String] = _
+  var middleName: Option[String] = None
 
   /**姓*/
-  var familyName: Option[String] = _
+  var familyName: Option[String] = None
 
   /**姓名*/
   var formatedName: String = _

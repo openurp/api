@@ -10,7 +10,7 @@ OptionGroup.name=名称
 OptionGroup.oppoVal=倾向性权重 必须在0和1之间
 OptionGroup.options=各类选项
 OptionGroup.depart=创建部门
-
+OptionGroup.project=项目
 
 QuestionType=问题类型
 QuestionType.name=中文名称
@@ -21,7 +21,7 @@ QuestionType.endOn=失效时间
 QuestionType.remark=备注
 QuestionType.priority=优先级 ,越大越靠前
 QuestionType.state=状态
-
+QuestionType.project=项目
 
 Question=评教问题
 Question.content=问题内容
@@ -36,7 +36,7 @@ Question.endOn=失效时间
 Question.state=使用状态
 Question.addition=是否附加题
 Question.optionGroup=选项组
-
+Question.project=项目
 
 Questionnaire=评教问卷
 Questionnaire.title=问卷标题
@@ -50,8 +50,7 @@ Questionnaire.endOn=失效时间
 Questionnaire.createBy=创建者
 Questionnaire.state=使用状态
 Questionnaire.oppoQs=对立问题
-
-
+Questionnaire.project=项目
 
 EvaluationCriteriaItem=评价名称对应项
 EvaluationCriteriaItem.min=最小分值
@@ -63,3 +62,4 @@ EvaluationCriteria=评教对照标准
 EvaluationCriteria.name=名称
 EvaluationCriteria.criteriaItems=具体分值对照项
 EvaluationCriteria.depart=制作部门
+EvaluationCriteria.project=项目

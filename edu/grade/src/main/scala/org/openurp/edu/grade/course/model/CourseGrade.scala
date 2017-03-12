@@ -77,8 +77,6 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
    */
   var gp: Option[Float] = None
 
-  var bonus: Option[Float] = None
-
   /**
    * 总评成绩
    */

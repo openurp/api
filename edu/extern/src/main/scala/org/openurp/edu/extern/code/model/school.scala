@@ -24,12 +24,12 @@ import org.openurp.code.BaseCodeBean
  * 校外考试科目
  */
 @code("school")
-class ExternExamSubject extends BaseCodeBean {
-  var category:ExternExamCategory=_
+class ExamSubject extends BaseCodeBean {
+  var category:ExamCategory=_
 }
 
 /**
  * 校外考试种类
  */
 @code("school")
-class ExternExamCategory extends BaseCodeBean 
+class ExamCategory extends BaseCodeBean

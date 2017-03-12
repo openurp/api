@@ -16,23 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.service
+package org.openurp.edu.extern.course.model
 
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.extern.grade.model.ExternExamGrade
-import org.openurp.edu.extern.code.model.ExternExamSubject
-import org.openurp.edu.extern.code.model.ExternExamCategory
+import org.beangle.commons.model.bind.Mapping
 
+class DefaultMapping extends Mapping {
 
-trait ExternExamGradeService {
+  def binding(): Unit = {
+    defaultIdGenerator("date")
 
-  def saveOrUpdate(ExternExamGrade: ExternExamGrade): Unit
+    bind[ExternSchool]
+    bind[ExternCourse]
+    bind[ExternGrade]
+    bind[ConvertedGrade].on(e => declare(
+      e.sources is depends("converted")))
+  }
 
-  def getBestGrade(std: Student, category: ExternExamCategory): ExternExamGrade
-
-  def getPassGradesOf(std: Student, subjects: Iterable[ExternExamSubject]): List[ExternExamGrade]
-
-  def isPass(std: Student, subject: ExternExamSubject): Boolean
-
-  def getExternExamGrades(std: Student, best: Boolean): Iterable[ExternExamGrade]
 }

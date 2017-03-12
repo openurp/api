@@ -41,22 +41,22 @@ trait EvalStat extends LongIdEntity {
   var statAt: Date = _
 
   /** 总得分 */
-  var score: Float = _
+  var totalScore: Float = _
 
-  /** 有效总分 */
-  var validScore: Double = _
+  /** 平均得分 */
+  var avgScore: Float = _
 
   /** 附加题总分 */
   var addScore: Double = _
 
   /**是否发布*/
-  var published: Integer = _
+  var published: Boolean = _
 
   /** 有效票数 */
-  var validTickets: Integer = _
+  var tickets: Int = _
 
   /**所有样本*/
-  var allTickets: Integer = _
+  var totalTickets: Int = _
 
   /**问卷*/
   var questionnaire: Questionnaire = _
@@ -76,13 +76,13 @@ trait QuestionStat extends LongIdEntity {
   var question: Question = _
 
   /** 平均得分 */
-  var average: Double = _
+  var avgScore: Double = _
 
   /** 标准差 */
   var stddev: Double = _
 
   /** 总得分 */
-  var total: Double = _
+  var totalScore: Double = _
 
   /** 具体选项 */
   var optionStats: Buffer[OptionStat] = new collection.mutable.ListBuffer[OptionStat]
@@ -92,8 +92,11 @@ trait QuestionTypeStat extends LongIdEntity {
   /** 问题类别 */
   var questionType: QuestionType = _
 
-  /** 问题类别统计的分值(百分制) */
-  var score: Float = _
+  /** 问题类别统计的总分值*/
+  var totalScore: Float = _
+
+  /** 问题类别统计的平均分值 */
+  var avgScore: Float = _
 
   /** 问卷评教结果 */
   var evalStat: EvalStat = _

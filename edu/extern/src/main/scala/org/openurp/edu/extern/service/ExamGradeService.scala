@@ -16,16 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.exchange.model
+package org.openurp.edu.extern.service
 
-import org.beangle.commons.model.{ Coded, Named, TemporalOn, Updated }
-import org.beangle.commons.model.LongId
-import org.openurp.code.geo.model.Country
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.extern.exam.model.ExamGrade
+import org.openurp.edu.extern.code.model.ExamSubject
+import org.openurp.edu.extern.code.model.ExamCategory
 
-class ExchangeSchool extends LongId with Updated with TemporalOn with Coded with Named {
 
-  var enName: Option[String] = None
+trait ExamGradeService {
 
-  var country: Country = _
+  def saveOrUpdate(ExamGrade: ExamGrade): Unit
+
+  def getBestGrade(std: Student, category: ExamCategory): ExamGrade
+
+  def getPassGradesOf(std: Student, subjects: Iterable[ExamSubject]): List[ExamGrade]
+
+  def isPass(std: Student, subject: ExamSubject): Boolean
+
+  def getExamGrades(std: Student, best: Boolean): Iterable[ExamGrade]
 }
-

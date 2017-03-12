@@ -20,7 +20,6 @@ CourseGrade.gp=绩点
 CourseGrade.examMode=考核方式
 CourseGrade.remark=备注
 CourseGrade.project=项目
-CourseGrade.bonus=加分成绩
 
 ExamGrade=考试成绩
 ExamGrade.gradeType=成绩类型
@@ -58,7 +57,7 @@ GaGrade.status=成绩状态
 GaGrade.passed=是否通过
 GaGrade.operator=操作者
 GaGrade.gp=绩点
-GaGrade.ratio=比例
+GaGrade.delta=加减修正分
 
 GaGradeState=总评成绩状态
 GaGradeState.gradeType=成绩类型

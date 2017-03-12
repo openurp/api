@@ -16,36 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.grade.model
+package org.openurp.edu.extern.exam.model
 
-import org.beangle.commons.model.LongId
-import org.openurp.edu.base.code.model.ScoreMarkStyle
-import org.openurp.base.model.Semester
-import org.openurp.edu.base.code.model.ExamStatus
-import org.openurp.edu.extern.code.model.ExternExamSubject
-import org.openurp.edu.base.model.Student
+import org.beangle.commons.model.bind.Mapping
 
-class ExternExamGrade extends LongId {
+class DefaultMapping extends Mapping {
 
-  var std: Student = _
+  def binding(): Unit = {
+    defaultIdGenerator("date")
 
-  var score: Option[Float] = _
+    bind[ExamGrade].on(e => declare(
+      e.scoreText is length(5),
+      e.certificate & e.examNo are length(80)))
+  }
 
-  var scoreText: String = _
-
-  var passed: Boolean = _
-
-  var subject: ExternExamSubject = _
-
-  var semester: Semester = _
-
-  var examNo: Option[String] = _
-
-  var certificate: Option[String] = _
-
-  var acquireOn: java.sql.Date = _
-
-  var markStyle: ScoreMarkStyle = _
-
-  var examStatus: ExamStatus = _
 }

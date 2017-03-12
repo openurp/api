@@ -67,8 +67,7 @@ CourseSchedule.endWeek=结束周
 CourseSchedule.period= 已安排课时
 CourseSchedule.weekstate=周状态
 CourseSchedule.activities=具体排课结果
-CourseSchedule.classroomType=教室类型
-CourseSchedule.publishState=发布状态
+CourseSchedule.roomType=教室类型
 
 ExamSchedule=考试安排
 ExamSchedule.examMode=考核方式
