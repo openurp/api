@@ -23,11 +23,12 @@ import org.openurp.base.model.Room
 import org.openurp.code.edu.model.ClassroomType
 import org.beangle.commons.model.Coded
 import org.openurp.base.model.Campus
+import org.beangle.commons.model.TemporalOn
 
 /**
  * 教室
  */
-class Classroom extends LongId with Named with Coded with Updated {
+class Classroom extends LongId with Named with Coded with Updated with TemporalOn {
 
   /**项目*/
   var project: Project = _

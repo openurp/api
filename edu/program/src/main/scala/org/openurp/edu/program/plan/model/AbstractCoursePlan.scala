@@ -25,6 +25,7 @@ import org.beangle.commons.model.{ TemporalOn, Updated }
 import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.CourseType
 import org.beangle.commons.model.Remark
+import org.beangle.commons.model.LongId
 
 /**
  * 抽象课程方案
@@ -32,7 +33,7 @@ import org.beangle.commons.model.Remark
  * @author chaostone
  * @since 2009
  */
-trait AbstractCoursePlan extends CoursePlan with Updated with TemporalOn with Remark {
+trait AbstractCoursePlan extends LongId with CoursePlan with Updated with TemporalOn with Remark {
 
   /**
    * 课程组

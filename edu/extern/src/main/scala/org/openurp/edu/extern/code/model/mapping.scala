@@ -28,8 +28,8 @@ class DefaultMapping extends Mapping {
 
   def binding(): Unit = {
 
-    bind[ExternExamSubject]
-    bind[ExternExamCategory]
+    bind[ExamSubject]
+    bind[ExamCategory]
   }
 
 }

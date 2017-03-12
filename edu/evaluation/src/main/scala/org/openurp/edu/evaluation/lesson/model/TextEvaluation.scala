@@ -24,6 +24,9 @@ import org.openurp.edu.lesson.model.Lesson
 import org.beangle.commons.collection.Collections
 import org.openurp.edu.base.model.Teacher
 
+/**
+ * 开放式文字评教
+ */
 class TextEvaluation extends LongId {
   /** 教学任务 */
   var lesson: Lesson = _
@@ -31,11 +34,11 @@ class TextEvaluation extends LongId {
   var teacher: Teacher = _
   /** 学生 */
   var student: Student = _
+  /**评教内容*/
   var content: String = _
   /** 评教时间 */
   var evaluateAt: java.util.Date = _
   /** 是否确认 */
-
   var state: Boolean = false
 
   /** 是否教师评教 */

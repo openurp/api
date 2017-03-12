@@ -41,6 +41,7 @@ ExamTask.examOn=考试日期
 ExamTask.beginAt=考试开始时间
 ExamTask.endAt=考试结束时间
 ExamTask.stdCount=考生人数
+ExamTask.examLessons=排考教学任务
 
 ExamStudent=应考学生
 ExamStudent.lesson=教学任务

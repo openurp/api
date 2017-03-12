@@ -24,13 +24,15 @@ import org.beangle.commons.lang.{ Numbers, Strings }
 import org.beangle.commons.model.{ LongId, Named }
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Terms
+import org.beangle.commons.model.Remark
+
 /**
  * 课程设置中的课程组 </p>
  *
  * @author chaostone
  * @since 2009
  */
-trait AbstractCourseGroup extends LongId with CourseGroup with Named with Cloneable with Ordered[CourseGroup] {
+abstract class AbstractCourseGroup extends LongId with CourseGroup with Named with Cloneable with Ordered[CourseGroup] with Remark {
   /**
    * 计划
    */
@@ -39,7 +41,7 @@ trait AbstractCourseGroup extends LongId with CourseGroup with Named with Clonea
   /**
    * 上级组
    */
-  var parent: Option[CourseGroup] = _
+  var parent: Option[CourseGroup] = None
 
   /**
    * 下级组列表
@@ -70,11 +72,6 @@ trait AbstractCourseGroup extends LongId with CourseGroup with Named with Clonea
    * 要求门数
    */
   var courseNum: Short = _
-
-  /**
-   * 备注
-   */
-  var remark: Option[String] = _
 
   /**
    * 学期学分分布

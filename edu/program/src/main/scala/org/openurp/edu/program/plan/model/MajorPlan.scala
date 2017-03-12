@@ -25,7 +25,7 @@ import org.beangle.commons.model.TemporalOn
 /**
  * @author chaostone
  */
-class MajorPlan extends LongId with AbstractCoursePlan {
+class MajorPlan extends AbstractCoursePlan {
 
   /**
    * 培养方案

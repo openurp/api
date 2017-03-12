@@ -22,6 +22,7 @@ import org.beangle.commons.model.LongId
 import org.openurp.edu.base.code.model.ScoreMarkStyle
 import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.grade.model.Grade
+import org.beangle.commons.model.Updated
 
 /**
  * 总评成绩
@@ -32,7 +33,7 @@ import org.openurp.edu.grade.model.Grade
  * @author chaostone
  * @since 2005
  */
-class GaGrade extends LongId with Grade {
+class GaGrade extends LongId with Grade with Updated {
   /** 成绩类型 */
   var gradeType: GradeType = _
   /** 成绩记录方式 */
@@ -51,8 +52,8 @@ class GaGrade extends LongId with Grade {
   var operator: String = _
   /**绩点*/
   var gp: Option[Float] = None
-  /***/
-  var ratio: Float = 1.0f
+  /**加减修正分*/
+  var delta: Option[Float] = None
 
   def std = courseGrade.std
   // 大的成绩放前面

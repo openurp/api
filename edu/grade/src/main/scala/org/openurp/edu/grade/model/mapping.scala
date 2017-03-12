@@ -23,7 +23,6 @@ import org.beangle.commons.model.annotation.{ code, config }
 import org.beangle.commons.model.bind.Mapping
 import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.grade.course.model.{ CourseGrade, CourseGradeState, ExamGrade, ExamGradeState, GaGrade, GaGradeState }
-import org.openurp.edu.grade.exchange.model.{ ExchangeCourse, ExchangeSchool }
 import org.openurp.edu.grade.moral.model.MoralGrade
 import org.openurp.edu.grade.course.model.StdGpa
 import org.openurp.edu.grade.course.model.StdYearGpa
@@ -83,12 +82,6 @@ class DefaultMapping extends Mapping {
 
     bind[StdYearGpa].on(e => declare(
       e.schoolYear & e.stdGpa are notnull))
-
-    bind[ExchangeCourse].on(e => declare(
-      e.school is notnull,
-      e.remark is length(100)))
-    bind[ExchangeSchool].on(e => declare(
-      e.code & e.name & e.beginOn & e.country & e.updatedAt are notnull))
 
     bind[GradeRateConfig].on(e => declare(
       e.markStyle is notnull,

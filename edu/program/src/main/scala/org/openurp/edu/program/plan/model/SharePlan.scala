@@ -29,7 +29,7 @@ import org.openurp.edu.base.code.model.CourseAbilityRate
  *
  * @author chaostone
  */
-class SharePlan extends LongId with AbstractCoursePlan with EducationBased with Named with Cloneable {
+class SharePlan extends AbstractCoursePlan with EducationBased with Named with Cloneable {
 
   /**起始年级*/
   var fromGrade: String = _
@@ -42,7 +42,7 @@ class SharePlan extends LongId with AbstractCoursePlan with EducationBased with 
 /**
  * 公共共享课程组(默认实现)
  */
-class ShareCourseGroup extends LongId with AbstractCourseGroup {
+class ShareCourseGroup extends AbstractCourseGroup {
 
   /**
    * 对应外语语种

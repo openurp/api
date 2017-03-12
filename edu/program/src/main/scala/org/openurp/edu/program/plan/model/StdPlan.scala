@@ -24,7 +24,7 @@ import org.openurp.edu.base.model.Student
 /**
  * 个人计划
  */
-class StdPlan extends LongId with AbstractCoursePlan {
+class StdPlan extends AbstractCoursePlan {
 
   /**
    * 学生

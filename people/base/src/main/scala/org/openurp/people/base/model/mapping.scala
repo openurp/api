@@ -30,11 +30,11 @@ class DefaultMapping extends Mapping {
 
     bind[Person].on(e => declare(
       e.code is (notnull, unique, length(30)),
-      e.idType & e.gender are (notnull),
       e.name.familyName & e.name.givenName are length(80),
       e.name.formatedName is length(100),
       e.name.middleName is length(50),
-      e.formerName & e.phoneticName are length(100)))
+      e.formerName & e.phoneticName are length(100)
+      ))
 
     bind[PoliticalState].on(e => declare(
       e.person & e.status & e.beginOn are notnull))

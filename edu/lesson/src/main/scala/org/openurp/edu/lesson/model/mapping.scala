@@ -43,6 +43,7 @@ class DefaultMapping extends Mapping {
       e.no is length(32),
       e.teachers is ordered,
       e.teachclass.name is (length(500), column("class_name")),
+      e.teachclass.grade is length(20),
       e.exam.beginAt is column("exam_begin_at"),
       e.exam.endAt is column("exam_end_at"),
       e.teachclass.courseTakers & e.teachclass.examTakers & e.teachclass.groups &
