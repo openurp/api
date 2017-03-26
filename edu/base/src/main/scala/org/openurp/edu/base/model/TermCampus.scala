@@ -21,19 +21,14 @@ package org.openurp.edu.base.model
 import org.beangle.commons.model.IntId
 import org.openurp.base.model.Campus
 import org.openurp.edu.base.code.model.Education
+import org.beangle.commons.model.LongId
+
 /**
- * 专业对应校区
+ * 专业培养方案每学期对应校区
  */
-class MajorCampus extends IntId {
+class TermCampus extends LongId {
 
-  /** 年级,形式为yyyy-p */
-  var grade: String = _
-
-  /** 专业 */
-  var major: Major = _
-
-  /** 校区信息 */
-  var education: Education = _
+  var program: Program = _
 
   /** 对应学期 */
   var terms: Terms = _
