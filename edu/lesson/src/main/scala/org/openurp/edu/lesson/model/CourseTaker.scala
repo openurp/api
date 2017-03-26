@@ -40,6 +40,12 @@ class CourseTaker extends LongId with Updated with Cloneable {
   /** 修读类别 */
   var takeType: CourseTakeType = _
 
+  /**是否免听*/
+  var freeListening: Boolean = false
+
+  /**是否替代*/
+  var substitution: Boolean = false
+
   /** 选课方式 **/
   var electionMode: ElectionMode = _
 
