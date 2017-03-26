@@ -78,6 +78,7 @@ class DefaultMapping extends Mapping {
     bind[Program] on (e => declare(
       e.grade is length(10),
       e.name is length(100),
+      e.termCampuses is depends("program"),
       e.remark is length(200)))
 
     bind[Project] on (e => declare(
@@ -108,6 +109,6 @@ class DefaultMapping extends Mapping {
       e.version is length(50),
       e.description is length(300)))
 
-    bind[MajorCampus]
+    bind[TermCampus]
   }
 }

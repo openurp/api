@@ -20,6 +20,7 @@ CourseGrade.gp=绩点
 CourseGrade.examMode=考核方式
 CourseGrade.remark=备注
 CourseGrade.project=项目
+CourseGrade.freeListening=是否免听
 
 ExamGrade=考试成绩
 ExamGrade.gradeType=成绩类型

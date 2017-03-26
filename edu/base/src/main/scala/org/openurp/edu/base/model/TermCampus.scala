@@ -16,36 +16,24 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.exam.model
+package org.openurp.edu.base.model
 
+import org.beangle.commons.model.IntId
+import org.openurp.base.model.Campus
+import org.openurp.edu.base.code.model.Education
 import org.beangle.commons.model.LongId
-import org.openurp.edu.base.code.model.ScoreMarkStyle
-import org.openurp.base.model.Semester
-import org.openurp.edu.base.code.model.ExamStatus
-import org.openurp.edu.extern.code.model.ExamSubject
-import org.openurp.edu.base.model.Student
 
-class ExamGrade extends LongId {
+/**
+ * 专业培养方案每学期对应校区
+ */
+class TermCampus extends LongId {
 
-  var std: Student = _
+  var program: Program = _
 
-  var score: Option[Float] = None
+  /** 对应学期 */
+  var terms: Terms = _
 
-  var scoreText: String = _
+  /** 校区信息 */
+  var campus: Campus = _
 
-  var passed: Boolean = _
-
-  var subject: ExamSubject = _
-
-  var semester: Semester = _
-
-  var examNo: Option[String] = None
-
-  var certificate: Option[String] = None
-
-  var acquireOn: java.sql.Date = _
-
-  var markStyle: ScoreMarkStyle = _
-
-  var examStatus: ExamStatus = _
 }

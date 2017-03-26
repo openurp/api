@@ -77,6 +77,8 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
    */
   var gp: Option[Float] = None
 
+  /**是否免听*/
+  var freeListening: Boolean = false
   /**
    * 总评成绩
    */

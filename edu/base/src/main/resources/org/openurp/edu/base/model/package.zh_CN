@@ -115,6 +115,8 @@ Program.degree=毕业授予学位
 Program.studyType=学习形式
 Program.state=状态
 Program.project=项目
+Program.campus=校区
+Program.termCampuses=学期对应校区
 
 Project=项目
 Project.name=名称
@@ -213,9 +215,7 @@ Instructor.project=项目
 Instructor.person=人员信息
 Instructor.user=用户
 
-MajorCampus=专业所在校区
-MajorCampus.campus=校区
-MajorCampus.education=培养层次
-MajorCampus.grade=年级
-MajorCampus.major=专业
-MajorCampus.terms=学期
+TermCampus=专业所在校区
+TermCampus.campus=校区
+TermCampus.program=培养方案
+TermCampus.terms=学期

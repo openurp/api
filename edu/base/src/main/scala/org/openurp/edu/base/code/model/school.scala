@@ -81,12 +81,6 @@ class CourseAbilityRate extends BaseCodeBean
  */
 @code("school")
 class CourseTakeType extends BaseCodeBean {
-  /** 是否重修 */
-  var retake: Boolean = _
-  /** 是否考核 */
-  var exam: Boolean = _
-  /**是否上课*/
-  var attend: Boolean = _
   def this(id: Int, code: String, name: String, enName: String) {
     this()
     this.id = id
@@ -102,9 +96,6 @@ object CourseTakeType {
 
   /** 重修 */
   val Restudy = 3;
-
-  /** 免修不免考 */
-  val Reexam = 4;
 
   /** 免修 */
   val Untake = 5;

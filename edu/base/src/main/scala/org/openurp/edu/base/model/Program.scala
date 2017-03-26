@@ -24,6 +24,9 @@ import org.openurp.base.model.Department
 import org.openurp.code.edu.model.{ Degree, StudyType }
 import org.openurp.edu.base.{ EducationBased, States }
 import org.openurp.edu.base.code.model.StdType
+import org.openurp.base.model.Campus
+import org.beangle.commons.collection.Collections
+import scala.collection.mutable.Buffer
 
 /**
  * 专业培养方案
@@ -32,48 +35,36 @@ import org.openurp.edu.base.code.model.StdType
  */
 class Program extends LongId with Updated with Named with Cloneable with TemporalOn with EducationBased with Remark {
 
-  /**
-   * 年级
-   */
+  /** 年级 */
   var grade: String = _
 
-  /**
-   * 部门
-   */
+  /** 部门 */
   var department: Department = _
 
-  /**
-   * 学生类别
-   */
+  /** 校区 */
+  var campus: Campus = _
+
+  /** 学生类别 */
   var stdType: StdType = _
 
-  /**
-   * 专业
-   */
+  /** 专业  */
   var major: Major = _
 
-  /**
-   * 专业方向
-   */
+  /** 专业方向 */
   var direction: Option[Direction] = None
 
-  /**
-   * 学制
-   */
+  /** 学制  */
   var duration: Float = _
 
-  /**
-   * 学习形式
-   */
+  /** 学习形式 */
   var studyType: StudyType = _
 
-  /**
-   * 毕业授予学位
-   */
+  /** 毕业授予学位 */
   var degree: Option[Degree] = None
 
-  /**
-   * 审核状态
-   */
+  /** 学期对应校区 */
+  var termCampuses = Collections.newBuffer[TermCampus]
+
+  /**  审核状态 */
   var state: States.State = States.Draft
 }

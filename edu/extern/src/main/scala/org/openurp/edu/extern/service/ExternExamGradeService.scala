@@ -16,29 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.base.model
+package org.openurp.edu.extern.service
 
-import org.beangle.commons.model.IntId
-import org.openurp.base.model.Campus
-import org.openurp.edu.base.code.model.Education
-/**
- * 专业对应校区
- */
-class MajorCampus extends IntId {
+import org.beangle.commons.model.annotation.code
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.extern.code.model.{ ExamCategory, ExamSubject }
+import org.openurp.edu.extern.exam.model.ExternExamGrade
 
-  /** 年级,形式为yyyy-p */
-  var grade: String = _
 
-  /** 专业 */
-  var major: Major = _
+trait ExternExamGradeService {
 
-  /** 校区信息 */
-  var education: Education = _
+  def saveOrUpdate(examGrade: ExternExamGrade): Unit
 
-  /** 对应学期 */
-  var terms: Terms = _
+  def getBestGrade(std: Student, category: ExamCategory): ExternExamGrade
 
-  /** 校区信息 */
-  var campus: Campus = _
+  def getPassGradesOf(std: Student, subjects: Iterable[ExamSubject]): List[ExternExamGrade]
 
+  def isPass(std: Student, subject: ExamSubject): Boolean
+
+  def getExamGrades(std: Student, best: Boolean): Iterable[ExternExamGrade]
 }
