@@ -16,36 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.exam.model
+package org.openurp.edu.extern.service
 
-import org.beangle.commons.model.LongId
-import org.openurp.edu.base.code.model.ScoreMarkStyle
-import org.openurp.base.model.Semester
-import org.openurp.edu.base.code.model.ExamStatus
-import org.openurp.edu.extern.code.model.ExamSubject
+import org.beangle.commons.model.annotation.code
 import org.openurp.edu.base.model.Student
+import org.openurp.edu.extern.code.model.{ ExamCategory, ExamSubject }
+import org.openurp.edu.extern.exam.model.ExternExamGrade
 
-class ExamGrade extends LongId {
 
-  var std: Student = _
+trait ExternExamGradeService {
 
-  var score: Option[Float] = None
+  def saveOrUpdate(examGrade: ExternExamGrade): Unit
 
-  var scoreText: String = _
+  def getBestGrade(std: Student, category: ExamCategory): ExternExamGrade
 
-  var passed: Boolean = _
+  def getPassGradesOf(std: Student, subjects: Iterable[ExamSubject]): List[ExternExamGrade]
 
-  var subject: ExamSubject = _
+  def isPass(std: Student, subject: ExamSubject): Boolean
 
-  var semester: Semester = _
-
-  var examNo: Option[String] = None
-
-  var certificate: Option[String] = None
-
-  var acquireOn: java.sql.Date = _
-
-  var markStyle: ScoreMarkStyle = _
-
-  var examStatus: ExamStatus = _
+  def getExamGrades(std: Student, best: Boolean): Iterable[ExternExamGrade]
 }

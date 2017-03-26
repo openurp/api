@@ -1,14 +1,14 @@
 
-ExamGrade=考试成绩
-ExamGrade.std=学生
-ExamGrade.score=得分
-ExamGrade.scoreText=得分字面值
-ExamGrade.passed=是否通过
-ExamGrade.subject=科目
-ExamGrade.semester=学期
-ExamGrade.examNo=准考证号
-ExamGrade.certificate=证书编号
-ExamGrade.sessionNo=批次号
-ExamGrade.markStyle=成绩记录方式
-ExamGrade.examStatus=考试情况
-ExamGrade.acquireOn=获得日期
+ExternExamGrade=考试成绩
+ExternExamGrade.std=学生
+ExternExamGrade.score=得分
+ExternExamGrade.scoreText=得分字面值
+ExternExamGrade.passed=是否通过
+ExternExamGrade.subject=科目
+ExternExamGrade.semester=学期
+ExternExamGrade.examNo=准考证号
+ExternExamGrade.certificate=证书编号
+ExternExamGrade.sessionNo=批次号
+ExternExamGrade.markStyle=成绩记录方式
+ExternExamGrade.examStatus=考试情况
+ExternExamGrade.acquireOn=获得日期
