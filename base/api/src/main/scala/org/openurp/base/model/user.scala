@@ -21,10 +21,12 @@ package org.openurp.base.model
 import org.beangle.commons.model.{ Coded, LongId, Named, Remark, Updated }
 import org.beangle.commons.model.annotation.code
 import org.openurp.base.code.model.UserCategory
+import org.beangle.commons.model.TemporalOn
+
 /**
  * 通用人员信息
  */
-class User extends LongId with Coded with Named with Updated with Remark {
+class User extends LongId with Coded with Named with Updated with Remark with TemporalOn {
 
   var school: School = _
 
@@ -35,5 +37,4 @@ class User extends LongId with Coded with Named with Updated with Remark {
   var email: Option[String] = None
 
   var mobile: Option[String] = None
-
 }
