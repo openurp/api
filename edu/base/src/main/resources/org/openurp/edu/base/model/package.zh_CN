@@ -112,6 +112,7 @@ Program.direction=专业方向
 Program.stdType=学生类别
 Program.duration=学制
 Program.degree=毕业授予学位
+Program.degreeGpa=学位绩点
 Program.studyType=学习形式
 Program.state=状态
 Program.project=项目

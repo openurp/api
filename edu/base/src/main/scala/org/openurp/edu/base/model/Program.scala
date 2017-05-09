@@ -62,6 +62,9 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   /** 毕业授予学位 */
   var degree: Option[Degree] = None
 
+  /**学位绩点*/
+  var degreeGpa: Option[Float] = None
+
   /** 学期对应校区 */
   var termCampuses = Collections.newBuffer[TermCampus]
 
