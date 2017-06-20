@@ -75,7 +75,7 @@ class DefaultMapping extends MappingModule {
 
     //depart stat
     bind[DepartEvalStat].on(e => declare(
-      e.department is notnull,
+      e.department & e.semester are notnull,
       e.questionStats is depends(classOf[DepartQuestionStat], "evalStat"),
       e.questionTypeStats is depends(classOf[DepartQuestionTypeStat], "evalStat")))
 

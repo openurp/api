@@ -24,6 +24,8 @@ import org.openurp.base.model.Department
 import org.openurp.base.model.Semester
 import org.beangle.commons.collection.Collections
 import org.openurp.edu.base.model.Teacher
+import java.time.Instant
+
 /**
  * 院系问卷评教结果
  *
@@ -42,7 +44,7 @@ class DepartEvaluate extends LongId {
   /** 问题评教结果 */
   var questionResults = Collections.newSet[DepartQuestion]
   /** 评教时间 */
-  var evaluateAt: java.util.Date = _
+  var evaluateAt: Instant = _
   /**备注*/
   var remark: String = _
 

@@ -30,6 +30,7 @@ import org.beangle.data.model.pojo.Remark
 import org.beangle.data.model.pojo.Updated
 import org.beangle.data.model.IntId
 import java.time.ZoneId
+import org.beangle.data.model.pojo.DateRange
 
 /**
  * 教学日历方案
@@ -47,7 +48,7 @@ class Calendar extends IntId with Coded with Named with TemporalOn with Updated 
 /**
  * 学年学期 </p> 代表的是具体学年度的 学期设置，每个学期的起始日期（起始日期beginOn第一天）和结束日期。
  */
-class Semester extends IntId with Coded with Named with TemporalOn with Remark {
+class Semester extends IntId with Coded with Named with DateRange with Remark {
 
   /**日历*/
   var calendar: Calendar = _

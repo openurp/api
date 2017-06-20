@@ -18,13 +18,15 @@
  */
 package org.openurp.edu.evaluation.lesson.result.model
 
+import java.time.Instant
+
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
-import org.openurp.edu.base.model.Student
+import org.openurp.edu.base.model.{ Student, Teacher }
 import org.openurp.edu.evaluation.model.Questionnaire
 import org.openurp.edu.lesson.model.Lesson
-import org.openurp.edu.base.model.Teacher
+
 /**
  * 问卷评教结果
  *
@@ -44,7 +46,7 @@ class EvaluateResult extends LongId {
   /** 问题评教结果 */
   var questionResults = Collections.newSet[QuestionResult]
   /** 评教时间 */
-  var evaluateAt: java.util.Date = _
+  var evaluateAt: Instant = _
   /**问卷状态 */
   /**
    * 1正常 2 无效 3异常(互斥)

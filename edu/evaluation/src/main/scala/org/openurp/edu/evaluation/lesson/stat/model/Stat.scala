@@ -18,13 +18,13 @@
  */
 package org.openurp.edu.evaluation.lesson.stat.model
 
-import java.util.Date
 import scala.collection.mutable.Buffer
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.edu.evaluation.model.{ Option, Question, QuestionType, Questionnaire }
 import org.beangle.data.model.LongIdEntity
 import org.beangle.commons.collection.Collections
+import java.time.Instant
 
 trait Rank {
   var rank: Int = _
@@ -38,7 +38,7 @@ trait EvalStat extends LongIdEntity {
   var semester: Semester = _
 
   /** 统计时间 */
-  var statAt: Date = _
+  var statAt: Instant = _
 
   /** 总得分 */
   var totalScore: Float = _
