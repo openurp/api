@@ -19,9 +19,10 @@
 package org.openurp.lg.room.model
 
 import org.beangle.commons.lang.time.WeekTime
-import org.beangle.commons.model.{ LongId, Updated }
-import org.openurp.code.edu.model.ActivityType
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Room
+import org.openurp.code.edu.model.ActivityType
 
 /**
  * 房间占用情况

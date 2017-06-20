@@ -18,9 +18,9 @@
  */
 package org.openurp.std.job.model
 
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.orm.MappingModule
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("date")
@@ -31,9 +31,9 @@ class DefaultMapping extends Mapping {
 
     bind[Graduate].on(e => declare(
       e.stdSource is length(100),
-      e.graduateBatch & e.std are notnull))
+      e.session & e.std are notnull))
       
-    bind[GraduateBatch].on(e => declare(
+    bind[GraduateSession].on(e => declare(
       e.code is (notnull, length(40)),
       e.name is (notnull, length(80))))
 

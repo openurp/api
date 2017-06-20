@@ -18,12 +18,14 @@
  */
 package org.openurp.edu.evaluation.department.model
 
-import org.beangle.commons.model.LongId
-import org.openurp.edu.evaluation.model.Questionnaire
-import org.openurp.base.model.Department
-import org.openurp.base.model.Semester
+import java.time.Instant
+
 import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.openurp.base.model.{ Department, Semester }
 import org.openurp.edu.base.model.Teacher
+import org.openurp.edu.evaluation.model.Questionnaire
+
 /**
  * 院系问卷评教结果
  *
@@ -42,7 +44,7 @@ class SupervisiorEvaluate extends LongId {
   /** 问题评教结果 */
   var questionResults = Collections.newSet[SupervisiorQuestion]
   /** 评教时间 */
-  var evaluateAt: java.util.Date = _
+  var evaluateAt: Instant = _
   /**备注*/
   var remark: String = _
 

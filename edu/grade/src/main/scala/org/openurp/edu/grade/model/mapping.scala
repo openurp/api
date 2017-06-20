@@ -19,8 +19,8 @@
 package org.openurp.edu.grade.model
 
 import scala.reflect.runtime.universe
-import org.beangle.commons.model.annotation.{ code, config }
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.model.annotation.{ code, config }
+import org.beangle.data.orm.MappingModule
 import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.grade.course.model.{ CourseGrade, CourseGradeState, ExamGrade, ExamGradeState, GaGrade, GaGradeState }
 import org.openurp.edu.grade.moral.model.MoralGrade
@@ -28,7 +28,7 @@ import org.openurp.edu.grade.course.model.StdGpa
 import org.openurp.edu.grade.course.model.StdYearGpa
 import org.openurp.edu.grade.course.model.StdSemesterGpa
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("date")

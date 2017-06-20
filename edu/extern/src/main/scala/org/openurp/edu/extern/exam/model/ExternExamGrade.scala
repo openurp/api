@@ -18,13 +18,13 @@
  */
 package org.openurp.edu.extern.exam.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.ScoreMarkStyle
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.code.model.ExamStatus
 import org.openurp.edu.extern.code.model.ExamSubject
 import org.openurp.edu.base.model.Student
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.annotation.code
 
 class ExternExamGrade extends LongId {
 

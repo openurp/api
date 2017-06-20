@@ -18,9 +18,9 @@
  */
 package org.openurp.base.code.model
 
-import org.beangle.commons.model.Hierarchical
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.annotation.code
 import org.openurp.code.BaseCodeBean
+import org.beangle.data.model.pojo.Hierarchical
 
 /**
  * 用户分类

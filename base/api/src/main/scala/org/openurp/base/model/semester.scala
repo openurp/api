@@ -23,7 +23,13 @@ import java.util.GregorianCalendar
 import scala.collection.mutable.Buffer
 
 import org.beangle.commons.lang.time.WeekDay.WeekDay
-import org.beangle.commons.model.{ Coded, IntId, Named, Remark, TemporalOn, Updated }
+import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.Coded
+import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.IntId
+import java.time.ZoneId
 
 /**
  * 教学日历方案
@@ -52,7 +58,7 @@ class Semester extends IntId with Coded with Named with TemporalOn with Remark {
   def startWeek(): Int = {
     val gc = new GregorianCalendar();
     gc.setFirstDayOfWeek(calendar.firstWeekday.index)
-    gc.setTime(beginOn);
+    gc.setTime(java.util.Date.from(beginOn.atStartOfDay(ZoneId.systemDefault).toInstant))
     gc.get(java.util.Calendar.WEEK_OF_YEAR);
   }
 

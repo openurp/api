@@ -18,7 +18,8 @@
  */
 package org.openurp.hr.base.model
 
-import org.beangle.commons.model.{LongId, TemporalOn}
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.model.Department
 import org.openurp.code.hr.model.WorkStatus
 

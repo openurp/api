@@ -18,9 +18,7 @@
  */
 package org.openurp.edu.program.plan.model
 
-import org.beangle.commons.model.LongId
-import org.openurp.edu.base.model.{ Program, Direction, Terms }
-import org.beangle.commons.model.TemporalOn
+import org.openurp.edu.base.model.{ Direction, Program, Terms }
 
 /**
  * @author chaostone

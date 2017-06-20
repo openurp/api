@@ -18,7 +18,8 @@
  */
 package org.openurp.sin.harvest.model
 
-import org.beangle.commons.model.{ Coded, IntId, Named }
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{ Coded, Named }
 
 class HarvestType extends IntId with Named with Coded {
 

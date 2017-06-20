@@ -18,13 +18,12 @@
  */
 package org.openurp.edu.exam.model
 
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Semester
-import org.beangle.commons.model.LongId
-import org.openurp.edu.lesson.model.Lesson
-import org.openurp.edu.base.code.model.ExamType
+import org.openurp.edu.base.code.model.{ ExamStatus, ExamType }
 import org.openurp.edu.base.model.Student
-import org.openurp.edu.base.code.model.ExamStatus
-import org.beangle.commons.model.Remark
+import org.openurp.edu.lesson.model.Lesson
 
 class ExamStudent extends LongId with Remark {
 

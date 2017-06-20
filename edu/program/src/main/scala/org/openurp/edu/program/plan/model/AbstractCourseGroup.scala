@@ -21,10 +21,10 @@ package org.openurp.edu.program.plan.model
 import scala.collection.mutable.{ Buffer, ListBuffer }
 
 import org.beangle.commons.lang.{ Numbers, Strings }
-import org.beangle.commons.model.{ LongId, Named }
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Named, Remark }
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Terms
-import org.beangle.commons.model.Remark
 
 /**
  * 课程设置中的课程组 </p>

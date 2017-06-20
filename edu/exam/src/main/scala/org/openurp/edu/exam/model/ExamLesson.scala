@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.exam.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.lesson.model.Lesson
 
 class ExamLesson extends LongId {

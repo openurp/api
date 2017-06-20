@@ -19,8 +19,8 @@
 package org.openurp.edu.award.model
 
 import scala.reflect.runtime.universe
-import org.beangle.commons.model.annotation.code
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.model.annotation.code
+import org.beangle.data.orm.MappingModule
 import org.openurp.edu.award.code.model.{ HonorCategory, HonorLevel }
 import org.openurp.edu.award.code.model.HonorType
 import org.openurp.edu.award.code.model.ScholarshipCategory
@@ -35,7 +35,7 @@ import org.openurp.edu.award.results.model.StdHonorAward
 import org.openurp.edu.award.results.model.StipendAward
 import org.openurp.edu.award.results.model.SubsidyAward
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")

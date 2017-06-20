@@ -18,10 +18,8 @@
  */
 package org.openurp.hr.base.model
 
-import java.util.Date
-import org.beangle.commons.model.LongId
-import org.openurp.people.base.model.Person
-import org.beangle.commons.model.TemporalOn
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.job.model.ProfessionalTitle
 
 /**工作经历信息*/

@@ -21,10 +21,10 @@ package org.openurp.edu.extern.code.model
 import scala.reflect.runtime.universe
 
 import org.beangle.commons.lang.annotation.beta
-import org.beangle.commons.model.annotation.code
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.model.annotation.code
+import org.beangle.data.orm.MappingModule
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
 

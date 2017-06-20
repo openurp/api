@@ -20,11 +20,11 @@ package org.openurp.edu.base.model
 
 import java.sql.Date
 
-import org.beangle.commons.model.{ LongId, Named, TemporalOn }
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Named, Remark, TemporalOn }
 import org.openurp.code.sin.model.Press
 import org.openurp.edu.base.code.model.{ BookAwardType, BookType }
-import org.beangle.commons.model.Remark
 
 class Textbook extends LongId with TemporalOn with Named with Remark {
 

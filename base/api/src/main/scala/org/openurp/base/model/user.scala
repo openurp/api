@@ -18,10 +18,10 @@
  */
 package org.openurp.base.model
 
-import org.beangle.commons.model.{ Coded, LongId, Named, Remark, Updated }
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
 import org.openurp.base.code.model.UserCategory
-import org.beangle.commons.model.TemporalOn
 
 /**
  * 通用人员信息

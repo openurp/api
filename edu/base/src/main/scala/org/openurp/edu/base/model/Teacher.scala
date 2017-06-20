@@ -18,12 +18,11 @@
  */
 package org.openurp.edu.base.model
 
-import org.beangle.commons.model.{ Coded, LongId, TemporalOn, Updated }
-import org.beangle.commons.model.annotation.code
-import org.openurp.base.model.Department
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ TemporalOn, Updated }
 import org.openurp.base.model.User
 import org.openurp.edu.base.code.model.TeacherType
-import org.openurp.people.base.model.Person
 
 /**
  * 教师信息

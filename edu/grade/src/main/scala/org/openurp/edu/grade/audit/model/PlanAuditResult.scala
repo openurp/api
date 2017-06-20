@@ -20,8 +20,8 @@ package org.openurp.edu.grade.audit.model
 
 import scala.collection.mutable.Buffer
 
-import org.beangle.commons.model.Updated
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Student
 

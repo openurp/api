@@ -4,7 +4,7 @@
   <mapping class="org.openurp.edu.textbook.order.model.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.edu.textbook" pluralize="true" schema="edu_textbook">
-       <class annotation = "org.beangle.commons.model.annotation.code" prefix="xb_" value="school" />
+       <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
     </profile>
   </naming>
 </orm>

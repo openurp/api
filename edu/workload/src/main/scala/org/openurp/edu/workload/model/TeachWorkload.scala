@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.workload.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.code.model.TeachLangType
 import org.openurp.edu.base.code.model.CourseCategory

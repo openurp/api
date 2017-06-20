@@ -19,7 +19,8 @@
 package org.openurp.edu.grade.audit.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.{ LongId, TemporalOn }
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.StudentScope
 

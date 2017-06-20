@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.extern.code.model
 
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.annotation.code
 import org.openurp.code.BaseCodeBean
 /**
  * 校外考试科目

@@ -18,22 +18,21 @@
  */
 package org.openurp.edu.base.model
 
-import java.sql.Date
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.{ Coded, Component, Journal, LongId, Updated, YearId }
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.{ Component, LongId }
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Coded, Remark, TemporalOn, Updated, YearId }
 import org.openurp.base.model.{ Campus, Department }
 import org.openurp.code.edu.model.{ StudentStatus, StudyType }
 import org.openurp.edu.base.{ EducationBased, StdEnrollment }
 import org.openurp.edu.base.code.model.{ Education, StdLabel, StdLabelType, StdType }
 import org.openurp.people.base.model.Person
-import org.beangle.commons.model.TemporalOn
-import org.beangle.commons.model.Remark
+import org.beangle.data.model.pojo.DateRange
 
 /**
  * 学籍信息实现
  */
-class Student extends LongId with EducationBased with YearId with Coded with Updated with Remark {
+class Student extends LongId with EducationBased with YearId with Coded with Updated with Remark with DateRange {
 
   /**基本信息*/
   var person: Person = _
@@ -55,15 +54,6 @@ class Student extends LongId with EducationBased with YearId with Coded with Upd
 
   /** 是否有学籍 */
   var registed: Boolean = _
-
-  /** 入学报到日期 */
-  var enrollOn: Date = _
-
-  /** 学籍生效日期 */
-  var registOn: Date = _
-
-  /** 应毕业时间 预计毕业日期 */
-  var graduateOn: Date = _
 
   /** 学习形式 全日制/业余/函授 */
   var studyType: StudyType = _

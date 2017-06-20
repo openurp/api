@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.student.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.code.geo.model.Division
 import org.openurp.code.edu.model.EnrollMode
 import org.openurp.edu.base.model.Student

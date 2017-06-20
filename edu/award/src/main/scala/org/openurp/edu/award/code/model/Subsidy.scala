@@ -18,8 +18,9 @@
  */
 package org.openurp.edu.award.code.model
 
-import org.beangle.commons.model.{ Coded, IntId, Named }
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.IntId
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Coded, Named }
 
 @code("school")
 class SubsidyCategory extends IntId with Coded with Named {

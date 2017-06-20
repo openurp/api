@@ -21,7 +21,7 @@ package org.openurp.hr.base.model
 import org.openurp.people.base.model.Person
 import org.openurp.code.person.model.HealthStatus
 import org.openurp.code.person.model.BloodType
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 
 /**
  * 健康状况

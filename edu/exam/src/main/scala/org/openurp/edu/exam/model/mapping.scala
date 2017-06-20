@@ -20,11 +20,11 @@ package org.openurp.edu.exam.model
 
 import scala.reflect.runtime.universe
 import org.beangle.commons.lang.annotation.beta
-import org.beangle.commons.model.annotation.code
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.model.annotation.code
+import org.beangle.data.orm.MappingModule
 import org.openurp.edu.lesson.code.model.LessonTag
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")

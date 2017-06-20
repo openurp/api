@@ -18,9 +18,8 @@
  */
 package org.openurp.edu.evaluation.model
 
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.Named
-import org.openurp.edu.base.model.Project
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
 
 /**
  * 选项

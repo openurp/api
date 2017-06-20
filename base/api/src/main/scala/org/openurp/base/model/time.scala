@@ -19,8 +19,10 @@
 package org.openurp.base.model
 
 import scala.collection.mutable.Buffer
+
 import org.beangle.commons.lang.time.HourMinute
-import org.beangle.commons.model.{ IntId, Named, NumId, TemporalOn }
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{ Named, TemporalOn }
 import org.openurp.base.code.model.DayPart
 
 /**

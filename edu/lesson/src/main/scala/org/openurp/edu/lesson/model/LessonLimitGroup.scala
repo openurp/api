@@ -18,9 +18,9 @@
  */
 package org.openurp.edu.lesson.model
 
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.YearId
 import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.YearId
 
 /**
  * 课程限制条件组

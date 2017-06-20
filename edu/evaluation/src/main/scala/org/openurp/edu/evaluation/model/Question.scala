@@ -18,11 +18,10 @@
  */
 package org.openurp.edu.evaluation.model
 
-import org.beangle.commons.model.{ TemporalOn, Updated }
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Remark, TemporalOn, Updated }
 import org.openurp.base.model.Department
 import org.openurp.edu.base.model.Project
-import org.beangle.commons.model.Remark
 
 /**
  * 评教问题

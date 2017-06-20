@@ -20,7 +20,7 @@ package org.openurp.edu.grade.audit.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Strings
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.grade.course.model.CourseGrade
 import org.openurp.edu.program.plan.model.PlanCourse

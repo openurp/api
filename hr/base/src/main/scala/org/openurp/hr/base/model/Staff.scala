@@ -18,13 +18,13 @@
  */
 package org.openurp.hr.base.model
 
-import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.{ Coded, LongId, Updated }
-import org.openurp.code.hr.model.StaffType
-import org.openurp.people.base.model.Person
-import org.openurp.code.hr.model.EmployType
-import org.openurp.code.hr.model.StaffSourceType
 import java.sql.Date
+
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Coded, Updated }
+import org.openurp.code.hr.model.{ EmployType, StaffSourceType, StaffType }
+import org.openurp.people.base.model.Person
 
 /**
  * 教职工信息

@@ -20,10 +20,10 @@ package org.openurp.edu.evaluation.lesson.stat.model
 
 import java.util.Date
 import scala.collection.mutable.Buffer
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.edu.evaluation.model.{ Option, Question, QuestionType, Questionnaire }
-import org.beangle.commons.model.LongIdEntity
+import org.beangle.data.model.LongIdEntity
 import org.beangle.commons.collection.Collections
 
 trait Rank {

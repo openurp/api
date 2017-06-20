@@ -19,7 +19,7 @@
 package org.openurp.edu.evaluation.lesson.result.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.evaluation.model.Questionnaire

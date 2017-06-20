@@ -18,8 +18,7 @@
  */
 package org.openurp.edu.program.plan.model
 
-import org.beangle.commons.model.Named
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.pojo.Named
 import org.openurp.code.edu.model.Language
 import org.openurp.edu.base.EducationBased
 import org.openurp.edu.base.code.model.CourseAbilityRate

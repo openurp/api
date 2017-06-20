@@ -3,7 +3,7 @@
   <mapping class="org.openurp.lg.room.model.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.lg.room" pluralize="true" schema="lg_room">
-       <class annotation = "org.beangle.commons.model.annotation.code" prefix="xb_" value="school" />
+       <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
     </profile>
   </naming>
 </orm>

@@ -18,9 +18,11 @@
  */
 package org.openurp.edu.grade.model
 
-import org.beangle.commons.model.{ LongId, TemporalOn, Updated }
 import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.base.code.model.ScoreMarkStyle
+import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 
 /**
  * 成绩状态表<br>

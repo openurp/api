@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.grade.course.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.{ ExamStatus, ScoreMarkStyle }
 import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.grade.model.Grade

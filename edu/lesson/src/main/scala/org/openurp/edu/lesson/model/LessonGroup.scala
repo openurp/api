@@ -18,8 +18,8 @@
  */
 package org.openurp.edu.lesson.model
 
-import org.beangle.commons.model.Named
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.{ Department, Semester }
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.model.Course

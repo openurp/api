@@ -18,13 +18,13 @@
  */
 package org.openurp.std.job.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Student
 
 class Graduate extends LongId {
 
   /**毕业批次*/
-  var graduateBatch: GraduateBatch = _
+  var session: GraduateSession = _
 
   /**学生*/
   var std: Student = _

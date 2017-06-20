@@ -18,7 +18,8 @@
  */
 package org.openurp.edu.program.plan.model
 
-import org.beangle.commons.model.{ LongIdEntity, Named }
+import org.beangle.data.model.LongIdEntity
+import org.beangle.data.model.pojo.Named
 import org.openurp.edu.base.code.model.CourseType
 
 /**

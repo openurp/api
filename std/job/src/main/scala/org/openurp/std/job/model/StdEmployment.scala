@@ -18,7 +18,7 @@
  */
 package org.openurp.std.job.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Student
 
 class StdEmployment extends LongId {

@@ -19,10 +19,10 @@
 package org.openurp.edu.lesson.model
 
 import org.beangle.commons.lang.time.WeekTime
-import org.beangle.commons.model.{ LongId, TemporalOn }
+import org.beangle.data.model.LongId
 import org.openurp.edu.base.Activity
-import org.openurp.edu.base.model.Classroom
-import org.openurp.edu.base.model.Teacher
+import org.openurp.edu.base.model.{ Classroom, Teacher }
+
 /**
  * 教学活动
  * </p>

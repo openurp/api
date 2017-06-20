@@ -18,7 +18,7 @@
  */
 package org.openurp.people.contact.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.code.geo.model.Country
 /**
  * 地址

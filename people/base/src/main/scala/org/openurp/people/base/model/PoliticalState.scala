@@ -18,10 +18,9 @@
  */
 package org.openurp.people.base.model
 
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.Updated
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ TemporalOn, Updated }
 import org.openurp.code.person.model.PoliticalStatus
-import org.beangle.commons.model.TemporalOn
 
 /**
  * 政治面貌

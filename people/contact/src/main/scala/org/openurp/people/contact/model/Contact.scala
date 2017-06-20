@@ -20,7 +20,8 @@ package org.openurp.people.contact.model
 
 import java.sql.Date
 
-import org.beangle.commons.model.{ LongId, Updated }
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.people.base.model.Person
 
 /**

@@ -19,10 +19,10 @@
 package org.openurp.edu.base.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.{ Coded, LongId, Named, Remark, TemporalOn, Updated }
-import org.beangle.commons.model.annotation.code
-import org.openurp.base.model.Department
-import org.openurp.base.model.Campus
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
+import org.openurp.base.model.{ Campus, Department }
 import org.openurp.edu.base.EducationBased
 import org.openurp.edu.base.code.model.StdType
 

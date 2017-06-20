@@ -19,7 +19,7 @@
 package org.openurp.code.asset.model
 
 import org.openurp.code.BaseCodeBean
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.annotation.code
 
 /**
  * 房间类型

@@ -19,10 +19,10 @@
 package org.openurp.people.contact.model
 
 import scala.reflect.runtime.universe
-import org.beangle.commons.model.annotation.code
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.model.annotation.code
+import org.beangle.data.orm.MappingModule
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")

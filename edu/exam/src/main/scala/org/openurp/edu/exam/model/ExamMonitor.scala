@@ -18,12 +18,12 @@
  */
 package org.openurp.edu.exam.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
 import org.openurp.people.base.model.Person
-import org.beangle.commons.model.TemporalOn
 import org.openurp.base.model.User
 import org.openurp.edu.base.model.Teacher
+import org.beangle.data.model.pojo.TemporalOn
 
 /**
  * 监考人员信息

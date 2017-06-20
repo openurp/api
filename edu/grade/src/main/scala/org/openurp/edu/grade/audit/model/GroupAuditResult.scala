@@ -21,7 +21,7 @@ package org.openurp.edu.grade.audit.model
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.program.plan.model.CourseGroup
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.grade.audit.adapters.GroupResultAdapter
 import scala.collection.mutable.Buffer
 

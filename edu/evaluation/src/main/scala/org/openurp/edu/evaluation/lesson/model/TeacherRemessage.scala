@@ -20,7 +20,7 @@ package org.openurp.edu.evaluation.lesson.model
 
 import org.openurp.edu.base.model.Student
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import java.util.Date
 /**
  * 文字评教教师回复

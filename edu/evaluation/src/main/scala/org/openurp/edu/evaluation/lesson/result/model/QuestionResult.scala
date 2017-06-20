@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.evaluation.lesson.result.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.evaluation.model.{ Option, Question, QuestionType }
 
 /**

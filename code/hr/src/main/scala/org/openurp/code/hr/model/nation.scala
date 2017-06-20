@@ -19,7 +19,7 @@
 package org.openurp.code.hr.model
 
 import org.openurp.code.BaseCodeBean
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.annotation.code
 
 /**
  * 用人形式

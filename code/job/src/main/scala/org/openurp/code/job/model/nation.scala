@@ -18,7 +18,7 @@
  */
 package org.openurp.code.job.model
 
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.annotation.code
 import org.openurp.code.BaseCodeBean
 /**
  * 职务类别

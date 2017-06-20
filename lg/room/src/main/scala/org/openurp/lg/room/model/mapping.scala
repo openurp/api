@@ -19,9 +19,9 @@
 package org.openurp.lg.room.model
 
 import scala.reflect.runtime.universe
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.orm.MappingModule
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")

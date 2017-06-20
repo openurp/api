@@ -20,12 +20,10 @@ package org.openurp.edu.program.plan.model
 
 import scala.collection.mutable.{ Buffer, ListBuffer }
 
-import org.beangle.commons.lang.Strings
-import org.beangle.commons.model.{ TemporalOn, Updated }
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Remark, TemporalOn, Updated }
 import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.CourseType
-import org.beangle.commons.model.Remark
-import org.beangle.commons.model.LongId
 
 /**
  * 抽象课程方案

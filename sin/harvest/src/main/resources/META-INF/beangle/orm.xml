@@ -3,7 +3,7 @@
   <mapping class="org.openurp.sin.harvest.model.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.sin.harvest" pluralize="true" schema="sin_harvest">
-       <class annotation = "org.beangle.commons.model.annotation.code" prefix="xb_" value="school" />
+       <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
     </profile>
   </naming>
 </orm>

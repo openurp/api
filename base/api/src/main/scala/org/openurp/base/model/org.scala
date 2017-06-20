@@ -18,10 +18,12 @@
  */
 package org.openurp.base.model
 
-import org.beangle.commons.model.{ Coded, Hierarchical, IntId, Named, Remark, TemporalOn, Updated }
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.IntId
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Coded, Hierarchical, Named, Remark, TemporalOn, Updated }
 import org.openurp.base.code.model.DepartmentCategory
 import org.openurp.code.edu.model.Institution
+
 /**
  * 学校
  */
