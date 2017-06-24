@@ -53,6 +53,8 @@ class EvaluateResult extends LongId {
    * 总数=有效问卷+无效问卷+异常问卷        无效问卷=无效比例*(总数-异常问卷)
    */
   var statType: Int = _
+  /**总分*/
+  var score :Float = _
   /**备注*/
   var remark: String = _
 }
