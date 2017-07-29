@@ -24,8 +24,7 @@ import org.openurp.edu.evaluation.model.Question
 /**
  * 院系问题评教结果
  *
- * @aimport org.openurp.edu.evaluation.app.department.model.SupervisiorEvaluate
- * uthor chaostone
+ * @author chaostone
  */
 class SupervisiorQuestion extends LongId {
   /** 问题 */

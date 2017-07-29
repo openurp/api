@@ -21,7 +21,8 @@ package org.openurp.edu.evaluation.lesson.model
 import org.openurp.edu.base.model.Student
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import java.util.Date
+import java.time.Instant
+
 /**
  * 文字评教教师回复
  *
@@ -40,7 +41,7 @@ class TeacherRemessage extends LongId {
   /** 显示状态 */
   var visible: Boolean = false
 
-  var createdAt: Date = _
+  var createdAt: Instant = _
 
-  var updatedAt: Date = _
+  var updatedAt: Instant = _
 }
