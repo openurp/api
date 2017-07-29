@@ -18,8 +18,8 @@
  */
 package org.openurp.edu.grade.model
 
-import org.beangle.commons.model.annotation.config
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.LongId
 /**
  * 成绩分级配置项
  */

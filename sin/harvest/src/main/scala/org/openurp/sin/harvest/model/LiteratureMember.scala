@@ -18,7 +18,8 @@
  */
 package org.openurp.sin.harvest.model
 
-import org.beangle.commons.model.{ IntId, Named }
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.Department
 
 class LiteratureMember extends IntId with Named {

@@ -18,15 +18,14 @@
  */
 package org.openurp.edu.base.model
 
-import org.beangle.commons.model.{ LongId, Named, Remark, TemporalOn, Updated }
-import org.beangle.commons.model.annotation.code
-import org.openurp.base.model.Department
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Named, Remark, TemporalOn, Updated }
+import org.openurp.base.model.{ Campus, Department }
 import org.openurp.code.edu.model.{ Degree, StudyType }
 import org.openurp.edu.base.{ EducationBased, States }
 import org.openurp.edu.base.code.model.StdType
-import org.openurp.base.model.Campus
-import org.beangle.commons.collection.Collections
-import scala.collection.mutable.Buffer
 
 /**
  * 专业培养方案
@@ -61,6 +60,9 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
 
   /** 毕业授予学位 */
   var degree: Option[Degree] = None
+
+  /**学位绩点*/
+  var degreeGpa: Option[Float] = None
 
   /** 学期对应校区 */
   var termCampuses = Collections.newBuffer[TermCampus]

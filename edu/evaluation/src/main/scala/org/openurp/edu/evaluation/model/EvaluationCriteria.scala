@@ -18,10 +18,10 @@
  */
 package org.openurp.edu.evaluation.model
 
-import org.beangle.commons.model.LongId
-import org.openurp.base.model.Department
-import org.beangle.commons.model.Named
 import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
+import org.openurp.base.model.Department
 import org.openurp.edu.base.model.Project
 
 class EvaluationCriteria extends LongId with Named {

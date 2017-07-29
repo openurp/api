@@ -23,8 +23,8 @@ import java.text.NumberFormat
 import scala.collection.mutable.{ Buffer, ListBuffer }
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.annotation.config
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.config
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.ScoreMarkStyle
 

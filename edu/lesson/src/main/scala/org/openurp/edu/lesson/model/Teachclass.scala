@@ -19,10 +19,12 @@
 package org.openurp.edu.lesson.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.{ Component, Named }
-import org.openurp.base.model.Department
 import org.beangle.commons.lang.annotation.value
-import Teachclass._
+import org.beangle.data.model.Component
+import org.beangle.data.model.pojo.Named
+import org.openurp.base.model.Department
+
+import Teachclass.GenderRatio
 
 class Teachclass extends Cloneable with Component with Named {
 

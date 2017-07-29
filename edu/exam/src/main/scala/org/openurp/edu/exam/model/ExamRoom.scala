@@ -21,7 +21,7 @@ package org.openurp.edu.exam.model
 import java.sql.Date
 import scala.collection.mutable.{ Buffer, ListBuffer }
 import org.beangle.commons.lang.time.HourMinute
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.base.model.{ Department, Semester }
 import org.openurp.edu.base.model.Classroom
 import org.openurp.edu.base.model.Teacher

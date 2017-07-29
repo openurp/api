@@ -18,16 +18,12 @@
  */
 package org.openurp.edu.course.model
 
-import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.TemporalOn
-import org.beangle.commons.model.Updated
-import org.openurp.edu.base.model.Course
 import java.util.Locale
-import org.openurp.edu.base.model.Teacher
-import org.beangle.commons.model.IntId
-import org.beangle.commons.model.Named
-import org.beangle.commons.model.Component
+
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.{ Component, IntId, LongId }
+import org.beangle.data.model.pojo.{ Named, TemporalOn, Updated }
+import org.openurp.edu.base.model.{ Course, Teacher }
 
 /**
  * 课程教学大纲

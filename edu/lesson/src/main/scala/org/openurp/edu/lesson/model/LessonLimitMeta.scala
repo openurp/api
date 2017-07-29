@@ -22,7 +22,7 @@ import scala.language.implicitConversions
 import org.openurp.base.model.Department
 import org.openurp.edu.base.code.model.{ Education, StdLabel, StdType }
 import org.openurp.edu.base.model.{ Adminclass, Direction, Major }
-import org.beangle.commons.model.Entity
+import org.beangle.data.model.Entity
 
 object LessonLimitMeta extends Enumeration {
 

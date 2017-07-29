@@ -18,10 +18,11 @@
  */
 package org.openurp.people.base.model
 
-import org.beangle.commons.model.{ Coded, LongId, Updated }
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Coded, Updated }
 import org.openurp.code.edu.model.Language
-import org.openurp.code.geo.model.{ Country, Division }
-import org.openurp.code.person.model.{ CompatriotType, Gender, IdType, MaritalStatus, Nation, PoliticalStatus, Religion }
+import org.openurp.code.geo.model.Country
+import org.openurp.code.person.model.{ CompatriotType, Gender, IdType, Nation, Religion }
 
 /**
  * 通用人员信息

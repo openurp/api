@@ -18,12 +18,10 @@
  */
 package org.openurp.edu.base.model
 
-import org.beangle.commons.model.{ LongId, Named, Updated }
-import org.openurp.base.model.Room
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Coded, Named, TemporalOn, Updated }
+import org.openurp.base.model.{ Campus, Room }
 import org.openurp.code.edu.model.ClassroomType
-import org.beangle.commons.model.Coded
-import org.openurp.base.model.Campus
-import org.beangle.commons.model.TemporalOn
 
 /**
  * 教室

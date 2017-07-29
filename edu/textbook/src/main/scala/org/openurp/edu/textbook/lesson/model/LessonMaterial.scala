@@ -21,7 +21,7 @@ package org.openurp.edu.textbook.lesson.model
 import java.sql.Date
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Textbook
 import org.openurp.edu.lesson.model.Lesson
 import org.openurp.edu.textbook.lesson.MaterialStatus.{ASSIGNED, Status}

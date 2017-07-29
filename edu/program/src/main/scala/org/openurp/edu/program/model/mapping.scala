@@ -21,10 +21,10 @@ package org.openurp.edu.program.model
 import scala.reflect.runtime.universe
 
 import org.beangle.commons.lang.annotation.beta
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.orm.MappingModule
 import org.openurp.edu.program.plan.model.{ AbstractCourseGroup, AbstractPlanCourse, MajorCourseGroup, MajorCourseSubstitution, MajorPlan, MajorPlanCourse, ShareCourseGroup, SharePlan, SharePlanCourse, StdCourseGroup, StdCourseSubstitution, StdPlan, StdPlanCourse }
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("date")

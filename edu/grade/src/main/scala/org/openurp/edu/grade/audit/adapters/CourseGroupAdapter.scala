@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.grade.audit.adapters
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.program.plan.model.{ CourseGroup, CoursePlan, PlanCourse }
 

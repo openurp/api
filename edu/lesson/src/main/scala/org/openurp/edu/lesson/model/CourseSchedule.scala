@@ -19,8 +19,8 @@
 package org.openurp.edu.lesson.model
 
 import org.beangle.commons.lang.time.WeekState
-import org.beangle.commons.model.Component
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.Component
+import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.ClassroomType
 
 /**

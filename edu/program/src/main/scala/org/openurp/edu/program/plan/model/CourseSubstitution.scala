@@ -18,13 +18,12 @@
  */
 package org.openurp.edu.program.plan.model
 
-import org.beangle.commons.model.{ LongId, Updated }
-import org.openurp.base.model.Department
-import org.openurp.code.edu.model.EducationLevel
-import org.openurp.edu.base.code.model.StdType
-import org.openurp.edu.base.model.{ Course, Direction, Major, Project, Student }
-import org.openurp.edu.base.code.model.Education
 import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Department
+import org.openurp.edu.base.code.model.{ Education, StdType }
+import org.openurp.edu.base.model.{ Course, Direction, Major, Project, Student }
 
 /**
  * 课程替代关系.

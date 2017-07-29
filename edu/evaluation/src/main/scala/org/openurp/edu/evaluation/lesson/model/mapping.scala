@@ -20,11 +20,11 @@ package org.openurp.edu.evaluation.lesson.model
 
 import scala.reflect.runtime.universe
 
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.orm.MappingModule
 import org.openurp.edu.evaluation.lesson.result.model._
 import org.openurp.edu.evaluation.lesson.stat.model._
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("date")

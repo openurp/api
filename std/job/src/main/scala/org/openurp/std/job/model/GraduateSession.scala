@@ -18,7 +18,7 @@
  */
 package org.openurp.std.job.model
 
-import org.beangle.commons.model.{ Coded, Named }
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Coded, Named }
 
-class GraduateBatch extends LongId with Named with Coded
+class GraduateSession extends LongId with Named with Coded

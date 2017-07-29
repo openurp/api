@@ -18,11 +18,10 @@
  */
 package org.openurp.edu.grade.course.model
 
-import org.beangle.commons.model.LongId
-import org.openurp.edu.base.code.model.ScoreMarkStyle
-import org.openurp.edu.base.code.model.GradeType
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.edu.base.code.model.{ GradeType, ScoreMarkStyle }
 import org.openurp.edu.grade.model.Grade
-import org.beangle.commons.model.Updated
 
 /**
  * 总评成绩

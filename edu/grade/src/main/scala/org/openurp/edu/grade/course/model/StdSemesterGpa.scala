@@ -18,9 +18,8 @@
  */
 package org.openurp.edu.grade.course.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
-import org.beangle.commons.model.Updated
 
 /**
  * 每学期绩点

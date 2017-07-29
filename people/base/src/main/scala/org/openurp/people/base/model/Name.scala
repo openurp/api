@@ -18,7 +18,7 @@
  */
 package org.openurp.people.base.model
 
-import org.beangle.commons.model.Component
+import org.beangle.data.model.Component
 
 /**
  * 姓名

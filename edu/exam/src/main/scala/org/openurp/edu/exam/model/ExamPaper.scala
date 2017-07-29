@@ -20,7 +20,8 @@ package org.openurp.edu.exam.model
 
 import scala.collection.mutable.Buffer
 
-import org.beangle.commons.model.{ Coded, LongId, Named, Remark }
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Coded, Named, Remark }
 import org.openurp.code.edu.model.ClassroomType
 import org.openurp.edu.base.code.model.ExamType
 import org.openurp.edu.base.model.{ Course, Project }

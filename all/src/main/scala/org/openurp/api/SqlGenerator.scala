@@ -1,7 +1,7 @@
 package org.openurp.api
 
 import org.hibernate.dialect.PostgreSQL9Dialect
-import org.beangle.data.hibernate.tool.DdlGenerator
+import org.beangle.data.orm.tool.DdlGenerator
 import org.hibernate.dialect.PostgreSQL9Dialect
 
 object SqlGenerator {

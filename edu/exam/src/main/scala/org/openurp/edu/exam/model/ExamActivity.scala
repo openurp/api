@@ -19,10 +19,10 @@
 package org.openurp.edu.exam.model
 
 import org.beangle.commons.lang.time.HourMinute
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.code.model.ExamType
-import org.beangle.commons.model.Remark
 import org.openurp.edu.lesson.model.Lesson
 
 /**

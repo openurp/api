@@ -18,7 +18,8 @@
  */
 package org.openurp.code
 
-import org.beangle.commons.model.{ Coded, IntId, Named, Remark, TemporalOn, Updated }
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
 
 trait BaseCode extends IntId with Named with Coded {
 

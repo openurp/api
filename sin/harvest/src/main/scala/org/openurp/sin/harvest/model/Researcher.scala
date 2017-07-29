@@ -19,7 +19,7 @@
 package org.openurp.sin.harvest.model
 
 import org.openurp.people.base.model.Person
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 
 class Researcher extends LongId {
   /**

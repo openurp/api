@@ -18,12 +18,13 @@
  */
 package org.openurp.edu.grade.course.model
 
-import collection.mutable
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.Updated
-import org.openurp.edu.base.model.Student
+import scala.collection.mutable
+
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.ProjectBased
+import org.openurp.edu.base.model.Student
 
 trait GpaStat {
   /**

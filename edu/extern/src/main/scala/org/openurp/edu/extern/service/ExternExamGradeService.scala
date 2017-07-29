@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.extern.service
 
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.annotation.code
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.extern.code.model.{ ExamCategory, ExamSubject }
 import org.openurp.edu.extern.exam.model.ExternExamGrade

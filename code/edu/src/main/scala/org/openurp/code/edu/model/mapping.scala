@@ -20,11 +20,11 @@ package org.openurp.code.edu.model
 
 import scala.reflect.runtime.universe
 
-import org.beangle.commons.model.annotation.code
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.model.annotation.code
+import org.beangle.data.orm.MappingModule
 import org.openurp.code.BaseCodeBean
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
  def binding(): Unit = {
     bind[AdmissionType]

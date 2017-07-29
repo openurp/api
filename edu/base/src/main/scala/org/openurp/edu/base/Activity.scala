@@ -18,8 +18,6 @@
  */
 package org.openurp.edu.base
 
-import org.beangle.commons.model.TemporalAt
-
 trait Activity {
 
   def startOn: java.sql.Date

@@ -18,11 +18,9 @@
  */
 package org.openurp.hr.base.model
 
-import org.beangle.commons.model.Component
-import org.openurp.code.edu.model.{ Degree, EducationDegree }
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.TemporalOn
-import org.openurp.code.edu.model.StudyType
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.TemporalOn
+import org.openurp.code.edu.model.{ Degree, EducationDegree, StudyType }
 
 /**
  * 教育信息

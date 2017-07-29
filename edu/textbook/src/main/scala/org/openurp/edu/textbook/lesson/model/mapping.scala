@@ -18,10 +18,10 @@
  */
 package org.openurp.edu.textbook.lesson.model
 
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.orm.MappingModule
 import org.openurp.edu.textbook.lesson.MaterialStatus
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("date")

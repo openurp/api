@@ -18,7 +18,9 @@
  */
 package org.openurp.people.contact.model
 
-import org.beangle.commons.model.{ LongId, Named }
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
+
 
 /**
  * 绰号/称呼

@@ -5,7 +5,7 @@
   <mapping class="org.openurp.edu.extern.course.model.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.edu.extern" pluralize="true" schema="edu_extern">
-       <class annotation = "org.beangle.commons.model.annotation.code" prefix="xb_" value="school" />
+       <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
     </profile>
   </naming>
 </orm>

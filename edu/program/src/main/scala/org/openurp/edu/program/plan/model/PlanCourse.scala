@@ -19,7 +19,7 @@
 package org.openurp.edu.program.plan.model
 
 import org.beangle.commons.lang.time.WeekState
-import org.beangle.commons.model.LongIdEntity
+import org.beangle.data.model.LongIdEntity
 import org.openurp.base.model.Department
 import org.openurp.edu.base.code.model.ExamMode
 import org.openurp.edu.base.model.Course

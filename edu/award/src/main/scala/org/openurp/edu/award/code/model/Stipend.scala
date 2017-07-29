@@ -18,8 +18,9 @@
  */
 package org.openurp.edu.award.code.model
 
-import org.beangle.commons.model.{ Coded, IntId, Named, TemporalOn }
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.IntId
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Coded, Named, TemporalOn }
 
 @code("school")
 class StipendCategory extends IntId with Coded with Named with TemporalOn {

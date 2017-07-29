@@ -18,10 +18,9 @@
  */
 package org.openurp.edu.program.plan.model
 
-import org.beangle.commons.model.LongId
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Terms
-import org.beangle.commons.model.Remark
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
+import org.openurp.edu.base.model.{ Course, Terms }
 
 /**
  * 抽象计划内课程

@@ -18,11 +18,11 @@
  */
 package org.openurp.hr.base.model
 
-import org.beangle.commons.model.{ Coded, LongId, Named }
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Coded, Named }
 import org.openurp.code.geo.model.Country
 import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.code.person.model.{ FamilyRelationship, HealthStatus, IdType, JobStatus, Nation, PoliticalStatus }
-import org.openurp.people.base.model.Person
 
 /**
  * 家庭成员

@@ -18,10 +18,10 @@
  */
 package org.openurp.code.job.model
 
-import org.beangle.commons.model.bind.Mapping
+import org.beangle.data.orm.MappingModule
 import org.openurp.code.BaseCodeBean
 
-class DefaultMapping extends Mapping {
+class DefaultMapping extends MappingModule {
 
  def binding(): Unit = {
     bind[SocialUnitType]

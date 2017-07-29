@@ -18,8 +18,7 @@
  */
 package org.openurp.std.job.model
 
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.Named
-import org.beangle.commons.model.Coded
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Coded, Named }
 
 class EmploymentStatus extends LongId  with Coded with Named

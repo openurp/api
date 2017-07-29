@@ -18,10 +18,10 @@
  */
 package org.openurp.edu.base.model
 
-import org.beangle.commons.model.IntId
+import org.beangle.data.model.IntId
 import org.openurp.base.model.Campus
 import org.openurp.edu.base.code.model.Education
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 
 /**
  * 专业培养方案每学期对应校区

@@ -19,8 +19,8 @@
 package org.openurp.edu.evaluation.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.{ LongId, Named }
-import org.openurp.base.model.Department
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
 import org.openurp.edu.base.model.Project
 
 /**

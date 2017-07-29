@@ -18,10 +18,10 @@
  */
 package org.openurp.edu.evaluation.lesson.model
 
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 import org.openurp.edu.evaluation.model.Questionnaire
 import org.openurp.edu.lesson.model.Lesson
-import org.beangle.commons.model.LongId
+import org.beangle.data.model.LongId
 
 class QuestionnaireLesson extends LongId {
   /**教学任务*/

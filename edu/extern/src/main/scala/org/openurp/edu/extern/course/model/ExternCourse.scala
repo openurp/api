@@ -1,10 +1,8 @@
 package org.openurp.edu.extern.course.model
 
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{ Named, Remark, TemporalOn }
 import org.openurp.base.model.School
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.Named
-import org.beangle.commons.model.TemporalOn
-import org.beangle.commons.model.Remark
 
 /**
  * 校外课程

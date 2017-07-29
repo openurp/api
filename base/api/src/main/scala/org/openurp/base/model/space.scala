@@ -18,9 +18,9 @@
  */
 package org.openurp.base.model
 
-import org.beangle.commons.model.{ Coded, IntId, Named, Remark, TemporalOn, Updated }
-import org.openurp.code.asset.model.RoomType
-import org.openurp.code.asset.model.BuildingType
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
+import org.openurp.code.asset.model.{ BuildingType, RoomType }
 
 /**
  * 校区

@@ -18,10 +18,10 @@
  */
 package org.openurp.edu.grade.course.model
 
-import org.beangle.commons.model.annotation.config
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.Remark
 import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.grade.model.AbstractGradeState
-import org.beangle.commons.model.Remark
 
 /**
  * 总评成绩状态

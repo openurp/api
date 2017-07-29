@@ -18,8 +18,8 @@
  */
 package org.openurp.lg.room.model
 
-import org.beangle.commons.model.LongId
-import org.beangle.commons.model.Named
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
 
 /**
  * 房间的使用系统

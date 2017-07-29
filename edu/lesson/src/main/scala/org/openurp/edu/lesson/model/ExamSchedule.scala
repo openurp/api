@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.lesson.model
 
-import org.beangle.commons.model.Component
+import org.beangle.data.model.Component
 import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
 import org.beangle.commons.lang.time.HourMinute
 

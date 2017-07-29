@@ -19,12 +19,12 @@
 package org.openurp.edu.base.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.{ Coded, LongId, Named, TemporalOn, Updated }
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
 import org.openurp.base.model.Department
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.{ CourseAbilityRate, CourseCategory, CourseHourType, CourseType, Education, ExamMode, ScoreMarkStyle }
-import org.beangle.commons.model.Remark
 
 /**
  * 课程基本信息 </p>

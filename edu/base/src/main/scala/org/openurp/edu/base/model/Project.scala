@@ -19,12 +19,14 @@
 package org.openurp.edu.base.model
 
 import scala.collection.mutable.{ Buffer, ListBuffer }
+
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.model.{ Coded, IntId, LongId, Named, TemporalOn, Updated }
-import org.beangle.commons.model.annotation.code
+import org.beangle.data.model.{ IntId, LongId }
+import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.{ Coded, Named, TemporalOn, Updated }
 import org.openurp.base.model.{ Calendar, Campus, Department, School, TimeSetting }
 import org.openurp.edu.base.code.model.{ Education, StdLabel, StdType }
-import org.openurp.base.model.Room
+
 /**
  * 项目
  *

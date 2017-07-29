@@ -20,7 +20,8 @@ package org.openurp.sin.harvest.model
 
 import java.sql.Date
 
-import org.beangle.commons.model.{ IntId, Named }
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.Named
 
 class PublishedSituation extends IntId with Named {
 
