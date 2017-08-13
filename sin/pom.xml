@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.0.19</version>
+    <version>0.0.20-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.sin</groupId>
   <artifactId>openurp-sin-parent</artifactId>
