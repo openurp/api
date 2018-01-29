@@ -20,12 +20,11 @@ package org.openurp.edu.lesson.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.YearId
 
 /**
  * 课程限制条件组
  */
-class LessonLimitGroup extends LongId with Cloneable with YearId {
+class LessonLimitGroup extends LongId with Cloneable {
 
   /** 教学任务 */
   var lesson: Lesson = _
@@ -46,6 +45,4 @@ class LessonLimitGroup extends LongId with Cloneable with YearId {
   var parent: Option[LessonLimitGroup] = None
 
   var children = Collections.newBuffer[LessonLimitGroup]
-
-  def year: Int = lesson.year
 }

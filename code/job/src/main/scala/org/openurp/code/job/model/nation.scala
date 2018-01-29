@@ -19,18 +19,18 @@
 package org.openurp.code.job.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 /**
  * 职务类别
  */
 @code("nation")
-class DutyType extends BaseCodeBean
+class DutyType extends CodeBean
 
 /**
  * 行政职务级别
  */
 @code("nation")
-class DutyGrade extends BaseCodeBean {
+class DutyGrade extends CodeBean {
   /**
    * 行政职务类别
    */
@@ -41,19 +41,19 @@ class DutyGrade extends BaseCodeBean {
  * 职称等级
  */
 @code("nation")
-class ProfessionalGrade extends BaseCodeBean
+class ProfessionalGrade extends CodeBean
 
 /**
  * 岗位类别
  */
 @code("nation")
-class PostType extends BaseCodeBean
+class PostType extends CodeBean
 
 /**
  * 岗位等级
  */
 @code("nation")
-class PostGrade extends BaseCodeBean
+class PostGrade extends CodeBean
 
 /**
  * 职称
@@ -62,7 +62,7 @@ class PostGrade extends BaseCodeBean
  * @since 2005-9-7
  */
 @code("nation")
-class ProfessionalTitle extends BaseCodeBean {
+class ProfessionalTitle extends CodeBean {
   /**
    * 职称等级
    */

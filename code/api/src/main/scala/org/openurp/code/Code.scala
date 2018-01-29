@@ -16,13 +16,26 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.code.service
+package org.openurp.code
 
-import org.openurp.code.BaseCode
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
 
-trait BaseCodeService {
+trait Code extends IntId with Named with Coded {
 
-  def getCodes[T <: BaseCode](clazz: Class[T]): Seq[T]
+  def enName: Option[String]
+}
 
-  def getCode[T <: BaseCode](clazz: Class[T], id: Integer): T
+object CodeCategory {
+
+  //  基础代码种类
+  val Nation = "nation"
+
+  val Industry = "industry"
+
+  val School = "school"
+}
+
+abstract class CodeBean extends IntId with Code with TemporalOn with Updated with Remark {
+  var enName: Option[String] = None
 }

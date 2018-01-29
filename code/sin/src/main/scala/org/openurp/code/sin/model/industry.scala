@@ -19,13 +19,13 @@
 package org.openurp.code.sin.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 
 /**
  * 刊物
  */
 @code("industry")
-class Publication extends BaseCodeBean {
+class Publication extends CodeBean {
 
   var grade: PublicationGrade = _
 }
@@ -34,7 +34,7 @@ class Publication extends BaseCodeBean {
  * 刊物级别
  */
 @code("industry")
-class PublicationGrade extends BaseCodeBean {
+class PublicationGrade extends CodeBean {
 
 }
 
@@ -42,7 +42,7 @@ class PublicationGrade extends BaseCodeBean {
  * 出版社
  */
 @code("industry")
-class Press extends BaseCodeBean{
+class Press extends CodeBean{
    var grade: PressGrade = _
 }
 
@@ -51,4 +51,4 @@ class Press extends BaseCodeBean{
  * 参见教育部标准JY/T 1001 4.6.1
  */
 @code("industry")
-class PressGrade extends BaseCodeBean
+class PressGrade extends CodeBean

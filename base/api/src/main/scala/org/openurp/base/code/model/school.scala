@@ -19,23 +19,23 @@
 package org.openurp.base.code.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 import org.beangle.data.model.pojo.Hierarchical
 
 /**
  * 用户分类
  */
 @code("school")
-class UserCategory extends BaseCodeBean
+class UserCategory extends CodeBean
 
 /**
  * 部门分类
  */
 @code("school")
-class DepartmentCategory extends BaseCodeBean with Hierarchical[DepartmentCategory]
+class DepartmentCategory extends CodeBean with Hierarchical[DepartmentCategory]
 
 /**
  * 上下午时段
  */
 @code("school")
-class DayPart extends BaseCodeBean
+class DayPart extends CodeBean

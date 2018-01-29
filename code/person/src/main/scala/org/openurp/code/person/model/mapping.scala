@@ -19,7 +19,7 @@
 package org.openurp.code.person.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 
 class DefaultMapping extends MappingModule {
 

@@ -19,12 +19,12 @@
 package org.openurp.edu.extern.code.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 /**
  * 校外考试科目
  */
 @code("school")
-class ExamSubject extends BaseCodeBean {
+class ExamSubject extends CodeBean {
   var category:ExamCategory=_
 }
 
@@ -32,4 +32,4 @@ class ExamSubject extends BaseCodeBean {
  * 校外考试种类
  */
 @code("school")
-class ExamCategory extends BaseCodeBean
+class ExamCategory extends CodeBean
