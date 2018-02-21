@@ -18,7 +18,7 @@
  */
 package org.openurp.code.geo.model
 
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 import org.beangle.data.model.annotation.code
 
 /**
@@ -29,7 +29,7 @@ import org.beangle.data.model.annotation.code
  * @since 3.0.0
  */
 @code("industry")
-class RailwayStation extends BaseCodeBean {
+class RailwayStation extends CodeBean {
 
   /**简拼*/
   var jianpin: String = _

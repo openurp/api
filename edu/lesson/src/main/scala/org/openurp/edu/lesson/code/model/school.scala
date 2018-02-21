@@ -19,12 +19,12 @@
 package org.openurp.edu.lesson.code.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 /**
  * 教学任务标签
  */
 @code("school")
-class LessonTag extends BaseCodeBean
+class LessonTag extends CodeBean
 object LessonTag {
   val GuapaiId = 1
 

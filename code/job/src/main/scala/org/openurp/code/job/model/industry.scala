@@ -19,18 +19,18 @@
 package org.openurp.code.job.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 
 /**
  * 社会单位性质
  * 参见教育部标准JY/T 1001 4.5.12
  */
 @code("industry")
-class SocialUnitType extends BaseCodeBean
+class SocialUnitType extends CodeBean
 
 /**
  * 导师类型
  * 参见教育部标准JY/T 1001 4.4.4
  */
 @code("industry")
-class TutorType extends BaseCodeBean
+class TutorType extends CodeBean

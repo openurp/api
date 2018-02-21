@@ -19,7 +19,7 @@
 package org.openurp.code.edu.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 /**
  * 学位
  * 参见国家推荐标准 GB/T 6864
@@ -27,7 +27,7 @@ import org.openurp.code.BaseCodeBean
  * @since 2005-9-7
  */
 @code("nation")
-class Degree extends BaseCodeBean {
+class Degree extends CodeBean {
   var level: DegreeLevel = _
 }
 
@@ -38,7 +38,7 @@ class Degree extends BaseCodeBean {
  * @since 2015-2-5
  */
 @code("nation")
-class DegreeLevel extends BaseCodeBean
+class DegreeLevel extends CodeBean
 
 /**
  * 学科门类
@@ -46,7 +46,7 @@ class DegreeLevel extends BaseCodeBean
  * @see http://web.heuet.edu.cn/rsc/zhicheng2007/erjixuekemulu.doc
  */
 @code("nation")
-class DisciplineCategory extends BaseCodeBean
+class DisciplineCategory extends CodeBean
 
 /**
  * 学历(文化程度)
@@ -54,7 +54,7 @@ class DisciplineCategory extends BaseCodeBean
  * @see http://www.csres.com/detail/176312.html
  */
 @code("nation")
-class EducationDegree extends BaseCodeBean {
+class EducationDegree extends CodeBean {
   var level: EducationLevel = _
   var result: EducationResult = _
 }
@@ -65,14 +65,14 @@ class EducationDegree extends BaseCodeBean {
  * @see http://www.csres.com/detail/176312.html
  */
 @code("nation")
-class EducationLevel extends BaseCodeBean
+class EducationLevel extends CodeBean
 
 /**
  * 教育培训结果
  * 参见国家推荐标准GB/T 14946.1—2009 附录A.27
  */
 @code("nation")
-class EducationResult extends BaseCodeBean
+class EducationResult extends CodeBean
 
 /**
  * 语种
@@ -82,14 +82,14 @@ class EducationResult extends BaseCodeBean
  * @see http://zh.wikipedia.org/wiki/ISO_639-2
  */
 @code("nation")
-class Language extends BaseCodeBean
+class Language extends CodeBean
 
 /**
  * 语种熟练程度
  * 参见国家推荐标准 GB/T 6865
  */
 @code("nation")
-class LanguageAbility extends BaseCodeBean
+class LanguageAbility extends CodeBean
 
 
 /**
@@ -98,4 +98,4 @@ class LanguageAbility extends BaseCodeBean
  * @author chaostone
  */
 @code("nation")
-class StudyType extends BaseCodeBean
+class StudyType extends CodeBean

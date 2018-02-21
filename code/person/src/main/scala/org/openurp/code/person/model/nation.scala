@@ -19,14 +19,14 @@
 package org.openurp.code.person.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 
 /**
  * 港澳台侨
  * 参见国家标准 GB_T 14946.1-2009 A2
  */
 @code("nation")
-class CompatriotType extends BaseCodeBean
+class CompatriotType extends CodeBean
 
 /**
  * 人员关系
@@ -34,7 +34,7 @@ class CompatriotType extends BaseCodeBean
  * @see http://www.sac.gov.cn/SACSearch/search?channelid=160591&templet=gjcxjg_detail.jsp&searchword=STANDARD_CODE=%27GB/T%204761-2008%27&XZ=T
  */
 @code("nation")
-class FamilyRelationship extends BaseCodeBean 
+class FamilyRelationship extends CodeBean 
 
 /**
  * 性别
@@ -43,35 +43,35 @@ class FamilyRelationship extends BaseCodeBean
  * @see http://en.wikipedia.org/wiki/ISO/IEC_5218
  */
 @code("nation")
-class Gender extends BaseCodeBean
+class Gender extends CodeBean
 
 /**
  * 健康状况
  * 参见国家标准GB/T 2261.3
  */
 @code("nation")
-class HealthStatus extends BaseCodeBean
+class HealthStatus extends CodeBean
 
 /**
  * 证件类型
  * 参见国家标准GB/T 14946.1-2009 附录A.84
  */
 @code("nation")
-class IdType extends BaseCodeBean
+class IdType extends CodeBean
 
 /**
  * 从业状况
  * 参见国家标准GB/T 2261.4-2003
  */
 @code("nation")
-class JobStatus extends BaseCodeBean 
+class JobStatus extends CodeBean 
 
 /**
  * 婚姻状况
  * 参见国家标准GB 2261.2-2003
  */
 @code("nation")
-class MaritalStatus extends BaseCodeBean
+class MaritalStatus extends CodeBean
 
 /**
  * 民族
@@ -79,7 +79,7 @@ class MaritalStatus extends BaseCodeBean
  * @see http://www.gfjl.org/thread-74491-1-1.html
  */
 @code("nation")
-class Nation extends BaseCodeBean{
+class Nation extends CodeBean{
   var alphaCode: String = _
 }
 
@@ -89,11 +89,11 @@ class Nation extends BaseCodeBean{
  * @see http://www.gfjl.org/thread-79332-1-1.html
  */
 @code("nation")
-class PoliticalStatus extends BaseCodeBean 
+class PoliticalStatus extends CodeBean 
 
 /**
  * 宗教信仰
  * 参见国家标准GA 214.12
  */
 @code("nation")
-class Religion extends BaseCodeBean 
+class Religion extends CodeBean 

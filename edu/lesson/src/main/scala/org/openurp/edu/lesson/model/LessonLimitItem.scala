@@ -19,13 +19,12 @@
 package org.openurp.edu.lesson.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.YearId
 import org.openurp.edu.lesson.LessonLimitMeta
 
 /**
  * 选课限制条件项
  */
-class LessonLimitItem extends LongId with Cloneable with YearId {
+class LessonLimitItem extends LongId with Cloneable {
 
   /** 限制具体项目 */
   var meta: LessonLimitMeta.LimitMeta = _
@@ -41,7 +40,4 @@ class LessonLimitItem extends LongId with Cloneable with YearId {
 
   /** 限制内容 */
   var content: String = _
-
-  def year = group.year
-
 }

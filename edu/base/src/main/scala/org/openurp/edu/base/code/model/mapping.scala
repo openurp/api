@@ -21,7 +21,7 @@ package org.openurp.edu.base.code.model
 import scala.reflect.runtime.universe
 import org.beangle.data.model.annotation.code
 import org.beangle.data.orm.MappingModule
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 import org.beangle.commons.lang.time.WeekState
 
 class DefaultMapping extends MappingModule {

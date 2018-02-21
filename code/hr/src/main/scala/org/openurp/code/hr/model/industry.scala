@@ -19,7 +19,7 @@
 package org.openurp.code.hr.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 import org.beangle.commons.collection.Collections
 
 /**
@@ -27,7 +27,7 @@ import org.beangle.commons.collection.Collections
  * 参见教育部标准JY/T 1001 4.4.16
  */
 @code("industry")
-class StaffType extends BaseCodeBean {
+class StaffType extends CodeBean {
   var parent: StaffType = _
   var children = Collections.newBuffer[StaffType]
 }
@@ -36,7 +36,7 @@ class StaffType extends BaseCodeBean {
  * 参见教育部标准JY/T 1001 4.4.17
  */
 @code("industry")
-class StaffSourceType extends BaseCodeBean {
+class StaffSourceType extends CodeBean {
   var parent: StaffSourceType = _
   var children = Collections.newBuffer[StaffSourceType]
 }
@@ -47,5 +47,5 @@ class StaffSourceType extends BaseCodeBean {
  * 参见教育部标准JY/T 1001 4.4.15
  */
 @code("industry")
-class WorkStatus extends BaseCodeBean
+class WorkStatus extends CodeBean
 

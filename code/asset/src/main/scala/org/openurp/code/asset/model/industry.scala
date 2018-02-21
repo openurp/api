@@ -18,7 +18,7 @@
  */
 package org.openurp.code.asset.model
 
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 import org.beangle.data.model.annotation.code
 
 /**
@@ -29,7 +29,7 @@ import org.beangle.data.model.annotation.code
  * @since 3.0.0
  */
 @code("industry")
-class RoomType extends BaseCodeBean {
+class RoomType extends CodeBean {
 
 }
 
@@ -39,6 +39,6 @@ class RoomType extends BaseCodeBean {
  * @since 2016-07-03
  */
 @code("industry")
-class BuildingType extends BaseCodeBean {
+class BuildingType extends CodeBean {
 
 }

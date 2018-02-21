@@ -21,7 +21,7 @@ package org.openurp.edu.lesson.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ Updated, YearId }
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.{ Campus, Department, Semester }
 import org.openurp.edu.base.{ ProjectBased, States }
 import org.openurp.edu.base.code.model.{ CourseType, TeachLangType }
@@ -47,7 +47,7 @@ import org.openurp.edu.lesson.code.model.LessonTag
  * @depend - - - ExamMode
  * @depend - - - Project
  */
-class Lesson extends LongId with ProjectBased with Updated with Cloneable with YearId {
+class Lesson extends LongId with ProjectBased with Updated with Cloneable {
 
   /** 课程序号 */
   var no: String = _
@@ -92,9 +92,4 @@ class Lesson extends LongId with ProjectBased with Updated with Cloneable with Y
   var state: States.State = _
 
   var tags = Collections.newSet[LessonTag]
-
-  def year: Int = {
-    Integer.valueOf(semester.id.toString.substring(0, 4))
-  }
-
 }

@@ -18,12 +18,12 @@
  */
 package org.openurp.code.hr.model
 
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 import org.beangle.data.model.annotation.code
 
 /**
  * 用人形式
  */
 @code("nation")
-class EmployType extends BaseCodeBean 
+class EmployType extends CodeBean 
 

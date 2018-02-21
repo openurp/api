@@ -19,20 +19,20 @@
 package org.openurp.edu.base.code.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 import org.openurp.code.edu.model.EducationLevel
 
 /**
  * 教材类型
  */
 @code("school")
-class BookType extends BaseCodeBean
+class BookType extends CodeBean
 
 /**
  * 教材获奖类型
  */
 @code("school")
-class BookAwardType extends BaseCodeBean
+class BookAwardType extends CodeBean
 
 /**
  * 课程类别
@@ -41,7 +41,7 @@ class BookAwardType extends BaseCodeBean
  * @since 2005-9-7
  */
 @code("school")
-class CourseType extends BaseCodeBean {
+class CourseType extends CodeBean {
 
   /**是否实践课程*/
   var practical: Boolean = _
@@ -60,18 +60,18 @@ class CourseType extends BaseCodeBean {
  * （一般、体育、挂牌、双语）
  */
 @code("school")
-class CourseCategory extends BaseCodeBean
+class CourseCategory extends CodeBean
 /**
  * 课时类别代码
  */
 @code("school")
-class CourseHourType extends BaseCodeBean
+class CourseHourType extends CodeBean
 
 /**
  * 课程能力等级
  */
 @code("school")
-class CourseAbilityRate extends BaseCodeBean
+class CourseAbilityRate extends CodeBean
 /**
  * 修课类别
  * （重修、增修、免修不免试、主修，选修）
@@ -80,7 +80,7 @@ class CourseAbilityRate extends BaseCodeBean
  * @since 2005-12-2
  */
 @code("school")
-class CourseTakeType extends BaseCodeBean {
+class CourseTakeType extends CodeBean {
   def this(id: Int, code: String, name: String, enName: String) {
     this()
     this.id = id
@@ -105,7 +105,7 @@ object CourseTakeType {
  * 培养层次
  */
 @code("school")
-class Education extends BaseCodeBean {
+class Education extends CodeBean {
   var from: EducationLevel = _
   var to: EducationLevel = _
 }
@@ -113,13 +113,13 @@ class Education extends BaseCodeBean {
  * 考核方式
  */
 @code("school")
-class ExamMode extends BaseCodeBean
+class ExamMode extends CodeBean
 /**
  * 考试情况
  * 正常、作弊、旷考等
  */
 @code("school")
-class ExamStatus extends BaseCodeBean {
+class ExamStatus extends CodeBean {
   /**
    * 是否参加考试
    */
@@ -149,7 +149,7 @@ object ExamStatus {
 }
 
 @code("school")
-class ElectionMode extends BaseCodeBean
+class ElectionMode extends CodeBean
 
 object ElectionMode {
   /** 指定 */
@@ -163,7 +163,7 @@ object ElectionMode {
  * 考试方式
  */
 @code("school")
-class ExamForm extends BaseCodeBean
+class ExamForm extends CodeBean
 /**
  * 考试类型
  */
@@ -183,7 +183,7 @@ object ExamType {
 }
 
 @code("school")
-class ExamType extends BaseCodeBean {
+class ExamType extends CodeBean {
 
   /**是否是缓考*/
   var deferred: Boolean = _
@@ -203,7 +203,7 @@ class ExamType extends BaseCodeBean {
  * @since 2005-9-7
  */
 @code("school")
-class GradeType extends BaseCodeBean {
+class GradeType extends CodeBean {
   def isGa: Boolean = {
     id == GradeType.EndGa || id == GradeType.MakeupGa || id == GradeType.DelayGa
   }
@@ -239,26 +239,26 @@ object GradeType {
  * 学生分类标签
  */
 @code("school")
-class StdLabel extends BaseCodeBean {
+class StdLabel extends CodeBean {
   var labelType: StdLabelType = _
 }
 /**
  * 学生分类标签类型
  */
 @code("school")
-class StdLabelType extends BaseCodeBean
+class StdLabelType extends CodeBean
 
 /**
  * 学生类别
  */
 @code("school")
-class StdType extends BaseCodeBean
+class StdType extends CodeBean
 
 /**
  * 成绩记录方式
  */
 @code("school")
-class ScoreMarkStyle extends BaseCodeBean {
+class ScoreMarkStyle extends CodeBean {
 
   var numStyle: Boolean = _
 
@@ -282,12 +282,12 @@ object ScoreMarkStyle {
  * 授课语言类型
  */
 @code("school")
-class TeachLangType extends BaseCodeBean
+class TeachLangType extends CodeBean
 /**
  * 教师类型
  */
 @code("school")
-class TeacherType extends BaseCodeBean {
+class TeacherType extends CodeBean {
   var external: Boolean = _
   var parttime: Boolean = _
 }

@@ -21,7 +21,7 @@ package org.openurp.edu.base.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.{ Component, LongId }
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ Coded, Remark, TemporalOn, Updated, YearId }
+import org.beangle.data.model.pojo.{ Coded, Remark, TemporalOn, Updated }
 import org.openurp.base.model.{ Campus, Department }
 import org.openurp.code.edu.model.{ StudentStatus, StudyType }
 import org.openurp.edu.base.{ EducationBased, StdEnrollment }
@@ -32,7 +32,7 @@ import org.beangle.data.model.pojo.DateRange
 /**
  * 学籍信息实现
  */
-class Student extends LongId with EducationBased with YearId with Coded with Updated with Remark with DateRange {
+class Student extends LongId with EducationBased with Coded with Updated with Remark with DateRange {
 
   /**基本信息*/
   var person: Person = _
@@ -60,9 +60,6 @@ class Student extends LongId with EducationBased with YearId with Coded with Upd
 
   /**导师*/
   var tutor: Option[Teacher] = None
-
-  def year = Integer.valueOf(state.get.grade.substring(0, 4))
-
 }
 /**
  * 学籍状态日志

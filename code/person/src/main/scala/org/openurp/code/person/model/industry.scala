@@ -19,54 +19,54 @@
 package org.openurp.code.person.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 
 /**
  * 血型
  * 参见教育部标准JY/T 1001 4.5.14
  */
 @code("industry")
-class BloodType extends BaseCodeBean
+class BloodType extends CodeBean
 
 /**
  * 困难原因
  * 参见教育部标准JY/T 1001 4.2.23
  */
 @code("industry")
-class DifficultyCause extends BaseCodeBean 
+class DifficultyCause extends CodeBean 
 
 /**
  * 困难程度
  * 参见教育部标准JY/T 1001 4.2.22
  */
 @code("industry")
-class DifficultyDegree extends BaseCodeBean
+class DifficultyDegree extends CodeBean
 
 /**
  * 家庭类别
  * 参见教育部标准JY/T 1001 4.2.19
  */
 @code("industry")
-class FamilyCategory extends BaseCodeBean
+class FamilyCategory extends CodeBean
 
 /**
  * 户口类别
  * 参见国家标准GA 324.1-2001 见表C.3
  */
 @code("industry")
-class HouseholdType extends BaseCodeBean
+class HouseholdType extends CodeBean
 
 /**
  * 护照类别
  * 参见GA 59.7 涉外信息管理代码 第 7 部分:护照证件种类代码
  */
 @code("industry")
-class PassportType extends BaseCodeBean
+class PassportType extends CodeBean
 
 /**
  * 中国签证类别
  * GA/T 704.8-2007
  */
 @code("industry")
-class VisaType extends BaseCodeBean
+class VisaType extends CodeBean
 

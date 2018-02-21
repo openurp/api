@@ -19,7 +19,7 @@
 package org.openurp.code.geo.model
 
 import org.beangle.data.model.annotation.code
-import org.openurp.code.BaseCodeBean
+import org.openurp.code.CodeBean
 import org.beangle.commons.collection.Collections
 
 /**
@@ -29,7 +29,7 @@ import org.beangle.commons.collection.Collections
  * @see http://wenku.baidu.com/view/bd105c235901020207409cd1.html
  */
 @code("nation")
-class Country extends BaseCodeBean {
+class Country extends CodeBean {
   var alpha3Code: String = _
   var alpha2Code: String = _
   var shortName: String = _
@@ -41,7 +41,7 @@ class Country extends BaseCodeBean {
  * @see http://www.gfjl.org/thread-83266-1-1.html
  */
 @code("nation")
-class Division extends BaseCodeBean {
+class Division extends CodeBean {
   /** 父级 */
   var parent: Division = _
 
