@@ -1,20 +1,20 @@
 /*
- * OpenURP, Agile University Resource Planning Solution
+ * OpenURP, Agile University Resource Planning Solution.
  *
- * Copyright (c) 2014-2017, OpenURP Software.
+ * Copyright © 2005, The OpenURP Software.
  *
- * OpenURP is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * OpenURP is distributed in the hope that it will be useful.
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * GNU Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with OpenURP.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.code.person.model
 
@@ -34,7 +34,7 @@ class CompatriotType extends CodeBean
  * @see http://www.sac.gov.cn/SACSearch/search?channelid=160591&templet=gjcxjg_detail.jsp&searchword=STANDARD_CODE=%27GB/T%204761-2008%27&XZ=T
  */
 @code("nation")
-class FamilyRelationship extends CodeBean 
+class FamilyRelationship extends CodeBean
 
 /**
  * 性别
@@ -64,7 +64,7 @@ class IdType extends CodeBean
  * 参见国家标准GB/T 2261.4-2003
  */
 @code("nation")
-class JobStatus extends CodeBean 
+class JobStatus extends CodeBean
 
 /**
  * 婚姻状况
@@ -89,11 +89,11 @@ class Nation extends CodeBean{
  * @see http://www.gfjl.org/thread-79332-1-1.html
  */
 @code("nation")
-class PoliticalStatus extends CodeBean 
+class PoliticalStatus extends CodeBean
 
 /**
  * 宗教信仰
  * 参见国家标准GA 214.12
  */
 @code("nation")
-class Religion extends CodeBean 
+class Religion extends CodeBean
