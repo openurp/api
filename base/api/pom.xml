@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.openurp.base</groupId>
-    <artifactId>openurp-base-parent</artifactId>
+    <artifactId>openurp-base-parent_2.12</artifactId>
     <version>0.0.23-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.base</groupId>
-  <artifactId>openurp-base-api</artifactId>
+  <artifactId>openurp-base-api_2.12</artifactId>
   <version>0.0.23-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>OpenURP Base API</name>
@@ -20,19 +20,19 @@
   <dependencies>
     <dependency>
       <groupId>org.openurp.code</groupId>
-      <artifactId>openurp-code-person</artifactId>
+      <artifactId>openurp-code-person_2.12</artifactId>
     </dependency>
     <dependency>
       <groupId>org.openurp.code</groupId>
-      <artifactId>openurp-code-edu</artifactId>
+      <artifactId>openurp-code-edu_2.12</artifactId>
     </dependency>
     <dependency>
       <groupId>org.openurp.code</groupId>
-      <artifactId>openurp-code-geo</artifactId>
+      <artifactId>openurp-code-geo_2.12</artifactId>
     </dependency>
     <dependency>
       <groupId>org.openurp.code</groupId>
-      <artifactId>openurp-code-asset</artifactId>
+      <artifactId>openurp-code-asset_2.12</artifactId>
     </dependency>
   </dependencies>
 </project>
