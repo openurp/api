@@ -4,17 +4,13 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.2.10</version>
+    <version>0.2.12</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-parent_2.12</artifactId>
   <packaging>pom</packaging>
   <version>0.0.23-SNAPSHOT</version>
   <name>OpenURP API Parent</name>
-
-  <prerequisites>
-    <maven>3.3</maven>
-  </prerequisites>
 
   <modules>
     <module>code</module>
