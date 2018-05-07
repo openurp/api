@@ -3,18 +3,19 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.openurp.code</groupId>
-    <artifactId>openurp-code-parent_2.12</artifactId>
-    <version>0.0.23-SNAPSHOT</version>
+    <artifactId>openurp-code-parent</artifactId>
+    <version>0.0.23</version>
   </parent>
   <groupId>org.openurp.code</groupId>
-  <artifactId>openurp-code-sin_2.12</artifactId>
+  <artifactId>openurp-code-sin</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Code - Science</name>
 
   <dependencies>
     <dependency>
       <groupId>org.openurp.code</groupId>
-      <artifactId>openurp-code-api_2.12</artifactId>
+      <artifactId>openurp-code-api</artifactId>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
 </project>

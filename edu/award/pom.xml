@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.openurp.edu</groupId>
-    <artifactId>openurp-edu-parent_2.12</artifactId>
-    <version>0.0.23-SNAPSHOT</version>
+    <artifactId>openurp-edu-parent</artifactId>
+    <version>0.0.23</version>
   </parent>
   <groupId>org.openurp.edu.award</groupId>
-  <artifactId>openurp-edu-award-api_2.12</artifactId>
+  <artifactId>openurp-edu-award-api</artifactId>
   <packaging>jar</packaging>
   <name>OpenURP Edu Award API</name>
 
@@ -19,7 +19,7 @@
   <dependencies>
     <dependency>
       <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-api_2.12</artifactId>
+      <artifactId>openurp-edu-base-api</artifactId>
     </dependency>
   </dependencies>
 </project>
