@@ -1,9 +1,9 @@
 CourseGrade=课程成绩实现
 CourseGrade.beyondSubmit=是否提交
 CourseGrade.course=课程
-CourseGrade.lessonNo=课程序号
-CourseGrade.lesson=教学任务
-CourseGrade.markStyle=成绩记录方式
+CourseGrade.crn=课程序号
+CourseGrade.clazz=教学任务
+CourseGrade.gradingMode=成绩记录方式
 CourseGrade.operator=操作者
 CourseGrade.passed=是否通过
 CourseGrade.personPercent=个人百分比
@@ -24,7 +24,7 @@ CourseGrade.freeListening=是否免听
 
 ExamGrade=考试成绩
 ExamGrade.gradeType=成绩类型
-ExamGrade.markStyle=成绩记录方式
+ExamGrade.gradingMode=成绩记录方式
 ExamGrade.examStatus=考试情况
 ExamGrade.score=得分
 ExamGrade.scoreText=得分字面值
@@ -50,7 +50,7 @@ GradeRateConfig.project=项目
 
 GaGrade=总评成绩
 GaGrade.gradeType=成绩类型
-GaGrade.markStyle=成绩记录方式
+GaGrade.gradingMode=成绩记录方式
 GaGrade.score=得分
 GaGrade.scoreText=得分字面值
 GaGrade.courseGrade=对应的课程成绩
@@ -66,7 +66,7 @@ GaGradeState.gradeState=总成绩状态
 GaGradeState.remark=备注
 GaGradeState.operator=操作者
 GaGradeState.status=成绩状态
-GaGradeState.markStyle=成绩记录方式
+GaGradeState.gradingMode=成绩记录方式
 
 ExamGradeState=考试成绩状态
 ExamGradeState.gradeType=成绩类型
@@ -75,12 +75,12 @@ ExamGradeState.remark=备注
 ExamGradeState.percent=百分比描述
 ExamGradeState.operator=操作者
 ExamGradeState.status=成绩状态
-ExamGradeState.markStyle=成绩记录方式
+ExamGradeState.gradingMode=成绩记录方式
 
 CourseGradeState=成绩状态
-CourseGradeState.lesson=教学任务
+CourseGradeState.clazz=教学任务
 CourseGradeState.operator=操作者
-CourseGradeState.markStyle=成绩记录方式
+CourseGradeState.gradingMode=成绩记录方式
 CourseGradeState.status=成绩状态
 
 GpaStat.gpa=总平均绩点

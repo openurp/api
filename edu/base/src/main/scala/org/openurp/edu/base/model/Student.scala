@@ -86,7 +86,7 @@ class StudentState extends LongId with StdEnrollment with TemporalOn with Remark
   var direction: Option[Direction] = None
 
   /** 行政班级 */
-  var adminclass: Option[Adminclass] = None
+  var squad: Option[Squad] = None
 
   /** 是否在校 */
   var inschool: Boolean = _

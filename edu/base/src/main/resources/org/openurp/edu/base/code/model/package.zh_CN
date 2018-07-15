@@ -24,9 +24,9 @@ ExamForm=考试形式
 ExamType=考试类型
 ExamType.deferred=是否是缓考
 
-Education=培养层次
-Education.from=开始
-Education.to=结束
+EduSpan=培养层次
+EduSpan.fromLevel=开始
+EduSpan.toLevel=结束
 ElectionMode=选课方式
 GradeType=成绩类型
 GradeType.examType=考试类型
@@ -35,8 +35,8 @@ Discipline=学科
 DisciplineCatalog=学科目录
 Degree=学位
 
-ScoreMarkStyle=成绩记录方式
-ScoreMarkStyle.numStyle=是否为数字类型
+GradingMode=成绩记录方式
+GradingMode.numerical=是否为数字类型
 StudyType=学习形式
 StdLabel=学生分类标签
 StdLabel.labelType=学生分类标签类型

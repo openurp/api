@@ -32,7 +32,7 @@ import org.openurp.edu.base.code.model.StdType
  * @author chaostone
  * @since 2005-9-12
  */
-class Adminclass extends LongId with EduSpanBased with Coded with Named with TemporalOn with Updated with Remark {
+class Squad extends LongId with EduSpanBased with Coded with Named with TemporalOn with Updated with Remark {
 
   /** 年级,形式为yyyy-p */
   var grade: String = _

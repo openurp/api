@@ -21,7 +21,7 @@ package org.openurp.edu.course.model
 import scala.language.implicitConversions
 import org.openurp.base.model.Department
 import org.openurp.edu.base.code.model.{ EduSpan, StdLabel, StdType }
-import org.openurp.edu.base.model.{ Adminclass, Direction, Major }
+import org.openurp.edu.base.model.{ Squad, Direction, Major }
 import org.beangle.data.model.Entity
 
 object RestrictionMeta extends Enumeration {
@@ -36,7 +36,7 @@ object RestrictionMeta extends Enumeration {
 
   val Direction = new Meta(6, classOf[Direction])
 
-  val Adminclass = new Meta(7, classOf[Adminclass])
+  val Squad = new Meta(7, classOf[Squad])
 
   val EduSpan = new Meta(8, classOf[EduSpan])
 

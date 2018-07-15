@@ -115,7 +115,7 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
 
   var operator: String = _
 
-  var lesson: Option[Clazz] = None
+  var clazz: Option[Clazz] = None
 
   def gradeType: GradeType = {
     new GradeType(GradeType.Final)

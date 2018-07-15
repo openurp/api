@@ -9,6 +9,6 @@ ExternExamGrade.semester=学期
 ExternExamGrade.examNo=准考证号
 ExternExamGrade.certificate=证书编号
 ExternExamGrade.sessionNo=批次号
-ExternExamGrade.markStyle=成绩记录方式
+ExternExamGrade.gradingMode=成绩记录方式
 ExternExamGrade.examStatus=考试情况
 ExternExamGrade.acquireOn=获得日期

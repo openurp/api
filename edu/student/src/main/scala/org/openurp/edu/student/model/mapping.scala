@@ -27,7 +27,7 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    //lesson result
+    //clazz result
     bind[StdAdmission].on(e => declare(
       e.std is notnull,
       e.letterNo is length(30),
