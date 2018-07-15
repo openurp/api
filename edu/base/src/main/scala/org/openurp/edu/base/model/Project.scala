@@ -25,7 +25,7 @@ import org.beangle.data.model.{ IntId, LongId }
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{ Coded, Named, TemporalOn, Updated }
 import org.openurp.base.model.{ Calendar, Campus, Department, School, TimeSetting }
-import org.openurp.edu.base.code.model.{ Education, StdLabel, StdType }
+import org.openurp.edu.base.code.model.{ EduSpan, StdLabel, StdType }
 
 /**
  * 项目
@@ -44,7 +44,7 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   /** 部门列表 */
   var departments: Buffer[Department] = new ListBuffer[Department]
   /** 学历层次列表 */
-  var educations: Buffer[Education] = new ListBuffer[Education]
+  var spans: Buffer[EduSpan] = new ListBuffer[EduSpan]
   /** 学生分类列表 */
   var stdLabels: Buffer[StdLabel] = new ListBuffer[StdLabel]
   /**学生类别*/

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.edu.textbook.lesson.model.DefaultMapping" />
+  <mapping class="org.openurp.edu.textbook.course.model.DefaultMapping" />
   <mapping class="org.openurp.edu.textbook.order.model.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.edu.textbook" pluralize="true" schema="edu_textbook">

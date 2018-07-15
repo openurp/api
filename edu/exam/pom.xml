@@ -22,8 +22,8 @@
       <artifactId>openurp-edu-base-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.lesson</groupId>
-      <artifactId>openurp-edu-lesson-api</artifactId>
+      <groupId>org.openurp.edu.course</groupId>
+      <artifactId>openurp-edu-course-api</artifactId>
     </dependency>
   </dependencies>
 </project>

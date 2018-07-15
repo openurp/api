@@ -20,7 +20,7 @@ package org.openurp.edu.base
 
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.StudentStatus
-import org.openurp.edu.base.code.model.Education
+import org.openurp.edu.base.code.model.EduSpan
 import org.openurp.edu.base.model.{ Adminclass, Direction, Major, Student }
 
 /**
@@ -98,7 +98,6 @@ trait StudentBased {
  * @author chaostone
  */
 
-trait EducationBased extends ProjectBased {
-  var education: Education = _
-
+trait EduSpanBased extends ProjectBased {
+  var span: EduSpan = _
 }

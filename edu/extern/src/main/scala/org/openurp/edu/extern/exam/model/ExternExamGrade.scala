@@ -19,12 +19,11 @@
 package org.openurp.edu.extern.exam.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.code.model.ScoreMarkStyle
-import org.openurp.base.model.Semester
-import org.openurp.edu.base.code.model.ExamStatus
-import org.openurp.edu.extern.code.model.ExamSubject
-import org.openurp.edu.base.model.Student
 import org.beangle.data.model.annotation.code
+import org.openurp.base.model.Semester
+import org.openurp.edu.base.code.model.{ ExamStatus, GradingMode }
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.extern.code.model.ExamSubject
 
 class ExternExamGrade extends LongId {
 
@@ -46,7 +45,7 @@ class ExternExamGrade extends LongId {
 
   var acquireOn: java.sql.Date = _
 
-  var markStyle: ScoreMarkStyle = _
+  var gradingMode: GradingMode = _
 
   var examStatus: ExamStatus = _
 }

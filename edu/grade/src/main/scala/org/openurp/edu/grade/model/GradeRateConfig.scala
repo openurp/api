@@ -26,7 +26,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.openurp.edu.base.ProjectBased
-import org.openurp.edu.base.code.model.ScoreMarkStyle
+import org.openurp.edu.base.code.model.GradingMode
 
 /**
  * 成绩分级配置
@@ -37,7 +37,7 @@ class GradeRateConfig extends LongId with ProjectBased {
   /**
    * 成绩记录方式
    */
-  var markStyle: ScoreMarkStyle = _
+  var gradingMode: GradingMode = _
 
   /**
    * 成绩分级配置项
@@ -61,7 +61,7 @@ class GradeRateConfig extends LongId with ProjectBased {
    *
    * @param score
    *            不能为空
-   * @param markStyle
+   * @param gradingMode
    * @return
    */
   def convert(grade: String): java.lang.Float = {
@@ -73,12 +73,12 @@ class GradeRateConfig extends LongId with ProjectBased {
    * 空成绩将转换成null
    *
    * @param score
-   * @param markStyle
+   * @param gradingMode
    * @return
    */
   def convert(score: java.lang.Float): String = {
     if (null == score) return ""
-    if (markStyle.numStyle) return NumberFormat.getInstance.format(score.floatValue())
+    if (gradingMode.numerical) return NumberFormat.getInstance.format(score.floatValue())
     for (item <- items if item.contains(score)) {
       return item.grade
     }

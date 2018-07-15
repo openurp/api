@@ -19,7 +19,7 @@
 package org.openurp.edu.grade.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.code.model.ScoreMarkStyle
+import org.openurp.edu.base.code.model.GradingMode
 
 /**
  * 成绩状态抽象基类
@@ -31,7 +31,7 @@ abstract class AbstractGradeState extends LongId with GradeState {
   /**
    * 成绩记录方式
    */
-  var markStyle: ScoreMarkStyle = _
+  var gradingMode: GradingMode = _
 
   /**
    * 成绩录入状态

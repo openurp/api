@@ -21,7 +21,7 @@ package org.openurp.edu.grade.moral.model
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.model.Student
-import org.openurp.edu.base.code.model.ScoreMarkStyle
+import org.openurp.edu.base.code.model.GradingMode
 
 /**
  * 德育成绩
@@ -34,6 +34,6 @@ class MoralGrade extends LongId  {
   var scoreText: String=_
   var passed: Boolean=_
   var status: Int=_
-  var markStyle: ScoreMarkStyle=_
+  var gradingMode: GradingMode=_
   var operator: String=_
 }

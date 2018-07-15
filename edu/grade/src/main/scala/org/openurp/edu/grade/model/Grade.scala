@@ -20,7 +20,7 @@ package org.openurp.edu.grade.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.code.model.{ GradeType, ScoreMarkStyle }
+import org.openurp.edu.base.code.model.{ GradeType, GradingMode }
 import org.openurp.edu.base.model.Student
 
 object Grade {
@@ -38,7 +38,7 @@ object Grade {
  * 成绩中设立原始分数和分数字面值，分别表示数字型分数和文字型评价。分数用于和其他记录方式进行转换，
  * 分数字面值则为最后的转换结果。
  *
- * @depend - - - ScoreMarkStyle
+ * @depend - - - GradingMode
  * @author chaostone
  * @since 2006
  */
@@ -68,9 +68,9 @@ trait Grade extends LongId with Ordered[Grade] with Updated {
 
   def status_=(newStatus: Int)
 
-  def markStyle: ScoreMarkStyle
+  def gradingMode: GradingMode
 
-  def markStyle_=(style: ScoreMarkStyle)
+  def gradingMode_=(style: GradingMode)
 
   def gradeType: GradeType
 

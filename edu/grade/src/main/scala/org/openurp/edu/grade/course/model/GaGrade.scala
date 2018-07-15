@@ -20,7 +20,7 @@ package org.openurp.edu.grade.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.code.model.{ GradeType, ScoreMarkStyle }
+import org.openurp.edu.base.code.model.{ GradeType, GradingMode }
 import org.openurp.edu.grade.model.Grade
 
 /**
@@ -36,7 +36,7 @@ class GaGrade extends LongId with Grade with Updated {
   /** 成绩类型 */
   var gradeType: GradeType = _
   /** 成绩记录方式 */
-  var markStyle: ScoreMarkStyle = _
+  var gradingMode: GradingMode = _
   /** 得分 */
   var score: Option[Float] = None
   /** 得分字面值 */
@@ -62,13 +62,13 @@ class GaGrade extends LongId with Grade with Updated {
     return grade.score.get.compareTo(score.get)
   }
 
-  def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: String, markStyle: ScoreMarkStyle, passed: Boolean, status: Int) {
+  def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: String, gradingMode: GradingMode, passed: Boolean, status: Int) {
     this()
     this.id = id
     this.gradeType = gradeType
     this.score = score
     this.scoreText = scoreText
-    this.markStyle = markStyle
+    this.gradingMode = gradingMode
     this.passed = passed
     this.status = status
   }

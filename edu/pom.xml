@@ -18,9 +18,9 @@
 
   <modules>
     <module>base</module>
-    <module>course</module>
+    <module>curricula</module>
     <module>program</module>
-    <module>lesson</module>
+    <module>course</module>
     <module>grade</module>
     <module>student</module>
     <module>evaluation</module>

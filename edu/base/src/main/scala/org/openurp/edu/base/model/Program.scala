@@ -24,7 +24,7 @@ import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{ Named, Remark, TemporalOn, Updated }
 import org.openurp.base.model.{ Campus, Department }
 import org.openurp.code.edu.model.{ Degree, StudyType }
-import org.openurp.edu.base.{ EducationBased, States }
+import org.openurp.edu.base.{ EduSpanBased, States }
 import org.openurp.edu.base.code.model.StdType
 
 /**
@@ -32,7 +32,7 @@ import org.openurp.edu.base.code.model.StdType
  * @author chaostone
  *
  */
-class Program extends LongId with Updated with Named with Cloneable with TemporalOn with EducationBased with Remark {
+class Program extends LongId with Updated with Named with Cloneable with TemporalOn with EduSpanBased with Remark {
 
   /** 年级 */
   var grade: String = _

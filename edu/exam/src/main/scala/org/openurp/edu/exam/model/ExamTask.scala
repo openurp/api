@@ -44,5 +44,5 @@ class ExamTask extends LongId {
 
   var stdCount: Int = _
 
-  var examLessons: Buffer[ExamLesson] = Collections.newBuffer[ExamLesson]
+  var examClazzes: Buffer[ExamClazz] = Collections.newBuffer[ExamClazz]
 }

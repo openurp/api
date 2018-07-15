@@ -55,7 +55,7 @@ class DisciplineCategory extends CodeBean
  */
 @code("nation")
 class EducationDegree extends CodeBean {
-  var level: EducationLevel = _
+  var level: AcademicLevel = _
   var result: EducationResult = _
 }
 
@@ -65,7 +65,7 @@ class EducationDegree extends CodeBean {
  * @see http://www.csres.com/detail/176312.html
  */
 @code("nation")
-class EducationLevel extends CodeBean
+class AcademicLevel extends CodeBean
 
 /**
  * 教育培训结果

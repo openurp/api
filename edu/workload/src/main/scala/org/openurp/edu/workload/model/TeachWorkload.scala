@@ -23,11 +23,11 @@ import org.openurp.base.model.Semester
 import org.openurp.edu.base.code.model.TeachLangType
 import org.openurp.edu.base.code.model.CourseCategory
 import org.openurp.edu.base.model.Course
-import org.openurp.edu.lesson.model.Lesson
+import org.openurp.edu.course.model.Clazz
 
 class TeachWorkload extends LongId {
 
-  var lesson: Lesson = _
+  var clazz:Clazz = _
 
   var course: Course = _
 

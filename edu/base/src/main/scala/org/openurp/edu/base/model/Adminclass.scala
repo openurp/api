@@ -23,7 +23,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
 import org.openurp.base.model.{ Campus, Department }
-import org.openurp.edu.base.EducationBased
+import org.openurp.edu.base.EduSpanBased
 import org.openurp.edu.base.code.model.StdType
 
 /**
@@ -32,7 +32,7 @@ import org.openurp.edu.base.code.model.StdType
  * @author chaostone
  * @since 2005-9-12
  */
-class Adminclass extends LongId with EducationBased with Coded with Named with TemporalOn with Updated with Remark {
+class Adminclass extends LongId with EduSpanBased with Coded with Named with TemporalOn with Updated with Remark {
 
   /** 年级,形式为yyyy-p */
   var grade: String = _

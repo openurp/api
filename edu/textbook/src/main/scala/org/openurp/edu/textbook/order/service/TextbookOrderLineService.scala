@@ -20,20 +20,20 @@ package org.openurp.edu.textbook.order.service
 
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.model.{ Student, Textbook }
-import org.openurp.edu.lesson.model.{ CourseTaker, Lesson }
+import org.openurp.edu.course.model.{ CourseTaker, Clazz }
 import org.openurp.edu.textbook.order.model.TextbookOrderLine
 
 trait TextbookOrderLineService {
 
-  def getLessonsHasTextbook(lessons: Iterable[Lesson]): Set[Long]
+  def getLessonsHasTextbook(lessons: Iterable[Clazz]): Set[Long]
 
-  def getTextbooksForLesson(lesson: Lesson): List[Textbook]
+  def getTextbooksForLesson(lesson: Clazz): List[Textbook]
 
-  def getTextBookMapByLessons(lessons: Iterable[Lesson]): Map[Long, List[Textbook]]
+  def getTextBookMapByLessons(lessons: Iterable[Clazz]): Map[Long, List[Textbook]]
 
-  def getLessonsHasOrderTextBook(lessons: Iterable[Lesson]): Set[Long]
+  def getLessonsHasOrderTextBook(lessons: Iterable[Clazz]): Set[Long]
 
-  def getTextbookOrderLinesByLesson(lessonId: Lesson, std: Student): List[TextbookOrderLine]
+  def getTextbookOrderLinesByLesson(lessonId: Clazz, std: Student): List[TextbookOrderLine]
 
   def getTextbookOrderLines(std: Student, semester: Semester, lessonId: java.lang.Long): List[TextbookOrderLine]
 
@@ -44,7 +44,7 @@ trait TextbookOrderLineService {
 
   def createTextbookOrderLines(bookMap: Map[Textbook, Integer], semester: Semester, std: Student): List[TextbookOrderLine]
 
-  def getTextBooks(takes: List[CourseTaker]): Map[Lesson, List[Textbook]]
+  def getTextBooks(takes: List[CourseTaker]): Map[Clazz, List[Textbook]]
 
-  def getBookLessons(takes: List[CourseTaker]): Map[Textbook, Lesson]
+  def getBookLessons(takes: List[CourseTaker]): Map[Textbook, Clazz]
 }

@@ -34,7 +34,7 @@ class DefaultMapping extends MappingModule {
     bind[CourseTakeType]
     bind[CourseHourType]
     bind[CourseAbilityRate]
-    bind[Education]
+    bind[EduSpan]
     bind[ElectionMode]
     bind[ExamType]
     bind[ExamStatus]
@@ -44,7 +44,7 @@ class DefaultMapping extends MappingModule {
     bind[StdLabel]
     bind[StdLabelType]
     bind[StdType]
-    bind[ScoreMarkStyle]
+    bind[GradingMode]
     bind[TeachLangType]
     bind[TeacherType]
   }

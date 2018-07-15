@@ -20,7 +20,7 @@ package org.openurp.edu.program.plan.model
 
 import org.beangle.data.model.pojo.Named
 import org.openurp.code.edu.model.Language
-import org.openurp.edu.base.EducationBased
+import org.openurp.edu.base.EduSpanBased
 import org.openurp.edu.base.code.model.CourseAbilityRate
 
 /**
@@ -28,7 +28,7 @@ import org.openurp.edu.base.code.model.CourseAbilityRate
  *
  * @author chaostone
  */
-class SharePlan extends AbstractCoursePlan with EducationBased with Named with Cloneable {
+class SharePlan extends AbstractCoursePlan with EduSpanBased with Named with Cloneable {
 
   /**起始年级*/
   var fromGrade: String = _
