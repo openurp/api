@@ -29,11 +29,11 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator("auto_increment")
     defaultCache("openurp.edu.base", "read-write")
 
-    bind[Adminclass] on (e => declare(
+    bind[Squad] on (e => declare(
       e.code is (length(20), unique),
       e.name is length(50),
       e.grade is length(10),
-      e.stdStates is one2many("adminclass"),
+      e.stdStates is one2many("squad"),
       e.remark is length(100)))
 
     bind[Classroom] on (e => declare(

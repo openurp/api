@@ -21,7 +21,7 @@ package org.openurp.edu.base
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.StudentStatus
 import org.openurp.edu.base.code.model.EduSpan
-import org.openurp.edu.base.model.{ Adminclass, Direction, Major, Student }
+import org.openurp.edu.base.model.{ Squad, Direction, Major, Student }
 
 /**
  * 学籍注册信息
@@ -41,7 +41,7 @@ trait StdEnrollment {
   def direction: Option[Direction]
 
   /** 行政班级 */
-  def adminclass: Option[Adminclass]
+  def squad: Option[Squad]
 
   /** 是否在校 */
   def inschool: Boolean
@@ -93,7 +93,7 @@ trait StudentBased {
  * </p>
  * 基于项目和培养层次的实体接口，标准化了培养层次的属性名称。
  *
- * @see Adminclass
+ * @see Squad
  * @see Student
  * @author chaostone
  */

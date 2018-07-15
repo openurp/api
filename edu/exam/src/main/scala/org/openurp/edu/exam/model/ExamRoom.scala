@@ -65,7 +65,7 @@ class ExamRoom extends LongId {
   /**教室借用ID*/
   var roomApplyId: Option[Long] = None
 
-  def lessons: Set[Clazz] = {
+  def clazzs: Set[Clazz] = {
     activities.map(a => a.clazz).toSet
   }
 

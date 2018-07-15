@@ -1,0 +1,10 @@
+Material=课程材料
+Material.clazz=课程
+Material.books=教材
+Material.referenceBooks=参考书
+Material.extra=其他书
+Material.passed=是否通过
+Material.auditAt=审核日期
+Material.remark=备注
+Material.useExplain=选用理由
+Material.status=教材状态

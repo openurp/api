@@ -19,7 +19,6 @@
 package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.course.model.RestrictionMeta
 
 /**
  * 选课限制条件项

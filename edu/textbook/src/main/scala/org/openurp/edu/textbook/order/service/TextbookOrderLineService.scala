@@ -25,19 +25,19 @@ import org.openurp.edu.textbook.order.model.TextbookOrderLine
 
 trait TextbookOrderLineService {
 
-  def getLessonsHasTextbook(lessons: Iterable[Clazz]): Set[Long]
+  def getLessonsHasTextbook(clazzs: Iterable[Clazz]): Set[Long]
 
-  def getTextbooksForLesson(lesson: Clazz): List[Textbook]
+  def getTextbooksForLesson(clazz: Clazz): List[Textbook]
 
-  def getTextBookMapByLessons(lessons: Iterable[Clazz]): Map[Long, List[Textbook]]
+  def getTextBookMapByLessons(clazzs: Iterable[Clazz]): Map[Long, List[Textbook]]
 
-  def getLessonsHasOrderTextBook(lessons: Iterable[Clazz]): Set[Long]
+  def getLessonsHasOrderTextBook(clazzs: Iterable[Clazz]): Set[Long]
 
-  def getTextbookOrderLinesByLesson(lessonId: Clazz, std: Student): List[TextbookOrderLine]
+  def getTextbookOrderLinesByLesson(clazzId: Clazz, std: Student): List[TextbookOrderLine]
 
-  def getTextbookOrderLines(std: Student, semester: Semester, lessonId: java.lang.Long): List[TextbookOrderLine]
+  def getTextbookOrderLines(std: Student, semester: Semester, clazzId: java.lang.Long): List[TextbookOrderLine]
 
-  def createTextbookOrderLines(lessonId: java.lang.Long,
+  def createTextbookOrderLines(clazzId: java.lang.Long,
                                materialNum: Int,
                                semester: Semester,
                                std: Student): List[TextbookOrderLine]

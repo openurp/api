@@ -41,7 +41,7 @@ QuestionTypeStat.evalStat=问卷评教结果
 
 
 LessonEvalStat=任务评教问卷统计结果
-LessonEvalStat.lesson=教学任务
+LessonEvalStat.clazz=教学任务
 LessonEvalStat.semester=教学日历
 LessonEvalStat.addScore=附加题总分
 LessonEvalStat.published=是否发布
@@ -69,7 +69,7 @@ LessonQuestionTypeStat=任务评教问题类别统计结果
 LessonQuestionTypeStat.questionType=问题类别
 LessonQuestionTypeStat.evalStat=问卷评教结果
 LessonQuestionnaireLesson=问卷课程配置
-LessonQuestionnaireLesson.lesson=教学任务
+LessonQuestionnaireLesson.clazz=教学任务
 LessonQuestionnaireLesson.questionnaire=问卷
 LessonQuestionnaireLesson.evaluateByTeacher=是否教师评教
 
