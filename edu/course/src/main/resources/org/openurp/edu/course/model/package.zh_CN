@@ -71,11 +71,11 @@ Schedule.weekstate=周状态
 Schedule.activities=具体排课结果
 Schedule.roomType=教室类型
 
-ExamSchedule=考试安排
-ExamSchedule.examMode=考核方式
-ExamSchedule.examOn=考试日期
-ExamSchedule.beginAt=考试开始时间
-ExamSchedule.endAt=考试结束时间
+Exam=考试安排
+Exam.examMode=考核方式
+Exam.examOn=考试日期
+Exam.beginAt=考试开始时间
+Exam.endAt=考试结束时间
 
 Session=教学活动
 Session.clazz=教学任务
