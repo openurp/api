@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.0.23</version>
+    <version>0.1.0</version>
   </parent>
   <groupId>org.openurp.edu</groupId>
   <artifactId>openurp-edu-parent</artifactId>
@@ -18,9 +18,9 @@
 
   <modules>
     <module>base</module>
-    <module>course</module>
+    <module>curricula</module>
     <module>program</module>
-    <module>lesson</module>
+    <module>course</module>
     <module>grade</module>
     <module>student</module>
     <module>evaluation</module>

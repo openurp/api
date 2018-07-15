@@ -20,10 +20,10 @@ package org.openurp.edu.grade.course.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.annotation.{ code, config }
-import org.openurp.edu.base.code.model.ScoreMarkStyle
+import org.openurp.edu.base.code.model.GradingMode
 import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.grade.model.{ AbstractGradeState, GradeState }
-import org.openurp.edu.lesson.model.Lesson
+import org.openurp.edu.course.model.Clazz
 /**
  * 成绩状态表
  * 记录了对应教学任务成绩<br>
@@ -38,7 +38,7 @@ class CourseGradeState extends AbstractGradeState {
   /**
    * 教学任务
    */
-  var lesson: Lesson = _
+  var clazz:Clazz = _
 
   /**
    * 可录入各成绩类型的状态设置
@@ -50,10 +50,10 @@ class CourseGradeState extends AbstractGradeState {
    */
   var gaStates = Collections.newSet[GaGradeState]
 
-  def this(lesson: Lesson) {
+  def this(clazz: Clazz) {
     this()
-    this.lesson = lesson
-    this.markStyle = new ScoreMarkStyle(ScoreMarkStyle.Percent)
+    this.clazz = clazz
+    this.gradingMode = new GradingMode(GradingMode.Percent)
   }
 
   def updateStatus(gradeType: GradeType, status: Int) {
@@ -64,14 +64,14 @@ class CourseGradeState extends AbstractGradeState {
         newstate.gradeState = this
         newstate.gradeType = gradeType
         newstate.status = status
-        newstate.markStyle = markStyle
+        newstate.gradingMode = gradingMode
         gaStates += newstate
       } else {
         val newstate = new ExamGradeState
         newstate.gradeState = this
         newstate.gradeType = gradeType
         newstate.status = status
-        newstate.markStyle = markStyle
+        newstate.gradingMode = gradingMode
         examStates += newstate
       }
     } else {

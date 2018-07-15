@@ -1,5 +1,5 @@
 ExamActivity=排考活动
-ExamActivity.lesson=教学任务
+ExamActivity.clazz=教学任务
 ExamActivity.semester=学年学期
 ExamActivity.examType=考试类型
 ExamActivity.beginAt=开始时间
@@ -27,10 +27,10 @@ ExamRoom.ExamStudents=应考学生记录
 ExamRoom.roomApplyId=教室申请流水号
 ExamRoom.examOn=考试日期
 
-ExamLesson=排考教学任务
-ExamLesson.lesson=教学任务
-ExamLesson.task=排考任务
-ExamLesson.stdCount=考生人数
+ExamClazz=排考教学任务
+ExamClazz.clazz=教学任务
+ExamClazz.task=排考任务
+ExamClazz.stdCount=考生人数
 
 ExamTask=排考任务
 ExamTask.project=项目
@@ -41,10 +41,10 @@ ExamTask.examOn=考试日期
 ExamTask.beginAt=考试开始时间
 ExamTask.endAt=考试结束时间
 ExamTask.stdCount=考生人数
-ExamTask.examLessons=排考教学任务
+ExamTask.examClazzes=排考教学任务
 
 ExamStudent=应考学生
-ExamStudent.lesson=教学任务
+ExamStudent.clazz=教学任务
 ExamStudent.std=学生
 ExamStudent.semester=学期
 ExamStudent.examRoom=考场

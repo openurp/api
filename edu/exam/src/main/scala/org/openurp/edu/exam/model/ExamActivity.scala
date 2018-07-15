@@ -23,7 +23,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.code.model.ExamType
-import org.openurp.edu.lesson.model.Lesson
+import org.openurp.edu.course.model.Clazz
 
 /**
  * 考试活动 </p>
@@ -31,7 +31,7 @@ import org.openurp.edu.lesson.model.Lesson
  * @depend - - - Semester
  * @depend - - - ExamType
  * @depend - - - Course
- * @has 1..* AssignedTo 1..* Lesson
+ * @has 1..* AssignedTo 1..* Clazz
  * @depend - - - Classroom
  * @depend - - - Teacher
  * @depend - - - Department
@@ -44,7 +44,7 @@ class ExamActivity extends LongId with Remark {
   var examType: ExamType = _
 
   /** 教学任务 */
-  var lesson: Lesson = _
+  var clazz: Clazz = _
 
   /**考试日期*/
   var examOn: java.sql.Date = _

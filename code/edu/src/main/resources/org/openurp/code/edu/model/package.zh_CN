@@ -11,7 +11,7 @@ Discipline.category=学科门类
 Discipline.catalog=学科目录
 DisciplineCatalog=学科目录
 
-EducationLevel=学历层次
+AcademicLevel=学历层次
 EducationDegree=学历(文化程度)
 EducationDegree.result=毕结业结论
 EducationDegree.level=学历层次

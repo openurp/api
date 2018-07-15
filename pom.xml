@@ -4,12 +4,12 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.2.12</version>
+    <version>0.2.13</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-parent</artifactId>
   <packaging>pom</packaging>
-  <version>0.0.23</version>
+  <version>0.1.0</version>
   <name>OpenURP API Parent</name>
 
   <modules>
@@ -91,8 +91,8 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.edu.lesson</groupId>
-        <artifactId>openurp-edu-lesson-api</artifactId>
+        <groupId>org.openurp.edu.course</groupId>
+        <artifactId>openurp-edu-course-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

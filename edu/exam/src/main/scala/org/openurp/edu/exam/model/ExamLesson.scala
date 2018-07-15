@@ -19,13 +19,13 @@
 package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.lesson.model.Lesson
+import org.openurp.edu.course.model.Clazz
 
-class ExamLesson extends LongId {
+class ExamClazz extends LongId {
 
   var task: ExamTask = _
 
-  var lesson: Lesson = _
+  var clazz: Clazz = _
 
   var stdCount: Int = _
 

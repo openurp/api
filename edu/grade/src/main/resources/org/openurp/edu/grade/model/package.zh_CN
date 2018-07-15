@@ -8,7 +8,7 @@ GradeRateItem.gpExp=绩点表达式
 GradeRateItem.defaultScore=默认分数
 
 GradeRateConfig=成绩分级配置
-GradeRateConfig.markStyle=成绩记录方式
+GradeRateConfig.gradingMode=成绩记录方式
 GradeRateConfig.items=成绩分级配置项
 GradeRateConfig.passScore=及格线
 GradeRateConfig.project=项目

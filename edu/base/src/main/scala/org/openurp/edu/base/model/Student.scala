@@ -24,15 +24,15 @@ import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{ Coded, Remark, TemporalOn, Updated }
 import org.openurp.base.model.{ Campus, Department }
 import org.openurp.code.edu.model.{ StudentStatus, StudyType }
-import org.openurp.edu.base.{ EducationBased, StdEnrollment }
-import org.openurp.edu.base.code.model.{ Education, StdLabel, StdLabelType, StdType }
+import org.openurp.edu.base.{ EduSpanBased, StdEnrollment }
+import org.openurp.edu.base.code.model.{ EduSpan, StdLabel, StdLabelType, StdType }
 import org.openurp.people.base.model.Person
 import org.beangle.data.model.pojo.DateRange
 
 /**
  * 学籍信息实现
  */
-class Student extends LongId with EducationBased with Coded with Updated with Remark with DateRange {
+class Student extends LongId with EduSpanBased with Coded with Updated with Remark with DateRange {
 
   /**基本信息*/
   var person: Person = _
@@ -86,7 +86,7 @@ class StudentState extends LongId with StdEnrollment with TemporalOn with Remark
   var direction: Option[Direction] = None
 
   /** 行政班级 */
-  var adminclass: Option[Adminclass] = None
+  var squad: Option[Squad] = None
 
   /** 是否在校 */
   var inschool: Boolean = _
@@ -110,7 +110,7 @@ class StudentScope extends Component {
   /**项目*/
   var project: Project = _
   /**培养层次集合*/
-  var educations: collection.mutable.Set[Education] = _
+  var spans: collection.mutable.Set[EduSpan] = _
   /**学生类别集合*/
   var stdTypes: collection.mutable.Set[StdType] = _
   /**部门集合*/

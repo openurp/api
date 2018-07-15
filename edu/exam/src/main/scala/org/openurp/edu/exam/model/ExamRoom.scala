@@ -26,7 +26,7 @@ import org.openurp.base.model.{ Department, Semester }
 import org.openurp.edu.base.model.Classroom
 import org.openurp.edu.base.model.Teacher
 import org.beangle.commons.collection.Collections
-import org.openurp.edu.lesson.model.Lesson
+import org.openurp.edu.course.model.Clazz
 
 /**
  * 考场
@@ -65,8 +65,8 @@ class ExamRoom extends LongId {
   /**教室借用ID*/
   var roomApplyId: Option[Long] = None
 
-  def lessons: Set[Lesson] = {
-    activities.map(a => a.lesson).toSet
+  def clazzs: Set[Clazz] = {
+    activities.map(a => a.clazz).toSet
   }
 
   def this(activity: ExamActivity, classroom: Classroom) {

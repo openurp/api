@@ -8,7 +8,7 @@ Modulus.modulusValue=系数
 
 
 TeachWorkload=教学工作量
-TeachWorkload.lesson=教学任务
+TeachWorkload.clazz=教学任务
 TeachWorkload.course=课程
 TeachWorkload.semester=学期
 TeachWorkload.langType=授课语言

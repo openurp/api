@@ -38,24 +38,24 @@ class DefaultMapping extends MappingModule {
 
     //grade
     bind[CourseGrade].on(e => declare(
-      e.lessonNo is length(20),
-      e.course & e.courseTakeType & e.project & e.courseType & e.semester & e.markStyle are notnull,
+      e.crn is length(20),
+      e.course & e.courseTakeType & e.project & e.courseType & e.semester & e.gradingMode are notnull,
       e.operator is length(100),
       e.scoreText is length(5),
       e.remark is length(200),
       e.examGrades & e.gaGrades are depends("courseGrade")))
 
     bind[AbstractGradeState].on(e => declare(
-      e.markStyle & e.beginOn are notnull,
+      e.gradingMode & e.beginOn are notnull,
       e.operator is length(100)))
 
     bind[CourseGradeState].on(e => declare(
-      e.lesson is notnull,
+      e.clazz is notnull,
       e.examStates is depends("courseGradeState"),
       e.gaStates is depends("courseGradeState")))
 
     bind[Grade].on(e => declare(
-      e.markStyle is notnull,
+      e.gradingMode is notnull,
       e.scoreText is length(5),
       e.operator is length(100)))
 
@@ -84,14 +84,14 @@ class DefaultMapping extends MappingModule {
       e.schoolYear & e.stdGpa are notnull))
 
     bind[GradeRateConfig].on(e => declare(
-      e.markStyle is notnull,
+      e.gradingMode is notnull,
       e.items is depends("config")))
 
     bind[GradeRateItem].on(e => declare(
       e.config is notnull))
 
     bind[MoralGrade].on(e => declare(
-      e.std & e.semester & e.markStyle are notnull,
+      e.std & e.semester & e.gradingMode are notnull,
       e.scoreText is length(5),
       e.operator is length(100)))
 

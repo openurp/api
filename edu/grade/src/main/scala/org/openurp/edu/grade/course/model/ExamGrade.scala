@@ -19,7 +19,7 @@
 package org.openurp.edu.grade.course.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.code.model.{ ExamStatus, ScoreMarkStyle }
+import org.openurp.edu.base.code.model.{ ExamStatus, GradingMode }
 import org.openurp.edu.base.code.model.GradeType
 import org.openurp.edu.grade.model.Grade
 /**
@@ -28,7 +28,7 @@ import org.openurp.edu.grade.model.Grade
  * 平时成绩,期中成绩,期末成绩,总评成绩,补考成绩,缓考成绩
  *
  * @depend - - - GradeType
- * @depend - - - ScoreMarkStyle
+ * @depend - - - GradingMode
  * @depend - - - ExamStatus
  * @depend - - - CourseGrade
  * @author chaostone
@@ -38,7 +38,7 @@ class ExamGrade extends LongId with Grade {
   /** 成绩类型 */
   var gradeType: GradeType = _
   /** 成绩记录方式 */
-  var markStyle: ScoreMarkStyle = _
+  var gradingMode: GradingMode = _
   /** 得分 */
   var score: Option[Float] = None
   /** 得分字面值 */
@@ -64,13 +64,13 @@ class ExamGrade extends LongId with Grade {
     else if (None == grade.score) return -1
     return grade.score.get.compareTo(score.get)
   }
-  def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: String, markStyle: ScoreMarkStyle, passed: Boolean, status: Int) {
+  def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: String, gradingMode: GradingMode, passed: Boolean, status: Int) {
     this()
     this.id = id
     this.gradeType = gradeType
     this.score = score
     this.scoreText = scoreText
-    this.markStyle = markStyle
+    this.gradingMode = gradingMode
     this.passed = passed
     this.status = status
   }

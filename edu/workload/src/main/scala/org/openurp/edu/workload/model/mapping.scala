@@ -29,7 +29,7 @@ class DefaultMapping extends MappingModule {
       e.langType & e.courseCategory are notnull))
 
     bind[TeachWorkload].on(e => declare(
-      e.lesson & e.course & e.semester & e.langType & e.courseCategory & e.modulus are notnull))
+      e.clazz & e.course & e.semester & e.langType & e.courseCategory & e.modulus are notnull))
   }
 
 }

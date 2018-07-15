@@ -24,10 +24,10 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.ProjectBased
-import org.openurp.edu.base.code.model.{ CourseTakeType, CourseType, ExamMode, GradeType, ScoreMarkStyle }
+import org.openurp.edu.base.code.model.{ CourseTakeType, CourseType, ExamMode, GradeType, GradingMode }
 import org.openurp.edu.base.model.{ Course, Student }
 import org.openurp.edu.grade.model.Grade
-import org.openurp.edu.lesson.model.Lesson
+import org.openurp.edu.course.model.Clazz
 
 /**
  * 课程成绩
@@ -67,7 +67,7 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
   /**
    * 任务序号
    */
-  var lessonNo: Option[String] = None
+  var crn: Option[String] = None
   /**
    * 课程类别
    */
@@ -111,11 +111,11 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
 
   var status: Int = _
 
-  var markStyle: ScoreMarkStyle = _
+  var gradingMode: GradingMode = _
 
   var operator: String = _
 
-  var lesson: Option[Lesson] = None
+  var clazz: Option[Clazz] = None
 
   def gradeType: GradeType = {
     new GradeType(GradeType.Final)

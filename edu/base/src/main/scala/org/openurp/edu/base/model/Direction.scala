@@ -24,7 +24,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
 import org.openurp.base.model.Department
-import org.openurp.edu.base.code.model.Education
+import org.openurp.edu.base.code.model.EduSpan
 
 /**
  * 方向信息 专业领域.
@@ -47,7 +47,7 @@ class DirectionJournal extends LongId with TemporalOn with Remark {
   /**专业方向*/
   var direction: Direction = _
   /**培养层次*/
-  var education: Education = _
+  var span: EduSpan = _
   /**部门*/
   var depart: Department = _
 }

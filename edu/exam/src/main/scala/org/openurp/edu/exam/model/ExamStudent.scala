@@ -23,11 +23,11 @@ import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Semester
 import org.openurp.edu.base.code.model.{ ExamStatus, ExamType }
 import org.openurp.edu.base.model.Student
-import org.openurp.edu.lesson.model.Lesson
+import org.openurp.edu.course.model.Clazz
 
 class ExamStudent extends LongId with Remark {
 
-  var lesson: Lesson = _
+  var clazz:Clazz = _
 
   var semester: Semester = _
 

@@ -20,7 +20,7 @@ package org.openurp.edu.base.code.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
-import org.openurp.code.edu.model.EducationLevel
+import org.openurp.code.edu.model.AcademicLevel
 
 /**
  * 教材类型
@@ -95,19 +95,19 @@ object CourseTakeType {
   val Normal = 1;
 
   /** 重修 */
-  val Restudy = 3;
+  val Repeat = 3;
 
   /** 免修 */
-  val Untake = 5;
+  val Exemption = 5;
 
 }
 /**
  * 培养层次
  */
 @code("school")
-class Education extends CodeBean {
-  var from: EducationLevel = _
-  var to: EducationLevel = _
+class EduSpan extends CodeBean {
+  var fromLevel: AcademicLevel = _
+  var toLevel: AcademicLevel = _
 }
 /**
  * 考核方式
@@ -258,9 +258,9 @@ class StdType extends CodeBean
  * 成绩记录方式
  */
 @code("school")
-class ScoreMarkStyle extends CodeBean {
+class GradingMode extends CodeBean {
 
-  var numStyle: Boolean = _
+  var numerical: Boolean = _
 
   def this(id: Int) {
     this()
@@ -275,7 +275,7 @@ class ScoreMarkStyle extends CodeBean {
   }
 }
 
-object ScoreMarkStyle {
+object GradingMode {
   val Percent = 1
 }
 /**

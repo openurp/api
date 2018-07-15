@@ -20,7 +20,6 @@ package org.openurp.edu.base.model
 
 import org.beangle.data.model.IntId
 import org.openurp.base.model.Campus
-import org.openurp.edu.base.code.model.Education
 import org.beangle.data.model.LongId
 
 /**

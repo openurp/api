@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
   <mapping class="org.openurp.edu.evaluation.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.evaluation.lesson.model.DefaultMapping" />
+  <mapping class="org.openurp.edu.evaluation.course.model.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.edu.evaluation" pluralize="true" schema="edu_evaluation">
       <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />

@@ -22,7 +22,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Department
-import org.openurp.edu.base.code.model.{ Education, StdType }
+import org.openurp.code.edu.model.AcademicLevel
+import org.openurp.edu.base.code.model.StdType
 import org.openurp.edu.base.model.{ Course, Direction, Major, Project, Student }
 
 /**
@@ -52,7 +53,7 @@ class MajorCourseSubstitution extends CourseSubstitution {
   /**
    * 获取培养层次
    */
-  var education: Education = _
+  var level: AcademicLevel = _
   /**
    * 起始年级.
    */

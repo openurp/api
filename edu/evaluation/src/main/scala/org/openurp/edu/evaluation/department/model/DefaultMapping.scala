@@ -29,7 +29,7 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")
 
-    //lesson result
+    //clazz result
     bind[DepartEvaluate].on(e => declare(
       e.department & e.questionnaire & e.evaluateAt & e.semester are notnull,
       e.questionResults is depends("result"),

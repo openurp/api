@@ -23,8 +23,9 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
 import org.openurp.base.model.Department
+import org.openurp.code.edu.model.AcademicLevel
 import org.openurp.edu.base.ProjectBased
-import org.openurp.edu.base.code.model.{ CourseAbilityRate, CourseCategory, CourseHourType, CourseType, Education, ExamMode, ScoreMarkStyle }
+import org.openurp.edu.base.code.model.{ CourseAbilityRate, CourseCategory, CourseHourType, CourseType, ExamMode, GradingMode }
 
 /**
  * 课程基本信息 </p>
@@ -41,17 +42,17 @@ import org.openurp.edu.base.code.model.{ CourseAbilityRate, CourseCategory, Cour
  * @since 2008-09-24
  */
 class Course extends LongId with ProjectBased with Ordered[Course] with Updated
-    with TemporalOn with Coded with Named with Remark {
+  with TemporalOn with Coded with Named with Remark {
   /**课程英文名*/
   var enName: Option[String] = None
   /** 学历层次 */
-  var educations = Collections.newBuffer[Education]
+  var levels = Collections.newBuffer[AcademicLevel]
   /**课程种类代码*/
   var category: CourseCategory = _
   /**学分*/
   var credits: Float = _
   /** 学时/总课时 */
-  var period: Int = _
+  var creditHours: Int = _
   /**课程类型*/
   var courseType: CourseType = _
   /** 分类课时 */
@@ -65,7 +66,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 考试方式 */
   var examMode: ExamMode = _
   /** 成绩记录方式 */
-  var markStyle: ScoreMarkStyle = _
+  var gradingModes = Collections.newSet[GradingMode]
   /** 能力等级 */
   var abilityRates = Collections.newSet[CourseAbilityRate]
   /**针对专业*/

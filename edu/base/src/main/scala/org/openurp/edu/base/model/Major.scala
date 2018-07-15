@@ -25,7 +25,7 @@ import org.beangle.data.model.annotation.code
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.DisciplineCategory
 import org.openurp.edu.base.ProjectBased
-import org.openurp.edu.base.code.model.Education
+import org.openurp.edu.base.code.model.EduSpan
 import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
@@ -57,8 +57,8 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
   var journals = Collections.newBuffer[MajorJournal]
 
   /** 培养层次 */
-  def educations: Set[Education] = {
-    journals.map(_.education).toSet
+  def spans: Set[EduSpan] = {
+    journals.map(_.span).toSet
   }
 
   def departments: Set[Department] = {
@@ -104,7 +104,7 @@ class MajorJournal extends LongId with TemporalOn with Remark {
   var duration: Float = _
 
   /**培养层次*/
-  var education: Education = _
+  var span: EduSpan = _
 
   /**部门*/
   var depart: Department = _
