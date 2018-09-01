@@ -60,7 +60,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 周数*/
   var weeks: Int = _
   /**周课时*/
-  var weekHour: Int = _
+  var weekHours: Int = _
   /**院系*/
   var department: Department = _
   /** 考试方式 */
@@ -102,7 +102,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
 class CourseHour extends LongId {
   var course: Course = _
   var period: Int = _
-  var weekHour: Int = _
+  var weekHours: Int = _
   var weeks: Int = _
   var hourType: CourseHourType = _
 }

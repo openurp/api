@@ -110,5 +110,7 @@ class DefaultMapping extends MappingModule {
       e.description is length(300)))
 
     bind[TermCampus]
+
+    all.except(classOf[Student], classOf[StudentState]).cacheable()
   }
 }

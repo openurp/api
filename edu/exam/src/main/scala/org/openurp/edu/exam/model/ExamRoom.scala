@@ -48,7 +48,7 @@ class ExamRoom extends LongId {
   var endAt: HourMinute = _
 
   /**教室*/
-  var classroom: Classroom = _
+  var room: Classroom = _
 
   /**主考教师*/
   var examiner: Option[Teacher] = None
@@ -71,7 +71,7 @@ class ExamRoom extends LongId {
 
   def this(activity: ExamActivity, classroom: Classroom) {
     this()
-    this.classroom = classroom
+    this.room = classroom
     this.activities += activity
     activity.rooms.asInstanceOf[Buffer[ExamRoom]] += this
   }

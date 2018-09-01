@@ -61,6 +61,8 @@ class ExamActivity extends LongId with Remark {
   /** 考场列表 */
   var rooms: collection.mutable.Buffer[ExamRoom] = _
 
+  var state: PublishState.State = _
+
   def startOn: java.sql.Date = {
     examOn
   }

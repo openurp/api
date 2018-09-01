@@ -18,27 +18,12 @@
  */
 package org.openurp.edu.exam.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
-import org.openurp.base.model.Semester
-import org.openurp.edu.base.code.model.{ ExamStatus, ExamType }
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.course.model.Clazz
+object PublishState extends Enumeration {
+  class State(val name: String, val timePublished: Boolean, val roomPublished: Boolean) extends super.Val {
+  }
 
-class ExamStudent extends LongId with Remark {
-
-  var clazz: Clazz = _
-
-  var semester: Semester = _
-
-  var std: Student = _
-
-  var examRoom: Option[ExamRoom] = None
-
-  var examType: ExamType = _
-
-  var activity: ExamActivity = _
-
-  var seatNo: Short = _
+  val None = new State("未发布", false, false)
+  val TimeOnly = new State("仅发布时间", true, false)
+  val TimeAndRoom = new State("发布时间地点", true, true)
 
 }
