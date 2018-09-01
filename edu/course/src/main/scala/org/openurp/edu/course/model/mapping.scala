@@ -30,7 +30,7 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator("date")
 
     //code
-    bind[ClazzTag]
+    bind[ClazzTag].generator("auto_increment")
 
     bind[ExamTaker].on(e => declare(
       e.remark is length(100)))

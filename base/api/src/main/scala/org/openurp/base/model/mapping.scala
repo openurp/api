@@ -85,7 +85,9 @@ class DefaultMapping extends MappingModule {
       e.email is length(80),
       e.mobile is length(15),
       e.remark is length(200)))
+
+    all.except(classOf[User]).cacheable()
+
   }
 
-  all.except(classOf[User]).cacheable()
 }
