@@ -38,7 +38,7 @@ Course.category=课程种类代码
 Course.credits=学分
 Course.creditHours=学时/总课时
 Course.hours=分类课时
-Course.weekHour=周课时
+Course.weekHours=周课时
 Course.weeks=周数
 Course.department=院系
 Course.beginOn=设立日期
@@ -59,7 +59,7 @@ Course.levels=学历层次列表
 
 CourseHour=课程分类课时信息
 CourseHour.period=学时/总课时
-CourseHour.weekHour=周课时
+CourseHour.weekHours=周课时
 CourseHour.weeks=周数
 CourseHour.course=课程
 CourseHour.hourType=课时类别代码
