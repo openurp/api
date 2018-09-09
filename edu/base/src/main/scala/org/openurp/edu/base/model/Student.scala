@@ -22,7 +22,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.{ Component, LongId }
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{ Coded, Remark, TemporalOn, Updated }
-import org.openurp.base.model.{ Campus, Department }
+import org.openurp.base.model.{ Campus, Department, User }
 import org.openurp.code.edu.model.{ StudentStatus, StudyType }
 import org.openurp.edu.base.{ EduSpanBased, StdEnrollment }
 import org.openurp.edu.base.code.model.{ EduSpan, StdLabel, StdLabelType, StdType }
@@ -36,6 +36,9 @@ class Student extends LongId with EduSpanBased with Coded with Updated with Rema
 
   /**基本信息*/
   var person: Person = _
+
+  /**用户信息*/
+  var user: User = _
 
   /** 学生类别 所在项目内的学生类别 */
   var stdType: StdType = _
@@ -75,9 +78,6 @@ class StudentState extends LongId with StdEnrollment with TemporalOn with Remark
 
   /** 管理院系 */
   var department: Department = _
-
-  /** 专业所在院系 */
-  var majorDepart: Department = _
 
   /** 专业 */
   var major: Major = _

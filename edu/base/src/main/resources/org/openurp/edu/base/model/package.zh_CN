@@ -153,6 +153,7 @@ Student.squad=行政班级
 Student.inschool=是否在校
 Student.program=培养方案
 Student.state=学籍状态
+Student.user=账户信息
 Student.education=培养层次
 Student.enrollOn=入学报到日期
 Student.department=管理院系 行政管理院系
@@ -188,7 +189,6 @@ StudentState.beginOn=起始日期
 StudentState.endOn=结束日期
 StudentState.remark=备注
 StudentState.campus=校区
-StudentState.majorDepart=专业所在院系
 
 Textbook=教材
 Textbook.isbn=ISBN

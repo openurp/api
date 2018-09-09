@@ -35,8 +35,5 @@ class DefaultMapping extends MappingModule {
       e.name.middleName is length(50),
       e.formerName & e.phoneticName are length(100)
       ))
-
-    bind[PoliticalState].on(e => declare(
-      e.person & e.status & e.beginOn are notnull))
   }
 }
