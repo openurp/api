@@ -22,10 +22,10 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{ Coded, Updated }
 import org.openurp.code.edu.model.Language
 import org.openurp.code.geo.model.Country
-import org.openurp.code.person.model.{ CompatriotType, Gender, IdType, Nation, Religion }
+import org.openurp.code.person.model.{ CompatriotType, Gender, IdType, Nation, Religion, PoliticalStatus }
 
 /**
- * 通用人员信息
+ * 通用自然人信息
  */
 class Person extends LongId with Updated with Coded {
 
@@ -55,6 +55,9 @@ class Person extends LongId with Updated with Coded {
 
   /**民族 */
   var nation: Option[Nation] = None
+
+  /**政治面貌 */
+  var politicalStatus: Option[PoliticalStatus] = None
 
   /**国籍/地区 */
   var country: Option[Country] = None
