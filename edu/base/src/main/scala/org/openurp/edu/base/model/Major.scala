@@ -18,21 +18,20 @@
  */
 package org.openurp.edu.base.model
 
-import java.sql.Date
+import java.time.LocalDate
 
 import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.Coded
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.DisciplineCategory
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.EduSpan
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Coded
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.Updated
-import java.time.LocalDate
 
 /**
  * 专业

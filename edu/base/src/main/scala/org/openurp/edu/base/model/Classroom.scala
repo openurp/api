@@ -19,8 +19,12 @@
 package org.openurp.edu.base.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{ Coded, Named, TemporalOn, Updated }
-import org.openurp.base.model.{ Campus, Room }
+import org.beangle.data.model.pojo.Coded
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Campus
+import org.openurp.base.model.Room
 import org.openurp.code.edu.model.ClassroomType
 
 /**
