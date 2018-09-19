@@ -3,8 +3,6 @@
   <mapping class="org.openurp.base.model.DefaultMapping" />
   <mapping class="org.openurp.base.code.model.DefaultMapping" />
   <naming>
-    <profile package = "org.openurp.base" pluralize="true" schema="base">
-      <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
-    </profile>
+    <profile package = "org.openurp.base" pluralize="true" schema="base"/>
   </naming>
 </orm>
