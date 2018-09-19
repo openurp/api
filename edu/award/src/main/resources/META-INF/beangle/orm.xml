@@ -2,8 +2,6 @@
 <orm>
   <mapping class="org.openurp.edu.award.model.DefaultMapping" />
   <naming>
-    <profile package = "org.openurp.edu.award" pluralize="true" schema="edu_award">
-      <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
-    </profile>
+    <profile package = "org.openurp.edu.award" pluralize="true" schema="edu_award"/>
   </naming>
 </orm>

@@ -37,7 +37,7 @@ class ExamStudent extends LongId with Remark {
 
   var examType: ExamType = _
 
-  var activity: ExamActivity = _
+  var activity: Option[ExamActivity] = None
 
   var seatNo: Short = _
 

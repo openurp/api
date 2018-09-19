@@ -53,13 +53,13 @@ Course.textbooks=常用教材
 Course.prerequisites=先修课程
 Course.remark=课程备注
 Course.calgp=是否计算绩点
+Course.hasMakeup=是否有补考
 Course.project=项目
 Course.teachers=上课教师
 Course.levels=学历层次列表
 
 CourseHour=课程分类课时信息
-CourseHour.period=学时/总课时
-CourseHour.weekHours=周课时
+CourseHour.creditHours=学时/总课时
 CourseHour.weeks=周数
 CourseHour.course=课程
 CourseHour.hourType=课时类别代码

@@ -19,15 +19,26 @@
 package org.openurp.edu.base.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.{ Component, LongId }
+import org.beangle.data.model.Component
+import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ Coded, Remark, TemporalOn, Updated }
-import org.openurp.base.model.{ Campus, Department, User }
-import org.openurp.code.edu.model.{ StudentStatus, StudyType }
-import org.openurp.edu.base.{ EduSpanBased, StdEnrollment }
-import org.openurp.edu.base.code.model.{ EduSpan, StdLabel, StdLabelType, StdType }
-import org.openurp.people.base.model.Person
+import org.beangle.data.model.pojo.Coded
 import org.beangle.data.model.pojo.DateRange
+import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Campus
+import org.openurp.base.model.Department
+import org.openurp.base.model.User
+import org.openurp.code.edu.model.StudentStatus
+import org.openurp.code.edu.model.StudyType
+import org.openurp.edu.base.EduSpanBased
+import org.openurp.edu.base.StdEnrollment
+import org.openurp.edu.base.code.model.EduSpan
+import org.openurp.edu.base.code.model.StdLabel
+import org.openurp.edu.base.code.model.StdLabelType
+import org.openurp.edu.base.code.model.StdType
+import org.openurp.people.base.model.Person
 
 /**
  * 学籍信息实现

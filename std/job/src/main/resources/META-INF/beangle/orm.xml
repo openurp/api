@@ -2,8 +2,6 @@
 <orm>
   <mapping class="org.openurp.std.job.model.DefaultMapping" />
   <naming>
-    <profile  package = "org.openurp.std.job" pluralize="true" schema="std_job">
-       <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
-    </profile>
+    <profile  package = "org.openurp.std.job" pluralize="true" schema="std_job" />
   </naming>
 </orm>

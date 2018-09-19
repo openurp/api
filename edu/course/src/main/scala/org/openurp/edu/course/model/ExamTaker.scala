@@ -19,10 +19,15 @@
 package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.code.model.{ ExamStatus, ExamType }
+import org.openurp.base.model.Semester
+import org.openurp.edu.base.code.model.ExamStatus
+import org.openurp.edu.base.code.model.ExamType
 import org.openurp.edu.base.model.Student
 
 class ExamTaker extends LongId with Cloneable {
+
+  /**学年学期*/
+  var semester: Semester = _
 
   /** 教学任务 */
   var clazz: Clazz = _

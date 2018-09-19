@@ -22,7 +22,11 @@ import scala.collection.mutable.Buffer
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
+import org.beangle.data.model.pojo.Coded
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Department
 import org.openurp.edu.base.code.model.EduSpan
 

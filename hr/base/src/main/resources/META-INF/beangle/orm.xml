@@ -2,8 +2,6 @@
 <orm>
   <mapping class="org.openurp.hr.base.model.DefaultMapping" />
   <naming>
-    <profile  package = "org.openurp.hr.base" pluralize="true" schema="hr_base">
-      <class annotation = "org.beangle.data.model.annotation.code" prefix="xb_" value="school" />
-    </profile>
+    <profile  package = "org.openurp.hr.base" pluralize="true" schema="hr_base" />
   </naming>
 </orm>
