@@ -22,9 +22,12 @@ import java.sql.Date
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ Named, Remark, TemporalOn }
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.sin.model.Press
-import org.openurp.edu.base.code.model.{ BookAwardType, BookType }
+import org.openurp.edu.base.code.model.BookAwardType
+import org.openurp.edu.base.code.model.BookType
 
 class Textbook extends LongId with TemporalOn with Named with Remark {
 

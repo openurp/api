@@ -20,7 +20,8 @@ package org.openurp.edu.base.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ TemporalOn, Updated }
+import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.User
 import org.openurp.edu.base.code.model.TeacherType
 

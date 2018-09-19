@@ -21,10 +21,16 @@ package org.openurp.edu.base.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ Named, Remark, TemporalOn, Updated }
-import org.openurp.base.model.{ Campus, Department }
-import org.openurp.code.edu.model.{ Degree, StudyType }
-import org.openurp.edu.base.{ EduSpanBased, States }
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Campus
+import org.openurp.base.model.Department
+import org.openurp.code.edu.model.Degree
+import org.openurp.code.edu.model.StudyType
+import org.openurp.edu.base.EduSpanBased
+import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.StdType
 
 /**

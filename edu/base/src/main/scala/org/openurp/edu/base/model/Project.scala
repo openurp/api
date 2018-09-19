@@ -18,14 +18,25 @@
  */
 package org.openurp.edu.base.model
 
-import scala.collection.mutable.{ Buffer, ListBuffer }
+import scala.collection.mutable.Buffer
+import scala.collection.mutable.ListBuffer
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.{ IntId, LongId }
+import org.beangle.data.model.IntId
+import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ Coded, Named, TemporalOn, Updated }
-import org.openurp.base.model.{ Calendar, Campus, Department, School, TimeSetting }
-import org.openurp.edu.base.code.model.{ EduSpan, StdLabel, StdType }
+import org.beangle.data.model.pojo.Coded
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Calendar
+import org.openurp.base.model.Campus
+import org.openurp.base.model.Department
+import org.openurp.base.model.School
+import org.openurp.base.model.TimeSetting
+import org.openurp.edu.base.code.model.EduSpan
+import org.openurp.edu.base.code.model.StdLabel
+import org.openurp.edu.base.code.model.StdType
 
 /**
  * 项目
