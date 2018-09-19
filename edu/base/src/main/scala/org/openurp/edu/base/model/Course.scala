@@ -103,8 +103,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
 
 class CourseHour extends LongId {
   var course: Course = _
-  var period: Int = _
-  var weekHours: Int = _
+  var creditHours: Int = _
   var weeks: Int = _
   var hourType: CourseHourType = _
 }

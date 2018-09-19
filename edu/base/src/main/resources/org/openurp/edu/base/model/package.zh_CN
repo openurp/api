@@ -59,8 +59,7 @@ Course.teachers=上课教师
 Course.levels=学历层次列表
 
 CourseHour=课程分类课时信息
-CourseHour.period=学时/总课时
-CourseHour.weekHours=周课时
+CourseHour.creditHours=学时/总课时
 CourseHour.weeks=周数
 CourseHour.course=课程
 CourseHour.hourType=课时类别代码
