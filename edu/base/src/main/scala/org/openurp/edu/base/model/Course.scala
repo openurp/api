@@ -79,6 +79,8 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var teachers = Collections.newSet[Teacher]
   /** 是否计算绩点 **/
   var calgp: Boolean = _
+  /**是否有补考*/
+  var hasMakeup: Boolean = _
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)

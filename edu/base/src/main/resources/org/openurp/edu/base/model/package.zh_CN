@@ -53,6 +53,7 @@ Course.textbooks=常用教材
 Course.prerequisites=先修课程
 Course.remark=课程备注
 Course.calgp=是否计算绩点
+Course.hasMakeup=是否有补考
 Course.project=项目
 Course.teachers=上课教师
 Course.levels=学历层次列表
