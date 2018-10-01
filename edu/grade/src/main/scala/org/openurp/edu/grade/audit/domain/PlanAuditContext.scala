@@ -16,32 +16,33 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.course.model
+package org.openurp.edu.grade.audit.domain
 
-import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.code.model.ExamStatus
-import org.openurp.edu.base.code.model.ExamType
 import org.openurp.edu.base.model.Student
+import org.openurp.edu.grade.audit.model.PlanAuditResult
+import org.openurp.edu.program.plan.model.CoursePlan
+import org.beangle.commons.collection.Collections
 
-class ExamTaker extends LongId with Cloneable {
+class PlanAuditContext(val std: Student, val coursePlan: CoursePlan, val setting: AuditSetting) {
 
-  /**学年学期*/
-  var semester: Semester = _
+  var result: PlanAuditResult = _
 
-  /** 教学任务 */
-  var clazz: Clazz = _
+  var stdGrade: StdGrade = _
 
-  /** 学生 */
-  var std: Student = _
+  var partial: Boolean = _
 
-  /** 考试类型 */
-  var examType: ExamType = _
+  var auditTerms: Array[Int] = _
 
-  /** 考试情况 */
-  var examStatus: ExamStatus = _
+  var listeners: List[PlanAuditListener] = _
 
-  /** 缓考申请原因/记录处分 */
-  var remark: Option[String] = None
+  val params = Collections.newMap[String, Any]
 
+  def getParam[T](paramName: String, clazz: Class[T]): T = {
+    params.get(paramName).orNull.asInstanceOf[T]
+  }
+
+  def setAuditTerms(auditTerms: Array[Int]) {
+    this.auditTerms = auditTerms
+    this.partial = if (auditTerms == null || auditTerms.length == 0) false else true
+  }
 }

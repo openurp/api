@@ -20,7 +20,7 @@ package org.openurp.edu.extern.exam.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.openurp.base.model.Semester
+import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.code.model.{ ExamStatus, GradingMode }
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.extern.code.model.ExamSubject

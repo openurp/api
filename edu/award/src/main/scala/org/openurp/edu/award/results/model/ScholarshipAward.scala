@@ -20,7 +20,7 @@ package org.openurp.edu.award.results.model
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Student
-import org.openurp.base.model.Semester
+import org.openurp.edu.base.model.Semester
 import org.openurp.edu.award.code.model.ScholarshipLevel
 import org.openurp.edu.award.code.model.ScholarshipCategory
 

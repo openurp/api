@@ -20,7 +20,7 @@ package org.openurp.edu.evaluation.course.stat.model
 
 import scala.collection.mutable.Buffer
 import org.beangle.data.model.LongId
-import org.openurp.base.model.Semester
+import org.openurp.edu.base.model.Semester
 import org.openurp.edu.evaluation.model.{ Option, Question, QuestionType, Questionnaire }
 import org.beangle.data.model.LongIdEntity
 import org.beangle.commons.collection.Collections

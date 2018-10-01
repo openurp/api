@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.textbook.order.service
 
-import org.openurp.base.model.Semester
+import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.model.{ Student, Textbook }
 import org.openurp.edu.course.model.{ CourseTaker, Clazz }
 import org.openurp.edu.textbook.order.model.TextbookOrderLine

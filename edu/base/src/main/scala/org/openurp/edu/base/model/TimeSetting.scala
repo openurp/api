@@ -16,27 +16,23 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.base.model
+package org.openurp.edu.base.model
 
 import scala.collection.mutable.Buffer
 
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{ Named, TemporalOn }
-import org.openurp.base.code.model.DayPart
-
-/**
- * 假日安排
- */
-class Holiday extends IntId with Named with TemporalOn {
-  var school: School = _
-}
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.TemporalOn
+import org.openurp.base.model.Campus
+import org.openurp.edu.base.code.model.DayPart
 
 /**
  * 时间设置
  */
-class TimeSetting extends IntId with Named {
-  var school: School = _
+class TimeSetting extends IntId with Named with TemporalOn {
+  var project: Project = _
+  var campus: Option[Campus] = None
   var units: Buffer[CourseUnit] = new collection.mutable.ListBuffer[CourseUnit]
 }
 

@@ -29,11 +29,9 @@ import org.beangle.data.model.pojo.Coded
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Calendar
 import org.openurp.base.model.Campus
 import org.openurp.base.model.Department
 import org.openurp.base.model.School
-import org.openurp.base.model.TimeSetting
 import org.openurp.edu.base.code.model.EduSpan
 import org.openurp.edu.base.code.model.StdLabel
 import org.openurp.edu.base.code.model.StdType
@@ -62,8 +60,6 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   var stdTypes: Buffer[StdType] = new ListBuffer[StdType]
   /** 使用校历 */
   var calendars = Collections.newBuffer[Calendar]
-  /** 小节设置 */
-  var timeSettings = Collections.newBuffer[TimeSetting]
   /** 描述 */
   var description: String = _
   /** 是否辅修 */

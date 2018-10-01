@@ -291,3 +291,10 @@ class TeacherType extends CodeBean {
   var external: Boolean = _
   var parttime: Boolean = _
 }
+
+/**
+ * 上下午时段
+ */
+@code("school")
+class DayPart extends CodeBean
+

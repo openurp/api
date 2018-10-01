@@ -22,7 +22,7 @@ import scala.collection.mutable.{ Buffer, ListBuffer }
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.model.Semester
+import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.{ CourseTakeType, CourseType, ExamMode, GradeType, GradingMode }
 import org.openurp.edu.base.model.{ Course, Student }

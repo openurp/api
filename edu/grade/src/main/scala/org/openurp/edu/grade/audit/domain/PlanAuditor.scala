@@ -16,32 +16,16 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.course.model
+package org.openurp.edu.grade.audit.domain
 
-import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.code.model.ExamStatus
-import org.openurp.edu.base.code.model.ExamType
-import org.openurp.edu.base.model.Student
+import org.openurp.edu.grade.audit.model.PlanAuditResult
 
-class ExamTaker extends LongId with Cloneable {
+trait PlanAuditor {
 
-  /**学年学期*/
-  var semester: Semester = _
-
-  /** 教学任务 */
-  var clazz: Clazz = _
-
-  /** 学生 */
-  var std: Student = _
-
-  /** 考试类型 */
-  var examType: ExamType = _
-
-  /** 考试情况 */
-  var examStatus: ExamStatus = _
-
-  /** 缓考申请原因/记录处分 */
-  var remark: Option[String] = None
+  /**
+   * 即时审核一个学生，结果不保存<br>
+   * context 中得设置好standard, coursePlan
+   */
+  def audit(context: PlanAuditContext): PlanAuditResult
 
 }

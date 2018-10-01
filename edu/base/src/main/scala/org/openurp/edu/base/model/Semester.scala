@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.base.model
+package org.openurp.edu.base.model
 
 import java.util.GregorianCalendar
 
@@ -31,6 +31,7 @@ import org.beangle.data.model.pojo.Updated
 import org.beangle.data.model.IntId
 import java.time.ZoneId
 import org.beangle.data.model.pojo.DateRange
+import org.openurp.base.model.School
 
 /**
  * 教学日历方案
@@ -63,12 +64,18 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
     gc.get(java.util.Calendar.WEEK_OF_YEAR);
   }
 
-  def this(id: Integer, code: String, schoolYear: String, name: String) {
+  def this(id: Int, code: String, schoolYear: String, name: String) {
     this()
     this.id = id
     this.code = code
     this.schoolYear = schoolYear
     this.name = name
   }
+}
 
+/**
+ * 假日安排
+ */
+class Holiday extends IntId with Named with TemporalOn {
+  var school: School = _
 }

@@ -18,12 +18,14 @@
  */
 package org.openurp.edu.grade.audit.model
 
+import scala.collection.mutable.Buffer
+
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Hierarchical
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Course
+import org.openurp.edu.grade.audit.domain.GroupResultAdapter
 import org.openurp.edu.program.plan.model.CourseGroup
-import org.beangle.data.model.LongId
-import org.openurp.edu.grade.audit.adapters.GroupResultAdapter
-import scala.collection.mutable.Buffer
 
 object GroupAuditResult {
 
@@ -42,13 +44,15 @@ object GroupAuditResult {
     }
     groupResult.passed = childrenPassed && groupResult.auditStat.passed
     if (isRecursive) {
-      if (null != groupResult.parent) checkPassed(groupResult.parent, true) else checkPassed(new GroupResultAdapter(groupResult.planResult),
-        false)
+      groupResult.parent match {
+        case None    => checkPassed(new GroupResultAdapter(groupResult.planResult), false)
+        case Some(p) => checkPassed(p, true)
+      }
     }
   }
 }
 
-class GroupAuditResult extends LongId {
+class GroupAuditResult extends LongId with Hierarchical[GroupAuditResult] {
 
   var name: String = _
 
@@ -58,11 +62,7 @@ class GroupAuditResult extends LongId {
 
   var courseType: CourseType = _
 
-  var parent: GroupAuditResult = _
-
   var passed: Boolean = _
-
-  var children: Buffer[GroupAuditResult] = new collection.mutable.ListBuffer[GroupAuditResult]
 
   var groupNum: Short = _
 
@@ -122,18 +122,20 @@ class GroupAuditResult extends LongId {
       auditStat.addCredits(course.credits)
       auditStat.addNum(1)
     }
-    if (null != groupResult.parent) addPassedCourse(groupResult.parent, course) else {
-      val planAuditStat = groupResult.planResult.auditStat
-      if (!planAuditStat.passedCourses.contains(course)) {
-        planAuditStat.passedCourses.add(course)
-        planAuditStat.addCredits(course.credits)
-        planAuditStat.addNum(1)
-      }
+    groupResult.parent match {
+      case None =>
+        val planAuditStat = groupResult.planResult.auditStat
+        if (!planAuditStat.passedCourses.contains(course)) {
+          planAuditStat.passedCourses.add(course)
+          planAuditStat.addCredits(course.credits)
+          planAuditStat.addNum(1)
+        }
+      case Some(p) => addPassedCourse(p, course)
     }
   }
 
   def addChild(gr: GroupAuditResult) {
-    gr.parent = this
+    gr.parent = Some(this)
     this.children += gr
   }
 

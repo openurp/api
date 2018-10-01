@@ -34,6 +34,7 @@ class DefaultMapping extends MappingModule {
     bind[CourseTakeType]
     bind[CourseHourType]
     bind[CourseAbilityRate]
+    bind[DayPart]
     bind[EduSpan]
     bind[ElectionMode]
     bind[ExamType]

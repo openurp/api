@@ -18,8 +18,6 @@
  */
 package org.openurp.base.model
 
-import scala.reflect.runtime.universe
-
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
@@ -41,15 +39,6 @@ class DefaultMapping extends MappingModule {
       e.children is depends("parent"),
       e.remark is length(200)))
 
-    bind[Calendar] on (e => declare(
-      e.semesters is (depends("calendar")),
-      e.code is length(10),
-      e.name is length(80)))
-
-    bind[Semester].on(e => declare(
-      e.code is (length(15)),
-      e.name & e.schoolYear are (length(10)))).generator("code")
-
     bind[Campus] on (e => declare(
       e.code is length(10),
       e.name is length(80),
@@ -66,18 +55,6 @@ class DefaultMapping extends MappingModule {
       e.code is length(10),
       e.name is length(80),
       e.remark is (length(200))))
-
-    bind[Holiday] on (e => declare(
-      e.name is length(20),
-      e.endOn is notnull))
-
-    bind[TimeSetting] on (e => declare(
-      e.name is length(20),
-      e.units is (depends("setting"))))
-
-    bind[CourseUnit] on (e => declare(
-      e.enName is length(30),
-      e.name & e.indexno are length(20)))
 
     bind[User] on (e => declare(
       e.code is length(30),

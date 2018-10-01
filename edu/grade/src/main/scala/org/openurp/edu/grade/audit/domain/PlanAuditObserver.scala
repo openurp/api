@@ -16,32 +16,20 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.course.model
+package org.openurp.edu.grade.audit.domain
 
-import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.code.model.ExamStatus
-import org.openurp.edu.base.code.model.ExamType
-import org.openurp.edu.base.model.Student
+/**
+ * 在审核的时候Observer的notifyBegin先执行<br>
+ * 然后是Listener<br>
+ * 然后是Observer的notifyEnd
+ */
+trait PlanAuditObserver {
 
-class ExamTaker extends LongId with Cloneable {
+  def notifyStart(): Unit
 
-  /**学年学期*/
-  var semester: Semester = _
+  def notifyBegin(context: PlanAuditContext, index: Int): Boolean
 
-  /** 教学任务 */
-  var clazz: Clazz = _
+  def notifyEnd(context: PlanAuditContext, index: Int): Unit
 
-  /** 学生 */
-  var std: Student = _
-
-  /** 考试类型 */
-  var examType: ExamType = _
-
-  /** 考试情况 */
-  var examStatus: ExamStatus = _
-
-  /** 缓考申请原因/记录处分 */
-  var remark: Option[String] = None
-
+  def finish(): Unit
 }
