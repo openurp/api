@@ -19,41 +19,25 @@
 package org.openurp.edu.student.model
 
 import org.beangle.data.model.LongId
-import org.openurp.code.geo.model.Division
-import org.openurp.code.edu.model.EnrollMode
 import org.openurp.edu.base.model.Student
-import org.openurp.code.person.model.HouseholdType
-import org.openurp.edu.base.model.Major
-import org.openurp.base.model.Department
-import java.time.LocalDate
-import org.openurp.code.edu.model.EducationMode
 
 /**
- * 录取信息
+ * 联系信息
  */
-class Admission extends LongId {
+class Contact extends LongId {
 
-  /** 学生 */
+  /**学生*/
   var std: Student = _
 
-  /** 录取年月*/
-  var enrollOn: LocalDate = _
+  /** 电子邮箱 */
+  var mail: Option[String] = None
 
-  /** 录取专业*/
-  var major: Major = _
+  /** 电话 */
+  var phone: Option[String] = None
 
-  /** 录取院系*/
-  var department: Department = _
+  /** 移动电话 */
+  var mobile: Option[String] = None
 
-  /** 录取通知书号 */
-  var letterNo: Option[String] = None
-
-  /** 录取第几志愿 */
-  var admissionIndex: Option[Int] = None
-
-  /** 入学方式 */
-  var enrollMode: EnrollMode = _
-
-  /** 培养方式*/
-  var educationMode: EducationMode = _
+  /** 地址 入校后联系地址 */
+  var address: Option[String] = None
 }

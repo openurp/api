@@ -26,6 +26,9 @@ import org.openurp.code.edu.model.Degree
 import org.openurp.code.edu.model.EducationResult
 import org.openurp.edu.base.model.Student
 
+/**
+ * 毕业信息
+ */
 class Graduation extends LongId with Updated {
 
   var std: Student = _
@@ -40,12 +43,12 @@ class Graduation extends LongId with Updated {
   var educationResult: EducationResult = _
 
   /** 学位 */
-  var degree: Degree = _
+  var degree: Option[Degree] = None
 
   /** 学位授予日期 */
-  var degreeAwardOn: LocalDate = _
+  var degreeAwardOn: Option[LocalDate] = None
 
   /** 学位证书号 */
-  var diplomaNo: String = _
+  var diplomaNo: Option[String] = None
 
 }

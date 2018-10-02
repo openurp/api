@@ -18,42 +18,48 @@
  */
 package org.openurp.edu.student.model
 
-import org.beangle.data.model.LongId
-import org.openurp.code.geo.model.Division
-import org.openurp.code.edu.model.EnrollMode
-import org.openurp.edu.base.model.Student
-import org.openurp.code.person.model.HouseholdType
-import org.openurp.edu.base.model.Major
-import org.openurp.base.model.Department
 import java.time.LocalDate
-import org.openurp.code.edu.model.EducationMode
+import org.openurp.code.geo.model.Division
+import org.beangle.commons.collection.Collections
+import org.openurp.edu.base.model.Student
+import org.beangle.data.model.LongId
 
 /**
- * 录取信息
+ * 考生信息
  */
-class Admission extends LongId {
+class Examinee extends LongId {
 
-  /** 学生 */
+  /**学生*/
   var std: Student = _
 
-  /** 录取年月*/
-  var enrollOn: LocalDate = _
+  /** 考生号 */
+  var code: String = _
 
-  /** 录取专业*/
-  var major: Major = _
+  /** 准考证号 */
+  var examNo: Option[String] = None
 
-  /** 录取院系*/
-  var department: Department = _
+  /** 生源地 */
+  var originDivision: Option[Division] = None
 
-  /** 录取通知书号 */
-  var letterNo: Option[String] = None
+  /** 毕业学校编号 */
+  var schoolNo: Option[String] = None
 
-  /** 录取第几志愿 */
-  var admissionIndex: Option[Int] = None
+  /** 毕业学校名称 */
+  var schoolName: Option[String] = None
 
-  /** 入学方式 */
-  var enrollMode: EnrollMode = _
+  /** 毕业日期 */
+  var graduateOn: Option[LocalDate] = None
 
-  /** 培养方式*/
-  var educationMode: EducationMode = _
+  /** 招生录取总分 */
+  var score: Option[Float] = None
+
+  /** 各科分数 科目->浮点数 */
+  var scores = Collections.newMap[Integer, java.lang.Float]
+
+  /** 报考省市 */
+  var province: Option[String] = None
+
+  /** 是否预科生 */
+  var preparatory: Boolean = _
+
 }
