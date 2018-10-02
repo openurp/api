@@ -22,6 +22,7 @@
     <module>program</module>
     <module>course</module>
     <module>grade</module>
+    <module>graduation</module>
     <module>student</module>
     <module>evaluation</module>
     <module>award</module>

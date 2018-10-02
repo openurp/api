@@ -31,7 +31,7 @@ import org.openurp.edu.grade.course.model.StdSemesterGpa
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
+    defaultIdGenerator("auto_increment")
 
     //code
     bind[GradeType]

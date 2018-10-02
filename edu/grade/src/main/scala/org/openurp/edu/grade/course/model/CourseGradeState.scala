@@ -50,6 +50,7 @@ class CourseGradeState extends AbstractGradeState {
    */
   var gaStates = Collections.newSet[GaGradeState]
 
+  /**保留小数位*/
   var precision: Int = _
 
   def this(clazz: Clazz) {
