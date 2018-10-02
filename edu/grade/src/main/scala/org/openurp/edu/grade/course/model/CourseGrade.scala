@@ -87,17 +87,7 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
    * 考核成绩
    */
   var examGrades: Buffer[ExamGrade] = new ListBuffer[ExamGrade]
-  /**
-   * 得到指定的考试成绩
-   */
-  def getGrade(gradeType: GradeType): Grade = {
-    if (gradeType.isGa) gaGrades.find(eg => eg.gradeType == gradeType).orNull
-    else examGrades.find(eg => eg.gradeType == gradeType).orNull
-  }
 
-  def getGrade(gradeTypeId: Integer): Grade = {
-    getGrade(new GradeType(gradeTypeId))
-  }
   /**
    * 考核方式
    */
@@ -116,6 +106,66 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
   var operator: String = _
 
   var clazz: Option[Clazz] = None
+
+  /**
+   * 得到指定的考试成绩
+   */
+  def getGrade(gradeType: GradeType): Option[Grade] = {
+    if (gradeType.isGa) gaGrades.find(eg => eg.gradeType == gradeType)
+    else examGrades.find(eg => eg.gradeType == gradeType)
+  }
+
+  def getGrade(gradeTypeId: Int): Option[Grade] = {
+    getGrade(new GradeType(gradeTypeId))
+  }
+
+  /**
+   * 得到指定的考试成绩
+   */
+  def getExamGrade(gradeTypeId: Int): Option[ExamGrade] = {
+    getExamGrade(new GradeType(gradeTypeId))
+  }
+
+  /**
+   * 得到指定的考试成绩
+   */
+  def getExamGrade(gt: GradeType): Option[ExamGrade] = {
+    if (gt.isGa) throw new RuntimeException(s"${gt.id} is not exam grade type")
+    examGrades.find(eg => eg.gradeType == gradeType)
+  }
+
+  /**
+   * 得到指定的总评成绩
+   */
+  def getGaGrade(gradeTypeId: Int): Option[GaGrade] = {
+    getGaGrade(new GradeType(gradeTypeId))
+  }
+
+  /**
+   * 得到指定的总评成绩
+   */
+  def getGaGrade(gt: GradeType): Option[GaGrade] = {
+    if (!gt.isGa) throw new RuntimeException(s"${gt.id} is not ga grade type")
+    gaGrades.find(eg => eg.gradeType == gradeType)
+  }
+
+  /**
+   * 添加考试成绩
+   */
+  def addExamGrade(examGrade: ExamGrade): this.type = {
+    examGrades += examGrade
+    examGrade.courseGrade = this
+    this
+  }
+
+  /**
+   * 添加总评成绩
+   */
+  def addGaGrade(gaGrade: GaGrade): this.type = {
+    gaGrades += gaGrade
+    gaGrade.courseGrade = this
+    this
+  }
 
   def gradeType: GradeType = {
     new GradeType(GradeType.Final)

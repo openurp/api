@@ -41,7 +41,7 @@ class PlanAuditSkipListener extends PlanAuditListener {
     if (null == standard) {
       return true
     }
-    val auditTerms = context.auditTerms
+    val auditTerms = context.setting.auditTerms
     // 没有指定具体审核哪个学期，那么就审核全部学期
     if (auditTerms == null || auditTerms.length == 0) {
       return true

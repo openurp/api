@@ -18,22 +18,16 @@
  */
 package org.openurp.edu.grade.audit.domain
 
+import org.beangle.commons.collection.Collections
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.grade.audit.model.PlanAuditResult
 import org.openurp.edu.program.plan.model.CoursePlan
-import org.beangle.commons.collection.Collections
 
-class PlanAuditContext(val std: Student, val coursePlan: CoursePlan, val setting: AuditSetting) {
+class PlanAuditContext(val std: Student, val coursePlan: CoursePlan,
+                       val stdGrade: StdGrade, val setting: AuditSetting,
+                       val listeners: Seq[PlanAuditListener]) {
 
   var result: PlanAuditResult = _
-
-  var stdGrade: StdGrade = _
-
-  var partial: Boolean = _
-
-  var auditTerms: Array[Int] = _
-
-  var listeners: List[PlanAuditListener] = _
 
   val params = Collections.newMap[String, Any]
 
@@ -41,8 +35,4 @@ class PlanAuditContext(val std: Student, val coursePlan: CoursePlan, val setting
     params.get(paramName).orNull.asInstanceOf[T]
   }
 
-  def setAuditTerms(auditTerms: Array[Int]) {
-    this.auditTerms = auditTerms
-    this.partial = if (auditTerms == null || auditTerms.length == 0) false else true
-  }
 }

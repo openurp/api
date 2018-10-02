@@ -16,47 +16,45 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.model
+package org.openurp.edu.grade.course.domain
 
-import org.beangle.data.model.annotation.config
-import org.beangle.data.model.LongId
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.grade.course.model.CourseGrade
+import org.openurp.edu.grade.course.model.StdGpa
+
 /**
- * 成绩分级配置项
+ * 平均绩点计算策略
  */
-@config
-class GradeRateItem extends LongId {
+trait GpaPolicy {
 
   /**
-   * 成绩配置
+   * 计算平均绩点
+   *
+   * @param grades
+   * @return
    */
-  var config: GradeRateConfig = _
+  def calcGpa(grades: Iterable[CourseGrade]): Float
 
   /**
-   * 显示名称
+   * 计算平均分
+   *
+   * @param grades
+   * @return
    */
-  var grade: String = _
+  def calcGa(grades: Iterable[CourseGrade]): Float
 
   /**
-   * 最低分
+   * 计算平均绩点
+   *
+   * @param grades
+   * @return
    */
-  var minScore: Float = _
+  def calc(std: Student, grades: Iterable[CourseGrade], calcDetail: Boolean): StdGpa
 
   /**
-   * 最高分
+   * 平均绩点和平均分的小数点后精确位数,默认为2
+   *
+   * @return
    */
-  var maxScore: Float = _
-
-  /**
-   * 绩点表达式
-   */
-  var gpExp: Option[String] = None
-
-  /**
-   * 默认分数
-   */
-  var defaultScore: Float = _
-
-  def contains(f: Float): Boolean = {
-    minScore <= f && f <= maxScore
-  }
+  def precision: Int
 }

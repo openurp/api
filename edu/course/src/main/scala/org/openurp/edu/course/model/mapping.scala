@@ -43,6 +43,7 @@ class DefaultMapping extends MappingModule {
       e.crn is length(32),
       e.teachers is ordered,
       e.name is length(500),
+      e.teachers is ordered,
       e.enrollment.grade is length(20),
       e.exam.beginAt is column("exam_begin_at"),
       e.exam.endAt is column("exam_end_at"),

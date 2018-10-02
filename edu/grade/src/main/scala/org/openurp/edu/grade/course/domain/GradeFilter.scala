@@ -16,47 +16,14 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.model
+package org.openurp.edu.grade.course.domain
 
-import org.beangle.data.model.annotation.config
-import org.beangle.data.model.LongId
-/**
- * 成绩分级配置项
- */
-@config
-class GradeRateItem extends LongId {
+import java.util.List
+import org.openurp.edu.grade.course.model.CourseGrade
+//remove if not needed
+import scala.collection.JavaConversions._
 
-  /**
-   * 成绩配置
-   */
-  var config: GradeRateConfig = _
+trait GradeFilter {
 
-  /**
-   * 显示名称
-   */
-  var grade: String = _
-
-  /**
-   * 最低分
-   */
-  var minScore: Float = _
-
-  /**
-   * 最高分
-   */
-  var maxScore: Float = _
-
-  /**
-   * 绩点表达式
-   */
-  var gpExp: Option[String] = None
-
-  /**
-   * 默认分数
-   */
-  var defaultScore: Float = _
-
-  def contains(f: Float): Boolean = {
-    minScore <= f && f <= maxScore
-  }
+  def filter(grades: Seq[CourseGrade]): Seq[CourseGrade]
 }

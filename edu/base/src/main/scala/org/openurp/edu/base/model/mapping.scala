@@ -102,6 +102,7 @@ class DefaultMapping extends MappingModule {
     bind[Project] on (e => declare(
       e.code is (length(10), unique),
       e.name is length(100),
+      e.departments is ordered,
       e.description is length(500)))
 
     bind[ProjectCode] on (e => declare(

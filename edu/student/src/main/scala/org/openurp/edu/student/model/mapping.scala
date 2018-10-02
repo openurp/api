@@ -27,11 +27,13 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    //clazz result
-    bind[StdAdmission].on(e => declare(
+    bind[Admission].on(e => declare(
       e.std is notnull,
       e.letterNo is length(30),
       e.ticketNo is length(30)))
+
+    bind[Graduation]
+
   }
 
 }

@@ -18,6 +18,8 @@
  */
 package org.openurp.edu.base.model
 
+import java.time.LocalDate
+
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.Component
 import org.beangle.data.model.LongId
@@ -63,7 +65,21 @@ class Student extends LongId with EduSpanBased with Coded with Updated with Rema
   /** 学生分类标签 */
   var labels = Collections.newMap[StdLabelType, StdLabel]
 
-  /** 学制 学习年限（允许0.5年出现） */
+  /**
+   * 入学日期
+   * <li> 入学日期+最长学习年限=学籍截止日期
+   * <li> 该日期也是学籍状态开始的日期(student.state.beginOn)，但不得早于学籍有效的开始日期(student.beginOn)
+   */
+  var studyOn: LocalDate = _
+
+  /**
+   * 预计毕业日期
+   * <li> 入学日期+学习年限=预计毕业日期
+   * <li> 该日期是学籍状态的最后截止日期，但预计毕业日期不得晚于学籍截止日期
+   */
+  var graduateOn: LocalDate = _
+
+  /** 学习年限（允许0.5年出现） */
   var duration: Float = _
 
   /** 是否有学籍 */

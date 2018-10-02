@@ -30,13 +30,13 @@ object DefaultGroupResultBuilder extends GroupResultBuilder {
   def buildResult(context: PlanAuditContext, group: CourseGroup): GroupAuditResult = {
     val result = new GroupAuditResult()
     var creditsRequired = group.credits
-    if (context.auditTerms != null && context.auditTerms.length != 0) {
+    if (context.setting.auditTerms != null && context.setting.auditTerms.length != 0) {
       creditsRequired = 0f
       var groupCourseCredits = 0f
       var creditsNeedCompare = false
       val auditedCourses = Collections.newSet[Course]
-      for (i <- 0 until context.auditTerms.length) {
-        val term = context.auditTerms(i)
+      for (i <- 0 until context.setting.auditTerms.length) {
+        val term = context.setting.auditTerms(i)
         creditsRequired += PlanUtils.getGroupCredits(group, term)
         if (group.children.isEmpty && !group.planCourses.isEmpty &&
           group.compulsory) {
@@ -53,7 +53,7 @@ object DefaultGroupResultBuilder extends GroupResultBuilder {
       }
     }
     result.auditStat.creditsRequired = creditsRequired
-    if (context.partial) {
+    if (context.setting.partial) {
       result.auditStat.numRequired = 0
     } else {
       result.auditStat.numRequired = group.courseNum

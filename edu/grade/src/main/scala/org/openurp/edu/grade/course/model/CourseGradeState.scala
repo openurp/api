@@ -38,7 +38,7 @@ class CourseGradeState extends AbstractGradeState {
   /**
    * 教学任务
    */
-  var clazz:Clazz = _
+  var clazz: Clazz = _
 
   /**
    * 可录入各成绩类型的状态设置
@@ -49,6 +49,8 @@ class CourseGradeState extends AbstractGradeState {
    * 可录入各成绩类型的状态设置
    */
   var gaStates = Collections.newSet[GaGradeState]
+
+  var precision: Int = _
 
   def this(clazz: Clazz) {
     this()
@@ -84,6 +86,13 @@ class CourseGradeState extends AbstractGradeState {
       gaStates.find(_.gradeType.id == gradeType.id).getOrElse(null)
     else
       examStates.find(_.gradeType.id == gradeType.id).getOrElse(null)
+  }
+
+  def getStatus(gradeType: GradeType): Int = {
+    if (gradeType.isGa)
+      gaStates.find(_.gradeType.id == gradeType.id).map(_.status).getOrElse(0)
+    else
+      examStates.find(_.gradeType.id == gradeType.id).map(_.status).getOrElse(0)
   }
 
   /**

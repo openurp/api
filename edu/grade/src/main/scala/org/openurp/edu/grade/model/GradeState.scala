@@ -70,6 +70,10 @@ trait GradeState extends LongId with TemporalOn with Updated {
   def status: Int
 
   /**
+   * 设置新状态
+   */
+  def status_=(newStatus: Int)
+  /**
    * 返回操作者
    */
   def operator: String

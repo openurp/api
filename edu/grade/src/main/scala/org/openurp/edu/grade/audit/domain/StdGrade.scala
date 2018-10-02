@@ -21,10 +21,13 @@ package org.openurp.edu.grade.audit.domain
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.grade.course.model.CourseGrade
 import org.beangle.commons.collection.Collections
+import scala.collection.mutable.Buffer
+import org.beangle.commons.bean.orderings.PropertyOrdering
+import org.beangle.commons.bean.orderings.MultiPropertyOrdering
 
 class StdGrade(val grades: Seq[CourseGrade]) {
 
-  private val gradeMap = grades.groupBy(g => g.course)
+  private val gradeMap = grades.sorted(new MultiPropertyOrdering("course,score desc")).groupBy(g => g.course)
 
   private val usedCourses = Collections.newSet[Course]
 

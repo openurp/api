@@ -18,44 +18,34 @@
  */
 package org.openurp.edu.student.model
 
+import java.time.LocalDate
+
 import org.beangle.data.model.LongId
-import org.openurp.code.geo.model.Division
-import org.openurp.code.edu.model.EnrollMode
+import org.beangle.data.model.pojo.Updated
+import org.openurp.code.edu.model.Degree
+import org.openurp.code.edu.model.EducationResult
 import org.openurp.edu.base.model.Student
-import org.openurp.code.person.model.HouseholdType
 
-/**
- * 录取信息
- */
-class StdAdmission extends LongId {
+class Graduation extends LongId with Updated {
 
-  /** 学生 */
   var std: Student = _
 
-  /** 录取通知书号 */
-  var letterNo:String =_
+  /** 毕业证书编号（电子注册号） */
+  var code: String = _
 
-  /** 录取第几志愿 */
-  var admissionIndex:Int=_
+  /** 毕结业日期 */
+  var graduateOn: LocalDate = _
 
-  /** 准考证号 */
-  var ticketNo: String = _
+  /** 毕结业情况 */
+  var educationResult: EducationResult = _
 
-  /** 入学方式 */
-  var enrollMode: EnrollMode = _
+  /** 学位 */
+  var degree: Degree = _
 
-  /** 报考省市 */
-  var province: String = _
+  /** 学位授予日期 */
+  var degreeAwardOn: LocalDate = _
 
-  /** 是否预科生 */
-  var preparatory: Boolean = _
+  /** 学位证书号 */
+  var diplomaNo: String = _
 
-  /** 入学前户口所在区划 */
-  var formerDivision: Division = _
-
-  /** 入学后户口所在区划 */
-  var currentDivision: Division = _
-
-  /** 原户口性质 */
-  var householdType:HouseholdType = _
 }

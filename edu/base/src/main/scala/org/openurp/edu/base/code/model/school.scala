@@ -71,7 +71,9 @@ class CourseHourType extends CodeBean
  * 课程能力等级
  */
 @code("school")
-class CourseAbilityRate extends CodeBean
+class CourseAbilityRate extends CodeBean {
+  var rate: Int = _
+}
 /**
  * 修课类别
  * （重修、增修、免修不免试、主修，选修）
@@ -188,9 +190,13 @@ class ExamType extends CodeBean {
   /**是否是缓考*/
   var deferred: Boolean = _
 
-  def this(id: Int, code: String, name: String, enName: String) {
+  def this(id: Int) {
     this()
     this.id = id
+  }
+
+  def this(id: Int, code: String, name: String, enName: String) {
+    this(id)
     this.code = code
     this.name = name
     this.enName = Some(enName)
@@ -204,9 +210,8 @@ class ExamType extends CodeBean {
  */
 @code("school")
 class GradeType extends CodeBean {
-  def isGa: Boolean = {
-    id == GradeType.EndGa || id == GradeType.MakeupGa || id == GradeType.DelayGa
-  }
+  var examType: Option[ExamType] = None
+
   def this(id: Int) {
     this()
     this.id = id
@@ -219,6 +224,15 @@ class GradeType extends CodeBean {
     this.name = name
     this.enName = Some(enName)
   }
+
+  def isGa: Boolean = {
+    id == GradeType.EndGa || id == GradeType.MakeupGa || id == GradeType.DelayGa
+  }
+
+  def isMakeupOrDeplay: Boolean = {
+    id == GradeType.Makeup || id == GradeType.Delay
+  }
+
 }
 
 object GradeType {

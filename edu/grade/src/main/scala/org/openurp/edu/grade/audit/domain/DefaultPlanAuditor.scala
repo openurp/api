@@ -30,13 +30,13 @@ import org.openurp.edu.program.plan.model.CourseGroup
 class DefaultPlanAuditor extends PlanAuditor {
 
   def audit(context: PlanAuditContext): PlanAuditResult = {
+    val setting = context.setting
     val planAuditResult = new PlanAuditResult(context.std)
     planAuditResult.passed = false
     planAuditResult.remark = null
     planAuditResult.updatedAt = Instant.now
-    //planAuditResult.auditor=Securities.username
     planAuditResult.auditStat = new AuditStat()
-    planAuditResult.partial = context.partial
+    planAuditResult.partial = setting.partial
     context.result = planAuditResult
     val plan = context.coursePlan
     if (null == plan || null == context.stdGrade) {
@@ -50,15 +50,15 @@ class DefaultPlanAuditor extends PlanAuditor {
     val courseGroupAdapter = new CourseGroupAdapter(context.coursePlan)
     val groupResultAdapter = new GroupResultAdapter(planAuditResult)
     var creditsRequired = context.coursePlan.credits
-    if (context.auditTerms != null && context.auditTerms.length != 0) {
+    if (setting.auditTerms != null && setting.auditTerms.length != 0) {
       creditsRequired = 0
-      for (i <- 0 until context.auditTerms.length; group <- context.coursePlan.groups if group.parent == null) {
-        creditsRequired += PlanUtils.getGroupCredits(group, context.auditTerms(i))
+      for (i <- 0 until setting.auditTerms.length; group <- context.coursePlan.groups if group.parent == null) {
+        creditsRequired += PlanUtils.getGroupCredits(group, setting.auditTerms(i))
       }
     }
     planAuditResult.auditStat.creditsRequired = creditsRequired
     var numRequired = 0
-    if (!context.partial) {
+    if (!setting.partial) {
       for (group <- context.coursePlan.groups if group.parent == null) {
         numRequired += group.courseNum
       }
@@ -68,7 +68,7 @@ class DefaultPlanAuditor extends PlanAuditor {
     for (listener <- context.listeners) {
       listener.endPlanAudit(context)
     }
-    val lastTarget = context.result.groupResult(context.setting.convertTarget)
+    val lastTarget = context.result.getGroupResult(setting.convertTarget)
     if (null != lastTarget) {
       if (lastTarget.auditStat.creditsCompleted == 0 && lastTarget.auditStat.creditsRequired == 0 &&
         lastTarget.courseResults.isEmpty) {

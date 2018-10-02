@@ -29,6 +29,9 @@ class Restriction extends LongId with Cloneable {
   /** 教学任务 */
   var clazz: Clazz = _
 
+  /**是否主要开课对象*/
+  var prime: Boolean = _
+
   /** 条件列表 */
   var items = Collections.newBuffer[RestrictionItem]
 
@@ -37,9 +40,6 @@ class Restriction extends LongId with Cloneable {
 
   /** 当前人数 */
   var curCount: Int = _
-
-  /**授课对象还是选课对象*/
-  var forClass: Boolean = true
 
   /** 父级菜单 */
   var parent: Option[Restriction] = None

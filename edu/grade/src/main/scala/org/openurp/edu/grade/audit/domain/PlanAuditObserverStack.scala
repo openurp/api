@@ -18,12 +18,10 @@
  */
 package org.openurp.edu.grade.audit.domain
 
-import java.util.Iterator
-import java.util.List
 import java.util.Observable
 import org.beangle.commons.collection.Collections
 
-class PlanAuditObserverStack(initObersers: PlanAuditObserver*) extends Observable() with PlanAuditObserver {
+class PlanAuditObserverStack(initObersers: PlanAuditObserver*) extends Observable with PlanAuditObserver {
 
   for (ob <- initObersers) {
     addObserver(ob)

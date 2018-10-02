@@ -50,12 +50,6 @@ class GradeRateConfig extends LongId with ProjectBased {
   var passScore: Float = _
 
   /**
-   * 默认成绩
-   */
-  @transient
-  private var defaultScoreMap = Collections.newMap[String, Float]
-
-  /**
    * 将字符串按照成绩记录方式转换成数字.<br>
    * 空成绩将转换成null
    *
@@ -64,8 +58,8 @@ class GradeRateConfig extends LongId with ProjectBased {
    * @param gradingMode
    * @return
    */
-  def convert(grade: String): java.lang.Float = {
-    defaultScoreMap.get(grade).asInstanceOf[java.lang.Float]
+  def convert(grade: String): Option[Float] = {
+    items.find(_.grade == grade).map(i => i.defaultScore)
   }
 
   /**
@@ -76,24 +70,15 @@ class GradeRateConfig extends LongId with ProjectBased {
    * @param gradingMode
    * @return
    */
-  def convert(score: java.lang.Float): String = {
-    if (null == score) return ""
-    if (gradingMode.numerical) return NumberFormat.getInstance.format(score.floatValue())
-    for (item <- items if item.contains(score)) {
-      return item.grade
+  def convert(score: Float): String = {
+    if (gradingMode.numerical) {
+      NumberFormat.getInstance.format(score)
+    } else {
+      items.find(_.contains(score)) match {
+        case None    => ""
+        case Some(g) => g.grade
+      }
     }
-    ""
   }
 
-  /**
-   * 1)将字符串的成绩等级转换成列表<br>
-   * 2)将转换映射成map
-   */
-  def init() {
-    var iterator = items.iterator
-    while (iterator.hasNext) {
-      val item = iterator.next()
-      defaultScoreMap.put(item.grade, item.defaultScore)
-    }
-  }
 }

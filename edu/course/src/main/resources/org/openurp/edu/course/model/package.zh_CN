@@ -4,13 +4,13 @@ Restriction.clazz=教学任务
 Restriction.items=条件列表
 Restriction.maxCount=最大人数
 Restriction.curCount=当前人数
-Restriction.forClass=授课对象还是选课对象
+Restriction.prime=是否主要授课对象
 Restriction.parent=上级组
 
 RestrictionItem=课程限制项
 RestrictionItem.name=限制项名称
 RestrictionItem.meta=限制具体项目
-RestrictionItem.group=所在限制组
+RestrictionItem.restriction=所在限制组
 RestrictionItem.operator=操作符
 RestrictionItem.content=限制内容
 RestrictionItem.inclusive=是否包含限定内容

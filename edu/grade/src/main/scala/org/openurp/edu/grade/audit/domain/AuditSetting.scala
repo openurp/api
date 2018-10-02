@@ -43,6 +43,10 @@ class AuditSetting(
       }
     }
 
+  var auditTerms: Array[Int] = _
+
+  var partial: Boolean = _
+
   def isConvertable(courseType: CourseType): Boolean = {
     convertableCourseTypes.contains(courseType)
   }
@@ -59,5 +63,10 @@ class AuditSetting(
       return convertableCourseTypes.contains(courseType)
     }
     false
+  }
+
+  def setAuditTerms(auditTerms: Array[Int]) {
+    this.auditTerms = auditTerms
+    this.partial = if (auditTerms == null || auditTerms.length == 0) false else true
   }
 }

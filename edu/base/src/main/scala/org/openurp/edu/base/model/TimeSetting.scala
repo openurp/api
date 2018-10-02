@@ -33,6 +33,7 @@ import org.openurp.edu.base.code.model.DayPart
 class TimeSetting extends IntId with Named with TemporalOn {
   var project: Project = _
   var campus: Option[Campus] = None
+  var minutesPerUnit: Short = _
   var units: Buffer[CourseUnit] = new collection.mutable.ListBuffer[CourseUnit]
 }
 
