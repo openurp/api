@@ -24,6 +24,8 @@ import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.User
 import org.openurp.edu.base.code.model.TeacherType
+import org.openurp.code.job.model.ProfessionalTitle
+import org.openurp.code.hr.model.WorkStatus
 
 /**
  * 教师信息
@@ -38,4 +40,12 @@ class Teacher extends LongId with Updated with TemporalOn {
 
   /**教师类型*/
   var teacherType: TeacherType = _
+
+  /**在职状态*/
+  var status: WorkStatus = _
+
+  /**职称*/
+  var title: ProfessionalTitle = _
+
+  var remark: String = _
 }

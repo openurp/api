@@ -65,7 +65,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /**课程类型*/
   var courseType: CourseType = _
   /** 分类课时 */
-  var hours: collection.mutable.Seq[CourseHour] = new collection.mutable.ListBuffer[CourseHour]
+  var hours = Collections.newBuffer[CourseHour]
   /** 周数*/
   var weeks: Int = _
   /**周课时*/

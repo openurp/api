@@ -18,8 +18,6 @@
  */
 package org.openurp.edu.student.model
 
-import scala.reflect.runtime.universe
-
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
@@ -27,11 +25,35 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    //clazz result
-    bind[StdAdmission].on(e => declare(
+    bind[Admission].on(e => declare(
       e.std is notnull,
-      e.letterNo is length(30),
-      e.ticketNo is length(30)))
+      e.letterNo is length(30)))
+
+    bind[Examinee].on(e => declare(
+      e.code is length(30),
+      e.examNo is length(30),
+      e.schoolNo is length(30),
+      e.schoolName is length(200),
+      e.province is length(50),
+      e.scores is eleColumn("score")))
+
+    bind[Graduation]
+
+    bind[Home].on(e => declare(
+      e.formerAddr is length(100),
+      e.phone is length(20),
+      e.postcode is length(20),
+      e.address is length(150),
+      e.police is length(150),
+      e.policePhone is length(20)))
+
+    bind[Contact].on(e => declare(
+      e.mail is length(100),
+      e.phone is length(20),
+      e.mobile is length(20),
+      e.address is length(150)))
+
+    bind[EducationRecord]
   }
 
 }

@@ -150,12 +150,10 @@ Student.department=管理院系
 Student.major=专业
 Student.direction=方向
 Student.squad=行政班级
-Student.inschool=是否在校
 Student.program=培养方案
 Student.state=学籍状态
 Student.user=账户信息
 Student.education=培养层次
-Student.enrollOn=入学报到日期
 Student.department=管理院系 行政管理院系
 Student.direction=方向 当前修读方向
 Student.duration=学制/学习年限
@@ -166,8 +164,10 @@ Student.major=专业 当前修读专业
 Student.majorDepart=专业所在院系
 Student.states=状态日志
 Student.registed=是否有学籍
-Student.registOn=学籍生效日期
-Student.graduateOn=应毕业时间 预计毕业日期
+Student.beginOn=学籍生效日期
+Student.endOn=学籍截止日期
+Student.studyOn=入学日期
+Student.graduateOn=应毕业日期
 Student.person=基本信息
 Student.project=项目
 Student.remark=备注
@@ -209,6 +209,9 @@ Teacher.person=人员信息
 Teacher.teacherType=教师类型
 Teacher.department=所在部门
 Teacher.user=用户
+Teacher.title=职称
+Teacher.status=在职状态
+Teacher.remark=备注
 
 Instructor=辅导员
 Instructor.department=院系
@@ -220,3 +223,28 @@ TermCampus=专业所在校区
 TermCampus.campus=校区
 TermCampus.program=培养方案
 TermCampus.terms=学期
+
+Calendar=日历方案
+Calendar.firstWeekday=每周开始时间
+Calendar.semesters=包含学期
+Calendar.school=学校
+
+CourseUnit=默认作息时间
+CourseUnit.indexno=小节编号
+CourseUnit.setting=时间设置
+CourseUnit.beginAt=开始分钟
+CourseUnit.endAt=结束分钟
+CourseUnit.enName=英文名称
+CourseUnit.part=时段
+
+Semester=学年学期
+Semester.schoolYear=学年度,格式2005-2006
+Semester.calendar=教学日历方案类别
+
+Holiday=法定假日
+Holiday.school=学校
+
+TimeSetting=每个小节的时间设置
+TimeSetting.units=默认作息时间
+TimeSetting.school=学校
+TimeSetting.minutesPerUnit=每小节分钟数

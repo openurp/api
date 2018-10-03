@@ -16,38 +16,59 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.util
+package org.openurp.edu.grade.course.domain
 
 /**
  * 保留数字精确位的方法
- *
- * @author chaostone
  */
-trait PrecisionReserveMethod {
+trait NumRounder {
 
-  def reserve(num: Float, precision: Int): Float
+  def round(num: Float, precision: Int): Float
 
-  def reserve(num: Double, precision: Int): Double
+  def round(num: Double, precision: Int): Double
+
 }
 
-object PrecisionReserveMethod {
+object NumRounder {
+  /**
+   * 向上取整法
+   */
+  object Ceil extends NumRounder {
+
+    def round(num: Float, precision: Int): Float = {
+      val mutilply = Math.pow(10, precision + 1).toInt
+      var res = num * mutilply
+      if (res % 10 >= 1) res += 10
+      res -= res % 10
+      res / mutilply
+    }
+
+    def round(num: Double, precision: Int): Double = {
+      val mutilply = Math.pow(10, precision + 1).toInt
+      var res = num * mutilply
+      if (res % 10 >= 1) res += 10
+      res -= res % 10
+      res / mutilply
+    }
+  }
 
   /**
    * 四舍五入进位法
    */
-  object MoreHalf extends PrecisionReserveMethod {
-    def reserve(value: Float, precision: Int): Float = {
+  object Normal extends NumRounder {
+
+    def round(n: Float, precision: Int): Float = {
+      var num = n
       val mutilply = Math.pow(10, precision + 1).toInt
-      var num = value
       num *= mutilply
       if (num % 10 >= 5) num += 10
       num -= num % 10
       num / mutilply
     }
 
-    def reserve(value: Double, precision: Int): Double = {
+    def round(n: Double, precision: Int): Double = {
+      var num = n
       val mutilply = Math.pow(10, precision + 1).toInt
-      var num = value
       num *= mutilply
       if (num % 10 >= 5) num += 10
       num -= num % 10

@@ -54,13 +54,9 @@ class GradeRateItem extends LongId {
   /**
    * 默认分数
    */
-  var defaultScore: java.lang.Float = _
+  var defaultScore: Float = _
 
-  def contains(f: java.lang.Float): Boolean = {
-    minScore <= f.floatValue() && f.floatValue() <= maxScore
-  }
-
-  def inScope(score: java.lang.Float): Boolean = {
-    maxScore.compareTo(score) > -1 && minScore.compareTo(score) < 1
+  def contains(f: Float): Boolean = {
+    minScore <= f && f <= maxScore
   }
 }

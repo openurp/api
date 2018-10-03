@@ -1,22 +1,10 @@
 Remark.remark=备注
 
-Calendar=日历方案
-Calendar.firstWeekday=每周开始时间
-Calendar.semesters=包含学期
-Calendar.school=学校
 
 Campus=校区信息
 Campus.enName=英文名称
 Campus.shortName=简称
 Campus.school=学校
-
-CourseUnit=默认作息时间
-CourseUnit.indexno=小节编号
-CourseUnit.setting=时间设置
-CourseUnit.beginAt=开始分钟
-CourseUnit.endAt=结束分钟
-CourseUnit.enName=英文名称
-CourseUnit.part=时段
 
 Room=房间
 Room.campus=所在校区
@@ -27,10 +15,6 @@ Room.floor=教室所处楼层
 Room.capacity=实际容量
 Room.enName=英文名称
 Room.school=学校
-
-Semester=学年学期
-Semester.schoolYear=学年度,格式2005-2006
-Semester.calendar=教学日历方案类别
 
 Building=楼房建筑物
 Building.enName=英文名称
@@ -54,13 +38,6 @@ School.institution=研究机构
 School.shortName=简称
 School.logoUrl=Logo URL
 
-Holiday=法定假日
-Holiday.school=学校
-
-TimeSetting=每个小节的时间设置
-TimeSetting.units=默认作息时间
-TimeSetting.school=学校
-
 User=通用人员信息
 User.code=人员帐号
 User.email=邮箱
@@ -69,4 +46,3 @@ User.category=人员分类
 User.mobile=电话
 User.name=姓名
 User.school=学校
-

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.audit.adapters
+package org.openurp.edu.grade.audit.domain
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.CourseType

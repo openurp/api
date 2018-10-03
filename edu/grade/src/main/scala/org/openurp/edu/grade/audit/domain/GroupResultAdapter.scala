@@ -16,12 +16,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.audit.adapters
+package org.openurp.edu.grade.audit.domain
 
-import scala.collection.mutable.Buffer
-
-import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.grade.audit.model.{ AuditStat, CourseAuditResult, GroupAuditResult, PlanAuditResult }
+import org.openurp.edu.grade.audit.model.{ CourseAuditResult, GroupAuditResult, PlanAuditResult }
 
 class GroupResultAdapter(var result: PlanAuditResult) extends GroupAuditResult {
 
@@ -57,6 +54,7 @@ class GroupResultAdapter(var result: PlanAuditResult) extends GroupAuditResult {
   //  override def auditStat_=(auditStat: AuditStat) {
   //    result.auditStat = auditStat
   //  }
+
   def checkPassed {
     GroupAuditResult.checkPassed(this, false)
   }

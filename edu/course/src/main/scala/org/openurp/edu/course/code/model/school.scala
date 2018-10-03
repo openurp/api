@@ -24,7 +24,9 @@ import org.openurp.code.CodeBean
  * 教学任务标签
  */
 @code("school")
-class ClazzTag extends CodeBean
+class ClazzTag extends CodeBean {
+  var color: String = _
+}
 object ClazzTag {
   val GuapaiId = 1
 

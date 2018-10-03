@@ -5,4 +5,3 @@ DepartmentCategory.parent=上级分类
 DepartmentCategory.children=子分类
 
 UserCategory=人员分类
-DayPart=时段

@@ -22,7 +22,7 @@ import scala.collection.mutable
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Semester
+import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.model.Student
 

@@ -6,6 +6,8 @@ CourseTakeType.retake=是否重修
 CourseTakeType.exam=是否考试
 CourseTakeType.attend=是否上课
 CourseAbilityRate=课程能力等级
+CourseAbilityRate.rate=等级值
+
 CourseCategory=课程种类
 CourseHourType=课时类别代码
 CourseTakeType=修课类别
@@ -54,3 +56,5 @@ TeacherTitleLevel=教师职称等级
 
 AdmissionWay=入学方式
 Press=出版社
+
+DayPart=时段

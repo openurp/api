@@ -18,22 +18,39 @@
  */
 package org.openurp.edu.course.model
 
-import org.beangle.data.model.Component
-import org.openurp.edu.base.code.model.{ ExamForm, ExamMode }
 import org.beangle.commons.lang.time.HourMinute
+import org.beangle.data.model.Component
+import org.openurp.code.edu.model.ClassroomType
+import org.openurp.edu.base.code.model.ExamForm
+import org.openurp.edu.base.code.model.ExamMode
 
 /**
  * 考试安排
  */
 class Exam extends Component with Serializable with Cloneable {
 
+  /** 期末考试日期 */
   var examOn: Option[java.sql.Date] = None
 
+  /** 期末考试开始时间   */
   var beginAt: HourMinute = HourMinute.Zero
 
+  /** 期末考试结束时间   */
   var endAt: HourMinute = HourMinute.Zero
 
-  /** 考试方式 */
+  /** 考核方式 */
   var examMode: ExamMode = _
+
+  /** 考试方式 */
+  var examForm: ExamForm = _
+
+  /** 考试时长 */
+  var examDuration: Short = _
+
+  /** 考试教室类型 */
+  var examRoomType: ClassroomType = _
+
+  /** 是否有补考 */
+  var hasMakeup: Boolean = _
 
 }

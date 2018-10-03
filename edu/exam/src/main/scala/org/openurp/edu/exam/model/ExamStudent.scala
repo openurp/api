@@ -20,7 +20,7 @@ package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.model.Semester
+import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.code.model.{ ExamStatus, ExamType }
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.course.model.Clazz

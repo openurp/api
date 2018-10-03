@@ -33,9 +33,3 @@ class UserCategory extends CodeBean
  */
 @code("school")
 class DepartmentCategory extends CodeBean with Hierarchical[DepartmentCategory]
-
-/**
- * 上下午时段
- */
-@code("school")
-class DayPart extends CodeBean

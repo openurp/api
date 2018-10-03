@@ -41,5 +41,4 @@ class PostInfo extends LongId with TemporalOn {
 
   /**辅导员类型*/
 
-
 }

@@ -33,6 +33,10 @@ class Terms(val value: Int) extends Ordered[Terms] with Serializable {
     else 1
   }
 
+  def contains(term: Int): Boolean = {
+    (value & (1 << term)) > 0
+  }
+
   def termList: List[Int] = {
     val str = toString
     var i = str.length - 1

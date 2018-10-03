@@ -80,7 +80,9 @@ class EducationMode extends CodeBean
  * 参见教育部标准JY/T 1001 4.5.4
  */
 @code("industry")
-class HskLevel extends CodeBean
+class HskLevel extends CodeBean {
+  var grade: Int = _
+}
 
 /**
  * 科研机构

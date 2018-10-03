@@ -82,6 +82,7 @@ CourseGradeState.clazz=教学任务
 CourseGradeState.operator=操作者
 CourseGradeState.gradingMode=成绩记录方式
 CourseGradeState.status=成绩状态
+CourseGradeState.precision=保留小数位
 
 GpaStat.gpa=总平均绩点
 GpaStat.gp=总绩点

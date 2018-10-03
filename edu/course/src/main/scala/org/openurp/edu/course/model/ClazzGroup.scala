@@ -20,9 +20,10 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.base.model.{ Department, Semester }
+import org.openurp.base.model.Department
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.model.Course
+import org.openurp.edu.base.model.Semester
 
 /**
  * 教学任务课程组

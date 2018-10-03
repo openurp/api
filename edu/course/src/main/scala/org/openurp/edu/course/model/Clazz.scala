@@ -21,13 +21,18 @@ package org.openurp.edu.course.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.{ Campus, Department, Semester }
-import org.openurp.edu.base.{ ProjectBased, States }
-import org.openurp.edu.base.code.model.{ CourseType, TeachLangType }
-import org.openurp.edu.base.model.{ Course, Teacher }
-import org.openurp.edu.course.code.model.ClazzTag
 import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Campus
+import org.openurp.base.model.Department
+import org.openurp.edu.base.ProjectBased
+import org.openurp.edu.base.States
+import org.openurp.edu.base.code.model.CourseType
+import org.openurp.edu.base.code.model.TeachLangType
+import org.openurp.edu.base.model.Course
+import org.openurp.edu.base.model.Semester
+import org.openurp.edu.base.model.Teacher
+import org.openurp.edu.course.code.model.ClazzTag
 
 /**
  * 教学任务 </p> 每学期开课任务，以此为开始作为排课、排考、成绩录入的依据。代表着从对上课对象和开课院系的完整的教学实际任务信息. <li>

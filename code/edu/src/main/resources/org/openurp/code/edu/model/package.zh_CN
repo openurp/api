@@ -20,6 +20,7 @@ EducationMode=培养方式
 EnrollMode=入学方式
 
 HskLevel=汉语水平考试等级
+HskLevel.grade=等级
 
 Institution=科研机构
 Language=语种

@@ -18,44 +18,36 @@
  */
 package org.openurp.edu.student.model
 
-import org.beangle.data.model.LongId
-import org.openurp.code.geo.model.Division
-import org.openurp.code.edu.model.EnrollMode
 import org.openurp.edu.base.model.Student
-import org.openurp.code.person.model.HouseholdType
+import org.beangle.data.model.LongId
+import org.openurp.code.geo.model.RailwayStation
 
 /**
- * 录取信息
+ * 家庭信息
  */
-class StdAdmission extends LongId {
+class Home extends LongId {
 
-  /** 学生 */
+  /**学生*/
   var std: Student = _
 
-  /** 录取通知书号 */
-  var letterNo:String =_
+  /** 家庭电话 */
+  var phone: Option[String] = None
 
-  /** 录取第几志愿 */
-  var admissionIndex:Int=_
+  /** 家庭地址 */
+  var address: Option[String] = None
 
-  /** 准考证号 */
-  var ticketNo: String = _
+  /** 家庭地址邮编 */
+  var postcode: Option[String] = None
 
-  /** 入学方式 */
-  var enrollMode: EnrollMode = _
+  /** 户籍 */
+  var formerAddr: Option[String] = None
 
-  /** 报考省市 */
-  var province: String = _
+  /** 派出所 */
+  var police: Option[String] = None
 
-  /** 是否预科生 */
-  var preparatory: Boolean = _
+  /** 派出所电话 */
+  var policePhone: Option[String] = None
 
-  /** 入学前户口所在区划 */
-  var formerDivision: Division = _
-
-  /** 入学后户口所在区划 */
-  var currentDivision: Division = _
-
-  /** 原户口性质 */
-  var householdType:HouseholdType = _
+  /** 火车站 用于打印学生证 */
+  var railwayStation: Option[RailwayStation] = None
 }

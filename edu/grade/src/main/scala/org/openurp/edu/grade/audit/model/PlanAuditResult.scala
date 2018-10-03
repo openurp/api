@@ -69,7 +69,7 @@ class PlanAuditResult extends LongId with Updated {
     this.groupResults -= rs
   }
 
-  def groupResult(`type`: CourseType): GroupAuditResult = {
+  def getGroupResult(`type`: CourseType): GroupAuditResult = {
     if (null == groupResults) {
       return null
     }

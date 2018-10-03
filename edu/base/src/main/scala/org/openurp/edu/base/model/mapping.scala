@@ -18,9 +18,6 @@
  */
 package org.openurp.edu.base.model
 
-import scala.reflect.runtime.universe
-
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
@@ -28,6 +25,27 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")
     defaultCache("openurp.edu.base", "read-write")
+
+    bind[TimeSetting] on (e => declare(
+      e.name is length(20),
+      e.units is (depends("setting"))))
+
+    bind[CourseUnit] on (e => declare(
+      e.enName is length(30),
+      e.name & e.indexno are length(20)))
+
+    bind[Calendar] on (e => declare(
+      e.semesters is (depends("calendar")),
+      e.code is length(10),
+      e.name is length(80)))
+
+    bind[Semester].on(e => declare(
+      e.code is (length(15)),
+      e.name & e.schoolYear are (length(10)))).generator("code")
+
+    bind[Holiday] on (e => declare(
+      e.name is length(20),
+      e.endOn is notnull))
 
     bind[Squad] on (e => declare(
       e.code is (length(20), unique),
@@ -84,6 +102,7 @@ class DefaultMapping extends MappingModule {
     bind[Project] on (e => declare(
       e.code is (length(10), unique),
       e.name is length(100),
+      e.departments is ordered,
       e.description is length(500)))
 
     bind[ProjectCode] on (e => declare(
