@@ -33,6 +33,9 @@ class AuditResult extends LongId with Updated {
   /** GPA */
   var gpa: Float = _
 
+  /**平均分*/
+  var ga: Float = _
+
   /** 获得学分 */
   var acquiredCredits: Float = _
 

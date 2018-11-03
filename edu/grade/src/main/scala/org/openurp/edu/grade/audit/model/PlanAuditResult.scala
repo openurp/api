@@ -35,7 +35,10 @@ class PlanAuditResult extends LongId with Updated {
 
   var passed: Boolean = _
 
-  var gpa: java.lang.Float = _
+  var gpa: Float = _
+
+  /**平均分*/
+  var ga: Float = _
 
   var remark: String = _
 
