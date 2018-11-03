@@ -16,31 +16,10 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.sin.harvest.model
+package org.openurp.edu.exam.model
 
-import java.time.LocalDate
+import org.beangle.commons.lang.time.HourMinute
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
-
-class PublishedSituation extends IntId with Named {
-
-  var enName: String = _
-
-  var isbn: String = _
-
-  var issn: String = _
-
-  var position: String = _
-
-  var cn: String = _
-
-  var publishedOn: LocalDate = _
-
-  var harvestType: HarvestType = _
-
-  var publishedRange: PublishedRange = _
-
-  var translated: Boolean = false
+case class TurnOfDay(beginAt: HourMinute, endAt: HourMinute) {
 
 }

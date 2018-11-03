@@ -18,13 +18,12 @@
  */
 package org.openurp.hr.base.model
 
-import java.sql.Date
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{ Coded, Updated }
 import org.openurp.code.hr.model.{ EmployType, StaffSourceType, StaffType }
 import org.openurp.people.base.model.Person
+import java.time.LocalDate
 
 /**
  * 教职工信息
@@ -50,10 +49,10 @@ class Staff extends LongId with Updated with Coded {
   var sourceType: StaffSourceType = _
 
   /**参加工作日期*/
-  var workStartOn: Date = _
+  var workStartOn: LocalDate = _
 
   /**来校日期*/
-  var employOn: Date = _
+  var employOn: LocalDate = _
 
   /**用人形式*/
   var employType: EmployType = _

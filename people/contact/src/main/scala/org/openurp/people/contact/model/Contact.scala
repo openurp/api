@@ -18,11 +18,10 @@
  */
 package org.openurp.people.contact.model
 
-import java.sql.Date
-
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.people.base.model.Person
+import java.time.LocalDate
 
 /**
  * 联系方式
@@ -38,5 +37,5 @@ class Contact extends LongId with Updated {
 
   var sortAs: String = _
 
-  var anniversary: Date = _
+  var anniversary: Option[LocalDate] = _
 }

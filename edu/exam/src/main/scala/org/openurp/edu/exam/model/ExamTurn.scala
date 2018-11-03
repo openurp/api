@@ -18,24 +18,27 @@
  */
 package org.openurp.edu.exam.model
 
-import scala.collection.mutable.Buffer
-
+import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{ Coded, Named, Remark }
-import org.openurp.code.edu.model.ClassroomType
-import org.openurp.edu.base.code.model.ExamType
-import org.openurp.edu.base.model.{ Course, Project }
+import java.time.LocalDate
 
-class ExamPaper extends LongId with Coded with Named with Remark {
+/***
+ * 排考场次
+ */
+class ExamTurn extends LongId {
 
-  var project: Project = _
+  /**排考组*/
+  var group: ExamGroup = _
 
-  var examType: ExamType = _
+  /**考试日期*/
+  var examOn: LocalDate = _
 
-  var courses: Buffer[Course] = _
+  /**开始时间*/
+  var beginAt: HourMinute = _
 
-  var roomType: Option[ClassroomType] = None
+  /**结束时间*/
+  var endAt: HourMinute = _
 
-  var duration: Short = _
-
+  /**最大容量*/
+  var capacity: Option[Int] = None
 }

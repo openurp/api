@@ -16,31 +16,15 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.sin.harvest.model
+package org.openurp.edu.base
 
-import java.time.LocalDate
+import org.openurp.edu.base.model.Project
+import org.openurp.edu.base.model.Semester
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+trait SemesterBased {
 
-class PublishedSituation extends IntId with Named {
+  var project: Project = _
 
-  var enName: String = _
-
-  var isbn: String = _
-
-  var issn: String = _
-
-  var position: String = _
-
-  var cn: String = _
-
-  var publishedOn: LocalDate = _
-
-  var harvestType: HarvestType = _
-
-  var publishedRange: PublishedRange = _
-
-  var translated: Boolean = false
+  var semester: Semester = _
 
 }

@@ -22,6 +22,7 @@ import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.Activity
 import org.openurp.edu.base.model.{ Classroom, Teacher }
+import java.time.LocalDate
 
 /**
  * 教学活动
@@ -53,7 +54,7 @@ class Session extends LongId with Ordered[Session] with Activity {
     -1
   }
 
-  override def startOn: java.sql.Date = {
+  override def startOn: LocalDate = {
     if (null != time) time.startOn else null
   }
 }

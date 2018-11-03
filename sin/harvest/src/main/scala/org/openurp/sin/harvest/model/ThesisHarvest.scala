@@ -18,7 +18,7 @@
  */
 package org.openurp.sin.harvest.model
 
-import java.sql.Date
+import java.time.LocalDate
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.Named
@@ -26,7 +26,7 @@ import org.openurp.base.model.Department
 
 class ThesisHarvest extends IntId with Named {
 
-  var applyDate: Date = _
+  var applyOn: LocalDate = _
 
   var count: Integer = _
 

@@ -24,6 +24,8 @@ import org.beangle.data.model.pojo.Remark
 import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.code.model.ExamType
 import org.openurp.edu.course.model.Clazz
+import java.time.LocalDate
+import org.beangle.commons.collection.Collections
 
 /**
  * 考试活动 </p>
@@ -46,11 +48,11 @@ class ExamActivity extends LongId with Remark {
   /** 教学任务 */
   var clazz: Clazz = _
 
-  /**考试日期*/
-  var examOn: java.sql.Date = _
-
   /**考试学期*/
   var semester: Semester = _
+
+  /**考试日期*/
+  var examOn: LocalDate = _
 
   /**开始时间*/
   var beginAt: HourMinute = _
@@ -58,12 +60,19 @@ class ExamActivity extends LongId with Remark {
   /**结束时间*/
   var endAt: HourMinute = _
 
+  /**学生人数*/
+  var stdCount: Int = _
+
   /** 考场列表 */
   var rooms: collection.mutable.Buffer[ExamRoom] = _
 
+  /**应考学生*/
+  var examStudents = Collections.newSet[ExamStudent]
+
+  /**发布状态*/
   var state: PublishState.State = _
 
-  def startOn: java.sql.Date = {
+  def startOn: LocalDate = {
     examOn
   }
 

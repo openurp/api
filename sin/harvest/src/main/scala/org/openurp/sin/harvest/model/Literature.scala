@@ -18,15 +18,14 @@
  */
 package org.openurp.sin.harvest.model
 
-import java.sql.Date
-
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.Department
+import java.time.LocalDate
 
 class Literature extends IntId with Named {
 
-  var publishDate: Date = _
+  var publishedOn: LocalDate = _
 
   var introduction: String = _
 

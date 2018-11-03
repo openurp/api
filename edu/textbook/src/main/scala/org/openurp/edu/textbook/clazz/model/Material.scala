@@ -18,13 +18,12 @@
  */
 package org.openurp.edu.textbook.clazz.model
 
-import java.sql.Date
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Textbook
 import org.openurp.edu.course.model.Clazz
-import org.openurp.edu.textbook.clazz.MaterialStatus.{ASSIGNED, Status}
+import org.openurp.edu.textbook.clazz.MaterialStatus.{ ASSIGNED, Status }
+import java.time.LocalDate
 
 class Material extends LongId {
 
@@ -38,7 +37,7 @@ class Material extends LongId {
 
   var passed: Boolean = _
 
-  var auditAt: Date = _
+  var auditAt: LocalDate = _
 
   var remark: String = _
 

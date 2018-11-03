@@ -18,8 +18,10 @@
  */
 package org.openurp.edu.base
 
+import java.time.LocalDate
+
 trait Activity {
 
-  def startOn: java.sql.Date
+  def startOn: LocalDate
 
 }

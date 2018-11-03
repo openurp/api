@@ -23,6 +23,7 @@ import org.beangle.data.model.Component
 import org.openurp.code.edu.model.ClassroomType
 import org.openurp.edu.base.code.model.ExamForm
 import org.openurp.edu.base.code.model.ExamMode
+import java.time.LocalDate
 
 /**
  * 考试安排
@@ -30,7 +31,7 @@ import org.openurp.edu.base.code.model.ExamMode
 class Exam extends Component with Serializable with Cloneable {
 
   /** 期末考试日期 */
-  var examOn: Option[java.sql.Date] = None
+  var examOn: Option[LocalDate] = None
 
   /** 期末考试开始时间   */
   var beginAt: HourMinute = HourMinute.Zero

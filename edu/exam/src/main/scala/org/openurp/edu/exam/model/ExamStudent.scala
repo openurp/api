@@ -25,20 +25,33 @@ import org.openurp.edu.base.code.model.{ ExamStatus, ExamType }
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.course.model.Clazz
 
+/**
+ * 应考学生
+ */
 class ExamStudent extends LongId with Remark {
 
+  /** 教学任务 */
   var clazz: Clazz = _
 
+  /** 学年学期 */
   var semester: Semester = _
 
+  /** 学生 */
   var std: Student = _
 
+  /** 考场 */
   var examRoom: Option[ExamRoom] = None
 
+  /** 考试类型 */
   var examType: ExamType = _
 
+  /** 考试活动 */
   var activity: Option[ExamActivity] = None
 
+  /** 考试情况 */
+  var examStatus: ExamStatus = _
+
+  /** 作为号 */
   var seatNo: Short = _
 
 }

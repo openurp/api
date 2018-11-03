@@ -18,15 +18,16 @@
  */
 package org.openurp.edu.exam.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.openurp.edu.course.model.Clazz
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.Updated
+import org.openurp.edu.base.ProjectBased
+import org.openurp.edu.base.model.Classroom
 
-class ExamClazz extends LongId {
-
-  var task: ExamTask = _
-
-  var clazz: Clazz = _
-
-  var stdCount: Int = _
-
+/**
+ * 教室组
+ */
+class RoomGroup extends LongId with Named with ProjectBased with Updated {
+  var rooms = Collections.newBuffer[Classroom]
 }

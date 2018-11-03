@@ -16,31 +16,37 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.sin.harvest.model
+package org.openurp.edu.exam.model
 
-import java.time.LocalDate
+import org.openurp.edu.base.model.Teacher
+import org.openurp.edu.course.model.Clazz
+import org.beangle.data.model.LongId
+import org.openurp.base.model.User
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+/**
+ * 教学任务上的监考配额
+ */
+class InvigilationClazzQuota extends LongId {
 
-class PublishedSituation extends IntId with Named {
+  /** 教学任务 */
+  var clazz: Clazz = _
 
-  var enName: String = _
+  /** 教师 */
+  var teacher: Teacher = _
 
-  var isbn: String = _
+  /** 系数 */
+  var ratio: Float = _
 
-  var issn: String = _
+  /** 课时 */
+  var period: Float = _
 
-  var position: String = _
+  /** 次数 */
+  var quota: Float = _
 
-  var cn: String = _
-
-  var publishedOn: LocalDate = _
-
-  var harvestType: HarvestType = _
-
-  var publishedRange: PublishedRange = _
-
-  var translated: Boolean = false
+  def this(clazz: Clazz, teacher: Teacher) {
+    this()
+    this.clazz = clazz
+    this.teacher = teacher
+  }
 
 }

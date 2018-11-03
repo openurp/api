@@ -30,20 +30,37 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator("auto_increment")
 
     bind[ExamActivity].on(e => declare(
+      e.examStudents is depends("activity"),
       e.remark is length(100)))
 
-    bind[ExamMonitor]
-
     bind[ExamRoom].on(e => declare(
-      e.monitors is depends("examRoom")))
+      e.invigilations is depends("examRoom"),
+      e.examStudents is depends("examRoom")))
+
+    bind[ExamTask].on(e => declare(
+      e.examClazzes is depends("task")))
 
     bind[ExamClazz]
 
-    bind[ExamPaper]
+    bind[ExamGroup].on(e => declare(
+      e.tasks is one2many("group"),
+      e.turns is depends("group")))
+
+    bind[ExamTurn]
 
     bind[ExamStudent]
 
-    bind[ExamTask]
+    bind[Invigilation]
+    bind[InvigilationClazzQuota]
+
+    bind[InvigilationQuota].on(e => declare(
+      e.details is depends("invigilationQuota")))
+
+    bind[InvigilationQuotaDetail]
+
+    bind[RoomGroup]
+
+    bind[RoomAllocSetting]
   }
 
 }

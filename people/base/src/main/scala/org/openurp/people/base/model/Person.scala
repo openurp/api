@@ -23,6 +23,7 @@ import org.beangle.data.model.pojo.{ Coded, Updated }
 import org.openurp.code.edu.model.Language
 import org.openurp.code.geo.model.Country
 import org.openurp.code.person.model.{ CompatriotType, Gender, IdType, Nation, Religion, PoliticalStatus }
+import java.time.LocalDate
 
 /**
  * 通用自然人信息
@@ -45,7 +46,7 @@ class Person extends LongId with Updated with Coded {
   var gender: Gender = _
 
   /**出生日期 */
-  var birthday: java.sql.Date = _
+  var birthday: LocalDate = _
 
   /**出生地*/
   var birthplace: Option[String] = None

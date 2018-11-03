@@ -24,6 +24,7 @@ import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.code.model.{ ExamStatus, GradingMode }
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.extern.code.model.ExamSubject
+import java.time.LocalDate
 
 class ExternExamGrade extends LongId {
 
@@ -43,7 +44,7 @@ class ExternExamGrade extends LongId {
 
   var certificate: Option[String] = None
 
-  var acquireOn: java.sql.Date = _
+  var acquireOn: LocalDate = _
 
   var gradingMode: GradingMode = _
 

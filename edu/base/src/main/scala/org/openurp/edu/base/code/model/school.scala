@@ -311,4 +311,3 @@ class TeacherType extends CodeBean {
  */
 @code("school")
 class DayPart extends CodeBean
-

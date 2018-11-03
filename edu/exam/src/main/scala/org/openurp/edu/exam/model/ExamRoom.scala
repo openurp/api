@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.exam.model
 
-import java.sql.Date
+import java.time.LocalDate
 
 import scala.collection.mutable.Buffer
 
@@ -26,9 +26,9 @@ import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
+import org.openurp.edu.base.code.model.ExamType
 import org.openurp.edu.base.model.Classroom
 import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.model.Teacher
 import org.openurp.edu.course.model.Clazz
 
 /**
@@ -41,8 +41,14 @@ class ExamRoom extends LongId {
   /**考试学期*/
   var semester: Semester = _
 
+  /**开课院系*/
+  var teachDepart: Department = _
+
+  /**考试类型*/
+  var examType: ExamType = _
+
   /**考试日期*/
-  var examOn: Date = _
+  var examOn: LocalDate = _
 
   /**开始时间*/
   var beginAt: HourMinute = _
@@ -53,20 +59,17 @@ class ExamRoom extends LongId {
   /**教室*/
   var room: Classroom = _
 
-  /**主考教师*/
-  var examiner: Option[Teacher] = None
-
-  /**主考教师院系*/
-  var department: Option[Department] = None
+  /**考试人数*/
+  var stdCount: Int = _
 
   /**考试活动*/
   var activities = Collections.newBuffer[ExamActivity]
 
   /**监考信息*/
-  var monitors = Collections.newSet[ExamMonitor]
+  var invigilations = Collections.newSet[Invigilation]
 
-  /**教室借用ID*/
-  var roomApplyId: Option[Long] = None
+  /**应考学生*/
+  var examStudents = Collections.newSet[ExamStudent]
 
   def clazzs: Set[Clazz] = {
     activities.map(a => a.clazz).toSet

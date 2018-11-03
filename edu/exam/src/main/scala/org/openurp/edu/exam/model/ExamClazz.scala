@@ -16,31 +16,36 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.sin.harvest.model
+package org.openurp.edu.exam.model
 
-import java.time.LocalDate
+import org.beangle.data.model.LongId
+import org.openurp.edu.course.model.Clazz
+import org.openurp.edu.base.code.model.ExamType
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+/**
+ * 排考教学任务
+ */
+class ExamClazz extends LongId {
 
-class PublishedSituation extends IntId with Named {
+  /**教学班*/
+  var clazz: Clazz = _
 
-  var enName: String = _
+  /**考试类型*/
+  var examType: ExamType = _
 
-  var isbn: String = _
+  /**排考任务*/
+  var task: Option[ExamTask] = _
 
-  var issn: String = _
+  /**考生数*/
+  var stdCount: Int = _
 
-  var position: String = _
+  /**考试周*/
+  var examWeek: Option[Int] = None
 
-  var cn: String = _
+  /**是否院系自主安排*/
+  var departArranged: Boolean = _
 
-  var publishedOn: LocalDate = _
-
-  var harvestType: HarvestType = _
-
-  var publishedRange: PublishedRange = _
-
-  var translated: Boolean = false
+  /**试卷编号*/
+  var examPaperNo: Option[String] = None
 
 }

@@ -50,7 +50,7 @@ class DefaultMapping extends MappingModule {
       e.name is (notnull, length(300)),
       e.enName is length(200),
       e.isbn & e.issn & e.cn are length(100),
-      e.publishedDate & e.publishedRange are notnull))
+      e.publishedOn & e.publishedRange are notnull))
 
     bind[Researcher].on(e => declare(
       e.person is notnull))

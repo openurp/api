@@ -19,32 +19,13 @@
 package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.model.Department
-import org.openurp.people.base.model.Person
-import org.openurp.base.model.User
-import org.openurp.edu.base.model.Teacher
-import org.beangle.data.model.pojo.TemporalOn
+import org.beangle.data.model.pojo.Named
+import org.openurp.edu.base.ProjectBased
+import org.openurp.edu.base.code.model.ExamType
 
-/**
- * 监考人员信息
- * 记录监考院系、教师、自定义监考人员
- *
- * @depend - - - User
- * @depend - - - Department
- * @author chaostone
- */
-class ExamMonitor extends LongId with TemporalOn {
-
-  var teacher: Teacher = _
-  /**
-   * 监考院系
-   */
-  var department: Department = _
-
-  def this(teacher: Teacher, department: Department) {
-    this()
-    this.teacher = teacher
-    this.department = department
-  }
-
+class RoomAllocSetting extends LongId with Named with ProjectBased {
+  var examType: ExamType = _
+  var minOccupyRatio: Float = _
+  var minCapacity: Int = _
+  var allocPolicy: RoomAllocPolicy.Policy = _
 }

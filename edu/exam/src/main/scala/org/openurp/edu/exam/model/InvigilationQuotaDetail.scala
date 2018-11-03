@@ -16,31 +16,36 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.sin.harvest.model
+package org.openurp.edu.exam.model
 
-import java.time.LocalDate
+import org.openurp.base.model.Campus
+import org.openurp.base.model.Department
+import org.beangle.data.model.LongId
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+/**
+ * 监考人员配额明细
+ *
+ * @author chaostone
+ */
+class InvigilationQuotaDetail extends LongId {
 
-class PublishedSituation extends IntId with Named {
+  /** 监考人配额 */
+  var invigilationQuota: InvigilationQuota = _
 
-  var enName: String = _
+  /** 校区 */
+  var campus: Campus = _
 
-  var isbn: String = _
+  /** 开课部门 */
+  var depart: Department = _
 
-  var issn: String = _
+  /** 次数 */
+  var quota: Float = _
 
-  var position: String = _
-
-  var cn: String = _
-
-  var publishedOn: LocalDate = _
-
-  var harvestType: HarvestType = _
-
-  var publishedRange: PublishedRange = _
-
-  var translated: Boolean = false
+  def this(campus: Campus, depart: Department, quota: Float) {
+    this()
+    this.campus = campus
+    this.depart = depart
+    this.quota = quota
+  }
 
 }

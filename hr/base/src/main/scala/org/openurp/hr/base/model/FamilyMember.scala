@@ -23,6 +23,7 @@ import org.beangle.data.model.pojo.{ Coded, Named }
 import org.openurp.code.geo.model.Country
 import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.code.person.model.{ FamilyRelationship, HealthStatus, IdType, JobStatus, Nation, PoliticalStatus }
+import java.time.LocalDate
 
 /**
  * 家庭成员
@@ -33,7 +34,7 @@ class FamilyMember extends LongId with Coded with Named {
   /**亲属关系 */
   var familyRelationship: FamilyRelationship = _
   /**出生日期*/
-  var birthday: java.sql.Date = _
+  var birthday: LocalDate = _
   /**民族 */
   var nation: Nation = _
   /**国籍/地区 */
