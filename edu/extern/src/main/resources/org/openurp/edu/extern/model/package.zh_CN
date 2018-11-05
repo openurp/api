@@ -5,8 +5,8 @@ ExternSchool.project=项目
 
 ExternGrade=校外成绩
 ExternGrade.passed=是否通过
-ExternGrade.course=课程
-ExternGrade.semester=学期
+ExternGrade.courseName=课程名称
+ExternGrade.acquiredOn=获得年月
 ExternGrade.converted=转换成绩
 ExternGrade.scoreText=成绩字面值
 ExternGrade.std=学生
@@ -20,6 +20,7 @@ ConvertedGrade.gp=绩点
 ConvertedGrade.scoreText=成绩字面值
 ConvertedGrade.std=学生
 ConvertedGrade.score=分数
+ConvertedGrade.acquiredOn=获得年月
 
 ExternExamGrade=考试成绩
 ExternExamGrade.std=学生

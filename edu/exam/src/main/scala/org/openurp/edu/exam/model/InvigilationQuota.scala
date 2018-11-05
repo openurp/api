@@ -27,6 +27,7 @@ import org.openurp.base.model.Department
 import org.openurp.base.model.User
 import org.openurp.edu.base.model.Project
 import org.openurp.edu.base.model.Semester
+import org.beangle.data.model.pojo.Remark
 
 /**
  * 监考人员
@@ -34,7 +35,7 @@ import org.openurp.edu.base.model.Semester
  *
  * @author chaostone
  */
-class InvigilationQuota extends LongId {
+class InvigilationQuota extends LongId with Remark {
 
   /** 项目 */
   var project: Project = _
@@ -53,9 +54,6 @@ class InvigilationQuota extends LongId {
 
   /** 排除的日期 */
   var excludes = Collections.newBuffer[LocalDate]
-
-  /** 备注 */
-  var remark: Option[String] = None
 
   def addQuota(campus: Campus, depart: Department, quota: Float): InvigilationQuotaDetail = {
     var result: InvigilationQuotaDetail = null
