@@ -54,7 +54,8 @@ class DefaultMapping extends MappingModule {
     bind[InvigilationClazzQuota]
 
     bind[InvigilationQuota].on(e => declare(
-      e.details is depends("invigilationQuota")))
+      e.details is depends("invigilationQuota"),
+      e.excludes is eleColumn("exclude_on")))
 
     bind[InvigilationQuotaDetail]
 

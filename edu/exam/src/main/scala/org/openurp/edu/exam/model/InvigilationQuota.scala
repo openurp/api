@@ -18,15 +18,15 @@
  */
 package org.openurp.edu.exam.model
 
+import java.time.LocalDate
+
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
 import org.openurp.base.model.Campus
 import org.openurp.base.model.Department
+import org.openurp.base.model.User
 import org.openurp.edu.base.model.Project
 import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.model.Teacher
-import org.beangle.data.model.LongId
-import org.beangle.commons.collection.Collections
-import org.openurp.base.model.User
-import java.time.LocalDate
 
 /**
  * 监考人员
@@ -52,7 +52,7 @@ class InvigilationQuota extends LongId {
   var details = Collections.newBuffer[InvigilationQuotaDetail]
 
   /** 排除的日期 */
-  var excludeDates = Collections.newBuffer[LocalDate]
+  var excludes = Collections.newBuffer[LocalDate]
 
   /** 备注 */
   var remark: Option[String] = None

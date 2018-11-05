@@ -18,22 +18,19 @@
  */
 package org.openurp.edu.exam.model
 
-import scala.collection.mutable.Buffer
+import java.time.LocalDate
 
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.code.model.ExamType
-import org.openurp.edu.base.model.Project
-import java.time.LocalDate
 import org.beangle.data.model.pojo.Coded
-import org.openurp.base.model.Department
-import org.openurp.base.model.Building
-import org.openurp.edu.base.model.Classroom
-import org.openurp.code.edu.model.ClassroomType
 import org.beangle.data.model.pojo.Remark
+import org.openurp.base.model.Building
+import org.openurp.base.model.Department
+import org.openurp.code.edu.model.ClassroomType
 import org.openurp.edu.base.SemesterBased
+import org.openurp.edu.base.code.model.ExamType
+import org.openurp.edu.base.model.Classroom
 
 /**
  * 排考任务

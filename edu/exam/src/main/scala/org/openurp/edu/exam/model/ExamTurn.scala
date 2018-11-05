@@ -18,9 +18,10 @@
  */
 package org.openurp.edu.exam.model
 
+import java.time.LocalDate
+
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import java.time.LocalDate
 
 /***
  * 排考场次
