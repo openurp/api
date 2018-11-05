@@ -25,11 +25,13 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    bind[Modulus] on (e => declare(
-      e.langType & e.courseCategory are notnull))
+    bind[CapacityFactor] on (e => declare(
+      e.segments is depends("factor")))
 
-    bind[TeachWorkload].on(e => declare(
-      e.clazz & e.course & e.semester & e.langType & e.courseCategory & e.modulus are notnull))
+    bind[FactorSegment]
+
+    bind[TeachingLoad].on(e => declare(
+      e.clazz & e.course))
   }
 
 }

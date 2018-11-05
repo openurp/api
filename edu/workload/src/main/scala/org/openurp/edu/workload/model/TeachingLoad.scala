@@ -19,28 +19,33 @@
 package org.openurp.edu.workload.model
 
 import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.TeachLangType
-import org.openurp.edu.base.code.model.CourseCategory
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.base.model.Semester
 import org.openurp.edu.course.model.Clazz
+import org.openurp.code.job.model.ProfessionalTitle
+import org.beangle.commons.collection.Collections
+import org.openurp.edu.course.code.model.ClazzTag
 
-class TeachWorkload extends LongId {
+class TeachingLoad extends LongId {
 
-  var clazz:Clazz = _
+  var clazz: Clazz = _
 
   var course: Course = _
 
   var semester: Semester = _
 
-  var langType: TeachLangType = _
+  var teacherTitle: ProfessionalTitle = _
 
-  var courseCategory: CourseCategory = _
+  var capacityFactor: CapacityFactor = _
 
-  var modulus: Modulus = _
+  var clazzTags = Collections.newBuffer[ClazzTag]
 
-  var stdCount: Integer = _
+  var factor: Float = _
 
-  var totalWorkload: Integer = _
+  var period: Int = _
+
+  var stdCount: Int = _
+
+  var load: Float = _
 
 }

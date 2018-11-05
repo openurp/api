@@ -32,7 +32,6 @@ import org.openurp.code.edu.model.ExamMode
 import org.openurp.code.edu.model.GradingMode
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.CourseAbilityRate
-import org.openurp.edu.base.code.model.CourseCategory
 import org.openurp.edu.base.code.model.CourseHourType
 import org.openurp.edu.base.code.model.CourseType
 
@@ -56,8 +55,6 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var enName: Option[String] = None
   /** 学历层次 */
   var levels = Collections.newBuffer[AcademicLevel]
-  /**课程种类代码*/
-  var category: CourseCategory = _
   /**学分*/
   var credits: Float = _
   /** 学时/总课时 */

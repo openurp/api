@@ -9,7 +9,7 @@ HarvestType.parent=父类
 
 Literature=专著
 Literature.name=名称
-Literature.publishDate=发表时间
+Literature.publishedOn=发表时间
 Literature.introduction=简介
 Literature.department=部门
 Literature.harvestType=成果类型

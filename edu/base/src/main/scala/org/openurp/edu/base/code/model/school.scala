@@ -54,13 +54,6 @@ class CourseType extends CodeBean {
     this.enName = Some(enName)
   }
 }
-
-/**
- * 课程种类
- * （一般、体育、挂牌、双语）
- */
-@code("school")
-class CourseCategory extends CodeBean
 /**
  * 课时类别代码
  */

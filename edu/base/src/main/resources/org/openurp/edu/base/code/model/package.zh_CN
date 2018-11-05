@@ -4,7 +4,6 @@ BookAwardType=教材获奖类型
 CourseAbilityRate=课程能力等级
 CourseAbilityRate.rate=等级值
 
-CourseCategory=课程种类
 CourseHourType=课时类别代码
 CourseType=课程类别
 CourseType.practical=是否实践课
