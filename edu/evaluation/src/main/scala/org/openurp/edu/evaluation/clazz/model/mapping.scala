@@ -16,13 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.evaluation.course.model
+package org.openurp.edu.evaluation.clazz.model
 
 import scala.reflect.runtime.universe
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.evaluation.course.result.model._
-import org.openurp.edu.evaluation.course.stat.model._
+import org.openurp.edu.evaluation.clazz.result.model._
+import org.openurp.edu.evaluation.clazz.stat.model._
 
 class DefaultMapping extends MappingModule {
 
