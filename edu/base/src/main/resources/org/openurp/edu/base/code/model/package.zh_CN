@@ -23,3 +23,7 @@ StdType.labelType=学生分类标签类型
 TutorType=导师类型
 TeacherTitle=教师职称
 TeacherTitleLevel=教师职称等级
+
+TeacherType=教师类别
+TeacherType.parttime=是否兼职
+TeacherType.external=是否外聘

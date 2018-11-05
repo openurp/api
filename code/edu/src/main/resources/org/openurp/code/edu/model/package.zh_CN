@@ -58,7 +58,4 @@ GradingMode=成绩记录方式
 GradingMode.numerical=是否为数字类型
 
 TeachLangType=授课语言类型
-TeacherType=教师类别
-TeacherType.parttime=是否兼职
-TeacherType.external=是否外聘
 DayPart=时段
