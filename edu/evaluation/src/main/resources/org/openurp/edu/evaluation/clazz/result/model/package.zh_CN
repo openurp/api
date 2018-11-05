@@ -1,5 +1,4 @@
 
-
 QuestionResult=问题评教结果
 QuestionResult.question=问题
 QuestionResult.option=问题选项
@@ -18,6 +17,4 @@ EvaluateResult.evaluateAt=评教时间
 EvaluateResult.statState=统计状态
 EvaluateResult.statType=1正常 2 无效 3异常(互斥)
 EvaluateResult.remark=备注
-
-
-
+EvaluateResult.score=总分

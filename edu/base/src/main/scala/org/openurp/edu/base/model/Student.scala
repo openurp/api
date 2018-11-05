@@ -1,19 +1,19 @@
 /*
  * OpenURP, Agile University Resource Planning Solution.
  *
- * Copyright © 2005, The OpenURP Software.
+ * Copyright (c) 2005, The OpenURP Software.
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.edu.base.model
@@ -32,11 +32,11 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Campus
 import org.openurp.base.model.Department
 import org.openurp.base.model.User
+import org.openurp.code.edu.model.EducationLevel
 import org.openurp.code.edu.model.StudentStatus
 import org.openurp.code.edu.model.StudyType
-import org.openurp.edu.base.EduSpanBased
+import org.openurp.edu.base.EduLevelBased
 import org.openurp.edu.base.StdEnrollment
-import org.openurp.edu.base.code.model.EduSpan
 import org.openurp.edu.base.code.model.StdLabel
 import org.openurp.edu.base.code.model.StdLabelType
 import org.openurp.edu.base.code.model.StdType
@@ -45,7 +45,7 @@ import org.openurp.people.base.model.Person
 /**
  * 学籍信息实现
  */
-class Student extends LongId with EduSpanBased with Coded with Updated with Remark with DateRange {
+class Student extends LongId with EduLevelBased with Coded with Updated with Remark with DateRange {
 
   /**基本信息*/
   var person: Person = _
@@ -137,7 +137,7 @@ class StudentScope extends Component {
   /**项目*/
   var project: Project = _
   /**培养层次集合*/
-  var spans: collection.mutable.Set[EduSpan] = _
+  var levels: collection.mutable.Set[EducationLevel] = _
   /**学生类别集合*/
   var stdTypes: collection.mutable.Set[StdType] = _
   /**部门集合*/

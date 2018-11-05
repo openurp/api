@@ -1,19 +1,19 @@
 /*
  * OpenURP, Agile University Resource Planning Solution.
  *
- * Copyright © 2005, The OpenURP Software.
+ * Copyright (c) 2005, The OpenURP Software.
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.code.edu.model
@@ -76,6 +76,20 @@ class EnrollMode extends CodeBean
 class EducationMode extends CodeBean
 
 /**
+ * 培养层次
+ */
+@code("industry")
+class EducationLevel extends CodeBean {
+  var fromLevel: AcademicLevel = _
+  var toLevel: AcademicLevel = _
+}
+/**
+ * 教育类别
+ */
+@code("industry")
+class EduCategory extends CodeBean {
+}
+/**
  * 留学生HSK等级
  * 参见教育部标准JY/T 1001 4.5.4
  */
@@ -125,3 +139,207 @@ class StudentStatus extends CodeBean
  */
 @code("industry")
 class UeeSubjectType extends CodeBean
+
+/**
+ * 修课类别
+ * （重修、增修、免修不免试、主修，选修）
+ *
+ * @author chaostone
+ * @since 2005-12-2
+ */
+@code("industry")
+class CourseTakeType extends CodeBean {
+  def this(id: Int, code: String, name: String, enName: String) {
+    this()
+    this.id = id
+    this.code = code
+    this.name = name
+    this.enName = Some(enName)
+  }
+}
+object CourseTakeType {
+
+  /** 正常修读  */
+  val Normal = 1
+  /** 重修 */
+  val Repeat = 3
+  /** 免修 */
+  val Exemption = 5
+}
+
+/**
+ * 考试情况
+ * 正常、作弊、旷考等
+ */
+@code("industry")
+class ExamStatus extends CodeBean {
+  /**
+   * 是否参加考试
+   */
+  var attended: Boolean = _
+  /**
+   * 是否需要参加下一次缓考
+   */
+  var deferred: Boolean = _
+  /**
+   * 是否有作弊行为
+   */
+  var cheating: Boolean = _
+
+  def this(id: Int) {
+    this()
+    this.id = id
+  }
+}
+
+object ExamStatus {
+
+  /** 正常 */
+  val Normal = 1;
+
+  /**缺考*/
+  val Absent = 3;
+}
+
+/**
+ * 成绩记录方式
+ */
+@code("industry")
+class GradingMode extends CodeBean {
+
+  var numerical: Boolean = _
+
+  def this(id: Int) {
+    this()
+    this.id = id
+  }
+  def this(id: Int, code: String, name: String, enName: String) {
+    this()
+    this.id = id
+    this.code = code
+    this.name = name
+    this.enName = Some(enName)
+  }
+}
+
+object GradingMode {
+  val Percent = 1
+}
+
+/**
+ * 上下午时段
+ */
+@code("industry")
+class DayPart extends CodeBean
+/**
+ * 成绩类型
+ *
+ * @author chaostone
+ * @since 2005-9-7
+ */
+@code("industry")
+class GradeType extends CodeBean {
+  var examType: Option[ExamType] = None
+
+  def this(id: Int) {
+    this()
+    this.id = id
+  }
+
+  def this(id: Int, code: String, name: String, enName: String) {
+    this()
+    this.id = id
+    this.code = code
+    this.name = name
+    this.enName = Some(enName)
+  }
+
+  def isGa: Boolean = {
+    id == GradeType.EndGa || id == GradeType.MakeupGa || id == GradeType.DelayGa
+  }
+
+  def isMakeupOrDeplay: Boolean = {
+    id == GradeType.Makeup || id == GradeType.Delay
+  }
+
+}
+
+object GradeType {
+  val Final = 0
+
+  val Middle = 1
+  val End = 2
+  val Usual = 3
+  val Makeup = 4
+  val Delay = 6
+
+  val EndGa = 7
+  val DelayGa = 8
+  val MakeupGa = 9
+}
+
+/**
+ * 考试类型
+ */
+object ExamType {
+
+  /** 期末考试 */
+  val Final = 1
+
+  /** 期中考试 */
+  val Midterm = 2
+
+  /** 补考 */
+  val Makeup = 3
+
+  /** 缓考 */
+  val Delay = 4
+}
+
+@code("industry")
+class ExamType extends CodeBean {
+
+  /**是否是缓考*/
+  var deferred: Boolean = _
+
+  def this(id: Int) {
+    this()
+    this.id = id
+  }
+
+  def this(id: Int, code: String, name: String, enName: String) {
+    this(id)
+    this.code = code
+    this.name = name
+    this.enName = Some(enName)
+  }
+}
+
+@code("industry")
+class ElectionMode extends CodeBean
+
+object ElectionMode {
+  /** 指定 */
+  val Assigned = 1
+
+  /** 自选  */
+  val SelfChoose = 2
+}
+
+/**
+ * 考核方式
+ */
+@code("school")
+class ExamMode extends CodeBean
+
+/**
+ * 考试方式
+ */
+@code("school")
+class ExamForm extends CodeBean
+
+/**
+ * 授课语言类型
+ */
+@code("school")
+class TeachLangType extends CodeBean

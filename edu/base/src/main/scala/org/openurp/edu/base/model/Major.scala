@@ -1,19 +1,19 @@
 /*
  * OpenURP, Agile University Resource Planning Solution.
  *
- * Copyright © 2005, The OpenURP Software.
+ * Copyright (c) 2005, The OpenURP Software.
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.edu.base.model
@@ -22,7 +22,6 @@ import java.time.LocalDate
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.Coded
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.Remark
@@ -30,8 +29,8 @@ import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.DisciplineCategory
+import org.openurp.code.edu.model.EducationLevel
 import org.openurp.edu.base.ProjectBased
-import org.openurp.edu.base.code.model.EduSpan
 
 /**
  * 专业
@@ -56,8 +55,8 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
   var journals = Collections.newBuffer[MajorJournal]
 
   /** 培养层次 */
-  def spans: Set[EduSpan] = {
-    journals.map(_.span).toSet
+  def levels: Set[EducationLevel] = {
+    journals.map(_.level).toSet
   }
 
   def departments: Set[Department] = {
@@ -103,7 +102,7 @@ class MajorJournal extends LongId with TemporalOn with Remark {
   var duration: Float = _
 
   /**培养层次*/
-  var span: EduSpan = _
+  var level: EducationLevel = _
 
   /**部门*/
   var depart: Department = _
