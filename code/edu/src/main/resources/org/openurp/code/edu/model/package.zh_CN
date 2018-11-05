@@ -34,3 +34,31 @@ StudentAlterReason=学籍异动原因
 
 UeeSubjectType=高考科目
 
+CourseTakeType=修读类别
+CourseTakeType.retake=是否重修
+CourseTakeType.attend=是否上课
+CourseTakeType.exam=是否考核
+ExamStatus=考试情况
+ExamMode=考核方式
+ExamStatus.attended=是否参加考试
+ExamStatus.cheating=是否有作弊行为
+ExamStatus.deferred=是否需要参加下一次缓考
+ExamForm=考试形式
+ExamType=考试类型
+ExamType.deferred=是否是缓考
+EducationLevel=培养层次
+EducationLevel.fromLevel=开始
+EducationLevel.toLevel=结束
+ElectionMode=选课方式
+GradeType=成绩类型
+GradeType.examType=考试类型
+AdmissionWay=入学方式
+Press=出版社
+GradingMode=成绩记录方式
+GradingMode.numerical=是否为数字类型
+
+TeachLangType=授课语言类型
+TeacherType=教师类别
+TeacherType.parttime=是否兼职
+TeacherType.external=是否外聘
+DayPart=时段

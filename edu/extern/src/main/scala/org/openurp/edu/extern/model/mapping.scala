@@ -16,23 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.lg.room.model
+package org.openurp.edu.extern.model
 
-import scala.reflect.runtime.universe
+import org.beangle.data.model.annotation.code
 import org.beangle.data.orm.MappingModule
+import org.openurp.edu.extern.code.model.ExamCategory
+import org.openurp.edu.extern.code.model.ExamSubject
+import scala.reflect.ManifestFactory.classType
+import scala.reflect.api.materializeTypeTag
+import org.beangle.data.orm.IdGenerator
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
+    defaultIdGenerator("date")
 
-    bind[Occupancy] on (e => declare(
-      e.room is notnull,
-      e.time.startOn & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull,
-      e.activityType & e.updatedAt & e.userApp & e.activityId are notnull,
-      e.comments is length(300)))
+    bind[ExamSubject].generator(IdGenerator.Code)
+    bind[ExamCategory].generator(IdGenerator.Code)
 
-    bind[UserApp] on (e => declare(
-      e.name & e.activityUrl are (length(200), notnull)))
+    bind[ExternSchool]
+    bind[ExternGrade]
+    bind[ConvertedGrade]
+
+    bind[ExternExamGrade].on(e => declare(
+      e.scoreText is length(5),
+      e.certificate & e.examNo are length(80)))
   }
+
 }
