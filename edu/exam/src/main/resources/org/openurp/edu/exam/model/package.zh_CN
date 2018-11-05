@@ -49,6 +49,7 @@ ExamTask.examWeek=考试周
 ExamTask.duration=考试时长
 ExamTask.maxCourseConflictRatio=最大上课冲突比例
 ExamTask.rooms=排考任务对应教室
+ExamTask.timeAllotted=是否时间已经指定
 
 ExamStudent=应考学生
 ExamStudent.clazz=教学任务
@@ -70,10 +71,13 @@ ExamGroup.state=发布状态
 ExamGroup.rooms=考试组对应教室
 
 RoomGroup=教室组
+RoomGroup.rooms=教室组内教室
+
 ExamTurn=考场场次
 ExamTurn.examOn=考试日期
 ExamTurn.beginAt=开始时间
 ExamTurn.endAt=结束时间
+ExamTurn.capacity=最大容量
 
 InvigilationClazzQuota=教学任务监考配额统计
 InvigilationClazzQuota.period=学时
@@ -87,6 +91,7 @@ RoomAllocSetting.allocPolicy=分配策略
 
 InvigilationQuota=监考配额
 InvigilationQuota.quota=配额
+InvigilationQuota.excludes=排除日期
 
 InvigilationQuotaDetail=监考统计明细
 InvigilationQuotaDetail.quota=配额

@@ -40,7 +40,7 @@ PublishedSituation.isbn=ISBN
 PublishedSituation.issn=ISSN
 PublishedSituation.position=发表位置
 PublishedSituation.cn=CN
-PublishedSituation.publishedDate=发表时间
+PublishedSituation.publishedOn=发表时间
 PublishedSituation.harvestType=成果类型
 PublishedSituation.publishedRange=发表范围
 PublishedSituation.translated=是否翻译
@@ -50,7 +50,7 @@ Researcher.person=人员
 
 ThesisHarvest=论文成果
 ThesisHarvest.name=名称
-ThesisHarvest.applyDate=申请时间
+ThesisHarvest.applyOn=申请时间
 ThesisHarvest.count=字数
 ThesisHarvest.confirm=是否确认
 ThesisHarvest.summary=摘要
