@@ -46,9 +46,6 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   /** 部门 */
   var department: Department = _
 
-  /** 校区 */
-  var campus: Campus = _
-
   /** 学生类别 */
   var stdType: StdType = _
 
@@ -75,4 +72,8 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
 
   /**  审核状态 */
   var state: States.State = States.Draft
+
+  def campuses: Set[Campus] = {
+    termCampuses.map(_.campus).toSet
+  }
 }
