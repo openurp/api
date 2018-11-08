@@ -329,17 +329,17 @@ object ElectionMode {
 /**
  * 考核方式
  */
-@code("school")
+@code("industry")
 class ExamMode extends CodeBean
 
 /**
  * 考试方式
  */
-@code("school")
+@code("industry")
 class ExamForm extends CodeBean
 
 /**
  * 授课语言类型
  */
-@code("school")
+@code("industry")
 class TeachLangType extends CodeBean

@@ -116,8 +116,8 @@ Program.degreeGpa=学位绩点
 Program.studyType=学习形式
 Program.state=状态
 Program.project=项目
-Program.campus=校区
 Program.termCampuses=学期对应校区
+Program.campuses=校区
 
 Project=项目
 Project.name=名称
