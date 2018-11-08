@@ -1,18 +1,18 @@
-Modulus=教学工作量系数
-Modulus.langType=授课语言
-Modulus.courseCategory=课程类别
-Modulus.moduluMark=系数标识
-Modulus.maxStdCount=学生人数上限
-Modulus.minStdCount=学生人数下限
-Modulus.modulusValue=系数
+CapacityFactor=教学工作量系数
+CapacityFactor.condition=条件表达式
+
+FactorSegment=教学工作量分段系数
+FactorSegment.maxCapacity=学生人数上限
+FactorSegment.minCapacity=学生人数下限
+FactorSegment.factorExp=系数表达式
 
 
-TeachWorkload=教学工作量
-TeachWorkload.clazz=教学任务
-TeachWorkload.course=课程
-TeachWorkload.semester=学期
-TeachWorkload.langType=授课语言
-TeachWorkload.courseCategory=课程类别
-TeachWorkload.modulus=工作量系数
-TeachWorkload.stdCount=教学班人数
-TeachWorkload.totalWorkload=教学工作量
+TeachingLoad=教学工作量
+TeachingLoad.clazz=教学任务
+TeachingLoad.course=课程
+TeachingLoad.semester=学期
+TeachingLoad.factor=工作量系数
+TeachingLoad.stdCount=教学班人数
+TeachingLoad.load=折算课时
+TeachingLoad.period=担任学时
+TeachingLoad.clazzTags=任务标记

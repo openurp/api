@@ -1,28 +1,27 @@
 /*
  * OpenURP, Agile University Resource Planning Solution.
  *
- * Copyright © 2005, The OpenURP Software.
+ * Copyright (c) 2005, The OpenURP Software.
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.openurp.people.contact.model
 
-import java.sql.Date
-
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.people.base.model.Person
+import java.time.LocalDate
 
 /**
  * 联系方式
@@ -38,5 +37,5 @@ class Contact extends LongId with Updated {
 
   var sortAs: String = _
 
-  var anniversary: Date = _
+  var anniversary: Option[LocalDate] = _
 }

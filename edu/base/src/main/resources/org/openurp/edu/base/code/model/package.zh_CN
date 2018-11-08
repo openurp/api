@@ -1,44 +1,17 @@
 BookType=教材类型
 BookAwardType=教材获奖类型
 
-CourseTakeType=修读类别
-CourseTakeType.retake=是否重修
-CourseTakeType.exam=是否考试
-CourseTakeType.attend=是否上课
 CourseAbilityRate=课程能力等级
 CourseAbilityRate.rate=等级值
 
-CourseCategory=课程种类
 CourseHourType=课时类别代码
-CourseTakeType=修课类别
-CourseTakeType.retake=是否重修
-CourseTakeType.exam=是否考核
-CourseTakeType.attend=是否听课
 CourseType=课程类别
 CourseType.practical=是否实践课
-
-ExamStatus=考试情况
-ExamMode=考核方式
-ExamStatus.attended=是否参加考试
-ExamStatus.cheating=是否有作弊行为
-ExamStatus.deferred=是否需要参加下一次缓考
-ExamForm=考试形式
-ExamType=考试类型
-ExamType.deferred=是否是缓考
-
-EduSpan=培养层次
-EduSpan.fromLevel=开始
-EduSpan.toLevel=结束
-ElectionMode=选课方式
-GradeType=成绩类型
-GradeType.examType=考试类型
 
 Discipline=学科
 DisciplineCatalog=学科目录
 Degree=学位
 
-GradingMode=成绩记录方式
-GradingMode.numerical=是否为数字类型
 StudyType=学习形式
 StdLabel=学生分类标签
 StdLabel.labelType=学生分类标签类型
@@ -46,15 +19,10 @@ StdLabelType=学生分类标签类型
 StdType=学生类别
 StdType.labelType=学生分类标签类型
 
-TeachLangType=授课语言类型
-TeacherType=教师类别
-TeacherType.parttime=是否兼职
-TeacherType.external=是否外聘
 TutorType=导师类型
 TeacherTitle=教师职称
 TeacherTitleLevel=教师职称等级
 
-AdmissionWay=入学方式
-Press=出版社
-
-DayPart=时段
+TeacherType=教师类别
+TeacherType.parttime=是否兼职
+TeacherType.external=是否外聘

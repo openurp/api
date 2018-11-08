@@ -7,10 +7,10 @@ DepartEvaluation.userName=评测人
 DepartEvaluation.updateAt=评测日期
 DepartEvaluation.course=被评课程
 
-QuestionnaireLesson=教学任务问卷配置
-QuestionnaireLesson.evaluateByTeacher=评教人
-QuestionnaireLesson.clazz=任务
-QuestionnaireLesson.questionnaire=问卷
+QuestionnaireClazz=教学任务问卷配置
+QuestionnaireClazz.evaluateByTeacher=评教人
+QuestionnaireClazz.clazz=任务
+QuestionnaireClazz.questionnaire=问卷
 
 TextEvaluation=开放式文字评教
 TextEvaluation.evaluateAt=评教时间
