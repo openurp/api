@@ -109,3 +109,17 @@ class MajorJournal extends LongId with TemporalOn with Remark {
   var depart: Department = _
 
 }
+
+class MajorCampus extends LongId {
+
+  /** 年级,形式为yyyy-p */
+  var grade:String=_
+
+  /** 专业 */
+  var major:Major=_
+
+  /** 对应学期 */
+  var terms:Terms=_
+
+  var level:EducationLevel=_
+}
