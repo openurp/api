@@ -57,9 +57,6 @@ class Enrollment extends Cloneable with Component {
   /** 上课名单 */
   var courseTakers = Collections.newBuffer[CourseTaker]
 
-  /** 考试名单 */
-  var examTakers: collection.mutable.Set[ExamTaker] = _
-
   /**限制条件组 */
   var restrictions = Collections.newBuffer[Restriction]
 }

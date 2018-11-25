@@ -93,12 +93,3 @@ ClazzGroup.teachDepart=开课部门
 ClazzGroup.semester=学期
 ClazzGroup.project=项目
 ClazzGroup.course=课程
-
-ExamTaker=应考记录
-ExamTaker.clazz=教学任务
-ExamTaker.std=学生
-ExamTaker.semester=教学日历
-ExamTaker.examType=考试类型
-ExamTaker.examStatus=考试情况
-ExamTaker.remark=缓考申请原因/记录处分
-

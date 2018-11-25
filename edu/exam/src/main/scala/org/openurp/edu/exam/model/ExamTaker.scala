@@ -29,7 +29,7 @@ import org.openurp.edu.course.model.Clazz
 /**
  * 应考学生
  */
-class ExamStudent extends LongId with Remark {
+class ExamTaker extends LongId with Remark {
 
   /** 教学任务 */
   var clazz: Clazz = _
