@@ -38,6 +38,15 @@ trait CourseSubstitution extends LongId with Updated {
 
   /**新课程*/
   var news = Collections.newSet[Course]
+
+  def exchange(): Unit = {
+    val nolds = Collections.newSet[Course]
+    nolds ++= news
+    news.clear()
+    news ++= olds
+    olds.clear()
+    olds ++= nolds
+  }
 }
 
 /**

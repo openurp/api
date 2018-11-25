@@ -69,7 +69,7 @@ class ExamRoom extends LongId {
   var invigilations = Collections.newSet[Invigilation]
 
   /**应考学生*/
-  var examStudents = Collections.newSet[ExamStudent]
+  var examTakers = Collections.newSet[ExamTaker]
 
   def clazzs: Set[Clazz] = {
     activities.map(a => a.clazz).toSet

@@ -30,12 +30,12 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator("auto_increment")
 
     bind[ExamActivity].on(e => declare(
-      e.examStudents is depends("activity"),
+      e.examTakers is depends("activity"),
       e.remark is length(100)))
 
     bind[ExamRoom].on(e => declare(
       e.invigilations is depends("examRoom"),
-      e.examStudents is depends("examRoom")))
+      e.examTakers is depends("examRoom")))
 
     bind[ExamTask].on(e => declare(
       e.examClazzes is depends("task")))
@@ -48,7 +48,7 @@ class DefaultMapping extends MappingModule {
 
     bind[ExamTurn]
 
-    bind[ExamStudent]
+    bind[ExamTaker]
 
     bind[Invigilation]
     bind[InvigilationClazzQuota]

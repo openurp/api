@@ -32,9 +32,6 @@ class DefaultMapping extends MappingModule {
     //code
     bind[ClazzTag].generator("auto_increment")
 
-    bind[ExamTaker].on(e => declare(
-      e.remark is length(100)))
-
     //course
     bind[CourseTaker].on(e => declare(
       e.remark is length(100)))
@@ -47,7 +44,7 @@ class DefaultMapping extends MappingModule {
       e.enrollment.grade is length(20),
       e.exam.beginAt is column("exam_begin_at"),
       e.exam.endAt is column("exam_end_at"),
-      e.enrollment.courseTakers & e.enrollment.examTakers & e.enrollment.restrictions &
+      e.enrollment.courseTakers & e.enrollment.restrictions &
         e.schedule.sessions are depends("clazz")))
 
     bind[Restriction].on(e => declare(

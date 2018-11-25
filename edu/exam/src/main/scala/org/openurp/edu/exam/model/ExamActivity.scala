@@ -67,7 +67,7 @@ class ExamActivity extends LongId with Remark {
   var rooms: collection.mutable.Buffer[ExamRoom] = _
 
   /**应考学生*/
-  var examStudents = Collections.newSet[ExamStudent]
+  var examTakers = Collections.newSet[ExamTaker]
 
   /**发布状态*/
   var state: PublishState.State = _
