@@ -26,7 +26,13 @@ import org.openurp.code.edu.model.ExamStatus
 import org.openurp.code.edu.model.GradingMode
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.extern.code.model.ExamSubject
+import org.beangle.commons.collection.Collections
+import scala.collection.mutable.Buffer
+import org.openurp.edu.grade.course.model.CourseGrade
 
+/**
+ * 校外证书成绩
+ */
 class ExternExamGrade extends LongId {
 
   var std: Student = _
@@ -48,4 +54,6 @@ class ExternExamGrade extends LongId {
   var gradingMode: GradingMode = _
 
   var examStatus: ExamStatus = _
+
+  var courseGrades: Buffer[CourseGrade] = Collections.newBuffer[CourseGrade]
 }

@@ -21,5 +21,9 @@
       <groupId>org.openurp.edu.base</groupId>
       <artifactId>openurp-edu-base-api</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.openurp.edu.grade</groupId>
+      <artifactId>openurp-edu-grade-api</artifactId>
+    </dependency>
   </dependencies>
 </project>
