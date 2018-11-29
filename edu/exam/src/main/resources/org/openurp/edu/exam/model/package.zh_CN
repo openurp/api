@@ -51,15 +51,15 @@ ExamTask.maxCourseConflictRatio=最大上课冲突比例
 ExamTask.rooms=排考任务对应教室
 ExamTask.timeAllotted=是否时间已经指定
 
-ExamStudent=应考学生
-ExamStudent.clazz=教学任务
-ExamStudent.std=学生
-ExamStudent.semester=学期
-ExamStudent.examRoom=考场
-ExamStudent.examType=考试类型
-ExamStudent.examStatus=考试情况
-ExamStudent.seatNo=考场座位号
-ExamStudent.remark=缓考申请原因/记录处分
+ExamTaker=应考学生
+ExamTaker.clazz=教学任务
+ExamTaker.std=学生
+ExamTaker.semester=学期
+ExamTaker.examRoom=考场
+ExamTaker.examType=考试类型
+ExamTaker.examStatus=考试情况
+ExamTaker.seatNo=考场座位号
+ExamTaker.remark=缓考申请原因/记录处分
 
 ExamGroup=考试组
 ExamGroup.beginOn=开始日期

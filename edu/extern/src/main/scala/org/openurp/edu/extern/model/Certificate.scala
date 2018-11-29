@@ -21,28 +21,39 @@ package org.openurp.edu.extern.model
 import java.time.LocalDate
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Student
+import org.beangle.data.model.annotation.code
+import org.openurp.code.edu.model.ExamStatus
 import org.openurp.code.edu.model.GradingMode
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.extern.code.model.ExamSubject
+import org.beangle.commons.collection.Collections
+import scala.collection.mutable.Buffer
+import org.openurp.edu.grade.course.model.CourseGrade
 
 /**
- * 转换成我校后的成绩
+ * 校外证书成绩
  */
-class ConvertedGrade extends LongId {
+class Certificate extends LongId {
+
+  var code: Option[String] = None
 
   var std: Student = _
 
-  var course: Course = _
-
-  var score: Option[Float] = _
+  var score: Option[Float] = None
 
   var scoreText: String = _
 
   var passed: Boolean = _
 
-  var gp: Option[Float] = None
+  var subject: ExamSubject = _
+
+  var examNo: Option[String] = None
 
   var acquiredOn: LocalDate = _
 
   var gradingMode: GradingMode = _
+
+  var examStatus: ExamStatus = _
+
+  var courseGrades: Buffer[CourseGrade] = Collections.newBuffer[CourseGrade]
 }

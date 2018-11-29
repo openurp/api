@@ -16,36 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.model
+package org.openurp.edu.extern.service
 
-import java.time.LocalDate
-
-import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.openurp.code.edu.model.ExamStatus
-import org.openurp.code.edu.model.GradingMode
 import org.openurp.edu.base.model.Student
-import org.openurp.edu.extern.code.model.ExamSubject
+import org.openurp.edu.extern.code.model.{ ExamCategory, ExamSubject }
+import org.openurp.edu.extern.model.Certificate
 
-class ExternExamGrade extends LongId {
+trait CertificateService {
 
-  var std: Student = _
+  def saveOrUpdate(examGrade: Certificate): Unit
 
-  var score: Option[Float] = None
+  def getBest(std: Student, category: ExamCategory): Certificate
 
-  var scoreText: String = _
+  def getPassed(std: Student, subjects: Iterable[ExamSubject]): List[Certificate]
 
-  var passed: Boolean = _
+  def isPass(std: Student, subject: ExamSubject): Boolean
 
-  var subject: ExamSubject = _
-
-  var examNo: Option[String] = None
-
-  var certificate: Option[String] = None
-
-  var acquiredOn: LocalDate = _
-
-  var gradingMode: GradingMode = _
-
-  var examStatus: ExamStatus = _
+  def get(std: Student, best: Boolean): Iterable[Certificate]
 }

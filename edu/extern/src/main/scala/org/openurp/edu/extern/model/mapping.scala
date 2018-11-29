@@ -36,11 +36,10 @@ class DefaultMapping extends MappingModule {
 
     bind[ExternSchool]
     bind[ExternGrade]
-    bind[ConvertedGrade]
 
-    bind[ExternExamGrade].on(e => declare(
+    bind[Certificate].on(e => declare(
       e.scoreText is length(5),
-      e.certificate & e.examNo are length(80)))
+      e.code & e.examNo are length(80)))
   }
 
 }

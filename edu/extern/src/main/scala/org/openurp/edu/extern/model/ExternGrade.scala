@@ -24,9 +24,12 @@ import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.EduCategory
 import org.openurp.code.edu.model.EducationLevel
 import org.openurp.edu.base.model.Student
+import org.openurp.edu.grade.course.model.CourseGrade
+import org.beangle.commons.collection.Collections
+import scala.collection.mutable.Buffer
 
 /**
- * 校外成绩
+ * 外校成绩
  */
 class ExternGrade extends LongId {
 
@@ -50,5 +53,6 @@ class ExternGrade extends LongId {
 
   var passed: Boolean = _
 
-  var converted: ConvertedGrade = _
+  var courseGrades: Buffer[CourseGrade] = Collections.newBuffer[CourseGrade]
+
 }
