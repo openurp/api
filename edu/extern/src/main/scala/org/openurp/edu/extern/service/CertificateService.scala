@@ -21,17 +21,17 @@ package org.openurp.edu.extern.service
 import org.beangle.data.model.annotation.code
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.extern.code.model.{ ExamCategory, ExamSubject }
-import org.openurp.edu.extern.model.ExternExamGrade
+import org.openurp.edu.extern.model.Certificate
 
-trait ExternExamGradeService {
+trait CertificateService {
 
-  def saveOrUpdate(examGrade: ExternExamGrade): Unit
+  def saveOrUpdate(examGrade: Certificate): Unit
 
-  def getBestGrade(std: Student, category: ExamCategory): ExternExamGrade
+  def getBest(std: Student, category: ExamCategory): Certificate
 
-  def getPassGradesOf(std: Student, subjects: Iterable[ExamSubject]): List[ExternExamGrade]
+  def getPassed(std: Student, subjects: Iterable[ExamSubject]): List[Certificate]
 
   def isPass(std: Student, subject: ExamSubject): Boolean
 
-  def getExamGrades(std: Student, best: Boolean): Iterable[ExternExamGrade]
+  def get(std: Student, best: Boolean): Iterable[Certificate]
 }

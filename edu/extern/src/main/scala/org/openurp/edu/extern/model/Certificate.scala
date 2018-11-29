@@ -33,7 +33,9 @@ import org.openurp.edu.grade.course.model.CourseGrade
 /**
  * 校外证书成绩
  */
-class ExternExamGrade extends LongId {
+class Certificate extends LongId {
+
+  var code: Option[String] = None
 
   var std: Student = _
 
@@ -46,8 +48,6 @@ class ExternExamGrade extends LongId {
   var subject: ExamSubject = _
 
   var examNo: Option[String] = None
-
-  var certificate: Option[String] = None
 
   var acquiredOn: LocalDate = _
 
