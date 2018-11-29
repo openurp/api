@@ -23,6 +23,10 @@
     <module>lg</module>
   </modules>
 
+  <properties>
+    <beangle.data.version>5.1.1</beangle.data.version>
+  </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
