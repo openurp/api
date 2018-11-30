@@ -99,9 +99,15 @@ MajorDiscipline.disciplineCode=教育部代码
 
 MajorJournal=专业建设历程
 MajorJournal.major=专业
-MajorJournal.duration=修读年限
 MajorJournal.education=培养层次
 MajorJournal.depart=部门
+
+SchoolLength=学制
+SchoolLength.fromGrade=起始年级
+SchoolLength.toGrade=结束年级
+SchoolLength.normal=学制
+SchoolLength.minimum=最低学习年限
+SchoolLength.maximum=最长学习年限
 
 Program=专业培养方案
 Program.grade=年级

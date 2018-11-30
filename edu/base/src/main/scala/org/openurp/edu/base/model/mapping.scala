@@ -85,6 +85,7 @@ class DefaultMapping extends MappingModule {
       e.journals is depends("major"),
       e.directions is depends("major"),
       e.disciplines is depends("major"),
+      e.schoolLengths is depends("major"),
       e.remark is length(100)))
 
     bind[MajorDiscipline] on (e => declare(
@@ -92,6 +93,9 @@ class DefaultMapping extends MappingModule {
 
     bind[MajorJournal] on (e => declare(
       e.remark is length(200)))
+
+    bind[SchoolLength] on (e => declare(
+      e.fromGrade & e.toGrade are length(10)))
 
     bind[Program] on (e => declare(
       e.grade is length(10),
