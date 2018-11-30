@@ -18,30 +18,35 @@
  */
 package org.openurp.edu.textbook.clazz.model
 
+import java.time.Instant
+
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Textbook
 import org.openurp.edu.course.model.Clazz
-import org.openurp.edu.textbook.clazz.MaterialStatus.{ ASSIGNED, Status }
-import java.time.LocalDate
+import org.openurp.edu.textbook.clazz.MaterialStatus.ASSIGNED
+import org.openurp.edu.textbook.clazz.MaterialStatus.Status
 
+/**
+ * 教材
+ */
 class Material extends LongId {
 
   var clazz: Clazz = _
 
   var books = Collections.newBuffer[Textbook]
 
-  var referenceBooks: String = _
+  var references: String = _
 
   var extra: String = _
 
   var passed: Boolean = _
 
-  var auditAt: LocalDate = _
+  var auditAt: Instant = _
 
   var remark: String = _
 
-  var useExplain: String = _
+  var reason: String = _
 
   var status: Status = ASSIGNED
 }
