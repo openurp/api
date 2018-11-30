@@ -48,11 +48,14 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
   /** 专业方向 */
   var directions = Collections.newSet[Direction]
 
-  /** 历史学科信息 */
+  /** 学科信息 */
   var disciplines = Collections.newBuffer[MajorDiscipline]
 
   /** 建设过程 */
   var journals = Collections.newBuffer[MajorJournal]
+
+  /**学制*/
+  var schoolLengths = Collections.newBuffer[SchoolLength]
 
   /** 培养层次 */
   def levels: Set[EducationLevel] = {
@@ -98,13 +101,37 @@ class MajorJournal extends LongId with TemporalOn with Remark {
   /**专业*/
   var major: Major = _
 
-  /** 修读年限 */
-  var duration: Float = _
-
   /**培养层次*/
   var level: EducationLevel = _
 
   /**部门*/
   var depart: Department = _
+
+}
+
+/**
+ * 学制
+ */
+class SchoolLength extends LongId {
+  /**专业*/
+  var major: Major = _
+
+  /**培养层次*/
+  var level: EducationLevel = _
+
+  /**起始年级*/
+  var fromGrade: String = _
+
+  /**结束年级*/
+  var toGrade: Option[String] = None
+
+  /**学制*/
+  var normal: Float = _
+
+  /**最低学习年限*/
+  var minimum: Float = _
+
+  /**最长学习年限*/
+  var maximum: Float = _
 
 }
