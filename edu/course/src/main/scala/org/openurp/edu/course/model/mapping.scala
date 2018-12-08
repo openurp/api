@@ -18,8 +18,6 @@
  */
 package org.openurp.edu.course.model
 
-import scala.reflect.runtime.universe
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.annotation.code
 import org.beangle.data.orm.MappingModule
 import org.openurp.edu.course.code.model.ClazzTag
@@ -52,6 +50,8 @@ class DefaultMapping extends MappingModule {
       e.children is depends("parent")))
 
     bind[RestrictionItem]
+
+    bind[Lesson]
 
     //schedule
     bind[Session].on(e => declare(

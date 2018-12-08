@@ -93,3 +93,11 @@ ClazzGroup.teachDepart=开课部门
 ClazzGroup.semester=学期
 ClazzGroup.project=项目
 ClazzGroup.course=课程
+
+Lesson=教学进度
+Lesson.date=上课日期
+Lesson.beginAt=开始时间
+Lesson.endAt=结束时间
+Lesson.content=具体内容
+Lesson.teachers=授课教师列表
+Lesson.rooms=教室列表
