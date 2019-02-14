@@ -16,38 +16,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.model
+package org.openurp.edu.course.model
 
+import java.time.LocalDate
+
+import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.model.Student
+import org.openurp.edu.base.model.Classroom
+import org.openurp.edu.base.model.Teacher
 
-class AuditResult extends LongId with Updated {
+/***
+ * 具体一次上课的内容
+ */
+class Lesson extends LongId {
 
-  /** 所属的毕业审核批次 */
-  var session: GraduateSession = _
+  var clazz: Clazz = _
 
-  /**学生*/
-  var std: Student = _
+  var date: LocalDate = _
 
-  /** GPA */
-  var gpa: Float = _
+  var beginAt: HourMinute = _
 
-  /**平均分*/
-  var ga: Float = _
+  var endAt: HourMinute = _
 
-  /** 获得学分 */
-  var acquiredCredits: Float = _
+  var content: String = _
 
-  /** 要求学分 */
-  var requiredCredits: Float = _
+  /** 授课教师列表 */
+  var teachers: collection.mutable.Set[Teacher] = Collections.newSet[Teacher]
 
-  /** 修读学分 */
-  var electedCredits: Float = _
-
-  /** 毕业信息*/
-  var graduate: GraduateResult = _
-
-  /** 学位信息 */
-  var degree: DegreeResult = _
+  /** 教室列表 */
+  var rooms: collection.mutable.Set[Classroom] = Collections.newSet[Classroom]
 }

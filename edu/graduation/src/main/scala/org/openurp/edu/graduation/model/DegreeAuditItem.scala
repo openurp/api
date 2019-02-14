@@ -35,5 +35,5 @@ class DegreeAuditItem extends LongId {
   var comments: Option[String] = None
 
   /** 毕业审核结果 */
-  var result: AuditResult = _
+  var result: DegreeResult = _
 }

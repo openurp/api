@@ -61,6 +61,9 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   /** 课程 */
   var course: Course = _
 
+  /**主题*/
+  var subject: Option[String] = None
+
   /** 课程类别 */
   var courseType: CourseType = _
 
