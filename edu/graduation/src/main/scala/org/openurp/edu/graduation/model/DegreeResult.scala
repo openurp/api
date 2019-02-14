@@ -21,13 +21,27 @@ package org.openurp.edu.graduation.model
 import scala.collection.mutable.Buffer
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.Component
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.code.edu.model.Degree
+import org.openurp.edu.base.model.Student
 
-class DegreeResult extends Component {
+class DegreeResult extends LongId with Updated {
+
+  /** 所属的毕业审核批次 */
+  var session: GraduateSession = _
+
+  /**学生*/
+  var std: Student = _
 
   /** 学位审核详细结果 */
   var items: Buffer[DegreeAuditItem] = Collections.newBuffer[DegreeAuditItem]
+
+  /** GPA */
+  var gpa: Float = _
+
+  /**平均分*/
+  var ga: Float = _
 
   /**
    * 是否通过学位审核

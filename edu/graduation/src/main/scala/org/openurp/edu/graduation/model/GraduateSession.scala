@@ -34,4 +34,7 @@ class GraduateSession extends LongId {
 
   /**毕业日期*/
   var graduateOn: LocalDate = _
+
+  /**是否授学位*/
+  var degreeOffered: Boolean = _
 }

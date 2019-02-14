@@ -35,9 +35,9 @@ class GraduateAuditItem extends LongId {
   var comments: Option[String] = None
 
   /** 毕业审核结果 */
-  var result: AuditResult = _
+  var result: GraduateResult = _
 
-  def this(name: String, auditResult: AuditResult) {
+  def this(name: String, auditResult: GraduateResult) {
     this()
     this.name = name
     this.result = auditResult

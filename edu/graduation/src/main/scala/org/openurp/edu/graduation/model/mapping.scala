@@ -18,8 +18,6 @@
  */
 package org.openurp.edu.graduation.model
 
-import scala.reflect.runtime.universe
-import org.beangle.data.model.annotation.{ code, config }
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
@@ -38,17 +36,13 @@ class DefaultMapping extends MappingModule {
       e.name is length(100),
       e.comments is length(500)))
 
-    bind[AuditResult].on(e => declare(
-      e.graduate.items & e.degree.items are depends("result"),
-      e.graduate.locked is column("graduate_locked"),
-      e.graduate.passed is column("graduate_passed"),
-      e.graduate.published is column("graduate_published"),
-      e.graduate.comments is (column("graduate_comments"), length(500)),
+    bind[GraduateResult].on(e => declare(
+      e.items is depends("result"),
+      e.comments is (column("graduate_comments"), length(500))))
 
-      e.degree.locked is column("degree_locked"),
-      e.degree.passed is column("degree_passed"),
-      e.degree.published is column("degree_published"),
-      e.degree.comments is (column("degree_comments"), length(500))))
+    bind[DegreeResult].on(e => declare(
+      e.items is depends("result"),
+      e.comments is (column("degree_comments"), length(500))))
 
     bind[LastMakeupClazz].on(e => declare(
       e.takers is depends("clazz")))
