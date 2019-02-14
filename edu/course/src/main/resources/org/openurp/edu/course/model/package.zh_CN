@@ -33,6 +33,7 @@ Clazz=教学任务
 Clazz.crn=课程序号
 Clazz.name = 教学班名称
 Clazz.course=课程
+Clazz.subject=主题
 Clazz.courseType=课程类别
 Clazz.teachDepart=开课院系
 Clazz.teachers=授课教师
