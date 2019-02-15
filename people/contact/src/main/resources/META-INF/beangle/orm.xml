@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.people.contact.model.DefaultMapping" />
-  <naming>
-    <profile package="org.openurp.people.contact" pluralize="true" schema="ppl_contact"/>
-  </naming>
-</orm>
