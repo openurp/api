@@ -26,6 +26,7 @@ import org.openurp.base.model.User
 import org.openurp.edu.base.code.model.TeacherType
 import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.code.hr.model.WorkStatus
+import org.openurp.people.base.model.Person
 
 /**
  * 教师信息
@@ -34,6 +35,9 @@ class Teacher extends LongId with Updated with TemporalOn {
 
   /**用户*/
   var user: User = _
+
+  /**人员信息*/
+  var person: Person = _
 
   /**所在项目*/
   var project: Project = _
@@ -45,7 +49,17 @@ class Teacher extends LongId with Updated with TemporalOn {
   var status: WorkStatus = _
 
   /**职称*/
-  var title: ProfessionalTitle = _
+  var title: Option[ProfessionalTitle] = None
 
-  var remark: String = _
+  /**是否兼职*/
+  var parttime: Boolean = _
+
+  /**是否退休返聘*/
+  var retired: Boolean = _
+
+  /**是否在编*/
+  var formalHr: Boolean = _
+
+  /**备注*/
+  var remark: Option[String] = None
 }
