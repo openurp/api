@@ -22,11 +22,11 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Person
 import org.openurp.base.model.User
-import org.openurp.edu.base.code.model.TeacherType
-import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.code.hr.model.WorkStatus
-import org.openurp.people.base.model.Person
+import org.openurp.code.job.model.ProfessionalTitle
+import org.openurp.edu.base.code.model.TeacherType
 
 /**
  * 教师信息

@@ -26,10 +26,6 @@
       <artifactId>openurp-code-sin</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.openurp.people.base</groupId>
-      <artifactId>openurp-people-base-api</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.openurp.code</groupId>
       <artifactId>openurp-code-hr</artifactId>
     </dependency>
