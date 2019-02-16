@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orm>
+  <mapping class="org.openurp.hr.contact.model.DefaultMapping" />
+  <naming>
+    <profile package="org.openurp.hr.contact" pluralize="true" schema="hr_contact"/>
+  </naming>
+</orm>

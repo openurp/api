@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.edu</groupId>
     <artifactId>openurp-edu-parent</artifactId>
-    <version>0.5.2</version>
+    <version>0.6.0</version>
   </parent>
   <groupId>org.openurp.edu.base</groupId>
   <artifactId>openurp-edu-base-api</artifactId>
@@ -24,10 +24,6 @@
     <dependency>
       <groupId>org.openurp.code</groupId>
       <artifactId>openurp-code-sin</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.people.base</groupId>
-      <artifactId>openurp-people-base-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.openurp.code</groupId>

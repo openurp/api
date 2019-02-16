@@ -31,6 +31,7 @@ import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Campus
 import org.openurp.base.model.Department
+import org.openurp.base.model.Person
 import org.openurp.base.model.User
 import org.openurp.code.edu.model.EducationLevel
 import org.openurp.code.edu.model.StudentStatus
@@ -40,7 +41,6 @@ import org.openurp.edu.base.StdEnrollment
 import org.openurp.edu.base.code.model.StdLabel
 import org.openurp.edu.base.code.model.StdLabelType
 import org.openurp.edu.base.code.model.StdType
-import org.openurp.people.base.model.Person
 
 /**
  * 学籍信息实现

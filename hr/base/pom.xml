@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.hr</groupId>
     <artifactId>openurp-hr-parent</artifactId>
-    <version>0.5.2</version>
+    <version>0.6.0</version>
   </parent>
   <groupId>org.openurp.hr.base</groupId>
   <artifactId>openurp-hr-base-api</artifactId>
@@ -20,10 +20,6 @@
     <dependency>
       <groupId>org.openurp.base</groupId>
       <artifactId>openurp-base-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.people.base</groupId>
-      <artifactId>openurp-people-base-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.openurp.code</groupId>

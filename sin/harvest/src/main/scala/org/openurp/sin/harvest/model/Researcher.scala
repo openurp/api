@@ -18,8 +18,8 @@
  */
 package org.openurp.sin.harvest.model
 
-import org.openurp.people.base.model.Person
 import org.beangle.data.model.LongId
+import org.openurp.base.model.Person
 
 class Researcher extends LongId {
   /**

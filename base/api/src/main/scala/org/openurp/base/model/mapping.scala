@@ -63,7 +63,14 @@ class DefaultMapping extends MappingModule {
       e.mobile is length(15),
       e.remark is length(200)))
 
-    all.except(classOf[User]).cacheable()
+    bind[Person].on(e => declare(
+      e.code is (notnull, unique, length(30)),
+      e.name.familyName & e.name.givenName are length(80),
+      e.name.formatedName is length(100),
+      e.name.middleName is length(50),
+      e.formerName & e.phoneticName are length(100)))
+
+    all.except(classOf[User], classOf[Person]).cacheable()
 
   }
 

@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.5.2</version>
+    <version>0.6.0</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-all</artifactId>
@@ -122,13 +122,8 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.people.base</groupId>
-      <artifactId>openurp-people-base-api</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.people.contact</groupId>
-      <artifactId>openurp-people-contact-api</artifactId>
+      <groupId>org.openurp.hr.contact</groupId>
+      <artifactId>openurp-hr-contact-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
