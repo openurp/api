@@ -37,7 +37,7 @@ class Teacher extends LongId with Updated with TemporalOn {
   var user: User = _
 
   /**人员信息*/
-  var person: Person = _
+  var person: Option[Person] = None
 
   /**所在项目*/
   var project: Project = _
