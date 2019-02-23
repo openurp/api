@@ -32,7 +32,7 @@ class AuditStat extends Component {
 
   var passedCount: Int = _
 
-  var passedCourses = Collections.newSet[Course]
+  @transient var passedCourses = Collections.newSet[Course]
 
   var convertedCredits: Float = _
 

@@ -19,3 +19,6 @@ AuditStat.passedCredits=完成学分
 AuditStat.requiredCount=要求门数
 AuditStat.passedCount=完成门数
 AuditStat.convertedCredits=转换学分
+
+OffsetCredit=冲抵学分
+OffsetCredit.credits=学分
