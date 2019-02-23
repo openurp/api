@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.edu</groupId>
     <artifactId>openurp-edu-parent</artifactId>
-    <version>0.6.0</version>
+    <version>0.7.0</version>
   </parent>
   <groupId>org.openurp.edu.graduation</groupId>
   <artifactId>openurp-edu-graduation-api</artifactId>
@@ -20,6 +20,10 @@
     <dependency>
       <groupId>org.openurp.edu.base</groupId>
       <artifactId>openurp-edu-base-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu.grade</groupId>
+      <artifactId>openurp-edu-grade-api</artifactId>
     </dependency>
   </dependencies>
 </project>

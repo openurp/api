@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.6.0</version>
+    <version>0.7.0</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-all</artifactId>
@@ -157,23 +157,11 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5</version>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>3.0.0-M1</version>
         <configuration>
-          <appendAssemblyId>false</appendAssemblyId>
-          <descriptors>
-            <descriptor>src/main/assembly/assembly.xml</descriptor>
-          </descriptors>
+          <skip>true</skip>
         </configuration>
-        <executions>
-          <execution>
-            <id>make-assembly</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

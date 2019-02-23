@@ -28,7 +28,7 @@ import org.openurp.edu.base.code.model.CourseType
  *
  * @author chaostone
  */
-trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] with Named {
+trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
 
   /**
    * 获得课程方案
@@ -49,7 +49,7 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] with Named {
    * 要求完成的课程组数量
    * (-1表示全部完成)
    */
-  def groupNum: Short
+  def subCount: Short
 
   /**
    * 获得课程类别.
@@ -61,10 +61,12 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] with Named {
    */
   def credits: Float
 
+  /**组名*/
+  def name: String
   /**
    * 获得组内要求门数
    */
-  def courseNum: Short
+  def courseCount: Short
 
   def planCourses: Seq[PlanCourse]
 
