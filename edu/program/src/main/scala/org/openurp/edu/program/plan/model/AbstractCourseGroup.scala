@@ -32,7 +32,7 @@ import org.openurp.edu.base.model.Terms
  * @author chaostone
  * @since 2009
  */
-abstract class AbstractCourseGroup extends LongId with CourseGroup with Named with Cloneable with Ordered[CourseGroup] with Remark {
+abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneable with Ordered[CourseGroup] with Remark {
   /**
    * 计划
    */
@@ -66,12 +66,12 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Named wi
   /**
    * 要求完成组数
    */
-  var groupNum: Short = _
+  var subCount: Short = _
 
   /**
    * 要求门数
    */
-  var courseNum: Short = _
+  var courseCount: Short = _
 
   /**
    * 学期学分分布
@@ -83,6 +83,10 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Named wi
    */
   var indexno: String = _
 
+  override def name: String = {
+    courseType.name
+  }
+
   def index(): Int = {
     var index = Strings.substringAfterLast(indexno, ".")
     if (Strings.isEmpty(index)) index = indexno
@@ -92,8 +96,8 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Named wi
   }
 
   def compulsory: Boolean = {
-    val requiredGroupNum = if (groupNum == -1) children.size else groupNum
-    (requiredGroupNum == children.size && !planCourses.exists(p => !p.compulsory))
+    val requiredSubCount = if (subCount == -1) children.size else subCount
+    (requiredSubCount == children.size && !planCourses.exists(p => !p.compulsory))
   }
 
   def addGroup(group: AbstractCourseGroup) {

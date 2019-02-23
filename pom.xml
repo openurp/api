@@ -9,7 +9,7 @@
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-parent</artifactId>
   <packaging>pom</packaging>
-  <version>0.6.1-SNAPSHOT</version>
+  <version>0.7.0</version>
   <name>OpenURP API Parent</name>
 
   <modules>
@@ -20,6 +20,7 @@
     <module>sin</module>
     <module>std</module>
     <module>lg</module>
+	<module>all</module>	
   </modules>
 
   <dependencyManagement>

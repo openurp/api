@@ -55,7 +55,7 @@ class MajorCourseGroup extends AbstractCourseGroup {
    */
   var direction: Option[Direction] = None
 
-  def getName: String = {
+  override def name: String = {
     val sb = new StringBuilder()
     if (null != courseType) sb.append(courseType.name)
     if (None != alias) sb.append(" ").append(alias.get)
