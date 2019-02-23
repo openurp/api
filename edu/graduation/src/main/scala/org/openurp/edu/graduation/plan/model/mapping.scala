@@ -31,6 +31,7 @@ class DefaultMapping extends MappingModule {
 
     bind[GroupAuditResult].on(e => declare(
       e.name is length(100),
+      e.children is depends("parent"),
       e.courseResults is depends("groupResult")))
 
     bind[PlanAuditResult].on(e => declare(

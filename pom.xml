@@ -12,6 +12,10 @@
   <version>0.7.0</version>
   <name>OpenURP API Parent</name>
 
+  <properties>
+    <beangle.commons.version>5.1.4</beangle.commons.version>
+    <beangle.data.version>5.1.2</beangle.data.version>
+  </properties>
   <modules>
     <module>code</module>
     <module>base</module>
