@@ -29,7 +29,7 @@ class StdAlterationItem extends LongId {
   var alteration: StdAlteration = _
 
   /**异动属性*/
-  var meta: AlterMeta.Value = _
+  var meta: AlterMeta.Meta = _
 
   /** 变更前 */
   var oldvalue: Option[String] = None

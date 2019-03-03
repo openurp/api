@@ -23,6 +23,13 @@ package org.openurp.edu.student.alter.model
  */
 object AlterMeta extends Enumeration(1) {
 
-  val Grade, Department, Major, Direction, Squad, Inschool, Status, Campus = Value
+  val Grade, Department, Major, Direction, Squad, Inschool, Status, Campus = newValue
 
+  class Meta(id: Int) extends Val(id) {
+
+  }
+
+  def newValue: Meta = {
+    new Meta(nextId)
+  }
 }

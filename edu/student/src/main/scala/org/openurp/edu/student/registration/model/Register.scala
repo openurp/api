@@ -52,6 +52,6 @@ class Register extends LongId with Remark {
   var operateBy: String = _
 
   /** 操作ip */
-  var operateFrom: String = _
+  var operateIp: String = _
 
 }

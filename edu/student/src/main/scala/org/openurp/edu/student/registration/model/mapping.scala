@@ -30,7 +30,7 @@ class DefaultMapping extends MappingModule {
     bind[Register].on(e => declare(
       e.remark is length(50),
       e.operateBy is length(50),
-      e.operateFrom is length(100)))
+      e.operateIp is length(100)))
 
   }
 
