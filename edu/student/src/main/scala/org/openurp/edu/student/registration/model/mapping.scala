@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.alter.model
+package org.openurp.edu.student.registration.model
 
 import org.beangle.data.orm.MappingModule
 import org.openurp.edu.student.info.model.Contact
@@ -27,12 +27,11 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    bind[StdAlteration].on(e => declare(
-      e.items is depends("alteration")))
+    bind[Register].on(e => declare(
+      e.remark is length(50),
+      e.operateBy is length(50),
+      e.operateFrom is length(100)))
 
-    bind[StdAlterationItem].on(e => declare(
-      e.oldvalue is length(100),
-      e.oldvalue is length(100)))
   }
 
 }

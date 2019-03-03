@@ -16,23 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.alter.model
+package org.openurp.edu.student.code.model
 
-import org.beangle.data.orm.MappingModule
-import org.openurp.edu.student.info.model.Contact
-import org.openurp.edu.student.info.model.Admission
+import org.beangle.data.model.annotation.code
+import org.openurp.code.CodeBean
 
-class DefaultMapping extends MappingModule {
+@code("school")
+class UnregisteredReason extends CodeBean
 
-  def binding(): Unit = {
-    defaultIdGenerator("date")
-
-    bind[StdAlteration].on(e => declare(
-      e.items is depends("alteration")))
-
-    bind[StdAlterationItem].on(e => declare(
-      e.oldvalue is length(100),
-      e.oldvalue is length(100)))
-  }
-
-}
+@code("school")
+class UncheckinReason extends CodeBean
