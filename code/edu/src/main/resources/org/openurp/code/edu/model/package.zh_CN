@@ -60,3 +60,6 @@ GradingMode.numerical=是否为数字类型
 TeachLangType=授课语言类型
 DayPart=时段
 EduCategory=教学类型
+
+StdAlterType=学籍异动类型
+StdAlterReason=学籍异动原因
