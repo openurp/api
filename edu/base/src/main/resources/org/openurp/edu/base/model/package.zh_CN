@@ -57,6 +57,7 @@ Course.hasMakeup=是否有补考
 Course.project=项目
 Course.teachers=上课教师
 Course.levels=学历层次列表
+Course.practical=是否实践课
 
 CourseHour=课程分类课时信息
 CourseHour.creditHours=学时/总课时
