@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
+package org.openurp.edu.student.info.model
 
 import org.beangle.data.orm.MappingModule
 
@@ -54,6 +54,8 @@ class DefaultMapping extends MappingModule {
       e.address is length(150)))
 
     bind[EducationRecord]
+
+    bind[SocialRelation]
   }
 
 }

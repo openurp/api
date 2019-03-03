@@ -16,28 +16,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
+package org.openurp.edu.student.info.model
 
-import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Student
+import org.beangle.data.model.LongId
+import org.openurp.code.geo.model.RailwayStation
 
 /**
- * 联系信息
+ * 家庭信息
  */
-class Contact extends LongId {
+class Home extends LongId {
 
   /**学生*/
   var std: Student = _
 
-  /** 电子邮箱 */
-  var mail: Option[String] = None
-
-  /** 电话 */
+  /** 家庭电话 */
   var phone: Option[String] = None
 
-  /** 移动电话 */
-  var mobile: Option[String] = None
-
-  /** 地址 入校后联系地址 */
+  /** 家庭地址 */
   var address: Option[String] = None
+
+  /** 家庭地址邮编 */
+  var postcode: Option[String] = None
+
+  /** 户籍 */
+  var formerAddr: Option[String] = None
+
+  /** 派出所 */
+  var police: Option[String] = None
+
+  /** 派出所电话 */
+  var policePhone: Option[String] = None
+
+  /** 火车站 用于打印学生证 */
+  var railwayStation: Option[RailwayStation] = None
 }

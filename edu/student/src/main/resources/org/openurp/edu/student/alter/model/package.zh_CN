@@ -1,0 +1,10 @@
+
+StdAlteration=学籍异动
+StdAlteration.items=变动项目
+StdAlteration.effective=是否生效
+
+
+StdAlterationItem=学籍异动明细
+StdAlterationItem.meta=变动属性
+StdAlterationItem.oldvalue=变动前
+StdAlterationItem.newvalue=变动后

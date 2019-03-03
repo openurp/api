@@ -344,3 +344,15 @@ class ExamForm extends CodeBean
  */
 @code("industry")
 class TeachLangType extends CodeBean
+
+/**
+ * 学籍异动类型
+ */
+@code("industry")
+class StdAlterType extends CodeBean
+
+/**
+ * 学籍异动原因
+ */
+@code("industry")
+class StdAlterReason extends CodeBean

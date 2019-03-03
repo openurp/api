@@ -63,5 +63,8 @@ class DefaultMapping extends MappingModule {
     bind[GradeType]
     bind[GradingMode]
     bind[TeachLangType]
+
+    bind[StdAlterType]
+    bind[StdAlterReason]
   }
 }

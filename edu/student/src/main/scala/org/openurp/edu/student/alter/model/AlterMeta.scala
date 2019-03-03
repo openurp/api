@@ -16,24 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
-
-import org.openurp.edu.base.model.Student
-import org.beangle.data.model.LongId
-import java.time.YearMonth
+package org.openurp.edu.student.alter.model
 
 /**
- * 教育经历
+ * 学籍异动属性
  */
-class EducationRecord extends LongId {
+object AlterMeta extends Enumeration(1) {
 
-  /**学生*/
-  var std: Student = _
-
-  var beginOn: YearMonth = _
-
-  var endOn: YearMonth = _
-
-  var school: String = _
+  val Grade, Department, Major, Direction, Squad, Inschool, Status, Campus = Value
 
 }
