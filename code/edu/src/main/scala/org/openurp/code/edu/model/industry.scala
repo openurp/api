@@ -85,6 +85,7 @@ class EducationLevel extends CodeBean {
 }
 /**
  * 教育类别
+ * 1 成人高等教育,2 普通高等教育,3 网络教育,4 中职教育,5 自考
  */
 @code("industry")
 class EduCategory extends CodeBean {
@@ -343,3 +344,15 @@ class ExamForm extends CodeBean
  */
 @code("industry")
 class TeachLangType extends CodeBean
+
+/**
+ * 学籍异动类型
+ */
+@code("industry")
+class StdAlterType extends CodeBean
+
+/**
+ * 学籍异动原因
+ */
+@code("industry")
+class StdAlterReason extends CodeBean

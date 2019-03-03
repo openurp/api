@@ -16,28 +16,42 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
+package org.openurp.edu.student.info.model
 
 import org.beangle.data.model.LongId
+import org.openurp.code.edu.model.EnrollMode
 import org.openurp.edu.base.model.Student
+import org.openurp.edu.base.model.Major
+import org.openurp.base.model.Department
+import java.time.LocalDate
+import org.openurp.code.edu.model.EducationMode
 
 /**
- * 联系信息
+ * 录取信息
  */
-class Contact extends LongId {
+class Admission extends LongId {
 
-  /**学生*/
+  /** 学生 */
   var std: Student = _
 
-  /** 电子邮箱 */
-  var mail: Option[String] = None
+  /** 录取年月*/
+  var enrollOn: LocalDate = _
 
-  /** 电话 */
-  var phone: Option[String] = None
+  /** 录取专业*/
+  var major: Major = _
 
-  /** 移动电话 */
-  var mobile: Option[String] = None
+  /** 录取院系*/
+  var department: Department = _
 
-  /** 地址 入校后联系地址 */
-  var address: Option[String] = None
+  /** 录取通知书号 */
+  var letterNo: Option[String] = None
+
+  /** 录取第几志愿 */
+  var admissionIndex: Option[Int] = None
+
+  /** 入学方式 */
+  var enrollMode: Option[EnrollMode] = None
+
+  /** 培养方式*/
+  var educationMode: Option[EducationMode] = None
 }

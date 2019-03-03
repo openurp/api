@@ -16,13 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
+package org.openurp.edu.student.info.model
 
 import java.time.LocalDate
 import org.openurp.code.geo.model.Division
 import org.beangle.commons.collection.Collections
 import org.openurp.edu.base.model.Student
 import org.beangle.data.model.LongId
+import org.openurp.code.edu.model.EnrollMode
+import org.openurp.code.edu.model.EducationMode
 
 /**
  * 考生信息
@@ -58,8 +60,5 @@ class Examinee extends LongId {
 
   /** 报考省市 */
   var province: Option[String] = None
-
-  /** 是否预科生 */
-  var preparatory: Boolean = _
 
 }

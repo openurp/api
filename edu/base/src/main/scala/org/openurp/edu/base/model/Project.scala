@@ -24,7 +24,6 @@ import scala.collection.mutable.ListBuffer
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.IntId
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.Coded
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.TemporalOn
@@ -32,6 +31,7 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Campus
 import org.openurp.base.model.Department
 import org.openurp.base.model.School
+import org.openurp.code.edu.model.EduCategory
 import org.openurp.code.edu.model.EducationLevel
 import org.openurp.edu.base.code.model.StdLabel
 import org.openurp.edu.base.code.model.StdType
@@ -64,6 +64,8 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   var description: String = _
   /** 是否辅修 */
   var minor: Boolean = _
+  /**教育类别*/
+  var category: EduCategory = _
   /**项目属性*/
   var properties = Collections.newMap[String, String]
 

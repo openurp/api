@@ -16,24 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
+package org.openurp.edu.student.code.model
 
-import org.openurp.edu.base.model.Student
-import org.beangle.data.model.LongId
-import java.time.YearMonth
+import org.beangle.data.orm.MappingModule
 
-/**
- * 教育经历
- */
-class EducationRecord extends LongId {
+class DefaultMapping extends MappingModule {
 
-  /**学生*/
-  var std: Student = _
+  def binding(): Unit = {
+    defaultIdGenerator("code")
 
-  var beginOn: YearMonth = _
+    bind[UnregisteredReason]
 
-  var endOn: YearMonth = _
-
-  var school: String = _
+    bind[UncheckinReason]
+  }
 
 }

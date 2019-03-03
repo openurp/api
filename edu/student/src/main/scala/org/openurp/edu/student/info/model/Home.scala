@@ -16,44 +16,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
+package org.openurp.edu.student.info.model
 
-import org.beangle.data.model.LongId
-import org.openurp.code.geo.model.Division
-import org.openurp.code.edu.model.EnrollMode
 import org.openurp.edu.base.model.Student
-import org.openurp.code.person.model.HouseholdType
-import org.openurp.edu.base.model.Major
-import org.openurp.base.model.Department
-import java.time.LocalDate
-import org.openurp.code.edu.model.EducationMode
+import org.beangle.data.model.LongId
+import org.openurp.code.geo.model.RailwayStation
 
 /**
- * 录取信息
+ * 家庭信息
  */
-class Admission extends LongId {
+class Home extends LongId {
 
-  /** 学生 */
+  /**学生*/
   var std: Student = _
 
-  /** 录取年月*/
-  var enrollOn: LocalDate = _
+  /** 家庭电话 */
+  var phone: Option[String] = None
 
-  /** 录取专业*/
-  var major: Major = _
+  /** 家庭地址 */
+  var address: Option[String] = None
 
-  /** 录取院系*/
-  var department: Department = _
+  /** 家庭地址邮编 */
+  var postcode: Option[String] = None
 
-  /** 录取通知书号 */
-  var letterNo: Option[String] = None
+  /** 户籍 */
+  var formerAddr: Option[String] = None
 
-  /** 录取第几志愿 */
-  var admissionIndex: Option[Int] = None
+  /** 派出所 */
+  var police: Option[String] = None
 
-  /** 入学方式 */
-  var enrollMode: EnrollMode = _
+  /** 派出所电话 */
+  var policePhone: Option[String] = None
 
-  /** 培养方式*/
-  var educationMode: EducationMode = _
+  /** 火车站 用于打印学生证 */
+  var railwayStation: Option[RailwayStation] = None
 }

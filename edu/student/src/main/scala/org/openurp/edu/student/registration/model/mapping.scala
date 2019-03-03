@@ -16,44 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
+package org.openurp.edu.student.registration.model
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.edu.student.info.model.Contact
+import org.openurp.edu.student.info.model.Admission
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    bind[Admission].on(e => declare(
-      e.std is notnull,
-      e.letterNo is length(30)))
+    bind[Register].on(e => declare(
+      e.remark is length(50),
+      e.operateBy is length(50),
+      e.operateIp is length(100)))
 
-    bind[Examinee].on(e => declare(
-      e.code is length(30),
-      e.examNo is length(30),
-      e.schoolNo is length(30),
-      e.schoolName is length(200),
-      e.province is length(50),
-      e.scores is eleColumn("score")))
-
-    bind[Graduation]
-
-    bind[Home].on(e => declare(
-      e.formerAddr is length(100),
-      e.phone is length(20),
-      e.postcode is length(20),
-      e.address is length(150),
-      e.police is length(150),
-      e.policePhone is length(20)))
-
-    bind[Contact].on(e => declare(
-      e.mail is length(100),
-      e.phone is length(20),
-      e.mobile is length(20),
-      e.address is length(150)))
-
-    bind[EducationRecord]
   }
 
 }

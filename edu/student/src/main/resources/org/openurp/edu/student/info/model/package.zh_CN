@@ -29,7 +29,6 @@ Examinee.scores=各科分数
 Examinee.province=报考省市
 Examinee.preparatory=是否预科生
 
-
 Graduation=毕业信息
 Graduation.code=毕业证书编号
 Graduation.graduateOn=毕结业日期
@@ -43,3 +42,7 @@ Home.postcode=家庭地址邮编
 Home.formerAddr=户籍
 Home.police=派出所
 Home.policePhone=派出所电话
+
+SocialRelation=社会关系
+SocialRelation.name=姓名
+SocialRelation.relation=关系

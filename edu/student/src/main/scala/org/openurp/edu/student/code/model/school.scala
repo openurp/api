@@ -16,38 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
+package org.openurp.edu.student.code.model
 
-import org.openurp.edu.base.model.Student
-import org.beangle.data.model.LongId
-import org.openurp.code.geo.model.RailwayStation
+import org.beangle.data.model.annotation.code
+import org.openurp.code.CodeBean
 
-/**
- * 家庭信息
- */
-class Home extends LongId {
+@code("school")
+class UnregisteredReason extends CodeBean
 
-  /**学生*/
-  var std: Student = _
-
-  /** 家庭电话 */
-  var phone: Option[String] = None
-
-  /** 家庭地址 */
-  var address: Option[String] = None
-
-  /** 家庭地址邮编 */
-  var postcode: Option[String] = None
-
-  /** 户籍 */
-  var formerAddr: Option[String] = None
-
-  /** 派出所 */
-  var police: Option[String] = None
-
-  /** 派出所电话 */
-  var policePhone: Option[String] = None
-
-  /** 火车站 用于打印学生证 */
-  var railwayStation: Option[RailwayStation] = None
-}
+@code("school")
+class UncheckinReason extends CodeBean

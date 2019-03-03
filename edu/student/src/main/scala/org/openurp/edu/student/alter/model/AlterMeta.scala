@@ -16,39 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.model
-
-import java.time.LocalDate
-
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.code.edu.model.Degree
-import org.openurp.code.edu.model.EducationResult
-import org.openurp.edu.base.model.Student
+package org.openurp.edu.student.alter.model
 
 /**
- * 毕业信息
+ * 学籍异动属性
  */
-class Graduation extends LongId with Updated {
+object AlterMeta extends Enumeration(1) {
 
-  var std: Student = _
+  val Grade, Department, Major, Direction, Squad, Inschool, Status, Campus = newValue
 
-  /** 毕业证书编号（电子注册号） */
-  var code: String = _
+  class Meta(id: Int) extends Val(id) {
 
-  /** 毕结业日期 */
-  var graduateOn: LocalDate = _
+  }
 
-  /** 毕结业情况 */
-  var educationResult: EducationResult = _
-
-  /** 学位 */
-  var degree: Option[Degree] = None
-
-  /** 学位授予日期 */
-  var degreeAwardOn: Option[LocalDate] = None
-
-  /** 学位证书号 */
-  var diplomaNo: Option[String] = None
-
+  def newValue: Meta = {
+    new Meta(nextId)
+  }
 }

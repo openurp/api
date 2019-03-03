@@ -1,0 +1,8 @@
+
+Register=注册报到信息
+Register.registerAt=注册时间
+Register.registered=是否注册
+Register.checkin=是否报到
+Register.tuitionPaid=是否缴学费
+Register.operateBy=操作人
+Register.operateIp=操作IP
