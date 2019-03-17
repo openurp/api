@@ -4,18 +4,14 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.2.27</version>
+    <version>0.2.28</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-parent</artifactId>
   <packaging>pom</packaging>
-  <version>0.8.1-SNAPSHOT</version>
+  <version>0.8.1</version>
   <name>OpenURP API Parent</name>
 
-  <properties>
-    <beangle.commons.version>5.1.4</beangle.commons.version>
-    <beangle.data.version>5.1.2</beangle.data.version>
-  </properties>
   <modules>
     <module>code</module>
     <module>base</module>
