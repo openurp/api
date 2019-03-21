@@ -60,20 +60,20 @@ ExecutePlanCourse.department=开课部门
 ExecutePlanCourse.examMode=考核方式
 ExecutePlanCourse.weekstate=开课周
 
-CourseSubstitution=课程替代关系
-CourseSubstitution.olds=原课程
-CourseSubstitution.news=新课程
+AlternativeCourse=课程替代关系
+AlternativeCourse.olds=原课程
+AlternativeCourse.news=新课程
 
-MajorCourseSubstitution=专业替代课程
-MajorCourseSubstitution.project=项目
-MajorCourseSubstitution.department=院系
-MajorCourseSubstitution.education=培养层次
-MajorCourseSubstitution.fromGrade=起始年级
-MajorCourseSubstitution.toGrade=截至年级
-MajorCourseSubstitution.major=适用专业
-MajorCourseSubstitution.direction=适用方向
-MajorCourseSubstitution.stdType=学生类别
+MajorAlternativeCourse=专业替代课程
+MajorAlternativeCourse.project=项目
+MajorAlternativeCourse.department=院系
+MajorAlternativeCourse.education=培养层次
+MajorAlternativeCourse.fromGrade=起始年级
+MajorAlternativeCourse.toGrade=截至年级
+MajorAlternativeCourse.major=适用专业
+MajorAlternativeCourse.direction=适用方向
+MajorAlternativeCourse.stdType=学生类别
 
-StdCourseSubstitution=学生替代课程
-StdCourseSubstitution.std=学生
+StdAlternativeCourse=学生替代课程
+StdAlternativeCourse.std=学生
 

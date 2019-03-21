@@ -26,7 +26,7 @@ CourseTaker.turn=选课轮次
 CourseTaker.temporary=是否临时(预选)
 CourseTaker.limitGroup=授课对象组
 CourseTaker.freeListening=是否免听
-CourseTaker.substitution=是否替代
+CourseTaker.alternative=是否替代
 CourseTaker.remark=备注
 
 Clazz=教学任务

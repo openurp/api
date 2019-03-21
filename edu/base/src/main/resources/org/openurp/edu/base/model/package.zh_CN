@@ -125,6 +125,7 @@ Program.state=状态
 Program.project=项目
 Program.termCampuses=学期对应校区
 Program.campuses=校区
+Program.offsetType=任选课类别
 
 Project=项目
 Project.name=名称

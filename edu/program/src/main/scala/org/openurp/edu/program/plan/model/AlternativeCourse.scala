@@ -31,7 +31,7 @@ import org.openurp.edu.base.model.{ Course, Direction, Major, Project, Student }
  *
  * @author new
  */
-trait CourseSubstitution extends LongId with Updated {
+trait AlternativeCourse extends LongId with Updated {
 
   /**原课程*/
   var olds = Collections.newSet[Course]
@@ -52,7 +52,7 @@ trait CourseSubstitution extends LongId with Updated {
 /**
  * 专业替代课程.
  */
-class MajorCourseSubstitution extends CourseSubstitution {
+class MajorAlternativeCourse extends AlternativeCourse {
 
   /**
    * 项目
@@ -95,7 +95,7 @@ class MajorCourseSubstitution extends CourseSubstitution {
 /**
  * 学生替代课程.
  */
-class StdCourseSubstitution extends CourseSubstitution {
+class StdAlternativeCourse extends AlternativeCourse {
 
   /**
    * 获取学生
