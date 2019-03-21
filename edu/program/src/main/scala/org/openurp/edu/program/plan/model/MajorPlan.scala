@@ -23,20 +23,13 @@ import org.openurp.edu.base.model.{ Direction, Program, Terms }
 /**
  * @author chaostone
  */
-class MajorPlan extends AbstractCoursePlan {
+class MajorPlan extends AbstractCoursePlan with ProgramCoursePlan {
 
   /**
    * 培养方案
    */
   var program: Program = _
 
-  override def toString(): String = {
-    "MajorPlanBean [program=" + program + ", startTerm=" +
-      startTerm +
-      ", endTerm=" +
-      endTerm +
-      "]"
-  }
 }
 
 /**
@@ -62,15 +55,6 @@ class MajorCourseGroup extends AbstractCourseGroup {
     sb.toString
   }
 
-  override def toString(): String = {
-    "MajorPlanCourseGroupBean [alias=" + alias + ", direction=" +
-      direction +
-      ", parent=" +
-      parent +
-      ", courseType=" +
-      courseType +
-      "]"
-  }
 }
 /**
  * 专业计划课程
@@ -81,17 +65,4 @@ class MajorPlanCourse extends AbstractPlanCourse with ExecutePlanCourse {
   /** 建议修读学期 */
   var suggestTerms: Terms = Terms.empty
 
-  override def toString(): String = {
-    "MajorPlanCourseBean [courseGroup=" + group + ", course=" +
-      course +
-      ", terms=" +
-      terms +
-      ", compulsory=" +
-      compulsory +
-      ", department=" +
-      department +
-      ", examMode=" +
-      examMode +
-      "]"
-  }
 }

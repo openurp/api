@@ -24,27 +24,27 @@ import org.openurp.edu.program.plan.model.PlanCourse
 
 trait PlanAuditListener {
 
-    /**
+  /**
    * 开始审核计划
    *
    * @return false 表示不能继续审核
    */
-  def startPlanAudit(context: PlanAuditContext): Boolean
+  def start(context: PlanAuditContext): Boolean
 
   /**
    *  开始审核课程组
    *  @return false 表示不能继续审核
    */
-  def startGroupAudit(context: PlanAuditContext, courseGroup: CourseGroup, groupResult: GroupAuditResult): Boolean
+  def startGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupResult: GroupAuditResult): Boolean
 
   /**
    *  开始审核课程
    * @return false 表示不能继续审核
    */
-  def startCourseAudit(context: PlanAuditContext, groupResult: GroupAuditResult, planCourse: PlanCourse): Boolean
+  def startCourse(context: PlanAuditContext, groupResult: GroupAuditResult, planCourse: PlanCourse): Boolean
 
   /**
    * 结束审核计划
    */
-  def endPlanAudit(context: PlanAuditContext): Unit
+  def end(context: PlanAuditContext): Unit
 }

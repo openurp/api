@@ -20,16 +20,17 @@ package org.openurp.edu.program.plan.model
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Student
+import org.openurp.edu.base.model.Program
 
 /**
  * 个人计划
  */
-class StdPlan extends AbstractCoursePlan {
+class StdPlan extends AbstractCoursePlan with ProgramCoursePlan {
 
-  /**
-   * 学生
-   */
+  /**学生*/
   var std: Student = _
+
+  var program: Program = _
 
 }
 
