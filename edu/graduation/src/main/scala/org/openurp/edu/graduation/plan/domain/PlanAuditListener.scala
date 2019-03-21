@@ -38,12 +38,6 @@ trait PlanAuditListener {
   def startGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupResult: GroupAuditResult): Boolean
 
   /**
-   *  开始审核课程
-   * @return false 表示不能继续审核
-   */
-  def startCourse(context: PlanAuditContext, groupResult: GroupAuditResult, planCourse: PlanCourse): Boolean
-
-  /**
    * 结束审核计划
    */
   def end(context: PlanAuditContext): Unit
