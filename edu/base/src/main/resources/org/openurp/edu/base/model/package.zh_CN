@@ -182,6 +182,7 @@ Student.remark=备注
 Student.stdType=学生类别
 Student.studyType=学习形式
 Student.tutor=导师
+Student.program=培养方案
 
 StudentState=学籍状态日志
 StudentState.std=学生
@@ -191,7 +192,6 @@ StudentState.major=专业
 StudentState.direction=方向
 StudentState.squad=行政班级
 StudentState.inschool=是否在校
-StudentState.program=培养方案
 StudentState.status=学籍状态
 StudentState.beginOn=起始日期
 StudentState.endOn=结束日期
