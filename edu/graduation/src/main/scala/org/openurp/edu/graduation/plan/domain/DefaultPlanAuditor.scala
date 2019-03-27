@@ -30,7 +30,6 @@ import org.openurp.edu.program.plan.model.CourseGroup
 class DefaultPlanAuditor extends PlanAuditor {
 
   def audit(context: PlanAuditContext): PlanAuditResult = {
-    val setting = context.setting
     val planAuditResult = new PlanAuditResult(context.std)
     planAuditResult.passed = false
     planAuditResult.remark = null
@@ -42,33 +41,24 @@ class DefaultPlanAuditor extends PlanAuditor {
       return context.result
     }
 
-    if (context.listeners.exists(!_.startPlanAudit(context))) {
+    if (context.listeners.exists(!_.start(context))) {
       return planAuditResult
     }
 
     val courseGroupAdapter = new CourseGroupAdapter(context.coursePlan)
     val groupResultAdapter = new GroupResultAdapter(planAuditResult)
-    var creditsRequired = context.coursePlan.credits
-    if (setting.auditTerms != null && setting.auditTerms.length != 0) {
-      creditsRequired = 0
-      for (i <- 0 until setting.auditTerms.length; group <- context.coursePlan.groups if group.parent == null) {
-        creditsRequired += PlanUtils.getGroupCredits(group, setting.auditTerms(i))
-      }
-    }
+    val creditsRequired = context.coursePlan.credits
     planAuditResult.auditStat.requiredCredits = creditsRequired
     var numRequired = 0
-    if (!setting.partial) {
-      for (group <- context.coursePlan.groups if group.parent == null) {
-        numRequired += group.courseCount
-      }
+    for (group <- context.coursePlan.groups if group.parent == null) {
+      numRequired += group.courseCount
     }
     planAuditResult.auditStat.requiredCount = numRequired
     auditGroup(context, courseGroupAdapter, groupResultAdapter)
     for (listener <- context.listeners) {
-      listener.endPlanAudit(context)
+      listener.end(context)
     }
-    val lastTarget = context.result.getGroupResult(setting.convertTarget)
-    if (null != lastTarget) {
+    context.result.getGroupResult(context.coursePlan.program.offsetType) foreach { lastTarget =>
       if (lastTarget.auditStat.passedCredits == 0 && lastTarget.auditStat.requiredCredits == 0 &&
         lastTarget.courseResults.isEmpty) {
         context.result.removeGroupResult(lastTarget)
@@ -83,7 +73,7 @@ class DefaultPlanAuditor extends PlanAuditor {
       val childResult = DefaultGroupResultBuilder.buildResult(context, child)
       groupAuditResult.addChild(childResult)
       planAuditResult.addGroupResult(childResult)
-      if (context.listeners.exists(!_.startGroupAudit(context, child, childResult))) {
+      if (context.listeners.exists(!_.startGroup(context, child, childResult))) {
         planAuditResult.auditStat.reduceRequired(
           childResult.auditStat.requiredCredits,
           childResult.auditStat.requiredCount)
@@ -95,14 +85,11 @@ class DefaultPlanAuditor extends PlanAuditor {
     }
 
     courseGroup.planCourses foreach { planCourse =>
-      val skiped = context.listeners.exists(!_.startCourseAudit(context, groupAuditResult, planCourse))
-      if (!skiped) {
-        val planCourseAuditResult = new CourseAuditResult(planCourse)
-        var courseGrades = context.stdGrade.useGrades(planCourse.course)
-        if (!courseGrades.isEmpty || planCourse.compulsory) {
-          planCourseAuditResult.checkPassed(courseGrades)
-          groupAuditResult.addCourseResult(planCourseAuditResult)
-        }
+      val planCourseAuditResult = new CourseAuditResult(planCourse)
+      var courseGrades = context.stdGrade.useGrades(planCourse.course)
+      if (!courseGrades.isEmpty || planCourse.compulsory) {
+        planCourseAuditResult.checkPassed(courseGrades)
+        groupAuditResult.addCourseResult(planCourseAuditResult)
       }
     }
     groupAuditResult.checkPassed(false)

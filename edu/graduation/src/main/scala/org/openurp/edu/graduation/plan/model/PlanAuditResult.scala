@@ -57,28 +57,26 @@ class PlanAuditResult extends LongId with Updated with Remark {
     this.groupResults -= rs
   }
 
-  def getGroupResult(`type`: CourseType): GroupAuditResult = {
+  def getGroupResult(typ: CourseType): Option[GroupAuditResult] = {
     if (null == groupResults) {
-      return null
+      return None
     }
-    for (groupAuditResult <- groupResults) {
-      val res = findGroupResult(groupAuditResult, `type`)
-      if (null != res) {
-        return res
-      }
+    var rs: Option[GroupAuditResult] = None
+    for (groupAuditResult <- groupResults; if None == rs) {
+      rs = findGroupResult(groupAuditResult, typ)
     }
-    null
+    rs
   }
 
-  private def findGroupResult(groupResult: GroupAuditResult, `type`: CourseType): GroupAuditResult = {
-    if (`type` == groupResult.courseType) {
-      return groupResult
+  private def findGroupResult(groupResult: GroupAuditResult, typ: CourseType): Option[GroupAuditResult] = {
+    if (typ == groupResult.courseType) {
+      return Some(groupResult)
     }
-    for (childResult <- groupResult.children) {
-      val res = findGroupResult(childResult, `type`)
-      if (null != res) return res
+    var rs: Option[GroupAuditResult] = None
+    for (childResult <- groupResult.children; if None == rs) {
+      rs = findGroupResult(childResult, typ)
     }
-    null
+    rs
   }
 
   def this(student: Student) {

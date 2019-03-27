@@ -52,3 +52,10 @@ class Press extends CodeBean{
  */
 @code("industry")
 class PressGrade extends CodeBean
+
+/**
+ * 图书分类
+ * @see http://ztflh.com/
+ */
+@code("industry")
+class BookCategory extends CodeBean

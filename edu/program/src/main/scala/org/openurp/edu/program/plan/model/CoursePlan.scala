@@ -22,6 +22,7 @@ import org.beangle.data.model.LongIdEntity
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.CourseType
+import org.openurp.edu.base.model.Program
 
 /**
  * 课程方案
@@ -60,4 +61,8 @@ trait CoursePlan extends LongIdEntity with Cloneable with TemporalOn {
   def terms: Short
 
   def state: States.State
+}
+
+trait ProgramCoursePlan extends CoursePlan {
+  def program: Program
 }

@@ -34,6 +34,12 @@ class StdAlterationItem extends LongId {
   /** 变更前 */
   var oldvalue: Option[String] = None
 
+  /** 变更前值 */
+  var oldtext: Option[String] = None
+
   /** 变更后 */
   var newvalue: Option[String] = None
+
+  /** 变更后值 */
+  var newtext: Option[String] = None
 }

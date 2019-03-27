@@ -34,7 +34,7 @@ import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.CourseAbilityRate
 import org.openurp.edu.base.code.model.CourseHourType
 import org.openurp.edu.base.code.model.CourseType
-
+import org.openurp.edu.base.code.model.CourseCategory
 /**
  * 课程基本信息 </p>
  * 记录课程代码、名称、学分、课时等基本信息，课程的关键业务属性为课程名称、学分、课时、考核方式等与课程有关的属性，其它类似课程类别、所属部门等
@@ -61,6 +61,8 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var creditHours: Int = _
   /**课程类型*/
   var courseType: CourseType = _
+  /**课程大类*/
+  var category: Option[CourseCategory] = None
   /** 分类课时 */
   var hours = Collections.newBuffer[CourseHour]
   /** 周数*/

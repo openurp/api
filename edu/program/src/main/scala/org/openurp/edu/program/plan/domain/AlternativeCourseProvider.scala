@@ -18,33 +18,33 @@
  */
 package org.openurp.edu.program.plan.domain
 
-import org.openurp.edu.program.plan.model.MajorCourseSubstitution
-import org.openurp.edu.program.plan.model.StdCourseSubstitution
+import org.openurp.edu.program.plan.model.MajorAlternativeCourse
+import org.openurp.edu.program.plan.model.StdAlternativeCourse
 import org.openurp.edu.base.model.Student
-import org.openurp.edu.program.plan.model.CourseSubstitution
+import org.openurp.edu.program.plan.model.AlternativeCourse
 
-trait CourseSubstitutionProvider {
+trait AlternativeCourseProvider {
   /**
    * 得到该学生指定专业类型的所有的替代课程
    *
    * @param std
-   * @return list<CourseSubstitution>
+   * @return list<AlternativeCourse>
    */
-  def getCourseSubstitutions(std: Student): Seq[CourseSubstitution]
+  def getAlternatives(std: Student): Seq[AlternativeCourse]
 
   /**
    * 得到该学生指定专业类型的个人替代课程
    *
    * @param std
-   * @return list<CourseSubstitution>
+   * @return list<AlternativeCourse>
    */
-  def getMajorCourseSubstitutions(std: Student): Seq[MajorCourseSubstitution]
+  def getMajorAlternatives(std: Student): Seq[MajorAlternativeCourse]
 
   /**
    * 得到该学生指定专业类型的专业替代课程
    *
    * @param std
-   * @return list<CourseSubstitution>
+   * @return list<AlternativeCourse>
    */
-  def getStdCourseSubstitutions(std: Student): Seq[StdCourseSubstitution]
+  def getStdAlternatives(std: Student): Seq[StdAlternativeCourse]
 }

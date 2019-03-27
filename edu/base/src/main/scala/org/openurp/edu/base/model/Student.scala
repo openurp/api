@@ -90,6 +90,9 @@ class Student extends LongId with EduLevelBased with Coded with Updated with Rem
 
   /**导师*/
   var tutor: Option[Teacher] = None
+
+  /**培养方案*/
+  var program: Option[Program] = None
 }
 /**
  * 学籍状态日志
@@ -123,9 +126,6 @@ class StudentState extends LongId with StdEnrollment with TemporalOn with Remark
 
   /** 校区 */
   var campus: Campus = _
-
-  /**培养方案*/
-  var program: Option[Program] = None
 }
 
 /**

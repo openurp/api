@@ -32,6 +32,7 @@ import org.openurp.code.edu.model.StudyType
 import org.openurp.edu.base.EduLevelBased
 import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.StdType
+import org.openurp.edu.base.code.model.CourseType
 
 /**
  * 专业培养方案
@@ -76,4 +77,7 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   def campuses: Set[Campus] = {
     termCampuses.map(_.campus).toSet
   }
+
+  /**多出学分可以冲抵的课程类别*/
+  var offsetType: CourseType = _
 }

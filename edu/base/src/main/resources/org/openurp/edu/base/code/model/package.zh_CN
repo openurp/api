@@ -6,6 +6,7 @@ CourseAbilityRate.rate=等级值
 
 CourseHourType=课时类别代码
 CourseType=课程类别
+CourseCategory=课程大类
 CourseType.practical=是否实践课
 
 Discipline=学科

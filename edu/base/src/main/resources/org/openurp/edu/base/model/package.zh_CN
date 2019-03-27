@@ -125,6 +125,7 @@ Program.state=状态
 Program.project=项目
 Program.termCampuses=学期对应校区
 Program.campuses=校区
+Program.offsetType=任选课类别
 
 Project=项目
 Project.name=名称
@@ -181,6 +182,7 @@ Student.remark=备注
 Student.stdType=学生类别
 Student.studyType=学习形式
 Student.tutor=导师
+Student.program=培养方案
 
 StudentState=学籍状态日志
 StudentState.std=学生
@@ -190,7 +192,6 @@ StudentState.major=专业
 StudentState.direction=方向
 StudentState.squad=行政班级
 StudentState.inschool=是否在校
-StudentState.program=培养方案
 StudentState.status=学籍状态
 StudentState.beginOn=起始日期
 StudentState.endOn=结束日期
@@ -208,6 +209,9 @@ Textbook.remark=备注
 Textbook.bookType=教材类型
 Textbook.publishedOn=出版日期
 Textbook.awardType=教材获奖类型
+Textbook.awardOrg=授予单位
+Textbook.series=丛书
+Textbook.category=图书分类
 Textbook.published=是否出版
 
 Teacher=教师信息

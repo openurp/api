@@ -22,7 +22,7 @@ import scala.reflect.runtime.universe
 
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.program.plan.model.{ AbstractCourseGroup, AbstractPlanCourse, MajorCourseGroup, MajorCourseSubstitution, MajorPlan, MajorPlanCourse, ShareCourseGroup, SharePlan, SharePlanCourse, StdCourseGroup, StdCourseSubstitution, StdPlan, StdPlanCourse }
+import org.openurp.edu.program.plan.model.{ AbstractCourseGroup, AbstractPlanCourse, MajorCourseGroup, MajorAlternativeCourse, MajorPlan, MajorPlanCourse, ShareCourseGroup, SharePlan, SharePlanCourse, StdCourseGroup, StdAlternativeCourse, StdPlan, StdPlanCourse }
 
 class DefaultMapping extends MappingModule {
 
@@ -80,10 +80,9 @@ class DefaultMapping extends MappingModule {
     bind[StdPlanCourse].on(e => declare(
       e.group is target[StdCourseGroup]))
 
-    bind[MajorCourseSubstitution].on(e => declare(
-      e.fromGrade & e.toGrade are length(10))).table("major_course_subs")
+    bind[MajorAlternativeCourse].on(e => declare(
+      e.fromGrade & e.toGrade are length(10)))
 
-    bind[StdCourseSubstitution].table("std_course_subs")
+    bind[StdAlternativeCourse]
   }
-
 }

@@ -20,7 +20,7 @@ package org.openurp.edu.grade.course.domain
 
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.grade.course.model.CourseGrade
-import org.openurp.edu.program.plan.model.CourseSubstitution
+import org.openurp.edu.program.plan.model.AlternativeCourse
 
 /**
  * 成绩比较器
@@ -51,16 +51,16 @@ object GradeComparator {
    * 是否替代成功 <br>
    * 先比较绩点，后比较分数，最后按照是否通过比较
    *
-   * @param substitution
+   * @param altCourse
    * @param grades
    */
-  def isSubstitute(substitution: CourseSubstitution, grades: collection.Map[Course, CourseGrade]): Boolean = {
+  def isSubstitute(altCourse: AlternativeCourse, grades: collection.Map[Course, CourseGrade]): Boolean = {
     var existOrigGrade = false
     var gpa1 = 0f
     var ga1 = 0f
     var credit1 = 0f
     var passed1 = 0
-    for (course <- substitution.olds) {
+    for (course <- altCourse.olds) {
       grades.get(course) foreach { grade =>
         if (grade.passed) passed1 += 1
         grade.gp foreach { gp => gpa1 += grade.course.credits * gp }
@@ -74,7 +74,7 @@ object GradeComparator {
     var ga2 = 0f
     var credit2 = 0f
     var passed2 = 0
-    for (course <- substitution.news) {
+    for (course <- altCourse.news) {
       val grade = grades.get(course).getOrElse(null)
       if (null != grade) {
         if (grade.passed) passed2 += 1
@@ -104,7 +104,7 @@ object GradeComparator {
       }
     }
     //    if (!success && existOrigGrade && fullGrade2) {
-    //      substitution.news foreach (grades.remove(_))
+    //      altCourse.news foreach (grades.remove(_))
     //    }
     success
   }

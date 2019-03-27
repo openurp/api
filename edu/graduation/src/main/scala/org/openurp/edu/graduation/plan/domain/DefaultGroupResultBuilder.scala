@@ -30,34 +30,8 @@ object DefaultGroupResultBuilder extends GroupResultBuilder {
   def buildResult(context: PlanAuditContext, group: CourseGroup): GroupAuditResult = {
     val result = new GroupAuditResult()
     var creditsRequired = group.credits
-    if (context.setting.auditTerms != null && context.setting.auditTerms.length != 0) {
-      creditsRequired = 0f
-      var groupCourseCredits = 0f
-      var creditsNeedCompare = false
-      val auditedCourses = Collections.newSet[Course]
-      for (i <- 0 until context.setting.auditTerms.length) {
-        val term = context.setting.auditTerms(i)
-        creditsRequired += PlanUtils.getGroupCredits(group, term)
-        if (group.children.isEmpty && !group.planCourses.isEmpty &&
-          group.compulsory) {
-          creditsNeedCompare = true
-          for (planCourse <- group.planCourses if !auditedCourses.contains(planCourse.course) && planCourse.terms.contains(term)) {
-            groupCourseCredits += planCourse.course.credits
-            auditedCourses.add(planCourse.course)
-          }
-        }
-      }
-      if (creditsNeedCompare) {
-        creditsRequired = if (java.lang.Float.compare(creditsRequired, groupCourseCredits) <
-          0) creditsRequired else groupCourseCredits
-      }
-    }
     result.auditStat.requiredCredits = creditsRequired
-    if (context.setting.partial) {
-      result.auditStat.requiredCount = 0
-    } else {
-      result.auditStat.requiredCount = group.courseCount
-    }
+    result.auditStat.requiredCount = group.courseCount
     result.courseType = group.courseType
     result.name = group.name
     result.subCount = group.subCount

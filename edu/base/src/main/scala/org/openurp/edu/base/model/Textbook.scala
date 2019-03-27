@@ -24,6 +24,7 @@ import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.Remark
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.sin.model.Press
+import org.openurp.code.sin.model.BookCategory
 import org.openurp.edu.base.code.model.BookAwardType
 import org.openurp.edu.base.code.model.BookType
 import java.time.LocalDate
@@ -34,7 +35,7 @@ class Textbook extends LongId with TemporalOn with Named with Remark {
 
   var author: String = _
 
-  var press: Press = _
+  var press: Option[Press] = None
 
   var version: String = _
 
@@ -44,9 +45,15 @@ class Textbook extends LongId with TemporalOn with Named with Remark {
 
   var bookType: Option[BookType] = None
 
+  var category: Option[BookCategory] = None
+
   var publishedOn: LocalDate = _
 
   var awardType: Option[BookAwardType] = None
+
+  var awardOrg: Option[String] = None
+
+  var series: Option[String] = None
 
   var published: Boolean = true
 
