@@ -209,6 +209,9 @@ Textbook.remark=备注
 Textbook.bookType=教材类型
 Textbook.publishedOn=出版日期
 Textbook.awardType=教材获奖类型
+Textbook.awardOrg=授予单位
+Textbook.series=丛书
+Textbook.category=图书分类
 Textbook.published=是否出版
 
 Teacher=教师信息

@@ -356,3 +356,4 @@ class StdAlterType extends CodeBean
  */
 @code("industry")
 class StdAlterReason extends CodeBean
+

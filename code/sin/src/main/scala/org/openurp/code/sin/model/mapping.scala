@@ -23,10 +23,11 @@ import org.openurp.code.CodeBean
 
 class DefaultMapping extends MappingModule {
 
- def binding(): Unit = {
+  def binding(): Unit = {
     bind[Publication]
     bind[PublicationGrade]
     bind[Press]
     bind[PressGrade]
+    bind[BookCategory]
   }
 }
