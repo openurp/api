@@ -54,6 +54,9 @@ class CourseType extends CodeBean {
     this.enName = Some(enName)
   }
 }
+@code("school")
+class CourseCategory extends CodeBean
+
 /**
  * 课时类别代码
  */
