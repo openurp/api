@@ -58,7 +58,7 @@ class DefaultPlanAuditor extends PlanAuditor {
     for (listener <- context.listeners) {
       listener.end(context)
     }
-    context.result.getGroupResult(context.coursePlan.program.offsetType) foreach { lastTarget =>
+    context.result.getGroupResult(context.std.program.get.offsetType) foreach { lastTarget =>
       if (lastTarget.auditStat.passedCredits == 0 && lastTarget.auditStat.requiredCredits == 0 &&
         lastTarget.courseResults.isEmpty) {
         context.result.removeGroupResult(lastTarget)

@@ -25,12 +25,10 @@ import org.openurp.edu.base.model.Program
 /**
  * 个人计划
  */
-class StdPlan extends AbstractCoursePlan with ProgramCoursePlan {
+class StdPlan extends AbstractCoursePlan with CoursePlan {
 
   /**学生*/
   var std: Student = _
-
-  var program: Program = _
 
 }
 

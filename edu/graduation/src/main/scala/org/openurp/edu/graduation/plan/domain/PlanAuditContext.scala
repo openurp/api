@@ -21,9 +21,9 @@ package org.openurp.edu.graduation.plan.domain
 import org.beangle.commons.collection.Collections
 import org.openurp.edu.base.model.Student
 import org.openurp.edu.graduation.plan.model.PlanAuditResult
-import org.openurp.edu.program.plan.model.ProgramCoursePlan
+import org.openurp.edu.program.plan.model.CoursePlan
 
-class PlanAuditContext(val std: Student, val coursePlan: ProgramCoursePlan,
+class PlanAuditContext(val std: Student, val coursePlan: CoursePlan,
                        val stdGrade:  StdGrade,
                        val listeners: Seq[PlanAuditListener]) {
 

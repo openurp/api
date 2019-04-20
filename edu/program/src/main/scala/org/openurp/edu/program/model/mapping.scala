@@ -81,8 +81,8 @@ class DefaultMapping extends MappingModule {
       e.group is target[StdCourseGroup]))
 
     bind[MajorAlternativeCourse].on(e => declare(
-      e.fromGrade & e.toGrade are length(10)))
+      e.fromGrade & e.toGrade are length(10))).table("major_alt_courses")
 
-    bind[StdAlternativeCourse]
+    bind[StdAlternativeCourse].table("std_alt_courses")
   }
 }
