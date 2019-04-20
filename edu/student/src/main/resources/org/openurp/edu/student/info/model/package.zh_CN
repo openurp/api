@@ -34,7 +34,8 @@ Graduation.code=毕业证书编号
 Graduation.graduateOn=毕结业日期
 Graduation.degreeAwardOn=学位授予日期
 Graduation.diplomaNo=学位证书号
-  
+Graduation.foreignLangPassedOn=外语通过年月
+
 Home=家庭信息
 Home.phone=家庭电话
 Home.address=家庭地址

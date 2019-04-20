@@ -25,6 +25,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.code.edu.model.Degree
 import org.openurp.edu.base.model.Student
+import java.time.LocalDate
 
 class DegreeResult extends LongId with Updated {
 
@@ -43,9 +44,7 @@ class DegreeResult extends LongId with Updated {
   /**平均分*/
   var ga: Float = _
 
-  /**
-   * 是否通过学位审核
-   */
+  /** 是否通过学位审核*/
   var passed: Boolean = _
 
   /** 锁定毕业审核结果 */
@@ -59,4 +58,11 @@ class DegreeResult extends LongId with Updated {
 
   /** 学位 */
   var degree: Option[Degree] = None
+
+  /**外语通过年月*/
+  var foreignLangPassedOn: Option[LocalDate] = None
+
+  def deciplineCode: String = {
+    std.state.map(_.major.disciplineCode(session.graduateOn)).getOrElse("")
+  }
 }
