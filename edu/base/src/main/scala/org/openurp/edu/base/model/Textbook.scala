@@ -29,11 +29,16 @@ import org.openurp.edu.base.code.model.BookAwardType
 import org.openurp.edu.base.code.model.BookType
 import java.time.LocalDate
 
+/**
+ * 教材基本信息
+ */
 class Textbook extends LongId with TemporalOn with Named with Remark {
 
   var isbn: Option[String] = None
 
   var author: String = _
+
+  var translator: Option[String] = None
 
   var press: Option[Press] = None
 
@@ -55,6 +60,6 @@ class Textbook extends LongId with TemporalOn with Named with Remark {
 
   var series: Option[String] = None
 
-  var published: Boolean = true
+  var madeInSchool: Boolean = false
 
 }
