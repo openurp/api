@@ -201,6 +201,7 @@ StudentState.campus=校区
 Textbook=教材
 Textbook.isbn=ISBN
 Textbook.author=作者
+Textbook.translator=译者
 Textbook.press=出版社
 Textbook.version=版本
 Textbook.price=价格
@@ -212,7 +213,7 @@ Textbook.awardType=教材获奖类型
 Textbook.awardOrg=授予单位
 Textbook.series=丛书
 Textbook.category=图书分类
-Textbook.published=是否出版
+Textbook.madeInSchool=是否自编
 
 Teacher=教师信息
 Teacher.project=所在项目

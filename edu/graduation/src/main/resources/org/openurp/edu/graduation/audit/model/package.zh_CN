@@ -31,6 +31,7 @@ DegreeResult.comments=毕业备注
 DegreeResult.degree=学位
 DegreeResult.gpa=GPA
 DegreeResult.ga=平均分
+DegreeResult.foreignLangPassedOn=外语通过年月
 
 GraduateSession=毕业批次
 GraduateSession.name=名称

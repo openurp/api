@@ -51,4 +51,7 @@ class Graduation extends LongId with Updated {
   /** 学位证书号 */
   var diplomaNo: Option[String] = None
 
+  /**外语通过年月*/
+  var foreignLangPassedOn: Option[LocalDate] = None
+
 }
