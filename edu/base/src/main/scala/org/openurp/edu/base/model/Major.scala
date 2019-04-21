@@ -74,6 +74,10 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
     journals.filter(j => date.isAfter(j.beginOn) && (None == j.endOn || date.isBefore(j.endOn.get)))
       .map(_.depart).toSet
   }
+
+  def disciplineCode(date: LocalDate): String = {
+    disciplines.find(_.contains(date)).map(_.disciplineCode.getOrElse("")).getOrElse("")
+  }
 }
 
 /**
@@ -89,6 +93,14 @@ class MajorDiscipline extends LongId with TemporalOn {
 
   /** 教育部代码 */
   var disciplineCode: Option[String] = None
+
+  def contains(d: LocalDate): Boolean = {
+    if (beginOn.isAfter(d)) {
+      false
+    } else {
+      endOn.forall(!d.isAfter(_))
+    }
+  }
 }
 
 /**
