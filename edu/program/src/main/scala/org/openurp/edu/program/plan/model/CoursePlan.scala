@@ -62,7 +62,3 @@ trait CoursePlan extends LongIdEntity with Cloneable with TemporalOn {
 
   def state: States.State
 }
-
-trait ProgramCoursePlan extends CoursePlan {
-  def program: Program
-}

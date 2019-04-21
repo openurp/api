@@ -93,8 +93,8 @@ class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
     this.yearGpas = new collection.mutable.ListBuffer[StdYearGpa]
     this.credits = 0f
     this.count = 0
-    this.ga = new java.lang.Float(0)
-    this.gpa = new java.lang.Float(0)
+    this.ga = 0f
+    this.gpa = 0f
   }
 
   def getGpa(semester: Semester):  Float = {

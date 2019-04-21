@@ -71,7 +71,7 @@ class InvigilationQuota extends LongId with Remark {
     for (iq <- details) {
       sum += iq.quota
     }
-    this.quota = new java.lang.Double(Math.round(sum)).intValue
+    this.quota = Math.round(sum).toInt
     result
   }
 
@@ -89,10 +89,10 @@ class InvigilationQuota extends LongId with Remark {
       if (java.lang.Float.compare(0, iq.quota) == 0) {
         removed += iq
       }
-      iq.quota = new java.lang.Double(Math.round(iq.quota)).intValue
+      iq.quota = Math.round(iq.quota).toInt
       sum += iq.quota
     }
-    this.quota = new java.lang.Double(sum).intValue()
+    this.quota = sum.toInt
     val oldSize = details.size
     details --= removed
     details.size < oldSize
@@ -111,7 +111,7 @@ class InvigilationQuota extends LongId with Remark {
     for (iq <- details) {
       if (iq.campus == campus) sum += iq.quota
     }
-    new java.lang.Double(sum).intValue
+    sum.toInt
   }
 
 }

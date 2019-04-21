@@ -23,7 +23,7 @@ import org.openurp.edu.base.model.{ Direction, Program, Terms }
 /**
  * @author chaostone
  */
-class MajorPlan extends AbstractCoursePlan with ProgramCoursePlan {
+class MajorPlan extends AbstractCoursePlan with CoursePlan {
 
   /**
    * 培养方案
@@ -51,7 +51,7 @@ class MajorCourseGroup extends AbstractCourseGroup {
   override def name: String = {
     val sb = new StringBuilder()
     if (null != courseType) sb.append(courseType.name)
-    if (None != alias) sb.append(" ").append(alias.get)
+    alias foreach{x => sb.append(" ").append(x)}
     sb.toString
   }
 
