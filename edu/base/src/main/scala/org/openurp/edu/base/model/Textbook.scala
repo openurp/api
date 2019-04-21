@@ -34,6 +34,8 @@ import java.time.LocalDate
  */
 class Textbook extends LongId with TemporalOn with Named with Remark {
 
+  var project: Project = _
+
   var isbn: Option[String] = None
 
   var author: String = _
