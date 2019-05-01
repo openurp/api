@@ -19,7 +19,6 @@
 package org.openurp.code.sin.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.code.CodeBean
 
 class DefaultMapping extends MappingModule {
 
@@ -29,5 +28,7 @@ class DefaultMapping extends MappingModule {
     bind[Press]
     bind[PressGrade]
     bind[BookCategory]
+
+    all.cacheAll()
   }
 }

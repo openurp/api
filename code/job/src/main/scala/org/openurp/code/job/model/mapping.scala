@@ -19,11 +19,10 @@
 package org.openurp.code.job.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.code.CodeBean
 
 class DefaultMapping extends MappingModule {
 
- def binding(): Unit = {
+  def binding(): Unit = {
     bind[SocialUnitType]
     bind[DutyType]
     bind[DutyGrade]
@@ -32,5 +31,7 @@ class DefaultMapping extends MappingModule {
     bind[PostGrade]
     bind[ProfessionalTitle]
     bind[TutorType]
+
+    all.cacheAll()
   }
 }

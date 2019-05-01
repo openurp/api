@@ -44,7 +44,7 @@ class Textbook extends LongId with TemporalOn with Named with Remark {
 
   var press: Option[Press] = None
 
-  var version: String = _
+  var edition: String = _
 
   var price: Option[Float] = None
 
