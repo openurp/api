@@ -19,21 +19,22 @@
 package org.openurp.code.geo.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.code.CodeBean
 
 class DefaultMapping extends MappingModule {
 
- def binding(): Unit = {
+  def binding(): Unit = {
     bind[Division].on(e => declare(
-      e.children is (depends("parent"), orderby("code"), cacheable)))
+      e.children is(depends("parent"), orderby("code"))))
 
     bind[Country].on(e => declare(
-      e.alpha2Code is (length(2), notnull),
-      e.alpha3Code is (length(3), notnull),
+      e.alpha2Code is(length(2), notnull),
+      e.alpha3Code is(length(3), notnull),
       e.shortName is (length(50))))
 
     bind[RailwayStation].on(e => declare(
-      e.jianpin is (length(50), notnull)))
+      e.jianpin is(length(50), notnull)))
+
+    all.cacheAll()
   }
 
 }

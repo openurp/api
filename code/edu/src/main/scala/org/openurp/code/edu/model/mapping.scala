@@ -18,11 +18,7 @@
  */
 package org.openurp.code.edu.model
 
-import scala.reflect.runtime.universe
-
-import org.beangle.data.model.annotation.code
 import org.beangle.data.orm.MappingModule
-import org.openurp.code.CodeBean
 
 class DefaultMapping extends MappingModule {
 
@@ -66,5 +62,7 @@ class DefaultMapping extends MappingModule {
 
     bind[StdAlterType]
     bind[StdAlterReason]
+
+    all.cacheAll()
   }
 }

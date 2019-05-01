@@ -19,11 +19,10 @@
 package org.openurp.code.person.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.code.CodeBean
 
 class DefaultMapping extends MappingModule {
 
- def binding(): Unit = {
+  def binding(): Unit = {
     bind[BloodType]
     bind[DifficultyCause]
     bind[DifficultyDegree]
@@ -41,6 +40,8 @@ class DefaultMapping extends MappingModule {
     bind[Nation]
     bind[PoliticalStatus]
     bind[Religion]
+
+    all.cacheAll()
   }
 
 }

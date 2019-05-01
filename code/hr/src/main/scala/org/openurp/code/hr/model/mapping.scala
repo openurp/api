@@ -19,17 +19,18 @@
 package org.openurp.code.hr.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.code.CodeBean
 
 class DefaultMapping extends MappingModule {
 
- def binding(): Unit = {
+  def binding(): Unit = {
     bind[StaffType].on(e => declare(
-      e.children is (depends("parent"), orderby("code"), cacheable)))
+      e.children is(depends("parent"), orderby("code"))))
     bind[StaffSourceType].on(e => declare(
-      e.children is (depends("parent"), orderby("code"), cacheable)))
+      e.children is(depends("parent"), orderby("code"))))
     bind[WorkStatus]
     bind[EmployType]
+
+    all.cacheAll()
   }
 
 }
