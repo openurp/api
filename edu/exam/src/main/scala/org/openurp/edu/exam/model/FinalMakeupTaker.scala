@@ -16,19 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.makeup.model
+package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Student
+import org.beangle.data.model.pojo.Updated
+import java.time.Instant
 
 /**
  * 毕业清考名单
  */
-class MakeupTaker extends LongId {
+class FinalMakeupTaker extends LongId with Updated {
 
   /**清考任务*/
-  var makeupCourse: MakeupCourse = _
+  var makeupCourse: FinalMakeupCourse = _
 
   /** 学生 */
   var std: Student = _
@@ -36,10 +38,11 @@ class MakeupTaker extends LongId {
   /** 课程类型 */
   var courseType: CourseType = _
 
-  def this(c: MakeupCourse, std: Student, courseType: CourseType) {
+  def this(c: FinalMakeupCourse, std: Student, courseType: CourseType) {
     this()
     this.makeupCourse = c
     this.std = std
     this.courseType = courseType
+    this.updatedAt = Instant.now
   }
 }
