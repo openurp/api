@@ -18,16 +18,18 @@
  */
 package org.openurp.edu.exam.model
 
+import java.time.Instant
+
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.Updated
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Student
-import org.beangle.data.model.pojo.Updated
-import java.time.Instant
 
 /**
  * 毕业清考名单
  */
-class FinalMakeupTaker extends LongId with Updated {
+class FinalMakeupTaker extends LongId with Updated with Remark {
 
   /**清考任务*/
   var makeupCourse: FinalMakeupCourse = _
@@ -37,6 +39,9 @@ class FinalMakeupTaker extends LongId with Updated {
 
   /** 课程类型 */
   var courseType: CourseType = _
+
+  /**最好成绩*/
+  var scores: String = _
 
   def this(c: FinalMakeupCourse, std: Student, courseType: CourseType) {
     this()

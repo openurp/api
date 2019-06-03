@@ -16,17 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.code.service
+package org.openurp.edu.base.service
 
-import org.openurp.code.Code
+import java.time.LocalDate
+import org.openurp.edu.base.model.Project
+import org.openurp.edu.base.model.Semester
 
-trait CodeService {
-
-  def get[T <: Code](clazz: Class[T]): Seq[T]
-
-  def get[T <: Code](clazz: Class[T], ids: Int*): Seq[T]
-
-  def get[T <: Code](clazz: Class[T], id: Int): T
-
-  def get[T <: Code](clazz: Class[T], code: String): Option[T]
+trait SemesterService {
+  def get(project: Project, date: LocalDate): Semester
 }
