@@ -60,6 +60,12 @@ class DefaultMapping extends MappingModule {
     bind[ClazzGroup].on(e => declare(
       e.clazzes is one2many("group")))
 
+    bind[Material] on (e => declare(
+      e.clazz is notnull,
+      e.references is length(500),
+      e.extra is length(200),
+      e.reason is length(300),
+      e.remark is length(200)))
   }
 
 }

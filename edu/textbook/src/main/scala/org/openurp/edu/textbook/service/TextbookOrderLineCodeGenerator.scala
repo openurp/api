@@ -16,22 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.clazz.model
+package org.openurp.edu.textbook.service
 
-import org.beangle.data.orm.MappingModule
-import org.openurp.edu.textbook.clazz.MaterialStatus
+import org.openurp.edu.textbook.model.StdBookOrder
 
-class DefaultMapping extends MappingModule {
+trait TextbookOrderLineCodeGenerator {
 
-  def binding(): Unit = {
-    defaultIdGenerator("date")
-
-    bind[Material] on (e => declare(
-      e.clazz is notnull,
-      e.references is length(500),
-      e.extra is length(200),
-      e.reason is length(300),
-      e.remark is length(200)))
-  }
-
+  def genCode(orderLine: StdBookOrder): String
 }

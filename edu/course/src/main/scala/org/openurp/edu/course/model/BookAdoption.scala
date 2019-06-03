@@ -16,11 +16,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.order.service
+package org.openurp.edu.course.model
 
-import org.openurp.edu.textbook.order.model.TextbookOrderLine
+object BookAdoption extends Enumeration {
 
-trait TextbookOrderLineCodeGenerator {
+  class State(id: Int, val fullname: String) extends super.Val {
+  }
 
-  def genCode(orderLine: TextbookOrderLine): String
+  val None = new State(0, "不使用教材，也不使用讲义")
+  val UseTextBook = new State(1, "使用教材")
+  val UseLecture = new State(2, "使用讲义")
+
+  import scala.language.implicitConversions
+  implicit def convertValue(v: Value): State = v.asInstanceOf[State]
 }

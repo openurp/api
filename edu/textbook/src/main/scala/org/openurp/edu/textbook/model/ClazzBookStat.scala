@@ -16,16 +16,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.order.model
+package org.openurp.edu.textbook.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.openurp.edu.course.model.Clazz
+import org.openurp.edu.base.model.Textbook
+import java.time.Instant
 
-class DefaultMapping extends MappingModule {
+/**
+ * 教学任务教材统计
+ */
+class ClazzBookStat extends LongId {
 
-  def binding(): Unit = {
-    defaultIdGenerator("date")
+  /**教学任务*/
+  var clazz: Clazz = _
 
-    bind[TextbookOrderLine]
-  }
+  /**教材*/
+  var textbook: Textbook = _
 
+  /**学生用户量*/
+  var stdCount: Int = _
+
+  /**教师用户量*/
+  var teacherCount: Int = _
+
+  /**统计时间*/
+  var statAt: Instant = _
 }
