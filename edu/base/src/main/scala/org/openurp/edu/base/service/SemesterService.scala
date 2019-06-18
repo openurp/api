@@ -16,25 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.clazz
+package org.openurp.edu.base.service
 
-object MaterialStatus extends Enumeration {
+import java.time.LocalDate
+import org.openurp.edu.base.model.Project
+import org.openurp.edu.base.model.Semester
 
-  val PUBLISHED = new Status("教材已发")
-
-  val DONT_ASSIGNED = new Status("不需教材")
-
-  val ASSIGNED = new Status("已指定")
-
-  class Status private extends Val {
-
-    var fullName: String = _
-
-    def this(fullName: String) {
-      this
-      this.fullName = fullName
-    }
-  }
-  import scala.language.implicitConversions
-  implicit def convertValue(v: Value): Status = v.asInstanceOf[Status]
+trait SemesterService {
+  def get(project: Project, date: LocalDate): Semester
 }

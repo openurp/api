@@ -16,22 +16,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.service
+package org.openurp.edu.textbook.model
 
-import org.beangle.data.model.annotation.code
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.extern.code.model.{ ExamCategory, ExamSubject }
-import org.openurp.edu.extern.model.Certificate
+import org.beangle.data.model.LongId
+import org.openurp.edu.course.model.Clazz
+import org.openurp.edu.base.model.Textbook
+import java.time.Instant
 
-trait CertificateService {
+/**
+ * 教学任务教材统计
+ */
+class ClazzBookStat extends LongId {
 
-  def saveOrUpdate(examGrade: Certificate): Unit
+  /**教学任务*/
+  var clazz: Clazz = _
 
-  def getBest(std: Student, category: ExamCategory): Certificate
+  /**教材*/
+  var textbook: Textbook = _
 
-  def getPassed(std: Student, subjects: Iterable[ExamSubject]): List[Certificate]
+  /**学生用户量*/
+  var stdCount: Int = _
 
-  def isPass(std: Student, subject: ExamSubject): Boolean
+  /**教师用户量*/
+  var teacherCount: Int = _
 
-  def get(std: Student, best: Boolean): Iterable[Certificate]
+  /**统计时间*/
+  var statAt: Instant = _
 }
