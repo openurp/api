@@ -16,11 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.order.service
+package org.openurp.edu.extern.service
 
-import org.openurp.edu.textbook.order.model.TextbookOrderLine
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.extern.model.ExternExamGrade
+import org.openurp.edu.extern.code.model.ExamCategory
+import org.openurp.edu.extern.code.model.ExamSubject
 
-trait TextbookOrderLineCodeGenerator {
+trait ExternExamGradeService {
 
-  def genCode(orderLine: TextbookOrderLine): String
+  def getBest(std: Student, category: ExamCategory): ExternExamGrade
+
+  def getPassed(std: Student, subjects: Iterable[ExamSubject]): List[ExternExamGrade]
+
+  def isPass(std: Student, subject: ExamSubject): Boolean
+
+  def get(std: Student, best: Boolean): Iterable[ExternExamGrade]
 }

@@ -102,3 +102,14 @@ Lesson.endAt=结束时间
 Lesson.content=具体内容
 Lesson.teachers=授课教师列表
 Lesson.rooms=教室列表
+
+Material=教材选用
+Material.clazz=课程
+Material.books=教材
+Material.references=参考书
+Material.extra=其他书
+Material.passed=是否通过
+Material.confirmed=是否提交
+Material.remark=备注
+Material.reason=选用理由
+Material.state=教材状态
