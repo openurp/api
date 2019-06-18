@@ -16,37 +16,46 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.clazz.model
+package org.openurp.edu.course.model
 
-import java.time.Instant
+import scala.collection.mutable.Buffer
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.Updated
 import org.openurp.edu.base.model.Textbook
-import org.openurp.edu.course.model.Clazz
-import org.openurp.edu.textbook.clazz.MaterialStatus.ASSIGNED
-import org.openurp.edu.textbook.clazz.MaterialStatus.Status
 
 /**
- * 教材
+ * 教学材料说明
+ *  包括教材、参考书等
  */
-class Material extends LongId {
+class Material extends LongId with Serializable with Cloneable with Updated with Remark {
 
+  /**教材选用类型*/
+  var state: BookAdoption.State = _
+
+  /**教材列表*/
+  var books: Buffer[Textbook] = Collections.newBuffer[Textbook]
+
+  /**参考书*/
+  var references: Option[String] = None
+
+  /**其它资料*/
+  var extra: Option[String] = None
+
+  /**选用理由*/
+  var reason: Option[String] = None
+
+  /**教学任务*/
   var clazz: Clazz = _
 
-  var books = Collections.newBuffer[Textbook]
+  /**已提交*/
+  var confirmed: Boolean = _
 
-  var references: String = _
+  /**历史已经订购过*/
+  var ordered: Boolean = _
 
-  var extra: String = _
-
-  var passed: Boolean = _
-
-  var auditAt: Instant = _
-
-  var remark: String = _
-
-  var reason: String = _
-
-  var status: Status = ASSIGNED
+  /**审核通过*/
+  var passed: Option[Boolean] = None
 }

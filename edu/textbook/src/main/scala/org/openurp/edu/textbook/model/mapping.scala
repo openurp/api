@@ -16,9 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.order.model
+package org.openurp.edu.textbook.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.LongId
+import org.beangle.data.orm.MappingModule
 
-class TextbookOrderLine extends LongId
+class DefaultMapping extends MappingModule {
+
+  def binding(): Unit = {
+    defaultIdGenerator("date")
+
+    bind[StdBookOrder]
+
+    bind[ClazzBookStat]
+  }
+
+}

@@ -101,4 +101,7 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   var state: States.State = _
 
   var tags = Collections.newSet[ClazzTag]
+
+  /**教学材料*/
+  var material: Option[Material] = None
 }

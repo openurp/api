@@ -16,22 +16,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.clazz.model
+package org.openurp.edu.course.model
 
-import org.beangle.data.orm.MappingModule
-import org.openurp.edu.textbook.clazz.MaterialStatus
+object BookAdoption extends Enumeration {
 
-class DefaultMapping extends MappingModule {
-
-  def binding(): Unit = {
-    defaultIdGenerator("date")
-
-    bind[Material] on (e => declare(
-      e.clazz is notnull,
-      e.references is length(500),
-      e.extra is length(200),
-      e.reason is length(300),
-      e.remark is length(200)))
+  class State(id: Int, val fullname: String) extends super.Val {
   }
 
+  val None = new State(0, "不使用教材，也不使用讲义")
+  val UseTextBook = new State(1, "使用教材")
+  val UseLecture = new State(2, "使用讲义")
+
+  import scala.language.implicitConversions
+  implicit def convertValue(v: Value): State = v.asInstanceOf[State]
 }

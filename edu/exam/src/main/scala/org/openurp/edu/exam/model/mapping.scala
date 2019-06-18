@@ -62,6 +62,11 @@ class DefaultMapping extends MappingModule {
     bind[RoomGroup]
 
     bind[RoomAllocSetting]
+
+    bind[FinalMakeupCourse].on(e => declare(
+      e.takers is depends("makeupCourse")))
+
+    bind[FinalMakeupTaker]
   }
 
 }

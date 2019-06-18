@@ -16,30 +16,46 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.makeup.model
+package org.openurp.edu.extern.model
+
+import java.time.LocalDate
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.code.model.CourseType
+import org.beangle.data.model.annotation.code
+import org.openurp.code.edu.model.ExamStatus
+import org.openurp.code.edu.model.GradingMode
 import org.openurp.edu.base.model.Student
+import org.openurp.edu.extern.code.model.ExamSubject
+import org.beangle.commons.collection.Collections
+import scala.collection.mutable.Buffer
+import org.openurp.edu.grade.course.model.CourseGrade
 
 /**
- * 毕业清考名单
+ * 校外证书成绩
  */
-class MakeupTaker extends LongId {
+class ExternExamGrade extends LongId {
 
-  /**清考任务*/
-  var makeupCourse: MakeupCourse = _
-
-  /** 学生 */
   var std: Student = _
 
-  /** 课程类型 */
-  var courseType: CourseType = _
+  var score: Option[Float] = None
 
-  def this(c: MakeupCourse, std: Student, courseType: CourseType) {
-    this()
-    this.makeupCourse = c
-    this.std = std
-    this.courseType = courseType
-  }
+  var scoreText: String = _
+
+  var passed: Boolean = _
+
+  var subject: ExamSubject = _
+
+  var certificate: Option[String] = None
+
+  var examNo: Option[String] = None
+
+  var acquiredOn: LocalDate = _
+
+  var gradingMode: GradingMode = _
+
+  var examStatus: ExamStatus = _
+
+  var grades: Buffer[CourseGrade] = Collections.newBuffer[CourseGrade]
+
+  var status: Int = _
 }

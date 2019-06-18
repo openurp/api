@@ -16,16 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.order.model
+package org.openurp.edu.textbook.service
 
-import org.beangle.data.orm.MappingModule
+import org.openurp.edu.textbook.model.StdBookOrder
 
-class DefaultMapping extends MappingModule {
+trait TextbookOrderLineCodeGenerator {
 
-  def binding(): Unit = {
-    defaultIdGenerator("date")
-
-    bind[TextbookOrderLine]
-  }
-
+  def genCode(orderLine: StdBookOrder): String
 }

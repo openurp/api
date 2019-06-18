@@ -22,7 +22,11 @@ import org.openurp.code.Code
 
 trait CodeService {
 
-  def getCodes[T <: Code](clazz: Class[T]): Seq[T]
+  def get[T <: Code](clazz: Class[T]): Seq[T]
 
-  def getCode[T <: Code](clazz: Class[T], id: Integer): T
+  def get[T <: Code](clazz: Class[T], ids: Int*): Seq[T]
+
+  def get[T <: Code](clazz: Class[T], id: Int): T
+
+  def get[T <: Code](clazz: Class[T], code: String): Option[T]
 }

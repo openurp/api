@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.makeup.model
+package org.openurp.edu.exam.model
 
 import java.time.Instant
 
@@ -32,12 +32,12 @@ import org.openurp.edu.base.model.Squad
 import org.openurp.edu.base.model.Teacher
 
 /**
- * 毕业清考任务
+ * 毕业补考任务
  *
  */
-class MakeupCourse extends LongId {
+class FinalMakeupCourse extends LongId {
 
-  /** 清考序号 */
+  /** 补考序号 */
   var crn: String = _
 
   /**项目*/
@@ -53,7 +53,7 @@ class MakeupCourse extends LongId {
   var depart: Department = _
 
   /** 清考名单 */
-  var takers: Buffer[MakeupTaker] = Collections.newBuffer[MakeupTaker]
+  var takers: Buffer[FinalMakeupTaker] = Collections.newBuffer[FinalMakeupTaker]
 
   /** 行政班列表 */
   var squads: collection.mutable.Set[Squad] = Collections.newSet[Squad]
@@ -62,7 +62,7 @@ class MakeupCourse extends LongId {
   var stdCount: Int = _
 
   /** 是否提交成绩 */
-  var gradeSubmited: Boolean = _
+  var confirmed: Boolean = _
 
   /** 是否发布成绩 */
   var published: Boolean = _
@@ -71,13 +71,13 @@ class MakeupCourse extends LongId {
   var teacher: Option[Teacher] = None
 
   /**成绩录入时间*/
-  var gradeInputAt: Option[Instant] = None
+  var inputAt: Option[Instant] = None
 
-  def mergeWith(makeupClazz: MakeupCourse) {
+  def mergeWith(makeupClazz: FinalMakeupCourse) {
     stdCount += makeupClazz.stdCount
     squads ++= makeupClazz.squads
-    for (lastMakeupTake2 <- makeupClazz.takers) {
-      val make = new MakeupTaker(this, lastMakeupTake2.std, lastMakeupTake2.courseType)
+    for (taker2 <- makeupClazz.takers) {
+      val make = new FinalMakeupTaker(this, taker2.std, taker2.courseType)
       this.takers += make
     }
   }

@@ -16,14 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.textbook.order.service
+package org.openurp.edu.textbook.service
 
 import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.model.{ Student, Textbook }
 import org.openurp.edu.course.model.{ CourseTaker, Clazz }
-import org.openurp.edu.textbook.order.model.TextbookOrderLine
+import org.openurp.edu.textbook.model.StdBookOrder
 
-trait TextbookOrderLineService {
+trait StdBookOrderService {
 
   def getLessonsHasTextbook(clazzs: Iterable[Clazz]): Set[Long]
 
@@ -33,16 +33,17 @@ trait TextbookOrderLineService {
 
   def getLessonsHasOrderTextBook(clazzs: Iterable[Clazz]): Set[Long]
 
-  def getTextbookOrderLinesByLesson(clazzId: Clazz, std: Student): List[TextbookOrderLine]
+  def getStdBookOrdersByLesson(clazzId: Clazz, std: Student): List[StdBookOrder]
 
-  def getTextbookOrderLines(std: Student, semester: Semester, clazzId: java.lang.Long): List[TextbookOrderLine]
+  def getStdBookOrders(std: Student, semester: Semester, clazzId: java.lang.Long): List[StdBookOrder]
 
-  def createTextbookOrderLines(clazzId: java.lang.Long,
-                               materialNum: Int,
-                               semester: Semester,
-                               std: Student): List[TextbookOrderLine]
+  def createStdBookOrders(
+    clazzId:     java.lang.Long,
+    materialNum: Int,
+    semester:    Semester,
+    std:         Student): List[StdBookOrder]
 
-  def createTextbookOrderLines(bookMap: Map[Textbook, Integer], semester: Semester, std: Student): List[TextbookOrderLine]
+  def createStdBookOrders(bookMap: Map[Textbook, Integer], semester: Semester, std: Student): List[StdBookOrder]
 
   def getTextBooks(takes: List[CourseTaker]): Map[Clazz, List[Textbook]]
 
