@@ -30,7 +30,7 @@ trait AlternativeCourseProvider {
    * @param std
    * @return list<AlternativeCourse>
    */
-  def getAlternatives(std: Student): Seq[AlternativeCourse]
+  def getAlternatives(std: Student): collection.Seq[AlternativeCourse]
 
   /**
    * 得到该学生指定专业类型的个人替代课程
@@ -38,7 +38,7 @@ trait AlternativeCourseProvider {
    * @param std
    * @return list<AlternativeCourse>
    */
-  def getMajorAlternatives(std: Student): Seq[MajorAlternativeCourse]
+  def getMajorAlternatives(std: Student): collection.Seq[MajorAlternativeCourse]
 
   /**
    * 得到该学生指定专业类型的专业替代课程
@@ -46,5 +46,5 @@ trait AlternativeCourseProvider {
    * @param std
    * @return list<AlternativeCourse>
    */
-  def getStdAlternatives(std: Student): Seq[StdAlternativeCourse]
+  def getStdAlternatives(std: Student): collection.Seq[StdAlternativeCourse]
 }

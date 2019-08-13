@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.10.0</version>
+    <version>0.11.0</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-all</artifactId>
@@ -149,7 +149,7 @@
     </dependency>
     <dependency>
       <groupId>org.beangle.data</groupId>
-      <artifactId>beangle-data-hibernate_2.12</artifactId>
+      <artifactId>beangle-data-hibernate_2.13</artifactId>
     </dependency>
   </dependencies>
 

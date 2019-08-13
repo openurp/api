@@ -38,7 +38,7 @@ class CourseAuditResult extends LongId with Remark {
 
   var compulsory: Boolean = _
 
-  def checkPassed(grades: Seq[CourseGrade]) {
+  def checkPassed(grades: collection.Seq[CourseGrade]) {
     val sb = new StringBuilder
     if (Collections.isEmpty(grades)) {
       scores = "--"
@@ -52,7 +52,7 @@ class CourseAuditResult extends LongId with Remark {
     }
   }
 
-  def checkPassed(grades: Seq[CourseGrade], substituteGrades: Seq[CourseGrade]) {
+  def checkPassed(grades: collection.Seq[CourseGrade], substituteGrades: collection.Seq[CourseGrade]) {
     checkPassed(grades)
     if (!passed && !substituteGrades.isEmpty) {
       passed = (substituteGrades.head).asInstanceOf[CourseGrade].passed

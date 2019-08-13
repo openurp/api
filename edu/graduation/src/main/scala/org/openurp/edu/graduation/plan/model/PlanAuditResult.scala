@@ -18,12 +18,12 @@
  */
 package org.openurp.edu.graduation.plan.model
 
-import scala.collection.mutable.Buffer
-
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{ Updated, Remark }
+import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Student
+
+import scala.collection.mutable.Buffer
 
 class PlanAuditResult extends LongId with Updated with Remark {
 
@@ -39,7 +39,7 @@ class PlanAuditResult extends LongId with Updated with Remark {
 
   var archived: Boolean = false
 
-  def topGroupResults: Seq[GroupAuditResult] = {
+  def topGroupResults: collection.Seq[GroupAuditResult] = {
     val results = new collection.mutable.ListBuffer[GroupAuditResult]
     for (result <- groupResults if null == result.parent) {
       results += result
@@ -47,12 +47,12 @@ class PlanAuditResult extends LongId with Updated with Remark {
     results
   }
 
-  def addGroupResult(rs: GroupAuditResult) {
+  def addGroupResult(rs: GroupAuditResult): Unit = {
     rs.planResult = this
     this.groupResults += rs
   }
 
-  def removeGroupResult(rs: GroupAuditResult) {
+  def removeGroupResult(rs: GroupAuditResult): Unit = {
     rs.planResult = null
     this.groupResults -= rs
   }
@@ -62,7 +62,7 @@ class PlanAuditResult extends LongId with Updated with Remark {
       return None
     }
     var rs: Option[GroupAuditResult] = None
-    for (groupAuditResult <- groupResults; if None == rs) {
+    for (groupAuditResult <- groupResults; if rs.isEmpty) {
       rs = findGroupResult(groupAuditResult, typ)
     }
     rs
@@ -73,7 +73,7 @@ class PlanAuditResult extends LongId with Updated with Remark {
       return Some(groupResult)
     }
     var rs: Option[GroupAuditResult] = None
-    for (childResult <- groupResult.children; if None == rs) {
+    for (childResult <- groupResult.children; if rs.isEmpty) {
       rs = findGroupResult(childResult, typ)
     }
     rs

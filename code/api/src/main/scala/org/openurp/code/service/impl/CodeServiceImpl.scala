@@ -34,7 +34,7 @@ class CodeServiceImpl extends CodeService {
     else None
   }
 
-  def get[T <: Code](clazz: Class[T]): Seq[T] = {
+  def get[T <: Code](clazz: Class[T]): collection.Seq[T] = {
     val now = LocalDate.now
     val builder = OqlBuilder.from(clazz, "basecode")
       .where("basecode.beginOn <= :now and (basecode.endOn is null or basecode.endOn >= :now)", now);
@@ -46,7 +46,7 @@ class CodeServiceImpl extends CodeService {
     entityDao.get(clazz, id)
   }
 
-  def get[T <: Code](clazz: Class[T], ids: Int*): Seq[T] = {
+  def get[T <: Code](clazz: Class[T], ids: Int*): collection.Seq[T] = {
     val builder = OqlBuilder.from(clazz, "basecode").where("basecode.id in(:ids)", ids);
     entityDao.search(builder)
   }

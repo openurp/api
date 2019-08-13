@@ -19,13 +19,11 @@
 package org.openurp.edu.program.plan.model
 
 import org.beangle.data.model.LongIdEntity
-import org.beangle.data.model.pojo.Named
 import org.openurp.edu.base.code.model.CourseType
 
-/**
- * 课程设置中的课程组. </p> <li>1)对应计划</li> <li>2)课程类型</li> <li>3)要求学分</li> <li>4)是否必修课</li>
+/** 课程设置中的课程组.
+ * </p> <li>1)对应计划</li> <li>2)课程类型</li> <li>3)要求学分</li> <li>4)是否必修课</li>
  * <li>5)父组</li> <li>6)子组集合</li> <li>7)组内所有的课程</li> <li>8)备注</li>
- *
  * @author chaostone
  */
 trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
@@ -43,7 +41,7 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
   /**
    * 获得子节点集合.
    */
-  def children: Seq[CourseGroup]
+  def children: collection.Seq[CourseGroup]
 
   /**
    * 要求完成的课程组数量
@@ -61,14 +59,15 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
    */
   def credits: Float
 
-  /**组名*/
+  /** 组名 */
   def name: String
+
   /**
    * 获得组内要求门数
    */
   def courseCount: Short
 
-  def planCourses: Seq[PlanCourse]
+  def planCourses: collection.Seq[PlanCourse]
 
   /**
    * 判断是否必修组<br>
