@@ -19,11 +19,10 @@
 package org.openurp.edu.grade.course.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.annotation.{ code, config }
-import org.openurp.edu.grade.model.{ AbstractGradeState, GradeState }
+import org.beangle.data.model.annotation.config
+import org.openurp.code.edu.model.{GradeType, GradingMode}
 import org.openurp.edu.course.model.Clazz
-import org.openurp.code.edu.model.GradeType
-import org.openurp.code.edu.model.GradingMode
+import org.openurp.edu.grade.model.{AbstractGradeState, GradeState}
 
 /**
  * 成绩状态表
@@ -51,7 +50,7 @@ class CourseGradeState extends AbstractGradeState {
    */
   var gaStates = Collections.newSet[GaGradeState]
 
-  /**保留小数位*/
+  /** 保留小数位 */
   var precision: Int = _
 
   def this(clazz: Clazz) {
@@ -60,7 +59,7 @@ class CourseGradeState extends AbstractGradeState {
     this.gradingMode = new GradingMode(GradingMode.Percent)
   }
 
-  def updateStatus(gradeType: GradeType, status: Int) {
+  def updateStatus(gradeType: GradeType, status: Int): Unit = {
     val state = getState(gradeType).asInstanceOf[ExamGradeState]
     if (null == state) {
       if (gradeType.isGa) {
@@ -108,7 +107,7 @@ class CourseGradeState extends AbstractGradeState {
   def getPercent(gradeType: GradeType): Option[Short] = {
     examStates.find(_.gradeType.id == gradeType.id) match {
       case Some(es) => es.percent
-      case None     => None
+      case None => None
     }
   }
 

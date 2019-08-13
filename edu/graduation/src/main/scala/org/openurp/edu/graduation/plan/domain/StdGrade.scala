@@ -25,7 +25,7 @@ import scala.collection.mutable.Buffer
 import org.beangle.commons.bean.orderings.PropertyOrdering
 import org.beangle.commons.bean.orderings.MultiPropertyOrdering
 
-class StdGrade(val grades: Seq[CourseGrade]) {
+class StdGrade(val grades: collection.Seq[CourseGrade]) {
 
   private val gradeMap = grades.sorted(new MultiPropertyOrdering("course,score desc")).groupBy(g => g.course)
 
@@ -37,7 +37,7 @@ class StdGrade(val grades: Seq[CourseGrade]) {
    * 查询课程对应的成绩，不会被标记为usedCourses
    *
    */
-  def getGrades(course: Course): Seq[CourseGrade] = {
+  def getGrades(course: Course): collection.Seq[CourseGrade] = {
     if (noGradeCourses.contains(course)) return List.empty
     gradeMap.get(course).getOrElse(List.empty)
   }
@@ -45,7 +45,7 @@ class StdGrade(val grades: Seq[CourseGrade]) {
   /**
    * 使用课程课程拿成绩之后，会被标记为usedCourses
    */
-  def useGrades(course: Course): Seq[CourseGrade] = {
+  def useGrades(course: Course): collection.Seq[CourseGrade] = {
     if (noGradeCourses.contains(course)) {
       List.empty
     } else {

@@ -22,14 +22,12 @@ import org.beangle.commons.lang.time.WeekState
 import org.beangle.data.model.LongIdEntity
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.ExamMode
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Terms
+import org.openurp.edu.base.model.{Course, Terms}
 
 /**
  * 培养计划中的课程.<import org.openurp.edu.program.plan.model.CourseGroup
  * br>
  * 具体体现了课程、开课和审核要求三部分.
- *
  * @author chaostone
  */
 trait PlanCourse extends LongIdEntity {
@@ -39,7 +37,7 @@ trait PlanCourse extends LongIdEntity {
    */
   def course: Course
 
-  def course_=(c: Course)
+  def course_=(c: Course): Unit
 
   /**
    * 课程开设的学期.<br>
@@ -47,20 +45,21 @@ trait PlanCourse extends LongIdEntity {
    */
   def terms: Terms
 
-  def terms_=(t: Terms)
+  def terms_=(t: Terms): Unit
 
   /**
    * 课程组
    */
   def group: CourseGroup
 
-  def group_=(g: CourseGroup)
+  def group_=(g: CourseGroup): Unit
+
   /**
    * 课程是否必修.
    */
   def compulsory: Boolean
 
-  def compulsory_=(c: Boolean)
+  def compulsory_=(c: Boolean): Unit
 }
 
 /**

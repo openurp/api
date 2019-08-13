@@ -24,11 +24,11 @@ import org.openurp.edu.grade.course.model.{ CourseGrade, StdGpa }
 
 trait CourseGradeService {
 
-  def getGrades(std: Student, semesters: Semester*): Seq[CourseGrade]
+  def getGrades(std: Student, semesters: Semester*): collection.Seq[CourseGrade]
   /**
    * 查询一批学生发布的成绩
    */
-  def getGrades(stds: Iterable[Student], semesters: Semester*): collection.Map[Student, Seq[CourseGrade]]
+  def getGrades(stds: Iterable[Student], semesters: Semester*): collection.Map[Student, collection.Seq[CourseGrade]]
 
   /**
    * 如果semesters不包含元素或者为null则统计所有学期 否则统计学生的在校semesters所包含的学期的平均绩点

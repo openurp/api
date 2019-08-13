@@ -18,12 +18,9 @@
  */
 package org.openurp.edu.grade.course.domain
 
-import java.util.List
 import org.openurp.edu.grade.course.model.CourseGrade
-//remove if not needed
-import scala.collection.JavaConversions._
 
 trait GradeFilter {
 
-  def filter(grades: Seq[CourseGrade]): Seq[CourseGrade]
+  def filter(grades: collection.Seq[CourseGrade]): collection.Seq[CourseGrade]
 }
