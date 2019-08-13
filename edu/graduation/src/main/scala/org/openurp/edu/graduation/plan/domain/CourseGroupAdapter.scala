@@ -20,15 +20,15 @@ package org.openurp.edu.graduation.plan.domain
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.program.plan.model.{ CourseGroup, CoursePlan, PlanCourse }
+import org.openurp.edu.program.plan.model.{CourseGroup, CoursePlan, PlanCourse}
 
 class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseGroup {
 
-  private var groups: Seq[CourseGroup] = coursePlan.groups.filter { g => g.parent == null }
+  private var groups: collection.Seq[CourseGroup] = coursePlan.groups.filter { g => g.parent == null }
 
   override def name: String = "plan"
 
-  def children: Seq[CourseGroup] = groups
+  def children: collection.Seq[CourseGroup] = groups
 
   def credits: Float = coursePlan.credits
 
@@ -42,93 +42,96 @@ class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseG
     -1
   }
 
-  def addChildGroup(arg0: CourseGroup) {
+  def addChildGroup(arg0: CourseGroup): Unit = {
   }
 
-  def addPlanCourse(arg0: PlanCourse) {
+  def addPlanCourse(arg0: PlanCourse): Unit = {
   }
 
   def parent: Option[CourseGroup] = None
-  def parent_=(arg0: Option[CourseGroup]) {
+
+  def parent_=(arg0: Option[CourseGroup]): Unit = {
   }
-  def planCourses: Seq[PlanCourse] = List.empty
+
+  def planCourses: collection.Seq[PlanCourse] = List.empty
 
   def remark: Option[String] = None
-  def remark_=(arg0: Option[String]) {
+
+  def remark_=(arg0: Option[String]): Unit = {
   }
 
   def compulsory: Boolean = false
 
-  def courseCount_=(arg0: Int) {
+  def courseCount_=(arg0: Int): Unit = {
   }
 
-  def courseType_=(arg0: CourseType) {
+  def courseType_=(arg0: CourseType): Unit = {
   }
 
-  def credits(arg0: Float) {
+  def credits(arg0: Float): Unit = {
   }
 
-  def subCount_=(arg0: Int) {
+  def subCount_=(arg0: Int): Unit = {
   }
 
-  def updateCoursePlan(arg0: CoursePlan) {
+  def updateCoursePlan(arg0: CoursePlan): Unit = {
   }
 
-  def removePlanCourse(course: PlanCourse) {
+  def removePlanCourse(course: PlanCourse): Unit = {
   }
 
-  def statCreditAndHour(termsCount: Int) {
+  def statCreditAndHour(termsCount: Int): Unit = {
   }
 
   def creditPerTerms: String = {
     throw new UnsupportedOperationException("CoursePlanGroupAdapter.CreditPerTerms没有实现")
   }
 
-  def creditPerTerms(arg0: String) {
+  def creditPerTerms(arg0: String): Unit = {
     throw new UnsupportedOperationException("CoursePlanGroupAdapter.CreditPerTerms没有实现")
   }
 
-  def creditList: Seq[String] = null
+  def creditList: collection.Seq[String] = null
 
-  def credits(terms: Seq[Integer]): Float = 0
+  def credits(terms: collection.Seq[Integer]): Float = 0
 
-  def groupCourses: Seq[_ <: PlanCourse] = null
+  def groupCourses: collection.Seq[_ <: PlanCourse] = null
 
   def parentCourseType: CourseType = null
 
-  def planCourses(termList: Seq[Integer]): Seq[_ <: PlanCourse] = null
+  def planCourses(termList: collection.Seq[Integer]): collection.Seq[_ <: PlanCourse] = null
 
-  def planCourses(terms: String): Seq[_ <: PlanCourse] = null
+  def planCourses(terms: String): collection.Seq[_ <: PlanCourse] = null
 
   def isSameGroup(`object`: AnyRef): Boolean = false
 
-  def groupCourses_=(groupCourses: Seq[_ <: PlanCourse]) {
+  def groupCourses_=(groupCourses: collection.Seq[_ <: PlanCourse]): Unit = {
   }
 
   def plan: CoursePlan = null
 
-  def plan_=(plan: CoursePlan) {
+  def plan_=(plan: CoursePlan): Unit = {
   }
 
-  def children_=(children: Seq[CourseGroup]) {
+  def children_=(children: collection.Seq[CourseGroup]): Unit = {
   }
 
-  def planCourses_=(planCourses: Seq[PlanCourse]) {
+  def planCourses_=(planCourses: collection.Seq[PlanCourse]): Unit = {
   }
 
-  def addPlanCourses(planCourses: Seq[PlanCourse]) {
+  def addPlanCourses(planCourses: collection.Seq[PlanCourse]): Unit = {
   }
 
   def termCredits: String = null
 
-  def termCredits(termCredits: String) {
+  def termCredits(termCredits: String): Unit = {
   }
 
   override def compare(o: CourseGroup): Int = 0
 
   def indexno: String = null
 
-  def indexno_=(indexno: String) {
+  def indexno_=(indexno: String): Unit = {
   }
 
   def index: Int = 0

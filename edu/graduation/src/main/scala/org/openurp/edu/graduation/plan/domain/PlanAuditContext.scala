@@ -25,7 +25,7 @@ import org.openurp.edu.program.plan.model.CoursePlan
 
 class PlanAuditContext(val std: Student, val coursePlan: CoursePlan,
                        val stdGrade:  StdGrade,
-                       val listeners: Seq[PlanAuditListener]) {
+                       val listeners: collection.Seq[PlanAuditListener]) {
 
   var result: PlanAuditResult = _
 

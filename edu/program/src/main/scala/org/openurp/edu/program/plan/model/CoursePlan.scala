@@ -28,8 +28,6 @@ import org.openurp.edu.base.model.Program
  * 课程方案
  * </p> <li>1)年级</li> <li>2)培养层次</li> <li>3)学分要求</li> <li>4)课程组</li>
  *
- * @composed 1 has * CourseGroup
- * @depend - - - Degree
  * @author chaostone
  * @since 2009
  */
@@ -43,7 +41,7 @@ trait CoursePlan extends LongIdEntity with Cloneable with TemporalOn {
   /**
    * 获得计划课程组
    */
-  def groups: Seq[CourseGroup]
+  def groups: collection.Seq[CourseGroup]
 
   /**
    * 查询指定类型的组
@@ -53,7 +51,7 @@ trait CoursePlan extends LongIdEntity with Cloneable with TemporalOn {
   /**
    * 获得顶级课程组
    */
-  def tops: Seq[CourseGroup]
+  def tops: collection.Seq[CourseGroup]
 
   /**
    * 这个计划的学期数

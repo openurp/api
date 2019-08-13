@@ -64,7 +64,7 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Tempor
     groups += group
   }
 
-  override def tops: Seq[CourseGroup] = {
+  override def tops: collection.Seq[CourseGroup] = {
     val res = new ListBuffer[CourseGroup]
     for (group <- groups if group.parent == null) res += group
     res

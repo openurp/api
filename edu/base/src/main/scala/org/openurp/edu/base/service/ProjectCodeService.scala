@@ -23,7 +23,7 @@ import org.openurp.edu.base.model.Project
 
 trait ProjectCodeService {
 
-  def getCodes[T <: Code](project: Project, clazz: Class[T]): Seq[T]
+  def getCodes[T <: Code](project: Project, clazz: Class[T]): collection.Seq[T]
 
   def getCode[T <: Code](clazz: Class[T], id: Int): T
 }
