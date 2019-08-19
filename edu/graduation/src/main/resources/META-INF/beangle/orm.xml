@@ -2,7 +2,6 @@
 <orm>
   <mapping class="org.openurp.edu.graduation.audit.model.DefaultMapping" />
   <mapping class="org.openurp.edu.graduation.plan.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.graduation.makeup.model.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.edu.graduation" pluralize="true" schema="edu_graduation"/>
   </naming>
