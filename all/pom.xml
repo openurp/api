@@ -131,12 +131,6 @@
       <artifactId>openurp-sin-harvest-api</artifactId>
       <version>${project.version}</version>
     </dependency>
-
-    <dependency>
-      <groupId>org.openurp.std.base</groupId>
-      <artifactId>openurp-std-base-api</artifactId>
-      <version>${project.version}</version>
-    </dependency>
     <dependency>
       <groupId>org.openurp.std.job</groupId>
       <artifactId>openurp-std-job-api</artifactId>

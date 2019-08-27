@@ -22,17 +22,13 @@ import java.time.LocalDate
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.openurp.base.model.Campus
-import org.openurp.base.model.Department
-import org.openurp.base.model.User
-import org.openurp.edu.base.model.Project
-import org.openurp.edu.base.model.Semester
 import org.beangle.data.model.pojo.Remark
+import org.openurp.base.model.{Campus, Department, User}
+import org.openurp.edu.base.model.{Project, Semester}
 
 /**
  * 监考人员
  * NatureId(teacher,semester)
- *
  * @author chaostone
  */
 class InvigilationQuota extends LongId with Remark {
@@ -49,7 +45,7 @@ class InvigilationQuota extends LongId with Remark {
   /** 次数 */
   var quota: Int = _
 
-  /**监考明细*/
+  /** 监考明细 */
   var details = Collections.newBuffer[InvigilationQuotaDetail]
 
   /** 排除的日期 */
@@ -75,7 +71,7 @@ class InvigilationQuota extends LongId with Remark {
     result
   }
 
-  def clearQuota() {
+  def clearQuota(): Unit = {
     this.quota = 0
     for (iq <- details) {
       iq.quota = 0

@@ -18,7 +18,6 @@
 
   <modules>
     <module>job</module>
-    <module>base</module>
   </modules>
 
   <dependencies>
