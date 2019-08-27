@@ -18,17 +18,16 @@
  */
 package org.openurp.edu.program.plan.model
 
-import scala.collection.mutable.{ Buffer, ListBuffer }
-
-import org.beangle.commons.lang.{ Numbers, Strings }
+import org.beangle.commons.lang.{Numbers, Strings}
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{ Named, Remark }
+import org.beangle.data.model.pojo.Remark
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Terms
 
+import scala.collection.mutable.{Buffer, ListBuffer}
+
 /**
  * 课程设置中的课程组 </p>
- *
  * @author chaostone
  * @since 2009
  */
@@ -100,7 +99,7 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
     (requiredSubCount == children.size && !planCourses.exists(p => !p.compulsory))
   }
 
-  def addGroup(group: AbstractCourseGroup) {
+  def addGroup(group: AbstractCourseGroup): Unit = {
     group.parent = Some(this)
     children += group
   }
@@ -111,20 +110,20 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
     planCourses += planCourse
   }
 
-  def removeCourse(pc: PlanCourse) {
+  def removeCourse(pc: PlanCourse): Unit = {
     planCourses -= pc
   }
 
   /**
    * 添加计划课程
    */
-  def addCourses(planCourses: Iterable[AbstractPlanCourse]) {
+  def addCourses(planCourses: Iterable[AbstractPlanCourse]): Unit = {
     for (element <- planCourses) {
       addCourse(element)
     }
   }
 
-  def follow(plan: CoursePlan) {
+  def follow(plan: CoursePlan): Unit = {
     this.plan = plan
     children.foreach { c =>
       c.follow(plan)

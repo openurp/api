@@ -18,7 +18,6 @@
  */
 package org.openurp.edu.course.model
 
-import org.beangle.data.model.annotation.code
 import org.beangle.data.orm.MappingModule
 import org.openurp.edu.course.code.model.ClazzTag
 

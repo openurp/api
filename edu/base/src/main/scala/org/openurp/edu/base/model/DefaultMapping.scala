@@ -134,6 +134,6 @@ class DefaultMapping extends MappingModule {
 
     bind[TermCampus]
 
-    all.except(classOf[Student], classOf[StudentState]).cacheAll(excepts = Set("Squad.stdStates"))
+    all.except(classOf[Student], classOf[StudentState]).cacheAll()
   }
 }

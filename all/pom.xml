@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.11.0</version>
+    <version>0.11.1</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-all</artifactId>
@@ -129,12 +129,6 @@
     <dependency>
       <groupId>org.openurp.sin.harvest</groupId>
       <artifactId>openurp-sin-harvest-api</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.openurp.std.base</groupId>
-      <artifactId>openurp-std-base-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

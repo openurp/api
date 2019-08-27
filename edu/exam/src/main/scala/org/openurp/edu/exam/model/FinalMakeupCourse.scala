@@ -40,7 +40,7 @@ class FinalMakeupCourse extends LongId {
   /** 补考序号 */
   var crn: String = _
 
-  /**项目*/
+  /** 项目 */
   var project: Project = _
 
   /** 学年学期 */
@@ -70,10 +70,10 @@ class FinalMakeupCourse extends LongId {
   /** 阅卷老师 */
   var teacher: Option[Teacher] = None
 
-  /**成绩录入时间*/
+  /** 成绩录入时间 */
   var inputAt: Option[Instant] = None
 
-  def mergeWith(makeupClazz: FinalMakeupCourse) {
+  def mergeWith(makeupClazz: FinalMakeupCourse): Unit = {
     stdCount += makeupClazz.stdCount
     squads ++= makeupClazz.squads
     for (taker2 <- makeupClazz.takers) {
