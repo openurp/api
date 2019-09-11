@@ -60,14 +60,6 @@ trait StdEnrollment {
  * 学籍信息记录了四部分内容： <li>基本内容 学号、姓名、英文名(拼音)、性别</li> <li>培养内容 项目、年级、院系、专业、方向、班级、培养层次、学习形式、学生分类标签</li> <li>
  * 培养时间 录取时间、入学时间、预计毕业时间、学制</li> <li>学籍状态日志 各时段的是否在校、专业、方向以及学籍状态</li>
  *
- * @depend - - - Gender
- * @depend - - - Department
- * @depend - - - Major
- * @depend - - - Direction
- * @depend - - - StdType
- * @depend - - - StudyType
- * @depend - - - EducationType
- * @has 1..* has 1..* StdLabel
  * @author chaostone
  * @since 2005
  */

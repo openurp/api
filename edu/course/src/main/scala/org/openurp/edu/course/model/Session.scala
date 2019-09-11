@@ -29,8 +29,6 @@ import java.time.LocalDate
  * </p>
  * 上课对象是任务对应的教学班学生
  *
- * @has 1..* AssignedTo 1..* Teacher
- * @depend - - - Clazz
  */
 class Session extends LongId with Ordered[Session] with Activity {
 

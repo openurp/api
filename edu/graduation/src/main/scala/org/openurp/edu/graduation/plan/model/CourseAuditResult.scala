@@ -19,7 +19,6 @@
 package org.openurp.edu.graduation.plan.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.edu.base.model.Course
@@ -38,24 +37,23 @@ class CourseAuditResult extends LongId with Remark {
 
   var compulsory: Boolean = _
 
-  def checkPassed(grades: collection.Seq[CourseGrade]) {
+  def checkPassed(grades: collection.Seq[CourseGrade]): Unit = {
     val sb = new StringBuilder
     if (Collections.isEmpty(grades)) {
       scores = "--"
     } else {
       for (grade <- grades) {
-        sb.append(Strings.defaultIfBlank(grade.scoreText, "--"))
-          .append(" ")
+        sb.append(grade.scoreText.getOrElse("--")).append(" ")
         if (!passed) passed = grade.passed
       }
       scores = sb.toString
     }
   }
 
-  def checkPassed(grades: collection.Seq[CourseGrade], substituteGrades: collection.Seq[CourseGrade]) {
+  def checkPassed(grades: collection.Seq[CourseGrade], substituteGrades: collection.Seq[CourseGrade]): Unit = {
     checkPassed(grades)
-    if (!passed && !substituteGrades.isEmpty) {
-      passed = (substituteGrades.head).asInstanceOf[CourseGrade].passed
+    if (!passed && substituteGrades.nonEmpty) {
+      passed = substituteGrades.head.passed
     }
   }
 

@@ -18,22 +18,17 @@
  */
 package org.openurp.edu.grade.course.model
 
-import scala.collection.mutable.Buffer
-import scala.collection.mutable.ListBuffer
-
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.code.edu.model.CourseTakeType
-import org.openurp.code.edu.model.ExamMode
-import org.openurp.code.edu.model.GradeType
-import org.openurp.code.edu.model.GradingMode
+import org.openurp.code.edu.model.{CourseTakeType, ExamMode, GradeType, GradingMode}
 import org.openurp.edu.base.ProjectBased
 import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.model.Student
+import org.openurp.edu.base.model.{Course, Semester, Student}
 import org.openurp.edu.course.model.Clazz
 import org.openurp.edu.grade.model.Grade
+
+import scala.collection.mutable
 
 /**
  * 课程成绩
@@ -42,13 +37,6 @@ import org.openurp.edu.grade.model.Grade
  * </p>
  * 课程成绩由多个考试成绩组成，一般为平时、期末、补考、缓考、总评等成绩成分。
  *
- * @depend - - - Lesson
- * @depend - - - Course
- * @depend - - - CourseType
- * @depend - - - CourseTakeType
- * @composed 1 has * ExamGrade
- * @depend - - - Project
- * @depend - - - Education
  * @author chaostone
  * @since 2006
  */
@@ -82,16 +70,16 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
    */
   var gp: Option[Float] = None
 
-  /**是否免听*/
+  /** 是否免听 */
   var freeListening: Boolean = false
   /**
    * 总评成绩
    */
-  var gaGrades: Buffer[GaGrade] = new ListBuffer[GaGrade]
+  var gaGrades: mutable.Buffer[GaGrade] = Collections.newBuffer[GaGrade]
   /**
    * 考核成绩
    */
-  var examGrades: Buffer[ExamGrade] = new ListBuffer[ExamGrade]
+  var examGrades: mutable.Buffer[ExamGrade] = Collections.newBuffer[ExamGrade]
 
   /**
    * 考核方式
@@ -100,7 +88,7 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
 
   var score: Option[Float] = None
 
-  var scoreText: String = _
+  var scoreText: Option[String] = None
 
   var passed: Boolean = _
 
@@ -108,7 +96,7 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
 
   var gradingMode: GradingMode = _
 
-  var operator: String = _
+  var operator: Option[String] = None
 
   var clazz: Option[Clazz] = None
 
@@ -120,30 +108,12 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
     else examGrades.find(eg => eg.gradeType == gradeType)
   }
 
-  def getGrade(gradeTypeId: Int): Option[Grade] = {
-    getGrade(new GradeType(gradeTypeId))
-  }
-
-  /**
-   * 得到指定的考试成绩
-   */
-  def getExamGrade(gradeTypeId: Int): Option[ExamGrade] = {
-    getExamGrade(new GradeType(gradeTypeId))
-  }
-
   /**
    * 得到指定的考试成绩
    */
   def getExamGrade(gt: GradeType): Option[ExamGrade] = {
     if (gt.isGa) throw new RuntimeException(s"${gt.id} is not exam grade type")
-    examGrades.find(eg => eg.gradeType == gradeType)
-  }
-
-  /**
-   * 得到指定的总评成绩
-   */
-  def getGaGrade(gradeTypeId: Int): Option[GaGrade] = {
-    getGaGrade(new GradeType(gradeTypeId))
+    examGrades.find(eg => eg.gradeType == gt)
   }
 
   /**
@@ -151,7 +121,14 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
    */
   def getGaGrade(gt: GradeType): Option[GaGrade] = {
     if (!gt.isGa) throw new RuntimeException(s"${gt.id} is not ga grade type")
-    gaGrades.find(eg => eg.gradeType == gradeType)
+    gaGrades.find(eg => eg.gradeType == gt)
+  }
+
+  def getScoreText(gt: GradeType): Option[String] = {
+    getGrade(gt) match {
+      case None => None
+      case Some(g) => g.scoreText
+    }
   }
 
   /**
@@ -175,10 +152,11 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
   def gradeType: GradeType = {
     new GradeType(GradeType.Final)
   }
+
   // 大的成绩放前面
   override def compare(grade: Grade): Int = {
-    if (None == score) return 1
-    else if (None == grade.score) return -1
-    return grade.score.get.compareTo(score.get)
+    if (score.isEmpty) return 1
+    else if (grade.score.isEmpty) return -1
+    grade.score.get.compareTo(score.get)
   }
 }

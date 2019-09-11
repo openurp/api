@@ -18,12 +18,10 @@
  */
 package org.openurp.edu.graduation.plan.domain
 
+import org.beangle.commons.bean.orderings.MultiPropertyOrdering
+import org.beangle.commons.collection.Collections
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.grade.course.model.CourseGrade
-import org.beangle.commons.collection.Collections
-import scala.collection.mutable.Buffer
-import org.beangle.commons.bean.orderings.PropertyOrdering
-import org.beangle.commons.bean.orderings.MultiPropertyOrdering
 
 class StdGrade(val grades: collection.Seq[CourseGrade]) {
 
@@ -51,7 +49,7 @@ class StdGrade(val grades: collection.Seq[CourseGrade]) {
     } else {
       usedCourses += course
       gradeMap.get(course) match {
-        case None    => List.empty
+        case None => List.empty
         case Some(l) => l.toList
       }
     }
@@ -69,14 +67,14 @@ class StdGrade(val grades: collection.Seq[CourseGrade]) {
    * 获得一个课程的成绩，并且会标记该课程已被使用过
    *
    */
-  def addNoGradeCourse(course: Course) {
+  def addNoGradeCourse(course: Course): Unit = {
     noGradeCourses += course
   }
 
   /**
    * 返回每个课程是否通过
    */
-  def getCoursePassedMap(): Map[Long, Boolean] = {
+  def getCoursePassedMap: Map[Long, Boolean] = {
     gradeMap.map {
       case (k, l) => k.id -> l.exists(_.passed)
     }

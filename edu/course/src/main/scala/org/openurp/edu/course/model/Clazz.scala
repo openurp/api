@@ -20,19 +20,15 @@ package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Campus
-import org.openurp.base.model.Department
+import org.beangle.data.model.pojo.{Named, Updated}
+import org.openurp.base.model.{Campus, Department}
 import org.openurp.code.edu.model.TeachLangType
-import org.openurp.edu.base.ProjectBased
-import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.model.Teacher
+import org.openurp.edu.base.model.{Course, Semester, Teacher}
+import org.openurp.edu.base.{ProjectBased, States}
 import org.openurp.edu.course.code.model.ClazzTag
+
+import scala.collection.mutable
 
 /**
  * 教学任务 </p> 每学期开课任务，以此为开始作为排课、排考、成绩录入的依据。代表着从对上课对象和开课院系的完整的教学实际任务信息. <li>
@@ -41,17 +37,6 @@ import org.openurp.edu.course.code.model.ClazzTag
  * <li>4、选课情况（是否预选、选课上下限、实选人数、选课规则）</li> <li>
  * 5、任务要求（教室要求、课程要求（教材、参考书、案例）、是否挂牌、是否双语）</li> <li>6、创建时间、修改时间、备注</li>
  *
- * @depend - - - Course
- * @depend - - - CourseType
- * @depend - - - Department
- * @has 1..* AssignedTo 1..* Teacher
- * @depend - - - Campus
- * @depend - - - TeachClass
- * @depend - - - Semester
- * @depend - - - CourseSchedule
- * @depend - - - ExamSchedule
- * @depend - - - ExamMode
- * @depend - - - Project
  */
 class Clazz extends LongId with ProjectBased with Updated with Cloneable with Named {
 
@@ -61,7 +46,7 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   /** 课程 */
   var course: Course = _
 
-  /**主题*/
+  /** 主题 */
   var subject: Option[String] = None
 
   /** 课程类别 */
@@ -71,7 +56,7 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   var teachDepart: Department = _
 
   /** 授课教师 */
-  var teachers = Collections.newBuffer[Teacher]
+  var teachers: mutable.Buffer[Teacher] = Collections.newBuffer[Teacher]
 
   /** 开课校区 */
   var campus: Campus = _
@@ -100,8 +85,8 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   /** 审核状态 */
   var state: States.State = _
 
-  var tags = Collections.newSet[ClazzTag]
+  var tags:mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]
 
-  /**教学材料*/
+  /** 教学材料 */
   var material: Option[Material] = None
 }

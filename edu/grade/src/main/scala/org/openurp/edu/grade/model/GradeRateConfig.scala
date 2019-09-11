@@ -20,9 +20,9 @@ package org.openurp.edu.grade.model
 
 import java.text.NumberFormat
 
-import scala.collection.mutable.Buffer
-import scala.collection.mutable.ListBuffer
+import org.beangle.commons.collection.Collections
 
+import scala.collection.mutable
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.openurp.code.edu.model.GradingMode
@@ -42,7 +42,7 @@ class GradeRateConfig extends LongId with ProjectBased {
   /**
    * 成绩分级配置项
    */
-  var items: Buffer[GradeRateItem] = new ListBuffer[GradeRateItem]
+  var items: mutable.Buffer[GradeRateItem] =Collections.newBuffer[GradeRateItem]
 
   /**
    * 及格线
@@ -51,11 +51,9 @@ class GradeRateConfig extends LongId with ProjectBased {
 
   /**
    * 将字符串按照成绩记录方式转换成数字.<br>
-   * 空成绩将转换成null
+   * 空成绩将转换成None
    *
-   * @param score
-   *            不能为空
-   * @param gradingMode
+   * @param grade 不能为空
    * @return
    */
   def convert(grade: String): Option[Float] = {
@@ -66,18 +64,14 @@ class GradeRateConfig extends LongId with ProjectBased {
    * 将字符串按照成绩记录方式转换成数字.<br>
    * 空成绩将转换成null
    *
-   * @param score
-   * @param gradingMode
+   * @param score 分数
    * @return
    */
-  def convert(score: Float): String = {
+  def convert(score: Float): Option[String] = {
     if (gradingMode.numerical) {
-      NumberFormat.getInstance.format(score)
+      Some(NumberFormat.getInstance.format(score))
     } else {
-      items.find(_.contains(score)) match {
-        case None    => ""
-        case Some(g) => g.grade
-      }
+      items.find(_.contains(score)).map(_.grade)
     }
   }
 

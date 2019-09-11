@@ -18,23 +18,23 @@
  */
 package org.openurp.edu.graduation.plan.model
 
-import scala.collection.mutable.Buffer
-
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{ Hierarchical, Named }
+import org.beangle.data.model.pojo.{Hierarchical, Named}
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.graduation.plan.domain.GroupResultAdapter
 import org.openurp.edu.program.plan.model.CourseGroup
 
+import scala.collection.mutable.Buffer
+
 object GroupAuditResult {
 
-  def checkPassed(groupResult: GroupAuditResult, isRecursive: Boolean) {
+  def checkPassed(groupResult: GroupAuditResult, isRecursive: Boolean): Unit = {
     if (null == groupResult) {
       return
     }
     var childrenPassed = true
-    if (!groupResult.children.isEmpty) {
+    if (groupResult.children.nonEmpty) {
       val requiredNum = if (groupResult.subCount >= 0) groupResult.subCount else groupResult.children.size
       var passed = 0
       for (childResult <- groupResult.children if !childResult.passed) {
@@ -66,7 +66,7 @@ class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditRes
 
   var planResult: PlanAuditResult = _
 
-  def attachTo(pl: PlanAuditResult) {
+  def attachTo(pl: PlanAuditResult): Unit = {
     planResult = pl
     planResult.groupResults += this
     for (groupResult <- children) {
@@ -74,10 +74,10 @@ class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditRes
     }
   }
 
-  def detach() {
+  def detach(): Unit = {
     if (null != planResult) planResult.groupResults -= this
     planResult = null
-    for (groupResult <- children) groupResult.detach
+    for (groupResult <- children) groupResult.detach()
   }
 
   def this(group: CourseGroup) {
@@ -90,7 +90,7 @@ class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditRes
     if ((null != planResult)) new GroupResultAdapter(planResult) else null
   }
 
-  def addCourseResult(courseResult: CourseAuditResult) {
+  def addCourseResult(courseResult: CourseAuditResult): Unit = {
     courseResult.groupResult = this
     courseResults += courseResult
     if (courseResult.passed) {
@@ -98,11 +98,11 @@ class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditRes
     }
   }
 
-  def updateCourseResult(rs: CourseAuditResult) {
+  def updateCourseResult(rs: CourseAuditResult): Unit = {
     if (rs.passed) addPassedCourse(rs.groupResult, rs.course)
   }
 
-  private def addPassedCourse(groupResult: GroupAuditResult, course: Course) {
+  private def addPassedCourse(groupResult: GroupAuditResult, course: Course): Unit = {
     if (null == groupResult) {
       return
     }
@@ -124,17 +124,17 @@ class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditRes
     }
   }
 
-  def addChild(gr: GroupAuditResult) {
+  def addChild(gr: GroupAuditResult): Unit = {
     gr.parent = Some(this)
     this.children += gr
   }
 
-  def removeChild(gr: GroupAuditResult) {
+  def removeChild(gr: GroupAuditResult): Unit = {
     gr.parent = null
     this.children -= gr
   }
 
-  def checkPassed(isRecursive: Boolean) {
+  def checkPassed(isRecursive: Boolean): Unit = {
     GroupAuditResult.checkPassed(this, isRecursive)
   }
 }

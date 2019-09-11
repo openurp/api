@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.graduation.plan.domain
 
-import org.openurp.edu.graduation.plan.model.{ CourseAuditResult, GroupAuditResult, PlanAuditResult }
+import org.openurp.edu.graduation.plan.model.{CourseAuditResult, GroupAuditResult, PlanAuditResult}
 
 class GroupResultAdapter(var result: PlanAuditResult) extends GroupAuditResult {
 
@@ -27,39 +27,30 @@ class GroupResultAdapter(var result: PlanAuditResult) extends GroupAuditResult {
   planResult = result
   passed = result.passed
 
-  override def removeChild(gr: GroupAuditResult) {
+  override def removeChild(gr: GroupAuditResult): Unit = {
   }
 
-  override def addChild(gr: GroupAuditResult) {
+  override def addChild(gr: GroupAuditResult): Unit = {
     //    this.auditResult = result.auditResult
   }
 
-  override def attachTo(planResult: PlanAuditResult) {
+  override def attachTo(planResult: PlanAuditResult): Unit = {
   }
 
-  override def detach {
+  override def detach(): Unit = {
   }
 
-  override def addCourseResult(courseResult: CourseAuditResult) {
+  override def addCourseResult(courseResult: CourseAuditResult): Unit = {
   }
 
-  override def updateCourseResult(rs: CourseAuditResult) {
+  override def updateCourseResult(rs: CourseAuditResult): Unit = {
   }
 
-  //  override def children: Buffer[GroupAuditResult] = {
-  //    val rs = new collection.mutable.ListBuffer[GroupAuditResult]
-  //    rs ++= result.topGroupResults
-  //    rs
-  //  }
-  //  override def auditStat_=(auditStat: AuditStat) {
-  //    result.auditStat = auditStat
-  //  }
-
-  def checkPassed {
+  def checkPassed(): Unit = {
     GroupAuditResult.checkPassed(this, false)
   }
 
-  override def checkPassed(isRecursive: Boolean) {
+  override def checkPassed(isRecursive: Boolean): Unit = {
     GroupAuditResult.checkPassed(this, isRecursive)
   }
 

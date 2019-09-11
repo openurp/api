@@ -19,9 +19,8 @@
 package org.openurp.edu.grade.course.model
 
 import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.ExamStatus
-import org.openurp.code.edu.model.GradeType
-import org.openurp.code.edu.model.GradingMode
+import org.openurp.code.edu.model.{ExamStatus, GradeType, GradingMode}
+import org.openurp.edu.base.model.Student
 import org.openurp.edu.grade.model.Grade
 
 /**
@@ -29,10 +28,6 @@ import org.openurp.edu.grade.model.Grade
  * </p>
  * 平时成绩,期中成绩,期末成绩,总评成绩,补考成绩,缓考成绩
  *
- * @depend - - - GradeType
- * @depend - - - GradingMode
- * @depend - - - ExamStatus
- * @depend - - - CourseGrade
  * @author chaostone
  * @since 2005
  */
@@ -44,7 +39,7 @@ class ExamGrade extends LongId with Grade {
   /** 得分 */
   var score: Option[Float] = None
   /** 得分字面值 */
-  var scoreText: String = _
+  var scoreText: Option[String] = None
   /** 对应的课程成绩 */
   var courseGrade: CourseGrade = _
   /** 成绩状态 */
@@ -52,21 +47,23 @@ class ExamGrade extends LongId with Grade {
   /** 是否通过 */
   var passed: Boolean = _
   /** 操作者 */
-  var operator: String = _
-  /**考试情况 */
+  var operator: Option[String] = None
+  /** 考试情况 */
   var examStatus: ExamStatus = _
-  /**百分比 */
+  /** 百分比 */
   var percent: Option[Short] = None
 
-  def std = courseGrade.std
+  def std: Student = courseGrade.std
 
   // 大的成绩放前面
   override def compare(grade: Grade): Int = {
     if (null == None) return 1
-    else if (None == grade.score) return -1
-    return grade.score.get.compareTo(score.get)
+    else if (grade.score.isEmpty) return -1
+    grade.score.get.compareTo(score.get)
   }
-  def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: String, gradingMode: GradingMode, passed: Boolean, status: Int) {
+
+  def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: Option[String],
+           gradingMode: GradingMode, passed: Boolean, status: Int) {
     this()
     this.id = id
     this.gradeType = gradeType
