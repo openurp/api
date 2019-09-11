@@ -19,11 +19,8 @@
 package org.openurp.edu.base.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Person
-import org.openurp.base.model.User
+import org.beangle.data.model.pojo.{TemporalOn, Updated}
+import org.openurp.base.model.{Person, User}
 import org.openurp.code.hr.model.WorkStatus
 import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.edu.base.code.model.TeacherType

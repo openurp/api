@@ -18,12 +18,12 @@
  */
 package org.openurp.edu.program.plan.model
 
-import scala.collection.mutable.{ Buffer, ListBuffer }
-
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{ Remark, TemporalOn, Updated }
+import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
 import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.CourseType
+
+import scala.collection.mutable.{Buffer, ListBuffer}
 
 /**
  * 抽象课程方案
@@ -58,9 +58,9 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Tempor
    */
   var state: States.State = States.Draft
 
-  def terms = (endTerm - startTerm + 1).asInstanceOf[Short]
+  def terms: Short = (endTerm - startTerm + 1).asInstanceOf[Short]
 
-  def addGroup(group: CourseGroup) {
+  def addGroup(group: CourseGroup): Unit = {
     groups += group
   }
 

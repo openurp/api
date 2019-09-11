@@ -39,11 +39,6 @@ import org.openurp.edu.base.code.model.StdType
 /**
  * 项目
  *
- * @has 1..* AssignedTo 1..* Department
- * @has 1..* AssignedTo 1..* Education
- * @has 1..* AssignedTo 1..* StudentType
- * @has 1..* AssignedTo 1..* StdLabel
- * @depend - - - Calendar
  */
 class Project extends IntId with Coded with TemporalOn with Updated with Named {
   /** 适用学校 */

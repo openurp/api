@@ -31,15 +31,6 @@ import org.openurp.edu.course.model.Clazz
 /**
  * 考试活动 </p>
  *
- * @depend - - - Semester
- * @depend - - - ExamType
- * @depend - - - Course
- * @has 1..* AssignedTo 1..* Clazz
- * @depend - - - Classroom
- * @depend - - - Teacher
- * @depend - - - Department
- * @depend - - - ExamMonitor
- * @composed 1 has * ExamTake
  */
 class ExamActivity extends LongId with Remark {
   /** 考试类型 */

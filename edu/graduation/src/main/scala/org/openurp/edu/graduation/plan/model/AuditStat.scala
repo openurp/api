@@ -42,11 +42,11 @@ class AuditStat extends Component {
     this.passedCount = totalNum
   }
 
-  def addCredits(credits: Float) {
+  def addCredits(credits: Float): Unit = {
     this.passedCredits += credits
   }
 
-  def addNum(num: Int) {
+  def addNum(num: Int): Unit = {
     this.passedCount += num
   }
 
@@ -68,7 +68,7 @@ class AuditStat extends Component {
     }
   }
 
-  def reduceRequired(credits: Float, num: Int) {
+  def reduceRequired(credits: Float, num: Int): Unit = {
     this.requiredCredits -= credits
     this.requiredCredits = if (this.requiredCredits < 0) 0 else this.requiredCredits
     this.requiredCount -= num

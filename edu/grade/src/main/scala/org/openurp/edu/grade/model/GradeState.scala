@@ -19,10 +19,8 @@
 package org.openurp.edu.grade.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
-import org.openurp.code.edu.model.GradeType
-import org.openurp.code.edu.model.GradingMode
+import org.beangle.data.model.pojo.{TemporalOn, Updated}
+import org.openurp.code.edu.model.{GradeType, GradingMode}
 
 /**
  * 成绩状态表<br>
@@ -52,7 +50,7 @@ trait GradeState extends LongId with TemporalOn with Updated {
   /**
    * 记录方式
    */
-  def gradingMode_=(style: GradingMode)
+  def gradingMode_=(style: GradingMode): Unit
 
   /**
    * 是否提交确认
@@ -72,7 +70,8 @@ trait GradeState extends LongId with TemporalOn with Updated {
   /**
    * 设置新状态
    */
-  def status_=(newStatus: Int)
+  def status_=(newStatus: Int): Unit
+
   /**
    * 返回操作者
    */

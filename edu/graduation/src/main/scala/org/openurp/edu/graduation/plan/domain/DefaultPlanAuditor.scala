@@ -20,11 +20,7 @@ package org.openurp.edu.graduation.plan.domain
 
 import java.time.Instant
 
-import org.openurp.edu.graduation.plan.model.AuditStat
-import org.openurp.edu.graduation.plan.model.CourseAuditResult
-import org.openurp.edu.graduation.plan.model.GroupAuditResult
-import org.openurp.edu.graduation.plan.model.PlanAuditResult
-import org.openurp.edu.program.plan.domain.PlanUtils
+import org.openurp.edu.graduation.plan.model.{AuditStat, CourseAuditResult, GroupAuditResult, PlanAuditResult}
 import org.openurp.edu.program.plan.model.CourseGroup
 
 class DefaultPlanAuditor extends PlanAuditor {
@@ -67,7 +63,7 @@ class DefaultPlanAuditor extends PlanAuditor {
     planAuditResult
   }
 
-  private def auditGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupAuditResult: GroupAuditResult) {
+  private def auditGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupAuditResult: GroupAuditResult): Unit = {
     val planAuditResult = context.result
     courseGroup.children foreach { child =>
       val childResult = DefaultGroupResultBuilder.buildResult(context, child)
@@ -86,8 +82,8 @@ class DefaultPlanAuditor extends PlanAuditor {
 
     courseGroup.planCourses foreach { planCourse =>
       val planCourseAuditResult = new CourseAuditResult(planCourse)
-      var courseGrades = context.stdGrade.useGrades(planCourse.course)
-      if (!courseGrades.isEmpty || planCourse.compulsory) {
+      val courseGrades = context.stdGrade.useGrades(planCourse.course)
+      if (courseGrades.nonEmpty || planCourse.compulsory) {
         planCourseAuditResult.checkPassed(courseGrades)
         groupAuditResult.addCourseResult(planCourseAuditResult)
       }

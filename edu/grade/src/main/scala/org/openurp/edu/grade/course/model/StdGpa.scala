@@ -18,13 +18,12 @@
  */
 package org.openurp.edu.grade.course.model
 
-import scala.collection.mutable
-
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.ProjectBased
-import org.openurp.edu.base.model.Student
+import org.openurp.edu.base.model.{Semester, Student}
+
+import scala.collection.mutable
 
 trait GpaStat {
   /**
@@ -53,12 +52,13 @@ trait GpaStat {
    */
   var count: Int = _
 }
+
 /**
  * 学生成绩绩点统计
  */
 class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
   /**
-   *  学生
+   * 学生
    */
   var std: Student = _
 
@@ -97,7 +97,7 @@ class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
     this.gpa = 0f
   }
 
-  def getGpa(semester: Semester):  Float = {
+  def getGpa(semester: Semester): Float = {
     val gpterm = getStdTermGpa(semester)
     if (null == gpterm) 0 else gpterm.gpa
   }
@@ -116,12 +116,12 @@ class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
     yearGpaCache.get(schoolYear).orNull
   }
 
-  def add(stdTermGpa: StdSemesterGpa) {
+  def add(stdTermGpa: StdSemesterGpa): Unit = {
     stdTermGpa.stdGpa = this
     semesterGpas += stdTermGpa
   }
 
-  def add(stdYearGpa: StdYearGpa) {
+  def add(stdYearGpa: StdYearGpa): Unit = {
     stdYearGpa.stdGpa = this
     yearGpas += stdYearGpa
   }

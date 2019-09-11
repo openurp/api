@@ -42,10 +42,6 @@ import org.openurp.edu.base.code.model.CourseCategory
  * <p>
  * 课程的学历层次可以不加指定，为空时表示适用与对应项目下的所有学历层次。
  *
- * @depend - - - CourseCategory
- * @depend - - - Department
- * @depend - - - CourseType
- * @depend - - - ExamMode
  * @author chaostone
  * @since 2008-09-24
  */
