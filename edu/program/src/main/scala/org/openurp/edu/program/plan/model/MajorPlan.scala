@@ -30,6 +30,12 @@ class MajorPlan extends AbstractCoursePlan with CoursePlan {
    */
   var program: Program = _
 
+  /** 部门 */
+  var department: Option[Department] = None
+
+  /** 学生类别 */
+  var stdType: Option[StdType] = None
+
 }
 
 /**

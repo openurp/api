@@ -61,8 +61,6 @@ class Squad extends LongId with EduLevelBased with Coded with Named with Tempora
   var tutor: Option[Teacher] = None
   /** 学生状态 */
   var stdStates = Collections.newBuffer[StudentState]
-  /**培养方案*/
-  var program: Option[Program] = None
   /**固定校区*/
   var campus: Campus = _
 }

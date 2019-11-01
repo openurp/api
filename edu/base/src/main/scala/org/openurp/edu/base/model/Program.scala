@@ -36,48 +36,51 @@ import org.openurp.edu.base.code.model.CourseType
 
 /**
  * 专业培养方案
+ *
  * @author chaostone
  *
  */
 class Program extends LongId with Updated with Named with Cloneable with TemporalOn with EduLevelBased with Remark {
 
-  /** 年级 */
-  var grade: String = _
+	/** 年级 */
+	var grade: String = _
 
-  /** 部门 */
-  var department: Department = _
+	/** 部门 */
+	var department: Option[Department] = None
 
-  /** 学生类别 */
-  var stdType: StdType = _
+	/** 学生类别 */
+	var stdType: Option[StdType] = None
 
-  /** 专业  */
-  var major: Major = _
+	var camups: Option[Campus] = None
 
-  /** 专业方向 */
-  var direction: Option[Direction] = None
+	/** 专业  */
+	var major: Major = _
 
-  /** 学制  */
-  var duration: Float = _
+	/** 专业方向 */
+	var direction: Option[Direction] = None
 
-  /** 学习形式 */
-  var studyType: StudyType = _
+	/** 学制  */
+	var duration: Float = _
 
-  /** 毕业授予学位 */
-  var degree: Option[Degree] = None
+	/** 学习形式 */
+	var studyType: StudyType = _
 
-  /**学位绩点*/
-  var degreeGpa: Option[Float] = None
+	/** 毕业授予学位 */
+	var degree: Option[Degree] = None
 
-  /** 学期对应校区 */
-  var termCampuses = Collections.newBuffer[TermCampus]
+	/** 学位绩点 */
+	var degreeGpa: Option[Float] = None
 
-  /**  审核状态 */
-  var state: States.State = States.Draft
+	/** 学期对应校区 */
+	var termCampuses = Collections.newBuffer[TermCampus]
 
-  def campuses: Set[Campus] = {
-    termCampuses.map(_.campus).toSet
-  }
+	/** 审核状态 */
+	var state: States.State = States.Draft
 
-  /**多出学分可以冲抵的课程类别*/
-  var offsetType: CourseType = _
+	def campuses: Set[Campus] = {
+		termCampuses.map(_.campus).toSet
+	}
+
+	/** 多出学分可以冲抵的课程类别 */
+	var offsetType: CourseType = _
 }
