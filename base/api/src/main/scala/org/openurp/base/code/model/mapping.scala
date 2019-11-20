@@ -18,9 +18,6 @@
  */
 package org.openurp.base.code.model
 
-import scala.reflect.runtime.universe
-
-import org.beangle.data.model.annotation.code
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {

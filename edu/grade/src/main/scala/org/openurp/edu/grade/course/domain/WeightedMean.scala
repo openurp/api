@@ -20,6 +20,8 @@ package org.openurp.edu.grade.course.domain
 
 import org.openurp.edu.grade.course.model.CourseGrade
 
+/** 加权平均值
+ */
 object WeightedMean {
 
   def calcGa(grades: collection.Iterable[CourseGrade]): Float = {
