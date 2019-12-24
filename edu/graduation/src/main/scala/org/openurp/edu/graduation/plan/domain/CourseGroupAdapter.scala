@@ -20,7 +20,7 @@ package org.openurp.edu.graduation.plan.domain
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.program.plan.model.{CourseGroup, CoursePlan, PlanCourse}
+import org.openurp.edu.program.model.{CourseGroup, CoursePlan, PlanCourse}
 
 class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseGroup {
 

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.model
+package org.openurp.edu.program.model
 
 import org.beangle.commons.lang.{Numbers, Strings}
 import org.beangle.data.model.LongId

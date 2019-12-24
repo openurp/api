@@ -19,20 +19,19 @@
 package org.openurp.edu.student.alter.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.student.info.model.Contact
-import org.openurp.edu.student.info.model.Admission
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    bind[StdAlteration].on(e => declare(
-      e.items is depends("alteration")))
-
-    bind[StdAlterationItem].on(e => declare(
-      e.oldvalue is length(100),
-      e.oldvalue is length(100)))
+    bind[StdAlteration].declare { e =>
+      e.items is depends("alteration")
+    }
+    bind[StdAlterationItem].declare { e =>
+      e.oldvalue is length(100)
+      e.oldvalue is length(100)
+    }
   }
 
 }

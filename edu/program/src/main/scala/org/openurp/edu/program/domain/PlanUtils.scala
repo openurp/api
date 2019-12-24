@@ -16,9 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.domain
+package org.openurp.edu.program.domain
 
-import org.openurp.edu.program.plan.model.CourseGroup
+import org.openurp.edu.program.model.CourseGroup
 
 object PlanUtils {
 

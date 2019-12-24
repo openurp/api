@@ -25,21 +25,23 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    bind[EmploymentStatus].on(e => declare(
-      e.code is (notnull, length(40)),
-      e.name is (notnull, length(80))))
+    bind[EmploymentStatus].declare { e =>
+      e.code is(notnull, length(40))
+      e.name is(notnull, length(80))
+    }
 
-    bind[Graduate].on(e => declare(
-      e.stdSource is length(100),
-      e.session & e.std are notnull))
+    bind[Graduate].declare { e =>
+      e.stdSource is length(100)
+      e.session & e.std are notnull
+    }
+    bind[GraduateSession].declare { e =>
+      e.code is(notnull, length(40))
+      e.name is(notnull, length(80))
+    }
 
-    bind[GraduateSession].on(e => declare(
-      e.code is (notnull, length(40)),
-      e.name is (notnull, length(80))))
-
-    bind[StdEmployment].on(e => declare(
-      e.employmentStatus & e.std are notnull))
-
+    bind[StdEmployment].declare { e =>
+      e.employmentStatus & e.std are notnull
+    }
   }
 
 }

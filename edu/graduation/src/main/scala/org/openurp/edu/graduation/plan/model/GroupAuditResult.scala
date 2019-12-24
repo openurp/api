@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.{Hierarchical, Named}
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.graduation.plan.domain.GroupResultAdapter
-import org.openurp.edu.program.plan.model.CourseGroup
+import org.openurp.edu.program.model.CourseGroup
 
 import scala.collection.mutable.Buffer
 

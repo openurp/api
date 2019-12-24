@@ -16,14 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.model
+package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
 import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.CourseType
 
-import scala.collection.mutable.{Buffer, ListBuffer}
+import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
 
 /**
  * 抽象课程方案
@@ -33,29 +34,22 @@ import scala.collection.mutable.{Buffer, ListBuffer}
  */
 trait AbstractCoursePlan extends LongId with CoursePlan with Updated with TemporalOn with Remark {
 
-  /**
-   * 课程组
-   */
-  var groups: Buffer[CourseGroup] = new ListBuffer[CourseGroup]
+  /** 培养方案 */
+  var program: Program = _
 
-  /**
-   * 要求学分
-   */
+  /** 课程组 */
+  var groups: mutable.Buffer[CourseGroup] = new ListBuffer[CourseGroup]
+
+  /** 要求学分 */
   var credits: Float = _
 
-  /**
-   * 起始学期
-   */
+  /** 起始学期 */
   var startTerm: Short = _
 
-  /**
-   * 结束学期
-   */
+  /** 结束学期 */
   var endTerm: Short = _
 
-  /**
-   * 审核状态
-   */
+  /** 审核状态 */
   var state: States.State = States.Draft
 
   def terms: Short = (endTerm - startTerm + 1).asInstanceOf[Short]
@@ -70,7 +64,7 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Tempor
     res
   }
 
-  override def group(courseType: CourseType): CourseGroup = {
-    groups.find(_.courseType == courseType).orNull
+  override def getGroup(courseType: CourseType): Option[CourseGroup] = {
+    groups.find(_.courseType == courseType)
   }
 }

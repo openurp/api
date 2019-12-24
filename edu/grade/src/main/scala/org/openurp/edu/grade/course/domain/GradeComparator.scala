@@ -20,7 +20,7 @@ package org.openurp.edu.grade.course.domain
 
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.grade.course.model.CourseGrade
-import org.openurp.edu.program.plan.model.AlternativeCourse
+import org.openurp.edu.program.model.AlternativeCourse
 
 /**
  * 成绩比较器

@@ -19,19 +19,17 @@
 package org.openurp.edu.student.registration.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.student.info.model.Contact
-import org.openurp.edu.student.info.model.Admission
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    bind[Register].on(e => declare(
-      e.remark is length(50),
-      e.operateBy is length(50),
-      e.operateIp is length(100)))
-
+    bind[Register].declare { e =>
+      e.remark is length(50)
+      e.operateBy is length(50)
+      e.operateIp is length(100)
+    }
   }
 
 }

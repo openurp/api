@@ -25,20 +25,20 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")
 
-    bind[CourseAuditResult].on(e => declare(
-      e.scores is length(50),
-      e.remark is length(50)))
-
-    bind[GroupAuditResult].on(e => declare(
-      e.name is length(100),
-      e.children is depends("parent"),
-      e.courseResults is depends("groupResult")))
-
-    bind[PlanAuditResult].on(e => declare(
-      e.groupResults is depends("planResult"),
-      e.remark is length(100),
-      e.updates is length(500)))
-
+    bind[CourseAuditResult].declare { e =>
+      e.scores is length(50)
+      e.remark is length(50)
+    }
+    bind[GroupAuditResult].declare { e =>
+      e.name is length(100)
+      e.children is depends("parent")
+      e.courseResults is depends("groupResult")
+    }
+    bind[PlanAuditResult].declare { e =>
+      e.groupResults is depends("planResult")
+      e.remark is length(100)
+      e.updates is length(500)
+    }
     bind[OffsetCredit]
   }
 

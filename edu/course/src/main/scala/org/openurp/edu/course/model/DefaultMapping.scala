@@ -30,41 +30,43 @@ class DefaultMapping extends MappingModule {
     bind[ClazzTag].generator("auto_increment")
 
     //course
-    bind[CourseTaker].on(e => declare(
-      e.remark is length(100)))
+    bind[CourseTaker].declare { e =>
+      e.remark is length(100)
+    }
 
-    bind[Clazz].on(e => declare(
-      e.crn is length(32),
-      e.teachers is ordered,
-      e.name is length(500),
-      e.teachers is ordered,
-      e.enrollment.grade is length(20),
-      e.exam.beginAt is column("exam_begin_at"),
-      e.exam.endAt is column("exam_end_at"),
+    bind[Clazz].declare { e =>
+      e.crn is length(32)
+      e.teachers is ordered
+      e.name is length(500)
+      e.teachers is ordered
+      e.enrollment.grade is length(20)
+      e.exam.beginAt is column("exam_begin_at")
+      e.exam.endAt is column("exam_end_at")
       e.enrollment.courseTakers & e.enrollment.restrictions &
-        e.schedule.sessions are depends("clazz")))
-
-    bind[Restriction].on(e => declare(
-      e.items is depends("group"),
-      e.children is depends("parent")))
-
+        e.schedule.sessions are depends("clazz")
+    }
+    bind[Restriction].declare { e =>
+      e.items is depends("group")
+      e.children is depends("parent")
+    }
     bind[RestrictionItem]
 
     bind[Lesson]
 
     //schedule
-    bind[Session].on(e => declare(
-      e.remark is length(200)))
-
-    bind[ClazzGroup].on(e => declare(
-      e.clazzes is one2many("group")))
-
-    bind[Material] on (e => declare(
-      e.clazz is notnull,
-      e.references is length(500),
-      e.extra is length(200),
-      e.reason is length(300),
-      e.remark is length(200)))
+    bind[Session].declare { e =>
+      e.remark is length(200)
+    }
+    bind[ClazzGroup].declare { e =>
+      e.clazzes is one2many("group")
+    }
+    bind[Material] declare { e =>
+      e.clazz is notnull
+      e.references is length(500)
+      e.extra is length(200)
+      e.reason is length(300)
+      e.remark is length(200)
+    }
   }
 
 }

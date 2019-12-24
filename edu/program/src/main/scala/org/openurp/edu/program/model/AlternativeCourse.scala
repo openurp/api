@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.model
+package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
@@ -24,7 +24,7 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.AcademicLevel
 import org.openurp.edu.base.code.model.StdType
-import org.openurp.edu.base.model.{ Course, Direction, Major, Project, Student }
+import org.openurp.edu.base.model._
 
 /**
  * 课程替代关系.

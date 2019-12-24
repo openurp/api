@@ -26,52 +26,58 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator("auto_increment")
     defaultCache("openurp.base", "read-write")
 
-    bind[School] on (e => declare(
-      e.code is (length(10), unique),
-      e.name is length(50)))
+    bind[School] declare { e =>
+      e.code is(length(10), unique)
+      e.name is length(50)
+    }
 
-    bind[Department] on (e => declare(
-      e.code is length(10),
-      e.name is length(80),
-      e.enName is length(100),
-      e.shortName is length(100),
-      e.indexno is length(20),
-      e.children is depends("parent"),
-      e.remark is length(200)))
+    bind[Department] declare{e =>
+      e.code is length(10)
+      e.name is length(80)
+      e.enName is length(100)
+      e.shortName is length(100)
+      e.indexno is length(20)
+      e.children is depends("parent")
+      e.remark is length(200)
+    }
 
-    bind[Campus] on (e => declare(
-      e.code is length(10),
-      e.name is length(80),
-      e.enName & e.shortName are (length(100)),
-      e.remark is (length(200))))
+    bind[Campus] declare { e =>
+      e.code is length(10)
+      e.name is length(80)
+      e.enName & e.shortName are (length(100))
+      e.remark is (length(200))
+    }
 
-    bind[Building] on (e => declare(
-      e.code is length(10),
-      e.name is length(80),
-      e.enName & e.shortName are (length(100)),
-      e.remark is (length(200))))
+    bind[Building] declare { e =>
+      e.code is length(10)
+      e.name is length(80)
+      e.enName & e.shortName are (length(100))
+      e.remark is (length(200))
+    }
 
-    bind[Room] on (e => declare(
-      e.code is length(10),
-      e.name is length(80),
-      e.remark is (length(200))))
+    bind[Room] declare { e =>
+      e.code is length(10)
+      e.name is length(80)
+      e.remark is (length(200))
+    }
 
-    bind[User] on (e => declare(
-      e.code is length(30),
-      e.name is length(80),
-      e.email is length(80),
-      e.mobile is length(15),
-      e.remark is length(200)))
+    bind[User] declare { e =>
+      e.code is length(30)
+      e.name is length(80)
+      e.email is length(80)
+      e.mobile is length(15)
+      e.remark is length(200)
+    }
 
-    bind[Person].on(e => declare(
-      e.code is (notnull, unique, length(30)),
-      e.name.familyName & e.name.givenName are length(80),
-      e.name.formatedName is length(100),
-      e.name.middleName is length(50),
-      e.formerName & e.phoneticName are length(100)))
+    bind[Person].declare { e =>
+      e.code is(notnull, unique, length(30))
+      e.name.familyName & e.name.givenName are length(80)
+      e.name.formatedName is length(100)
+      e.name.middleName is length(50)
+      e.formerName & e.phoneticName are length(100)
+    }
 
     all.except(classOf[User], classOf[Person]).cacheable()
-
   }
 
 }

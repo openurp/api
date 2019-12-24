@@ -21,7 +21,7 @@ package org.openurp.edu.graduation.plan.domain
 import java.time.Instant
 
 import org.openurp.edu.graduation.plan.model.{AuditStat, CourseAuditResult, GroupAuditResult, PlanAuditResult}
-import org.openurp.edu.program.plan.model.CourseGroup
+import org.openurp.edu.program.model.CourseGroup
 
 class DefaultPlanAuditor extends PlanAuditor {
 
@@ -54,7 +54,7 @@ class DefaultPlanAuditor extends PlanAuditor {
     for (listener <- context.listeners) {
       listener.end(context)
     }
-    context.result.getGroupResult(context.std.program.get.offsetType) foreach { lastTarget =>
+    context.result.getGroupResult(context.coursePlan.program.offsetType) foreach { lastTarget =>
       if (lastTarget.auditStat.passedCredits == 0 && lastTarget.auditStat.requiredCredits == 0 &&
         lastTarget.courseResults.isEmpty) {
         context.result.removeGroupResult(lastTarget)
@@ -70,9 +70,7 @@ class DefaultPlanAuditor extends PlanAuditor {
       groupAuditResult.addChild(childResult)
       planAuditResult.addGroupResult(childResult)
       if (context.listeners.exists(!_.startGroup(context, child, childResult))) {
-        planAuditResult.auditStat.reduceRequired(
-          childResult.auditStat.requiredCredits,
-          childResult.auditStat.requiredCount)
+        planAuditResult.auditStat.reduceRequired(childResult.auditStat.requiredCredits, childResult.auditStat.requiredCount)
         groupAuditResult.removeChild(childResult)
         planAuditResult.removeGroupResult(childResult)
       } else {

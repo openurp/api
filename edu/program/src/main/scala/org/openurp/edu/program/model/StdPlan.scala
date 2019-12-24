@@ -16,36 +16,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.model
+package org.openurp.edu.program.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
-import org.openurp.edu.base.model.{ Course, Terms }
+import org.openurp.edu.base.model.Student
 
 /**
- * 抽象计划内课程
- * @author chaostone
- * @since 2009
+ * 个人计划
  */
-abstract class AbstractPlanCourse extends LongId with PlanCourse with Cloneable with Remark {
-  /**
-   * 课程组
-   */
-  var group: CourseGroup = _
+class StdPlan extends AbstractCoursePlan {
 
-  /**
-   * 课程
-   */
-  var course: Course = _
-
-  /**
-   * 学期
-   */
-  var terms: Terms = _
-
-  /**
-   * 是否必修
-   */
-  var compulsory: Boolean = _
-
+  /** 学生 */
+  var std: Student = _
 }
+
+class StdCourseGroup extends AbstractCourseGroup
+
+class StdPlanCourse extends AbstractPlanCourse

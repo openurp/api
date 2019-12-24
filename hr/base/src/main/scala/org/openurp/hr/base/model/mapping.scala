@@ -28,43 +28,52 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")
 
-    bind[DutyInfo].on(e => declare(
-      e.staff & e.dutyType & e.dutyGrade & e.beginOn are notnull))
+    bind[DutyInfo].declare { e =>
+      e.staff & e.dutyType & e.dutyGrade & e.beginOn are notnull
+    }
 
-    bind[EducationInfo].on(e => declare(
-      e.staff & e.beginOn are notnull,
-      e.certificateNo is length(50),
-      e.major is length(100),
-      e.school is length(200)))
+    bind[EducationInfo].declare { e =>
+      e.staff & e.beginOn are notnull
+      e.certificateNo is length(50)
+      e.major is length(100)
+      e.school is length(200)
+    }
 
-    bind[FamilyMember].on(e => declare(
-      e.name is (notnull, length(50)),
+    bind[FamilyMember].declare { e =>
+      e.name is(notnull, length(50))
       e.staff & e.familyRelationship & e.politicalStatus &
-        e.jobStatus & e.nation & e.country & e.healthStatus are notnull,
-      e.sid is (length(50), notnull)))
+        e.jobStatus & e.nation & e.country & e.healthStatus are notnull
+      e.sid is(length(50), notnull)
+    }
 
     bind[Health]
 
-    bind[PostInfo].on(e => declare(
-      e.staff & e.postType & e.postGrade & e.beginOn are notnull))
+    bind[PostInfo].declare { e =>
+      e.staff & e.postType & e.postGrade & e.beginOn are notnull
+    }
 
-    bind[Staff].on(e => declare(
-      e.code is (notnull, length(30)),
-      e.person is (notnull),
-      e.workStartOn & e.employType & e.employOn are notnull,
-      e.states is (depends("staff")))).generator("auto_increment")
+    bind[Staff].declare { e =>
+      e.code is(notnull, length(30))
+      e.person is (notnull)
+      e.workStartOn & e.employType & e.employOn are notnull
+      e.states is (depends("staff"))
+    }.generator("auto_increment")
 
-    bind[StaffState].on(e => declare(
-      e.staff & e.department & e.status & e.beginOn is notnull))
+    bind[StaffState].declare { e =>
+      e.staff & e.department & e.status & e.beginOn is notnull
+    }
 
-    bind[TitleInfo].on(e => declare(
-      e.staff & e.title & e.beginOn are notnull))
+    bind[TitleInfo].declare{e =>
+      e.staff & e.title & e.beginOn are notnull
+    }
 
-    bind[TutorInfo].on(e => declare(
-      e.staff & e.tutorType & e.beginOn are notnull))
+    bind[TutorInfo].declare { e =>
+      e.staff & e.tutorType & e.beginOn are notnull
+    }
 
-    bind[WorkInfo].on(e => declare(
-      e.staff & e.workPlace & e.beginOn are notnull))
+    bind[WorkInfo].declare { e =>
+      e.staff & e.workPlace & e.beginOn are notnull
+    }
 
   }
 }

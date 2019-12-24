@@ -16,57 +16,52 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.model
+package org.openurp.edu.program.model
 
-import org.openurp.edu.base.model.{ Direction, Program, Terms }
+import org.openurp.base.model.{Campus, Department}
+import org.openurp.edu.base.code.model.StdType
+import org.openurp.edu.base.model.{Direction, Terms}
 
-/**
+/** 执行计划
  * @author chaostone
  */
-class MajorPlan extends AbstractCoursePlan with CoursePlan {
+class ExecutionPlan extends AbstractCoursePlan with CoursePlan {
 
-  /**
-   * 培养方案
-   */
-  var program: Program = _
-
-  /** 部门 */
-  var department: Option[Department] = None
+  /** 部门(培养方案的部门或者子部门) */
+  var department: Department = _
 
   /** 学生类别 */
   var stdType: Option[StdType] = None
 
+  /** 校区 */
+  var campus: Option[Campus] = None
+
 }
 
-/**
- * 专业计划课程组.
- *   @author chaostone
+/** 执行计划课程组
+ *
+ * @author chaostone
  */
-class MajorCourseGroup extends AbstractCourseGroup {
+class ExecutionCourseGroup extends AbstractCourseGroup {
 
-  /**
-   * 自定义别名
-   */
+  /** 自定义别名 */
   var alias: Option[String] = None
 
-  /**
-   * 该组针对的专业方向
-   */
+  /** 该组针对的专业方向 */
   var direction: Option[Direction] = None
 
   override def name: String = {
     val sb = new StringBuilder()
     if (null != courseType) sb.append(courseType.name)
-    alias foreach{x => sb.append(" ").append(x)}
+    alias foreach { x => sb.append(" ").append(x) }
     sb.toString
   }
 
 }
-/**
- * 专业计划课程
- *
+
+/** 执行计划课程
  */
-class MajorPlanCourse extends AbstractPlanCourse with ExecutePlanCourse {
+class ExecutionPlanCourse extends AbstractPlanCourse with Executable {
 
   /** 建议修读学期 */
   var suggestTerms: Terms = Terms.empty

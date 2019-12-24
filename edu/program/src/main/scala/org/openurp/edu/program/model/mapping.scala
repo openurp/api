@@ -18,70 +18,98 @@
  */
 package org.openurp.edu.program.model
 
-import scala.reflect.runtime.universe
-
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.program.plan.model.{ AbstractCourseGroup, AbstractPlanCourse, MajorCourseGroup, MajorAlternativeCourse, MajorPlan, MajorPlanCourse, ShareCourseGroup, SharePlan, SharePlanCourse, StdCourseGroup, StdAlternativeCourse, StdPlan, StdPlanCourse }
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator("date")
 
-    bind[AbstractCourseGroup].on(e => declare(
-      e.indexno is length(20),
-      e.remark is length(200)))
+    bind[Program] declare { e =>
+      e.grade is length(10)
+      e.name is length(100)
+      e.termCampuses is depends("program")
+      e.remark is length(200)
+    }
 
-    bind[AbstractPlanCourse].on(e => declare(
-      e.remark is length(200)))
+    bind[TermCampus]
 
-    bind[MajorCourseGroup].on(e => declare(
-      e.plan is target[MajorPlan],
-      e.parent is target[MajorCourseGroup],
-      e.children is depends(classOf[MajorCourseGroup], "parent"),
-      e.planCourses is depends(classOf[MajorPlanCourse], "group"),
-      e.termCredits is length(40),
-      e.alias is length(100)))
+    bind[AbstractCourseGroup].declare { e =>
+      e.indexno is length(20)
+      e.remark is length(200)
+    }
 
-    bind[MajorPlan].on(e => declare(
-      e.endOn is notnull,
-      e.groups is depends(classOf[MajorCourseGroup], "plan"),
-      e.remark is length(200)))
-
-    bind[MajorPlanCourse].on(e => declare(
-      e.group is target[MajorCourseGroup]))
-
-    bind[ShareCourseGroup].on(e => declare(
-      e.plan is target[SharePlan],
-      e.parent is target[ShareCourseGroup],
-      e.children is depends(classOf[ShareCourseGroup], "parent"),
-      e.planCourses is depends(classOf[SharePlanCourse], "group")))
-
-    bind[SharePlan].on(e => declare(
-      e.endOn is notnull,
-      e.groups is depends(classOf[ShareCourseGroup], "plan"),
-      e.remark is length(200)))
-
-    bind[SharePlanCourse].on(e => declare(
-      e.group is target[ShareCourseGroup]))
-
-    bind[StdCourseGroup].on(e => declare(
-      e.plan is target[StdPlan],
-      e.parent is target[StdCourseGroup],
-      e.children is depends(classOf[StdCourseGroup], "parent"),
-      e.planCourses is depends(classOf[StdPlanCourse], "group")))
-
-    bind[StdPlan].on(e => declare(
-      e.endOn is notnull,
-      e.groups is depends(classOf[StdCourseGroup], "plan"),
-      e.remark is length(200)))
-
-    bind[StdPlanCourse].on(e => declare(
-      e.group is target[StdCourseGroup]))
-
-    bind[MajorAlternativeCourse].on(e => declare(
-      e.fromGrade & e.toGrade are length(10))).table("major_alt_courses")
+    bind[AbstractPlanCourse].declare { e =>
+      e.remark is length(200)
+    }
+    //major plan
+    bind[MajorCourseGroup].declare { e =>
+      e.plan is target[MajorPlan]
+      e.parent is target[MajorCourseGroup]
+      e.children is depends(classOf[MajorCourseGroup], "parent")
+      e.planCourses is depends(classOf[MajorPlanCourse], "group")
+      e.termCredits is length(40)
+      e.alias is length(100)
+    }
+    bind[MajorPlan].declare { e =>
+      e.endOn is notnull
+      e.groups is depends(classOf[MajorCourseGroup], "plan")
+      e.remark is length(200)
+    }
+    bind[MajorPlanCourse].declare { e =>
+      e.group is target[MajorCourseGroup]
+    }
+    // execution plan
+    bind[ExecutionCourseGroup].declare { e =>
+      e.plan is target[ExecutionPlan]
+      e.parent is target[ExecutionCourseGroup]
+      e.children is depends(classOf[ExecutionCourseGroup], "parent")
+      e.planCourses is depends(classOf[ExecutionPlanCourse], "group")
+      e.termCredits is length(40)
+      e.alias is length(100)
+    }
+    bind[ExecutionPlan].declare { e =>
+      e.endOn is notnull
+      e.groups is depends(classOf[ExecutionCourseGroup], "plan")
+      e.remark is length(200)
+    }
+    bind[ExecutionPlanCourse].declare { e =>
+      e.group is target[ExecutionCourseGroup]
+    }
+    //share plan
+    bind[ShareCourseGroup].declare { e =>
+      e.plan is target[SharePlan]
+      e.parent is target[ShareCourseGroup]
+      e.children is depends(classOf[ShareCourseGroup], "parent")
+      e.planCourses is depends(classOf[SharePlanCourse], "group")
+    }
+    bind[SharePlan].declare { e =>
+      e.endOn is notnull
+      e.groups is depends(classOf[ShareCourseGroup], "plan")
+      e.remark is length(200)
+    }
+    bind[SharePlanCourse].declare { e =>
+      e.group is target[ShareCourseGroup]
+    }
+    // std plan
+    bind[StdCourseGroup].declare { e =>
+      e.plan is target[StdPlan]
+      e.parent is target[StdCourseGroup]
+      e.children is depends(classOf[StdCourseGroup], "parent")
+      e.planCourses is depends(classOf[StdPlanCourse], "group")
+    }
+    bind[StdPlan].declare { e =>
+      e.endOn is notnull
+      e.groups is depends(classOf[StdCourseGroup], "plan")
+      e.remark is length(200)
+    }
+    bind[StdPlanCourse].declare { e =>
+      e.group is target[StdCourseGroup]
+    }
+    // alternative course
+    bind[MajorAlternativeCourse].declare { e =>
+      e.fromGrade & e.toGrade are length(10)
+    }.table("major_alt_courses")
 
     bind[StdAlternativeCourse].table("std_alt_courses")
   }

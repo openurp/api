@@ -18,7 +18,6 @@
  */
 package org.openurp.lg.room.model
 
-import scala.reflect.runtime.universe
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
@@ -26,13 +25,14 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")
 
-    bind[Occupancy] on (e => declare(
-      e.room is notnull,
-      e.time.startOn & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull,
-      e.activityType & e.updatedAt & e.userApp & e.activityId are notnull,
-      e.comments is length(300)))
-
-    bind[UserApp] on (e => declare(
-      e.name & e.activityUrl are (length(200), notnull)))
+    bind[Occupancy] declare { e =>
+      e.room is notnull
+      e.time.startOn & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull
+      e.activityType & e.updatedAt & e.userApp & e.activityId are notnull
+      e.comments is length(300)
+    }
+    bind[UserApp] declare { e =>
+      e.name & e.activityUrl are(length(200), notnull)
+    }
   }
 }

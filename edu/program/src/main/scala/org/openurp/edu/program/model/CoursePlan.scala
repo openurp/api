@@ -16,13 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.model
+package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongIdEntity
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.base.model.Program
 
 /**
  * 课程方案
@@ -46,7 +45,7 @@ trait CoursePlan extends LongIdEntity with Cloneable with TemporalOn {
   /**
    * 查询指定类型的组
    */
-  def group(courseType: CourseType): CourseGroup
+  def getGroup(courseType: CourseType): Option[CourseGroup]
 
   /**
    * 获得顶级课程组
@@ -57,6 +56,8 @@ trait CoursePlan extends LongIdEntity with Cloneable with TemporalOn {
    * 这个计划的学期数
    */
   def terms: Short
+
+  def program: Program
 
   def state: States.State
 }

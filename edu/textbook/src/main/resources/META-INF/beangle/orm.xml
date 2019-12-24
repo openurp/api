@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.edu.textbook.clazz.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.textbook.order.model.DefaultMapping" />
+  <mapping class="org.openurp.edu.textbook.model.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.edu.textbook" pluralize="true" schema="edu_textbook"/>
   </naming>

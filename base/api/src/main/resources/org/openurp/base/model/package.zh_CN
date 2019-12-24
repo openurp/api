@@ -32,6 +32,8 @@ Department.parent=上级单位
 Department.children=下级部门集合
 Department.category=部门分类
 Department.school=学校
+Department.campuses=部门对应校区
+
 
 School=学校信息
 School.institution=研究机构

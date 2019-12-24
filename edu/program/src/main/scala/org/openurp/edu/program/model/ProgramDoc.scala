@@ -1,0 +1,80 @@
+/*
+ * OpenURP, Agile University Resource Planning Solution.
+ *
+ * Copyright © 2014, The OpenURP Software.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful.
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+package org.openurp.edu.program.model
+
+import java.util.Locale
+
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.pojo.{Hierarchical, Named, TemporalOn, Updated}
+import org.beangle.data.model.{IntId, LongId}
+import org.openurp.base.model.Department
+import org.openurp.code.edu.model.EducationLevel
+import org.openurp.edu.base.code.model.StdType
+
+import scala.collection.mutable
+
+/** 培养方案文档
+ * 该文档与培养方案一对一
+ */
+class ProgramDoc extends LongId with Updated {
+  /** 语言 */
+  var locale: Locale = _
+  /** 方案 */
+  var program: Program = _
+}
+
+/** 培养方案章节
+ * */
+class ProgramDocSection extends LongId with Named with Hierarchical[ProgramDocSection] {
+
+  /** 内容 */
+  var content: String = _
+
+  /** 文档 */
+  var doc: ProgramDoc = _
+}
+
+/** 培养方案文档模板
+ * 限定在某个层次的,某个部门的文档模板，部门可选
+ */
+class ProgramDocTemplate extends IntId with Named with TemporalOn {
+  /**培养层次*/
+  var level: EducationLevel = _
+  /**部门*/
+  var department: Option[Department] = None
+  /**语言*/
+  var locale: Locale = _
+  /**学生类别*/
+  var stdTypes: mutable.Buffer[StdType] = Collections.newBuffer[StdType]
+}
+
+/** 方案模板章节定义
+ **/
+class ProgramDocMeta extends IntId with Named {
+
+  /**章节编号*/
+  var indexno: String = _
+
+  /**模板*/
+  var template: ProgramDocTemplate = _
+
+  /**最大长度*/
+  var maxlength: Int = _
+
+}

@@ -18,34 +18,29 @@
  */
 package org.openurp.edu.textbook.service
 
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.model.{ Student, Textbook }
-import org.openurp.edu.course.model.{ CourseTaker, Clazz }
+import org.openurp.edu.base.model.{Semester, Student, Textbook}
+import org.openurp.edu.course.model.{Clazz, CourseTaker}
 import org.openurp.edu.textbook.model.StdBookOrder
 
 trait StdBookOrderService {
 
-  def getLessonsHasTextbook(clazzs: Iterable[Clazz]): Set[Long]
+  def getClazzesHasTextbook(clazzs: Iterable[Clazz]): Set[Long]
 
   def getTextbooksForLesson(clazz: Clazz): List[Textbook]
 
   def getTextBookMapByLessons(clazzs: Iterable[Clazz]): Map[Long, List[Textbook]]
 
-  def getLessonsHasOrderTextBook(clazzs: Iterable[Clazz]): Set[Long]
+  def getClazzesHasOrderTextBook(clazzs: Iterable[Clazz]): Set[Long]
 
   def getStdBookOrdersByLesson(clazzId: Clazz, std: Student): List[StdBookOrder]
 
   def getStdBookOrders(std: Student, semester: Semester, clazzId: java.lang.Long): List[StdBookOrder]
 
-  def createStdBookOrders(
-    clazzId:     java.lang.Long,
-    materialNum: Int,
-    semester:    Semester,
-    std:         Student): List[StdBookOrder]
+  def createStdBookOrders(clazzId: java.lang.Long, materialNum: Int, semester: Semester, std: Student): List[StdBookOrder]
 
   def createStdBookOrders(bookMap: Map[Textbook, Integer], semester: Semester, std: Student): List[StdBookOrder]
 
   def getTextBooks(takes: List[CourseTaker]): Map[Clazz, List[Textbook]]
 
-  def getBookLessons(takes: List[CourseTaker]): Map[Textbook, Clazz]
+  def getBookClazzes(takes: List[CourseTaker]): Map[Textbook, Clazz]
 }
