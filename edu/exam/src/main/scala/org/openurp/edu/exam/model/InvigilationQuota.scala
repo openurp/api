@@ -43,7 +43,7 @@ class InvigilationQuota extends LongId with Remark {
   var invigilator: User = _
 
   /** 次数 */
-  var quota: Int = _
+  var amount: Int = _
 
   /** 监考明细 */
   var details = Collections.newBuffer[InvigilationQuotaDetail]
@@ -51,30 +51,30 @@ class InvigilationQuota extends LongId with Remark {
   /** 排除的日期 */
   var excludes = Collections.newBuffer[LocalDate]
 
-  def addQuota(campus: Campus, depart: Department, quota: Float): InvigilationQuotaDetail = {
+  def addQuota(campus: Campus, depart: Department, amount: Float): InvigilationQuotaDetail = {
     var result: InvigilationQuotaDetail = null
     details find (x => x.campus == campus && x.depart == depart) match {
       case None =>
-        val detail = new InvigilationQuotaDetail(campus, depart, quota)
-        detail.invigilationQuota = this
+        val detail = new InvigilationQuotaDetail(campus, depart, amount)
+        detail.quota = this
         this.details += detail
         result = detail
       case Some(detail) =>
-        detail.quota += quota
+        detail.amount += amount
         result = detail
     }
     var sum = 0f
     for (iq <- details) {
-      sum += iq.quota
+      sum += iq.amount
     }
-    this.quota = Math.round(sum).toInt
+    this.amount = Math.round(sum).toInt
     result
   }
 
   def clearQuota(): Unit = {
-    this.quota = 0
+    this.amount = 0
     for (iq <- details) {
-      iq.quota = 0
+      iq.amount = 0
     }
   }
 
@@ -82,13 +82,13 @@ class InvigilationQuota extends LongId with Remark {
     val removed = Collections.newBuffer[InvigilationQuotaDetail]
     var sum = 0d
     for (iq <- details) {
-      if (java.lang.Float.compare(0, iq.quota) == 0) {
+      if (java.lang.Float.compare(0, iq.amount) == 0) {
         removed += iq
       }
-      iq.quota = Math.round(iq.quota).toInt
-      sum += iq.quota
+      iq.amount = Math.round(iq.amount).toInt
+      sum += iq.amount
     }
-    this.quota = sum.toInt
+    this.amount = sum.toInt
     val oldSize = details.size
     details --= removed
     details.size < oldSize
@@ -105,7 +105,7 @@ class InvigilationQuota extends LongId with Remark {
   def getCampusQuota(campus: Campus): Int = {
     var sum = 0d
     for (iq <- details) {
-      if (iq.campus == campus) sum += iq.quota
+      if (iq.campus == campus) sum += iq.amount
     }
     sum.toInt
   }

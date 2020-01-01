@@ -28,32 +28,59 @@ class DefaultMapping extends MappingModule {
     bind[ExamActivity].declare { e =>
       e.examTakers is depends("activity")
       e.remark is length(100)
+      index("idx_exam_activity", true, e.clazz, e.examType)
+      index("idx_exam_activity_semester", false, e.semester)
     }
+
     bind[ExamRoom].declare { e =>
       e.invigilations is depends("examRoom")
       e.examTakers is depends("examRoom")
     }
+
     bind[ExamTask].declare { e =>
       e.examClazzes is depends("task")
+      index("idx_exam_task", true, e.project, e.semester, e.code)
+      index("idx_exam_task_semester", false, e.semester)
+      index("idx_exam_task_group", false, e.group)
     }
-    bind[ExamClazz]
+
+    bind[ExamClazz] declare { e =>
+      index("idx_exam_clazz", true, e.clazz, e.examType)
+      index("idx_exam_clazz_task", false, e.task)
+    }
 
     bind[ExamGroup].declare { e =>
-      e.tasks is one2many("group")
       e.turns is depends("group")
+      e.tasks is one2many("group")
     }
-    bind[ExamTurn]
 
-    bind[ExamTaker]
+    bind[ExamTurn] declare { e =>
+      index("idx_exam_turn_group", false, e.group)
+    }
 
-    bind[Invigilation]
-    bind[InvigilationClazzQuota]
+    bind[ExamTaker] declare { e =>
+      index("idx_exam_taker", true, e.std, e.clazz, e.examType)
+      index("idx_exam_taker_clazz", false, e.clazz)
+      index("idx_exam_taker_exam_room", false, e.examRoom)
+    }
+
+    bind[Invigilation] declare { e =>
+      index("idx_invigilation_exam_room", false, e.examRoom)
+    }
+
+    bind[InvigilationClazzQuota] declare { e =>
+      index("idx_invigilation_clazz_quota", true, e.clazz, e.teacher)
+    }
 
     bind[InvigilationQuota].declare { e =>
       e.details is depends("invigilationQuota")
       e.excludes is eleColumn("exclude_on")
+      index("idx_invigilation_quota", true, e.invigilator, e.semester)
     }
-    bind[InvigilationQuotaDetail]
+
+    bind[InvigilationQuotaDetail] declare { e =>
+      index("idx_invigilation_quota_detail1", false, e.quota)
+    }
 
     bind[RoomGroup]
 
@@ -62,7 +89,11 @@ class DefaultMapping extends MappingModule {
     bind[FinalMakeupCourse].declare { e =>
       e.takers is depends("makeupCourse")
     }
-    bind[FinalMakeupTaker]
+
+    bind[FinalMakeupTaker] declare { e =>
+      index("idx_final_makeup_taker_std", false, e.std)
+      index("idx_final_makeup_taker_course", false, e.makeupCourse)
+    }
   }
 
 }

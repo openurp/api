@@ -30,7 +30,7 @@ import org.beangle.data.model.LongId
 class InvigilationQuotaDetail extends LongId {
 
   /** 监考人配额 */
-  var invigilationQuota: InvigilationQuota = _
+  var quota: InvigilationQuota = _
 
   /** 校区 */
   var campus: Campus = _
@@ -39,13 +39,13 @@ class InvigilationQuotaDetail extends LongId {
   var depart: Department = _
 
   /** 次数 */
-  var quota: Float = _
+  var amount: Float = _
 
-  def this(campus: Campus, depart: Department, quota: Float) {
+  def this(campus: Campus, depart: Department, amount: Float) {
     this()
     this.campus = campus
     this.depart = depart
-    this.quota = quota
+    this.amount = amount
   }
 
 }

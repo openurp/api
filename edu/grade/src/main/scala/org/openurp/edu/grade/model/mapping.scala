@@ -39,56 +39,74 @@ class DefaultMapping extends MappingModule {
       e.scoreText is length(5)
       e.remark is length(200)
       e.examGrades & e.gaGrades are depends("courseGrade")
+
+      index("idx_course_grade", true, e.std, e.course, e.semester)
+      index("idx_course_grade_std", false, e.std)
+      index("idx_course_grade_clazz", false, e.clazz)
+      index("idx_course_grade_project", false, e.project)
     }
-    bind[AbstractGradeState].declare { e =>
-      e.gradingMode & e.beginOn are notnull
-      e.operator is length(100)
-    }
-    bind[CourseGradeState].declare { e =>
-      e.clazz is notnull
-      e.examStates is depends("courseGradeState")
-      e.gaStates is depends("courseGradeState")
-    }
+
     bind[Grade].declare { e =>
       e.gradingMode is notnull
       e.scoreText is length(5)
       e.operator is length(100)
     }
+
     bind[ExamGrade].declare { e =>
-      e.gradeType & e.examStatus & e.courseGrade are notnull
+      index("idx_exam_grade", true, e.courseGrade, e.gradeType)
     }
-    bind[ExamGradeState].declare { e =>
-      e.gradeState & e.gradeType are notnull
-    }
+
     bind[GaGrade].declare { e =>
-      e.gradeType & e.courseGrade is notnull
+      index("idx_exam_grade", true, e.courseGrade, e.gradeType)
     }
+
+    bind[AbstractGradeState].declare { e =>
+      e.gradingMode & e.beginOn are notnull
+      e.operator is length(100)
+    }
+
+    bind[CourseGradeState].declare { e =>
+      e.examStates is depends("courseGradeState")
+      e.gaStates is depends("courseGradeState")
+      index("idx_course_grade_state", false, e.clazz)
+    }
+
+    bind[ExamGradeState].declare { e =>
+      index("idx_exam_grade_state", true, e.gradeState, e.gradeType)
+    }
+
     bind[GaGradeState].declare { e =>
-      e.gradeState is notnull
       e.remark is length(50)
+      index("idx_ga_grade_state", true, e.gradeState, e.gradeType)
     }
+
     bind[StdGpa].declare { e =>
-      e.project & e.std & e.updatedAt are notnull
       e.semesterGpas is depends("stdGpa")
       e.yearGpas is depends("stdGpa")
+      index("idx_std_gpa", true, e.std)
     }
+
     bind[StdSemesterGpa].declare { e =>
-      e.semester & e.stdGpa are notnull
+      index("idx_std_semester_gpa", true, e.stdGpa, e.semester)
     }
+
     bind[StdYearGpa].declare { e =>
-      e.schoolYear & e.stdGpa are notnull
+      index("idx_std_year_gpa", true, e.stdGpa, e.schoolYear)
     }
+
     bind[GradeRateConfig].declare { e =>
       e.gradingMode is notnull
       e.items is depends("config")
     }
+
     bind[GradeRateItem].declare { e =>
       e.config is notnull
     }
+
     bind[MoralGrade].declare { e =>
-      e.std & e.semester & e.gradingMode are notnull
       e.scoreText is length(5)
       e.operator is length(100)
+      index("idx_moral_grade", true, e.std, e.semester)
     }
   }
 
