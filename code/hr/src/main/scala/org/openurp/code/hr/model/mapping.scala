@@ -23,10 +23,12 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[StaffType].on(e => declare(
-      e.children is(depends("parent"), orderby("code"))))
-    bind[StaffSourceType].on(e => declare(
-      e.children is(depends("parent"), orderby("code"))))
+    bind[StaffType].declare { e =>
+      e.children is(depends("parent"), orderby("code"))
+    }
+    bind[StaffSourceType].declare { e =>
+      e.children is(depends("parent"), orderby("code"))
+    }
     bind[WorkStatus]
     bind[EmployType]
 

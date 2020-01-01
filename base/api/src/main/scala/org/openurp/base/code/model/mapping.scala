@@ -18,16 +18,14 @@
  */
 package org.openurp.base.code.model
 
-import scala.reflect.runtime.universe
-
-import org.beangle.data.model.annotation.code
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[UserCategory]
-    bind[DepartmentCategory].on(e => declare(
-      e.children is (depends("parent"))))
+    bind[DepartmentCategory].declare { e =>
+      e.children is (depends("parent"))
+    }
   }
 }

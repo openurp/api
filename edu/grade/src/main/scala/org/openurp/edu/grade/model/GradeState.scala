@@ -27,10 +27,10 @@ import org.openurp.code.edu.model.{GradeType, GradingMode}
  *
  * <pre>
  * 记录了对应教学任务成绩
- * 1)记录方式,
- * 2)各种成绩成分的百分比,
- * 3)各种成绩的确认状态,
- * 4)各种成绩的发布状态
+ * 1)记录方式
+* 2)各种成绩成分的百分比
+* 3)各种成绩的确认状态
+* 4)各种成绩的发布状态
  * </pre>
  *
  * @author 塞外狂人,chaostone

@@ -18,13 +18,8 @@
  */
 package org.openurp.edu.extern.model
 
-import org.beangle.data.model.annotation.code
-import org.beangle.data.orm.MappingModule
-import org.openurp.edu.extern.code.model.ExamCategory
-import org.openurp.edu.extern.code.model.ExamSubject
-import scala.reflect.ManifestFactory.classType
-import scala.reflect.api.materializeTypeTag
-import org.beangle.data.orm.IdGenerator
+import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.openurp.edu.extern.code.model.{ExamCategory, ExamSubject}
 
 class DefaultMapping extends MappingModule {
 
@@ -37,9 +32,10 @@ class DefaultMapping extends MappingModule {
     bind[ExternSchool]
     bind[ExternGrade]
 
-    bind[ExternExamGrade].on(e => declare(
-      e.scoreText is length(5),
-      e.certificate & e.examNo are length(80)))
+    bind[ExternExamGrade].declare { e =>
+      e.scoreText is length(5)
+      e.certificate & e.examNo are length(80)
+    }
   }
 
 }

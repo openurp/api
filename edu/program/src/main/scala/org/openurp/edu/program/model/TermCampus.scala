@@ -16,35 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.domain
+package org.openurp.edu.program.model
 
-import org.openurp.edu.program.plan.model.CoursePlan
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.program.plan.model.StdPlan
-import org.openurp.edu.program.plan.model.MajorPlan
+import org.beangle.data.model.LongId
+import org.openurp.base.model.Campus
+import org.openurp.edu.base.model.Terms
 
 /**
- * 培养计划提供者
- * @author chaostone
- *
+ * 专业培养方案每学期对应校区
  */
-trait CoursePlanProvider {
+class TermCampus extends LongId {
 
-  /**
-   * 获得专业培养计划
-   */
-  def getMajorPlan(student: Student): MajorPlan
+  var program: Program = _
 
-  /**
-   * 获得单个学生的个人计划
-   */
-  def getStdPlan(student: Student): StdPlan
+  /** 对应学期 */
+  var terms: Terms = _
 
-  /**
-   * 获得学生的计划
-   *
-   * @param std
-   * @return
-   */
-  def getCoursePlan(std: Student): CoursePlan
+  /** 校区信息 */
+  var campus: Campus = _
+
 }

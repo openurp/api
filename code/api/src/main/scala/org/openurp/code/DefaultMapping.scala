@@ -26,11 +26,12 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator("code")
     defaultCache("openurp.code", "read-write")
 
-    bind[CodeBean].on(e => declare(
-      e.code is (length(20), unique),
-      e.name is length(100),
-      e.enName is length(300),
-      e.remark is length(200))).cacheable().generator("code")
+    bind[CodeBean].declare { e =>
+      e.code is(length(20), unique)
+      e.name is length(100)
+      e.enName is length(300)
+      e.remark is length(200)
+    }.cacheable().generator("code")
   }
 
 }

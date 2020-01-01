@@ -18,7 +18,6 @@
  */
 package org.openurp.edu.evaluation.department.model
 
-import scala.reflect.runtime.universe
 import org.beangle.data.orm.MappingModule
 
 /**
@@ -30,22 +29,22 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator("auto_increment")
 
     //clazz result
-    bind[DepartEvaluate].on(e => declare(
-      e.department & e.questionnaire & e.evaluateAt & e.semester are notnull,
-      e.questionResults is depends("result"),
-      e.remark is length(20)))
-
-    bind[DepartQuestion].on(e => declare(
-      e.result & e.question & e.score are notnull))
-
-    bind[SupervisiorEvaluate].on(e => declare(
-      e.department & e.questionnaire & e.evaluateAt & e.semester are notnull,
-      e.questionResults is depends("result"),
-      e.remark is length(20)))
-
-    bind[SupervisiorQuestion].on(e => declare(
-      e.result & e.question & e.score are notnull))
-
+    bind[DepartEvaluate].declare { e =>
+      e.department & e.questionnaire & e.evaluateAt & e.semester are notnull
+      e.questionResults is depends("result")
+      e.remark is length(20)
+    }
+    bind[DepartQuestion].declare { e =>
+      e.result & e.question & e.score are notnull
+    }
+    bind[SupervisiorEvaluate].declare { e =>
+      e.department & e.questionnaire & e.evaluateAt & e.semester are notnull
+      e.questionResults is depends("result")
+      e.remark is length(20)
+    }
+    bind[SupervisiorQuestion].declare { e =>
+      e.result & e.question & e.score are notnull
+    }
   }
 
 }

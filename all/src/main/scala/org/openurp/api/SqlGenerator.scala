@@ -18,10 +18,13 @@
  */
 package org.openurp.api
 
+import org.beangle.commons.lang.SystemInfo
 import org.beangle.data.orm.tool.DdlGenerator
 
 object SqlGenerator {
   def main(args: Array[String]): Unit = {
-    DdlGenerator.main(Array("PostgreSQL", "/tmp", "zh_CN", null));
+    val dir = SystemInfo.tmpDir
+    DdlGenerator.main(Array("PostgreSQL", dir, "zh_CN", null))
+    println("genderate ddl in " + dir)
   }
 }

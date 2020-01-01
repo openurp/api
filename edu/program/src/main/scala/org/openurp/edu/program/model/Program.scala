@@ -16,26 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.base.model
+package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Campus
-import org.openurp.base.model.Department
-import org.openurp.code.edu.model.Degree
-import org.openurp.code.edu.model.StudyType
-import org.openurp.edu.base.EduLevelBased
-import org.openurp.edu.base.States
-import org.openurp.edu.base.code.model.StdType
-import org.openurp.edu.base.code.model.CourseType
+import org.beangle.data.model.pojo.{Named, Remark, TemporalOn, Updated}
+import org.openurp.base.model.{Campus, Department}
+import org.openurp.code.edu.model.{Degree, StudyType}
+import org.openurp.edu.base.code.model.{CourseType, StdType}
+import org.openurp.edu.base.model.{Direction, Major}
+import org.openurp.edu.base.{EduLevelBased, States}
 
 /**
  * 专业培养方案
+ *
  * @author chaostone
  *
  */
@@ -47,14 +41,17 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   /** 部门 */
   var department: Department = _
 
-  /** 学生类别 */
-  var stdType: StdType = _
-
   /** 专业  */
   var major: Major = _
 
   /** 专业方向 */
   var direction: Option[Direction] = None
+
+  /** 学生类别 */
+  var stdType: Option[StdType] = None
+
+  /** 校区 */
+  var campus: Option[Campus] = None
 
   /** 学制  */
   var duration: Float = _
@@ -65,19 +62,19 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   /** 毕业授予学位 */
   var degree: Option[Degree] = None
 
-  /**学位绩点*/
+  /** 学位绩点 */
   var degreeGpa: Option[Float] = None
 
   /** 学期对应校区 */
   var termCampuses = Collections.newBuffer[TermCampus]
 
-  /**  审核状态 */
+  /** 审核状态 */
   var state: States.State = States.Draft
+
+  /** 多出学分可以冲抵的课程类别 */
+  var offsetType: CourseType = _
 
   def campuses: Set[Campus] = {
     termCampuses.map(_.campus).toSet
   }
-
-  /**多出学分可以冲抵的课程类别*/
-  var offsetType: CourseType = _
 }

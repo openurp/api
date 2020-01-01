@@ -23,7 +23,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.grade.course.model.CourseGrade
-import org.openurp.edu.program.plan.model.PlanCourse
+import org.openurp.edu.program.model.PlanCourse
 
 class CourseAuditResult extends LongId with Remark {
 

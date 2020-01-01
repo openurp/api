@@ -50,7 +50,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /**课程英文名*/
   var enName: Option[String] = None
   /** 学历层次 */
-  var levels = Collections.newBuffer[AcademicLevel]
+  var levels = Collections.newSet[AcademicLevel]
   /**学分*/
   var credits: Float = _
   /** 学时/总课时 */

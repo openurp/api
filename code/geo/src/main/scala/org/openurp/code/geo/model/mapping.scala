@@ -23,16 +23,19 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[Division].on(e => declare(
-      e.children is(depends("parent"), orderby("code"))))
+    bind[Division].declare { e =>
+      e.children is(depends("parent"), orderby("code"))
+    }
 
-    bind[Country].on(e => declare(
-      e.alpha2Code is(length(2), notnull),
-      e.alpha3Code is(length(3), notnull),
-      e.shortName is (length(50))))
+    bind[Country].declare { e =>
+      e.alpha2Code is(length(2), notnull)
+      e.alpha3Code is(length(3), notnull)
+      e.shortName is (length(50))
+    }
 
-    bind[RailwayStation].on(e => declare(
-      e.jianpin is(length(50), notnull)))
+    bind[RailwayStation].declare { e =>
+      e.jianpin is(length(50), notnull)
+    }
 
     all.cacheAll()
   }

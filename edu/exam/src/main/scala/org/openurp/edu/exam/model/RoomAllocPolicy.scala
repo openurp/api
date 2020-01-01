@@ -23,6 +23,7 @@ object RoomAllocPolicy extends Enumeration {
   class Policy(val name: String, val sameTask: Boolean,
                val sameCourse: Boolean, val sameDepart: Boolean) extends super.Val {
   }
+
   val SameTask = new Policy("只有一个任务", true, true, true)
   val SameCourse = new Policy("只有一个课程", false, true, true)
   val SameDepart = new Policy("只有一个开课院系", false, false, true)

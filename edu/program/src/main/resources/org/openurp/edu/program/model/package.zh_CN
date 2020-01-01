@@ -1,12 +1,36 @@
+Program=专业培养方案
+Program.grade=年级
+Program.department=部门
+Program.education=培养层次
+Program.major=专业
+Program.direction=专业方向
+Program.stdType=学生类别
+Program.duration=学制
+Program.degree=毕业授予学位
+Program.degreeGpa=学位绩点
+Program.studyType=学习形式
+Program.state=状态
+Program.project=项目
+Program.termCampuses=学期对应校区
+Program.campus=校区
+Program.offsetType=任选课类别
+
 MajorCourseGroup=专业计划课程组
 MajorCourseGroup.alias=自定义别名
 MajorCourseGroup.direction=该组针对的专业方向
 
 MajorPlan=专业培养计划
-MajorPlan.program=培养方案
 
 MajorPlanCourse=专业计划课程
 MajorPlanCourse.suggestTerms=建议修读学期
+
+ExecutionCourseGroup=执行计划课程组
+ExecutionCourseGroup.alias=自定义别名
+ExecutionCourseGroup.direction=该组针对的专业方向
+
+ExecutionPlan=执行培养计划
+ExecutionPlanCourse=执行计划课程
+ExecutionPlanCourse.suggestTerms=建议修读学期
 
 ShareCourseGroup=公共共享课程组
 ShareCourseGroup.language=要求外语语种
@@ -20,6 +44,7 @@ SharePlan.project=项目
 SharePlan.education=培养层次
 
 SharePlanCourse=公共共享课程组课程
+SharePlanCourse.terms=学期
 
 StdCourseGroup=学生共享课程组
 
@@ -56,9 +81,21 @@ AbstractPlanCourse.terms=开课学期
 AbstractPlanCourse.compulsory=是否必修
 AbstractPlanCourse.remark=备注
 
-ExecutePlanCourse.department=开课部门
-ExecutePlanCourse.examMode=考核方式
-ExecutePlanCourse.weekstate=开课周
+ProgramDoc=培养方案文档
+ProgramDocSection=培养方案文档章节
+ProgramDocSection.content=内容
+
+ProgramDocTemplate=培养方案文档模板
+ProgramDocTemplat.locale=语言
+ProgramDocTemplat.stdTypes=培养方案文档对应学生类别
+
+ProgramDocMeta=培养方案章节定义
+ProgramDocMeta.indexno=章节编号
+ProgramDocMeta.maxlength=最大长度
+
+Executable.department=开课部门
+Executable.examMode=考核方式
+Executable.weekstate=开课周
 
 AlternativeCourse=课程替代关系
 AlternativeCourse.olds=原课程
@@ -77,3 +114,7 @@ MajorAlternativeCourse.stdType=学生类别
 StdAlternativeCourse=学生替代课程
 StdAlternativeCourse.std=学生
 
+TermCampus=专业所在校区
+TermCampus.campus=校区
+TermCampus.program=培养方案
+TermCampus.terms=学期

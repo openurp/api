@@ -38,7 +38,7 @@ import scala.collection.mutable
  * 课程成绩由多个考试成绩组成，一般为平时、期末、补考、缓考、总评等成绩成分。
  *
  * @author chaostone
- * @since 2006
+ * @since 2014
  */
 class CourseGrade extends LongId with ProjectBased with Grade with Remark {
   /**
@@ -60,7 +60,7 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
   /**
    * 任务序号
    */
-  var crn: Option[String] = None
+  var crn: String = _
   /**
    * 课程类别
    */

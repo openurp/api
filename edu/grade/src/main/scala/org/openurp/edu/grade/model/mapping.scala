@@ -18,18 +18,9 @@
  */
 package org.openurp.edu.grade.model
 
-import org.beangle.data.model.annotation.config
 import org.beangle.data.orm.MappingModule
 import org.openurp.code.edu.model.GradeType
-import org.openurp.edu.grade.course.model.CourseGrade
-import org.openurp.edu.grade.course.model.CourseGradeState
-import org.openurp.edu.grade.course.model.ExamGrade
-import org.openurp.edu.grade.course.model.ExamGradeState
-import org.openurp.edu.grade.course.model.GaGrade
-import org.openurp.edu.grade.course.model.GaGradeState
-import org.openurp.edu.grade.course.model.StdGpa
-import org.openurp.edu.grade.course.model.StdSemesterGpa
-import org.openurp.edu.grade.course.model.StdYearGpa
+import org.openurp.edu.grade.course.model._
 import org.openurp.edu.grade.moral.model.MoralGrade
 
 class DefaultMapping extends MappingModule {
@@ -41,64 +32,82 @@ class DefaultMapping extends MappingModule {
     bind[GradeType]
 
     //grade
-    bind[CourseGrade].on(e => declare(
-      e.crn is length(20),
-      e.course & e.courseTakeType & e.project & e.courseType & e.semester & e.gradingMode are notnull,
-      e.operator is length(100),
-      e.scoreText is length(5),
-      e.remark is length(200),
-      e.examGrades & e.gaGrades are depends("courseGrade")))
+    bind[CourseGrade].declare { e =>
+      e.crn is length(20)
+      e.course & e.courseTakeType & e.project & e.courseType & e.semester & e.gradingMode are notnull
+      e.operator is length(100)
+      e.scoreText is length(5)
+      e.remark is length(200)
+      e.examGrades & e.gaGrades are depends("courseGrade")
 
-    bind[AbstractGradeState].on(e => declare(
-      e.gradingMode & e.beginOn are notnull,
-      e.operator is length(100)))
+      index("idx_course_grade", true, e.std, e.course, e.semester)
+      index("idx_course_grade_std", false, e.std)
+      index("idx_course_grade_clazz", false, e.clazz)
+      index("idx_course_grade_project", false, e.project)
+    }
 
-    bind[CourseGradeState].on(e => declare(
-      e.clazz is notnull,
-      e.examStates is depends("courseGradeState"),
-      e.gaStates is depends("courseGradeState")))
+    bind[Grade].declare { e =>
+      e.gradingMode is notnull
+      e.scoreText is length(5)
+      e.operator is length(100)
+    }
 
-    bind[Grade].on(e => declare(
-      e.gradingMode is notnull,
-      e.scoreText is length(5),
-      e.operator is length(100)))
+    bind[ExamGrade].declare { e =>
+      index("idx_exam_grade", true, e.courseGrade, e.gradeType)
+    }
 
-    bind[ExamGrade].on(e => declare(
-      e.gradeType & e.examStatus & e.courseGrade are notnull))
+    bind[GaGrade].declare { e =>
+      index("idx_exam_grade", true, e.courseGrade, e.gradeType)
+    }
 
-    bind[ExamGradeState].on(e => declare(
-      e.gradeState & e.gradeType are notnull))
+    bind[AbstractGradeState].declare { e =>
+      e.gradingMode & e.beginOn are notnull
+      e.operator is length(100)
+    }
 
-    bind[GaGrade].on(e => declare(
-      e.gradeType & e.courseGrade is notnull))
+    bind[CourseGradeState].declare { e =>
+      e.examStates is depends("courseGradeState")
+      e.gaStates is depends("courseGradeState")
+      index("idx_course_grade_state", false, e.clazz)
+    }
 
-    bind[GaGradeState].on(e => declare(
-      e.gradeState is notnull,
-      e.remark is length(50)))
+    bind[ExamGradeState].declare { e =>
+      index("idx_exam_grade_state", true, e.gradeState, e.gradeType)
+    }
 
-    bind[StdGpa].on(e => declare(
-      e.project & e.std & e.updatedAt are notnull,
-      e.semesterGpas is depends("stdGpa"),
-      e.yearGpas is depends("stdGpa")))
+    bind[GaGradeState].declare { e =>
+      e.remark is length(50)
+      index("idx_ga_grade_state", true, e.gradeState, e.gradeType)
+    }
 
-    bind[StdSemesterGpa].on(e => declare(
-      e.semester & e.stdGpa are notnull))
+    bind[StdGpa].declare { e =>
+      e.semesterGpas is depends("stdGpa")
+      e.yearGpas is depends("stdGpa")
+      index("idx_std_gpa", true, e.std)
+    }
 
-    bind[StdYearGpa].on(e => declare(
-      e.schoolYear & e.stdGpa are notnull))
+    bind[StdSemesterGpa].declare { e =>
+      index("idx_std_semester_gpa", true, e.stdGpa, e.semester)
+    }
 
-    bind[GradeRateConfig].on(e => declare(
-      e.gradingMode is notnull,
-      e.items is depends("config")))
+    bind[StdYearGpa].declare { e =>
+      index("idx_std_year_gpa", true, e.stdGpa, e.schoolYear)
+    }
 
-    bind[GradeRateItem].on(e => declare(
-      e.config is notnull))
+    bind[GradeRateConfig].declare { e =>
+      e.gradingMode is notnull
+      e.items is depends("config")
+    }
 
-    bind[MoralGrade].on(e => declare(
-      e.std & e.semester & e.gradingMode are notnull,
-      e.scoreText is length(5),
-      e.operator is length(100)))
+    bind[GradeRateItem].declare { e =>
+      e.config is notnull
+    }
 
+    bind[MoralGrade].declare { e =>
+      e.scoreText is length(5)
+      e.operator is length(100)
+      index("idx_moral_grade", true, e.std, e.semester)
+    }
   }
 
 }

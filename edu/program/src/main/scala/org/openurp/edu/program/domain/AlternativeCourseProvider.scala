@@ -16,12 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.domain
+package org.openurp.edu.program.domain
 
-import org.openurp.edu.program.plan.model.MajorAlternativeCourse
-import org.openurp.edu.program.plan.model.StdAlternativeCourse
 import org.openurp.edu.base.model.Student
-import org.openurp.edu.program.plan.model.AlternativeCourse
+import org.openurp.edu.program.model.{AlternativeCourse, MajorAlternativeCourse, StdAlternativeCourse}
+import org.openurp.edu.program.model.{MajorAlternativeCourse, StdAlternativeCourse}
 
 trait AlternativeCourseProvider {
   /**

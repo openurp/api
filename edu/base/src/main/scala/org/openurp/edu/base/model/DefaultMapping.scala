@@ -26,113 +26,157 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator("auto_increment")
     defaultCache("openurp.edu.base", "read-write")
 
-    bind[TimeSetting] on (e => declare(
-      e.name is length(20),
-      e.units is depends("setting")))
+    bind[TimeSetting] declare { e =>
+      e.name is length(20)
+      e.units is depends("setting")
+    }
 
-    bind[CourseUnit] on (e => declare(
-      e.enName is length(30),
-      e.name & e.indexno are length(20)))
+    bind[CourseUnit] declare { e =>
+      e.enName is length(30)
+      e.name & e.indexno are length(20)
+    }
 
-    bind[Calendar] on (e => declare(
-      e.semesters is depends("calendar"),
-      e.code is length(10),
-      e.name is length(80)))
+    bind[Calendar] declare { e =>
+      e.semesters is depends("calendar")
+      e.code is length(10)
+      e.name is length(80)
+      index("idx_calendar_code", true, e.school, e.code)
+    }
 
-    bind[Semester].on(e => declare(
-      e.code is length(15),
-      e.name & e.schoolYear are length(10))).generator("code")
+    bind[Semester].declare { e =>
+      e.code is length(15)
+      e.name & e.schoolYear are length(10)
+      index("idx_semester_code", true, e.calendar, e.code)
+    }.generator("code")
 
-    bind[Holiday] on (e => declare(
-      e.name is length(20),
-      e.endOn is notnull))
+    bind[Holiday] declare { e =>
+      e.name is length(20)
+      e.endOn is notnull
+    }
 
-    bind[Squad] on (e => declare(
-      e.code is(length(20), unique),
-      e.name is length(50),
-      e.grade is length(10),
-      e.stdStates is one2many("squad"),
-      e.remark is length(100)))
+    bind[Squad] declare { e =>
+      e.code is length(20)
+      e.name is length(50)
+      e.grade is length(10)
+      e.stdStates is one2many("squad")
+      e.remark is length(100)
+      index("idx_squad", true, e.project, e.code)
+      index("idx_squad_code", false, e.code)
+    }
 
-    bind[Classroom] on (e => declare(
-      e.code is length(20),
-      e.name is length(100)))
+    bind[Classroom] declare { e =>
+      e.code is length(20)
+      e.name is length(100)
+      index("idx_classroom", true, e.project, e.code)
+      index("idx_classroom_code", true, e.code)
+    }
 
-    bind[Course] on (e => declare(
-      e.code is(length(32), unique),
-      e.name is length(222),
-      e.enName is length(300),
-      e.hours is depends("course"),
-      e.remark is length(500)))
+    bind[Course] declare { e =>
+      e.code is(length(32), unique)
+      e.name is length(222)
+      e.enName is length(300)
+      e.hours is depends("course")
+      e.remark is length(500)
+      index("idx_course", true, e.project, e.code)
+      index("idx_course_code", false, e.code)
+    }
 
-    bind[CourseHour].on(e => declare(
-      e.course & e.hourType are notnull))
+    bind[CourseHour].declare { e =>
+      e.course & e.hourType are notnull
+      index("idx_course_hour_course", false, e.course)
+    }
 
-    bind[Direction].on(e => declare(
-      e.code is(length(32), unique),
-      e.name is length(100),
-      e.enName is length(255),
-      e.journals is depends("direction"),
-      e.remark is length(200)))
+    bind[Direction].declare { e =>
+      e.code is(length(32), unique)
+      e.name is length(100)
+      e.enName is length(255)
+      e.journals is depends("direction")
+      e.remark is length(200)
+      index("idx_direction", true, e.project, e.code)
+      index("idx_direction_major", false, e.major)
+    }
 
-    bind[DirectionJournal] on (e => declare(
-      e.remark is length(200)))
+    bind[DirectionJournal] declare { e =>
+      e.remark is length(200)
+      index("idx_direction_journal_d", false, e.direction)
+    }
 
-    bind[Major] on (e => declare(
-      e.code is(length(20), unique),
-      e.name is length(50),
-      e.enName is length(150),
-      e.journals is depends("major"),
-      e.directions is depends("major"),
-      e.disciplines is depends("major"),
-      e.schoolLengths is depends("major"),
-      e.remark is length(100)))
+    bind[Major] declare { e =>
+      e.code is(length(20), unique)
+      e.name is length(50)
+      e.enName is length(150)
+      e.journals is depends("major")
+      e.directions is depends("major")
+      e.disciplines is depends("major")
+      e.schoolLengths is depends("major")
+      e.remark is length(100)
+      index("idx_major", true, e.project, e.code)
+    }
 
-    bind[MajorDiscipline] on (e => declare(
-      e.disciplineCode is length(50)))
+    bind[MajorDiscipline] declare { e =>
+      e.disciplineCode is length(50)
+      index("idx_major_discipline_major", false, e.major)
+    }
 
-    bind[MajorJournal] on (e => declare(
-      e.remark is length(200)))
+    bind[MajorJournal] declare { e =>
+      e.remark is length(200)
+      index("idx_major_journal_major", false, e.major)
+    }
 
-    bind[SchoolLength] on (e => declare(
-      e.fromGrade & e.toGrade are length(10)))
+    bind[SchoolLength] declare { e =>
+      e.fromGrade & e.toGrade are length(10)
+    }
 
-    bind[Program] on (e => declare(
-      e.grade is length(10),
-      e.name is length(100),
-      e.termCampuses is depends("program"),
-      e.remark is length(200)))
+    bind[Project] declare { e =>
+      e.code is(length(10), unique)
+      e.name is length(100)
+      e.departments is ordered
+      e.description is length(500)
+    }
 
-    bind[Project] on (e => declare(
-      e.code is(length(10), unique),
-      e.name is length(100),
-      e.departments is ordered,
-      e.description is length(500)))
+    bind[ProjectCode] declare { e =>
+      e.className is length(100)
+      e.codeIds is length(2000)
+    }
 
-    bind[ProjectCode] on (e => declare(
-      e.className is length(100),
-      e.codeIds is length(2000)))
+    bind[Teacher] declare { e =>
+      index("idx_teacher", true, e.project, e.user)
+      index("idx_teacher_user", false, e.user)
+      index("idx_teacher_project", false, e.project)
+    }
 
-    bind[Teacher]
+    bind[Instructor] declare { e =>
+      index("idx_instructor", true, e.project, e.user)
+      index("idx_instructor_user", false, e.user)
+      index("idx_instructor_project", false, e.project)
+    }
 
-    bind[Instructor]
+    bind[Student] declare { e =>
+      e.code is length(30)
+      e.states is depends("std")
+      e.remark is length(200)
 
-    bind[Student] on (e => declare(
-      e.code is(length(30), unique),
-      e.states is depends("std"),
-      e.remark is length(200)))
+      index("idx_student", true, e.project, e.code)
+      index("idx_student_user", false, e.user)
+      index("idx_student_state", false, e.state)
+      index("idx_student_project", false, e.project)
+    }
 
-    bind[StudentState] on (e => declare(
-      e.remark is length(200)))
+    bind[StudentState] declare { e =>
+      e.remark is length(200)
+      index("idx_student_state_std", false, e.std)
+      index("idx_student_state_department", false, e.department)
+      index("idx_student_state_major", false, e.major)
+      index("idx_student_state_squad", false, e.squad)
+    }
 
-    bind[Textbook] on (e => declare(
-      e.name is length(300),
-      e.isbn is length(100),
-      e.author is length(80),
-      e.edition is length(50),
-      e.description is length(300)))
-
-    bind[TermCampus]
+    bind[Textbook] declare { e =>
+      e.name is length(300)
+      e.isbn is length(100)
+      e.author is length(80)
+      e.edition is length(50)
+      e.description is length(300)
+    }
 
     all.except(classOf[Student], classOf[StudentState]).cacheAll()
   }

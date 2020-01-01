@@ -19,8 +19,7 @@
 package org.openurp.edu.graduation.plan.domain
 
 import org.openurp.edu.graduation.plan.model.GroupAuditResult
-import org.openurp.edu.program.plan.model.CourseGroup
-import org.openurp.edu.program.plan.model.PlanCourse
+import org.openurp.edu.program.model.CourseGroup
 
 trait PlanAuditListener {
 

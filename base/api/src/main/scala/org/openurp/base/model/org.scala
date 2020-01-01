@@ -20,9 +20,11 @@ package org.openurp.base.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ Coded, Hierarchical, Named, Remark, TemporalOn, Updated }
+import org.beangle.data.model.pojo.{Coded, Hierarchical, Named, Remark, TemporalOn, Updated}
 import org.openurp.base.code.model.DepartmentCategory
 import org.openurp.code.edu.model.Institution
+
+import scala.collection.mutable.{Buffer, ListBuffer}
 
 /**
  * 学校
@@ -43,4 +45,6 @@ class Department extends IntId with Coded with Named with Hierarchical[Departmen
   var category: Option[DepartmentCategory] = None
   var teaching: Boolean = _
   var research: Boolean = _
+  /** 校区列表 */
+  var campuses: Buffer[Campus] = new ListBuffer[Campus]
 }

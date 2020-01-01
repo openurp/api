@@ -16,7 +16,6 @@ Squad.project=项目
 Squad.education=培养层次
 Squad.shortName=简称
 Squad.campus=校区
-Squad.program=培养方案
 
 Classroom=教室
 Classroom.room=房间
@@ -110,23 +109,6 @@ SchoolLength.normal=学制
 SchoolLength.minimum=最低学习年限
 SchoolLength.maximum=最长学习年限
 
-Program=专业培养方案
-Program.grade=年级
-Program.department=部门
-Program.education=培养层次
-Program.major=专业
-Program.direction=专业方向
-Program.stdType=学生类别
-Program.duration=学制
-Program.degree=毕业授予学位
-Program.degreeGpa=学位绩点
-Program.studyType=学习形式
-Program.state=状态
-Program.project=项目
-Program.termCampuses=学期对应校区
-Program.campuses=校区
-Program.offsetType=任选课类别
-
 Project=项目
 Project.name=名称
 Project.school=适用学校
@@ -182,7 +164,6 @@ Student.remark=备注
 Student.stdType=学生类别
 Student.studyType=学习形式
 Student.tutor=导师
-Student.program=培养方案
 
 StudentState=学籍状态日志
 StudentState.std=学生
@@ -233,11 +214,6 @@ Instructor.department=院系
 Instructor.project=项目
 Instructor.person=人员信息
 Instructor.user=用户
-
-TermCampus=专业所在校区
-TermCampus.campus=校区
-TermCampus.program=培养方案
-TermCampus.terms=学期
 
 Calendar=日历方案
 Calendar.firstWeekday=每周开始时间

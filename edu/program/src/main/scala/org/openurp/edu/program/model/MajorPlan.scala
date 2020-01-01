@@ -16,48 +16,46 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.program.plan.model
+package org.openurp.edu.program.model
 
-import org.beangle.data.model.pojo.Named
-import org.openurp.code.edu.model.Language
-import org.openurp.edu.base.EduLevelBased
-import org.openurp.edu.base.code.model.CourseAbilityRate
+import org.openurp.edu.base.model.{Direction, Terms}
 
 /**
- * 公共共享计划
- *
  * @author chaostone
  */
-class SharePlan extends AbstractCoursePlan with EduLevelBased with Named with Cloneable {
-
-  /**起始年级*/
-  var fromGrade: String = _
-
-  /**截止年级(包含)*/
-  var toGrade: String = _
-
-}
+class MajorPlan extends AbstractCoursePlan
 
 /**
- * 公共共享课程组(默认实现)
+ * 专业计划课程组.
+ *   @author chaostone
  */
-class ShareCourseGroup extends AbstractCourseGroup {
+class MajorCourseGroup extends AbstractCourseGroup {
 
   /**
-   * 对应外语语种
+   * 自定义别名
    */
-  var language: Option[Language] = None
+  var alias: Option[String] = None
 
   /**
-   * *
-   * 要求语言等级
+   * 该组针对的专业方向
    */
-  var courseAbilityRate: Option[CourseAbilityRate] = None
+  var direction: Option[Direction] = None
+
+  override def name: String = {
+    val sb = new StringBuilder()
+    if (null != courseType) sb.append(courseType.name)
+    alias foreach{x => sb.append(" ").append(x)}
+    sb.toString
+  }
+
 }
-
 /**
- * 公共共享课程组课程
+ * 专业计划课程
  *
- * @author chaostone
  */
-class SharePlanCourse extends AbstractPlanCourse with ExecutePlanCourse
+class MajorPlanCourse extends AbstractPlanCourse with Executable {
+
+  /** 建议修读学期 */
+  var suggestTerms: Terms = Terms.empty
+
+}

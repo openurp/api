@@ -35,7 +35,7 @@ public class SchemaTest {
     factory.setValidating(true);
     try {
       factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
-          "http://www.w3.org/2001/XMLSchema");
+"http://www.w3.org/2001/XMLSchema");
     } catch (IllegalArgumentException ex) {
       ParserConfigurationException pcex = new ParserConfigurationException(
           "Unable to validate using XSD: Your JAXP provider [" + factory
