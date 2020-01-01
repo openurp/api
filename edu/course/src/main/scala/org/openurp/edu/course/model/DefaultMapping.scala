@@ -32,6 +32,8 @@ class DefaultMapping extends MappingModule {
     //course
     bind[CourseTaker].declare { e =>
       e.remark is length(100)
+      index("idx_course_taker", true, e.std, e.course, e.semester)
+      index("idx_course_taker_clazz", false, e.clazz)
     }
 
     bind[Clazz].declare { e =>
@@ -44,29 +46,45 @@ class DefaultMapping extends MappingModule {
       e.exam.endAt is column("exam_end_at")
       e.enrollment.courseTakers & e.enrollment.restrictions &
         e.schedule.sessions are depends("clazz")
+
+      index("idx_clazz", true, e.project, e.semester, e.crn)
+      index("idx_clazz_depart", false, e.project, e.teachDepart)
     }
+
     bind[Restriction].declare { e =>
       e.items is depends("group")
       e.children is depends("parent")
+      index("idx_restriction_clazz", false, e.clazz)
     }
-    bind[RestrictionItem]
 
-    bind[Lesson]
+    bind[RestrictionItem].declare { e =>
+      index("idx_restriction_item_r", false, e.restriction)
+    }
+
+    bind[Lesson] declare { e =>
+      index("idx_lesson_clazz", false, e.clazz)
+    }
 
     //schedule
     bind[Session].declare { e =>
       e.remark is length(200)
+      index("idx_session_clazz", false, e.clazz)
     }
+
     bind[ClazzGroup].declare { e =>
       e.clazzes is one2many("group")
     }
+
     bind[Material] declare { e =>
       e.clazz is notnull
       e.references is length(500)
       e.extra is length(200)
       e.reason is length(300)
       e.remark is length(200)
+
+      index("idx_material_clazz", true, e.clazz)
     }
+
   }
 
 }

@@ -30,7 +30,11 @@ class DefaultMapping extends MappingModule {
       e.time.startOn & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull
       e.activityType & e.updatedAt & e.userApp & e.activityId are notnull
       e.comments is length(300)
+      index("idx_occupancy_room", false, e.room)
+      index("idx_occupancy_activity_id", false, e.activityId)
+      index("idx_occupancy_start_on", false, e.time.startOn)
     }
+
     bind[UserApp] declare { e =>
       e.name & e.activityUrl are(length(200), notnull)
     }
