@@ -40,13 +40,13 @@ class DefaultMapping extends MappingModule {
       e.semesters is depends("calendar")
       e.code is length(10)
       e.name is length(80)
-      index("idx_calendar_code", true, e.school, e.code)
+      index("", true, e.school, e.code)
     }
 
     bind[Semester].declare { e =>
       e.code is length(15)
       e.name & e.schoolYear are length(10)
-      index("idx_semester_code", true, e.calendar, e.code)
+      index("", true, e.calendar, e.code)
     }.generator("code")
 
     bind[Holiday] declare { e =>
@@ -60,15 +60,15 @@ class DefaultMapping extends MappingModule {
       e.grade is length(10)
       e.stdStates is one2many("squad")
       e.remark is length(100)
-      index("idx_squad", true, e.project, e.code)
-      index("idx_squad_code", false, e.code)
+      index("", true, e.project, e.code)
+      index("", false, e.code)
     }
 
     bind[Classroom] declare { e =>
       e.code is length(20)
       e.name is length(100)
-      index("idx_classroom", true, e.project, e.code)
-      index("idx_classroom_code", true, e.code)
+      index("", true, e.project, e.code)
+      index("", true, e.code)
     }
 
     bind[Course] declare { e =>
@@ -77,13 +77,13 @@ class DefaultMapping extends MappingModule {
       e.enName is length(300)
       e.hours is depends("course")
       e.remark is length(500)
-      index("idx_course", true, e.project, e.code)
-      index("idx_course_code", false, e.code)
+      index("", true, e.project, e.code)
+      index("", false, e.code)
     }
 
     bind[CourseHour].declare { e =>
       e.course & e.hourType are notnull
-      index("idx_course_hour_course", false, e.course)
+      index("", false, e.course)
     }
 
     bind[Direction].declare { e =>
@@ -92,13 +92,13 @@ class DefaultMapping extends MappingModule {
       e.enName is length(255)
       e.journals is depends("direction")
       e.remark is length(200)
-      index("idx_direction", true, e.project, e.code)
-      index("idx_direction_major", false, e.major)
+      index("", true, e.project, e.code)
+      index("", false, e.major)
     }
 
     bind[DirectionJournal] declare { e =>
       e.remark is length(200)
-      index("idx_direction_journal_d", false, e.direction)
+      index("", false, e.direction)
     }
 
     bind[Major] declare { e =>
@@ -110,17 +110,17 @@ class DefaultMapping extends MappingModule {
       e.disciplines is depends("major")
       e.schoolLengths is depends("major")
       e.remark is length(100)
-      index("idx_major", true, e.project, e.code)
+      index("", true, e.project, e.code)
     }
 
     bind[MajorDiscipline] declare { e =>
       e.disciplineCode is length(50)
-      index("idx_major_discipline_major", false, e.major)
+      index("", false, e.major)
     }
 
     bind[MajorJournal] declare { e =>
       e.remark is length(200)
-      index("idx_major_journal_major", false, e.major)
+      index("", false, e.major)
     }
 
     bind[SchoolLength] declare { e =>
@@ -140,15 +140,15 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Teacher] declare { e =>
-      index("idx_teacher", true, e.project, e.user)
-      index("idx_teacher_user", false, e.user)
-      index("idx_teacher_project", false, e.project)
+      index("", true, e.project, e.user)
+      index("", false, e.user)
+      index("", false, e.project)
     }
 
     bind[Instructor] declare { e =>
-      index("idx_instructor", true, e.project, e.user)
-      index("idx_instructor_user", false, e.user)
-      index("idx_instructor_project", false, e.project)
+      index("", true, e.project, e.user)
+      index("", false, e.user)
+      index("", false, e.project)
     }
 
     bind[Student] declare { e =>
@@ -156,18 +156,18 @@ class DefaultMapping extends MappingModule {
       e.states is depends("std")
       e.remark is length(200)
 
-      index("idx_student", true, e.project, e.code)
-      index("idx_student_user", false, e.user)
-      index("idx_student_state", false, e.state)
-      index("idx_student_project", false, e.project)
+      index("", true, e.project, e.code)
+      index("", false, e.user)
+      index("", false, e.state)
+      index("", false, e.project)
     }
 
     bind[StudentState] declare { e =>
       e.remark is length(200)
-      index("idx_student_state_std", false, e.std)
-      index("idx_student_state_department", false, e.department)
-      index("idx_student_state_major", false, e.major)
-      index("idx_student_state_squad", false, e.squad)
+      index("", false, e.std)
+      index("", false, e.department)
+      index("", false, e.major)
+      index("", false, e.squad)
     }
 
     bind[Textbook] declare { e =>

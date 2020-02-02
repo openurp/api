@@ -84,9 +84,9 @@ class CourseGradeState extends AbstractGradeState {
 
   def getState(gradeType: GradeType): GradeState = {
     if (gradeType.isGa)
-      gaStates.find(_.gradeType.id == gradeType.id).getOrElse(null)
+      gaStates.find(_.gradeType.id == gradeType.id).orNull
     else
-      examStates.find(_.gradeType.id == gradeType.id).getOrElse(null)
+      examStates.find(_.gradeType.id == gradeType.id).orNull
   }
 
   def getStatus(gradeType: GradeType): Int = {

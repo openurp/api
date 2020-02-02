@@ -27,7 +27,7 @@ class DefaultMapping extends MappingModule {
 
     bind[Syllabus].declare { e =>
       e.course & e.locale & e.attachment & e.passed & e.updatedAt & e.beginOn are notnull
-      e.contents is depends("section")
+      e.contents is depends("syllabus")
       e.attachment.name is(notnull, length(50))
       e.attachment.size is(notnull, column("file_size"))
       e.attachment.key is(notnull, length(200))

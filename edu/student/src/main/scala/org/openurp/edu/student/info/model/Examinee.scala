@@ -19,17 +19,19 @@
 package org.openurp.edu.student.info.model
 
 import java.time.LocalDate
+
 import org.openurp.code.geo.model.Division
 import org.beangle.commons.collection.Collections
 import org.openurp.edu.base.model.Student
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.code.edu.model.EnrollMode
 import org.openurp.code.edu.model.EducationMode
 
 /**
  * 考生信息
  */
-class Examinee extends LongId {
+class Examinee extends LongId with Updated{
 
   /**学生*/
   var std: Student = _

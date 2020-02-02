@@ -24,12 +24,14 @@ import org.openurp.edu.base.model.Student
 import org.openurp.edu.base.model.Major
 import org.openurp.base.model.Department
 import java.time.LocalDate
+
+import org.beangle.data.model.pojo.Updated
 import org.openurp.code.edu.model.EducationMode
 
 /**
  * 录取信息
  */
-class Admission extends LongId {
+class Admission extends LongId with Updated{
 
   /** 学生 */
   var std: Student = _

@@ -33,7 +33,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[TermCampus] declare { e =>
-      index("idx_term_campus_program", true, e.program)
+      index("", true, e.program)
     }
 
     bind[AbstractCourseGroup].declare { e =>
@@ -52,21 +52,21 @@ class DefaultMapping extends MappingModule {
       e.planCourses is depends(classOf[MajorPlanCourse], "group")
       e.termCredits is length(40)
       e.alias is length(100)
-      index("idx_major_plan_group_plan", false, e.plan)
-      index("idx_major_plan_course_parent", false, e.parent)
+      index("", false, e.plan)
+      index("", false, e.parent)
     }
 
     bind[MajorPlan].declare { e =>
       e.endOn is notnull
       e.groups is depends(classOf[MajorCourseGroup], "plan")
       e.remark is length(200)
-      index("idx_major_plan", false, e.program)
+      index("", false, e.program)
     }
 
     bind[MajorPlanCourse].declare { e =>
       e.group is target[MajorCourseGroup]
-      index("idx_major_plan_course", true, e.group, e.course)
-      index("idx_major_plan_course_group", false, e.group)
+      index("", true, e.group, e.course)
+      index("", false, e.group)
     }
 
     // execution plan
@@ -77,21 +77,21 @@ class DefaultMapping extends MappingModule {
       e.planCourses is depends(classOf[ExecutionPlanCourse], "group")
       e.termCredits is length(40)
       e.alias is length(100)
-      index("idx_exe_course_group_plan", false, e.plan)
-      index("idx_exe_course_group_parent", false, e.parent)
+      index("", false, e.plan)
+      index("", false, e.parent)
     }
 
     bind[ExecutionPlan].declare { e =>
       e.endOn is notnull
       e.groups is depends(classOf[ExecutionCourseGroup], "plan")
       e.remark is length(200)
-      index("idx_execution_plan", false, e.program)
+      index("", false, e.program)
     }
 
     bind[ExecutionPlanCourse].declare { e =>
       e.group is target[ExecutionCourseGroup]
-      index("idx_exe_plan_course", true, e.group, e.course)
-      index("idx_exe_plan_course_group", false, e.group)
+      index("", true, e.group, e.course)
+      index("", false, e.group)
     }
 
     //share plan
@@ -100,8 +100,8 @@ class DefaultMapping extends MappingModule {
       e.parent is target[ShareCourseGroup]
       e.children is depends(classOf[ShareCourseGroup], "parent")
       e.planCourses is depends(classOf[SharePlanCourse], "group")
-      index("idx_share_course_group_parent", false, e.parent)
-      index("idx_share_course_group_plan", false, e.plan)
+      index("", false, e.parent)
+      index("", false, e.plan)
     }
 
     bind[SharePlan].declare { e =>
@@ -112,8 +112,8 @@ class DefaultMapping extends MappingModule {
 
     bind[SharePlanCourse].declare { e =>
       e.group is target[ShareCourseGroup]
-      index("idx_share_plan_course", true, e.group, e.course)
-      index("idx_share_plan_course_group", false, e.group)
+      index("", true, e.group, e.course)
+      index("", false, e.group)
     }
 
     // std plan
@@ -122,31 +122,31 @@ class DefaultMapping extends MappingModule {
       e.parent is target[StdCourseGroup]
       e.children is depends(classOf[StdCourseGroup], "parent")
       e.planCourses is depends(classOf[StdPlanCourse], "group")
-      index("idx_std_course_group_parent", false, e.parent)
-      index("idx_std_course_group_plan", false, e.plan)
+      index("", false, e.parent)
+      index("", false, e.plan)
     }
 
     bind[StdPlan].declare { e =>
       e.endOn is notnull
       e.groups is depends(classOf[StdCourseGroup], "plan")
       e.remark is length(200)
-      index("idx_std_plan", true, e.std)
+      index("", true, e.std)
     }
 
     bind[StdPlanCourse].declare { e =>
       e.group is target[StdCourseGroup]
-      index("idx_std_plan_course", true, e.group, e.course)
-      index("idx_std_plan_course_group", false, e.group)
+      index("", true, e.group, e.course)
+      index("", false, e.group)
     }
 
     // alternative course
     bind[MajorAlternativeCourse].declare { e =>
       e.fromGrade & e.toGrade are length(10)
-      index("idx_major_alt_course_project", false, e.project)
+      index("", false, e.project)
     }.table("major_alt_courses")
 
     bind[StdAlternativeCourse].declare { e =>
-      index("idx_std_alt_course_std", false, e.std)
+      index("", false, e.std)
     }.table("std_alt_courses")
   }
 }

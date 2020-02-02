@@ -20,12 +20,13 @@ package org.openurp.edu.student.info.model
 
 import org.openurp.edu.base.model.Student
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.code.geo.model.RailwayStation
 
 /**
  * 家庭信息
  */
-class Home extends LongId {
+class Home extends LongId with Updated{
 
   /**学生*/
   var std: Student = _
