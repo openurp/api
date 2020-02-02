@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.lg</groupId>
     <artifactId>openurp-lg-parent</artifactId>
-    <version>0.12.0</version>
+    <version>0.12.1</version>
   </parent>
   <groupId>org.openurp.lg.room</groupId>
   <artifactId>openurp-lg-room-api</artifactId>

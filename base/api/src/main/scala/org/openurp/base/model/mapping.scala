@@ -39,7 +39,7 @@ class DefaultMapping extends MappingModule {
       e.indexno is length(20)
       e.children is depends("parent")
       e.remark is length(200)
-      index("idx_department_code", true, e.school, e.code)
+      index("", true, e.school, e.code)
     }
 
     bind[Campus] declare { e =>
@@ -47,7 +47,7 @@ class DefaultMapping extends MappingModule {
       e.name is length(80)
       e.enName & e.shortName are (length(100))
       e.remark is (length(200))
-      index("idx_campus_code", true, e.school, e.code)
+      index("", true, e.school, e.code)
     }
 
     bind[Building] declare { e =>
@@ -56,7 +56,7 @@ class DefaultMapping extends MappingModule {
       e.enName & e.shortName are (length(100))
       e.remark is length(200)
 
-      index("idx_building_code", true, e.school, e.code)
+      index("", true, e.school, e.code)
     }
 
     bind[Room] declare { e =>
@@ -64,7 +64,7 @@ class DefaultMapping extends MappingModule {
       e.name is length(80)
       e.remark is length(200)
 
-      index("idx_room_code", true, e.school, e.code)
+      index("", true, e.school, e.code)
     }
 
     bind[User] declare { e =>
@@ -73,7 +73,7 @@ class DefaultMapping extends MappingModule {
       e.email is length(80)
       e.mobile is length(15)
       e.remark is length(200)
-      index("idx_user_code", true, e.school, e.code)
+      index("", true, e.school, e.code)
     }
 
     bind[Person].declare { e =>

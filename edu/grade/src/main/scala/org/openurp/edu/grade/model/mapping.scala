@@ -40,10 +40,10 @@ class DefaultMapping extends MappingModule {
       e.remark is length(200)
       e.examGrades & e.gaGrades are depends("courseGrade")
 
-      index("idx_course_grade", true, e.std, e.course, e.semester)
-      index("idx_course_grade_std", false, e.std)
-      index("idx_course_grade_clazz", false, e.clazz)
-      index("idx_course_grade_project", false, e.project)
+      index("", true, e.std, e.course, e.semester)
+      index("", false, e.std)
+      index("", false, e.clazz)
+      index("", false, e.project)
     }
 
     bind[Grade].declare { e =>
@@ -53,11 +53,11 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ExamGrade].declare { e =>
-      index("idx_exam_grade", true, e.courseGrade, e.gradeType)
+      index("", true, e.courseGrade, e.gradeType)
     }
 
     bind[GaGrade].declare { e =>
-      index("idx_exam_grade", true, e.courseGrade, e.gradeType)
+      index("", true, e.courseGrade, e.gradeType)
     }
 
     bind[AbstractGradeState].declare { e =>
@@ -66,32 +66,32 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[CourseGradeState].declare { e =>
-      e.examStates is depends("courseGradeState")
-      e.gaStates is depends("courseGradeState")
-      index("idx_course_grade_state", false, e.clazz)
+      e.examStates is depends("gradeState")
+      e.gaStates is depends("gradeState")
+      index("", false, e.clazz)
     }
 
     bind[ExamGradeState].declare { e =>
-      index("idx_exam_grade_state", true, e.gradeState, e.gradeType)
+      index("", true, e.gradeState, e.gradeType)
     }
 
     bind[GaGradeState].declare { e =>
       e.remark is length(50)
-      index("idx_ga_grade_state", true, e.gradeState, e.gradeType)
+      index("", true, e.gradeState, e.gradeType)
     }
 
     bind[StdGpa].declare { e =>
       e.semesterGpas is depends("stdGpa")
       e.yearGpas is depends("stdGpa")
-      index("idx_std_gpa", true, e.std)
+      index("", true, e.std)
     }
 
     bind[StdSemesterGpa].declare { e =>
-      index("idx_std_semester_gpa", true, e.stdGpa, e.semester)
+      index("", true, e.stdGpa, e.semester)
     }
 
     bind[StdYearGpa].declare { e =>
-      index("idx_std_year_gpa", true, e.stdGpa, e.schoolYear)
+      index("", true, e.stdGpa, e.schoolYear)
     }
 
     bind[GradeRateConfig].declare { e =>
@@ -106,7 +106,7 @@ class DefaultMapping extends MappingModule {
     bind[MoralGrade].declare { e =>
       e.scoreText is length(5)
       e.operator is length(100)
-      index("idx_moral_grade", true, e.std, e.semester)
+      index("", true, e.std, e.semester)
     }
   }
 

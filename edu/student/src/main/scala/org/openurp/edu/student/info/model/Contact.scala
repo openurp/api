@@ -19,12 +19,13 @@
 package org.openurp.edu.student.info.model
 
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.edu.base.model.Student
 
 /**
  * 联系信息
  */
-class Contact extends LongId {
+class Contact extends LongId with Updated{
 
   /**学生*/
   var std: Student = _

@@ -18,12 +18,11 @@
  */
 package org.openurp.code.geo.model
 
-import org.openurp.code.CodeBean
 import org.beangle.data.model.annotation.code
+import org.openurp.code.CodeBean
 
 /**
  * 火车站
- *
  * @author chaostone
  * @since 2011-7-14
  * @since 3.0.0
@@ -31,6 +30,9 @@ import org.beangle.data.model.annotation.code
 @code("industry")
 class RailwayStation extends CodeBean {
 
-  /**简拼*/
+  /** 简拼 */
   var jianpin: String = _
+
+  /**所属行政区划*/
+  var division: Division = _
 }
