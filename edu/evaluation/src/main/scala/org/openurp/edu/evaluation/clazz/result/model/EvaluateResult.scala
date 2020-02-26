@@ -25,7 +25,7 @@ import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
 import org.openurp.edu.base.model.{ Student, Teacher }
 import org.openurp.edu.evaluation.model.Questionnaire
-import org.openurp.edu.course.model.Clazz
+import org.openurp.edu.clazz.model.Clazz
 
 /**
  * 问卷评教结果

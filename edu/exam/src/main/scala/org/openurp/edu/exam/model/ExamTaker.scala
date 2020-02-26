@@ -24,7 +24,7 @@ import org.openurp.code.edu.model.ExamStatus
 import org.openurp.code.edu.model.ExamType
 import org.openurp.edu.base.model.Semester
 import org.openurp.edu.base.model.Student
-import org.openurp.edu.course.model.Clazz
+import org.openurp.edu.clazz.model.Clazz
 
 /**
  * 应考学生

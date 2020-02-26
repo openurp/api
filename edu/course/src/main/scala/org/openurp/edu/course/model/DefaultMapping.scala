@@ -18,73 +18,41 @@
  */
 package org.openurp.edu.course.model
 
-import org.beangle.data.orm.MappingModule
-import org.openurp.edu.course.code.model.ClazzTag
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
+    defaultIdGenerator(IdGenerator.DateTime)
+    defaultCache("openurp.edu.course", "read-write")
 
-    //code
-    bind[ClazzTag].generator("auto_increment")
-
-    //course
-    bind[CourseTaker].declare { e =>
-      e.remark is length(100)
-      index("", true, e.std, e.course, e.semester)
-      index("", false, e.clazz)
+    bind[Syllabus].declare { e =>
+      e.contents is depends("syllabus")
+      e.attachment.name is(notnull, length(50))
+      e.attachment.size is(notnull, column("file_size"))
+      e.attachment.key is(notnull, length(200))
     }
 
-    bind[Clazz].declare { e =>
-      e.crn is length(32)
-      e.teachers is ordered
-      e.name is length(500)
-      e.teachers is ordered
-      e.enrollment.grade is length(20)
-      e.exam.beginAt is column("exam_begin_at")
-      e.exam.endAt is column("exam_end_at")
-      e.enrollment.courseTakers & e.enrollment.restrictions &
-        e.schedule.sessions are depends("clazz")
-
-      index("", true, e.project, e.semester, e.crn)
-      index("", false, e.project, e.teachDepart)
+    bind[SyllabusSection].declare { e =>
+      e.title & e.syllabus are notnull
+      e.content is length(3900)
     }
 
-    bind[Restriction].declare { e =>
-      e.items is depends("restriction")
-      e.children is depends("parent")
-      index("", false, e.clazz)
+    bind[SyllabusSectionTitle].declare { e =>
+      e.name is(notnull, length(80))
     }
 
-    bind[RestrictionItem].declare { e =>
-      index("", false, e.restriction)
+    bind[CourseBlog] declare { e =>
+      e.description is length(40000)
+      e.enDescription is length(40000)
     }
 
-    bind[Lesson] declare { e =>
-      index("", false, e.clazz)
+    bind[LecturePlan]
+    bind[Syllabus]
+
+    bind[TeacherBlog] declare { e =>
+      e.intro is length(40000)
+      e.harvest is length(40000)
     }
-
-    //schedule
-    bind[Session].declare { e =>
-      e.remark is length(200)
-      index("", false, e.clazz)
-    }
-
-    bind[ClazzGroup].declare { e =>
-      e.clazzes is one2many("group")
-    }
-
-    bind[Material] declare { e =>
-      e.clazz is notnull
-      e.references is length(500)
-      e.extra is length(200)
-      e.reason is length(300)
-      e.remark is length(200)
-
-      index("", true, e.clazz)
-    }
-
   }
-
 }

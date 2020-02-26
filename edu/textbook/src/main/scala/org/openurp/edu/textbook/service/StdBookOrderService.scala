@@ -19,7 +19,7 @@
 package org.openurp.edu.textbook.service
 
 import org.openurp.edu.base.model.{Semester, Student, Textbook}
-import org.openurp.edu.course.model.{Clazz, CourseTaker}
+import org.openurp.edu.clazz.model.{Clazz, CourseTaker}
 import org.openurp.edu.textbook.model.StdBookOrder
 
 trait StdBookOrderService {
