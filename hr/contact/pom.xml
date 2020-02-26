@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.hr</groupId>
     <artifactId>openurp-hr-parent</artifactId>
-    <version>0.13.0</version>
+    <version>0.13.1-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.hr.contact</groupId>
   <artifactId>openurp-hr-contact-api</artifactId>

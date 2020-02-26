@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.edu</groupId>
     <artifactId>openurp-edu-parent</artifactId>
-    <version>0.13.0</version>
+    <version>0.13.1-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.edu.evaluation</groupId>
   <artifactId>openurp-edu-evaluation-api</artifactId>
