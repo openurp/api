@@ -19,7 +19,7 @@
 package org.openurp.edu.textbook.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.course.model.Clazz
+import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.base.model.Textbook
 import java.time.Instant
 

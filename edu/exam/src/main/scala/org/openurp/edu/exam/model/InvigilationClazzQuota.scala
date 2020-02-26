@@ -19,7 +19,7 @@
 package org.openurp.edu.exam.model
 
 import org.openurp.edu.base.model.Teacher
-import org.openurp.edu.course.model.Clazz
+import org.openurp.edu.clazz.model.Clazz
 import org.beangle.data.model.LongId
 import org.openurp.base.model.User
 
@@ -41,7 +41,7 @@ class InvigilationClazzQuota extends LongId {
   var period: Float = _
 
   /** 次数 */
-  var quota: Float = _
+  var amount: Float = _
 
   def this(clazz: Clazz, teacher: Teacher) {
     this()

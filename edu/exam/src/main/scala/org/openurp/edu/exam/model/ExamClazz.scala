@@ -19,7 +19,7 @@
 package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.course.model.Clazz
+import org.openurp.edu.clazz.model.Clazz
 import org.openurp.code.edu.model.ExamType
 
 /**

@@ -81,7 +81,7 @@ ExamTurn.capacity=最大容量
 
 InvigilationClazzQuota=教学任务监考配额统计
 InvigilationClazzQuota.period=学时
-InvigilationClazzQuota.quota=配额
+InvigilationClazzQuota.amount=配额
 InvigilationClazzQuota.ratio=比例
 
 RoomAllocSetting=教室分配设置
@@ -90,11 +90,11 @@ RoomAllocSetting.minCapacity=最小容量
 RoomAllocSetting.allocPolicy=分配策略
 
 InvigilationQuota=监考配额
-InvigilationQuota.quota=配额
+InvigilationQuota.amount=配额
 InvigilationQuota.excludes=排除日期
 
 InvigilationQuotaDetail=监考统计明细
-InvigilationQuotaDetail.quota=配额
+InvigilationQuotaDetail.amount=配额
 
 Invigilation=监考信息
 Invigilation.published=是否发布

@@ -21,7 +21,7 @@ package org.openurp.edu.grade.course.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.annotation.config
 import org.openurp.code.edu.model.{GradeType, GradingMode}
-import org.openurp.edu.course.model.Clazz
+import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.{AbstractGradeState, GradeState}
 
 /**
