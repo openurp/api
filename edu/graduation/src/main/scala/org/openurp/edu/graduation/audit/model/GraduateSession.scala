@@ -22,10 +22,12 @@ import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Project
 import java.time.LocalDate
 
+import org.beangle.data.model.pojo.Updated
+
 /**
  * 毕业批次
  */
-class GraduateSession extends LongId {
+class GraduateSession extends LongId with Updated {
 
   var project: Project = _
 
