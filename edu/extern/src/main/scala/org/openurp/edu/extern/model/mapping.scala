@@ -29,13 +29,24 @@ class DefaultMapping extends MappingModule {
     bind[ExamSubject].generator(IdGenerator.Code)
     bind[ExamCategory].generator(IdGenerator.Code)
 
-    bind[ExternSchool]
+    bind[ExternSchool].generator(IdGenerator.AutoIncrement)
     bind[ExternGrade]
 
     bind[ExternExamGrade].declare { e =>
       e.scoreText is length(5)
       e.certificate & e.examNo are length(80)
     }
+
+    bind[ExternStudent].declare { e =>
+      e.marks is depends("externStudent")
+    }
+
+    bind[ExternMark].declare { e =>
+      e.courseName is length(255)
+      e.scoreText is length(10)
+    }
+
+    bind[ExemptionCredit]
   }
 
 }

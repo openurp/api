@@ -18,41 +18,29 @@
  */
 package org.openurp.edu.extern.model
 
-import java.time.LocalDate
-
-import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.EduCategory
-import org.openurp.code.edu.model.EducationLevel
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.grade.course.model.CourseGrade
 import org.beangle.commons.collection.Collections
-import scala.collection.mutable.Buffer
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.openurp.code.edu.model.{EduCategory, EducationLevel}
+import org.openurp.edu.base.States
+import org.openurp.edu.base.model.Student
+
+import scala.collection.mutable;
 
 /**
- * 外校成绩
+ * 外部学习经历
  */
-class ExternGrade extends LongId {
-
-  var school: ExternSchool = _
-
-  var level: EducationLevel = _
-
-  var category: EduCategory = _
-
+class ExternStudent extends LongId with Updated with DateRange {
+  var std: Student = null
+  var school: ExternSchool = null
   var majorName: Option[String] = None
-
-  var courseName: String = _
-
+  var level: EducationLevel = null
+  var category: EduCategory = null
+  var marks: mutable.Buffer[ExternMark] = Collections.newBuffer[ExternMark]
+  var transcriptPath: Option[String] = None
+  /** 审核状态 */
+  var state: States.State = States.Draft
+  var auditOpinion: Option[String] = None
   var credits: Float = _
-
-  var std: Student = _
-
-  var acquiredOn: LocalDate = _
-
-  var scoreText: String = _
-
-  var passed: Boolean = _
-
-  var grades: Buffer[CourseGrade] = Collections.newBuffer[CourseGrade]
-
+  var exemptionCredits: Float = _
 }

@@ -18,16 +18,14 @@
  */
 package org.openurp.edu.extern.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.edu.base.ProjectBased
+import org.beangle.data.model.LongId
+import org.openurp.edu.base.model.Student
 
+class ExemptionCredit extends LongId {
 
-/**
- * 校外教育机构
- */
-class ExternSchool extends IntId with ProjectBased
-  with Named with Updated with TemporalOn with Coded {
+  var std: Student = _
 
+  var exempted: Float = _
+
+  var maxValue: Float = _
 }
-
