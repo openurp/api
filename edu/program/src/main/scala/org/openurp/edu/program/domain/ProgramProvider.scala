@@ -18,35 +18,11 @@
  */
 package org.openurp.edu.program.domain
 
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.program.model.{CoursePlan, ExecutionPlan, MajorPlan, StdPlan}
+import org.openurp.edu.base.model.{Student, StudentState}
+import org.openurp.edu.program.model.Program
 
-/**
- * 培养计划提供者
- * @author chaostone
- *
- */
-trait CoursePlanProvider {
-  /**
-   * 获得原始专业培养计划
-   */
-  def getMajorPlan(student: Student): Option[MajorPlan]
+trait ProgramProvider {
+  def getProgram(std: Student): Option[Program]
 
-  /**
-   * 获得执行专业培养计划
-   */
-  def getExecutionPlan(student: Student): Option[ExecutionPlan]
-
-  /**
-   * 获得单个学生的个人计划
-   */
-  def getStdPlan(student: Student): Option[StdPlan]
-
-  /**
-   * 获得学生的计划
-   *
-   * @param std
-   * @return
-   */
-  def getCoursePlan(std: Student): Option[CoursePlan]
+  def getProgram(state: StudentState): Option[Program]
 }
