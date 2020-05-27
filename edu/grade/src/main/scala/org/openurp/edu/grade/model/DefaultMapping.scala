@@ -27,7 +27,7 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator(IdGenerator.DateTime)
 
     //code
-    bind[GradeType]
+    bind[GradeType].generator(IdGenerator.AutoIncrement)
 
     bind[Grade].declare { e =>
       e.gradingMode is notnull
