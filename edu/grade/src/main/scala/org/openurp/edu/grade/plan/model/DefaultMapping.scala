@@ -16,21 +16,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.domain
+package org.openurp.edu.grade.plan.model
 
-import org.beangle.commons.collection.Collections
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.graduation.plan.model.PlanAuditResult
-import org.openurp.edu.program.model.CoursePlan
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
-class PlanAuditContext(val std: Student, val coursePlan: CoursePlan, val stdGrade: StdGrade, val listeners: collection.Seq[PlanAuditListener]) {
+class DefaultMapping extends MappingModule {
 
-  var result: PlanAuditResult = _
+  def binding(): Unit = {
+    defaultIdGenerator(IdGenerator.DateTime)
 
-  val params = Collections.newMap[String, Any]
-
-  def getParam[T](paramName: String, clazz: Class[T]): T = {
-    params.get(paramName).orNull.asInstanceOf[T]
+    bind[CourseAuditResult].declare { e =>
+      e.scores is length(50)
+      e.remark is length(50)
+    }
+    bind[GroupAuditResult].declare { e =>
+      e.name is length(100)
+      e.children is depends("parent")
+      e.courseResults is depends("groupResult")
+    }
+    bind[PlanAuditResult].declare { e =>
+      e.groupResults is depends("planResult")
+      e.remark is length(100)
+      e.updates is length(500)
+    }
   }
 
 }

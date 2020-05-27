@@ -16,30 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.model
+package org.openurp.edu.extern.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.openurp.edu.base.model.Student
 
-class DefaultMapping extends MappingModule {
+class ExemptionCredit extends LongId {
 
-  def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
+  var std: Student = _
 
-    bind[CourseAuditResult].declare { e =>
-      e.scores is length(50)
-      e.remark is length(50)
-    }
-    bind[GroupAuditResult].declare { e =>
-      e.name is length(100)
-      e.children is depends("parent")
-      e.courseResults is depends("groupResult")
-    }
-    bind[PlanAuditResult].declare { e =>
-      e.groupResults is depends("planResult")
-      e.remark is length(100)
-      e.updates is length(500)
-    }
-    bind[OffsetCredit]
-  }
+  var exempted: Float = _
 
+  var maxValue: Float = _
 }

@@ -16,13 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.model
+package org.openurp.edu.grade.plan.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Hierarchical, Named}
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Course
-import org.openurp.edu.graduation.plan.domain.GroupResultAdapter
+import org.openurp.edu.grade.plan.domain.GroupResultAdapter
 import org.openurp.edu.program.model.CourseGroup
 
 import scala.collection.mutable.Buffer

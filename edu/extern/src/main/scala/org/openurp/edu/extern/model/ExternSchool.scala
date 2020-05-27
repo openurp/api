@@ -19,12 +19,15 @@
 package org.openurp.edu.extern.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
 import org.openurp.edu.base.ProjectBased
+
 
 /**
  * 校外教育机构
  */
-class ExternSchool extends IntId with ProjectBased with Named {
+class ExternSchool extends IntId with ProjectBased
+  with Named with Updated with TemporalOn with Coded {
 
 }
+

@@ -13,7 +13,7 @@ ExternGrade.std=学生
 ExternGrade.score=分数
 ExternGrade.credits=学分
 ExternGrade.majorName=专业名称
-ExternGrade.courseGrades=外校成绩认定结果
+ExternGrade.grades=外校成绩认定结果
 
 ExternExamGrade=考试成绩
 ExternExamGrade.std=学生
@@ -28,3 +28,22 @@ ExternExamGrade.examStatus=考试情况
 ExternExamGrade.acquiredOn=获得日期
 ExternExamGrade.grades=证书成绩认定结果
 ExternExamGrade.status=状态
+
+ExternStudent=外校学习经历
+ExternStudent.majorName=学习专业名称
+ExternStudent.transcriptPath=成绩证明附件的存储路径
+ExternStudent.state=审核状态
+ExternStudent.auditOpinion=审核意见
+ExternStudent.credits=校外学习课程总学分
+ExternStudent.exemptionCredits=免修校内课程总学分
+
+ExternMark=外校原始课程成绩
+ExternMark.acquiredOn=成绩获得年月
+ExternMark.courseName=课程名称
+ExternMark.credits=学分
+ExternMark.scoreText=分数或等级
+ExternMark.courses=冲抵课程
+
+ExemptionCredit=免修学分上限
+ExemptionCredit.exempted=已免修学分数
+ExemptionCredit.maxValue=免修学分总和的最大值

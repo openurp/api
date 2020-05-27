@@ -53,6 +53,6 @@ class ExternGrade extends LongId {
 
   var passed: Boolean = _
 
-  var courseGrades: Buffer[CourseGrade] = Collections.newBuffer[CourseGrade]
+  var grades: Buffer[CourseGrade] = Collections.newBuffer[CourseGrade]
 
 }

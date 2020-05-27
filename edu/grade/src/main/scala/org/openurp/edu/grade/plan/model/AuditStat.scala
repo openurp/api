@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.model
+package org.openurp.edu.grade.plan.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.Component

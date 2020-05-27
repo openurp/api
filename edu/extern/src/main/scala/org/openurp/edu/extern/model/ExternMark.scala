@@ -16,23 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.domain
+package org.openurp.edu.extern.model
 
-import org.openurp.edu.graduation.plan.model.GroupAuditResult
-import org.openurp.edu.program.model.CourseGroup
+import java.time.LocalDate
 
-object DefaultGroupResultBuilder extends GroupResultBuilder {
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
+import org.openurp.edu.base.States
+import org.openurp.edu.base.model.Course
 
-  def buildResult(context: PlanAuditContext, group: CourseGroup): GroupAuditResult = {
-    val result = new GroupAuditResult()
-    var creditsRequired = group.credits
-    result.auditStat.requiredCredits = creditsRequired
-    result.auditStat.requiredCount = group.courseCount
-    result.courseType = group.courseType
-    result.name = group.name
-    result.subCount = group.subCount
-    result.indexno = group.indexno
-    result.planResult = context.result
-    result
-  }
+import scala.collection.mutable
+
+class ExternMark extends LongId with Remark {
+  var externStudent: ExternStudent = _
+  var acquiredOn: LocalDate = _
+  var courseName: String = _
+  var credits: Float = _
+  var scoreText: String = _
+  var courses: mutable.Buffer[Course] = Collections.newBuffer[Course]
 }

@@ -22,5 +22,5 @@ import org.openurp.edu.grade.course.model.CourseGrade
 
 trait GradeFilter {
 
-  def filter(grades: collection.Seq[CourseGrade]): collection.Seq[CourseGrade]
+  def filter(grades: Iterable[CourseGrade]): Iterable[CourseGrade]
 }
