@@ -16,11 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.domain
+package org.openurp.edu.grade.plan.domain
 
 import java.time.Instant
 
-import org.openurp.edu.graduation.plan.model.{AuditStat, CourseAuditResult, GroupAuditResult, PlanAuditResult}
+import org.openurp.edu.grade.plan.model.{AuditStat, CourseAuditResult, GroupAuditResult, PlanAuditResult}
 import org.openurp.edu.program.model.CourseGroup
 
 class DefaultPlanAuditor extends PlanAuditor {

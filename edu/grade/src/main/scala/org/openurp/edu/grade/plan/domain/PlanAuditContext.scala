@@ -16,16 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.domain
+package org.openurp.edu.grade.plan.domain
 
-import org.openurp.edu.graduation.plan.model.PlanAuditResult
+import org.beangle.commons.collection.Collections
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.grade.plan.model.PlanAuditResult
+import org.openurp.edu.program.model.CoursePlan
 
-trait PlanAuditor {
+class PlanAuditContext(val std: Student, val coursePlan: CoursePlan, val stdGrade: StdGrade, val listeners: collection.Seq[PlanAuditListener]) {
 
-  /**
-   * 即时审核一个学生，结果不保存<br>
-   * context 中得设置好standard, coursePlan
-   */
-  def audit(context: PlanAuditContext): PlanAuditResult
+  var result: PlanAuditResult = _
+
+  val params = Collections.newMap[String, Any]
+
+  def getParam[T](paramName: String, clazz: Class[T]): T = {
+    params.get(paramName).orNull.asInstanceOf[T]
+  }
 
 }

@@ -16,28 +16,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.domain
+package org.openurp.edu.grade.model
 
-import org.openurp.edu.graduation.plan.model.GroupAuditResult
-import org.openurp.edu.program.model.CourseGroup
+import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.openurp.code.edu.model.GradeType
 
-trait PlanAuditListener {
+class DefaultMapping extends MappingModule {
 
-  /**
-   * 开始审核计划
-   *
-   * @return false 表示不能继续审核
-   */
-  def start(context: PlanAuditContext): Boolean
+  def binding(): Unit = {
+    defaultIdGenerator(IdGenerator.DateTime)
 
-  /**
-   *  开始审核课程组
-   *  @return false 表示不能继续审核
-   */
-  def startGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupResult: GroupAuditResult): Boolean
+    //code
+    bind[GradeType]
 
-  /**
-   * 结束审核计划
-   */
-  def end(context: PlanAuditContext): Unit
+    bind[Grade].declare { e =>
+      e.gradingMode is notnull
+      e.scoreText is length(5)
+      e.operator is length(100)
+    }
+
+    bind[AbstractGradeState].declare { e =>
+      e.gradingMode & e.beginOn are notnull
+      e.operator is length(100)
+    }
+
+    bind[GradeRateConfig].declare { e =>
+      e.gradingMode is notnull
+      e.items is depends("config")
+    }
+
+    bind[GradeRateItem].declare { e =>
+      e.config is notnull
+    }
+  }
+
 }

@@ -16,23 +16,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.student.transfer.model
+package org.openurp.edu.grade.plan.domain
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.openurp.edu.grade.plan.model.GroupAuditResult
+import org.openurp.edu.program.model.CourseGroup
 
-class DefaultMapping extends MappingModule {
+trait PlanAuditListener {
 
-  def binding(): Unit = {
-    defaultIdGenerator(IdGenerator.DateTime)
+  /**
+   * 开始审核计划
+   *
+   * @return false 表示不能继续审核
+   */
+  def start(context: PlanAuditContext): Boolean
 
-    bind[TransferScheme].declare { e =>
-      e.scopes is depends("scheme")
-      e.options is depends("scheme")
-    }
+  /**
+   *  开始审核课程组
+   *  @return false 表示不能继续审核
+   */
+  def startGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupResult: GroupAuditResult): Boolean
 
-    bind[TransferOption]
-    bind[TransferApply]
-    bind[TransferScope]
-  }
-
+  /**
+   * 结束审核计划
+   */
+  def end(context: PlanAuditContext): Unit
 }

@@ -25,7 +25,7 @@ import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.{Department, User}
 import org.openurp.edu.base.model.{Direction, Major}
 
-/** 招生专业
+/** 转专业招收专业
  * */
 class TransferOption extends LongId with Remark {
 

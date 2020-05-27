@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.domain
+package org.openurp.edu.grade.plan.domain
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.CourseType

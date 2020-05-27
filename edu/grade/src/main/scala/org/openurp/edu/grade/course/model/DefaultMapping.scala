@@ -16,20 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.model
+package org.openurp.edu.grade.course.model
 
-import org.beangle.data.orm.MappingModule
-import org.openurp.code.edu.model.GradeType
-import org.openurp.edu.grade.course.model._
-import org.openurp.edu.grade.moral.model.MoralGrade
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
-
-    //code
-    bind[GradeType]
+    defaultIdGenerator(IdGenerator.DateTime)
 
     //grade
     bind[CourseGrade].declare { e =>
@@ -46,11 +40,6 @@ class DefaultMapping extends MappingModule {
       index("", false, e.project)
     }
 
-    bind[Grade].declare { e =>
-      e.gradingMode is notnull
-      e.scoreText is length(5)
-      e.operator is length(100)
-    }
 
     bind[ExamGrade].declare { e =>
       index("", true, e.courseGrade, e.gradeType)
@@ -60,10 +49,6 @@ class DefaultMapping extends MappingModule {
       index("", true, e.courseGrade, e.gradeType)
     }
 
-    bind[AbstractGradeState].declare { e =>
-      e.gradingMode & e.beginOn are notnull
-      e.operator is length(100)
-    }
 
     bind[CourseGradeState].declare { e =>
       e.examStates is depends("gradeState")
@@ -94,20 +79,6 @@ class DefaultMapping extends MappingModule {
       index("", true, e.stdGpa, e.schoolYear)
     }
 
-    bind[GradeRateConfig].declare { e =>
-      e.gradingMode is notnull
-      e.items is depends("config")
-    }
-
-    bind[GradeRateItem].declare { e =>
-      e.config is notnull
-    }
-
-    bind[MoralGrade].declare { e =>
-      e.scoreText is length(5)
-      e.operator is length(100)
-      index("", true, e.std, e.semester)
-    }
   }
 
 }

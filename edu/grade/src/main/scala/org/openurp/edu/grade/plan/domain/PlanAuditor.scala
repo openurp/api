@@ -16,12 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.domain
+package org.openurp.edu.grade.plan.domain
 
-import org.openurp.edu.graduation.plan.model.GroupAuditResult
-import org.openurp.edu.program.model.CourseGroup
+import org.openurp.edu.grade.plan.model.PlanAuditResult
 
-trait GroupResultBuilder {
+trait PlanAuditor {
 
-  def buildResult(context: PlanAuditContext, group: CourseGroup): GroupAuditResult
+  /**
+   * 即时审核一个学生，结果不保存<br>
+   * context 中得设置好standard, coursePlan
+   */
+  def audit(context: PlanAuditContext): PlanAuditResult
+
 }

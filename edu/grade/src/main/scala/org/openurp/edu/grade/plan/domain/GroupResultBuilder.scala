@@ -16,23 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.domain
+package org.openurp.edu.grade.plan.domain
 
-import org.openurp.edu.graduation.plan.model.GroupAuditResult
+import org.openurp.edu.grade.plan.model.GroupAuditResult
 import org.openurp.edu.program.model.CourseGroup
 
-object DefaultGroupResultBuilder extends GroupResultBuilder {
+trait GroupResultBuilder {
 
-  def buildResult(context: PlanAuditContext, group: CourseGroup): GroupAuditResult = {
-    val result = new GroupAuditResult()
-    var creditsRequired = group.credits
-    result.auditStat.requiredCredits = creditsRequired
-    result.auditStat.requiredCount = group.courseCount
-    result.courseType = group.courseType
-    result.name = group.name
-    result.subCount = group.subCount
-    result.indexno = group.indexno
-    result.planResult = context.result
-    result
-  }
+  def buildResult(context: PlanAuditContext, group: CourseGroup): GroupAuditResult
 }

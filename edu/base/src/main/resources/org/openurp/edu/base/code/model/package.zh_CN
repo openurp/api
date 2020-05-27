@@ -8,6 +8,7 @@ CourseHourType=课时类别代码
 CourseType=课程类别
 CourseCategory=课程大类
 CourseType.practical=是否实践课
+CourseType.major=是否专业课
 
 Discipline=学科
 DisciplineCatalog=学科目录

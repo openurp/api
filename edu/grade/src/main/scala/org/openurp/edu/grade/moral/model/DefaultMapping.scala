@@ -16,20 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.plan.model
+package org.openurp.edu.grade.moral.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.model.Student
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
-/**
- * 冲抵学分
- */
-class OffsetCredit extends LongId with Updated {
+class DefaultMapping extends MappingModule {
 
-  /**学生*/
-  var std: Student = _
+  def binding(): Unit = {
+    defaultIdGenerator(IdGenerator.DateTime)
 
-  /**学分*/
-  var credits: Float = _
+    bind[MoralGrade].declare { e =>
+      e.scoreText is length(5)
+      e.operator is length(100)
+      index("", true, e.std, e.semester)
+    }
+  }
+
 }

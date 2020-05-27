@@ -39,7 +39,7 @@ class TransferApply extends LongId with Updated {
   /** 转出专业 */
   var fromMajor: Major = _
 
-  /** 转出专业 */
+  /** 转出专业方向 */
   var fromDirection: Option[Direction] = None
 
   /** 转出班级 */
