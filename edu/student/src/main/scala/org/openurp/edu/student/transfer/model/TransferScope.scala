@@ -16,11 +16,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.course.domain
+package org.openurp.edu.student.transfer.model
 
-import org.openurp.edu.grade.course.model.CourseGrade
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.openurp.edu.base.model.Major
 
-trait GradeFilter {
+import scala.collection.mutable
 
-  def filter(grades: Iterable[CourseGrade]): Iterable[CourseGrade]
+/** 招生学生范围
+ *
+ */
+class TransferScope extends LongId {
+
+  var scheme: TransferScheme = _
+
+  /** 包含还是禁止   */
+  var included: Boolean = _
+
+  /**专业列表*/
+  var majors: mutable.Buffer[Major] = Collections.newBuffer[Major]
+
+  /**年级范围*/
+  var grades: mutable.Buffer[String] = Collections.newBuffer[String]
+
 }

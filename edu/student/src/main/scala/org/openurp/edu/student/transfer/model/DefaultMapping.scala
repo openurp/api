@@ -16,11 +16,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.course.domain
+package org.openurp.edu.student.transfer.model
 
-import org.openurp.edu.grade.course.model.CourseGrade
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
-trait GradeFilter {
+class DefaultMapping extends MappingModule {
 
-  def filter(grades: Iterable[CourseGrade]): Iterable[CourseGrade]
+  def binding(): Unit = {
+    defaultIdGenerator(IdGenerator.DateTime)
+
+    bind[TransferScheme].declare { e =>
+      e.scopes is depends("scheme")
+      e.options is depends("scheme")
+    }
+
+    bind[TransferOption]
+    bind[TransferApply]
+    bind[TransferScope]
+    bind[TransferApplyLog]
+  }
+
 }
