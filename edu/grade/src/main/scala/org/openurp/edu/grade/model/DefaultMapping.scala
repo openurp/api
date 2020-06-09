@@ -24,8 +24,6 @@ import org.openurp.code.edu.model.GradeType
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator(IdGenerator.DateTime)
-
     //code
     bind[GradeType].generator(IdGenerator.AutoIncrement)
 

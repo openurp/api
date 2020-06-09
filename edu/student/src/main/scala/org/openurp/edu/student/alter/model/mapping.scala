@@ -23,8 +23,6 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
-
     bind[StdAlteration].declare { e =>
       e.items is depends("alteration")
     }

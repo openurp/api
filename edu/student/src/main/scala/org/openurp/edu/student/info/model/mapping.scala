@@ -23,8 +23,6 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
-
     bind[Admission].declare { e =>
       e.std is notnull
       e.letterNo is length(30)

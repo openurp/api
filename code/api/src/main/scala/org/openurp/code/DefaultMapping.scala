@@ -23,7 +23,7 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("code")
+    defaultIdGenerator(classOf[String],"code")
     defaultCache("openurp.code", "read-write")
 
     bind[CodeBean].declare { e =>

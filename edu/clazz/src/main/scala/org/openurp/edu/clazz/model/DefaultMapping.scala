@@ -24,8 +24,6 @@ import org.openurp.edu.clazz.code.model.ClazzTag
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
-
     //code
     bind[ClazzTag].generator("auto_increment")
 

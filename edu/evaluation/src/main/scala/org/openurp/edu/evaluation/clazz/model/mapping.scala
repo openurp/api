@@ -25,8 +25,6 @@ import org.openurp.edu.evaluation.clazz.stat.model._
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
-
     //clazz result
     bind[EvaluateResult].declare { e =>
       e.clazz & e.student & e.department & e.questionnaire & e.evaluateAt are notnull
