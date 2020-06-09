@@ -23,8 +23,6 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
-
     bind[GraduateSession].declare { e =>
       e.name is length(100)
     }
@@ -44,6 +42,8 @@ class DefaultMapping extends MappingModule {
       e.items is depends("result")
       e.comments is(column("degree_comments"), length(500))
     }
+
+    bind[DegreeApply]
   }
 
 }

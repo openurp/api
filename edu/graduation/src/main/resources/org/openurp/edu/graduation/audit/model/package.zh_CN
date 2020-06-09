@@ -21,6 +21,7 @@ GraduateResult.educationResult=毕结业情况
 GraduateResult.acquiredCredits=获得学分
 GraduateResult.requiredCredits=要求学分
 GraduateResult.electedCredits=修读学分
+GraduateResult.batch=批次
 
 DegreeResult=学位审核结果
 DegreeResult.items=学位审核详细结果
@@ -32,6 +33,7 @@ DegreeResult.degree=学位
 DegreeResult.gpa=GPA
 DegreeResult.ga=平均分
 DegreeResult.foreignLangPassedOn=外语通过年月
+DegreeResult.batch=批次
 
 GraduateSession=毕业批次
 GraduateSession.name=名称

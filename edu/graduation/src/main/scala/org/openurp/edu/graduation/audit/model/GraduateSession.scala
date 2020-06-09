@@ -39,4 +39,5 @@ class GraduateSession extends LongId with Updated {
 
   /**是否授学位*/
   var degreeOffered: Boolean = _
+
 }
