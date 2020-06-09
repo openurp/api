@@ -18,21 +18,29 @@
  */
 package org.openurp.edu.extern.model
 
-import java.time.LocalDate
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.openurp.code.edu.model.{EduCategory, EducationLevel}
 import org.openurp.edu.base.States
-import org.openurp.edu.base.model.Course
+import org.openurp.edu.base.model.Student
 
-import scala.collection.mutable
+import scala.collection.mutable;
 
-class ExternMark extends LongId with Remark {
-  var externStudent: ExternStudent = _
-  var acquiredOn: LocalDate = _
-  var courseName: String = _
+/**
+ * 外部学习经历
+ */
+class ExchangeStudent extends LongId with Updated with DateRange {
+  var std: Student = null
+  var school: ExchangeSchool = null
+  var majorName: Option[String] = None
+  var level: EducationLevel = null
+  var category: EduCategory = null
+  var grades: mutable.Buffer[ExchangeGrade] = Collections.newBuffer[ExchangeGrade]
+  var transcriptPath: Option[String] = None
+  /** 审核状态 */
+  var state: States.State = States.Draft
+  var auditOpinion: Option[String] = None
   var credits: Float = _
-  var scoreText: String = _
-  var courses: mutable.Buffer[Course] = Collections.newBuffer[Course]
+  var exemptionCredits: Float = _
 }

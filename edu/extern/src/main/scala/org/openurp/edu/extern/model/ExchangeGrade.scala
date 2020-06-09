@@ -16,35 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.lg.room.model
+package org.openurp.edu.extern.model
 
-import org.beangle.commons.lang.time.WeekTime
+import java.time.LocalDate
+
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Room
-import org.openurp.code.edu.model.ActivityType
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.edu.base.model.Course
+
+import scala.collection.mutable
 
 /**
- * 房间占用情况
- * 这里不用classroom的原因，在于跨项目的教室冲突检测需要。
+ * 外校成绩
  */
-class Occupancy extends LongId with Updated {
+class ExchangeGrade extends LongId with Remark with Updated {
 
-  /** 房间 */
-  var room: Room = _ // 教室/考场/活动场地
+  var exchangeStudent: ExchangeStudent = _
 
-  /** 时间 */
-  var time = new WeekTime // 时间安排
+  var courseName: String = _
 
-  /** 活动类型 */
-  var activityType: ActivityType = _
+  var credits: Float = _
 
-  /**用户系统*/
-  var userApp: UserApp = _
+  var acquiredOn: LocalDate = _
 
-  /** 活动ID */
-  var activityId: Long = _
+  var scoreText: String = _
 
-  /** 说明 */
-  var comments: String = _
+  var courses: mutable.Set[Course] = Collections.newSet[Course]
 }

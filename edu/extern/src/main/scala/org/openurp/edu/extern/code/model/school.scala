@@ -24,8 +24,8 @@ import org.openurp.code.CodeBean
  * 校外考试科目
  */
 @code("school")
-class ExamSubject extends CodeBean {
-  var category: ExamCategory = _
+class CertificateSubject extends CodeBean {
+  var category: CertificateCategory = _
   var institutionCode: Option[String] = None
   var institutionName: Option[String] = None
 }
@@ -34,4 +34,4 @@ class ExamSubject extends CodeBean {
  * 校外考试种类
  */
 @code("school")
-class ExamCategory extends CodeBean
+class CertificateCategory extends CodeBean

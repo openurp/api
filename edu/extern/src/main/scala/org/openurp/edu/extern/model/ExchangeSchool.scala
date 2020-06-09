@@ -26,7 +26,7 @@ import org.openurp.edu.base.ProjectBased
 /**
  * 校外教育机构
  */
-class ExternSchool extends IntId with ProjectBased
+class ExchangeSchool extends IntId with ProjectBased
   with Named with Updated with TemporalOn with Coded {
 
 }

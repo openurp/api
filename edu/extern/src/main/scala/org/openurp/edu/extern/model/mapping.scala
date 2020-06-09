@@ -19,29 +19,26 @@
 package org.openurp.edu.extern.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.edu.extern.code.model.{ExamCategory, ExamSubject}
+import org.openurp.edu.extern.code.model.{CertificateCategory, CertificateSubject}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
+    bind[CertificateSubject].generator(IdGenerator.Code)
+    bind[CertificateCategory].generator(IdGenerator.Code)
 
-    bind[ExamSubject].generator(IdGenerator.Code)
-    bind[ExamCategory].generator(IdGenerator.Code)
+    bind[ExchangeSchool].generator(IdGenerator.AutoIncrement)
 
-    bind[ExternSchool].generator(IdGenerator.AutoIncrement)
-    bind[ExternGrade]
-
-    bind[ExternExamGrade].declare { e =>
+    bind[CertificateGrade].declare { e =>
       e.scoreText is length(5)
       e.certificate & e.examNo are length(80)
     }
 
-    bind[ExternStudent].declare { e =>
-      e.marks is depends("externStudent")
+    bind[ExchangeStudent].declare { e =>
+      e.grades is depends("exchangeStudent")
     }
 
-    bind[ExternMark].declare { e =>
+    bind[ExchangeGrade].declare { e =>
       e.courseName is length(255)
       e.scoreText is length(10)
     }
