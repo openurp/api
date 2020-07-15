@@ -23,8 +23,6 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator(IdGenerator.DateTime)
-
     bind[MoralGrade].declare { e =>
       e.scoreText is length(5)
       e.operator is length(100)

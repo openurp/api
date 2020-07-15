@@ -23,8 +23,6 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator(IdGenerator.DateTime)
-
     bind[TuitionConfig].generator("auto_increment")
 
     bind[FeeType].generator("auto_increment")

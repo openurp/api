@@ -23,8 +23,6 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
-
     bind[Occupancy] declare { e =>
       e.room is notnull
       e.time.startOn & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull

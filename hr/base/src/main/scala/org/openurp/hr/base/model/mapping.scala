@@ -26,8 +26,6 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
-
     bind[DutyInfo].declare { e =>
       e.staff & e.dutyType & e.dutyGrade & e.beginOn are notnull
     }

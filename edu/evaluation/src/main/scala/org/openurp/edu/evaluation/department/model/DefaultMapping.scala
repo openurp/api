@@ -26,8 +26,6 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
-
     //clazz result
     bind[DepartEvaluate].declare { e =>
       e.department & e.questionnaire & e.evaluateAt & e.semester are notnull
