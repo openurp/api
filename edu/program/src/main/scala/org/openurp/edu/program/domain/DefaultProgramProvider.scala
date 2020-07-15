@@ -37,12 +37,18 @@ class DefaultProgramProvider extends ProgramProvider {
     query.where("p.grade=:grade", state.grade)
     query.where("p.department=:department", state.department)
     query.where("p.major=:major", state.major)
-    state.direction match {
-      case Some(d) => query.where("p.direction=:direction", d)
-      case None => query.where("p.direction is null")
-    }
     query.where("p.level=:level", state.std.level)
     val ps = entityDao.search(query)
-    ps.filter(DefaultProgramMatcher.isMatched(_, state)).headOption
+
+    state.direction match {
+      case Some(d) =>
+        val firstTry = ps.filter(_.direction.contains(d)).find(DefaultProgramMatcher.isMatched(_, state))
+        firstTry match {
+          case rs@Some(_) => rs
+          case None => ps.filter(_.direction.isEmpty).find(DefaultProgramMatcher.isMatched(_, state))
+        }
+      case None =>
+        ps.filter(_.direction.isEmpty).find(DefaultProgramMatcher.isMatched(_, state))
+    }
   }
 }
