@@ -24,8 +24,6 @@ import org.openurp.edu.extern.code.model.{ExamCategory, ExamSubject}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
-
     bind[ExamSubject].generator(IdGenerator.Code)
     bind[ExamCategory].generator(IdGenerator.Code)
 

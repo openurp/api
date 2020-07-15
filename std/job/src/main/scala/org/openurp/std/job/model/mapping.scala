@@ -23,8 +23,6 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
-
     bind[EmploymentStatus].declare { e =>
       e.code is(notnull, length(40))
       e.name is(notnull, length(80))

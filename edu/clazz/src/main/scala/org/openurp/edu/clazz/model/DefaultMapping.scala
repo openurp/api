@@ -18,16 +18,14 @@
  */
 package org.openurp.edu.clazz.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 import org.openurp.edu.clazz.code.model.ClazzTag
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("date")
-
     //code
-    bind[ClazzTag].generator("auto_increment")
+    bind[ClazzTag].generator(IdGenerator.AutoIncrement)
 
     //course
     bind[CourseTaker].declare { e =>

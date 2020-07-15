@@ -23,8 +23,6 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator(IdGenerator.DateTime)
-
     bind[TransferScheme].declare { e =>
       e.scopes is depends("scheme")
       e.options is depends("scheme")

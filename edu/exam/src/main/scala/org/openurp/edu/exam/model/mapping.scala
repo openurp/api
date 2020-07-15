@@ -23,8 +23,6 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
-
     bind[ExamActivity].declare { e =>
       e.examTakers is depends("activity")
       e.remark is length(100)

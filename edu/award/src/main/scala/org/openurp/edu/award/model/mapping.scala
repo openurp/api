@@ -38,8 +38,6 @@ import org.openurp.edu.award.results.model.SubsidyAward
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator("auto_increment")
-
     //code
     bind[HonorCategory]
     bind[HonorLevel]

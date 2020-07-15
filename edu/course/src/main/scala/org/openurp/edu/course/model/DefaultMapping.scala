@@ -23,7 +23,6 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultIdGenerator(IdGenerator.DateTime)
     defaultCache("openurp.edu.course", "read-write")
 
     bind[Syllabus].declare { e =>
