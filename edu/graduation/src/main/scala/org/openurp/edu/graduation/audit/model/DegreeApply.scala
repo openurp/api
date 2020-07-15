@@ -16,18 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.model
+package org.openurp.edu.graduation.audit.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.edu.base.ProjectBased
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.code.edu.model.Degree
+import org.openurp.edu.base.model.Student
 
+class DegreeApply extends LongId with Updated {
 
-/**
- * 校外教育机构
- */
-class ExternSchool extends IntId with ProjectBased
-  with Named with Updated with TemporalOn with Coded {
+  var session: GraduateSession = _
 
+  var std: Student = _
+
+  var gpa: Float = _
+
+  var degree: Degree = _
+
+  var passed: Option[Boolean] = None
 }
-

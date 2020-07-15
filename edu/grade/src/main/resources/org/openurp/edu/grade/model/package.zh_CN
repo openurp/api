@@ -13,3 +13,4 @@ GradeRateConfig.items=成绩分级配置项
 GradeRateConfig.passScore=及格线
 GradeRateConfig.project=项目
 
+Grade.createdAt=创建时间

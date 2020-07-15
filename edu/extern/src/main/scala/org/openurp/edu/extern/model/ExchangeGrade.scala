@@ -20,42 +20,27 @@ package org.openurp.edu.extern.model
 
 import java.time.LocalDate
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
-import org.openurp.code.edu.model.ExamStatus
-import org.openurp.code.edu.model.GradingMode
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.extern.code.model.ExamSubject
 import org.beangle.commons.collection.Collections
-import scala.collection.mutable.Buffer
-import org.openurp.edu.grade.course.model.CourseGrade
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.edu.base.model.Course
+
+import scala.collection.mutable
 
 /**
- * 校外证书成绩
+ * 外校成绩
  */
-class ExternExamGrade extends LongId {
+class ExchangeGrade extends LongId with Remark with Updated {
 
-  var std: Student = _
+  var exchangeStudent: ExchangeStudent = _
 
-  var score: Option[Float] = None
+  var courseName: String = _
 
-  var scoreText: String = _
-
-  var passed: Boolean = _
-
-  var subject: ExamSubject = _
-
-  var certificate: Option[String] = None
-
-  var examNo: Option[String] = None
+  var credits: Float = _
 
   var acquiredOn: LocalDate = _
 
-  var gradingMode: GradingMode = _
+  var scoreText: String = _
 
-  var examStatus: ExamStatus = _
-
-  var grades: Buffer[CourseGrade] = Collections.newBuffer[CourseGrade]
-
-  var status: Int = _
+  var courses: mutable.Set[Course] = Collections.newSet[Course]
 }

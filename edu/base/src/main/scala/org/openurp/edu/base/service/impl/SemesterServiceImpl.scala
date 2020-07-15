@@ -20,36 +20,65 @@ package org.openurp.edu.base.service.impl
 
 import java.time.LocalDate
 
-import org.beangle.data.dao.EntityDao
-import org.beangle.data.dao.OqlBuilder
-import org.openurp.edu.base.model.Project
-import org.openurp.edu.base.model.Semester
+import org.beangle.commons.collection.Order
+import org.beangle.data.dao.{EntityDao, OqlBuilder}
+import org.openurp.edu.base.model.{Project, Semester}
 import org.openurp.edu.base.service.SemesterService
 
 class SemesterServiceImpl extends SemesterService {
   var entityDao: EntityDao = _
 
-  def get(project: Project, date: LocalDate): Semester = {
+  override def getActives(project: Project): Seq[Semester] = {
     val builder = OqlBuilder.from(classOf[Semester], "semester")
       .where("semester.calendar in(:calendars)", project.calendars)
-    builder.where(":date between semester.beginOn and  semester.endOn")
+    builder.where("semester.archived=false")
+    builder.orderBy("semester.beginOn")
+    builder.cacheable()
+    entityDao.search(builder)
+  }
+
+  override def get(project: Project, date: LocalDate): Option[Semester] = {
+    val builder = OqlBuilder.from(classOf[Semester], "semester")
+      .where("semester.calendar in(:calendars)", project.calendars)
+    builder.where(":date between semester.beginOn and  semester.endOn", date)
     builder.cacheable()
     val rs = entityDao.search(builder)
     if (rs.isEmpty) {
       val builder2 = OqlBuilder.from(classOf[Semester], "semester")
         .where("semester.calendar in(:calendars)", project.calendars)
-      builder2.orderBy("abs(semester.beginOn - :date + semester.endOn - :date)")
+      builder2.where("semester.endOn >= :date", date)
+      builder2.orderBy(Order.parse("semester.beginOn"))
       builder2.cacheable()
       builder.limit(1, 2)
       val rs2 = entityDao.search(builder2)
       if (rs2.nonEmpty) {
-        rs2.head
+        rs2.headOption
       } else {
-        null
+        None
       }
     } else {
-      rs.head
+      rs.headOption
     }
   }
 
+  /**
+   * get semester by index
+   *
+   * @param project
+   * @param beginOn
+   * @param endOn
+   * @param index start with 1
+   */
+  override def get(project: Project, beginOn: LocalDate, endOn: LocalDate, index: Int): Option[Semester] = {
+    val builder = OqlBuilder.from(classOf[Semester], "semester")
+    builder.where("semester.beginOn <= :endOn", endOn)
+    builder.where("semester.endOn >= :beginOn", beginOn)
+    builder.orderBy(Order.parse("semester.beginOn"))
+    val semestersByInterval = entityDao.search(builder)
+    if (index > semestersByInterval.size) {
+      None
+    } else {
+      Some(semestersByInterval(index - 1))
+    }
+  }
 }

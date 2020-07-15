@@ -19,9 +19,22 @@
 package org.openurp.edu.base.service
 
 import java.time.LocalDate
-import org.openurp.edu.base.model.Project
-import org.openurp.edu.base.model.Semester
+
+import org.openurp.edu.base.model.{Project, Semester}
 
 trait SemesterService {
-  def get(project: Project, date: LocalDate): Semester
+
+  def getActives(project: Project): Seq[Semester]
+
+  def get(project: Project, date: LocalDate): Option[Semester]
+
+  /**
+   * get semester by index
+   *
+   * @param project
+   * @param beginOn
+   * @param endOn
+   * @param index start with 1
+   */
+  def get(project: Project, beginOn: LocalDate, endOn: LocalDate, index: Int): Option[Semester]
 }

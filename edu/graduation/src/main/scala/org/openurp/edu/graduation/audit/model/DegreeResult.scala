@@ -32,6 +32,9 @@ class DegreeResult extends LongId with Updated {
   /** 所属的毕业审核批次 */
   var session: GraduateSession = _
 
+  /**批次*/
+  var batch:Int=_
+
   /**学生*/
   var std: Student = _
 

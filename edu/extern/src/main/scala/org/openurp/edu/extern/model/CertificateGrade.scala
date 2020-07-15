@@ -18,15 +18,44 @@
  */
 package org.openurp.edu.extern.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.edu.base.model.Student
+import java.time.LocalDate
 
-class ExemptionCredit extends LongId with Remark with Updated {
+import org.beangle.data.model.LongId
+import org.openurp.code.edu.model.ExamStatus
+import org.openurp.code.edu.model.GradingMode
+import org.openurp.edu.base.model.{Course, Student}
+import org.openurp.edu.extern.code.model.CertificateSubject
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.pojo.Updated
+
+import scala.collection.mutable
+
+/**
+ * 校外证书成绩
+ */
+class CertificateGrade extends LongId with Updated{
 
   var std: Student = _
 
-  var exempted: Float = _
+  var score: Option[Float] = None
 
-  var maxValue: Float = _
+  var scoreText: String = _
+
+  var passed: Boolean = _
+
+  var subject: CertificateSubject = _
+
+  var certificate: Option[String] = None
+
+  var examNo: Option[String] = None
+
+  var acquiredOn: LocalDate = _
+
+  var gradingMode: GradingMode = _
+
+  var examStatus: ExamStatus = _
+
+  var courses: mutable.Set[Course] = Collections.newSet[Course]
+
+  var status: Int = _
 }

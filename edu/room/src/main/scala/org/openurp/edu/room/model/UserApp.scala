@@ -16,20 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.service
+package org.openurp.edu.room.model
 
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.extern.model.ExternExamGrade
-import org.openurp.edu.extern.code.model.ExamCategory
-import org.openurp.edu.extern.code.model.ExamSubject
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
 
-trait ExternExamGradeService {
+/**
+ * 房间的使用系统
+ */
+class UserApp extends LongId with Named {
 
-  def getBest(std: Student, category: ExamCategory): ExternExamGrade
-
-  def getPassed(std: Student, subjects: Iterable[ExamSubject]): List[ExternExamGrade]
-
-  def isPass(std: Student, subject: ExamSubject): Boolean
-
-  def get(std: Student, best: Boolean): Iterable[ExternExamGrade]
+  /**活动明细url*/
+  var activityUrl: String = _
 }

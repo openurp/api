@@ -19,7 +19,6 @@
     <module>hr</module>
     <module>sin</module>
     <module>std</module>
-    <module>lg</module>
     <module>all</module>
   </modules>
 
@@ -116,8 +115,8 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.openurp.lg.room</groupId>
-        <artifactId>openurp-lg-room-api</artifactId>
+        <groupId>org.openurp.edu.room</groupId>
+        <artifactId>openurp-edu-room-api</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>

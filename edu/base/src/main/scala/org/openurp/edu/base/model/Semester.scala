@@ -57,6 +57,9 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
   /**学年度,一般为yyyy-yyyy或者yyyy的格式*/
   var schoolYear: String = _
 
+  /**是否已经存档*/
+  var archived:Boolean=_
+
   def startWeek(): Int = {
     val gc = new GregorianCalendar();
     gc.setFirstDayOfWeek(calendar.firstWeekday.index)

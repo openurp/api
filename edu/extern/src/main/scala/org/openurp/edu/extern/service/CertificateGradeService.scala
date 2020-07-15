@@ -16,23 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.model
+package org.openurp.edu.extern.service
 
-import java.time.LocalDate
+import org.openurp.edu.base.model.Student
+import org.openurp.edu.extern.model.CertificateGrade
+import org.openurp.edu.extern.code.model.CertificateCategory
+import org.openurp.edu.extern.code.model.CertificateSubject
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
-import org.openurp.edu.base.States
-import org.openurp.edu.base.model.Course
+trait CertificateGradeService {
 
-import scala.collection.mutable
+  def getBest(std: Student, category: CertificateCategory): CertificateGrade
 
-class ExternMark extends LongId with Remark {
-  var externStudent: ExternStudent = _
-  var acquiredOn: LocalDate = _
-  var courseName: String = _
-  var credits: Float = _
-  var scoreText: String = _
-  var courses: mutable.Buffer[Course] = Collections.newBuffer[Course]
+  def getPassed(std: Student, subjects: Iterable[CertificateSubject]): List[CertificateGrade]
+
+  def isPass(std: Student, subject: CertificateSubject): Boolean
+
+  def get(std: Student, best: Boolean): Iterable[CertificateGrade]
 }
