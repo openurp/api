@@ -18,41 +18,16 @@
  */
 package org.openurp.edu.extern.model
 
-import java.time.LocalDate
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
+import org.openurp.edu.base.ProjectBased
 
-import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.EduCategory
-import org.openurp.code.edu.model.EducationLevel
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.grade.course.model.CourseGrade
-import org.beangle.commons.collection.Collections
-import scala.collection.mutable.Buffer
 
 /**
- * 外校成绩
+ * 校外教育机构
  */
-class ExternGrade extends LongId {
-
-  var school: ExternSchool = _
-
-  var level: EducationLevel = _
-
-  var category: EduCategory = _
-
-  var majorName: Option[String] = None
-
-  var courseName: String = _
-
-  var credits: Float = _
-
-  var std: Student = _
-
-  var acquiredOn: LocalDate = _
-
-  var scoreText: String = _
-
-  var passed: Boolean = _
-
-  var grades: Buffer[CourseGrade] = Collections.newBuffer[CourseGrade]
+class ExchangeSchool extends IntId with ProjectBased
+  with Named with Updated with TemporalOn with Coded {
 
 }
+

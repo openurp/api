@@ -18,10 +18,13 @@
  */
 package org.openurp.edu.program.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongIdEntity
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.edu.base.States
 import org.openurp.edu.base.code.model.CourseType
+
+import scala.collection.mutable
 
 /**
  * 课程方案
@@ -52,6 +55,12 @@ trait CoursePlan extends LongIdEntity with Cloneable with TemporalOn {
    */
   def tops: collection.Seq[CourseGroup]
 
+  def planCourses: collection.Seq[PlanCourse] = {
+    val rs = Collections.newBuffer[PlanCourse]
+    CoursePlan.addPlanCourse(this.groups, rs)
+    rs
+  }
+
   /**
    * 这个计划的学期数
    */
@@ -60,4 +69,19 @@ trait CoursePlan extends LongIdEntity with Cloneable with TemporalOn {
   def program: Program
 
   def state: States.State
+}
+
+object CoursePlan {
+  /**
+   * @param groups
+   * @param planCourses
+   */
+  private def addPlanCourse(groups: collection.Seq[CourseGroup], planCourses: mutable.Buffer[PlanCourse]): Unit = {
+    if (groups.nonEmpty) {
+      groups foreach { g =>
+        planCourses.addAll(g.planCourses)
+        addPlanCourse(g.children, planCourses)
+      }
+    }
+  }
 }

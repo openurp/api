@@ -18,10 +18,11 @@
  */
 package org.openurp.edu.grade.model
 
+import java.time.Instant
+
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.code.edu.model.GradeType
-import org.openurp.code.edu.model.GradingMode
+import org.openurp.code.edu.model.{GradeType, GradingMode}
 import org.openurp.edu.base.model.Student
 
 object Grade {
@@ -40,10 +41,14 @@ object Grade {
  * 系统中所有成绩的抽象接口，记录成绩的原始分数、呈现方式、状态和是否通过。
  * 成绩中设立原始分数和分数字面值，分别表示数字型分数和文字型评价。分数用于和其他记录方式进行转换，
  * 分数字面值则为最后的转换结果。
+ *
  * @author chaostone
  * @since 2006
  */
 trait Grade extends LongId with Ordered[Grade] with Updated {
+
+  var createdAt: Instant = _
+
   def score: Option[Float]
 
   def score_=(s: Option[Float]): Unit
@@ -52,7 +57,7 @@ trait Grade extends LongId with Ordered[Grade] with Updated {
 
   def scoreText: Option[String]
 
-  def scoreText_=(st:  Option[String] ): Unit
+  def scoreText_=(st: Option[String]): Unit
 
   def passed: Boolean
 
@@ -76,7 +81,7 @@ trait Grade extends LongId with Ordered[Grade] with Updated {
 
   def gradeType: GradeType
 
-  def operator:  Option[String]
+  def operator: Option[String]
 
-  def operator_=(o:  Option[String] ): Unit
+  def operator_=(o: Option[String]): Unit
 }

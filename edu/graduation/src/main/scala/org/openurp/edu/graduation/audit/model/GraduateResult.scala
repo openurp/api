@@ -18,14 +18,13 @@
  */
 package org.openurp.edu.graduation.audit.model
 
-import scala.collection.mutable.Buffer
-
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.Component
 import org.openurp.code.edu.model.EducationResult
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Student
 import org.beangle.data.model.pojo.Updated
+
+import scala.collection.mutable
 
 /**
  * 毕业审核结果
@@ -35,11 +34,14 @@ class GraduateResult extends LongId with Updated {
   /** 所属的毕业审核批次 */
   var session: GraduateSession = _
 
+  /**批次*/
+  var batch:Int=_
+
   /**学生*/
   var std: Student = _
 
   /** 毕业审核详细结果 */
-  var items: Buffer[GraduateAuditItem] = Collections.newBuffer[GraduateAuditItem]
+  var items: mutable.Buffer[GraduateAuditItem] = Collections.newBuffer[GraduateAuditItem]
 
   /** 获得学分 */
   var acquiredCredits: Float = _

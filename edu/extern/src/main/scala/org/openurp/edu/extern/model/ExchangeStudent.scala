@@ -30,13 +30,13 @@ import scala.collection.mutable;
 /**
  * 外部学习经历
  */
-class ExternStudent extends LongId with Updated with DateRange {
+class ExchangeStudent extends LongId with Updated with DateRange {
   var std: Student = null
-  var school: ExternSchool = null
+  var school: ExchangeSchool = null
   var majorName: Option[String] = None
   var level: EducationLevel = null
   var category: EduCategory = null
-  var marks: mutable.Buffer[ExternMark] = Collections.newBuffer[ExternMark]
+  var grades: mutable.Buffer[ExchangeGrade] = Collections.newBuffer[ExchangeGrade]
   var transcriptPath: Option[String] = None
   /** 审核状态 */
   var state: States.State = States.Draft

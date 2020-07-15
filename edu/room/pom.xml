@@ -6,20 +6,14 @@
     <artifactId>openurp-edu-parent</artifactId>
     <version>0.15.0</version>
   </parent>
-  <groupId>org.openurp.edu.course</groupId>
-  <artifactId>openurp-edu-course-api</artifactId>
+  <groupId>org.openurp.edu.room</groupId>
+  <artifactId>openurp-edu-room-api</artifactId>
   <packaging>jar</packaging>
-  <name>OpenURP Edu Course API</name>
+  <name>OpenURP Edu Room API</name>
 
   <properties>
-    <bundle.symbolicName>org.openurp.edu.course</bundle.symbolicName>
-    <bundle.namespace>org.openurp.edu.course</bundle.namespace>
+    <bundle.symbolicName>org.openurp.edu.room</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu.room</bundle.namespace>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.openurp.edu.base</groupId>
-      <artifactId>openurp-edu-base-api</artifactId>
-    </dependency>
-  </dependencies>
 </project>

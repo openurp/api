@@ -62,10 +62,7 @@ class FinalMakeupCourse extends LongId {
   var stdCount: Int = _
 
   /** 是否提交成绩 */
-  var confirmed: Boolean = _
-
-  /** 是否发布成绩 */
-  var published: Boolean = _
+  var status: Int = _
 
   /** 阅卷老师 */
   var teacher: Option[Teacher] = None
