@@ -135,4 +135,6 @@ class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseG
   }
 
   def index: Int = 0
+
+  override def autoAddup: Boolean = true
 }
