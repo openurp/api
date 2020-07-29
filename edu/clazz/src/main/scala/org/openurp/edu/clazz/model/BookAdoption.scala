@@ -20,7 +20,7 @@ package org.openurp.edu.clazz.model
 
 object BookAdoption extends Enumeration {
 
-  class State(id: Int, val fullname: String) extends super.Val {
+  class State(id: Int, val title: String) extends super.Val {
   }
 
   val None = new State(0, "不使用教材，也不使用讲义")
