@@ -9,7 +9,7 @@
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-parent</artifactId>
   <packaging>pom</packaging>
-  <version>0.15.1-SNAPSHOT</version>
+  <version>0.15.1</version>
   <name>OpenURP API Parent</name>
 
   <modules>
