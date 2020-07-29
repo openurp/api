@@ -49,6 +49,9 @@ class CourseType extends CodeBean {
   /**是否专业课*/
   var major:Boolean=_
 
+  /**是否选修*/
+  var optional:Boolean=_
+
   def this(id: Int, code: String, name: String, enName: String) {
     this()
     this.id = id
