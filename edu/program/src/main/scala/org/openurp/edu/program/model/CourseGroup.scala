@@ -27,6 +27,8 @@ import org.openurp.edu.base.code.model.CourseType
  * @author chaostone
  */
 trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
+  /** 组名 */
+  def name: String
 
   /**
    * 获得课程方案
@@ -59,24 +61,15 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
    */
   def credits: Float
 
-  /** 组名 */
-  def name: String
-
   /**
    * 获得组内要求门数
    */
   def courseCount: Short
 
-  def planCourses: collection.Seq[PlanCourse]
-
-  /**
-   * 判断是否必修组<br>
-   * 如果组内没有课程和子组，那么就是选修<br>
-   * 如果组内有课程没子组，那么所有课程都是必修才是必修，否则就是选修<br>
-   * 如果组内无课程有子组，那么组关系必须是AND才是必修，否则就是选修<br>
-   * 如果组内有课程有子组，那么所有课程都是必修且关系AND才是必修，否则就是选修
+  /** 组内课程
+   * @return
    */
-  def compulsory: Boolean
+  def planCourses: collection.Seq[PlanCourse]
 
   /**
    * 获得备注.
@@ -89,4 +82,7 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
   def termCredits: String
 
   def indexno: String
+
+  /** 自动累加学分 */
+  def autoAddup: Boolean
 }

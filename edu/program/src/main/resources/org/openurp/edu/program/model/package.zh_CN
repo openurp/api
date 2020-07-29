@@ -18,6 +18,7 @@ Program.offsetType=任选课类别
 MajorCourseGroup=专业计划课程组
 MajorCourseGroup.alias=自定义别名
 MajorCourseGroup.direction=该组针对的专业方向
+MajorCourseGroup.autoAddup=自动累加学分
 
 MajorPlan=专业培养计划
 
@@ -27,6 +28,7 @@ MajorPlanCourse.suggestTerms=建议修读学期
 ExecutionCourseGroup=执行计划课程组
 ExecutionCourseGroup.alias=自定义别名
 ExecutionCourseGroup.direction=该组针对的专业方向
+ExecutionCourseGroup.autoAddup=自动累加学分
 
 ExecutionPlan=执行培养计划
 ExecutionPlanCourse=执行计划课程
@@ -65,6 +67,7 @@ AbstractCourseGroup.courseCount=要求课程门数
 AbstractCourseGroup.remark=备注
 AbstractCourseGroup.termCredits=学期学分分布
 AbstractCourseGroup.indexno=索引号
+AbstractCourseGroup.autoAddup=自动累加学分
 
 AbstractCoursePlan=抽象课程方案
 AbstractCoursePlan.groups=课程组

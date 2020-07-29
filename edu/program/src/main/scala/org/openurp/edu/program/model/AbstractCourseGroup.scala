@@ -20,37 +20,27 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.lang.{Numbers, Strings}
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.{Hierarchical, Remark}
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Terms
 
-import scala.collection.mutable.{Buffer, ListBuffer}
+import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
 
 /**
  * 课程设置中的课程组 </p>
  * @author chaostone
  * @since 2009
  */
-abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneable with Ordered[CourseGroup] with Remark {
+abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneable with Hierarchical[CourseGroup] with Remark {
   /**
    * 计划
    */
   var plan: CoursePlan = _
-
-  /**
-   * 上级组
-   */
-  var parent: Option[CourseGroup] = None
-
-  /**
-   * 下级组列表
-   */
-  var children: Buffer[AbstractCourseGroup] = new ListBuffer[AbstractCourseGroup]
-
   /**
    * 计划课程列表
    */
-  var planCourses: Buffer[PlanCourse] = new ListBuffer[PlanCourse]
+  var planCourses: mutable.Buffer[PlanCourse] = new ListBuffer[PlanCourse]
 
   /**
    * 课程类别
@@ -77,10 +67,8 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
    */
   var termCredits: String = _
 
-  /**
-   * index no
-   */
-  var indexno: String = _
+  /**自动累加学分*/
+  var autoAddup:Boolean=_
 
   override def name: String = {
     courseType.name
@@ -92,11 +80,6 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
     var idx = Numbers.toInt(index)
     if (idx <= 0) idx = 1
     idx
-  }
-
-  def compulsory: Boolean = {
-    val requiredSubCount = if (subCount == -1) children.size else subCount
-    (requiredSubCount == children.size && !planCourses.exists(p => !p.compulsory))
   }
 
   def addGroup(group: AbstractCourseGroup): Unit = {
@@ -126,7 +109,7 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
   def follow(plan: CoursePlan): Unit = {
     this.plan = plan
     children.foreach { c =>
-      c.follow(plan)
+      c.asInstanceOf[AbstractCourseGroup].follow(plan)
     }
   }
 

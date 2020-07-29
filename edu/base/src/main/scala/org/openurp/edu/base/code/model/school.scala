@@ -20,7 +20,6 @@ package org.openurp.edu.base.code.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
-import org.openurp.code.edu.model.AcademicLevel
 
 /**
  * 教材类型
@@ -36,18 +35,20 @@ class BookAwardType extends CodeBean
 
 /**
  * 课程类别
- *
  * @author chaostone
  * @since 2005-9-7
  */
 @code("school")
 class CourseType extends CodeBean {
 
-  /**是否实践课程*/
+  /** 是否实践课程 */
   var practical: Boolean = _
 
-  /**是否专业课*/
-  var major:Boolean=_
+  /** 是否专业课 */
+  var major: Boolean = _
+
+  /** 是否选修 */
+  var optional: Boolean = _
 
   def this(id: Int, code: String, name: String, enName: String) {
     this()
@@ -57,6 +58,7 @@ class CourseType extends CodeBean {
     this.enName = Some(enName)
   }
 }
+
 @code("school")
 class CourseCategory extends CodeBean
 
@@ -64,7 +66,25 @@ class CourseCategory extends CodeBean
  * 课时类别代码
  */
 @code("school")
-class CourseHourType extends CodeBean
+class CourseHourType extends CodeBean {
+  /**课时分类*/
+  var category: CourseHourCategory.Category = _
+}
+
+/**课时分类*/
+object CourseHourCategory extends Enumeration {
+
+  class Category(id: Int, val title: String) extends super.Val {
+  }
+
+  val Lecture = new Category(0, "讲授")
+  val Experiment = new Category(1, "实验")
+  val Practice = new Category(2, "实践")
+
+  import scala.language.implicitConversions
+
+  implicit def convertValue(v: Value): Category = v.asInstanceOf[Category]
+}
 
 /**
  * 课程能力等级
@@ -73,6 +93,7 @@ class CourseHourType extends CodeBean
 class CourseAbilityRate extends CodeBean {
   var rate: Int = _
 }
+
 /**
  * 学生分类标签
  */
@@ -80,6 +101,7 @@ class CourseAbilityRate extends CodeBean {
 class StdLabel extends CodeBean {
   var labelType: StdLabelType = _
 }
+
 /**
  * 学生分类标签类型
  */

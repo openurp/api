@@ -79,5 +79,5 @@ trait Executable {
   /**
    * 开课周
    */
-  var weekstate: WeekState = _
+  var weekstate: WeekState = WeekState.Zero
 }
