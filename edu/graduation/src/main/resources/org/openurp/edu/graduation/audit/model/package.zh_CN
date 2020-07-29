@@ -3,13 +3,13 @@ GraduateAuditItem=毕业审核条目
 GraduateAuditItem.name=项目名称
 GraduateAuditItem.passed=是否通过
 GraduateAuditItem.comments=具体状态信息
-GraduateAuditItem.result=毕业审核结果 
+GraduateAuditItem.result=毕业审核结果
 
 DegreeAuditItem=学位审核条目
 DegreeAuditItem.name=项目名称
 DegreeAuditItem.passed=是否通过
 DegreeAuditItem.comments=具体状态信息
-DegreeAuditItem.result=学位审核结果 
+DegreeAuditItem.result=学位审核结果
 
 GraduateResult=毕业审核结果
 GraduateResult.items=毕业审核详细结果
@@ -39,3 +39,7 @@ GraduateSession=毕业批次
 GraduateSession.name=名称
 GraduateSession.graduateOn=毕业日期
 GraduateSession.degreeOffered=是否授学位
+
+DegreeApply=学位申请
+DegreeApply.gpa=GPA
+DegreeApply.passed=是否通过

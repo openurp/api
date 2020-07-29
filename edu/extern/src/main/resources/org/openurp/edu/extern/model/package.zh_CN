@@ -25,7 +25,7 @@ CertificateGrade.certificate=证书编号
 CertificateGrade.gradingMode=成绩记录方式
 CertificateGrade.examStatus=考试情况
 CertificateGrade.acquiredOn=获得日期
-CertificateGrade.grades=证书成绩认定结果
+CertificateGrade.courses=证书成绩认定结果
 CertificateGrade.status=状态
 
 ExchangeStudent=外校学习经历

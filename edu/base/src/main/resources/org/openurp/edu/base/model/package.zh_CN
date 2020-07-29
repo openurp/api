@@ -231,6 +231,7 @@ CourseUnit.part=时段
 Semester=学年学期
 Semester.schoolYear=学年度,格式2005-2006
 Semester.calendar=教学日历方案类别
+Semester.archived=是否归档
 
 Holiday=法定假日
 Holiday.school=学校

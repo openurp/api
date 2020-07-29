@@ -115,6 +115,7 @@ FinalMakeupCourse.confirmed=是否提交成绩
 FinalMakeupCourse.published=是否发布成绩
 FinalMakeupCourse.teacher=阅卷老师
 FinalMakeupCourse.inputAt=成绩录入时间
+FinalMakeupCourse.status=成绩录入状态
 
 FinalMakeupTaker=清考名单
 FinalMakeupTaker.makeupCourse=清考任务
