@@ -16,36 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.exam.model
+package org.openurp.edu.innovation.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.clazz.model.Clazz
-import org.openurp.code.edu.model.ExamType
+import org.beangle.data.model.pojo.{Coded, DateRange, Named}
 
-/**
- * 排考教学任务
- */
-class ExamClazz extends LongId {
+class Expert extends LongId with Coded with Named with DateRange {
 
-  /**教学班*/
-  var clazz: Clazz = _
+  var password: String = _
 
-  /**考试类型*/
-  var examType: ExamType = _
-
-  /**排考任务*/
-  var task: Option[ExamTask] = _
-
-  /**考生数*/
-  var stdCount: Int = _
-
-  /**考试周*/
-  var examWeek: Option[Int] = None
-
-  /**是否院系自主安排*/
-  var departArranged: Boolean = _
-
-  /**试卷编号*/
-  var examPaperNo: Option[String] = None
+  var intro: Option[String] = None
 
 }

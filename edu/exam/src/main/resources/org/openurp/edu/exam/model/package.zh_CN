@@ -10,6 +10,10 @@ ExamActivity.stdCount=考生数
 ExamActivity.examRooms=考场列表
 ExamActivity.state=审核状态
 ExamActivity.rooms=对应考场
+ExamActivity.task=排考任务
+ExamActivity.departArranged=是否院系自主安排
+ExamActivity.examPaperNo=试卷号
+ExamActivity.examWeek=考试周
 
 ExamMonitor=监考信息
 ExamMonitor.teacher=监考人员
@@ -26,13 +30,6 @@ ExamRoom.roomApplyId=教室申请流水号
 ExamRoom.examOn=考试日期
 ExamRoom.stdCount=考生数
 
-ExamClazz=排考教学任务
-ExamClazz.clazz=教学任务
-ExamClazz.task=排考任务
-ExamClazz.stdCount=考生人数
-ExamClazz.departArranged=是否院系自主安排
-ExamClazz.examPaperNo=试卷号
-ExamClazz.examWeek=考试周
 
 ExamTask=排考任务
 ExamTask.project=项目

@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.15.1</version>
+    <version>0.16.0</version>
   </parent>
   <groupId>org.openurp.edu</groupId>
   <artifactId>openurp-edu-parent</artifactId>
@@ -32,6 +32,7 @@
     <module>textbook</module>
     <module>workload</module>
     <module>fee</module>
+    <module>innovation</module>
   </modules>
 
   <dependencies>

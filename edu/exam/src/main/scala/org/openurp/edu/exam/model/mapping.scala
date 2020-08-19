@@ -26,8 +26,9 @@ class DefaultMapping extends MappingModule {
     bind[ExamActivity].declare { e =>
       e.examTakers is depends("activity")
       e.remark is length(100)
-      index("", true, e.clazz, e.examType)
+      index("", false, e.clazz, e.examType)
       index("", false, e.semester)
+      index("", false, e.task)
     }
 
     bind[ExamRoom].declare { e =>
@@ -36,15 +37,10 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ExamTask].declare { e =>
-      e.examClazzes is depends("task")
+      e.activities is depends("task")
       index("", true, e.project, e.semester, e.code)
       index("", false, e.semester)
       index("", false, e.group)
-    }
-
-    bind[ExamClazz] declare { e =>
-      index("", true, e.clazz, e.examType)
-      index("", false, e.task)
     }
 
     bind[ExamGroup].declare { e =>

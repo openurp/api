@@ -27,8 +27,7 @@ import scala.collection.mutable
 
 trait GpaStat {
   /**
-   * 总平均绩点
-   * =gp/totalCredits
+   * 总平均绩点 gp/totalCredits
    */
   var gpa: Float = _
 

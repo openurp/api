@@ -68,6 +68,7 @@ AbstractCourseGroup.remark=备注
 AbstractCourseGroup.termCredits=学期学分分布
 AbstractCourseGroup.indexno=索引号
 AbstractCourseGroup.autoAddup=自动累加学分
+AbstractCourseGroup.terms=开课学期
 
 AbstractCoursePlan=抽象课程方案
 AbstractCoursePlan.groups=课程组

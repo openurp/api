@@ -20,6 +20,7 @@ package org.openurp.edu.grade.plan.domain
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.base.code.model.CourseType
+import org.openurp.edu.base.model.Terms
 import org.openurp.edu.program.model.{CourseGroup, CoursePlan, PlanCourse}
 
 class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseGroup {
@@ -134,7 +135,8 @@ class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseG
   def indexno_=(indexno: String): Unit = {
   }
 
-  def index: Int = 0
-
   override def autoAddup: Boolean = true
+
+  /**开课学期*/
+  override def terms:Terms=Terms.empty
 }

@@ -47,7 +47,7 @@ class ExamTask extends LongId with Coded with SemesterBased with Remark {
   var group: Option[ExamGroup] = None
 
   /**排考课程*/
-  var examClazzes = Collections.newBuffer[ExamClazz]
+  var activities = Collections.newBuffer[ExamActivity]
 
   /**考生人数*/
   var stdCount: Int = _

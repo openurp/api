@@ -21,7 +21,6 @@ package org.openurp.edu.base.model
 import java.util.GregorianCalendar
 
 import scala.collection.mutable.Buffer
-
 import org.beangle.commons.lang.time.WeekDay.WeekDay
 import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Named
@@ -30,8 +29,12 @@ import org.beangle.data.model.pojo.Remark
 import org.beangle.data.model.pojo.Updated
 import org.beangle.data.model.IntId
 import java.time.ZoneId
+
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.DateRange
 import org.openurp.base.model.School
+
+import scala.collection.mutable
 
 /**
  * 教学日历方案
@@ -41,24 +44,28 @@ class Calendar extends IntId with Coded with Named with TemporalOn with Updated 
 
   var school: School = _
 
-  var semesters: Buffer[Semester] = new collection.mutable.ListBuffer[Semester]
+  var semesters: mutable.Buffer[Semester] = new collection.mutable.ListBuffer[Semester]
 
-  /**一周中的第一天是周几 */
+  /** 一周中的第一天是周几 */
   var firstWeekday: WeekDay = _
 }
+
 /**
  * 学年学期 </p> 代表的是具体学年度的 学期设置，每个学期的起始日期（起始日期beginOn第一天）和结束日期。
  */
 class Semester extends IntId with Coded with Named with DateRange with Remark {
 
-  /**日历*/
+  /** 日历 */
   var calendar: Calendar = _
 
-  /**学年度,一般为yyyy-yyyy或者yyyy的格式*/
+  /** 学年度,一般为yyyy-yyyy或者yyyy的格式 */
   var schoolYear: String = _
 
-  /**是否已经存档*/
-  var archived:Boolean=_
+  /** 是否已经存档 */
+  var archived: Boolean = _
+
+  /** 学期中的阶段 */
+  var stages: mutable.Buffer[SemesterStage] = Collections.newBuffer[SemesterStage]
 
   def startWeek(): Int = {
     val gc = new GregorianCalendar();
@@ -76,9 +83,14 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
   }
 }
 
-/**
- * 假日安排
- */
-class Holiday extends IntId with Named with TemporalOn {
+/** 教学日历中的阶段 */
+class CalendarStage extends IntId with Named {
   var school: School = _
+  var vacation: Boolean = _
+}
+
+/** 学期中的阶段 */
+class SemesterStage extends IntId with DateRange with Remark {
+  var semester: Semester = _
+  var stage: CalendarStage = _
 }

@@ -39,28 +39,40 @@ class ExamActivity extends LongId with Remark {
   /** 教学任务 */
   var clazz: Clazz = _
 
-  /**考试学期*/
+  /** 排考任务 */
+  var task: Option[ExamTask] = _
+
+  /** 考试学期 */
   var semester: Semester = _
 
-  /**考试日期*/
+  /** 考试日期 */
   var examOn: LocalDate = _
 
-  /**开始时间*/
+  /** 开始时间 */
   var beginAt: HourMinute = _
 
-  /**结束时间*/
+  /** 结束时间 */
   var endAt: HourMinute = _
 
-  /**学生人数*/
+  /** 学生人数 */
   var stdCount: Int = _
 
   /** 考场列表 */
   var rooms: collection.mutable.Buffer[ExamRoom] = _
 
-  /**应考学生*/
+  /** 应考学生 */
   var examTakers = Collections.newSet[ExamTaker]
 
-  /**发布状态*/
+  /** 考试周 */
+  var examWeek: Option[Int] = None
+
+  /** 是否院系自主安排 */
+  var departArranged: Boolean = _
+
+  /** 试卷编号 */
+  var examPaperNo: Option[String] = None
+
+  /** 发布状态 */
   var state: PublishState.State = _
 
   def startOn: LocalDate = {

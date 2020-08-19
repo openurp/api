@@ -70,6 +70,9 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
   /**自动累加学分*/
   var autoAddup:Boolean=_
 
+  /**开课学期*/
+  var terms:Terms=Terms.empty
+
   override def name: String = {
     courseType.name
   }
