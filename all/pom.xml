@@ -142,6 +142,11 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.openurp.edu.innovation</groupId>
+      <artifactId>openurp-edu-innovation-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.beangle.data</groupId>
       <artifactId>beangle-data-hibernate_2.13</artifactId>
     </dependency>

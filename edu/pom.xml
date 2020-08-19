@@ -32,6 +32,7 @@
     <module>textbook</module>
     <module>workload</module>
     <module>fee</module>
+    <module>innovation</module>
   </modules>
 
   <dependencies>
