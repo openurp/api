@@ -232,9 +232,14 @@ Semester=学年学期
 Semester.schoolYear=学年度,格式2005-2006
 Semester.calendar=教学日历方案类别
 Semester.archived=是否归档
+Semester.stages=阶段列表
 
-Holiday=法定假日
-Holiday.school=学校
+CalendarStage=日历阶段
+CalendarStage.vacation=是否假期
+
+SemesterStage=学期阶段
+SemesterStage.beginOn=开始日期
+SemesterStage.endOn=结束日期
 
 TimeSetting=每个小节的时间设置
 TimeSetting.units=默认作息时间

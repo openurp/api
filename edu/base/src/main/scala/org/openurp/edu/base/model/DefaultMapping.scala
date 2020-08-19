@@ -42,15 +42,18 @@ class DefaultMapping extends MappingModule {
       index("", true, e.school, e.code)
     }
 
+    bind[CalendarStage] declare {e=>
+      e.name is length(100)
+    }
+
     bind[Semester].declare { e =>
       e.code is length(15)
       e.name & e.schoolYear are length(10)
       index("", true, e.calendar, e.code)
     }.generator("code")
 
-    bind[Holiday] declare { e =>
-      e.name is length(20)
-      e.endOn is notnull
+    bind[SemesterStage] declare {e=>
+      e.remark is length(500)
     }
 
     bind[Squad] declare { e =>

@@ -22,7 +22,7 @@ import org.beangle.commons.lang.time.WeekState
 import org.beangle.data.model.LongIdEntity
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.ExamMode
-import org.openurp.edu.base.model.{Course, Terms}
+import org.openurp.edu.base.model.{CalendarStage, Course, Terms}
 
 /**
  * 培养计划中的课程.<import org.openurp.edu.program.plan.model.CourseGroup
@@ -66,18 +66,15 @@ trait PlanCourse extends LongIdEntity {
  * 执行计划课程，例如MajorPlanCourse,SharePlanCourse
  */
 trait Executable {
-  /**
-   * 开课部门
-   */
+  /** 开课部门 */
   var department: Department = _
 
-  /**
-   * 考核方式
-   */
+  /** 考核方式 */
   var examMode: ExamMode = _
 
-  /**
-   * 开课周
-   */
+  /** 开课周 */
   var weekstate: WeekState = WeekState.Zero
+
+  /** 开课阶段 */
+  var stage: CalendarStage = _
 }
