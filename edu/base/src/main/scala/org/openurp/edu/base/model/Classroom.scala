@@ -18,14 +18,16 @@
  */
 package org.openurp.edu.base.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Coded
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Campus
-import org.openurp.base.model.Room
+import org.openurp.base.model.{Campus, Department, Room}
 import org.openurp.code.edu.model.ClassroomType
+
+import scala.collection.mutable
 
 /**
  * 教室
@@ -67,5 +69,16 @@ class Classroom extends LongId with Named with Coded with Updated with TemporalO
    * 考试容量
    */
   var examCapacity: Int = _
+
+  /**使用部门*/
+  var departs:mutable.Set[Department]=Collections.newSet[Department]
+
+  /**容量*/
+  def capacity:Int={
+    room match{
+      case None=> courseCapacity
+      case Some(r)=> r.capacity
+    }
+  }
 
 }
