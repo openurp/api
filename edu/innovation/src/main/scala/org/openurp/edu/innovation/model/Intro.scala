@@ -26,7 +26,7 @@ class Intro extends LongId {
   var project: Project = _
 
   /**项目简介*/
-  var summary: String = _
+  var summaries: String = _
 
   /**创新点和难点*/
   var innovation: String = _

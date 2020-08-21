@@ -32,6 +32,8 @@ class DefaultMapping extends MappingModule {
     bind[StdLabel]
     bind[StdLabelType]
     bind[StdType]
-    bind[TeacherType]
+    bind[TeacherType] declare{e=>
+      e.external is column("external_")
+    }
   }
 }

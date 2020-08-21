@@ -23,10 +23,10 @@ import org.openurp.edu.base.model.Project
 
 class EvaluationCriteriaItem extends LongId{
     /** 最小分值 */
-    var  min:Float=_
+    var  minScore:Float=_
 
     /** 最大分值 */
-    var  max:Float=_
+    var  maxScore:Float=_
 
     /** 对应的评价名称 */
     var  name:String=_

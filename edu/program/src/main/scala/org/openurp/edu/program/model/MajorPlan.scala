@@ -34,7 +34,7 @@ class MajorCourseGroup extends AbstractCourseGroup {
   /**
    * 自定义别名
    */
-  var alias: Option[String] = None
+  var givenName: Option[String] = None
 
   /**
    * 该组针对的专业方向
@@ -44,7 +44,7 @@ class MajorCourseGroup extends AbstractCourseGroup {
   override def name: String = {
     val sb = new StringBuilder()
     if (null != courseType) sb.append(courseType.name)
-    alias foreach{x => sb.append(" ").append(x)}
+    givenName foreach{ x => sb.append(" ").append(x)}
     sb.toString
   }
 

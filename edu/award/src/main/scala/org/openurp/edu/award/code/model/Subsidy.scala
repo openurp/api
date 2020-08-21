@@ -29,7 +29,7 @@ class SubsidyCategory extends IntId with Coded with Named {
   var discription: Option[String] = None
 
   /**评定周期*/
-  var period: String = _
+  var assessPeriod: String = _
 
   /**颁奖单位*/
   var awardUnit: String = _

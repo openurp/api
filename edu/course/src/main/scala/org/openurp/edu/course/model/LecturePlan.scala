@@ -32,7 +32,7 @@ class LecturePlan extends LongId with Updated {
 
   var course: Course = _
 
-  var locale: Locale = _
+  var docLocale: Locale = _
 
   var semester: Semester = _
 

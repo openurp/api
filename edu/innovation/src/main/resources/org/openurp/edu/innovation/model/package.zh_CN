@@ -37,18 +37,18 @@ InitReviewGroup=立项评审组
 InitReviewGroup.experts=评审专家
 
 Intro=项目介绍
-Intro.summary=项目简介
+Intro.summaries=项目简介
 Intro.innovation=创新点和难点
 Intro.product=预期成果
 
 LevelJounal=项目评级记录
-LevelJounal.year=年度
+LevelJounal.awardYear=年度
 
 Material=项目材料
 Material.fileName=文件名
-Material.size=大小
+Material.fileSize=大小
 Material.sha=sha摘要
-Material.path=路径
+Material.filePath=路径
 
 
 Member=项目成员

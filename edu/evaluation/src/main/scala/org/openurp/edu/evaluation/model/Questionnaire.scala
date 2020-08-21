@@ -39,8 +39,6 @@ class Questionnaire extends LongId with Updated with TemporalOn with Remark {
   var depart: Department = _
   /** 创建者 */
   var createBy: String = _
-  /** 使用状态 */
-  var state: Boolean = false
 
   def totalScore: Float = {
     questions.foldLeft(0f)(_ + _.score)

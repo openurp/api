@@ -25,7 +25,7 @@ import org.openurp.base.model.{Campus, Department}
 import org.openurp.code.edu.model.TeachLangType
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.{Course, Semester, Teacher}
-import org.openurp.edu.base.{ProjectBased, States}
+import org.openurp.edu.base.{ProjectBased, AuditStates}
 import org.openurp.edu.clazz.code.model.ClazzTag
 
 import scala.collection.mutable
@@ -83,7 +83,7 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   var group: Option[ClazzGroup] = None
 
   /** 审核状态 */
-  var state: States.State = _
+  var auditState: AuditStates.State = _
 
   var tags:mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]
 

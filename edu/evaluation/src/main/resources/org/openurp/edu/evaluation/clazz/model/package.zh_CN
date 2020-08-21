@@ -14,9 +14,9 @@ QuestionnaireClazz.questionnaire=问卷
 
 TextEvaluation=开放式文字评教
 TextEvaluation.evaluateAt=评教时间
-TextEvaluation.state=状态
+TextEvaluation.audited=是否已审核
 TextEvaluation.evaluateByTeacher=是否针对教师
-TextEvaluation.content=内容
+TextEvaluation.contents=内容
 TextEvaluation.clazz=教学任务
 TextEvaluation.teacher=教师
 TextEvaluation.student=学生

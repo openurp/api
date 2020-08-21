@@ -14,6 +14,7 @@
   <properties>
     <bundle.symbolicName>org.openurp.api.all</bundle.symbolicName>
     <bundle.namespace>org.openurp</bundle.namespace>
+    <beangle.data.version>5.3.8</beangle.data.version>
   </properties>
 
   <dependencies>

@@ -1,5 +1,5 @@
 Rank=排名结果
-Rank.rank=全校排名
+Rank.schoolRank=全校排名
 Rank.departRank=院系排名
 
 EvalStat=评教问卷统计结果
@@ -18,7 +18,6 @@ EvalStat.questionTypeStats=问题类型详细信息统计
 
 
 OptionStat=评教选项统计结果
-OptionStat.state=问题统计明细
 OptionStat.option=选项
 OptionStat.amount=人数
 OptionStat.questionStat=问题统计明细
@@ -52,7 +51,6 @@ ClazzEvalStat.questionTypeStats=问题类型详细信息统计
 ClazzEvalStat.teacher=教师
 
 ClazzOptionStat=任务评教选项统计结果
-ClazzOptionStat.state=问题统计明细
 ClazzOptionStat.option=选项
 ClazzOptionStat.amount=人数
 
@@ -89,7 +87,6 @@ TeacherEvalStat.scores=问题类别得分
 TeacherEvalStat.questionTypeStats=问题类型详细信息统计
 
 TeacherOptionStat=教师评教选项统计结果
-TeacherOptionStat.state=问题统计明细
 TeacherOptionStat.option=选项
 TeacherOptionStat.amount=人数
 
@@ -125,13 +122,9 @@ CourseEvalStat.scores=问题类别得分
 CourseEvalStat.questionTypeStats=问题类型详细信息统计
 
 
-
-
 CourseOptionStat=课程评教选项统计结果
-CourseOptionStat.state=问题统计明细
 CourseOptionStat.option=选项
 CourseOptionStat.amount=人数
-
 
 CourseQuestionStat=课程评教问题统计结果
 CourseQuestionStat.question=具体问题
@@ -162,11 +155,7 @@ DepartEvalStat.questionStats=问题详细信息统计
 DepartEvalStat.scores=问题类别得分
 DepartEvalStat.questionTypeStats=问题类型详细信息统计
 
-
-
-
 DepartOptionStat=开课院系评教选项统计结果
-DepartOptionStat.state=问题统计明细
 DepartOptionStat.option=选项
 DepartOptionStat.amount=人数
 
@@ -199,11 +188,7 @@ SchoolEvalStat.questionStats=问题详细信息统计
 SchoolEvalStat.scores=问题类别得分
 SchoolEvalStat.questionTypeStats=问题类型详细信息统计
 
-
-
-
 SchoolOptionStat=学校评教选项统计结果
-SchoolOptionStat.state=问题统计明细
 SchoolOptionStat.option=选项
 SchoolOptionStat.amount=人数
 

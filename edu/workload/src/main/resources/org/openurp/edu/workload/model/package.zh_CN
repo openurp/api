@@ -1,5 +1,5 @@
 CapacityFactor=教学工作量系数
-CapacityFactor.condition=条件表达式
+CapacityFactor.conditionExp=条件表达式
 
 FactorSegment=教学工作量分段系数
 FactorSegment.maxCapacity=学生人数上限
@@ -13,6 +13,6 @@ TeachingLoad.course=课程
 TeachingLoad.semester=学期
 TeachingLoad.factor=工作量系数
 TeachingLoad.stdCount=教学班人数
-TeachingLoad.load=折算课时
-TeachingLoad.period=担任学时
+TeachingLoad.loadHours=折算课时
+TeachingLoad.creditHours=担任学时
 TeachingLoad.clazzTags=任务标记

@@ -75,7 +75,7 @@ class DefaultMapping extends MappingModule {
 
     bind[Material] declare { e =>
       e.clazz is notnull
-      e.references is length(500)
+      e.referenceBooks is length(500)
       e.extra is length(200)
       e.reason is length(300)
       e.remark is length(200)

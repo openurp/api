@@ -45,5 +45,5 @@ class ExamGradeState extends AbstractGradeState  with Remark{
    * 百分比描述 <br>
    * 10% 就是 10， 20% 就是 20<br>
    */
-  var percent: Option[Short] = None
+  var scorePercent: Option[Short] = None
 }

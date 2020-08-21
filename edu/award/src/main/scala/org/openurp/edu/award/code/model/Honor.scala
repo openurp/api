@@ -32,7 +32,7 @@ class HonorCategory extends IntId with Coded with Named {
   var discription: Option[String] = None
 
   /**评定周期*/
-  var period: String = _
+  var assessPeriod: String = _
 
   /**颁奖单位*/
   var awardUnit: String = _
@@ -58,7 +58,6 @@ class HonorLevel extends IntId with Coded with Named {
   var enabled: Boolean = _
 
   /**描述*/
-
   var discription: Option[String] = None
 }
 
@@ -67,5 +66,5 @@ class HonorType extends IntId with Coded with Named {
   /**使用状态*/
   var enabled: Boolean = _
   /**排序序号*/
-  var sequence: String = _
+  var idx: String = _
 }

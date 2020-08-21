@@ -28,11 +28,11 @@ class ThesisHarvest extends IntId with Named {
 
   var applyOn: LocalDate = _
 
-  var count: Integer = _
+  var wordCount: Integer = _
 
   var confirm: Boolean = false
 
-  var summary: String = _
+  var summaries: String = _
 
   var department: Department = _
 

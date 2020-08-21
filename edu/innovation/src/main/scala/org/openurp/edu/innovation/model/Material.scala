@@ -30,11 +30,11 @@ class Material extends LongId with Updated {
   /**文件名*/
   var fileName: String = _
   /**大小*/
-  var size: Int = _
+  var fileSize: Int = _
   /**sha*/
   var sha: String = _
   /**路径*/
-  var path: String = _
+  var filePath: String = _
 
   def this(project: Project, stageType: StageType) {
     this()

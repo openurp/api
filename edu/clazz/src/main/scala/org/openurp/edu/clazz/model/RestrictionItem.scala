@@ -35,8 +35,8 @@ class RestrictionItem extends LongId with Cloneable {
    * 是否包含限定内容
    *  不包含exclusive情况下，为排除限定内容
    */
-  var inclusive: Boolean = _
+  var includeIn: Boolean = _
 
   /** 限制内容 */
-  var content: String = _
+  var contents: String = _
 }
