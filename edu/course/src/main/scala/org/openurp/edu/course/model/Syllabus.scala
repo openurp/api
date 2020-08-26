@@ -35,7 +35,7 @@ class Syllabus extends LongId with Updated {
 
   var course: Course = _
 
-  var locale: Locale = _
+  var docLocale: Locale = _
 
   var semester: Semester = _
 
@@ -54,7 +54,7 @@ class Syllabus extends LongId with Updated {
 class SyllabusSection extends LongId {
   var title: SyllabusSectionTitle = _
   var syllabus: Syllabus = _
-  var content: String = _
+  var contents: String = _
 }
 
 /**
@@ -66,7 +66,7 @@ class SyllabusSectionTitle extends IntId with Named
  * 大纲附件
  */
 class Attachment extends Component with Named {
-  var size: Int = _
+  var fileSize: Int = _
   var mimeType: String = _
-  var key: String = _
+  var filePath: String = _
 }

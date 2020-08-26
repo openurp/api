@@ -33,13 +33,13 @@ import org.openurp.edu.base.model.Textbook
 class Material extends LongId with Serializable with Cloneable with Updated with Remark {
 
   /**教材选用类型*/
-  var state: BookAdoption.State = _
+  var adoptionState: BookAdoption.State = _
 
   /**教材列表*/
   var books: Buffer[Textbook] = Collections.newBuffer[Textbook]
 
   /**参考书*/
-  var references: Option[String] = None
+  var referenceBooks: Option[String] = None
 
   /**其它资料*/
   var extra: Option[String] = None

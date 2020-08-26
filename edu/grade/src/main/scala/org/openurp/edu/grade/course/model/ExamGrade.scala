@@ -51,7 +51,7 @@ class ExamGrade extends LongId with Grade {
   /** 考试情况 */
   var examStatus: ExamStatus = _
   /** 百分比 */
-  var percent: Option[Short] = None
+  var scorePercent: Option[Short] = None
 
   def std: Student = courseGrade.std
 

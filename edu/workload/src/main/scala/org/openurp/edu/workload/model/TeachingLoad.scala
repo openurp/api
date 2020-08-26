@@ -42,10 +42,10 @@ class TeachingLoad extends LongId {
 
   var factor: Float = _
 
-  var period: Int = _
+  var creditHours: Int = _
 
   var stdCount: Int = _
 
-  var load: Float = _
+  var loadHours: Float = _
 
 }

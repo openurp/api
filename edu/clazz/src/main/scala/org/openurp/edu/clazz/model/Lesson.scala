@@ -33,13 +33,13 @@ class Lesson extends LongId {
 
   var clazz: Clazz = _
 
-  var date: LocalDate = _
+  var openOn: LocalDate = _
 
   var beginAt: HourMinute = _
 
   var endAt: HourMinute = _
 
-  var content: String = _
+  var contents: String = _
 
   /** 授课教师列表 */
   var teachers: collection.mutable.Set[Teacher] = Collections.newSet[Teacher]

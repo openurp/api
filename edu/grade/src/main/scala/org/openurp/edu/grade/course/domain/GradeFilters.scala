@@ -60,7 +60,7 @@ object GradeFilters {
         if (score <= 0 && grade.getGrade(new GradeType(GradeType.Delay)).isEmpty) {
           grade.getExamGrade(new GradeType(GradeType.End)) match {
             case None => true
-            case Some(eg) => !eg.examStatus.deferred // 期末存在记录，但是考试情况是缓考
+            case Some(eg) => !eg.examStatus.hasDeferred // 期末存在记录，但是考试情况是缓考
           }
         } else {
           true

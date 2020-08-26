@@ -36,17 +36,14 @@ class TextEvaluation extends LongId {
   /** 学生 */
   var student: Student = _
   /**评教内容*/
-  var content: String = _
+  var contents: String = _
   /** 评教时间 */
   var evaluateAt: Instant = _
-  /** 是否确认 */
-  var state: Boolean = false
-
+  /** 是否已审核 */
+  var audited: Boolean = false
   /** 是否教师评教 */
   var evaluateByTeacher: Boolean = _
-  /** 是否确认 */
-  //  var isAffirm:Boolean=_
-
+  /**教师回复*/
   var teacherRemessages = Collections.newBuffer[TeacherRemessage]
 
 }

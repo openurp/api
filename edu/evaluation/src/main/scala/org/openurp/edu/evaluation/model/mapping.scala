@@ -41,7 +41,7 @@ class DefaultMapping extends MappingModule {
       e.options is depends("optionGroup")
     }
     bind[Question].declare { e =>
-      e.content is(length(400), notnull)
+      e.contents is(length(400), notnull)
       e.remark is length(200)
       e.questionType & e.depart are notnull
     }

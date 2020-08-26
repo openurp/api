@@ -181,7 +181,7 @@ class ExamStatus extends CodeBean {
   /**
    * 是否需要参加下一次缓考
    */
-  var deferred: Boolean = _
+  var hasDeferred: Boolean = _
   /**
    * 是否有作弊行为
    */
@@ -301,7 +301,7 @@ object ExamType {
 class ExamType extends CodeBean {
 
   /**是否是缓考*/
-  var deferred: Boolean = _
+  var forDeferred: Boolean = _
 
   def this(id: Int) {
     this()

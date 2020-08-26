@@ -63,7 +63,7 @@ class DefaultGpaPolicy extends GpaPolicy {
 
           stdTermGpa.gpa = this.calcGpa(semesterGrades)
           stdTermGpa.ga = this.calcGa(semesterGrades)
-          stdTermGpa.count = semesterGrades.size
+          stdTermGpa.gradeCount = semesterGrades.size
           val stats = statCredits(semesterGrades)
           stdTermGpa.totalCredits = stats(0)
           stdTermGpa.credits = stats(1)
@@ -75,7 +75,7 @@ class DefaultGpaPolicy extends GpaPolicy {
           stdGpa.add(stdYearGpa)
           stdYearGpa.gpa = this.calcGpa(yearGrades)
           stdYearGpa.ga = this.calcGa(yearGrades)
-          stdYearGpa.count = yearGrades.size
+          stdYearGpa.gradeCount = yearGrades.size
           val stats = statCredits(yearGrades)
           stdYearGpa.totalCredits = stats(0)
           stdYearGpa.credits = stats(1)
@@ -94,7 +94,7 @@ class DefaultGpaPolicy extends GpaPolicy {
         courseMap.put(grade.course, grade)
       }
     }
-    stdGpa.count = courseMap.size
+    stdGpa.gradeCount = courseMap.size
     val totalStats = statCredits(courseMap.values)
     stdGpa.totalCredits = totalStats(0)
     stdGpa.credits = totalStats(1)

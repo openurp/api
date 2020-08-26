@@ -22,7 +22,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Updated}
 import org.openurp.code.edu.model.{EduCategory, EducationLevel}
-import org.openurp.edu.base.States
+import org.openurp.edu.base.AuditStates
 import org.openurp.edu.base.model.Student
 
 import scala.collection.mutable;
@@ -39,7 +39,7 @@ class ExchangeStudent extends LongId with Updated with DateRange {
   var grades: mutable.Buffer[ExchangeGrade] = Collections.newBuffer[ExchangeGrade]
   var transcriptPath: Option[String] = None
   /** 审核状态 */
-  var state: States.State = States.Draft
+  var auditState: AuditStates.State = AuditStates.Draft
   var auditOpinion: Option[String] = None
   var credits: Float = _
   var exemptionCredits: Float = _

@@ -28,13 +28,13 @@ class DefaultMapping extends MappingModule {
     bind[Syllabus].declare { e =>
       e.contents is depends("syllabus")
       e.attachment.name is(notnull, length(50))
-      e.attachment.size is(notnull, column("file_size"))
-      e.attachment.key is(notnull, length(200))
+      e.attachment.fileSize is notnull
+      e.attachment.filePath is(notnull, length(200))
     }
 
     bind[SyllabusSection].declare { e =>
       e.title & e.syllabus are notnull
-      e.content is length(3900)
+      e.contents is length(3900)
     }
 
     bind[SyllabusSectionTitle].declare { e =>

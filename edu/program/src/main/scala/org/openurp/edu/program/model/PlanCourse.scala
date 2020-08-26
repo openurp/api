@@ -76,5 +76,5 @@ trait Executable {
   var weekstate: WeekState = WeekState.Zero
 
   /** 开课阶段 */
-  var stage: CalendarStage = _
+  var stage: Option[CalendarStage] = None
 }

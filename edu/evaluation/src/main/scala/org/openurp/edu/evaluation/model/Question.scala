@@ -31,7 +31,7 @@ import org.openurp.edu.base.model.Project
 class Question extends LongId with Updated with TemporalOn with Remark {
   var project: Project = _
   /** 问题内容 */
-  var content: String = _
+  var contents: String = _
   /** 问题类型 */
   var questionType: QuestionType = _
   /** 分值 */
@@ -40,8 +40,6 @@ class Question extends LongId with Updated with TemporalOn with Remark {
   var depart: Department = _
   /** 优先级 */
   var priority: Int = _
-  /** 使用状态 */
-  var state: Boolean = false
   /** 是否附加题 */
   var addition: Boolean = false
   /** 选项组 */

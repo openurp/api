@@ -51,7 +51,7 @@ class CourseGradeState extends AbstractGradeState {
   var gaStates = Collections.newSet[GaGradeState]
 
   /** 保留小数位 */
-  var precision: Int = _
+  var scorePrecision: Int = _
 
   def this(clazz: Clazz) {
     this()
@@ -106,7 +106,7 @@ class CourseGradeState extends AbstractGradeState {
 
   def getPercent(gradeType: GradeType): Option[Short] = {
     examStates.find(_.gradeType.id == gradeType.id) match {
-      case Some(es) => es.percent
+      case Some(es) => es.scorePercent
       case None => None
     }
   }

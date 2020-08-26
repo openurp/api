@@ -9,14 +9,14 @@ Program.duration=学制
 Program.degree=毕业授予学位
 Program.degreeGpa=学位绩点
 Program.studyType=学习形式
-Program.state=状态
+Program.auditState=状态
 Program.project=项目
 Program.termCampuses=学期对应校区
 Program.campus=校区
 Program.offsetType=任选课类别
 
 MajorCourseGroup=专业计划课程组
-MajorCourseGroup.alias=自定义别名
+MajorCourseGroup.givenName=自定义别名
 MajorCourseGroup.direction=该组针对的专业方向
 MajorCourseGroup.autoAddup=自动累加学分
 
@@ -26,7 +26,7 @@ MajorPlanCourse=专业计划课程
 MajorPlanCourse.suggestTerms=建议修读学期
 
 ExecutionCourseGroup=执行计划课程组
-ExecutionCourseGroup.alias=自定义别名
+ExecutionCourseGroup.givenName=自定义别名
 ExecutionCourseGroup.direction=该组针对的专业方向
 ExecutionCourseGroup.autoAddup=自动累加学分
 
@@ -75,7 +75,7 @@ AbstractCoursePlan.groups=课程组
 AbstractCoursePlan.credits=要求学分
 AbstractCoursePlan.startTerm=起始学期
 AbstractCoursePlan.endTerm=结束学期
-AbstractCoursePlan.state=审核状态
+AbstractCoursePlan.auditState=审核状态
 AbstractCoursePlan.remark=备注
 
 AbstractPlanCourse=抽象计划内课程
@@ -86,12 +86,13 @@ AbstractPlanCourse.compulsory=是否必修
 AbstractPlanCourse.remark=备注
 
 ProgramDoc=培养方案文档
+ProgramDoc.docLocale=语言
 ProgramDocSection=培养方案文档章节
-ProgramDocSection.content=内容
+ProgramDocSection.contents=内容
 
 ProgramDocTemplate=培养方案文档模板
-ProgramDocTemplat.locale=语言
-ProgramDocTemplat.stdTypes=培养方案文档对应学生类别
+ProgramDocTemplate.docLocale=语言
+ProgramDocTemplate.stdTypes=培养方案文档对应学生类别
 
 ProgramDocMeta=培养方案章节定义
 ProgramDocMeta.indexno=章节编号

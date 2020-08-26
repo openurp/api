@@ -32,7 +32,7 @@ ExamGrade.courseGrade=对应的课程成绩
 ExamGrade.status=成绩状态
 ExamGrade.passed=是否通过
 ExamGrade.operator=操作者
-ExamGrade.percent=百分比描述
+ExamGrade.scorePercent=百分比描述
 
 GradeRateItem=成绩分级配置项
 GradeRateItem.config=成绩配置
@@ -72,7 +72,7 @@ ExamGradeState=考试成绩状态
 ExamGradeState.gradeType=成绩类型
 ExamGradeState.gradeState=总成绩状态
 ExamGradeState.remark=备注
-ExamGradeState.percent=百分比描述
+ExamGradeState.scorePercent=百分比描述
 ExamGradeState.operator=操作者
 ExamGradeState.status=成绩状态
 ExamGradeState.gradingMode=成绩记录方式
@@ -82,14 +82,14 @@ CourseGradeState.clazz=教学任务
 CourseGradeState.operator=操作者
 CourseGradeState.gradingMode=成绩记录方式
 CourseGradeState.status=成绩状态
-CourseGradeState.precision=保留小数位
+CourseGradeState.scorePrecision=保留小数位
 
 GpaStat.gpa=总平均绩点
 GpaStat.gp=总绩点
 GpaStat.ga=平均分
 GpaStat.credits=获得学分
 GpaStat.totalCredits=总学分
-GpaStat.count=门数
+GpaStat.gradeCount=门数
 
 StdGpa=学生成绩绩点统计
 StdGpa.std=学生

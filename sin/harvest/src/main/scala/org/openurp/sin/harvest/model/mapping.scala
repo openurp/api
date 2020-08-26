@@ -61,7 +61,7 @@ class DefaultMapping extends MappingModule {
       e =>
         e.researcher & e.publishedSituation & e.department is notnull
         e.name is length(300)
-        e.summary is length(2000)
+        e.summaries is length(2000)
     }
   }
 
