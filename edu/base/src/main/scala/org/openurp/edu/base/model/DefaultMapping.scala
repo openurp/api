@@ -49,6 +49,7 @@ class DefaultMapping extends MappingModule {
     bind[Semester].declare { e =>
       e.code is length(15)
       e.name & e.schoolYear are length(10)
+      e.stages is depends("semester")
       index("", true, e.calendar, e.code)
     }.generator("code")
 
