@@ -29,7 +29,7 @@ import org.beangle.data.model.pojo.Updated
 class LevelJounal extends LongId with Updated {
 
   /**年度*/
-  var year: Int = _
+  var awardYear: Int = _
 
   var project: Project = _
 
@@ -37,7 +37,7 @@ class LevelJounal extends LongId with Updated {
 
   def this(year: Int, project: Project, level: ProjectLevel) {
     this()
-    this.year = year
+    this.awardYear = year
     this.project = project
     this.level = level
     this.updatedAt = Instant.now

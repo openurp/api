@@ -49,7 +49,7 @@ trait GpaStat {
   /**
    * 成绩的门数
    */
-  var count: Int = _
+  var gradeCount: Int = _
 }
 
 /**
@@ -91,7 +91,7 @@ class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
     this.semesterGpas = new collection.mutable.ListBuffer[StdSemesterGpa]
     this.yearGpas = new collection.mutable.ListBuffer[StdYearGpa]
     this.credits = 0f
-    this.count = 0
+    this.gradeCount = 0
     this.ga = 0f
     this.gpa = 0f
   }

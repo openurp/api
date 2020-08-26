@@ -22,7 +22,7 @@ package org.openurp.edu.base
  * 通用的审核状态枚举类
  *
  */
-object States extends Enumeration {
+object AuditStates extends Enumeration {
   class State(name: String) extends super.Val(name)
 
   val Draft = new State("草稿")

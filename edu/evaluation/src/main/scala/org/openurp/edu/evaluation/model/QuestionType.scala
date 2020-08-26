@@ -34,6 +34,4 @@ class QuestionType extends LongId with Named with Updated with TemporalOn with R
   var enName: scala.Option[String] = None
   /** 优先级 ,越大越靠前 */
   var priority: Int = _
-  /** 状态 */
-  var state: Boolean = false
 }

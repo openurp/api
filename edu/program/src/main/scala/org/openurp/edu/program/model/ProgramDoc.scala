@@ -34,7 +34,7 @@ import scala.collection.mutable
  */
 class ProgramDoc extends LongId with Updated {
   /** 语言 */
-  var locale: Locale = _
+  var docLocale: Locale = _
   /** 方案 */
   var program: Program = _
 }
@@ -44,7 +44,7 @@ class ProgramDoc extends LongId with Updated {
 class ProgramDocSection extends LongId with Named with Hierarchical[ProgramDocSection] {
 
   /** 内容 */
-  var content: String = _
+  var contents: String = _
 
   /** 文档 */
   var doc: ProgramDoc = _
@@ -59,9 +59,7 @@ class ProgramDocTemplate extends IntId with Named with TemporalOn {
   /**部门*/
   var department: Option[Department] = None
   /**语言*/
-  var locale: Locale = _
-  /**学生类别*/
-  var stdTypes: mutable.Buffer[StdType] = Collections.newBuffer[StdType]
+  var docLocale: Locale = _
 }
 
 /** 方案模板章节定义

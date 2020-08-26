@@ -35,7 +35,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Intro] declare { e =>
-      e.summary is length(500)
+      e.summaries is length(500)
       e.innovation is length(300)
       e.product is length(300)
     }

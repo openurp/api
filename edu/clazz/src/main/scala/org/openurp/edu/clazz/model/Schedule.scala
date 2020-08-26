@@ -29,7 +29,7 @@ import org.openurp.code.edu.model.ClassroomType
 class Schedule extends Component with Serializable with Cloneable {
 
   /** 要求排课课时 */
-  var period: Int = _
+  var creditHours: Int = _
 
   /** 周状态 */
   var weekstate: WeekState = _

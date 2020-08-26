@@ -31,7 +31,7 @@ class PublishedSituation extends IntId with Named {
 
   var issn: String = _
 
-  var position: String = _
+  var location:String = _
 
   var cn: String = _
 

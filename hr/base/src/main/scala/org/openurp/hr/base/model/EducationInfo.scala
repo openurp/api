@@ -44,10 +44,10 @@ class EducationInfo extends LongId with TemporalOn {
   /**学习形式 */
   var studyType: StudyType = _
   /**学习内容 */
-  var content: String = _
+  var contents: String = _
   /**证明人*/
-  var witness: String =
-  /**备注*/_
+  var witness: String =_
+  /**备注*/
   var remark: String = _
 
 }

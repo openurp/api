@@ -18,16 +18,16 @@
  */
 package org.openurp.edu.evaluation.clazz.stat.model
 
-import scala.collection.mutable.Buffer
-import org.beangle.data.model.LongId
 import org.openurp.edu.base.model.Semester
-import org.openurp.edu.evaluation.model.{ Option, Question, QuestionType, Questionnaire }
+import org.openurp.edu.evaluation.model.{Option, Question, QuestionType, Questionnaire}
 import org.beangle.data.model.LongIdEntity
 import org.beangle.commons.collection.Collections
 import java.time.Instant
 
+import scala.collection.mutable
+
 trait Rank {
-  var rank: Int = _
+  var schoolRank: Int = _
 
   var departRank: Int = _
 }
@@ -85,7 +85,7 @@ trait QuestionStat extends LongIdEntity {
   var totalScore: Double = _
 
   /** 具体选项 */
-  var optionStats: Buffer[OptionStat] = new collection.mutable.ListBuffer[OptionStat]
+  var optionStats: mutable.Buffer[OptionStat] = new collection.mutable.ListBuffer[OptionStat]
 }
 
 trait QuestionTypeStat extends LongIdEntity {

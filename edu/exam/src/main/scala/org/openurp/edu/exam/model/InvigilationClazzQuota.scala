@@ -38,7 +38,7 @@ class InvigilationClazzQuota extends LongId {
   var ratio: Float = _
 
   /** 课时 */
-  var period: Float = _
+  var creditHours: Float = _
 
   /** 次数 */
   var amount: Float = _

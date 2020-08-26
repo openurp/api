@@ -53,7 +53,7 @@ class ExamGroup extends LongId with Named with SemesterBased with Updated {
   var maxCourseConflictRatio: Float = _
 
   /**发布状态*/
-  var state: PublishState.State = _
+  var publishState: PublishState.State = _
 
   /** 排考任务列表*/
   var tasks = Collections.newBuffer[ExamTask]

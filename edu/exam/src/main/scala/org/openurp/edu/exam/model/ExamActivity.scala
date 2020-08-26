@@ -73,7 +73,7 @@ class ExamActivity extends LongId with Remark {
   var examPaperNo: Option[String] = None
 
   /** 发布状态 */
-  var state: PublishState.State = _
+  var publishState: PublishState.State = _
 
   def startOn: LocalDate = {
     examOn

@@ -25,7 +25,7 @@ import org.openurp.base.model.{Campus, Department}
 import org.openurp.code.edu.model.{Degree, StudyType}
 import org.openurp.edu.base.code.model.{CourseType, StdType}
 import org.openurp.edu.base.model.{Direction, Major}
-import org.openurp.edu.base.{EduLevelBased, States}
+import org.openurp.edu.base.{EduLevelBased, AuditStates}
 
 /**
  * 专业培养方案
@@ -69,7 +69,7 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   var termCampuses = Collections.newBuffer[TermCampus]
 
   /** 审核状态 */
-  var state: States.State = States.Draft
+  var auditState: AuditStates.State = AuditStates.Draft
 
   /** 多出学分可以冲抵的课程类别 */
   var offsetType: CourseType = _

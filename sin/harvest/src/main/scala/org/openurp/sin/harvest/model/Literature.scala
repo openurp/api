@@ -41,7 +41,7 @@ class Literature extends IntId with Named {
 
   var translated: Boolean = false
 
-  var count: Float = _
+  var wordCount: Float = _
 
   var confirm: Boolean = false
 

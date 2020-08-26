@@ -64,7 +64,7 @@ class Room extends IntId with Coded with Named with TemporalOn with Updated with
   var roomType: RoomType = _
 
   /** 楼层 */
-  var floor: Int = _
+  var floorNo: Int = _
 
   /** 容量*/
   var capacity: Int = _

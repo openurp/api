@@ -8,7 +8,7 @@ ExamActivity.examOn=考试时间
 ExamActivity.remark=备注
 ExamActivity.stdCount=考生数
 ExamActivity.examRooms=考场列表
-ExamActivity.state=审核状态
+ExamActivity.publishState=发布状态
 ExamActivity.rooms=对应考场
 ExamActivity.task=排考任务
 ExamActivity.departArranged=是否院系自主安排
@@ -64,7 +64,7 @@ ExamGroup.endOn=结束日期
 ExamGroup.allowInClass=允许随堂考
 ExamGroup.maxCourseConflictRatio=最大上课冲突比例
 ExamGroup.minCourseConflictCount=最小学生上课冲突人数
-ExamGroup.state=发布状态
+ExamGroup.publishState=发布状态
 ExamGroup.rooms=考试组对应教室
 
 RoomGroup=教室组
@@ -77,7 +77,7 @@ ExamTurn.endAt=结束时间
 ExamTurn.capacity=最大容量
 
 InvigilationClazzQuota=教学任务监考配额统计
-InvigilationClazzQuota.period=学时
+InvigilationClazzQuota.creditHours=学时
 InvigilationClazzQuota.amount=配额
 InvigilationClazzQuota.ratio=比例
 

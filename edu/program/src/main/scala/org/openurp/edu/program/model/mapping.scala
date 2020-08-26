@@ -49,7 +49,7 @@ class DefaultMapping extends MappingModule {
       e.children is depends(classOf[MajorCourseGroup], "parent")
       e.planCourses is depends(classOf[MajorPlanCourse], "group")
       e.termCredits is length(40)
-      e.alias is length(100)
+      e.givenName is length(100)
       index("", false, e.plan)
       index("", false, e.parent)
     }
@@ -74,7 +74,7 @@ class DefaultMapping extends MappingModule {
       e.children is depends(classOf[ExecutionCourseGroup], "parent")
       e.planCourses is depends(classOf[ExecutionPlanCourse], "group")
       e.termCredits is length(40)
-      e.alias is length(100)
+      e.givenName is length(100)
       index("", false, e.plan)
       index("", false, e.parent)
     }
@@ -146,5 +146,9 @@ class DefaultMapping extends MappingModule {
     bind[StdAlternativeCourse].declare { e =>
       index("", false, e.std)
     }.table("std_alt_courses")
+
+    bind[ProgramDocTemplate]
+
+    bind[ProgramDoc]
   }
 }

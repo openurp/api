@@ -26,7 +26,7 @@ import org.beangle.data.model.pojo.TemporalOn
 
 class CapacityFactor extends LongId with Named with Remark with TemporalOn {
 
-  var condition: String = _
+  var conditionExp: String = _
 
   var segments = Collections.newBuffer[FactorSegment]
 
