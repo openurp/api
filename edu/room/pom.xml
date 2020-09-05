@@ -16,4 +16,10 @@
     <bundle.namespace>org.openurp.edu.room</bundle.namespace>
   </properties>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.openurp.edu.base</groupId>
+      <artifactId>openurp-edu-base-api</artifactId>
+    </dependency>
+  </dependencies>
 </project>

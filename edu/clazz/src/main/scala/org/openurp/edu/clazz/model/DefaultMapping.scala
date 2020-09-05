@@ -83,6 +83,7 @@ class DefaultMapping extends MappingModule {
       index("", true, e.clazz)
     }
 
+    bind[StdCourseAbility]
   }
 
 }

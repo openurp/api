@@ -21,11 +21,7 @@ package org.openurp.edu.base.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.Coded
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Coded, DateRange, Named, Remark, TemporalOn, Updated}
 import org.openurp.base.model.Campus
 import org.openurp.base.model.Department
 import org.openurp.edu.base.EduLevelBased
@@ -37,7 +33,7 @@ import org.openurp.edu.base.code.model.StdType
  * @author chaostone
  * @since 2005-9-12
  */
-class Squad extends LongId with EduLevelBased with Coded with Named with TemporalOn with Updated with Remark {
+class Squad extends LongId with EduLevelBased with Coded with Named with DateRange with Updated with Remark {
 
   /** 年级,形式为yyyy-p */
   var grade: String = _
