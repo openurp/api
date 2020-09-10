@@ -89,7 +89,6 @@ ProgramDoc=培养方案文档
 ProgramDoc.docLocale=语言
 ProgramDocSection=培养方案文档章节
 ProgramDocSection.contents=内容
-
 ProgramDocTemplate=培养方案文档模板
 ProgramDocTemplate.docLocale=语言
 ProgramDocTemplate.stdTypes=培养方案文档对应学生类别

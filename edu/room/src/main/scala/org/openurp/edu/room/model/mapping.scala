@@ -36,5 +36,19 @@ class DefaultMapping extends MappingModule {
     bind[UserApp] declare { e =>
       e.name & e.activityUrl are(length(200), notnull)
     }
+
+    bind[RoomApply] declare { e =>
+      e.activity.name is column("activity_name")
+    }
+
+    bind[ApplyDepartCheck] declare { e =>
+      e.opinions is length(100)
+    }
+
+    bind[ApplyFinalCheck] declare { e =>
+      e.opinions is length(100)
+    }
+
+    bind[AvailableTime]
   }
 }

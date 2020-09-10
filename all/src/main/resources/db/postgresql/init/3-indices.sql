@@ -5,6 +5,7 @@ create index idx_6n5shiehsmeu47y6hblapon9j on code_gb.divisions (parent_id);
 create index idx_pkni877r20i1vkg4n2jk2lb31 on code_hb.staff_source_types (parent_id);
 create index idx_bqnq6ihum5omb2520bavufwbs on code_hb.staff_types (parent_id);
 create index idx_t7g19kn25v4jhn6darbfa2stp on edu_base.classrooms_departs (classroom_id);
+create index idx_3y1hwcx0xh0apfawnr099698f on edu_base.classrooms_projects (classroom_id);
 create index idx_cio9wl9gex7fo85575w4112c4 on edu_base.course_hours (course_id);
 create index idx_enrjhpjmn8iterehufbi0m2f6 on edu_base.course_units (setting_id);
 create index idx_61og8rbqdd2y28rx2et5fdnxd on edu_base.courses (code);
@@ -140,6 +141,9 @@ create index idx_h0ysdj9584dxm8l728cffxrrl on edu_program.major_course_groups (p
 create index idx_k721uxxb3t08ojvw2gw6s4nt5 on edu_program.major_course_groups (parent_id);
 create index idx_lew5g9v57qxwekv4aherpblii on edu_program.major_plan_courses (group_id);
 create index idx_5kjqjfeqltk9lomhga2doccnh on edu_program.major_plans (program_id);
+create index idx_d69hctw0adiwc375iducsqovm on edu_program.program_doc_metas (template_id);
+create index idx_jfn7je4lfhja46qtvdeka1dut on edu_program.program_doc_sections (parent_id);
+create index idx_lkchplwh47vmakls9riujfgrw on edu_program.program_doc_sections (doc_id);
 create index idx_127cshdpus15xol454uaojjfe on edu_program.share_course_groups (parent_id);
 create index idx_dsgghmsmfesuqdn7ct736a6re on edu_program.share_course_groups (plan_id);
 create index idx_4kls4p6klclkgscfvak8pqsdf on edu_program.share_plan_courses (group_id);
@@ -153,6 +157,7 @@ create index idx_ks5c08r0ewjy6tqj2bdktvcnr on edu_program.term_campuses (program
 create index idx_5c8y9mjfcmi8qfg5ktnfmhq8e on edu_room.occupancies (room_id);
 create index idx_cibqwhtpc8x3gdpclaxfh296j on edu_room.occupancies (activity_id);
 create index idx_ddxl05y02vs65yn5vwqhnn5rk on edu_room.occupancies (start_on);
+create index idx_oaii80w561p28ji3r86pv8djo on edu_room.room_applies_times (room_apply_id);
 create index idx_jby4o302r5oxdg1qfapaoxj45 on edu_student.examinees_scores (examinee_id);
 create index idx_4ajhq7ycatuntfts147dl6sx6 on edu_student.std_alteration_items (alteration_id);
 create index idx_pv31fi3fkfu1vs1s0forsx0fk on edu_student.transfer_options (scheme_id);

@@ -18,16 +18,20 @@ Squad.shortName=简称
 Squad.campus=校区
 
 Classroom=教室
-Classroom.room=房间
+Classroom.roomNo=房间号
 Classroom.name=名称
 Classroom.enName=英文名
 Classroom.shortName=简称
 Classroom.roomType=教室类型
+Classroom.capacity=容量
 Classroom.examCapacity=考试容量
 Classroom.courseCapacity=上课容量
 Classroom.project=项目
 Classroom.campus=校区
 Classroom.departs=使用部门
+Classroom.floorNo=楼层
+Classroom.building=教学楼
+Classroom.projects=使用项目
 
 Course=课程基本信息
 Course.code=课程代码

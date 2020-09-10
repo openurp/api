@@ -21,29 +21,18 @@ package org.openurp.edu.room.model
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.model.Classroom
-import org.openurp.code.edu.model.ActivityType
+import org.openurp.edu.base.model.{Classroom, Project}
 
-/**
- * 房间占用情况
- */
-class Occupancy extends LongId with Updated {
+/** 可用时间
+ **/
+class AvailableTime extends LongId with Updated {
 
-  /** 房间 */
+  var project: Project = _
+
+  /** 教室 */
   var room: Classroom = _
 
   /** 时间 */
   var time = new WeekTime
 
-  /** 活动类型 */
-  var activityType: ActivityType = _
-
-  /**用户系统*/
-  var userApp: UserApp = _
-
-  /** 活动ID */
-  var activityId: Long = _
-
-  /** 说明 */
-  var comments: String = _
 }

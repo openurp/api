@@ -147,8 +147,19 @@ class DefaultMapping extends MappingModule {
       index("", false, e.std)
     }.table("std_alt_courses")
 
-    bind[ProgramDocTemplate]
+    bind[ProgramDocTemplate] declare { e=>
+      e.metas is depends("template")
+    }
 
-    bind[ProgramDoc]
+    bind[ProgramDocMeta]
+
+    bind[ProgramDoc] declare {e=>
+      e.sections is depends("doc")
+    }
+
+    bind[ProgramDocSection] declare{e=>
+      e.contents is length(10000)
+      e.children is depends("parent")
+    }
   }
 }

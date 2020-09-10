@@ -20,11 +20,8 @@ package org.openurp.edu.base.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Coded
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.{Campus, Department, Room}
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
+import org.openurp.base.model.{Building, Campus, Department, School}
 import org.openurp.code.edu.model.ClassroomType
 
 import scala.collection.mutable
@@ -34,51 +31,43 @@ import scala.collection.mutable
  */
 class Classroom extends LongId with Named with Coded with Updated with TemporalOn {
 
-  /**项目*/
-  var project: Project = _
-  /**
-   * 房间
-   * 可以为空，表示虚拟房间
-   */
-  var room: Option[Room] = None
+  /** 学校 */
+  var school: School = _
 
-  /**所属校区*/
+  /** 项目列表 */
+  var projects: mutable.Set[Project] = Collections.newSet[Project]
+
+  /** 房间号 */
+  var roomNo: Option[String] = None
+
+  /** 所属校区 */
   var campus: Campus = _
 
-  /**
-   * 英文名
-   */
+  /** 所属建筑 */
+  var building: Option[Building] = None
+
+  /** 英文名 */
   var enName: Option[String] = None
 
-  /**
-   * 简称
-   */
+  /** 简称 */
   var shortName: Option[String] = None
 
-  /**
-   * 教室类型
-   */
+  /** 教室类型 */
   var roomType: ClassroomType = _
 
-  /**
-   * 上课容量
-   */
+  /** 楼层 */
+  var floorNo: Int = _
+
+  /** 容量 */
+  var capacity: Int = _
+
+  /** 上课容量 */
   var courseCapacity: Int = _
 
-  /**
-   * 考试容量
-   */
+  /** 考试容量 */
   var examCapacity: Int = _
 
-  /**使用部门*/
-  var departs:mutable.Set[Department]=Collections.newSet[Department]
-
-  /**容量*/
-  def capacity:Int={
-    room match{
-      case None=> courseCapacity
-      case Some(r)=> r.capacity
-    }
-  }
+  /** 使用部门 */
+  var departs: mutable.Set[Department] = Collections.newSet[Department]
 
 }

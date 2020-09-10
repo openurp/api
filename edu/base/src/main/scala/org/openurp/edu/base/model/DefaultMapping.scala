@@ -70,7 +70,7 @@ class DefaultMapping extends MappingModule {
     bind[Classroom] declare { e =>
       e.code is length(20)
       e.name is length(100)
-      index("", true, e.project, e.code)
+      e.roomNo is length(20)
       index("", true, e.code)
     }
 

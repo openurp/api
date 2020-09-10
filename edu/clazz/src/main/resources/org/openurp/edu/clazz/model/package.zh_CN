@@ -114,3 +114,6 @@ Material.remark=备注
 Material.reason=选用理由
 Material.adoptionState=教材状态
 Material.ordered=教材已订购
+
+StdCourseAbility=学生课程能力
+StdCourseAbility.score=分数

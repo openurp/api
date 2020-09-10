@@ -25,7 +25,6 @@ import org.beangle.data.model.pojo.{Hierarchical, Named, TemporalOn, Updated}
 import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.EducationLevel
-import org.openurp.edu.base.code.model.StdType
 
 import scala.collection.mutable
 
@@ -37,6 +36,9 @@ class ProgramDoc extends LongId with Updated {
   var docLocale: Locale = _
   /** 方案 */
   var program: Program = _
+
+  /**章节列表*/
+  var sections:mutable.Buffer[ProgramDocSection] =Collections.newBuffer[ProgramDocSection]
 }
 
 /** 培养方案章节
@@ -54,25 +56,27 @@ class ProgramDocSection extends LongId with Named with Hierarchical[ProgramDocSe
  * 限定在某个层次的,某个部门的文档模板，部门可选
  */
 class ProgramDocTemplate extends IntId with Named with TemporalOn {
-  /**培养层次*/
+  /** 培养层次 */
   var level: EducationLevel = _
-  /**部门*/
+  /** 部门 */
   var department: Option[Department] = None
-  /**语言*/
+  /** 语言 */
   var docLocale: Locale = _
+  /** 章节元数据 */
+  var metas: mutable.Buffer[ProgramDocMeta] = Collections.newBuffer[ProgramDocMeta]
 }
 
 /** 方案模板章节定义
  **/
 class ProgramDocMeta extends IntId with Named {
 
-  /**章节编号*/
+  /** 章节编号 */
   var indexno: String = _
 
-  /**模板*/
+  /** 模板 */
   var template: ProgramDocTemplate = _
 
-  /**最大长度*/
+  /** 最大长度 */
   var maxlength: Int = _
 
 }

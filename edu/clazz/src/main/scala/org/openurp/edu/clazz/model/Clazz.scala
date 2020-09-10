@@ -31,12 +31,13 @@ import org.openurp.edu.clazz.code.model.ClazzTag
 import scala.collection.mutable
 
 /**
- * 教学任务 </p> 每学期开课任务，以此为开始作为排课、排考、成绩录入的依据。代表着从对上课对象和开课院系的完整的教学实际任务信息. <li>
- * 1、教什么（课程名称、类别）、什么时候教（学年学期），谁来教（授课学院、零个或多个教师）</li> <li>
- * 2、教学班信息——教谁（学生人数、上课对象（院系、学生类别）、选课对象）</li> <li>3、安排情况（具体安排,开始周、结束周、总课时）</li>
- * <li>4、选课情况（是否预选、选课上下限、实选人数、选课规则）</li> <li>
- * 5、任务要求（教室要求、课程要求（教材、参考书、案例）、是否挂牌、是否双语）</li> <li>6、创建时间、修改时间、备注</li>
- *
+ * 教学任务 </p> 每学期开课任务，以此为开始作为排课、排考、成绩录入的依据。代表着从对上课对象和开课院系的完整的教学实际任务信息.
+ * <li>1、教什么（课程名称、类别）、什么时候教（学年学期），谁来教（授课学院、零个或多个教师）</li>
+ * <li>2、教学班信息——教谁（学生人数、上课对象（院系、学生类别）、选课对象）</li>
+ * <li>3、安排情况（具体安排,开始周、结束周、总课时）</li>
+ * <li>4、选课情况（选课上下限、实选人数、选课规则）</li>
+ * <li>5、任务要求（教室要求、课程要求（教材、参考书、案例）、是否挂牌、是否双语）</li>
+ * <li>6、创建时间、修改时间、备注</li>
  */
 class Clazz extends LongId with ProjectBased with Updated with Cloneable with Named {
 
@@ -85,6 +86,7 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   /** 审核状态 */
   var auditState: AuditStates.State = _
 
+  /**任务标签*/
   var tags:mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]
 
   /** 教学材料 */

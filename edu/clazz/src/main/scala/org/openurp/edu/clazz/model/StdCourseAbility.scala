@@ -16,34 +16,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.room.model
+package org.openurp.edu.clazz.model
 
-import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.model.Classroom
-import org.openurp.code.edu.model.ActivityType
+import org.openurp.edu.base.code.model.CourseAbilityRate
+import org.openurp.edu.base.model.Student
 
-/**
- * 房间占用情况
+/*** 学生课程能力等级
  */
-class Occupancy extends LongId with Updated {
+class StdCourseAbility extends LongId with Updated{
 
-  /** 房间 */
-  var room: Classroom = _
+  /**学生*/
+  var std:Student=_
 
-  /** 时间 */
-  var time = new WeekTime
+  /**分级分数*/
+  var score:Option[Float]=None
 
-  /** 活动类型 */
-  var activityType: ActivityType = _
+  /**分级名称*/
+  var rate:CourseAbilityRate=_
 
-  /**用户系统*/
-  var userApp: UserApp = _
-
-  /** 活动ID */
-  var activityId: Long = _
-
-  /** 说明 */
-  var comments: String = _
 }
