@@ -44,3 +44,6 @@ ApplyFinalCheck.approved=是否审核通过
 ApplyFinalCheck.checkedBy=审核人
 ApplyFinalCheck.checkedAt=审核时间
 ApplyFinalCheck.opinions=具体意见
+
+AvailableTime=教室可用时间
+AvailableTime.time=时间

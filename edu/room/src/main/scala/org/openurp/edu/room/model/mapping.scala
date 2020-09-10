@@ -48,5 +48,7 @@ class DefaultMapping extends MappingModule {
     bind[ApplyFinalCheck] declare { e =>
       e.opinions is length(100)
     }
+
+    bind[AvailableTime]
   }
 }
