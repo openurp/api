@@ -1,6 +1,7 @@
 Squad=学生行政班级信息
 Squad.code=编码代码
 Squad.name=名称
+Squad.enName=英文名
 Squad.abbreviation=简称
 Squad.department=院系
 Squad.direction=方向

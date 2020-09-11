@@ -39,6 +39,8 @@ class Squad extends LongId with EduLevelBased with Coded with Named with DateRan
   var grade: String = _
   /** 简称 */
   var shortName: Option[String] = None
+  /** 专业英文名 */
+  var enName: Option[String] = None
   /** 院系 */
   var department: Department = _
   /** 专业 */
