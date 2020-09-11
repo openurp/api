@@ -35,9 +35,12 @@ create index idx_3y1hwcx0xh0apfawnr099698f on edu_base.classrooms_projects (clas
 alter table edu_base.classrooms_projects add constraint fk_fgiktidt9t5160vtodc3olj5j foreign key (classroom_id) references edu_base.classrooms (id);
 alter table edu_base.classrooms_projects add constraint fk_i4kfwi4ifex3emo0xsda5iuk1 foreign key (project_id) references edu_base.projects (id);
 
+insert into edu_base.classrooms_projects(classroom_id,project_id)
+select r.id,r.project_id from edu_base.classrooms r;
+
+--check data--------
 alter table edu_base.squads alter end_on set not null;
 comment on column edu_base.squads.end_on is '结束日期';
-
 
 alter table edu_base.classrooms add column room_no varchar(20);
 alter table edu_base.classrooms add column school_id integer;
@@ -46,13 +49,15 @@ alter table edu_base.classrooms add column building_id integer;
 alter table edu_base.classrooms add column floor_no integer;
 update edu_base.classrooms c set room_no=(select r.code from base.rooms r where r.id=c.room_id);
 update edu_base.classrooms c set capacity=(select r.capacity from base.rooms r where r.id=c.room_id);
+update edu_base.classrooms set capacity=0 where capacity is null;
+update edu_base.classrooms set floor_no=0 where floor_no is null;
+
 update edu_base.classrooms c set building_id=(select r.building_id from base.rooms r where r.id=c.room_id);
 update edu_base.classrooms c set floor_no=(select r.floor_no from base.rooms r where r.id=c.room_id);
 update edu_base.classrooms c set school_id=(select r.school_id from base.rooms r where r.id=c.room_id);
 
 
 alter table base.rooms drop capacity cascade;
-alter table edu_base.classrooms drop room_id cascade;
 alter table edu_base.classrooms drop project_id cascade;
 alter table edu_base.classrooms alter school_id set not null;
 alter table edu_base.classrooms alter floor_no set not null;
@@ -146,7 +151,12 @@ alter table edu_room.room_applies_times add constraint pk_gut4id17joy6x8d5psmvc1
 create index idx_oaii80w561p28ji3r86pv8djo on edu_room.room_applies_times (room_apply_id);
 
 alter table edu_room.room_applies_times add constraint fk_qpapnbbq74r8lwfljrwobal9j foreign key (room_apply_id) references edu_room.room_applies (id);
+
+--occupancies-----------
 alter table edu_room.occupancies alter room_id type bigint;
+update edu_room.occupancies o set room_id=(select r.id from edu_base.classrooms r where r.room_id=o.room_id);
+alter table edu_base.classrooms drop room_id cascade;
+
 alter table edu_room.occupancies drop constraint fk_5tyfmv9xpwuh3qmtskpy62ah cascade;
 alter table edu_room.occupancies add constraint fk_cxcnxdgl2tss3ved9eqe00oq9 foreign key (room_id) references edu_base.classrooms (id);
 
