@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orm>
+  <mapping class="org.openurp.std.register.model.DefaultMapping" />
+  <naming>
+    <profile package = "org.openurp.std.register" pluralize="true" schema="std_register"/>
+  </naming>
+</orm>

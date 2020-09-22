@@ -4,21 +4,23 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-parent</artifactId>
-    <version>0.3.29</version>
+    <version>0.4.0</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-parent</artifactId>
   <packaging>pom</packaging>
-  <version>0.17.1</version>
+  <version>0.18.0</version>
   <name>OpenURP API Parent</name>
 
   <modules>
     <module>code</module>
     <module>base</module>
     <module>edu</module>
+    <module>std</module>
+    <module>prac</module>
+    <module>stu</module>
     <module>hr</module>
     <module>sin</module>
-    <module>std</module>
     <module>all</module>
   </modules>
 
@@ -62,6 +64,11 @@
       <dependency>
         <groupId>org.openurp.code</groupId>
         <artifactId>openurp-code-sin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openurp.code</groupId>
+        <artifactId>openurp-code-std</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

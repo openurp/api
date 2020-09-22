@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openurp</groupId>
+    <artifactId>openurp-api-parent</artifactId>
+    <version>0.18.0</version>
+  </parent>
+  <groupId>org.openurp.prac</groupId>
+  <artifactId>openurp-prac-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>OpenURP Practice Parent</name>
+
+  <properties>
+    <bundle.symbolicName>org.openurp.prac.parent</bundle.symbolicName>
+    <bundle.namespace>org.openurp.prac</bundle.namespace>
+  </properties>
+
+  <modules>
+    <module>innovation</module>
+  </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openurp.base</groupId>
+      <artifactId>openurp-base-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+</project>
