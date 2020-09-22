@@ -26,18 +26,18 @@ class DefaultMapping extends MappingModule {
     defaultCache("openurp.edu.evaluation", "read-write")
 
     bind[EvaluationCriteria].declare { e =>
-      e.name is(length(100), notnull)
+      e.name.is(length(100), notnull)
       e.criteriaItems is depends("criteria")
     }
     bind[EvaluationCriteriaItem].declare { e =>
       e.criteria is notnull
     }
     bind[Option].declare { e =>
-      e.name is(length(50), notnull)
+      e.name.is(length(50), notnull)
       e.optionGroup is notnull
     }
     bind[OptionGroup].declare { e =>
-      e.name is(length(50), notnull)
+      e.name.is(length(50), notnull)
       e.options is depends("optionGroup")
     }
     bind[Question].declare { e =>
@@ -52,7 +52,7 @@ class DefaultMapping extends MappingModule {
       e.description is length(500)
     }
     bind[QuestionType].declare { e =>
-      e.name is(notnull, length(50))
+      e.name.is(notnull, length(50))
       e.enName is length(100)
       e.remark is length(100)
       e.beginOn is notnull

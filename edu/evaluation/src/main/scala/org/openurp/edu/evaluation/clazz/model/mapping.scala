@@ -114,7 +114,7 @@ class DefaultMapping extends MappingModule {
       e.optionStats is depends(classOf[SchoolOptionStat], "questionStat")
     }
     bind[SchoolQuestionTypeStat].declare { e =>
-      e.evalStat is(notnull, target[SchoolEvalStat])
+      e.evalStat.is(notnull, target[SchoolEvalStat])
     }
     //teacher
     bind[TeacherEvalStat].declare { e =>
@@ -123,10 +123,10 @@ class DefaultMapping extends MappingModule {
       e.questionTypeStats is depends(classOf[TeacherQuestionTypeStat], "evalStat")
     }
     bind[TeacherOptionStat].declare { e =>
-      e.questionStat is(notnull, target[TeacherQuestionStat])
+      e.questionStat.is(notnull, target[TeacherQuestionStat])
     }
     bind[TeacherQuestionStat].declare { e =>
-      e.evalStat is(notnull, target[TeacherEvalStat])
+      e.evalStat.is(notnull, target[TeacherEvalStat])
       e.optionStats is depends(classOf[TeacherOptionStat], "questionStat")
     }
     bind[TeacherQuestionTypeStat].declare { e =>
@@ -134,7 +134,7 @@ class DefaultMapping extends MappingModule {
     }
     bind[TextEvaluation].declare { e =>
       e.student & e.clazz & e.evaluateByTeacher & e.evaluateAt are notnull
-      e.teacherRemessages is(depends("textEvaluation"), table("text_evaluation_remsgs"))
+      e.teacherRemessages.is(depends("textEvaluation"), table("text_evaluation_remsgs"))
     }
     bind[TeacherRemessage].declare { e =>
       e.textEvaluation & e.visible are notnull
