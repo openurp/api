@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.prac</groupId>
     <artifactId>openurp-prac-parent</artifactId>
-    <version>0.18.0</version>
+    <version>0.18.1-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.prac.innovation</groupId>
   <artifactId>openurp-prac-innovation-api</artifactId>
