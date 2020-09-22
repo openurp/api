@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.17.2-SNAPSHOT</version>
+    <version>0.18.0</version>
   </parent>
   <groupId>org.openurp.code</groupId>
   <artifactId>openurp-code-parent</artifactId>
@@ -20,6 +20,7 @@
     <module>api</module>
     <module>person</module>
     <module>edu</module>
+    <module>std</module>
     <module>geo</module>
     <module>job</module>
     <module>sin</module>

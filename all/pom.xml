@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.17.2-SNAPSHOT</version>
+    <version>0.18.0</version>
   </parent>
   <groupId>org.openurp</groupId>
   <artifactId>openurp-api-all</artifactId>
@@ -42,16 +42,15 @@
       <artifactId>openurp-code-sin</artifactId>
       <version>${project.version}</version>
     </dependency>
-
     <dependency>
-      <groupId>org.openurp.base</groupId>
-      <artifactId>openurp-base-api</artifactId>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-std</artifactId>
       <version>${project.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>org.openurp.edu.award</groupId>
-      <artifactId>openurp-edu-award-api</artifactId>
+      <groupId>org.openurp.base</groupId>
+      <artifactId>openurp-base-api</artifactId>
       <version>${project.version}</version>
     </dependency>
 
@@ -66,13 +65,13 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.evaluation</groupId>
-      <artifactId>openurp-edu-evaluation-api</artifactId>
+      <groupId>org.openurp.edu.course</groupId>
+      <artifactId>openurp-edu-course-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.extern</groupId>
-      <artifactId>openurp-edu-extern-api</artifactId>
+      <groupId>org.openurp.edu.evaluation</groupId>
+      <artifactId>openurp-edu-evaluation-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
@@ -81,18 +80,8 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.student</groupId>
-      <artifactId>openurp-edu-student-api</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.edu.course</groupId>
-      <artifactId>openurp-edu-course-api</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.edu.program</groupId>
-      <artifactId>openurp-edu-program-api</artifactId>
+      <groupId>org.openurp.edu.extern</groupId>
+      <artifactId>openurp-edu-extern-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
@@ -103,6 +92,16 @@
     <dependency>
       <groupId>org.openurp.edu.graduation</groupId>
       <artifactId>openurp-edu-graduation-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu.program</groupId>
+      <artifactId>openurp-edu-program-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.edu.room</groupId>
+      <artifactId>openurp-edu-room-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
@@ -126,24 +125,53 @@
       <artifactId>openurp-hr-contact-api</artifactId>
       <version>${project.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.openurp.std.alter</groupId>
+      <artifactId>openurp-std-alter-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.std.register</groupId>
+      <artifactId>openurp-std-register-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.std.info</groupId>
+      <artifactId>openurp-std-info-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.std.transfer</groupId>
+      <artifactId>openurp-std-transfer-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openurp.std.fee</groupId>
+      <artifactId>openurp-std-fee-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>org.openurp.sin.harvest</groupId>
       <artifactId>openurp-sin-harvest-api</artifactId>
       <version>${project.version}</version>
     </dependency>
+
     <dependency>
-      <groupId>org.openurp.std.job</groupId>
-      <artifactId>openurp-std-job-api</artifactId>
+      <groupId>org.openurp.stu.award</groupId>
+      <artifactId>openurp-stu-award-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.room</groupId>
-      <artifactId>openurp-edu-room-api</artifactId>
+      <groupId>org.openurp.stu.job</groupId>
+      <artifactId>openurp-stu-job-api</artifactId>
       <version>${project.version}</version>
     </dependency>
+
     <dependency>
-      <groupId>org.openurp.edu.innovation</groupId>
-      <artifactId>openurp-edu-innovation-api</artifactId>
+      <groupId>org.openurp.prac.innovation</groupId>
+      <artifactId>openurp-prac-innovation-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

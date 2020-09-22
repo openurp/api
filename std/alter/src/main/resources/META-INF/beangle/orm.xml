@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orm>
+  <mapping class="org.openurp.std.alter.model.DefaultMapping" />
+  <naming>
+    <profile package = "org.openurp.std.alter" pluralize="true" schema="std_alter"/>
+  </naming>
+</orm>

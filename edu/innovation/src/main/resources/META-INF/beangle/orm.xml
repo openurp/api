@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.edu.innovation.model.DefaultMapping" />
-  <naming>
-    <profile package = "org.openurp.edu.innovation" pluralize="true" schema="edu_innovation"/>
-  </naming>
-</orm>
