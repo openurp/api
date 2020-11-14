@@ -30,6 +30,7 @@ class DefaultMapping extends MappingModule {
     bind[Discipline]
     bind[EnrollMode]
     bind[EducationMode]
+    bind[FeeOrigin]
     bind[HskLevel]
     bind[Institution]
     bind[StudentPunishmentType]

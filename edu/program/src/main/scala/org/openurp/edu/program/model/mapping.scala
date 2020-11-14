@@ -55,7 +55,6 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[MajorPlan].declare { e =>
-      e.endOn is notnull
       e.groups is depends(classOf[MajorCourseGroup], "plan")
       e.remark is length(200)
       index("", false, e.program)
@@ -103,7 +102,6 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[SharePlan].declare { e =>
-      e.endOn is notnull
       e.groups is depends(classOf[ShareCourseGroup], "plan")
       e.remark is length(200)
     }
@@ -125,7 +123,6 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[StdPlan].declare { e =>
-      e.endOn is notnull
       e.groups is depends(classOf[StdCourseGroup], "plan")
       e.remark is length(200)
       index("", true, e.std)

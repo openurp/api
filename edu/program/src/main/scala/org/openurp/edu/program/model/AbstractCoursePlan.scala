@@ -19,7 +19,7 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
 import org.openurp.edu.base.AuditStates
 import org.openurp.edu.base.code.model.CourseType
 
@@ -32,7 +32,7 @@ import scala.collection.mutable.ListBuffer
  * @author chaostone
  * @since 2009
  */
-trait AbstractCoursePlan extends LongId with CoursePlan with Updated with TemporalOn with Remark {
+trait AbstractCoursePlan extends LongId with CoursePlan with Updated with DateRange with Remark {
 
   /** 培养方案 */
   var program: Program = _

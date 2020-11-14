@@ -21,6 +21,7 @@ alter table edu_student.transfer_scopes_majors set schema std_transfer;
 
 alter table edu_student.admissions set schema std_info;
 alter table edu_student.contacts set schema std_info;
+alter table edu_student.graduations set schema std_info;
 alter table edu_student.education_records set schema std_info;
 alter table edu_student.examinees set schema std_info;
 alter table edu_student.examinees_scores set schema std_info;
