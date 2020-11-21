@@ -35,37 +35,37 @@ import org.openurp.edu.base.code.model.CourseAbilityRate
 import org.openurp.edu.base.code.model.CourseHourType
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.code.model.CourseCategory
+
 /**
  * 课程基本信息 </p>
  * 记录课程代码、名称、学分、课时等基本信息，课程的关键业务属性为课程名称、学分、课时、考核方式等与课程有关的属性，其它类似课程类别、所属部门等
  * 均可以看作非关键属性。 </p> 如课程不要求记录学分、不做考核要求、不计算绩点等额外要求需要培养方案、成绩等环节进行额外处理，不在课程部分进行规定。
  * <p>
  * 课程的学历层次可以不加指定，为空时表示适用与对应项目下的所有学历层次。
- *
  * @author chaostone
  * @since 2008-09-24
  */
 class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   with TemporalOn with Coded with Named with Remark {
-  /**课程英文名*/
+  /** 课程英文名 */
   var enName: Option[String] = None
   /** 学历层次 */
   var levels = Collections.newSet[AcademicLevel]
-  /**学分*/
+  /** 学分 */
   var credits: Float = _
   /** 学时/总课时 */
   var creditHours: Int = _
-  /**课程类型*/
+  /** 课程类型 */
   var courseType: CourseType = _
-  /**课程大类*/
+  /** 课程大类 */
   var category: Option[CourseCategory] = None
   /** 分类课时 */
   var hours = Collections.newBuffer[CourseHour]
-  /** 周数*/
+  /** 周数 */
   var weeks: Int = _
-  /**周课时*/
+  /** 周课时 */
   var weekHours: Int = _
-  /**院系*/
+  /** 院系 */
   var department: Department = _
   /** 考试方式 */
   var examMode: ExamMode = _
@@ -73,20 +73,22 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var gradingModes = Collections.newSet[GradingMode]
   /** 能力等级 */
   var abilityRates = Collections.newSet[CourseAbilityRate]
-  /**针对专业*/
+  /** 针对专业 */
   var majors = Collections.newSet[Major]
-  /**排除专业*/
+  /** 排除专业 */
   var xmajors = Collections.newSet[Major]
-  /**推荐教材*/
+  /** 推荐教材 */
   var textbooks = Collections.newSet[Textbook]
-  /**教师*/
+  /** 教师 */
   var teachers = Collections.newSet[Teacher]
-  /** 是否计算绩点 **/
+  /** 是否计算绩点 * */
   var calgp: Boolean = _
-  /**是否实践课程*/
+  /** 是否实践课程 */
   var practical: Boolean = _
-  /**是否有补考*/
+  /** 是否有补考 */
   var hasMakeup: Boolean = _
+  /** 教研室 */
+  var teachingGroup: Option[TeachingGroup] = None
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
@@ -103,7 +105,6 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
 
 /**
  * 课程分类课时信息
- *
  * @author chaostone
  */
 

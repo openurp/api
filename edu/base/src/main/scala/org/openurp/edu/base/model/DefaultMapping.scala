@@ -181,6 +181,8 @@ class DefaultMapping extends MappingModule {
       e.description is length(300)
     }
 
+    bind[TeachingGroup]
+
     all.except(classOf[Student], classOf[StudentState]).cacheAll()
   }
 }
