@@ -21,7 +21,7 @@ package org.openurp.edu.grade.plan.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.edu.base.model.Course
+import org.openurp.edu.base.model.{Course, Terms}
 import org.openurp.edu.grade.course.model.CourseGrade
 import org.openurp.edu.program.model.PlanCourse
 
@@ -34,6 +34,8 @@ class CourseAuditResult extends LongId with Remark {
   var scores: String = _
 
   var passed: Boolean = _
+
+  var terms: Terms = Terms.empty
 
   var compulsory: Boolean = _
 

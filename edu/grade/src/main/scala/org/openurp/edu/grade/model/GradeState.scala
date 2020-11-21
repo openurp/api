@@ -35,7 +35,7 @@ import org.openurp.code.edu.model.{GradeType, GradingMode}
  *
  * @author 塞外狂人,chaostone
  */
-trait GradeState extends LongId with TemporalOn with Updated {
+trait GradeState extends LongId  with Updated {
 
   /**
    * 成绩类型

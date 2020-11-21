@@ -19,7 +19,7 @@
 package org.openurp.edu.grade.plan.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Hierarchical, Named}
+import org.beangle.data.model.pojo.{Hierarchical, Named, Remark}
 import org.openurp.edu.base.code.model.CourseType
 import org.openurp.edu.base.model.Course
 import org.openurp.edu.grade.plan.domain.GroupResultAdapter
@@ -52,7 +52,7 @@ object GroupAuditResult {
   }
 }
 
-class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditResult] {
+class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditResult] with Remark {
 
   var auditStat = new AuditStat
 
