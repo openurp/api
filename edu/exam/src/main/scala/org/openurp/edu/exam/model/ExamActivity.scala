@@ -67,7 +67,7 @@ class ExamActivity extends LongId with Remark {
   var examWeek: Option[Int] = None
 
   /** 是否院系自主安排 */
-  var departArranged: Boolean = _
+  var departArranged: Option[Boolean] = None
 
   /** 试卷编号 */
   var examPaperNo: Option[String] = None
