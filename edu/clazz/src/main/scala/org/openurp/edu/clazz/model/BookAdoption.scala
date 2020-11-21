@@ -23,7 +23,7 @@ object BookAdoption extends Enumeration {
   class State(id: Int, val title: String) extends super.Val {
   }
 
-  val None = new State(0, "不使用教材，也不使用讲义")
+  val None = new State(0, "推荐参考资料")
   val UseTextBook = new State(1, "使用教材")
   val UseLecture = new State(2, "使用讲义")
 
