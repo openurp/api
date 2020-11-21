@@ -23,8 +23,8 @@ import org.beangle.commons.lang.annotation.value
 import org.beangle.data.model.Component
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.Department
-
 import Enrollment.GenderRatio
+import org.openurp.edu.base.code.model.CourseAbilityRate
 
 class Enrollment extends Cloneable with Component {
 
@@ -59,6 +59,9 @@ class Enrollment extends Cloneable with Component {
 
   /**限制条件组 */
   var restrictions = Collections.newBuffer[Restriction]
+
+  /**要求课程能力等级*/
+  var abilityRates = Collections.newSet[CourseAbilityRate]
 }
 
 object Enrollment {
