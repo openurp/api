@@ -18,10 +18,11 @@
  */
 package org.openurp.edu.course.model
 
+import java.time.Instant
 import java.util.Locale
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.pojo.{Named, Updated}
+import org.beangle.data.model.pojo.{DateRange, Named, Updated}
 import org.beangle.data.model.{Component, IntId, LongId}
 import org.openurp.base.model.User
 import org.openurp.edu.base.model.{Course, Semester}
@@ -31,21 +32,25 @@ import org.openurp.edu.base.model.{Course, Semester}
  * TemporalOn表示大纲会有一定的时效性
  * 每个课程、每个学期、每个语种、每个作者做唯一限制
  */
-class Syllabus extends LongId with Updated {
+class Syllabus extends LongId with DateRange with Updated {
 
   var course: Course = _
 
   var docLocale: Locale = _
 
-  var semester: Semester = _
-
   var author: User = _
+
+  var semester: Semester = _
 
   var attachment: Attachment = new Attachment
 
   var contents = Collections.newBuffer[SyllabusSection]
 
-  var passed: Boolean = _
+  var passed: Option[Boolean] = None
+
+  var auditor: Option[User] = None
+
+  var auditAt: Option[Instant] = None
 }
 
 /**
