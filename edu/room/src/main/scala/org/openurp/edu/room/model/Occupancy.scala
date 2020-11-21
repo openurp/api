@@ -39,7 +39,7 @@ class Occupancy extends LongId with Updated {
   var activityType: ActivityType = _
 
   /**用户系统*/
-  var userApp: UserApp = _
+  var app: UserApp = _
 
   /** 活动ID */
   var activityId: Long = _
