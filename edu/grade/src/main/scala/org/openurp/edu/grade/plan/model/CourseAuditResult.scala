@@ -59,7 +59,7 @@ class CourseAuditResult extends LongId with Remark {
     }
   }
 
-  def this(planCourse: PlanCourse) {
+  def this(planCourse: PlanCourse) = {
     this
     this.course = planCourse.course
     this.compulsory = planCourse.compulsory

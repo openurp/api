@@ -34,7 +34,6 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[AbstractGradeState].declare { e =>
-      e.gradingMode & e.beginOn are notnull
       e.operator is length(100)
     }
 

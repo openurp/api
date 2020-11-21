@@ -50,7 +50,7 @@ class CourseType extends CodeBean {
   /** 是否选修 */
   var optional: Boolean = _
 
-  def this(id: Int, code: String, name: String, enName: String) {
+  def this(id: Int, code: String, name: String, enName: String) = {
     this()
     this.id = id
     this.code = code

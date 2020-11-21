@@ -31,7 +31,7 @@ object StageType {
 
 class StageType extends IntId with Named with Coded with TemporalOn with Hierarchical[StageType] {
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }

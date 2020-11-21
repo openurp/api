@@ -75,7 +75,7 @@ class ExamRoom extends LongId {
     activities.map(a => a.clazz).toSet
   }
 
-  def this(activity: ExamActivity, classroom: Classroom) {
+  def this(activity: ExamActivity, classroom: Classroom) = {
     this()
     this.room = classroom
     this.activities += activity

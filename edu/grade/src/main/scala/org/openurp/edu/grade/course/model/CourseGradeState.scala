@@ -54,10 +54,10 @@ class CourseGradeState extends AbstractGradeState {
   /** 保留小数位 */
   var scorePrecision: Int = _
 
-  /**其他录入员*/
-  var inputer:Option[User]=None
+  /** 其他录入员 */
+  var inputer: Option[User] = None
 
-  def this(clazz: Clazz) {
+  def this(clazz: Clazz) = {
     this()
     this.clazz = clazz
     this.gradingMode = new GradingMode(GradingMode.Percent)

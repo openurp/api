@@ -94,7 +94,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
     code.compareTo(other.code)
   }
 
-  def this(id: Long, code: String, name: String, enName: String) {
+  def this(id: Long, code: String, name: String, enName: String) = {
     this()
     this.id = id
     this.code = code

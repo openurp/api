@@ -43,7 +43,7 @@ class FinalMakeupTaker extends LongId with Updated with Remark {
   /**最好成绩*/
   var scores: String = _
 
-  def this(c: FinalMakeupCourse, std: Student, courseType: CourseType) {
+  def this(c: FinalMakeupCourse, std: Student, courseType: CourseType) = {
     this()
     this.makeupCourse = c
     this.std = std

@@ -85,7 +85,7 @@ class InvigilationQuota extends LongId with Remark {
       if (java.lang.Float.compare(0, iq.amount) == 0) {
         removed += iq
       }
-      iq.amount = Math.round(iq.amount).toInt
+      iq.amount = Math.round(iq.amount)
       sum += iq.amount
     }
     this.amount = sum.toInt

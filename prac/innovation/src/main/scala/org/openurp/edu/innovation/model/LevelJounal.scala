@@ -35,7 +35,7 @@ class LevelJounal extends LongId with Updated {
 
   var level: ProjectLevel = _
 
-  def this(year: Int, project: Project, level: ProjectLevel) {
+  def this(year: Int, project: Project, level: ProjectLevel) = {
     this()
     this.awardYear = year
     this.project = project

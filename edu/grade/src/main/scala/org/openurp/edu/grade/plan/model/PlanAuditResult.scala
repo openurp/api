@@ -79,7 +79,7 @@ class PlanAuditResult extends LongId with Updated with Remark {
     rs
   }
 
-  def this(student: Student) {
+  def this(student: Student) = {
     this
     std = student
   }

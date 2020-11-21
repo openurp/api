@@ -152,7 +152,7 @@ class UeeSubjectType extends CodeBean
  */
 @code("industry")
 class CourseTakeType extends CodeBean {
-  def this(id: Int, code: String, name: String, enName: String) {
+  def this(id: Int, code: String, name: String, enName: String) = {
     this()
     this.id = id
     this.code = code
@@ -190,7 +190,7 @@ class ExamStatus extends CodeBean {
    */
   var cheating: Boolean = _
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }
@@ -213,12 +213,12 @@ class GradingMode extends CodeBean {
 
   var numerical: Boolean = _
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }
 
-  def this(id: Int, code: String, name: String, enName: String) {
+  def this(id: Int, code: String, name: String, enName: String) = {
     this()
     this.id = id
     this.code = code
@@ -248,12 +248,12 @@ class DayPart extends CodeBean {
 class GradeType extends CodeBean {
   var examType: Option[ExamType] = None
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }
 
-  def this(id: Int, code: String, name: String, enName: String) {
+  def this(id: Int, code: String, name: String, enName: String) = {
     this()
     this.id = id
     this.code = code
@@ -309,12 +309,12 @@ class ExamType extends CodeBean {
   /** 是否是缓考 */
   var forDeferred: Boolean = _
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }
 
-  def this(id: Int, code: String, name: String, enName: String) {
+  def this(id: Int, code: String, name: String, enName: String) = {
     this(id)
     this.code = code
     this.name = name

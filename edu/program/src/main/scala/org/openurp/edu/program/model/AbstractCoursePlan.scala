@@ -28,11 +28,10 @@ import scala.collection.mutable.ListBuffer
 
 /**
  * 抽象课程方案
- *
  * @author chaostone
  * @since 2009
  */
-trait AbstractCoursePlan extends LongId with CoursePlan with Updated with DateRange with Remark {
+trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Remark {
 
   /** 培养方案 */
   var program: Program = _

@@ -26,7 +26,6 @@ class DefaultMapping extends MappingModule {
     bind[Occupancy] declare { e =>
       e.room is notnull
       e.time.startOn & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull
-      e.activityType & e.updatedAt & e.userApp & e.activityId are notnull
       e.comments is length(300)
       index("", false, e.room)
       index("", false, e.activityId)

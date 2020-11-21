@@ -80,7 +80,7 @@ class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditRes
     for (groupResult <- children) groupResult.detach()
   }
 
-  def this(group: CourseGroup) {
+  def this(group: CourseGroup) = {
     this
     this.name = group.name
     this.courseType = group.courseType

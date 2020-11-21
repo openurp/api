@@ -37,7 +37,7 @@ class GraduateAuditItem extends LongId {
   /** 毕业审核结果 */
   var result: GraduateResult = _
 
-  def this(name: String, auditResult: GraduateResult) {
+  def this(name: String, auditResult: GraduateResult) = {
     this()
     this.name = name
     this.result = auditResult

@@ -40,7 +40,7 @@ class Closure extends LongId with Updated {
 
   var replyScore: Option[Int] = None
 
-  def this(project: Project) {
+  def this(project: Project) = {
     this()
     this.project = project
   }

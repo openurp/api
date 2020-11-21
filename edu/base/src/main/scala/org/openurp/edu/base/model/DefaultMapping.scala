@@ -155,11 +155,9 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Student] declare { e =>
-      e.code is length(30)
       e.states is depends("std")
       e.remark is length(200)
 
-      index("", true, e.project, e.code)
       index("", false, e.user)
       index("", false, e.state)
       index("", false, e.project)

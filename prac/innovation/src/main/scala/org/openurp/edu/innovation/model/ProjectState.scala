@@ -31,7 +31,7 @@ object ProjectState {
 
 class ProjectState extends IntId with Named with Coded {
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }

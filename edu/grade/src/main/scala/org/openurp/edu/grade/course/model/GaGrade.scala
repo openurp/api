@@ -64,7 +64,7 @@ class GaGrade extends LongId with Grade with Updated with Remark {
   }
 
   def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: Option[String],
-           gradingMode: GradingMode, passed: Boolean, status: Int) {
+           gradingMode: GradingMode, passed: Boolean, status: Int) = {
     this()
     this.id = id
     this.gradeType = gradeType
