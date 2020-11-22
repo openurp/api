@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.stu</groupId>
     <artifactId>openurp-stu-parent</artifactId>
-    <version>0.18.1</version>
+    <version>0.18.2-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.stu.award</groupId>
   <artifactId>openurp-stu-award-api</artifactId>

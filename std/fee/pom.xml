@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp.std</groupId>
     <artifactId>openurp-std-parent</artifactId>
-    <version>0.18.1</version>
+    <version>0.18.2-SNAPSHOT</version>
   </parent>
   <groupId>org.openurp.std.fee</groupId>
   <artifactId>openurp-std-fee-api</artifactId>
