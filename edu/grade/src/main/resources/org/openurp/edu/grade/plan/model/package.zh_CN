@@ -12,6 +12,7 @@ GroupAuditResult.passed=是否通过
 CourseAuditResult.passed=是否通过
 CourseAuditResult.scores=分数
 CourseAuditResult.compulsory=是否必修
+CourseAuditResult.terms=开课学期
 
 AuditStat=审核学分统计
 AuditStat.requiredCredits=要求学分
