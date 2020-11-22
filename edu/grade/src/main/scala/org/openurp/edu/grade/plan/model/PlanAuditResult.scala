@@ -35,7 +35,7 @@ class PlanAuditResult extends LongId with Updated with Remark {
 
   var passed: Boolean = _
 
-  var updates: String = _
+  var updates: Option[String] = None
 
   var archived: Boolean = false
 
@@ -79,7 +79,7 @@ class PlanAuditResult extends LongId with Updated with Remark {
     rs
   }
 
-  def this(student: Student) {
+  def this(student: Student) = {
     this
     std = student
   }

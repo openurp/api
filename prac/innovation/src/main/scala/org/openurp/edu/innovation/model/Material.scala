@@ -36,7 +36,7 @@ class Material extends LongId with Updated {
   /**路径*/
   var filePath: String = _
 
-  def this(project: Project, stageType: StageType) {
+  def this(project: Project, stageType: StageType) = {
     this()
     this.project = project
     this.stageType = stageType

@@ -20,6 +20,7 @@ package org.openurp.edu.grade.course.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.annotation.config
+import org.openurp.base.model.User
 import org.openurp.code.edu.model.{GradeType, GradingMode}
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.{AbstractGradeState, GradeState}
@@ -53,7 +54,10 @@ class CourseGradeState extends AbstractGradeState {
   /** 保留小数位 */
   var scorePrecision: Int = _
 
-  def this(clazz: Clazz) {
+  /** 其他录入员 */
+  var inputer: Option[User] = None
+
+  def this(clazz: Clazz) = {
     this()
     this.clazz = clazz
     this.gradingMode = new GradingMode(GradingMode.Percent)

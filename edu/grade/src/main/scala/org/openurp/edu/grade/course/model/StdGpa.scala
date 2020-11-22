@@ -80,12 +80,12 @@ class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
 
   @transient private var yearGpaCache: Map[String, StdYearGpa] = _
 
-  def this(id: Long) {
+  def this(id: Long) = {
     this()
     this.id = id
   }
 
-  def this(std: Student) {
+  def this(std: Student) = {
     this()
     this.std = std
     this.semesterGpas = new collection.mutable.ListBuffer[StdSemesterGpa]

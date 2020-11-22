@@ -74,7 +74,7 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
     gc.get(java.util.Calendar.WEEK_OF_YEAR);
   }
 
-  def this(id: Int, code: String, schoolYear: String, name: String) {
+  def this(id: Int, code: String, schoolYear: String, name: String) = {
     this()
     this.id = id
     this.code = code

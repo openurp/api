@@ -21,10 +21,10 @@ package org.openurp.code.std.model
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
 
-@code("school")
+@code("industry")
 class UnregisteredReason extends CodeBean
 
-@code("school")
+@code("industry")
 class UncheckinReason extends CodeBean
 /**
  * 学籍异动类型

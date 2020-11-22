@@ -18,36 +18,37 @@
  */
 package org.openurp.edu.graduation.audit.model
 
-import scala.collection.mutable.Buffer
+import java.time.LocalDate
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.code.edu.model.Degree
 import org.openurp.edu.base.model.Student
-import java.time.LocalDate
+
+import scala.collection.mutable
 
 class DegreeResult extends LongId with Updated {
 
   /** 所属的毕业审核批次 */
   var session: GraduateSession = _
 
-  /**批次*/
-  var batch:Int=_
+  /** 批次 */
+  var batch: Int = _
 
-  /**学生*/
+  /** 学生 */
   var std: Student = _
 
   /** 学位审核详细结果 */
-  var items: Buffer[DegreeAuditItem] = Collections.newBuffer[DegreeAuditItem]
+  var items: mutable.Buffer[DegreeAuditItem] = Collections.newBuffer[DegreeAuditItem]
 
   /** GPA */
   var gpa: Float = _
 
-  /**平均分*/
+  /** 平均分 */
   var ga: Float = _
 
-  /** 是否通过学位审核*/
+  /** 是否通过学位审核 */
   var passed: Boolean = _
 
   /** 锁定毕业审核结果 */
@@ -62,7 +63,7 @@ class DegreeResult extends LongId with Updated {
   /** 学位 */
   var degree: Option[Degree] = None
 
-  /**外语通过年月*/
+  /** 外语通过年月 */
   var foreignLangPassedOn: Option[LocalDate] = None
 
   def deciplineCode: String = {

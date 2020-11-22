@@ -16,21 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.prac.innovation.model
+package org.openurp.edu.base.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{ Named, Coded }
-object ProjectLevel{
-  val School=1
-  val State=2
-  val Nation=3
-}
-/**
- * 项目级别
- */
-class ProjectLevel extends IntId with Named with Coded {
-  def this(id: Int) = {
-    this()
-    this.id = id
+import org.junit.runner.RunWith
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.junit.JUnitRunner
+
+@RunWith(classOf[JUnitRunner])
+class TermsTest extends AnyFunSpec with Matchers {
+  describe("Terms") {
+    it("list empty") {
+      val empty = Terms.empty
+      empty.termList.size should be(0)
+    }
+    it("list 1") {
+      val multiple = Terms("1,2,4")
+      multiple.termList should equal(List(1, 2, 4))
+    }
   }
 }

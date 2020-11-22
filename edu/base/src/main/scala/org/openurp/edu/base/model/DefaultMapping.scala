@@ -42,7 +42,7 @@ class DefaultMapping extends MappingModule {
       index("", true, e.school, e.code)
     }
 
-    bind[CalendarStage] declare {e=>
+    bind[CalendarStage] declare { e =>
       e.name is length(100)
     }
 
@@ -53,13 +53,13 @@ class DefaultMapping extends MappingModule {
       index("", true, e.calendar, e.code)
     }.generator("code")
 
-    bind[SemesterStage] declare {e=>
+    bind[SemesterStage] declare { e =>
       e.remark is length(500)
     }
 
     bind[Squad] declare { e =>
       e.code is length(20)
-      e.name is length(50)
+      e.name is length(100)
       e.grade is length(10)
       e.stdStates is one2many("squad")
       e.remark is length(100)
@@ -143,7 +143,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Teacher] declare { e =>
-      index("", true, e.project, e.user)
+      index("", true, e.user, e.project)
       index("", false, e.user)
       index("", false, e.project)
     }
@@ -155,11 +155,10 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Student] declare { e =>
-      e.code is length(30)
       e.states is depends("std")
       e.remark is length(200)
 
-      index("", true, e.project, e.code)
+      index("", true, e.user, e.project)
       index("", false, e.user)
       index("", false, e.state)
       index("", false, e.project)
@@ -180,6 +179,8 @@ class DefaultMapping extends MappingModule {
       e.edition is length(50)
       e.description is length(300)
     }
+
+    bind[TeachingGroup]
 
     all.except(classOf[Student], classOf[StudentState]).cacheAll()
   }

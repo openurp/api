@@ -2,6 +2,7 @@ Syllabus=教学大纲
 Syllabus.docLocale=语言
 Syllabus.author=作者
 Syllabus.passed=是否通过
+Syllabus.auditAt=审核时间
 
 Attachment=大纲附件
 Attachment.mimeType=文件类型

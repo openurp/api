@@ -19,9 +19,9 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
+import org.beangle.data.model.pojo._
 import org.openurp.base.code.model.UserCategory
+import org.openurp.code.person.model.Gender
 
 /**
  * 通用人员信息
@@ -29,6 +29,10 @@ import org.openurp.base.code.model.UserCategory
 class User extends LongId with Coded with Named with Updated with Remark with TemporalOn {
 
   var school: School = _
+
+  var gender: Gender = _
+
+  var enName: Option[String] = None
 
   var department: Department = _
 

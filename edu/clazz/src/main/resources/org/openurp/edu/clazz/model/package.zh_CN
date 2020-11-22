@@ -62,6 +62,7 @@ Enrollment.capacity=人数上限
 Enrollment.locked=是否锁定上限
 Enrollment.reserved=保留人数
 Enrollment.genderRatio=男女比
+Enrollment.abilityRates=要求课程能力等级
 
 Schedule=课程安排
 Schedule.startWeek=起始周
@@ -112,8 +113,9 @@ Material.passed=是否通过
 Material.confirmed=是否提交
 Material.remark=备注
 Material.reason=选用理由
-Material.adoptionState=教材状态
+Material.adoption=教材状态
 Material.ordered=教材已订购
+Material.auditAt=审核时间
 
 StdCourseAbility=学生课程能力
 StdCourseAbility.score=分数

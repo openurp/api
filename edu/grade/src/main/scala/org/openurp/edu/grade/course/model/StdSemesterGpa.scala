@@ -38,7 +38,7 @@ class StdSemesterGpa extends LongId with GpaStat {
    */
   var semester: Semester = _
 
-  def this(semester: Semester, gpa: Float) {
+  def this(semester: Semester, gpa: Float) = {
     this()
     this.semester = semester
     this.gpa = gpa

@@ -47,6 +47,7 @@ User.department=所在部门
 User.category=人员分类
 User.mobile=电话
 User.name=姓名
+User.enName=英文名
 User.school=学校
 
 Person=人员信息

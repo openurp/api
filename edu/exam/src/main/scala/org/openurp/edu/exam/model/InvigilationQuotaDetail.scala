@@ -41,7 +41,7 @@ class InvigilationQuotaDetail extends LongId {
   /** 次数 */
   var amount: Float = _
 
-  def this(campus: Campus, depart: Department, amount: Float) {
+  def this(campus: Campus, depart: Department, amount: Float) = {
     this()
     this.campus = campus
     this.depart = depart

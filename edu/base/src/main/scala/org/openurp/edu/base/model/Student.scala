@@ -21,36 +21,22 @@ package org.openurp.edu.base.model
 import java.time.LocalDate
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.Component
-import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.Coded
-import org.beangle.data.model.pojo.DateRange
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Campus
-import org.openurp.base.model.Department
-import org.openurp.base.model.Person
-import org.openurp.base.model.User
-import org.openurp.code.edu.model.EducationLevel
-import org.openurp.code.edu.model.StudentStatus
-import org.openurp.code.edu.model.StudyType
-import org.openurp.edu.base.EduLevelBased
-import org.openurp.edu.base.StdEnrollment
-import org.openurp.edu.base.code.model.StdLabel
-import org.openurp.edu.base.code.model.StdLabelType
-import org.openurp.edu.base.code.model.StdType
+import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
+import org.beangle.data.model.{Component, LongId}
+import org.openurp.base.model.{Campus, Department, Person, User}
+import org.openurp.code.edu.model.{EducationLevel, StudentStatus, StudyType}
+import org.openurp.edu.base.code.model.{StdLabel, StdLabelType, StdType}
+import org.openurp.edu.base.{EduLevelBased, StdEnrollment}
 
 /**
  * 学籍信息实现
  */
-class Student extends LongId with EduLevelBased with Coded with Updated with Remark with DateRange {
+class Student extends LongId with EduLevelBased with Updated with Remark with DateRange {
 
-  /**基本信息*/
-  var person: Person = _
+  /** 基本信息 */
+  var person: Option[Person] = None
 
-  /**用户信息*/
+  /** 用户信息 */
   var user: User = _
 
   /** 学生类别 所在项目内的学生类别 */
@@ -88,9 +74,10 @@ class Student extends LongId with EduLevelBased with Coded with Updated with Rem
   /** 学习形式 全日制/业余/函授 */
   var studyType: StudyType = _
 
-  /**导师*/
+  /** 导师 */
   var tutor: Option[Teacher] = None
 }
+
 /**
  * 学籍状态日志
  */
@@ -109,7 +96,7 @@ class StudentState extends LongId with StdEnrollment with TemporalOn with Remark
   /** 专业 */
   var major: Major = _
 
-  /**专业方向*/
+  /** 专业方向 */
   var direction: Option[Direction] = None
 
   /** 行政班级 */
@@ -129,19 +116,19 @@ class StudentState extends LongId with StdEnrollment with TemporalOn with Remark
  * 学生范围
  */
 class StudentScope extends Component {
-  /**年级*/
+  /** 年级 */
   var grades: String = _
-  /**项目*/
+  /** 项目 */
   var project: Project = _
-  /**培养层次集合*/
+  /** 培养层次集合 */
   var levels: collection.mutable.Set[EducationLevel] = _
-  /**学生类别集合*/
+  /** 学生类别集合 */
   var stdTypes: collection.mutable.Set[StdType] = _
-  /**部门集合*/
+  /** 部门集合 */
   var departments: collection.mutable.Set[Department] = _
-  /**专业集合*/
+  /** 专业集合 */
   var majors: collection.mutable.Set[Major] = _
-  /**专业方向集合*/
+  /** 专业方向集合 */
   var directions: collection.mutable.Set[Direction] = _
 
 }

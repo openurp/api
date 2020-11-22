@@ -20,7 +20,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.AcademicLevel
 import org.openurp.edu.base.code.model.StdType
@@ -28,15 +28,14 @@ import org.openurp.edu.base.model._
 
 /**
  * 课程替代关系.
- *
  * @author new
  */
 trait AlternativeCourse extends LongId with Updated {
 
-  /**原课程*/
+  /** 原课程 */
   var olds = Collections.newSet[Course]
 
-  /**新课程*/
+  /** 新课程 */
   var news = Collections.newSet[Course]
 
   def exchange(): Unit = {
@@ -52,7 +51,7 @@ trait AlternativeCourse extends LongId with Updated {
 /**
  * 专业替代课程.
  */
-class MajorAlternativeCourse extends AlternativeCourse {
+class MajorAlternativeCourse extends AlternativeCourse with Remark {
 
   /**
    * 项目
@@ -68,7 +67,7 @@ class MajorAlternativeCourse extends AlternativeCourse {
    */
   var fromGrade: String = _
 
-  /**截至年级*/
+  /** 截至年级 */
   var toGrade: String = _
 
   /**
@@ -95,7 +94,7 @@ class MajorAlternativeCourse extends AlternativeCourse {
 /**
  * 学生替代课程.
  */
-class StdAlternativeCourse extends AlternativeCourse {
+class StdAlternativeCourse extends AlternativeCourse with Remark {
 
   /**
    * 获取学生

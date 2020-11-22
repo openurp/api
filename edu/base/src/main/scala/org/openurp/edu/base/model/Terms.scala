@@ -19,9 +19,22 @@
 package org.openurp.edu.base.model
 
 import org.beangle.commons.lang.annotation.value
+import org.beangle.commons.lang.{Numbers, Strings}
 
 object Terms {
   val empty = new Terms(0)
+
+  def apply(terms: String): Terms = {
+    if (Strings.isNotBlank(terms) && "*" != terms) {
+      var value = 0
+      Strings.split(terms, ",") foreach { t =>
+        value |= 1 << Numbers.toInt(t);
+      }
+      new Terms(value)
+    } else {
+      empty
+    }
+  }
 }
 
 @value
@@ -38,17 +51,25 @@ class Terms(val value: Int) extends Ordered[Terms] with Serializable {
   }
 
   def termList: List[Int] = {
-    val str = toString
-    var i = str.length - 1
-    val result = new collection.mutable.ListBuffer[Int]
-    while (i >= 0) {
-      if (str.charAt(i) == '1') result += (str.length - i)
-      i -= 1
+    if (value > 0) {
+      val str = java.lang.Integer.toBinaryString(value)
+      var i = str.length - 1
+      val result = new collection.mutable.ListBuffer[Int]
+      while (i >= 0) {
+        if (str.charAt(i) == '1') result += (str.length - i - 1)
+        i -= 1
+      }
+      result.toList
+    } else {
+      List.empty
     }
-    result.toList
   }
 
   def matches(other: Terms): Boolean = {
     (this.value & other.value) > 0
+  }
+
+  override def toString: String = {
+    termList.mkString(",")
   }
 }

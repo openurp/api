@@ -43,7 +43,7 @@ class InvigilationClazzQuota extends LongId {
   /** 次数 */
   var amount: Float = _
 
-  def this(clazz: Clazz, teacher: Teacher) {
+  def this(clazz: Clazz, teacher: Teacher) = {
     this()
     this.clazz = clazz
     this.teacher = teacher

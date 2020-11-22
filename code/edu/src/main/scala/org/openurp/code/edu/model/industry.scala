@@ -30,7 +30,7 @@ class AdmissionType extends CodeBean
 
 /**
  * 活动类型
- *  参考教育部标准JY/T 1001 4.3.4（教室占用情况）
+ * 参考教育部标准JY/T 1001 4.3.4（教室占用情况）
  */
 @code("industry")
 class ActivityType extends CodeBean
@@ -41,6 +41,7 @@ class ActivityType extends CodeBean
  */
 @code("industry")
 class ClassroomType extends CodeBean
+
 /**
  * 学科目录
  *
@@ -48,11 +49,11 @@ class ClassroomType extends CodeBean
  */
 @code("industry")
 class DisciplineCatalog extends CodeBean
+
 /**
  * 学科
  * （来自本专科科学科目录、研究生学术性学位目录、研究生专业性学位目录的学科）<br>
  * 一般认为4位代码的是一级学科，2位代码的是二级学科，但实际上可能没有一级学科、二级学科这种叫法
- *
  * @author chaostone
  */
 @code("industry")
@@ -83,6 +84,7 @@ class EducationLevel extends CodeBean {
   var fromLevel: AcademicLevel = _
   var toLevel: AcademicLevel = _
 }
+
 /**
  * 教育类别
  * 1 成人高等教育,2 普通高等教育,3 网络教育,4 中职教育,5 自考
@@ -90,6 +92,7 @@ class EducationLevel extends CodeBean {
 @code("industry")
 class EduCategory extends CodeBean {
 }
+
 /**
  * 留学生HSK等级
  * 参见教育部标准JY/T 1001 4.5.4
@@ -144,13 +147,12 @@ class UeeSubjectType extends CodeBean
 /**
  * 修课类别
  * （重修、增修、免修不免试、主修，选修）
- *
  * @author chaostone
  * @since 2005-12-2
  */
 @code("industry")
 class CourseTakeType extends CodeBean {
-  def this(id: Int, code: String, name: String, enName: String) {
+  def this(id: Int, code: String, name: String, enName: String) = {
     this()
     this.id = id
     this.code = code
@@ -158,9 +160,10 @@ class CourseTakeType extends CodeBean {
     this.enName = Some(enName)
   }
 }
+
 object CourseTakeType {
 
-  /** 正常修读  */
+  /** 正常修读 */
   val Normal = 1
   /** 重修 */
   val Repeat = 3
@@ -187,7 +190,7 @@ class ExamStatus extends CodeBean {
    */
   var cheating: Boolean = _
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }
@@ -198,7 +201,7 @@ object ExamStatus {
   /** 正常 */
   val Normal = 1;
 
-  /**缺考*/
+  /** 缺考 */
   val Absent = 3;
 }
 
@@ -210,11 +213,12 @@ class GradingMode extends CodeBean {
 
   var numerical: Boolean = _
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }
-  def this(id: Int, code: String, name: String, enName: String) {
+
+  def this(id: Int, code: String, name: String, enName: String) = {
     this()
     this.id = id
     this.code = code
@@ -231,10 +235,12 @@ object GradingMode {
  * 上下午时段
  */
 @code("industry")
-class DayPart extends CodeBean
+class DayPart extends CodeBean {
+  var color: String = _
+}
+
 /**
  * 成绩类型
- *
  * @author chaostone
  * @since 2005-9-7
  */
@@ -242,12 +248,12 @@ class DayPart extends CodeBean
 class GradeType extends CodeBean {
   var examType: Option[ExamType] = None
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }
 
-  def this(id: Int, code: String, name: String, enName: String) {
+  def this(id: Int, code: String, name: String, enName: String) = {
     this()
     this.id = id
     this.code = code
@@ -300,15 +306,15 @@ object ExamType {
 @code("industry")
 class ExamType extends CodeBean {
 
-  /**是否是缓考*/
+  /** 是否是缓考 */
   var forDeferred: Boolean = _
 
-  def this(id: Int) {
+  def this(id: Int) = {
     this()
     this.id = id
   }
 
-  def this(id: Int, code: String, name: String, enName: String) {
+  def this(id: Int, code: String, name: String, enName: String) = {
     this(id)
     this.code = code
     this.name = name
@@ -323,7 +329,7 @@ object ElectionMode {
   /** 指定 */
   val Assigned = 1
 
-  /** 自选  */
+  /** 自选 */
   val SelfChoose = 2
 }
 
@@ -356,3 +362,9 @@ class StdAlterType extends CodeBean
  */
 @code("industry")
 class StdAlterReason extends CodeBean
+
+/**
+ * 费用来源
+ */
+@code("industry")
+class FeeOrigin extends CodeBean

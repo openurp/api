@@ -19,10 +19,10 @@
 package org.openurp.edu.graduation.audit.model
 
 import org.beangle.commons.collection.Collections
-import org.openurp.code.edu.model.EducationResult
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Student
 import org.beangle.data.model.pojo.Updated
+import org.openurp.code.edu.model.EducationResult
+import org.openurp.edu.base.model.Student
 
 import scala.collection.mutable
 
@@ -34,10 +34,10 @@ class GraduateResult extends LongId with Updated {
   /** 所属的毕业审核批次 */
   var session: GraduateSession = _
 
-  /**批次*/
-  var batch:Int=_
+  /** 批次 */
+  var batch: Int = _
 
-  /**学生*/
+  /** 学生 */
   var std: Student = _
 
   /** 毕业审核详细结果 */
@@ -54,7 +54,7 @@ class GraduateResult extends LongId with Updated {
   /**
    * 是否通过毕业审核
    */
-  var passed: Boolean = _
+  var passed: Option[Boolean] = None
 
   /** 锁定毕业审核结果 */
   var locked: Boolean = _
@@ -66,5 +66,5 @@ class GraduateResult extends LongId with Updated {
   var comments: Option[String] = None
 
   /** 毕结业情况 */
-  var educationResult: EducationResult = _
+  var educationResult: Option[EducationResult] = None
 }

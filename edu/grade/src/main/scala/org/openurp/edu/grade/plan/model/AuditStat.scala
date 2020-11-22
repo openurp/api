@@ -36,7 +36,7 @@ class AuditStat extends Component {
 
   var convertedCredits: Float = _
 
-  def this(passedCredits: Float, totalNum: Int) {
+  def this(passedCredits: Float, totalNum: Int) = {
     this
     this.passedCredits = passedCredits
     this.passedCount = totalNum

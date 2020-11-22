@@ -48,7 +48,7 @@ class Invigilation extends LongId with Updated {
   /** 是否发布 */
   var published: Boolean = _
 
-  def this(examRoom: ExamRoom, department: Department, teacher: User) {
+  def this(examRoom: ExamRoom, department: Department, teacher: User) = {
     this()
     this.examRoom = examRoom
     this.department = department;
@@ -56,7 +56,7 @@ class Invigilation extends LongId with Updated {
     this.updatedAt = Instant.now
   }
 
-  def this(examRoom: ExamRoom, department: Department, teacherName: String) {
+  def this(examRoom: ExamRoom, department: Department, teacherName: String) = {
     this()
     this.examRoom = examRoom;
     this.department = department;

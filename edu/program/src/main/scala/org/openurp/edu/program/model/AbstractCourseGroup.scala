@@ -43,6 +43,11 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
   var planCourses: mutable.Buffer[PlanCourse] = new ListBuffer[PlanCourse]
 
   /**
+   * 自定义别名
+   */
+  var givenName: Option[String] = None
+
+  /**
    * 课程类别
    */
   var courseType: CourseType = _
@@ -74,7 +79,10 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
   var terms:Terms=Terms.empty
 
   override def name: String = {
-    courseType.name
+    val sb = new StringBuilder()
+    if (null != courseType) sb.append(courseType.name)
+    givenName foreach{ x => sb.append(" ").append(x)}
+    sb.toString
   }
 
   def index(): Int = {

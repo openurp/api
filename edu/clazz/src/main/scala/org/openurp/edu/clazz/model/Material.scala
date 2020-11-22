@@ -18,44 +18,48 @@
  */
 package org.openurp.edu.clazz.model
 
-import scala.collection.mutable.Buffer
+import java.time.Instant
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.edu.base.model.Textbook
+
+import scala.collection.mutable.Buffer
 
 /**
  * 教学材料说明
- *  包括教材、参考书等
+ * 包括教材、参考书等
  */
 class Material extends LongId with Serializable with Cloneable with Updated with Remark {
 
-  /**教材选用类型*/
-  var adoptionState: BookAdoption.State = _
+  /** 教材选用类型 */
+  var adoption: BookAdoption.State = _
 
-  /**教材列表*/
+  /** 教材列表 */
   var books: Buffer[Textbook] = Collections.newBuffer[Textbook]
 
-  /**参考书*/
+  /** 参考书 */
   var referenceBooks: Option[String] = None
 
-  /**其它资料*/
+  /** 其它资料 */
   var extra: Option[String] = None
 
-  /**选用理由*/
+  /** 选用理由 */
   var reason: Option[String] = None
 
-  /**教学任务*/
+  /** 教学任务 */
   var clazz: Clazz = _
 
-  /**已提交*/
+  /** 已提交 */
   var confirmed: Boolean = _
 
-  /**历史已经订购过*/
+  /** 历史已经订购过 */
   var ordered: Boolean = _
 
-  /**审核通过*/
+  /** 审核通过 */
   var passed: Option[Boolean] = None
+
+  /** 审核时间 */
+  var auditAt: Option[Instant] = None
 }

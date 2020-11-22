@@ -63,7 +63,7 @@ class ExamGrade extends LongId with Grade {
   }
 
   def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: Option[String],
-           gradingMode: GradingMode, passed: Boolean, status: Int) {
+           gradingMode: GradingMode, passed: Boolean, status: Int) = {
     this()
     this.id = id
     this.gradeType = gradeType
