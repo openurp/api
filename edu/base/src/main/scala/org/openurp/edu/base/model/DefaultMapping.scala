@@ -75,7 +75,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Course] declare { e =>
-      e.code is(length(32), unique)
+      e.code is length(32)
       e.name is length(222)
       e.enName is length(300)
       e.hours is depends("course")
@@ -90,7 +90,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Direction].declare { e =>
-      e.code is(length(32), unique)
+      e.code is length(32)
       e.name is length(100)
       e.enName is length(255)
       e.journals is depends("direction")
@@ -105,7 +105,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Major] declare { e =>
-      e.code is(length(20), unique)
+      e.code is length(20)
       e.name is length(50)
       e.enName is length(150)
       e.journals is depends("major")
@@ -180,7 +180,9 @@ class DefaultMapping extends MappingModule {
       e.description is length(300)
     }
 
-    bind[TeachingGroup]
+    bind[TeachingGroup] declare { e =>
+      index("", true, e.project, e.code)
+    }
 
     all.except(classOf[Student], classOf[StudentState]).cacheAll()
   }

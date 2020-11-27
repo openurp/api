@@ -42,4 +42,7 @@ class User extends LongId with Coded with Named with Updated with Remark with Te
 
   var mobile: Option[String] = None
 
+  def description: String = {
+    s"$code $name ${department.shortName.getOrElse(department.name)}"
+  }
 }

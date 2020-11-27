@@ -28,6 +28,10 @@ import scala.collection.mutable
 /** 教研室 */
 class TeachingGroup extends LongId with Coded with Named with Updated with TemporalOn {
 
+  /** 项目 */
+  var project: Project = _
+
+  /** 部门 */
   var department: Department = _
 
   /** 负责人 */
