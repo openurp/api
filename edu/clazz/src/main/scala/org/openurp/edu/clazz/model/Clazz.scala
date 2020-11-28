@@ -88,7 +88,4 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
 
   /**任务标签*/
   var tags:mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]
-
-  /** 教学材料 */
-  var material: Option[Material] = None
 }

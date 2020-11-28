@@ -203,7 +203,7 @@ Textbook.category=图书分类
 Textbook.madeInSchool=是否自编
 
 Teacher=教师信息
-Teacher.project=所在项目
+Teacher.projects=所在项目
 Teacher.person=人员信息
 Teacher.teacherType=教师类型
 Teacher.department=所在部门

@@ -18,22 +18,15 @@
  */
 package org.openurp.edu.course.model
 
-import org.beangle.data.orm.MappingModule
+object BookAdoption extends Enumeration {
 
-class DefaultMapping extends MappingModule {
-
-  def binding(): Unit = {
-    defaultCache("openurp.edu.course", "read-write")
-
-    bind[CourseProfile] declare { e=>
-      e.description is length(40000)
-      e.enDescription is length(40000)
-    }
-
-    bind[Syllabus] declare { e =>
-      e.attachments is depends("syllabus")
-    }
-
-    bind[SyllabusFile]
+  class State(id: Int, val title: String) extends super.Val(id) {
   }
+
+  val None = new State(0, "推荐参考资料")
+  val UseTextBook = new State(1, "使用教材")
+  val UseLecture = new State(2, "使用讲义")
+
+  import scala.language.implicitConversions
+  implicit def convertValue(v: Value): State = v.asInstanceOf[State]
 }

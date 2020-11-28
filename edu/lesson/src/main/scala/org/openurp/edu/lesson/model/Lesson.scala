@@ -16,29 +16,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.course.model
+package org.openurp.edu.lesson.model
 
-import java.util.Locale
+import java.time.LocalDate
 
+import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.User
-import org.openurp.edu.base.model.{Course, Semester}
+import org.openurp.edu.base.model.{Classroom, Teacher}
+import org.openurp.edu.clazz.model.Clazz
 
-/** 授课计划
- * 每个课程、每个学期、每个语种、每个作者做唯一限制
+/***
+ * 具体一次上课的内容
  */
-class LecturePlan extends LongId with Updated {
+class Lesson extends LongId {
 
-  var course: Course = _
+  var clazz: Clazz = _
 
-  var docLocale: Locale = _
+  var openOn: LocalDate = _
 
-  var semester: Semester = _
+  var beginAt: HourMinute = _
 
-  var author: User = _
+  var endAt: HourMinute = _
 
-  var attachment: Attachment = new Attachment
+  var contents: String = _
 
-  var passed: Boolean = _
+  /** 授课教师列表 */
+  var teachers: collection.mutable.Set[Teacher] = Collections.newSet[Teacher]
+
+  /** 教室列表 */
+  var rooms: collection.mutable.Set[Classroom] = Collections.newSet[Classroom]
 }

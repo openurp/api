@@ -16,24 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.course.model
+package org.openurp.edu.lesson.model
 
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp.edu.course", "read-write")
-
-    bind[CourseProfile] declare { e=>
-      e.description is length(40000)
-      e.enDescription is length(40000)
+    bind[Lesson] declare { e =>
+      index("", false, e.clazz)
     }
 
-    bind[Syllabus] declare { e =>
-      e.attachments is depends("syllabus")
-    }
-
-    bind[SyllabusFile]
+    bind[LecturePlan]
   }
+
 }

@@ -143,9 +143,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Teacher] declare { e =>
-      index("", true, e.user, e.project)
-      index("", false, e.user)
-      index("", false, e.project)
+      index("", true, e.user)
     }
 
     bind[Instructor] declare { e =>

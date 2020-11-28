@@ -59,10 +59,6 @@ class DefaultMapping extends MappingModule {
       index("", false, e.restriction)
     }
 
-    bind[Lesson] declare { e =>
-      index("", false, e.clazz)
-    }
-
     //schedule
     bind[Session].declare { e =>
       e.remark is length(200)
@@ -71,16 +67,6 @@ class DefaultMapping extends MappingModule {
 
     bind[ClazzGroup].declare { e =>
       e.clazzes is one2many("group")
-    }
-
-    bind[Material] declare { e =>
-      e.clazz is notnull
-      e.referenceBooks is length(500)
-      e.extra is length(200)
-      e.reason is length(300)
-      e.remark is length(200)
-
-      index("", true, e.clazz)
     }
 
     bind[StdCourseAbility]

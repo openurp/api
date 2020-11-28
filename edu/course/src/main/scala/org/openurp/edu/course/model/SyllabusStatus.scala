@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.course.model
 
-object BlogStatus extends Enumeration(0) {
+object SyllabusStatus extends Enumeration(0) {
 
   class Status(val name: String) extends super.Val {
   }

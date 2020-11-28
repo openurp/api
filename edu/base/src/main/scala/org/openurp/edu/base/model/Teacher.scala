@@ -18,17 +18,24 @@
  */
 package org.openurp.edu.base.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{TemporalOn, Updated}
-import org.openurp.base.model.{Person, User}
+import org.openurp.base.model.{Person, School, User}
+import org.openurp.code.edu.model.{Degree, EducationDegree}
 import org.openurp.code.hr.model.WorkStatus
 import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.edu.base.code.model.TeacherType
+
+import scala.collection.mutable
 
 /**
  * 教师信息
  */
 class Teacher extends LongId with Updated with TemporalOn {
+
+  /** 学校 */
+  var school: School = _
 
   /**用户*/
   var user: User = _
@@ -36,8 +43,8 @@ class Teacher extends LongId with Updated with TemporalOn {
   /**人员信息*/
   var person: Option[Person] = None
 
-  /**所在项目*/
-  var project: Project = _
+  /** 项目列表 */
+  var projects: mutable.Set[Project] = Collections.newSet[Project]
 
   /**教师类型*/
   var teacherType: TeacherType = _
@@ -47,6 +54,12 @@ class Teacher extends LongId with Updated with TemporalOn {
 
   /**职称*/
   var title: Option[ProfessionalTitle] = None
+
+  /** 学历 */
+  var educationDegree: Option[EducationDegree] = None
+
+  /** 学位 */
+  var degree: Option[Degree] = None
 
   /**是否兼职*/
   var parttime: Boolean = _

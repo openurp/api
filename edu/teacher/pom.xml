@@ -6,14 +6,14 @@
     <artifactId>openurp-edu-parent</artifactId>
     <version>0.18.2-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.edu.textbook</groupId>
-  <artifactId>openurp-edu-textbook-api</artifactId>
+  <groupId>org.openurp.edu.teacher</groupId>
+  <artifactId>openurp-edu-teacher-api</artifactId>
   <packaging>jar</packaging>
-  <name>OpenURP Edu Textbook API</name>
+  <name>OpenURP Edu Teacher API</name>
 
   <properties>
-    <bundle.symbolicName>org.openurp.edu.textbook</bundle.symbolicName>
-    <bundle.namespace>org.openurp.edu.textbook</bundle.namespace>
+    <bundle.symbolicName>org.openurp.edu.teacher</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu.teacher</bundle.namespace>
   </properties>
 
   <dependencies>
@@ -22,12 +22,8 @@
       <artifactId>openurp-edu-base-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.openurp.edu.clazz</groupId>
-      <artifactId>openurp-edu-clazz-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.openurp.edu.course</groupId>
-      <artifactId>openurp-edu-course-api</artifactId>
+      <groupId>org.openurp.code</groupId>
+      <artifactId>openurp-code-hr</artifactId>
     </dependency>
   </dependencies>
 </project>

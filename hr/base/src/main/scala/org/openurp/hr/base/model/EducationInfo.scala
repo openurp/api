@@ -20,19 +20,19 @@ package org.openurp.hr.base.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.code.edu.model.{ Degree, EducationDegree, StudyType }
+import org.openurp.code.edu.model.{Degree, EducationDegree, StudyType}
 
 /**
  * 教育信息
  * (入学日期，毕(肄)业日期)
  */
 class EducationInfo extends LongId with TemporalOn {
-/**教职工*/
+  /**教职工*/
   var staff: Staff = _
   /** 学历 */
   var educationDegree: EducationDegree = _
   /**学位*/
- var degree: Degree = _
+  var degree: Degree = _
   /** 学历证书号 */
   var certificateNo: String = _
   /**学制 */

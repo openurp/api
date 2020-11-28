@@ -16,24 +16,41 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.course.model
+package org.openurp.edu.lesson.model
 
-import org.beangle.data.orm.MappingModule
+import java.time.Instant
+import java.util.Locale
 
-class DefaultMapping extends MappingModule {
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.User
+import org.openurp.edu.base.model.Semester
+import org.openurp.edu.clazz.model.Clazz
 
-  def binding(): Unit = {
-    defaultCache("openurp.edu.course", "read-write")
+/** 授课计划
+ * 每个任务唯一
+ */
+class LecturePlan extends LongId with Updated {
 
-    bind[CourseProfile] declare { e=>
-      e.description is length(40000)
-      e.enDescription is length(40000)
-    }
+  var clazz: Clazz = _
 
-    bind[Syllabus] declare { e =>
-      e.attachments is depends("syllabus")
-    }
+  var docLocale: Locale = _
 
-    bind[SyllabusFile]
-  }
+  var semester: Semester = _
+
+  var author: User = _
+
+  var fileSize: Int = _
+
+  var mimeType: String = _
+
+  var filePath: String = _
+
+  var passed: Option[Boolean] = None
+
+  /** 审核人 */
+  var auditor: Option[User] = None
+
+  /** 审核时间 */
+  var auditAt: Option[Instant] = None
 }

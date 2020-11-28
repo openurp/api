@@ -9,3 +9,12 @@ ClazzBookStat=课程教材订购汇总
 ClazzBookStat.stdCount=学生用数量
 ClazzBookStat.teacherCount=教师用数量
 ClazzBookStat.statAt=汇总时间
+
+Material=教材选用
+Material.clazz=课程
+Material.passed=是否通过
+Material.ordered=教材已订购
+Material.books=教材
+Material.materials=辅助资料
+Material.adoption=教材状态
+Material.submitAt=提交时间

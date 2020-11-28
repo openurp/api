@@ -6,14 +6,14 @@
     <artifactId>openurp-edu-parent</artifactId>
     <version>0.18.2-SNAPSHOT</version>
   </parent>
-  <groupId>org.openurp.edu.textbook</groupId>
-  <artifactId>openurp-edu-textbook-api</artifactId>
+  <groupId>org.openurp.edu.lesson</groupId>
+  <artifactId>openurp-edu-lesson-api</artifactId>
   <packaging>jar</packaging>
-  <name>OpenURP Edu Textbook API</name>
+  <name>OpenURP Edu Lesson API</name>
 
   <properties>
-    <bundle.symbolicName>org.openurp.edu.textbook</bundle.symbolicName>
-    <bundle.namespace>org.openurp.edu.textbook</bundle.namespace>
+    <bundle.symbolicName>org.openurp.edu.lesson</bundle.symbolicName>
+    <bundle.namespace>org.openurp.edu.lesson</bundle.namespace>
   </properties>
 
   <dependencies>

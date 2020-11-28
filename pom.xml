@@ -97,6 +97,11 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.openurp.edu.course</groupId>
+        <artifactId>openurp-edu-course-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.openurp.edu.clazz</groupId>
         <artifactId>openurp-edu-clazz-api</artifactId>
         <version>${project.version}</version>

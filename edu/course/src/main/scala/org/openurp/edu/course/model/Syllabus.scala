@@ -19,59 +19,44 @@
 package org.openurp.edu.course.model
 
 import java.time.Instant
-import java.util.Locale
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.pojo.{DateRange, Named, Updated}
-import org.beangle.data.model.{Component, IntId, LongId}
-import org.openurp.base.model.User
-import org.openurp.edu.base.model.{Course, Semester}
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.openurp.base.model.{Department, User}
+import org.openurp.edu.base.model._
 
-/**
- * 课程教学大纲
- * TemporalOn表示大纲会有一定的时效性
- * 每个课程、每个学期、每个语种、每个作者做唯一限制
+import scala.collection.mutable
+
+/** 课程教学大纲
+ *
  */
-class Syllabus extends LongId with DateRange with Updated {
+class Syllabus extends LongId with Updated with DateRange {
 
+  /** 课程 */
   var course: Course = _
 
-  var docLocale: Locale = _
-
-  var author: User = _
-
+  /** 修订时的学年学期 */
   var semester: Semester = _
 
-  var attachment: Attachment = new Attachment
+  /** 开课院系 */
+  var department: Department = _
 
-  var contents = Collections.newBuffer[SyllabusSection]
+  /** 教研室 */
+  var teachingGroup: Option[TeachingGroup] = None
 
-  var passed: Option[Boolean] = None
+  /** 附件 */
+  var attachments: mutable.Buffer[SyllabusFile] = Collections.newBuffer[SyllabusFile]
 
+  /** 作者 */
+  var author: User = _
+
+  /** 状态 */
+  var status: SyllabusStatus.Status = SyllabusStatus.Draft
+
+  /** 审核人 */
   var auditor: Option[User] = None
 
+  /** 审核时间 */
   var auditAt: Option[Instant] = None
-}
-
-/**
- * 大纲内容章节
- */
-class SyllabusSection extends LongId {
-  var title: SyllabusSectionTitle = _
-  var syllabus: Syllabus = _
-  var contents: String = _
-}
-
-/**
- * 大纲内容章节标题
- */
-class SyllabusSectionTitle extends IntId with Named
-
-/**
- * 大纲附件
- */
-class Attachment extends Component with Named {
-  var fileSize: Int = _
-  var mimeType: String = _
-  var filePath: String = _
 }

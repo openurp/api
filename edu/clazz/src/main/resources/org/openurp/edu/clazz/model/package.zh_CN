@@ -96,26 +96,5 @@ ClazzGroup.semester=学期
 ClazzGroup.project=项目
 ClazzGroup.course=课程
 
-Lesson=教学进度
-Lesson.openOn=上课日期
-Lesson.beginAt=开始时间
-Lesson.endAt=结束时间
-Lesson.contents=具体内容
-Lesson.teachers=授课教师列表
-Lesson.rooms=教室列表
-
-Material=教材选用
-Material.clazz=课程
-Material.books=教材
-Material.referenceBooks=参考书
-Material.extra=其他书
-Material.passed=是否通过
-Material.confirmed=是否提交
-Material.remark=备注
-Material.reason=选用理由
-Material.adoption=教材状态
-Material.ordered=教材已订购
-Material.auditAt=审核时间
-
 StdCourseAbility=学生课程能力
 StdCourseAbility.score=分数

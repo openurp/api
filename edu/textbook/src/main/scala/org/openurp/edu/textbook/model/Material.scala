@@ -16,50 +16,44 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.clazz.model
+package org.openurp.edu.textbook.model
 
 import java.time.Instant
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.Remark
 import org.openurp.edu.base.model.Textbook
+import org.openurp.edu.clazz.model.Clazz
+import org.openurp.edu.course.model.BookAdoption
 
-import scala.collection.mutable.Buffer
+import scala.collection.mutable
 
 /**
  * 教学材料说明
  * 包括教材、参考书等
  */
-class Material extends LongId with Serializable with Cloneable with Updated with Remark {
-
-  /** 教材选用类型 */
-  var adoption: BookAdoption.State = _
-
-  /** 教材列表 */
-  var books: Buffer[Textbook] = Collections.newBuffer[Textbook]
-
-  /** 参考书 */
-  var referenceBooks: Option[String] = None
-
-  /** 其它资料 */
-  var extra: Option[String] = None
-
-  /** 选用理由 */
-  var reason: Option[String] = None
+class Material extends LongId with Serializable with Cloneable with Remark {
 
   /** 教学任务 */
   var clazz: Clazz = _
 
-  /** 已提交 */
-  var confirmed: Boolean = _
-
   /** 历史已经订购过 */
   var ordered: Boolean = _
 
-  /** 审核通过 */
+  /** 教材列表 */
+  var books: mutable.Buffer[Textbook] = Collections.newBuffer[Textbook]
+
+  /** 教材选用类型 */
+  var adoption: BookAdoption.State = _
+
+  /** 辅助资料 */
+  var materials: Option[String] = None
+
+  /** 是否审核通过 */
   var passed: Option[Boolean] = None
 
-  /** 审核时间 */
-  var auditAt: Option[Instant] = None
+  /** 提交时间 */
+  var submitAt: Option[Instant] = None
+
 }

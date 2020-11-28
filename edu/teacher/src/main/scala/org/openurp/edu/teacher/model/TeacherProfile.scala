@@ -16,26 +16,32 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.course.model
+package org.openurp.edu.teacher.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.User
+import org.openurp.edu.base.model.Teacher
 
-class TeacherBlog extends LongId with Updated {
+class TeacherProfile extends LongId with Updated {
 
-	var user: User = _
+  var teacher: Teacher = _
 
-	/** 个人简介 */
-	var intro: String = _
+  /** 个人简介 */
+  var intro: String = _
 
-	/** 研究方向 */
-	var research: Option[String] = None
+  /** 教学经历 */
+  var teachingCareer: Option[String] = None
 
-	/** 联系方式 */
-	var contact: Option[String] = None
+  /** 科研成果 */
+  var harvest: Option[String] = None
 
-	/** 科研成果 */
-	var harvest: Option[String] = None
+  /** 方向 */
+  var research: Option[String] = None
+
+  /** 学术兼职 */
+  var titles: Option[String] = None
+
+  /** 联系方式 */
+  var contact: Option[String] = None
 
 }

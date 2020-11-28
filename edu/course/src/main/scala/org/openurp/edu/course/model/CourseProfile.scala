@@ -18,27 +18,14 @@
  */
 package org.openurp.edu.course.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.{Department, User}
-import org.openurp.edu.base.model.{Course, Semester}
 
-import scala.collection.mutable
 
-/** 课程资料
+/** 课程简介
  *
  */
-class CourseBlog extends LongId with Updated {
-
-  /** 学年学期 */
-  var semester: Semester = _
-
-  /** 课程 */
-  var course: Course = _
-
-  /** 授课教师 */
-  var teachers: mutable.Set[User] = Collections.newSet[User]
+class CourseProfile extends LongId with Updated {
 
   /** 简介 */
   var description: String = _
@@ -46,18 +33,18 @@ class CourseBlog extends LongId with Updated {
   /** 英文简介 */
   var enDescription: Option[String] = None
 
-  /** 开课院系 */
-  var department: Department = _
+  /** 先修课程 */
+  var prerequisites: Option[String] = None
 
-  /** 作者 */
-  var author: User = _
+  /** 适用专业 */
+  var majors: Option[String] = None
 
-  /** 教材和辅助资料 */
+  /** 教材和参考书目 */
+  var textbooks: Option[String] = None
+
+  /** 辅助资料 */
   var materials: Option[String] = None
 
-  /** 课程网站 */
+  /** 课程网站地址 */
   var website: Option[String] = None
-
-  /** 状态 */
-  var status: BlogStatus.Status = BlogStatus.Draft
 }

@@ -16,34 +16,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.clazz.model
+package org.openurp.edu.course.model
 
-import java.time.LocalDate
+import java.util.Locale
 
-import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Classroom
-import org.openurp.edu.base.model.Teacher
 
-/***
- * 具体一次上课的内容
+/**
+ * 课程教学大纲附件
  */
-class Lesson extends LongId {
+class SyllabusFile extends LongId {
 
-  var clazz: Clazz = _
+  var syllabus: Syllabus = _
 
-  var openOn: LocalDate = _
+  var docLocale: Locale = _
 
-  var beginAt: HourMinute = _
+  var fileSize: Int = _
 
-  var endAt: HourMinute = _
+  var mimeType: String = _
 
-  var contents: String = _
+  var filePath: String = _
 
-  /** 授课教师列表 */
-  var teachers: collection.mutable.Set[Teacher] = Collections.newSet[Teacher]
-
-  /** 教室列表 */
-  var rooms: collection.mutable.Set[Classroom] = Collections.newSet[Classroom]
 }
