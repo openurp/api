@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.hr.base.model.DefaultMapping" />
-  <naming>
-    <profile  package = "org.openurp.hr.base" pluralize="true" schema="hr_base" />
-  </naming>
-</orm>

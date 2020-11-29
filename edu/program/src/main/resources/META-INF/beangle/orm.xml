@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.edu.program.model.DefaultMapping" />
-  <naming>
-    <profile package = "org.openurp.edu.program" pluralize="true" schema="edu_program"/>
-  </naming>
-</orm>

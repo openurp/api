@@ -4,22 +4,17 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.18.2-SNAPSHOT</version>
+    <version>0.19.0</version>
   </parent>
   <groupId>org.openurp.stu</groupId>
-  <artifactId>openurp-stu-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Stu Parent</name>
+  <artifactId>openurp-stu-api</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Stu API</name>
 
   <properties>
-    <bundle.symbolicName>org.openurp.stu.parent</bundle.symbolicName>
+    <bundle.symbolicName>org.openurp.stu.api</bundle.symbolicName>
     <bundle.namespace>org.openurp.stu</bundle.namespace>
   </properties>
-
-  <modules>
-    <module>award</module>
-    <module>job</module>
-  </modules>
 
   <dependencies>
     <dependency>

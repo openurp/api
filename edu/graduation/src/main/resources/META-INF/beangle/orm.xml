@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.edu.graduation.audit.model.DefaultMapping" />
-  <naming>
-    <profile package = "org.openurp.edu.graduation" pluralize="true" schema="edu_graduation"/>
-  </naming>
-</orm>

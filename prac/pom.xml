@@ -4,21 +4,17 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.18.2-SNAPSHOT</version>
+    <version>0.19.0</version>
   </parent>
   <groupId>org.openurp.prac</groupId>
-  <artifactId>openurp-prac-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Practice Parent</name>
+  <artifactId>openurp-prac-api</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Practice API</name>
 
   <properties>
-    <bundle.symbolicName>org.openurp.prac.parent</bundle.symbolicName>
+    <bundle.symbolicName>org.openurp.prac.api</bundle.symbolicName>
     <bundle.namespace>org.openurp.prac</bundle.namespace>
   </properties>
-
-  <modules>
-    <module>innovation</module>
-  </modules>
 
   <dependencies>
     <dependency>
