@@ -20,7 +20,7 @@ package org.openurp.edu.base
 
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.EducationLevel
-import org.openurp.code.edu.model.StudentStatus
+import org.openurp.code.std.model.StudentStatus
 import org.openurp.edu.base.model.Direction
 import org.openurp.edu.base.model.Major
 import org.openurp.edu.base.model.Squad

@@ -27,6 +27,10 @@ class DefaultMapping extends MappingModule {
     bind[UncheckinReason]
     bind[StdAlterType]
     bind[StdAlterReason]
+    bind[StdPunishmentType]
+    bind[StudentStatus]
+    bind[UeeSubjectType]
+    bind[FeeOrigin]
     all.cacheAll()
   }
 }

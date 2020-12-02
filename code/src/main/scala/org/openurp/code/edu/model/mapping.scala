@@ -30,14 +30,8 @@ class DefaultMapping extends MappingModule {
     bind[Discipline]
     bind[EnrollMode]
     bind[EducationMode]
-    bind[FeeOrigin]
     bind[HskLevel]
     bind[Institution]
-    bind[StudentPunishmentType]
-    bind[StudentAlterType]
-    bind[StudentAlterReason]
-    bind[StudentStatus]
-    bind[UeeSubjectType]
     bind[Degree]
     bind[DegreeLevel]
     bind[DisciplineCategory]
@@ -60,10 +54,6 @@ class DefaultMapping extends MappingModule {
     bind[GradeType]
     bind[GradingMode]
     bind[TeachLangType]
-
-    bind[StdAlterType]
-    bind[StdAlterReason]
-
     all.cacheAll()
   }
 }

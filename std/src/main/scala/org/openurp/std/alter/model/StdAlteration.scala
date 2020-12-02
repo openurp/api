@@ -18,18 +18,13 @@
  */
 package org.openurp.std.alter.model
 
-import scala.collection.mutable.Buffer
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Coded
-import org.beangle.data.model.pojo.DateRange
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.Updated
-import org.openurp.code.edu.model.StdAlterReason
-import org.openurp.code.edu.model.StdAlterType
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.model.Student
+import org.beangle.data.model.pojo.{Coded, DateRange, Remark, Updated}
+import org.openurp.code.std.model.{StdAlterReason, StdAlterType}
+import org.openurp.edu.base.model.{Semester, Student}
+
+import scala.collection.mutable.Buffer
 
 /**
  * 学籍异动

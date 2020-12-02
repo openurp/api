@@ -24,7 +24,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
 import org.beangle.data.model.{Component, LongId}
 import org.openurp.base.model.{Campus, Department, Person, User}
-import org.openurp.code.edu.model.{EducationLevel, StudentStatus, StudyType}
+import org.openurp.code.edu.model.{EducationLevel, StudyType}
+import org.openurp.code.std.model.StudentStatus
 import org.openurp.edu.base.code.model.{StdLabel, StdLabelType, StdType}
 import org.openurp.edu.base.{EduLevelBased, StdEnrollment}
 

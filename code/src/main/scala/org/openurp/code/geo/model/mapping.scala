@@ -28,13 +28,13 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Country].declare { e =>
-      e.alpha2Code is(length(2), notnull)
-      e.alpha3Code is(length(3), notnull)
-      e.shortName is (length(50))
+      e.alpha2Code is length(2)
+      e.alpha3Code is length(3)
+      e.shortName is length(50)
     }
 
     bind[RailwayStation].declare { e =>
-      e.jianpin is(length(50), notnull)
+      e.jianpin is length(50)
     }
 
     all.cacheAll()
