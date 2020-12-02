@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.edu.evaluation.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.evaluation.clazz.model.DefaultMapping" />
-  <naming>
-    <profile package = "org.openurp.edu.evaluation" pluralize="true" schema="edu_evaluation"/>
-  </naming>
-</orm>

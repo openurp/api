@@ -1,0 +1,16 @@
+LecturePlan=授课计划
+LecturePlan.author=作者
+LecturePlan.passed=是否通过
+LecturePlan.docLocale=语言
+LecturePlan.mimeType=文件类型
+LecturePlan.filePath=附件关键字
+LecturePlan.fileSize=大小
+LecturePlan.auditAt=审核时间
+
+Lesson=教学进度
+Lesson.openOn=上课日期
+Lesson.beginAt=开始时间
+Lesson.endAt=结束时间
+Lesson.contents=具体内容
+Lesson.teachers=授课教师列表
+Lesson.rooms=教室列表

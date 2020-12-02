@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.std.transfer.model.DefaultMapping" />
-  <naming>
-    <profile package = "org.openurp.std.transfer" pluralize="true" schema="std_transfer"/>
-  </naming>
-</orm>

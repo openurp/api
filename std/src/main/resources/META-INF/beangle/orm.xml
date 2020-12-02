@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orm>
+  <mapping class="org.openurp.std.alter.model.DefaultMapping" />
+  <mapping class="org.openurp.std.fee.model.DefaultMapping" />
+  <mapping class="org.openurp.std.info.model.DefaultMapping" />
+  <mapping class="org.openurp.std.register.model.DefaultMapping" />
+  <mapping class="org.openurp.std.transfer.model.DefaultMapping" />
+  <naming>
+    <profile package = "org.openurp.std.alter" pluralize="true" schema="std_alter"/>
+    <profile package = "org.openurp.std.fee.model" pluralize="true" schema="std_fee"/>
+    <profile package = "org.openurp.std.info" pluralize="true" schema="std_info"/>
+    <profile package = "org.openurp.std.register" pluralize="true" schema="std_register"/>
+    <profile package = "org.openurp.std.transfer" pluralize="true" schema="std_transfer"/>
+  </naming>
+</orm>

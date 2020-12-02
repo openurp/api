@@ -4,34 +4,23 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.18.1</version>
+    <version>0.19.0</version>
   </parent>
   <groupId>org.openurp.sin</groupId>
-  <artifactId>openurp-sin-parent</artifactId>
-  <packaging>pom</packaging>
-  <name>OpenURP Sin Parent</name>
+  <artifactId>openurp-sin-api</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Sin API</name>
 
   <properties>
-    <bundle.symbolicName>org.openurp.sin.parent</bundle.symbolicName>
+    <bundle.symbolicName>org.openurp.sin.api</bundle.symbolicName>
     <bundle.namespace>org.openurp.sin</bundle.namespace>
   </properties>
 
-  <modules>
-    <module>harvest</module>
-  </modules>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.openurp.base</groupId>
-        <artifactId>openurp-base-api</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openurp.hr</groupId>
-        <artifactId>openurp-hr-base</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.openurp.base</groupId>
+      <artifactId>openurp-base-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
 </project>
