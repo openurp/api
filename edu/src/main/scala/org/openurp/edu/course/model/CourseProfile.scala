@@ -20,12 +20,17 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.User
+import org.openurp.edu.base.model.Course
 
 
 /** 课程简介
  *
  */
 class CourseProfile extends LongId with Updated {
+
+  /** 课程 */
+  var course: Course = _
 
   /** 简介 */
   var description: String = _
@@ -47,4 +52,7 @@ class CourseProfile extends LongId with Updated {
 
   /** 课程网站地址 */
   var website: Option[String] = None
+
+  /** 更新人 */
+  var updatedBy: Option[User] = None
 }

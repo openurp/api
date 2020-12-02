@@ -25,9 +25,11 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultCache("openurp.edu.course", "read-write")
 
-    bind[CourseProfile] declare { e=>
+    bind[CourseProfile] declare { e =>
       e.description is length(40000)
       e.enDescription is length(40000)
+
+      index("", true, e.course)
     }
 
     bind[Syllabus] declare { e =>

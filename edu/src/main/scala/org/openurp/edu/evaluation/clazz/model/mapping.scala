@@ -83,7 +83,7 @@ class DefaultMapping extends MappingModule {
       e.optionStats is depends(classOf[DepartOptionStat], "questionStat")
     }
     bind[DepartQuestionTypeStat].declare { e =>
-      e.evalStat is(notnull, target[DepartEvalStat])
+      e.evalStat.is(notnull, target[DepartEvalStat])
     }
     // clazz stat
     bind[ClazzEvalStat].declare { e =>
@@ -130,7 +130,7 @@ class DefaultMapping extends MappingModule {
       e.optionStats is depends(classOf[TeacherOptionStat], "questionStat")
     }
     bind[TeacherQuestionTypeStat].declare { e =>
-      e.evalStat is(notnull, target[TeacherEvalStat])
+      e.evalStat.is(notnull, target[TeacherEvalStat])
     }
     bind[TextEvaluation].declare { e =>
       e.student & e.clazz & e.evaluateByTeacher & e.evaluateAt are notnull

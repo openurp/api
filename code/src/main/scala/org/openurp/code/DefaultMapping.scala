@@ -27,7 +27,7 @@ class DefaultMapping extends MappingModule {
     defaultCache("openurp.code", "read-write")
 
     bind[CodeBean].declare { e =>
-      e.code is(length(20), unique)
+      e.code.is(length(20), unique)
       e.name is length(100)
       e.enName is length(300)
       e.remark is length(200)

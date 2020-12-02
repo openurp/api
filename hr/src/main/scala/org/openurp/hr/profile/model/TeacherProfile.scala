@@ -16,23 +16,32 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.teacher.model
+package org.openurp.hr.profile.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.edu.base.model.Teacher
 
-class DefaultMapping extends MappingModule {
+class TeacherProfile extends LongId with Updated {
 
-  def binding(): Unit = {
-    defaultCache("openurp.edu.teacher", "read-write")
+  var teacher: Teacher = _
 
-    bind[TeacherProfile] declare { e =>
-      e.intro is length(40000)
-      e.harvest is length(40000)
-      e.teachingCareer is length(1000)
-      e.titles is length(1000)
+  /** 个人简介 */
+  var intro: String = _
 
-      index("", true, e.teacher)
-    }
+  /** 教学经历 */
+  var teachingCareer: Option[String] = None
 
-  }
+  /** 科研成果 */
+  var harvest: Option[String] = None
+
+  /** 方向 */
+  var research: Option[String] = None
+
+  /** 学术兼职 */
+  var titles: Option[String] = None
+
+  /** 联系方式 */
+  var contact: Option[String] = None
+
 }
