@@ -110,41 +110,6 @@ class HskLevel extends CodeBean {
 class Institution extends CodeBean
 
 /**
- * 学生处分类型
- * 参见教育部标准JY/T 1001 4.2.3
- */
-@code("industry")
-class StudentPunishmentType extends CodeBean
-
-/**
- * 学籍异动类别
- * 参见教育部标准JY/T 1001 4.2.39
- */
-@code("industry")
-class StudentAlterType extends CodeBean
-
-/**
- * 学籍异动原因
- * 参见教育部标准JY/T 1001 4.2.40
- */
-@code("industry")
-class StudentAlterReason extends CodeBean
-
-/**
- * 学生当前状态
- * 参见教育部标准JY/T 1001 4.2.42
- */
-@code("industry")
-class StudentStatus extends CodeBean
-
-/**
- * 高考科目
- * 参见教育部标准JY/T 1001 4.2.8
- */
-@code("industry")
-class UeeSubjectType extends CodeBean
-
-/**
  * 修课类别
  * （重修、增修、免修不免试、主修，选修）
  * @author chaostone
@@ -351,20 +316,3 @@ class ExamForm extends CodeBean
 @code("industry")
 class TeachLangType extends CodeBean
 
-/**
- * 学籍异动类型
- */
-@code("industry")
-class StdAlterType extends CodeBean
-
-/**
- * 学籍异动原因
- */
-@code("industry")
-class StdAlterReason extends CodeBean
-
-/**
- * 费用来源
- */
-@code("industry")
-class FeeOrigin extends CodeBean
