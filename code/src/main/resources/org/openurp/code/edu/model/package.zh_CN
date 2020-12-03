@@ -27,12 +27,6 @@ Language=语种
 LanguageAbility=语种熟练程度
 
 StudyType=学习形式
-StudentStatus=学生学籍状态
-StudentPunishmentType=学生处分类型
-StudentAlterType=学籍异动类别
-StudentAlterReason=学籍异动原因
-
-UeeSubjectType=高考科目
 
 CourseTakeType=修读类别
 CourseTakeType.retake=是否重修
@@ -61,7 +55,3 @@ TeachLangType=授课语言类型
 DayPart=时段
 DayPart.color=css颜色
 EduCategory=教学类型
-
-StdAlterType=学籍异动类型
-StdAlterReason=学籍异动原因
-FeeOrigin=费用来源

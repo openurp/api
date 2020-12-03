@@ -1,0 +1,9 @@
+INSERT INTO code_hb.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (0, '2007-04-30', '0001', NULL, NULL, '最终成绩', '2007-04-30 00:00:00', NULL, NULL);
+INSERT INTO code_hb.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (8, '2014-12-11', '0018', NULL, NULL, '缓考总评', '2014-12-11 00:00:00', NULL, NULL);
+INSERT INTO code_hb.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (7, '2006-10-29', '0007', NULL, NULL, '期末总评', '2006-10-29 14:56:09', NULL, NULL);
+INSERT INTO code_hb.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (9, '2014-12-11', '0019', NULL, NULL, '补考总评', '2014-12-11 00:00:00', NULL, NULL);
+INSERT INTO code_hb.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (4, '2006-10-29', '0004', NULL, NULL, '补考成绩', '2006-10-29 14:56:09', 3, NULL);
+INSERT INTO code_hb.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (6, '2006-10-29', '0006', NULL, NULL, '缓考成绩', '2011-06-03 13:41:02', 4, NULL);
+INSERT INTO code_hb.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (3, '2006-10-29', '0002', 'Component Score', NULL, '平时成绩', '2007-12-20 00:00:00', NULL, NULL);
+INSERT INTO code_hb.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (2, '2006-10-29', '0003', 'Final Exam Score', NULL, '期末成绩', '2007-03-09 00:00:00', 1, NULL);
+INSERT INTO code_hb.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (1, '2006-10-29', '0008', NULL, '2016-05-03', '期中成绩', '2007-04-30 00:00:00', NULL, NULL);
