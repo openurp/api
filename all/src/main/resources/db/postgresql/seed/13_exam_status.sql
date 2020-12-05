@@ -1,4 +1,0 @@
-INSERT INTO code_hb.exam_statuses (id, code, name, en_name, begin_on, end_on, updated_at, attended, has_deferred, remark,  cheating) VALUES (1, '1', '正常', NULL, '2015-07-01', NULL, '2015-07-01 00:00:00', true, false, NULL,   false);
-INSERT INTO code_hb.exam_statuses (id, code, name, en_name, begin_on, end_on, updated_at, attended, has_deferred, remark,  cheating) VALUES (2, '2', '缓考', NULL, '2015-07-01', NULL, '2015-07-01 00:00:00', false, true, NULL, false);
-INSERT INTO code_hb.exam_statuses (id, code, name, en_name, begin_on, end_on, updated_at, attended, has_deferred, remark,  cheating) VALUES (10, '10', '作弊', NULL, '2017-03-30', NULL, '2017-03-30 13:49:04.346837', true, false, NULL,  true);
-INSERT INTO code_hb.exam_statuses (id, code, name, en_name, begin_on, end_on, updated_at, attended, has_deferred, remark,  cheating) VALUES (3, '3', '缺考', NULL, '2015-07-01', NULL, '2015-07-01 00:00:00', false, false, NULL,  false);
