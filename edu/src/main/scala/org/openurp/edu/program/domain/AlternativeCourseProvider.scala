@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.program.domain
 
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 import org.openurp.edu.program.model.{AlternativeCourse, MajorAlternativeCourse, StdAlternativeCourse}
 import org.openurp.edu.program.model.{MajorAlternativeCourse, StdAlternativeCourse}
 

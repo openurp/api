@@ -24,7 +24,7 @@ import org.beangle.data.model.Component
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.Department
 import Enrollment.GenderRatio
-import org.openurp.edu.base.code.model.CourseAbilityRate
+import org.openurp.base.edu.code.model.CourseAbilityRate
 
 class Enrollment extends Cloneable with Component {
 

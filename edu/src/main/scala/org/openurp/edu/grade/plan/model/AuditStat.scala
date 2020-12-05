@@ -20,7 +20,7 @@ package org.openurp.edu.grade.plan.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.Component
-import org.openurp.edu.base.model.Course
+import org.openurp.base.edu.model.Course
 
 class AuditStat extends Component {
 

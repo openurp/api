@@ -23,7 +23,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, TemporalOn}
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.Discipline
-import org.openurp.edu.base.model.Teacher
+import org.openurp.base.edu.model.Teacher
 
 import scala.collection.mutable
 

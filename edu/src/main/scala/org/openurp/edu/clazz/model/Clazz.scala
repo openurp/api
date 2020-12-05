@@ -23,9 +23,9 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Updated}
 import org.openurp.base.model.{Campus, Department}
 import org.openurp.code.edu.model.TeachLangType
-import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.base.model.{Course, Semester, Teacher}
-import org.openurp.edu.base.{ProjectBased, AuditStates}
+import org.openurp.base.edu.code.model.CourseType
+import org.openurp.base.edu.model.{Course, Semester, Teacher}
+import org.openurp.base.edu.{ProjectBased, AuditStates}
 import org.openurp.edu.clazz.code.model.ClazzTag
 
 import scala.collection.mutable

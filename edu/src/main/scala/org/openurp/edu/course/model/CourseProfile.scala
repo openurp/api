@@ -21,7 +21,7 @@ package org.openurp.edu.course.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.User
-import org.openurp.edu.base.model.Course
+import org.openurp.base.edu.model.Course
 
 
 /** 课程简介

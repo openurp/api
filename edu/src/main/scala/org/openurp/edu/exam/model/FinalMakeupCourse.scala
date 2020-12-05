@@ -25,11 +25,11 @@ import scala.collection.mutable.Buffer
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Project
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.model.Squad
-import org.openurp.edu.base.model.Teacher
+import org.openurp.base.edu.model.Course
+import org.openurp.base.edu.model.Project
+import org.openurp.base.edu.model.Semester
+import org.openurp.base.edu.model.Squad
+import org.openurp.base.edu.model.Teacher
 
 /**
  * 毕业补考任务

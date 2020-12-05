@@ -23,7 +23,7 @@ import java.time.LocalDate
 import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.ExamStatus
 import org.openurp.code.edu.model.GradingMode
-import org.openurp.edu.base.model.{Course, Student}
+import org.openurp.base.edu.model.{Course, Student}
 import org.openurp.edu.extern.code.model.CertificateSubject
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.Updated

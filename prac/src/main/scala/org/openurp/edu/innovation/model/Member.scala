@@ -20,7 +20,7 @@ package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 
 object Member {
   def apply(project: Project, std: Student): Member = {

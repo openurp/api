@@ -18,8 +18,8 @@
  */
 package org.openurp.edu.grade.course.service
 
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Semester
+import org.openurp.base.edu.model.Student
 import org.openurp.edu.grade.course.model.{ CourseGrade, StdGpa }
 
 trait CourseGradeService {

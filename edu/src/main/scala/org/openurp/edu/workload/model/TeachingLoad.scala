@@ -19,8 +19,8 @@
 package org.openurp.edu.workload.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Semester
+import org.openurp.base.edu.model.Course
+import org.openurp.base.edu.model.Semester
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.code.job.model.ProfessionalTitle
 import org.beangle.commons.collection.Collections

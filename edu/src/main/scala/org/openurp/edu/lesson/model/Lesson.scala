@@ -23,7 +23,7 @@ import java.time.LocalDate
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.{Classroom, Teacher}
+import org.openurp.base.edu.model.{Classroom, Teacher}
 import org.openurp.edu.clazz.model.Clazz
 
 /***

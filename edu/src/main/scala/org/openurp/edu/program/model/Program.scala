@@ -23,9 +23,9 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Remark, TemporalOn, Updated}
 import org.openurp.base.model.{Campus, Department}
 import org.openurp.code.edu.model.{Degree, StudyType}
-import org.openurp.edu.base.code.model.{CourseType, StdType}
-import org.openurp.edu.base.model.{Direction, Major}
-import org.openurp.edu.base.{EduLevelBased, AuditStates}
+import org.openurp.base.edu.code.model.{CourseType, StdType}
+import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.edu.{EduLevelBased, AuditStates}
 
 /**
  * 专业培养方案

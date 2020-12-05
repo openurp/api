@@ -21,7 +21,7 @@ package org.openurp.edu.graduation.audit.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.code.edu.model.Degree
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 
 class DegreeApply extends LongId with Updated {
 

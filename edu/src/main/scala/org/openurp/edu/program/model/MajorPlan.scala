@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.program.model
 
-import org.openurp.edu.base.model.{Direction, Terms}
+import org.openurp.base.edu.model.{Direction, Terms}
 
 /**
  * @author chaostone

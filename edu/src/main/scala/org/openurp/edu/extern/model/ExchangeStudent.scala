@@ -22,8 +22,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Updated}
 import org.openurp.code.edu.model.{EduCategory, EducationLevel}
-import org.openurp.edu.base.AuditStates
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.AuditStates
+import org.openurp.base.edu.model.Student
 
 import scala.collection.mutable;
 

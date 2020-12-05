@@ -20,7 +20,7 @@ package org.openurp.edu.grade.plan.domain
 
 import org.beangle.commons.bean.orderings.MultiPropertyOrdering
 import org.beangle.commons.collection.Collections
-import org.openurp.edu.base.model.Course
+import org.openurp.base.edu.model.Course
 import org.openurp.edu.grade.course.model.CourseGrade
 
 class StdGrade(val grades: collection.Seq[CourseGrade]) {

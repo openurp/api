@@ -26,7 +26,7 @@ import scala.collection.mutable
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.openurp.code.edu.model.GradingMode
-import org.openurp.edu.base.ProjectBased
+import org.openurp.base.edu.ProjectBased
 
 /**
  * 成绩分级配置

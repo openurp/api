@@ -22,7 +22,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{ Remark, TemporalOn, Updated }
 import org.openurp.base.model.Department
-import org.openurp.edu.base.model.Project
+import org.openurp.base.edu.model.Project
 
 /**
  * 评教问卷

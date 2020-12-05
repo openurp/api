@@ -20,13 +20,13 @@ package org.openurp.edu.textbook.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Textbook
-import org.openurp.edu.base.model.Semester
+import org.openurp.base.edu.model.Student
+import org.openurp.base.edu.model.Course
+import org.openurp.base.edu.model.Textbook
+import org.openurp.base.edu.model.Semester
 import org.openurp.base.model.Department
 import java.time.Instant
-import org.openurp.edu.base.model.Project
+import org.openurp.base.edu.model.Project
 import org.openurp.base.model.Department
 
 /**

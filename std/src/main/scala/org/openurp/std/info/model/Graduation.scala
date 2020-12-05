@@ -24,7 +24,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.code.edu.model.Degree
 import org.openurp.code.edu.model.EducationResult
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 
 /**
  * 毕业信息

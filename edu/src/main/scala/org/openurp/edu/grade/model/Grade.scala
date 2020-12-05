@@ -23,7 +23,7 @@ import java.time.Instant
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.code.edu.model.{GradeType, GradingMode}
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 
 object Grade {
 

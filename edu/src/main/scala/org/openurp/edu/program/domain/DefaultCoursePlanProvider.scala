@@ -19,7 +19,7 @@
 package org.openurp.edu.program.domain
 
 import org.beangle.data.dao.EntityDao
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 import org.openurp.edu.program.model._
 
 class DefaultCoursePlanProvider extends CoursePlanProvider {

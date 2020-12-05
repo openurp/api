@@ -27,8 +27,8 @@ import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.ExamType
-import org.openurp.edu.base.model.Classroom
-import org.openurp.edu.base.model.Semester
+import org.openurp.base.edu.model.Classroom
+import org.openurp.base.edu.model.Semester
 import org.openurp.edu.clazz.model.Clazz
 
 /**

@@ -20,7 +20,7 @@ package org.openurp.edu.extern.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.edu.base.ProjectBased
+import org.openurp.base.edu.ProjectBased
 
 
 /**

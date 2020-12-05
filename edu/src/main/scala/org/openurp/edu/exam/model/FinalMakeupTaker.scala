@@ -23,8 +23,8 @@ import java.time.Instant
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.code.model.CourseType
+import org.openurp.base.edu.model.Student
 
 /**
  * 毕业清考名单

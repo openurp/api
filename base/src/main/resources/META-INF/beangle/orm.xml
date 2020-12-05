@@ -2,10 +2,10 @@
 <orm>
   <mapping class="org.openurp.base.model.DefaultMapping" />
   <mapping class="org.openurp.base.code.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.base.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.base.code.model.DefaultMapping" />
+  <mapping class="org.openurp.base.edu.model.DefaultMapping" />
+  <mapping class="org.openurp.base.edu.code.model.DefaultMapping" />
   <naming>
     <profile package = "org.openurp.base" pluralize="true" schema="base"/>
-    <profile package = "org.openurp.edu.base" pluralize="true" schema="edu_base"/>
+    <profile package = "org.openurp.base.edu" pluralize="true" schema="base_edu"/>
   </naming>
 </orm>

@@ -22,7 +22,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.Department
-import org.openurp.edu.base.model.Project
+import org.openurp.base.edu.model.Project
 
 class EvaluationCriteria extends LongId with Named {
   var project: Project = _

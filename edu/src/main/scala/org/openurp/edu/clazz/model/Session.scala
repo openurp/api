@@ -20,8 +20,8 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.Activity
-import org.openurp.edu.base.model.{ Classroom, Teacher }
+import org.openurp.base.edu.Activity
+import org.openurp.base.edu.model.{ Classroom, Teacher }
 import java.time.LocalDate
 
 /**

@@ -20,8 +20,8 @@ package org.openurp.edu.grade.plan.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Hierarchical, Named, Remark}
-import org.openurp.edu.base.code.model.CourseType
-import org.openurp.edu.base.model.Course
+import org.openurp.base.edu.code.model.CourseType
+import org.openurp.base.edu.model.Course
 import org.openurp.edu.grade.plan.domain.GroupResultAdapter
 import org.openurp.edu.program.model.CourseGroup
 

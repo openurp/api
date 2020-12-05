@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.program.domain
 
-import org.openurp.edu.base.model.{Student, StudentState}
+import org.openurp.base.edu.model.{Student, StudentState}
 import org.openurp.edu.program.model.Program
 
 trait ProgramProvider {

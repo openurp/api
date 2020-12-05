@@ -23,7 +23,7 @@ import java.time.Instant
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.model.Department
-import org.openurp.edu.base.model.{Semester, Student}
+import org.openurp.base.edu.model.{Semester, Student}
 
 /** 账单 */
 class Bill extends LongId with Updated with Remark {

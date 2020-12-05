@@ -19,7 +19,7 @@
 package org.openurp.edu.grade.plan.domain
 
 import org.beangle.commons.collection.Collections
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 import org.openurp.edu.grade.plan.model.PlanAuditResult
 import org.openurp.edu.program.model.CoursePlan
 

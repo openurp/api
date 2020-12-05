@@ -21,9 +21,9 @@ package org.openurp.edu.evaluation.department.model
 import org.beangle.data.model.LongId
 import org.openurp.edu.evaluation.model.Questionnaire
 import org.openurp.base.model.Department
-import org.openurp.edu.base.model.Semester
+import org.openurp.base.edu.model.Semester
 import org.beangle.commons.collection.Collections
-import org.openurp.edu.base.model.Teacher
+import org.openurp.base.edu.model.Teacher
 import java.time.Instant
 
 /**
