@@ -7,6 +7,8 @@ alter table edu_clazz.lessons_rooms set schema edu_lesson;
 alter  table edu_clazz.materials set schema edu_textbook;
 alter  table edu_clazz.materials_books set schema edu_textbook;
 
+alter table code_gb.education_degrees rename column conclusion to result_id;
+
 create schema hr_profile;
 alter table edu_course.teacher_blogs set schema hr_profile;
 --drop table edu_course.syllabus_section_titles cascade;
@@ -63,8 +65,9 @@ insert into edu_base.teachers_profects (teacher_id,project_id)select id ,project
 --alter table edu_base.teachers drop project_id cascade;
 alter table edu_base.teachers add column education_degree_id integer;
 alter table edu_base.teachers add column school_id integer;
-alter table edu_base.teachers alter school_id set not null;
 alter table edu_base.teachers add column degree_id integer;
+update edu_base.teachers set school_id=(select s.id from base.schools s);
+alter table edu_base.teachers alter school_id set not null;
 alter table edu_base.teachers drop constraint fk_1onjcmor1ox39txw1dk62ht35 cascade;
 alter table edu_base.teachers add constraint fk_cny3qap1t5kigpnr697g3cixx foreign key (degree_id) references code_gb.degrees (id);
 alter table edu_base.teachers add constraint fk_nuqy5yvj4u3uw5r7d4u78x9tl foreign key (education_degree_id) references code_gb.education_degrees (id);

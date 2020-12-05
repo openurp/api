@@ -51,6 +51,8 @@ alter table edu_course.syllabuses alter passed drop not null;
 alter table edu_course.syllabuses add constraint fk_982kh3ctxgx53t7ponrklk1sk foreign key (auditor_id) references base.users (id);
 alter table base.rooms drop capacity cascade;
 alter table base.users add column gender_id integer;
+update base.users u set gender_id=(select p.gender_id from base.people p ,edu_base.students std where std.user_id=u.id and std.person_id=p.id); 
+update base.users u set gender_id=1 where gender_id is null;
 alter table base.users alter gender_id set not null;
 alter table base.users add column en_name varchar(255);
 alter table base.users add constraint fk_tjqd54krxpiam3m1xb1mdp64f foreign key (gender_id) references code_gb.genders (id);
