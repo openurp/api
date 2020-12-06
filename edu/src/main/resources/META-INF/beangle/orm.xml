@@ -1,33 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.edu.clazz.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.course.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.evaluation.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.evaluation.clazz.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.exam.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.extern.model.DefaultMapping" />
+  <mapping class="org.openurp.edu.clazz.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.course.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.evaluation.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.evaluation.clazz.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.exam.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.extern.model.DefaultMapping"/>
   <mapping class="org.openurp.edu.grade.model.DefaultMapping"/>
   <mapping class="org.openurp.edu.grade.course.model.DefaultMapping"/>
   <mapping class="org.openurp.edu.grade.moral.model.DefaultMapping"/>
   <mapping class="org.openurp.edu.grade.plan.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.graduation.audit.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.lesson.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.program.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.room.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.textbook.model.DefaultMapping" />
-  <mapping class="org.openurp.edu.workload.model.DefaultMapping" />
+  <mapping class="org.openurp.edu.graduation.audit.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.lesson.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.program.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.room.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.textbook.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.workload.model.DefaultMapping"/>
   <naming>
-    <profile package = "org.openurp.edu.clazz" pluralize="true" schema="edu_clazz"/>
-    <profile package = "org.openurp.edu.course" pluralize="true" schema="edu_course"/>
-    <profile package = "org.openurp.edu.evaluation" pluralize="true" schema="edu_evaluation"/>
-    <profile package = "org.openurp.edu.exam" pluralize="true" schema="edu_exam"/>
-    <profile package = "org.openurp.edu.extern" pluralize="true" schema="edu_extern"/>
-    <profile package = "org.openurp.edu.grade" pluralize="true" schema="edu_grade"/>
-    <profile package = "org.openurp.edu.graduation" pluralize="true" schema="edu_graduation"/>
-    <profile package = "org.openurp.edu.lesson" pluralize="true" schema="edu_lesson"/>
-    <profile package = "org.openurp.edu.program" pluralize="true" schema="edu_program"/>
-    <profile package = "org.openurp.edu.room" pluralize="true" schema="edu_room" />
-    <profile package = "org.openurp.edu.textbook" pluralize="true" schema="edu_textbook"/>
-    <profile package = "org.openurp.edu.workload" pluralize="true" schema="edu_workload"/>
+    <profile package="org.openurp.edu" pluralize="true" schema="edu"/>
   </naming>
 </orm>

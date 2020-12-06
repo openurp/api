@@ -4,8 +4,6 @@
   <mapping class="org.openurp.hr.contact.model.DefaultMapping" />
   <mapping class="org.openurp.hr.profile.model.DefaultMapping" />
   <naming>
-    <profile package = "org.openurp.hr.base" pluralize="true" schema="hr_base" />
-    <profile package = "org.openurp.hr.contact" pluralize="true" schema="hr_contact"/>
-    <profile package = "org.openurp.hr.profile" pluralize="true" schema="hr_profile"/>
+    <profile package = "org.openurp.hr" pluralize="true" schema="hr" />
   </naming>
 </orm>

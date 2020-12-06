@@ -215,12 +215,6 @@ Teacher.parttime=是否兼职
 Teacher.retired=是否退休返聘
 Teacher.formalHr=是否在编
 
-Instructor=辅导员
-Instructor.department=院系
-Instructor.project=项目
-Instructor.person=人员信息
-Instructor.user=用户
-
 Calendar=日历方案
 Calendar.firstWeekday=每周开始时间
 Calendar.semesters=包含学期

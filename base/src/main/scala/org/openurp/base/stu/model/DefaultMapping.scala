@@ -16,21 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.base.edu.model
+package org.openurp.base.stu.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.User
+import org.beangle.data.orm.MappingModule
 
-/**
- * 辅导员
- */
-class Instructor extends LongId with Updated with TemporalOn {
+class DefaultMapping extends MappingModule {
 
-  var project: Project = _
+  def binding(): Unit = {
+    defaultCache("openurp.base", "read-write")
 
-  /**人员信息*/
-  var user: User = _
+    bind[Instructor] declare { e =>
+      index("", true, e.user)
+    }
 
+  }
 }
