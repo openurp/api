@@ -18,13 +18,13 @@
  */
 package org.openurp.edu.grade.course.domain
 
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Course
+import org.openurp.base.edu.model.Student
 import org.openurp.edu.grade.course.model.CourseGrade
 import org.openurp.edu.grade.course.model.StdGpa
 import org.openurp.edu.grade.course.model.StdSemesterGpa
 import org.openurp.edu.grade.course.model.StdYearGpa
-import org.openurp.edu.base.model.Semester
+import org.openurp.base.edu.model.Semester
 import scala.collection.mutable.Buffer
 import org.beangle.commons.collection.Collections
 import java.time.Instant

@@ -20,7 +20,7 @@ package org.openurp.std.transfer.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Major
+import org.openurp.base.edu.model.Major
 
 import scala.collection.mutable
 

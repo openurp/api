@@ -57,12 +57,12 @@ Member.hobby=擅长
 Member.phone=移动电话
 Member.email=电子邮件
 
-Project=项目
-Project.code=代码
-Project.title=名称
-Project.funds=经费
+InnovProject=项目
+InnovProject.code=代码
+InnovProject.title=名称
+InnovProject.funds=经费
 
-Project.instructors=指导老师
+InnovProject.instructors=指导老师
 ProjectLevel=项目等级
 ProjectState=项目状态
 ProjectCategory=项目分类

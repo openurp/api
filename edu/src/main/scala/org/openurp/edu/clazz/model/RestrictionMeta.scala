@@ -22,11 +22,11 @@ import scala.language.implicitConversions
 
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.EducationLevel
-import org.openurp.edu.base.code.model.StdLabel
-import org.openurp.edu.base.code.model.StdType
-import org.openurp.edu.base.model.Direction
-import org.openurp.edu.base.model.Major
-import org.openurp.edu.base.model.Squad
+import org.openurp.base.edu.code.model.StdLabel
+import org.openurp.base.edu.code.model.StdType
+import org.openurp.base.edu.model.Direction
+import org.openurp.base.edu.model.Major
+import org.openurp.base.edu.model.Squad
 import org.beangle.data.model.Entity
 
 object RestrictionMeta extends Enumeration {

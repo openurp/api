@@ -20,8 +20,8 @@ package org.openurp.edu.grade.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.ProjectBased
-import org.openurp.edu.base.model.{Semester, Student}
+import org.openurp.base.edu.ProjectBased
+import org.openurp.base.edu.model.{Semester, Student}
 
 import scala.collection.mutable
 

@@ -20,7 +20,7 @@ package org.openurp.hr.profile.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.model.Teacher
+import org.openurp.base.edu.model.Teacher
 
 class TeacherProfile extends LongId with Updated {
 

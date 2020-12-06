@@ -23,7 +23,7 @@ import java.time.Instant
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.edu.base.model.Textbook
+import org.openurp.base.edu.model.Textbook
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.course.model.BookAdoption
 

@@ -29,8 +29,8 @@ import org.openurp.base.model.Building
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.ClassroomType
 import org.openurp.code.edu.model.ExamType
-import org.openurp.edu.base.SemesterBased
-import org.openurp.edu.base.model.Classroom
+import org.openurp.base.edu.SemesterBased
+import org.openurp.base.edu.model.Classroom
 
 /**
  * 排考任务

@@ -2,6 +2,6 @@
 <orm>
   <mapping class="org.openurp.sin.harvest.model.DefaultMapping" />
   <naming>
-    <profile package = "org.openurp.sin.harvest" pluralize="true" schema="sin_harvest" />
+    <profile package = "org.openurp.sin" pluralize="true" schema="sin" />
   </naming>
 </orm>

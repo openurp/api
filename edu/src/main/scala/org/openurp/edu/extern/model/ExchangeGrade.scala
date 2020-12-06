@@ -23,7 +23,7 @@ import java.time.LocalDate
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.edu.base.model.Course
+import org.openurp.base.edu.model.Course
 
 import scala.collection.mutable
 

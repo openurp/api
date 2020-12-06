@@ -20,7 +20,7 @@ package org.openurp.edu.extern.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 
 class ExemptionCredit extends LongId with Remark with Updated {
 

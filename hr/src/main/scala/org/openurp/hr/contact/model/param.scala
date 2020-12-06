@@ -18,9 +18,6 @@
  */
 package org.openurp.hr.contact.model
 
-import org.beangle.commons.collection.Collections
-import scala.collection.mutable.Buffer
-
 trait Typed {
 
   var typenames: String = _

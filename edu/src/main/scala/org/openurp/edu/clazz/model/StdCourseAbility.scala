@@ -20,8 +20,8 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.base.code.model.CourseAbilityRate
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.code.model.CourseAbilityRate
+import org.openurp.base.edu.model.Student
 
 /*** 学生课程能力等级
  */

@@ -23,7 +23,7 @@ import org.beangle.data.model.LongId
 class Intro extends LongId {
 
   /**项目*/
-  var project: Project = _
+  var project: InnovProject = _
 
   /**项目简介*/
   var summaries: String = _

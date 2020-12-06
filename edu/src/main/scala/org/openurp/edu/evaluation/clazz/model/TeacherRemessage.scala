@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.evaluation.clazz.model
 
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import java.time.Instant

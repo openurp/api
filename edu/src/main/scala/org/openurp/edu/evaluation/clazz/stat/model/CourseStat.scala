@@ -19,8 +19,8 @@
 package org.openurp.edu.evaluation.clazz.stat.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Course
-import org.openurp.edu.base.model.Teacher
+import org.openurp.base.edu.model.Course
+import org.openurp.base.edu.model.Teacher
 
 class CourseEvalStat extends LongId with EvalStat with Rank {
 

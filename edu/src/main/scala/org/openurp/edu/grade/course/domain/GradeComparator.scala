@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.grade.course.domain
 
-import org.openurp.edu.base.model.Course
+import org.openurp.base.edu.model.Course
 import org.openurp.edu.grade.course.model.CourseGrade
 import org.openurp.edu.program.model.AlternativeCourse
 

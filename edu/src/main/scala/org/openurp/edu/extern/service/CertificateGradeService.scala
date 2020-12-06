@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.extern.service
 
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 import org.openurp.edu.extern.model.CertificateGrade
 import org.openurp.edu.extern.code.model.CertificateCategory
 import org.openurp.edu.extern.code.model.CertificateSubject

@@ -23,8 +23,8 @@ import java.time.Instant
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.code.std.model.{UncheckinReason, UnregisteredReason}
-import org.openurp.edu.base.model.Semester
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Semester
+import org.openurp.base.edu.model.Student
 
 class Register extends LongId with Remark {
 

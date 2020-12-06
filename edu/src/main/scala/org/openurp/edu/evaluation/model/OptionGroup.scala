@@ -21,7 +21,7 @@ package org.openurp.edu.evaluation.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.edu.base.model.Project
+import org.openurp.base.edu.model.Project
 
 /**
  * 选项组

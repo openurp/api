@@ -19,8 +19,8 @@
 package org.openurp.edu.evaluation.clazz.stat.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Teacher
-import org.openurp.edu.base.model.Semester
+import org.openurp.base.edu.model.Teacher
+import org.openurp.base.edu.model.Semester
 
 class FinalTeacherScore extends LongId with Rank {
   var teacher: Teacher = _

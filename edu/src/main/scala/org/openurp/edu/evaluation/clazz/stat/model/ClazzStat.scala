@@ -20,7 +20,7 @@ package org.openurp.edu.evaluation.clazz.stat.model
 
 import org.beangle.data.model.LongId
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.edu.base.model.Teacher
+import org.openurp.base.edu.model.Teacher
 
 class ClazzEvalStat extends LongId with EvalStat with Rank {
 

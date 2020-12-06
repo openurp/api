@@ -18,7 +18,7 @@
  */
 package org.openurp.std.info.model
 
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 import org.beangle.data.model.LongId
 
 /**

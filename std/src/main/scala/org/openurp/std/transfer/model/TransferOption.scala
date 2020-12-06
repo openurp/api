@@ -23,7 +23,7 @@ import java.time.LocalDate
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.{Department, User}
-import org.openurp.edu.base.model.{Direction, Major}
+import org.openurp.base.edu.model.{Direction, Major}
 
 /** 转专业招收专业
  * */

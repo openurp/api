@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.program.model
 
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 
 /**
  * 个人计划

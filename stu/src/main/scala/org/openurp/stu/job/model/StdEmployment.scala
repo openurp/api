@@ -19,7 +19,7 @@
 package org.openurp.stu.job.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Student
+import org.openurp.base.edu.model.Student
 
 class StdEmployment extends LongId {
   /**学生*/

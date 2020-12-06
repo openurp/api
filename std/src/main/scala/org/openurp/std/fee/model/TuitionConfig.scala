@@ -22,7 +22,7 @@ import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.EducationLevel
-import org.openurp.edu.base.model.Major
+import org.openurp.base.edu.model.Major
 
 /**
  * 收费缺省值

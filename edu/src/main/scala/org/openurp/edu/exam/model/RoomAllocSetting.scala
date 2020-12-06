@@ -20,7 +20,7 @@ package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.edu.base.ProjectBased
+import org.openurp.base.edu.ProjectBased
 import org.openurp.code.edu.model.ExamType
 
 class RoomAllocSetting extends LongId with Named with ProjectBased {

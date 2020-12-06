@@ -21,8 +21,8 @@ package org.openurp.std.transfer.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Department
-import org.openurp.edu.base.AuditStates
-import org.openurp.edu.base.model.{Direction, Major, Squad, Student}
+import org.openurp.base.edu.AuditStates
+import org.openurp.base.edu.model.{Direction, Major, Squad, Student}
 
 /** 转专业申请 */
 class TransferApply extends LongId with Updated {

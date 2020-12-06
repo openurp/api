@@ -24,7 +24,7 @@ import java.util.Locale
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.User
-import org.openurp.edu.base.model.Semester
+import org.openurp.base.edu.model.Semester
 import org.openurp.edu.clazz.model.Clazz
 
 /** 授课计划

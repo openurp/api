@@ -19,8 +19,8 @@
 package org.openurp.stu.award.results.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Student
-import org.openurp.edu.base.model.Semester
+import org.openurp.base.edu.model.Student
+import org.openurp.base.edu.model.Semester
 import org.openurp.stu.award.code.model.HonorLevel
 import org.openurp.stu.award.code.model.HonorCategory
 

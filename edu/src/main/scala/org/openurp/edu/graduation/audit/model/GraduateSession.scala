@@ -19,7 +19,7 @@
 package org.openurp.edu.graduation.audit.model
 
 import org.beangle.data.model.LongId
-import org.openurp.edu.base.model.Project
+import org.openurp.base.edu.model.Project
 import java.time.LocalDate
 
 import org.beangle.data.model.pojo.Updated

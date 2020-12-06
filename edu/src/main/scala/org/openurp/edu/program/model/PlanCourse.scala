@@ -22,7 +22,7 @@ import org.beangle.commons.lang.time.WeekState
 import org.beangle.data.model.LongIdEntity
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.ExamMode
-import org.openurp.edu.base.model.{CalendarStage, Course, Terms}
+import org.openurp.base.edu.model.{CalendarStage, Course, Terms}
 
 /**
  * 培养计划中的课程.<import org.openurp.edu.program.plan.model.CourseGroup
