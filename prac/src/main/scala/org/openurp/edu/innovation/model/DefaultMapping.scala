@@ -27,7 +27,7 @@ class DefaultMapping extends MappingModule {
 
     bind[Member]
 
-    bind[Project] declare { e =>
+    bind[InnovProject] declare { e =>
       e.members is depends("project")
       e.materials is depends("project")
       e.levels is depends("project")

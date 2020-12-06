@@ -19,11 +19,12 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.base.stu.model.Instructor
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp.base.edu", "read-write")
+    defaultCache("openurp.base", "read-write")
 
     bind[TimeSetting] declare { e =>
       e.name is length(20)
@@ -144,12 +145,6 @@ class DefaultMapping extends MappingModule {
 
     bind[Teacher] declare { e =>
       index("", true, e.user)
-    }
-
-    bind[Instructor] declare { e =>
-      index("", true, e.project, e.user)
-      index("", false, e.user)
-      index("", false, e.project)
     }
 
     bind[Student] declare { e =>

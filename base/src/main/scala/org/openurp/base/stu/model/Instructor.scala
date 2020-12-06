@@ -16,20 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.prac.innovation.model
+package org.openurp.base.stu.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{TemporalOn, Updated}
+import org.openurp.base.edu.model.Project
+import org.openurp.base.model.{School, User}
 
-import scala.collection.mutable
+/**
+ * 辅导员
+ */
+class Instructor extends LongId with Updated with TemporalOn {
 
-class InitReview extends LongId {
+  /** 学校 */
+  var school: School = _
+  /** 人员信息 */
+  var user: User = _
 
-  var project: InnovProject = _
-
-  var score: Option[Float] = None
-
-  var group: Option[InitReviewGroup] = None
-
-  var details: mutable.Buffer[InitReviewDetail] = Collections.newBuffer[InitReviewDetail]
 }

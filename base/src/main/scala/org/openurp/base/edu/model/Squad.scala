@@ -26,6 +26,7 @@ import org.openurp.base.model.Campus
 import org.openurp.base.model.Department
 import org.openurp.base.edu.EduLevelBased
 import org.openurp.base.edu.code.model.StdType
+import org.openurp.base.stu.model.Instructor
 
 /**
  * 学生行政班级信息
