@@ -82,8 +82,8 @@ class ExamTask extends LongId with Coded with SemesterBased with Remark {
   /**考试周*/
   var examWeek: Option[Short] = None
 
-  /**是否院系自主安排*/
-  var departArranged: Boolean = _
+  /**是否集中安排*/
+  var centralized: Boolean = _
 
   /**与上课冲突上限*/
   var maxCourseConflictRatio: Option[Float] = None
