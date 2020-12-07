@@ -60,7 +60,7 @@ alter table edu_base.teachers_projects add constraint pk_ksmq83maw97gk85mth4s2g9
 create index idx_swgo4qm8hl9fiixhbkynf4kmp on edu_base.teachers_projects (teacher_id);
 alter table edu_base.teachers_projects add constraint fk_7yto5qcqlg6uvluupiche0ub9 foreign key (teacher_id) references edu_base.teachers (id);
 alter table edu_base.teachers_projects add constraint fk_sxnuy9llj90w0sxmvtcnl0ll4 foreign key (project_id) references edu_base.projects (id);
-insert into edu_base.teachers_profects (teacher_id,project_id)select id ,project_id from edu_base.teachers;
+insert into edu_base.teachers_projects (teacher_id,project_id)select id ,project_id from edu_base.teachers;
 
 --alter table edu_base.teachers drop project_id cascade;
 alter table edu_base.teachers add column education_degree_id integer;
