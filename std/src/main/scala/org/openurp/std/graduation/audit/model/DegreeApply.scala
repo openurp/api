@@ -16,55 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.audit.model
+package org.openurp.std.graduation.audit.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.code.edu.model.EducationResult
+import org.openurp.code.edu.model.Degree
 import org.openurp.base.edu.model.Student
 
-import scala.collection.mutable
+class DegreeApply extends LongId with Updated {
 
-/**
- * 毕业审核结果
- */
-class GraduateResult extends LongId with Updated {
-
-  /** 所属的毕业审核批次 */
   var session: GraduateSession = _
 
-  /** 批次 */
-  var batch: Int = _
-
-  /** 学生 */
   var std: Student = _
 
-  /** 毕业审核详细结果 */
-  var items: mutable.Buffer[GraduateAuditItem] = Collections.newBuffer[GraduateAuditItem]
+  var gpa: Float = _
 
-  /** 获得学分 */
-  var acquiredCredits: Float = _
+  var degree: Degree = _
 
-  /** 要求学分 */
-  var requiredCredits: Float = _
-
-  /** 修读学分 */
-  var electedCredits: Float = _
-  /**
-   * 是否通过毕业审核
-   */
   var passed: Option[Boolean] = None
-
-  /** 锁定毕业审核结果 */
-  var locked: Boolean = _
-
-  /** 是否已发布 */
-  var published: Boolean = _
-
-  /** 毕业备注 */
-  var comments: Option[String] = None
-
-  /** 毕结业情况 */
-  var educationResult: Option[EducationResult] = None
 }

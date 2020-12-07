@@ -16,28 +16,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.audit.model
+package org.openurp.std.graduation.audit.model
 
-import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Project
-import java.time.LocalDate
+import org.beangle.data.orm.MappingModule
 
-import org.beangle.data.model.pojo.Updated
+class DefaultMapping extends MappingModule {
 
-/**
- * 毕业批次
- */
-class GraduateSession extends LongId with Updated {
+  def binding(): Unit = {
+    bind[GraduateSession].declare { e =>
+      e.name is length(100)
+    }
+    bind[GraduateAuditItem].declare { e =>
+      e.name is length(100)
+      e.comments is length(500)
+    }
+    bind[DegreeAuditItem].declare { e =>
+      e.name is length(100)
+      e.comments is length(500)
+    }
+    bind[GraduateResult].declare { e =>
+      e.items is depends("result")
+      e.comments.is(column("graduate_comments"), length(500))
+    }
+    bind[DegreeResult].declare { e =>
+      e.items is depends("result")
+      e.comments.is(column("degree_comments"), length(500))
+    }
 
-  var project: Project = _
-
-  /** 名称 */
-  var name: String = _
-
-  /**毕业日期*/
-  var graduateOn: LocalDate = _
-
-  /**是否授学位*/
-  var degreeOffered: Boolean = _
+    bind[DegreeApply]
+  }
 
 }
