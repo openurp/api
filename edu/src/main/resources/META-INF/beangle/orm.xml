@@ -10,7 +10,6 @@
   <mapping class="org.openurp.edu.grade.course.model.DefaultMapping"/>
   <mapping class="org.openurp.edu.grade.moral.model.DefaultMapping"/>
   <mapping class="org.openurp.edu.grade.plan.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.graduation.audit.model.DefaultMapping"/>
   <mapping class="org.openurp.edu.lesson.model.DefaultMapping"/>
   <mapping class="org.openurp.edu.program.model.DefaultMapping"/>
   <mapping class="org.openurp.edu.room.model.DefaultMapping"/>

@@ -66,8 +66,8 @@ class ExamActivity extends LongId with Remark {
   /** 考试周 */
   var examWeek: Option[Int] = None
 
-  /** 是否院系自主安排 */
-  var departArranged: Option[Boolean] = None
+  /** 是否集中安排 */
+  var centralized: Option[Boolean] = None
 
   /** 试卷编号 */
   var examPaperNo: Option[String] = None

@@ -16,14 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.graduation.audit.model
+package org.openurp.std.graduation.audit.model
 
 import org.beangle.data.model.LongId
 
 /**
- * 毕业审核明细
+ * 学位审核条目
  */
-class GraduateAuditItem extends LongId {
+class DegreeAuditItem extends LongId {
 
   /** 项目名称 */
   var name: String = _
@@ -35,11 +35,5 @@ class GraduateAuditItem extends LongId {
   var comments: Option[String] = None
 
   /** 毕业审核结果 */
-  var result: GraduateResult = _
-
-  def this(name: String, auditResult: GraduateResult) = {
-    this()
-    this.name = name
-    this.result = auditResult
-  }
+  var result: DegreeResult = _
 }
