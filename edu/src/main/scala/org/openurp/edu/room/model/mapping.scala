@@ -32,7 +32,7 @@ class DefaultMapping extends MappingModule {
       index("", false, e.time.startOn)
     }
 
-    bind[UserApp] declare { e =>
+    bind[RoomOccupyApp] declare { e =>
       e.name & e.activityUrl are(length(200), notnull)
     }
 
