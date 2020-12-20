@@ -72,7 +72,7 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   var auditState: AuditStates.State = AuditStates.Draft
 
   /** 多出学分可以冲抵的课程类别 */
-  var offsetType: CourseType = _
+  var offsetType: Option[CourseType] = None
 
   def campuses: Set[Campus] = {
     termCampuses.map(_.campus).toSet

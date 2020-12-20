@@ -6,9 +6,9 @@ Occupancy.activityId=活动Id
 Occupancy.userApp=用户系统
 Occupancy.comments=说明
 
-UserApp=房间占用用户系统
-UserApp.name=名称
-UserApp.activityUrl=活动明细url
+RoomOccupyApp=房间占用用户系统
+RoomOccupyApp.name=名称
+RoomOccupyApp.activityUrl=活动明细url
 
 RoomApply=教室借用
 RoomApply.applyAt=申请时间
