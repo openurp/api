@@ -44,7 +44,7 @@ class Exam extends Component with Serializable with Cloneable {
   var examMode: ExamMode = _
 
   /** 考试方式 */
-  var examForm: ExamForm = _
+  var examForm: Option[ExamForm] = None
 
   /** 考试时长 */
   var examDuration: Short = _

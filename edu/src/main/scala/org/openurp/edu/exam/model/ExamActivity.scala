@@ -46,13 +46,13 @@ class ExamActivity extends LongId with Remark {
   var semester: Semester = _
 
   /** 考试日期 */
-  var examOn: LocalDate = _
+  var examOn: Option[LocalDate] = None
 
   /** 开始时间 */
-  var beginAt: HourMinute = _
+  var beginAt: HourMinute = HourMinute.Zero
 
   /** 结束时间 */
-  var endAt: HourMinute = _
+  var endAt: HourMinute = HourMinute.Zero
 
   /** 学生人数 */
   var stdCount: Int = _
