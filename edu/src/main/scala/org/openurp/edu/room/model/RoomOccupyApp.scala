@@ -24,7 +24,7 @@ import org.beangle.data.model.pojo.Named
 /**
  * 房间的使用系统
  */
-class UserApp extends LongId with Named {
+class RoomOccupyApp extends LongId with Named {
 
   /**活动明细url*/
   var activityUrl: String = _
