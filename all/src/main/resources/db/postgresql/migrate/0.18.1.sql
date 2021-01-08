@@ -2,7 +2,6 @@
 alter schema edu_innovation rename to prac_innovation;
 alter schema edu_award rename to stu_award;
 alter schema std_job rename to stu_job;
-alter schema edu_student rename to std_info;
 
 alter schema edu_fee rename to std_fee;
 
@@ -20,6 +19,8 @@ alter table edu_student.transfer_schemes set schema std_transfer;
 alter table edu_student.transfer_scopes set schema std_transfer;
 alter table edu_student.transfer_scopes_grades set schema std_transfer;
 alter table edu_student.transfer_scopes_majors set schema std_transfer;
+
+alter schema edu_student rename to std_info;
 
 create table std_fee.bills (semester_id integer not null, updated_at timestamp not null, payed integer not null, pay_at timestamp, std_id bigint not null, amount integer not null, id bigint not null, created_at timestamp not null, fee_type_id integer not null, depart_id integer not null, updated_by varchar(255) not null, invoice_code varchar(255), remark varchar(255));
 create table std_fee.fee_types (id integer not null, begin_on date not null, end_on date, updated_at timestamp not null, code varchar(20) not null unique, en_name varchar(300), name varchar(100) not null, remark varchar(200));
@@ -210,8 +211,7 @@ comment on column edu_room.room_applies_times.weekstate is '周状态';
 alter table edu_room.room_applies_times add constraint pk_gut4id17joy6x8d5psmvc1pd2 primary key (room_apply_id,weekstate,begin_at,start_on,end_at);
 create index idx_oaii80w561p28ji3r86pv8djo on edu_room.room_applies_times (room_apply_id);
 alter table edu_room.room_applies_times add constraint fk_qpapnbbq74r8lwfljrwobal9j foreign key (room_apply_id) references edu_room.room_applies (id);
-alter table edu_room.occupancies drop user_app_id cascade;
-alter table edu_room.occupancies add column app_id bigint;
+alter table edu_room.occupancies rename user_app_id to app_id;
 alter table edu_room.occupancies alter app_id set not null;
 alter table edu_room.occupancies alter room_id type bigint;
 alter table edu_room.occupancies drop constraint fk_1cjsr1m8n9vqaw4rj0r3xj0fm cascade;

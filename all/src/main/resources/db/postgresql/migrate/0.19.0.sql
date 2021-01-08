@@ -42,7 +42,7 @@ alter table edu_course.syllabuses add column teaching_group_id bigint;
 alter table edu_course.syllabuses add constraint fk_bcjr4d78cmwxtof1akent1apw foreign key (department_id) references base.departments (id);
 alter table edu_course.syllabuses add constraint fk_c8f0kk3qb1apqjpjk5g2o2g6l foreign key (teaching_group_id) references edu_base.teaching_groups (id);
 
-alter table  code_hb.student_punishment_types rename to std_punishment_types;
+alter table code_hb.student_punishment_types rename to std_punishment_types;
 drop table code_hb.student_alter_types cascade;
 drop table code_hb.student_alter_reasons cascade;
 
