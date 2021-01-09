@@ -24,8 +24,6 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[Occupancy] declare { e =>
-      e.room is notnull
-      e.time.startOn & e.time.beginAt & e.time.endAt & e.time.weekstate are notnull
       e.comments is length(300)
       index("", false, e.room)
       index("", false, e.activityId)
@@ -33,7 +31,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[RoomOccupyApp] declare { e =>
-      e.name & e.activityUrl are(length(200), notnull)
+      e.name & e.activityUrl are length(200)
     }
 
     bind[RoomApply] declare { e =>

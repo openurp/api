@@ -31,75 +31,57 @@ class DefaultMapping extends MappingModule {
       e.questionResults is depends("result")
       e.remark is length(20)
     }
-    bind[QuestionResult].declare { e =>
-      e.result & e.questionType & e.question are notnull
-    }
-    bind[QuestionnaireClazz].declare { e =>
-      e.clazz & e.questionnaire are notnull
-    } //   finalTeacherScore
-    bind[FinalTeacherScore].declare { e =>
-      e.teacher & e.semester are notnull
-    }
-    //eval stat
-    bind[EvalStat].declare { e =>
-      e.semester & e.statAt & e.questionnaire are notnull
-    }
-    bind[OptionStat].declare { e =>
-      e.option is notnull
-    }
-    bind[QuestionStat].declare { e =>
-      e.question is notnull
-    }
-    bind[QuestionTypeStat].declare { e =>
-      e.questionType is notnull
-    }
+    bind[QuestionResult]
+    bind[QuestionnaireClazz]
+    bind[FinalTeacherScore]
+    bind[EvalStat]
+    bind[OptionStat]
+    bind[QuestionStat]
+    bind[QuestionTypeStat]
     //course stat
     bind[CourseEvalStat].declare { e =>
-      e.course & e.teacher are notnull
       e.questionStats is depends(classOf[CourseQuestionStat], "evalStat")
       e.questionTypeStats is depends(classOf[CourseQuestionTypeStat], "evalStat")
     }
     bind[CourseOptionStat].declare { e =>
-      e.questionStat is(notnull, target[CourseQuestionStat])
+      e.questionStat is target[CourseQuestionStat]
     }
     bind[CourseQuestionStat].declare { e =>
-      e.evalStat is(notnull, target[CourseEvalStat])
+      e.evalStat is target[CourseEvalStat]
       e.optionStats is depends(classOf[CourseOptionStat], "questionStat")
     }
     bind[CourseQuestionTypeStat].declare { e =>
-      e.evalStat is(notnull, target[CourseEvalStat])
+      e.evalStat is target[CourseEvalStat]
     }
     //depart stat
     bind[DepartEvalStat].declare { e =>
-      e.department & e.semester are notnull
       e.questionStats is depends(classOf[DepartQuestionStat], "evalStat")
       e.questionTypeStats is depends(classOf[DepartQuestionTypeStat], "evalStat")
     }
     bind[DepartOptionStat].declare { e =>
-      e.questionStat is(notnull, target[DepartQuestionStat])
+      e.questionStat is target[DepartQuestionStat]
     }
     bind[DepartQuestionStat].declare { e =>
-      e.evalStat is(notnull, target[DepartEvalStat])
+      e.evalStat is target[DepartEvalStat]
       e.optionStats is depends(classOf[DepartOptionStat], "questionStat")
     }
     bind[DepartQuestionTypeStat].declare { e =>
-      e.evalStat.is(notnull, target[DepartEvalStat])
+      e.evalStat is target[DepartEvalStat]
     }
     // clazz stat
     bind[ClazzEvalStat].declare { e =>
-      e.clazz is notnull
       e.questionStats is depends(classOf[ClazzQuestionStat], "evalStat")
       e.questionTypeStats is depends(classOf[ClazzQuestionTypeStat], "evalStat")
     }
     bind[ClazzOptionStat].declare { e =>
-      e.questionStat is(notnull, target[ClazzQuestionStat])
+      e.questionStat is target[ClazzQuestionStat]
     }
     bind[ClazzQuestionStat].declare { e =>
-      e.evalStat is(notnull, target[ClazzEvalStat])
+      e.evalStat is target[ClazzEvalStat]
       e.optionStats is depends(classOf[ClazzOptionStat], "questionStat")
     }
     bind[ClazzQuestionTypeStat].declare { e =>
-      e.evalStat is(notnull, target[ClazzEvalStat])
+      e.evalStat is target[ClazzEvalStat]
     }
     //school
     bind[SchoolEvalStat].declare { e =>
@@ -107,38 +89,34 @@ class DefaultMapping extends MappingModule {
       e.questionTypeStats is depends(classOf[SchoolQuestionTypeStat], "evalStat")
     }
     bind[SchoolOptionStat].declare { e =>
-      e.questionStat is(notnull, target[SchoolQuestionStat])
+      e.questionStat is target[SchoolQuestionStat]
     }
     bind[SchoolQuestionStat].declare { e =>
-      e.evalStat is(notnull, target[SchoolEvalStat])
+      e.evalStat is target[SchoolEvalStat]
       e.optionStats is depends(classOf[SchoolOptionStat], "questionStat")
     }
     bind[SchoolQuestionTypeStat].declare { e =>
-      e.evalStat.is(notnull, target[SchoolEvalStat])
+      e.evalStat is target[SchoolEvalStat]
     }
     //teacher
     bind[TeacherEvalStat].declare { e =>
-      e.teacher is notnull
       e.questionStats is depends(classOf[TeacherQuestionStat], "evalStat")
       e.questionTypeStats is depends(classOf[TeacherQuestionTypeStat], "evalStat")
     }
     bind[TeacherOptionStat].declare { e =>
-      e.questionStat.is(notnull, target[TeacherQuestionStat])
+      e.questionStat is target[TeacherQuestionStat]
     }
     bind[TeacherQuestionStat].declare { e =>
-      e.evalStat.is(notnull, target[TeacherEvalStat])
+      e.evalStat is target[TeacherEvalStat]
       e.optionStats is depends(classOf[TeacherOptionStat], "questionStat")
     }
     bind[TeacherQuestionTypeStat].declare { e =>
-      e.evalStat.is(notnull, target[TeacherEvalStat])
+      e.evalStat is target[TeacherEvalStat]
     }
     bind[TextEvaluation].declare { e =>
-      e.student & e.clazz & e.evaluateByTeacher & e.evaluateAt are notnull
       e.teacherRemessages.is(depends("textEvaluation"), table("text_evaluation_remsgs"))
     }
-    bind[TeacherRemessage].declare { e =>
-      e.textEvaluation & e.visible are notnull
-    }
+    bind[TeacherRemessage]
   }
 
 }

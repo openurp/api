@@ -67,16 +67,17 @@ alter table code_hb.staff_source_types set schema code;
 alter table code_hb.staff_types set schema code;
 alter table code_hb.std_alter_reasons set schema code;
 alter table code_hb.std_alter_types set schema code;
-alter table code_hb.std_punishment_types set schema code;
 alter table code_hb.student_statuses set schema code;
 alter table code_hb.teach_lang_types set schema code;
 alter table code_hb.tutor_types set schema code;
 alter table code_hb.uee_subject_types set schema code;
+alter table code_hb.std_punishment_types set schema code;
+alter table code_hb.student_punishment_types set schema code;
 alter table code_hb.uncheckin_reasons set schema code;
 alter table code_hb.unregistered_reasons set schema code;
 alter table code_hb.visa_types set schema code;
 alter table code_hb.work_statuses set schema code;
-create schema base;
+
 alter table edu_base.book_award_types set schema base;
 alter table edu_base.book_types set schema base;
 alter table edu_base.calendar_stages set schema base;
@@ -144,9 +145,11 @@ alter table edu_clazz.sessions set schema edu;
 alter table edu_clazz.sessions_rooms set schema edu;
 alter table edu_clazz.sessions_teachers set schema edu;
 alter table edu_clazz.std_course_abilities set schema edu;
+
 alter table edu_course.course_profiles set schema edu;
 alter table edu_course.syllabus_files set schema edu;
 alter table edu_course.syllabuses set schema edu;
+
 alter table edu_evaluation.clazz_eval_stats set schema edu;
 alter table edu_evaluation.clazz_option_stats set schema edu;
 alter table edu_evaluation.clazz_question_stats set schema edu;
@@ -182,6 +185,7 @@ alter table edu_evaluation.teacher_question_type_stats set schema edu;
 alter table edu_evaluation.teacher_remessages set schema edu;
 alter table edu_evaluation.teacher_remessages_students set schema edu;
 alter table edu_evaluation.text_evaluations set schema edu;
+
 alter table edu_exam.exam_activities set schema edu;
 alter table edu_exam.exam_activities_rooms set schema edu;
 alter table edu_exam.exam_groups set schema edu;
@@ -203,6 +207,7 @@ alter table edu_exam.invigilations set schema edu;
 alter table edu_exam.room_alloc_settings set schema edu;
 alter table edu_exam.room_groups set schema edu;
 alter table edu_exam.room_groups_rooms set schema edu;
+
 alter table edu_extern.certificate_categories set schema edu;
 alter table edu_extern.certificate_grades set schema edu;
 alter table edu_extern.certificate_grades_courses set schema edu;
@@ -212,6 +217,7 @@ alter table edu_extern.exchange_grades_courses set schema edu;
 alter table edu_extern.exchange_schools set schema edu;
 alter table edu_extern.exchange_students set schema edu;
 alter table edu_extern.exemption_credits set schema edu;
+
 alter table edu_grade.course_audit_results set schema edu;
 alter table edu_grade.course_grade_states set schema edu;
 alter table edu_grade.course_grades set schema edu;
@@ -227,16 +233,20 @@ alter table edu_grade.plan_audit_results set schema edu;
 alter table edu_grade.std_gpas set schema edu;
 alter table edu_grade.std_semester_gpas set schema edu;
 alter table edu_grade.std_year_gpas set schema edu;
+
+create schema std;
 alter table edu_graduation.degree_applies set schema std;
 alter table edu_graduation.degree_audit_items set schema std;
 alter table edu_graduation.degree_results set schema std;
 alter table edu_graduation.graduate_audit_items set schema std;
 alter table edu_graduation.graduate_results set schema std;
 alter table edu_graduation.graduate_sessions set schema std;
+
 alter table edu_lesson.lecture_plans set schema edu;
 alter table edu_lesson.lessons set schema edu;
 alter table edu_lesson.lessons_rooms set schema edu;
 alter table edu_lesson.lessons_teachers set schema edu;
+
 alter table edu_program.execution_course_groups set schema edu;
 alter table edu_program.execution_plan_courses set schema edu;
 alter table edu_program.execution_plans set schema edu;
@@ -262,6 +272,7 @@ alter table edu_program.std_course_groups set schema edu;
 alter table edu_program.std_plan_courses set schema edu;
 alter table edu_program.std_plans set schema edu;
 alter table edu_program.term_campuses set schema edu;
+
 alter table edu_room.apply_depart_checks set schema edu;
 alter table edu_room.apply_final_checks set schema edu;
 alter table edu_room.available_times set schema edu;
@@ -269,14 +280,17 @@ alter table edu_room.occupancies set schema edu;
 alter table edu_room.room_applies set schema edu;
 alter table edu_room.room_applies_times set schema edu;
 alter table edu_room.user_apps set schema edu;
+
 alter table edu_textbook.clazz_book_stats set schema edu;
 alter table edu_textbook.materials set schema edu;
 alter table edu_textbook.materials_books set schema edu;
 alter table edu_textbook.std_book_orders set schema edu;
+
 alter table edu_workload.capacity_factors set schema edu;
 alter table edu_workload.factor_segments set schema edu;
 alter table edu_workload.teaching_loads set schema edu;
 alter table edu_workload.teaching_loads_clazz_tags set schema edu;
+
 create schema hr;
 alter table hr_base.duty_infoes set schema hr;
 alter table hr_base.education_infoes set schema hr;
@@ -304,7 +318,10 @@ alter table hr_contact.timezones set schema hr;
 alter table hr_contact.titles set schema hr;
 alter table hr_contact.urls set schema hr;
 alter table hr_contact.xtendeds set schema hr;
-alter table hr_profile.teacher_profiles set schema hr;
+
+alter table hr_profile.teacher_blogs set schema hr;
+alter table hr.teacher_blogs rename to teacher_profiles;
+
 create schema prac;
 alter table prac_innovation.batches set schema prac;
 alter table prac_innovation.closure_review_details set schema prac;
@@ -337,7 +354,7 @@ alter table sin_harvest.published_ranges set schema sin;
 alter table sin_harvest.published_situations set schema sin;
 alter table sin_harvest.researchers set schema sin;
 alter table sin_harvest.thesis_harvests set schema sin;
-create schema std;
+
 alter table std_alter.std_alteration_items set schema std;
 alter table std_alter.std_alterations set schema std;
 alter table std_fee.bills set schema std;

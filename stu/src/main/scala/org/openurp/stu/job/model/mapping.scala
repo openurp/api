@@ -24,22 +24,19 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[EmploymentStatus].declare { e =>
-      e.code is(notnull, length(40))
-      e.name is(notnull, length(80))
+      e.code is length(40)
+      e.name is length(80)
     }
 
     bind[Graduate].declare { e =>
       e.stdSource is length(100)
-      e.session & e.std are notnull
     }
     bind[GraduateSession].declare { e =>
-      e.code is(notnull, length(40))
-      e.name is(notnull, length(80))
+      e.code is length(40)
+      e.name is length(80)
     }
 
-    bind[StdEmployment].declare { e =>
-      e.employmentStatus & e.std are notnull
-    }
+    bind[StdEmployment]
   }
 
 }

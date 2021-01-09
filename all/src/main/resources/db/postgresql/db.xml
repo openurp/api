@@ -1362,6 +1362,15 @@
             <unique-key name="uk_rtwk6iqyuv8d7se1gkkumd948" columns="school_id,code"/>
           </unique-keys>
         </table>
+        <table name="versions" comment="版本迁移日志">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="description" type="varchar(200)" nullable="false" comment="内容"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+            <column name="version" type="varchar(20)" nullable="false" comment="版本"/>
+          </columns>
+          <primary-key name="pk_kn37tnh6h9broruk4q2gsyyip" columns="id"/>
+        </table>
       </tables>
     </schema>
     <schema name="code">
@@ -3261,7 +3270,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
-            <column name="centralized" type="boolean" comment="是否院系自主安排"/>
+            <column name="centralized" type="boolean" comment="是否集中考试"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="exam_on" type="date" comment="考试时间"/>
@@ -3497,7 +3506,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_at" type="smallint" nullable="false" comment="考试开始时间"/>
             <column name="building_id" type="integer" comment="楼房建筑物ID"/>
-            <column name="centralized" type="boolean" nullable="false" comment="是否院系自主安排"/>
+            <column name="centralized" type="boolean" nullable="false" comment="是否集中考试"/>
             <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
             <column name="duration" type="smallint" nullable="false" comment="考试时长"/>
             <column name="end_at" type="smallint" nullable="false" comment="考试结束时间"/>

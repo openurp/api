@@ -16,40 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.hr.base.model
+package org.openurp.base.model
 
-import scala.reflect.runtime.universe
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.Updated
 
-import org.beangle.data.model.annotation.code
-import org.beangle.data.orm.MappingModule
+object Version {
+  val Latest = "0.20.3"
+}
 
-class DefaultMapping extends MappingModule {
+class Version extends IntId with Updated {
 
-  def binding(): Unit = {
-    bind[DutyInfo]
+  var version: String = _
 
-    bind[EducationInfo].declare { e =>
-      e.certificateNo is length(50)
-      e.major is length(100)
-      e.school is length(200)
-    }
-
-    bind[FamilyMember].declare { e =>
-      e.name is length(50)
-      e.sid is length(50)
-    }
-
-    bind[Health]
-
-    bind[PostInfo]
-    bind[Staff].declare { e =>
-      e.code is length(30)
-      e.states is (depends("staff"))
-    }.generator("auto_increment")
-
-    bind[StaffState]
-    bind[TitleInfo]
-    bind[TutorInfo]
-    bind[WorkInfo]
-  }
+  var description: String = _
 }
