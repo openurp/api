@@ -21,7 +21,11 @@ package org.openurp.base.model
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.Updated
 
-class Migration extends IntId with Updated {
+object Version {
+  val Latest = "0.20.3"
+}
+
+class Version extends IntId with Updated {
 
   var version: String = _
 

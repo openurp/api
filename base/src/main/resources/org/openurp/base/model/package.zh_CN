@@ -74,7 +74,7 @@ Name.middleName=中间名
 Name.familyName=姓
 Name.formatedName=姓名
 
-Migration=迁移日志
-Migration.updatedAt=更新时间
-Migration.version=版本
-Migration.description=内容
+Version=版本迁移日志
+Version.updatedAt=更新时间
+Version.version=版本
+Version.description=内容

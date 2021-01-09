@@ -83,7 +83,7 @@ class DefaultMapping extends MappingModule {
       e.formerName & e.phoneticName are length(100)
     }
 
-    bind[Migration].declare{e=>
+    bind[Version].declare{ e=>
       e.version is length(20)
       e.description is length(200)
     }

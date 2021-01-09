@@ -77,6 +77,7 @@ alter table base.time_settings add constraint pk_c883txidvf5q332sj20l5n5fx prima
 alter table base.user_categories add constraint pk_g22tbnb6clymkxmi560ll33em primary key (id);
 alter table base.users add constraint pk_i4mlr3lp5ixml05sx2wuk8kp8 primary key (id);
 alter table base.users add constraint uk_rtwk6iqyuv8d7se1gkkumd948 unique (school_id,code);
+alter table base.versions add constraint pk_kn37tnh6h9broruk4q2gsyyip primary key (id);
 alter table code.academic_levels add constraint pk_q51xfy75i97otjcrinh3ioojl primary key (id);
 alter table code.activity_types add constraint pk_cmb1g96s43erp3tu63b3t5c3r primary key (id);
 alter table code.admission_types add constraint pk_a6q355jjrx7gsqp1gfus8kc09 primary key (id);
