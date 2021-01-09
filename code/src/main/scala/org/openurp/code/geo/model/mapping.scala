@@ -24,7 +24,7 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[Division].declare { e =>
-      e.children is(depends("parent"), orderby("code"))
+      e.children.is(depends("parent"), orderby("code"))
     }
 
     bind[Country].declare { e =>
