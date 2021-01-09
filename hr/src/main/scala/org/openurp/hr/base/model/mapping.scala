@@ -26,52 +26,30 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[DutyInfo].declare { e =>
-      e.staff & e.dutyType & e.dutyGrade & e.beginOn are notnull
-    }
+    bind[DutyInfo]
 
     bind[EducationInfo].declare { e =>
-      e.staff & e.beginOn are notnull
       e.certificateNo is length(50)
       e.major is length(100)
       e.school is length(200)
     }
 
     bind[FamilyMember].declare { e =>
-      e.name is(notnull, length(50))
-      e.staff & e.familyRelationship & e.politicalStatus &
-        e.jobStatus & e.nation & e.country & e.healthStatus are notnull
-      e.sid is(length(50), notnull)
+      e.name is length(50)
+      e.sid is length(50)
     }
 
     bind[Health]
 
-    bind[PostInfo].declare { e =>
-      e.staff & e.postType & e.postGrade & e.beginOn are notnull
-    }
-
+    bind[PostInfo]
     bind[Staff].declare { e =>
-      e.code is(notnull, length(30))
-      e.person is (notnull)
-      e.workStartOn & e.employType & e.employOn are notnull
+      e.code is length(30)
       e.states is (depends("staff"))
     }.generator("auto_increment")
 
-    bind[StaffState].declare { e =>
-      e.staff & e.department & e.status & e.beginOn is notnull
-    }
-
-    bind[TitleInfo].declare{e =>
-      e.staff & e.title & e.beginOn are notnull
-    }
-
-    bind[TutorInfo].declare { e =>
-      e.staff & e.tutorType & e.beginOn are notnull
-    }
-
-    bind[WorkInfo].declare { e =>
-      e.staff & e.workPlace & e.beginOn are notnull
-    }
-
+    bind[StaffState]
+    bind[TitleInfo]
+    bind[TutorInfo]
+    bind[WorkInfo]
   }
 }

@@ -24,10 +24,10 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[StaffType].declare { e =>
-      e.children is(depends("parent"), orderby("code"))
+      e.children.is(depends("parent"), orderby("code"))
     }
     bind[StaffSourceType].declare { e =>
-      e.children is(depends("parent"), orderby("code"))
+      e.children.is(depends("parent"), orderby("code"))
     }
     bind[WorkStatus]
     bind[EmployType]

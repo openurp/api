@@ -26,7 +26,7 @@ class DefaultMapping extends MappingModule {
     defaultCache("openurp.base", "read-write")
 
     bind[School] declare { e =>
-      e.code is(length(10), unique)
+      e.code.is(length(10), unique)
       e.name is length(50)
     }
 
@@ -45,7 +45,7 @@ class DefaultMapping extends MappingModule {
       e.code is length(10)
       e.name is length(80)
       e.enName & e.shortName are (length(100))
-      e.remark is (length(200))
+      e.remark is length(200)
       index("", true, e.school, e.code)
     }
 
@@ -76,7 +76,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Person].declare { e =>
-      e.code is(notnull, unique, length(30))
+      e.code.is(unique, length(30))
       e.name.familyName & e.name.givenName are length(80)
       e.name.formatedName is length(100)
       e.name.middleName is length(50)

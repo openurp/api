@@ -32,7 +32,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Order] declare { e =>
-      e.code is(length(50), unique)
+      e.code.is(length(50), unique)
       e.payUrl is length(500)
       index("idx_order_bill_id", true, e.bill)
     }

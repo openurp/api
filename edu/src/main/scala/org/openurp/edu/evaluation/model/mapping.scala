@@ -26,36 +26,30 @@ class DefaultMapping extends MappingModule {
     defaultCache("openurp.edu.evaluation", "read-write")
 
     bind[EvaluationCriteria].declare { e =>
-      e.name.is(length(100), notnull)
+      e.name is length(100)
       e.criteriaItems is depends("criteria")
     }
-    bind[EvaluationCriteriaItem].declare { e =>
-      e.criteria is notnull
-    }
+    bind[EvaluationCriteriaItem]
     bind[Option].declare { e =>
-      e.name.is(length(50), notnull)
-      e.optionGroup is notnull
+      e.name is length(50)
     }
     bind[OptionGroup].declare { e =>
-      e.name.is(length(50), notnull)
+      e.name is length(50)
       e.options is depends("optionGroup")
     }
     bind[Question].declare { e =>
-      e.contents is(length(400), notnull)
+      e.contents is length(400)
       e.remark is length(200)
-      e.questionType & e.depart are notnull
     }
     bind[Questionnaire].declare { e =>
-      e.depart & e.beginOn are notnull
       e.remark is length(200)
       e.title is length(200)
       e.description is length(500)
     }
     bind[QuestionType].declare { e =>
-      e.name.is(notnull, length(50))
+      e.name is length(50)
       e.enName is length(100)
       e.remark is length(100)
-      e.beginOn is notnull
     }
 
     all.cacheable()
