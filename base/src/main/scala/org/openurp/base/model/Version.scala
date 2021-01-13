@@ -22,7 +22,7 @@ import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.Updated
 
 object Version {
-  val Latest = "0.20.3"
+  val Latest = "0.20.4"
 }
 
 class Version extends IntId with Updated {

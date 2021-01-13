@@ -76,6 +76,18 @@ alter table eams.sys_rule_parameters set schema app;
 alter table eams.sys_rules set schema app;
 drop schema eams;
 
+alter table app_std.ga_standards_degree_rules set schema app;
+alter table app_std.ga_standards_departments set schema app;
+alter table app_std.ga_standards_directions set schema app;
+alter table app_std.ga_standards_educations set schema app;
+alter table app_std.ga_standards_majors set schema app;
+alter table app_std.ga_standards_rules set schema app;
+alter table app_std.ga_standards_std_types set schema app;
+alter table app_std.graduate_audit_logs set schema app;
+alter table app_std.graduate_audit_standards set schema app;
+
+drop schema app_std;
+
 alter table app_student.register_user_groups set schema app;
 alter table app_student.register_user_groups_users set schema app;
 alter table app_student.report_login_switches set schema app;
@@ -87,7 +99,7 @@ alter table app_student.std_edit_restrictions_metas set schema app;
 alter table app_student.std_property_editors set schema app;
 alter table app_student.student_apply_edits set schema app;
 alter table app_student.student_logs set schema app;
-
+alter table app_student.std_edit_restrictions_users  set schema app;
 drop schema app_student;
 
 alter table edu_clazz.restriction_metas set schema edu;
