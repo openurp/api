@@ -67,3 +67,7 @@ class UeeSubjectType extends CodeBean
  */
 @code("industry")
 class FeeOrigin extends CodeBean
+
+/**毕业去向*/
+@code("industry")
+class WheretoGo extends CodeBean

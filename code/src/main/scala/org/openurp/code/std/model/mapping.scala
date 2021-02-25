@@ -31,6 +31,7 @@ class DefaultMapping extends MappingModule {
     bind[StudentStatus]
     bind[UeeSubjectType]
     bind[FeeOrigin]
+    bind[WheretoGo]
     all.cacheAll()
   }
 }

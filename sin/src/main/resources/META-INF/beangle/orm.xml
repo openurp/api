@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.sin.harvest.model.DefaultMapping" />
-  <naming>
-    <profile package = "org.openurp.sin" pluralize="true" schema="sin" />
-  </naming>
-</orm>

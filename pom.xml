@@ -18,9 +18,8 @@
     <module>edu</module>
     <module>std</module>
     <module>prac</module>
-    <module>stu</module>
     <module>hr</module>
-    <module>sin</module>
+    <module>qos</module>
     <module>all</module>
   </modules>
 

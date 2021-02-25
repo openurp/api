@@ -27,7 +27,6 @@ DutyInfo.dutyType=职务类别
 DutyInfo.staff=教职工
 DutyInfo.name=名称
 
-
 PostInfo=教职工岗位信息
 PostInfo.department=部门
 PostInfo.postGrade=岗位等级
@@ -46,27 +45,6 @@ DegreeInfo.endOn=授予日期
 DegreeInfo.degree=学位
 DegreeInfo.major=专业
 DegreeInfo.certificateNo=学位证书号
-
-FamilyMember=家庭成员
-FamilyMember.staff=教职工
-FamilyMember.name=名称
-FamilyMember.familyRelationship=亲属关系
-FamilyMember.enName=英文名
-FamilyMember.birthday=出生日期
-FamilyMember.nation=民族
-FamilyMember.country=国籍/地区
-FamilyMember.healthStatus=健康状况
-FamilyMember.workPlace=工作地点
-FamilyMember.jobStatus=从业状况
-FamilyMember.email=邮箱
-FamilyMember.mobile=联系电话
-FamilyMember.title=专业技术职务级别
-FamilyMember.idType=证件类型
-FamilyMember.sid=证件号码
-FamilyMember.politicalStatus=政治面貌
-FamilyMember.job=工作
-FamilyMember.annualIncome=年收入
-
 
 EducationInfo=学习经历
 EducationInfo.staff=教职工
@@ -93,12 +71,13 @@ WorkInfo.adminPosition=党政职务
 WorkInfo.witness=证明人
 WorkInfo.remark=备注
 
-Health=健康状况
-Health.staff=教职工
-Health.healthStatus=健康状况
-Health.bloodType=血型
-Health.height=身高
-Health.weight=体重
+TeacherProfile=教师简介
+TeacherProfile.intro=简介
+TeacherProfile.research=研究方向
+TeacherProfile.contact=联系方式
+TeacherProfile.harvest=科研成果
+TeacherProfile.teachingCareer=教学经历
+TeacherProfile.titles=学术兼职
 
 TitleInfo=职称信息
 TitleInfo.staff=教职工

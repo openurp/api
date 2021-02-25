@@ -34,18 +34,18 @@ class DefaultMapping extends MappingModule {
       e.school is length(200)
     }
 
-    bind[FamilyMember].declare { e =>
-      e.name is length(50)
-      e.sid is length(50)
+    bind[TeacherProfile] declare { e =>
+      e.intro is length(40000)
+      e.harvest is length(40000)
+      e.teachingCareer is length(1000)
+      e.titles is length(1000)
+
+      index("", true, e.teacher)
     }
 
-    bind[Health]
-
-    bind[PostInfo]
     bind[Staff].declare { e =>
-      e.code is length(30)
       e.states is (depends("staff"))
-    }.generator("auto_increment")
+    }
 
     bind[StaffState]
     bind[TitleInfo]

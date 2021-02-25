@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<orm>
-  <mapping class="org.openurp.stu.award.model.DefaultMapping"/>
-  <mapping class="org.openurp.stu.job.model.DefaultMapping"/>
-  <naming>
-    <profile package="org.openurp.stu" pluralize="true" schema="stu"/>
-  </naming>
-</orm>

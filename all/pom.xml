@@ -43,18 +43,13 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.sin</groupId>
-      <artifactId>openurp-sin-api</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.openurp.std</groupId>
       <artifactId>openurp-std-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openurp.stu</groupId>
-      <artifactId>openurp-stu-api</artifactId>
+      <groupId>org.openurp.qos</groupId>
+      <artifactId>openurp-qos-api</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
