@@ -52,13 +52,13 @@ class Teacher extends LongId with Updated with TemporalOn {
   /**在职状态*/
   var status: WorkStatus = _
 
-  /**职称*/
+  /**最高职称*/
   var title: Option[ProfessionalTitle] = None
 
-  /** 学历 */
+  /** 最高学历 */
   var educationDegree: Option[EducationDegree] = None
 
-  /** 学位 */
+  /** 最高学位 */
   var degree: Option[Degree] = None
 
   /**是否兼职*/

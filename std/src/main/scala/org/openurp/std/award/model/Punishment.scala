@@ -18,32 +18,43 @@
  */
 package org.openurp.std.award.model
 
-import org.beangle.data.orm.MappingModule
+;
 
-class DefaultMapping extends MappingModule {
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Named, Remark}
+import org.openurp.base.edu.model.{Semester, Student}
+import org.openurp.base.model.Department
+import org.openurp.code.std.model.StdPunishmentType
 
-  def binding(): Unit = {
-    //code
-    bind[HonorCategory]
-    bind[HonorLevel]
-    bind[HonorType]
+import java.time.LocalDate
 
-    bind[ScholarshipCategory]
-    bind[ScholarshipLevel]
-    bind[ScholarshipType]
+/**
+ * 处分记录
+ */
+class Punishment extends LongId with Named with Remark {
 
-    bind[StipendCategory]
-    bind[StipendLevel]
-    bind[SubsidyCategory]
-    bind[SubsidyLevel]
+  /** 处分文号 */
+  var docSeq: String = _
 
-    //result
-    bind[ScholarshipAward]
-    bind[HonorAward]
-    bind[StipendAward]
-    bind[SubsidyAward]
+  /** 处分类别 */
+  var publishmentType: StdPunishmentType = _
 
-    bind[Punishment]
-  }
+  /** 学生 */
+  var std: Student = _
+
+  /** 教学日历 */
+  var semester: Semester = _
+
+  /** 日期 */
+  var issueOn: LocalDate = _
+
+  /** 撤销日期 */
+  var withdrawOn: Option[LocalDate] = None
+
+  /** 部门 */
+  var depart: Department = _
+
+  /** 处分原因 */
+  var reason: Option[String] = None
 
 }
