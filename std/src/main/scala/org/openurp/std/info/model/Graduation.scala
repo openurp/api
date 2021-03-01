@@ -18,13 +18,13 @@
  */
 package org.openurp.std.info.model
 
-import java.time.LocalDate
-
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.code.edu.model.Degree
-import org.openurp.code.edu.model.EducationResult
 import org.openurp.base.edu.model.Student
+import org.openurp.code.edu.model.{Degree, EducationResult}
+import org.openurp.code.std.model.WheretoGo
+
+import java.time.LocalDate
 
 /**
  * 毕业信息
@@ -51,7 +51,9 @@ class Graduation extends LongId with Updated {
   /** 学位证书号 */
   var diplomaNo: Option[String] = None
 
-  /**外语通过年月*/
+  /** 外语通过年月 */
   var foreignLangPassedOn: Option[LocalDate] = None
 
+  /** 毕业去向 */
+  var wheretoGo: Option[WheretoGo] = None
 }

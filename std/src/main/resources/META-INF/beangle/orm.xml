@@ -5,7 +5,7 @@
   <mapping class="org.openurp.std.info.model.DefaultMapping" />
   <mapping class="org.openurp.std.register.model.DefaultMapping" />
   <mapping class="org.openurp.std.transfer.model.DefaultMapping" />
-  <mapping class="org.openurp.std.graduation.audit.model.DefaultMapping"/>
+  <mapping class="org.openurp.std.graduation.model.DefaultMapping"/>
   <naming>
     <profile package = "org.openurp.std" pluralize="true" schema="std"/>
   </naming>

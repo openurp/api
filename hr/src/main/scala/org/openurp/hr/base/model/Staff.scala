@@ -18,46 +18,49 @@
  */
 package org.openurp.hr.base.model
 
-import java.time.LocalDate
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Coded
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Person
-import org.openurp.code.hr.model.EmployType
-import org.openurp.code.hr.model.StaffSourceType
-import org.openurp.code.hr.model.StaffType
+import org.openurp.base.model.{Person, School, User}
+import org.openurp.code.hr.model.{EmployType, StaffSourceType, StaffType}
+
+import java.time.LocalDate
 
 /**
  * 教职工信息
  */
-class Staff extends LongId with Updated with Coded {
+class Staff extends LongId with Updated {
 
-  /**人员信息*/
+  /** 学校 */
+  var school: School = _
+
+  /** 用户 */
+  var user: User = _
+
+  /** 人员信息 */
   var person: Person = _
 
-  /**状态*/
+  /** 状态 */
   var state: StaffState = _
 
-  /**状态日志*/
+  /** 状态日志 */
   var states = Collections.newBuffer[StaffState]
 
-  /**教职工类别*/
+  /** 教职工类别 */
   var staffType: StaffType = _
 
-  /**是否在编*/
+  /** 是否在编 */
   var registed: Boolean = _
 
-  /**教职工来源*/
+  /** 教职工来源 */
   var sourceType: StaffSourceType = _
 
-  /**参加工作日期*/
+  /** 参加工作日期 */
   var workStartOn: LocalDate = _
 
-  /**来校日期*/
+  /** 来校日期 */
   var employOn: LocalDate = _
 
-  /**用人形式*/
+  /** 用人形式 */
   var employType: EmployType = _
 }
