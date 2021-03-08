@@ -1,3 +1,6 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.21.0',now(),'整合sin,std,stu,hr等schema');
+
 create schema qos;
 alter table edu.clazz_question_type_stats set schema qos;
 alter table edu.teacher_remessages set schema qos;
