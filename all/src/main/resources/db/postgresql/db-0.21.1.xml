@@ -1168,6 +1168,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
             <column name="degree_id" type="integer" comment="学位ID"/>
+            <column name="depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="education_degree_id" type="integer" comment="学历(文化程度)ID"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="formal_hr" type="boolean" nullable="false" comment="是否在编"/>
@@ -1196,6 +1197,8 @@
                          referenced-column="id"/>
             <foreign-key name="fk_nuqy5yvj4u3uw5r7d4u78x9tl" column="education_degree_id"
                          referenced-table="code.education_degrees" referenced-column="id"/>
+            <foreign-key name="fk_66bgaf2haj7wrne27r25ywhe3" column="depart_id" referenced-table="base.departments"
+                         referenced-column="id"/>
             <foreign-key name="fk_b8dct7w2j1vl1r2bpstw5isc0" column="user_id" referenced-table="base.users"
                          referenced-column="id"/>
             <foreign-key name="fk_mohq7si9b5ibo6p3mkntcneun" column="status_id" referenced-table="code.work_statuses"
@@ -6474,21 +6477,13 @@
                          referenced-column="id"/>
           </foreign-keys>
         </table>
-        <table name="minor_schools" comment="辅修学生学校">
-          <columns>
-            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="en_name" type="varchar(255)" comment="英文名"/>
-            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
-          </columns>
-          <primary-key name="pk_m248xtvbk7coop74w0tg05nao" columns="id"/>
-        </table>
         <table name="minors" comment="辅修学生信息">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="en_major_name" type="varchar(255)" comment="主修专业英文名"/>
-            <column name="major_catalog_id" type="integer" nullable="false" comment="主修专业学科门类ID"/>
+            <column name="major_category_id" type="integer" nullable="false" comment="主修专业学科门类ID"/>
             <column name="major_name" type="varchar(255)" nullable="false" comment="主修专业"/>
-            <column name="school_id" type="integer" nullable="false" comment="辅修学生学校ID"/>
+            <column name="school_id" type="integer" nullable="false" comment="主修学校ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
           </columns>
@@ -6496,10 +6491,10 @@
           <foreign-keys>
             <foreign-key name="fk_k6gwa4qslilv40u9o3e51hyui" column="std_id" referenced-table="base.students"
                          referenced-column="id"/>
-            <foreign-key name="fk_muu7y8ts33ny1fsshso4pkkrc" column="school_id" referenced-table="std.minor_schools"
+            <foreign-key name="fk_8xpnw1gcc5ha7wne9fknnwq6r" column="school_id" referenced-table="code.institutions"
                          referenced-column="id"/>
-            <foreign-key name="fk_5vsmx94glpctw9pby3bqeb9bd" column="major_catalog_id"
-                         referenced-table="code.discipline_catalogs" referenced-column="id"/>
+            <foreign-key name="fk_gmmjfmmugool9fya0o2r9ba0h" column="major_category_id"
+                         referenced-table="code.discipline_categories" referenced-column="id"/>
           </foreign-keys>
         </table>
         <table name="orders" comment="支付订单记录">
