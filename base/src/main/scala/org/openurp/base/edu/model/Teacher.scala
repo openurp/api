@@ -20,39 +20,42 @@ package org.openurp.base.edu.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{TemporalOn, Updated}
-import org.openurp.base.model.{Person, School, User}
+import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.openurp.base.edu.code.model.TeacherType
+import org.openurp.base.model.{Department, Person, School, User}
 import org.openurp.code.edu.model.{Degree, EducationDegree}
 import org.openurp.code.hr.model.WorkStatus
 import org.openurp.code.job.model.ProfessionalTitle
-import org.openurp.base.edu.code.model.TeacherType
 
 import scala.collection.mutable
 
 /**
  * 教师信息
  */
-class Teacher extends LongId with Updated with TemporalOn {
+class Teacher extends LongId with Updated with TemporalOn with Remark {
 
   /** 学校 */
   var school: School = _
 
-  /**用户*/
+  /** 用户 */
   var user: User = _
 
-  /**人员信息*/
+  /** 所在教学部门 */
+  var department: Department = _
+
+  /** 人员信息 */
   var person: Option[Person] = None
 
   /** 项目列表 */
   var projects: mutable.Set[Project] = Collections.newSet[Project]
 
-  /**教师类型*/
+  /** 教师类型 */
   var teacherType: TeacherType = _
 
-  /**在职状态*/
+  /** 在职状态 */
   var status: WorkStatus = _
 
-  /**最高职称*/
+  /** 最高职称 */
   var title: Option[ProfessionalTitle] = None
 
   /** 最高学历 */
@@ -61,15 +64,13 @@ class Teacher extends LongId with Updated with TemporalOn {
   /** 最高学位 */
   var degree: Option[Degree] = None
 
-  /**是否兼职*/
+  /** 是否兼职 */
   var parttime: Boolean = _
 
-  /**是否退休返聘*/
+  /** 是否退休返聘 */
   var retired: Boolean = _
 
-  /**是否在编*/
+  /** 是否在编 */
   var formalHr: Boolean = _
 
-  /**备注*/
-  var remark: Option[String] = None
 }
