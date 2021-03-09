@@ -51,7 +51,5 @@ SocialRelation.relation=关系
 Minor=辅修学生信息
 Minor.majorName=主修专业
 Minor.enMajorName=主修专业英文名
-Minor.majorCatalog=主修专业学科门类
-
-MinorSchool=辅修学生学校
-MinorSchool.enName=英文名
+Minor.majorCategory=主修专业学科门类
+Minor.school=主修学校

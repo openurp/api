@@ -56,7 +56,6 @@ class DefaultMapping extends MappingModule {
     bind[SocialRelation]
 
     bind[Minor]
-    bind[MinorSchool]
   }
 
 }

@@ -21,7 +21,7 @@ package org.openurp.std.info.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Student
-import org.openurp.code.edu.model.DisciplineCatalog
+import org.openurp.code.edu.model.{DisciplineCatalog, DisciplineCategory, Institution}
 
 /** 辅修学生信息
  *
@@ -32,7 +32,7 @@ class Minor extends LongId with Updated {
   var std: Student = _
 
   /** 主修学校 */
-  var school: MinorSchool = _
+  var school: Institution = _
 
   /** 主修专业 */
   var majorName: String = _
@@ -41,5 +41,5 @@ class Minor extends LongId with Updated {
   var enMajorName: Option[String] = None
 
   /** 主修专业学科门类 */
-  var majorCatalog: DisciplineCatalog = _
+  var majorCategory: DisciplineCategory = _
 }
