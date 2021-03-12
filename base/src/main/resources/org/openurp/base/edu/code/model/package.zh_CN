@@ -34,3 +34,4 @@ TeacherTitleLevel=教师职称等级
 TeacherType=教师类别
 TeacherType.parttime=是否兼职
 TeacherType.external=是否外聘
+TeacherType.retired=是否退休返聘
