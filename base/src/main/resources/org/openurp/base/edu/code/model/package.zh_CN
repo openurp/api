@@ -9,6 +9,9 @@ CourseHourType.category=课时分类
 
 CourseType=课程类别
 CourseCategory=课程大类
+CourseNature=课程性质
+CourseNature.practical=是否实践课
+
 CourseType.practical=是否实践课
 CourseType.major=是否专业课
 CourseType.optional=是否选修

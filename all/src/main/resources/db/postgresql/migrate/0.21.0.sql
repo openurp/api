@@ -87,4 +87,15 @@ alter table code.whereto_goes add constraint pk_4613lax8xj9thcny8sbdbs84j primar
 
 alter table stu.punishments set schema std;
 
-drop schema sin;
+drop schema sin cascade;
+
+create table std.minors (school_id integer not null, updated_at timestamp not null, major_name varchar(255) not null, major_category_id integer not null, id bigint not null, std_id bigint not null, en_major_name varchar(255));
+alter table std.minors add constraint pk_tokfs2m4b9fdrpsc0dqqost3m primary key (id);
+comment on column std.minors.en_major_name is '主修专业英文名';
+comment on column std.minors.id is '非业务主键:datetime';
+comment on column std.minors.major_category_id is '主修专业学科门类ID';
+comment on column std.minors.major_name is '主修专业';
+comment on column std.minors.school_id is '主修学校ID';
+comment on column std.minors.std_id is '学籍信息实现ID';
+comment on column std.minors.updated_at is '更新时间';
+
