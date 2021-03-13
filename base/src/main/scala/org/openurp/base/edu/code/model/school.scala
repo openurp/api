@@ -67,39 +67,6 @@ class CourseType extends CodeBean {
 @code("school")
 class CourseCategory extends CodeBean
 
-/** 课程性质
- * 从理论课、术科课、独立实验课、实践课
- */
-@code("school")
-class CourseNature extends CodeBean {
-  /** 是否实践课程 */
-  var practical: Boolean = _
-}
-
-/**
- * 课时类别
- */
-@code("school")
-class CourseHourType extends CodeBean {
-  /** 课时分类 */
-  var category: CourseHourCategory.Category = _
-}
-
-/** 课时分类 */
-object CourseHourCategory extends Enumeration {
-
-  class Category(id: Int, val title: String) extends super.Val {
-  }
-
-  val Lecture = new Category(0, "讲授")
-  val Experiment = new Category(1, "实验")
-  val Practice = new Category(2, "实践")
-
-  import scala.language.implicitConversions
-
-  implicit def convertValue(v: Value): Category = v.asInstanceOf[Category]
-}
-
 /**
  * 课程能力等级
  */

@@ -16,18 +16,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.lesson.model
+package org.openurp.edu.clazz.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.openurp.code.edu.model.{TeachingMethod, TeachingNature}
 
-class DefaultMapping extends MappingModule {
+/**
+ * 授课内容
+ */
+class Lesson extends LongId {
 
-  def binding(): Unit = {
-    bind[Lesson] declare { e =>
-      index("", false, e.clazz)
-    }
+  /** 教学任务 */
+  var clazz: Clazz = _
 
-    bind[LecturePlan]
-  }
+  /** 针对授课对象组 */
+  var group: Option[CourseTakerGroup] = None
+
+  /** 序号 */
+  var idx: Int = _
+
+  /** 内容 */
+  var contents: String = _
 
 }

@@ -42,7 +42,8 @@ class DefaultMapping extends MappingModule {
       e.enrollment.grade is length(20)
       e.exam.beginAt is column("exam_begin_at")
       e.exam.endAt is column("exam_end_at")
-      e.enrollment.courseTakers & e.enrollment.restrictions &
+      e.lessons is depends("clazz")
+      e.enrollment.courseTakers & e.enrollment.restrictions & e.enrollment.takerGroups &
         e.schedule.sessions are depends("clazz")
 
       index("", true, e.project, e.semester, e.crn)
@@ -61,7 +62,7 @@ class DefaultMapping extends MappingModule {
 
     //schedule
     bind[Session].declare { e =>
-      e.remark is length(200)
+      e.places is length(200)
       index("", false, e.clazz)
     }
 
@@ -70,6 +71,16 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[StdCourseAbility]
+
+    bind[Lesson] declare { e =>
+      index("", false, e.clazz)
+    }
+
+    bind[CourseTakerGroup] declare { e =>
+      e.name is length(100)
+    }
+
+    bind[LecturePlan]
   }
 
 }

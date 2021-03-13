@@ -21,7 +21,9 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.Activity
-import org.openurp.base.edu.model.{ Classroom, Teacher }
+import org.openurp.base.edu.model.{Classroom, Teacher}
+import org.openurp.code.edu.model.{TeachingMethod, TeachingNature}
+
 import java.time.LocalDate
 
 /**
@@ -44,9 +46,19 @@ class Session extends LongId with Ordered[Session] with Activity {
   /** 教室列表 */
   var rooms: collection.mutable.Set[Classroom] = _
 
-  /** 排课备注 */
-  var remark: Option[String] = None
+  /** 授课场所 */
+  var places: Option[String] = None
 
+  /** 针对授课对象组 */
+  var takerGroup: Option[CourseTakerGroup] = None
+
+  /** 授课性质 */
+  var teachingNature: TeachingNature = _
+
+  /** 授课方式 */
+  var teachingMethod: TeachingMethod = _
+
+  /** 对比活动 */
   override def compare(other: Session): Int = {
     //fix me
     -1

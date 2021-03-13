@@ -54,6 +54,7 @@ class DisciplineCatalog extends CodeBean
  * 学科
  * （来自本专科科学科目录、研究生学术性学位目录、研究生专业性学位目录的学科）<br>
  * 一般认为4位代码的是一级学科，2位代码的是二级学科，但实际上可能没有一级学科、二级学科这种叫法
+ *
  * @author chaostone
  */
 @code("industry")
@@ -104,6 +105,7 @@ class HskLevel extends CodeBean {
 
 /**
  * 科研机构
+ *
  * @see http://www.stats.edu.cn/rjgx/dm/%E6%99%AE%E9%80%9A%E9%AB%98%E6%A0%A1%E4%BB%A3%E7%A0%81.htm
  */
 @code("industry")
@@ -112,6 +114,7 @@ class Institution extends CodeBean
 /**
  * 修课类别
  * （重修、增修、免修不免试、主修，选修）
+ *
  * @author chaostone
  * @since 2005-12-2
  */
@@ -206,6 +209,7 @@ class DayPart extends CodeBean {
 
 /**
  * 成绩类型
+ *
  * @author chaostone
  * @since 2005-9-7
  */
@@ -316,3 +320,56 @@ class ExamForm extends CodeBean
 @code("industry")
 class TeachLangType extends CodeBean
 
+/** 课程性质
+ * 从理论课、术科课、独立实验课、实践课
+ */
+@code("industry")
+class CourseNature extends CodeBean {
+  /** 是否实践课程 */
+  var practical: Boolean = _
+}
+
+object CourseNature {
+  val Theory = 1 //理论
+}
+
+/**
+ * 授课性质(课时分类)
+ */
+@code("industry")
+class TeachingNature extends CodeBean {
+  /** 性质分类 */
+  var category: TeachingNatureCategory.Category = _
+}
+
+object TeachingNature {
+  val Theory = 1 //理论
+  val Experiment = 2 //实验
+  val Practice = 3 //实践
+}
+
+/** 授课性质分类 */
+object TeachingNatureCategory extends Enumeration {
+
+  class Category(id: Int, val title: String) extends super.Val {
+  }
+
+  val Theory = new Category(0, "讲授")
+  val Experiment = new Category(1, "实验")
+  val Practice = new Category(2, "实践")
+
+  import scala.language.implicitConversions
+
+  implicit def convertValue(v: Value): Category = v.asInstanceOf[Category]
+}
+
+/**
+ * 授课方式
+ * 线下授课、线上直播、线上录播、线上线下同步等
+ */
+@code("industry")
+class TeachingMethod extends CodeBean
+
+object TeachingMethod {
+  val Offline = 1 //线下授课
+}

@@ -86,7 +86,7 @@ Session.clazz=教学任务
 Session.time=上课时间
 Session.teachers=授课教师列表
 Session.rooms=教室列表
-Session.remark=排课备注
+Session.places=授课场所
 
 ClazzGroup=教学任务组
 ClazzGroup.name=组名称
@@ -98,3 +98,17 @@ ClazzGroup.course=课程
 
 StdCourseAbility=学生课程能力
 StdCourseAbility.score=分数
+
+CourseTakerGroup = 上课名单分组
+Lesson=授课内容
+Lesson.idx=序号
+Lesson.contents=内容
+
+LecturePlan=授课计划
+LecturePlan.author=作者
+LecturePlan.passed=是否通过
+LecturePlan.docLocale=语言
+LecturePlan.mimeType=文件类型
+LecturePlan.filePath=附件关键字
+LecturePlan.fileSize=大小
+LecturePlan.auditAt=审核时间

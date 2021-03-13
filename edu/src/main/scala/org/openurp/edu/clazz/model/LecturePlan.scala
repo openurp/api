@@ -16,16 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.lesson.model
-
-import java.time.Instant
-import java.util.Locale
+package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.User
 import org.openurp.base.edu.model.Semester
-import org.openurp.edu.clazz.model.Clazz
+import org.openurp.base.model.User
+
+import java.time.Instant
+import java.util.Locale
 
 /** 授课计划
  * 每个任务唯一

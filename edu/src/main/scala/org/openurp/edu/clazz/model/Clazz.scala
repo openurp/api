@@ -21,11 +21,11 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Updated}
-import org.openurp.base.model.{Campus, Department}
-import org.openurp.code.edu.model.TeachLangType
 import org.openurp.base.edu.code.model.CourseType
 import org.openurp.base.edu.model.{Course, Semester, Teacher}
-import org.openurp.base.edu.{ProjectBased, AuditStates}
+import org.openurp.base.edu.{AuditStates, ProjectBased}
+import org.openurp.base.model.{Campus, Department}
+import org.openurp.code.edu.model.TeachLangType
 import org.openurp.edu.clazz.code.model.ClazzTag
 
 import scala.collection.mutable
@@ -83,9 +83,12 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   /** 所属课程组 */
   var group: Option[ClazzGroup] = None
 
+  /** 授课内容 */
+  var lessons: mutable.Buffer[Lesson] = Collections.newBuffer[Lesson]
+
   /** 审核状态 */
   var auditState: AuditStates.State = _
 
-  /**任务标签*/
-  var tags:mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]
+  /** 任务标签 */
+  var tags: mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]
 }

@@ -24,7 +24,7 @@ import org.beangle.data.model.pojo._
 import org.openurp.base.edu.ProjectBased
 import org.openurp.base.edu.code.model._
 import org.openurp.base.model.Department
-import org.openurp.code.edu.model.{AcademicLevel, ExamMode, GradingMode}
+import org.openurp.code.edu.model.{AcademicLevel, CourseNature, ExamMode, GradingMode, TeachingNature}
 
 /**
  * 课程基本信息 </p>
@@ -109,5 +109,5 @@ class CourseHour extends LongId {
   var course: Course = _
   var creditHours: Int = _
   var weeks: Int = _
-  var hourType: CourseHourType = _
+  var teachingNature: TeachingNature = _
 }
