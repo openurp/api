@@ -345,18 +345,18 @@ class TeachingNature extends CodeBean {
 object TeachingNature {
   val Theory = 1 //理论
   val Experiment = 2 //实验
-  val Practice = 3 //实践
+  val Practice = 9 //实践
 }
 
 /** 授课性质分类 */
-object TeachingNatureCategory extends Enumeration {
+object TeachingNatureCategory extends Enumeration(1) {
 
   class Category(id: Int, val title: String) extends super.Val {
   }
 
-  val Theory = new Category(0, "讲授")
-  val Experiment = new Category(1, "实验")
-  val Practice = new Category(2, "实践")
+  val Theory = new Category(1, "理论")
+  val Experiment = new Category(2, "实验")
+  val Practice = new Category(9, "实践")
 
   import scala.language.implicitConversions
 
