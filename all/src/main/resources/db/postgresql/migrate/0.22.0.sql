@@ -16,15 +16,15 @@ comment on column code.course_natures.remark is '备注';
 comment on column code.course_natures.updated_at is '修改时间';
 alter table code.course_natures add constraint pk_qmyas7mib2hjnqnj6ogbi2n7p primary key (id);
 
-insert code.course_natures(id,code,name,practical,begin_on,updated_at) values(1,'1','理论课',false,current_date-1,now());
-insert code.course_natures(id,code,name,practical,begin_on,updated_at) values(2,'2','术科课',false,current_date-1,now());
-insert code.course_natures(id,code,name,practical,begin_on,updated_at) values(3,'3','单独设立实验课',false,current_date-1,now());
-insert code.course_natures(id,code,name,practical,begin_on,updated_at) values(4,'4','实践课',true,current_date-1,now());
+insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(1,'1','理论课',false,current_date-1,now());
+insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(2,'2','术科课',false,current_date-1,now());
+insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(3,'3','单独设立实验课',false,current_date-1,now());
+insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(4,'4','实践课',true,current_date-1,now());
 
 alter table base.courses add column nature_id integer;
-update base.courses set nature_id=4 where practical = 1;
-update base.courses set nature_id=1 where practical = 0;
-alter table base.courses drop practical cascade;
+update base.courses set nature_id=4 where practical = true;
+update base.courses set nature_id=1 where practical = false;
+--alter table base.courses drop practical cascade;
 alter table base.courses alter nature_id set not null;
 alter table base.courses add constraint fk_6iin27c8tr78rl3ea1ybw0fai foreign key (nature_id) references code.course_natures (id);
 alter table base.course_hours rename hour_type_id to teaching_nature_id;
@@ -32,20 +32,18 @@ alter table base.course_hours rename hour_type_id to teaching_nature_id;
 alter table base.course_hour_types set schema code;
 alter table code.course_hour_types rename to teaching_natures;
 
-insert code.teaching_natures(id,code,name,category,begin_on,updated_at)
+insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
 select 1,'1','理论',1,current_date-1,now() where not exists(select * from code.teaching_natures tn where tn.id=1);
 
-insert code.teaching_natures(id,code,name,category,begin_on,updated_at)
+insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
 select 2,'2','实验',2,current_date-1,now() where not exists(select * from code.teaching_natures tn where tn.id=2);
 
-insert code.teaching_natures(id,code,name,category,begin_on,updated_at)
+insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
 select 9,'9','实践',9,current_date-1,now() where not exists(select * from code.teaching_natures tn where tn.id=9);
 
-update code.teaching_natures set category = id where id in(1,2,9);
-
+update code.teaching_natures set category = id where id in(1,2,9) and id <> category;
 
 -----teaching method---------------------
-
 create table code.teaching_methods (id integer not null, begin_on date not null, code varchar(20) not null unique, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamp not null);
 comment on table code.teaching_methods is '授课方式';
 comment on column code.teaching_methods.id is '非业务主键:auto_increment';
@@ -58,11 +56,10 @@ comment on column code.teaching_methods.remark is '备注';
 comment on column code.teaching_methods.updated_at is '修改时间';
 alter table code.teaching_methods add constraint pk_s2ob7rrxiu3hwv3dgtwvik47a primary key (id);
 
-insert code.teaching_methods(id,code,name,begin_on,updated_at) values(1,'1','线下授课',current_date-1,now());
-insert code.teaching_methods(id,code,name,begin_on,updated_at) values(2,'2','线上直播',current_date-1,now());
-insert code.teaching_methods(id,code,name,begin_on,updated_at) values(3,'3','线上录播',current_date-1,now());
-insert code.teaching_methods(id,code,name,begin_on,updated_at) values(4,'4','线上线下同步',current_date-1,now());
-
+insert into code.teaching_methods(id,code,name,begin_on,updated_at) values(1,'1','线下授课',current_date-1,now());
+insert into code.teaching_methods(id,code,name,begin_on,updated_at) values(2,'2','线上直播',current_date-1,now());
+insert into code.teaching_methods(id,code,name,begin_on,updated_at) values(3,'3','线上录播',current_date-1,now());
+insert into code.teaching_methods(id,code,name,begin_on,updated_at) values(4,'4','线上线下同步',current_date-1,now());
 --------------course-taker-groups------------------------
 create table edu.course_taker_groups (id bigint not null, clazz_id bigint not null, name varchar(100) not null);
 comment on table edu.course_taker_groups is '上课名单分组';

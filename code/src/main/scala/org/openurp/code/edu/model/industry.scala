@@ -350,16 +350,12 @@ object TeachingNature {
 
 /** 授课性质分类 */
 object TeachingNatureCategory extends Enumeration(1) {
-
-  class Category(id: Int, val title: String) extends super.Val {
-  }
-
+  class Category(id: Int, val title: String) extends super.Val(id)
   val Theory = new Category(1, "理论")
   val Experiment = new Category(2, "实验")
   val Practice = new Category(9, "实践")
 
   import scala.language.implicitConversions
-
   implicit def convertValue(v: Value): Category = v.asInstanceOf[Category]
 }
 
