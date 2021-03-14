@@ -3799,30 +3799,17 @@
             <column name="contents" type="varchar(500)" nullable="false" comment="内容"/>
             <column name="idx" type="integer" nullable="false" comment="序号"/>
             <column name="plan_id" type="bigint" nullable="false" comment="授课计划ID"/>
+            <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
           </columns>
           <primary-key name="pk_fha0ldq8mchqk0d5t5xy64chj" columns="id"/>
           <foreign-keys>
+            <foreign-key name="fk_g2wovhpgbf5lnlppmoo6cr0p1" column="subclazz_id" referenced-table="edu.subclazzes"
+                         referenced-column="id"/>
             <foreign-key name="fk_jmkpox7ul0xc3ca07ul79taqn" column="plan_id" referenced-table="edu.teaching_plans"
                          referenced-column="id"/>
           </foreign-keys>
           <indexes>
             <index name="idx_m85fsqiyr7ldosv7uwt9atr7x" columns="plan_id"/>
-          </indexes>
-        </table>
-        <table name="lessons_subclazzes" comment="授课内容针对的小班">
-          <columns>
-            <column name="lesson_id" type="bigint" nullable="false" comment="授课内容ID"/>
-            <column name="subclazz_id" type="bigint" nullable="false" comment="教学任务小班ID"/>
-          </columns>
-          <primary-key name="pk_4inavltnrokrnpk22cwbnafrl" columns="lesson_id,subclazz_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_rox82wvw7ft8ba4jpl4nv1p1c" column="lesson_id" referenced-table="edu.lessons"
-                         referenced-column="id"/>
-            <foreign-key name="fk_e5ng8pjge5lgs9fx2dsj24gyb" column="subclazz_id" referenced-table="edu.subclazzes"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_6e92qjperogib19w2i9meaxij" columns="lesson_id"/>
           </indexes>
         </table>
         <table name="major_alt_courses" comment="专业替代课程">
@@ -4389,6 +4376,7 @@
             <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="places" type="varchar(200)" comment="授课场所"/>
             <column name="start_on" type="date" nullable="false" comment="开始日期"/>
+            <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
             <column name="teaching_method_id" type="integer" nullable="false" comment="授课方式ID"/>
             <column name="teaching_nature_id" type="integer" nullable="false" comment="授课性质ID"/>
             <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
@@ -4397,6 +4385,8 @@
           <foreign-keys>
             <foreign-key name="fk_indcesiu4vvyo0hl7s7cjairm" column="teaching_nature_id"
                          referenced-table="code.teaching_natures" referenced-column="id"/>
+            <foreign-key name="fk_8mqwc7w2ppe535m8gp6exba08" column="subclazz_id" referenced-table="edu.subclazzes"
+                         referenced-column="id"/>
             <foreign-key name="fk_cp0hb230utgrxs71b1w1e9aag" column="teaching_method_id"
                          referenced-table="code.teaching_methods" referenced-column="id"/>
             <foreign-key name="fk_ovyeue5h9l3fh9y79ioa2wd4p" column="clazz_id" referenced-table="edu.clazzes"
@@ -4420,22 +4410,6 @@
           </foreign-keys>
           <indexes>
             <index name="idx_8x2cffwmuo8bbpdljfnv5sxna" columns="session_id"/>
-          </indexes>
-        </table>
-        <table name="sessions_subclazzes" comment="教学活动针对的小班">
-          <columns>
-            <column name="session_id" type="bigint" nullable="false" comment="教学活动ID"/>
-            <column name="subclazz_id" type="bigint" nullable="false" comment="教学任务小班ID"/>
-          </columns>
-          <primary-key name="pk_npcmi47jieumrgu3g7us7lry1" columns="session_id,subclazz_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_hqseqsxdfcyjwo05r4bvm4575" column="session_id" referenced-table="edu.sessions"
-                         referenced-column="id"/>
-            <foreign-key name="fk_ii27d8iue6pirx4907v2iv5iv" column="subclazz_id" referenced-table="edu.subclazzes"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_9xsu541qfjylxl921v9lelljq" columns="session_id"/>
           </indexes>
         </table>
         <table name="sessions_teachers" comment="授课教师列表">

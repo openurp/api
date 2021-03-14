@@ -29,8 +29,8 @@ class Lesson extends LongId {
   /** 授课计划 */
   var plan: TeachingPlan = _
 
-  /** 针对授课对象组 */
-  var subclazzes = Collections.newBuffer[Subclazz]
+  /** 针对授课小班 */
+  var subclazz: Option[Subclazz] = None
 
   /** 序号 */
   var idx: Int = _

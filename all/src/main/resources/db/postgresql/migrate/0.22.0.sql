@@ -90,29 +90,16 @@ alter table edu.lessons drop end_at cascade;
 alter table edu.lessons add column idx integer;
 alter table edu.lessons alter idx set not null;
 
+alter table edu.lessons add column subclazz_id bigint;
+alter table edu.lessons add constraint fk_g2wovhpgbf5lnlppmoo6cr0p1 foreign key (subclazz_id) references edu.subclazzes (id);
+
 alter table edu.lessons add constraint fk_jmkpox7ul0xc3ca07ul79taqn foreign key (plan_id) references edu.teaching_plans (id);
 drop index edu.idx_t5i75g36sonrbk0w7j22u885o;
 create index idx_m85fsqiyr7ldosv7uwt9atr7x on edu.lessons (plan_id);
 
-create table edu.lessons_subclazzes (lesson_id bigint not null, subclazz_id bigint not null);
-comment on table edu.lessons_subclazzes is '授课内容针对的小班';
-comment on column edu.lessons_subclazzes.lesson_id is '授课内容ID';
-comment on column edu.lessons_subclazzes.subclazz_id is '教学任务小班ID';
-alter table edu.lessons_subclazzes add constraint pk_4inavltnrokrnpk22cwbnafrl primary key (lesson_id,subclazz_id);
-create index idx_6e92qjperogib19w2i9meaxij on edu.lessons_subclazzes (lesson_id);
-alter table edu.lessons_subclazzes add constraint fk_rox82wvw7ft8ba4jpl4nv1p1c foreign key (lesson_id) references edu.lessons (id);
-alter table edu.lessons_subclazzes add constraint fk_e5ng8pjge5lgs9fx2dsj24gyb foreign key (subclazz_id) references edu.subclazzes (id);
-
 -----------session-----------------
-create table edu.sessions_subclazzes (session_id bigint not null, subclazz_id bigint not null);
-alter table edu.sessions_subclazzes add constraint pk_npcmi47jieumrgu3g7us7lry1 primary key (session_id,subclazz_id);
-create index idx_9xsu541qfjylxl921v9lelljq on edu.sessions_subclazzes (session_id);
-alter table edu.sessions_subclazzes add constraint fk_hqseqsxdfcyjwo05r4bvm4575 foreign key (session_id) references edu.sessions (id);
-alter table edu.sessions_subclazzes add constraint fk_ii27d8iue6pirx4907v2iv5iv foreign key (subclazz_id) references edu.subclazzes (id);
-comment on table edu.sessions_subclazzes is '教学活动针对的小班';
-comment on column edu.sessions_subclazzes.session_id is '教学活动ID';
-comment on column edu.sessions_subclazzes.subclazz_id is '教学任务小班ID';
-
+alter table edu.sessions add column subclazz_id bigint;
+alter table edu.sessions add constraint fk_8mqwc7w2ppe535m8gp6exba08 foreign key (subclazz_id) references edu.subclazzes (id);
 alter table edu.sessions rename  remark to places;
 alter table edu.sessions add column teaching_nature_id integer default 1;
 alter table edu.sessions alter teaching_nature_id set not null;
