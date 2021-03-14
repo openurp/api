@@ -87,6 +87,7 @@ Session.time=上课时间
 Session.teachers=授课教师列表
 Session.rooms=教室列表
 Session.places=授课场所
+Session.subclazzes=教学活动针对的小班
 
 ClazzGroup=教学任务组
 ClazzGroup.name=组名称
@@ -99,16 +100,20 @@ ClazzGroup.course=课程
 StdCourseAbility=学生课程能力
 StdCourseAbility.score=分数
 
-CourseTakerGroup = 上课名单分组
+Subclazz = 教学任务小班
+Subclazz.maxCount = 最大人数
+Subclazz.curCount = 当前人数
+
 Lesson=授课内容
 Lesson.idx=序号
 Lesson.contents=内容
+Lesson.subclazzes=授课内容针对的小班
 
-LecturePlan=授课计划
-LecturePlan.author=作者
-LecturePlan.passed=是否通过
-LecturePlan.docLocale=语言
-LecturePlan.mimeType=文件类型
-LecturePlan.filePath=附件关键字
-LecturePlan.fileSize=大小
-LecturePlan.auditAt=审核时间
+TeachingPlan=授课计划
+TeachingPlan.author=作者
+TeachingPlan.passed=是否通过
+TeachingPlan.docLocale=语言
+TeachingPlan.mimeType=文件类型
+TeachingPlan.filePath=附件关键字
+TeachingPlan.fileSize=大小
+TeachingPlan.auditAt=审核时间

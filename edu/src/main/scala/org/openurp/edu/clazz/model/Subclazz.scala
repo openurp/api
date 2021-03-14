@@ -22,10 +22,15 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 
 /**
- * 上课名单分组
+ * 任务内分配的小班
  */
-class CourseTakerGroup extends LongId with Named {
+class Subclazz extends LongId with Named {
 
   var clazz: Clazz = _
 
+  /** 最大人数 */
+  var maxCount: Int = _
+
+  /** 当前人数 */
+  var curCount: Int = _
 }

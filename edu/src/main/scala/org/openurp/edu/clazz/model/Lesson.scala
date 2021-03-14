@@ -18,19 +18,19 @@
  */
 package org.openurp.edu.clazz.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.{TeachingMethod, TeachingNature}
 
 /**
  * 授课内容
  */
 class Lesson extends LongId {
 
-  /** 教学任务 */
-  var clazz: Clazz = _
+  /** 授课计划 */
+  var plan: TeachingPlan = _
 
   /** 针对授课对象组 */
-  var group: Option[CourseTakerGroup] = None
+  var subclazzes = Collections.newBuffer[Subclazz]
 
   /** 序号 */
   var idx: Int = _

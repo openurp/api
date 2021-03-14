@@ -63,7 +63,7 @@ class Enrollment extends Cloneable with Component {
   var abilityRates = Collections.newSet[CourseAbilityRate]
 
   /** 上课名单分组 */
-  var takerGroups = Collections.newBuffer[CourseTakerGroup]
+  var subclazzes = Collections.newBuffer[Subclazz]
 }
 
 object Enrollment {

@@ -18,6 +18,7 @@
  */
 package org.openurp.edu.clazz.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Semester
@@ -25,26 +26,38 @@ import org.openurp.base.model.User
 
 import java.time.Instant
 import java.util.Locale
+import scala.collection.mutable
 
 /** 授课计划
  * 每个任务唯一
  */
-class LecturePlan extends LongId with Updated {
+class TeachingPlan extends LongId with Updated {
 
+  /** 教学任务 */
   var clazz: Clazz = _
 
+  /** 授课计划语言 */
   var docLocale: Locale = _
 
+  /** 学期 */
   var semester: Semester = _
 
-  var author: User = _
+  /** 作者 */
+  var author: Option[User] = None
 
+  /** 授课内容 */
+  var lessons: mutable.Buffer[Lesson] = Collections.newBuffer[Lesson]
+
+  /** 文件大小 */
   var fileSize: Int = _
 
-  var mimeType: String = _
+  /** 文件类型 */
+  var mimeType: Option[String] = None
 
-  var filePath: String = _
+  /** 文件路径 */
+  var filePath: Option[String] = None
 
+  /** 是否通过 */
   var passed: Option[Boolean] = None
 
   /** 审核人 */
@@ -52,4 +65,5 @@ class LecturePlan extends LongId with Updated {
 
   /** 审核时间 */
   var auditAt: Option[Instant] = None
+
 }

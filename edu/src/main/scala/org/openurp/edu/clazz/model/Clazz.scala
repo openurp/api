@@ -83,9 +83,6 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   /** 所属课程组 */
   var group: Option[ClazzGroup] = None
 
-  /** 授课内容 */
-  var lessons: mutable.Buffer[Lesson] = Collections.newBuffer[Lesson]
-
   /** 审核状态 */
   var auditState: AuditStates.State = _
 
