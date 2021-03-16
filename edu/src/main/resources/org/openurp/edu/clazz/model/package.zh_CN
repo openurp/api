@@ -106,6 +106,12 @@ Subclazz.curCount = 当前人数
 Lesson=授课内容
 Lesson.idx=序号
 Lesson.contents=内容
+Lesson.openOn=开课日期
+Lesson.units=开课节次
+Lesson.beginAt=开始时间
+Lesson.endAt=结束时间
+Lesson.teachers=授课教师列表
+Lesson.rooms=教室列表
 
 TeachingPlan=授课计划
 TeachingPlan.author=作者

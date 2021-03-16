@@ -28,4 +28,5 @@ class RoomAllocSetting extends LongId with Named with ProjectBased {
   var minOccupyRatio: Float = _
   var minCapacity: Int = _
   var allocPolicy: RoomAllocPolicy.Policy = _
+  var minStdExamInterval: Int = _
 }
