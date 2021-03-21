@@ -112,6 +112,7 @@ Lesson.beginAt=开始时间
 Lesson.endAt=结束时间
 Lesson.teachers=授课教师列表
 Lesson.rooms=教室列表
+Lesson.places=授课地点
 
 TeachingPlan=授课计划
 TeachingPlan.author=作者
