@@ -4,11 +4,9 @@ BookAwardType=教材获奖类型
 CourseAbilityRate=课程能力等级
 CourseAbilityRate.rate=等级值
 
-CourseHourType=课时类别代码
-CourseHourType.category=课时分类
-
 CourseType=课程类别
 CourseCategory=课程大类
+
 CourseType.practical=是否实践课
 CourseType.major=是否专业课
 CourseType.optional=是否选修
@@ -31,3 +29,4 @@ TeacherTitleLevel=教师职称等级
 TeacherType=教师类别
 TeacherType.parttime=是否兼职
 TeacherType.external=是否外聘
+TeacherType.retired=是否退休返聘

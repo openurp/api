@@ -26,6 +26,7 @@ class DefaultMapping extends MappingModule {
     bind[AdmissionType]
     bind[ActivityType]
     bind[ClassroomType]
+    bind[CourseNature]
     bind[DisciplineCatalog]
     bind[Discipline]
     bind[EnrollMode]
@@ -54,6 +55,8 @@ class DefaultMapping extends MappingModule {
     bind[GradeType]
     bind[GradingMode]
     bind[TeachLangType]
+    bind[TeachingNature]
+    bind[TeachingMethod]
     all.cacheAll()
   }
 }

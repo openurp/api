@@ -30,7 +30,6 @@ class DefaultMapping extends MappingModule {
     bind[CourseType]
     bind[CourseCategory]
     bind[CourseAbilityRate]
-    bind[CourseHourType]
     bind[StdLabel]
     bind[StdLabelType]
     bind[StdType]

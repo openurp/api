@@ -86,7 +86,7 @@ Session.clazz=教学任务
 Session.time=上课时间
 Session.teachers=授课教师列表
 Session.rooms=教室列表
-Session.remark=排课备注
+Session.places=授课场所
 
 ClazzGroup=教学任务组
 ClazzGroup.name=组名称
@@ -98,3 +98,27 @@ ClazzGroup.course=课程
 
 StdCourseAbility=学生课程能力
 StdCourseAbility.score=分数
+
+Subclazz = 教学任务小班
+Subclazz.maxCount = 最大人数
+Subclazz.curCount = 当前人数
+
+Lesson=授课内容
+Lesson.idx=序号
+Lesson.contents=内容
+Lesson.openOn=开课日期
+Lesson.units=开课节次
+Lesson.beginAt=开始时间
+Lesson.endAt=结束时间
+Lesson.teachers=授课教师列表
+Lesson.rooms=教室列表
+Lesson.places=授课地点
+
+TeachingPlan=授课计划
+TeachingPlan.author=作者
+TeachingPlan.passed=是否通过
+TeachingPlan.docLocale=语言
+TeachingPlan.mimeType=文件类型
+TeachingPlan.filePath=附件关键字
+TeachingPlan.fileSize=大小
+TeachingPlan.auditAt=审核时间

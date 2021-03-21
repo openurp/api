@@ -20,21 +20,11 @@ package org.openurp.base.edu.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.Coded
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Department
-import org.openurp.code.edu.model.AcademicLevel
-import org.openurp.code.edu.model.ExamMode
-import org.openurp.code.edu.model.GradingMode
+import org.beangle.data.model.pojo._
 import org.openurp.base.edu.ProjectBased
-import org.openurp.base.edu.code.model.CourseAbilityRate
-import org.openurp.base.edu.code.model.CourseHourType
-import org.openurp.base.edu.code.model.CourseType
-import org.openurp.base.edu.code.model.CourseCategory
+import org.openurp.base.edu.code.model._
+import org.openurp.base.model.Department
+import org.openurp.code.edu.model.{AcademicLevel, CourseNature, ExamMode, GradingMode, TeachingNature}
 
 /**
  * 课程基本信息 </p>
@@ -42,6 +32,7 @@ import org.openurp.base.edu.code.model.CourseCategory
  * 均可以看作非关键属性。 </p> 如课程不要求记录学分、不做考核要求、不计算绩点等额外要求需要培养方案、成绩等环节进行额外处理，不在课程部分进行规定。
  * <p>
  * 课程的学历层次可以不加指定，为空时表示适用与对应项目下的所有学历层次。
+ *
  * @author chaostone
  * @since 2008-09-24
  */
@@ -55,10 +46,12 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var credits: Float = _
   /** 学时/总课时 */
   var creditHours: Int = _
-  /** 课程类型 */
+  /** 课程类别 */
   var courseType: CourseType = _
   /** 课程大类 */
   var category: Option[CourseCategory] = None
+  /** 课程性质 */
+  var nature: CourseNature = _
   /** 分类课时 */
   var hours = Collections.newBuffer[CourseHour]
   /** 周数 */
@@ -83,8 +76,6 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var teachers = Collections.newSet[Teacher]
   /** 是否计算绩点 * */
   var calgp: Boolean = _
-  /** 是否实践课程 */
-  var practical: Boolean = _
   /** 是否有补考 */
   var hasMakeup: Boolean = _
   /** 教研室 */
@@ -101,10 +92,16 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
     this.name = name
     this.enName = Option(enName)
   }
+
+  /** 是否实践课程 */
+  def practical: Boolean = {
+    nature.practical
+  }
 }
 
 /**
  * 课程分类课时信息
+ *
  * @author chaostone
  */
 
@@ -112,5 +109,5 @@ class CourseHour extends LongId {
   var course: Course = _
   var creditHours: Int = _
   var weeks: Int = _
-  var hourType: CourseHourType = _
+  var teachingNature: TeachingNature = _
 }

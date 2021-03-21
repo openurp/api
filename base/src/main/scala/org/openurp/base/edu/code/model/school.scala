@@ -35,6 +35,8 @@ class BookAwardType extends CodeBean
 
 /**
  * 课程类别
+ * 从专业培养方案角度进行划分
+ *
  * @author chaostone
  * @since 2005-9-7
  */
@@ -59,32 +61,11 @@ class CourseType extends CodeBean {
   }
 }
 
-@code("school")
-class CourseCategory extends CodeBean
-
-/**
- * 课时类别代码
+/** 课程分类
+ * 从课程内容进行划分，一般分为英语课、体育课等
  */
 @code("school")
-class CourseHourType extends CodeBean {
-  /**课时分类*/
-  var category: CourseHourCategory.Category = _
-}
-
-/**课时分类*/
-object CourseHourCategory extends Enumeration {
-
-  class Category(id: Int, val title: String) extends super.Val {
-  }
-
-  val Lecture = new Category(0, "讲授")
-  val Experiment = new Category(1, "实验")
-  val Practice = new Category(2, "实践")
-
-  import scala.language.implicitConversions
-
-  implicit def convertValue(v: Value): Category = v.asInstanceOf[Category]
-}
+class CourseCategory extends CodeBean
 
 /**
  * 课程能力等级
@@ -119,6 +100,10 @@ class StdType extends CodeBean
  */
 @code("school")
 class TeacherType extends CodeBean {
+  /** 是否外聘 */
   var external: Boolean = _
+  /** 是否兼职 */
   var parttime: Boolean = _
+  /** 是否退休返聘 */
+  var retired: Boolean = _
 }

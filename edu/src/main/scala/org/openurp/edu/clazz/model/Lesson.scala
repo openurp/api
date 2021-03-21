@@ -18,27 +18,47 @@
  */
 package org.openurp.edu.clazz.model
 
-import org.beangle.commons.lang.time.WeekTime
+import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.Activity
 import org.openurp.base.edu.model.{Classroom, Teacher}
 import org.openurp.code.edu.model.{TeachingMethod, TeachingNature}
 
 import java.time.LocalDate
 
 /**
- * 教学活动
- * </p>
- * 上课对象是任务对应的教学班学生
- *
+ * 授课内容
  */
-class Session extends LongId with Ordered[Session] with Activity {
+class Lesson extends LongId {
 
-  /** 教学任务 */
-  var clazz: Clazz = _
+  /** 授课计划 */
+  var plan: TeachingPlan = _
 
-  /** 上课时间 */
-  var time: WeekTime = _
+  /** 针对授课小班 */
+  var subclazz: Option[Subclazz] = None
+
+  /** 序号 */
+  var idx: Int = _
+
+  /** 内容 */
+  var contents: String = _
+
+  /** 开课日期 */
+  var openOn: LocalDate = _
+
+  /** 开课节次 */
+  var units: String = _
+
+  /** 开始时间 */
+  var beginAt: HourMinute = _
+
+  /** 结束时间 */
+  var endAt: HourMinute = _
+
+  /** 授课性质 */
+  var teachingNature: TeachingNature = _
+
+  /** 授课方式 */
+  var teachingMethod: TeachingMethod = _
 
   /** 授课教师列表 */
   var teachers: collection.mutable.Set[Teacher] = _
@@ -49,22 +69,4 @@ class Session extends LongId with Ordered[Session] with Activity {
   /** 授课场所 */
   var places: Option[String] = None
 
-  /** 授课性质 */
-  var teachingNature: TeachingNature = _
-
-  /** 授课方式 */
-  var teachingMethod: TeachingMethod = _
-
-  /** 针对授课小班 */
-  var subclazz: Option[Subclazz] = None
-
-  /** 对比活动 */
-  override def compare(other: Session): Int = {
-    //fix me
-    -1
-  }
-
-  override def startOn: LocalDate = {
-    if (null != time) time.startOn else null
-  }
 }

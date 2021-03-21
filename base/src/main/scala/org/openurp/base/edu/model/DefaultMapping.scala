@@ -86,7 +86,6 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[CourseHour].declare { e =>
-      e.course & e.hourType are notnull
       index("", false, e.course)
     }
 

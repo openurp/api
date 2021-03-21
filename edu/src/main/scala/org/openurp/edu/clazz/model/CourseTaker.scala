@@ -19,13 +19,14 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Semester
-import org.openurp.base.edu.model.{ Course, Student }
-import org.openurp.code.edu.model.ElectionMode
-import org.openurp.code.edu.model.CourseTakeType
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.edu.model.{Course, Semester, Student}
+import org.openurp.code.edu.model.{CourseTakeType, ElectionMode}
 
-class CourseTaker extends LongId with Updated with Cloneable {
+/**
+ * 上课名单
+ */
+class CourseTaker extends LongId with Updated with Cloneable with Remark {
 
   /** 教学任务 */
   var clazz: Clazz = _
@@ -42,19 +43,16 @@ class CourseTaker extends LongId with Updated with Cloneable {
   /** 修读类别 */
   var takeType: CourseTakeType = _
 
-  /**是否免听*/
+  /** 是否免听 */
   var freeListening: Boolean = false
 
-  /**是否替代*/
+  /** 是否替代 */
   var alternative: Boolean = false
 
-  /** 选课方式 **/
+  /** 选课方式 * */
   var electionMode: ElectionMode = _
 
-  /** 备注 */
-  var remark: Option[String] = None
-
-  /** 授课对象组 */
-  var restriction: Option[Restriction] = None
+  /** 上课小班 */
+  var subclazz: Option[Subclazz] = None
 
 }

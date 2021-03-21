@@ -46,6 +46,7 @@ ExamTask.duration=考试时长
 ExamTask.maxCourseConflictRatio=最大上课冲突比例
 ExamTask.rooms=排考任务对应教室
 ExamTask.timeAllotted=是否时间已经指定
+ExamTask.minExamOn=最早考试日期
 
 ExamTaker=应考学生
 ExamTaker.clazz=教学任务
@@ -84,6 +85,7 @@ RoomAllocSetting=教室分配设置
 RoomAllocSetting.minOccupyRatio=最低占用率
 RoomAllocSetting.minCapacity=最小容量
 RoomAllocSetting.allocPolicy=分配策略
+RoomAllocSetting.minStdExamInterval=学生连续考试最小间隔
 
 InvigilationQuota=监考配额
 InvigilationQuota.amount=配额

@@ -206,34 +206,20 @@
           </columns>
           <primary-key name="pk_oqysoxcp8dqo4wmygpdpatqu4" columns="id"/>
         </table>
-        <table name="course_hour_types" comment="课时类别代码">
-          <columns>
-            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
-            <column name="category" type="integer" nullable="false" comment="课时分类"/>
-            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
-            <column name="en_name" type="varchar(300)" comment="英文名称"/>
-            <column name="end_on" type="date" comment="失效日期"/>
-            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
-            <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
-          </columns>
-          <primary-key name="pk_h1w52aw7t5tn23swgmmr7xupd" columns="id"/>
-        </table>
         <table name="course_hours" comment="课程分类课时信息">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程ID"/>
             <column name="credit_hours" type="integer" nullable="false" comment="学时/总课时"/>
-            <column name="hour_type_id" type="integer" nullable="false" comment="课时类别代码ID"/>
+            <column name="teaching_nature_id" type="integer" nullable="false" comment="授课性质ID"/>
             <column name="weeks" type="integer" nullable="false" comment="周数"/>
           </columns>
           <primary-key name="pk_euy5bifeg4jalgolkkxa21w3f" columns="id"/>
           <foreign-keys>
+            <foreign-key name="fk_6fgjynu3lq7x6d6kuq7mmev2j" column="teaching_nature_id"
+                         referenced-table="code.teaching_natures" referenced-column="id"/>
             <foreign-key name="fk_26355d0ox80bmneebjuhwfpi8" column="course_id" referenced-table="base.courses"
                          referenced-column="id"/>
-            <foreign-key name="fk_8p6oh1hfvpq4wl1yb32vglslv" column="hour_type_id"
-                         referenced-table="base.course_hour_types" referenced-column="id"/>
           </foreign-keys>
           <indexes>
             <index name="idx_cio9wl9gex7fo85575w4112c4" columns="course_id"/>
@@ -293,7 +279,7 @@
             <column name="exam_mode_id" type="integer" nullable="false" comment="考试方式ID"/>
             <column name="has_makeup" type="boolean" nullable="false" comment="是否有补考"/>
             <column name="name" type="varchar(222)" nullable="false" comment="课程名称"/>
-            <column name="practical" type="boolean" nullable="false" comment="是否实践课"/>
+            <column name="nature_id" type="integer" nullable="false" comment="课程性质ID"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(500)" comment="课程备注"/>
             <column name="teaching_group_id" type="bigint" comment="教研室ID"/>
@@ -312,6 +298,8 @@
             <foreign-key name="fk_ookm209qceyacbwgkhs83iubj" column="exam_mode_id" referenced-table="code.exam_modes"
                          referenced-column="id"/>
             <foreign-key name="fk_sv2mdywju86wq12x4did4xd78" column="department_id" referenced-table="base.departments"
+                         referenced-column="id"/>
+            <foreign-key name="fk_6iin27c8tr78rl3ea1ybw0fai" column="nature_id" referenced-table="code.course_natures"
                          referenced-column="id"/>
             <foreign-key name="fk_lrqjut8xtbtgs6h7uosddyut7" column="category_id"
                          referenced-table="base.course_categories" referenced-column="id"/>
@@ -1159,6 +1147,7 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="parttime" type="boolean" nullable="false" comment="是否兼职"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="retired" type="boolean" nullable="false" comment="是否退休返聘"/>
             <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
           </columns>
           <primary-key name="pk_rolhqr5isrcgg7ssk3jtlx3cl" columns="id"/>
@@ -1168,14 +1157,12 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
             <column name="degree_id" type="integer" comment="学位ID"/>
-            <column name="depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
+            <column name="department_id" type="integer" nullable="false" comment="所在部门ID"/>
             <column name="education_degree_id" type="integer" comment="学历(文化程度)ID"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="formal_hr" type="boolean" nullable="false" comment="是否在编"/>
-            <column name="parttime" type="boolean" nullable="false" comment="是否兼职"/>
             <column name="person_id" type="bigint" comment="人员信息ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="retired" type="boolean" nullable="false" comment="是否退休返聘"/>
             <column name="school_id" type="integer" nullable="false" comment="学校信息ID"/>
             <column name="status_id" type="integer" nullable="false" comment="在职状态ID"/>
             <column name="teacher_type_id" type="integer" nullable="false" comment="教师类型ID"/>
@@ -1197,7 +1184,7 @@
                          referenced-column="id"/>
             <foreign-key name="fk_nuqy5yvj4u3uw5r7d4u78x9tl" column="education_degree_id"
                          referenced-table="code.education_degrees" referenced-column="id"/>
-            <foreign-key name="fk_66bgaf2haj7wrne27r25ywhe3" column="depart_id" referenced-table="base.departments"
+            <foreign-key name="fk_rgr03njnvpwuktc0mntf8t6o0" column="department_id" referenced-table="base.departments"
                          referenced-column="id"/>
             <foreign-key name="fk_b8dct7w2j1vl1r2bpstw5isc0" column="user_id" referenced-table="base.users"
                          referenced-column="id"/>
@@ -1497,6 +1484,20 @@
             <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
           </columns>
           <primary-key name="pk_d8ehdli05dbs8aiu5yxq6ek0a" columns="id"/>
+        </table>
+        <table name="course_natures" comment="课程性质">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="practical" type="boolean" nullable="false" comment="是否实践课"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
+          </columns>
+          <primary-key name="pk_qmyas7mib2hjnqnj6ogbi2n7p" columns="id"/>
         </table>
         <table name="course_take_types" comment="修读类别">
           <columns>
@@ -2396,6 +2397,33 @@
           </columns>
           <primary-key name="pk_r34pug3nqijvuda05m4ok825n" columns="id"/>
         </table>
+        <table name="teaching_methods" comment="授课方式">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
+          </columns>
+          <primary-key name="pk_s2ob7rrxiu3hwv3dgtwvik47a" columns="id"/>
+        </table>
+        <table name="teaching_natures" comment="授课性质">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="category" type="integer" nullable="false" comment="授课性质大类"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
+          </columns>
+          <primary-key name="pk_iidoc1hu3mfla79sh3ys7xr3c" columns="id"/>
+        </table>
         <table name="tutor_types" comment="导师类别">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
@@ -2929,9 +2957,9 @@
             <column name="election_mode_id" type="integer" nullable="false" comment="选课方式ID"/>
             <column name="free_listening" type="boolean" nullable="false" comment="是否免听"/>
             <column name="remark" type="varchar(100)" comment="备注"/>
-            <column name="restriction_id" type="bigint" comment="课程限制条件组ID"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
             <column name="take_type_id" type="integer" nullable="false" comment="修读类别ID"/>
             <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
           </columns>
@@ -2943,7 +2971,7 @@
                          referenced-table="code.election_modes" referenced-column="id"/>
             <foreign-key name="fk_iplpgafup80l8ddb9mplrvffg" column="take_type_id"
                          referenced-table="code.course_take_types" referenced-column="id"/>
-            <foreign-key name="fk_qqaj89m3thotceid7iwvyqobq" column="restriction_id" referenced-table="edu.restrictions"
+            <foreign-key name="fk_ii8593nh0tmctkdi6uyirunhh" column="subclazz_id" referenced-table="edu.subclazzes"
                          referenced-column="id"/>
             <foreign-key name="fk_cixduaqxt9wljpewc8b6vlm5y" column="course_id" referenced-table="base.courses"
                          referenced-column="id"/>
@@ -3765,81 +3793,23 @@
             <index name="idx_2awmtgmlcsgq6pncrafck1dbh" columns="exam_room_id"/>
           </indexes>
         </table>
-        <table name="lecture_plans" comment="授课计划">
+        <table name="lessons" comment="授课内容">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="audit_at" type="timestamp" comment="审核时间"/>
-            <column name="auditor_id" type="bigint" comment="通用人员信息ID"/>
-            <column name="author_id" type="bigint" nullable="false" comment="作者ID"/>
-            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="doc_locale" type="varchar(255)" nullable="false" comment="语言"/>
-            <column name="file_path" type="varchar(255)" nullable="false" comment="附件关键字"/>
-            <column name="file_size" type="integer" nullable="false" comment="大小"/>
-            <column name="mime_type" type="varchar(255)" nullable="false" comment="文件类型"/>
-            <column name="passed" type="boolean" comment="是否通过"/>
-            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
-            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
-          </columns>
-          <primary-key name="pk_rjov1310497gksuc7oc81c049" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_ibwu96s6gfo5qrp0f4wk0cv7q" column="author_id" referenced-table="base.users"
-                         referenced-column="id"/>
-            <foreign-key name="fk_hmndbam10dbsi897ewlwbtk4j" column="auditor_id" referenced-table="base.users"
-                         referenced-column="id"/>
-            <foreign-key name="fk_kbbqccvtkip60v5kd2gasue70" column="semester_id" referenced-table="base.semesters"
-                         referenced-column="id"/>
-            <foreign-key name="fk_5b2106dftl156o7dtjnv8ihx4" column="clazz_id" referenced-table="edu.clazzes"
-                         referenced-column="id"/>
-          </foreign-keys>
-        </table>
-        <table name="lessons" comment="教学进度">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
-            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="contents" type="varchar(255)" nullable="false" comment="具体内容"/>
-            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
-            <column name="open_on" type="date" nullable="false" comment="上课日期"/>
+            <column name="contents" type="varchar(500)" nullable="false" comment="内容"/>
+            <column name="idx" type="integer" nullable="false" comment="序号"/>
+            <column name="plan_id" type="bigint" nullable="false" comment="授课计划ID"/>
+            <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
           </columns>
           <primary-key name="pk_fha0ldq8mchqk0d5t5xy64chj" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_pg6osxgk97mpwn864tkq5xhxv" column="clazz_id" referenced-table="edu.clazzes"
+            <foreign-key name="fk_g2wovhpgbf5lnlppmoo6cr0p1" column="subclazz_id" referenced-table="edu.subclazzes"
+                         referenced-column="id"/>
+            <foreign-key name="fk_jmkpox7ul0xc3ca07ul79taqn" column="plan_id" referenced-table="edu.teaching_plans"
                          referenced-column="id"/>
           </foreign-keys>
           <indexes>
-            <index name="idx_t5i75g36sonrbk0w7j22u885o" columns="clazz_id"/>
-          </indexes>
-        </table>
-        <table name="lessons_rooms" comment="教室列表">
-          <columns>
-            <column name="classroom_id" type="bigint" nullable="false" comment="教室ID"/>
-            <column name="lesson_id" type="bigint" nullable="false" comment="教学进度ID"/>
-          </columns>
-          <primary-key name="pk_5wsidq7pwfg59ygpf47nl1qu6" columns="lesson_id,classroom_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_mr17ypyjgprux7h9g7wmevlwe" column="lesson_id" referenced-table="edu.lessons"
-                         referenced-column="id"/>
-            <foreign-key name="fk_fm5lgj3urc874n3kl0rrym2je" column="classroom_id" referenced-table="base.classrooms"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_inlritlkt48apx8ejj1oa4xsp" columns="lesson_id"/>
-          </indexes>
-        </table>
-        <table name="lessons_teachers" comment="授课教师列表">
-          <columns>
-            <column name="lesson_id" type="bigint" nullable="false" comment="教学进度ID"/>
-            <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
-          </columns>
-          <primary-key name="pk_ole01ul2yg29w7shhjcf6rkh0" columns="lesson_id,teacher_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_bt06178c4t8fahu5hwce1j80v" column="lesson_id" referenced-table="edu.lessons"
-                         referenced-column="id"/>
-            <foreign-key name="fk_ncqrcxq1s30byb4ic0u35mchx" column="teacher_id" referenced-table="base.teachers"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_6dfrp3fwx1fst4j0686ofjsuc" columns="lesson_id"/>
+            <index name="idx_m85fsqiyr7ldosv7uwt9atr7x" columns="plan_id"/>
           </indexes>
         </table>
         <table name="major_alt_courses" comment="专业替代课程">
@@ -4404,12 +4374,21 @@
             <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
-            <column name="remark" type="varchar(200)" comment="排课备注"/>
+            <column name="places" type="varchar(200)" comment="授课场所"/>
             <column name="start_on" type="date" nullable="false" comment="开始日期"/>
+            <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
+            <column name="teaching_method_id" type="integer" nullable="false" comment="授课方式ID"/>
+            <column name="teaching_nature_id" type="integer" nullable="false" comment="授课性质ID"/>
             <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
           </columns>
           <primary-key name="pk_2k2jgch7v1cadr2171w0tlckn" columns="id"/>
           <foreign-keys>
+            <foreign-key name="fk_indcesiu4vvyo0hl7s7cjairm" column="teaching_nature_id"
+                         referenced-table="code.teaching_natures" referenced-column="id"/>
+            <foreign-key name="fk_8mqwc7w2ppe535m8gp6exba08" column="subclazz_id" referenced-table="edu.subclazzes"
+                         referenced-column="id"/>
+            <foreign-key name="fk_cp0hb230utgrxs71b1w1e9aag" column="teaching_method_id"
+                         referenced-table="code.teaching_methods" referenced-column="id"/>
             <foreign-key name="fk_ovyeue5h9l3fh9y79ioa2wd4p" column="clazz_id" referenced-table="edu.clazzes"
                          referenced-column="id"/>
           </foreign-keys>
@@ -4773,6 +4752,23 @@
             <index name="idx_k2it4d6hlqi69f22ht73l2ogb" columns="std_gpa_id"/>
           </indexes>
         </table>
+        <table name="subclazzes" comment="教学任务小班">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="cur_count" type="integer" nullable="false" comment="当前人数"/>
+            <column name="max_count" type="integer" nullable="false" comment="最大人数"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+          </columns>
+          <primary-key name="pk_r86ec4dvfg6l28xam7g5sunpt" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_3tm1bdhpjqhmki0l2vefj0fwu" column="clazz_id" referenced-table="edu.clazzes"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_4kc8i1iwg3dcxgp93s9lcfui9" columns="clazz_id"/>
+          </indexes>
+        </table>
         <table name="syllabus_files" comment="教学大纲附件">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -4819,6 +4815,33 @@
             <foreign-key name="fk_2lrbxwrdxyj55yagxtdk27ue7" column="semester_id" referenced-table="base.semesters"
                          referenced-column="id"/>
             <foreign-key name="fk_bcjr4d78cmwxtof1akent1apw" column="department_id" referenced-table="base.departments"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="teaching_plans" comment="授课计划">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="audit_at" type="timestamp" comment="审核时间"/>
+            <column name="auditor_id" type="bigint" comment="通用人员信息ID"/>
+            <column name="author_id" type="bigint" comment="作者ID"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="doc_locale" type="varchar(255)" nullable="false" comment="语言"/>
+            <column name="file_path" type="varchar(255)" comment="附件关键字"/>
+            <column name="file_size" type="integer" nullable="false" comment="大小"/>
+            <column name="mime_type" type="varchar(255)" comment="文件类型"/>
+            <column name="passed" type="boolean" comment="是否通过"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_fr5ve3vinn52vwsit7lgqxsjv" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_iklp3u2r0hc38e56s59bawluy" column="author_id" referenced-table="base.users"
+                         referenced-column="id"/>
+            <foreign-key name="fk_26eyd9thbf00mjb1sgj7x0nt1" column="auditor_id" referenced-table="base.users"
+                         referenced-column="id"/>
+            <foreign-key name="fk_51jus0fb5hkuccn9cmphw7qfc" column="semester_id" referenced-table="base.semesters"
+                         referenced-column="id"/>
+            <foreign-key name="fk_e7pk36r8xs8n2ykaylkh2le4x" column="clazz_id" referenced-table="edu.clazzes"
                          referenced-column="id"/>
           </foreign-keys>
         </table>

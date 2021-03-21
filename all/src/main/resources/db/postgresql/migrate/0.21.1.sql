@@ -1,3 +1,6 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.21.1',now(),'调整辅修、增加教师任教院系');
+
 drop table std.minor_schools cascade;
 alter table std.minors rename column major_catalog_id to major_category_id;
 alter table std.minors drop constraint fk_muu7y8ts33ny1fsshso4pkkrc cascade;

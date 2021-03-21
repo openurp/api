@@ -64,12 +64,6 @@ class Teacher extends LongId with Updated with TemporalOn with Remark {
   /** 最高学位 */
   var degree: Option[Degree] = None
 
-  /** 是否兼职 */
-  var parttime: Boolean = _
-
-  /** 是否退休返聘 */
-  var retired: Boolean = _
-
   /** 是否在编 */
   var formalHr: Boolean = _
 

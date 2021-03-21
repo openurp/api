@@ -68,6 +68,7 @@ alter table edu_base.classrooms add constraint fk_p169e84csib3wbj8ipuh3omkg fore
 alter table edu_base.classrooms add constraint fk_stm3c7u1s7l0t42gywsldaani foreign key (school_id) references base.schools (id);
 alter table edu_base.classrooms drop constraint uk_odyfmsy18wrf9vl0xvhejepy8 cascade;
 
+create schema edu_room;
 create table edu_room.apply_depart_checks (id bigint not null, apply_id bigint not null, approved boolean not null, checked_at timestamp not null, checked_by_id bigint not null, opinions varchar(100));
 comment on table edu_room.apply_depart_checks is '归口审核';
 comment on column edu_room.apply_depart_checks.id is '非业务主键:datetime';
@@ -76,10 +77,11 @@ comment on column edu_room.apply_depart_checks.approved is '是否审核通过';
 comment on column edu_room.apply_depart_checks.checked_at is '审核时间';
 comment on column edu_room.apply_depart_checks.checked_by_id is '审核人ID';
 comment on column edu_room.apply_depart_checks.opinions is '具体意见';
+create table edu_room.room_applies (id bigint not null, activity_name varchar(255) not null, activity_type_id integer not null, applicant varchar(255) not null, apply_at timestamp not null, apply_by_id bigint not null, approved boolean, attendance varchar(255) not null, attendance_num integer not null, begin_on date not null, campus_id integer not null, depart_check_id bigint, department_id integer not null, email varchar(255), end_on date not null, final_check_id bigint, minutes integer not null, mobile varchar(255) not null, require_multimedia boolean not null, room_comment varchar(255), school_id integer not null, speaker varchar(255) not null, time_comment varchar(255), unit_attendance integer not null);
+
 alter table edu_room.apply_depart_checks add constraint pk_6w1n3ng89llvco6c5gwu8js1d primary key (id);
 alter table edu_room.apply_depart_checks add constraint fk_5rqqkq7gslufl9irv3flcdomg foreign key (apply_id) references edu_room.room_applies (id);
 alter table edu_room.apply_depart_checks add constraint fk_6kai721b7f77w1syw0l85d1w6 foreign key (checked_by_id) references base.users (id);
-create table edu_room.room_applies (id bigint not null, activity_name varchar(255) not null, activity_type_id integer not null, applicant varchar(255) not null, apply_at timestamp not null, apply_by_id bigint not null, approved boolean, attendance varchar(255) not null, attendance_num integer not null, begin_on date not null, campus_id integer not null, depart_check_id bigint, department_id integer not null, email varchar(255), end_on date not null, final_check_id bigint, minutes integer not null, mobile varchar(255) not null, require_multimedia boolean not null, room_comment varchar(255), school_id integer not null, speaker varchar(255) not null, time_comment varchar(255), unit_attendance integer not null);
 comment on table edu_room.room_applies is '教室借用';
 comment on column edu_room.room_applies.id is '非业务主键:datetime';
 comment on column edu_room.room_applies.activity_name is '活动名称';
@@ -153,9 +155,13 @@ create index idx_oaii80w561p28ji3r86pv8djo on edu_room.room_applies_times (room_
 alter table edu_room.room_applies_times add constraint fk_qpapnbbq74r8lwfljrwobal9j foreign key (room_apply_id) references edu_room.room_applies (id);
 
 --occupancies-----------
+alter table lg_room.occupancies set schema edu_room;
 alter table edu_room.occupancies alter room_id type bigint;
 update edu_room.occupancies o set room_id=(select r.id from edu_base.classrooms r where r.room_id=o.room_id);
 alter table edu_base.classrooms drop room_id cascade;
+
+
+select * from edu_room.occupancies o where not exists(select r.id from edu_base.classrooms r where r.room_id=o.room_id);
 
 alter table edu_room.occupancies drop constraint fk_5tyfmv9xpwuh3qmtskpy62ah cascade;
 alter table edu_room.occupancies add constraint fk_cxcnxdgl2tss3ved9eqe00oq9 foreign key (room_id) references edu_base.classrooms (id);

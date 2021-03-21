@@ -211,8 +211,6 @@ Teacher.user=用户
 Teacher.title=职称
 Teacher.status=在职状态
 Teacher.remark=备注
-Teacher.parttime=是否兼职
-Teacher.retired=是否退休返聘
 Teacher.formalHr=是否在编
 
 Calendar=日历方案
