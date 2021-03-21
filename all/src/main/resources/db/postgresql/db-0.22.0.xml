@@ -3236,6 +3236,7 @@
             <column name="exam_week" type="smallint" comment="考试周"/>
             <column name="group_id" type="bigint" comment="考试组ID"/>
             <column name="max_course_conflict_ratio" type="float4" comment="最大上课冲突比例"/>
+            <column name="min_exam_on" type="date" comment="最早考试日期"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="room_group_id" type="bigint" comment="教室组ID"/>
@@ -3796,13 +3797,24 @@
         <table name="lessons" comment="授课内容">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
             <column name="contents" type="varchar(500)" nullable="false" comment="内容"/>
+            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="idx" type="integer" nullable="false" comment="序号"/>
+            <column name="open_on" type="date" nullable="false" comment="开课日期"/>
+            <column name="places" type="varchar(255)" comment="授课地点"/>
             <column name="plan_id" type="bigint" nullable="false" comment="授课计划ID"/>
             <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
+            <column name="teaching_method_id" type="integer" nullable="false" comment="授课方式ID"/>
+            <column name="teaching_nature_id" type="integer" nullable="false" comment="授课性质ID"/>
+            <column name="units" type="varchar(255)" nullable="false" comment="开课节次"/>
           </columns>
           <primary-key name="pk_fha0ldq8mchqk0d5t5xy64chj" columns="id"/>
           <foreign-keys>
+            <foreign-key name="fk_8ba4lgors04pd9wlcs45xu6j5" column="teaching_method_id"
+                         referenced-table="code.teaching_methods" referenced-column="id"/>
+            <foreign-key name="fk_kjl9o0q4asnk88xx8b7oj1b50" column="teaching_nature_id"
+                         referenced-table="code.teaching_natures" referenced-column="id"/>
             <foreign-key name="fk_g2wovhpgbf5lnlppmoo6cr0p1" column="subclazz_id" referenced-table="edu.subclazzes"
                          referenced-column="id"/>
             <foreign-key name="fk_jmkpox7ul0xc3ca07ul79taqn" column="plan_id" referenced-table="edu.teaching_plans"
@@ -3810,6 +3822,38 @@
           </foreign-keys>
           <indexes>
             <index name="idx_m85fsqiyr7ldosv7uwt9atr7x" columns="plan_id"/>
+          </indexes>
+        </table>
+        <table name="lessons_rooms" comment="教室列表">
+          <columns>
+            <column name="classroom_id" type="bigint" nullable="false" comment="教室ID"/>
+            <column name="lesson_id" type="bigint" nullable="false" comment="授课内容ID"/>
+          </columns>
+          <primary-key name="pk_5wsidq7pwfg59ygpf47nl1qu6" columns="lesson_id,classroom_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_mr17ypyjgprux7h9g7wmevlwe" column="lesson_id" referenced-table="edu.lessons"
+                         referenced-column="id"/>
+            <foreign-key name="fk_fm5lgj3urc874n3kl0rrym2je" column="classroom_id" referenced-table="base.classrooms"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_inlritlkt48apx8ejj1oa4xsp" columns="lesson_id"/>
+          </indexes>
+        </table>
+        <table name="lessons_teachers" comment="授课教师列表">
+          <columns>
+            <column name="lesson_id" type="bigint" nullable="false" comment="授课内容ID"/>
+            <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
+          </columns>
+          <primary-key name="pk_ole01ul2yg29w7shhjcf6rkh0" columns="lesson_id,teacher_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_bt06178c4t8fahu5hwce1j80v" column="lesson_id" referenced-table="edu.lessons"
+                         referenced-column="id"/>
+            <foreign-key name="fk_ncqrcxq1s30byb4ic0u35mchx" column="teacher_id" referenced-table="base.teachers"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_6dfrp3fwx1fst4j0686ofjsuc" columns="lesson_id"/>
           </indexes>
         </table>
         <table name="major_alt_courses" comment="专业替代课程">
@@ -4258,6 +4302,7 @@
             <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
             <column name="min_capacity" type="integer" nullable="false" comment="最小容量"/>
             <column name="min_occupy_ratio" type="float4" nullable="false" comment="最低占用率"/>
+            <column name="min_std_exam_interval" type="integer" nullable="false" comment="学生连续考试最小间隔"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
           </columns>

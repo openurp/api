@@ -86,7 +86,8 @@ create index idx_hxngncdxsqws8idke1p2m3ood on edu.invigilation_quota_details (qu
 create index idx_t403dhky0rxdpfyt54q7rq0kq on edu.invigilation_quotas_excludes (invigilation_quota_id);
 create index idx_2awmtgmlcsgq6pncrafck1dbh on edu.invigilations (exam_room_id);
 create index idx_m85fsqiyr7ldosv7uwt9atr7x on edu.lessons (plan_id);
-create index idx_6e92qjperogib19w2i9meaxij on edu.lessons_subclazzes (lesson_id);
+create index idx_inlritlkt48apx8ejj1oa4xsp on edu.lessons_rooms (lesson_id);
+create index idx_6dfrp3fwx1fst4j0686ofjsuc on edu.lessons_teachers (lesson_id);
 create index idx_8s5d0wiirdi101qp238i6ovru on edu.major_alt_courses (project_id);
 create index idx_4hvjp5b9sm4mb3gn32sdn86ch on edu.major_alt_courses_news (major_alternative_course_id);
 create index idx_2v1a5cnldp9ct2bepe4510lry on edu.major_alt_courses_olds (major_alternative_course_id);
@@ -109,7 +110,6 @@ create index idx_oaii80w561p28ji3r86pv8djo on edu.room_applies_times (room_apply
 create index idx_rro6eceumvyke0kyrl9ejsd1d on edu.room_groups_rooms (room_group_id);
 create index idx_epu4ne61rru6f5udqshomhdwx on edu.sessions (clazz_id);
 create index idx_8x2cffwmuo8bbpdljfnv5sxna on edu.sessions_rooms (session_id);
-create index idx_9xsu541qfjylxl921v9lelljq on edu.sessions_subclazzes (session_id);
 create index idx_m8omy8lyt0n0jerbb2fk6he47 on edu.sessions_teachers (session_id);
 create index idx_127cshdpus15xol454uaojjfe on edu.share_course_groups (parent_id);
 create index idx_dsgghmsmfesuqdn7ct736a6re on edu.share_course_groups (plan_id);

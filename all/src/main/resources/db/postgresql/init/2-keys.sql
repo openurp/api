@@ -224,7 +224,8 @@ alter table edu.invigilation_quotas add constraint uk_h35ysb0b74pj8foxdpfxvy0sv 
 alter table edu.invigilation_quotas_excludes add constraint pk_i04mllgl8dh4whufiq0sw5smj primary key (invigilation_quota_id,exclude_on);
 alter table edu.invigilations add constraint pk_bg0m2o403b43vb9mkg3noo1td primary key (id);
 alter table edu.lessons add constraint pk_fha0ldq8mchqk0d5t5xy64chj primary key (id);
-alter table edu.lessons_subclazzes add constraint pk_4inavltnrokrnpk22cwbnafrl primary key (lesson_id,subclazz_id);
+alter table edu.lessons_rooms add constraint pk_5wsidq7pwfg59ygpf47nl1qu6 primary key (lesson_id,classroom_id);
+alter table edu.lessons_teachers add constraint pk_ole01ul2yg29w7shhjcf6rkh0 primary key (lesson_id,teacher_id);
 alter table edu.major_alt_courses add constraint pk_scvgmvao9tsvfcm1whcnxvu3b primary key (id);
 alter table edu.major_alt_courses_news add constraint pk_q055pvumg14plkk3p3dyb4v5o primary key (major_alternative_course_id,course_id);
 alter table edu.major_alt_courses_olds add constraint pk_tfl42phv9abi60dnauh3cgtx5 primary key (major_alternative_course_id,course_id);
@@ -255,7 +256,6 @@ alter table edu.room_groups_rooms add constraint pk_8leerr9erf9chjn7yl4vs8xd0 pr
 alter table edu.room_occupy_apps add constraint pk_jhnnof3gdp1q99769e6htdi2x primary key (id);
 alter table edu.sessions add constraint pk_2k2jgch7v1cadr2171w0tlckn primary key (id);
 alter table edu.sessions_rooms add constraint pk_80wtvj2a6k7h396j14q81wg78 primary key (session_id,classroom_id);
-alter table edu.sessions_subclazzes add constraint pk_npcmi47jieumrgu3g7us7lry1 primary key (session_id,subclazz_id);
 alter table edu.sessions_teachers add constraint pk_rsvgf6p9cggfgylwx7nsj7cuo primary key (session_id,teacher_id);
 alter table edu.share_course_groups add constraint pk_45hb6362voxm23n8sxy3fgo3b primary key (id);
 alter table edu.share_plan_courses add constraint pk_d5aukjiewdmk6smt3dwg7s8cq primary key (id);
