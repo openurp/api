@@ -81,18 +81,12 @@ alter table edu.course_takers add constraint fk_ii8593nh0tmctkdi6uyirunhh foreig
 alter table edu.lecture_plan rename to teaching_plans;
 create table edu.teaching_plans (semester_id integer not null, author_id bigint, updated_at timestamp not null, clazz_id bigint not null, audit_at timestamp, passed boolean, doc_locale varchar(255) not null, mime_type varchar(255), id bigint not null, file_path varchar(255), auditor_id bigint, file_size integer not null);
 
-drop table edu.lessons_teachers cascade;
-drop table edu.lessons_rooms cascade;
 comment on table edu.lessons is '授课内容';
-alter table edu.lessons drop begin_at cascade;
-alter table edu.lessons drop open_on cascade;
-alter table edu.lessons drop end_at cascade;
 alter table edu.lessons add column idx integer;
 alter table edu.lessons alter idx set not null;
 
 alter table edu.lessons add column subclazz_id bigint;
 alter table edu.lessons add constraint fk_g2wovhpgbf5lnlppmoo6cr0p1 foreign key (subclazz_id) references edu.subclazzes (id);
-
 alter table edu.lessons add constraint fk_jmkpox7ul0xc3ca07ul79taqn foreign key (plan_id) references edu.teaching_plans (id);
 drop index edu.idx_t5i75g36sonrbk0w7j22u885o;
 create index idx_m85fsqiyr7ldosv7uwt9atr7x on edu.lessons (plan_id);
@@ -113,3 +107,7 @@ alter table base.teachers drop parttime cascade;
 alter table base.teachers drop retired cascade;
 alter table base.teacher_types add column retired boolean default false;
 alter table base.teacher_types alter retired set not null;
+
+---exam---------------
+alter table edu.exam_tasks add min_exam_on date;
+alter table edu.room_alloc_settings add min_std_exam_interval integer default 1;
