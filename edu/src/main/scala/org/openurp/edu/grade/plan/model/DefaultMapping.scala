@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.grade.plan.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
@@ -36,6 +36,7 @@ class DefaultMapping extends MappingModule {
       e.groupResults is depends("planResult")
       e.remark is length(100)
       e.updates is length(500)
+      index("", true, e.std)
     }
   }
 

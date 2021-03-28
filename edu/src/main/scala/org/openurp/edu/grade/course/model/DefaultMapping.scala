@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.grade.course.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
@@ -32,7 +32,7 @@ class DefaultMapping extends MappingModule {
       e.remark is length(200)
       e.examGrades & e.gaGrades are depends("courseGrade")
 
-      index("", true, e.std, e.course, e.semester)
+      index("", true, e.std, e.course, e.semester, e.crn)
       index("", false, e.std)
       index("", false, e.clazz)
       index("", false, e.project)
