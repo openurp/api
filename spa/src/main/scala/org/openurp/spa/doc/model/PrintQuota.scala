@@ -46,7 +46,7 @@ class PrintQuota extends LongId {
   /** 最后打印时间 */
   var lastPrintAt: Instant = _
 
-  def this(user: User, docType: DocType) {
+  def this(user: User, docType: DocType) = {
     this()
     this.user = user
     this.docType = docType
