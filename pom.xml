@@ -20,6 +20,7 @@
     <module>prac</module>
     <module>hr</module>
     <module>qos</module>
+    <module>spa</module>
     <module>all</module>
   </modules>
 
