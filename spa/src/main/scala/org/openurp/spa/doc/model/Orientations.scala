@@ -16,28 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.plan.model
+package org.openurp.spa.doc.model
 
-import org.beangle.data.orm.MappingModule
+/** 打印方向
+ * Portrait 为纵向
+ * Landscape 为横向
+ */
+object Orientations extends Enumeration(1) {
 
-class DefaultMapping extends MappingModule {
-
-  def binding(): Unit = {
-    bind[CourseAuditResult].declare { e =>
-      e.scores is length(50)
-      e.remark is length(50)
-    }
-    bind[GroupAuditResult].declare { e =>
-      e.name is length(100)
-      e.children is depends("parent")
-      e.courseResults is depends("groupResult")
-    }
-    bind[PlanAuditResult].declare { e =>
-      e.groupResults is depends("planResult")
-      e.remark is length(100)
-      e.updates is length(500)
-      index("", true, e.std)
-    }
+  class Orientation extends super.Val {
   }
+
+  private def orientationValue: Orientation = {
+    new Orientation()
+  }
+
+  val Portrait, Landscape = orientationValue
 
 }

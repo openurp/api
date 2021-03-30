@@ -16,28 +16,39 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.plan.model
+package org.openurp.spa.doc.model
 
-import org.beangle.data.orm.MappingModule
+import java.time.Instant
 
-class DefaultMapping extends MappingModule {
+import org.beangle.data.model.LongId
+import org.openurp.base.model.User
 
-  def binding(): Unit = {
-    bind[CourseAuditResult].declare { e =>
-      e.scores is length(50)
-      e.remark is length(50)
-    }
-    bind[GroupAuditResult].declare { e =>
-      e.name is length(100)
-      e.children is depends("parent")
-      e.courseResults is depends("groupResult")
-    }
-    bind[PlanAuditResult].declare { e =>
-      e.groupResults is depends("planResult")
-      e.remark is length(100)
-      e.updates is length(500)
-      index("", true, e.std)
-    }
+/** 打印配额
+ *
+ */
+class PrintQuota extends LongId {
+
+  /** 学生 */
+  var user: User = _
+
+  /** 文档类型 */
+  var docType: DocType = _
+
+  /** 免支付打印张数 */
+  var freeCnt: Int = _
+
+  /** 打印张数 */
+  var printCnt: Int = _
+
+  /** 剩余免支付的张数 */
+  var frees: Int = _
+
+  /** 最后打印时间 */
+  var lastPrintAt: Instant = _
+
+  def this(user: User, docType: DocType) = {
+    this()
+    this.user = user
+    this.docType = docType
   }
-
 }

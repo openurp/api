@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orm>
+  <mapping class="org.openurp.spa.doc.model.DefaultMapping" />
+  <naming>
+    <profile package = "org.openurp.spa" pluralize="true" schema="spa"/>
+  </naming>
+</orm>

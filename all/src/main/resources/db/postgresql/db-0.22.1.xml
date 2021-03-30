@@ -2915,7 +2915,7 @@
                          referenced-column="id"/>
           </foreign-keys>
           <unique-keys>
-            <unique-key name="uk_3f0hiv52a3ohsy5aof6ye59jb" columns="std_id,course_id,semester_id"/>
+            <unique-key name="uk_xitxltysiibv3efvpe69hk1j" columns="std_id,course_id,semester_id,crn"/>
           </unique-keys>
           <indexes>
             <index name="idx_4sj9rxcj7k0w4n33ijoi43yfw" columns="std_id"/>
@@ -3035,6 +3035,7 @@
           </foreign-keys>
           <indexes>
             <index name="idx_qbiu7ds54rmfpxmjwnvwo8dal" columns="exam_activity_id"/>
+            <index name="idx_pjwqn6d874ljreci8v9elrxac" columns="exam_room_id"/>
           </indexes>
         </table>
         <table name="exam_grade_states" comment="考试成绩状态">
@@ -3167,22 +3168,6 @@
                          referenced-table="base.departments" referenced-column="id"/>
           </foreign-keys>
         </table>
-        <table name="exam_rooms_activities" comment="考试活动">
-          <columns>
-            <column name="exam_activity_id" type="bigint" nullable="false" comment="排考活动ID"/>
-            <column name="exam_room_id" type="bigint" nullable="false" comment="考场ID"/>
-          </columns>
-          <primary-key name="pk_1f28y4tux179hp6afhvb23p7a" columns="exam_room_id,exam_activity_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_pckitbvjue90qjp9fsw5yyocy" column="exam_room_id" referenced-table="edu.exam_rooms"
-                         referenced-column="id"/>
-            <foreign-key name="fk_ja902hy689v7ai89saref961r" column="exam_activity_id"
-                         referenced-table="edu.exam_activities" referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_pdwk4ip0w6d82jy0xiouegpaa" columns="exam_room_id"/>
-          </indexes>
-        </table>
         <table name="exam_takers" comment="应考学生">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -3236,6 +3221,7 @@
             <column name="exam_week" type="smallint" comment="考试周"/>
             <column name="group_id" type="bigint" comment="考试组ID"/>
             <column name="max_course_conflict_ratio" type="float4" comment="最大上课冲突比例"/>
+            <column name="min_exam_on" type="date" comment="最早考试日期"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="room_group_id" type="bigint" comment="教室组ID"/>
@@ -3796,13 +3782,24 @@
         <table name="lessons" comment="授课内容">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
             <column name="contents" type="varchar(500)" nullable="false" comment="内容"/>
+            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="idx" type="integer" nullable="false" comment="序号"/>
+            <column name="open_on" type="date" nullable="false" comment="开课日期"/>
+            <column name="places" type="varchar(255)" comment="授课地点"/>
             <column name="plan_id" type="bigint" nullable="false" comment="授课计划ID"/>
             <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
+            <column name="teaching_method_id" type="integer" nullable="false" comment="授课方式ID"/>
+            <column name="teaching_nature_id" type="integer" nullable="false" comment="授课性质ID"/>
+            <column name="units" type="varchar(255)" nullable="false" comment="开课节次"/>
           </columns>
           <primary-key name="pk_fha0ldq8mchqk0d5t5xy64chj" columns="id"/>
           <foreign-keys>
+            <foreign-key name="fk_8ba4lgors04pd9wlcs45xu6j5" column="teaching_method_id"
+                         referenced-table="code.teaching_methods" referenced-column="id"/>
+            <foreign-key name="fk_kjl9o0q4asnk88xx8b7oj1b50" column="teaching_nature_id"
+                         referenced-table="code.teaching_natures" referenced-column="id"/>
             <foreign-key name="fk_g2wovhpgbf5lnlppmoo6cr0p1" column="subclazz_id" referenced-table="edu.subclazzes"
                          referenced-column="id"/>
             <foreign-key name="fk_jmkpox7ul0xc3ca07ul79taqn" column="plan_id" referenced-table="edu.teaching_plans"
@@ -3810,6 +3807,38 @@
           </foreign-keys>
           <indexes>
             <index name="idx_m85fsqiyr7ldosv7uwt9atr7x" columns="plan_id"/>
+          </indexes>
+        </table>
+        <table name="lessons_rooms" comment="教室列表">
+          <columns>
+            <column name="classroom_id" type="bigint" nullable="false" comment="教室ID"/>
+            <column name="lesson_id" type="bigint" nullable="false" comment="授课内容ID"/>
+          </columns>
+          <primary-key name="pk_5wsidq7pwfg59ygpf47nl1qu6" columns="lesson_id,classroom_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_mr17ypyjgprux7h9g7wmevlwe" column="lesson_id" referenced-table="edu.lessons"
+                         referenced-column="id"/>
+            <foreign-key name="fk_fm5lgj3urc874n3kl0rrym2je" column="classroom_id" referenced-table="base.classrooms"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_inlritlkt48apx8ejj1oa4xsp" columns="lesson_id"/>
+          </indexes>
+        </table>
+        <table name="lessons_teachers" comment="授课教师列表">
+          <columns>
+            <column name="lesson_id" type="bigint" nullable="false" comment="授课内容ID"/>
+            <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
+          </columns>
+          <primary-key name="pk_ole01ul2yg29w7shhjcf6rkh0" columns="lesson_id,teacher_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_bt06178c4t8fahu5hwce1j80v" column="lesson_id" referenced-table="edu.lessons"
+                         referenced-column="id"/>
+            <foreign-key name="fk_ncqrcxq1s30byb4ic0u35mchx" column="teacher_id" referenced-table="base.teachers"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_6dfrp3fwx1fst4j0686ofjsuc" columns="lesson_id"/>
           </indexes>
         </table>
         <table name="major_alt_courses" comment="专业替代课程">
@@ -4076,6 +4105,9 @@
             <foreign-key name="fk_jjhbginptypwctydw552dlcoi" column="std_id" referenced-table="base.students"
                          referenced-column="id"/>
           </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_f6f86yl0ja9p2dveh9syviq2x" columns="std_id"/>
+          </unique-keys>
         </table>
         <table name="program_doc_metas" comment="培养方案章节定义">
           <columns>
@@ -4258,6 +4290,7 @@
             <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
             <column name="min_capacity" type="integer" nullable="false" comment="最小容量"/>
             <column name="min_occupy_ratio" type="float4" nullable="false" comment="最低占用率"/>
+            <column name="min_std_exam_interval" type="integer" nullable="false" comment="学生连续考试最小间隔"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
           </columns>
@@ -6187,6 +6220,110 @@
             <foreign-key name="fk_24htvvhar3ls9qfbcp8x1w3ti" column="student_id" referenced-table="base.students"
                          referenced-column="id"/>
             <foreign-key name="fk_60dajton9avok0j68r06ai7ct" column="clazz_id" referenced-table="edu.clazzes"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+      </tables>
+    </schema>
+    <schema name="spa">
+      <tables>
+        <table name="coupons" comment="优惠券">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
+            <column name="count_per_std" type="integer" nullable="false" comment="每个人可以领取的数量"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="end_on" type="date" nullable="false" comment="结束日期"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_4p4li8m16qqtm8iqytn92aynw" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_dvlhphsv2cv8mgqcp1ig2qhpk" column="doc_type_id" referenced-table="spa.doc_types"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="doc_types" comment="文档类型">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="admin_url" type="varchar(255)" comment="管理人员打印地址"/>
+            <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
+            <column name="downloadable" type="boolean" nullable="false" comment="可下载的"/>
+            <column name="enable_user_password" type="boolean" nullable="false" comment="下载时是否启用用户密码"/>
+            <column name="enabled" type="boolean" nullable="false" comment="是否启用"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="notice" type="varchar(3000)" comment="通知公告"/>
+            <column name="orientation" type="integer" nullable="false" comment="纵向还是横向，默认纵向"/>
+            <column name="page_size" type="integer" nullable="false" comment="纸张大小"/>
+            <column name="url" type="varchar(255)" nullable="false" comment="访问地址"/>
+          </columns>
+          <primary-key name="pk_reovb49wcxk7g4dw0nofo785q" columns="id"/>
+        </table>
+        <table name="download_logs" comment="下载流水">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+            <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
+          </columns>
+          <primary-key name="pk_hwtugxgk0i1ws7vpqbbxvgyji" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_asbpf8hyeevmvq5gt69e4qxga" column="doc_type_id" referenced-table="spa.doc_types"
+                         referenced-column="id"/>
+            <foreign-key name="fk_pb9q5n7nqos1x5mit2q4j3nkn" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="print_configs" comment="打印配置">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="max_limit" type="integer" nullable="false" comment="最多打印次数"/>
+            <column name="price" type="integer" nullable="false" comment="单价，以分为单位，免费设置为0"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_bfngxr4ih2js7aiimmsw54x58" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_bm71oljg3facffojpmm860c5o" column="doc_type_id" referenced-table="spa.doc_types"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="print_logs" comment="打印流水">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
+            <column name="payed" type="integer" nullable="false" comment="支付费用"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+            <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
+          </columns>
+          <primary-key name="pk_gfrtd5snmjnuhycreal5usna7" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_9me6jfaceqlx2dpcvj140f3bl" column="doc_type_id" referenced-table="spa.doc_types"
+                         referenced-column="id"/>
+            <foreign-key name="fk_pbyh6ebfspjubwvkvv8ie12u" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="print_quotas" comment="打印配额">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="free_cnt" type="integer" nullable="false" comment="免支付打印张数"/>
+            <column name="frees" type="integer" nullable="false" comment="剩余免支付的张数"/>
+            <column name="last_print_at" type="timestamp" nullable="false" comment="最后打印时间"/>
+            <column name="print_cnt" type="integer" nullable="false" comment="打印张数"/>
+            <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
+          </columns>
+          <primary-key name="pk_st8emevheay237gju9wkv7y2p" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_qb1ycc3kdgt2on7ej8i8cqm2l" column="doc_type_id" referenced-table="spa.doc_types"
+                         referenced-column="id"/>
+            <foreign-key name="fk_j5ah9jicykofscsccinruktmi" column="user_id" referenced-table="base.users"
                          referenced-column="id"/>
           </foreign-keys>
         </table>

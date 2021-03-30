@@ -16,28 +16,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.plan.model
+package org.openurp.spa.doc.model
 
-import org.beangle.data.orm.MappingModule
+import java.time.{Instant, ZoneId}
 
-class DefaultMapping extends MappingModule {
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{DateRange, Updated}
 
-  def binding(): Unit = {
-    bind[CourseAuditResult].declare { e =>
-      e.scores is length(50)
-      e.remark is length(50)
-    }
-    bind[GroupAuditResult].declare { e =>
-      e.name is length(100)
-      e.children is depends("parent")
-      e.courseResults is depends("groupResult")
-    }
-    bind[PlanAuditResult].declare { e =>
-      e.groupResults is depends("planResult")
-      e.remark is length(100)
-      e.updates is length(500)
-      index("", true, e.std)
-    }
+/**
+ * 优惠券
+ */
+class Coupon extends IntId with Updated with DateRange {
+
+  def validAt(updatedAt: Instant): Boolean = {
+    val updatedOn = updatedAt.atZone(ZoneId.systemDefault()).toLocalDate
+    !(updatedOn.isBefore(beginOn) || updatedOn.isAfter(endOn))
   }
+
+  /** 适合文档 */
+  var docType: DocType = _
+
+  /** 每个人可以领取的数量 */
+  var countPerStd: Int = _
 
 }

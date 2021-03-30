@@ -16,28 +16,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.plan.model
+package org.openurp.spa.doc.model
 
-import org.beangle.data.orm.MappingModule
+/**纸张大小
+ * 定义常规的纸张大小
+ */
+object PageSizes extends Enumeration(1) {
 
-class DefaultMapping extends MappingModule {
-
-  def binding(): Unit = {
-    bind[CourseAuditResult].declare { e =>
-      e.scores is length(50)
-      e.remark is length(50)
-    }
-    bind[GroupAuditResult].declare { e =>
-      e.name is length(100)
-      e.children is depends("parent")
-      e.courseResults is depends("groupResult")
-    }
-    bind[PlanAuditResult].declare { e =>
-      e.groupResults is depends("planResult")
-      e.remark is length(100)
-      e.updates is length(500)
-      index("", true, e.std)
-    }
+  class PageSize extends super.Val {
   }
 
+  private def pageSizeValue: PageSize = {
+    new PageSize()
+  }
+
+  val A1, A2, A3, A4, A5, A6, Letter = pageSizeValue
 }

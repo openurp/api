@@ -16,28 +16,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.plan.model
+package org.openurp.spa.doc.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[CourseAuditResult].declare { e =>
-      e.scores is length(50)
-      e.remark is length(50)
-    }
-    bind[GroupAuditResult].declare { e =>
-      e.name is length(100)
-      e.children is depends("parent")
-      e.courseResults is depends("groupResult")
-    }
-    bind[PlanAuditResult].declare { e =>
-      e.groupResults is depends("planResult")
-      e.remark is length(100)
-      e.updates is length(500)
-      index("", true, e.std)
-    }
-  }
+    defaultCache("openurp.spa", "read-write")
 
+    bind[DocType] declare { e =>
+      e.notice is length(3000)
+    }
+
+    bind[PrintConfig]
+    bind[PrintLog]
+    bind[PrintQuota]
+    bind[Coupon]
+
+    bind[DownloadLog]
+
+    all.except(classOf[PrintLog], classOf[PrintQuota], classOf[DownloadLog]).cacheable()
+  }
 }

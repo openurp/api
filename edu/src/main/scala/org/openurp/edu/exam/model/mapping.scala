@@ -34,6 +34,7 @@ class DefaultMapping extends MappingModule {
     bind[ExamRoom].declare { e =>
       e.invigilations is depends("examRoom")
       e.examTakers is depends("examRoom")
+      e.activities is many2many("rooms")
     }
 
     bind[ExamTask].declare { e =>

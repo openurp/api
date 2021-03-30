@@ -16,28 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.plan.model
+package org.openurp.spa.doc.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{TemporalOn, Updated}
 
-class DefaultMapping extends MappingModule {
+/** 打印配置
+ * 针对每种类型的文档配置单价和打印的上限
+ */
+class PrintConfig extends IntId with Updated with TemporalOn {
 
-  def binding(): Unit = {
-    bind[CourseAuditResult].declare { e =>
-      e.scores is length(50)
-      e.remark is length(50)
-    }
-    bind[GroupAuditResult].declare { e =>
-      e.name is length(100)
-      e.children is depends("parent")
-      e.courseResults is depends("groupResult")
-    }
-    bind[PlanAuditResult].declare { e =>
-      e.groupResults is depends("planResult")
-      e.remark is length(100)
-      e.updates is length(500)
-      index("", true, e.std)
-    }
-  }
+  /** 文档类型 */
+  var docType: DocType = _
 
+  /** 单价，以分为单位，免费设置为0 */
+  var price: Int = _
+
+  /** 最多打印次数 */
+  var maxLimit: Int = _
 }

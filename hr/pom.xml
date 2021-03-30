@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.22.0</version>
+    <version>0.22.1</version>
   </parent>
   <groupId>org.openurp.hr</groupId>
   <artifactId>openurp-hr-api</artifactId>

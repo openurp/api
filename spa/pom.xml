@@ -6,14 +6,14 @@
     <artifactId>openurp-api-parent</artifactId>
     <version>0.22.1</version>
   </parent>
-  <groupId>org.openurp.edu</groupId>
-  <artifactId>openurp-edu-api</artifactId>
+  <groupId>org.openurp.spa</groupId>
+  <artifactId>openurp-spa-api</artifactId>
   <packaging>jar</packaging>
-  <name>OpenURP Edu API</name>
+  <name>OpenURP SPA API</name>
 
   <properties>
-    <bundle.symbolicName>org.openurp.edu.api</bundle.symbolicName>
-    <bundle.namespace>org.openurp.edu</bundle.namespace>
+    <bundle.symbolicName>org.openurp.spa.api</bundle.symbolicName>
+    <bundle.namespace>org.openurp.spa</bundle.namespace>
   </properties>
 
   <dependencies>
