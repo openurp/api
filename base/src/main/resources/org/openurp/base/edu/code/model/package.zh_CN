@@ -5,7 +5,7 @@ CourseAbilityRate=课程能力等级
 CourseAbilityRate.rate=等级值
 
 CourseType=课程类别
-CourseCategory=课程大类
+CourseAssessCategory=课程评教分类
 
 CourseType.practical=是否实践课
 CourseType.major=是否专业课
