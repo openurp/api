@@ -45,7 +45,6 @@ class ScholarshipAward extends LongId {
 
 }
 
-
 @code("school")
 class ScholarshipCategory extends IntId with Coded with Named with TemporalOn {
 

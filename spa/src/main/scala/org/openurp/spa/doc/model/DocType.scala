@@ -29,7 +29,6 @@ object DocType {
   val StudentEn = "student_en";
 }
 
-
 /** 打印文档的类型
  */
 class DocType extends IntId with Named with Coded with Enabled {

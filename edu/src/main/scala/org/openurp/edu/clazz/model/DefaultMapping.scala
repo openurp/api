@@ -46,7 +46,7 @@ class DefaultMapping extends MappingModule {
         e.schedule.sessions are depends("clazz")
 
       index("", true, e.project, e.semester, e.crn)
-      index("", false, e.project, e.teachDepart)
+      index("", false, e.project, e.semester, e.teachDepart)
     }
 
     bind[Restriction].declare { e =>

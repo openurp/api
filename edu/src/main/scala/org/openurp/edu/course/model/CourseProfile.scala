@@ -23,7 +23,6 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.User
 import org.openurp.base.edu.model.Course
 
-
 /** 课程简介
  *
  */

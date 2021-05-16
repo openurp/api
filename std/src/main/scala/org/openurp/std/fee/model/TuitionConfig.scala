@@ -29,25 +29,25 @@ import org.openurp.base.edu.model.Major
  */
 class TuitionConfig extends IntId with Remark {
 
-	/** 起始年级 */
-	var fromGrade: String = _
+  /** 起始年级 */
+  var fromGrade: String = _
 
-	/** 截止年级 */
-	var toGrade: String = _
+  /** 截止年级 */
+  var toGrade: String = _
 
-	/** 学历层次 */
-	var level: EducationLevel = _
+  /** 学历层次 */
+  var level: EducationLevel = _
 
-	/** 系 */
-	var department: Option[Department] = None
+  /** 系 */
+  var department: Option[Department] = None
 
-	/** 所属的专业 */
-	var major: Option[Major] = None
+  /** 所属的专业 */
+  var major: Option[Major] = None
 
-	/** 收费类型 */
-	var feeType: FeeType = _
+  /** 收费类型 */
+  var feeType: FeeType = _
 
-	/** 对应的值 */
-	var amount: Int = _
+  /** 对应的值 */
+  var amount: Int = _
 
 }

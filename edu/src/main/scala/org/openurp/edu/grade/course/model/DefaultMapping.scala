@@ -38,7 +38,6 @@ class DefaultMapping extends MappingModule {
       index("", false, e.project)
     }
 
-
     bind[ExamGrade].declare { e =>
       index("", true, e.courseGrade, e.gradeType)
     }
@@ -46,7 +45,6 @@ class DefaultMapping extends MappingModule {
     bind[GaGrade].declare { e =>
       index("", true, e.courseGrade, e.gradeType)
     }
-
 
     bind[CourseGradeState].declare { e =>
       e.examStates is depends("gradeState")

@@ -40,4 +40,3 @@ class QuestionResult extends LongId {
   var result: EvaluateResult = _
 
 }
-

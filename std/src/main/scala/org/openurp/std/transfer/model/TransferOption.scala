@@ -77,5 +77,3 @@ class TransferOption extends LongId with Remark {
   /** 笔试分数占总分比例 */
   var writtenPercent: Int = _
 }
-
-

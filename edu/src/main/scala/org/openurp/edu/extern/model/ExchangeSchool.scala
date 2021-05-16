@@ -22,7 +22,6 @@ import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
 import org.openurp.base.edu.ProjectBased
 
-
 /**
  * 校外教育机构
  */
@@ -30,4 +29,3 @@ class ExchangeSchool extends IntId with ProjectBased
   with Named with Updated with TemporalOn with Coded {
 
 }
-
