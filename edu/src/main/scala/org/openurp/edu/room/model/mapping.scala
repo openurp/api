@@ -38,14 +38,14 @@ class DefaultMapping extends MappingModule {
       e.activity.name is column("activity_name")
     }
 
-    bind[ApplyDepartCheck] declare { e =>
+    bind[RoomApplyDepartCheck] declare { e =>
       e.opinions is length(100)
     }
 
-    bind[ApplyFinalCheck] declare { e =>
+    bind[RoomApplyFinalCheck] declare { e =>
       e.opinions is length(100)
     }
 
-    bind[AvailableTime]
+    bind[RoomAvailableTime]
   }
 }

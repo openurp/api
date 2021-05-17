@@ -80,7 +80,6 @@ class ShareCourseGroup extends LongId with Hierarchical[ShareCourseGroup] {
    */
   var plan: SharePlan = _
 
-
   /**
    * 计划课程列表
    */

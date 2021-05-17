@@ -49,7 +49,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 课程类别 */
   var courseType: CourseType = _
   /** 课程大类 */
-  var category: Option[CourseCategory] = None
+  var category: Option[CourseAssessCategory] = None
   /** 课程性质 */
   var nature: CourseNature = _
   /** 分类课时 */

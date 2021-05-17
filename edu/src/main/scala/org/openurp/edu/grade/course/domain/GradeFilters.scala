@@ -21,7 +21,6 @@ package org.openurp.edu.grade.course.domain
 import org.openurp.code.edu.model.{CourseTakeType, GradeType}
 import org.openurp.edu.grade.course.model.CourseGrade
 
-
 object GradeFilters {
 
   def chain(filters: GradeFilter*): Chain = {

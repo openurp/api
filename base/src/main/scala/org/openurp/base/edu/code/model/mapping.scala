@@ -28,7 +28,7 @@ class DefaultMapping extends MappingModule {
     bind[BookType]
     bind[BookAwardType]
     bind[CourseType]
-    bind[CourseCategory]
+    bind[CourseAssessCategory]
     bind[CourseAbilityRate]
     bind[StdLabel]
     bind[StdLabelType]

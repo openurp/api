@@ -40,7 +40,6 @@ class StdAlterType extends CodeBean
 @code("industry")
 class StdAlterReason extends CodeBean
 
-
 /**
  * 学生处分类型
  * 参见教育部标准JY/T 1001 4.2.3
