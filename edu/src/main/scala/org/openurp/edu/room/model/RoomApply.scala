@@ -18,7 +18,6 @@
  */
 package org.openurp.edu.room.model
 
-import java.time.Instant
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Strings
 import org.beangle.commons.lang.time.{WeekDay, WeekTime}
@@ -28,6 +27,7 @@ import org.openurp.base.edu.model.Classroom
 import org.openurp.base.model.{Campus, Department, School, User}
 import org.openurp.code.edu.model.ActivityType
 
+import java.time.Instant
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import scala.collection.mutable
@@ -57,10 +57,10 @@ class RoomApply extends LongId {
   var applyBy: User = _
 
   /** 部门审核 */
-  var departCheck: Option[ApplyDepartCheck] = None
+  var departCheck: Option[RoomApplyDepartCheck] = None
 
   /** 最终审核 */
-  var finalCheck: Option[ApplyFinalCheck] = None
+  var finalCheck: Option[RoomApplyFinalCheck] = None
 
   /** 是否通过 */
   var approved: Option[Boolean] = None
@@ -203,7 +203,7 @@ class SpaceRequest extends Component {
 
 }
 
-class ApplyDepartCheck extends LongId {
+class RoomApplyDepartCheck extends LongId {
   var apply: RoomApply = _
   /** 是否审核通过 */
   var approved: Boolean = _
@@ -215,7 +215,7 @@ class ApplyDepartCheck extends LongId {
   var opinions: Option[String] = None
 }
 
-class ApplyFinalCheck extends LongId {
+class RoomApplyFinalCheck extends LongId {
   var apply: RoomApply = _
   var approved: Boolean = _
   var checkedBy: User = _

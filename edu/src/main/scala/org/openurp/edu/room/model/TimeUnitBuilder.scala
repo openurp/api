@@ -32,7 +32,7 @@ class TimeUnitBuilder {
 
   var endAt: HourMinute = _
 
-  def this(beginAt: HourMinute, endAt: HourMinute) {
+  def this(beginAt: HourMinute, endAt: HourMinute)= {
     this()
     this.beginAt = beginAt
     this.endAt = endAt

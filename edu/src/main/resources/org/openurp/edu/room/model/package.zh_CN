@@ -13,6 +13,7 @@ RoomOccupyApp.activityUrl=活动明细url
 RoomApply=教室借用
 RoomApply.applyAt=申请时间
 RoomApply.approved=是否审核通过
+RoomApply.rooms=已分配教室
 
 Activity.name=活动名称
 Activity.activityType=活动类型
@@ -33,17 +34,17 @@ SpaceRequest.unitAttendance=每个教室单元需要的座位数
 SpaceRequest.requireMultimedia=是否使用多媒体设备
 SpaceRequest.roomComment=借用场所要求
 
-ApplyDepartCheck=归口审核
-ApplyDepartCheck.approved=是否审核通过
-ApplyDepartCheck.checkedBy=审核人
-ApplyDepartCheck.checkedAt=审核时间
-ApplyDepartCheck.opinions=具体意见
+RoomApplyDepartCheck=归口审核
+RoomApplyDepartCheck.approved=是否审核通过
+RoomApplyDepartCheck.checkedBy=审核人
+RoomApplyDepartCheck.checkedAt=审核时间
+RoomApplyDepartCheck.opinions=具体意见
 
-ApplyFinalCheck=最终审核
-ApplyFinalCheck.approved=是否审核通过
-ApplyFinalCheck.checkedBy=审核人
-ApplyFinalCheck.checkedAt=审核时间
-ApplyFinalCheck.opinions=具体意见
+RoomApplyFinalCheck=最终审核
+RoomApplyFinalCheck.approved=是否审核通过
+RoomApplyFinalCheck.checkedBy=审核人
+RoomApplyFinalCheck.checkedAt=审核时间
+RoomApplyFinalCheck.opinions=具体意见
 
-AvailableTime=教室可用时间
-AvailableTime.time=时间
+RoomAvailableTime=教室可用时间
+RoomAvailableTime.time=时间
