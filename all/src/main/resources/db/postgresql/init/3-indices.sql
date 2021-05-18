@@ -43,7 +43,7 @@ create index idx_pkni877r20i1vkg4n2jk2lb31 on code.staff_source_types (parent_id
 create index idx_bqnq6ihum5omb2520bavufwbs on code.staff_types (parent_id);
 create index idx_9rggpenqtj9bpoeeiw6anqwu9 on edu.certificate_grades_courses (certificate_grade_id);
 create index idx_2nu751wwcosaoh3kd2a36ycdj on edu.clazzes (group_id);
-create index idx_erjg7aasw8glnxx3lrmvmrmqs on edu.clazzes (project_id, teach_depart_id);
+create index idx_9bwygbyci888eug6sjs5ihbqq on edu.clazzes (project_id, semester_id, teach_depart_id);
 create index idx_dtwnr7ysxuukruvulscomb6on on edu.clazzes_ability_rates (clazz_id);
 create index idx_8w82phrf16wpnbxdoqo3otrtk on edu.clazzes_tags (clazz_id);
 create index idx_ljvsyyihis2oe1m3gt3rffg2m on edu.clazzes_teachers (clazz_id);
@@ -106,6 +106,7 @@ create index idx_q0vt9i2ql8fjenu8ldm8fm5wu on edu.program_doc_templates_types (p
 create index idx_dax3f658vva8uq89kdgg48v4n on edu.restriction_items (restriction_id);
 create index idx_c2pllu9g7p0poy59op11nkab5 on edu.restrictions (clazz_id);
 create index idx_i8g6bl3jpwldie38iiqgw4kes on edu.restrictions (parent_id);
+create index idx_2ofh2k9b4pj51ftjaf0e9oj3s on edu.room_applies_rooms (room_apply_id);
 create index idx_oaii80w561p28ji3r86pv8djo on edu.room_applies_times (room_apply_id);
 create index idx_rro6eceumvyke0kyrl9ejsd1d on edu.room_groups_rooms (room_group_id);
 create index idx_epu4ne61rru6f5udqshomhdwx on edu.sessions (clazz_id);

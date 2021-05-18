@@ -12,7 +12,7 @@ alter table base.classrooms add constraint uk_3rf701tm9q4qyua4q0ydybv95 unique (
 alter table base.classrooms_departs add constraint pk_n5duwpuh4oq58kk8i61odk7h7 primary key (classroom_id,department_id);
 alter table base.classrooms_projects add constraint pk_cjgojafxa077u3fb2vicargx primary key (classroom_id,project_id);
 alter table base.course_ability_rates add constraint pk_ixp9hq9d3g6ggc30g8py4poq5 primary key (id);
-alter table base.course_categories add constraint pk_oqysoxcp8dqo4wmygpdpatqu4 primary key (id);
+alter table base.course_assess_categories add constraint pk_rov2lo5jx4untxk2bf0ou904o primary key (id);
 alter table base.course_hours add constraint pk_euy5bifeg4jalgolkkxa21w3f primary key (id);
 alter table base.course_types add constraint pk_30stnnqhnpw79pr0yyslpql58 primary key (id);
 alter table base.course_units add constraint pk_9eybgcnr9huwt9f43c30xud1m primary key (id);
@@ -158,9 +158,6 @@ alter table code.unregistered_reasons add constraint pk_a05jbnwecpcjh1vca74kq4u3
 alter table code.visa_types add constraint pk_5u4p2t27gbgicni5lyayh6tlv primary key (id);
 alter table code.whereto_goes add constraint pk_4613lax8xj9thcny8sbdbs84j primary key (id);
 alter table code.work_statuses add constraint pk_ia5xweu6skbop6en26o5y4jxs primary key (id);
-alter table edu.apply_depart_checks add constraint pk_6w1n3ng89llvco6c5gwu8js1d primary key (id);
-alter table edu.apply_final_checks add constraint pk_j60mj9ihq0fjm4jo49xfw9x2v primary key (id);
-alter table edu.available_times add constraint pk_8110ur4lpu6jgidotr5o22x0b primary key (id);
 alter table edu.certificate_categories add constraint pk_qhwrswgo8sbr37lfry41n9vn6 primary key (id);
 alter table edu.certificate_grades add constraint pk_21bw15677thfojwd283r42rcx primary key (id);
 alter table edu.certificate_grades_courses add constraint pk_bm04nfcnyemgwqbsuqab9kpgd primary key (certificate_grade_id,course_id);
@@ -250,7 +247,11 @@ alter table edu.restriction_items add constraint pk_63rvwfjhs9fece5mm74976fc8 pr
 alter table edu.restrictions add constraint pk_f453o9jrvoli7s141pd7lpl24 primary key (id);
 alter table edu.room_alloc_settings add constraint pk_sx8t0g2hnidik5hk1j6qj75cl primary key (id);
 alter table edu.room_applies add constraint pk_bc80rnoxs22g3i49cprrotgaq primary key (id);
+alter table edu.room_applies_rooms add constraint pk_f3isa2ggycb2cyjdu9cg3ow5q primary key (room_apply_id,classroom_id);
 alter table edu.room_applies_times add constraint pk_gut4id17joy6x8d5psmvc1pd2 primary key (room_apply_id,weekstate,begin_at,start_on,end_at);
+alter table edu.room_apply_depart_checks add constraint pk_9hbnf2sy4qro45xh5ujcmlfue primary key (id);
+alter table edu.room_apply_final_checks add constraint pk_gcxfm7cd70mrjbi5ir5dq5yxe primary key (id);
+alter table edu.room_available_times add constraint pk_72hrirupp9pfx9rkg0b30rct2 primary key (id);
 alter table edu.room_groups add constraint pk_dwmmkuaq696hl2b4fnddgoe3i primary key (id);
 alter table edu.room_groups_rooms add constraint pk_8leerr9erf9chjn7yl4vs8xd0 primary key (room_group_id,classroom_id);
 alter table edu.room_occupy_apps add constraint pk_jhnnof3gdp1q99769e6htdi2x primary key (id);
