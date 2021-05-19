@@ -61,6 +61,7 @@ create index idx_qbiu7ds54rmfpxmjwnvwo8dal on edu.exam_activities_rooms (exam_ac
 create index idx_k9c9mutaa6jeye5w02bmskklp on edu.exam_grade_states (grade_state_id);
 create index idx_otlslgc3imibs7quv0d0dqjb3 on edu.exam_grades (course_grade_id);
 create index idx_3fn9e5bana3uc5991o48ldw1x on edu.exam_groups_rooms (exam_group_id);
+create index idx_okvnxy33bnpg2tpeexe0h3fvy on edu.exam_room_groups_rooms (exam_room_group_id);
 create index idx_1hhyq3u8al0sqnt26y580k722 on edu.exam_takers (clazz_id);
 create index idx_l5wab7yp0sb0g5emubh6fp2iy on edu.exam_takers (exam_room_id);
 create index idx_rlo27xd1egx2ff1e2311u4wqq on edu.exam_takers (activity_id);
@@ -108,7 +109,6 @@ create index idx_c2pllu9g7p0poy59op11nkab5 on edu.restrictions (clazz_id);
 create index idx_i8g6bl3jpwldie38iiqgw4kes on edu.restrictions (parent_id);
 create index idx_2ofh2k9b4pj51ftjaf0e9oj3s on edu.room_applies_rooms (room_apply_id);
 create index idx_oaii80w561p28ji3r86pv8djo on edu.room_applies_times (room_apply_id);
-create index idx_rro6eceumvyke0kyrl9ejsd1d on edu.room_groups_rooms (room_group_id);
 create index idx_epu4ne61rru6f5udqshomhdwx on edu.sessions (clazz_id);
 create index idx_8x2cffwmuo8bbpdljfnv5sxna on edu.sessions_rooms (session_id);
 create index idx_m8omy8lyt0n0jerbb2fk6he47 on edu.sessions_teachers (session_id);

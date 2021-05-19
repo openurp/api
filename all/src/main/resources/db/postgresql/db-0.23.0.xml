@@ -2990,6 +2990,25 @@
             <index name="idx_pjwqn6d874ljreci8v9elrxac" columns="exam_room_id"/>
           </indexes>
         </table>
+        <table name="exam_alloc_settings" comment="教室分配设置">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="alloc_policy" type="integer" nullable="false" comment="分配策略"/>
+            <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
+            <column name="min_capacity" type="integer" nullable="false" comment="最小容量"/>
+            <column name="min_occupy_ratio" type="float4" nullable="false" comment="最低占用率"/>
+            <column name="min_std_exam_interval" type="integer" nullable="false" comment="学生连续考试最小间隔"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+          </columns>
+          <primary-key name="pk_jk80ai69eglnyd02ulvmr72mk" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_jpqtom08m4wq0xn2vngnlg8my" column="project_id" referenced-table="base.projects"
+                         referenced-column="id"/>
+            <foreign-key name="fk_nqmi0a9yx6qycdbfcf73ivvqb" column="exam_type_id" referenced-table="code.exam_types"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
         <table name="exam_grade_states" comment="考试成绩状态">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -3070,8 +3089,8 @@
           </columns>
           <primary-key name="pk_sibrdqqr0ie2m6sa4x21twlpa" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_15afb02qsb41bhll26vmqqcyh" column="alloc_setting_id"
-                         referenced-table="edu.room_alloc_settings" referenced-column="id"/>
+            <foreign-key name="fk_elov926pr4ijswj02klja6viy" column="alloc_setting_id"
+                         referenced-table="edu.exam_alloc_settings" referenced-column="id"/>
             <foreign-key name="fk_2qi232puueusje5sa83157c0u" column="project_id" referenced-table="base.projects"
                          referenced-column="id"/>
             <foreign-key name="fk_fisp6n4qhnde5fx4ohub8gmo" column="exam_type_id" referenced-table="code.exam_types"
@@ -3094,6 +3113,35 @@
           </foreign-keys>
           <indexes>
             <index name="idx_3fn9e5bana3uc5991o48ldw1x" columns="exam_group_id"/>
+          </indexes>
+        </table>
+        <table name="exam_room_groups" comment="教室组">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_8e9jvyge9pm0yll17wkms3v01" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_awhe2r78c89hre41ti1nbgnux" column="project_id" referenced-table="base.projects"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="exam_room_groups_rooms" comment="教室组内教室">
+          <columns>
+            <column name="classroom_id" type="bigint" nullable="false" comment="教室ID"/>
+            <column name="exam_room_group_id" type="bigint" nullable="false" comment="教室组ID"/>
+          </columns>
+          <primary-key name="pk_jxldkkl8o0nyifobrb87n1gj2" columns="exam_room_group_id,classroom_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_co90ax8bfbc4rssrkoegj0pxo" column="exam_room_group_id"
+                         referenced-table="edu.exam_room_groups" referenced-column="id"/>
+            <foreign-key name="fk_6u9pxpnfrkh6bwfiu8vs2nb10" column="classroom_id" referenced-table="base.classrooms"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_okvnxy33bnpg2tpeexe0h3fvy" columns="exam_room_group_id"/>
           </indexes>
         </table>
         <table name="exam_rooms" comment="考场">
@@ -3185,8 +3233,8 @@
           </columns>
           <primary-key name="pk_kpj9d25h0k6s95j7sov5ow3ee" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_1wtgcme7n3c9i2xcu8sbk1q1e" column="room_group_id" referenced-table="edu.room_groups"
-                         referenced-column="id"/>
+            <foreign-key name="fk_38x7rfcid9ebam68m802efyv6" column="room_group_id"
+                         referenced-table="edu.exam_room_groups" referenced-column="id"/>
             <foreign-key name="fk_hp4i91pvmch4bdvnbykhd90ow" column="project_id" referenced-table="base.projects"
                          referenced-column="id"/>
             <foreign-key name="fk_49a33f9a9dgfi64wen46mkaet" column="exam_type_id" referenced-table="code.exam_types"
@@ -4235,25 +4283,6 @@
             <index name="idx_i8g6bl3jpwldie38iiqgw4kes" columns="parent_id"/>
           </indexes>
         </table>
-        <table name="room_alloc_settings" comment="教室分配设置">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="alloc_policy" type="integer" nullable="false" comment="分配策略"/>
-            <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
-            <column name="min_capacity" type="integer" nullable="false" comment="最小容量"/>
-            <column name="min_occupy_ratio" type="float4" nullable="false" comment="最低占用率"/>
-            <column name="min_std_exam_interval" type="integer" nullable="false" comment="学生连续考试最小间隔"/>
-            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
-            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-          </columns>
-          <primary-key name="pk_sx8t0g2hnidik5hk1j6qj75cl" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_hqntewj4dcg2muq64ejey4gmr" column="project_id" referenced-table="base.projects"
-                         referenced-column="id"/>
-            <foreign-key name="fk_kxvar4lh6084g3ycvr33ao4wn" column="exam_type_id" referenced-table="code.exam_types"
-                         referenced-column="id"/>
-          </foreign-keys>
-        </table>
         <table name="room_applies" comment="教室借用">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -4384,35 +4413,6 @@
             <foreign-key name="fk_183gwhpwsatxi28cono6qufx0" column="room_id" referenced-table="base.classrooms"
                          referenced-column="id"/>
           </foreign-keys>
-        </table>
-        <table name="room_groups" comment="教室组">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
-            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
-          </columns>
-          <primary-key name="pk_dwmmkuaq696hl2b4fnddgoe3i" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_aq1egtmjl6n5x8xnex2bfp6dx" column="project_id" referenced-table="base.projects"
-                         referenced-column="id"/>
-          </foreign-keys>
-        </table>
-        <table name="room_groups_rooms" comment="教室组内教室">
-          <columns>
-            <column name="classroom_id" type="bigint" nullable="false" comment="教室ID"/>
-            <column name="room_group_id" type="bigint" nullable="false" comment="教室组ID"/>
-          </columns>
-          <primary-key name="pk_8leerr9erf9chjn7yl4vs8xd0" columns="room_group_id,classroom_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_biifx9lgvovr1upn5inqlt8cf" column="room_group_id" referenced-table="edu.room_groups"
-                         referenced-column="id"/>
-            <foreign-key name="fk_fydauievy5aguj3ii31qh445b" column="classroom_id" referenced-table="base.classrooms"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_rro6eceumvyke0kyrl9ejsd1d" columns="room_group_id"/>
-          </indexes>
         </table>
         <table name="room_occupy_apps" comment="房间占用用户系统">
           <columns>
