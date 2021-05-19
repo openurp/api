@@ -62,5 +62,5 @@ class ExamGroup extends LongId with Named with SemesterBased with Updated {
   var rooms = Collections.newBuffer[Classroom]
 
   /**教室分配设置*/
-  var allocSetting: RoomAllocSetting = _
+  var allocSetting: ExamAllocSetting = _
 }

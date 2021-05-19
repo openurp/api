@@ -77,9 +77,9 @@ class DefaultMapping extends MappingModule {
       index("", false, e.quota)
     }
 
-    bind[RoomGroup]
+    bind[ExamRoomGroup]
 
-    bind[RoomAllocSetting]
+    bind[ExamAllocSetting]
 
     bind[FinalMakeupCourse].declare { e =>
       e.takers is depends("makeupCourse")

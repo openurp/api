@@ -18,15 +18,16 @@
  */
 package org.openurp.edu.exam.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.ProjectBased
-import org.openurp.code.edu.model.ExamType
+import org.openurp.base.edu.model.Classroom
 
-class RoomAllocSetting extends LongId with Named with ProjectBased {
-  var examType: ExamType = _
-  var minOccupyRatio: Float = _
-  var minCapacity: Int = _
-  var allocPolicy: RoomAllocPolicy.Policy = _
-  var minStdExamInterval: Int = _
+/**
+ * 教室组
+ */
+class ExamRoomGroup extends LongId with Named with ProjectBased with Updated {
+  var rooms = Collections.newBuffer[Classroom]
 }
