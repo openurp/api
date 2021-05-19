@@ -18,16 +18,22 @@
  */
 package org.openurp.edu.exam.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.ProjectBased
-import org.openurp.base.edu.model.Classroom
+import org.openurp.code.edu.model.ExamType
 
-/**
- * 教室组
+/** 考试分配设定
+ *
  */
-class RoomGroup extends LongId with Named with ProjectBased with Updated {
-  var rooms = Collections.newBuffer[Classroom]
+class ExamAllocSetting extends LongId with Named with ProjectBased {
+  var examType: ExamType = _
+  /**考场分配人数占容量的最小比例*/
+  var minOccupyRatio: Float = _
+  /**考场容量的下限*/
+  var minCapacity: Int = _
+  /**考场分配策略*/
+  var allocPolicy: RoomAllocPolicy.Policy = _
+  /**考生连续考试的最小间隔(按小时计算)*/
+  var minStdExamInterval: Int = _
 }

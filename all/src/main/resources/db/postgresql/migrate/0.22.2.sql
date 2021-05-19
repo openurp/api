@@ -1,3 +1,6 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.22.2',now(),'更名教室借用审核表');
+
 alter table edu.available_times rename to room_available_times;
 create table edu.room_applies_rooms (classroom_id bigint not null, room_apply_id bigint not null);
 comment on table edu.room_applies_rooms is '已分配教室';

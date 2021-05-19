@@ -65,7 +65,7 @@ class ExamTask extends LongId with Coded with SemesterBased with Remark {
   var building: Option[Building] = None
 
   /** 教室组 */
-  var roomGroup: Option[RoomGroup] = None
+  var roomGroup: Option[ExamRoomGroup] = None
 
   /** 教室列表 */
   var rooms = Collections.newBuffer[Classroom]
