@@ -31,6 +31,7 @@ import java.time.LocalDate
  */
 class Graduation extends LongId with Updated {
 
+  /**学生*/
   var std: Student = _
 
   /** 毕业证书编号（电子注册号） */
@@ -56,4 +57,7 @@ class Graduation extends LongId with Updated {
 
   /** 毕业去向 */
   var wheretoGo: Option[WheretoGo] = None
+
+  /** 毕业批次 */
+  var batchNo: Int = _
 }
