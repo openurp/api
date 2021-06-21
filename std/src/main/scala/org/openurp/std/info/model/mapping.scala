@@ -35,7 +35,10 @@ class DefaultMapping extends MappingModule {
       e.province is length(50)
       e.scores is eleColumn("score")
     }
-    bind[Graduation]
+
+    bind[Graduation] declare { e =>
+      e.std is unique
+    }
 
     bind[Home].declare { e =>
       e.formerAddr is length(100)

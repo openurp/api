@@ -18,12 +18,13 @@
  */
 package org.openurp.edu.grade.plan.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.code.model.CourseType
 import org.openurp.base.edu.model.Student
 
-import scala.collection.mutable.Buffer
+import scala.collection.mutable
 
 class PlanAuditResult extends LongId with Updated with Remark {
 
@@ -31,7 +32,7 @@ class PlanAuditResult extends LongId with Updated with Remark {
 
   var auditStat = new AuditStat
 
-  var groupResults: Buffer[GroupAuditResult] = new collection.mutable.ListBuffer[GroupAuditResult]
+  var groupResults: mutable.Buffer[GroupAuditResult] = Collections.newBuffer[GroupAuditResult]
 
   var passed: Boolean = _
 
@@ -41,7 +42,7 @@ class PlanAuditResult extends LongId with Updated with Remark {
 
   def topGroupResults: collection.Seq[GroupAuditResult] = {
     val results = new collection.mutable.ListBuffer[GroupAuditResult]
-    for (result <- groupResults if null == result.parent) {
+    for (result <- groupResults if result.parent.isEmpty) {
       results += result
     }
     results

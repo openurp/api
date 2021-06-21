@@ -31,11 +31,11 @@ import java.time.LocalDate
  */
 class Graduation extends LongId with Updated {
 
-  /**学生*/
+  /** 学生 */
   var std: Student = _
 
   /** 毕业证书编号（电子注册号） */
-  var code: String = _
+  var certificateNo: Option[String] = None
 
   /** 毕结业日期 */
   var graduateOn: LocalDate = _

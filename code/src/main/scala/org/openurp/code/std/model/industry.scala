@@ -45,7 +45,17 @@ class StdAlterReason extends CodeBean
  * 参见教育部标准JY/T 1001 4.2.3
  */
 @code("industry")
-class StdPunishmentType extends CodeBean
+class StdPunishmentType extends CodeBean{
+  /**
+   * 处分等级值
+   * 级别越小越严重
+   */
+  var grade: Integer = _
+
+  def isSeriousThan(other: StdPunishmentType): Boolean = {
+    grade < other.grade
+  }
+}
 
 /**
  * 学生当前状态
