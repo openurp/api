@@ -36,7 +36,7 @@ import scala.collection.mutable
 class Student extends LongId with EduLevelBased with Updated with Remark with DateRange {
 
   /** 基本信息 */
-  var person: Option[Person] = None
+  var person: Person = _
 
   /** 用户信息 */
   var user: User = _

@@ -30,6 +30,17 @@ object CycleTime {
   val WEEK = 2
   /** 月 */
   val MONTH = 4
+
+  def apply(day: LocalDate, beginAt: HourMinute, endAt: HourMinute): CycleTime = {
+    val cd = new CycleTime
+    cd.beginOn = day
+    cd.endOn = day
+    cd.beginAt = beginAt
+    cd.endAt = endAt
+    cd.cycleCount = 1
+    cd.cycleType = CycleTime.WEEK
+    cd
+  }
 }
 
 class CycleTime extends Cloneable with Serializable {

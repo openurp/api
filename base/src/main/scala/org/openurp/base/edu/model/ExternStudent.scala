@@ -16,29 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.std.info.model
+package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Student
+import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.openurp.base.model.ExternSchool
+import org.openurp.code.edu.model.{EduCategory, EducationLevel}
 
 /**
- * 联系信息
+ * 外部学习经历
  */
-class Contact extends LongId with Updated{
-
-  /**学生*/
-  var std: Student = _
-
-  /** 电子邮箱 */
-  var email: Option[String] = None
-
-  /** 电话 */
-  var phone: Option[String] = None
-
-  /** 移动电话 */
-  var mobile: Option[String] = None
-
-  /** 地址 入校后联系地址 */
-  var address: Option[String] = None
+class ExternStudent extends LongId with Updated with DateRange {
+  var std: Student = null
+  var school: ExternSchool = null
+  var majorName: Option[String] = None
+  var level: EducationLevel = null
+  var category: EduCategory = null
 }

@@ -16,17 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.model
+package org.openurp.base.std.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.Student
+import org.beangle.data.model.pojo.{TemporalOn, Updated}
+import org.openurp.base.edu.model.Project
+import org.openurp.base.model.{School, User}
 
-class ExemptionCredit extends LongId with Remark with Updated {
+/**
+ * 辅导员
+ */
+class Instructor extends LongId with Updated with TemporalOn {
 
-  var std: Student = _
+  /** 学校 */
+  var school: School = _
+  /** 人员信息 */
+  var user: User = _
 
-  var exempted: Float = _
-
-  var maxValue: Float = _
 }

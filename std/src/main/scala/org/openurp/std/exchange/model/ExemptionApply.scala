@@ -16,29 +16,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.model
+package org.openurp.std.exchange.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{DateRange, Updated}
-import org.openurp.code.edu.model.{EduCategory, EducationLevel}
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.AuditStates
-import org.openurp.base.edu.model.Student
+import org.openurp.base.edu.model.ExternStudent
 
-import scala.collection.mutable;
-
-/**
- * 外部学习经历
+/** 免修申请
+ *
  */
-class ExchangeStudent extends LongId with Updated with DateRange {
-  var std: Student = null
-  var school: ExchangeSchool = null
-  var majorName: Option[String] = None
-  var level: EducationLevel = null
-  var category: EduCategory = null
-  var grades: mutable.Buffer[ExchangeGrade] = Collections.newBuffer[ExchangeGrade]
+class ExemptionApply extends LongId with Updated {
+  var externStudent: ExternStudent = _
   var transcriptPath: Option[String] = None
-  /** 审核状态 */
   var auditState: AuditStates.State = AuditStates.Draft
   var auditOpinion: Option[String] = None
   var credits: Float = _

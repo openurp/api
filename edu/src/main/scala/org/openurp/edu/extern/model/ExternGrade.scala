@@ -16,21 +16,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.base.stu.model
+package org.openurp.edu.extern.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{TemporalOn, Updated}
-import org.openurp.base.edu.model.Project
-import org.openurp.base.model.{School, User}
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.edu.model.{Course, ExternStudent}
+
+import java.time.LocalDate
+import scala.collection.mutable
 
 /**
- * 辅导员
+ * 外校成绩
  */
-class Instructor extends LongId with Updated with TemporalOn {
+class ExternGrade extends LongId with Remark with Updated {
 
-  /** 学校 */
-  var school: School = _
-  /** 人员信息 */
-  var user: User = _
+  var externStudent: ExternStudent = _
 
+  var courseName: String = _
+
+  var credits: Float = _
+
+  var acquiredOn: LocalDate = _
+
+  var scoreText: String = _
+
+  var courses: mutable.Set[Course] = Collections.newSet[Course]
 }

@@ -16,18 +16,33 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.base.stu.model
+package org.openurp.std.exchange.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.edu.AuditStates
+import org.openurp.base.edu.model.{Course, ExternStudent}
 
-class DefaultMapping extends MappingModule {
+import java.time.LocalDate
+import scala.collection.mutable
 
-  def binding(): Unit = {
-    defaultCache("openurp.base", "read-write")
+/**
+ * 外校成绩
+ */
+class ExchangeGrade extends LongId with Remark with Updated {
 
-    bind[Instructor] declare { e =>
-      index("", true, e.user)
-    }
+  var externStudent: ExternStudent = _
 
-  }
+  var courseName: String = _
+
+  var credits: Float = _
+
+  var acquiredOn: LocalDate = _
+
+  var scoreText: String = _
+
+  var courses: mutable.Set[Course] = Collections.newSet[Course]
+
+  var auditState: AuditStates.State = AuditStates.Draft
 }

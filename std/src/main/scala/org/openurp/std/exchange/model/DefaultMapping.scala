@@ -16,29 +16,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.std.info.model
+package org.openurp.std.exchange.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Student
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
-/**
- * 联系信息
- */
-class Contact extends LongId with Updated{
+class DefaultMapping extends MappingModule {
 
-  /**学生*/
-  var std: Student = _
+  def binding(): Unit = {
 
-  /** 电子邮箱 */
-  var email: Option[String] = None
+    bind[ExemptionApply].declare { e =>
+      index("", true, e.externStudent)
+    }
 
-  /** 电话 */
-  var phone: Option[String] = None
+    bind[ExchangeGrade].declare { e =>
+      e.courseName is length(255)
+      e.scoreText is length(10)
+    }
 
-  /** 移动电话 */
-  var mobile: Option[String] = None
+    bind[ExemptionCredit]
 
-  /** 地址 入校后联系地址 */
-  var address: Option[String] = None
+    bind[ExchangeProgram].generator(IdGenerator.AutoIncrement)
+  }
+
 }

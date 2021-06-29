@@ -9,7 +9,7 @@
   <groupId>org.openurp.prac</groupId>
   <artifactId>openurp-prac-api</artifactId>
   <packaging>jar</packaging>
-  <name>OpenURP Practice API</name>
+  <name>OpenURP Prac API</name>
 
   <properties>
     <bundle.symbolicName>org.openurp.prac.api</bundle.symbolicName>

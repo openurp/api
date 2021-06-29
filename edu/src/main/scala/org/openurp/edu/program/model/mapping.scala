@@ -30,9 +30,7 @@ class DefaultMapping extends MappingModule {
       e.remark is length(200)
     }
 
-    bind[TermCampus] declare { e =>
-      index("", true, e.program)
-    }
+    bind[TermCampus]
 
     bind[AbstractCourseGroup].declare { e =>
       e.indexno is length(20)

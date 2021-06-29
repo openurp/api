@@ -19,8 +19,7 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.{Coded, Hierarchical, Named, Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo._
 import org.openurp.base.code.model.DepartmentCategory
 import org.openurp.code.edu.model.Institution
 
@@ -34,11 +33,12 @@ class School extends IntId with Coded with Named with TemporalOn {
   var logoUrl: String = _
   var shortName: Option[String] = None
 }
+
 /**
  * 部门
  */
 class Department extends IntId with Coded with Named with Hierarchical[Department]
-    with TemporalOn with Updated with Remark {
+  with TemporalOn with Updated with Remark {
   var school: School = _
   var enName: Option[String] = None
   var shortName: Option[String] = None
@@ -47,4 +47,11 @@ class Department extends IntId with Coded with Named with Hierarchical[Departmen
   var research: Boolean = _
   /** 校区列表 */
   var campuses: Buffer[Campus] = new ListBuffer[Campus]
+}
+
+/** 其他培训机构
+ *
+ */
+class ExternSchool extends IntId with Named with Updated with TemporalOn with Coded {
+
 }

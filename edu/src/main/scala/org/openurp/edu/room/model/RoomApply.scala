@@ -31,7 +31,6 @@ import java.time.Instant
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import scala.collection.mutable
-import scala.util.control.Breaks.{break, breakable}
 
 class RoomApply extends LongId {
 
@@ -127,39 +126,29 @@ class TimeRequest extends Component with DateRange {
     val format2 = DateTimeFormatter.ofPattern("MM-dd")
     val dates = Collections.newBuffer[CycleTime]
     if (times.nonEmpty) {
-      times.foreach(time => { //循环节次信息
-        time.dates.foreach(d => { //遍历对应周状态通过的日期集合（每周的同一时间）
+      times.foreach{time =>  //循环节次信息
+        time.dates.foreach { d => //遍历对应周状态通过的日期集合（每周的同一时间）
           var cd: CycleTime = null
-          breakable {
-            dates.foreach(cd1 => { //遍历之前已经添加好的时间
-              val days = cd1.endOn.until(d, ChronoUnit.DAYS).toInt
-              val minus_time = (time.endAt.minute - cd1.endAt.minute)
-              if (days % 7 == 0 && minus_time == 0) { //如果整周的话
-                if (cd1.isOneDay) { //cd1的开始日期等于结束日期
-                  cd1.endOn = d
-                  cd = cd1
-                  break
-                }
-                else if (days == cd1.getCycleDays) { //或者等于7
-                  cd1.endOn = d
-                  cd = cd1
-                  break
-                }
+          val datesIter= dates.iterator
+          while(datesIter.hasNext && null==cd) { //遍历之前已经添加好的时间
+            val cd1 = datesIter.next()
+            val days = cd1.endOn.until(d, ChronoUnit.DAYS).toInt
+            val minus_time = (time.endAt.minute - cd1.endAt.minute)
+            if (days % 7 == 0 && minus_time == 0) { //如果整周的话
+              if (cd1.isOneDay) { //cd1的开始日期等于结束日期
+                cd1.endOn = d
+                cd = cd1
+              }else if (days == cd1.getCycleDays) { //或者等于7
+                cd1.endOn = d
+                cd = cd1
               }
-            })
+            }
           }
           if (cd == null) {
-            cd = new CycleTime
-            cd.beginOn = d
-            cd.endOn = d
-            cd.beginAt = time.beginAt
-            cd.endAt = time.endAt
-            cd.cycleCount = 1
-            cd.cycleType = CycleTime.WEEK
-            dates.+=(cd)
+            dates += CycleTime(d,time.beginAt,time.endAt)
           }
-        })
-      })
+        }
+      }
       dates.foreach(cd => {
         val sb = new StringBuilder
         if (cd.isOneDay) sb.append(cd.endOn.format(format))

@@ -47,18 +47,26 @@ class DefaultMapping extends MappingModule {
       e.address is length(150)
       e.police is length(150)
       e.policePhone is length(20)
+
+      index("", true, e.std)
     }
     bind[Contact].declare { e =>
-      e.mail is length(100)
+      e.email is length(100)
       e.phone is length(20)
       e.mobile is length(20)
       e.address is length(150)
+      index("", true, e.std)
     }
     bind[EducationRecord]
 
-    bind[SocialRelation]
+    bind[SocialRelation] declare { e =>
+      e.duty is length(400)
+      index("", false, e.std)
+    }
 
-    bind[Minor]
+    bind[Minor] declare { e =>
+      index("", true, e.std)
+    }
   }
 
 }

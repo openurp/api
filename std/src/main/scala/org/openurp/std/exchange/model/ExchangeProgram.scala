@@ -16,31 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.model
-
-import java.time.LocalDate
+package org.openurp.std.exchange.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.Course
+import org.beangle.data.model.pojo.{Named, TemporalOn}
+import org.openurp.base.edu.model.Project
+import org.openurp.base.model.ExternSchool
 
 import scala.collection.mutable
 
-/**
- * 外校成绩
- */
-class ExchangeGrade extends LongId with Remark with Updated {
+class ExchangeProgram extends LongId with Named with TemporalOn {
+  var schools: mutable.Buffer[ExternSchool] = Collections.newBuffer[ExternSchool]
 
-  var exchangeStudent: ExchangeStudent = _
-
-  var courseName: String = _
-
-  var credits: Float = _
-
-  var acquiredOn: LocalDate = _
-
-  var scoreText: String = _
-
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
+  var project: Project = _
 }

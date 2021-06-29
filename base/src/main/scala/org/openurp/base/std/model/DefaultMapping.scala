@@ -16,16 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.extern.model
+package org.openurp.base.std.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.base.edu.ProjectBased
+import org.beangle.data.orm.MappingModule
 
-/**
- * 校外教育机构
- */
-class ExchangeSchool extends IntId with ProjectBased
-  with Named with Updated with TemporalOn with Coded {
+class DefaultMapping extends MappingModule {
 
+  def binding(): Unit = {
+    defaultCache("openurp.base", "read-write")
+
+    bind[Instructor] declare { e =>
+      index("", true, e.user)
+    }
+
+  }
 }
