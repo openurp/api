@@ -21,12 +21,14 @@ package org.openurp.std.info.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Student
-import org.openurp.code.edu.model.{DisciplineCatalog, DisciplineCategory, Institution}
+import org.openurp.code.edu.model.{DisciplineCategory, Institution}
 
-/** 辅修学生信息
- *
+/** 学生的主修信息
  */
-class Minor extends LongId with Updated {
+class MajorStudent extends LongId with Updated {
+
+  /** 主修学号 */
+  var code: String = _
 
   /** 学生 */
   var std: Student = _

@@ -48,8 +48,9 @@ SocialRelation=社会关系
 SocialRelation.name=姓名
 SocialRelation.relation=关系
 
-Minor=辅修学生信息
-Minor.majorName=主修专业
-Minor.enMajorName=主修专业英文名
-Minor.majorCategory=主修专业学科门类
-Minor.school=主修学校
+MajorStudent=学生主修信息
+MajorStudent.code=主修学号
+MajorStudent.majorName=主修专业
+MajorStudent.enMajorName=主修专业英文名
+MajorStudent.majorCategory=主修专业学科门类
+MajorStudent.school=主修学校

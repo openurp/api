@@ -64,7 +64,7 @@ class DefaultMapping extends MappingModule {
       index("", false, e.std)
     }
 
-    bind[Minor] declare { e =>
+    bind[MajorStudent] declare { e =>
       index("", true, e.std)
     }
   }

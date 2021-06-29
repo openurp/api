@@ -18,17 +18,25 @@
  */
 package org.openurp.base.std.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
+import org.openurp.base.edu.model.Major
+import org.openurp.code.edu.model.{DisciplineCategory, Institution}
 
-class DefaultMapping extends MappingModule {
+/**
+ * 辅修专业
+ */
+class MinorMajor extends LongId with Coded with Named with TemporalOn {
 
-  def binding(): Unit = {
-    defaultCache("openurp.base", "read-write")
+  /** 教育机构 */
+  var institution: Institution = _
 
-    bind[Instructor] declare { e =>
-      index("", true, e.user)
-    }
+  /** 英文名 */
+  var enName: Option[String] = None
 
-    bind[MinorMajor] generator (IdGenerator.AutoIncrement)
-  }
+  /** 学科门类 */
+  var category: DisciplineCategory = _
+
+  /** 对应本校的专业 */
+  var major: Option[Major] = None
 }
