@@ -1,3 +1,4 @@
+package=基础信息
 Remark.remark=备注
 
 Campus=校区信息
@@ -78,3 +79,6 @@ Version=版本迁移日志
 Version.updatedAt=更新时间
 Version.version=版本
 Version.description=内容
+
+ExternSchool=校外教育机构
+ExternSchool.name=学校名称

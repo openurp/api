@@ -31,5 +31,4 @@ class DefaultMapping extends MappingModule {
       e.oldvalue is length(100)
     }
   }
-
 }

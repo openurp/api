@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.qos.evaluation.clazz.model.DefaultMapping" />
-  <mapping class="org.openurp.qos.evaluation.model.DefaultMapping" />
+  <mapping class="org.openurp.qos.evaluation.clazz.model.DefaultMapping" name="evaluation.clazz" />
+  <mapping class="org.openurp.qos.evaluation.model.DefaultMapping" name="evaluation"/>
   <naming>
     <profile package = "org.openurp.qos" pluralize="true" schema="qos"/>
   </naming>

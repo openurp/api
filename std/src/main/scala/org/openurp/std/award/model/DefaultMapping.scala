@@ -45,5 +45,4 @@ class DefaultMapping extends MappingModule {
 
     bind[Punishment]
   }
-
 }

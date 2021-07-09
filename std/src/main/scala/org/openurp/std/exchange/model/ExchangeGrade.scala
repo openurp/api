@@ -28,7 +28,7 @@ import java.time.LocalDate
 import scala.collection.mutable
 
 /**
- * 外校成绩
+ * 外校交流成绩
  */
 class ExchangeGrade extends LongId with Remark with Updated {
 

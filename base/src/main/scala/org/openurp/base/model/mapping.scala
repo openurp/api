@@ -92,5 +92,4 @@ class DefaultMapping extends MappingModule {
 
     all.except(classOf[User], classOf[Person]).cacheable()
   }
-
 }

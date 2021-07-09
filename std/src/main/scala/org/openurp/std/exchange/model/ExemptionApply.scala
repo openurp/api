@@ -27,10 +27,21 @@ import org.openurp.base.edu.model.ExternStudent
  *
  */
 class ExemptionApply extends LongId with Updated {
+  /** 外部学习经历 */
   var externStudent: ExternStudent = _
+
+  /** 成绩单附件路径 */
   var transcriptPath: Option[String] = None
+
+  /** 审核状态 */
   var auditState: AuditStates.State = AuditStates.Draft
+
+  /** 审核意见 */
   var auditOpinion: Option[String] = None
+
+  /** 申请冲抵的外校课程学分总计 */
   var credits: Float = _
+
+  /** 冲抵本校课程的学分总计 */
   var exemptionCredits: Float = _
 }

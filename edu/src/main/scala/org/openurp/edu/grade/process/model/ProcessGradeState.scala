@@ -16,20 +16,32 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.std.transfer.model
+package org.openurp.edu.grade.process.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.edu.clazz.model.Clazz
 
-class DefaultMapping extends MappingModule {
+import scala.collection.mutable
 
-  def binding(): Unit = {
-    bind[TransferScheme].declare { e =>
-      e.scopes is depends("scheme")
-      e.options is depends("scheme")
-    }
+/** 平时成绩状态
+ *
+ */
+class ProcessGradeState extends LongId with Updated {
 
-    bind[TransferOption]
-    bind[TransferApply]
-    bind[TransferScope]
-  }
+  /** 教学任务 */
+  var clazz: Clazz = _
+
+  /** 各个成绩类型的百分比 */
+  var percents: mutable.Map[ProcessTestType, Int] = Collections.newMap[ProcessTestType, Int]
+
+  /** 成绩状态 */
+  var status: Int = _
+
+  /** 平时成绩优秀率上限 */
+  var excellentRateLimit: Float = _
+
+  /** 优秀率 */
+  var excellentRate: Float = _
 }

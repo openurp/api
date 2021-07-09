@@ -68,5 +68,4 @@ class DefaultMapping extends MappingModule {
       index("", true, e.std)
     }
   }
-
 }

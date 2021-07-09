@@ -114,10 +114,16 @@ SubsidyAward.amount=金额
 SubsidyAward.approved=是否审核通过
 
 
-StdHonorAward=荣誉称号评定结果
-StdHonorAward.category=荣誉称号种类
-StdHonorAward.std=学生
-StdHonorAward.level=获奖等级
-StdHonorAward.semester=评定学期
-StdHonorAward.amount=金额
-StdHonorAward.approved=是否审核通过
+HonorAward=荣誉称号评定结果
+HonorAward.category=荣誉称号种类
+HonorAward.std=学生
+HonorAward.level=获奖等级
+HonorAward.semester=评定学期
+HonorAward.amount=金额
+HonorAward.approved=是否审核通过
+
+Punishment=处分
+Punishment.docSeq=处分文号
+Punishment.issueOn=日期
+Punishment.withdrawOn=撤销日期
+Punishment.reason=处分原因

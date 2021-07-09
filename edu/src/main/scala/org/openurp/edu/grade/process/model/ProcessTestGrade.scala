@@ -16,20 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.std.transfer.model
+package org.openurp.edu.grade.process.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.model.LongId
 
-class DefaultMapping extends MappingModule {
+/** 平时测验成绩
+ *
+ */
+class ProcessTestGrade extends LongId {
+  /** 平时总评 */
+  var processGrade: ProcessGrade = _
 
-  def binding(): Unit = {
-    bind[TransferScheme].declare { e =>
-      e.scopes is depends("scheme")
-      e.options is depends("scheme")
-    }
+  /** 测验类型 */
+  var testType: ProcessTestType = _
 
-    bind[TransferOption]
-    bind[TransferApply]
-    bind[TransferScope]
-  }
+  /** 百分比 */
+  var scorePercent: Int = _
+
+  /** 分数 */
+  var score: Int = _
 }

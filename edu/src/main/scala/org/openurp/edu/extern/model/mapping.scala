@@ -35,5 +35,4 @@ class DefaultMapping extends MappingModule {
       e.scoreText is length(20)
     }
   }
-
 }

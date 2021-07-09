@@ -74,7 +74,6 @@ class DefaultMapping extends MappingModule {
     bind[StdYearGpa].declare { e =>
       index("", true, e.stdGpa, e.schoolYear)
     }
-
   }
 
 }

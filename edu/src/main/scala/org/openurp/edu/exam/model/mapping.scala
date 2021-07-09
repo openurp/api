@@ -23,6 +23,7 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
+
     bind[ExamActivity].declare { e =>
       e.examTakers is depends("activity")
       e.remark is length(100)
@@ -90,5 +91,4 @@ class DefaultMapping extends MappingModule {
       index("", false, e.makeupCourse)
     }
   }
-
 }

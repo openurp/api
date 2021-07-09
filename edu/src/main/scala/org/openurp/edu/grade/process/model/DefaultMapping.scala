@@ -16,20 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.std.transfer.model
+package org.openurp.edu.grade.process.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[TransferScheme].declare { e =>
-      e.scopes is depends("scheme")
-      e.options is depends("scheme")
+    bind[ProcessGrade].declare { e =>
+      e.tests is depends("processGrade")
+
+      index("", true, e.std, e.clazz)
+      index("", false, e.std)
+      index("", false, e.clazz)
     }
 
-    bind[TransferOption]
-    bind[TransferApply]
-    bind[TransferScope]
+    bind[ProcessGradeState].declare { e =>
+      index("", true, e.clazz)
+    }
+
+    bind[ProcessTestGrade].declare { e =>
+      index("", true, e.processGrade, e.testType)
+    }
+
+    bind[ProcessTestType].declare { e =>
+      index("", true, e.name)
+    }
   }
 }

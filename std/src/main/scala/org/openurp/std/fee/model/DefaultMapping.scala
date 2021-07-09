@@ -37,5 +37,4 @@ class DefaultMapping extends MappingModule {
       index("idx_order_bill_id", true, e.bill)
     }
   }
-
 }

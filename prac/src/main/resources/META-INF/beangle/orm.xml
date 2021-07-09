@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.prac.innovation.model.DefaultMapping" />
+  <mapping class="org.openurp.prac.innovation.model.DefaultMapping"  name="innovation"/>
   <naming>
     <profile package = "org.openurp.prac" pluralize="true" schema="prac"/>
   </naming>

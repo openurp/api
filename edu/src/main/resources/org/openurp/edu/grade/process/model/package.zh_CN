@@ -1,0 +1,16 @@
+ProcessGrade=平时过程总评成绩
+ProcessGrade.status=状态
+ProcessGrade.score=分数
+
+ProcessGradeState=平时总评成绩状态
+ProcessGradeState.status=状态
+ProcessGradeState.excellentRateLimit=优秀率上限
+ProcessGradeState.excellentRate=优秀率
+ProcessGradeState.percents=各类测试百分比
+
+ProcessTestGrade=平时测试成绩
+ProcessTestGrade.score=分数
+ProcessTestGrade.scorePercent=百分比
+
+ProcessTestType=平时测试类型
+

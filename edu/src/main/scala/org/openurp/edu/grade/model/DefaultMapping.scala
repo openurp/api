@@ -24,9 +24,6 @@ import org.openurp.code.edu.model.GradeType
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    //code
-    bind[GradeType].generator(IdGenerator.AutoIncrement)
-
     bind[Grade].declare { e =>
       e.gradingMode is notnull
       e.scoreText is length(5)
@@ -46,5 +43,4 @@ class DefaultMapping extends MappingModule {
       e.config is notnull
     }
   }
-
 }

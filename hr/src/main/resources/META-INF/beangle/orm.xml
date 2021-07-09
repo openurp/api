@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.hr.base.model.DefaultMapping" />
-  <mapping class="org.openurp.hr.workload.model.DefaultMapping" />
+  <mapping class="org.openurp.hr.base.model.DefaultMapping" name="base"/>
+  <mapping class="org.openurp.hr.workload.model.DefaultMapping" name="workload"/>
   <naming>
     <profile package = "org.openurp.hr" pluralize="true" schema="hr" />
   </naming>

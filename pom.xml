@@ -24,6 +24,9 @@
     <module>all</module>
   </modules>
 
+  <properties>
+    <beangle.data.version>5.3.24-SNAPSHOT</beangle.data.version>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>

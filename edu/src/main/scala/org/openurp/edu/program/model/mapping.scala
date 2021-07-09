@@ -153,7 +153,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ProgramDocSection] declare{e=>
-      e.contents is length(10000)
+      e.contents is lob
       e.children is depends("parent")
     }
   }
