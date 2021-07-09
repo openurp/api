@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL">
+<db engine="PostgreSQL" version="0.23.1-SNAPSHOT">
   <schemas>
     <schema name="base">
       <tables>
