@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
   <mapping class="org.openurp.base.model.DefaultMapping" name="common"/>
-  <mapping class="org.openurp.base.code.model.DefaultMapping" name="code"/>
+  <mapping class="org.openurp.base.code.model.DefaultMapping" name="common"/>
   <mapping class="org.openurp.base.edu.model.DefaultMapping" name="edu"/>
   <mapping class="org.openurp.base.edu.code.model.DefaultMapping" name="edu.code"/>
   <mapping class="org.openurp.base.std.model.DefaultMapping" name="std"/>
