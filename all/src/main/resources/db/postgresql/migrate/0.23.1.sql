@@ -1,3 +1,6 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.23.1',now(),'更新外校交流成绩');
+
 --minor
 create table base.minor_majors (id bigint not null, begin_on date not null, category_id integer not null, code varchar(255) not null, en_name varchar(255), end_on date, institution_id integer not null, major_id bigint, name varchar(255) not null);
 comment on table base.minor_majors is '辅修专业@std';
