@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orm>
+  <mapping class="org.openurp.rd.project.model.DefaultMapping" name="project"/>
+  <naming>
+    <profile package="org.openurp.rd" pluralize="true" schema="rd"/>
+  </naming>
+</orm>

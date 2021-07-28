@@ -21,6 +21,7 @@
     <module>hr</module>
     <module>qos</module>
     <module>spa</module>
+    <module>rd</module>
     <module>all</module>
   </modules>
 
