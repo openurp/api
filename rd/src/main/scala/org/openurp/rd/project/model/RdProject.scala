@@ -20,8 +20,9 @@ package org.openurp.rd.project.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, Remark}
+import org.beangle.data.model.pojo.{Coded, Named, Remark, Updated}
 import org.openurp.base.model.{Department, User}
+import org.openurp.rd.code.model.RdLevel
 
 import java.time.YearMonth
 import scala.collection.mutable
@@ -29,13 +30,13 @@ import scala.collection.mutable
 /** 研究项目
  * 包含课程建设项目、教改项目
  */
-class RdProject extends LongId with Coded with Named with Remark {
+class RdProject extends LongId with Coded with Named with Remark with Updated {
 
   /** 是否课程建设项目 */
   var forCourse: Boolean = _
 
   /** 负责人 */
-  var leader: User = _
+  var leaders: mutable.Buffer[User] = Collections.newBuffer[User]
 
   /** 参与人 */
   var members: mutable.Buffer[RdProjectMember] = Collections.newBuffer[RdProjectMember]
@@ -44,7 +45,7 @@ class RdProject extends LongId with Coded with Named with Remark {
   var department: Department = _
 
   /** 级别 */
-  var level: RdProjectLevel = _
+  var level: RdLevel = _
 
   /** 类别 */
   var category: RdProjectCategory = _
@@ -63,6 +64,14 @@ class RdProject extends LongId with Coded with Named with Remark {
 
   /** 状态 */
   var status: RdProjectStatus = _
+
+  def leaderNames: String = {
+    leaders.map(_.name).mkString(",")
+  }
+
+  def memberNames: String = {
+    members.map(_.name).mkString(",")
+  }
 }
 
 /** 项目成员
@@ -71,8 +80,10 @@ class RdProject extends LongId with Coded with Named with Remark {
 class RdProjectMember extends LongId {
   /** 排名 */
   var idx: Int = _
+  /** 姓名 */
+  var name: String = _
   /** 参与人 */
-  var user: User = _
+  var user: Option[User] = None
   /** 项目 */
   var project: RdProject = _
 }

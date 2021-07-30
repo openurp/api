@@ -16,12 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.rd.project.model
+package org.openurp.rd.code.model
 
-import org.openurp.code.CodeBean
+import org.beangle.data.orm.MappingModule
 
-/**项目类别*/
-class RdProjectCategory extends CodeBean {
+class DefaultMapping extends MappingModule {
 
-  var forCourse: Boolean = _
+  def binding(): Unit = {
+    bind[RdLevel]
+    bind[RdAwardGrade]
+  }
 }

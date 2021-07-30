@@ -19,6 +19,7 @@
 package org.openurp.rd.project.model
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.rd.code.model.RdLevel
 
 class DefaultMapping extends MappingModule {
 
@@ -30,8 +31,6 @@ class DefaultMapping extends MappingModule {
     bind[RdProjectMember]
 
     bind[RdProjectStatus]
-
-    bind[RdProjectLevel]
 
     bind[RdProjectCategory]
   }

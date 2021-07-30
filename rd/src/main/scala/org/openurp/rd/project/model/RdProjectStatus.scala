@@ -18,10 +18,9 @@
  */
 package org.openurp.rd.project.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+import org.openurp.code.CodeBean
 
 /**项目状态*/
-class RdProjectStatus extends IntId with Named{
+class RdProjectStatus extends CodeBean{
 
 }

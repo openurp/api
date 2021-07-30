@@ -16,12 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.rd.project.model
+package org.openurp.rd.achievement.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.LongId
+import org.openurp.base.model.User
 
-/** 项目级别 */
-class RdProjectLevel extends IntId with Named {
-
+/** 项目成员
+ *
+ */
+class RdAchievementMember extends LongId {
+  /** 排名 */
+  var idx: Int = _
+  /** 姓名 */
+  var name: String = _
+  /** 参与人 */
+  var user: Option[User] = None
+  /** 项目 */
+  var achievement: RdAchievement = _
 }

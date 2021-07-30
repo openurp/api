@@ -16,12 +16,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.rd.project.model
+package org.openurp.rd.achievement.model
 
-import org.openurp.code.CodeBean
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
+import org.openurp.rd.code.model.{RdAwardGrade, RdLevel}
 
-/**项目类别*/
-class RdProjectCategory extends CodeBean {
+import java.time.YearMonth
 
-  var forCourse: Boolean = _
+/** 教学成果获奖信息
+ *
+ */
+class RdAchievementAward extends LongId with Named {
+
+  /** 获奖年份 */
+  var awardYear: Int = _
+
+  /** 获奖年月 */
+  var awardOn: Option[YearMonth] = None
+
+  /** 获奖等级 */
+  var grade: RdAwardGrade = _
+
+  /** 级别 */
+  var level: RdLevel = _
+
+  /** 教学成果 */
+  var achievement: RdAchievement = _
+
+  /** 授奖部门 */
+  var awardBy: String = _
 }
