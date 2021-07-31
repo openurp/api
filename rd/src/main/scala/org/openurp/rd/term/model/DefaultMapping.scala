@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.rd.achievement.model
+package org.openurp.rd.term.model
 
 import org.beangle.data.orm.MappingModule
 
@@ -24,23 +24,9 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
 
-    bind[RdAchievement] declare { e =>
-      e.members is depends("achievement")
-      e.awards is depends("achievement")
+    bind[TeachingTeam] declare { e =>
+      e.members is depends("team")
     }
-    bind[RdAchievementMember]
-
-    bind[RdAchievementAward]
-
-    bind[RdAchievementType]
-
-    bind[TextbookAchievement] declare { e =>
-      e.awards is depends("achievement")
-      e.editors is depends("achievement")
-    }
-
-    bind[TextbookAward]
-
-    bind[TextbookEditor]
+    bind[TeachingTeamMember]
   }
 }

@@ -16,31 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.rd.achievement.model
+package org.openurp.rd.term.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.openurp.base.model.User
 
-class DefaultMapping extends MappingModule {
+/** 教学团队成员
+ *
+ */
+class TeachingTeamMember extends LongId {
 
-  def binding(): Unit = {
+  var term: TeachingTeam = _
 
-    bind[RdAchievement] declare { e =>
-      e.members is depends("achievement")
-      e.awards is depends("achievement")
-    }
-    bind[RdAchievementMember]
+  /**顺序号*/
+  var idx: Int = _
 
-    bind[RdAchievementAward]
+  /**成员账户*/
+  var user: User = _
 
-    bind[RdAchievementType]
-
-    bind[TextbookAchievement] declare { e =>
-      e.awards is depends("achievement")
-      e.editors is depends("achievement")
-    }
-
-    bind[TextbookAward]
-
-    bind[TextbookEditor]
-  }
 }

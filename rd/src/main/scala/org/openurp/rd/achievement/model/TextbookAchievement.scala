@@ -18,29 +18,32 @@
  */
 package org.openurp.rd.achievement.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.Textbook
 
-class DefaultMapping extends MappingModule {
+import scala.collection.mutable
 
-  def binding(): Unit = {
+/** 教材信息
+ *
+ */
+class TextbookAchievement extends LongId with Updated {
 
-    bind[RdAchievement] declare { e =>
-      e.members is depends("achievement")
-      e.awards is depends("achievement")
-    }
-    bind[RdAchievementMember]
+  /** 教材 */
+  var textbook: Textbook = _
 
-    bind[RdAchievementAward]
+  /** 编写作者 */
+  var editors: mutable.Buffer[TextbookEditor] = Collections.newBuffer[TextbookEditor]
 
-    bind[RdAchievementType]
+  /** 获奖信息 */
+  var awards: mutable.Buffer[TextbookAward] = Collections.newBuffer[TextbookAward]
 
-    bind[TextbookAchievement] declare { e =>
-      e.awards is depends("achievement")
-      e.editors is depends("achievement")
-    }
+  def chiefEditors: collection.Seq[TextbookEditor] = {
+    editors.filter(_.chief)
+  }
 
-    bind[TextbookAward]
-
-    bind[TextbookEditor]
+  def noChiefEditors: collection.Seq[TextbookEditor] = {
+    editors.filter(_.chief)
   }
 }

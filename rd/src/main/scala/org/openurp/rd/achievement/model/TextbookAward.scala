@@ -18,29 +18,21 @@
  */
 package org.openurp.rd.achievement.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
+import org.openurp.rd.code.model.RdAwardGrade
 
-class DefaultMapping extends MappingModule {
+import java.time.YearMonth
 
-  def binding(): Unit = {
+/** 教材获奖 */
+class TextbookAward extends LongId with Named {
 
-    bind[RdAchievement] declare { e =>
-      e.members is depends("achievement")
-      e.awards is depends("achievement")
-    }
-    bind[RdAchievementMember]
+  /** 教材成果 */
+  var achievement: TextbookAchievement = _
 
-    bind[RdAchievementAward]
+  /** 获奖年月 */
+  var awardOn: Option[YearMonth] = None
 
-    bind[RdAchievementType]
-
-    bind[TextbookAchievement] declare { e =>
-      e.awards is depends("achievement")
-      e.editors is depends("achievement")
-    }
-
-    bind[TextbookAward]
-
-    bind[TextbookEditor]
-  }
+  /** 获奖等级 */
+  var grade: Option[RdAwardGrade] = None
 }

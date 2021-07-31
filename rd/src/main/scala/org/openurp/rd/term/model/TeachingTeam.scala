@@ -16,31 +16,33 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.rd.achievement.model
+package org.openurp.rd.term.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Named, Updated}
+import org.openurp.base.model.{Department, User}
+import org.openurp.rd.code.model.RdLevel
 
-class DefaultMapping extends MappingModule {
+import scala.collection.mutable
 
-  def binding(): Unit = {
+/** 教学团队
+ *
+ */
+class TeachingTeam extends LongId with Named with Updated {
 
-    bind[RdAchievement] declare { e =>
-      e.members is depends("achievement")
-      e.awards is depends("achievement")
-    }
-    bind[RdAchievementMember]
+  /** 所在学院 */
+  var department: Department = _
 
-    bind[RdAchievementAward]
+  /** 级别 */
+  var level: RdLevel = _
 
-    bind[RdAchievementType]
+  /** 带头人 */
+  var leaders: mutable.Buffer[User] = Collections.newBuffer[User]
 
-    bind[TextbookAchievement] declare { e =>
-      e.awards is depends("achievement")
-      e.editors is depends("achievement")
-    }
+  /** 参与人 */
+  var members: mutable.Buffer[TeachingTeamMember] = Collections.newBuffer[TeachingTeamMember]
+  /** 获奖信息 */
+  var awardTitle: Option[String] = None
 
-    bind[TextbookAward]
-
-    bind[TextbookEditor]
-  }
 }

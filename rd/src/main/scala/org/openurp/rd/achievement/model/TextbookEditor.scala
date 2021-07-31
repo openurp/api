@@ -18,29 +18,22 @@
  */
 package org.openurp.rd.achievement.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
+import org.openurp.base.model.User
 
-class DefaultMapping extends MappingModule {
+/** 教材作者 */
+class TextbookEditor extends LongId with Named {
 
-  def binding(): Unit = {
+  /** 教材成果 */
+  var achievement: TextbookAchievement = _
 
-    bind[RdAchievement] declare { e =>
-      e.members is depends("achievement")
-      e.awards is depends("achievement")
-    }
-    bind[RdAchievementMember]
+  /** 是否主编 */
+  var chief: Boolean = _
 
-    bind[RdAchievementAward]
+  /** 对应校内用户 */
+  var user: Option[User] = _
 
-    bind[RdAchievementType]
-
-    bind[TextbookAchievement] declare { e =>
-      e.awards is depends("achievement")
-      e.editors is depends("achievement")
-    }
-
-    bind[TextbookAward]
-
-    bind[TextbookEditor]
-  }
+  /** 主编或者参编排序 */
+  var idx: Int = _
 }

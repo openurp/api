@@ -20,8 +20,9 @@ package org.openurp.rd.achievement.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Named, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, Updated}
 
+import java.time.YearMonth
 import scala.collection.mutable
 
 /** 教学成果
@@ -34,7 +35,7 @@ import scala.collection.mutable
  * d：成果属本科教育填 1，研究生教育填 2，其他填 0。
  * </p>
  */
-class RdAchievement extends LongId with Named with Updated {
+class RdAchievement extends LongId with Coded with Named with Updated {
 
   /** 成果类型 */
   var achievementType: RdAchievementType = _
@@ -53,4 +54,18 @@ class RdAchievement extends LongId with Named with Updated {
 
   /** 成果网站 */
   var website: Option[String] = None
+
+  /** 成果起始 */
+  var beginOn: YearMonth = _
+
+  /** 成果完成 */
+  var endOn: YearMonth = _
+
+  def memberNames: String = {
+    members.map(_.name).mkString(",")
+  }
+
+  def getMember(idx: Int): Option[RdAchievementMember] = {
+    members.find(_.idx == idx)
+  }
 }

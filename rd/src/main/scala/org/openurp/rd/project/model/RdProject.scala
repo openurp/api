@@ -72,6 +72,10 @@ class RdProject extends LongId with Coded with Named with Remark with Updated {
   def memberNames: String = {
     members.map(_.name).mkString(",")
   }
+
+  def getMember(idx: Int): Option[RdProjectMember] = {
+    members.find(_.idx == idx)
+  }
 }
 
 /** 项目成员
