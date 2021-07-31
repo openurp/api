@@ -16,19 +16,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.process.model
+package org.openurp.edu.grade.regular.model
 
 import org.beangle.data.model.LongId
 
 /** 平时测验成绩
  *
  */
-class ProcessTestGrade extends LongId {
+class RegularTestGrade extends LongId {
   /** 平时总评 */
-  var processGrade: ProcessGrade = _
+  var regularGrade: RegularGrade = _
 
   /** 测验类型 */
-  var testType: ProcessTestType = _
+  var testType: RegularTestType = _
 
   /** 百分比 */
   var scorePercent: Int = _

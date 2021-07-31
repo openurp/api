@@ -16,11 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.process.model
+package org.openurp.edu.grade.regular.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.Student
+import org.openurp.edu.clazz.model.Clazz
 
-class ProcessTestType extends IntId with Named {
+import scala.collection.mutable
 
+/** 平时总评成绩
+ *
+ */
+class RegularGrade extends LongId with Updated {
+  var clazz: Clazz = _
+
+  var std: Student = _
+
+  var score: Float = _
+
+  var tests: mutable.Buffer[RegularTestGrade] = Collections.newBuffer[RegularTestGrade]
+
+  var status: Int = _
+
+  def getTestGrade(gt: RegularTestType): Option[RegularTestGrade] = {
+    tests.find(_.testType == gt)
+  }
 }

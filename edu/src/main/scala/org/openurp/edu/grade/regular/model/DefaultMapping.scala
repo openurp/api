@@ -16,32 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.process.model
+package org.openurp.edu.grade.regular.model
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.clazz.model.Clazz
+import org.beangle.data.orm.MappingModule
 
-import scala.collection.mutable
+class DefaultMapping extends MappingModule {
 
-/** 平时成绩状态
- *
- */
-class ProcessGradeState extends LongId with Updated {
+  def binding(): Unit = {
+    bind[RegularGrade].declare { e =>
+      e.tests is depends("regularGrade")
 
-  /** 教学任务 */
-  var clazz: Clazz = _
+      index("", true, e.std, e.clazz)
+      index("", false, e.std)
+      index("", false, e.clazz)
+    }
 
-  /** 各个成绩类型的百分比 */
-  var percents: mutable.Map[ProcessTestType, Int] = Collections.newMap[ProcessTestType, Int]
+    bind[RegularGradeState].declare { e =>
+      index("", true, e.clazz)
+    }
 
-  /** 成绩状态 */
-  var status: Int = _
+    bind[RegularTestGrade].declare { e =>
+      index("", true, e.regularGrade, e.testType)
+    }
 
-  /** 平时成绩优秀率上限 */
-  var excellentRateLimit: Float = _
-
-  /** 优秀率 */
-  var excellentRate: Float = _
+    bind[RegularTestType].declare { e =>
+      index("", true, e.name)
+    }
+  }
 }

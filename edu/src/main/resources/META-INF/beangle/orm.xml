@@ -7,7 +7,7 @@
   <mapping class="org.openurp.edu.grade.model.DefaultMapping" name="grade.common"/>
   <mapping class="org.openurp.edu.grade.course.model.DefaultMapping" name="grade.course"/>
   <mapping class="org.openurp.edu.grade.moral.model.DefaultMapping" name="grade.moral"/>
-  <mapping class="org.openurp.edu.grade.process.model.DefaultMapping" name="grade.process"/>
+  <mapping class="org.openurp.edu.grade.regular.model.DefaultMapping" name="grade.regular"/>
   <mapping class="org.openurp.edu.grade.plan.model.DefaultMapping" name="grade.plan"/>
   <mapping class="org.openurp.edu.program.model.DefaultMapping" name="program"/>
   <mapping class="org.openurp.edu.room.model.DefaultMapping" name="room"/>

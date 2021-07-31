@@ -16,31 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.edu.grade.process.model
+package org.openurp.edu.grade.regular.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.Named
 
-class DefaultMapping extends MappingModule {
+class RegularTestType extends IntId with Named {
 
-  def binding(): Unit = {
-    bind[ProcessGrade].declare { e =>
-      e.tests is depends("processGrade")
-
-      index("", true, e.std, e.clazz)
-      index("", false, e.std)
-      index("", false, e.clazz)
-    }
-
-    bind[ProcessGradeState].declare { e =>
-      index("", true, e.clazz)
-    }
-
-    bind[ProcessTestGrade].declare { e =>
-      index("", true, e.processGrade, e.testType)
-    }
-
-    bind[ProcessTestType].declare { e =>
-      index("", true, e.name)
-    }
-  }
 }
