@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.23.1-SNAPSHOT">
+<db engine="PostgreSQL" version="0.23.1">
   <schemas>
     <schema name="base">
       <tables>
@@ -428,7 +428,7 @@
             <index name="idx_2cpvhk7d040sh5temf5afvht8" columns="course_id"/>
           </indexes>
         </table>
-        <table name="department_categories" comment="部门分类@code">
+        <table name="department_categories" comment="部门分类@common">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
@@ -1369,7 +1369,7 @@
                          referenced-column="id"/>
           </foreign-keys>
         </table>
-        <table name="user_categories" comment="人员分类@code">
+        <table name="user_categories" comment="人员分类@common">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
@@ -6328,6 +6328,310 @@
         </table>
       </tables>
     </schema>
+    <schema name="rd">
+      <tables>
+        <table name="rd_achievement_awards" comment="教学成果获奖@achievement">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="achievement_id" type="bigint" nullable="false" comment="教学成果ID"/>
+            <column name="award_by" type="varchar(255)" nullable="false" comment="授奖部门"/>
+            <column name="award_on" type="date" comment="获奖年月"/>
+            <column name="award_year" type="integer" nullable="false" comment="获奖年份"/>
+            <column name="grade_id" type="integer" nullable="false" comment="获奖级别ID"/>
+            <column name="level_id" type="integer" nullable="false" comment="研究级别ID"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+          </columns>
+          <primary-key name="pk_jrurc91k5s98dupbvbiucs605" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_44j8kfjd2ja3u8qlj56j5d180" column="level_id" referenced-table="rd.rd_levels"
+                         referenced-column="id"/>
+            <foreign-key name="fk_oxp7bebss19larnn3t0nb14gp" column="achievement_id"
+                         referenced-table="rd.rd_achievements" referenced-column="id"/>
+            <foreign-key name="fk_ddndd7lhul3j63b3f98v49r8d" column="grade_id" referenced-table="rd.rd_award_grades"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_sure8ht5dxo4cbr29cq0bbq50" columns="achievement_id"/>
+          </indexes>
+        </table>
+        <table name="rd_achievement_members" comment="教学成果完成人@achievement">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="achievement_id" type="bigint" nullable="false" comment="教学成果ID"/>
+            <column name="idx" type="integer" nullable="false" comment="次序号"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="姓名"/>
+            <column name="user_id" type="bigint" comment="通用人员信息ID"/>
+          </columns>
+          <primary-key name="pk_13aseiekqtn3gmtqw4u0ortdo" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_tr48v1ys65adxli6vukmd9l66" column="achievement_id"
+                         referenced-table="rd.rd_achievements" referenced-column="id"/>
+            <foreign-key name="fk_jsxdglbdv51m9kbj295otnt3v" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_tf2rabxu2vp1vl422toaq0y0t" columns="achievement_id"/>
+          </indexes>
+        </table>
+        <table name="rd_achievement_types" comment="教学成果类型@achievement">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
+          </columns>
+          <primary-key name="pk_ta42fnnl0b3oljvweg6mflnwd" columns="id"/>
+        </table>
+        <table name="rd_achievements" comment="教学成果@achievement">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="achievement_type_id" type="integer" nullable="false" comment="教学成果类型ID"/>
+            <column name="begin_on" type="date" nullable="false" comment="成果起始"/>
+            <column name="category_code" type="varchar(255)" comment="科类代码"/>
+            <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
+            <column name="end_on" type="date" nullable="false" comment="成果完成"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="org_name" type="varchar(255)" nullable="false" comment="完成单位"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+            <column name="website" type="varchar(255)" comment="成果网址"/>
+          </columns>
+          <primary-key name="pk_kcqw8m7fdba9xh17q6sm4kxtd" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_sgffqts7wdj8k2vrtrpvlq0d1" column="achievement_type_id"
+                         referenced-table="rd.rd_achievement_types" referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="rd_award_grades" comment="获奖级别@code">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
+          </columns>
+          <primary-key name="pk_ij1rtygc537ykj7n9n0fonlm" columns="id"/>
+        </table>
+        <table name="rd_levels" comment="研究级别@code">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
+          </columns>
+          <primary-key name="pk_oblsjsi7q9bdeq4kxmf4j3qc9" columns="id"/>
+        </table>
+        <table name="rd_project_categories" comment="项目类别@project">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="for_course" type="boolean" nullable="false" comment="是否课程项目"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
+          </columns>
+          <primary-key name="pk_8ad75c7otnko05ptv7cs56eos" columns="id"/>
+        </table>
+        <table name="rd_project_members" comment="项目成员@project">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="idx" type="integer" nullable="false" comment="次序号"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="姓名"/>
+            <column name="project_id" type="bigint" nullable="false" comment="研究项目ID"/>
+            <column name="user_id" type="bigint" comment="通用人员信息ID"/>
+          </columns>
+          <primary-key name="pk_fx6ud9yt7chj5wgi8jsjxe1vd" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_b1y6ss7h1kn4xp7wtgnl3ihj9" column="project_id" referenced-table="rd.rd_projects"
+                         referenced-column="id"/>
+            <foreign-key name="fk_dqj4rjwrly2grgaonlanwxyvm" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_2k68gfloim9504k22uiuvfauk" columns="project_id"/>
+          </indexes>
+        </table>
+        <table name="rd_project_statuses" comment="项目状态@project">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="修改时间"/>
+          </columns>
+          <primary-key name="pk_2l8sy0rmcghk1vv78aur11wmw" columns="id"/>
+        </table>
+        <table name="rd_projects" comment="研究项目@project">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="立项年月"/>
+            <column name="category_id" type="integer" nullable="false" comment="项目类别ID"/>
+            <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
+            <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
+            <column name="end_on" type="date" nullable="false" comment="应结项年月"/>
+            <column name="finished_on" type="date" comment="实际结项年月"/>
+            <column name="for_course" type="boolean" nullable="false" comment="是否课程项目"/>
+            <column name="funds" type="integer" nullable="false" comment="资金"/>
+            <column name="level_id" type="integer" nullable="false" comment="研究级别ID"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="status_id" type="integer" nullable="false" comment="项目状态ID"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_sn8pn1wp0f8awmjy42hcmnmoc" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_3n41csujj883di3pustjmihnd" column="level_id" referenced-table="rd.rd_levels"
+                         referenced-column="id"/>
+            <foreign-key name="fk_k2vcs9vy3431k0tuf1nhn0ubu" column="category_id"
+                         referenced-table="rd.rd_project_categories" referenced-column="id"/>
+            <foreign-key name="fk_ekyb4syr9shdr4mvio1h07pf6" column="department_id" referenced-table="base.departments"
+                         referenced-column="id"/>
+            <foreign-key name="fk_oicmoe4lx8mjag53ba812vs2s" column="status_id"
+                         referenced-table="rd.rd_project_statuses" referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="rd_projects_leaders" comment="负责人@project">
+          <columns>
+            <column name="rd_project_id" type="bigint" nullable="false" comment="研究项目ID"/>
+            <column name="user_id" type="bigint" nullable="false" comment="通用人员信息ID"/>
+          </columns>
+          <primary-key name="pk_te6ajmxgr9o0402uvfenplpvh" columns="rd_project_id,user_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_fxa8grfxgh285tcrphy86vtky" column="rd_project_id" referenced-table="rd.rd_projects"
+                         referenced-column="id"/>
+            <foreign-key name="fk_lme51xpar41nsygthi5ti6kti" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_9i3d8et45ck4qwhsgrvnvdqrc" columns="rd_project_id"/>
+          </indexes>
+        </table>
+        <table name="teaching_team_members" comment="团队成员@team">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="idx" type="integer" nullable="false" comment="次序号"/>
+            <column name="team_id" type="bigint" nullable="false" comment="研究团队ID"/>
+            <column name="user_id" type="bigint" nullable="false" comment="通用人员信息ID"/>
+          </columns>
+          <primary-key name="pk_b0hsatym04m5isj6oxjjmmfbb" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_fspuaxe1a4elhn8xulnovu2dp" column="team_id" referenced-table="rd.teaching_teams"
+                         referenced-column="id"/>
+            <foreign-key name="fk_m78errt234ys34olo2fih3ky6" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_9loptf43av6ac4srdn8nuq58p" columns="team_id"/>
+          </indexes>
+        </table>
+        <table name="teaching_teams" comment="研究团队@team">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="award_title" type="varchar(255)" comment="获奖名称"/>
+            <column name="begin_on" type="date" nullable="false" comment="立项年月"/>
+            <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
+            <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
+            <column name="level_id" type="integer" nullable="false" comment="研究级别ID"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_k1qfb3g4prtlvhoqsw3cq0ska" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_rk53xvi8yj1jey0tr1q3qs71w" column="level_id" referenced-table="rd.rd_levels"
+                         referenced-column="id"/>
+            <foreign-key name="fk_3o51s6k56umn5thxfoombqp19" column="department_id" referenced-table="base.departments"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="teaching_teams_leaders" comment="研究团队带头人@team">
+          <columns>
+            <column name="teaching_team_id" type="bigint" nullable="false" comment="研究团队ID"/>
+            <column name="user_id" type="bigint" nullable="false" comment="通用人员信息ID"/>
+          </columns>
+          <primary-key name="pk_aqg74musb0j1qtonp6uy9vupg" columns="teaching_team_id,user_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_erqumximio9whgmyo69wokoch" column="teaching_team_id"
+                         referenced-table="rd.teaching_teams" referenced-column="id"/>
+            <foreign-key name="fk_arns2gdyoytsqvrp4wld7jbln" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_iksg21jj8jtd80126xrj83fp6" columns="teaching_team_id"/>
+          </indexes>
+        </table>
+        <table name="textbook_achievements" comment="教材成果@achievement">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="textbook_id" type="bigint" nullable="false" comment="教材ID"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_301jawapmi8866dn1wo04dr62" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_qpm0bumhlc6bxyxqqk5a61cnq" column="textbook_id" referenced-table="base.textbooks"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="textbook_awards" comment="教材获奖@achievement">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="achievement_id" type="bigint" nullable="false" comment="教材成果ID"/>
+            <column name="award_on" type="date" comment="获奖年月"/>
+            <column name="grade_id" type="integer" comment="获奖级别ID"/>
+            <column name="level_id" type="integer" nullable="false" comment="研究级别ID"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+          </columns>
+          <primary-key name="pk_mf7o4jj1qfw8k0d3akw2g95s7" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_isow2pp9x9uso60iam7mn7npj" column="level_id" referenced-table="rd.rd_levels"
+                         referenced-column="id"/>
+            <foreign-key name="fk_h46np6gm06l99bci0qv2ntath" column="achievement_id"
+                         referenced-table="rd.textbook_achievements" referenced-column="id"/>
+            <foreign-key name="fk_bqljtra85ba4yhal05n5o58b6" column="grade_id" referenced-table="rd.rd_award_grades"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_pynj8wtc3cfhryhr6988ymw1h" columns="achievement_id"/>
+          </indexes>
+        </table>
+        <table name="textbook_editors" comment="教材成果编辑信息@achievement">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="achievement_id" type="bigint" nullable="false" comment="教材成果ID"/>
+            <column name="chief" type="boolean" nullable="false" comment="是否主编"/>
+            <column name="idx" type="integer" nullable="false" comment="次序号"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="user_id" type="bigint" comment="通用人员信息ID"/>
+          </columns>
+          <primary-key name="pk_6l1cf8pefv3kvorgvxyk7qrm8" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_flsg7iul201ccuoxp8c1l6bt4" column="achievement_id"
+                         referenced-table="rd.textbook_achievements" referenced-column="id"/>
+            <foreign-key name="fk_h1v8t8wt85nke81m3roa78437" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_nkkgske0o3mh9cxc2s5hrpbvc" columns="achievement_id"/>
+          </indexes>
+        </table>
+      </tables>
+    </schema>
     <schema name="spa">
       <tables>
         <table name="coupons" comment="优惠券@doc">
@@ -7422,6 +7726,8 @@
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="amount" type="integer" nullable="false" comment="对应的金额"/>
             <column name="department_id" type="integer" comment="部门组织机构信息ID"/>
+            <column name="direction_id" type="bigint" comment="方向信息 专业领域ID"/>
+            <column name="duration" type="float4" nullable="false" comment="学制"/>
             <column name="fee_type_id" type="integer" nullable="false" comment="收费类型ID"/>
             <column name="from_grade" type="varchar(255)" nullable="false" comment="起始年级"/>
             <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
@@ -7438,6 +7744,8 @@
             <foreign-key name="fk_hdsrmr4nitrway1tj4eyn4erd" column="fee_type_id" referenced-table="std.fee_types"
                          referenced-column="id"/>
             <foreign-key name="fk_samiwcphv6owqj0byy0yao18u" column="department_id" referenced-table="base.departments"
+                         referenced-column="id"/>
+            <foreign-key name="fk_1qimyf4x6y3cmh1swfc5t8bia" column="direction_id" referenced-table="base.directions"
                          referenced-column="id"/>
           </foreign-keys>
         </table>

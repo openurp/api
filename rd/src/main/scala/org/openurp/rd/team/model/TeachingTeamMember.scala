@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.rd.term.model
+package org.openurp.rd.team.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.model.User
@@ -26,7 +26,7 @@ import org.openurp.base.model.User
  */
 class TeachingTeamMember extends LongId {
 
-  var term: TeachingTeam = _
+  var team: TeachingTeam = _
 
   /**顺序号*/
   var idx: Int = _

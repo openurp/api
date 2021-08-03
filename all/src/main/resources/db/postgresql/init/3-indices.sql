@@ -162,6 +162,14 @@ create index idx_7lykycmfk7vttwxwqw2hpr565 on qos.teacher_question_stats (eval_s
 create index idx_9d7epkerdh0q4rrvvjrn7epth on qos.teacher_question_type_stats (eval_stat_id);
 create index idx_8s9ak6mlyl39u6hp8j4ysbkel on qos.teacher_remessages (text_evaluation_id);
 create index idx_gavh43lg9nulgrwrywxh9o76u on qos.teacher_remessages_students (teacher_remessage_id);
+create index idx_sure8ht5dxo4cbr29cq0bbq50 on rd.rd_achievement_awards (achievement_id);
+create index idx_tf2rabxu2vp1vl422toaq0y0t on rd.rd_achievement_members (achievement_id);
+create index idx_2k68gfloim9504k22uiuvfauk on rd.rd_project_members (project_id);
+create index idx_9i3d8et45ck4qwhsgrvnvdqrc on rd.rd_projects_leaders (rd_project_id);
+create index idx_9loptf43av6ac4srdn8nuq58p on rd.teaching_team_members (team_id);
+create index idx_iksg21jj8jtd80126xrj83fp6 on rd.teaching_teams_leaders (teaching_team_id);
+create index idx_pynj8wtc3cfhryhr6988ymw1h on rd.textbook_awards (achievement_id);
+create index idx_nkkgske0o3mh9cxc2s5hrpbvc on rd.textbook_editors (achievement_id);
 create index idx_bill_std on std.bills (std_id);
 create index idx_6mgvfxpime2q3p8vuknbtghbo on std.degree_audit_items (result_id);
 create index idx_jby4o302r5oxdg1qfapaoxj45 on std.examinees_scores (examinee_id);

@@ -44,7 +44,7 @@ class RdAchievement extends LongId with Coded with Named with Updated {
   var members: mutable.Buffer[RdAchievementMember] = Collections.newBuffer[RdAchievementMember]
 
   /** 完成单位 */
-  var organization: String = _
+  var orgName: String = _
 
   /** 获奖情况 */
   var awards: mutable.Buffer[RdAchievementAward] = Collections.newBuffer[RdAchievementAward]

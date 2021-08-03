@@ -46,4 +46,8 @@ class TextbookAchievement extends LongId with Updated {
   def noChiefEditors: collection.Seq[TextbookEditor] = {
     editors.filter(_.chief)
   }
+
+  def getEditor(chief: Boolean, idx: Int): Option[TextbookEditor] = {
+    editors.find(x => x.idx == idx && x.chief == chief)
+  }
 }

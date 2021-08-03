@@ -20,7 +20,7 @@ package org.openurp.rd.achievement.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.rd.code.model.RdAwardGrade
+import org.openurp.rd.code.model.{RdAwardGrade, RdLevel}
 
 import java.time.YearMonth
 
@@ -35,4 +35,7 @@ class TextbookAward extends LongId with Named {
 
   /** 获奖等级 */
   var grade: Option[RdAwardGrade] = None
+
+  /** 获奖级别 */
+  var level: RdLevel = _
 }

@@ -16,20 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openurp.rd.term.model
+package org.openurp.rd.team.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Named, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, Remark, Updated}
 import org.openurp.base.model.{Department, User}
 import org.openurp.rd.code.model.RdLevel
 
+import java.time.YearMonth
 import scala.collection.mutable
 
 /** 教学团队
  *
  */
-class TeachingTeam extends LongId with Named with Updated {
+class TeachingTeam extends LongId with Coded with Named with Updated with Remark {
 
   /** 所在学院 */
   var department: Department = _
@@ -42,7 +43,24 @@ class TeachingTeam extends LongId with Named with Updated {
 
   /** 参与人 */
   var members: mutable.Buffer[TeachingTeamMember] = Collections.newBuffer[TeachingTeamMember]
+
   /** 获奖信息 */
   var awardTitle: Option[String] = None
+
+  /**立项年月*/
+  var beginOn:YearMonth=_
+
+  def leaderNames: String = {
+    leaders.map(_.name).mkString(",")
+  }
+
+  def memberNames: String = {
+    members.map(_.user.name).mkString(",")
+  }
+
+  def getMember(idx: Int): Option[TeachingTeamMember] = {
+    members.find(_.idx == idx)
+  }
+
 
 }

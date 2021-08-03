@@ -20,9 +20,9 @@ package org.openurp.std.fee.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.Remark
+import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.EducationLevel
-import org.openurp.base.edu.model.Major
 
 /**
  * 收费缺省值
@@ -35,14 +35,20 @@ class TuitionConfig extends IntId with Remark {
   /** 截止年级 */
   var toGrade: String = _
 
+  /**学制*/
+  var duration:Float=_
+
   /** 学历层次 */
   var level: EducationLevel = _
 
-  /** 系 */
+  /** 院系 */
   var department: Option[Department] = None
 
   /** 所属的专业 */
   var major: Option[Major] = None
+
+  /** 所属的专业方向 */
+  var direction: Option[Direction] = None
 
   /** 收费类型 */
   var feeType: FeeType = _
