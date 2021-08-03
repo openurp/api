@@ -35,7 +35,7 @@ class GraduateResult extends LongId with Updated {
   var session: GraduateSession = _
 
   /** 批次 */
-  var batch: Int = _
+  var batchNo: Int = _
 
   /** 学生 */
   var std: Student = _

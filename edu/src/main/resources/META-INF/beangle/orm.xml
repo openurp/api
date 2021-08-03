@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.edu.clazz.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.course.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.exam.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.extern.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.grade.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.grade.course.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.grade.moral.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.grade.plan.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.program.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.room.model.DefaultMapping"/>
-  <mapping class="org.openurp.edu.textbook.model.DefaultMapping"/>
+  <mapping class="org.openurp.edu.clazz.model.DefaultMapping" name="clazz"/>
+  <mapping class="org.openurp.edu.course.model.DefaultMapping" name="course"/>
+  <mapping class="org.openurp.edu.exam.model.DefaultMapping" name="exam"/>
+  <mapping class="org.openurp.edu.extern.model.DefaultMapping" name="extern"/>
+  <mapping class="org.openurp.edu.grade.model.DefaultMapping" name="grade.common"/>
+  <mapping class="org.openurp.edu.grade.course.model.DefaultMapping" name="grade.course"/>
+  <mapping class="org.openurp.edu.grade.moral.model.DefaultMapping" name="grade.moral"/>
+  <mapping class="org.openurp.edu.grade.regular.model.DefaultMapping" name="grade.regular"/>
+  <mapping class="org.openurp.edu.grade.plan.model.DefaultMapping" name="grade.plan"/>
+  <mapping class="org.openurp.edu.program.model.DefaultMapping" name="program"/>
+  <mapping class="org.openurp.edu.room.model.DefaultMapping" name="room"/>
+  <mapping class="org.openurp.edu.textbook.model.DefaultMapping" name="textbook"/>
   <naming>
     <profile package="org.openurp.edu" pluralize="true" schema="edu"/>
   </naming>

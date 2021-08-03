@@ -18,7 +18,7 @@
  */
 package org.openurp.base.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
@@ -83,12 +83,13 @@ class DefaultMapping extends MappingModule {
       e.formerName & e.phoneticName are length(100)
     }
 
-    bind[Version].declare{ e=>
+    bind[Version].declare { e =>
       e.version is length(20)
       e.description is length(200)
     }
 
+    bind[ExternSchool].generator(IdGenerator.AutoIncrement)
+
     all.except(classOf[User], classOf[Person]).cacheable()
   }
-
 }

@@ -32,5 +32,4 @@ class DefaultMapping extends MappingModule {
     bind[TransferApply]
     bind[TransferScope]
   }
-
 }

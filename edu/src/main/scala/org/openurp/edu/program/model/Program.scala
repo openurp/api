@@ -20,20 +20,19 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Named, Remark, TemporalOn, Updated}
-import org.openurp.base.model.{Campus, Department}
-import org.openurp.code.edu.model.{Degree, StudyType}
+import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
 import org.openurp.base.edu.code.model.{CourseType, StdType}
 import org.openurp.base.edu.model.{Direction, Major}
-import org.openurp.base.edu.{EduLevelBased, AuditStates}
+import org.openurp.base.edu.{AuditStates, EduLevelBased}
+import org.openurp.base.model.{Campus, Department}
+import org.openurp.code.edu.model.{Degree, StudyType}
 
 /**
  * 专业培养方案
- *
  * @author chaostone
  *
  */
-class Program extends LongId with Updated with Named with Cloneable with TemporalOn with EduLevelBased with Remark {
+class Program extends LongId with Updated with Named with Cloneable with DateRange with EduLevelBased with Remark {
 
   /** 年级 */
   var grade: String = _
@@ -41,7 +40,7 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   /** 部门 */
   var department: Department = _
 
-  /** 专业  */
+  /** 专业 */
   var major: Major = _
 
   /** 专业方向 */
@@ -53,7 +52,7 @@ class Program extends LongId with Updated with Named with Cloneable with Tempora
   /** 校区 */
   var campus: Option[Campus] = None
 
-  /** 学制  */
+  /** 学制 */
   var duration: Float = _
 
   /** 学习形式 */

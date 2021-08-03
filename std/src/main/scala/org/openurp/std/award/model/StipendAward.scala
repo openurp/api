@@ -67,7 +67,7 @@ class StipendCategory extends IntId with Coded with Named with TemporalOn {
   var enabled: Boolean = _
 
   /** 是否分等级 */
-  var beRated: Boolean = _
+  var rated: Boolean = _
 
 }
 

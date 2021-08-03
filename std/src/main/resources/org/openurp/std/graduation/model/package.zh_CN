@@ -21,7 +21,7 @@ GraduateResult.educationResult=毕结业情况
 GraduateResult.acquiredCredits=获得学分
 GraduateResult.requiredCredits=要求学分
 GraduateResult.electedCredits=修读学分
-GraduateResult.batch=批次
+GraduateResult.batchNo=批次
 
 DegreeResult=学位审核结果
 DegreeResult.items=学位审核详细结果

@@ -18,16 +18,17 @@
  */
 package org.openurp.base.edu.model
 
-import java.time.LocalDate
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
 import org.beangle.data.model.{Component, LongId}
+import org.openurp.base.edu.code.model.{StdLabel, StdLabelType, StdType}
+import org.openurp.base.edu.{EduLevelBased, StdEnrollment}
 import org.openurp.base.model.{Campus, Department, Person, User}
 import org.openurp.code.edu.model.{EducationLevel, StudyType}
 import org.openurp.code.std.model.StudentStatus
-import org.openurp.base.edu.code.model.{StdLabel, StdLabelType, StdType}
-import org.openurp.base.edu.{EduLevelBased, StdEnrollment}
+
+import java.time.LocalDate
+import scala.collection.mutable
 
 /**
  * 学籍信息实现
@@ -35,7 +36,7 @@ import org.openurp.base.edu.{EduLevelBased, StdEnrollment}
 class Student extends LongId with EduLevelBased with Updated with Remark with DateRange {
 
   /** 基本信息 */
-  var person: Option[Person] = None
+  var person: Person = _
 
   /** 用户信息 */
   var user: User = _
@@ -122,14 +123,14 @@ class StudentScope extends Component {
   /** 项目 */
   var project: Project = _
   /** 培养层次集合 */
-  var levels: collection.mutable.Set[EducationLevel] = _
+  var levels: mutable.Set[EducationLevel] = Collections.newSet[EducationLevel]
   /** 学生类别集合 */
-  var stdTypes: collection.mutable.Set[StdType] = _
+  var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]
   /** 部门集合 */
-  var departments: collection.mutable.Set[Department] = _
+  var departments: mutable.Set[Department] = Collections.newSet[Department]
   /** 专业集合 */
-  var majors: collection.mutable.Set[Major] = _
+  var majors: mutable.Set[Major] = Collections.newSet[Major]
   /** 专业方向集合 */
-  var directions: collection.mutable.Set[Direction] = _
+  var directions: mutable.Set[Direction] = Collections.newSet[Direction]
 
 }

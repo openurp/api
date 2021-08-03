@@ -83,5 +83,4 @@ class DefaultMapping extends MappingModule {
       e.contents is length(500)
     }
   }
-
 }

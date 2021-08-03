@@ -18,12 +18,12 @@
  */
 package org.openurp.std.fee.model
 
-import java.time.Instant
-
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.model.Department
 import org.openurp.base.edu.model.{Semester, Student}
+import org.openurp.base.model.Department
+
+import java.time.Instant
 
 /** 账单 */
 class Bill extends LongId with Updated with Remark {
@@ -57,4 +57,22 @@ class Bill extends LongId with Updated with Remark {
 
   /** 修改人 */
   var updatedBy: String = _
+
+  /** 应缴费用(元)
+   *
+   * @return
+   */
+  def amountYuan: Float = {
+    amount / 100.0f
+  }
+
+
+  /** 实收金额(元)
+   *
+   * @return
+   */
+  def payedYuan: Float = {
+    payed / 100.0f
+  }
+
 }

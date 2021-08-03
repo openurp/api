@@ -19,7 +19,6 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.base.stu.model.Instructor
 
 class DefaultMapping extends MappingModule {
 
@@ -176,6 +175,8 @@ class DefaultMapping extends MappingModule {
       index("", true, e.project, e.code)
     }
 
-    all.except(classOf[Student], classOf[StudentState]).cacheAll()
+    bind[ExternStudent]
+
+    all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent]).cacheAll()
   }
 }

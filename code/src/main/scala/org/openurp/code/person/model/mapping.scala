@@ -43,5 +43,4 @@ class DefaultMapping extends MappingModule {
 
     all.cacheAll()
   }
-
 }

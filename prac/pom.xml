@@ -4,12 +4,12 @@
   <parent>
     <groupId>org.openurp</groupId>
     <artifactId>openurp-api-parent</artifactId>
-    <version>0.23.0</version>
+    <version>0.23.1</version>
   </parent>
   <groupId>org.openurp.prac</groupId>
   <artifactId>openurp-prac-api</artifactId>
   <packaging>jar</packaging>
-  <name>OpenURP Practice API</name>
+  <name>OpenURP Prac API</name>
 
   <properties>
     <bundle.symbolicName>org.openurp.prac.api</bundle.symbolicName>

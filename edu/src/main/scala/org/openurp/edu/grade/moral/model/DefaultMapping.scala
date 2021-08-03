@@ -18,7 +18,7 @@
  */
 package org.openurp.edu.grade.moral.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
@@ -29,5 +29,4 @@ class DefaultMapping extends MappingModule {
       index("", true, e.std, e.semester)
     }
   }
-
 }

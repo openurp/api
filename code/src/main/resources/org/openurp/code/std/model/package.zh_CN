@@ -2,6 +2,8 @@ UnregisteredReason=未注册原因
 UncheckinReason=未报到原因
 
 StdPunishmentType=学生处分类型
+StdPunishmentType.grade=处分等级
+
 StdAlterType=学籍异动类别
 StdAlterReason=学籍异动原因
 UeeSubjectType=高考科目

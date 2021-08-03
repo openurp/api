@@ -18,19 +18,31 @@
  */
 package org.openurp.std.info.model
 
-import org.openurp.base.edu.model.Student
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
+import org.openurp.base.edu.model.Student
+import org.openurp.code.person.model.{FamilyRelationship, IdType}
 
 /**
  * 社会关系
  */
-class SocialRelation extends LongId {
+class SocialRelation extends LongId with Named {
 
-  /**学生*/
+  /** 学生 */
   var std: Student = _
 
-  var name: String = _
+  /** 关系 */
+  var relationship: FamilyRelationship = _
 
-  var relation: String = _
+  /** 单位、职务 */
+  var duty: Option[String] = None
 
+  /** 联系电话 */
+  var phone: Option[String] = None
+
+  /** 证件类型 */
+  var idType: Option[IdType] = None
+
+  /** 证件 */
+  var idcard: Option[String] = None
 }

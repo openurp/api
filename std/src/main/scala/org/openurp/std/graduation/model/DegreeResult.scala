@@ -33,9 +33,6 @@ class DegreeResult extends LongId with Updated {
   /** 所属的毕业审核批次 */
   var session: GraduateSession = _
 
-  /** 批次 */
-  var batch: Int = _
-
   /** 学生 */
   var std: Student = _
 
@@ -51,7 +48,7 @@ class DegreeResult extends LongId with Updated {
   /** 是否通过学位审核 */
   var passed: Boolean = _
 
-  /** 锁定毕业审核结果 */
+  /** 锁定审核结果 */
   var locked: Boolean = _
 
   /** 是否已发布 */

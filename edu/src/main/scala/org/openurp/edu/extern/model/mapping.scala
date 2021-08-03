@@ -26,24 +26,13 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     bind[CertificateSubject].generator(IdGenerator.Code)
     bind[CertificateCategory].generator(IdGenerator.Code)
-
-    bind[ExchangeSchool].generator(IdGenerator.AutoIncrement)
-
     bind[CertificateGrade].declare { e =>
       e.scoreText is length(5)
       e.certificate & e.examNo are length(80)
     }
-
-    bind[ExchangeStudent].declare { e =>
-      e.grades is depends("exchangeStudent")
+    bind[ExternGrade] declare{e=>
+      e.courseName is length(400)
+      e.scoreText is length(20)
     }
-
-    bind[ExchangeGrade].declare { e =>
-      e.courseName is length(255)
-      e.scoreText is length(10)
-    }
-
-    bind[ExemptionCredit]
   }
-
 }

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.std.alter.model.DefaultMapping" />
-  <mapping class="org.openurp.std.fee.model.DefaultMapping" />
-  <mapping class="org.openurp.std.info.model.DefaultMapping" />
-  <mapping class="org.openurp.std.register.model.DefaultMapping" />
-  <mapping class="org.openurp.std.transfer.model.DefaultMapping" />
-  <mapping class="org.openurp.std.graduation.model.DefaultMapping"/>
+  <mapping class="org.openurp.std.alter.model.DefaultMapping" name="alter" />
+  <mapping class="org.openurp.std.fee.model.DefaultMapping"  name="fee"/>
+  <mapping class="org.openurp.std.info.model.DefaultMapping"  name="info"/>
+  <mapping class="org.openurp.std.award.model.DefaultMapping"  name="award"/>
+  <mapping class="org.openurp.std.register.model.DefaultMapping"  name="register"/>
+  <mapping class="org.openurp.std.transfer.model.DefaultMapping"  name="transfer"/>
+  <mapping class="org.openurp.std.graduation.model.DefaultMapping"  name="graduation"/>
+  <mapping class="org.openurp.std.exchange.model.DefaultMapping"  name="exchange"/>
   <naming>
     <profile package = "org.openurp.std" pluralize="true" schema="std"/>
   </naming>

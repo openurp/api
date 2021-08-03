@@ -29,5 +29,4 @@ class DefaultMapping extends MappingModule {
       e.operateIp is length(100)
     }
   }
-
 }

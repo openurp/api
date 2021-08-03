@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.code.DefaultMapping" />
-  <mapping class="org.openurp.code.asset.model.DefaultMapping" />
-  <mapping class="org.openurp.code.edu.model.DefaultMapping" />
-  <mapping class="org.openurp.code.geo.model.DefaultMapping" />
-  <mapping class="org.openurp.code.hr.model.DefaultMapping" />
-  <mapping class="org.openurp.code.job.model.DefaultMapping" />
-  <mapping class="org.openurp.code.person.model.DefaultMapping" />
-  <mapping class="org.openurp.code.sin.model.DefaultMapping" />
-  <mapping class="org.openurp.code.std.model.DefaultMapping" />
+  <mapping class="org.openurp.code.DefaultMapping" name="common"/>
+  <mapping class="org.openurp.code.asset.model.DefaultMapping" name="asset"/>
+  <mapping class="org.openurp.code.edu.model.DefaultMapping" name="edu"/>
+  <mapping class="org.openurp.code.geo.model.DefaultMapping" name="geo"/>
+  <mapping class="org.openurp.code.hr.model.DefaultMapping" name="hr"/>
+  <mapping class="org.openurp.code.job.model.DefaultMapping" name="job"/>
+  <mapping class="org.openurp.code.person.model.DefaultMapping" name="person"/>
+  <mapping class="org.openurp.code.sin.model.DefaultMapping" name="sin"/>
+  <mapping class="org.openurp.code.std.model.DefaultMapping" name="std"/>
   <naming>
     <profile package = "org.openurp.code" pluralize="true" schema="code"/>
   </naming>

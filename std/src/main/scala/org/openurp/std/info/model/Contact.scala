@@ -31,7 +31,7 @@ class Contact extends LongId with Updated{
   var std: Student = _
 
   /** 电子邮箱 */
-  var mail: Option[String] = None
+  var email: Option[String] = None
 
   /** 电话 */
   var phone: Option[String] = None

@@ -247,3 +247,6 @@ TimeSetting.minutesPerUnit=每小节分钟数
 TeachingGroup=教研室
 TeachingGroup.director=负责人
 TeachingGroup.members=成员
+
+ExternStudent=外校学习经历
+ExternStudent.majorName=学习专业
