@@ -4104,96 +4104,6 @@
             <unique-key name="uk_f6f86yl0ja9p2dveh9syviq2x" columns="std_id"/>
           </unique-keys>
         </table>
-        <table name="process_grade_states" comment="平时总评成绩状态@grade.process">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="excellent_rate" type="float4" nullable="false" comment="优秀率"/>
-            <column name="excellent_rate_limit" type="float4" nullable="false" comment="优秀率上限"/>
-            <column name="status" type="integer" nullable="false" comment="状态"/>
-            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
-          </columns>
-          <primary-key name="pk_3iw2sbrv3pfmqb6lm168lfvpf" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_4jrss25fyhfrryx1h43989hmt" column="clazz_id" referenced-table="edu.clazzes"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <unique-keys>
-            <unique-key name="uk_efki1v9qto7s90pa2081ajov" columns="clazz_id"/>
-          </unique-keys>
-        </table>
-        <table name="process_grade_states_percents" comment="各类测试百分比@grade.process">
-          <columns>
-            <column name="process_grade_state_id" type="bigint" nullable="false" comment="平时总评成绩状态ID"/>
-            <column name="process_test_type_id" type="integer" nullable="false" comment="平时测试类型ID"/>
-            <column name="value_" type="integer" nullable="false" comment="各类测试百分比"/>
-          </columns>
-          <primary-key name="pk_2oh70wf3brffvjdb2j5m3wn0x"
-                       columns="process_grade_state_id,value_,process_test_type_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_jfb6nv8xt9ul5gqjvpey2o8x7" column="process_grade_state_id"
-                         referenced-table="edu.process_grade_states" referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_pqls9iau3y0aiari9j1i8pjbh" columns="process_grade_state_id"/>
-          </indexes>
-        </table>
-        <table name="process_grades" comment="平时过程总评成绩@grade.process">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="score" type="float4" nullable="false" comment="分数"/>
-            <column name="status" type="integer" nullable="false" comment="状态"/>
-            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
-          </columns>
-          <primary-key name="pk_ertalftcv64vnbi8sya1kebvh" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_j6m8dvr6hg60eloemmsss2qnv" column="std_id" referenced-table="base.students"
-                         referenced-column="id"/>
-            <foreign-key name="fk_tjck1xif57r4tf9b99xvdmgmp" column="clazz_id" referenced-table="edu.clazzes"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <unique-keys>
-            <unique-key name="uk_tpg5ssh3c0nc4bgte7770lsop" columns="std_id,clazz_id"/>
-          </unique-keys>
-          <indexes>
-            <index name="idx_1oeikyxe9m04d1os8e6soi5go" columns="std_id"/>
-            <index name="idx_py3s5ykk1fw0gk21lxl5ctl7v" columns="clazz_id"/>
-          </indexes>
-        </table>
-        <table name="process_test_grades" comment="平时测试成绩@grade.process">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="process_grade_id" type="bigint" nullable="false" comment="平时过程总评成绩ID"/>
-            <column name="score" type="integer" nullable="false" comment="分数"/>
-            <column name="score_percent" type="integer" nullable="false" comment="百分比"/>
-            <column name="test_type_id" type="integer" nullable="false" comment="平时测试类型ID"/>
-          </columns>
-          <primary-key name="pk_m2ij29ekdu9mjwwh999l76iph" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_ea2db94ig58wr4i6tt4d2cky9" column="process_grade_id"
-                         referenced-table="edu.process_grades" referenced-column="id"/>
-            <foreign-key name="fk_4rpt9v447pkihwaoy6tklddx9" column="test_type_id"
-                         referenced-table="edu.process_test_types" referenced-column="id"/>
-          </foreign-keys>
-          <unique-keys>
-            <unique-key name="uk_23w8j9ifx282bxgi9f12gjwh3" columns="process_grade_id,test_type_id"/>
-          </unique-keys>
-          <indexes>
-            <index name="idx_qoyl32k2m10m7r8g1if8fwdg5" columns="process_grade_id"/>
-          </indexes>
-        </table>
-        <table name="process_test_types" comment="平时测试类型@grade.process">
-          <columns>
-            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
-          </columns>
-          <primary-key name="pk_knphm7mh7voy3442lcxysesn7" columns="id"/>
-          <unique-keys>
-            <unique-key name="uk_oxllj3oaiitkn2np5b1bviv3h" columns="name"/>
-          </unique-keys>
-        </table>
         <table name="program_doc_metas" comment="培养方案章节定义@program">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
@@ -4329,6 +4239,96 @@
             <foreign-key name="fk_lgbdfiw5fkc6aqvy7hacfxi32" column="direction_id" referenced-table="base.directions"
                          referenced-column="id"/>
           </foreign-keys>
+        </table>
+        <table name="regular_grade_states" comment="平时总评成绩状态@grade.regular">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="excellent_rate" type="float4" nullable="false" comment="优秀率"/>
+            <column name="excellent_rate_limit" type="float4" nullable="false" comment="优秀率上限"/>
+            <column name="status" type="integer" nullable="false" comment="状态"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_hnj9nkhhqpuj7yg9v7efhigo6" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_j5ace0mxflctid23oeqqhaq8q" column="clazz_id" referenced-table="edu.clazzes"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_nv0dulh1dhs6ddpd0clg8tvac" columns="clazz_id"/>
+          </unique-keys>
+        </table>
+        <table name="regular_grade_states_percents" comment="各类测试百分比@grade.regular">
+          <columns>
+            <column name="regular_grade_state_id" type="bigint" nullable="false" comment="平时总评成绩状态ID"/>
+            <column name="regular_test_type_id" type="integer" nullable="false" comment="平时测试类型ID"/>
+            <column name="value_" type="integer" nullable="false" comment="各类测试百分比"/>
+          </columns>
+          <primary-key name="pk_ljpyhuafbu8nwj7j6exu1wax1"
+                       columns="regular_grade_state_id,value_,regular_test_type_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_lprivn68a8s69hcr0demiaoer" column="regular_grade_state_id"
+                         referenced-table="edu.regular_grade_states" referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_qcchbnp54bci79i8mdudt2y63" columns="regular_grade_state_id"/>
+          </indexes>
+        </table>
+        <table name="regular_grades" comment="平时过程总评成绩@grade.regular">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="score" type="float4" nullable="false" comment="分数"/>
+            <column name="status" type="integer" nullable="false" comment="状态"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_83v4fybspmj863btsicnyux6h" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_2oruj40kqq3brkq6rpiswt02n" column="std_id" referenced-table="base.students"
+                         referenced-column="id"/>
+            <foreign-key name="fk_kahcmptsyckx2c6rsh0c88e8q" column="clazz_id" referenced-table="edu.clazzes"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_ek8kmmv077hq3rh4docowoqw7" columns="std_id,clazz_id"/>
+          </unique-keys>
+          <indexes>
+            <index name="idx_fmwrwh59gqwgfcs1jevsbahxw" columns="std_id"/>
+            <index name="idx_79jpq20ahqs7fp9yhfb1k0eac" columns="clazz_id"/>
+          </indexes>
+        </table>
+        <table name="regular_test_grades" comment="平时测试成绩@grade.regular">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="regular_grade_id" type="bigint" nullable="false" comment="平时过程总评成绩ID"/>
+            <column name="score" type="integer" nullable="false" comment="分数"/>
+            <column name="score_percent" type="integer" nullable="false" comment="百分比"/>
+            <column name="test_type_id" type="integer" nullable="false" comment="平时测试类型ID"/>
+          </columns>
+          <primary-key name="pk_5cprha5ugb0e1uuo3cuof6jxj" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_9vjsk4osepdtwogp19en7yohw" column="regular_grade_id"
+                         referenced-table="edu.regular_grades" referenced-column="id"/>
+            <foreign-key name="fk_j1t7tkui9uk5j2avv9v9gl1gr" column="test_type_id"
+                         referenced-table="edu.regular_test_types" referenced-column="id"/>
+          </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_8n2yq76yji9pqu6q0ccfcymaw" columns="regular_grade_id,test_type_id"/>
+          </unique-keys>
+          <indexes>
+            <index name="idx_4uha48ytsvm0oy0dn16v694u3" columns="regular_grade_id"/>
+          </indexes>
+        </table>
+        <table name="regular_test_types" comment="平时测试类型@grade.regular">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+          </columns>
+          <primary-key name="pk_t3a6autvcdxavg3jngtnoa9u7" columns="id"/>
+          <unique-keys>
+            <unique-key name="uk_pjg3i553nwubmj92t250lraw9" columns="name"/>
+          </unique-keys>
         </table>
         <table name="restriction_items" comment="课程限制项@clazz">
           <columns>
