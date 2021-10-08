@@ -58,4 +58,7 @@ class Order extends LongId with Coded with Remark {
   /** 过期时间点 */
   var expiredAt: Instant = _
 
+  /** 发票地址 */
+  var invoicePath: Option[String] = None
+
 }

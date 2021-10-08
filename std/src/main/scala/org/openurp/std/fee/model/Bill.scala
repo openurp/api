@@ -34,9 +34,6 @@ class Bill extends LongId with Updated with Remark {
   /** 收费部门 */
   var depart: Department = _
 
-  /** 发票号 */
-  var invoiceCode: Option[String] = None
-
   /** 交费类型 */
   var feeType: FeeType = _
 

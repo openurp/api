@@ -1,5 +1,4 @@
 Bill=账单
-Bill.invoiceCode=发票号
 Bill.depart=收费部门
 Bill.amount=应缴费用(分)
 Bill.payed=实收(分)
@@ -24,3 +23,4 @@ Order.status=状态
 Order.payUrl=支付地址
 Order.createdAt=创建时间
 Order.expiredAt=过期时间点
+Order.invoicePath=发票地址
