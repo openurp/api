@@ -396,10 +396,10 @@ alter table edu.room_applies add constraint fk_e6v1qwxe7tut2p6ua5llhbbsn foreign
 alter table edu.room_applies_rooms add constraint fk_6ocigqxbksqi0cyosbbo2h91s foreign key (classroom_id) references base.classrooms (id);
 alter table edu.room_applies_rooms add constraint fk_nu4r5htixx20aou9bo8ep23bb foreign key (room_apply_id) references edu.room_applies (id);
 alter table edu.room_applies_times add constraint fk_qpapnbbq74r8lwfljrwobal9j foreign key (room_apply_id) references edu.room_applies (id);
-alter table edu.room_apply_depart_checks add constraint fk_n1agt68977pli9i9lfb2lxyhr foreign key (apply_id) references edu.room_applies (id);
+alter table edu.room_apply_depart_checks add constraint fk_86o2677abn3whr0cn6hcfmf73 foreign key (room_apply_id) references edu.room_applies (id);
 alter table edu.room_apply_depart_checks add constraint fk_sgesd4r8eb5299qb9tvljsjay foreign key (checked_by_id) references base.users (id);
 alter table edu.room_apply_final_checks add constraint fk_2lbh4x7na3ikpl94oscdow4h4 foreign key (checked_by_id) references base.users (id);
-alter table edu.room_apply_final_checks add constraint fk_eb7l2qgiubakaqheycv4gkwck foreign key (apply_id) references edu.room_applies (id);
+alter table edu.room_apply_final_checks add constraint fk_4athjgnyrbex8davkcl5rdjo4 foreign key (room_apply_id) references edu.room_applies (id);
 alter table edu.room_available_times add constraint fk_183gwhpwsatxi28cono6qufx0 foreign key (room_id) references base.classrooms (id);
 alter table edu.room_available_times add constraint fk_80f0a3loerpivqs3t1eq13h20 foreign key (project_id) references base.projects (id);
 alter table edu.sessions add constraint fk_8mqwc7w2ppe535m8gp6exba08 foreign key (subclazz_id) references edu.subclazzes (id);

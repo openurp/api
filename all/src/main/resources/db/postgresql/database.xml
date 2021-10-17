@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.23.1">
+<db engine="PostgreSQL" version="0.23.2">
   <schemas>
     <schema name="base">
       <tables>
@@ -4449,34 +4449,34 @@
         <table name="room_apply_depart_checks" comment="归口审核@room">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="apply_id" type="bigint" nullable="false" comment="教室借用ID"/>
             <column name="approved" type="boolean" nullable="false" comment="是否审核通过"/>
             <column name="checked_at" type="timestamp" nullable="false" comment="审核时间"/>
             <column name="checked_by_id" type="bigint" nullable="false" comment="审核人ID"/>
             <column name="opinions" type="varchar(100)" comment="具体意见"/>
+            <column name="room_apply_id" type="bigint" nullable="false" comment="教室借用ID"/>
           </columns>
           <primary-key name="pk_9hbnf2sy4qro45xh5ujcmlfue" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_n1agt68977pli9i9lfb2lxyhr" column="apply_id" referenced-table="edu.room_applies"
-                         referenced-column="id"/>
             <foreign-key name="fk_sgesd4r8eb5299qb9tvljsjay" column="checked_by_id" referenced-table="base.users"
+                         referenced-column="id"/>
+            <foreign-key name="fk_86o2677abn3whr0cn6hcfmf73" column="room_apply_id" referenced-table="edu.room_applies"
                          referenced-column="id"/>
           </foreign-keys>
         </table>
         <table name="room_apply_final_checks" comment="最终审核@room">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="apply_id" type="bigint" nullable="false" comment="教室借用ID"/>
             <column name="approved" type="boolean" nullable="false" comment="是否审核通过"/>
             <column name="checked_at" type="timestamp" nullable="false" comment="审核时间"/>
             <column name="checked_by_id" type="bigint" nullable="false" comment="审核人ID"/>
             <column name="opinions" type="varchar(100)" comment="具体意见"/>
+            <column name="room_apply_id" type="bigint" nullable="false" comment="教室借用ID"/>
           </columns>
           <primary-key name="pk_gcxfm7cd70mrjbi5ir5dq5yxe" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_eb7l2qgiubakaqheycv4gkwck" column="apply_id" referenced-table="edu.room_applies"
-                         referenced-column="id"/>
             <foreign-key name="fk_2lbh4x7na3ikpl94oscdow4h4" column="checked_by_id" referenced-table="base.users"
+                         referenced-column="id"/>
+            <foreign-key name="fk_4athjgnyrbex8davkcl5rdjo4" column="room_apply_id" referenced-table="edu.room_applies"
                          referenced-column="id"/>
           </foreign-keys>
         </table>
@@ -6772,7 +6772,6 @@
             <column name="created_at" type="timestamp" nullable="false" comment="创建时间"/>
             <column name="depart_id" type="integer" nullable="false" comment="收费部门ID"/>
             <column name="fee_type_id" type="integer" nullable="false" comment="收费类型ID"/>
-            <column name="invoice_code" type="varchar(255)" comment="发票号"/>
             <column name="pay_at" type="timestamp" comment="实缴时间"/>
             <column name="payed" type="integer" nullable="false" comment="实收(分)"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
@@ -7086,8 +7085,9 @@
         <table name="graduate_sessions" comment="毕业批次@graduation">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="毕业日期起始"/>
             <column name="degree_offered" type="boolean" nullable="false" comment="是否授学位"/>
-            <column name="graduate_on" type="date" nullable="false" comment="毕业日期"/>
+            <column name="end_on" type="date" nullable="false" comment="毕业日期结束"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
@@ -7248,6 +7248,7 @@
             <column name="code" type="varchar(50)" nullable="false" unique="true" comment="代码"/>
             <column name="created_at" type="timestamp" nullable="false" comment="创建时间"/>
             <column name="expired_at" type="timestamp" nullable="false" comment="过期时间点"/>
+            <column name="invoice_path" type="varchar(255)" comment="发票地址"/>
             <column name="paid" type="boolean" nullable="false" comment="是否成功"/>
             <column name="pay_at" type="timestamp" comment="支付时间"/>
             <column name="pay_url" type="varchar(500)" nullable="false" comment="支付地址"/>
