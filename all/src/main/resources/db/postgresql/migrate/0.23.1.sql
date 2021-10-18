@@ -147,10 +147,11 @@ alter table std.social_relations add constraint fk_bkj2udhihdk4dx9ixwcrb0gh2 for
 create index idx_tu5uubg7w074d5n7aoudd13r on std.social_relations (std_id);
 alter table std.graduate_results rename column batch to batch_no;
 alter table std.homes add constraint uk_t42cafsv2e1s4k9l1rxdixf2x unique (std_id);
-alter table std.graduations add column batch_no integer;
+alter table std.graduations add column batch_no integer default 1;
 alter table std.graduations alter batch_no set not null;
 alter table std.graduations alter certificate_no drop not null;
 alter table std.graduations rename column code to certificate_no;
+alter table std.graduations add whereto_go_id int4;
 alter table code.std_punishment_types add column grade integer;
 alter table code.std_punishment_types alter grade set not null;
 
