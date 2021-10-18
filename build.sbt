@@ -40,64 +40,56 @@ lazy val base = (project in file("base"))
   .settings(
     organization := "org.openurp.base",
     name := "openurp-base-api",
-    common,
-    libraryDependencies ++= Seq(scalatest)
+    common
   ).dependsOn(code)
 
 lazy val edu = (project in file("edu"))
   .settings(
     organization := "org.openurp.edu",
     name := "openurp-edu-api",
-    common,
-    libraryDependencies ++= Seq(scalatest)
+    common
   ).dependsOn(base)
 
 lazy val hr = (project in file("hr"))
   .settings(
     organization := "org.openurp.hr",
     name := "openurp-hr-api",
-    common,
-    libraryDependencies ++= Seq(scalatest)
+    common
   ).dependsOn(base)
 
 lazy val prac = (project in file("prac"))
   .settings(
     organization := "org.openurp.prac",
     name := "openurp-prac-api",
-    common,
-    libraryDependencies ++= Seq(scalatest)
+    common
   ).dependsOn(base)
 
 lazy val qos = (project in file("qos"))
   .settings(
     organization := "org.openurp.qos",
     name := "openurp-qos-api",
-    common,
-    libraryDependencies ++= Seq(scalatest)
+    common
   ).dependsOn(edu)
 
 lazy val rd = (project in file("rd"))
   .settings(
     organization := "org.openurp.rd",
     name := "openurp-rd-api",
-    common,
-    libraryDependencies ++= Seq(scalatest)
+    common
   ).dependsOn(base)
 
 lazy val spa = (project in file("spa"))
   .settings(
     organization := "org.openurp.spa",
     name := "openurp-spa-api",
-    common,
-    libraryDependencies ++= Seq(scalatest)
+    common
   ).dependsOn(base)
 
 lazy val std = (project in file("std"))
   .settings(
     organization := "org.openurp.std",
     name := "openurp-std-api",
-    common,
-    libraryDependencies ++= Seq(scalatest)
+    common
   ).dependsOn(base)
 
 lazy val all = (project in file("all"))
