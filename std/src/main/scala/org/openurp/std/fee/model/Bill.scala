@@ -62,7 +62,6 @@ class Bill extends LongId with Updated with Remark {
     amount / 100.0f
   }
 
-
   /** 实收金额(元)
    *
    * @return
