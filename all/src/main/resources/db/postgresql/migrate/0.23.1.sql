@@ -205,6 +205,7 @@ create index idx_iksg21jj8jtd80126xrj83fp6 on rd.teaching_teams_leaders (teachin
 create index idx_pynj8wtc3cfhryhr6988ymw1h on rd.textbook_awards (achievement_id);
 create index idx_nkkgske0o3mh9cxc2s5hrpbvc on rd.textbook_editors (achievement_id);
 
+create schema rd;
 alter table rd.rd_achievement_awards add constraint fk_44j8kfjd2ja3u8qlj56j5d180 foreign key (level_id) references rd.rd_levels (id);
 alter table rd.rd_achievement_awards add constraint fk_ddndd7lhul3j63b3f98v49r8d foreign key (grade_id) references rd.rd_award_grades (id);
 alter table rd.rd_achievement_awards add constraint fk_oxp7bebss19larnn3t0nb14gp foreign key (achievement_id) references rd.rd_achievements (id);

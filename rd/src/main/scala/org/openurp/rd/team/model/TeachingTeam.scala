@@ -61,5 +61,4 @@ class TeachingTeam extends LongId with Coded with Named with Updated with Remark
     members.find(_.idx == idx)
   }
 
-
 }

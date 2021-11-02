@@ -347,11 +347,17 @@ object TeachingNature {
   val Practice = 9 //实践
 }
 
-object TeachingNatureCategory{
-  def fromId(id:Int):TeachingNatureCategory={
-    TeachingNatureCategory.fromOrdinal(id - 1)
+object TeachingNatureCategory {
+  def fromId(id: Int): TeachingNatureCategory = {
+    id match {
+      case 1 => Theory
+      case 2 => Experiment
+      case 9 => Practice
+      case _=> throw new RuntimeException("Cannot recognize teaching nature id" + id)
+    }
   }
 }
+
 /** 授课性质分类 */
 enum TeachingNatureCategory(id: Int, val title: String) {
   case Theory extends TeachingNatureCategory(1, "理论")
