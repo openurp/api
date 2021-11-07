@@ -28,12 +28,6 @@ import org.openurp.base.edu.model.Major
 import org.openurp.base.edu.model.Squad
 import org.beangle.data.model.Entity
 
-object RestrictionMeta{
-
-  def fromId(id:Int):RestrictionMeta={
-    RestrictionMeta.fromOrdinal(id-1)
-  }
-}
 enum RestrictionMeta(val id:Int,contentType: Class[_]){
 
   case Grade extends RestrictionMeta(1, classOf[String])
