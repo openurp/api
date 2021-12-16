@@ -30,5 +30,5 @@ class Option extends LongId with Named {
   /** 选项所占比重（权重） */
   var proportion: Float = _
   /** 选项组 */
-  var optionGroup: OptionGroup = _
+  var group: OptionGroup = _
 }

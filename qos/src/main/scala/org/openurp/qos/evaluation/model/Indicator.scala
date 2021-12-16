@@ -18,19 +18,22 @@
 package org.openurp.qos.evaluation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{ Named, Remark, TemporalOn, Updated }
+import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.model.Project
 
 /**
  * 问题类型
+ * 指示器
  *
  * @author cwx,chaostone
  *
  */
-class QuestionType extends LongId with Named with Updated with TemporalOn with Remark {
+class Indicator extends LongId with Coded with Named with Updated with TemporalOn with Remark with Ordered[Indicator] {
   var project: Project = _
   /** 英文名称 */
   var enName: scala.Option[String] = None
-  /** 优先级 ,越大越靠前 */
-  var priority: Int = _
+
+  override def compare(that: Indicator): Int = {
+    code.compare(that.code)
+  }
 }

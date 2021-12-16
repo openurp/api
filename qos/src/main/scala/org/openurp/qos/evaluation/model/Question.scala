@@ -27,16 +27,14 @@ import org.openurp.base.edu.model.Project
  *
  * @author chaostone
  */
-class Question extends LongId with Updated with TemporalOn with Remark {
+class Question extends LongId with Updated with TemporalOn {
   var project: Project = _
   /** 问题内容 */
   var contents: String = _
   /** 问题类型 */
-  var questionType: QuestionType = _
+  var indicator: Indicator = _
   /** 分值 */
   var score: Float = _
-  /** 问题所对应的使用部门 */
-  var depart: Department = _
   /** 优先级 */
   var priority: Int = _
   /** 是否附加题 */

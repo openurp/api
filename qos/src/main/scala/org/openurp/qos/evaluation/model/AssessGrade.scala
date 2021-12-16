@@ -17,19 +17,26 @@
 
 package org.openurp.qos.evaluation.model
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.base.model.Department
+import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.edu.model.Project
 
-class EvaluationCriteria extends LongId with Named {
-  var project: Project = _
+class AssessGrade extends IntId with Named with Ordered[AssessGrade] {
+  /** 最小分值 */
+  var minScore: Float = _
 
-  /** 具体分值对照项 */
-  var criteriaItems = Collections.newBuffer[EvaluationCriteriaItem]
+  /** 最大分值 */
+  var maxScore: Float = _
 
-  /** 制作部门 */
-  var depart: Department = _
+  var grade: Int = _
+
+  var description: String = _
+
+  override def compare(that: AssessGrade): Int = {
+    grade - that.grade
+  }
+
+  /** 评价 */
+  var criteria: AssessCriteria = _
 
 }

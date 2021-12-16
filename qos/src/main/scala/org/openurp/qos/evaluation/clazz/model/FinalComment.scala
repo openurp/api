@@ -17,30 +17,32 @@
 
 package org.openurp.qos.evaluation.clazz.model
 
-import org.openurp.base.edu.model.Student
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import java.time.Instant
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.{Course, Semester, Student, Teacher}
+import org.openurp.base.model.Department
 
-/**
- * 文字评教教师回复
- *
- * @author chaostone
- */
-class TeacherRemessage extends LongId {
-  /** 回复信息 */
-  var remessage: String = _
+class FinalComment extends LongId with Updated {
 
-  /** 回复对象 */
-  var students = Collections.newSet[Student]
+  var std: Student = _
 
-  /** 文字评教 */
-  var textEvaluation: TextEvaluation = _
+  var crn: String = _
 
-  /** 显示状态 */
-  var visible: Boolean = false
+  /** 教学日历 */
+  var semester: Semester = _
 
-  var createdAt: Instant = _
+  /** 任课教师 */
+  var teacher: Teacher = _
 
-  var updatedAt: Instant = _
+  /** 开课院系 */
+  var teachDepart: Department = _
+
+  /** 课程 */
+  var course: Course = _
+
+  /** 评价等级 */
+  var grade: String = _
+
+  /** 内容 */
+  var contents: String = _
 }
