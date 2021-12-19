@@ -21,6 +21,9 @@ import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.edu.model.Project
 
+/** 评价等级
+ *
+ */
 class AssessGrade extends IntId with Named with Ordered[AssessGrade] {
   /** 最小分值 */
   var minScore: Float = _
@@ -28,15 +31,17 @@ class AssessGrade extends IntId with Named with Ordered[AssessGrade] {
   /** 最大分值 */
   var maxScore: Float = _
 
+  /** 等级数字值 */
   var grade: Int = _
 
+  /** 描述 */
   var description: String = _
+
+  /** 评价 */
+  var criteria: AssessCriteria = _
 
   override def compare(that: AssessGrade): Int = {
     grade - that.grade
   }
-
-  /** 评价 */
-  var criteria: AssessCriteria = _
 
 }

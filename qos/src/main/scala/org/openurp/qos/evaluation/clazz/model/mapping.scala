@@ -24,9 +24,8 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     //clazz result
     bind[EvaluateResult].declare { e =>
-      e.clazz & e.student & e.department & e.questionnaire & e.evaluateAt are notnull
+      e.clazz & e.student & e.department & e.questionnaire are notnull
       e.questionResults is depends("result")
-      e.remark is length(20)
     }
     bind[QuestionResult]
     bind[QuestionnaireClazz]

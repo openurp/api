@@ -4,7 +4,6 @@ Option.name=选项名
 Option.proportion=选项所占比重（权重）
 Option.optionGroup=选项组
 
-
 OptionGroup=选项组
 OptionGroup.name=名称
 OptionGroup.oppoVal=倾向性权重 必须在0和1之间
@@ -49,14 +48,14 @@ Questionnaire.createBy=创建者
 Questionnaire.oppoQs=对立问题
 Questionnaire.project=项目
 
-EvaluationCriteriaItem=评价名称对应项
-EvaluationCriteriaItem.minScore=最小分值
-EvaluationCriteriaItem.maxScore=最大分值
-EvaluationCriteriaItem.name=对应的评价名称
-EvaluationCriteriaItem.criteria=评价
+AssessGrade=评价名称对应项
+AssessGrade.minScore=最小分值
+AssessGrade.maxScore=最大分值
+AssessGrade.name=对应的评价名称
+AssessGrade.grade=数字级别
+AssessGrade.description=描述
 
-EvaluationCriteria=评教对照标准
-EvaluationCriteria.name=名称
-EvaluationCriteria.criteriaItems=具体分值对照项
-EvaluationCriteria.depart=制作部门
-EvaluationCriteria.project=项目
+AssessCriteria=评教对照标准
+AssessCriteria.name=名称
+AssessCriteria.grades=具体分值对照项
+AssessCriteria.project=项目

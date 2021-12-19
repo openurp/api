@@ -20,7 +20,7 @@ package org.openurp.qos.evaluation.clazz.model
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.{Semester, Teacher}
 
-class FinalTeacherScore extends LongId with Rank {
+class FinalTeacherScore extends LongId {
   var teacher: Teacher = _
   var semester: Semester = _
   var stdScore: Float = _
@@ -28,4 +28,9 @@ class FinalTeacherScore extends LongId with Rank {
   var departScore: Float = _
   var score: Float = _
 
+  /**部门排名*/
+  var departRank: Int = _
+
+  /**全校排名*/
+  var schoolRank: Int = _
 }

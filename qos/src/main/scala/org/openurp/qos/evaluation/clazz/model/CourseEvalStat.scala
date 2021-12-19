@@ -20,7 +20,7 @@ package org.openurp.qos.evaluation.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.Updated
 import org.beangle.data.model.{LongId, LongIdEntity}
-import org.openurp.base.edu.code.model.CourseAssessCategory
+import org.openurp.base.edu.code.model.CourseCategory
 import org.openurp.base.edu.model.{Course, Project, Semester, Teacher}
 import org.openurp.base.model.Department
 import org.openurp.qos.evaluation.model.{AssessGrade, Indicator, Option, Question, Questionnaire}
@@ -69,7 +69,7 @@ class CourseEvalStat extends LongId with Updated  with Rank {
   var teacherDepart: Department = _
 
   /** 课程所在学科 */
-  var category: CourseAssessCategory = _
+  var category: CourseCategory = _
 
   /** 评价等级ABCDEF */
   var grade: AssessGrade = _

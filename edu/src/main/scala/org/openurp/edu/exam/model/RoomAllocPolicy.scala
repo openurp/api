@@ -25,4 +25,5 @@ enum RoomAllocPolicy(val name: String, val sameTask: Boolean,
   case SameDepart extends RoomAllocPolicy("只有一个开课院系", false, false, true)
   case Any extends RoomAllocPolicy("任意安排", false, false, false)
 
+  override def toString: String = name
 }

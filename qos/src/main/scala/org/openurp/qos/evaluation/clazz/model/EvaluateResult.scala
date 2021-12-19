@@ -19,6 +19,7 @@ package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.{Student, Teacher}
 import org.openurp.base.model.Department
 import org.openurp.edu.clazz.model.Clazz
@@ -31,7 +32,7 @@ import java.time.Instant
  *
  * @author chaostone
  */
-class EvaluateResult extends LongId {
+class EvaluateResult extends LongId with Updated{
   /** 教学任务 */
   var clazz: Clazz = _
   /** 教师 */
@@ -44,8 +45,6 @@ class EvaluateResult extends LongId {
   var questionnaire: Questionnaire = _
   /** 问题评教结果 */
   var questionResults = Collections.newSet[QuestionResult]
-  /** 评教时间 */
-  var evaluateAt: Instant = _
   /**问卷状态 */
   /**
    * 1正常 2 无效 3异常(互斥)
@@ -54,6 +53,4 @@ class EvaluateResult extends LongId {
   var statType: Int = _
   /**总分*/
   var score :Float = _
-  /**备注*/
-  var remark: String = _
 }

@@ -85,6 +85,7 @@ AbstractPlanCourse.course=课程
 AbstractPlanCourse.terms=开课学期
 AbstractPlanCourse.compulsory=是否必修
 AbstractPlanCourse.remark=备注
+AbstractPlanCourse.labels=课程标签
 
 ProgramDoc=培养方案文档
 ProgramDoc.docLocale=语言

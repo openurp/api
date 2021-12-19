@@ -22,10 +22,14 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.{Course, Semester, Student, Teacher}
 import org.openurp.base.model.Department
 
+/**期末文字评价
+ *
+ */
 class FinalComment extends LongId with Updated {
 
   var std: Student = _
 
+  /**课程序号*/
   var crn: String = _
 
   /** 教学日历 */

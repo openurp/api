@@ -20,7 +20,7 @@ package org.openurp.qos.evaluation.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.code.model.CourseAssessCategory
+import org.openurp.base.edu.code.model.CourseCategory
 import org.openurp.base.edu.model.{Project, Semester}
 import org.openurp.qos.evaluation.model.{AssessGrade, Indicator}
 
@@ -36,7 +36,7 @@ class CategoryEvalStat extends LongId with Updated{
   var semester: Semester = _
 
   /** 课程分类 */
-  var category: CourseAssessCategory = _
+  var category: CourseCategory = _
 
   /** 课程数量 */
   var courseCount: Int = _
@@ -82,6 +82,8 @@ class CategoryEvalStat extends LongId with Updated{
 
 }
 
+/** 分类指标级别统计
+ * */
 class CategoryStatGrade extends LongId {
 
   var indicator: Indicator = _
@@ -99,6 +101,9 @@ class CategoryStatGrade extends LongId {
   var stat: CategoryEvalStat = _
 }
 
+/**
+ * 指标分段统计
+ */
 class CategoryStatRange extends LongId  {
 
   var stat: CategoryEvalStat = _

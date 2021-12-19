@@ -352,6 +352,8 @@ enum TeachingNatureCategory(val id: Int, val title: String) {
   case Theory extends TeachingNatureCategory(1, "理论")
   case Experiment extends TeachingNatureCategory(2, "实验")
   case Practice extends TeachingNatureCategory(9, "实践")
+
+  override def toString: String = title
 }
 
 /**

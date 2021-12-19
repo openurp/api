@@ -12,14 +12,17 @@ QuestionnaireClazz.evaluateByTeacher=评教人
 QuestionnaireClazz.clazz=任务
 QuestionnaireClazz.questionnaire=问卷
 
-TextEvaluation=开放式文字评教
-TextEvaluation.evaluateAt=评教时间
-TextEvaluation.audited=是否已审核
-TextEvaluation.evaluateByTeacher=是否针对教师
-TextEvaluation.contents=内容
-TextEvaluation.clazz=教学任务
-TextEvaluation.teacher=教师
-TextEvaluation.student=学生
+Feedback=开放式文字评教
+Feedback.grade=评价等级
+Feedback.contents=内容
+Feedback.clazz=教学任务
+Feedback.teacher=教师
+Feedback.crn=课程序号
+
+FinalComment=期末评价
+FinalComment.grade=评价等级
+FinalComment.contents=内容
+FinalComment.crn=课程序号
 
 QuestionResult=问题评教结果
 QuestionResult.question=问题
@@ -44,9 +47,10 @@ EvaluateResult.score=总分
 Rank=排名结果
 Rank.schoolRank=全校排名
 Rank.departRank=院系排名
+Rank.categoryRank=分类排名
 
 CourseEvalStat=评教问卷统计结果
-CourseEvalStat.semester=学年学期
+CourseEvalStat.crn=课程序号
 CourseEvalStat.course=课程
 CourseEvalStat.teacher=教师
 CourseEvalStat.score=平均得分
@@ -74,12 +78,12 @@ CourseQuestionStat.stat=问卷统计
 CourseIndicatorStat=评教问题类别统计结果
 CourseIndicatorStat.score=问题类别统计平均分值
 CourseIndicatorStat.stat=问卷评教结果
+CourseIndicatorStat.categoryRank=分类排名
 
 DepartEvalStat=开课院系评教问卷统计结果
 DepartEvalStat.department=开课院系
 DepartEvalStat.avgScore=平均得分
 DepartEvalStat.courseCount=课程数
-
 
 SchoolEvalStat=学校评教问卷统计结果
 SchoolEvalStat.semester=教学日历
@@ -93,3 +97,20 @@ FinalTeacherScore.departScore=部门评分
 FinalTeacherScore.teacher=教师
 FinalTeacherScore.stdScore=学生评分
 FinalTeacherScore.score=总分
+FinalTeacherScore.schoolRank=全校排名
+FinalTeacherScore.departRank=院系排名
+
+CategoryEvalStat = 分类统计
+CategoryEvalStat.courseCount=课程数量
+CategoryEvalStat.avgScore=平均分
+
+CategoryStatGrade = 分类统计-指标级别
+CategoryStatGrade.courseCount=课程数量
+CategoryStatGrade.avgScore=平均分
+CategoryStatGrade.maxScore=最高分
+CategoryStatGrade.minScore=最低分
+
+CategoryStatRange=分类统计-分段
+CategoryStatRange.fromScore=起始分数
+CategoryStatRange.toScore=截至分数
+CategoryStatRange.courseCount=课程数量
