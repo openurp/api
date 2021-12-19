@@ -15,14 +15,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.clazz.stat.model
+package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.{Course, Semester, Student, Teacher}
+import org.openurp.base.model.Department
 
-class SchoolEvalStat extends LongId with EvalStat
+/**期末文字评价
+ *
+ */
+class FinalComment extends LongId with Updated {
 
-class SchoolQuestionStat extends LongId with QuestionStat
+  var std: Student = _
 
-class SchoolOptionStat extends LongId  with OptionStat
+  /**课程序号*/
+  var crn: String = _
 
-class SchoolQuestionTypeStat extends LongId  with QuestionTypeStat
+  /** 教学日历 */
+  var semester: Semester = _
+
+  /** 任课教师 */
+  var teacher: Teacher = _
+
+  /** 开课院系 */
+  var teachDepart: Department = _
+
+  /** 课程 */
+  var course: Course = _
+
+  /** 评价等级 */
+  var grade: String = _
+
+  /** 内容 */
+  var contents: String = _
+}

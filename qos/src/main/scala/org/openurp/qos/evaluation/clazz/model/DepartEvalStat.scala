@@ -15,22 +15,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.model
+package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Project
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.{Project, Semester}
+import org.openurp.base.model.Department
 
-class EvaluationCriteriaItem extends LongId{
-    /** 最小分值 */
-    var  minScore:Float=_
+/** 按照开课院系统计
+ *
+ */
+class DepartEvalStat extends LongId with Updated {
 
-    /** 最大分值 */
-    var  maxScore:Float=_
+  /** 项目 */
+  var project: Project = _
 
-    /** 对应的评价名称 */
-    var  name:String=_
+  /** 开课院系 */
+  var department: Department = _
 
-    /** 评价 */
-    var  criteria:EvaluationCriteria=_
+  /** 平均分 */
+  var avgScore: Double = _
+
+  /** 学年学期 */
+  var semester: Semester = _
+
+  /** 课程数量 */
+  var courseCount: Int = _
 
 }

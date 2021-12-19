@@ -51,8 +51,8 @@ class CourseType extends CodeBean {
   /** 是否选修 */
   var optional: Boolean = _
 
-  /**上级类别*/
-  var parent:Option[CourseType]=None
+  /** 上级类别 */
+  var parent: Option[CourseType] = None
 
   def this(id: Int, code: String, name: String, enName: String) = {
     this()
@@ -63,11 +63,17 @@ class CourseType extends CodeBean {
   }
 }
 
-/** 课程评教分类
+/** 课程分类
  * 从课程内容进行划分，一般分为英语课、体育课等
  */
 @code("school")
-class CourseAssessCategory extends CodeBean
+class CourseCategory extends CodeBean
+
+/** 计划课程标签 */
+@code("school")
+class PlanCourseLabel extends CodeBean {
+  var symbol: String = _
+}
 
 /**
  * 课程能力等级

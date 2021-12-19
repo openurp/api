@@ -15,18 +15,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.clazz.stat.model
+package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.model.Department
+import org.openurp.base.edu.model.{Semester, Teacher}
 
-class DepartEvalStat extends LongId with EvalStat {
+class FinalTeacherScore extends LongId {
+  var teacher: Teacher = _
+  var semester: Semester = _
+  var stdScore: Float = _
+  var supviScore: Float = _
+  var departScore: Float = _
+  var score: Float = _
 
-  /**部门*/
-  var department: Department = _
+  /**部门排名*/
+  var departRank: Int = _
+
+  /**全校排名*/
+  var schoolRank: Int = _
 }
-class DepartOptionStat extends LongId with OptionStat
-
-class DepartQuestionStat extends LongId with QuestionStat
-
-class DepartQuestionTypeStat extends LongId with QuestionTypeStat

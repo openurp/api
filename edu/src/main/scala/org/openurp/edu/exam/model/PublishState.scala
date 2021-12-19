@@ -23,4 +23,5 @@ enum PublishState(val name: String, val timePublished: Boolean, val roomPublishe
   case TimeOnly extends PublishState("仅发布时间", true, false)
   case TimeAndRoom extends PublishState("发布时间地点", true, true)
 
+  override def toString: String = name
 }

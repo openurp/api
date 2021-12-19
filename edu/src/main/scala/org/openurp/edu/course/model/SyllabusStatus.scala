@@ -23,4 +23,6 @@ enum SyllabusStatus(val name: String) {
   case Unpassed extends SyllabusStatus("未通过")
   case Passed extends SyllabusStatus("审核通过")
   case Published extends SyllabusStatus("已发布")
+
+  override def toString: String = name
 }

@@ -15,44 +15,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.clazz.result.model
+package org.openurp.qos.evaluation.clazz.model
 
-import java.time.Instant
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.{Course, Semester, Student, Teacher}
 import org.openurp.base.model.Department
-import org.openurp.base.edu.model.{Student, Teacher}
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.qos.evaluation.model.Questionnaire
+
+import java.time.Instant
 
 /**
- * 问卷评教结果
- *
- * @author chaostone
+ * 开放式文字评教
  */
-class EvaluateResult extends LongId {
+class Feedback extends LongId with Updated {
+  /** 课程序号 */
+  var crn: String = _
   /** 教学任务 */
-  var clazz: Clazz = _
+  var course: Course = _
+  /** 教学日历 */
+  var semester: Semester = _
   /** 教师 */
   var teacher: Teacher = _
-  /** 学生 */
-  var student: Student = _
   /** 开课院系 */
-  var department: Department = _
-  /** 问卷信息 */
-  var questionnaire: Questionnaire = _
-  /** 问题评教结果 */
-  var questionResults = Collections.newSet[QuestionResult]
-  /** 评教时间 */
-  var evaluateAt: Instant = _
-  /**问卷状态 */
-  /**
-   * 1正常 2 无效 3异常(互斥)
-   * 总数=有效问卷+无效问卷+异常问卷        无效问卷=无效比例*(总数-异常问卷)
-   */
-  var statType: Int = _
-  /**总分*/
-  var score :Float = _
-  /**备注*/
-  var remark: String = _
+  var teachDepart: Department = _
+  /** 学生 */
+  var std: Student = _
+  /** 评教内容 */
+  var contents: String = _
+  /** 评价等级 */
+  var grade: String = _
 }

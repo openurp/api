@@ -27,7 +27,10 @@ class DefaultMapping extends MappingModule {
     bind[BookType]
     bind[BookAwardType]
     bind[CourseType]
-    bind[CourseAssessCategory]
+    bind[CourseCategory]
+    bind[PlanCourseLabel].declare{e=>
+      e.symbol is length(10)
+    }
     bind[CourseAbilityRate]
     bind[StdLabel]
     bind[StdLabelType]

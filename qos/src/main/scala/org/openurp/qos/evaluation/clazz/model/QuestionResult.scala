@@ -15,18 +15,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.clazz.stat.model
+package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Teacher
-import org.openurp.base.edu.model.Semester
+import org.openurp.qos.evaluation.clazz.model.EvaluateResult
+import org.openurp.qos.evaluation.model.{Indicator, Option, Question}
 
-class FinalTeacherScore extends LongId with Rank {
-  var teacher: Teacher = _
-  var semester: Semester = _
-  var stdScore: Float = _
-  var supviScore: Float = _
-  var departScore: Float = _
+/**
+ * 问题评教结果
+ *
+ * @author chaostone
+ */
+class QuestionResult extends LongId {
+  /** 问题类别 */
+  var indicator: Indicator = _
+  /** 问题 */
+  var question: Question = _
+  /** 问题选项 */
+  var option: Option = _
+  /** 得分 */
   var score: Float = _
+  /** 评教结果 */
+  var result: EvaluateResult = _
 
 }

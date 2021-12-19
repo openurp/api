@@ -15,17 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.clazz.stat.model
+package org.openurp.qos.evaluation.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Teacher
+import org.beangle.data.model.pojo.{Named, TemporalOn}
+import org.openurp.base.edu.model.Project
+import org.openurp.base.model.Department
 
-class TeacherEvalStat extends LongId with EvalStat with Rank {
-  var teacher: Teacher = _
+/** 评价档次体系
+ *
+ */
+class AssessCriteria extends LongId with Named with TemporalOn {
+  var project: Project = _
+
+  /** 具体分值对照项 */
+  var grades = Collections.newBuffer[AssessGrade]
+
 }
-
-class TeacherQuestionStat extends LongId with QuestionStat
-
-class TeacherOptionStat extends LongId with OptionStat
-
-class TeacherQuestionTypeStat extends LongId with QuestionTypeStat

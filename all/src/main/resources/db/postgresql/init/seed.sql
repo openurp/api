@@ -71,6 +71,21 @@ INSERT INTO code.grade_types (id, begin_on, code, en_name, end_on, name, updated
 INSERT INTO code.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (2, '2006-10-29', '0003', 'Final Exam Score', NULL, '期末成绩', '2007-03-09 00:00:00', 1, NULL);
 INSERT INTO code.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (1, '2006-10-29', '0008', NULL, '2016-05-03', '期中成绩', '2007-04-30 00:00:00', NULL, NULL);
 
+insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
+select 1,'1','理论',1,current_date-1,now() where not exists(select * from code.teaching_natures tn where tn.id=1);
+insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
+select 2,'2','实验',2,current_date-1,now() where not exists(select * from code.teaching_natures tn where tn.id=2);
+insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
+select 9,'9','实践',9,current_date-1,now() where not exists(select * from code.teaching_natures tn where tn.id=9);
+
+insert into code.teaching_methods(id,code,name,begin_on,updated_at) values(1,'1','线下授课',current_date-1,now());
+insert into code.teaching_methods(id,code,name,begin_on,updated_at) values(2,'2','线上直播',current_date-1,now());
+insert into code.teaching_methods(id,code,name,begin_on,updated_at) values(3,'3','线上录播',current_date-1,now());
+insert into code.teaching_methods(id,code,name,begin_on,updated_at) values(4,'4','线上线下同步',current_date-1,now());
+insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(1,'1','理论课',false,current_date-1,now());
+insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(2,'2','术科课',false,current_date-1,now());
+insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(3,'3','单独设立实验课',false,current_date-1,now());
+insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(4,'4','实践课',true,current_date-1,now());
 
 INSERT INTO edu.restriction_metas (id, name, remark) VALUES (1, 'GRADE', ' ');
 INSERT INTO edu.restriction_metas (id, name, remark) VALUES (2, 'STDTYPE', ' ');
@@ -84,3 +99,13 @@ INSERT INTO edu.restriction_metas (id, name, remark) VALUES (7, 'SQUAD', ' ');
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (1, 'course', '--');
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (2, 'exam', '--');
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (3, 'apply', '--');
+
+insert into code.institutions(id,code,name,begin_on,updated_at)
+values(00001,'00001','URP学院',current_date -10,now());
+
+insert into base.schools(id,name,institution_id,logo_url,code,begin_on,short_name)
+values(00001,'URP学院',11833,'http://someip/default/images/logo.png',11833,current_date -10,'URP');
+
+insert into code.edu_categories(id,code,name,begin_on,updated_at)
+values(1,'1','成人高等教育',current_date -10,now());
+

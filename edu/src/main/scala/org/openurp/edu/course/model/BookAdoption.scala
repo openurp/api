@@ -22,4 +22,6 @@ enum BookAdoption(val title: String) {
   case None extends BookAdoption("推荐参考资料")
   case UseTextBook extends BookAdoption("使用教材")
   case UseLecture extends BookAdoption("使用讲义")
+
+  override def toString: String = title
 }

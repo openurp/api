@@ -24,28 +24,27 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultCache("openurp.edu.evaluation", "read-write")
 
-    bind[EvaluationCriteria].declare { e =>
+    bind[AssessCriteria].declare { e =>
       e.name is length(100)
-      e.criteriaItems is depends("criteria")
+      e.grades is depends("criteria")
     }
-    bind[EvaluationCriteriaItem]
+    bind[AssessGrade]
     bind[Option].declare { e =>
       e.name is length(50)
     }
     bind[OptionGroup].declare { e =>
       e.name is length(50)
-      e.options is depends("optionGroup")
+      e.options is depends("group")
     }
     bind[Question].declare { e =>
       e.contents is length(400)
-      e.remark is length(200)
     }
     bind[Questionnaire].declare { e =>
       e.remark is length(200)
       e.title is length(200)
       e.description is length(500)
     }
-    bind[QuestionType].declare { e =>
+    bind[Indicator].declare { e =>
       e.name is length(50)
       e.enName is length(100)
       e.remark is length(100)

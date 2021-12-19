@@ -15,22 +15,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.model
+package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{ Named, Remark, TemporalOn, Updated }
-import org.openurp.base.edu.model.Project
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.{Project, Semester}
+import org.openurp.base.model.Department
 
-/**
- * 问题类型
- *
- * @author cwx,chaostone
+/** 全校统计
  *
  */
-class QuestionType extends LongId with Named with Updated with TemporalOn with Remark {
+class SchoolEvalStat extends LongId with Updated {
+
+  /** 项目 */
   var project: Project = _
-  /** 英文名称 */
-  var enName: scala.Option[String] = None
-  /** 优先级 ,越大越靠前 */
-  var priority: Int = _
+
+  /** 平均分 */
+  var avgScore: Double = _
+
+  /** 学年学期 */
+  var semester: Semester = _
+
+  /** 课程数量 */
+  var courseCount: Int = _
+
 }

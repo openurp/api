@@ -15,22 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.clazz.stat.model
+package org.openurp.qos.evaluation.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Course
-import org.openurp.base.edu.model.Teacher
+import org.beangle.data.model.pojo.*
+import org.openurp.base.edu.model.Project
 
-class CourseEvalStat extends LongId with EvalStat with Rank {
+/**
+ * 问题类型
+ * 指示器
+ *
+ * @author cwx,chaostone
+ *
+ */
+class Indicator extends LongId with Coded with Named with Updated with TemporalOn with Remark with Ordered[Indicator] {
+  var project: Project = _
+  /** 英文名称 */
+  var enName: scala.Option[String] = None
 
-  var teacher: Teacher = _
-
-  var course: Course = _
-
+  override def compare(that: Indicator): Int = {
+    code.compare(that.code)
+  }
 }
-
-class CourseOptionStat extends LongId with OptionStat
-
-class CourseQuestionStat extends LongId with QuestionStat
-
-class CourseQuestionTypeStat extends LongId with QuestionTypeStat

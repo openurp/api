@@ -31,9 +31,6 @@ import org.openurp.qos.evaluation.model.Option
 class OptionGroup extends LongId with Named {
   var project: Project = _
 
-  /** 倾向性权重 必须在0和1之间 */
-  var oppoVal: Float = _
-
   /** 各类选项 */
   var options = Collections.newSet[Option]
 }

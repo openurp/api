@@ -31,4 +31,5 @@ enum AuditStates(val name: String) {
   case Finalized extends AuditStates("通过")
   case Rejected extends AuditStates("不通过")
 
+  override def toString: String = name
 }

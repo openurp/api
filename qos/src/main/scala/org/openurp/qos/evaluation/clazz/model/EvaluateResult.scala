@@ -17,30 +17,40 @@
 
 package org.openurp.qos.evaluation.clazz.model
 
-import org.openurp.base.edu.model.Student
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.{Student, Teacher}
+import org.openurp.base.model.Department
+import org.openurp.edu.clazz.model.Clazz
+import org.openurp.qos.evaluation.model.Questionnaire
+
 import java.time.Instant
 
 /**
- * 文字评教教师回复
+ * 问卷评教结果
  *
  * @author chaostone
  */
-class TeacherRemessage extends LongId {
-  /** 回复信息 */
-  var remessage: String = _
-
-  /** 回复对象 */
-  var students = Collections.newSet[Student]
-
-  /** 文字评教 */
-  var textEvaluation: TextEvaluation = _
-
-  /** 显示状态 */
-  var visible: Boolean = false
-
-  var createdAt: Instant = _
-
-  var updatedAt: Instant = _
+class EvaluateResult extends LongId with Updated{
+  /** 教学任务 */
+  var clazz: Clazz = _
+  /** 教师 */
+  var teacher: Teacher = _
+  /** 学生 */
+  var student: Student = _
+  /** 开课院系 */
+  var department: Department = _
+  /** 问卷信息 */
+  var questionnaire: Questionnaire = _
+  /** 问题评教结果 */
+  var questionResults = Collections.newSet[QuestionResult]
+  /**问卷状态 */
+  /**
+   * 1正常 2 无效 3异常(互斥)
+   * 总数=有效问卷+无效问卷+异常问卷        无效问卷=无效比例*(总数-异常问卷)
+   */
+  var statType: Int = _
+  /**总分*/
+  var score :Float = _
 }
