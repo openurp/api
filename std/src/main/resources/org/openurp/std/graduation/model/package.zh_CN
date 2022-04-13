@@ -37,8 +37,7 @@ DegreeResult.batch=批次
 
 GraduateSession=毕业批次
 GraduateSession.name=名称
-GraduateSession.beginOn=毕业日期起始
-GraduateSession.endOn=毕业日期结束
+GraduateSession.graduateOn=毕业日期
 GraduateSession.degreeOffered=是否授学位
 
 DegreeApply=学位申请

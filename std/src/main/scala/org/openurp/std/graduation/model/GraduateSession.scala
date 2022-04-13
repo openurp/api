@@ -21,12 +21,12 @@ import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.Project
 
 import java.time.LocalDate
-import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.beangle.data.model.pojo.Updated
 
 /**
  * 毕业批次
  */
-class GraduateSession extends LongId with Updated with DateRange {
+class GraduateSession extends LongId with Updated {
 
   var project: Project = _
 
@@ -36,4 +36,6 @@ class GraduateSession extends LongId with Updated with DateRange {
   /**是否授学位*/
   var degreeOffered: Boolean = _
 
+  /**毕业日期*/
+  var graduateOn:LocalDate=_
 }
