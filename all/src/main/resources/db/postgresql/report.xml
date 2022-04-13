@@ -63,7 +63,6 @@
       </module>
     </schema>
 
-
     <schema name="edu" title="教务管理">
       <module name="clazz" title="课程安排">
         <group name="clazz" title="教学任务" tables="clazz*,course_take*,restriction*,subclazzes,lesson*,teaching_plans*">
@@ -181,7 +180,6 @@
       </module>
     </schema>
 
-
     <schema name="qos" title="教学质量">
       <module name="evaluation" title="评教信息">
         <group name="questionnaires" title="问卷" tables="options,option_groups,questions,questionnaires,questionnaires_questions,question_types">
@@ -210,13 +208,11 @@
       </module>
     </schema>
 
-
     <schema name="prac" title="实践教学">
       <module name="innovation" title="创新创业">
         <group name="misc" title="创新创业" tables="*"/>
       </module>
     </schema>
-
 
     <schema name="hr" title="人事相关">
       <module name="base" title="人事基本信息">
