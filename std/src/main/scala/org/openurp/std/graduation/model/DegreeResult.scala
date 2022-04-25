@@ -63,6 +63,6 @@ class DegreeResult extends LongId with Updated {
   var foreignLangPassedOn: Option[LocalDate] = None
 
   def deciplineCode: String = {
-    std.state.map(_.major.disciplineCode(session.beginOn)).getOrElse("")
+    std.state.map(_.major.disciplineCode(session.graduateOn)).getOrElse("")
   }
 }
