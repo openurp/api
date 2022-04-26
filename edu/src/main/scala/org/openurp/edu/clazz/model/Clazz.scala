@@ -83,7 +83,7 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   var group: Option[ClazzGroup] = None
 
   /** 审核状态 */
-  var auditStatus: AuditStatus = _
+  var status: AuditStatus = _
 
   /** 任务标签 */
   var tags: mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]

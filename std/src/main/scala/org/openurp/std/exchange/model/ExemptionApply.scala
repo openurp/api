@@ -33,7 +33,7 @@ class ExemptionApply extends LongId with Updated {
   var transcriptPath: Option[String] = None
 
   /** 审核状态 */
-  var auditStatus: AuditStatus = AuditStatus.Draft
+  var status: AuditStatus = AuditStatus.Draft
 
   /** 审核意见 */
   var auditOpinion: Option[String] = None

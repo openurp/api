@@ -75,7 +75,7 @@ class TransferApply extends LongId with Updated {
   var email: String = _
 
   /** 状态 */
-  var auditStatus: AuditStatus = AuditStatus.Draft
+  var status: AuditStatus = AuditStatus.Draft
 
   /** 是否通过 */
   var passed: Option[Boolean] = None

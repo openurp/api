@@ -43,5 +43,5 @@ class ExchangeGrade extends LongId with Remark with Updated {
 
   var courses: mutable.Set[Course] = Collections.newSet[Course]
 
-  var auditStatus: AuditStatus = AuditStatus.Draft
+  var status: AuditStatus = AuditStatus.Draft
 }
