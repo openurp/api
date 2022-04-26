@@ -43,4 +43,3 @@ case when audit_state=2 then 50  when audit_state=3 then 51  when audit_state=4 
 --syllabus---
 update edu.syllabuses set status =
 case when status=2 then 99  when status=3 then 100  when status=4 then 200 else status end;
-

@@ -67,7 +67,7 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
   var termCampuses = Collections.newBuffer[TermCampus]
 
   /** 审核状态 */
-  var auditStatus: AuditStatus = AuditStatus.Draft
+  var status: AuditStatus = AuditStatus.Draft
 
   /** 多出学分可以冲抵的课程类别 */
   var offsetType: Option[CourseType] = None

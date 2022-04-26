@@ -48,7 +48,7 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Remark
   var endTerm: Short = _
 
   /** 审核状态 */
-  var auditStatus: AuditStatus = AuditStatus.Draft
+  var status: AuditStatus = AuditStatus.Draft
 
   def terms: Short = (endTerm - startTerm + 1).asInstanceOf[Short]
 
