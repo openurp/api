@@ -25,7 +25,7 @@ import org.openurp.base.model.{School, User}
 /**
  * 辅导员
  */
-class Instructor extends LongId with Updated with TemporalOn {
+class Mentor extends LongId with Updated with TemporalOn {
 
   /** 学校 */
   var school: School = _

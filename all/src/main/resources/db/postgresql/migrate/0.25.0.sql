@@ -43,3 +43,15 @@ case when audit_state=2 then 50  when audit_state=3 then 51  when audit_state=4 
 --syllabus---
 update edu.syllabuses set status =
 case when status=2 then 99  when status=3 then 100  when status=4 then 200 else status end;
+-----squad----------
+alter table base.squads add master_id bigint;
+--drop constraint on tutor_id and instructor_id
+alter table base.squads drop constraint fk_keowvc6huvp681vrxrii0wau3;
+alter table base.squads drop constraint fk_5yld2xcem9qgfuq2tbb7t8dfw;
+alter table base.squads add mentor_id bigint;
+update base.squads s set  tutor_id=(select t.user_id from base.teachers t where t.id=s.tutor_id);
+update base.squads s set  mentor_id=(select t.user_id from base.instructors t where t.id=s.instructor_id);
+--alter table  base.squads drop column instructor_id;
+
+alter table base.instructors rename to mentors;
+

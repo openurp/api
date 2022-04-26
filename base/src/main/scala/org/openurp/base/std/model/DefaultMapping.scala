@@ -24,7 +24,7 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultCache("openurp.base", "read-write")
 
-    bind[Instructor] declare { e =>
+    bind[Mentor] declare { e =>
       index("", true, e.user)
     }
 
