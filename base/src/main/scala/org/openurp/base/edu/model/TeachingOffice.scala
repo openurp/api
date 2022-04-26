@@ -25,7 +25,7 @@ import org.openurp.base.model.{Department, User}
 import scala.collection.mutable
 
 /** 教研室 */
-class TeachingGroup extends LongId with Coded with Named with Updated with TemporalOn {
+class TeachingOffice extends LongId with Coded with Named with Updated with TemporalOn {
 
   /** 项目 */
   var project: Project = _

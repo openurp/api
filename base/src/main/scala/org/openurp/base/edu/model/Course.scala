@@ -78,7 +78,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 是否有补考 */
   var hasMakeup: Boolean = _
   /** 教研室 */
-  var teachingGroup: Option[TeachingGroup] = None
+  var teachingOffice: Option[TeachingOffice] = None
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)

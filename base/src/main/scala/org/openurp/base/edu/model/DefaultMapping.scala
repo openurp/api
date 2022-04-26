@@ -170,7 +170,7 @@ class DefaultMapping extends MappingModule {
       e.description is length(300)
     }
 
-    bind[TeachingGroup] declare { e =>
+    bind[TeachingOffice] declare { e =>
       index("", true, e.project, e.code)
     }
 

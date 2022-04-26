@@ -244,9 +244,9 @@ TimeSetting.units=默认作息时间
 TimeSetting.school=学校
 TimeSetting.minutesPerUnit=每小节分钟数
 
-TeachingGroup=教研室
-TeachingGroup.director=负责人
-TeachingGroup.members=成员
+TeachingOffice=教研室
+TeachingOffice.director=负责人
+TeachingOffice.members=成员
 
 ExternStudent=外校学习经历
 ExternStudent.majorName=学习专业
