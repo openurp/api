@@ -19,8 +19,7 @@ package org.openurp.std.transfer.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Department
-import org.openurp.base.edu.AuditStatus
+import org.openurp.base.model.{AuditStatus, Department}
 import org.openurp.base.edu.model.{Direction, Major, Squad, Student}
 
 /** 转专业申请 */

@@ -15,33 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.exchange.model
+package org.openurp.prac.thesis.model
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.{Course, ExternStudent}
-import org.openurp.base.model.AuditStatus
-
-import java.time.LocalDate
 import scala.collection.mutable
 
-/**
- * 外校交流成绩
- */
-class ExchangeGrade extends LongId with Remark with Updated {
+object DelayDays {
+  private val days = new mutable.HashMap[Stage, Int]
 
-  var externStudent: ExternStudent = _
+  def dayOf(stage: Stage): Int = {
+    days(stage)
+  }
 
-  var courseName: String = _
+  Stage.values foreach { s =>
+    days.put(s, 0)
+  }
+  days.put(Stage.Commitment, 3)
+  days.put(Stage.Proposal, 3)
+  days.put(Stage.MidtermCheck, 3)
+  days.put(Stage.ThesisSubmit, 3)
 
-  var credits: Float = _
-
-  var acquiredOn: LocalDate = _
-
-  var scoreText: String = _
-
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
-
-  var status: AuditStatus = AuditStatus.Draft
 }

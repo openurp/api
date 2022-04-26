@@ -15,46 +15,43 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.course.model
+package org.openurp.prac.thesis.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{DateRange, Updated}
-import org.openurp.base.edu.model.*
-import org.openurp.base.model.{AuditStatus, Department, User}
+import org.openurp.base.edu.model.TeachingOffice
+import org.openurp.base.model.{Department, User}
 
 import java.time.Instant
 import scala.collection.mutable
 
-/** 课程教学大纲
- *
+/**
+ * 答辩组
  */
-class Syllabus extends LongId with Updated with DateRange {
+class DefenseGroup extends LongId {
 
-  /** 课程 */
-  var course: Course = _
+  var idx: Int = _
 
-  /** 修订时的学年学期 */
-  var semester: Semester = _
-
-  /** 开课院系 */
   var department: Department = _
 
-  /** 教研室 */
-  var teachingOffice: Option[TeachingOffice] = None
+  var office: Option[TeachingOffice] = None
 
-  /** 附件 */
-  var attachments: mutable.Buffer[SyllabusFile] = Collections.newBuffer[SyllabusFile]
+  var place: Option[String] = None
 
-  /** 作者 */
-  var author: User = _
+  var beginAt: Option[Instant] = None
 
-  /** 状态 */
-  var status: AuditStatus = AuditStatus.Draft
+  var endAt: Option[Instant] = None
 
-  /** 审核人 */
-  var auditor: Option[User] = None
+  var secretary: Option[User] = None
 
-  /** 审核时间 */
-  var auditAt: Option[Instant] = None
+  var members: mutable.Buffer[DefenseMember] = new mutable.ArrayBuffer[DefenseMember]
+
+  var writers: mutable.Set[Writer] = new mutable.HashSet[Writer]
+
+  var notices: mutable.Buffer[DefenseNotice] = new mutable.ArrayBuffer[DefenseNotice]
+
+  def staffCount: Int = members.size + secretary.size
+
+  def orderedWriters: mutable.Buffer[Writer] = {
+    writers.toBuffer.sortBy(x => x.advisor.get.user.code + "_" + x.code)
+  }
 }

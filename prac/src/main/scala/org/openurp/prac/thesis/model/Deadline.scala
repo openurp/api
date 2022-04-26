@@ -15,33 +15,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.exchange.model
+package org.openurp.prac.thesis.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.{Course, ExternStudent}
-import org.openurp.base.model.AuditStatus
+import org.beangle.data.model.pojo.Updated
 
-import java.time.LocalDate
-import scala.collection.mutable
+import java.time.Instant
 
-/**
- * 外校交流成绩
- */
-class ExchangeGrade extends LongId with Remark with Updated {
+class Deadline extends LongId with Updated {
 
-  var externStudent: ExternStudent = _
+  def this(stage: Stage, writer: Writer) = {
+    this()
+    this.stage = stage
+    this.writer = writer
+    this.updatedAt = Instant.now
+  }
 
-  var courseName: String = _
+  def expired: Boolean = {
+    endAt match {
+      case None => false
+      case Some(e) => Instant.now.isAfter(e)
+    }
+  }
 
-  var credits: Float = _
-
-  var acquiredOn: LocalDate = _
-
-  var scoreText: String = _
-
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
-
-  var status: AuditStatus = AuditStatus.Draft
+  var stage: Stage = _
+  var writer: Writer = _
+  var submitAt: Option[Instant] = None
+  var endAt: Option[Instant] = None
+  var delayCount: Int = _
 }

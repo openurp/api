@@ -15,33 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.exchange.model
+package org.openurp.prac.thesis.model
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.{Course, ExternStudent}
-import org.openurp.base.model.AuditStatus
-
-import java.time.LocalDate
-import scala.collection.mutable
-
-/**
- * 外校交流成绩
- */
-class ExchangeGrade extends LongId with Remark with Updated {
-
-  var externStudent: ExternStudent = _
-
-  var courseName: String = _
-
-  var credits: Float = _
-
-  var acquiredOn: LocalDate = _
-
-  var scoreText: String = _
-
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
-
-  var status: AuditStatus = AuditStatus.Draft
+enum PlanStatus {
+  case 待学院修改, 待学校审查, 审查通过, 审查未通过;
 }

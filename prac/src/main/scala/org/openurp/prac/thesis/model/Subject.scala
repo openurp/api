@@ -15,33 +15,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.exchange.model
+package org.openurp.prac.thesis.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.{Course, ExternStudent}
-import org.openurp.base.model.AuditStatus
+import org.beangle.data.model.pojo.Named
+import org.openurp.base.edu.model.Major
+import org.openurp.base.model.{AuditStatus, Department, User}
 
-import java.time.LocalDate
 import scala.collection.mutable
 
-/**
- * 外校交流成绩
+/** 论文开题题目
+ * FIXME one fields
  */
-class ExchangeGrade extends LongId with Remark with Updated {
-
-  var externStudent: ExternStudent = _
-
-  var courseName: String = _
-
-  var credits: Float = _
-
-  var acquiredOn: LocalDate = _
-
-  var scoreText: String = _
-
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
-
+class Subject extends LongId with Named {
+  /** 面向专业 */
+  var majors: mutable.Set[Major] = new mutable.HashSet[Major]
+  /** 现有条件 */
+  var conditions: Option[String] = None
+  /** 对学生要求 */
+  var requirements: Option[String] = None
+  /** 内容 */
+  var contents: Option[String] = None
+  /** 状态 */
   var status: AuditStatus = AuditStatus.Draft
+  /** 审查意见 */
+  var auditOpinion: Option[String] = None
+  /** 指导教师 */
+  var advisor: Advisor = _
+  /** 院系 */
+  var depart: Department = _
 }

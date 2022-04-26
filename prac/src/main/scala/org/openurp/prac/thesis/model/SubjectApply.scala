@@ -15,33 +15,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.exchange.model
+package org.openurp.prac.thesis.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.{Course, ExternStudent}
-import org.openurp.base.model.AuditStatus
 
-import java.time.LocalDate
-import scala.collection.mutable
+object SubjectApply {
+  val Round1 = "CX"
+  val Round2 = "BX"
+  val Round3 = "ZZ"
+}
 
-/**
- * 外校交流成绩
+/** 开题选择
+ * 记录学生初次开题和补选开题的题目
  */
-class ExchangeGrade extends LongId with Remark with Updated {
+class SubjectApply extends LongId {
 
-  var externStudent: ExternStudent = _
+  def this(writer: Writer, last: Subject) = {
+    this()
+    this.writer = writer
+    this.last = Some(last)
+  }
 
-  var courseName: String = _
+  /** 学生 */
+  var writer: Writer = _
 
-  var credits: Float = _
+  /** 初次选题 */
+  var first: Option[Subject] = None
 
-  var acquiredOn: LocalDate = _
+  /** 补选情况 */
+  var second: Option[Subject] = None
 
-  var scoreText: String = _
+  /** 最终选题 */
+  var last: Option[Subject] = None
 
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
-
-  var status: AuditStatus = AuditStatus.Draft
 }

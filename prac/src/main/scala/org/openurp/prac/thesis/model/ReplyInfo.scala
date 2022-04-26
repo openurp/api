@@ -15,33 +15,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.exchange.model
+package org.openurp.prac.thesis.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.{Course, ExternStudent}
-import org.openurp.base.model.AuditStatus
+import org.beangle.data.model.pojo.Updated
 
-import java.time.LocalDate
-import scala.collection.mutable
+class ReplyInfo extends LongId with Updated {
 
-/**
- * 外校交流成绩
- */
-class ExchangeGrade extends LongId with Remark with Updated {
+  /** 学生 */
+  var writer: Writer = _
 
-  var externStudent: ExternStudent = _
+  /** 回答问题摘要 */
+  var questions: Option[String] = None
 
-  var courseName: String = _
+  /** 答辩记录人 */
+  var recorder: Option[String] = None
 
-  var credits: Float = _
+  /** 答辩小组评语 */
+  var groupOpinion: Option[String] = None
 
-  var acquiredOn: LocalDate = _
+  /** 论文概述情况 */
+  var thesisSummary: String = _
 
-  var scoreText: String = _
-
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
-
-  var status: AuditStatus = AuditStatus.Draft
+  /** 回答问题情况 */
+  var answerSummary: String = _
 }

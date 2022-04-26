@@ -19,8 +19,8 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
-import org.openurp.base.edu.AuditStatus
 import org.openurp.base.edu.code.model.CourseType
+import org.openurp.base.model.AuditStatus
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer

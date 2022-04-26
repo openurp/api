@@ -15,33 +15,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.exchange.model
+package org.openurp.prac.thesis.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.{Course, ExternStudent}
 import org.openurp.base.model.AuditStatus
 
-import java.time.LocalDate
+import java.time.Instant
 import scala.collection.mutable
 
-/**
- * 外校交流成绩
+/** 中期检查
+ *
  */
-class ExchangeGrade extends LongId with Remark with Updated {
+class MidtermCheck extends LongId {
 
-  var externStudent: ExternStudent = _
+  /** 作者 */
+  var writer: Writer = _
 
-  var courseName: String = _
+  /** 论文写作进度 */
+  var proceeding: String = _
 
-  var credits: Float = _
+  /** 检查细节 */
+  var details: mutable.Buffer[MidtermCheckDetail] = new mutable.ArrayBuffer[MidtermCheckDetail]
 
-  var acquiredOn: LocalDate = _
+  /** 审核状态 */
+  var status: Option[AuditStatus] = None
 
-  var scoreText: String = _
+  /** 提交时间 */
+  var submitAt: Instant = _
 
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
+  def getDetail(item: MidtermCheckItem): Option[MidtermCheckDetail] = {
+    details.find(x => x.item == item)
+  }
 
-  var status: AuditStatus = AuditStatus.Draft
+  def advisorAuditStatus: AuditStatus = {
+    if details.isEmpty then AuditStatus.Blank
+    else {
+      if details.forall(x => x.status == AuditStatus.Passed) then AuditStatus.Passed else AuditStatus.Rejected
+    }
+  }
 }
