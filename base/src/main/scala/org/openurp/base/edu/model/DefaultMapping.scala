@@ -176,6 +176,8 @@ class DefaultMapping extends MappingModule {
 
     bind[ExternStudent]
 
+    bind[GraduateGrade]
+
     all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent]).cacheAll()
   }
 }

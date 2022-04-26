@@ -15,30 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.graduation.model
+package org.openurp.base.edu.model
 
-import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.{GraduateGrade, Project}
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.Named
 
 import java.time.LocalDate
-import org.beangle.data.model.pojo.Updated
 
 /**
- * 毕业批次
+ * 毕业界别
  */
-class GraduateSession extends LongId with Updated {
-
-  var project: Project = _
-
-  /**毕业界别*/
-  var gaduateGrade:GraduateGrade =_
-
-  /** 名称 */
-  var name: String = _
-
-  /**是否授学位*/
-  var degreeOffered: Boolean = _
-
-  /**毕业日期*/
-  var graduateOn:LocalDate=_
+class GraduateGrade extends IntId with Named {
+  var graduateYear: Int = _
 }
