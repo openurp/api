@@ -22,7 +22,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
 import org.openurp.base.edu.code.model.{CourseType, StdType}
 import org.openurp.base.edu.model.{Direction, Major}
-import org.openurp.base.edu.{AuditStates, EduLevelBased}
+import org.openurp.base.edu.{AuditStatus, EduLevelBased}
 import org.openurp.base.model.{Campus, Department}
 import org.openurp.code.edu.model.{Degree, StudyType}
 
@@ -67,7 +67,7 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
   var termCampuses = Collections.newBuffer[TermCampus]
 
   /** 审核状态 */
-  var auditState: AuditStates = AuditStates.Draft
+  var auditStatus: AuditStatus = AuditStatus.Draft
 
   /** 多出学分可以冲抵的课程类别 */
   var offsetType: Option[CourseType] = None

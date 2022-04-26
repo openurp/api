@@ -20,7 +20,7 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongIdEntity
 import org.beangle.data.model.pojo.{DateRange, TemporalOn}
-import org.openurp.base.edu.AuditStates
+import org.openurp.base.edu.AuditStatus
 import org.openurp.base.edu.code.model.CourseType
 
 import scala.collection.mutable
@@ -67,7 +67,7 @@ trait CoursePlan extends LongIdEntity with Cloneable with DateRange {
 
   def program: Program
 
-  def auditState: AuditStates
+  def auditStatus: AuditStatus
 }
 
 object CoursePlan {

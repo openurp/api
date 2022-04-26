@@ -20,7 +20,7 @@ package org.openurp.std.transfer.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Department
-import org.openurp.base.edu.AuditStates
+import org.openurp.base.edu.AuditStatus
 import org.openurp.base.edu.model.{Direction, Major, Squad, Student}
 
 /** 转专业申请 */
@@ -75,7 +75,7 @@ class TransferApply extends LongId with Updated {
   var email: String = _
 
   /** 状态 */
-  var auditState: AuditStates = AuditStates.Draft
+  var auditStatus: AuditStatus = AuditStatus.Draft
 
   /** 是否通过 */
   var passed: Option[Boolean] = None

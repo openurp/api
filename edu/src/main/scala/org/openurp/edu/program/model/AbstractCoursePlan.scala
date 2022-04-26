@@ -19,7 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
-import org.openurp.base.edu.AuditStates
+import org.openurp.base.edu.AuditStatus
 import org.openurp.base.edu.code.model.CourseType
 
 import scala.collection.mutable
@@ -48,7 +48,7 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Remark
   var endTerm: Short = _
 
   /** 审核状态 */
-  var auditState: AuditStates = AuditStates.Draft
+  var auditStatus: AuditStatus = AuditStatus.Draft
 
   def terms: Short = (endTerm - startTerm + 1).asInstanceOf[Short]
 

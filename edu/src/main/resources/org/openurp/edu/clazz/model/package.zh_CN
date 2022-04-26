@@ -46,7 +46,7 @@ Clazz.exam=考试安排
 Clazz.remark=备注
 Clazz.langType=授课语言类型
 Clazz.group=所属课程组
-Clazz.auditState=审核状态
+Clazz.auditStatus=审核状态
 Clazz.project=项目
 
 ClazzTag=教学任务标签
