@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <report title="数据库设计说明">
-  <system name="教学管理系统" version="0.23.1"/>
+  <system name="教学管理系统" version="0.25.0"/>
   <database xml="database.xml"/>
   <pages template="singlehtml" extension=".html">
     <page name="index" />
@@ -211,6 +211,9 @@
     <schema name="prac" title="实践教学">
       <module name="innovation" title="创新创业">
         <group name="misc" title="创新创业" tables="*"/>
+      </module>
+      <module name="thesis" title="毕业设计">
+        <group name="misc" title="毕业设计" tables="*"/>
       </module>
     </schema>
 

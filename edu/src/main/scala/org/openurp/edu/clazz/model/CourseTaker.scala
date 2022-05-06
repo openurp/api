@@ -19,7 +19,9 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.{Course, Semester, Student}
+import org.openurp.base.edu.model.Course
+import org.openurp.base.model.Semester
+import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{CourseTakeType, ElectionMode}
 
 /**

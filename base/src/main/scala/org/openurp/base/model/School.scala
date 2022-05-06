@@ -15,16 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
+package org.openurp.base.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
-
-import java.time.LocalDate
+import org.beangle.data.model.pojo.*
+import org.openurp.code.edu.model.Institution
 
 /**
- * 毕业界别
+ * 学校
  */
-class GraduateGrade extends IntId with Named {
-  var graduateYear: Int = _
+class School extends IntId with Coded with Named with TemporalOn {
+  var institution: Institution = _
+  var logoUrl: String = _
+  var shortName: Option[String] = None
 }

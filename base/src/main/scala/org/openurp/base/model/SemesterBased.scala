@@ -15,25 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.service
+package org.openurp.base.model
 
-import java.time.LocalDate
+import org.openurp.base.model.{Project, Semester}
 
-import org.openurp.base.edu.model.{Project, Semester}
+trait SemesterBased {
 
-trait SemesterService {
+  var project: Project = _
 
-  def getActives(project: Project): Seq[Semester]
+  var semester: Semester = _
 
-  def get(project: Project, date: LocalDate): Option[Semester]
-
-  /**
-   * get semester by index
-   *
-   * @param project
-   * @param beginOn
-   * @param endOn
-   * @param index start with 1
-   */
-  def get(project: Project, beginOn: LocalDate, endOn: LocalDate, index: Int): Option[Semester]
 }

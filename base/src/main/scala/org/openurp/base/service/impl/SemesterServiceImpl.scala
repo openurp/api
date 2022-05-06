@@ -15,21 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.service.impl
-
-import java.time.LocalDate
+package org.openurp.base.service.impl
 
 import org.beangle.commons.collection.Order
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
-import org.openurp.base.edu.model.{Project, Semester}
-import org.openurp.base.edu.service.SemesterService
+import org.openurp.base.model.{Project, Semester}
+import org.openurp.base.service.SemesterService
+
+import java.time.LocalDate
 
 class SemesterServiceImpl extends SemesterService {
   var entityDao: EntityDao = _
 
   override def getActives(project: Project): Seq[Semester] = {
     val builder = OqlBuilder.from(classOf[Semester], "semester")
-      .where("semester.calendar in(:calendars)", project.calendars)
+      .where("semester.calendar =:calendar", project.calendar)
     builder.where("semester.archived=false")
     builder.orderBy("semester.beginOn")
     builder.cacheable()
@@ -38,23 +38,19 @@ class SemesterServiceImpl extends SemesterService {
 
   override def get(project: Project, date: LocalDate): Option[Semester] = {
     val builder = OqlBuilder.from(classOf[Semester], "semester")
-      .where("semester.calendar in(:calendars)", project.calendars)
+      .where("semester.calendar =:calendar", project.calendar)
     builder.where(":date between semester.beginOn and  semester.endOn", date)
     builder.cacheable()
     val rs = entityDao.search(builder)
     if (rs.isEmpty) {
       val builder2 = OqlBuilder.from(classOf[Semester], "semester")
-        .where("semester.calendar in(:calendars)", project.calendars)
+        .where("semester.calendar =:calendar", project.calendar)
       builder2.where("semester.endOn >= :date", date)
       builder2.orderBy(Order.parse("semester.beginOn"))
       builder2.cacheable()
       builder.limit(1, 2)
       val rs2 = entityDao.search(builder2)
-      if (rs2.nonEmpty) {
-        rs2.headOption
-      } else {
-        None
-      }
+      rs2.headOption
     } else {
       rs.headOption
     }

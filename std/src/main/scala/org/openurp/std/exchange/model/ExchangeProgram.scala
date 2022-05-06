@@ -20,8 +20,7 @@ package org.openurp.std.exchange.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, TemporalOn}
-import org.openurp.base.edu.model.Project
-import org.openurp.base.model.ExternSchool
+import org.openurp.base.model.{ExternSchool, Project}
 
 import scala.collection.mutable
 

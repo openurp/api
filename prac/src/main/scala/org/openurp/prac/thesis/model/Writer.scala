@@ -18,21 +18,19 @@
 package org.openurp.prac.thesis.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.{Major, GraduateGrade}
-import org.openurp.base.model.Department
+import org.beangle.data.model.pojo.Named
+import org.openurp.base.edu.model.Major
+import org.openurp.base.model.{Department, User}
+import org.openurp.base.std.model.GraduateGrade
 
 import java.time.Instant
 import scala.collection.mutable
 
-class Writer extends LongId {
+class Writer extends LongId  {
 
   var graduateGrade: GraduateGrade = _
 
-  var code: String = _
-
-  var name: String = _
-
-  var major: Major = _
+  var user: User = _
 
   var department: Department = _
 
@@ -42,11 +40,7 @@ class Writer extends LongId {
   /** 论文题目 */
   var subject: Option[Subject] = None
 
-  var squad: Option[String] = None
-
-  var mobile: Option[String] = None
-
-  var email: Option[String] = None
+    var squad: Option[String] = None
 
   var deadlines: mutable.Buffer[Deadline] = new mutable.ArrayBuffer[Deadline]
 

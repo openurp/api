@@ -21,9 +21,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Remark}
-import org.openurp.base.edu.SemesterBased
 import org.openurp.base.edu.model.Classroom
-import org.openurp.base.model.{Building, Department}
+import org.openurp.base.model.{Building, Department, SemesterBased}
 import org.openurp.code.edu.model.{ClassroomType, ExamType}
 
 import java.time.LocalDate

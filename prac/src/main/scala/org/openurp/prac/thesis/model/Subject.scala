@@ -25,7 +25,6 @@ import org.openurp.base.model.{AuditStatus, Department, User}
 import scala.collection.mutable
 
 /** 论文开题题目
- * FIXME one fields
  */
 class Subject extends LongId with Named {
   /** 面向专业 */

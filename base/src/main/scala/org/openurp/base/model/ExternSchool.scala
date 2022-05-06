@@ -15,27 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.model
+package org.openurp.base.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
-import org.openurp.base.edu.model.Major
-import org.openurp.code.edu.model.{DisciplineCategory, Institution}
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.*
 
-/**
- * 辅修专业
+/** 其他培训机构
+ *
  */
-class MinorMajor extends LongId with Coded with Named with TemporalOn {
+class ExternSchool extends IntId with Named with Updated with TemporalOn with Coded {
 
-  /** 教育机构 */
-  var institution: Institution = _
-
-  /** 英文名 */
-  var enName: Option[String] = None
-
-  /** 学科门类 */
-  var category: DisciplineCategory = _
-
-  /** 对应本校的专业 */
-  var major: Option[Major] = None
 }

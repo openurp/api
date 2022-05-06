@@ -43,10 +43,4 @@ class Advisor extends LongId {
   /** 教师简介 */
   var description: Option[String] = None
 
-  /** 手机 */
-  var mobile: Option[String] = None
-
-  /** 邮箱 */
-  var email: Option[String] = None
-
 }

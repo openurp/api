@@ -21,7 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Updated}
 import org.openurp.base.edu.model.*
-import org.openurp.base.model.{AuditStatus, Department, User}
+import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 
 import java.time.Instant
 import scala.collection.mutable

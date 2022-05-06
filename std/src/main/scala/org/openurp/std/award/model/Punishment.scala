@@ -21,8 +21,8 @@ package org.openurp.std.award.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Remark}
-import org.openurp.base.edu.model.{Semester, Student}
-import org.openurp.base.model.Department
+import org.openurp.base.model.{Department, Semester}
+import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.StdPunishmentType
 
 import java.time.LocalDate

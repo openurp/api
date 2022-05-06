@@ -19,7 +19,7 @@ package org.openurp.qos.evaluation.model
 
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.{IntId, LongId}
-import org.openurp.base.edu.model.Project
+import org.openurp.base.model.Project
 
 /** 评价等级
  *

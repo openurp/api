@@ -19,10 +19,8 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.base.model.Department
-import org.openurp.base.edu.ProjectBased
+import org.openurp.base.model.{Department, ProjectBased, Semester}
 import org.openurp.base.edu.model.Course
-import org.openurp.base.edu.model.Semester
 
 /**
  * 教学任务课程组

@@ -21,9 +21,9 @@ import java.time.LocalDate
 
 import org.openurp.code.geo.model.Division
 import org.beangle.commons.collection.Collections
-import org.openurp.base.edu.model.Student
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.EnrollMode
 import org.openurp.code.edu.model.EducationMode
 

@@ -18,10 +18,11 @@
 package org.openurp.std.graduation.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.{GraduateGrade, Project}
 
 import java.time.LocalDate
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Project
+import org.openurp.base.std.model.GraduateGrade
 
 /**
  * 毕业批次

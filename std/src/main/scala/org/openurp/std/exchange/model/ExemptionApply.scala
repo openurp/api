@@ -19,8 +19,8 @@ package org.openurp.std.exchange.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.ExternStudent
 import org.openurp.base.model.AuditStatus
+import org.openurp.base.std.model.ExternStudent
 
 /** 免修申请
  *

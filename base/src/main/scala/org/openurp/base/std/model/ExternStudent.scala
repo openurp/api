@@ -15,15 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu
+package org.openurp.base.std.model
 
-import org.openurp.base.edu.model.Project
-import org.openurp.base.edu.model.Semester
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.openurp.base.model.ExternSchool
+import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.{EduCategory, EducationLevel}
 
-trait SemesterBased {
-
-  var project: Project = _
-
-  var semester: Semester = _
-
+/**
+ * 外部学习经历
+ */
+class ExternStudent extends LongId with Updated with DateRange {
+  var std: Student = null
+  var school: ExternSchool = null
+  var majorName: Option[String] = None
+  var level: EducationLevel = null
+  var category: EduCategory = null
 }

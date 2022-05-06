@@ -15,14 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.service
+package org.openurp.base.model
 
-import org.openurp.code.Code
-import org.openurp.base.edu.model.Project
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.*
+import org.openurp.code.asset.model.{BuildingType, RoomType}
 
-trait ProjectCodeService {
-
-  def getCodes[T <: Code](project: Project, clazz: Class[T]): collection.Seq[T]
-
-  def getCode[T <: Code](clazz: Class[T], id: Int): T
+/**
+ * 校区
+ */
+class Campus extends IntId with Cloneable with Coded with Named with TemporalOn with Updated with Remark {
+  var school: School = _
+  var enName: Option[String] = None
+  var shortName: Option[String] = None
 }

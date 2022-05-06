@@ -19,8 +19,7 @@ package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.{Project, Semester}
-import org.openurp.base.model.Department
+import org.openurp.base.model.{Department, Project, Semester}
 
 /** 按照开课院系统计
  *

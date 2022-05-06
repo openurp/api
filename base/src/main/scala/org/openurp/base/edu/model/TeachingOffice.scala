@@ -20,7 +20,7 @@ package org.openurp.base.edu.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.base.model.{Department, User}
+import org.openurp.base.model.{Department, Project, User}
 
 import scala.collection.mutable
 

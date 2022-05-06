@@ -52,5 +52,5 @@ class Proposal extends LongId {
   /** 教师审核意见 */
   var advisorOpinion: Option[String] = None
   /** 确认时间 */
-  var confirmedAt: Option[Instant] = None
+  var confirmAt: Option[Instant] = None
 }

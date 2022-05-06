@@ -18,14 +18,13 @@
 package org.openurp.base.edu.model
 
 import scala.collection.mutable.Buffer
-
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Coded
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.Remark
 import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Department
+import org.openurp.base.model.{Department, Project}
 import org.openurp.code.edu.model.EducationLevel
 
 /**

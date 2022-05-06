@@ -15,24 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
-
-import java.util.GregorianCalendar
-
-import scala.collection.mutable.Buffer
-import org.beangle.commons.lang.time.WeekDay
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Coded
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.Updated
-import org.beangle.data.model.IntId
-import java.time.ZoneId
+package org.openurp.base.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.pojo.DateRange
-import org.openurp.base.model.School
+import org.beangle.commons.lang.time.WeekDay
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.*
 
+import java.time.ZoneId
+import java.util.GregorianCalendar
 import scala.collection.mutable
 
 /**

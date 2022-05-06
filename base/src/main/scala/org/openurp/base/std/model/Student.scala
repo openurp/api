@@ -15,14 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
+package org.openurp.base.std.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
 import org.beangle.data.model.{Component, LongId}
 import org.openurp.base.edu.code.model.{StdLabel, StdLabelType, StdType}
-import org.openurp.base.edu.{EduLevelBased, StdEnrollment}
-import org.openurp.base.model.{Campus, Department, Person, User}
+import org.openurp.base.edu.model.*
+import org.openurp.base.model.*
 import org.openurp.code.edu.model.{EducationLevel, StudyType}
 import org.openurp.code.std.model.StudentStatus
 
@@ -30,7 +30,13 @@ import java.time.LocalDate
 import scala.collection.mutable
 
 /**
- * 学籍信息实现
+ * 学籍信息
+ * </p>
+ * 学籍信息记录了四部分内容： <li>基本内容 学号、姓名、英文名(拼音)、性别</li> <li>培养内容 项目、年级、院系、专业、方向、班级、培养层次、学习形式、学生分类标签</li> <li>
+ * 培养时间 录取时间、入学时间、预计毕业时间、学制</li> <li>学籍状态日志 各时段的是否在校、专业、方向以及学籍状态</li>
+ *
+ * @author chaostone
+ * @since 2005
  */
 class Student extends LongId with EduLevelBased with Updated with Remark with DateRange {
 
@@ -80,9 +86,13 @@ class Student extends LongId with EduLevelBased with Updated with Remark with Da
 }
 
 /**
- * 学籍状态日志
+ * 学籍状态
+ * </p>
+ * 学籍状态日志记录从起始时间到结束时间之间的学籍状态。主要记录学生的 <li>年级</li> <li>管理院系</li> <li>专业</li> <li>方向</li> <li>行政班级</li>
+ * <li>是否在校</li> <li>学籍状态</li> [beginOn,endOn)
+ *
+ * @author chaostone
  */
-
 class StudentState extends LongId with StdEnrollment with TemporalOn with Remark {
 
   /** 学生 */
@@ -131,5 +141,44 @@ class StudentScope extends Component {
   var majors: mutable.Set[Major] = Collections.newSet[Major]
   /** 专业方向集合 */
   var directions: mutable.Set[Direction] = Collections.newSet[Direction]
+}
+
+/**
+ * 学籍注册信息
+ */
+trait StdEnrollment {
+
+  /** 年级 表示现在年级，不同于入学时间 */
+  def grade: String
+
+  /** 管理院系 行政管理院系 */
+  def department: Department
+
+  /** 专业 当前修读专业 */
+  def major: Major
+
+  /** 方向 当前修读方向 */
+  def direction: Option[Direction]
+
+  /** 行政班级 */
+  def squad: Option[Squad]
+
+  /** 是否在校 */
+  def inschool: Boolean
+
+  /** 学籍状态 */
+  def status: StudentStatus
 
 }
+
+
+/**
+ * 基于学生信息的实体
+ *
+ * @author Administrator
+ */
+trait StudentBased {
+
+  var std: Student = _
+}
+

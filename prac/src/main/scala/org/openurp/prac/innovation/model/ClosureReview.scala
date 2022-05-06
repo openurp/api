@@ -24,7 +24,7 @@ import scala.collection.mutable
 
 class ClosureReview extends LongId {
 
-  var project: InnovProject = _
+  var project: Project = _
 
   var score: Option[Float] = None
 

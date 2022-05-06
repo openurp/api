@@ -19,8 +19,8 @@ package org.openurp.edu.grade.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{GradeType, GradingMode}
-import org.openurp.base.edu.model.Student
 import org.openurp.edu.grade.model.Grade
 
 /**

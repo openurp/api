@@ -18,6 +18,7 @@
 package org.openurp.base.std.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.openurp.base.edu.model.MinorMajor
 
 class DefaultMapping extends MappingModule {
 

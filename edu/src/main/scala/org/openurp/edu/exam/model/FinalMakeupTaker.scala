@@ -23,7 +23,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.code.model.CourseType
-import org.openurp.base.edu.model.Student
+import org.openurp.base.std.model.Student
 
 /**
  * 毕业清考名单

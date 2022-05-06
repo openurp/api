@@ -18,17 +18,24 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{DateRange, Updated}
-import org.openurp.base.model.ExternSchool
-import org.openurp.code.edu.model.{EduCategory, EducationLevel}
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
+import org.openurp.base.edu.model.Major
+import org.openurp.code.edu.model.{DisciplineCategory, Institution}
 
 /**
- * 外部学习经历
+ * 辅修专业
  */
-class ExternStudent extends LongId with Updated with DateRange {
-  var std: Student = null
-  var school: ExternSchool = null
-  var majorName: Option[String] = None
-  var level: EducationLevel = null
-  var category: EduCategory = null
+class MinorMajor extends LongId with Coded with Named with TemporalOn {
+
+  /** 教育机构 */
+  var institution: Institution = _
+
+  /** 英文名 */
+  var enName: Option[String] = None
+
+  /** 学科门类 */
+  var category: DisciplineCategory = _
+
+  /** 对应本校的专业 */
+  var major: Option[Major] = None
 }

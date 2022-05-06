@@ -37,51 +37,5 @@ class Plan extends LongId with Cloneable {
   def getStageTime(stage: Stage): StageTime = {
     times.find(x => x.stage == stage).get
   }
-//
-//  /** 论文题目提交 */
-//  var tmtjBegin: LocalDate = _
-//  var tmtjEnd: LocalDate = _
-//
-//  /** 教学院长审查题目 */
-//  var tmscBegin: LocalDate = _
-//  var tmscEnd: LocalDate = _
-//
-//  /** 学生初选 */
-//  var tmcxBegin: LocalDate = _
-//  var tmcxEnd: LocalDate = _
-//
-//  /** 学生补选 */
-//  var tmbxBegin: LocalDate = _
-//  var tmbxEnd: LocalDate = _
-//
-//  /** 确认任务书 */
-//  var jsrwsBegin: LocalDate = _
-//  var jsrwsEnd: LocalDate = _
-//
-//  /** 撰写开题报告 */
-//  var ktbgBegin: LocalDate = _
-//  var ktbgEnd: LocalDate = _
-//
-//  /** 教师指导Ⅰ */
-//  var jszd1Begin: LocalDate = _
-//  var jszd1End: LocalDate = _
-//
-//  /** 中期检查 */
-//  var zqjcBegin: LocalDate = _
-//  var zqjcEnd: LocalDate = _
-//
-//  /** 教师指导Ⅱ */
-//  var jszd2Begin: LocalDate = _
-//  var jszd2End: LocalDate = _
-//
-//  /** 论文提交截止 */
-//  var lwtjEnd: LocalDate = _
-//
-//  /** 论文评阅截止 */
-//  var lwpyEnd: LocalDate = _
-//
-//  /** 论文答辩截止 */
-//  var dbEnd: LocalDate = _
-
   override def clone(): AnyRef = super.clone()
 }

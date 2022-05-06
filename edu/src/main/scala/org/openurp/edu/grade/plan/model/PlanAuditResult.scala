@@ -21,7 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.code.model.CourseType
-import org.openurp.base.edu.model.Student
+import org.openurp.base.std.model.Student
 
 import scala.collection.mutable
 

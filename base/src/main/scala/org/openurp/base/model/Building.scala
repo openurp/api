@@ -22,15 +22,6 @@ import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
 import org.openurp.code.asset.model.{ BuildingType, RoomType }
 
 /**
- * 校区
- */
-class Campus extends IntId with Cloneable with Coded with Named with TemporalOn with Updated with Remark {
-  var school: School = _
-  var enName: Option[String] = None
-  var shortName: Option[String] = None
-}
-
-/**
  * 建筑
  */
 class Building extends IntId with Coded with Named with TemporalOn with Updated with Remark {
@@ -40,29 +31,4 @@ class Building extends IntId with Coded with Named with TemporalOn with Updated 
   var enName: Option[String] = None
   var shortName: Option[String] = None
   var buildingType: Option[BuildingType] = None
-}
-
-/**
- * 房间
- */
-class Room extends IntId with Coded with Named with TemporalOn with Updated with Remark {
-
-  /**所属学校*/
-  var school: School = _
-
-  /**所属校区*/
-  var campus: Campus = _
-
-  /**管理部门*/
-  var department: Option[Department] = None
-
-  /**所属建筑*/
-  var building: Option[Building] = None
-
-  /**房间类型*/
-  var roomType: RoomType = _
-
-  /** 楼层 */
-  var floorNo: Int = _
-
 }

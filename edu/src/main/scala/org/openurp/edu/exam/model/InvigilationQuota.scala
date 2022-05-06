@@ -22,8 +22,7 @@ import java.time.LocalDate
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.model.{Campus, Department, User}
-import org.openurp.base.edu.model.{Project, Semester}
+import org.openurp.base.model.{Campus, Department, Project, Semester, User}
 
 /**
  * 监考人员

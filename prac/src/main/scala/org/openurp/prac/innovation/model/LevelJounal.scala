@@ -30,11 +30,11 @@ class LevelJounal extends LongId with Updated {
   /**年度*/
   var awardYear: Int = _
 
-  var project: InnovProject = _
+  var project: Project = _
 
   var level: ProjectLevel = _
 
-  def this(year: Int, project: InnovProject, level: ProjectLevel) = {
+  def this(year: Int, project: Project, level: ProjectLevel) = {
     this()
     this.awardYear = year
     this.project = project

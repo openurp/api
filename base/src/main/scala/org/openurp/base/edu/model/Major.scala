@@ -26,10 +26,9 @@ import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.Remark
 import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Department
+import org.openurp.base.model.{Department, ProjectBased}
 import org.openurp.code.edu.model.DisciplineCategory
 import org.openurp.code.edu.model.EducationLevel
-import org.openurp.base.edu.ProjectBased
 
 /**
  * 专业

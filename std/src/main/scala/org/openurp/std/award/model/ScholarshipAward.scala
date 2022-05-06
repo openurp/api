@@ -20,7 +20,8 @@ package org.openurp.std.award.model
 import org.beangle.data.model.{IntId, LongId}
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
-import org.openurp.base.edu.model.{Semester, Student}
+import org.openurp.base.model.Semester
+import org.openurp.base.std.model.Student
 
 class ScholarshipAward extends LongId {
 

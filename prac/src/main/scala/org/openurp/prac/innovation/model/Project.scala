@@ -29,7 +29,7 @@ import scala.collection.mutable
 /**
  * 项目
  */
-class InnovProject extends LongId with TemporalOn with Remark {
+class Project extends LongId with TemporalOn with Remark {
 
   /** 项目编号 */
   var code: Option[String] = _

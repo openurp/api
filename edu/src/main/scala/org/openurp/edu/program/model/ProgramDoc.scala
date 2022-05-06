@@ -22,10 +22,9 @@ import java.util.Locale
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{Hierarchical, Named, TemporalOn, Updated}
 import org.beangle.data.model.{IntId, LongId}
-import org.openurp.base.model.Department
+import org.openurp.base.model.{Department, Project}
 import org.openurp.code.edu.model.EducationLevel
 import org.openurp.base.edu.code.model.StdType
-import org.openurp.base.edu.model.Project
 
 import scala.collection.mutable
 

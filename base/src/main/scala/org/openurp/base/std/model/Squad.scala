@@ -15,16 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
+package org.openurp.base.std.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.*
-import org.openurp.base.edu.EduLevelBased
 import org.openurp.base.edu.code.model.StdType
-import org.openurp.base.model.{Campus, Department, User}
-import org.openurp.base.std.model.Mentor
+import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.model.{Campus, Department, EduLevelBased, User}
+import org.openurp.base.std.model.{Mentor, StudentState}
+
+import scala.collection.mutable
 
 /**
  * 学生行政班级信息
@@ -59,7 +60,7 @@ class Squad extends LongId with EduLevelBased with Coded with Named with DateRan
   /** 班主任 */
   var master: Option[User] = None
   /** 学生状态 */
-  var stdStates = Collections.newBuffer[StudentState]
+  var stdStates: mutable.Buffer[StudentState] = Collections.newBuffer[StudentState]
   /** 固定校区 */
   var campus: Campus = _
 }

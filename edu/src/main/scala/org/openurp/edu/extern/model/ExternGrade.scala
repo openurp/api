@@ -20,7 +20,8 @@ package org.openurp.edu.extern.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.{Course, ExternStudent}
+import org.openurp.base.edu.model.Course
+import org.openurp.base.std.model.ExternStudent
 
 import java.time.LocalDate
 import scala.collection.mutable

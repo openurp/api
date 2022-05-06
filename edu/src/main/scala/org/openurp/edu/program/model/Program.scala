@@ -22,12 +22,12 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
 import org.openurp.base.edu.code.model.{CourseType, StdType}
 import org.openurp.base.edu.model.{Direction, Major}
-import org.openurp.base.edu.EduLevelBased
-import org.openurp.base.model.{AuditStatus, Campus, Department}
+import org.openurp.base.model.{AuditStatus, Campus, Department, EduLevelBased}
 import org.openurp.code.edu.model.{Degree, StudyType}
 
 /**
  * 专业培养方案
+ *
  * @author chaostone
  *
  */
