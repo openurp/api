@@ -21,9 +21,10 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.code.edu.model.{CourseTakeType, ExamMode, GradeType, GradingMode}
-import org.openurp.base.edu.ProjectBased
 import org.openurp.base.edu.code.model.CourseType
-import org.openurp.base.edu.model.{Course, Semester, Student}
+import org.openurp.base.edu.model.Course
+import org.openurp.base.model.{ProjectBased, Semester}
+import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.Grade
 

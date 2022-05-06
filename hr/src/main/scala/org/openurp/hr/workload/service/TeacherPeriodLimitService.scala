@@ -18,7 +18,8 @@
 package org.openurp.hr.workload.service
 
 import org.openurp.base.edu.code.model.TeacherType
-import org.openurp.base.edu.model.{Semester, Teacher}
+import org.openurp.base.edu.model.Teacher
+import org.openurp.base.model.Semester
 import org.openurp.code.job.model.ProfessionalGrade
 
 trait TeacherPeriodLimitService {

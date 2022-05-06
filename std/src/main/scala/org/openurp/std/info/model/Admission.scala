@@ -19,12 +19,12 @@ package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.EnrollMode
-import org.openurp.base.edu.model.Student
 import org.openurp.base.edu.model.Major
 import org.openurp.base.model.Department
 import java.time.LocalDate
 
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.EducationMode
 
 /**

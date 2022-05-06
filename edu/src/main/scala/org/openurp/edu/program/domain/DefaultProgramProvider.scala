@@ -18,7 +18,7 @@
 package org.openurp.edu.program.domain
 
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
-import org.openurp.base.edu.model.{Student, StudentState}
+import org.openurp.base.std.model.{Student, StudentState}
 import org.openurp.edu.program.model.Program
 
 class DefaultProgramProvider extends ProgramProvider {

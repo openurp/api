@@ -20,8 +20,7 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Semester
-import org.openurp.base.model.User
+import org.openurp.base.model.{Semester, User}
 
 import java.time.Instant
 import java.util.Locale

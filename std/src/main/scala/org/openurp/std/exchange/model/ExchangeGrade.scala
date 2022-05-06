@@ -20,8 +20,9 @@ package org.openurp.std.exchange.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.AuditStates
-import org.openurp.base.edu.model.{Course, ExternStudent}
+import org.openurp.base.edu.model.Course
+import org.openurp.base.model.AuditStatus
+import org.openurp.base.std.model.ExternStudent
 
 import java.time.LocalDate
 import scala.collection.mutable
@@ -43,5 +44,5 @@ class ExchangeGrade extends LongId with Remark with Updated {
 
   var courses: mutable.Set[Course] = Collections.newSet[Course]
 
-  var auditState: AuditStates = AuditStates.Draft
+  var status: AuditStatus = AuditStatus.Draft
 }

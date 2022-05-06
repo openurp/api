@@ -18,12 +18,11 @@
 package org.openurp.base.edu.model
 
 import scala.collection.mutable.Buffer
-
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.base.model.Campus
+import org.openurp.base.model.{Campus, Project}
 import org.openurp.code.edu.model.DayPart
 
 /**

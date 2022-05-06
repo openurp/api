@@ -18,13 +18,14 @@
 package org.openurp.base.std.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.openurp.base.edu.model.MinorMajor
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultCache("openurp.base", "read-write")
 
-    bind[Instructor] declare { e =>
+    bind[Mentor] declare { e =>
       index("", true, e.user)
     }
 

@@ -9,7 +9,7 @@ Program.duration=学制
 Program.degree=毕业授予学位
 Program.degreeGpa=学位绩点
 Program.studyType=学习形式
-Program.auditState=状态
+Program.status=状态
 Program.project=项目
 Program.termCampuses=学期对应校区
 Program.campus=校区
@@ -76,7 +76,7 @@ AbstractCoursePlan.groups=课程组
 AbstractCoursePlan.credits=要求学分
 AbstractCoursePlan.startTerm=起始学期
 AbstractCoursePlan.endTerm=结束学期
-AbstractCoursePlan.auditState=审核状态
+AbstractCoursePlan.status=审核状态
 AbstractCoursePlan.remark=备注
 
 AbstractPlanCourse=抽象计划内课程

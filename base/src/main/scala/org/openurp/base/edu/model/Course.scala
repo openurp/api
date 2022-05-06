@@ -20,9 +20,8 @@ package org.openurp.base.edu.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo._
-import org.openurp.base.edu.ProjectBased
 import org.openurp.base.edu.code.model._
-import org.openurp.base.model.Department
+import org.openurp.base.model.{Department, ProjectBased}
 import org.openurp.code.edu.model.{AcademicLevel, CourseNature, ExamMode, GradingMode, TeachingNature}
 
 /**
@@ -78,7 +77,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 是否有补考 */
   var hasMakeup: Boolean = _
   /** 教研室 */
-  var teachingGroup: Option[TeachingGroup] = None
+  var teachingOffice: Option[TeachingOffice] = None
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)

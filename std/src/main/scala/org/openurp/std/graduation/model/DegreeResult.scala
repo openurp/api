@@ -22,8 +22,8 @@ import java.time.LocalDate
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Degree
-import org.openurp.base.edu.model.Student
 
 import scala.collection.mutable
 
@@ -63,6 +63,6 @@ class DegreeResult extends LongId with Updated {
   var foreignLangPassedOn: Option[LocalDate] = None
 
   def deciplineCode: String = {
-    std.state.map(_.major.disciplineCode(session.beginOn)).getOrElse("")
+    std.state.map(_.major.disciplineCode(session.graduateOn)).getOrElse("")
   }
 }

@@ -2,7 +2,7 @@ import org.openurp.parent.Settings._
 import org.openurp.parent.Dependencies._
 
 ThisBuild / organization := "org.openurp.api"
-ThisBuild / version := "0.24.1"
+ThisBuild / version := "0.25.0"
 
 ThisBuild / scmInfo := Some(
   ScmInfo(
@@ -26,7 +26,7 @@ ThisBuild / resolvers += Resolver.mavenLocal
 
 lazy val root = (project in file("."))
   .settings()
-  .aggregate(code,base,edu,hr,prac,qos,rd,spa,std,all)
+  .aggregate(code,base,edu,hr,prac,qos,trd,spa,std,all)
 
 lazy val code = (project in file("code"))
   .settings(
@@ -71,10 +71,10 @@ lazy val qos = (project in file("qos"))
     common
   ).dependsOn(edu)
 
-lazy val rd = (project in file("rd"))
+lazy val trd = (project in file("trd"))
   .settings(
-    organization := "org.openurp.rd",
-    name := "openurp-rd-api",
+    organization := "org.openurp.trd",
+    name := "openurp-trd-api",
     common
   ).dependsOn(base)
 
@@ -98,6 +98,6 @@ lazy val all = (project in file("all"))
     name := "openurp-api-all",
     common,
     publish / skip := true
-  ).dependsOn(code,base,edu,hr,prac,qos,rd,spa,std)
+  ).dependsOn(code,base,edu,hr,prac,qos,trd,spa,std)
 
 publish / skip := true

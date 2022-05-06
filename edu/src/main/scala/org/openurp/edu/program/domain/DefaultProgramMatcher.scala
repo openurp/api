@@ -17,7 +17,7 @@
 
 package org.openurp.edu.program.domain
 
-import org.openurp.base.edu.model.{Squad, StudentState}
+import org.openurp.base.std.model.{Squad, StudentState}
 import org.openurp.edu.program.model.Program
 
 object DefaultProgramMatcher extends ProgramMatcher {

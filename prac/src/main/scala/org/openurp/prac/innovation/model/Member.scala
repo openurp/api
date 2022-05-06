@@ -19,10 +19,10 @@ package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.model.Student
+import org.openurp.base.std.model.Student
 
 object Member {
-  def apply(project: InnovProject, std: Student): Member = {
+  def apply(project: Project, std: Student): Member = {
     val m = new Member()
     m.project = project
     m.std = std
@@ -35,7 +35,7 @@ class Member extends LongId with Remark {
 
   var std: Student = _
 
-  var project: InnovProject = _
+  var project: Project = _
 
   var duty: String = _
 

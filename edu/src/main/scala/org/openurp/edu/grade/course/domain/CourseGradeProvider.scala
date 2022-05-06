@@ -17,8 +17,8 @@
 
 package org.openurp.edu.grade.course.domain
 
-import org.openurp.base.edu.model.Semester
-import org.openurp.base.edu.model.Student
+import org.openurp.base.model.Semester
+import org.openurp.base.std.model.Student
 import org.openurp.edu.grade.course.model.CourseGrade
 
 trait CourseGradeProvider {

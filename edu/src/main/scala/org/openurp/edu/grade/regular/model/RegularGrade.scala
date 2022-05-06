@@ -20,7 +20,7 @@ package org.openurp.edu.grade.regular.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Student
+import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
 
 import scala.collection.mutable

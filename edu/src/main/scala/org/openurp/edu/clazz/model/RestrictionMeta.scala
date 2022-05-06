@@ -25,8 +25,8 @@ import org.openurp.base.edu.code.model.StdLabel
 import org.openurp.base.edu.code.model.StdType
 import org.openurp.base.edu.model.Direction
 import org.openurp.base.edu.model.Major
-import org.openurp.base.edu.model.Squad
 import org.beangle.data.model.Entity
+import org.openurp.base.std.model.Squad
 
 enum RestrictionMeta(val id:Int,contentType: Class[_]){
 

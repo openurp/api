@@ -21,8 +21,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.Updated
 import org.beangle.data.model.{LongId, LongIdEntity}
 import org.openurp.base.edu.code.model.CourseCategory
-import org.openurp.base.edu.model.{Course, Project, Semester, Teacher}
-import org.openurp.base.model.Department
+import org.openurp.base.edu.model.{Course, Teacher}
+import org.openurp.base.model.{Department, Project, Semester}
 import org.openurp.qos.evaluation.model.{AssessGrade, Indicator, Option, Question, Questionnaire}
 
 import scala.collection.mutable

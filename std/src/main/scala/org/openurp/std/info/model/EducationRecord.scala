@@ -17,8 +17,8 @@
 
 package org.openurp.std.info.model
 
-import org.openurp.base.edu.model.Student
 import org.beangle.data.model.LongId
+import org.openurp.base.std.model.Student
 import java.time.YearMonth
 
 /**

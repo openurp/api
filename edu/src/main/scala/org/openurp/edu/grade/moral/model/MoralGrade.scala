@@ -18,9 +18,9 @@
 package org.openurp.edu.grade.moral.model
 
 import org.beangle.data.model.LongId
+import org.openurp.base.model.Semester
 import org.openurp.code.edu.model.GradingMode
-import org.openurp.base.edu.model.Semester
-import org.openurp.base.edu.model.Student
+import org.openurp.base.std.model.Student
 
 /**
  * 德育成绩

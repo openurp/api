@@ -18,10 +18,11 @@
 package org.openurp.std.graduation.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Project
 
 import java.time.LocalDate
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Project
+import org.openurp.base.std.model.GraduateGrade
 
 /**
  * 毕业批次
@@ -29,6 +30,9 @@ import org.beangle.data.model.pojo.Updated
 class GraduateSession extends LongId with Updated {
 
   var project: Project = _
+
+  /**毕业界别*/
+  var gaduateGrade:GraduateGrade =_
 
   /** 名称 */
   var name: String = _

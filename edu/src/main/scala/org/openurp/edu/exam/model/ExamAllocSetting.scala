@@ -19,7 +19,7 @@ package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.base.edu.ProjectBased
+import org.openurp.base.model.ProjectBased
 import org.openurp.code.edu.model.ExamType
 
 /** 考试分配设定

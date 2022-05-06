@@ -20,8 +20,9 @@ package org.openurp.std.alter.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, DateRange, Remark, Updated}
+import org.openurp.base.model.Semester
 import org.openurp.code.std.model.{StdAlterReason, StdAlterType}
-import org.openurp.base.edu.model.{Semester, Student}
+import org.openurp.base.std.model.Student
 
 import scala.collection.mutable.Buffer
 

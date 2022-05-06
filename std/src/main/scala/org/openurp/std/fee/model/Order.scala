@@ -21,7 +21,7 @@ import java.time.Instant
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Remark}
-import org.openurp.base.edu.model.Student
+import org.openurp.base.std.model.Student
 
 /** 支付订单记录
  * */

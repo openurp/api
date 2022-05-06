@@ -18,6 +18,8 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.base.model.{Calendar, CalendarStage, Project, ProjectCode, Semester, SemesterStage}
+import org.openurp.base.std.model.{ExternStudent, GraduateGrade, Squad, Student, StudentState}
 
 class DefaultMapping extends MappingModule {
 
@@ -170,11 +172,13 @@ class DefaultMapping extends MappingModule {
       e.description is length(300)
     }
 
-    bind[TeachingGroup] declare { e =>
+    bind[TeachingOffice] declare { e =>
       index("", true, e.project, e.code)
     }
 
     bind[ExternStudent]
+
+    bind[GraduateGrade]
 
     all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent]).cacheAll()
   }

@@ -27,7 +27,7 @@ import scala.collection.mutable
  * 项目结项
  */
 class Closure extends LongId with Updated {
-  var project: InnovProject = _
+  var project: Project = _
 
   var applyExemptionReply: Boolean = _
 
@@ -39,7 +39,7 @@ class Closure extends LongId with Updated {
 
   var replyScore: Option[Int] = None
 
-  def this(project: InnovProject) = {
+  def this(project: Project) = {
     this()
     this.project = project
   }

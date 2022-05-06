@@ -24,7 +24,7 @@ import org.beangle.data.model.pojo.Updated
 /** 项目材料
  */
 class Material extends LongId with Updated {
-  var project: InnovProject = _
+  var project: Project = _
   var stageType: StageType = _
   /**文件名*/
   var fileName: String = _
@@ -35,7 +35,7 @@ class Material extends LongId with Updated {
   /**路径*/
   var filePath: String = _
 
-  def this(project: InnovProject, stageType: StageType) = {
+  def this(project: Project, stageType: StageType) = {
     this()
     this.project = project
     this.stageType = stageType

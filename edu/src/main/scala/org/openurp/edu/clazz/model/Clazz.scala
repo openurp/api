@@ -21,9 +21,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Updated}
 import org.openurp.base.edu.code.model.CourseType
-import org.openurp.base.edu.model.{Course, Semester, Teacher}
-import org.openurp.base.edu.{AuditStates, ProjectBased}
-import org.openurp.base.model.{Campus, Department}
+import org.openurp.base.edu.model.{Course, Teacher}
+import org.openurp.base.model.{AuditStatus, Campus, Department, ProjectBased, Semester}
 import org.openurp.code.edu.model.TeachLangType
 import org.openurp.edu.clazz.code.model.ClazzTag
 
@@ -83,7 +82,7 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   var group: Option[ClazzGroup] = None
 
   /** 审核状态 */
-  var auditState: AuditStates = _
+  var status: AuditStatus = _
 
   /** 任务标签 */
   var tags: mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]

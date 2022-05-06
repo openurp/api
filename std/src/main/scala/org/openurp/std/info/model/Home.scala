@@ -17,9 +17,9 @@
 
 package org.openurp.std.info.model
 
-import org.openurp.base.edu.model.Student
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.std.model.Student
 import org.openurp.code.geo.model.RailwayStation
 
 /**

@@ -19,7 +19,7 @@ package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Student
+import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{Degree, EducationResult}
 import org.openurp.code.std.model.WheretoGo
 

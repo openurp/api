@@ -19,14 +19,12 @@ package org.openurp.edu.textbook.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Student
 import org.openurp.base.edu.model.Course
 import org.openurp.base.edu.model.Textbook
-import org.openurp.base.edu.model.Semester
-import org.openurp.base.model.Department
+import org.openurp.base.model.{Department, Project, Semester}
 import java.time.Instant
-import org.openurp.base.edu.model.Project
 import org.openurp.base.model.Department
+import org.openurp.base.std.model.Student
 
 /**
  * 学生教材订单

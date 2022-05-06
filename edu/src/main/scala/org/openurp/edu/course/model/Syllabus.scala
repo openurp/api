@@ -17,14 +17,13 @@
 
 package org.openurp.edu.course.model
 
-import java.time.Instant
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Updated}
-import org.openurp.base.model.{Department, User}
-import org.openurp.base.edu.model._
+import org.openurp.base.edu.model.*
+import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 
+import java.time.Instant
 import scala.collection.mutable
 
 /** 课程教学大纲
@@ -42,7 +41,7 @@ class Syllabus extends LongId with Updated with DateRange {
   var department: Department = _
 
   /** 教研室 */
-  var teachingGroup: Option[TeachingGroup] = None
+  var teachingOffice: Option[TeachingOffice] = None
 
   /** 附件 */
   var attachments: mutable.Buffer[SyllabusFile] = Collections.newBuffer[SyllabusFile]
@@ -51,7 +50,7 @@ class Syllabus extends LongId with Updated with DateRange {
   var author: User = _
 
   /** 状态 */
-  var status: SyllabusStatus = SyllabusStatus.Draft
+  var status: AuditStatus = AuditStatus.Draft
 
   /** 审核人 */
   var auditor: Option[User] = None

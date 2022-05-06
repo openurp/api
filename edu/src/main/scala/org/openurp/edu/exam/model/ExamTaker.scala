@@ -19,10 +19,10 @@ package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
+import org.openurp.base.model.Semester
 import org.openurp.code.edu.model.ExamStatus
 import org.openurp.code.edu.model.ExamType
-import org.openurp.base.edu.model.Semester
-import org.openurp.base.edu.model.Student
+import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
 
 /**

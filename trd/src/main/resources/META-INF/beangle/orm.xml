@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orm>
+  <mapping class="org.openurp.trd.code.model.DefaultMapping" name="code"/>
+  <mapping class="org.openurp.trd.project.model.DefaultMapping" name="project"/>
+  <mapping class="org.openurp.trd.achievement.model.DefaultMapping" name="achievement"/>
+  <mapping class="org.openurp.trd.team.model.DefaultMapping" name="team"/>
+  <naming>
+    <profile package="org.openurp.trd" pluralize="true" schema="trd"/>
+  </naming>
+</orm>
