@@ -674,7 +674,7 @@ alter table std.graduate_audit_items add constraint fk_spr1t06o2gkqpa1jukk1bieqx
 alter table std.graduate_results add constraint fk_60tarsb0wps3cmsumt4fmx7ki foreign key (std_id) references base.students (id);
 alter table std.graduate_results add constraint fk_aw2crvlxuwnxsbyexehnmhbnj foreign key (education_result_id) references code.education_results (id);
 alter table std.graduate_results add constraint fk_q4lfteojw5bdx69gwtmcb8lsc foreign key (session_id) references std.graduate_sessions (id);
-alter table std.graduate_sessions add constraint fk_1kuglq2yqj5gipmr7s1s0i1h6 foreign key (gaduate_grade_id) references base.graduate_grades (id);
+alter table std.graduate_sessions add constraint fk_1kuglq2yqj5gipmr7s1s0i1h6 foreign key (graduate_grade_id) references base.graduate_grades (id);
 alter table std.graduate_sessions add constraint fk_tf5b7i60rw4ynapyis5e2gl6s foreign key (project_id) references base.projects (id);
 alter table std.graduations add constraint fk_3l7ojs3sqfm57qr9tin1fy0iq foreign key (whereto_go_id) references code.whereto_goes (id);
 alter table std.graduations add constraint fk_g3b2w9le8nidh58ljm8no5thx foreign key (std_id) references base.students (id);

@@ -32,7 +32,7 @@ class GraduateSession extends LongId with Updated {
   var project: Project = _
 
   /**毕业界别*/
-  var gaduateGrade:GraduateGrade =_
+  var graduateGrade:GraduateGrade =_
 
   /** 名称 */
   var name: String = _

@@ -89,7 +89,6 @@ class DefaultMapping extends MappingModule {
 
     bind[ExternSchool].generator(IdGenerator.AutoIncrement)
 
-
     bind[Project] declare { e =>
       e.code.is(length(10), unique)
       e.name is length(100)

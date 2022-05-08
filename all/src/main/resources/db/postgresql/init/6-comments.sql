@@ -2675,7 +2675,7 @@ comment on column std.graduate_results.session_id is '毕业批次ID';
 comment on column std.graduate_results.std_id is '学籍信息实现ID';
 comment on column std.graduate_results.updated_at is '更新时间';
 comment on column std.graduate_sessions.degree_offered is '是否授学位';
-comment on column std.graduate_sessions.gaduate_grade_id is '毕业界别ID';
+comment on column std.graduate_sessions.graduate_grade_id is '毕业界别ID';
 comment on column std.graduate_sessions.graduate_on is '毕业日期';
 comment on column std.graduate_sessions.id is '非业务主键:datetime';
 comment on column std.graduate_sessions.name is '名称';

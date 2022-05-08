@@ -6270,7 +6270,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="degree_offered" type="boolean" nullable="false" comment="是否授学位"/>
-            <column name="gaduate_grade_id" type="integer" nullable="false" comment="毕业界别ID"/>
+            <column name="graduate_grade_id" type="integer" nullable="false" comment="毕业界别ID"/>
             <column name="graduate_on" type="date" nullable="false" comment="毕业日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
@@ -6278,7 +6278,7 @@
           </columns>
           <primary-key name="pk_mkxxjrbu9vb5boe7b9hvxgkl4" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_1kuglq2yqj5gipmr7s1s0i1h6" column="gaduate_grade_id" referenced-table="base.graduate_grades" referenced-column="id"/>
+            <foreign-key name="fk_1kuglq2yqj5gipmr7s1s0i1h6" column="graduate_grade_id" referenced-table="base.graduate_grades" referenced-column="id"/>
             <foreign-key name="fk_tf5b7i60rw4ynapyis5e2gl6s" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </foreign-keys>
         </table>

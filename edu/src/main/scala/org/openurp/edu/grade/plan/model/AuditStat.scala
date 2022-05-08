@@ -50,18 +50,13 @@ class AuditStat extends Component {
   }
 
   def passed: Boolean = {
-    requiredCredits <= (passedCredits + convertedCredits) &&
-      requiredCount <= passedCount
+    java.lang.Float.compare(requiredCredits, passedCredits + convertedCredits) <= 0 && requiredCount <= passedCount
   }
 
   def creditNeeded(returnNegative: Boolean): Float = {
     val needToComplete = requiredCredits - convertedCredits - passedCredits
-    if (needToComplete < 0) {
-      if (returnNegative) {
-        needToComplete
-      } else {
-        0
-      }
+    if (java.lang.Float.compare(needToComplete, 0) < 0) {
+      if returnNegative then needToComplete else 0
     } else {
       needToComplete
     }
