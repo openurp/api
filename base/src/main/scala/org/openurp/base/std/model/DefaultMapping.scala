@@ -60,6 +60,9 @@ class DefaultMapping extends MappingModule {
     bind[MinorMajor] generator (IdGenerator.AutoIncrement)
     bind[ExternStudent]
     bind[GraduateGrade]
+    bind[Grade] declare { e =>
+      e.code is unique
+    }
 
     all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent]).cacheAll()
   }

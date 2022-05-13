@@ -74,3 +74,5 @@ ExternStudent.majorName=学习专业
 
 GraduateGrade=毕业界别
 GraduateGrade.graduateYear=毕业年份
+
+Grade=年级
