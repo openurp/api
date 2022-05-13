@@ -1,28 +1,34 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.25.0',now(),'统一审核状态');
+
+alter table std.graduate_sessions rename begin_on to graduate_on;
+alter table std.graduate_sessions drop column end_on;
+alter table std.graduate_sessions add column gaduate_grade_id integer;
 alter table edu.clazzes add column  status int4;
 update edu.clazzes set status =
 case when audit_state=2 then 100  when audit_state=3 then 99  else audit_state end;
---alter table edu.clazzes drop column audit_state;
+alter table edu.clazzes drop column audit_state;
 
 ---plans--------------
 alter table edu.execution_plans add column  status int4;
 update edu.execution_plans set status =
 case when audit_state=2 then 100  when audit_state=3 then 99  else audit_state end;
---alter table edu.execution_plans drop column audit_state;
+alter table edu.execution_plans drop column audit_state;
 
 alter table edu.major_plans add column  status int4;
 update edu.major_plans set status =
 case when audit_state=2 then 100  when audit_state=3 then 99  else audit_state end;
---alter table edu.major_plans drop column audit_state;
+alter table edu.major_plans drop column audit_state;
 
 alter table edu.std_plans add column  status int4;
 update edu.std_plans set status =
 case when audit_state=2 then 100  when audit_state=3 then 99  else audit_state end;
---alter table edu.std_plans drop column audit_state;
+alter table edu.std_plans drop column audit_state;
 
 alter table edu.programs add column  status int4;
 update edu.programs set status =
 case when audit_state=2 then 100  when audit_state=3 then 99  else audit_state end;
---alter table edu.programs drop column audit_state;
+alter table edu.programs drop column audit_state;
 
 --exchange-----------
 alter table std.exchange_grades add column  status int4;
@@ -33,12 +39,12 @@ case when audit_state=2 then 50  when audit_state=3 then 51  when audit_state=4 
 alter table std.exemption_applies add column  status int4;
 update std.exemption_applies set status =
 case when audit_state=2 then 50  when audit_state=3 then 51  when audit_state=4 then 100  when audit_state=5 then 99 else audit_state end;
---alter table std.exemption_applies drop column audit_state;
+alter table std.exemption_applies drop column audit_state;
 
 alter table std.transfer_applies add column  status int4;
 update std.transfer_applies set status =
 case when audit_state=2 then 50  when audit_state=3 then 51  when audit_state=4 then 100  when audit_state=5 then 99 else audit_state end;
---alter table std.transfer_applies drop column audit_state;
+alter table std.transfer_applies drop column audit_state;
 
 --syllabus---
 update edu.syllabuses set status =
@@ -96,3 +102,9 @@ alter table prac.innov_projects_instructors rename to inno_innov_projects_instru
 
 ---rd schema rename---------
 alter schema rd rename to trd;
+----project code-----------
+alter table base.project_codes add code_ids varchar(500);
+alter table base.project_codes add class_name varchar(100);
+--alter table base.project_codes drop column code_id;
+--alter table base.project_codes drop column meta_id;
+

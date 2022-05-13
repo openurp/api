@@ -674,7 +674,7 @@ alter table std.graduate_audit_items add constraint fk_spr1t06o2gkqpa1jukk1bieqx
 alter table std.graduate_results add constraint fk_60tarsb0wps3cmsumt4fmx7ki foreign key (std_id) references base.students (id);
 alter table std.graduate_results add constraint fk_aw2crvlxuwnxsbyexehnmhbnj foreign key (education_result_id) references code.education_results (id);
 alter table std.graduate_results add constraint fk_q4lfteojw5bdx69gwtmcb8lsc foreign key (session_id) references std.graduate_sessions (id);
-alter table std.graduate_sessions add constraint fk_1kuglq2yqj5gipmr7s1s0i1h6 foreign key (gaduate_grade_id) references base.graduate_grades (id);
+alter table std.graduate_sessions add constraint fk_qtky36f0j9qk75hc1jcn9pa3x foreign key (graduate_grade_id) references base.graduate_grades (id);
 alter table std.graduate_sessions add constraint fk_tf5b7i60rw4ynapyis5e2gl6s foreign key (project_id) references base.projects (id);
 alter table std.graduations add constraint fk_3l7ojs3sqfm57qr9tin1fy0iq foreign key (whereto_go_id) references code.whereto_goes (id);
 alter table std.graduations add constraint fk_g3b2w9le8nidh58ljm8no5thx foreign key (std_id) references base.students (id);
@@ -742,6 +742,7 @@ alter table std.transfer_options add constraint fk_c6p0frqr19pibx87k0ivvhrj7 for
 alter table std.transfer_options add constraint fk_ilm61hfn8md9cxatfsp0t51k8 foreign key (major_id) references base.majors (id);
 alter table std.transfer_schemes add constraint fk_6dnypked27sbhep5utolwq5v8 foreign key (project_id) references base.projects (id);
 alter table std.transfer_schemes add constraint fk_7h3wwdos7iedt1twhb48t27p7 foreign key (semester_id) references base.semesters (id);
+alter table std.transfer_schemes add constraint fk_tk18vblwpr3r37hj6rfqacbr9 foreign key (grade_id) references base.grades (id);
 alter table std.transfer_scopes add constraint fk_ojj6p6ktv5m6ostl47gpyngja foreign key (scheme_id) references std.transfer_schemes (id);
 alter table std.transfer_scopes_grades add constraint fk_79rdkqpxksicgbyd2u3o06rp foreign key (transfer_scope_id) references std.transfer_scopes (id);
 alter table std.transfer_scopes_majors add constraint fk_ahfteu7j9ip5s37orubh7ynlv foreign key (transfer_scope_id) references std.transfer_scopes (id);

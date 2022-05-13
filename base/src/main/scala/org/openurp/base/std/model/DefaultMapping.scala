@@ -25,10 +25,45 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultCache("openurp.base", "read-write")
 
+    bind[Squad] declare { e =>
+      e.code is length(20)
+      e.name is length(100)
+      e.grade is length(10)
+      e.stdStates is one2many("squad")
+      e.remark is length(100)
+      index("", true, e.project, e.code)
+      index("", false, e.code)
+    }
+
+    bind[Student] declare { e =>
+      e.states is depends("std")
+      e.remark is length(200)
+
+      index("", true, e.user, e.project)
+      index("", false, e.user)
+      index("", false, e.state)
+      index("", false, e.project)
+    }
+
+    bind[StudentState] declare { e =>
+      e.remark is length(200)
+      index("", false, e.std)
+      index("", false, e.department)
+      index("", false, e.major)
+      index("", false, e.squad)
+    }
+
     bind[Mentor] declare { e =>
       index("", true, e.user)
     }
 
     bind[MinorMajor] generator (IdGenerator.AutoIncrement)
+    bind[ExternStudent]
+    bind[GraduateGrade]
+    bind[Grade] declare { e =>
+      e.code is unique
+    }
+
+    all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent]).cacheAll()
   }
 }

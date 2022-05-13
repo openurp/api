@@ -98,4 +98,3 @@ trait ProjectBased {
 trait EduLevelBased extends ProjectBased {
   var level: EducationLevel = _
 }
-

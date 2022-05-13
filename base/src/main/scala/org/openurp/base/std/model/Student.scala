@@ -171,7 +171,6 @@ trait StdEnrollment {
 
 }
 
-
 /**
  * 基于学生信息的实体
  *
@@ -181,4 +180,3 @@ trait StudentBased {
 
   var std: Student = _
 }
-

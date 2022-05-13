@@ -17,25 +17,24 @@
 
 package org.openurp.std.transfer.model
 
-import java.time.Instant
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Updated}
 import org.openurp.base.model.{Project, Semester}
-
+import org.openurp.base.std.model.Grade
+import java.time.Instant
 import scala.collection.mutable
 
 /** 转专业招生计划
  *
  */
 class TransferScheme extends LongId with Named with Updated {
-
   /** 项目 */
   var project: Project = _
   /** 学年学期 */
   var semester: Semester = _
-
+  /** 转入年级 */
+  var grade: Grade = _
   /** 申请开始时间 */
   var applyBeginAt: Instant = _
   /** 申请结束时间 */
@@ -47,9 +46,9 @@ class TransferScheme extends LongId with Named with Updated {
   var editEndAt: Instant = _
 
   /** 院系审核申请开始时间 */
-  var auditBeginAt: Instant = _
+  var auditBeginAt: Option[Instant] = None
   /** 院系审核申请结束时间 */
-  var auditEndAt: Instant = _
+  var auditEndAt: Option[Instant] = None
 
   /** 招生专业列表 */
   var options: mutable.Buffer[TransferOption] = Collections.newBuffer[TransferOption]

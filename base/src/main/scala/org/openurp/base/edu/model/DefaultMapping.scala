@@ -18,8 +18,6 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.base.model.{Calendar, CalendarStage, Project, ProjectCode, Semester, SemesterStage}
-import org.openurp.base.std.model.{ExternStudent, GraduateGrade, Squad, Student, StudentState}
 
 class DefaultMapping extends MappingModule {
 
@@ -34,38 +32,6 @@ class DefaultMapping extends MappingModule {
     bind[CourseUnit] declare { e =>
       e.enName is length(30)
       e.name & e.indexno are length(20)
-    }
-
-    bind[Calendar] declare { e =>
-      e.semesters is depends("calendar")
-      e.code is length(10)
-      e.name is length(80)
-      index("", true, e.school, e.code)
-    }
-
-    bind[CalendarStage] declare { e =>
-      e.name is length(100)
-    }
-
-    bind[Semester].declare { e =>
-      e.code is length(15)
-      e.name & e.schoolYear are length(10)
-      e.stages is depends("semester")
-      index("", true, e.calendar, e.code)
-    }.generator("code")
-
-    bind[SemesterStage] declare { e =>
-      e.remark is length(500)
-    }
-
-    bind[Squad] declare { e =>
-      e.code is length(20)
-      e.name is length(100)
-      e.grade is length(10)
-      e.stdStates is one2many("squad")
-      e.remark is length(100)
-      index("", true, e.project, e.code)
-      index("", false, e.code)
     }
 
     bind[Classroom] declare { e =>
@@ -130,38 +96,8 @@ class DefaultMapping extends MappingModule {
       e.fromGrade & e.toGrade are length(10)
     }
 
-    bind[Project] declare { e =>
-      e.code.is(length(10), unique)
-      e.name is length(100)
-      e.departments is ordered
-      e.description is length(500)
-    }
-
-    bind[ProjectCode] declare { e =>
-      e.className is length(100)
-      e.codeIds is length(2000)
-    }
-
     bind[Teacher] declare { e =>
       index("", true, e.user)
-    }
-
-    bind[Student] declare { e =>
-      e.states is depends("std")
-      e.remark is length(200)
-
-      index("", true, e.user, e.project)
-      index("", false, e.user)
-      index("", false, e.state)
-      index("", false, e.project)
-    }
-
-    bind[StudentState] declare { e =>
-      e.remark is length(200)
-      index("", false, e.std)
-      index("", false, e.department)
-      index("", false, e.major)
-      index("", false, e.squad)
     }
 
     bind[Textbook] declare { e =>
@@ -176,10 +112,6 @@ class DefaultMapping extends MappingModule {
       index("", true, e.project, e.code)
     }
 
-    bind[ExternStudent]
-
-    bind[GraduateGrade]
-
-    all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent]).cacheAll()
+    all.except(classOf[Teacher]).cacheAll()
   }
 }

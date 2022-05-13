@@ -34,6 +34,7 @@ alter table base.directions add constraint pk_j2qwo6upqlwqexl7chxnno9mw primary 
 alter table base.directions add constraint uk_ry4fda3w2fdnnsfl7yrnpha1 unique (project_id,code);
 alter table base.extern_schools add constraint pk_nj2mnlh45jh2wagd9heuq58dl primary key (id);
 alter table base.extern_students add constraint pk_8omlfu3itguya4lmcd6pxe0wd primary key (id);
+alter table base.grades add constraint pk_tfax6erblyil71kws4l93yhnv primary key (id);
 alter table base.graduate_grades add constraint pk_2m9oojtihkt53wes2jddk6umt primary key (id);
 alter table base.major_disciplines add constraint pk_oifn3upq6ylafj81hb805ut1l primary key (id);
 alter table base.major_journals add constraint pk_7gepwk5lg9b0ixt7ww2tum8gm primary key (id);

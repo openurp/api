@@ -89,6 +89,40 @@ class DefaultMapping extends MappingModule {
 
     bind[ExternSchool].generator(IdGenerator.AutoIncrement)
 
+    bind[Project] declare { e =>
+      e.code.is(length(10), unique)
+      e.name is length(100)
+      e.departments is ordered
+      e.description is length(500)
+    }
+
+    bind[ProjectCode] declare { e =>
+      e.className is length(100)
+      e.codeIds is length(2000)
+    }
+
+    bind[Calendar] declare { e =>
+      e.semesters is depends("calendar")
+      e.code is length(10)
+      e.name is length(80)
+      index("", true, e.school, e.code)
+    }
+
+    bind[CalendarStage] declare { e =>
+      e.name is length(100)
+    }
+
+    bind[Semester].declare { e =>
+      e.code is length(15)
+      e.name & e.schoolYear are length(10)
+      e.stages is depends("semester")
+      index("", true, e.calendar, e.code)
+    }.generator("code")
+
+    bind[SemesterStage] declare { e =>
+      e.remark is length(500)
+    }
+
     all.except(classOf[User], classOf[Person]).cacheable()
   }
 }
