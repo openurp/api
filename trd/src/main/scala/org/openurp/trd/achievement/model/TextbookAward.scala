@@ -19,7 +19,7 @@ package org.openurp.trd.achievement.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.trd.code.model.{RdAwardGrade, RdLevel}
+import org.openurp.trd.code.{RdAwardGrade, RdLevel}
 
 import java.time.YearMonth
 

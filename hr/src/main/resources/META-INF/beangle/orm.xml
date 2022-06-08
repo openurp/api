@@ -2,7 +2,12 @@
 <orm>
   <mapping class="org.openurp.hr.base.model.DefaultMapping" name="base"/>
   <mapping class="org.openurp.hr.workload.model.DefaultMapping" name="workload"/>
+  <mapping class="org.openurp.hr.workload.config.DefaultMapping" name="workload.config"/>
   <naming>
-    <profile package = "org.openurp.hr" pluralize="true" schema="hr" />
+    <profile package="org.openurp.hr" pluralize="true" schema="hr" >
+      <annotation class="org.beangle.data.model.annotation.config" prefix="cfg_"/>
+      <annotation class="org.beangle.data.model.annotation.code" value="school" prefix="c_"/>
+      <annotation class="org.beangle.data.model.annotation.log"  schema="log" prefix="hr_"/>
+    </profile>
   </naming>
 </orm>

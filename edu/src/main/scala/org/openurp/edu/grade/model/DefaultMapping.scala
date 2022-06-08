@@ -18,7 +18,6 @@
 package org.openurp.edu.grade.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.code.edu.model.GradeType
 
 class DefaultMapping extends MappingModule {
 
@@ -33,13 +32,56 @@ class DefaultMapping extends MappingModule {
       e.operator is length(100)
     }
 
-    bind[GradeRateConfig].declare { e =>
-      e.gradingMode is notnull
-      e.items is depends("config")
+    //grade
+    bind[CourseGrade].declare { e =>
+      e.crn is length(20)
+      e.course & e.courseTakeType & e.project & e.courseType & e.semester & e.gradingMode are notnull
+      e.operator is length(100)
+      e.scoreText is length(5)
+      e.remark is length(200)
+      e.examGrades & e.gaGrades are depends("courseGrade")
+
+      index("", true, e.std, e.course, e.semester, e.crn)
+      index("", false, e.std)
+      index("", false, e.clazz)
+      index("", false, e.project)
     }
 
-    bind[GradeRateItem].declare { e =>
-      e.config is notnull
+    bind[ExamGrade].declare { e =>
+      index("", true, e.courseGrade, e.gradeType)
+    }
+
+    bind[GaGrade].declare { e =>
+      index("", true, e.courseGrade, e.gradeType)
+    }
+
+    bind[CourseGradeState].declare { e =>
+      e.examStates is depends("gradeState")
+      e.gaStates is depends("gradeState")
+      index("", false, e.clazz)
+    }
+
+    bind[ExamGradeState].declare { e =>
+      index("", true, e.gradeState, e.gradeType)
+    }
+
+    bind[GaGradeState].declare { e =>
+      e.remark is length(50)
+      index("", true, e.gradeState, e.gradeType)
+    }
+
+    bind[StdGpa].declare { e =>
+      e.semesterGpas is depends("stdGpa")
+      e.yearGpas is depends("stdGpa")
+      index("", true, e.std)
+    }
+
+    bind[StdSemesterGpa].declare { e =>
+      index("", true, e.stdGpa, e.semester)
+    }
+
+    bind[StdYearGpa].declare { e =>
+      index("", true, e.stdGpa, e.schoolYear)
     }
   }
 }

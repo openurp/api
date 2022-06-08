@@ -3,7 +3,7 @@
   <mapping class="org.openurp.prac.innovation.model.DefaultMapping"  name="innovation"/>
   <mapping class="org.openurp.prac.thesis.model.DefaultMapping"  name="thesis"/>
   <naming>
-    <profile package = "org.openurp.prac.innovation" pluralize="true" schema="prac" prefix="inno_" />
-    <profile package = "org.openurp.prac.thesis" pluralize="true" schema="prac" prefix="lw_" />
+    <profile package="org.openurp.prac.innovation" pluralize="true" schema="prac" prefix="inno_" />
+    <profile package="org.openurp.prac.thesis" pluralize="true" schema="prac" prefix="lw_" />
   </naming>
 </orm>

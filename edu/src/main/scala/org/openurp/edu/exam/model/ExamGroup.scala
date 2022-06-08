@@ -18,7 +18,6 @@
 package org.openurp.edu.exam.model
 
 import java.time.LocalDate
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
@@ -26,6 +25,7 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Classroom
 import org.openurp.base.model.SemesterBased
 import org.openurp.code.edu.model.ExamType
+import org.openurp.edu.exam.config.ExamAllocSetting
 
 /**排考组*/
 class ExamGroup extends LongId with Named with SemesterBased with Updated {

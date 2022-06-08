@@ -20,11 +20,11 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Updated}
-import org.openurp.base.edu.code.model.CourseType
+import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.{Course, Teacher}
 import org.openurp.base.model.{AuditStatus, Campus, Department, ProjectBased, Semester}
 import org.openurp.code.edu.model.TeachLangType
-import org.openurp.edu.clazz.code.model.ClazzTag
+import org.openurp.edu.clazz.code.ClazzTag
 
 import scala.collection.mutable
 

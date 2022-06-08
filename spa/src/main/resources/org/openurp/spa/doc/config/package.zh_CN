@@ -1,0 +1,15 @@
+Coupon=优惠券
+Coupon.countPerStd=每个人可以领取的数量
+
+DocType=文档类型
+DocType.downloadable=可下载的
+DocType.enableUserPassword=下载时是否启用用户密码
+DocType.adminUrl=管理人员打印地址
+DocType.notice=通知公告
+DocType.orientation=纵向还是横向，默认纵向
+DocType.pageSize=纸张大小
+DocType.url=访问地址
+
+PrintConfig=打印配置
+PrintConfig.price=单价，以分为单位，免费设置为0
+PrintConfig.maxLimit=最多打印次数

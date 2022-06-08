@@ -18,17 +18,11 @@
 package org.openurp.std.transfer.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.openurp.std.transfer.config.{TransferOption, TransferScope}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[TransferScheme].declare { e =>
-      e.scopes is depends("scheme")
-      e.options is depends("scheme")
-    }
-
-    bind[TransferOption]
     bind[TransferApply]
-    bind[TransferScope]
   }
 }

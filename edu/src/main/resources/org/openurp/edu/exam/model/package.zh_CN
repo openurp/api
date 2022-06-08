@@ -81,12 +81,6 @@ InvigilationClazzQuota.creditHours=学时
 InvigilationClazzQuota.amount=配额
 InvigilationClazzQuota.ratio=比例
 
-ExamAllocSetting=教室分配设置
-ExamAllocSetting.minOccupyRatio=最低占用率
-ExamAllocSetting.minCapacity=最小容量
-ExamAllocSetting.allocPolicy=分配策略
-ExamAllocSetting.minStdExamInterval=学生连续考试最小间隔
-
 InvigilationQuota=监考配额
 InvigilationQuota.amount=配额
 InvigilationQuota.excludes=排除日期
@@ -120,3 +114,7 @@ FinalMakeupTaker.makeupCourse=清考任务
 FinalMakeupTaker.std=学生
 FinalMakeupTaker.courseType=课程类型
 FinalMakeupTaker.scores=分数
+
+ExamNotice=考试通知
+ExamNotice.studentNotice=学生通知
+ExamNotice.managerNotice=管理人员通知

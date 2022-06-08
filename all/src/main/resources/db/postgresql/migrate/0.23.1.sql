@@ -160,6 +160,7 @@ comment on column edu.programs.end_on is '结束日期';
 alter table base.students alter person_id set not null;
 
 ---增加教学研究部分
+create schema rd;
 create table rd.rd_achievement_awards (name varchar(255) not null, award_on date, id bigint not null, grade_id integer not null, award_year integer not null, achievement_id bigint not null, level_id integer not null, award_by varchar(255) not null);
 create table rd.rd_achievement_members (name varchar(255) not null, id bigint not null, idx integer not null, user_id bigint, achievement_id bigint not null);
 create table rd.rd_achievement_types (id integer not null, begin_on date not null, end_on date, updated_at timestamp not null, code varchar(20) not null unique, en_name varchar(300), name varchar(100) not null, remark varchar(200));
@@ -205,7 +206,7 @@ create index idx_iksg21jj8jtd80126xrj83fp6 on rd.teaching_teams_leaders (teachin
 create index idx_pynj8wtc3cfhryhr6988ymw1h on rd.textbook_awards (achievement_id);
 create index idx_nkkgske0o3mh9cxc2s5hrpbvc on rd.textbook_editors (achievement_id);
 
-create schema rd;
+
 alter table rd.rd_achievement_awards add constraint fk_44j8kfjd2ja3u8qlj56j5d180 foreign key (level_id) references rd.rd_levels (id);
 alter table rd.rd_achievement_awards add constraint fk_ddndd7lhul3j63b3f98v49r8d foreign key (grade_id) references rd.rd_award_grades (id);
 alter table rd.rd_achievement_awards add constraint fk_oxp7bebss19larnn3t0nb14gp foreign key (achievement_id) references rd.rd_achievements (id);

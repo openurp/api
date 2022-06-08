@@ -18,7 +18,7 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.edu.clazz.code.model.ClazzTag
+import org.openurp.edu.clazz.code.ClazzTag
 
 class DefaultMapping extends MappingModule {
 

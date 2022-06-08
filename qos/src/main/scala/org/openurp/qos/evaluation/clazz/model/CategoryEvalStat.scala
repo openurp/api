@@ -20,9 +20,9 @@ package org.openurp.qos.evaluation.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.code.model.CourseCategory
+import org.openurp.base.edu.code.CourseCategory
 import org.openurp.base.model.{Project, Semester}
-import org.openurp.qos.evaluation.model.{AssessGrade, Indicator}
+import org.openurp.qos.evaluation.config.{AssessGrade, Indicator}
 
 import scala.collection.mutable
 

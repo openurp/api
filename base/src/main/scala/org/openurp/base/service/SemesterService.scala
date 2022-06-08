@@ -24,7 +24,7 @@ trait SemesterService {
 
   def getActives(project: Project): Seq[Semester]
 
-  def get(project: Project, date: LocalDate): Option[Semester]
+  def get(project: Project, date: LocalDate): Semester
 
   /**
    * get semester by index

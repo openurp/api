@@ -14,8 +14,6 @@ RdAchievementMember=教学成果完成人
 RdAchievementMember.idx=次序号
 RdAchievementMember.name=姓名
 
-RdAchievementType=教学成果类型
-
 TextbookAward=教材获奖
 TextbookAward.awardOn=获奖年月
 

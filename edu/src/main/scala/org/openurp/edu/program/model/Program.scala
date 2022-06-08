@@ -20,7 +20,7 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
-import org.openurp.base.edu.code.model.{CourseType, StdType}
+import org.openurp.base.edu.code.{CourseType, StdType}
 import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.model.{AuditStatus, Campus, Department, EduLevelBased}
 import org.openurp.code.edu.model.{Degree, StudyType}

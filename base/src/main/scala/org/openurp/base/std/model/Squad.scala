@@ -20,7 +20,7 @@ package org.openurp.base.std.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.edu.code.model.StdType
+import org.openurp.base.edu.code.StdType
 import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.model.{Campus, Department, EduLevelBased, User}
 import org.openurp.base.std.model.{Mentor, StudentState}

@@ -31,6 +31,10 @@ class DefaultMapping extends MappingModule {
     bind[WorkStatus]
     bind[EmployType]
 
+    bind[UserCategory]
+    bind[DepartmentCategory].declare { e =>
+      e.children is depends("parent")
+    }
     all.cacheAll()
   }
 }

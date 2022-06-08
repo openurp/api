@@ -22,7 +22,7 @@ import org.beangle.data.orm.tool.DdlGenerator
 
 object SqlGenerator {
   def main(args: Array[String]): Unit = {
-    val dir = SystemInfo.tmpDir
+    val dir = SystemInfo.tmpDir+"/ddl"
     DdlGenerator.main(Array("PostgreSQL", dir, "zh_CN", null))
     println("genderate ddl in " + dir)
   }

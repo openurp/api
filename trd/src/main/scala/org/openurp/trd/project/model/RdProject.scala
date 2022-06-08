@@ -21,7 +21,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, Remark, Updated}
 import org.openurp.base.model.{Department, User}
-import org.openurp.trd.code.model.RdLevel
+import org.openurp.trd.code.RdLevel
+import org.openurp.trd.project.code.{RdProjectCategory, RdProjectStatus}
 
 import java.time.YearMonth
 import scala.collection.mutable

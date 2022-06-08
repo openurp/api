@@ -22,19 +22,6 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp.spa", "read-write")
-
-    bind[DocType] declare { e =>
-      e.notice is length(3000)
-    }
-
-    bind[PrintConfig]
-    bind[PrintLog]
     bind[PrintQuota]
-    bind[Coupon]
-
-    bind[DownloadLog]
-
-    all.except(classOf[PrintLog], classOf[PrintQuota], classOf[DownloadLog]).cacheable()
   }
 }

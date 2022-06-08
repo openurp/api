@@ -21,7 +21,7 @@ import scala.collection.mutable
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Course, Terms}
-import org.openurp.base.edu.code.model.PlanCourseLabel
+import org.openurp.base.edu.code.PlanCourseLabel
 /**
  * 抽象计划内课程
  *

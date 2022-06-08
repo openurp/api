@@ -18,9 +18,10 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.commons.lang.time.WeekState
-import org.beangle.data.model.Component
-import org.beangle.data.model.LongId
+import org.beangle.data.model.{Component, LongId}
 import org.openurp.code.edu.model.ClassroomType
+
+import java.time.LocalDate
 
 /**
  * 课程安排
@@ -39,10 +40,21 @@ class Schedule extends Component with Serializable with Cloneable {
   /** 教室类型 */
   var roomType: ClassroomType = _
 
+  /** 开课院系安排 */
+  var departArranged: Boolean = true
+
+  /** 第一次上课时间
+   * @return
+   */
+  def firstDate: Option[LocalDate] = {
+    sessions.map(_.startOn).toBuffer.sorted.headOption
+  }
+
   /** 起始周 */
   def firstWeek: Int = {
     if (null != weekstate) weekstate.first else 0
   }
+
   /** 结束周 */
   def lastWeek: Int = {
     if (null != weekstate) weekstate.last else 0

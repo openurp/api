@@ -64,6 +64,6 @@ class Session extends LongId with Ordered[Session] with Activity {
   }
 
   override def startOn: LocalDate = {
-    if (null != time) time.startOn else null
+    if (null != time) time.firstDay else null
   }
 }

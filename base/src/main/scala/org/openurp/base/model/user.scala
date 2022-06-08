@@ -19,7 +19,7 @@ package org.openurp.base.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo._
-import org.openurp.base.code.model.UserCategory
+import org.openurp.code.hr.model.UserCategory
 import org.openurp.code.person.model.Gender
 
 /**

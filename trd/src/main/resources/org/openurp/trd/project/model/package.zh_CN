@@ -5,11 +5,10 @@ RdProject.endOn=应结项年月
 RdProject.finishedOn=实际结项年月
 RdProject.funds=资金
 
-RdProjectCategory=项目类别
-RdProjectStatus=项目状态
+
 RdProjectMember=项目成员
 RdProjectMember.idx=次序号
 RdProjectMember.name=姓名
 
 RdProject.forCourse=是否课程项目
-RdProjectCategory.forCourse=是否课程项目
+

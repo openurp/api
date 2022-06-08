@@ -1,0 +1,5 @@
+ExamAllocSetting=教室分配设置
+ExamAllocSetting.minOccupyRatio=最低占用率
+ExamAllocSetting.minCapacity=最小容量
+ExamAllocSetting.allocPolicy=分配策略
+ExamAllocSetting.minStdExamInterval=学生连续考试最小间隔

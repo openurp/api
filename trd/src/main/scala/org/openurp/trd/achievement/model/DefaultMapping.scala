@@ -31,8 +31,6 @@ class DefaultMapping extends MappingModule {
 
     bind[RdAchievementAward]
 
-    bind[RdAchievementType]
-
     bind[TextbookAchievement] declare { e =>
       e.awards is depends("achievement")
       e.editors is depends("achievement")
