@@ -22,75 +22,23 @@ import org.beangle.data.model.{IntId, LongId}
 import org.beangle.data.model.pojo.{Coded, Named}
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
+import org.openurp.std.award.code.{HonorCategory, HonorLevel}
 
 /** 荣誉奖学金
  *
  */
 class HonorAward extends LongId {
-
   /**荣誉种类*/
   var category: HonorCategory = _
-
   /**学生*/
   var std: Student = _
-
   /**获奖等级*/
   var level: HonorLevel = _
-
   /**评定学期*/
   var semester: Semester = _
-
   /**金额*/
   var amount: Int = _
-
   /**是否审核通过*/
   var approved: Boolean = _
 
-}
-
-@code("school")
-class HonorCategory extends IntId with Coded with Named {
-
-  /**荣誉类型*/
-  var honorType: HonorType = _
-
-  /**荣誉描述*/
-  var discription: Option[String] = None
-
-  /**评定周期*/
-  var assessPeriod: String = _
-
-  /**颁奖单位*/
-  var awardUnit: String = _
-
-  /**使用状态*/
-  var enabled: Boolean = _
-
-  /**是否分等级*/
-  var rated: Boolean = _
-
-}
-
-@code("school")
-class HonorLevel extends IntId with Coded with Named {
-
-  /**荣誉种类*/
-  var category: HonorCategory = _
-
-  /**奖励金额*/
-  var amount: Int = _
-
-  /**使用状态*/
-  var enabled: Boolean = _
-
-  /**描述*/
-  var discription: Option[String] = None
-}
-
-@code("school")
-class HonorType extends IntId with Coded with Named {
-  /**使用状态*/
-  var enabled: Boolean = _
-  /**排序序号*/
-  var idx: String = _
 }

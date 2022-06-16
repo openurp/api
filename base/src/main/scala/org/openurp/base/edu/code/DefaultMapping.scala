@@ -36,5 +36,6 @@ class DefaultMapping extends MappingModule {
     bind[TeacherType] declare { e =>
       e.external is column("external_")
     }
+    all.cacheAll()
   }
 }

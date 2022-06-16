@@ -4,6 +4,7 @@
   <mapping class="org.openurp.std.fee.model.DefaultMapping"  name="fee"/>
   <mapping class="org.openurp.std.fee.config.DefaultMapping"  name="fee.config"/>
   <mapping class="org.openurp.std.info.model.DefaultMapping"  name="info"/>
+  <mapping class="org.openurp.std.award.code.DefaultMapping"  name="award.code"/>
   <mapping class="org.openurp.std.award.model.DefaultMapping"  name="award"/>
   <mapping class="org.openurp.std.register.model.DefaultMapping"  name="register"/>
   <mapping class="org.openurp.std.transfer.model.DefaultMapping"  name="transfer"/>

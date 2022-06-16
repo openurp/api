@@ -22,72 +22,19 @@ import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
+import org.openurp.std.award.code.{ScholarshipCategory, ScholarshipLevel}
 
 class ScholarshipAward extends LongId {
-
   /**奖学金种类*/
   var category: ScholarshipCategory = _
-
   /**学生*/
   var std: Student = _
-
   /**获奖等级*/
   var level: ScholarshipLevel = _
-
   /**评定学期*/
   var semester: Semester = _
-
   /**金额*/
   var amount: Int = _
-
   /**是否审核通过*/
   var approved: Boolean = _
-
-}
-
-@code("school")
-class ScholarshipCategory extends IntId with Coded with Named with TemporalOn {
-
-  /**奖学金类型*/
-  var scholarshipType: ScholarshipType = _
-
-  /**奖学金描述*/
-  var discription: Option[String] = None
-
-  /**评定周期*/
-  var assessPeriod: String = _
-
-  /**颁奖单位*/
-  var awardUnit: String = _
-
-  /**使用状态*/
-  var enabled: Boolean = _
-
-  /**是否分等级*/
-  var rated: Boolean = _
-
-}
-
-@code("school")
-class ScholarshipLevel extends IntId with Coded with Named {
-
-  /**奖学金种类*/
-  var category: ScholarshipCategory = _
-
-  /**奖励金额*/
-  var amount: Int = _
-
-  /**使用状态*/
-  var enabled: Boolean = _
-
-  /**描述*/
-  var discription: Option[String] = None
-}
-
-@code("school")
-class ScholarshipType extends IntId with Coded with Named {
-  /**使用状态*/
-  var enabled: Boolean = _
-  /**排序序号*/
-  var idx: String = _
 }
