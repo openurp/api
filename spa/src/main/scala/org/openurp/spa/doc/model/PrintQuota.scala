@@ -17,10 +17,11 @@
 
 package org.openurp.spa.doc.model
 
-import java.time.Instant
-
 import org.beangle.data.model.LongId
 import org.openurp.base.model.User
+import org.openurp.spa.doc.config.DocType
+
+import java.time.Instant
 
 /** 打印配额
  *

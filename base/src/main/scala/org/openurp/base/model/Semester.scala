@@ -22,7 +22,8 @@ import org.beangle.commons.lang.time.WeekDay
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
 
-import java.time.ZoneId
+import java.time.temporal.{ChronoUnit, TemporalUnit}
+import java.time.{LocalDate, ZoneId}
 import java.util.GregorianCalendar
 import scala.collection.mutable
 
@@ -62,6 +63,10 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
     gc.setFirstDayOfWeek(calendar.firstWeekday.index)
     gc.setTime(java.util.Date.from(beginOn.atStartOfDay(ZoneId.systemDefault).toInstant))
     gc.get(java.util.Calendar.WEEK_OF_YEAR);
+  }
+
+  def weeks: Int = {
+    Math.ceil(beginOn.until(endOn.plusDays(1), ChronoUnit.DAYS)/7.0).intValue()
   }
 
   def this(id: Int, code: String, schoolYear: String, name: String) = {

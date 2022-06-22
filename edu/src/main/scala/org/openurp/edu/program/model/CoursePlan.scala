@@ -20,7 +20,7 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongIdEntity
 import org.beangle.data.model.pojo.{DateRange, TemporalOn}
-import org.openurp.base.edu.code.model.CourseType
+import org.openurp.base.edu.code.CourseType
 import org.openurp.base.model.AuditStatus
 
 import scala.collection.mutable
@@ -52,7 +52,7 @@ trait CoursePlan extends LongIdEntity with Cloneable with DateRange {
   /**
    * 获得顶级课程组
    */
-  def tops: collection.Seq[CourseGroup]
+  def topGroups: collection.Seq[CourseGroup]
 
   def planCourses: collection.Seq[PlanCourse] = {
     val rs = Collections.newBuffer[PlanCourse]

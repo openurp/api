@@ -21,7 +21,7 @@ import org.beangle.data.model.LongId
 import org.openurp.base.model.{Department, Semester}
 import org.beangle.commons.collection.Collections
 import org.openurp.base.edu.model.Teacher
-import org.openurp.qos.evaluation.model.Questionnaire
+import org.openurp.qos.evaluation.config.Questionnaire
 
 import java.time.Instant
 

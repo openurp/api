@@ -22,6 +22,7 @@ import org.beangle.data.model.pojo.{Coded, Named}
 import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
+import org.openurp.std.award.code.{SubsidyCategory, SubsidyLevel}
 
 /**
  * 困难补助
@@ -46,43 +47,4 @@ class SubsidyAward extends LongId {
   /** 是否审核通过 */
   var approved: Boolean = _
 
-}
-
-/** 困难补助类别
- *
- */
-@code("school")
-class SubsidyCategory extends IntId with Coded with Named {
-
-  /** 困难补助描述 */
-  var discription: Option[String] = None
-
-  /** 评定周期 */
-  var assessPeriod: String = _
-
-  /** 颁奖单位 */
-  var awardUnit: String = _
-
-  /** 使用状态 */
-  var enabled: Boolean = _
-
-  /** 是否分等级 */
-  var rated: Boolean = _
-
-}
-
-@code("school")
-class SubsidyLevel extends IntId with Coded with Named {
-
-  /** 困难补助种类 */
-  var category: SubsidyCategory = _
-
-  /** 奖励金额 */
-  var amount: Int = _
-
-  /** 使用状态 */
-  var enabled: Boolean = _
-
-  /** 描述 */
-  var discription: Option[String] = None
 }

@@ -1,0 +1,5 @@
+TuitionConfig=收费缺省值
+TuitionConfig.fromGrade=起始年级
+TuitionConfig.toGrade=截止年级
+TuitionConfig.amount=对应的金额
+TuitionConfig.duration=学制

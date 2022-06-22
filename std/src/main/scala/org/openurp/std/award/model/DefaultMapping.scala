@@ -22,26 +22,10 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    //code
-    bind[HonorCategory]
-    bind[HonorLevel]
-    bind[HonorType]
-
-    bind[ScholarshipCategory]
-    bind[ScholarshipLevel]
-    bind[ScholarshipType]
-
-    bind[StipendCategory]
-    bind[StipendLevel]
-    bind[SubsidyCategory]
-    bind[SubsidyLevel]
-
-    //result
     bind[ScholarshipAward]
     bind[HonorAward]
     bind[StipendAward]
     bind[SubsidyAward]
-
     bind[Punishment]
   }
 }

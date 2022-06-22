@@ -257,18 +257,16 @@ object GradeType {
  * 考试类型
  */
 object ExamType {
-
   /** 期末考试 */
   val Final = 1
-
-  /** 期中考试 */
-  val Midterm = 2
-
+  /** 补缓考 */
+  val MakeupDelay = 2
   /** 补考 */
   val Makeup = 3
-
   /** 缓考 */
   val Delay = 4
+  /** 期中考试 */
+  val Midterm = 6
 }
 
 @code("industry")

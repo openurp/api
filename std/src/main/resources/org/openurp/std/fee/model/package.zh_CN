@@ -6,14 +6,6 @@ Bill.payAt=实缴时间
 Bill.createdAt=创建时间
 Bill.updatedBy=修改人
 
-FeeType=收费类型
-
-TuitionConfig=收费缺省值
-TuitionConfig.fromGrade=起始年级
-TuitionConfig.toGrade=截止年级
-TuitionConfig.amount=对应的金额
-TuitionConfig.duration=学制
-
 Order=支付订单记录
 Order.amount=金额（分）
 Order.channel=支付渠道

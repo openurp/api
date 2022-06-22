@@ -62,10 +62,12 @@ trait Grade extends LongId with Ordered[Grade] with Updated {
 
   def passed_=(dp: Boolean): Unit
 
+  @transient
   def published: Boolean = {
     status == Grade.Status.Published
   }
 
+  @transient
   def confirmed: Boolean = {
     status == Grade.Status.Published || status == Grade.Status.Confirmed
   }

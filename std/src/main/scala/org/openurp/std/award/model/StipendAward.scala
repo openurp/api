@@ -22,67 +22,22 @@ import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
 import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
+import org.openurp.std.award.code.{StipendCategory, StipendLevel}
 
 /** 助学金
  *
  */
 class StipendAward extends LongId {
-
   /** 助学金种类 */
   var category: StipendCategory = _
-
   /** 学生 */
   var std: Student = _
-
   /** 获奖等级 */
   var level: StipendLevel = _
-
   /** 评定学期 */
   var semester: Semester = _
-
   /** 金额 */
   var amount: Int = _
-
   /** 是否审核通过 */
   var approved: Boolean = _
-
-}
-
-/** 助学金类别
- *
- */
-@code("school")
-class StipendCategory extends IntId with Coded with Named with TemporalOn {
-
-  /** 助学金描述 */
-  var discription: Option[String] = None
-
-  /** 评定周期 */
-  var assessPeriod: String = _
-
-  /** 颁奖单位 */
-  var awardUnit: String = _
-
-  /** 使用状态 */
-  var enabled: Boolean = _
-
-  /** 是否分等级 */
-  var rated: Boolean = _
-
-}
-
-@code("school")
-class StipendLevel extends IntId with Coded with Named {
-
-  /** 助学金种类 */
-  var category: StipendCategory = _
-
-  /** 奖励金额 */
-  var amount: Int = _
-
-  /** 使用状态 */
-  var enabled: Boolean = _
-
-  /** 描述 */
-  var discription: Option[String] = None
 }

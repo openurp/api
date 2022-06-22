@@ -20,6 +20,7 @@ package org.openurp.trd.achievement.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, Updated}
+import org.openurp.trd.achievement.code.RdAchievementType
 
 import java.time.YearMonth
 import scala.collection.mutable

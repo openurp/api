@@ -27,16 +27,7 @@ import java.time.LocalDate
 class SemesterServiceImpl extends SemesterService {
   var entityDao: EntityDao = _
 
-  override def getActives(project: Project): Seq[Semester] = {
-    val builder = OqlBuilder.from(classOf[Semester], "semester")
-      .where("semester.calendar =:calendar", project.calendar)
-    builder.where("semester.archived=false")
-    builder.orderBy("semester.beginOn")
-    builder.cacheable()
-    entityDao.search(builder)
-  }
-
-  override def get(project: Project, date: LocalDate): Option[Semester] = {
+  override def get(project: Project, date: LocalDate): Semester = {
     val builder = OqlBuilder.from(classOf[Semester], "semester")
       .where("semester.calendar =:calendar", project.calendar)
     builder.where(":date between semester.beginOn and  semester.endOn", date)
@@ -48,12 +39,23 @@ class SemesterServiceImpl extends SemesterService {
       builder2.where("semester.endOn >= :date", date)
       builder2.orderBy(Order.parse("semester.beginOn"))
       builder2.cacheable()
-      builder.limit(1, 2)
-      val rs2 = entityDao.search(builder2)
-      rs2.headOption
+      builder.limit(1, 1)
+      entityDao.search(builder2).headOption match {
+        case Some(r) => r
+        case None => getActives(project).last
+      }
     } else {
-      rs.headOption
+      rs.head
     }
+  }
+
+  override def getActives(project: Project): Seq[Semester] = {
+    val builder = OqlBuilder.from(classOf[Semester], "semester")
+      .where("semester.calendar =:calendar", project.calendar)
+    builder.where("semester.archived=false")
+    builder.orderBy("semester.beginOn")
+    builder.cacheable()
+    entityDao.search(builder)
   }
 
   /**

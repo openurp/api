@@ -20,7 +20,7 @@ package org.openurp.base.edu.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
-import org.openurp.base.edu.code.model.TeacherType
+import org.openurp.base.edu.code.TeacherType
 import org.openurp.base.model.{Department, Person, Project, School, User}
 import org.openurp.code.edu.model.{Degree, EducationDegree}
 import org.openurp.code.hr.model.WorkStatus

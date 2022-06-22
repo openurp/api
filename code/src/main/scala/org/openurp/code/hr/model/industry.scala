@@ -20,6 +20,7 @@ package org.openurp.code.hr.model
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
 import org.beangle.commons.collection.Collections
+import org.beangle.data.model.pojo.Hierarchical
 
 /**
  * 教职工类别
@@ -47,3 +48,15 @@ class StaffSourceType extends CodeBean {
  */
 @code("industry")
 class WorkStatus extends CodeBean
+
+/**
+ * 用户分类
+ */
+@code("industry")
+class UserCategory extends CodeBean
+
+/**
+ * 部门分类
+ */
+@code("industry")
+class DepartmentCategory extends CodeBean with Hierarchical[DepartmentCategory]

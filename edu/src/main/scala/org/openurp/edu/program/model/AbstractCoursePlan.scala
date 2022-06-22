@@ -19,7 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
-import org.openurp.base.edu.code.model.CourseType
+import org.openurp.base.edu.code.CourseType
 import org.openurp.base.model.AuditStatus
 
 import scala.collection.mutable
@@ -27,6 +27,7 @@ import scala.collection.mutable.ListBuffer
 
 /**
  * 抽象课程方案
+ *
  * @author chaostone
  * @since 2009
  */
@@ -56,9 +57,9 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Remark
     groups += group
   }
 
-  override def tops: collection.Seq[CourseGroup] = {
+  override def topGroups: collection.Seq[CourseGroup] = {
     val res = new ListBuffer[CourseGroup]
-    for (group <- groups if group.parent == null) res += group
+    for (group <- groups if group.parent.isEmpty) res += group
     res
   }
 

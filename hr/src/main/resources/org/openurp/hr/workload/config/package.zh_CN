@@ -1,0 +1,7 @@
+CapacityFactor=教学工作量系数
+CapacityFactor.conditionExp=条件表达式
+
+FactorSegment=教学工作量分段系数
+FactorSegment.maxCapacity=学生人数上限
+FactorSegment.minCapacity=学生人数下限
+FactorSegment.factorExp=系数表达式

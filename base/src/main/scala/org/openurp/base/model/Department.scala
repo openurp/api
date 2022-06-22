@@ -19,7 +19,7 @@ package org.openurp.base.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.code.model.DepartmentCategory
+import org.openurp.code.hr.model.DepartmentCategory
 import org.openurp.code.edu.model.Institution
 
 import scala.collection.mutable.{Buffer, ListBuffer}

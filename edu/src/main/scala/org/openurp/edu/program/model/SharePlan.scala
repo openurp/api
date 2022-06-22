@@ -19,7 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.edu.code.model.{CourseAbilityRate, CourseType}
+import org.openurp.base.edu.code.{CourseAbilityRate, CourseType}
 import org.openurp.base.edu.model.{Course, Terms}
 import org.openurp.base.model.EduLevelBased
 import org.openurp.code.edu.model.Language

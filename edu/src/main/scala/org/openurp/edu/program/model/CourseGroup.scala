@@ -18,7 +18,7 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongIdEntity
-import org.openurp.base.edu.code.model.CourseType
+import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Terms
 
 /** 课程设置中的课程组.

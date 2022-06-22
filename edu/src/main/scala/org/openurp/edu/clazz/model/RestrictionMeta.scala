@@ -17,18 +17,17 @@
 
 package org.openurp.edu.clazz.model
 
+import org.beangle.data.model.Entity
+import org.openurp.base.edu.code.StdType
+import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.model.Department
+import org.openurp.base.std.code.StdLabel
+import org.openurp.base.std.model.Squad
+import org.openurp.code.edu.model.EducationLevel
+
 import scala.language.implicitConversions
 
-import org.openurp.base.model.Department
-import org.openurp.code.edu.model.EducationLevel
-import org.openurp.base.edu.code.model.StdLabel
-import org.openurp.base.edu.code.model.StdType
-import org.openurp.base.edu.model.Direction
-import org.openurp.base.edu.model.Major
-import org.beangle.data.model.Entity
-import org.openurp.base.std.model.Squad
-
-enum RestrictionMeta(val id:Int,contentType: Class[_]){
+enum RestrictionMeta(val id: Int, contentType: Class[_]) {
 
   case Grade extends RestrictionMeta(1, classOf[String])
 

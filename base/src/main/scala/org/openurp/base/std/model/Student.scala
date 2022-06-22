@@ -20,9 +20,10 @@ package org.openurp.base.std.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
 import org.beangle.data.model.{Component, LongId}
-import org.openurp.base.edu.code.model.{StdLabel, StdLabelType, StdType}
 import org.openurp.base.edu.model.*
 import org.openurp.base.model.*
+import org.openurp.base.edu.code.StdType
+import org.openurp.base.std.code.{StdLabel, StdLabelType}
 import org.openurp.code.edu.model.{EducationLevel, StudyType}
 import org.openurp.code.std.model.StudentStatus
 
@@ -83,6 +84,10 @@ class Student extends LongId with EduLevelBased with Updated with Remark with Da
 
   /** 导师 */
   var tutor: Option[Teacher] = None
+
+  def code: String = user.code
+
+  def name: String = user.name
 }
 
 /**

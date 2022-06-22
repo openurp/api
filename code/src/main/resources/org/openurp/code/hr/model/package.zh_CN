@@ -5,3 +5,11 @@ StaffSourceType.parent=上级来源
 StaffType=教职工类别
 StaffType.parent=上级类别
 WorkStatus=在职状态
+
+DepartmentCategory=部门分类
+DepartmentCategory.research=是否科研
+DepartmentCategory.teaching=是否教学
+DepartmentCategory.parent=上级分类
+DepartmentCategory.children=子分类
+
+UserCategory=人员分类

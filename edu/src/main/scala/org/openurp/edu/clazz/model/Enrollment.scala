@@ -20,7 +20,7 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.value
 import org.beangle.data.model.Component
-import org.openurp.base.edu.code.model.CourseAbilityRate
+import org.openurp.base.edu.code.CourseAbilityRate
 import org.openurp.base.model.Department
 import org.openurp.edu.clazz.model.Enrollment.GenderRatio
 

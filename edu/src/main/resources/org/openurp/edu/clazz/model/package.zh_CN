@@ -71,6 +71,7 @@ Schedule.creditHours= 已安排课时
 Schedule.weekstate=周状态
 Schedule.activities=具体排课结果
 Schedule.roomType=教室类型
+Schedule.departArranged=是否开课院系负责安排
 
 Exam=考试安排
 Exam.examMode=考核方式

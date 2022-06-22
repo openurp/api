@@ -18,7 +18,7 @@
 package org.openurp.edu.program.model
 
 import org.openurp.base.model.{Campus, Department}
-import org.openurp.base.edu.code.model.StdType
+import org.openurp.base.edu.code.StdType
 import org.openurp.base.edu.model.{Direction, Terms}
 
 /** 执行计划
