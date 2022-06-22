@@ -10,8 +10,8 @@ alter table base.fee_types rename to c_fee_types;
 alter table base.plan_course_labels rename to c_plan_course_labels;
 alter table base.std_label_types rename to c_std_label_types;
 alter table base.std_labels rename to c_std_labels;
-alter table base.std_types rename to to c_std_types;
-alter table base.teacher_types rename to to c_teacher_types;
+alter table base.std_types rename to c_std_types;
+alter table base.teacher_types rename to c_teacher_types;
 alter table base.user_categories set schema code;
 alter table base.department_categories set schema code;
 
