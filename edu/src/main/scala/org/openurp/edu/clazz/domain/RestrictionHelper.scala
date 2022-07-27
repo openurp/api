@@ -24,7 +24,7 @@ import org.openurp.edu.clazz.model.RestrictionMeta
 object RestrictionHelper {
 
   def build(meta: RestrictionMeta, alias: String, id: String): Condition = {
-    var template = s" alias.meta = ${meta.id} and (case when alias.includeIn=true and locate(:values,','||alias.contents||',')>0 then 1 else 0 end) = 1 "
+    var template = s" alias.meta = ${meta.id} and (case when alias.included=true and locate(:values,','||alias.contents||',')>0 then 1 else 0 end) = 1 "
     val paramName = "metaValue" + randomInt + "s"
     template = Strings.replace(template, "alias", alias)
     template = Strings.replace(template, "values", paramName)

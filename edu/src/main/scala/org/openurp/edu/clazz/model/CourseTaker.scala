@@ -19,6 +19,7 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
@@ -43,6 +44,9 @@ class CourseTaker extends LongId with Updated with Cloneable with Remark {
 
   /** 修读类别 */
   var takeType: CourseTakeType = _
+
+  /** 课程类别 */
+  var courseType: CourseType = _
 
   /** 是否免听 */
   var freeListening: Boolean = false

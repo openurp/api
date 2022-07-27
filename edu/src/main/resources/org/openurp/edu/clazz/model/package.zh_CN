@@ -13,7 +13,7 @@ RestrictionItem.meta=限制具体项目
 RestrictionItem.restriction=所在限制组
 RestrictionItem.operator=操作符
 RestrictionItem.contents=限制内容
-RestrictionItem.includeIn=是否包含限定内容
+RestrictionItem.included=是否包含限定内容
 
 CourseTaker=学生修读课程信息
 CourseTaker.clazz=教学任务
