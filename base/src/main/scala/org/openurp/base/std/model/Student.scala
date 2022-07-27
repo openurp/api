@@ -20,9 +20,9 @@ package org.openurp.base.std.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
 import org.beangle.data.model.{Component, LongId}
+import org.openurp.base.edu.code.StdType
 import org.openurp.base.edu.model.*
 import org.openurp.base.model.*
-import org.openurp.base.edu.code.StdType
 import org.openurp.base.std.code.{StdLabel, StdLabelType}
 import org.openurp.code.edu.model.{EducationLevel, StudyType}
 import org.openurp.code.std.model.StudentStatus
@@ -88,17 +88,26 @@ class Student extends LongId with EduLevelBased with Updated with Remark with Da
   def code: String = user.code
 
   def name: String = user.name
+
+  def calcCurrentState(): Unit = {
+    val today = LocalDate.now()
+    this.state =
+      this.states.find(_.within(today)) match {
+        case st@Some(s) => st
+        case None => this.states.lastOption
+      }
+  }
 }
 
 /**
  * 学籍状态
  * </p>
  * 学籍状态日志记录从起始时间到结束时间之间的学籍状态。主要记录学生的 <li>年级</li> <li>管理院系</li> <li>专业</li> <li>方向</li> <li>行政班级</li>
- * <li>是否在校</li> <li>学籍状态</li> [beginOn,endOn)
+ * <li>是否在校</li> <li>学籍状态</li> [beginOn,endOn]
  *
  * @author chaostone
  */
-class StudentState extends LongId with StdEnrollment with TemporalOn with Remark {
+class StudentState extends LongId with StdEnrollment with DateRange with Remark {
 
   /** 学生 */
   var std: Student = _

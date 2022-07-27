@@ -7,6 +7,8 @@ INSERT INTO code.academic_levels (id, code, name, en_name, begin_on, end_on, upd
 INSERT INTO code.academic_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (60, '60', '普通高中', NULL, '2017-03-04 00:00:00', NULL, '2015-04-21 09:57:22', NULL);
 INSERT INTO code.academic_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (20, '20', '大学本科', NULL, '2017-03-04 00:00:00', NULL, '2014-10-14 15:09:20.921', NULL);
 
+INSERT INTO code.countries(id, code, name, en_name,short_name,begin_on,  updated_at,alpha2_code,alpha3_code) VALUES (156, '156','中华人民共和国', 'China','中国',current_date,now(),'CN','CHN');
+
 INSERT INTO code.course_take_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '正常', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.course_take_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '02', '重修', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.course_take_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (5, '03', '免修', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
@@ -26,6 +28,8 @@ INSERT INTO code.grading_modes (id, code, name, en_name, begin_on, end_on, numer
 INSERT INTO code.grading_modes (id, code, name, en_name, begin_on, end_on, numerical, updated_at, remark) VALUES (1, '1', '百分制', NULL, '2015-07-01', NULL, true, '2015-07-01 00:00:00', NULL);
 
 INSERT INTO code.study_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '全日制', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.study_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '夜大学', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.study_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (8, '08', '研修班', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 
 INSERT INTO code.day_parts (id, begin_on, code, en_name, end_on, name, updated_at, color, remark) VALUES (1, current_date, '1', NULL, NULL, '上午', '2016-06-04 00:00:00', '#eeff00', NULL);
 INSERT INTO code.day_parts (id, begin_on, code, en_name, end_on, name, updated_at, color, remark) VALUES (2, current_date, '2', NULL, NULL, '下午', '2016-06-04 00:00:00', '#33bb00', NULL);

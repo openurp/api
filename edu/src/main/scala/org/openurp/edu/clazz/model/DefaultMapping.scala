@@ -55,7 +55,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[RestrictionItem].declare { e =>
-      //FIXME drop it when version 0.27.0
+      //FIXME drop it when version 0.30.0
       e.included is column("include_in")
       index("", false, e.restriction)
     }

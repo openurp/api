@@ -36,7 +36,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Student] declare { e =>
-      e.states is depends("std")
+      e.states is (depends("std"),orderby("endOn"))
       e.remark is length(200)
 
       index("", true, e.user, e.project)
