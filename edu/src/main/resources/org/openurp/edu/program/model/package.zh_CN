@@ -14,6 +14,7 @@ Program.project=项目
 Program.termCampuses=学期对应校区
 Program.campus=校区
 Program.offsetType=任选课类别
+Program.degreeCourses=学位课程
 
 MajorCourseGroup=专业计划课程组
 MajorCourseGroup.givenName=自定义别名

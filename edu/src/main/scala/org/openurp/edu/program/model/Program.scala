@@ -20,9 +20,10 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
-import org.openurp.base.edu.code.{CourseType, StdType}
-import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.edu.code.CourseType
+import org.openurp.base.edu.model.{Course, Direction, Major}
 import org.openurp.base.model.{AuditStatus, Campus, Department, EduLevelBased}
+import org.openurp.base.std.code.StdType
 import org.openurp.code.edu.model.{Degree, StudyType}
 
 /**
@@ -57,20 +58,23 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
   /** 学习形式 */
   var studyType: StudyType = _
 
+  /** 学期对应校区 */
+  var termCampuses = Collections.newBuffer[TermCampus]
+
+  /** 多出学分可以冲抵的课程类别 */
+  var offsetType: Option[CourseType] = None
+
   /** 毕业授予学位 */
   var degree: Option[Degree] = None
 
   /** 学位绩点 */
   var degreeGpa: Option[Float] = None
 
-  /** 学期对应校区 */
-  var termCampuses = Collections.newBuffer[TermCampus]
+  /** 学位课程 */
+  var degreeCourses = Collections.newSet[Course]
 
   /** 审核状态 */
   var status: AuditStatus = AuditStatus.Draft
-
-  /** 多出学分可以冲抵的课程类别 */
-  var offsetType: Option[CourseType] = None
 
   def campuses: Set[Campus] = {
     termCampuses.map(_.campus).toSet

@@ -21,7 +21,6 @@ import scala.collection.mutable
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Course, Terms}
-import org.openurp.base.edu.code.PlanCourseLabel
 /**
  * 抽象计划内课程
  *
@@ -48,7 +47,4 @@ abstract class AbstractPlanCourse extends LongId with PlanCourse with Cloneable 
    * 是否必修
    */
   var compulsory: Boolean = _
-
-  /** 标签 */
-  var labels: mutable.Set[PlanCourseLabel] = new mutable.HashSet[PlanCourseLabel]
 }
