@@ -17,15 +17,14 @@
 
 package org.openurp.edu.program.model
 
-import java.util.Locale
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{Hierarchical, Named, TemporalOn, Updated}
 import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.model.{Department, Project}
+import org.openurp.base.std.code.StdType
 import org.openurp.code.edu.model.EducationLevel
-import org.openurp.base.edu.code.StdType
 
+import java.util.Locale
 import scala.collection.mutable
 
 /** 培养方案文档

@@ -17,7 +17,6 @@
 
 package org.openurp.base.std.code
 
-
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
@@ -27,5 +26,6 @@ class DefaultMapping extends MappingModule {
     bind[StdLabel]
     bind[StdLabelType]
     bind[FeeType]
+    bind[StdType]
   }
 }

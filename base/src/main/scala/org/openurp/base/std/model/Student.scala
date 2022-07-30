@@ -20,10 +20,9 @@ package org.openurp.base.std.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
 import org.beangle.data.model.{Component, LongId}
-import org.openurp.base.edu.code.StdType
 import org.openurp.base.edu.model.*
 import org.openurp.base.model.*
-import org.openurp.base.std.code.{StdLabel, StdLabelType}
+import org.openurp.base.std.code.{StdLabel, StdLabelType, StdType}
 import org.openurp.code.edu.model.{EducationLevel, StudyType}
 import org.openurp.code.std.model.StudentStatus
 

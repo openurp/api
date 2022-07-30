@@ -20,14 +20,15 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.model.{Department, Project}
-import org.openurp.code.edu.model.AcademicLevel
-import org.openurp.base.edu.code.StdType
 import org.openurp.base.edu.model.*
+import org.openurp.base.model.{Department, Project}
+import org.openurp.base.std.code.StdType
 import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.AcademicLevel
 
 /**
  * 课程替代关系.
+ *
  * @author new
  */
 trait AlternativeCourse extends LongId with Updated {

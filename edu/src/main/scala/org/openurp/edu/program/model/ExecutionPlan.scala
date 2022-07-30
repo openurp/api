@@ -17,11 +17,12 @@
 
 package org.openurp.edu.program.model
 
-import org.openurp.base.model.{Campus, Department}
-import org.openurp.base.edu.code.StdType
 import org.openurp.base.edu.model.{Direction, Terms}
+import org.openurp.base.model.{Campus, Department}
+import org.openurp.base.std.code.StdType
 
 /** 执行计划
+ *
  * @author chaostone
  */
 class ExecutionPlan extends AbstractCoursePlan with CoursePlan {

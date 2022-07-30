@@ -19,7 +19,11 @@ package org.openurp.base.std.code
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
-
+/**
+ * 学生类别
+ */
+@code("school")
+class StdType extends CodeBean
 /**
  * 学生分类标签
  */
