@@ -18,12 +18,12 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.Entity
-import org.openurp.base.edu.code.StdType
 import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.model.Department
-import org.openurp.base.std.code.StdLabel
+import org.openurp.base.std.code.{StdLabel, StdType}
 import org.openurp.base.std.model.Squad
 import org.openurp.code.edu.model.EducationLevel
+import org.openurp.code.person.model.Gender
 
 import scala.language.implicitConversions
 
@@ -32,6 +32,8 @@ enum RestrictionMeta(val id: Int, contentType: Class[_]) {
   case Grade extends RestrictionMeta(1, classOf[String])
 
   case StdType extends RestrictionMeta(2, classOf[StdType])
+
+  case Gender extends RestrictionMeta(3, classOf[Gender])
 
   case Department extends RestrictionMeta(4, classOf[Department])
 

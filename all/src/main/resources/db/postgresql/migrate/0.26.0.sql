@@ -6,6 +6,7 @@ alter table base.book_types rename to c_book_types;
 alter table base.course_ability_rates rename to c_course_ability_rates;
 alter table base.course_categories rename to c_course_categories;
 alter table base.course_types rename to c_course_types;
+alter table std.fee_types set schema base;
 alter table base.fee_types rename to c_fee_types;
 alter table base.plan_course_labels rename to c_plan_course_labels;
 alter table base.std_label_types rename to c_std_label_types;
@@ -32,6 +33,12 @@ alter table edu.certificate_subjects rename to c_certificate_subjects;
 alter table app.report_templates rename to cfg_transcript_templates;
 alter table app.cfg_transcript_templates set schema edu;
 
+alter table app.grade_input_switches set schema edu;
+alter table app.grade_input_switches_types set schema edu;
+alter table edu.grade_input_switches_types rename to cfg_grade_input_switches_types;
+alter table edu.grade_input_switches rename to cfg_grade_input_switches;
+
+
 alter table edu.grade_rate_items rename to cfg_grade_rate_items;
 alter table edu.grade_rate_configs rename to cfg_grade_rate_configs;
 alter table edu.exam_alloc_settings rename to cfg_exam_alloc_settings;
@@ -54,8 +61,9 @@ alter table std.transfer_schemes rename to cfg_transfer_schemes;
 alter table std.transfer_scopes rename to cfg_transfer_scopes;
 alter table std.transfer_scopes_majors rename to cfg_transfer_scopes_majors;
 alter table std.transfer_scopes_grades rename to cfg_transfer_scopes_grades;
+
 alter table std.tuition_configs rename to cfg_tuition_configs;
-alter table std.fee_types rename to c_fee_types;
+
 --spa
 alter table spa.coupons rename to cfg_coupons;
 alter table spa.doc_types rename to cfg_doc_types;

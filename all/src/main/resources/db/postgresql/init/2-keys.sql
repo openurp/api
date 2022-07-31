@@ -6,7 +6,6 @@ alter table base.c_course_ability_rates add constraint pk_bgsi7jt2ydrd4g7un61vyk
 alter table base.c_course_categories add constraint pk_4a82ko2a6rqjpct6lyocxtfw0 primary key (id);
 alter table base.c_course_types add constraint pk_ad7srp158yyt3qqfnho3du3b2 primary key (id);
 alter table base.c_fee_types add constraint pk_arhwas5ou48lb9euph8py4f1b primary key (id);
-alter table base.c_plan_course_labels add constraint pk_axuh630hmo2h1fhi8awei5hvd primary key (id);
 alter table base.c_std_label_types add constraint pk_jsvqoo99gu44bmdynjo11lw7i primary key (id);
 alter table base.c_std_labels add constraint pk_eenp8ej7lgwccvfl9gely2b2d primary key (id);
 alter table base.c_std_types add constraint pk_madxfpue18kxxvmx2an9k8fxb primary key (id);
@@ -232,7 +231,6 @@ alter table edu.exam_turns add constraint pk_7mybkgmuiw34nagg7ti6oui2b primary k
 alter table edu.execution_course_groups add constraint pk_i8ey4cvnf78oa7cq6536x3e7t primary key (id);
 alter table edu.execution_plan_courses add constraint pk_8pnnwn3x0hml7i3beqlw29uwc primary key (id);
 alter table edu.execution_plan_courses add constraint uk_jod7x8jyse63x23hd4uwhcaio unique (group_id,course_id);
-alter table edu.execution_plan_courses_labels add constraint pk_ioyg353p4y54dour5lo2nfff0 primary key (execution_plan_course_id,plan_course_label_id);
 alter table edu.execution_plans add constraint pk_5p24qpu2c2ydwpwg2qxabenb1 primary key (id);
 alter table edu.extern_grades add constraint pk_c6lgnfjsyt425c90aek6a4cba primary key (id);
 alter table edu.extern_grades_courses add constraint pk_gv8v2v8yd2imwxfxqhx13d07l primary key (extern_grade_id,course_id);
@@ -260,7 +258,6 @@ alter table edu.major_alt_courses_olds add constraint pk_tfl42phv9abi60dnauh3cgt
 alter table edu.major_course_groups add constraint pk_3nxbhw8uol7n3nw0kpsdr6lvr primary key (id);
 alter table edu.major_plan_courses add constraint pk_3wd4vyblbfks1j2lwty25qnbu primary key (id);
 alter table edu.major_plan_courses add constraint uk_bmxrewotma5nd0dxovv1m77cw unique (group_id,course_id);
-alter table edu.major_plan_courses_labels add constraint pk_h5pie0pd7m9vcg0y55du0m3vf primary key (major_plan_course_id,plan_course_label_id);
 alter table edu.major_plans add constraint pk_ohol0jsnb6did1juitfw0awos primary key (id);
 alter table edu.materials add constraint pk_590jmdlsq3houbgbs5xcy9f7f primary key (id);
 alter table edu.materials add constraint uk_l4su5whmw7vaxq0fvig5238b6 unique (clazz_id);
@@ -275,6 +272,7 @@ alter table edu.program_doc_templates add constraint pk_8e5naml4u9wbcyjrrhlmeb3a
 alter table edu.program_doc_templates_types add constraint pk_lwfg2w960gakch3fo4djc31d7 primary key (program_doc_template_id,std_type_id);
 alter table edu.program_docs add constraint pk_tmprm3sm6os3l88qop5r89q9x primary key (id);
 alter table edu.programs add constraint pk_9osl20jg9o3ywqs65190pgm9v primary key (id);
+alter table edu.programs_degree_courses add constraint pk_c56n0ogp63uo4vcl3pp16l842 primary key (program_id,course_id);
 alter table edu.regular_grade_states add constraint pk_hnj9nkhhqpuj7yg9v7efhigo6 primary key (id);
 alter table edu.regular_grade_states add constraint uk_nv0dulh1dhs6ddpd0clg8tvac unique (clazz_id);
 alter table edu.regular_grade_states_percents add constraint pk_ljpyhuafbu8nwj7j6exu1wax1 primary key (regular_grade_state_id,value_,regular_test_type_id);
@@ -310,7 +308,6 @@ alter table edu.std_gpas add constraint pk_d8hmmf1mnbxhuj1fi91q1n9rj primary key
 alter table edu.std_gpas add constraint uk_1pgtli4u8gcx191biigqq6mty unique (std_id);
 alter table edu.std_plan_courses add constraint pk_sw97n0tnorl3stkr4q9s5vo8n primary key (id);
 alter table edu.std_plan_courses add constraint uk_9ume0khx1eqjh5l7v7lsp3gjf unique (group_id,course_id);
-alter table edu.std_plan_courses_labels add constraint pk_1pt84bi85mv6hfqqp0evj82a3 primary key (std_plan_course_id,plan_course_label_id);
 alter table edu.std_plans add constraint pk_n7x5kawng3p8xqf5wfya9s6ns primary key (id);
 alter table edu.std_plans add constraint uk_jo5xh73ptavgr1lk7p0sfpamw unique (std_id);
 alter table edu.std_semester_gpas add constraint pk_fqb6mob02oox7m3qiy43y5g3f primary key (id);

@@ -28,11 +28,7 @@ class DefaultMapping extends MappingModule {
     bind[BookAwardType]
     bind[CourseType]
     bind[CourseCategory]
-    bind[PlanCourseLabel].declare{e=>
-      e.symbol is length(10)
-    }
     bind[CourseAbilityRate]
-    bind[StdType]
     bind[TeacherType] declare { e =>
       e.external is column("external_")
     }

@@ -69,12 +69,6 @@ class CourseType extends CodeBean {
 @code("school")
 class CourseCategory extends CodeBean
 
-/** 计划课程标签 */
-@code("school")
-class PlanCourseLabel extends CodeBean {
-  var symbol: String = _
-}
-
 /**
  * 课程能力等级
  */
@@ -82,12 +76,6 @@ class PlanCourseLabel extends CodeBean {
 class CourseAbilityRate extends CodeBean {
   var rate: Int = _
 }
-
-/**
- * 学生类别
- */
-@code("school")
-class StdType extends CodeBean
 
 /**
  * 教师类型

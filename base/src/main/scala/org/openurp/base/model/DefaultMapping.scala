@@ -94,6 +94,7 @@ class DefaultMapping extends MappingModule {
       e.name is length(100)
       e.departments is ordered
       e.description is length(500)
+      e.properties is eleLength(2000)
     }
 
     bind[ProjectCode] declare { e =>

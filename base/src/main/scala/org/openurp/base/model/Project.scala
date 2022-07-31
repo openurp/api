@@ -20,9 +20,8 @@ package org.openurp.base.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
 import org.beangle.data.model.{IntId, LongId}
-import org.openurp.base.edu.code.StdType
 import org.openurp.base.model.{Campus, Department, School}
-import org.openurp.base.std.code.StdLabel
+import org.openurp.base.std.code.{StdLabel, StdType}
 import org.openurp.code.edu.model.{EduCategory, EducationLevel}
 
 import scala.collection.mutable
