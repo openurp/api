@@ -58,8 +58,6 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   var minor: Boolean = _
   /** 教育类别 */
   var category: EduCategory = _
-  /** 项目属性 */
-  var properties: mutable.Map[String, String] = Collections.newMap[String, String]
 
 }
 
@@ -97,4 +95,20 @@ trait ProjectBased {
 
 trait EduLevelBased extends ProjectBased {
   var level: EducationLevel = _
+}
+
+object ProjectPropertyType {
+  val Integer = "integer"
+  val Float = "float"
+  val String = "string"
+  val Boolean = "boolean"
+  val Json = "json"
+  val types = Set(Integer, Float, String, Boolean, Json)
+}
+
+class ProjectProperty extends LongId with ProjectBased {
+  var name: String = _
+  var description: String = _
+  var typeName: String = _
+  var value: String = _
 }

@@ -17,7 +17,9 @@
 
 package org.openurp.edu.program.domain
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
+import org.openurp.base.model.Department
 import org.openurp.base.std.model.{Student, StudentState}
 import org.openurp.edu.program.model.Program
 
@@ -32,9 +34,16 @@ class DefaultProgramProvider extends ProgramProvider {
   }
 
   override def getProgram(state: StudentState): Option[Program] = {
+    val departs = Collections.newSet[Department]
+    var depart = state.department
+    while (null != depart && !departs.contains(depart)) {
+      departs += depart
+      depart = depart.parent.orNull
+    }
+
     val query = OqlBuilder.from(classOf[Program], "p")
     query.where("p.grade=:grade", state.grade)
-    query.where("p.department=:department", state.department)
+    query.where("p.department in (:departments)", departs)
     query.where("p.major=:major", state.major)
     query.where("p.level=:level", state.std.level)
     val ps = entityDao.search(query)
