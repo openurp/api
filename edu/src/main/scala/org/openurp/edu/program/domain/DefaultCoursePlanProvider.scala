@@ -19,7 +19,7 @@ package org.openurp.edu.program.domain
 
 import org.beangle.data.dao.EntityDao
 import org.openurp.base.std.model.Student
-import org.openurp.edu.program.model._
+import org.openurp.edu.program.model.*
 
 class DefaultCoursePlanProvider extends CoursePlanProvider {
 
@@ -78,7 +78,7 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
   private def getExecutionPlan(p: Program, student: Student): Option[ExecutionPlan] = {
     val plans = entityDao.findBy(classOf[ExecutionPlan], "program", List(p))
     val matched = plans.filter { p =>
-      p.department == student.state.get.department &&
+      DefaultProgramMatcher.departMatched(p.department, student.state.get.department) &&
         (p.stdType.isEmpty || p.stdType.get == student.stdType) &&
         (p.campus.isEmpty || p.campus.get == student.state.get.campus)
     }

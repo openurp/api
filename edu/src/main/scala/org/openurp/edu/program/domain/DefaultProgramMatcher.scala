@@ -17,6 +17,8 @@
 
 package org.openurp.edu.program.domain
 
+import org.beangle.commons.collection.Collections
+import org.openurp.base.model.Department
 import org.openurp.base.std.model.{Squad, StudentState}
 import org.openurp.edu.program.model.Program
 
@@ -25,7 +27,7 @@ object DefaultProgramMatcher extends ProgramMatcher {
   override def isMatched(program: Program, state: StudentState): Boolean = {
     val std = state.std
     if (program.grade != state.grade ||
-      program.department != state.department ||
+      !departMatched(program.department, state.department) ||
       program.major != state.major ||
       program.level != std.level) {
       false
@@ -50,7 +52,7 @@ object DefaultProgramMatcher extends ProgramMatcher {
 
   override def isMatched(program: Program, squad: Squad): Boolean = {
     if (program.grade != squad.grade ||
-      program.department != squad.department ||
+      !departMatched(program.department, squad.department) ||
       program.level != squad.level) {
       false
     } else {
@@ -72,5 +74,18 @@ object DefaultProgramMatcher extends ProgramMatcher {
       }
       matched
     }
+  }
+
+  def departMatched(programDepart: Department, userDepart: Department): Boolean = {
+    if programDepart == userDepart then
+      true
+    else
+      val departs = Collections.newSet[Department]
+      var depart = userDepart
+      while (null != depart && !departs.contains(depart)) {
+        departs += depart
+        depart = depart.parent.orNull
+      }
+      departs.contains(programDepart)
   }
 }
