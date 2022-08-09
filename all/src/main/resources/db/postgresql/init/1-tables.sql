@@ -40,11 +40,11 @@ create table base.mentors (school_id integer not null, updated_at timestamp not 
 create table base.minor_majors (name varchar(255) not null, en_name varchar(255), institution_id integer not null, code varchar(255) not null, id bigint not null, begin_on date not null, category_id integer not null, end_on date, major_id bigint);
 create table base.people (phonetic_name varchar(100), political_status_id integer, country_id integer, compatriot_type_id integer, code varchar(30) not null unique, id bigint not null, language_id integer, gender_id integer not null, birthday date not null, id_type_id integer not null, family_name varchar(80), given_name varchar(80), middle_name varchar(50), formated_name varchar(100) not null, updated_at timestamp not null, home_town varchar(255), nation_id integer, birthplace varchar(255), former_name varchar(100), religion_id integer);
 create table base.project_codes (project_id integer not null, code_ids varchar(2000) not null, id bigint not null, class_name varchar(100) not null);
+create table base.project_properties (name varchar(255) not null, project_id integer not null, description varchar(200) not null, id bigint not null, value_ varchar(2000) not null, type_name varchar(100) not null);
 create table base.projects (school_id integer not null, description varchar(500) not null, begin_on date not null, category_id integer not null, end_on date, minor boolean not null, name varchar(100) not null, updated_at timestamp not null, calendar_id integer not null, code varchar(10) not null unique, id integer not null);
 create table base.projects_campuses (project_id integer not null, campus_id integer not null);
 create table base.projects_departments (project_id integer not null, department_id integer not null, idx integer not null);
 create table base.projects_levels (project_id integer not null, education_level_id integer not null);
-create table base.projects_properties (project_id integer not null, value_ varchar(2000) not null, name varchar(255) not null);
 create table base.projects_std_labels (project_id integer not null, std_label_id integer not null);
 create table base.projects_std_types (project_id integer not null, std_type_id integer not null);
 create table base.rooms (school_id integer not null, room_type_id integer not null, building_id integer, code varchar(10) not null, department_id integer, id integer not null, remark varchar(200), begin_on date not null, floor_no integer not null, end_on date, campus_id integer not null, name varchar(80) not null, updated_at timestamp not null);

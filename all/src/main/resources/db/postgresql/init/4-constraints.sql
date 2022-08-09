@@ -73,6 +73,7 @@ alter table base.people add constraint fk_oc3i2nyu6m10t9mhggo3q23h1 foreign key 
 alter table base.people add constraint fk_qu9yxc8l50o3wk80guysv2glg foreign key (language_id) references code.languages (id);
 alter table base.people add constraint fk_r8r7svcudbl3vg24u40ifx94a foreign key (compatriot_type_id) references code.compatriot_types (id);
 alter table base.project_codes add constraint fk_6co7o6oypbttwwbgls2mrymcn foreign key (project_id) references base.projects (id);
+alter table base.project_properties add constraint fk_lf8vnssrqpnwfk9lq9vakkmt6 foreign key (project_id) references base.projects (id);
 alter table base.projects add constraint fk_2ely3u2yvcgd00u5phw3htocy foreign key (school_id) references base.schools (id);
 alter table base.projects add constraint fk_qaxsrgi2qwv4tap2mfb9ca7i6 foreign key (category_id) references code.edu_categories (id);
 alter table base.projects add constraint fk_stekawubheoexvpodfhpi4rfq foreign key (calendar_id) references base.calendars (id);
@@ -82,7 +83,6 @@ alter table base.projects_departments add constraint fk_7p8acb49fqug494l5r40ojsf
 alter table base.projects_departments add constraint fk_opg6c3iohqoqcpoj9c6n5vvf7 foreign key (department_id) references base.departments (id);
 alter table base.projects_levels add constraint fk_o5yqmhaha9wev6gdpiax57p0c foreign key (project_id) references base.projects (id);
 alter table base.projects_levels add constraint fk_qjrpjhqmguwb8j88llgnaqlnj foreign key (education_level_id) references code.education_levels (id);
-alter table base.projects_properties add constraint fk_qlokyjip9gef5loev7513vwmt foreign key (project_id) references base.projects (id);
 alter table base.projects_std_labels add constraint fk_rk5v0kbvsm2k9ih26boxvktmu foreign key (std_label_id) references base.c_std_labels (id);
 alter table base.projects_std_labels add constraint fk_t54ayk37ucu3heamugvx2pd07 foreign key (project_id) references base.projects (id);
 alter table base.projects_std_types add constraint fk_7jhjlcmyk2l651ewxqnc0j2t foreign key (std_type_id) references base.c_std_types (id);

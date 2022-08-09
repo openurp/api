@@ -19,7 +19,6 @@ create index idx_9tpxhrx7soog576asswjsm796 on base.major_journals (major_id);
 create index idx_ars8ki40prfrp0dh90qqcsrxu on base.projects_campuses (project_id);
 create index idx_sy5ms6fqa1if8ox26dljlhk0v on base.projects_departments (project_id);
 create index idx_4ipswvqq8c1i50hh9cr762l61 on base.projects_levels (project_id);
-create index idx_jx3emdr0cnf0yfq5111tyd1c5 on base.projects_properties (project_id);
 create index idx_9xea4f7jxyx6oo4ghwyr4ygfp on base.projects_std_labels (project_id);
 create index idx_pj8pjvjbvsbx8mbrg5enx6c31 on base.projects_std_types (project_id);
 create index idx_a0nnh2q7pmjkwgdafxxn3xyhx on base.school_lengths (major_id);

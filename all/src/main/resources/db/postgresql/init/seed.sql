@@ -43,11 +43,6 @@ INSERT INTO code.exam_forms (id, code, name, en_name, begin_on, end_on, updated_
 INSERT INTO code.exam_forms (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '口试', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.exam_forms (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '考查', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 
-
-INSERT INTO code.exam_forms (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '笔试', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
-INSERT INTO code.exam_forms (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '口试', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
-INSERT INTO code.exam_forms (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '考查', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
-
 INSERT INTO code.election_modes (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '1', '指定', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.election_modes (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '自选', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.election_modes (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '代理', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
@@ -89,8 +84,9 @@ insert into code.course_natures(id,code,name,practical,begin_on,updated_at) valu
 insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(3,'3','单独设立实验课',false,current_date-1,now());
 insert into code.course_natures(id,code,name,practical,begin_on,updated_at) values(4,'4','实践课',true,current_date-1,now());
 
-insert into code.edu_categories(id,code,name,begin_on,updated_at)
-values(1,'1','成人高等教育',current_date -10,now());
+insert into code.edu_categories(id,code,name,begin_on,updated_at) values(30,'30','成人高等教育',current_date -10,now());
+insert into code.edu_categories(id,code,name,begin_on,updated_at) values(31,'31','普通高等教育',current_date -10,now());
+insert into code.edu_categories(id,code,name,begin_on,updated_at) values(32,'32','网络教育',current_date -10,now());
 
 INSERT INTO code.user_categories (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.user_categories (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '学生', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);

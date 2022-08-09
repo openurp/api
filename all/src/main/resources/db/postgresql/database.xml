@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.27.0">
+<db engine="PostgreSQL" version="0.28.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -815,6 +815,24 @@
                          referenced-column="id"/>
           </foreign-keys>
         </table>
+        <table name="project_properties" comment="项目属性@common">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="description" type="varchar(200)" nullable="false" comment="描述"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+            <column name="type_name" type="varchar(100)" nullable="false" comment="类型"/>
+            <column name="value_" type="varchar(2000)" nullable="false" comment="值"/>
+          </columns>
+          <primary-key name="pk_rfrpbcb39anra9nb0a5x1g6dd" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_lf8vnssrqpnwfk9lq9vakkmt6" column="project_id" referenced-table="base.projects"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_1kgy8wfyw9wg1e28k8seg64se" columns="project_id,name"/>
+          </unique-keys>
+        </table>
         <table name="projects" comment="项目@common">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
@@ -886,21 +904,6 @@
           </foreign-keys>
           <indexes>
             <index name="idx_4ipswvqq8c1i50hh9cr762l61" columns="project_id"/>
-          </indexes>
-        </table>
-        <table name="projects_properties" comment="项目属性/项目参数@common">
-          <columns>
-            <column name="name" type="varchar(255)" nullable="false" comment="name"/>
-            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="value_" type="varchar(2000)" nullable="false" comment="项目属性/项目参数"/>
-          </columns>
-          <primary-key name="pk_k5gcer7xqcwvko6ou7lc985m8" columns="project_id,value_,name"/>
-          <foreign-keys>
-            <foreign-key name="fk_qlokyjip9gef5loev7513vwmt" column="project_id" referenced-table="base.projects"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_jx3emdr0cnf0yfq5111tyd1c5" columns="project_id"/>
           </indexes>
         </table>
         <table name="projects_std_labels" comment="学生分类列表@common">

@@ -49,11 +49,12 @@ alter table base.mentors add constraint uk_3y0yv2cy2egy1bl908vqnnhrv unique (use
 alter table base.minor_majors add constraint pk_puyx3wltdpl9vv77rj77l9txc primary key (id);
 alter table base.people add constraint pk_25uwl12dj9en3iflug9w23r1q primary key (id);
 alter table base.project_codes add constraint pk_h8pb4rkgymaq67flwfvm8mdvg primary key (id);
+alter table base.project_properties add constraint pk_rfrpbcb39anra9nb0a5x1g6dd primary key (id);
+alter table base.project_properties add constraint uk_1kgy8wfyw9wg1e28k8seg64se unique (project_id,name);
 alter table base.projects add constraint pk_68i13lhb2otxe0ptivfl1qpeh primary key (id);
 alter table base.projects_campuses add constraint pk_cxhgbnp68mvn8mhg6wpa8po7j primary key (project_id,campus_id);
 alter table base.projects_departments add constraint pk_c3pws6toenjk026awpmfjnul6 primary key (project_id,department_id,idx);
 alter table base.projects_levels add constraint pk_f8wpx8th02k4kus25oq36p79n primary key (project_id,education_level_id);
-alter table base.projects_properties add constraint pk_k5gcer7xqcwvko6ou7lc985m8 primary key (project_id,value_,name);
 alter table base.projects_std_labels add constraint pk_gpnc9xr0cnwkqao6sq7arohpc primary key (project_id,std_label_id);
 alter table base.projects_std_types add constraint pk_8rp3u9k569jpshgo6y2unauns primary key (project_id,std_type_id);
 alter table base.rooms add constraint pk_nsj160cru1j6fbgp9le397om7 primary key (id);

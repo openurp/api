@@ -14,13 +14,18 @@ Project.description=描述
 Project.minor=是否辅修
 Project.beginOn=生效日期
 Project.endOn=失效日期
-Project.properties=项目属性/项目参数
 Project.stdTypes=学生类别
 
 ProjectCode=项目基础代码配置
 ProjectCode.project=项目
 ProjectCode.className=代码元
 ProjectCode.codeIds=代码ID
+
+ProjectProperty=项目属性
+ProjectProperty.name=名称
+ProjectProperty.value=值
+ProjectProperty.typeName=类型
+ProjectProperty.description=描述
 
 Campus=校区信息
 Campus.enName=英文名称
