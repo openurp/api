@@ -132,14 +132,14 @@ INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (3, 'apply', '-
 
 -----------如下代码需要插入后修改---------
 insert into code.institutions(id,code,name,begin_on,updated_at)
-values(10278,'10278','上海音乐学院',current_date -10,now());
+values(10000,'10000','URP学院',current_date -10,now());
 
 insert into base.schools(id,name,institution_id,logo_url,code,begin_on,short_name)
-values(10278,'上海音乐学院',10278,'https://www.shcmusic.edu.cn/_upload/article/images/bc/6f/11606c9f4aceadacd57d2869d40f/9b4b3f58-b2f1-4d33-8106-9f4797af1ae9.png',10278,current_date -10,'上音');
+values(10000,'URP学院',10000,'http://openurp.net/logo.png',10000,current_date -10,'上音');
 
 insert into base.departments(id,code,name,research,teaching,school_id,begin_on,updated_at,indexno)
-values(1,'01','音乐学系',true,true,10278,current_date -365,now(),'01');
+values(1,'01','软件学院',true,true,10000,current_date -365,now(),'01');
 
 insert into base.users(id,code,name,school_id,email,department_id,gender_id,begin_on,end_on,updated_at,category_id)
-values(next_id('base.users'),'root','root',10278,'admin@school.com',1,1,current_date-365,current_date+10*365,now(),3);
+values(next_id('base.users'),'root','root',10000,'admin@school.com',1,1,current_date-365,current_date+10*365,now(),3);
 
