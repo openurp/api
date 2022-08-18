@@ -27,7 +27,12 @@ alter table hr.teacher_profiles add education_degree_id int4;
 alter table hr.teacher_profiles add degree_level int4;
 alter table hr.teacher_profiles add degree_id int4;
 alter table hr.teacher_profiles add degree_award_by varchar(255);
-alter table hr.teacher_profiles add formal_hr bool;
+alter table hr.teacher_profiles add formal_hr bool default true;
+alter table hr.teacher_profiles add has_tqc bool default true;
+alter table hr.teacher_profiles add tqc_number varchar(20);
+alter table hr.teacher_profiles add oqc varchar(200);
+alter table hr.teacher_profiles add homepage varchar(200);
+alter table hr.teacher_profiles add organization varchar(200);
 
 update hr.teacher_profiles tp set department_id=(select u.department_id from base.users u,base.teachers t where t.id=tp.teacher_id and t.user_id=u.id);
 update hr.teacher_profiles tp set gender_id=(select u.gender_id from base.users u,base.teachers t where t.id=tp.teacher_id and t.user_id=u.id);

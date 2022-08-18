@@ -532,6 +532,7 @@ alter table hr.teacher_profiles add constraint fk_c3cjf6p1mmqtm5obrnjncv26m fore
 alter table hr.teacher_profiles add constraint fk_epr5jcirvvhtmfck0miremiyg foreign key (nation_id) references code.nations (id);
 alter table hr.teacher_profiles add constraint fk_kju81hx73juocdbum6bse9616 foreign key (degree_id) references code.degrees (id);
 alter table hr.teacher_profiles add constraint fk_ms8kw00tamwnxdns4blv0m34f foreign key (education_degree_id) references code.education_degrees (id);
+alter table hr.teacher_profiles add constraint fk_n6ltdcwq1smbxbbsgha9sihb foreign key (degree_level_id) references code.degree_levels (id);
 alter table hr.teacher_profiles add constraint fk_qqysm11ynfer6e5v7gyigprlu foreign key (teacher_id) references base.teachers (id);
 alter table hr.teacher_profiles add constraint fk_toxox3o9xlmdxtxfhukydutqd foreign key (title_id) references code.professional_titles (id);
 alter table hr.teaching_loads add constraint fk_3957dj4fgo2f15wswkvgxaq6q foreign key (teacher_id) references base.teachers (id);

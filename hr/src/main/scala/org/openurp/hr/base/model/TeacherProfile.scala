@@ -33,21 +33,11 @@ import java.time.LocalDate
  * 教师基本情况
  */
 class TeacherProfile extends LongId with Updated {
-
   /** 教师 */
   var teacher: Teacher = _
-
-  /** 所在教学部门 */
-  var department: Department = _
-
+  //基本信息
   /** 性别 */
   var gender: Gender = _
-
-  /** 教师类型 */
-  var teacherType: TeacherType = _
-
-  /** 在职状态 */
-  var status: WorkStatus = _
 
   /** 身份证件类型 */
   var idType: Option[IdType] = None
@@ -64,6 +54,29 @@ class TeacherProfile extends LongId with Updated {
   /** 政治面貌 */
   var politicalStatus: Option[PoliticalStatus] = None
 
+  //任职情况
+  /** 所在教学部门 */
+  var department: Department = _
+
+  /** 在职状态 */
+  var status: WorkStatus = _
+
+  /** 教师类型 */
+  var teacherType: TeacherType = _
+
+  /** 是否在编 */
+  var formalHr: Boolean = _
+
+  /** 是否有教师资格证 */
+  var hasTqc: Boolean = _
+
+  /** 教师资格证编号 */
+  var tqcNumber: Option[String] = None
+
+  /** 其他职业资格证书和等级说明 */
+  var oqc: Option[String] = None
+
+  //职称、学历和学位
   /** 最高职称 */
   var title: Option[ProfessionalTitle] = None
 
@@ -79,12 +92,7 @@ class TeacherProfile extends LongId with Updated {
   /** 最高学位授予单位 */
   var degreeAwardBy: Option[String] = None
 
-  /** 是否在编 */
-  var formalHr: Boolean = _
-
-  /** 个人简介 */
-  var intro: String = _
-
+  //教学经历和科研成果
   /** 教学经历 */
   var teachingCareer: Option[String] = None
 
@@ -97,7 +105,16 @@ class TeacherProfile extends LongId with Updated {
   /** 学术兼职 */
   var titles: Option[String] = None
 
+  // 个人介绍和联系方式
+  /** 个人简介 */
+  var intro: String = _
+
   /** 联系方式 */
   var contact: Option[String] = None
 
+  /** 全职工作单位 */
+  var organization: Option[String] = None
+
+  /** 个人主页 */
+  var homepage: Option[String] = None
 }

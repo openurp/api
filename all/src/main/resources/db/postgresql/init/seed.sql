@@ -99,6 +99,7 @@ INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updat
 
 INSERT INTO base.c_teacher_types (id, code, name, en_name, begin_on, end_on, updated_at, remark,retired,parttime,external_) VALUES (11, '11', '专任教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL,false,false,false);
 INSERT INTO base.c_teacher_types (id, code, name, en_name, begin_on, end_on, updated_at, remark,retired,parttime,external_) VALUES (12, '12', '教辅教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL,false,false,false);
+INSERT INTO base.c_teacher_types (id, code, name, en_name, begin_on, end_on, updated_at, remark,retired,parttime,external_) VALUES (13, '13', '兼职教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL,false,true,false);
 
 insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
 select 1,'1','理论',1,current_date-1,now() where not exists(select * from code.teaching_natures tn where tn.id=1);

@@ -83,7 +83,12 @@ TeacherProfile.title=职称
 TeacherProfile.formalHr=是否在编
 TeacherProfile.status=在职状态
 TeacherProfile.birthday=出生日期
-TeacherProfile.id_number=证件号码
+TeacherProfile.idNumber=证件号码
+TeacherProfile.organization=全职工作单位
+TeacherProfile.homepage=个人主页
+TeacherProfile.hasTqc=s是否有教师资格证
+TeacherProfile.tqcNumber=教师资格证编号
+TeacherProfile.oqc=其他职业资格证书和等级说明
 
 TitleInfo=职称信息
 TitleInfo.staff=教职工
