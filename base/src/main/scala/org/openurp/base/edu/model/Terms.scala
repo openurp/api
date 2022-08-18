@@ -27,7 +27,15 @@ object Terms {
     if (Strings.isNotBlank(terms) && "*" != terms) {
       var value = 0
       Strings.split(terms, ",") foreach { t =>
-        value |= 1 << Numbers.toInt(t);
+        if (t.contains("-")) {
+          val start = Strings.substringBefore(t, "-").trim().toInt
+          val end = Strings.substringAfter(t, "-").trim().toInt
+          (start to end) foreach { i =>
+            value |= (1 << i)
+          }
+        } else {
+          value |= 1 << Numbers.toInt(t)
+        }
       }
       new Terms(value)
     } else {

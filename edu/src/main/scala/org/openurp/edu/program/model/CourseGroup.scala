@@ -24,6 +24,7 @@ import org.openurp.base.edu.model.Terms
 /** 课程设置中的课程组.
  * </p> <li>1)对应计划</li> <li>2)课程类型</li> <li>3)要求学分</li> <li>4)是否必修课</li>
  * <li>5)父组</li> <li>6)子组集合</li> <li>7)组内所有的课程</li> <li>8)备注</li>
+ *
  * @author chaostone
  */
 trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
@@ -61,12 +62,22 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
    */
   def credits: Float
 
+  /** 要求学时
+   *
+   * @return
+   */
+  def creditHours: Int
+
+  /** 课时比例 */
+  def hourRatios: Option[String]
+
   /**
    * 获得组内要求门数
    */
   def courseCount: Short
 
   /** 组内课程
+   *
    * @return
    */
   def planCourses: collection.Seq[PlanCourse]
@@ -81,12 +92,12 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
    */
   def termCredits: String
 
-  /**序号*/
+  /** 序号 */
   def indexno: String
 
   /** 自动累加学分 */
   def autoAddup: Boolean
 
-  /**开课学期*/
-  def terms:Terms
+  /** 开课学期 */
+  def terms: Terms
 }

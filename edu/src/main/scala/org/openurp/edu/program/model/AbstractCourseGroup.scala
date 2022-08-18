@@ -28,6 +28,7 @@ import scala.collection.mutable.ListBuffer
 
 /**
  * 课程设置中的课程组 </p>
+ *
  * @author chaostone
  * @since 2009
  */
@@ -56,6 +57,12 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
    */
   var credits: Float = _
 
+  /** 课时 */
+  var creditHours: Int = _
+
+  /** 课时比例 */
+  var hourRatios: Option[String] = None
+
   /**
    * 要求完成组数
    */
@@ -71,16 +78,16 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
    */
   var termCredits: String = _
 
-  /**自动累加学分*/
-  var autoAddup:Boolean=_
+  /** 自动累加学分 */
+  var autoAddup: Boolean = _
 
-  /**开课学期*/
-  var terms:Terms=Terms.empty
+  /** 开课学期 */
+  var terms: Terms = Terms.empty
 
   override def name: String = {
     val sb = new StringBuilder()
     if (null != courseType) sb.append(courseType.name)
-    givenName foreach{ x => sb.append(" ").append(x)}
+    givenName foreach { x => sb.append(" ").append(x) }
     sb.toString
   }
 
@@ -99,7 +106,7 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
 
   def addCourse(planCourse: AbstractPlanCourse): Unit = {
     if (planCourses.exists(_.course == planCourse.course)) return
-    planCourse.group = this
+      planCourse.group = this
     planCourses += planCourse
   }
 
@@ -131,4 +138,5 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
   override def compare(o: CourseGroup): Int = {
     indexno.compareTo(o.indexno)
   }
+
 }

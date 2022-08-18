@@ -28,114 +28,42 @@ class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseG
 
   override def name: String = "plan"
 
-  def children: collection.Seq[CourseGroup] = groups
+  override def children: collection.Seq[CourseGroup] = groups
 
-  def credits: Float = coursePlan.credits
+  override def credits: Float = coursePlan.credits
 
   override def clone: AnyRef = super.clone
 
-  def courseCount: Short = 0
+  override def courseCount: Short = 0
 
-  def courseType: CourseType = null
+  override def courseType: CourseType = null
 
-  def subCount: Short = {
-    -1
-  }
+  override def subCount: Short = -1
 
-  def addChildGroup(arg0: CourseGroup): Unit = {
-  }
+  override def parent: Option[CourseGroup] = None
 
-  def addPlanCourse(arg0: PlanCourse): Unit = {
-  }
+  override def creditHours: Int = 0
 
-  def parent: Option[CourseGroup] = None
+  override def planCourses: collection.Seq[PlanCourse] = List.empty
 
-  def parent_=(arg0: Option[CourseGroup]): Unit = {
-  }
-
-  def planCourses: collection.Seq[PlanCourse] = List.empty
-
-  def remark: Option[String] = None
-
-  def remark_=(arg0: Option[String]): Unit = {
-  }
-
-  def compulsory: Boolean = false
-
-  def courseCount_=(arg0: Int): Unit = {
-  }
-
-  def courseType_=(arg0: CourseType): Unit = {
-  }
-
-  def credits(arg0: Float): Unit = {
-  }
-
-  def subCount_=(arg0: Int): Unit = {
-  }
-
-  def updateCoursePlan(arg0: CoursePlan): Unit = {
-  }
-
-  def removePlanCourse(course: PlanCourse): Unit = {
-  }
-
-  def statCreditAndHour(termsCount: Int): Unit = {
-  }
-
-  def creditPerTerms: String = {
-    throw new UnsupportedOperationException("CoursePlanGroupAdapter.CreditPerTerms没有实现")
-  }
-
-  def creditPerTerms(arg0: String): Unit = {
-    throw new UnsupportedOperationException("CoursePlanGroupAdapter.CreditPerTerms没有实现")
-  }
-
-  def creditList: collection.Seq[String] = null
-
-  def credits(terms: collection.Seq[Integer]): Float = 0
-
-  def groupCourses: collection.Seq[_ <: PlanCourse] = null
-
-  def parentCourseType: CourseType = null
+  override def remark: Option[String] = None
 
   def planCourses(termList: collection.Seq[Integer]): collection.Seq[_ <: PlanCourse] = null
 
   def planCourses(terms: String): collection.Seq[_ <: PlanCourse] = null
 
-  def isSameGroup(`object`: AnyRef): Boolean = false
+  override def plan: CoursePlan = null
 
-  def groupCourses_=(groupCourses: collection.Seq[_ <: PlanCourse]): Unit = {
-  }
-
-  def plan: CoursePlan = null
-
-  def plan_=(plan: CoursePlan): Unit = {
-  }
-
-  def children_=(children: collection.Seq[CourseGroup]): Unit = {
-  }
-
-  def planCourses_=(planCourses: collection.Seq[PlanCourse]): Unit = {
-  }
-
-  def addPlanCourses(planCourses: collection.Seq[PlanCourse]): Unit = {
-  }
-
-  def termCredits: String = null
-
-  def termCredits(termCredits: String): Unit = {
-  }
+  override def termCredits: String = null
 
   override def compare(o: CourseGroup): Int = 0
 
-  def indexno: String = null
-
-  def indexno_=(indexno: String): Unit = {
-  }
+  override def indexno: String = null
 
   override def autoAddup: Boolean = true
 
-  /**开课学期*/
-  override def terms:Terms=Terms.empty
+  /** 开课学期 */
+  override def terms: Terms = Terms.empty
+
+  override def hourRatios: Option[String] = None
 }
