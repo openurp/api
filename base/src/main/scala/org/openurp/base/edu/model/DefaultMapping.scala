@@ -97,7 +97,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Teacher] declare { e =>
-      index("", true, e.user)
+      index("", true, e.code)
     }
 
     bind[Textbook] declare { e =>
@@ -112,6 +112,6 @@ class DefaultMapping extends MappingModule {
       index("", true, e.project, e.code)
     }
 
-    all.except(classOf[Teacher]).cacheAll()
+    all.cacheAll()
   }
 }

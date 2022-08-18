@@ -19,11 +19,68 @@ package org.openurp.hr.base.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.code.TeacherType
 import org.openurp.base.edu.model.Teacher
+import org.openurp.base.model.Department
+import org.openurp.code.edu.model.{Degree, DegreeLevel, EducationDegree}
+import org.openurp.code.hr.model.WorkStatus
+import org.openurp.code.job.model.ProfessionalTitle
+import org.openurp.code.person.model.{Gender, IdType, Nation, PoliticalStatus}
 
+import java.time.LocalDate
+
+/**
+ * 教师基本情况
+ */
 class TeacherProfile extends LongId with Updated {
 
+  /** 教师 */
   var teacher: Teacher = _
+
+  /** 所在教学部门 */
+  var department: Department = _
+
+  /** 性别 */
+  var gender: Gender = _
+
+  /** 教师类型 */
+  var teacherType: TeacherType = _
+
+  /** 在职状态 */
+  var status: WorkStatus = _
+
+  /** 身份证件类型 */
+  var idType: Option[IdType] = None
+
+  /** 证件号码 */
+  var idNumber: Option[String] = None
+
+  /** 出生日期 */
+  var birthday: Option[LocalDate] = None
+
+  /** 民族 */
+  var nation: Option[Nation] = None
+
+  /** 政治面貌 */
+  var politicalStatus: Option[PoliticalStatus] = None
+
+  /** 最高职称 */
+  var title: Option[ProfessionalTitle] = None
+
+  /** 最高学历 */
+  var educationDegree: Option[EducationDegree] = None
+
+  /** 学位层次 */
+  var degreeLevel: DegreeLevel = _
+
+  /** 最高学位 */
+  var degree: Option[Degree] = None
+
+  /** 最高学位授予单位 */
+  var degreeAwardBy: Option[String] = None
+
+  /** 是否在编 */
+  var formalHr: Boolean = _
 
   /** 个人简介 */
   var intro: String = _

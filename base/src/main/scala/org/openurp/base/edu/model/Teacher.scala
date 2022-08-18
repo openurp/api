@@ -19,51 +19,31 @@ package org.openurp.base.edu.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.code.TeacherType
-import org.openurp.base.model.{Department, Person, Project, School, User}
+import org.openurp.base.model.*
 import org.openurp.code.edu.model.{Degree, EducationDegree}
 import org.openurp.code.hr.model.WorkStatus
 import org.openurp.code.job.model.ProfessionalTitle
+import org.openurp.code.person.model.Gender
 
 import scala.collection.mutable
 
 /**
  * 教师信息
  */
-class Teacher extends LongId with Updated with TemporalOn with Remark {
+class Teacher extends LongId with Coded with Named with Updated with TemporalOn with Remark {
 
   /** 学校 */
   var school: School = _
 
-  /** 用户 */
-  var user: User = _
+  /** 性别 */
+  var gender: Gender = _
 
   /** 所在教学部门 */
   var department: Department = _
 
-  /** 人员信息 */
-  var person: Option[Person] = None
-
   /** 项目列表 */
   var projects: mutable.Set[Project] = Collections.newSet[Project]
-
-  /** 教师类型 */
-  var teacherType: TeacherType = _
-
-  /** 在职状态 */
-  var status: WorkStatus = _
-
-  /** 最高职称 */
-  var title: Option[ProfessionalTitle] = None
-
-  /** 最高学历 */
-  var educationDegree: Option[EducationDegree] = None
-
-  /** 最高学位 */
-  var degree: Option[Degree] = None
-
-  /** 是否在编 */
-  var formalHr: Boolean = _
 
 }

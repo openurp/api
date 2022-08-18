@@ -118,14 +118,8 @@ Textbook.madeInSchool=是否自编
 
 Teacher=教师信息
 Teacher.projects=所在项目
-Teacher.person=人员信息
-Teacher.teacherType=教师类型
 Teacher.department=所在部门
-Teacher.user=用户
-Teacher.title=职称
-Teacher.status=在职状态
 Teacher.remark=备注
-Teacher.formalHr=是否在编
 
 CourseUnit=默认作息时间
 CourseUnit.indexno=小节编号

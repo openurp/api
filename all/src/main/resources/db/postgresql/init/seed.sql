@@ -7,6 +7,18 @@ INSERT INTO code.academic_levels (id, code, name, en_name, begin_on, end_on, upd
 INSERT INTO code.academic_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (60, '60', '普通高中', NULL, '2017-03-04 00:00:00', NULL, '2015-04-21 09:57:22', NULL);
 INSERT INTO code.academic_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (20, '20', '大学本科', NULL, '2017-03-04 00:00:00', NULL, '2014-10-14 15:09:20.921', NULL);
 
+INSERT INTO code.education_results (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '毕业', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.education_results (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '结业', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.education_results (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (8, '08', '肄业', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+INSERT INTO code.education_degrees (id, code, name,level_id,result_id, en_name, begin_on, end_on, updated_at, remark) VALUES (11, '11', '博士研究生毕业', 10,1,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.education_degrees (id, code, name,level_id,result_id, en_name, begin_on, end_on, updated_at, remark) VALUES (14, '14', '硕士研究生毕业', 11,1,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.education_degrees (id, code, name,level_id,result_id, en_name, begin_on, end_on, updated_at, remark) VALUES (21, '21', '大学本科毕业', 20,1,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+INSERT INTO code.degree_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '1', '学士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.degree_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '2', '硕士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.degree_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '3', '博士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
 INSERT INTO code.countries(id, code, name, en_name,short_name,begin_on,  updated_at,alpha2_code,alpha3_code) VALUES (156, '156','中华人民共和国', 'China','中国',current_date,now(),'CN','CHN');
 
 INSERT INTO code.course_take_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '正常', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
@@ -17,7 +29,10 @@ INSERT INTO code.education_levels (id, code, name, en_name, begin_on, end_on, up
 INSERT INTO code.education_levels (id, code, name, en_name, begin_on, end_on, updated_at, from_level_id, to_level_id, remark) VALUES (3, '22', '专升本', NULL, '2005-07-24', NULL, '2019-10-22 23:37:56.352206', 30, 20, NULL);
 INSERT INTO code.education_levels (id, code, name, en_name, begin_on, end_on, updated_at, from_level_id, to_level_id, remark) VALUES (2, '21', '高起专', NULL, '2005-07-24', NULL, '2019-10-22 23:38:10.792471', 60, 30, NULL);
 INSERT INTO code.education_levels (id, code, name, en_name, begin_on, end_on, updated_at, from_level_id, to_level_id, remark) VALUES (4, '4', '高中', NULL, '2016-01-20', NULL, '2016-01-20 00:00:00', 70, 60, NULL);
-INSERT INTO code.education_levels (id, code, name, en_name, begin_on, end_on, updated_at, from_level_id, to_level_id, remark) VALUES (5, '5', '大专', NULL, '2016-01-22', NULL, '2016-01-22 00:00:00', 60, 30, NULL);
+INSERT INTO code.education_levels (id, code, name, en_name, begin_on, end_on, updated_at, from_level_id, to_level_id, remark) VALUES (5, '5', '专科', NULL, '2016-01-22', NULL, '2016-01-22 00:00:00', 60, 30, NULL);
+
+INSERT INTO code.education_levels (id, code, name, en_name, begin_on, end_on, updated_at, from_level_id, to_level_id, remark) VALUES (31, '31', '硕士', NULL, '2016-01-20', NULL, '2016-01-20 00:00:00', 20,11, NULL);
+INSERT INTO code.education_levels (id, code, name, en_name, begin_on, end_on, updated_at, from_level_id, to_level_id, remark) VALUES (32, '32', '博士', NULL, '2016-01-22', NULL, '2016-01-22 00:00:00', 11, 10, NULL);
 
 INSERT INTO code.exam_modes (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '1', '考查', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.exam_modes (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '0', '考试', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
@@ -67,6 +82,24 @@ INSERT INTO code.grade_types (id, begin_on, code, en_name, end_on, name, updated
 INSERT INTO code.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (2, '2006-10-29', '0003', 'Final Exam Score', NULL, '期末成绩', '2007-03-09 00:00:00', 1, NULL);
 INSERT INTO code.grade_types (id, begin_on, code, en_name, end_on, name, updated_at, exam_type_id, remark) VALUES (1, '2006-10-29', '0008', NULL, '2016-05-03', '期中成绩', '2007-04-30 00:00:00', NULL, NULL);
 
+INSERT INTO code.genders (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '男', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.genders (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '女', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+INSERT INTO code.professional_grades (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '1', '高级', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_grades (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '2', '中级', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_grades (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '3', '初级', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (11, '011', '教授', 1,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (12, '012', '副教授',1, NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (13, '013', '讲师', 1,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (14, '014', '助教',1, NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (7, '07', '离职', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (11, '11', '在职', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+INSERT INTO base.c_teacher_types (id, code, name, en_name, begin_on, end_on, updated_at, remark,retired,parttime,external_) VALUES (11, '11', '专任教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL,false,false,false);
+INSERT INTO base.c_teacher_types (id, code, name, en_name, begin_on, end_on, updated_at, remark,retired,parttime,external_) VALUES (12, '12', '教辅教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL,false,false,false);
+
 insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
 select 1,'1','理论',1,current_date-1,now() where not exists(select * from code.teaching_natures tn where tn.id=1);
 insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
@@ -99,11 +132,14 @@ INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (3, 'apply', '-
 
 -----------如下代码需要插入后修改---------
 insert into code.institutions(id,code,name,begin_on,updated_at)
-values(00001,'00001','URP学院',current_date -10,now());
+values(10278,'10278','上海音乐学院',current_date -10,now());
 
 insert into base.schools(id,name,institution_id,logo_url,code,begin_on,short_name)
-values(00001,'URP学院',11833,'http://someip/default/images/logo.png',11833,current_date -10,'URP');
+values(10278,'上海音乐学院',10278,'https://www.shcmusic.edu.cn/_upload/article/images/bc/6f/11606c9f4aceadacd57d2869d40f/9b4b3f58-b2f1-4d33-8106-9f4797af1ae9.png',10278,current_date -10,'上音');
+
+insert into base.departments(id,code,name,research,teaching,school_id,begin_on,updated_at,indexno)
+values(1,'01','音乐学系',true,true,10278,current_date -365,now(),'01');
 
 insert into base.users(id,code,name,school_id,email,department_id,gender_id,begin_on,end_on,updated_at,category_id)
-values(next_id('base.users'),'root','root',00001,'admin@school.com',1,1,current_date-365,current_date+10*365,now(),3);
+values(next_id('base.users'),'root','root',10278,'admin@school.com',1,1,current_date-365,current_date+10*365,now(),3);
 

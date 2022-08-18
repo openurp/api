@@ -71,7 +71,7 @@ alter table base.students add constraint pk_dp1c3lp7694lu2ri6rfh6n7g8 primary ke
 alter table base.students add constraint uk_7olmoqml89w2merfrxmturwa5 unique (user_id,project_id);
 alter table base.students_labels add constraint pk_ramuktutb3f32cwgsbe0apovk primary key (student_id,std_label_id,std_label_type_id);
 alter table base.teachers add constraint pk_k6sh5di4vpqtsxxvusqlb0vg5 primary key (id);
-alter table base.teachers add constraint uk_cd1k6xwg9jqtiwx9ybnxpmoh9 unique (user_id);
+alter table base.teachers add constraint uk_lmg2qx967u1knxjscfxomathn unique (code);
 alter table base.teachers_projects add constraint pk_ksmq83maw97gk85mth4s2g99n primary key (teacher_id,project_id);
 alter table base.teaching_offices add constraint pk_cqhu9i1m9mg4ekr9tuv58c744 primary key (id);
 alter table base.teaching_offices add constraint uk_90yrmn6u3xmkpyo348xl31ihq unique (project_id,code);

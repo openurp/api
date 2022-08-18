@@ -78,6 +78,12 @@ TeacherProfile.contact=联系方式
 TeacherProfile.harvest=科研成果
 TeacherProfile.teachingCareer=教学经历
 TeacherProfile.titles=学术兼职
+TeacherProfile.teacherType=教师类型
+TeacherProfile.title=职称
+TeacherProfile.formalHr=是否在编
+TeacherProfile.status=在职状态
+TeacherProfile.birthday=出生日期
+TeacherProfile.id_number=证件号码
 
 TitleInfo=职称信息
 TitleInfo.staff=教职工

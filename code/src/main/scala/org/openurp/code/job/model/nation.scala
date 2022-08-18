@@ -56,7 +56,7 @@ class PostGrade extends CodeBean
 
 /**
  * 职称
- *
+ * 本代码引自GB/T 8561-2001，
  * @author chaostone
  * @since 2005-9-7
  */
