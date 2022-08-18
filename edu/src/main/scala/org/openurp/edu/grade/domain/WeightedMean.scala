@@ -24,28 +24,34 @@ import org.openurp.edu.grade.model.CourseGrade
 object WeightedMean {
 
   def calcGa(grades: collection.Iterable[CourseGrade]): Float = {
-    var credits = 0f
-    var creditGas = 0f
-    for (grade <- grades) {
-      if (grade.score.isDefined || !grade.passed) {
-        val score = grade.score.getOrElse(0f)
-        val credit = grade.course.credits
-        credits += credit
-        creditGas += credit * score
+    if grades.isEmpty then 0f
+    else
+      var credits = 0f
+      var creditGas = 0f
+      val level = grades.head.std.level
+      for (grade <- grades) {
+        if (grade.score.isDefined || !grade.passed) {
+          val score = grade.score.getOrElse(0f)
+          val credit = grade.course.getCredits(level)
+          credits += credit
+          creditGas += credit * score
+        }
       }
-    }
-    if ((credits == 0)) 0f else (creditGas / credits)
+      if (credits == 0) 0f else creditGas / credits
   }
 
   def calcGpa(grades: collection.Iterable[CourseGrade]): Float = {
-    var credits = 0f
-    var creditGps = 0f
-    for (grade <- grades if grade.gp.isDefined) {
-      val credit = grade.course.credits
-      credits += credit
-      creditGps += credit * (grade.gp.get)
-    }
-    if ((credits == 0)) 0f else (creditGps / credits)
+    if grades.isEmpty then 0f
+    else
+      var credits = 0f
+      var creditGps = 0f
+      val level = grades.head.std.level
+      for (grade <- grades if grade.gp.isDefined) {
+        val credit = grade.course.getCredits(level)
+        credits += credit
+        creditGps += credit * (grade.gp.get)
+      }
+      if (credits == 0) 0f else (creditGps / credits)
   }
 
 }

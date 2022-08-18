@@ -108,7 +108,7 @@ class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditRes
     val auditStat = groupResult.auditStat
     if (!auditStat.passedCourses.contains(course)) {
       auditStat.passedCourses.add(course)
-      auditStat.addCredits(course.credits)
+      auditStat.addCredits(course.getCredits(groupResult.planResult.std.level))
       auditStat.addNum(1)
     }
     groupResult.parent match {
@@ -116,7 +116,7 @@ class GroupAuditResult extends LongId with Named with Hierarchical[GroupAuditRes
         val planAuditStat = groupResult.planResult.auditStat
         if (!planAuditStat.passedCourses.contains(course)) {
           planAuditStat.passedCourses.add(course)
-          planAuditStat.addCredits(course.credits)
+          planAuditStat.addCredits(course.getCredits(groupResult.planResult.std.level))
           planAuditStat.addNum(1)
         }
       case Some(p) => addPassedCourse(p, course)

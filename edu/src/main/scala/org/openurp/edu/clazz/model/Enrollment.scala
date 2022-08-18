@@ -22,6 +22,7 @@ import org.beangle.commons.lang.annotation.value
 import org.beangle.data.model.Component
 import org.openurp.base.edu.code.CourseAbilityRate
 import org.openurp.base.model.Department
+import org.openurp.code.edu.model.EducationLevel
 import org.openurp.edu.clazz.model.Enrollment.GenderRatio
 
 class Enrollment extends Cloneable with Component {
@@ -31,6 +32,9 @@ class Enrollment extends Cloneable with Component {
 
   /** 年级 */
   var grade: Option[String] = None
+
+  /** 培养层次 */
+  var levels = Collections.newSet[EducationLevel]
 
   /** 学生人数 */
   var actual: Int = _

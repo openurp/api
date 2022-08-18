@@ -17,16 +17,14 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.base.edu.model.Course
-import org.openurp.edu.grade.model.CourseGrade
-
-import scala.collection.mutable.Buffer
 import org.beangle.commons.collection.Collections
+import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.edu.grade.model.{CourseGrade, StdGpa, StdSemesterGpa, StdYearGpa}
 
 import java.time.Instant
+import scala.collection.mutable.Buffer
 
 class DefaultGpaPolicy extends GpaPolicy {
 
@@ -86,7 +84,7 @@ class DefaultGpaPolicy extends GpaPolicy {
     val courseMap = Collections.newMap[Course, CourseGrade]
     for (grade <- grades) {
       val add = courseMap.get(grade.course) match {
-        case None        => true
+        case None => true
         case Some(exist) => !exist.passed
       }
       if (add) {
@@ -102,12 +100,14 @@ class DefaultGpaPolicy extends GpaPolicy {
   }
 
   private def statCredits(grades: Iterable[CourseGrade]): Array[Float] = {
-    var credits = 0f
-    var all = 0f
+    var passedCredits = 0f
+    var allCredits = 0f
     for (grade <- grades) {
-      if (grade.passed) credits += grade.course.credits
-      all += grade.course.credits
+      val level = grade.std.level
+      val credits = grade.course.getCredits(level)
+      if (grade.passed) passedCredits += credits
+      allCredits += credits
     }
-    Array(all, credits)
+    Array(allCredits, passedCredits)
   }
 }

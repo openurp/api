@@ -25,7 +25,8 @@ alter table base.courses add constraint pk_1lyj037fss3plmcutpx9b4r2x primary key
 alter table base.courses add constraint uk_thp7tiw1cr1mvm9uy21fqflch unique (project_id,code);
 alter table base.courses_ability_rates add constraint pk_o072av0vclfvq7gpvr9gxat6u primary key (course_id,course_ability_rate_id);
 alter table base.courses_grading_modes add constraint pk_pmy94fkg457bni4cgs3nfsbyp primary key (course_id,grading_mode_id);
-alter table base.courses_levels add constraint pk_4mtg5wprk0penmjd20btm7iy7 primary key (course_id,academic_level_id);
+alter table base.courses_level_credits add constraint pk_rp78tpdutg1g4rg1d9uf4wgr9 primary key (course_id,value_,education_level_id);
+alter table base.courses_levels add constraint pk_4mtg5wprk0penmjd20btm7iy7 primary key (course_id,education_level_id);
 alter table base.courses_majors add constraint pk_eymkpxyqwpqqtaond0nj71g1s primary key (course_id,major_id);
 alter table base.courses_teachers add constraint pk_lj3gh310g6ro1s6t13qunca7a primary key (course_id,teacher_id);
 alter table base.courses_textbooks add constraint pk_su8h61lhgrbuv4l18nkjb874 primary key (course_id,textbook_id);
@@ -201,6 +202,7 @@ alter table edu.clazz_groups add constraint pk_rk07cifqsq9cq5cscif6rre46 primary
 alter table edu.clazzes add constraint pk_3ra1a077so5k9mwdt2kxb3k0b primary key (id);
 alter table edu.clazzes add constraint uk_8xuvd3v6lnrq5xmcl8jje0yau unique (project_id,semester_id,crn);
 alter table edu.clazzes_ability_rates add constraint pk_kx0jp80tganm39yvlc4lewj74 primary key (clazz_id,course_ability_rate_id);
+alter table edu.clazzes_levels add constraint pk_i68q454w5kfdeuq347y3g80b5 primary key (clazz_id,education_level_id);
 alter table edu.clazzes_tags add constraint pk_e1e2u69ixc5hje4f436327g1t primary key (clazz_id,clazz_tag_id);
 alter table edu.clazzes_teachers add constraint pk_38x8fp2quo9ykkur4hvt7khir primary key (clazz_id,teacher_id,idx);
 alter table edu.course_audit_results add constraint pk_e8y9knf7dh7k1rsjgal3b5d6x primary key (id);

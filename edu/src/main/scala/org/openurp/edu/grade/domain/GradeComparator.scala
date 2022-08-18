@@ -54,6 +54,8 @@ object GradeComparator {
    * @param grades
    */
   def isSubstitute(altCourse: AlternativeCourse, grades: collection.Map[Course, CourseGrade]): Boolean = {
+    if (grades.isEmpty) return false
+    val level = grades.head._2.std.level
     var existOrigGrade = false
     var gpa1 = 0f
     var ga1 = 0f
@@ -62,11 +64,11 @@ object GradeComparator {
     for (course <- altCourse.olds) {
       grades.get(course) foreach { grade =>
         if (grade.passed) passed1 += 1
-        grade.gp foreach { gp => gpa1 += grade.course.credits * gp }
-        grade.score foreach { score => ga1 += grade.course.credits * score }
+        grade.gp foreach { gp => gpa1 += grade.credits * gp }
+        grade.score foreach { score => ga1 += grade.credits * score }
         existOrigGrade = true
       }
-      credit1 += course.credits
+      credit1 += course.getCredits(level)
     }
     var fullGrade2 = true
     var gpa2 = 0f
@@ -77,19 +79,19 @@ object GradeComparator {
       val grade = grades.get(course).getOrElse(null)
       if (null != grade) {
         if (grade.passed) passed2 += 1
-        grade.gp foreach { gp => gpa2 += grade.course.credits * gp }
-        grade.score foreach { score => ga2 += grade.course.credits * score }
+        grade.gp foreach { gp => gpa2 += grade.credits * gp }
+        grade.score foreach { score => ga2 += grade.credits * score }
       } else {
         fullGrade2 = false
       }
-      credit2 += course.credits
+      credit2 += course.getCredits(level)
     }
 
     var success = false
     if (!existOrigGrade && fullGrade2) {
       success = true
     } else {
-      if ((fullGrade2) && (credit1 > 0 && credit2 > 0)) {
+      if (fullGrade2 && (credit1 > 0 && credit2 > 0)) {
         // 优先比较绩点，其次比较分数，最后比较是否通过.
         var gpaCompare = 0
         if (gpa1 > 0 || gpa2 > 0) {

@@ -100,6 +100,10 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
 
   var clazz: Option[Clazz] = None
 
+  def credits: Float = {
+    if null == std || null == course then 0f else course.getCredits(std.level)
+  }
+
   /**
    * 得到指定的考试成绩
    */

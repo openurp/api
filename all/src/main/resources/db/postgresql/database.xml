@@ -350,7 +350,7 @@
             <column name="code" type="varchar(32)" nullable="false" comment="课程代码"/>
             <column name="course_type_id" type="integer" nullable="false" comment="建议课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" comment="学时/总课时"/>
-            <column name="credits" type="float4" nullable="false" comment="学分"/>
+            <column name="default_credits" type="float4" nullable="false" comment="学分"/>
             <column name="department_id" type="integer" nullable="false" comment="院系ID"/>
             <column name="en_name" type="varchar(300)" comment="课程英文名"/>
             <column name="end_on" type="date" comment="失效日期"/>
@@ -421,17 +421,32 @@
             <index name="idx_stfe4bsgtttmfke9q01mcn86k" columns="course_id"/>
           </indexes>
         </table>
+        <table name="courses_level_credits" comment="培养层次学分@edu">
+          <columns>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="education_level_id" type="integer" nullable="false" comment="培养层次ID"/>
+            <column name="value_" type="float4" nullable="false" comment="培养层次学分"/>
+          </columns>
+          <primary-key name="pk_rp78tpdutg1g4rg1d9uf4wgr9" columns="course_id,value_,education_level_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_ep8pgo6ofk9b03hma481xck6b" column="course_id" referenced-table="base.courses"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_d9noa4evvsa4ayiovx2i4ehjw" columns="course_id"/>
+          </indexes>
+        </table>
         <table name="courses_levels" comment="学历层次列表@edu">
           <columns>
-            <column name="academic_level_id" type="integer" nullable="false" comment="学历层次ID"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="education_level_id" type="integer" nullable="false" comment="培养层次ID"/>
           </columns>
-          <primary-key name="pk_4mtg5wprk0penmjd20btm7iy7" columns="course_id,academic_level_id"/>
+          <primary-key name="pk_4mtg5wprk0penmjd20btm7iy7" columns="course_id,education_level_id"/>
           <foreign-keys>
             <foreign-key name="fk_7e0xi75qsamjo0196oketqxw6" column="course_id" referenced-table="base.courses"
                          referenced-column="id"/>
-            <foreign-key name="fk_l4vdd2ltqwuejkv8vhvc6d0a1" column="academic_level_id"
-                         referenced-table="code.academic_levels" referenced-column="id"/>
+            <foreign-key name="fk_p85dfwguxaip33iqfkaq5x739" column="education_level_id"
+                         referenced-table="code.education_levels" referenced-column="id"/>
           </foreign-keys>
           <indexes>
             <index name="idx_a28ih2a6htcdlct7gyr69oulb" columns="course_id"/>
@@ -3286,6 +3301,22 @@
             <index name="idx_dtwnr7ysxuukruvulscomb6on" columns="clazz_id"/>
           </indexes>
         </table>
+        <table name="clazzes_levels" comment="面向培养层次@clazz">
+          <columns>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="education_level_id" type="integer" nullable="false" comment="培养层次ID"/>
+          </columns>
+          <primary-key name="pk_i68q454w5kfdeuq347y3g80b5" columns="clazz_id,education_level_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_jfoiyh09plik4q4prjyj5ef6k" column="clazz_id" referenced-table="edu.clazzes"
+                         referenced-column="id"/>
+            <foreign-key name="fk_iefbde4y8wt7t16eio0irvptm" column="education_level_id"
+                         referenced-table="code.education_levels" referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_a5w44qyltpf2rwijkp0ctxn6k" columns="clazz_id"/>
+          </indexes>
+        </table>
         <table name="clazzes_tags" comment="教学任务标签@clazz">
           <columns>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
@@ -3849,6 +3880,7 @@
             <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="direction_id" type="bigint" comment="该组针对的专业方向ID"/>
             <column name="given_name" type="varchar(100)" comment="自定义别名"/>
+            <column name="hour_ratios" type="varchar(255)" comment="要求学时比例"/>
             <column name="indexno" type="varchar(20)" nullable="false" comment="索引号"/>
             <column name="parent_id" type="bigint" comment="上级组ID"/>
             <column name="plan_id" type="bigint" nullable="false" comment="计划ID"/>
@@ -4298,7 +4330,6 @@
             <column name="department_id" type="integer" comment="院系ID"/>
             <column name="direction_id" type="bigint" comment="适用方向ID"/>
             <column name="from_grade" type="varchar(10)" nullable="false" comment="起始年级"/>
-            <column name="level_id" type="integer" nullable="false" comment="学历层次ID"/>
             <column name="major_id" type="bigint" comment="适用专业ID"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
@@ -4308,8 +4339,6 @@
           </columns>
           <primary-key name="pk_scvgmvao9tsvfcm1whcnxvu3b" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_7xu75jd32fk2ix62yrruxxsgd" column="level_id" referenced-table="code.academic_levels"
-                         referenced-column="id"/>
             <foreign-key name="fk_tje28di1a4lc9p4dc77uomij3" column="project_id" referenced-table="base.projects"
                          referenced-column="id"/>
             <foreign-key name="fk_38vktyypc4qx0hqcwkb7d6ibr" column="major_id" referenced-table="base.majors"
@@ -4367,6 +4396,7 @@
             <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="direction_id" type="bigint" comment="该组针对的专业方向ID"/>
             <column name="given_name" type="varchar(100)" comment="自定义别名"/>
+            <column name="hour_ratios" type="varchar(255)" comment="要求学时比例"/>
             <column name="indexno" type="varchar(20)" nullable="false" comment="索引号"/>
             <column name="parent_id" type="bigint" comment="上级组ID"/>
             <column name="plan_id" type="bigint" nullable="false" comment="计划ID"/>
@@ -4804,7 +4834,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="contents" type="varchar(255)" nullable="false" comment="限制内容"/>
-            <column name="include_in" type="boolean" nullable="false" comment="是否包含限定内容"/>
+            <column name="included" type="boolean" nullable="false" comment="是否包含限定内容"/>
             <column name="meta" type="integer" nullable="false" comment="限制具体项目"/>
             <column name="restriction_id" type="bigint" nullable="false" comment="所在限制组ID"/>
           </columns>
@@ -5221,6 +5251,7 @@
             <column name="credit_hours" type="integer" nullable="false" comment="要求学时"/>
             <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="given_name" type="varchar(255)" comment="别名"/>
+            <column name="hour_ratios" type="varchar(255)" comment="要求学时比例"/>
             <column name="indexno" type="varchar(20)" nullable="false" comment="索引号"/>
             <column name="parent_id" type="bigint" comment="上级组ID"/>
             <column name="plan_id" type="bigint" nullable="false" comment="计划ID"/>
@@ -5614,7 +5645,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="birthday" type="date" comment="出生日期"/>
             <column name="contact" type="varchar(255)" comment="联系方式"/>
-            <column name="degree_award_by" type="varchar(255)" comment="degreeAwardBy?"/>
+            <column name="degree_award_by" type="varchar(255)" comment="学位授予单位"/>
             <column name="degree_id" type="integer" comment="学位ID"/>
             <column name="degree_level_id" type="integer" nullable="false" comment="学位层次ID"/>
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>

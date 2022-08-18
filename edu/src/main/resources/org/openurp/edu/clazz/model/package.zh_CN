@@ -56,6 +56,7 @@ ClazzTag.color=颜色
 
 Enrollment=教学班
 Enrollment.grade = 年级
+Enrollment.levels=面向培养层次
 Enrollment.depart=学生所在部门
 Enrollment.actual=学生人数
 Enrollment.capacity=人数上限

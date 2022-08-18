@@ -60,14 +60,9 @@ class MajorAlternativeCourse extends AlternativeCourse with Remark {
   var project: Project = _
 
   /**
-   * 获取培养层次
-   */
-  var level: AcademicLevel = _
-  /**
    * 起始年级.
    */
   var fromGrade: String = _
-
   /** 截至年级 */
   var toGrade: String = _
 

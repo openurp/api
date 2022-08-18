@@ -19,10 +19,12 @@ package org.openurp.base.edu.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo._
-import org.openurp.base.edu.code._
+import org.beangle.data.model.pojo.*
+import org.openurp.base.edu.code.*
 import org.openurp.base.model.{Department, ProjectBased}
-import org.openurp.code.edu.model.{AcademicLevel, CourseNature, ExamMode, GradingMode, TeachingNature}
+import org.openurp.code.edu.model.*
+
+import scala.collection.mutable
 
 /**
  * 课程基本信息 </p>
@@ -38,10 +40,12 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   with TemporalOn with Coded with Named with Remark {
   /** 课程英文名 */
   var enName: Option[String] = None
-  /** 学历层次 */
-  var levels = Collections.newSet[AcademicLevel]
-  /** 学分 */
-  var credits: Float = _
+  /** 培养层次 */
+  var levels = Collections.newSet[EducationLevel]
+  /** 默认学分 */
+  var defaultCredits: Float = _
+  /** 培养层次学分 */
+  var levelCredits: mutable.Map[EducationLevel, Float] = Collections.newMap[EducationLevel, Float]
   /** 学时/总课时 */
   var creditHours: Int = _
   /** 课程类别 */
@@ -94,6 +98,10 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 是否实践课程 */
   def practical: Boolean = {
     nature.practical
+  }
+
+  def getCredits(level: EducationLevel): Float = {
+    levelCredits.getOrElse(level, defaultCredits)
   }
 }
 

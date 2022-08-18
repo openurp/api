@@ -5,6 +5,7 @@ create index idx_enrjhpjmn8iterehufbi0m2f6 on base.course_units (setting_id);
 create index idx_61og8rbqdd2y28rx2et5fdnxd on base.courses (code);
 create index idx_1frqftcod45ghtxsmgci3x40s on base.courses_ability_rates (course_id);
 create index idx_stfe4bsgtttmfke9q01mcn86k on base.courses_grading_modes (course_id);
+create index idx_d9noa4evvsa4ayiovx2i4ehjw on base.courses_level_credits (course_id);
 create index idx_a28ih2a6htcdlct7gyr69oulb on base.courses_levels (course_id);
 create index idx_nrw3kp2mrqymirhyhhbciyjhe on base.courses_majors (course_id);
 create index idx_9p2rpmgl437gq3r5n1cwsjyo9 on base.courses_teachers (course_id);
@@ -53,6 +54,7 @@ create index idx_q8ai1qbh3e9pvh1up7l4uuw6u on edu.cfg_schedule_setting_departs (
 create index idx_2nu751wwcosaoh3kd2a36ycdj on edu.clazzes (group_id);
 create index idx_9bwygbyci888eug6sjs5ihbqq on edu.clazzes (project_id, semester_id, teach_depart_id);
 create index idx_dtwnr7ysxuukruvulscomb6on on edu.clazzes_ability_rates (clazz_id);
+create index idx_a5w44qyltpf2rwijkp0ctxn6k on edu.clazzes_levels (clazz_id);
 create index idx_8w82phrf16wpnbxdoqo3otrtk on edu.clazzes_tags (clazz_id);
 create index idx_ljvsyyihis2oe1m3gt3rffg2m on edu.clazzes_teachers (clazz_id);
 create index idx_n27g9imaanyl2kggxag56rvhs on edu.course_audit_results (group_result_id);

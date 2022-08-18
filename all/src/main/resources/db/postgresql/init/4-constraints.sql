@@ -29,8 +29,9 @@ alter table base.courses_ability_rates add constraint fk_gmkdn8k97mgmyfmxr8t6qp4
 alter table base.courses_ability_rates add constraint fk_ny3ok1iohat9t522ldim3hhi7 foreign key (course_id) references base.courses (id);
 alter table base.courses_grading_modes add constraint fk_7i9hlkj25vis9lrhu46o4uefx foreign key (grading_mode_id) references code.grading_modes (id);
 alter table base.courses_grading_modes add constraint fk_jrqhe3q83vm6pywb00r3py3ya foreign key (course_id) references base.courses (id);
+alter table base.courses_level_credits add constraint fk_ep8pgo6ofk9b03hma481xck6b foreign key (course_id) references base.courses (id);
 alter table base.courses_levels add constraint fk_7e0xi75qsamjo0196oketqxw6 foreign key (course_id) references base.courses (id);
-alter table base.courses_levels add constraint fk_l4vdd2ltqwuejkv8vhvc6d0a1 foreign key (academic_level_id) references code.academic_levels (id);
+alter table base.courses_levels add constraint fk_p85dfwguxaip33iqfkaq5x739 foreign key (education_level_id) references code.education_levels (id);
 alter table base.courses_majors add constraint fk_dayh72llaqamf2xkwycii9yw9 foreign key (major_id) references base.majors (id);
 alter table base.courses_majors add constraint fk_dbl375xu4pmh6nt4as03klasq foreign key (course_id) references base.courses (id);
 alter table base.courses_teachers add constraint fk_3wl4nefhpvfpymqs82duuy47y foreign key (teacher_id) references base.teachers (id);
@@ -240,6 +241,8 @@ alter table edu.clazzes add constraint fk_r867k2gvndergonma662p4id9 foreign key 
 alter table edu.clazzes add constraint fk_sscc45j4np46bdjaflb5tk87f foreign key (group_id) references edu.clazz_groups (id);
 alter table edu.clazzes_ability_rates add constraint fk_56s4i33m3fuiugexl7bdxetdy foreign key (course_ability_rate_id) references base.c_course_ability_rates (id);
 alter table edu.clazzes_ability_rates add constraint fk_b8unl65rdwbtkvgou7sf2s58r foreign key (clazz_id) references edu.clazzes (id);
+alter table edu.clazzes_levels add constraint fk_iefbde4y8wt7t16eio0irvptm foreign key (education_level_id) references code.education_levels (id);
+alter table edu.clazzes_levels add constraint fk_jfoiyh09plik4q4prjyj5ef6k foreign key (clazz_id) references edu.clazzes (id);
 alter table edu.clazzes_tags add constraint fk_7r9kr1vfdkut7yw4vloynk09h foreign key (clazz_id) references edu.clazzes (id);
 alter table edu.clazzes_tags add constraint fk_qvu6wp6cn3owqcfmhecjd3apd foreign key (clazz_tag_id) references edu.c_clazz_tags (id);
 alter table edu.clazzes_teachers add constraint fk_9t0p4g06kld01v7ejwgkme3uy foreign key (clazz_id) references edu.clazzes (id);
@@ -371,7 +374,6 @@ alter table edu.lessons_rooms add constraint fk_mr17ypyjgprux7h9g7wmevlwe foreig
 alter table edu.lessons_teachers add constraint fk_bt06178c4t8fahu5hwce1j80v foreign key (lesson_id) references edu.lessons (id);
 alter table edu.lessons_teachers add constraint fk_ncqrcxq1s30byb4ic0u35mchx foreign key (teacher_id) references base.teachers (id);
 alter table edu.major_alt_courses add constraint fk_38vktyypc4qx0hqcwkb7d6ibr foreign key (major_id) references base.majors (id);
-alter table edu.major_alt_courses add constraint fk_7xu75jd32fk2ix62yrruxxsgd foreign key (level_id) references code.academic_levels (id);
 alter table edu.major_alt_courses add constraint fk_ar5jglrauar7v07hr4b5sgaes foreign key (std_type_id) references base.c_std_types (id);
 alter table edu.major_alt_courses add constraint fk_is1a5f0kxxrdh825rdi2vxvcb foreign key (direction_id) references base.directions (id);
 alter table edu.major_alt_courses add constraint fk_kw8nn4ka6l7bjwhe0585d13ri foreign key (department_id) references base.departments (id);

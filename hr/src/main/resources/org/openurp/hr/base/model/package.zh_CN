@@ -89,6 +89,7 @@ TeacherProfile.homepage=个人主页
 TeacherProfile.hasTqc=s是否有教师资格证
 TeacherProfile.tqcNumber=教师资格证编号
 TeacherProfile.oqc=其他职业资格证书和等级说明
+TeacherProfile.degreeAwardBy=学位授予单位
 
 TitleInfo=职称信息
 TitleInfo.staff=教职工
