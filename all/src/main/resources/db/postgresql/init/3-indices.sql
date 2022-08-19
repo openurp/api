@@ -1,12 +1,11 @@
 create index idx_t7g19kn25v4jhn6darbfa2stp on base.classrooms_departs (classroom_id);
 create index idx_3y1hwcx0xh0apfawnr099698f on base.classrooms_projects (classroom_id);
 create index idx_cio9wl9gex7fo85575w4112c4 on base.course_hours (course_id);
+create index idx_w33dd8gtyilc14ptwiwvx0w5 on base.course_levels (course_id);
 create index idx_enrjhpjmn8iterehufbi0m2f6 on base.course_units (setting_id);
 create index idx_61og8rbqdd2y28rx2et5fdnxd on base.courses (code);
 create index idx_1frqftcod45ghtxsmgci3x40s on base.courses_ability_rates (course_id);
-create index idx_moiqek95olgmni21hjo855luj on base.courses_edulevels (course_id);
 create index idx_stfe4bsgtttmfke9q01mcn86k on base.courses_grading_modes (course_id);
-create index idx_d9noa4evvsa4ayiovx2i4ehjw on base.courses_level_credits (course_id);
 create index idx_nrw3kp2mrqymirhyhhbciyjhe on base.courses_majors (course_id);
 create index idx_9p2rpmgl437gq3r5n1cwsjyo9 on base.courses_teachers (course_id);
 create index idx_cwi8j5mcog4kvgv6keicpliwn on base.courses_textbooks (course_id);

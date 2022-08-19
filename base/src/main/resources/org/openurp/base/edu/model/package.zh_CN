@@ -26,7 +26,6 @@ Course.education=学历层次
 Course.category=课程种类代码
 Course.credits=学分
 Course.defaultCredits=默认学分
-Course.levelCredits=培养层次学分
 Course.creditHours=学时/总课时
 Course.hours=分类课时
 Course.weekHours=周课时
@@ -55,6 +54,9 @@ CourseHour.creditHours=学时/总课时
 CourseHour.weeks=周数
 CourseHour.course=课程
 CourseHour.hourType=课时类别代码
+
+CourseLevel=课程分层次要求
+CourseLevel.credits=学分
 
 Direction=方向信息 专业领域
 Direction.code=专业方向编码

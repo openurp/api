@@ -20,13 +20,13 @@ alter table base.classrooms add constraint uk_3rf701tm9q4qyua4q0ydybv95 unique (
 alter table base.classrooms_departs add constraint pk_n5duwpuh4oq58kk8i61odk7h7 primary key (classroom_id,department_id);
 alter table base.classrooms_projects add constraint pk_cjgojafxa077u3fb2vicargx primary key (classroom_id,project_id);
 alter table base.course_hours add constraint pk_euy5bifeg4jalgolkkxa21w3f primary key (id);
+alter table base.course_levels add constraint pk_1mqdklheeg8p8nx65q4l3og8g primary key (id);
+alter table base.course_levels add constraint uk_59cbmhw5789an69kcq0j5g9i8 unique (course_id,level_id);
 alter table base.course_units add constraint pk_9eybgcnr9huwt9f43c30xud1m primary key (id);
 alter table base.courses add constraint pk_1lyj037fss3plmcutpx9b4r2x primary key (id);
 alter table base.courses add constraint uk_thp7tiw1cr1mvm9uy21fqflch unique (project_id,code);
 alter table base.courses_ability_rates add constraint pk_o072av0vclfvq7gpvr9gxat6u primary key (course_id,course_ability_rate_id);
-alter table base.courses_edulevels add constraint pk_o90dyoj4hhofc0d135rx1kfqa primary key (course_id,education_level_id);
 alter table base.courses_grading_modes add constraint pk_pmy94fkg457bni4cgs3nfsbyp primary key (course_id,grading_mode_id);
-alter table base.courses_level_credits add constraint pk_rp78tpdutg1g4rg1d9uf4wgr9 primary key (course_id,value_,education_level_id);
 alter table base.courses_majors add constraint pk_eymkpxyqwpqqtaond0nj71g1s primary key (course_id,major_id);
 alter table base.courses_teachers add constraint pk_lj3gh310g6ro1s6t13qunca7a primary key (course_id,teacher_id);
 alter table base.courses_textbooks add constraint pk_su8h61lhgrbuv4l18nkjb874 primary key (course_id,textbook_id);

@@ -74,13 +74,13 @@ alter table hr.teacher_profiles add constraint fk_toxox3o9xlmdxtxfhukydutqd fore
 alter table edu.major_alt_courses alter column level_id drop not null;
 alter table edu.major_alt_courses drop column level_id;
 
+
 create table edu.clazzes_levels (clazz_id bigint not null, education_level_id integer not null);
 alter table edu.clazzes_levels add constraint pk_i68q454w5kfdeuq347y3g80b5 primary key (clazz_id,education_level_id);
 
-create table base.courses_level_credits (course_id bigint not null, value_ float4 not null, education_level_id integer not null);
-alter table base.courses_level_credits add constraint pk_rp78tpdutg1g4rg1d9uf4wgr9 primary key (course_id,education_level_id);
+create table base.course_levels (course_id bigint not null, credits float4, id bigint not null, level_id integer not null);
+alter table base.course_levels add constraint pk_1mqdklheeg8p8nx65q4l3og8g primary key (id);
+alter table base.course_levels add constraint uk_59cbmhw5789an69kcq0j5g9i8 unique (course_id,level_id);
 
-create table base.courses_edulevels (course_id bigint not null, education_level_id integer not null);
-insert into base.courses_edulevels
-select cl.course_id,l.id from base.courses_levels cl,code.education_levels l where cl.academic_level_id=l.to_level_id;
-
+insert into base.course_levels(id,course_id,level_id)
+select next_id('base.course_levels'),cl.course_id,l.id from base.courses_levels cl,code.education_levels l where cl.academic_level_id=l.to_level_id;

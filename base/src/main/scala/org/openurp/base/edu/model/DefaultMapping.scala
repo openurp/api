@@ -47,13 +47,17 @@ class DefaultMapping extends MappingModule {
       e.enName is length(300)
       e.hours is depends("course")
       e.remark is length(500)
-      e.levels is table("courses_edulevels")
+      e.levels is depends("course")
       index("", true, e.project, e.code)
       index("", false, e.code)
     }
 
     bind[CourseHour].declare { e =>
       index("", false, e.course)
+    }
+
+    bind[CourseLevel] declare { e =>
+      index("", true, e.course, e.level)
     }
 
     bind[Direction].declare { e =>

@@ -16,12 +16,11 @@ create table base.classrooms (en_name varchar(255), room_no varchar(20), room_ty
 create table base.classrooms_departs (classroom_id bigint not null, department_id integer not null);
 create table base.classrooms_projects (classroom_id bigint not null, project_id integer not null);
 create table base.course_hours (course_id bigint not null, weeks integer not null, credit_hours integer not null, id bigint not null, teaching_nature_id integer not null);
+create table base.course_levels (course_id bigint not null, credits float4, id bigint not null, level_id integer not null);
 create table base.course_units (name varchar(20) not null, setting_id integer not null, en_name varchar(30) not null, begin_at smallint not null, id integer not null, indexno integer not null, part_id integer not null, end_at smallint not null);
-create table base.courses (course_type_id integer not null, remark varchar(500), begin_on date not null, teaching_office_id bigint, end_on date, name varchar(222) not null, updated_at timestamp not null, weeks integer not null, project_id integer not null, en_name varchar(300), credit_hours integer not null, credits float4 not null, has_makeup boolean not null, exam_mode_id integer not null, code varchar(32) not null, department_id integer not null, id bigint not null, calgp boolean not null, nature_id integer not null, week_hours integer not null, category_id integer);
+create table base.courses (course_type_id integer not null, code varchar(32) not null, remark varchar(500), begin_on date not null, teaching_office_id bigint, end_on date, name varchar(222) not null, updated_at timestamp not null, weeks integer not null, project_id integer not null, en_name varchar(300), credit_hours integer not null, credits float4 not null, has_makeup boolean not null, exam_mode_id integer not null, department_id integer not null, id bigint not null, calgp boolean not null, nature_id integer not null, week_hours integer not null, category_id integer);
 create table base.courses_ability_rates (course_id bigint not null, course_ability_rate_id integer not null);
-create table base.courses_edulevels (course_id bigint not null, education_level_id integer not null);
 create table base.courses_grading_modes (course_id bigint not null, grading_mode_id integer not null);
-create table base.courses_level_credits (course_id bigint not null, value_ float4 not null, education_level_id integer not null);
 create table base.courses_majors (course_id bigint not null, major_id bigint not null);
 create table base.courses_teachers (course_id bigint not null, teacher_id bigint not null);
 create table base.courses_textbooks (course_id bigint not null, textbook_id bigint not null);

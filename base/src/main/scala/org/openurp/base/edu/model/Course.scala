@@ -40,13 +40,11 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   with TemporalOn with Coded with Named with Remark {
   /** 课程英文名 */
   var enName: Option[String] = None
-  /** 培养层次 */
-  var levels = Collections.newSet[EducationLevel]
+  /** 培养层次要求 */
+  var levels = Collections.newBuffer[CourseLevel]
   /** 默认学分 */
   @deprecated("请使用defaultCredits", "0.30.0")
   var credits: Float = _
-  /** 培养层次学分 */
-  var levelCredits: mutable.Map[EducationLevel, Float] = Collections.newMap[EducationLevel, Float]
   /** 学时/总课时 */
   var creditHours: Int = _
   /** 课程类别 */
@@ -84,7 +82,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 教研室 */
   var teachingOffice: Option[TeachingOffice] = None
 
-  def defaultCredits:Float=credits
+  def defaultCredits: Float = credits
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
@@ -104,7 +102,10 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   }
 
   def getCredits(level: EducationLevel): Float = {
-    levelCredits.getOrElse(level, defaultCredits)
+    levels.find(_.level == level) match {
+      case None => defaultCredits
+      case Some(cl) => cl.credits.getOrElse(defaultCredits)
+    }
   }
 }
 
@@ -119,4 +120,13 @@ class CourseHour extends LongId {
   var creditHours: Int = _
   var weeks: Int = _
   var teachingNature: TeachingNature = _
+}
+
+/**
+ * 课程层次要求
+ */
+class CourseLevel extends LongId {
+  var course: Course = _
+  var level: EducationLevel = _
+  var credits: Option[Float] = _
 }

@@ -319,6 +319,27 @@
             <index name="idx_cio9wl9gex7fo85575w4112c4" columns="course_id"/>
           </indexes>
         </table>
+        <table name="course_levels" comment="课程分层次要求@edu">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="credits" type="float4" comment="学分"/>
+            <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
+          </columns>
+          <primary-key name="pk_1mqdklheeg8p8nx65q4l3og8g" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_9pbuxh67utphuhx8xw028mec1" column="level_id" referenced-table="code.education_levels"
+                         referenced-column="id"/>
+            <foreign-key name="fk_8bytgma8rd50gcy7hrdk094hr" column="course_id" referenced-table="base.courses"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_59cbmhw5789an69kcq0j5g9i8" columns="course_id,level_id"/>
+          </unique-keys>
+          <indexes>
+            <index name="idx_w33dd8gtyilc14ptwiwvx0w5" columns="course_id"/>
+          </indexes>
+        </table>
         <table name="course_units" comment="默认作息时间@edu">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
@@ -419,37 +440,6 @@
           </foreign-keys>
           <indexes>
             <index name="idx_stfe4bsgtttmfke9q01mcn86k" columns="course_id"/>
-          </indexes>
-        </table>
-        <table name="courses_level_credits" comment="培养层次学分@edu">
-          <columns>
-            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
-            <column name="education_level_id" type="integer" nullable="false" comment="培养层次ID"/>
-            <column name="value_" type="float4" nullable="false" comment="培养层次学分"/>
-          </columns>
-          <primary-key name="pk_rp78tpdutg1g4rg1d9uf4wgr9" columns="course_id,value_,education_level_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_ep8pgo6ofk9b03hma481xck6b" column="course_id" referenced-table="base.courses"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_d9noa4evvsa4ayiovx2i4ehjw" columns="course_id"/>
-          </indexes>
-        </table>
-        <table name="courses_levels" comment="学历层次列表@edu">
-          <columns>
-            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
-            <column name="education_level_id" type="integer" nullable="false" comment="培养层次ID"/>
-          </columns>
-          <primary-key name="pk_4mtg5wprk0penmjd20btm7iy7" columns="course_id,education_level_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_7e0xi75qsamjo0196oketqxw6" column="course_id" referenced-table="base.courses"
-                         referenced-column="id"/>
-            <foreign-key name="fk_p85dfwguxaip33iqfkaq5x739" column="education_level_id"
-                         referenced-table="code.education_levels" referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_a28ih2a6htcdlct7gyr69oulb" columns="course_id"/>
           </indexes>
         </table>
         <table name="courses_majors" comment="针对专业@edu">
@@ -4834,7 +4824,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="contents" type="varchar(255)" nullable="false" comment="限制内容"/>
-            <column name="included_in" type="boolean" nullable="false" comment="是否包含限定内容"/>
+            <column name="include_in" type="boolean" nullable="false" comment="是否包含限定内容"/>
             <column name="meta" type="integer" nullable="false" comment="限制具体项目"/>
             <column name="restriction_id" type="bigint" nullable="false" comment="所在限制组ID"/>
           </columns>
