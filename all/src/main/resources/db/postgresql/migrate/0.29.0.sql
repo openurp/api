@@ -71,13 +71,6 @@ alter table hr.teacher_profiles add constraint fk_kju81hx73juocdbum6bse9616 fore
 alter table hr.teacher_profiles add constraint fk_ms8kw00tamwnxdns4blv0m34f foreign key (education_degree_id) references code.education_degrees (id);
 alter table hr.teacher_profiles add constraint fk_toxox3o9xlmdxtxfhukydutqd foreign key (title_id) references code.professional_titles (id);
 
-alter table base.teachers drop column teacher_type_id;
-alter table base.teachers drop column status_id;
-alter table base.teachers drop column title_id;
-alter table base.teachers drop column education_degree_id;
-alter table base.teachers drop column degree_id;
-alter table base.teachers drop column formal_hr;
-
 alter table edu.major_alt_courses alter column level_id drop not null;
 alter table edu.major_alt_courses drop column level_id;
 
@@ -87,12 +80,7 @@ alter table edu.clazzes_levels add constraint pk_i68q454w5kfdeuq347y3g80b5 prima
 create table base.courses_level_credits (course_id bigint not null, value_ float4 not null, education_level_id integer not null);
 alter table base.courses_level_credits add constraint pk_rp78tpdutg1g4rg1d9uf4wgr9 primary key (course_id,education_level_id);
 
-create table base.courses_levels2 (course_id bigint not null, education_level_id integer not null);
-insert into base.courses_levels2
+create table base.courses_edulevels (course_id bigint not null, education_level_id integer not null);
+insert into base.courses_edulevels
 select cl.course_id,l.id from base.courses_levels cl,code.education_levels l where cl.academic_level_id=l.to_level_id;
 
-drop table base.courses_Levels;
-alter table base.courses_levels2 rename to courses_levels;
-
-alter table edu.restriction_items rename column include_in to included;
-alter table base.courses rename column credits to default_credits;

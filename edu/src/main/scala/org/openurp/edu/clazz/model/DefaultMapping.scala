@@ -55,6 +55,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[RestrictionItem].declare { e =>
+      e.included is column("include_in")
       index("", false, e.restriction)
     }
 

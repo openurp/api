@@ -47,6 +47,7 @@ class DefaultMapping extends MappingModule {
       e.enName is length(300)
       e.hours is depends("course")
       e.remark is length(500)
+      e.levels is table("courses_edulevels")
       index("", true, e.project, e.code)
       index("", false, e.code)
     }

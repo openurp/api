@@ -17,11 +17,11 @@ create table base.classrooms_departs (classroom_id bigint not null, department_i
 create table base.classrooms_projects (classroom_id bigint not null, project_id integer not null);
 create table base.course_hours (course_id bigint not null, weeks integer not null, credit_hours integer not null, id bigint not null, teaching_nature_id integer not null);
 create table base.course_units (name varchar(20) not null, setting_id integer not null, en_name varchar(30) not null, begin_at smallint not null, id integer not null, indexno integer not null, part_id integer not null, end_at smallint not null);
-create table base.courses (course_type_id integer not null, credit_hours integer not null, remark varchar(500), begin_on date not null, teaching_office_id bigint, end_on date, name varchar(222) not null, updated_at timestamp not null, weeks integer not null, project_id integer not null, en_name varchar(300), has_makeup boolean not null, exam_mode_id integer not null, code varchar(32) not null, department_id integer not null, id bigint not null, calgp boolean not null, nature_id integer not null, week_hours integer not null, category_id integer, default_credits float4 not null);
+create table base.courses (course_type_id integer not null, remark varchar(500), begin_on date not null, teaching_office_id bigint, end_on date, name varchar(222) not null, updated_at timestamp not null, weeks integer not null, project_id integer not null, en_name varchar(300), credit_hours integer not null, credits float4 not null, has_makeup boolean not null, exam_mode_id integer not null, code varchar(32) not null, department_id integer not null, id bigint not null, calgp boolean not null, nature_id integer not null, week_hours integer not null, category_id integer);
 create table base.courses_ability_rates (course_id bigint not null, course_ability_rate_id integer not null);
+create table base.courses_edulevels (course_id bigint not null, education_level_id integer not null);
 create table base.courses_grading_modes (course_id bigint not null, grading_mode_id integer not null);
 create table base.courses_level_credits (course_id bigint not null, value_ float4 not null, education_level_id integer not null);
-create table base.courses_levels (course_id bigint not null, education_level_id integer not null);
 create table base.courses_majors (course_id bigint not null, major_id bigint not null);
 create table base.courses_teachers (course_id bigint not null, teacher_id bigint not null);
 create table base.courses_textbooks (course_id bigint not null, textbook_id bigint not null);
@@ -248,7 +248,7 @@ create table edu.regular_grade_states_percents (regular_grade_state_id bigint no
 create table edu.regular_grades (updated_at timestamp not null, clazz_id bigint not null, score float4 not null, std_id bigint not null, id bigint not null, status integer not null);
 create table edu.regular_test_grades (regular_grade_id bigint not null, score integer not null, score_percent integer not null, test_type_id integer not null, id bigint not null);
 create table edu.regular_test_types (name varchar(255) not null, id integer not null);
-create table edu.restriction_items (included boolean not null, contents varchar(255) not null, restriction_id bigint not null, id bigint not null, meta integer not null);
+create table edu.restriction_items (include_in boolean not null, contents varchar(255) not null, restriction_id bigint not null, id bigint not null, meta integer not null);
 create table edu.restrictions (clazz_id bigint not null, cur_count integer not null, max_count integer not null, id bigint not null, prime boolean not null, parent_id bigint);
 create table edu.room_applies (school_id integer not null, apply_at timestamp not null, final_check_id bigint, depart_check_id bigint, id bigint not null, campus_id integer not null, require_multimedia boolean not null, unit_attendance integer not null, room_comment varchar(255), minutes integer not null, begin_on date not null, time_comment varchar(255), end_on date not null, speaker varchar(255) not null, activity_name varchar(255) not null, attendance_num integer not null, activity_type_id integer not null, attendance varchar(255) not null, approved boolean, apply_by_id bigint not null, mobile varchar(255) not null, department_id integer not null, email varchar(255), applicant varchar(255) not null);
 create table edu.room_applies_rooms (room_apply_id bigint not null, classroom_id bigint not null);

@@ -32,9 +32,12 @@ class RestrictionItem extends LongId with Cloneable {
 
   /**
    * 是否包含限定内容
-   *  不包含exclusive情况下，为排除限定内容
+   * 不包含exclusive情况下，为排除限定内容
    */
   var included: Boolean = _
+
+  @deprecated("请使用included", "0.30.0")
+  def includeIn: Boolean = included
 
   /** 限制内容 */
   var contents: String = _

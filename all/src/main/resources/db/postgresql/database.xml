@@ -350,7 +350,7 @@
             <column name="code" type="varchar(32)" nullable="false" comment="课程代码"/>
             <column name="course_type_id" type="integer" nullable="false" comment="建议课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" comment="学时/总课时"/>
-            <column name="default_credits" type="float4" nullable="false" comment="学分"/>
+            <column name="credits" type="float4" nullable="false" comment="学分"/>
             <column name="department_id" type="integer" nullable="false" comment="院系ID"/>
             <column name="en_name" type="varchar(300)" comment="课程英文名"/>
             <column name="end_on" type="date" comment="失效日期"/>
@@ -4834,7 +4834,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="contents" type="varchar(255)" nullable="false" comment="限制内容"/>
-            <column name="included" type="boolean" nullable="false" comment="是否包含限定内容"/>
+            <column name="included_in" type="boolean" nullable="false" comment="是否包含限定内容"/>
             <column name="meta" type="integer" nullable="false" comment="限制具体项目"/>
             <column name="restriction_id" type="bigint" nullable="false" comment="所在限制组ID"/>
           </columns>
