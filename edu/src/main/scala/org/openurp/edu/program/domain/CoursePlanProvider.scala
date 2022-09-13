@@ -17,11 +17,14 @@
 
 package org.openurp.edu.program.domain
 
+import org.openurp.base.edu.code.CourseType
+import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 import org.openurp.edu.program.model.{CoursePlan, ExecutionPlan, MajorPlan, StdPlan}
 
 /**
  * 培养计划提供者
+ *
  * @author chaostone
  *
  */
@@ -48,4 +51,12 @@ trait CoursePlanProvider {
    * @return
    */
   def getCoursePlan(std: Student): Option[CoursePlan]
+
+  /**获取某个课程针对学生的课程类别
+   *
+   * @param std
+   * @param course
+   * @return
+   */
+  def getCourseType(std: Student, course: Course): CourseType
 }

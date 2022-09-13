@@ -43,8 +43,7 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 培养层次要求 */
   var levels = Collections.newBuffer[CourseLevel]
   /** 默认学分 */
-  @deprecated("请使用defaultCredits", "0.30.0")
-  var credits: Float = _
+  var defaultCredits: Float = _
   /** 学时/总课时 */
   var creditHours: Int = _
   /** 课程类别 */
@@ -81,8 +80,6 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var hasMakeup: Boolean = _
   /** 教研室 */
   var teachingOffice: Option[TeachingOffice] = None
-
-  def defaultCredits: Float = credits
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
@@ -129,4 +126,10 @@ class CourseLevel extends LongId {
   var course: Course = _
   var level: EducationLevel = _
   var credits: Option[Float] = _
+
+  def this(c: Course, l: EducationLevel) = {
+    this()
+    this.course = c
+    this.level = l
+  }
 }

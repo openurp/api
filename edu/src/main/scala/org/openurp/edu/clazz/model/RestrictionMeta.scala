@@ -22,6 +22,7 @@ import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.model.Department
 import org.openurp.base.std.code.{StdLabel, StdType}
 import org.openurp.base.std.model.Squad
+import org.openurp.base.edu.code.EducationType
 import org.openurp.code.edu.model.EducationLevel
 import org.openurp.code.person.model.Gender
 
@@ -44,6 +45,8 @@ enum RestrictionMeta(val id: Int, contentType: Class[_]) {
   case Squad extends RestrictionMeta(7, classOf[Squad])
 
   case Level extends RestrictionMeta(8, classOf[EducationLevel])
+
+  case EduType extends RestrictionMeta(9, classOf[EducationType])
 
   case StdLabel extends RestrictionMeta(11, classOf[StdLabel])
 

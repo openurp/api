@@ -36,11 +36,11 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Student] declare { e =>
-      e.states is (depends("std"),orderby("endOn"))
+      e.states is(depends("std"), orderby("endOn"))
       e.remark is length(200)
 
-      index("", true, e.user, e.project)
-      index("", false, e.user)
+      index("", true, e.code, e.project)
+      index("", false, e.code)
       index("", false, e.state)
       index("", false, e.project)
     }
@@ -53,16 +53,20 @@ class DefaultMapping extends MappingModule {
       index("", false, e.squad)
     }
 
-    bind[Mentor] declare { e =>
-      index("", true, e.user)
+    bind[Mentor].declare { e =>
+      index("", true, e.staff)
+    }.generator(IdGenerator.Assigned)
+
+    bind[MinorMajor] generator IdGenerator.AutoIncrement
+    bind[ExternStudent]
+
+    bind[GraduateGrade] declare { e =>
+      index("", true, e.project, e.code)
     }
 
-    bind[MinorMajor] generator (IdGenerator.AutoIncrement)
-    bind[ExternStudent]
-    bind[GraduateGrade]
-    bind[Grade] declare { e =>
-      e.code is unique
-    }
+    bind[Grade].declare { e =>
+      index("", true, e.project, e.code)
+    }.generator(IdGenerator.Assigned)
 
     all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent]).cacheAll()
   }

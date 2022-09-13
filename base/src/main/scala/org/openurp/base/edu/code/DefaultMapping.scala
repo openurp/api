@@ -29,9 +29,7 @@ class DefaultMapping extends MappingModule {
     bind[CourseType]
     bind[CourseCategory]
     bind[CourseAbilityRate]
-    bind[TeacherType] declare { e =>
-      e.external is column("external_")
-    }
+    bind[EducationType]
     all.cacheAll()
   }
 }

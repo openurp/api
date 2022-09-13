@@ -131,6 +131,18 @@ class DefaultMapping extends MappingModule {
       e.remark is length(500)
     }
 
+    bind[Staff].declare { e =>
+      e.idNumber is length(18)
+      e.mobile is length(20)
+      e.email is length(100)
+      e.homepage is length(200)
+      e.organization is length(200)
+      e.name is length(100)
+      e.code is length(20)
+      e.external is column("external_")
+      index("", true, e.school, e.code)
+    }
+
     all.except(classOf[User], classOf[Person]).cacheable()
   }
 }

@@ -24,6 +24,7 @@ import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.{Course, Direction, Major}
 import org.openurp.base.model.{AuditStatus, Campus, Department, EduLevelBased}
 import org.openurp.base.std.code.StdType
+import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.{Degree, StudyType}
 
 /**
@@ -35,7 +36,7 @@ import org.openurp.code.edu.model.{Degree, StudyType}
 class Program extends LongId with Updated with Named with Cloneable with DateRange with EduLevelBased with Remark {
 
   /** 年级 */
-  var grade: String = _
+  var grade: Grade = _
 
   /** 部门 */
   var department: Department = _

@@ -42,7 +42,7 @@ class Country extends CodeBean {
 @code("nation")
 class Division extends CodeBean {
   /** 父级 */
-  var parent: Division = _
+  var parent: Option[Division] = None
 
   var children = Collections.newBuffer[Division]
 }

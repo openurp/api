@@ -17,16 +17,16 @@
 
 package org.openurp.hr.workload.service
 
-import org.openurp.base.edu.code.TeacherType
 import org.openurp.base.edu.model.Teacher
 import org.openurp.base.model.Semester
+import org.openurp.code.hr.model.StaffType
 import org.openurp.code.job.model.ProfessionalGrade
 
 trait TeacherPeriodLimitService {
 
   def getMaxPeriod(teacher: Teacher): Int
 
-  def getMaxPeriod(grade: ProfessionalGrade, teacherType: TeacherType): Int
+  def getMaxPeriod(grade: ProfessionalGrade, staffType: StaffType): Int
 
   def getTeacherPeriods(teacher: Teacher, semester: Semester): Int
 }

@@ -28,6 +28,8 @@ Examinee.score=招生录取总分
 Examinee.scores=各科分数
 Examinee.province=报考省市
 Examinee.preparatory=是否预科生
+Examinee.client=委培单位
+Examinee.letterNo=录取通知书号
 
 Graduation=毕业信息
 Graduation.certificateNo=毕业证书编号

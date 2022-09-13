@@ -20,11 +20,8 @@ package org.openurp.base.edu.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.edu.code.TeacherType
 import org.openurp.base.model.*
-import org.openurp.code.edu.model.{Degree, EducationDegree}
-import org.openurp.code.hr.model.WorkStatus
-import org.openurp.code.job.model.ProfessionalTitle
+import org.openurp.code.job.model.TutorType
 import org.openurp.code.person.model.Gender
 
 import scala.collection.mutable
@@ -32,13 +29,10 @@ import scala.collection.mutable
 /**
  * 教师信息
  */
-class Teacher extends LongId with Coded with Named with Updated with TemporalOn with Remark {
+class Teacher extends LongId with TemporalOn with Named with Remark {
 
-  /** 学校 */
-  var school: School = _
-
-  /** 性别 */
-  var gender: Gender = _
+  /** 教职工 */
+  var staff: Staff = _
 
   /** 所在教学部门 */
   var department: Department = _
@@ -46,4 +40,21 @@ class Teacher extends LongId with Coded with Named with Updated with TemporalOn 
   /** 项目列表 */
   var projects: mutable.Set[Project] = Collections.newSet[Project]
 
+  /** 任教校区 */
+  var campuses: mutable.Set[Campus] = Collections.newSet[Campus]
+
+  /** 导师类型 */
+  var tutorType: Option[TutorType] = None
+
+  /** 教师资格证编号 */
+  var tqcNumber: Option[String] = None
+
+  /** 其他职业资格证书和等级说明 */
+  var oqc: Option[String] = None
+
+  /** 工号 */
+  def code: String = staff.code
+
+  /** 性别 */
+  def gender: Gender = staff.gender
 }

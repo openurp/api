@@ -36,9 +36,6 @@ class RestrictionItem extends LongId with Cloneable {
    */
   var included: Boolean = _
 
-  @deprecated("请使用included", "0.30.0")
-  def includeIn: Boolean = included
-
   /** 限制内容 */
   var contents: String = _
 }

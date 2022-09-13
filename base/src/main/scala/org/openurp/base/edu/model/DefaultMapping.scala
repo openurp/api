@@ -17,7 +17,7 @@
 
 package org.openurp.base.edu.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
@@ -101,9 +101,12 @@ class DefaultMapping extends MappingModule {
       e.fromGrade & e.toGrade are length(10)
     }
 
-    bind[Teacher] declare { e =>
-      index("", true, e.code)
-    }
+    bind[Teacher].declare { e =>
+      e.tqcNumber is length(20)
+      e.oqc is length(200)
+      e.name is length(100)
+      index("", true, e.staff)
+    }.generator(IdGenerator.Assigned)
 
     bind[Textbook] declare { e =>
       e.name is length(300)

@@ -17,10 +17,10 @@
 
 package org.openurp.code.hr.model
 
-import org.beangle.data.model.annotation.code
-import org.openurp.code.CodeBean
 import org.beangle.commons.collection.Collections
+import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.Hierarchical
+import org.openurp.code.CodeBean
 
 /**
  * 教职工类别
@@ -28,16 +28,17 @@ import org.beangle.data.model.pojo.Hierarchical
  */
 @code("industry")
 class StaffType extends CodeBean {
-  var parent: StaffType = _
+  var parent: Option[StaffType] = None
   var children = Collections.newBuffer[StaffType]
 }
+
 /**
  * 教职工来源
  * 参见教育部标准JY/T 1001 4.4.17
  */
 @code("industry")
 class StaffSourceType extends CodeBean {
-  var parent: StaffSourceType = _
+  var parent: Option[StaffSourceType] = None
   var children = Collections.newBuffer[StaffSourceType]
 }
 
@@ -54,6 +55,14 @@ class WorkStatus extends CodeBean
  */
 @code("industry")
 class UserCategory extends CodeBean
+
+object UserCategory {
+  def apply(id: Int): UserCategory = {
+    val uc = new UserCategory
+    uc.id = id
+    uc
+  }
+}
 
 /**
  * 部门分类

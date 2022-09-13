@@ -17,22 +17,23 @@
 
 package org.openurp.std.info.model
 
-import java.time.LocalDate
-
-import org.openurp.code.geo.model.Division
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.Major
+import org.openurp.base.model.Department
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.EnrollMode
-import org.openurp.code.edu.model.EducationMode
+import org.openurp.code.edu.model.{EducationMode, EnrollMode}
+import org.openurp.code.geo.model.Division
+
+import java.time.LocalDate
 
 /**
  * 考生信息
  */
-class Examinee extends LongId with Updated{
+class Examinee extends LongId with Updated {
 
-  /**学生*/
+  /** 学生 */
   var std: Student = _
 
   /** 考生号 */
@@ -44,22 +45,30 @@ class Examinee extends LongId with Updated{
   /** 生源地 */
   var originDivision: Option[Division] = None
 
-  /** 毕业学校编号 */
-  var schoolNo: Option[String] = None
-
   /** 毕业学校名称 */
   var schoolName: Option[String] = None
 
   /** 毕业日期 */
   var graduateOn: Option[LocalDate] = None
 
+  /** 录取专业 */
+  var major: Option[Major] = None
+
+  /** 录取通知书号 */
+  var letterNo: Option[String] = None
+
   /** 招生录取总分 */
   var score: Option[Float] = None
 
   /** 各科分数 科目->浮点数 */
-  var scores = Collections.newMap[Integer, java.lang.Float]
+  var scores: Option[String] = None
 
-  /** 报考省市 */
-  var province: Option[String] = None
+  /** 入学方式 */
+  var enrollMode: Option[EnrollMode] = None
 
+  /** 培养方式 */
+  var educationMode: Option[EducationMode] = None
+
+  /**委培单位*/
+  var client:Option[String]=None
 }

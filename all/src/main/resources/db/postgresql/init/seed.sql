@@ -91,15 +91,46 @@ INSERT INTO code.professional_grades (id, code, name, en_name, begin_on, end_on,
 
 INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (11, '011', '教授', 1,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (12, '012', '副教授',1, NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
-INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (13, '013', '讲师', 1,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
-INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (14, '014', '助教',1, NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (13, '013', '讲师', 2,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (14, '014', '助教',3, NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (621, '621', '研究员（社会科学）', 1,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (622, '622', '副研究员（社会科学）',1, NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (623, '623', '助理研究员（社会科学）',2, NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (611, '611', '研究员（自然科学）', 1,NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (612, '612', '副研究员（自然科学）',1, NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.professional_titles (id, code, name, grade_id,en_name, begin_on, end_on, updated_at, remark) VALUES (613, '613', '助理研究员（自然科学）',2, NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '退休', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '离休', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (4, '04', '返聘', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (6, '06', '辞职', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (7, '07', '离职', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (11, '11', '在职', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (12, '12', '延聘', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (14, '14', '长病假', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (15, '15', '因公出国', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (16, '16', '停薪留职', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 
-INSERT INTO base.c_teacher_types (id, code, name, en_name, begin_on, end_on, updated_at, remark,retired,parttime,external_) VALUES (11, '11', '专任教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL,false,false,false);
-INSERT INTO base.c_teacher_types (id, code, name, en_name, begin_on, end_on, updated_at, remark,retired,parttime,external_) VALUES (12, '12', '教辅教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL,false,false,false);
-INSERT INTO base.c_teacher_types (id, code, name, en_name, begin_on, end_on, updated_at, remark,retired,parttime,external_) VALUES (13, '13', '兼职教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL,false,true,false);
+
+INSERT INTO code.staff_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (11, '11', '专任教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.staff_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (12, '12', '教辅教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.staff_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (13, '13', '兼职教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '1', '居民身份证', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '2', '军官证', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '3', '士兵证', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (4, '4', '文职干部证', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (5, '5', '部队离退休证', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (6, '6', '香港特区护照/身份证明', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (7, '7', '澳门特区护照/身份证明', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (8, '8', '台湾居民来往大陆通行证', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (9, '9', '境外永久居住证', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (10, 'A', '护照', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (11, 'B', '户口薄', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
+INSERT INTO code.id_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (12, 'Z', '其他', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
 
 insert into code.teaching_natures(id,code,name,category,begin_on,updated_at)
 select 1,'1','理论',1,current_date-1,now() where not exists(select * from code.teaching_natures tn where tn.id=1);
@@ -127,9 +158,46 @@ INSERT INTO code.user_categories (id, code, name, en_name, begin_on, end_on, upd
 INSERT INTO code.user_categories (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '管理人员', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.user_categories (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (4, '04', '其他', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 
+INSERT INTO code.tutor_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '博士生导师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.tutor_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '硕士生导师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.tutor_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '博士硕士生导师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+INSERT INTO code.activity_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '排课', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.activity_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '排考', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '在读', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (25, '25', '毕业', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '休学', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '退学', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (1, 'course', '--');
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (2, 'exam', '--');
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (3, 'apply', '--');
+
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '01', '汉族', 'HA',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (02, '02', '蒙古族','MG', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (03, '03', '回族', 'HU',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (04, '04', '藏族','ZA', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (05, '05', '维吾尔族','UG', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (06, '06', '苗族','MH', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (07, '07', '彝族','YI', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (08, '08', '壮族', 'ZH',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (09, '09', '布依族', 'BY',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (10, '10', '朝鲜族', 'CS',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (11, '11', '满族', 'MA',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (12, '12', '侗族', 'DO',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (14, '14', '白族', 'MA',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (15, '15', '土家族','TJ', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (17, '17', '哈萨克族','KZ', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (22, '22', '畲族','SH', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (23, '23', '高山族','GS', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (33, '33', '羌族', 'QI',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (37, '37', '仡佬族', 'GL',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (38, '38', '锡伯族', 'XB',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, updated_at, remark) VALUES (97, '97', '其他', 'QT',NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+
+insert into base.c_education_types(id,code,name,begin_on,updated_at) values(1,'1','普通本科',current_date -10,now());
+insert into base.c_std_types(id,code,name,begin_on,updated_at) values(1,'1','普通',current_date -10,now());
 
 -----------如下代码需要插入后修改---------
 insert into code.institutions(id,code,name,begin_on,updated_at)

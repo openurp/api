@@ -124,6 +124,9 @@ Teacher=教师信息
 Teacher.projects=所在项目
 Teacher.department=所在部门
 Teacher.remark=备注
+Teacher.tqcNumber=教师资格证编号
+Teacher.oqc=其他职业资格证书和等级说明
+Teacher.campuses=任教校区
 
 CourseUnit=默认作息时间
 CourseUnit.indexno=小节编号

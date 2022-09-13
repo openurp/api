@@ -18,7 +18,6 @@
 package org.openurp.base.edu.model
 
 import java.time.LocalDate
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Coded
@@ -27,6 +26,7 @@ import org.beangle.data.model.pojo.Remark
 import org.beangle.data.model.pojo.TemporalOn
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.{Department, ProjectBased}
+import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.DisciplineCategory
 import org.openurp.code.edu.model.EducationLevel
 
@@ -69,7 +69,7 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
   }
 
   def departments(date: LocalDate): Set[Department] = {
-    journals.filter(j => date.isAfter(j.beginOn) && (None == j.endOn || date.isBefore(j.endOn.get)))
+    journals.filter(j => date.isAfter(j.beginOn) && (j.endOn.isEmpty || date.isBefore(j.endOn.get)))
       .map(_.depart).toSet
   }
 
@@ -130,10 +130,10 @@ class SchoolLength extends LongId {
   var level: EducationLevel = _
 
   /**起始年级*/
-  var fromGrade: String = _
+  var fromGrade: Grade = _
 
   /**结束年级*/
-  var toGrade: Option[String] = None
+  var toGrade: Option[Grade] = None
 
   /**学制*/
   var normal: Float = _

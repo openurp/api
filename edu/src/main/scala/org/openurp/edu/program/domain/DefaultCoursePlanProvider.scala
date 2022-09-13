@@ -17,7 +17,9 @@
 
 package org.openurp.edu.program.domain
 
-import org.beangle.data.dao.EntityDao
+import org.beangle.data.dao.{EntityDao, OqlBuilder}
+import org.openurp.base.edu.code.CourseType
+import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 import org.openurp.edu.program.model.*
 
@@ -84,4 +86,33 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
     }
     matched.headOption
   }
+
+
+  override def getCourseType(std: Student, course: Course): CourseType = {
+    val plan = getCoursePlan(std).orNull
+    var planCourseType: CourseType = null
+    if (null != plan) {
+      for (cg <- plan.groups; if (cg != null && planCourseType == null)) {
+        cg.planCourses.find(_.course == course) foreach (_ => planCourseType = cg.courseType)
+      }
+    }
+    if (null == planCourseType) {
+      val grade = java.lang.Integer.valueOf(std.state.get.grade.code.substring(0, 4))
+      val builder = OqlBuilder.from[CourseType](classOf[SharePlan].getName, "sp").join("sp.groups", "spg")
+        .join("spg.planCourses", "spgp")
+        .where("spgp.course=:course", course)
+        .where("sp.project=:project", std.project)
+        .where("year(sp.beginOn)<=:grade and (sp.endOn is null or year(sp.endOn)>=:grade)", grade)
+        .select("spg.courseType")
+        .cacheable()
+      val types = entityDao.search(builder)
+      if (!types.isEmpty) {
+        planCourseType =
+          if (null != course.courseType && types.contains(course.courseType)) course.courseType else types.head
+      }
+    }
+    if (null == planCourseType) planCourseType = course.courseType
+    planCourseType
+  }
+
 }

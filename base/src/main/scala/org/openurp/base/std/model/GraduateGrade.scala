@@ -18,13 +18,15 @@
 package org.openurp.base.std.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.{Coded, Named}
+import org.openurp.base.model.Project
 
 import java.time.LocalDate
 
 /**
  * 毕业界别
  */
-class GraduateGrade extends IntId with Named {
+class GraduateGrade extends IntId with Coded with Named {
   var graduateYear: Int = _
+  var project: Project = _
 }

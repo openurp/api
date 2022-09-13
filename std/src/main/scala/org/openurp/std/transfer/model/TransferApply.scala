@@ -21,7 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.{AuditStatus, Department}
 import org.openurp.base.edu.model.{Direction, Major}
-import org.openurp.base.std.model.{Squad, Student}
+import org.openurp.base.std.model.{Grade, Squad, Student}
 import org.openurp.std.transfer.config.TransferOption
 
 /** 转专业申请 */
@@ -31,7 +31,7 @@ class TransferApply extends LongId with Updated {
   var std: Student = _
 
   /** 转出年级 */
-  var fromGrade: String = _
+  var fromGrade: Grade = _
 
   /** 转出院系 */
   var fromDepart: Department = _

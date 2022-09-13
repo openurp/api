@@ -15,20 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.base.model
+package org.openurp.std
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.code.job.model.TutorType
-
-/**
- * 导师信息
- */
-class TutorInfo extends LongId with TemporalOn {
-
-  var staff: Staff = _
-
-  /**导师类型*/
-  var tutorType: TutorType = _
+object Features {
 
 }

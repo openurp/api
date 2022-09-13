@@ -15,26 +15,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.base.model
+package org.openurp.edu.extern.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.code.job.model.{ DutyGrade, DutyType }
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.{Campus, Semester}
+import org.openurp.base.std.model.Student
+import org.openurp.edu.extern.code.CertificateSubject
+
+import java.time.Instant
+import java.util.Date
 
 /**
- * 行政职务信息
+ * 资格考试报名记录
+ *
+ * @author chaostone
  */
-class DutyInfo extends LongId with TemporalOn {
-
-  var staff: Staff = _
-
-  /**职务名称*/
-  var name: String = _
-
-  /**职务类型*/
-  var dutyType: DutyType = _
-
-  /**职务等级*/
-  var dutyGrade: DutyGrade = _
-
+class CertSignup extends LongId with Updated {
+  /** 学生 */
+  var std: Student = _
+  /** 学年学期 */
+  var semester: Semester = _
+  /** 报名科目 */
+  var subject: CertificateSubject = _
+  /** 报名费 */
+  var fee: Int = _
+  /** 准考证号码 */
+  var examNo: Option[String] = None
+  /** 报名IP */
+  var ip: String = _
 }

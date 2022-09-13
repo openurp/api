@@ -23,30 +23,15 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[DutyInfo]
-
-    bind[EducationInfo].declare { e =>
-      e.certificateNo is length(50)
-      e.major is length(100)
-      e.school is length(200)
-    }
-
     bind[TeacherProfile] declare { e =>
       e.intro is length(40000)
       e.harvest is length(40000)
-      e.teachingCareer is length(1000)
+      e.career is length(1000)
       e.titles is length(1000)
 
-      index("", true, e.teacher)
+      index("", true, e.staff)
     }
 
-    bind[Staff].declare { e =>
-      e.states is (depends("staff"))
-    }
-
-    bind[StaffState]
     bind[TitleInfo]
-    bind[TutorInfo]
-    bind[WorkInfo]
   }
 }

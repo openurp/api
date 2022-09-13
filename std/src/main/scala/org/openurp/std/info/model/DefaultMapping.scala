@@ -22,17 +22,12 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[Admission].declare { e =>
-      e.std is notnull
-      e.letterNo is length(30)
-    }
+
     bind[Examinee].declare { e =>
       e.code is length(30)
       e.examNo is length(30)
-      e.schoolNo is length(30)
+      e.letterNo is length(30)
       e.schoolName is length(200)
-      e.province is length(50)
-      e.scores is eleColumn("score")
     }
 
     bind[Graduation] declare { e =>

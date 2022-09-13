@@ -1,5 +1,5 @@
 Mentor=辅导员
-Mentor.user=用户
+Mentor.mobile=联系电话
 
 Squad=学生行政班级信息
 Squad.code=编码代码
@@ -25,6 +25,8 @@ Student=学籍信息实现
 Student.squad=行政班级
 Student.campus=校区
 Student.code=学号
+Student.name=姓名
+Student.enName=姓名拼音
 Student.grade=年级
 Student.department=管理院系
 Student.major=专业
@@ -38,7 +40,6 @@ Student.department=管理院系 行政管理院系
 Student.direction=方向 当前修读方向
 Student.duration=学制/学习年限
 Student.gender=性别
-Student.grade=年级
 Student.labels=学生分类标签
 Student.major=专业 当前修读专业
 Student.majorDepart=专业所在院系
@@ -76,3 +77,4 @@ GraduateGrade=毕业界别
 GraduateGrade.graduateYear=毕业年份
 
 Grade=年级
+Grade.enName=英文名

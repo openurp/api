@@ -22,6 +22,8 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
+    bind[CertSignup]
+
     bind[CertificateGrade].declare { e =>
       e.scoreText is length(5)
       e.certificate & e.examNo are length(80)
@@ -29,6 +31,11 @@ class DefaultMapping extends MappingModule {
     bind[ExternGrade] declare { e =>
       e.courseName is length(400)
       e.scoreText is length(20)
+    }
+    bind[CertExemptApply] declare { e =>
+      e.certificate is length(80)
+      e.attachmentPath is length(100)
+      e.reasons is length(500)
     }
   }
 }

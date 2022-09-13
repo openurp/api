@@ -18,12 +18,13 @@
 package org.openurp.base.std.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo.*
 import org.beangle.data.model.{Component, LongId}
 import org.openurp.base.edu.model.*
 import org.openurp.base.model.*
 import org.openurp.base.std.code.{StdLabel, StdLabelType, StdType}
 import org.openurp.code.edu.model.{EducationLevel, StudyType}
+import org.openurp.code.person.model.Gender
 import org.openurp.code.std.model.StudentStatus
 
 import java.time.LocalDate
@@ -38,13 +39,16 @@ import scala.collection.mutable
  * @author chaostone
  * @since 2005
  */
-class Student extends LongId with EduLevelBased with Updated with Remark with DateRange {
+class Student extends LongId with Coded with Named with EduLevelBased with Updated with Remark with DateRange {
 
   /** 基本信息 */
   var person: Person = _
 
-  /** 用户信息 */
-  var user: User = _
+  /** 英文名 */
+  var enName: Option[String] = None
+
+  /** 性别 */
+  var gender: Gender = _
 
   /** 学生类别 所在项目内的学生类别 */
   var stdType: StdType = _
@@ -84,10 +88,6 @@ class Student extends LongId with EduLevelBased with Updated with Remark with Da
   /** 导师 */
   var tutor: Option[Teacher] = None
 
-  def code: String = user.code
-
-  def name: String = user.name
-
   def calcCurrentState(): Unit = {
     val today = LocalDate.now()
     this.state =
@@ -112,7 +112,7 @@ class StudentState extends LongId with StdEnrollment with DateRange with Remark 
   var std: Student = _
 
   /** 年级 */
-  var grade: String = _
+  var grade: Grade = _
 
   /** 管理院系 */
   var department: Department = _
@@ -162,7 +162,7 @@ class StudentScope extends Component {
 trait StdEnrollment {
 
   /** 年级 表示现在年级，不同于入学时间 */
-  def grade: String
+  def grade: Grade
 
   /** 管理院系 行政管理院系 */
   def department: Department

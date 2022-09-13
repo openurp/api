@@ -22,6 +22,7 @@ import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.code.{CourseAbilityRate, CourseType}
 import org.openurp.base.edu.model.{Course, Terms}
 import org.openurp.base.model.EduLevelBased
+import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.Language
 
 import scala.collection.mutable
@@ -35,10 +36,10 @@ import scala.collection.mutable.ListBuffer
 class SharePlan extends LongId with EduLevelBased with Named with Updated with TemporalOn with Remark with Cloneable {
 
   /** 起始年级 */
-  var fromGrade: String = _
+  var fromGrade: Grade = _
 
   /** 截止年级(包含) */
-  var toGrade: String = _
+  var toGrade: Grade = _
 
   /** 课程组 */
   var groups: mutable.Buffer[ShareCourseGroup] = new ListBuffer[ShareCourseGroup]

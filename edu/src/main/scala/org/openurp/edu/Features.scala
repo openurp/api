@@ -15,20 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.model
+package org.openurp.edu
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named}
-import org.openurp.base.model.Project
+object Features {
 
-/** 学生入学年级
- * */
-class Grade extends LongId with Coded with Named {
-  var project: Project = _
-  /** 英文名 */
-  var enName: Option[String] = None
+  /** 是否在计划预览界面链接课程简介 */
+  val ProgramLinkCourseEnabled = "edu.program.link_course_info_enabled"
 
-  override def toString: String = {
-    name
-  }
+  /** 是否支持培养计划中的学位绩点 */
+  val ProgramDegreeGpaSupported = "edu.program.degree_gpa_supported"
+
+  /** 是否支持培养计划中的学位课程 */
+  val ProgramDegreeCourseSupported = "edu.program.degree_course_supported"
 }

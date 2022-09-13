@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.*
 import org.openurp.base.model.{Department, Project}
 import org.openurp.base.std.code.StdType
-import org.openurp.base.std.model.Student
+import org.openurp.base.std.model.{Grade, Student}
 import org.openurp.code.edu.model.AcademicLevel
 
 /**
@@ -62,9 +62,9 @@ class MajorAlternativeCourse extends AlternativeCourse with Remark {
   /**
    * 起始年级.
    */
-  var fromGrade: String = _
+  var fromGrade: Grade = _
   /** 截至年级 */
-  var toGrade: String = _
+  var toGrade: Grade = _
 
   /**
    * 院系

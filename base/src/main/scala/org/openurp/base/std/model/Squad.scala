@@ -20,8 +20,8 @@ package org.openurp.base.std.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.edu.model.{Direction, Major}
-import org.openurp.base.model.{Campus, Department, EduLevelBased, User}
+import org.openurp.base.edu.model.{Direction, Major, Teacher}
+import org.openurp.base.model.*
 import org.openurp.base.std.code.StdType
 import org.openurp.base.std.model.{Mentor, StudentState}
 
@@ -36,7 +36,7 @@ import scala.collection.mutable
 class Squad extends LongId with EduLevelBased with Coded with Named with DateRange with Updated with Remark {
 
   /** 年级,形式为yyyy-p */
-  var grade: String = _
+  var grade: Grade = _
   /** 简称 */
   var shortName: Option[String] = None
   /** 专业英文名 */
@@ -48,17 +48,17 @@ class Squad extends LongId with EduLevelBased with Coded with Named with DateRan
   /** 方向 */
   var direction: Option[Direction] = None
   /** 学生类别 */
-  var stdType: StdType = _
+  var stdType: Option[StdType] = None
   /** 计划人数 */
   var planCount: Int = _
   /** 学籍有效人数 */
   var stdCount: Int = _
   /** 辅导员 */
-  var mentor: Option[User] = None
+  var mentor: Option[Staff] = None
   /** 班导师 */
-  var tutor: Option[User] = None
+  var tutor: Option[Staff] = None
   /** 班主任 */
-  var master: Option[User] = None
+  var master: Option[Staff] = None
   /** 学生状态 */
   var stdStates: mutable.Buffer[StudentState] = Collections.newBuffer[StudentState]
   /** 固定校区 */

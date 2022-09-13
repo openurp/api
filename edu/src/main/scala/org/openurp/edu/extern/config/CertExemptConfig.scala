@@ -15,33 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.base.model
+package org.openurp.edu.extern.config
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.code.job.model.ProfessionalTitle
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.InstantRange
+import org.openurp.base.edu.code.EducationType
+import org.openurp.base.model.{EduLevelBased, Project, Semester}
 
-/**工作经历信息*/
-class WorkInfo extends LongId with TemporalOn {
+import scala.collection.mutable
 
-  /**教职工*/
-  var staff: Staff = _
+/**
+ * 校外考试免修设置
+ */
+@config
+class CertExemptConfig extends LongId with InstantRange with EduLevelBased {
 
-  /**工作地点*/
-  var workPlace: String = _
+  var semester: Semester = _
 
-  /**工作内容*/
-  var workContent: String = _
+  var settings: mutable.Buffer[CertExemptSetting] = new mutable.ArrayBuffer[CertExemptSetting]
 
-  /**专业技术职务*/
-  var title: ProfessionalTitle = _
-
-  /**党政职务*/
-  var adminPosition: String = _
-
-  /**证明人*/
-  var witness: String = _
-
-  /**备注 */
-  var remark: String = _
+  var notice: String = _
 }

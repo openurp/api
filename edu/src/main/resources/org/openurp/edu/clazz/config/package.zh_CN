@@ -4,3 +4,10 @@ ScheduleSetting.timePublished=上课时间已发布
 ScheduleSetting.clazzEditable=任务可填报
 
 ScheduleSettingDepart=课程安排院系设置
+
+StdCreditStat=学生每学期选择教学班限制和统计
+StdCreditStat.totalCredits=已选学分
+StdCreditStat.maxCredits=学分上限
+StdCreditStat.totalNewCount=已选新课程门数(不含重修)
+StdCreditStat.maxNewCount=最多新选课程门数
+StdCreditStat.repeatCount=重修数量

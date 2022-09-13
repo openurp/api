@@ -55,7 +55,7 @@ ClazzTag.engName=英文名称
 ClazzTag.color=颜色
 
 Enrollment=教学班
-Enrollment.grade = 年级
+Enrollment.grades = 年级
 Enrollment.levels=面向培养层次
 Enrollment.depart=学生所在部门
 Enrollment.actual=学生人数
@@ -63,6 +63,7 @@ Enrollment.capacity=人数上限
 Enrollment.locked=是否锁定上限
 Enrollment.reserved=保留人数
 Enrollment.genderRatio=男女比
+Enrollment.shared=是否全校共享
 Enrollment.abilityRates=要求课程能力等级
 
 Schedule=课程安排

@@ -15,23 +15,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.base.model
+package org.openurp.base.service
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.base.model.Department
-import org.openurp.code.hr.model.WorkStatus
+import org.openurp.base.model.{Staff, User}
+import org.openurp.base.std.model.Student
 
-/**
- * 教工状态日志
- */
-class StaffState extends LongId with TemporalOn {
+trait UserRepo {
 
-  var staff: Staff = _
+  def createUser(staff: Staff): User
 
-  /** 部门 */
-  var department: Department = _
+  def createUser(std: Student): User
 
-  /** 在职状态*/
-  var status: WorkStatus = _
+  def activate(users: Iterable[User], active: Boolean): Unit
+
+  def updatePassword(userCode: String, password: String): Int
 }

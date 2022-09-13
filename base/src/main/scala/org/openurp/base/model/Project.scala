@@ -20,6 +20,7 @@ package org.openurp.base.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
 import org.beangle.data.model.{IntId, LongId}
+import org.openurp.base.edu.code.EducationType
 import org.openurp.base.model.{Campus, Department, School}
 import org.openurp.base.std.code.{StdLabel, StdType}
 import org.openurp.code.edu.model.{EduCategory, EducationLevel}
@@ -46,6 +47,9 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   var departments: mutable.Buffer[Department] = new mutable.ListBuffer[Department]
   /** 学历层次列表 */
   var levels: mutable.Buffer[EducationLevel] = new mutable.ListBuffer[EducationLevel]
+
+  /** 培养类型列表 */
+  var eduTypes: mutable.Buffer[EducationType] = new mutable.ListBuffer[EducationType]
   /** 学生分类列表 */
   var stdLabels: mutable.Buffer[StdLabel] = new mutable.ListBuffer[StdLabel]
   /** 学生类别 */
@@ -94,7 +98,10 @@ trait ProjectBased {
  */
 
 trait EduLevelBased extends ProjectBased {
+  /** 培养层次 */
   var level: EducationLevel = _
+  /** 培养类型 */
+  var eduType: EducationType = _
 }
 
 object ProjectPropertyType {

@@ -15,20 +15,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.model
+package org.openurp.std.exchange.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named}
-import org.openurp.base.model.Project
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.AuditStatus
+import org.openurp.base.std.model.ExternStudent
 
-/** 学生入学年级
- * */
-class Grade extends LongId with Coded with Named {
-  var project: Project = _
-  /** 英文名 */
-  var enName: Option[String] = None
+/** 交换免修申请
+ */
+class ExchangeExemptApply extends LongId with Updated {
+  /** 外部学习经历 */
+  var externStudent: ExternStudent = _
 
-  override def toString: String = {
-    name
-  }
+  /** 成绩单附件路径 */
+  var transcriptPath: Option[String] = None
+
+  /** 审核状态 */
+  var status: AuditStatus = AuditStatus.Draft
+
+  /** 审核意见 */
+  var auditOpinion: Option[String] = None
+
+  /** 申请冲抵的外校课程学分总计 */
+  var credits: Float = _
+
+  /** 冲抵本校课程的学分总计 */
+  var exemptionCredits: Float = _
 }

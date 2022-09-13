@@ -37,8 +37,8 @@ enum AuditStatus(val id: Int, val name: String) {
   case PassedByAdvisor extends AuditStatus(30, "导师审核通过")
   case RejectedByAdvisor extends AuditStatus(31, "导师审核不通过")
 
-  case PassedByDepart extends AuditStatus(50, "学院通过")
-  case RejectedByDepart extends AuditStatus(51, "学院不通过")
+  case PassedByDepart extends AuditStatus(50, "院系部通过")
+  case RejectedByDepart extends AuditStatus(51, "院系部不通过")
 
   case Rejected extends AuditStatus(99, "不通过")
   case Passed extends AuditStatus(100, "通过")

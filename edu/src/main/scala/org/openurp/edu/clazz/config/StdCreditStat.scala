@@ -15,17 +15,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.exchange.model
+package org.openurp.edu.clazz.config
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.annotation.config
+import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 
-class ExemptionCredit extends LongId with Remark with Updated {
+/** 学生每学期选择教学班限制和统计
+ */
+@config
+class StdCreditStat extends LongId {
 
   var std: Student = _
 
-  var exempted: Float = _
+  var semester: Semester = _
 
-  var maxValue: Float = _
+  /** 已选学分 */
+  var totalCredits: Float = _
+
+  /** 学分上限 */
+  var maxCredits: Float = _
+
+  /** 已选新课程门数
+   * 不含重修 */
+  var totalNewCount: Int = _
+
+  /** 最多新选课程门数 */
+  var maxNewCount: Int = _
+
+  /** 重修数量 */
+  var repeatCount: Int = _
 }

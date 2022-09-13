@@ -39,6 +39,17 @@ class Calendar extends IntId with Coded with Named with TemporalOn with Updated 
 
   /** 一周中的第一天是周几 */
   var firstWeekday: WeekDay = _
+
+  def weekdays: List[WeekDay] = {
+    val wds = Collections.newBuffer[WeekDay]
+    var first = firstWeekday
+    wds.addOne(first)
+    (1 to 6) foreach { i =>
+      first = first.next
+      wds.addOne(first)
+    }
+    wds.toList
+  }
 }
 
 /**
@@ -66,7 +77,7 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
   }
 
   def weeks: Int = {
-    Math.ceil(beginOn.until(endOn.plusDays(1), ChronoUnit.DAYS)/7.0).intValue()
+    Math.ceil(beginOn.until(endOn.plusDays(1), ChronoUnit.DAYS) / 7.0).intValue()
   }
 
   def this(id: Int, code: String, schoolYear: String, name: String) = {

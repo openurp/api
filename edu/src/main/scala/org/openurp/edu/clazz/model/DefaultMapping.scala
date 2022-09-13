@@ -38,7 +38,7 @@ class DefaultMapping extends MappingModule {
       e.teachers is ordered
       e.name is length(500)
       e.teachers is ordered
-      e.enrollment.grade is length(20)
+      e.enrollment.grades is length(40)
       e.exam.beginAt is column("exam_begin_at")
       e.exam.endAt is column("exam_end_at")
       e.enrollment.courseTakers & e.enrollment.restrictions & e.enrollment.subclazzes &
@@ -55,7 +55,6 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[RestrictionItem].declare { e =>
-      e.included is column("include_in")
       index("", false, e.restriction)
     }
 

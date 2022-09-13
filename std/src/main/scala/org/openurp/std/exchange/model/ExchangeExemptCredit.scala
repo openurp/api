@@ -15,44 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.info.model
+package org.openurp.std.exchange.model
 
 import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.EnrollMode
-import org.openurp.base.edu.model.Major
-import org.openurp.base.model.Department
-import java.time.LocalDate
-
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.EducationMode
 
-/**
- * 录取信息
- */
-class Admission extends LongId with Updated{
+class ExchangeExemptCredit extends LongId with Remark with Updated {
 
-  /** 学生 */
   var std: Student = _
 
-  /** 录取年月*/
-  var enrollOn: LocalDate = _
+  var exempted: Float = _
 
-  /** 录取专业*/
-  var major: Major = _
-
-  /** 录取院系*/
-  var department: Department = _
-
-  /** 录取通知书号 */
-  var letterNo: Option[String] = None
-
-  /** 录取第几志愿 */
-  var admissionIndex: Option[Int] = None
-
-  /** 入学方式 */
-  var enrollMode: Option[EnrollMode] = None
-
-  /** 培养方式*/
-  var educationMode: Option[EducationMode] = None
+  var maxValue: Float = _
 }

@@ -15,16 +15,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu
+package org.openurp.base
 
-object Properties {
+object Features {
+  /** 每学分对应学时数 */
+  val EduCourseHoursPerCredit = "edu.course.hours_per_credit"
 
-  /** 是否在计划预览界面链接课程简介 */
-  val ProgramLinkCourseEnabled = "edu.program.link_course_info_enabled"
+  /** 课程是否支持不同层次学分不同 */
+  val EduCourseLevelCreditSupported = "edu.course.level_credit_supported"
 
-  /** 是否支持培养计划中的学位绩点 */
-  val ProgramDegreeGpaSupported = "edu.program.degree_gpa_supported"
+  /** 学籍信息是否支持分班管理 */
+  val StdInfoSquadSupported = "std.info.squad_supported"
 
-  /** 是否支持培养计划中的学位课程 */
-  val ProgramDegreeCourseSupported = "edu.program.degree_course_supported"
+  /** 学籍信息中是否支持导师 */
+  val StdInfoTutorSupported = "std.info.tutor_supported"
 }

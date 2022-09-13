@@ -77,15 +77,8 @@ class CourseAbilityRate extends CodeBean {
   var rate: Int = _
 }
 
-/**
- * 教师类型
- */
+/** 培养类型 */
 @code("school")
-class TeacherType extends CodeBean {
-  /** 是否外聘 */
-  var external: Boolean = _
-  /** 是否兼职 */
-  var parttime: Boolean = _
-  /** 是否退休返聘 */
-  var retired: Boolean = _
+class EducationType extends CodeBean {
+
 }

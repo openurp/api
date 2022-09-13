@@ -18,10 +18,11 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{ Coded, Updated }
+import org.beangle.data.model.pojo.{Coded, Updated}
 import org.openurp.code.edu.model.Language
 import org.openurp.code.geo.model.Country
-import org.openurp.code.person.model.{ CompatriotType, Gender, IdType, Nation, Religion, PoliticalStatus }
+import org.openurp.code.person.model.*
+
 import java.time.LocalDate
 
 /**
@@ -29,46 +30,46 @@ import java.time.LocalDate
  */
 class Person extends LongId with Updated with Coded {
 
-  /**身份证件类型 */
+  /** 身份证件类型 */
   var idType: IdType = _
 
-  /**姓名*/
+  /** 姓名 */
   var name: Name = new Name
 
-  /**姓名拼音 */
+  /** 姓名拼音 */
   var phoneticName: Option[String] = None
 
-  /**曾用名 */
+  /** 曾用名 */
   var formerName: Option[String] = None
 
-  /**性别*/
+  /** 性别 */
   var gender: Gender = _
 
-  /**出生日期 */
-  var birthday: LocalDate = _
+  /** 出生日期 */
+  var birthday: Option[LocalDate] = None
 
-  /**出生地*/
+  /** 出生地 */
   var birthplace: Option[String] = None
 
-  /**籍贯 */
+  /** 籍贯 */
   var homeTown: Option[String] = None
 
-  /**民族 */
+  /** 民族 */
   var nation: Option[Nation] = None
 
-  /**政治面貌 */
+  /** 政治面貌 */
   var politicalStatus: Option[PoliticalStatus] = None
 
-  /**国籍/地区 */
+  /** 国籍/地区 */
   var country: Option[Country] = None
 
-  /**首要使用语言*/
+  /** 首要使用语言 */
   var language: Option[Language] = None
 
-  /**港澳台侨外 */
+  /** 港澳台侨外 */
   var compatriotType: Option[CompatriotType] = None
 
-  /**宗教信仰 */
+  /** 宗教信仰 */
   var religion: Option[Religion] = None
 
 }
@@ -77,21 +78,22 @@ import org.beangle.data.model.Component
 
 /**
  * 姓名
+ *
  * @see http://www.w3.org/International/questions/qa-personal-names
  * @see http://www.wikitree.com/wiki/Name_Fields
  */
 class Name extends Component {
 
-  /**名*/
+  /** 名 */
   var givenName: Option[String] = None
 
-  /**中间名*/
+  /** 中间名 */
   var middleName: Option[String] = None
 
-  /**姓*/
+  /** 姓 */
   var familyName: Option[String] = None
 
-  /**姓名*/
+  /** 姓名 */
   var formatedName: String = _
 
   override def toString: String = {

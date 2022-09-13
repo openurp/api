@@ -21,6 +21,7 @@ import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
 /**
  * 学生类别
+ * 例如留学生、港澳台等
  */
 @code("school")
 class StdType extends CodeBean

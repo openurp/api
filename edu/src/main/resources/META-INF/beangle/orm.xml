@@ -7,6 +7,7 @@
   <mapping class="org.openurp.edu.exam.config.DefaultMapping" name="exam.config"/>
   <mapping class="org.openurp.edu.extern.code.DefaultMapping" name="extern.code"/>
   <mapping class="org.openurp.edu.extern.model.DefaultMapping" name="extern"/>
+  <mapping class="org.openurp.edu.extern.config.DefaultMapping" name="extern.config"/>
   <mapping class="org.openurp.edu.grade.config.DefaultMapping" name="grade.config"/>
   <mapping class="org.openurp.edu.grade.model.DefaultMapping" name="grade.course"/>
   <mapping class="org.openurp.edu.grade.model.MoralMapping" name="grade.moral"/>

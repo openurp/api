@@ -20,7 +20,7 @@ package org.openurp.hr.base.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.job.model.ProfessionalTitle
-
+import org.openurp.base.model.Staff
 /**
  * 职称信息
  */

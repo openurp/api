@@ -26,5 +26,7 @@ class DefaultMapping extends MappingModule {
       e.departs is depends("setting")
     }
     bind[ScheduleSettingDepart]
+
+    bind[StdCreditStat]
   }
 }

@@ -18,20 +18,23 @@
 package org.openurp.edu.clazz.domain
 
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
+import org.openurp.base.edu.model.Teacher
 import org.openurp.base.model.{Project, Semester}
 import org.openurp.base.std.model.{Squad, Student}
 import org.openurp.edu.clazz.model.{Clazz, CourseTaker, RestrictionMeta}
 
 trait ClazzProvider {
-  def getStdClazzes(semester: Semester, std: Student): Seq[CourseTaker]
+  def getClazzes(semester: Semester, std: Student): Seq[CourseTaker]
 
-  def getSquadClazzes(semester: Semester, squad: Squad): Seq[Clazz]
+  def getClazzes(semester: Semester, squad: Squad): Seq[Clazz]
+
+  def getClazzes(semester: Semester, teacher: Teacher, project: Project): Seq[Clazz]
 }
 
 class DefaultClazzProvider extends ClazzProvider {
   var entityDao: EntityDao = _
 
-  override def getSquadClazzes(semester: Semester, squad: Squad): Seq[Clazz] = {
+  override def getClazzes(semester: Semester, squad: Squad): Seq[Clazz] = {
     val builder = OqlBuilder.from(classOf[Clazz], "clazz")
     builder.where("clazz.project = :project", squad.project)
     builder.where("clazz.semester = :semester", semester)
@@ -41,9 +44,16 @@ class DefaultClazzProvider extends ClazzProvider {
     entityDao.search(builder)
   }
 
-  override def getStdClazzes(semester: Semester, std: Student): Seq[CourseTaker] = {
+  override def getClazzes(semester: Semester, std: Student): Seq[CourseTaker] = {
     val query = OqlBuilder.from(classOf[CourseTaker], "ct")
     query.where("ct.clazz.project=:project and ct.semester=:semester and ct.std = :std", std.project, semester, std)
+    entityDao.search(query)
+  }
+
+  override def getClazzes(semester: Semester, teacher: Teacher, project: Project): Seq[Clazz] = {
+    val query = OqlBuilder.from(classOf[Clazz], "clazz")
+    query.where("clazz.project=:project and clazz.semester=:semester", project, semester)
+    query.where(":teacher in elements(clazz.teachers)", teacher)
     entityDao.search(query)
   }
 }

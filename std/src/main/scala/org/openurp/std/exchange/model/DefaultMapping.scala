@@ -22,7 +22,7 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[ExemptionApply].declare { e =>
+    bind[ExchangeExemptApply].declare { e =>
       index("", true, e.externStudent)
     }
 
@@ -31,8 +31,7 @@ class DefaultMapping extends MappingModule {
       e.scoreText is length(10)
     }
 
-    bind[ExemptionCredit]
-
+    bind[ExchangeExemptCredit]
     bind[ExchangeProgram].generator(IdGenerator.AutoIncrement)
   }
 }

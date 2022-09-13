@@ -18,17 +18,25 @@
 package org.openurp.base.std.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{TemporalOn, Updated}
-import org.openurp.base.model.{Project, School, User}
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
+import org.openurp.base.model.*
+import org.openurp.code.person.model.Gender
 
 /**
  * 辅导员
  */
-class Mentor extends LongId with Updated with TemporalOn {
+class Mentor extends LongId with Named with TemporalOn {
 
-  /** 学校 */
-  var school: School = _
-  /** 人员信息 */
-  var user: User = _
+  /** 教职工 */
+  var staff: Staff = _
+
+  /** 部门 */
+  def department: Department = staff.department
+
+  /**工号*/
+  def code: String = staff.code
+
+  /**性别*/
+  def gender: Gender = staff.gender
 
 }

@@ -31,10 +31,7 @@ class Enrollment extends Cloneable with Component {
   var depart: Option[Department] = None
 
   /** 年级 */
-  var grade: Option[String] = None
-
-  /** 培养层次 */
-  var levels = Collections.newSet[EducationLevel]
+  var grades: Option[String] = None
 
   /** 学生人数 */
   var actual: Int = _
@@ -67,6 +64,9 @@ class Enrollment extends Cloneable with Component {
 
   /** 上课名单分组 */
   var subclazzes = Collections.newBuffer[Subclazz]
+
+  /** 是否全校共享 */
+  var shared: Boolean = _
 }
 
 object Enrollment {

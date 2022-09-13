@@ -15,48 +15,44 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.fee.config
+package org.openurp.edu.extern.config
 
-import org.beangle.data.model.IntId
+import org.beangle.commons.lang.Strings
+import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.model.{Direction, Major}
-import org.openurp.base.model.Department
-import org.openurp.base.std.code.FeeType
-import org.openurp.base.std.model.Grade
+import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.EducationLevel
 
-/**
- * 收费缺省值
+import scala.collection.mutable
+
+/** 校外考试报名学生范围
+ *
  */
 @config
-class TuitionConfig extends IntId with Remark {
+class CertSignupScope extends LongId {
 
-  /** 起始年级 */
-  var fromGrade: Grade = _
+  var setting: CertSignupSetting = _
 
-  /** 截止年级 */
-  var toGrade: Grade = _
+  var grades: Option[String] = None
 
-  /**学制*/
-  var duration:Float=_
-
-  /** 学历层次 */
   var level: EducationLevel = _
 
-  /** 院系 */
-  var department: Option[Department] = None
+  var included: Boolean = _
 
-  /** 所属的专业 */
-  var major: Option[Major] = None
+  var codes: Option[String] = None
 
-  /** 所属的专业方向 */
-  var direction: Option[Direction] = None
-
-  /** 收费类型 */
-  var feeType: FeeType = _
-
-  /** 对应的值 */
-  var amount: Int = _
-
+  def matchStd(std: Student): Boolean = {
+    if (codes.nonEmpty) {
+      Strings.split(codes.get).toSet.contains(std.code)
+    } else {
+      if (std.level == this.level) {
+        grades match {
+          case None => true
+          case Some(g) => Strings.split(g).toSet.contains(std.state.get.grade)
+        }
+      } else {
+        false
+      }
+    }
+  }
 }

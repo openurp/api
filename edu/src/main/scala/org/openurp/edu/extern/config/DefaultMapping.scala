@@ -15,10 +15,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base
+package org.openurp.edu.extern.config
 
-object Properties {
-  /** 每学分对应学时数 */
-  val CourseHoursPerCredit = "edu.course.hours_per_credit"
+import org.beangle.data.orm.MappingModule
+
+class DefaultMapping extends MappingModule {
+
+  def binding(): Unit = {
+
+    bind[CertSignupConfig] declare { e =>
+      e.settings is depends("config")
+    }
+    bind[CertSignupSetting] declare { e =>
+      e.scopes is depends("setting")
+      e.exclusives is table("cfg_cert_signup_exclusives")
+    }
+
+    bind[CertSignupScope] declare { e =>
+      e.codes is length(20000)
+    }
+
+    bind[CertExemptConfig] declare { e =>
+      e.settings is depends("config")
+      e.notice is length(2000)
+    }
+
+    bind[CertExemptSetting] declare { e =>
+      e.courses is table("cfg_cert_exempt_courses")
+    }
+  }
 
 }
