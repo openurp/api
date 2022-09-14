@@ -6,6 +6,7 @@ CertExemptSetting.auditDepart=审核部门
 CertExemptSetting.validMonths=有效期长度，以月为单位
 CertExemptSetting.minScore=最低分
 CertExemptSetting.courses=免修课程
+CertExemptSetting.maxCount=免修最大门数
 
 CertSignupConfig=资格考试报名设置
 CertSignupConfig.opened=在规定的时间段内,是否可以开放

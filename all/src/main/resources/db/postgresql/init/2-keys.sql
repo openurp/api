@@ -216,6 +216,9 @@ alter table edu.cfg_std_credit_stats add constraint pk_1l485f6rmlnl41j59lt9wlxre
 alter table edu.cfg_transcript_templates add constraint pk_gijmnia1rc7cdrugxm8bp7kqy primary key (id);
 alter table edu.clazz_book_stats add constraint pk_baqp1iuvt4utj5ya9hn3k8w9p primary key (id);
 alter table edu.clazz_groups add constraint pk_rk07cifqsq9cq5cscif6rre46 primary key (id);
+alter table edu.clazz_materials add constraint pk_nrnf4gf44n88mvd5efhg9ror0 primary key (id);
+alter table edu.clazz_notice_files add constraint pk_tc2n52103b3130x5jaaaxj7n1 primary key (id);
+alter table edu.clazz_notices add constraint pk_dhgey9skl0nde8lg46v723xi2 primary key (id);
 alter table edu.clazzes add constraint pk_3ra1a077so5k9mwdt2kxb3k0b primary key (id);
 alter table edu.clazzes add constraint uk_8xuvd3v6lnrq5xmcl8jje0yau unique (project_id,semester_id,crn);
 alter table edu.clazzes_ability_rates add constraint pk_kx0jp80tganm39yvlc4lewj74 primary key (clazz_id,course_ability_rate_id);

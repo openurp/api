@@ -433,3 +433,14 @@ alter table edu.cfg_std_credit_stats add constraint pk_1l485f6rmlnl41j59lt9wlxre
 alter table edu.cfg_std_credit_stats add constraint fk_5aas9tyryicmrt3icq2djm47u foreign key (std_id) references base.students (id);
 alter table edu.cfg_std_credit_stats add constraint fk_bowf4nqkwexy5e47iawl7qu8x foreign key (semester_id) references base.semesters (id);
 
+-----clazz material and notice----------
+create table edu.clazz_materials (id bigint not null, file_path varchar(400), updated_by_id bigint not null, name varchar(300) not null, updated_at timestamp not null, clazz_id bigint not null, url varchar(400));
+create table edu.clazz_notice_files (id bigint not null, notice_id bigint not null, file_path varchar(200) not null, media_type varchar(100) not null, name varchar(255) not null, updated_at timestamp not null);
+create table edu.clazz_notices (updated_at timestamp not null, clazz_id bigint not null, contents varchar(1500) not null, id bigint not null, title varchar(300) not null, updated_by_id bigint not null);
+alter table edu.clazz_materials add constraint pk_nrnf4gf44n88mvd5efhg9ror0 primary key (id);
+alter table edu.clazz_notice_files add constraint pk_tc2n52103b3130x5jaaaxj7n1 primary key (id);
+alter table edu.clazz_notices add constraint pk_dhgey9skl0nde8lg46v723xi2 primary key (id);
+create index idx_ftsvqtl0wf5lx885wwiw514hp on edu.clazz_materials (clazz_id);
+create index idx_ifw02k8m49nnnsixxeic5irmd on edu.clazz_notice_files (notice_id);
+create index idx_etjnc5p0edykl4yjenl8f5aqo on edu.clazz_notices (clazz_id);
+

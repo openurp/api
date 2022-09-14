@@ -81,5 +81,24 @@ class DefaultMapping extends MappingModule {
     bind[Lesson] declare { e =>
       e.contents is length(500)
     }
+
+    bind[ClazzNotice] declare { e =>
+      e.title is length(300)
+      e.contents is length(1500)
+      e.files is depends("notice")
+      index("", false, e.clazz)
+    }
+
+    bind[ClazzNoticeFile] declare { e =>
+      e.filePath is length(200)
+      e.mediaType is length(100)
+    }
+
+    bind[ClazzMaterial].declare { e =>
+      e.name is length(300)
+      e.filePath is length(400)
+      e.url is length(400)
+      index("", false, e.clazz)
+    }
   }
 }

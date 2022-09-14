@@ -15,37 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.extern.config
+package org.openurp.edu.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{InstantRange, Remark}
-import org.openurp.base.edu.model.Course
-import org.openurp.base.model.Department
-import org.openurp.edu.extern.code.CertificateSubject
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.User
+import org.openurp.edu.clazz.model.Clazz
 
 import scala.collection.mutable
 
-/**
- * 校外考试免修科目设置
- */
-@config
-class CertExemptSetting extends LongId with Remark {
+class ClazzNotice extends LongId with Updated {
 
-  var config: CertExemptConfig = _
-  /** 考试科目 */
-  var subject: CertificateSubject = _
-  /** 审核部门 */
-  var auditDepart: Department = _
-  /**
-   * 有效期长度，以月为单位
-   */
-  var validMonths: Option[Int] = None
-  /** 最低分 */
-  var minScore: Option[Float] = None
-  /** 免修课程 */
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
-  /** 免修最大门数 */
-  var maxCount: Int = _
+  var clazz: Clazz = _
+
+  var title: String = _
+
+  var contents: String = _
+
+  var files: mutable.Buffer[ClazzNoticeFile] = Collections.newBuffer[ClazzNoticeFile]
+
+  var updatedBy: User = _
 }

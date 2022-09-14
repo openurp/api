@@ -58,6 +58,9 @@ create index idx_e1jm14m4lkrxvokb269vlrw46 on edu.cfg_cert_signup_settings (conf
 create index idx_8h5f9owky5n5vrcrd3xwojpqo on edu.cfg_grade_input_switches_types (grade_input_switch_id);
 create index idx_krohebe9mfogd0eh4v2d0g97r on edu.cfg_grade_rate_items (config_id);
 create index idx_q8ai1qbh3e9pvh1up7l4uuw6u on edu.cfg_schedule_setting_departs (setting_id);
+create index idx_ftsvqtl0wf5lx885wwiw514hp on edu.clazz_materials (clazz_id);
+create index idx_ifw02k8m49nnnsixxeic5irmd on edu.clazz_notice_files (notice_id);
+create index idx_etjnc5p0edykl4yjenl8f5aqo on edu.clazz_notices (clazz_id);
 create index idx_2nu751wwcosaoh3kd2a36ycdj on edu.clazzes (group_id);
 create index idx_9bwygbyci888eug6sjs5ihbqq on edu.clazzes (project_id, semester_id, teach_depart_id);
 create index idx_dtwnr7ysxuukruvulscomb6on on edu.clazzes_ability_rates (clazz_id);

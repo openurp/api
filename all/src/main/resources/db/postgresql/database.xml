@@ -3253,6 +3253,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="audit_depart_id" type="integer" nullable="false" comment="审核部门ID"/>
             <column name="config_id" type="bigint" nullable="false" comment="校外考试免修设置ID"/>
+            <column name="max_count" type="integer" nullable="false" comment="免修最大门数"/>
             <column name="min_score" type="float4" comment="最低分"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="subject_id" type="integer" nullable="false" comment="校外考试科目ID"/>
@@ -3560,6 +3561,65 @@
             <foreign-key name="fk_n3c1ubsjxa095g7ql9mtuuidx" column="teach_depart_id"
                          referenced-table="base.departments" referenced-column="id"/>
           </foreign-keys>
+        </table>
+        <table name="clazz_materials" comment="教学班资料@clazz">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="file_path" type="varchar(400)" comment="文件路径"/>
+            <column name="name" type="varchar(300)" nullable="false" comment="材料名称"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+            <column name="updated_by_id" type="bigint" nullable="false" comment="上传人ID"/>
+            <column name="url" type="varchar(400)" comment="网址"/>
+          </columns>
+          <primary-key name="pk_nrnf4gf44n88mvd5efhg9ror0" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_7qs0imwyd5kvdt56fmnq2cfhw" column="updated_by_id" referenced-table="base.users"
+                         referenced-column="id"/>
+            <foreign-key name="fk_kfad3pto3ceqqfxhqqy16t2h9" column="clazz_id" referenced-table="edu.clazzes"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_ftsvqtl0wf5lx885wwiw514hp" columns="clazz_id"/>
+          </indexes>
+        </table>
+        <table name="clazz_notice_files" comment="班级公告附件@clazz">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="file_path" type="varchar(200)" nullable="false" comment="文件路径"/>
+            <column name="media_type" type="varchar(100)" nullable="false" comment="类型"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="notice_id" type="bigint" nullable="false" comment="班内通知ID"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_tc2n52103b3130x5jaaaxj7n1" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_s4pejjaormgirmxawvpjyofv9" column="notice_id" referenced-table="edu.clazz_notices"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_ifw02k8m49nnnsixxeic5irmd" columns="notice_id"/>
+          </indexes>
+        </table>
+        <table name="clazz_notices" comment="班内通知@clazz">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="contents" type="varchar(1500)" nullable="false" comment="内容"/>
+            <column name="title" type="varchar(300)" nullable="false" comment="标题"/>
+            <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
+            <column name="updated_by_id" type="bigint" nullable="false" comment="发布人ID"/>
+          </columns>
+          <primary-key name="pk_dhgey9skl0nde8lg46v723xi2" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_fxdtj5wxg9x5voej00ql1e5ck" column="updated_by_id" referenced-table="base.users"
+                         referenced-column="id"/>
+            <foreign-key name="fk_oynlsgrdhhwo8rnkbgp7haljn" column="clazz_id" referenced-table="edu.clazzes"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_etjnc5p0edykl4yjenl8f5aqo" columns="clazz_id"/>
+          </indexes>
         </table>
         <table name="clazzes" comment="教学任务@clazz">
           <columns>

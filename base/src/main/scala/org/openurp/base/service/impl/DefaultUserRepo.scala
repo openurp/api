@@ -154,12 +154,13 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
   private def createAccount(orgId: Int, domainId: Int, code: String, name: String, password: String, categoryId: Int, roleId: Long): Unit = {
     val userIds = platformJdbcExecutor.unique[java.lang.Long]("select id from usr.users where org_id=" + orgId + " and code=? ", code)
-    var userId = userIds match {
+    val userId = userIds match {
       case Some(id) => id
       case None =>
         val userId = platformJdbcExecutor.unique[java.lang.Long]("select datetime_id()").getOrElse(0L)
         platformJdbcExecutor.update("insert into usr.users (id,code,name,org_id,category_id,updated_at,begin_on)"
-          + "values(?,?,?,?,?,now(),current_date);", userId, code, name, orgId, categoryId);
+          + "values(?,?,?,?,?,now(),current_date);", userId, code, name, orgId, categoryId)
+        userId
     }
     val accountCount = platformJdbcExecutor.unique[Long]("select count(*) from usr.accounts where user_id=? and domain_id=? ", userId, domainId).getOrElse(0L)
     if (accountCount == 0) {

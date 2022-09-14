@@ -88,7 +88,7 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
   }
 
 
-  override def getCourseType(std: Student, course: Course): CourseType = {
+  override def getPlanCourse(std: Student, course: Course): Option[PlanCourse] = {
     val plan = getCoursePlan(std).orNull
     var planCourseType: CourseType = null
     if (null != plan) {
@@ -98,21 +98,17 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
     }
     if (null == planCourseType) {
       val grade = java.lang.Integer.valueOf(std.state.get.grade.code.substring(0, 4))
-      val builder = OqlBuilder.from[CourseType](classOf[SharePlan].getName, "sp").join("sp.groups", "spg")
+      val builder = OqlBuilder.from[PlanCourse](classOf[SharePlan].getName, "sp").join("sp.groups", "spg")
         .join("spg.planCourses", "spgp")
         .where("spgp.course=:course", course)
         .where("sp.project=:project", std.project)
         .where("year(sp.beginOn)<=:grade and (sp.endOn is null or year(sp.endOn)>=:grade)", grade)
-        .select("spg.courseType")
+        .select("spgp")
         .cacheable()
-      val types = entityDao.search(builder)
-      if (!types.isEmpty) {
-        planCourseType =
-          if (null != course.courseType && types.contains(course.courseType)) course.courseType else types.head
-      }
+      entityDao.search(builder).headOption
+    } else {
+      None
     }
-    if (null == planCourseType) planCourseType = course.courseType
-    planCourseType
   }
 
 }
