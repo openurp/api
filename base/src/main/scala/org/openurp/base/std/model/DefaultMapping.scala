@@ -64,10 +64,14 @@ class DefaultMapping extends MappingModule {
       index("", true, e.project, e.code)
     }
 
+    bind[Graduate] declare { e =>
+      e.std is unique
+    }
+
     bind[Grade].declare { e =>
       index("", true, e.project, e.code)
     }.generator(IdGenerator.Assigned)
 
-    all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent]).cacheAll()
+    all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent], classOf[Graduate]).cacheAll()
   }
 }

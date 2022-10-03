@@ -142,6 +142,16 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
       .update("update usr.accounts acc set password=? where acc.domain_id=? and exists(select * from usr.users u where u.code=? and u.id=acc.user_id)", encoded, domainId, userCode)
   }
 
+  override def createAccount(user: User): Unit = {
+    val password = defaultPassword(user.code)
+    val roleId = user.category.id match {
+      case UserCategories.Student => stdRoleId
+      case UserCategories.Teacher => teacherRoleId
+      case _ => 0
+    }
+    createAccount(orgId, domainId, user.code, user.name, password, user.category.id, roleId)
+  }
+
   private def defaultPassword(idNumber: String): String = {
     if Strings.isEmpty(idNumber) then "123456"
     else {
@@ -170,10 +180,12 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
           + "values(?,?,?,?,current_date+180,false,true,current_date,now());",
         accountId.get, userId, domainId, "{MD5}" + Digests.md5Hex(password))
     }
-    val roleCount = platformJdbcExecutor.unique[Long]("select count(*) from usr.role_members where user_id=? and role_id=? ", userId, roleId).getOrElse(0L)
-    if (roleCount == 0) {
-      platformJdbcExecutor.update("insert into usr.role_members(id,user_id,role_id,is_member,is_granter,is_manager,updated_at)"
-        + "values(datetime_id(),?,?,true,false,false,current_date);", userId, roleId)
+    if (roleId > 0) {
+      val roleCount = platformJdbcExecutor.unique[Long]("select count(*) from usr.role_members where user_id=? and role_id=? ", userId, roleId).getOrElse(0L)
+      if (roleCount == 0) {
+        platformJdbcExecutor.update("insert into usr.role_members(id,user_id,role_id,is_member,is_granter,is_manager,updated_at)"
+          + "values(datetime_id(),?,?,true,false,false,current_date);", userId, roleId)
+      }
     }
   }
 }

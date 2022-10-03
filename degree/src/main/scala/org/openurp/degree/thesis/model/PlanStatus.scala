@@ -19,4 +19,6 @@ package org.openurp.degree.thesis.model
 
 enum PlanStatus {
   case 待学院修改, 待学校审查, 审查通过, 审查未通过;
+
+  def id: Int = ordinal
 }

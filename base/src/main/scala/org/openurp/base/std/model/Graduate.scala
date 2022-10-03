@@ -15,32 +15,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.info.model
+package org.openurp.base.std.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{Degree, EducationResult}
 import org.openurp.code.std.model.WheretoGo
 
 import java.time.LocalDate
 
-/**
- * 毕业信息
+/** 毕业生信息
+ *
  */
-class Graduation extends LongId with Updated {
+class Graduate extends LongId {
 
-  /** 学生 */
+  /** 界别 */
+  var grade: GraduateGrade = _
+
+  /** 学籍 */
   var std: Student = _
 
-  /** 毕业证书编号（电子注册号） */
-  var certificateNo: Option[String] = None
+  /** 毕结业证书编号（电子注册号） */
+  var certificateNo: String = _
 
   /** 毕结业日期 */
   var graduateOn: LocalDate = _
 
   /** 毕结业情况 */
-  var educationResult: EducationResult = _
+  var result: EducationResult = _
 
   /** 学位 */
   var degree: Option[Degree] = None

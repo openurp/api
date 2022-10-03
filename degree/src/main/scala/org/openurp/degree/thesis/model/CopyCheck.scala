@@ -17,29 +17,28 @@
 
 package org.openurp.degree.thesis.model
 
-import org.beangle.data.model.pojo.DateRange
-import org.beangle.data.model.{Component, LongId}
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 
-import java.time.LocalDate
-
-/** 各阶段的时间安排
+/** 拷贝检测
  *
  */
-class StageTime extends Component {
-  var stage: Stage = _
-  var beginOn: LocalDate = _
-  var endOn: LocalDate = _
+class CopyCheck extends LongId with Updated {
 
-  def this(stage: Stage, beginOn: LocalDate, endOn: LocalDate) = {
-    this()
-    this.stage = stage
-    this.beginOn = beginOn
-    this.endOn = endOn
-  }
+  var writer: Writer = _
 
-  def timeSuitable(date: LocalDate): Int = {
-    if beginOn.isAfter(date) then -1
-    else if endOn.isBefore(date) then 1
-    else 0
-  }
+  /** 复制比 */
+  var copyRatio: Float = _
+
+  /** 去除引用文献复制比 */
+  var copyRatioExtRefer: Float = _
+
+  /** 总字数 */
+  var wordCount: Int = _
+
+  /** 复制字数 */
+  var copyWordCount: Int = _
+
+  /**检测报告地址*/
+  var report: Option[String] = None
 }

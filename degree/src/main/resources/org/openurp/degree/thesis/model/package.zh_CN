@@ -2,6 +2,7 @@ Advisor=指导老师
 Advisor.subdecanal=是否教学副院长
 Advisor.maxWriters=所带学生数
 Advisor.description=教师简介
+Advisor.departs=指导院系
 
 Commitment=写作任务书
 Commitment.confirmed=是否确认
@@ -44,9 +45,13 @@ MidtermCheckDetail=中期检查明细
 MidtermCheckDetail.auditOpinion=审核意见
 MidtermCheckDetail.status=审核状态
 
-Plan=毕业设计工作计划
-Plan.auditOpinion=审核意见
-Plan.status=审核状态
+DepartPlan=毕业设计院系计划
+DepartPlan.auditOpinion=审核意见
+DepartPlan.status=审核状态
+DepartPlan.times=院系计划阶段时间
+
+ThesisPlan=毕业设计工作计划
+ThesisPlan.times=毕业设计阶段时间
 
 Proposal=开题报告
 Proposal.meanings=目的意义
@@ -74,6 +79,8 @@ SubjectApply.last=最终选题
 
 StageTime=各阶段的时间安排
 StageTime.stage=阶段
+StageTime.beginOn=起始日期
+StageTime.endOn=结束日期
 
 ThesisFile=论文文件
 ThesisFile.status=状态
@@ -84,3 +91,12 @@ ThesisFile.auditOpinion=审核意见
 
 Writer=写作学生
 Writer.squad=班级
+Writer.email=联系邮件
+Writer.mobile=联系手机
+
+CopyCheck=复制检测结果
+CopyCheck.copyRatio=复制比
+CopyCheck.copyRatioExtRefer=去除引用文献复制比
+CopyCheck.wordCount=总字数
+CopyCheck.copyWordCount=复制字数
+CopyCheck.report=检测报告地址

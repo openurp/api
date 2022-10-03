@@ -30,10 +30,6 @@ class DefaultMapping extends MappingModule {
       e.schoolName is length(200)
     }
 
-    bind[Graduation] declare { e =>
-      e.std is unique
-    }
-
     bind[Home].declare { e =>
       e.formerAddr is length(100)
       e.phone is length(20)

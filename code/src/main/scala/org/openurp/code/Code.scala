@@ -18,7 +18,7 @@
 package org.openurp.code
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
+import org.beangle.data.model.pojo.*
 
 trait Code extends IntId with Named with Coded {
 
@@ -37,4 +37,6 @@ object CodeCategory {
 
 abstract class CodeBean extends IntId with Code with TemporalOn with Updated with Remark {
   var enName: Option[String] = None
+
+  def codeName: String = s"$code $name"
 }

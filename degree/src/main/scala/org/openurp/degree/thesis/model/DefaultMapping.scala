@@ -22,14 +22,16 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-
-    bind[Plan].declare { e =>
-      e.times is depends("plan")
+    bind[ThesisPlan].declare { e =>
+      e.departPlans is depends("thesisPlan")
     }
-    bind[StageTime]
+
+    bind[DepartPlan].declare { e =>
+    }
 
     bind[Advisor].declare { e =>
       e.description is length(4000)
+      index("", true, e.project, e.user)
     }
 
     bind[Subject].declare { e =>
@@ -38,15 +40,19 @@ class DefaultMapping extends MappingModule {
       e.conditions is length(1000)
       e.contents is length(1000)
     }
+
     bind[Writer].declare { e =>
       e.deadlines is depends("writer")
+      index("", true, e.std, e.grade)
     }
+
     bind[SubjectApply]
     bind[Commitment]
     bind[Proposal].declare { e =>
       e.references is column("refers")
       e.methods & e.conditions & e.outline & e.advisorOpinion & e.meanings & e.references are lob
     }
+
     bind[Guidance].declare { e =>
       e.contents is lob
     }
@@ -59,6 +65,7 @@ class DefaultMapping extends MappingModule {
     bind[MidtermCheckDetail].declare { e =>
       e.auditOpinion is length(1000)
     }
+
     bind[MidtermCheckItem]
     bind[Deadline]
     bind[ThesisFile]
@@ -72,6 +79,10 @@ class DefaultMapping extends MappingModule {
 
     bind[DefenseNotice].declare { e =>
       e.contents is lob
+    }
+
+    bind[CopyCheck].declare { e =>
+      e.report is length(200)
     }
   }
 }

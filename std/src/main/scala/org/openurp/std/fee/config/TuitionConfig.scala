@@ -21,7 +21,7 @@ import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Direction, Major}
-import org.openurp.base.model.Department
+import org.openurp.base.model.{Department, Project}
 import org.openurp.base.std.code.FeeType
 import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.EducationLevel
@@ -32,14 +32,16 @@ import org.openurp.code.edu.model.EducationLevel
 @config
 class TuitionConfig extends IntId with Remark {
 
+  var project: Project = _
+
   /** 起始年级 */
   var fromGrade: Grade = _
 
   /** 截止年级 */
   var toGrade: Grade = _
 
-  /**学制*/
-  var duration:Float=_
+  /** 学制 */
+  var duration: Float = _
 
   /** 学历层次 */
   var level: EducationLevel = _

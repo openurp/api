@@ -78,3 +78,11 @@ GraduateGrade.graduateYear=毕业年份
 
 Grade=年级
 Grade.enName=英文名
+
+Graduate=毕业信息
+Graduate.certificateNo=毕业证书编号
+Graduate.batchNo=批次号
+Graduate.graduateOn=毕结业日期
+Graduate.degreeAwardOn=学位授予日期
+Graduate.diplomaNo=学位证书号
+Graduate.foreignLangPassedOn=外语通过年月

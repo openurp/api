@@ -26,6 +26,8 @@ trait UserRepo {
 
   def createUser(std: Student): User
 
+  def createAccount(user: User): Unit
+
   def activate(users: Iterable[User], active: Boolean): Unit
 
   def updatePassword(userCode: String, password: String): Int

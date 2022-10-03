@@ -17,25 +17,44 @@
 
 package org.openurp.degree.thesis.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.base.model.{AuditStatus, Department}
 
 import java.time.LocalDate
 import scala.collection.mutable
 
-/** 毕业设计工作计划
+/** 学院毕业设计工作计划
  *
  * @author duant
  */
-class Plan extends LongId with Cloneable {
+class DepartPlan extends LongId with Cloneable {
   var department: Department = _
-  var status: AuditStatus = _
-  var times: mutable.Buffer[StageTime] = new mutable.ArrayBuffer[StageTime]
+  var status: PlanStatus = _
+  var thesisPlan: ThesisPlan = _
+  var times: mutable.Buffer[StageTime] = Collections.newBuffer[StageTime]
   /** 工作计划审查意见 */
   var auditOpinion: Option[String] = None
 
   def getStageTime(stage: Stage): StageTime = {
     times.find(x => x.stage == stage).get
   }
-  override def clone(): AnyRef = super.clone()
+
+  def addTime(stage: Stage, begin: LocalDate, end: LocalDate): Unit = {
+    times.find(x => x.stage == stage) match {
+      case None => times.addOne(StageTime(stage, begin, end))
+      case Some(st) =>
+        st.beginOn = begin
+        st.endOn = end
+    }
+  }
+
+  override def clone(): AnyRef = {
+    val plan = super.clone().asInstanceOf[DepartPlan]
+    plan.times = Collections.newBuffer
+    this.times foreach { st =>
+      plan.addTime(st.stage, st.beginOn, st.endOn)
+    }
+    plan
+  }
 }

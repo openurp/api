@@ -17,17 +17,23 @@
 
 package org.openurp.degree.thesis.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.openurp.base.model.{Department, User}
+import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.edu.model.TeachingOffice
+import org.openurp.base.model.{Department, Project, Staff, User}
 import org.openurp.code.job.model.ProfessionalTitle
 
+import scala.collection.mutable
+
 /** 指导教师 */
-class Advisor extends LongId {
+class Advisor extends LongId, TemporalOn {
+
+  var project: Project = _
 
   var user: User = _
 
-  var department: Department = _
+  var departs: mutable.Buffer[Department] = Collections.newBuffer[Department]
 
   var title: Option[ProfessionalTitle] = None
 
@@ -42,5 +48,4 @@ class Advisor extends LongId {
 
   /** 教师简介 */
   var description: Option[String] = None
-
 }

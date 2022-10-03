@@ -6,15 +6,15 @@ select * from base.project_properties where name='edu.course.hours_per_credit';
 
 alter table edu.major_course_groups add credit_hours int4;
 alter table edu.major_course_groups add hour_ratios varchar(20);
-update edu.major_course_groups set credit_hours= credits*18;
+update edu.major_course_groups set credit_hours= credits*16;
 
 alter table edu.execution_course_groups add credit_hours int4;
 alter table edu.execution_course_groups add hour_ratios varchar(20);
-update edu.execution_course_groups set credit_hours= credits*18;
+update edu.execution_course_groups set credit_hours= credits*16;
 
 alter table edu.std_course_groups add credit_hours int4;
 alter table edu.std_course_groups add hour_ratios varchar(20);
-update edu.std_course_groups set credit_hours= credits*18;
+update edu.std_course_groups set credit_hours= credits*16;
 ---staff and teacher---------
 create table base.staffs (school_id integer not null, degree_award_by varchar(255), political_status_id integer, code varchar(20) not null, id bigint not null, formal_hr boolean not null, homepage varchar(200), title_id integer, end_on date, birthday date, id_type_id integer, organization varchar(200), name varchar(100) not null, updated_at timestamp not null, email varchar(100), nation_id integer, degree_id integer, department_id integer not null, education_degree_id integer, degree_level_id integer, begin_on date not null, id_number varchar(18), status_id integer not null, mobile varchar(20), staff_type_id integer not null, parttime boolean not null, gender_id integer not null,external_ boolean not null);
 insert into base.staffs(id,school_id,nation_id,political_status_id,code,department_id,formal_hr,title_id,staff_type_id,birthday,
@@ -56,6 +56,11 @@ comment on column base.staffs.status_id is '在职状态ID';
 comment on column base.staffs.title_id is '最高职称ID';
 comment on column base.staffs.updated_at is '更新时间';
 
+
+alter table code.staff_types alter column parent_id drop not null;
+alter table code.staff_source_types alter column parent_id drop not null;
+insert into code.staff_types(id,code,name,begin_on,updated_at) select id ,code,name,begin_on,updated_at from base.c_teacher_types;
+
 alter table base.staffs add constraint pk_qi7hj56hag2uu4e5eu4egoxrl primary key (id);
 alter table base.staffs add constraint uk_ksaq070k32jb6aey065dd9xv0 unique (school_id,code);
 alter table base.staffs add constraint fk_hgomx5css6ae570euyh78c1cu foreign key (gender_id) references code.genders (id);
@@ -76,11 +81,9 @@ alter table base.teachers add name varchar(100);
 update base.teachers set staff_id=id;
 update base.teachers t set (name)=(select u.name from base.users u where u.id=t.user_id);
 
-alter table code.staff_types alter column parent_id drop not null;
-alter table code.staff_source_types alter column parent_id drop not null;
 alter table code.divisions alter column parent_id drop not null;
 alter table base.people alter column birthday drop not null;
-insert into code.staff_types(id,code,name,begin_on,updated_at) select id ,code,name,begin_on,updated_at from base.c_teacher_types;
+
 create table base.teachers_campuses (teacher_id bigint not null, campus_id integer not null);
 comment on table base.teachers_campuses is '任教校区@edu';
 comment on column base.teachers_campuses.campus_id is '校区信息ID';
@@ -99,7 +102,6 @@ alter table base.grades alter column id type int8;
 alter table base.grades add en_name varchar(50);
 alter table base.grades add begin_on date;
 alter table base.grades add end_on date;
-alter table base.grades alter id type bigint;
 
 update base.grades set project_id = (select min(id) from base.projects);
 update base.grades set begin_on= to_date(substr(code,1,4)||'0901','YYYYMMDD');
@@ -122,30 +124,32 @@ update edu.programs s set grade_id=(select g.id from base.grades g where g.proje
 
 alter table base.school_lengths add column to_grade_id bigint;
 alter table base.school_lengths add column from_grade_id bigint;
-update base.school_lengths s set from_grade_id=(select g.id from base.grades g where g.project_id=s.project_id and g.code=s.from_grade);
-update base.school_lengths s set to_grade_id=(select g.id from base.grades g where g.project_id=s.project_id and g.code=s.to_grade);
+update base.school_lengths s set from_grade_id=(select g.id from base.grades g,base.majors m where m.id=s.major_id and m.project_id=g.project_id and g.code=s.from_grade);
+update base.school_lengths s set to_grade_id=(select g.id from base.grades g,base.majors m where m.id=s.major_id and m.project_id=g.project_id and g.code=s.to_grade);
 alter table base.school_lengths add constraint fk_j1yagjj51c2c0kawbwj0id46w foreign key (to_grade_id) references base.grades (id);
 alter table base.school_lengths add constraint fk_ny033y7pameoqo6j69sw3xguk foreign key (from_grade_id) references base.grades (id);
 alter table base.school_lengths alter from_grade_id set not null;
 
+alter table std.cfg_tuition_configs add column project_id int4;
+--视情况决定手工更改
+update std.cfg_tuition_configs set project_id=(select min(id) from base.projects);
 alter table std.cfg_tuition_configs add column from_grade_id bigint;
 alter table std.cfg_tuition_configs add column to_grade_id bigint;
 update std.cfg_tuition_configs s set from_grade_id=(select g.id from base.grades g where g.project_id=s.project_id and g.code=s.from_grade);
 update std.cfg_tuition_configs s set to_grade_id=(select g.id from base.grades g where g.project_id=s.project_id and g.code=s.to_grade);
 
 alter table std.transfer_applies add column from_grade_id bigint;
-update std.transfer_applies s set from_grade_id=(select g.id from base.grades g where g.project_id=s.project_id and g.code=s.frome_grade);
+update std.transfer_applies s set from_grade_id=(select g.id from base.grades g,base.students std where g.project_id=std.project_id and std.id=s.std_id and g.code=s.from_grade);
 alter table std.transfer_applies alter from_grade_id set not null;
 alter table std.transfer_applies add constraint fk_ia2lww4yn37qo57xd6766b7se foreign key (from_grade_id) references base.grades (id);
 alter table std.cfg_transfer_schemes alter grade_id type bigint;
-
 
 alter table edu.clazzes rename grade to grades;
 alter table edu.clazzes alter grades type varchar(40);
 alter table edu.clazzes add shared bool default false;
 ---------level---------------
 insert into base.project_properties(id,project_id,name,value_,type_name,description)
-values(datetime_id(),(select max(id) from base.projects),'edu.course.level_credit_supported','false','boolean','课程是否支持不同层次学分不同');
+values(datetime_id(),(select min(id) from base.projects),'edu.course.level_credit_supported','false','boolean','课程是否支持不同层次学分不同');
 
 alter table edu.major_alt_courses alter column level_id drop not null;
 alter table edu.major_alt_courses drop column level_id;
@@ -176,6 +180,9 @@ alter table base.projects_edu_types add constraint fk_qrd90wdrvpq5vy02rhxwmsgb7 
 
 alter table base.squads add edu_type_id int4;
 alter table base.students add edu_type_id int4;
+update base.squads set edu_type_id=1;
+update base.students set edu_type_id=1;
+
 comment on table base.c_education_types is '培养类型@edu.code';
 comment on column base.c_education_types.id is '非业务主键:auto_increment';
 comment on column base.c_education_types.begin_on is '生效日期';
@@ -235,7 +242,10 @@ drop table std.examinees_scores;
 
 -----graduate grade------
 alter table base.graduate_grades add column code varchar(255);
+update  base.graduate_grades set code=graduate_year;
 alter table base.graduate_grades add column project_id integer;
+update base.graduate_grades set project_id=(select min(id) from base.projects);
+
 alter table base.graduate_grades add constraint uk_op90s66v46iqanqv5ryumkvs0 unique (project_id,code);
 
 ----external signup-----------
@@ -308,39 +318,6 @@ alter table edu.cfg_cert_signup_settings add constraint fk_f9ex359j1sv1550aoka9l
 alter table edu.cfg_cert_signup_settings add constraint fk_5agxjc89ilra33ftv8ed0ti72 foreign key (subject_id) references edu.c_certificate_subjects (id);
 alter table edu.cfg_cert_signup_settings add constraint fk_g9aks6oc67st2ar2dh6n4y9vd foreign key (config_id) references edu.cfg_cert_signup_configs (id);
 
------warning----------
-alter table base.teachers drop column school_id;
-alter table base.teachers drop column updated_at;
-alter table base.teachers drop column teacher_type_id ;
-alter table base.teachers drop column formal_hr;
-alter table base.teachers drop column status_id ;
-alter table base.teachers drop column user_id;
-alter table base.teachers drop column person_id;
-alter table base.teachers drop column title_id;
-alter table base.teachers drop column degree_id;
-alter table base.teachers drop column education_degree_id;
-
-alter table base.mentors drop column user_id;
-alter table base.students drop column user_id;
-alter table base.squads drop column grade;
-alter table base.student_states drop column grade;
-alter table base.school_lengths drop to_grade cascade;
-alter table base.school_lengths drop from_grade cascade;
-
-alter table std.cfg_tuition_configs drop to_grade cascade;
-alter table std.cfg_tuition_configs drop from_grade cascade;
-alter table std.transfer_applies drop from_grade cascade;
-
-alter table edu.restriction_items rename column include_in to included;
-drop table base.c_teacher_types cascade;
-drop table base.courses_levels cascade;
-drop table hr.staff_states cascade;
-drop table hr.duty_infoes cascade;
-drop table hr.tutor_infoes cascade;
-drop table hr.work_infoes cascade;
-drop table hr.education_infoes cascade;
-drop table hr.staffs cascade;
-drop table std.admissions cascade;
 -----exchange grades-------------------
 alter table std.exemption_applies rename to exchange_exempt_applies;
 alter table std.exemption_credits rename to exchange_exempt_credits;
@@ -443,4 +420,42 @@ alter table edu.clazz_notices add constraint pk_dhgey9skl0nde8lg46v723xi2 primar
 create index idx_ftsvqtl0wf5lx885wwiw514hp on edu.clazz_materials (clazz_id);
 create index idx_ifw02k8m49nnnsixxeic5irmd on edu.clazz_notice_files (notice_id);
 create index idx_etjnc5p0edykl4yjenl8f5aqo on edu.clazz_notices (clazz_id);
+----graduate--------
+alter table std.graduations rename to graduates;
+alter table std.graduates set schema base;
+alter table base.graduates rename education_result_id to result_id;
+alter table base.graduates add grade_id int4;
 
+-----warning----------
+alter table base.teachers drop column school_id;
+alter table base.teachers drop column updated_at;
+alter table base.teachers drop column teacher_type_id ;
+alter table base.teachers drop column formal_hr;
+alter table base.teachers drop column status_id ;
+alter table base.teachers drop column user_id;
+alter table base.teachers drop column person_id;
+alter table base.teachers drop column title_id;
+alter table base.teachers drop column degree_id;
+alter table base.teachers drop column education_degree_id;
+
+alter table base.mentors drop column user_id;
+alter table base.students drop column user_id;
+alter table base.squads drop column grade;
+alter table base.student_states drop column grade;
+alter table base.school_lengths drop to_grade cascade;
+alter table base.school_lengths drop from_grade cascade;
+
+alter table std.cfg_tuition_configs drop to_grade cascade;
+alter table std.cfg_tuition_configs drop from_grade cascade;
+alter table std.transfer_applies drop from_grade cascade;
+
+alter table edu.restriction_items rename column include_in to included;
+drop table base.c_teacher_types cascade;
+drop table base.courses_levels cascade;
+drop table hr.staff_states cascade;
+drop table hr.duty_infoes cascade;
+drop table hr.tutor_infoes cascade;
+drop table hr.work_infoes cascade;
+drop table hr.education_infoes cascade;
+drop table hr.staffs cascade;
+drop table std.admissions cascade;

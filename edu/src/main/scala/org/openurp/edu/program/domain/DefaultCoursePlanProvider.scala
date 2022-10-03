@@ -87,7 +87,6 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
     matched.headOption
   }
 
-
   override def getPlanCourse(std: Student, course: Course): Option[PlanCourse] = {
     val plan = getCoursePlan(std).orNull
     var planCourseType: CourseType = null

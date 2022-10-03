@@ -57,4 +57,6 @@ class Teacher extends LongId with TemporalOn with Named with Remark {
 
   /** 性别 */
   def gender: Gender = staff.gender
+
+  def description: String = s"$code $name ${department.shortName.getOrElse(department.name)}"
 }

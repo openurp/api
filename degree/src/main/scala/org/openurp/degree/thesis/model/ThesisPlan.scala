@@ -17,29 +17,21 @@
 
 package org.openurp.degree.thesis.model
 
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.DateRange
-import org.beangle.data.model.{Component, LongId}
+import org.openurp.base.model.Project
+import org.openurp.base.std.model.GraduateGrade
 
-import java.time.LocalDate
+import scala.collection.mutable
 
-/** 各阶段的时间安排
- *
- */
-class StageTime extends Component {
-  var stage: Stage = _
-  var beginOn: LocalDate = _
-  var endOn: LocalDate = _
+class ThesisPlan extends LongId, DateRange {
 
-  def this(stage: Stage, beginOn: LocalDate, endOn: LocalDate) = {
-    this()
-    this.stage = stage
-    this.beginOn = beginOn
-    this.endOn = endOn
-  }
+  var project: Project = _
 
-  def timeSuitable(date: LocalDate): Int = {
-    if beginOn.isAfter(date) then -1
-    else if endOn.isBefore(date) then 1
-    else 0
-  }
+  var grade: GraduateGrade = _
+
+  var times: mutable.Buffer[StageTime] = Collections.newBuffer[StageTime]
+
+  var departPlans: mutable.Buffer[DepartPlan] = Collections.newBuffer[DepartPlan]
 }

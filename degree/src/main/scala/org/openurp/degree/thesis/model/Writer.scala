@@ -17,22 +17,21 @@
 
 package org.openurp.degree.thesis.model
 
+import org.beangle.commons.lang.SystemInfo.user
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.edu.model.Major
 import org.openurp.base.model.{Department, User}
-import org.openurp.base.std.model.GraduateGrade
+import org.openurp.base.std.model.{GraduateGrade, Squad, Student}
 
 import java.time.Instant
 import scala.collection.mutable
 
-class Writer extends LongId  {
+class Writer extends LongId {
 
-  var graduateGrade: GraduateGrade = _
+  var grade: GraduateGrade = _
 
-  var user: User = _
-
-  var department: Department = _
+  var std: Student = _
 
   /** 指导老师 */
   var advisor: Option[Advisor] = None
@@ -40,9 +39,21 @@ class Writer extends LongId  {
   /** 论文题目 */
   var subject: Option[Subject] = None
 
-    var squad: Option[String] = None
+  var mobile: Option[String] = None
+
+  var email: Option[String] = None
 
   var deadlines: mutable.Buffer[Deadline] = new mutable.ArrayBuffer[Deadline]
+
+  def code: String = std.code
+
+  def name: String = std.name
+
+  def department: Department = std.state.get.department
+
+  def major: Major = std.state.get.major
+
+  def squad: Option[Squad] = std.state.get.squad
 
   def getOrCreateDeadline(stage: Stage): Deadline = {
     deadlines.find(x => x.stage == stage) match {

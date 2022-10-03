@@ -52,6 +52,6 @@ class DefenseGroup extends LongId {
   def staffCount: Int = members.size + secretary.size
 
   def orderedWriters: mutable.Buffer[Writer] = {
-    writers.toBuffer.sortBy(x => x.advisor.get.user.code + "_" + x.user.code)
+    writers.toBuffer.sortBy(x => x.advisor.get.user.code + "_" + x.code)
   }
 }
