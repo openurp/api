@@ -18,4 +18,5 @@ where ct.course_type_id is null;
 
 alter table edu.course_takers alter column course_type_id set not null;
 alter table base.projects_properties alter column value_ type varchar(2000);
+update base.student_states ss set end_on=(select std.end_on from base.students std where std.id=ss.std_id) where end_on is null;
 alter table base.student_states alter column end_on set not null;

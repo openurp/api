@@ -16,10 +16,17 @@ alter table edu.std_course_groups add credit_hours int4;
 alter table edu.std_course_groups add hour_ratios varchar(20);
 update edu.std_course_groups set credit_hours= credits*16;
 ---staff and teacher---------
-create table base.staffs (school_id integer not null, degree_award_by varchar(255), political_status_id integer, code varchar(20) not null, id bigint not null, formal_hr boolean not null, homepage varchar(200), title_id integer, end_on date, birthday date, id_type_id integer, organization varchar(200), name varchar(100) not null, updated_at timestamp not null, email varchar(100), nation_id integer, degree_id integer, department_id integer not null, education_degree_id integer, degree_level_id integer, begin_on date not null, id_number varchar(18), status_id integer not null, mobile varchar(20), staff_type_id integer not null, parttime boolean not null, gender_id integer not null,external_ boolean not null);
+create table base.staffs (school_id integer not null, degree_award_by varchar(255), political_status_id integer,
+                         code varchar(20) not null, id bigint not null, formal_hr boolean not null, homepage varchar(200),
+                         title_id integer, end_on date, birthday date, id_type_id integer, organization varchar(200),
+                         name varchar(100) not null, updated_at timestamp not null, email varchar(100), nation_id integer,
+                         degree_id integer, department_id integer not null, education_degree_id integer,
+                         degree_level_id integer, begin_on date not null, id_number varchar(18),
+                         status_id integer not null, mobile varchar(20), staff_type_id integer not null,
+                         parttime boolean not null, gender_id integer not null,external_ boolean not null);
 insert into base.staffs(id,school_id,nation_id,political_status_id,code,department_id,formal_hr,title_id,staff_type_id,birthday,
                         id_type_id,id_number,name,updated_at,status_id,gender_id,begin_on,end_on,degree_id,education_degree_id,parttime,external_)
-select t.id,t.school_id,p.nation_id,p.political_status_id,u.code,u.department_id,t.formal_hr,t.title_id,1,p.birthday,
+select t.id,t.school_id,p.nation_id,p.political_status_id,u.code,u.department_id,t.formal_hr,t.title_id,t.teacher_type_id,p.birthday,
                                p.id_type_id,p.code,u.name,t.updated_at,t.status_id,u.gender_id,t.begin_on,t.end_on,t.degree_id,t.education_degree_id,ttype.parttime,ttype.external_ from
                                base.teachers t join base.users u on u.id=t.user_id join base.c_teacher_types ttype on t.teacher_type_id=ttype.id
                                left outer join base.people p on p.id=t.person_id;
@@ -56,7 +63,6 @@ comment on column base.staffs.status_id is '在职状态ID';
 comment on column base.staffs.title_id is '最高职称ID';
 comment on column base.staffs.updated_at is '更新时间';
 
-
 alter table code.staff_types alter column parent_id drop not null;
 alter table code.staff_source_types alter column parent_id drop not null;
 insert into code.staff_types(id,code,name,begin_on,updated_at) select id ,code,name,begin_on,updated_at from base.c_teacher_types;
@@ -92,10 +98,11 @@ alter table base.teachers_campuses add constraint pk_4wtyv7xyavsa0tlo5g8rl0txy p
 create index idx_dryob4n9h2g16emfu7mhc2b7w on base.teachers_campuses (teacher_id);
 alter table base.teachers  add tqc_number varchar(20);
 alter table base.teachers  add oqc varchar(100);
+alter table base.teachers  add tutor_type_id int4;
 
-INSERT INTO code.degree_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '1', '学士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
-INSERT INTO code.degree_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '2', '硕士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
-INSERT INTO code.degree_levels (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '3', '博士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.degree_levels(id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '1', '学士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.degree_levels(id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '2', '硕士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.degree_levels(id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '3', '博士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 ------------grades--------------
 alter table base.grades add project_id int4;
 alter table base.grades alter column id type int8;
@@ -180,8 +187,10 @@ alter table base.projects_edu_types add constraint fk_qrd90wdrvpq5vy02rhxwmsgb7 
 
 alter table base.squads add edu_type_id int4;
 alter table base.students add edu_type_id int4;
+alter table edu.programs add edu_type_id int4;
 update base.squads set edu_type_id=1;
 update base.students set edu_type_id=1;
+update edu.programs set edu_type_id=1;
 
 comment on table base.c_education_types is '培养类型@edu.code';
 comment on column base.c_education_types.id is '非业务主键:auto_increment';
