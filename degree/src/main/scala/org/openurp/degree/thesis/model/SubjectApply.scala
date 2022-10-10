@@ -36,8 +36,6 @@ class SubjectApply extends LongId {
     this.writer = writer
     this.last = Some(last)
   }
-
-  var grade: GraduateGrade = _
   /** 学生 */
   var writer: Writer = _
 
