@@ -34,11 +34,12 @@ class DefaultMapping extends MappingModule {
       index("", true, e.project, e.user)
     }
 
-    bind[Subject].declare { e =>
+    bind[Subject] declare { e =>
       e.name is length(300)
       e.requirements is length(1000)
       e.conditions is length(1000)
       e.contents is length(1000)
+      index("", true, e.grade, e.name)
     }
 
     bind[Writer].declare { e =>
@@ -46,7 +47,10 @@ class DefaultMapping extends MappingModule {
       index("", true, e.std, e.grade)
     }
 
-    bind[SubjectApply]
+    bind[SubjectApply] declare { e =>
+      index("", true, e.grade, e.last)
+    }
+
     bind[Commitment]
     bind[Proposal].declare { e =>
       e.references is column("refers")

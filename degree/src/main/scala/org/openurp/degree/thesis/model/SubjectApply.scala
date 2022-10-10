@@ -18,6 +18,7 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
+import org.openurp.base.std.model.GraduateGrade
 
 object SubjectApply {
   val Round1 = "CX"
@@ -36,6 +37,7 @@ class SubjectApply extends LongId {
     this.last = Some(last)
   }
 
+  var grade: GraduateGrade = _
   /** 学生 */
   var writer: Writer = _
 
