@@ -97,4 +97,8 @@ class Staff extends LongId with Coded with Named with Updated with TemporalOn {
 
   /** 是否外聘 */
   var external: Boolean = _
+
+  def description: String = {
+    s"$code $name ${department.shortName.getOrElse(department.name)}"
+  }
 }

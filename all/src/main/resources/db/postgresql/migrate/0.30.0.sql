@@ -207,6 +207,9 @@ alter table base.mentors add staff_id bigint;
 alter table base.mentors add name varchar(100);
 update base.mentors m set (staff_id, name )=(select s.id,s.name from base.staffs s where s.id=m.id);
 
+alter table base.squads drop constraint fk_ev1tw6auwpif0qyjddjac2wf4;
+alter table base.squads drop constraint fk_c2swxumbmnqw4bre3vk4rah3g;
+alter table base.squads drop constraint fk_ag4kov5ron4bpfk8j91d6slb0;
 ------------student---------------
 alter table base.students add code varchar(15);
 alter table base.students add name varchar(50);
