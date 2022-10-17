@@ -42,13 +42,13 @@ class CertSignupScope extends LongId {
   var codes: Option[String] = None
 
   def matchStd(std: Student): Boolean = {
-    if (codes.nonEmpty) {
+    if (codes.nonEmpty && Strings.isNotBlank(codes.get)) {
       Strings.split(codes.get).toSet.contains(std.code)
     } else {
       if (std.level == this.level) {
         grades match {
           case None => true
-          case Some(g) => Strings.split(g).toSet.contains(std.state.get.grade)
+          case Some(g) => Strings.split(g).toSet.contains(std.state.get.grade.code)
         }
       } else {
         false

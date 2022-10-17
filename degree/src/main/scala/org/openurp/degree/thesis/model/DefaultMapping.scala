@@ -47,7 +47,9 @@ class DefaultMapping extends MappingModule {
       index("", true, e.std, e.grade)
     }
 
-    bind[SubjectApply]
+    bind[SubjectApply].declare { e =>
+      index("", true, e.writer)
+    }
 
     bind[Commitment]
     bind[Proposal].declare { e =>
