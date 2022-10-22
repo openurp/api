@@ -188,9 +188,12 @@ alter table base.projects_edu_types add constraint fk_qrd90wdrvpq5vy02rhxwmsgb7 
 alter table base.squads add edu_type_id int4;
 alter table base.students add edu_type_id int4;
 alter table edu.programs add edu_type_id int4;
+alter table edu.program_doc_templates add edu_type_id int4;
 update base.squads set edu_type_id=1;
 update base.students set edu_type_id=1;
 update edu.programs set edu_type_id=1;
+update edu.program_doc_templates set edu_type_id=1;
+
 
 comment on table base.c_education_types is '培养类型@edu.code';
 comment on column base.c_education_types.id is '非业务主键:auto_increment';

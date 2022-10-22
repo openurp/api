@@ -40,6 +40,13 @@ class DepartPlan extends LongId with Cloneable {
     times.find(x => x.stage == stage).get
   }
 
+  def getCurrentTimes(): Seq[StageTime] = {
+    val now = LocalDate.now()
+    times.filter { x =>
+      x.timeSuitable(now) == 0
+    }.toSeq
+  }
+
   def addTime(stage: Stage, begin: LocalDate, end: LocalDate): Unit = {
     times.find(x => x.stage == stage) match {
       case None => times.addOne(StageTime(stage, begin, end))

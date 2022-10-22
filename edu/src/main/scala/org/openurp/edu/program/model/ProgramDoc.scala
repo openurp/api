@@ -20,7 +20,7 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{Hierarchical, Named, TemporalOn, Updated}
 import org.beangle.data.model.{IntId, LongId}
-import org.openurp.base.model.{Department, Project}
+import org.openurp.base.model.{Department, EduLevelBased, Project}
 import org.openurp.base.std.code.StdType
 import org.openurp.code.edu.model.EducationLevel
 
@@ -54,11 +54,7 @@ class ProgramDocSection extends LongId with Named with Hierarchical[ProgramDocSe
 /** 培养方案文档模板
  * 限定在某个层次的,某个部门的文档模板，部门可选
  */
-class ProgramDocTemplate extends IntId with Named with TemporalOn with Updated {
-  /** 项目 */
-  var project: Project = _
-  /** 培养层次 */
-  var level: EducationLevel = _
+class ProgramDocTemplate extends IntId, Named, EduLevelBased, TemporalOn, Updated {
   /** 部门 */
   var department: Option[Department] = None
   /** 语言 */

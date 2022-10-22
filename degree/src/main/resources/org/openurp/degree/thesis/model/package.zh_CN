@@ -1,8 +1,9 @@
 Advisor=指导老师
-Advisor.subdecanal=是否教学副院长
 Advisor.maxWriters=所带学生数
 Advisor.description=教师简介
 Advisor.departs=指导院系
+Advisor.email=电子邮件
+Advisor.mobile=手机号码
 
 Commitment=写作任务书
 Commitment.confirmed=是否确认

@@ -40,12 +40,12 @@ class Advisor extends LongId, TemporalOn {
   /** 所属教研室 */
   var office: Option[TeachingOffice] = None
 
-  /** 是否教学副院长 */
-  var subdecanal: Boolean = _
-
   /** 所带学生数 */
   var maxWriters: Long = _
 
+  var mobile: Option[String] = None
+
+  var email: Option[String] = None
   /** 教师简介 */
   var description: Option[String] = None
 }
