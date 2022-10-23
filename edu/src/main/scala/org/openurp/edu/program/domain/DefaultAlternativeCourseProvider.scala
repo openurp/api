@@ -37,10 +37,9 @@ class DefaultAlternativeCourseProvider extends AlternativeCourseProvider {
   def getMajorAlternatives(std: Student): collection.Seq[MajorAlternativeCourse] = {
     val query = OqlBuilder.from(classOf[MajorAlternativeCourse], "alternative")
     query.where("alternative.project = :project", std.project);
-    query.where("alternative.level = :level", std.level.toLevel);
     query.where("alternative.stdType is null or alternative.stdType = :stdType", std.stdType);
     std.state.foreach(state => {
-      query.where(" :grade between alternative.fromGrade  and alternative.toGrade", state.grade);
+      query.where(" :grade between alternative.fromGrade.code and alternative.toGrade.code", state.grade.code);
       query.where("alternative.major is null or alternative.major = :major", state.major)
       state.direction match {
         case None => query.where("alternative.direction is null");

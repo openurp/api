@@ -137,6 +137,11 @@ alter table base.school_lengths add constraint fk_j1yagjj51c2c0kawbwj0id46w fore
 alter table base.school_lengths add constraint fk_ny033y7pameoqo6j69sw3xguk foreign key (from_grade_id) references base.grades (id);
 alter table base.school_lengths alter from_grade_id set not null;
 
+alter table edu.major_alt_courses add column from_grade_id bigint;
+alter table edu.major_alt_courses add column to_grade_id bigint;
+update edu.major_alt_courses s set from_grade_id=(select g.id from base.grades g,base.majors m where m.id=s.major_id and m.project_id=g.project_id and g.code=s.from_grade);
+update edu.major_alt_courses s set to_grade_id=(select g.id from base.grades g,base.majors m where m.id=s.major_id and m.project_id=g.project_id and g.code=s.to_grade);
+
 alter table std.cfg_tuition_configs add column project_id int4;
 --视情况决定手工更改
 update std.cfg_tuition_configs set project_id=(select min(id) from base.projects);
@@ -159,7 +164,6 @@ insert into base.project_properties(id,project_id,name,value_,type_name,descript
 values(datetime_id(),(select min(id) from base.projects),'edu.course.level_credit_supported','false','boolean','课程是否支持不同层次学分不同');
 
 alter table edu.major_alt_courses alter column level_id drop not null;
-alter table edu.major_alt_courses drop column level_id;
 
 create table base.course_levels (course_id bigint not null, credits float4, id bigint not null, level_id integer not null);
 alter table base.course_levels add constraint pk_1mqdklheeg8p8nx65q4l3og8g primary key (id);
@@ -463,6 +467,9 @@ alter table base.school_lengths drop from_grade cascade;
 alter table std.cfg_tuition_configs drop to_grade cascade;
 alter table std.cfg_tuition_configs drop from_grade cascade;
 alter table std.transfer_applies drop from_grade cascade;
+alter table edu.major_alt_courses drop from_grade;
+alter table edu.major_alt_courses drop to_grade;
+alter table edu.major_alt_courses drop column level_id;
 
 alter table edu.restriction_items rename column include_in to included;
 drop table base.c_teacher_types cascade;
