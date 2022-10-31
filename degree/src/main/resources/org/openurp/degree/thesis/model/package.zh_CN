@@ -77,6 +77,7 @@ SubjectApply=论文选题
 SubjectApply.first=初次选题
 SubjectApply.second=补选情况
 SubjectApply.last=最终选题
+SubjectApply.currentRound=当前轮次
 
 StageTime=各阶段的时间安排
 StageTime.stage=阶段

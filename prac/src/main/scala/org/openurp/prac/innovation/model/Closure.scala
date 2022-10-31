@@ -17,11 +17,9 @@
 
 package org.openurp.prac.innovation.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 
-import scala.collection.mutable
 
 /**
  * 项目结项

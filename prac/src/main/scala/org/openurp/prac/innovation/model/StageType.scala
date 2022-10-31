@@ -18,14 +18,14 @@
 package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{Coded, Named}
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Hierarchical
+import org.beangle.data.model.pojo.{Coded, Hierarchical, Named, TemporalOn}
 
 object StageType {
   val Initial = 1
   val Closure = 3
   val ApplyExemptionReply = 4 //这是结项的一个子阶段
+  val PromotionState = 5
+  val PromotionNation = 6
 }
 
 class StageType extends IntId with Named with Coded with TemporalOn with Hierarchical[StageType] {

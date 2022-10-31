@@ -18,12 +18,14 @@
 package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{ Named, Coded }
-object ProjectLevel{
-  val School=1
-  val State=2
-  val Nation=3
+import org.beangle.data.model.pojo.{Coded, Named}
+
+object ProjectLevel {
+  val School = 1
+  val State = 2
+  val Nation = 3
 }
+
 /**
  * 项目级别
  */

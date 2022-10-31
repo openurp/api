@@ -139,8 +139,13 @@ alter table base.school_lengths alter from_grade_id set not null;
 
 alter table edu.major_alt_courses add column from_grade_id bigint;
 alter table edu.major_alt_courses add column to_grade_id bigint;
-update edu.major_alt_courses s set from_grade_id=(select g.id from base.grades g,base.majors m where m.id=s.major_id and m.project_id=g.project_id and g.code=s.from_grade);
-update edu.major_alt_courses s set to_grade_id=(select g.id from base.grades g,base.majors m where m.id=s.major_id and m.project_id=g.project_id and g.code=s.to_grade);
+update edu.major_alt_courses s set from_grade_id=(select g.id from base.grades g where g.code=s.from_grade) where from_grade_id is null;
+update edu.major_alt_courses s set to_grade_id=(select g.id from base.grades g  where g.code=s.to_grade) where to_grade_id is null;
+
+alter table edu.share_plans add column from_grade_id bigint;
+alter table edu.share_plans add column to_grade_id bigint;
+update base.share_plans s set from_grade_id=(select g.id from base.grades g  where  m.project_id=s.project_id and g.code=s.from_grade);
+update base.share_plans s set to_grade_id=(select g.id from base.grades g  where  m.project_id=s.project_id and g.code=s.to_grade);
 
 alter table std.cfg_tuition_configs add column project_id int4;
 --视情况决定手工更改
@@ -470,6 +475,8 @@ alter table std.transfer_applies drop from_grade cascade;
 alter table edu.major_alt_courses drop from_grade;
 alter table edu.major_alt_courses drop to_grade;
 alter table edu.major_alt_courses drop column level_id;
+alter table edu.share_plans drop from_grade;
+alter table edu.share_plans drop to_grade;
 
 alter table edu.restriction_items rename column include_in to included;
 drop table base.c_teacher_types cascade;

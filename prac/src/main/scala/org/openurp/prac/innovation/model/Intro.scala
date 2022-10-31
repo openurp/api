@@ -28,9 +28,9 @@ class Intro extends LongId {
   var summaries: String = _
 
   /**创新点和难点*/
-  var innovation: String = _
+  var innovations: String = _
 
   /**预期成果*/
-  var product: String = _
+  var products: String = _
 
 }

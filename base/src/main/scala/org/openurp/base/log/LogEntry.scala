@@ -29,7 +29,7 @@ abstract class LogEntry extends LongId {
   /** 操作时间 */
   var operateAt: Instant = _
   /** 操作内容摘要 */
-  var summary: String = _
+  var summaries: String = _
   /** 操作内容 */
   var details: String = _
   /** 对应的资源 */

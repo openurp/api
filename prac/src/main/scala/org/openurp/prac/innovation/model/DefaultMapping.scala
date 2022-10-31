@@ -24,7 +24,9 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultCache("openurp.innovation", "read-write")
 
-    bind[Member]
+    bind[Member] declare { e =>
+      index("", true, e.project, e.std)
+    }
 
     bind[Project] declare { e =>
       e.members is depends("project")
@@ -35,8 +37,8 @@ class DefaultMapping extends MappingModule {
 
     bind[Intro] declare { e =>
       e.summaries is length(500)
-      e.innovation is length(300)
-      e.product is length(300)
+      e.innovations is length(300)
+      e.products is length(300)
     }
 
     bind[ProjectCategory].cacheable()

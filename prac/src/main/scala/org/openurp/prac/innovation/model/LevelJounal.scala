@@ -22,6 +22,7 @@ import java.time.Instant
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 
+
 /** 项目的等级记录
  *
  */

@@ -80,4 +80,13 @@ class Project extends LongId with TemporalOn with Remark {
     materials.find(_.stageType.id == StageType.Closure)
   }
 
+  def levelMaterial(level: ProjectLevel): Option[Material] = {
+    val stageTypeId = level.id match {
+      case ProjectLevel.Nation => StageType.PromotionNation
+      case ProjectLevel.State => StageType.PromotionState
+      case ProjectLevel.School => 0
+    }
+    materials.find(_.stageType.id == stageTypeId)
+  }
+
 }

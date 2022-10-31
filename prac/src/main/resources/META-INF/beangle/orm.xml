@@ -2,6 +2,6 @@
 <orm>
   <mapping class="org.openurp.prac.innovation.model.DefaultMapping"  name="innovation"/>
   <naming>
-    <profile package="org.openurp.prac.innovation" pluralize="true" schema="prac" prefix="inno_" />
+    <profile package="org.openurp.prac.innovation" pluralize="true" schema="prac" prefix="inv_" />
   </naming>
 </orm>
