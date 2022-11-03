@@ -19,14 +19,16 @@ package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.std.model.Student
+
 import java.time.YearMonth
 
 /**
  * 教育经历
  */
+@deprecated(message = "Using EduWorkRecord instead", since = "0.30.4")
 class EducationRecord extends LongId {
 
-  /**学生*/
+  /** 学生 */
   var std: Student = _
 
   var beginOn: YearMonth = _

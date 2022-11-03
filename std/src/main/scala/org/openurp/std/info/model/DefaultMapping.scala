@@ -57,5 +57,22 @@ class DefaultMapping extends MappingModule {
     bind[MajorStudent] declare { e =>
       index("", true, e.std)
     }
+
+    bind[EduWorkRecord] declare { e =>
+      e.duty is length(100)
+      e.remark is length(100)
+      e.organization is length(200)
+    }
+
+    bind[Freshman] declare { e =>
+      e.code is length(20)
+      e.idCode is length(20)
+      e.name is length(60)
+      e.dormitoryNo is length(20)
+      e.homeTown & e.birthplace are length(100)
+      e.organization is length(100)
+      e.phone is length(20)
+      e.email is length(100)
+    }
   }
 }

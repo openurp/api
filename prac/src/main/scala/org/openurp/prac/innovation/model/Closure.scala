@@ -20,7 +20,6 @@ package org.openurp.prac.innovation.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 
-
 /**
  * 项目结项
  */

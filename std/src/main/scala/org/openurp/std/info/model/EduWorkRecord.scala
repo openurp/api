@@ -15,30 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.prac.innovation.model
-
-import java.time.Instant
+package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Remark
+import org.openurp.base.std.model.Student
 
-/** 项目的等级记录
- *
+import java.time.YearMonth
+
+/**
+ * 学习和工作经历
  */
-class LevelJounal extends LongId with Updated {
+class EduWorkRecord extends LongId, Remark {
 
-  /**年度*/
-  var awardYear: Int = _
+  /** 学生 */
+  var std: Student = _
 
-  var project: Project = _
+  var beginOn: YearMonth = _
 
-  var level: ProjectLevel = _
+  var endOn: YearMonth = _
 
-  def this(year: Int, project: Project, level: ProjectLevel) = {
-    this()
-    this.awardYear = year
-    this.project = project
-    this.level = level
-    this.updatedAt = Instant.now
-  }
+  /** 学校或单位 */
+  var organization: String = _
+
+  /** 职务 */
+  var duty: Option[String] = None
+
 }
