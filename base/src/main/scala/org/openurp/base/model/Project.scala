@@ -42,18 +42,18 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   /** 适用学校 */
   var school: School = _
   /** 校区列表 */
-  var campuses: mutable.Buffer[Campus] = new mutable.ListBuffer[Campus]
+  var campuses: mutable.Set[Campus] = new mutable.HashSet[Campus]
   /** 部门列表 */
-  var departments: mutable.Buffer[Department] = new mutable.ListBuffer[Department]
+  var departments: mutable.Set[Department] = new mutable.HashSet[Department]
   /** 学历层次列表 */
-  var levels: mutable.Buffer[EducationLevel] = new mutable.ListBuffer[EducationLevel]
+  var levels: mutable.Set[EducationLevel] = new mutable.HashSet[EducationLevel]
 
   /** 培养类型列表 */
-  var eduTypes: mutable.Buffer[EducationType] = new mutable.ListBuffer[EducationType]
+  var eduTypes: mutable.Set[EducationType] = new mutable.HashSet[EducationType]
   /** 学生分类列表 */
-  var stdLabels: mutable.Buffer[StdLabel] = new mutable.ListBuffer[StdLabel]
+  var stdLabels: mutable.Set[StdLabel] = new mutable.HashSet[StdLabel]
   /** 学生类别 */
-  var stdTypes: mutable.Buffer[StdType] = new mutable.ListBuffer[StdType]
+  var stdTypes: mutable.Set[StdType] = new mutable.HashSet[StdType]
   /** 使用校历 */
   var calendar: Calendar = _
   /** 描述 */
