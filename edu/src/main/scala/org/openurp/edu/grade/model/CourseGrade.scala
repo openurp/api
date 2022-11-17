@@ -24,10 +24,11 @@ import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{ProjectBased, Semester}
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.{CourseTakeType, ExamMode, GradeType, GradingMode}
+import org.openurp.code.edu.model.*
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.Grade
 
+import java.time.Instant
 import scala.collection.mutable
 
 /**
@@ -151,6 +152,57 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
     gaGrades += gaGrade
     gaGrade.courseGrade = this
     this
+  }
+
+  /**
+   * 添加总评成绩
+   *
+   * @param gradeType
+   * @return
+   */
+  def addGaGrade(gradeType: GradeType, status: Int): GaGrade = {
+    gaGrades.find(eg => eg.gradeType == gradeType) match {
+      case Some(ga) =>
+        ga.status = status
+        ga
+      case None =>
+        val ga = new GaGrade()
+        ga.courseGrade = this
+        ga.createdAt = Instant.now
+        ga.updatedAt = Instant.now
+        ga.gradeType = gradeType
+        ga.gradingMode = this.gradingMode
+        ga.status = status
+        this.gaGrades.addOne(ga)
+        ga
+    }
+  }
+
+  /**
+   * 添加考试成绩
+   *
+   * @param gradeType
+   * @return
+   */
+  def addExamGrade(gradeType: GradeType, gradingMode: GradingMode, examStatus: ExamStatus, status: Int): ExamGrade = {
+    examGrades.find(eg => eg.gradeType == gradeType) match {
+      case Some(ea) =>
+        ea.gradingMode = gradingMode
+        ea.examStatus = examStatus
+        ea.status = status
+        ea
+      case None =>
+        val ea = new ExamGrade()
+        ea.courseGrade = this
+        ea.createdAt = Instant.now
+        ea.updatedAt = Instant.now
+        ea.gradeType = gradeType
+        ea.gradingMode = gradingMode
+        ea.examStatus = examStatus
+        ea.status = status
+        this.examGrades.addOne(ea)
+        ea
+    }
   }
 
   @transient

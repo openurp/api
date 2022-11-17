@@ -100,5 +100,12 @@ class DefaultMapping extends MappingModule {
       e.url is length(400)
       index("", false, e.clazz)
     }
+
+    bind[ClazzBulletin] declare { e =>
+      e.contents is length(1000)
+      e.communicationChannel is length(150)
+      e.communicationQrcodePath is length(300)
+      index("",true,e.clazz)
+    }
   }
 }

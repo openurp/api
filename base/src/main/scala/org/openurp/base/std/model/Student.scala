@@ -89,13 +89,25 @@ class Student extends LongId with Coded with Named with EduLevelBased with Updat
   var tutor: Option[Teacher] = None
 
   def calcCurrentState(): Unit = {
-    val today = LocalDate.now()
-    this.state =
-      this.states.find(_.within(today)) match {
-        case st@Some(s) => st
-        case None => this.states.lastOption
-      }
+    this.state = Some(stateWhen(LocalDate.now()))
   }
+
+  def stateWhen(date: LocalDate): StudentState = {
+    this.states.find(_.within(date)) match {
+      case st@Some(s) => s
+      case None => this.states.sortBy(_.endOn).last
+    }
+  }
+
+  def grade: Grade = state.get.grade
+
+  def department: Department = state.get.department
+
+  def major: Major = state.get.major
+
+  def direction: Option[Direction] = state.get.direction
+
+
 }
 
 /**

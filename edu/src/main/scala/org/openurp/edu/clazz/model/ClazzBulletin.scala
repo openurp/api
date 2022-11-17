@@ -17,26 +17,18 @@
 
 package org.openurp.edu.clazz.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.User
-import org.openurp.edu.clazz.model.Clazz
-
-import scala.collection.mutable
 
 /**
- * 教学班通知
+ * 教学班班级公告
  */
-class ClazzNotice extends LongId with Updated {
+class ClazzBulletin extends LongId {
 
   var clazz: Clazz = _
 
-  var title: String = _
+  var contents: Option[String] = None
 
-  var contents: String = _
+  var communicationChannel: Option[String] = None
 
-  var files: mutable.Buffer[ClazzNoticeFile] = Collections.newBuffer[ClazzNoticeFile]
-
-  var updatedBy: User = _
+  var communicationQrcodePath: Option[String] = None
 }
