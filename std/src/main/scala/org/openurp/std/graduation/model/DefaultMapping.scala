@@ -22,7 +22,7 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[GraduateSession].declare { e =>
+    bind[GraduateBatch].declare { e =>
       e.name is length(100)
     }
     bind[GraduateAuditItem].declare { e =>

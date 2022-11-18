@@ -35,10 +35,10 @@ DegreeResult.ga=平均分
 DegreeResult.foreignLangPassedOn=外语通过年月
 DegreeResult.batch=批次
 
-GraduateSession=毕业批次
-GraduateSession.name=名称
-GraduateSession.graduateOn=毕业日期
-GraduateSession.degreeOffered=是否授学位
+GraduateBatch=毕业批次
+GraduateBatch.name=名称
+GraduateBatch.graduateOn=毕业日期
+GraduateBatch.degreeOffered=是否授学位
 
 DegreeApply=学位申请
 DegreeApply.gpa=GPA

@@ -39,12 +39,12 @@ class DefaultMapping extends MappingModule {
       e.requirements is length(1000)
       e.conditions is length(1000)
       e.contents is length(1000)
-      index("", true, e.grade, e.name)
+      index("", true, e.season, e.name)
     }
 
     bind[Writer].declare { e =>
       e.deadlines is depends("writer")
-      index("", true, e.std, e.grade)
+      index("", true, e.std, e.season)
     }
 
     bind[SubjectApply].declare { e =>

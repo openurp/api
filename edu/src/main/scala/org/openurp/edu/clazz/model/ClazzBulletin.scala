@@ -28,7 +28,7 @@ class ClazzBulletin extends LongId {
 
   var contents: Option[String] = None
 
-  var communicationChannel: Option[String] = None
+  var contactChannel: Option[String] = None
 
-  var communicationQrcodePath: Option[String] = None
+  var contactQrcodePath: Option[String] = None
 }

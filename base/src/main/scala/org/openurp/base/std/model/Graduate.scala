@@ -30,7 +30,7 @@ import java.time.LocalDate
 class Graduate extends LongId, Updated {
 
   /** 界别 */
-  var grade: GraduateGrade = _
+  var grade: GraduateSeason = _
 
   /** 学籍 */
   var std: Student = _

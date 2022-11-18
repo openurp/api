@@ -21,7 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.DateRange
 import org.openurp.base.model.Project
-import org.openurp.base.std.model.GraduateGrade
+import org.openurp.base.std.model.GraduateSeason
 
 import scala.collection.mutable
 
@@ -29,7 +29,7 @@ class ThesisPlan extends LongId, DateRange {
 
   var project: Project = _
 
-  var grade: GraduateGrade = _
+  var season: GraduateSeason = _
 
   var times: mutable.Buffer[StageTime] = Collections.newBuffer[StageTime]
 

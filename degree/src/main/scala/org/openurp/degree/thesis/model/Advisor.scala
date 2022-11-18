@@ -31,10 +31,13 @@ class Advisor extends LongId, TemporalOn {
 
   var project: Project = _
 
+  /** 用户 */
   var user: User = _
 
+  /** 指导院系 */
   var departs: mutable.Buffer[Department] = Collections.newBuffer[Department]
 
+  /** 职称 */
   var title: Option[ProfessionalTitle] = None
 
   /** 所属教研室 */
@@ -43,9 +46,12 @@ class Advisor extends LongId, TemporalOn {
   /** 所带学生数 */
   var maxWriters: Long = _
 
+  /** 手机 */
   var mobile: Option[String] = None
 
+  /** 联系方式 */
   var email: Option[String] = None
+
   /** 教师简介 */
   var description: Option[String] = None
 }

@@ -24,7 +24,7 @@ import org.openurp.code.edu.model.Degree
 
 class DegreeApply extends LongId with Updated {
 
-  var session: GraduateSession = _
+  var batch: GraduateBatch = _
 
   var std: Student = _
 

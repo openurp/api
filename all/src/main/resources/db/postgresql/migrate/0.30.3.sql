@@ -1,3 +1,6 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.30.3',now(),'指导老师增加联系方式');
+
 alter table degree.advisors add mobile varchar(20);
 alter table degree.advisors add email varchar(100);
 update degree.advisors a set (email,mobile) = (select u.email,u.mobile from base.users u where u.id=a.user_id);

@@ -21,14 +21,14 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.edu.model.Major
 import org.openurp.base.model.{AuditStatus, Department, User}
-import org.openurp.base.std.model.GraduateGrade
+import org.openurp.base.std.model.GraduateSeason
 
 import scala.collection.mutable
 
 /** 论文开题题目
  */
 class Subject extends LongId with Named {
-  var grade: GraduateGrade = _
+  var season: GraduateSeason = _
   /** 面向专业 */
   var majors: mutable.Set[Major] = new mutable.HashSet[Major]
   /** 现有条件 */
