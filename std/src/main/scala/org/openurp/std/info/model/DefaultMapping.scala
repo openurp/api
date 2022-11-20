@@ -28,6 +28,7 @@ class DefaultMapping extends MappingModule {
       e.examNo is length(30)
       e.letterNo is length(30)
       e.schoolName is length(200)
+      index("", true, e.std)
     }
 
     bind[Home].declare { e =>
@@ -47,7 +48,6 @@ class DefaultMapping extends MappingModule {
       e.address is length(150)
       index("", true, e.std)
     }
-    bind[EducationRecord]
 
     bind[SocialRelation] declare { e =>
       e.duty is length(400)
