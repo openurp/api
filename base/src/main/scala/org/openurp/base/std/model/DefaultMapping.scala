@@ -65,7 +65,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Graduate] declare { e =>
-      e.std is unique
+      index("", true, e.std)
     }
 
     bind[Grade].declare { e =>
