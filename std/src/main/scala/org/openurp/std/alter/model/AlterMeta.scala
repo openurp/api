@@ -21,6 +21,6 @@ package org.openurp.std.alter.model
  * 学籍异动属性
  */
 enum AlterMeta {
-  case None, Grade, Department, Major, Direction, Squad, Inschool, Status, Campus
+  case None, Grade, Department, Major, Direction, Squad, Inschool, Status, Campus,GraduateOn
 
 }
