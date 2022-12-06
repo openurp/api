@@ -141,3 +141,8 @@ ClazzNoticeFile=班级公告附件
 ClazzNoticeFile.name=名称
 ClazzNoticeFile.filePath=文件路径
 ClazzNoticeFile.mediaType=类型
+
+ClazzBulletin=教学班公告板
+ClazzBulletin.contents=公告内容
+ClazzBulletin.contactChannel=日常联系渠道
+ClazzBulletin.contactQrcodePath=日常联系渠道二维码

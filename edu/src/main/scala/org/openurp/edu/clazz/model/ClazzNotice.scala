@@ -25,6 +25,9 @@ import org.openurp.edu.clazz.model.Clazz
 
 import scala.collection.mutable
 
+/**
+ * 教学班通知
+ */
 class ClazzNotice extends LongId with Updated {
 
   var clazz: Clazz = _

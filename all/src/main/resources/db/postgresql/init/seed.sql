@@ -199,6 +199,13 @@ INSERT INTO code.nations (id, code, name,alpha_code, en_name, begin_on, end_on, 
 insert into base.c_education_types(id,code,name,begin_on,updated_at) values(1,'1','普通本科',current_date -10,now());
 insert into base.c_std_types(id,code,name,begin_on,updated_at) values(1,'1','普通',current_date -10,now());
 
+INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (1, '2017-04-14', '1', NULL, NULL, '休学', '2017-04-14 14:40:00.813518');
+INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (2, '2017-04-14', '2', NULL, NULL, '退学', '2017-04-14 14:40:24.358813');
+INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (3, '2017-04-14', '3', NULL, NULL, '复学', '2017-04-14 14:41:06.502864');
+INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (4, '2017-04-14', '4', NULL, NULL, '放弃学籍', '2017-04-14 14:41:36.211759');
+INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (5, '2017-04-14', '5', NULL, NULL, '转专业', '2017-04-14 14:42:10.183278');
+INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (6, '2017-04-26', '6', NULL, NULL, '恢复学籍', '2017-04-26 22:13:33.004115');
+INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (11, '2019-03-31', '11', NULL, NULL, '保留学籍', '2019-04-02 16:12:20.816552');
 -----------如下代码需要插入后修改---------
 insert into code.institutions(id,code,name,begin_on,updated_at)
 values(10000,'10000','URP学院',current_date -10,now());

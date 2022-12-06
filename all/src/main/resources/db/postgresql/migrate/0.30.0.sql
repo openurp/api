@@ -32,7 +32,6 @@ select t.id,t.school_id,p.nation_id,p.political_status_id,u.code,u.department_id
                                left outer join base.people p on p.id=t.person_id;
 alter table hr.teacher_profiles rename teaching_career to career;
 alter table base.staffs add constraint pk_qi7hj56hag2uu4e5eu4egoxrl primary key (id);
-alter table base.staffs add constraint uk_ksaq070k32jb6aey065dd9xv0 unique (school_id,code);
 comment on table base.staffs is '教职工信息@common';
 comment on column base.staffs.id is '非业务主键:datetime';
 comment on column base.staffs.begin_on is '生效日期';
@@ -62,6 +61,11 @@ comment on column base.staffs.staff_type_id is '教职工类别ID';
 comment on column base.staffs.status_id is '在职状态ID';
 comment on column base.staffs.title_id is '最高职称ID';
 comment on column base.staffs.updated_at is '更新时间';
+
+create table code.staff_types (id integer not null, begin_on date not null, end_on date, parent_id integer, updated_at timestamp not null, code varchar(20) not null unique, en_name varchar(300), name varchar(100) not null, remark varchar(200));
+create table code.staff_source_types (id integer not null, begin_on date not null, end_on date, parent_id integer, updated_at timestamp not null, code varchar(20) not null unique, en_name varchar(300), name varchar(100) not null, remark varchar(200));
+alter table code.staff_source_types add constraint pk_jsm380evxdo115plu90m5dmtc primary key (id);
+alter table code.staff_types add constraint pk_a4368uis6hkcnv1jksw7hntap primary key (id);
 
 alter table code.staff_types alter column parent_id drop not null;
 alter table code.staff_source_types alter column parent_id drop not null;
@@ -100,6 +104,7 @@ alter table base.teachers  add tqc_number varchar(20);
 alter table base.teachers  add oqc varchar(100);
 alter table base.teachers  add tutor_type_id int4;
 
+--#if code.degree_levels is empty,insert them.
 INSERT INTO code.degree_levels(id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (1, '1', '学士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.degree_levels(id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '2', '硕士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.degree_levels(id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '3', '博士学位', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
@@ -117,6 +122,9 @@ update base.grades set end_on= to_date((substr(code,1,4)::int +4)::varchar||'090
 insert into base.grades(id,code,name,project_id)
 select distinct (s.project_id::varchar||replace(s.grade,'-',''))::int8,s.grade,s.grade,s.project_id from base.squads s
 where not exists(select * from base.grades g where g.project_id=s.project_id and g.name=s.grade);
+
+update base.grades set begin_on=to_date(substr(code,1,4)||'-09-01','yyyy-MM-dd') where begin_on is null;
+update base.grades set end_on=to_date(substr(code,1,4)::int4+5||'-07-01','yyyy-MM-dd') where end_on is null;
 
 alter table base.grades add constraint uk_enpnepu169ecfvnnni3oayeva unique (project_id,code);
 
@@ -144,8 +152,8 @@ update edu.major_alt_courses s set to_grade_id=(select g.id from base.grades g  
 
 alter table edu.share_plans add column from_grade_id bigint;
 alter table edu.share_plans add column to_grade_id bigint;
-update base.share_plans s set from_grade_id=(select g.id from base.grades g  where  m.project_id=s.project_id and g.code=s.from_grade);
-update base.share_plans s set to_grade_id=(select g.id from base.grades g  where  m.project_id=s.project_id and g.code=s.to_grade);
+update edu.share_plans s set from_grade_id=(select g.id from base.grades g  where  g.project_id=s.project_id and g.code=s.from_grade);
+update edu.share_plans s set to_grade_id=(select g.id from base.grades g  where  g.project_id=s.project_id and g.code=s.to_grade);
 
 alter table std.cfg_tuition_configs add column project_id int4;
 --视情况决定手工更改
@@ -198,11 +206,14 @@ alter table base.squads add edu_type_id int4;
 alter table base.students add edu_type_id int4;
 alter table edu.programs add edu_type_id int4;
 alter table edu.program_doc_templates add edu_type_id int4;
+alter table edu.major_alt_courses add edu_type_id int4;
+alter table edu.share_plans add edu_type_id int4;
 update base.squads set edu_type_id=1;
 update base.students set edu_type_id=1;
 update edu.programs set edu_type_id=1;
 update edu.program_doc_templates set edu_type_id=1;
-
+update edu.major_alt_courses set edu_type_id=1;
+update edu.share_plans set edu_type_id=1;
 
 comment on table base.c_education_types is '培养类型@edu.code';
 comment on column base.c_education_types.id is '非业务主键:auto_increment';
@@ -266,11 +277,12 @@ drop table std.examinees_scores;
 
 -----graduate grade------
 alter table base.graduate_grades add column code varchar(255);
-update  base.graduate_grades set code=graduate_year;
 alter table base.graduate_grades add column project_id integer;
+update  base.graduate_grades set code=graduate_year;
 update base.graduate_grades set project_id=(select min(id) from base.projects);
 
 alter table base.graduate_grades add constraint uk_op90s66v46iqanqv5ryumkvs0 unique (project_id,code);
+
 
 ----external signup-----------
 create table edu.cfg_cert_signup_configs (id bigint not null, begin_at timestamp not null, category_id integer not null, code varchar(255) not null, end_at timestamp not null, name varchar(255) not null, notice varchar(255) not null, opened boolean not null, prediction boolean not null, project_id integer not null, semester_id integer not null);
@@ -450,6 +462,8 @@ alter table std.graduates set schema base;
 alter table base.graduates rename education_result_id to result_id;
 alter table base.graduates add grade_id int4;
 
+-----tutor-----------
+create table code.tutor_types (id integer not null, begin_on date not null, end_on date, updated_at timestamp not null, code varchar(20) not null unique, en_name varchar(300), name varchar(100) not null, remark varchar(200));
 -----warning----------
 alter table base.teachers drop column school_id;
 alter table base.teachers drop column updated_at;

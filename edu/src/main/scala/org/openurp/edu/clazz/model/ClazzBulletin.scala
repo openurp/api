@@ -19,6 +19,9 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
 
+/**
+ * 教学班班级公告
+ */
 class ClazzBulletin extends LongId {
 
   var clazz: Clazz = _

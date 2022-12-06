@@ -18,7 +18,7 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.std.model.GraduateGrade
+import org.openurp.base.std.model.GraduateSeason
 
 object SubjectApply {
   val Round1 = 1

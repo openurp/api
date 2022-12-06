@@ -22,14 +22,14 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.edu.model.Major
 import org.openurp.base.model.{Department, User}
-import org.openurp.base.std.model.{GraduateGrade, Squad, Student}
+import org.openurp.base.std.model.{GraduateSeason, Squad, Student}
 
 import java.time.Instant
 import scala.collection.mutable
 
 class Writer extends LongId {
 
-  var grade: GraduateGrade = _
+  var season: GraduateSeason = _
 
   var std: Student = _
 

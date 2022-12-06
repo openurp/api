@@ -31,7 +31,7 @@ import scala.collection.mutable
 class GraduateResult extends LongId with Updated {
 
   /** 所属的毕业审核批次 */
-  var session: GraduateSession = _
+  var batch: GraduateBatch = _
 
   /** 批次 */
   var batchNo: Int = _

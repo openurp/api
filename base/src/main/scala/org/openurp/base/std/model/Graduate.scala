@@ -18,6 +18,7 @@
 package org.openurp.base.std.model
 
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 import org.openurp.code.edu.model.{Degree, EducationResult}
 import org.openurp.code.std.model.WheretoGo
 
@@ -26,10 +27,10 @@ import java.time.LocalDate
 /** 毕业生信息
  *
  */
-class Graduate extends LongId {
+class Graduate extends LongId, Updated {
 
   /** 界别 */
-  var grade: GraduateGrade = _
+  var grade: GraduateSeason = _
 
   /** 学籍 */
   var std: Student = _

@@ -30,7 +30,7 @@ import scala.collection.mutable
 class DegreeResult extends LongId with Updated {
 
   /** 所属的毕业审核批次 */
-  var session: GraduateSession = _
+  var batch: GraduateBatch = _
 
   /** 学生 */
   var std: Student = _
@@ -63,6 +63,6 @@ class DegreeResult extends LongId with Updated {
   var foreignLangPassedOn: Option[LocalDate] = None
 
   def deciplineCode: String = {
-    std.state.map(_.major.disciplineCode(session.graduateOn)).getOrElse("")
+    std.state.map(_.major.disciplineCode(batch.graduateOn)).getOrElse("")
   }
 }

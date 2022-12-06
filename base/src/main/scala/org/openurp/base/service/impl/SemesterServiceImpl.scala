@@ -68,6 +68,7 @@ class SemesterServiceImpl extends SemesterService {
    */
   override def get(project: Project, beginOn: LocalDate, endOn: LocalDate, index: Int): Option[Semester] = {
     val builder = OqlBuilder.from(classOf[Semester], "semester")
+      .where("semester.calendar =:calendar", project.calendar)
     builder.where("semester.beginOn <= :endOn", endOn)
     builder.where("semester.endOn >= :beginOn", beginOn)
     builder.orderBy(Order.parse("semester.beginOn"))

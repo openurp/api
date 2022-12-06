@@ -39,12 +39,14 @@ class DefaultMapping extends MappingModule {
       e.requirements is length(1000)
       e.conditions is length(1000)
       e.contents is length(1000)
-      index("", true, e.grade, e.name)
+      index("", true, e.season, e.name)
     }
 
     bind[Writer].declare { e =>
       e.deadlines is depends("writer")
-      index("", true, e.std, e.grade)
+      index("", true, e.std, e.season)
+      index("", false, e.season)
+      index("", false, e.std)
     }
 
     bind[SubjectApply].declare { e =>
@@ -55,15 +57,19 @@ class DefaultMapping extends MappingModule {
     bind[Proposal].declare { e =>
       e.references is column("refers")
       e.methods & e.conditions & e.outline & e.advisorOpinion & e.meanings & e.references are lob
+
+      index("",false,e.writer)
     }
 
     bind[Guidance].declare { e =>
       e.contents is lob
+      index("",false,e.writer)
     }
 
     bind[MidtermCheck].declare { e =>
       e.details is depends("check")
       e.proceeding is lob
+      index("",false,e.writer)
     }
 
     bind[MidtermCheckDetail].declare { e =>
