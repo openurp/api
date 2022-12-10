@@ -18,6 +18,10 @@ Classroom.floorNo=楼层
 Classroom.building=教学楼
 Classroom.projects=使用项目
 
+CourseCluster=课程群组
+CourseCluster.component=是否作为整体的一部分
+CourseCluster.target=合成的课程
+
 Course=课程基本信息
 Course.code=课程代码
 Course.name=课程名称

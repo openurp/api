@@ -81,6 +81,9 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 教研室 */
   var teachingOffice: Option[TeachingOffice] = None
 
+  /** 课程群组 */
+  var cluster: Option[CourseCluster] = None
+
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
   }

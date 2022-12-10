@@ -19,6 +19,8 @@ alter table base.classrooms add constraint pk_d7h30ub9pduroys2e5318ti55 primary 
 alter table base.classrooms add constraint uk_3rf701tm9q4qyua4q0ydybv95 unique (code);
 alter table base.classrooms_departs add constraint pk_n5duwpuh4oq58kk8i61odk7h7 primary key (classroom_id,department_id);
 alter table base.classrooms_projects add constraint pk_cjgojafxa077u3fb2vicargx primary key (classroom_id,project_id);
+alter table base.course_clusters add constraint pk_6gjj4kp1e06ob51efr5det0ot primary key (id);
+alter table base.course_clusters add constraint uk_jvovhm8hp7ph6s50s7fvq90wt unique (project_id,code);
 alter table base.course_hours add constraint pk_euy5bifeg4jalgolkkxa21w3f primary key (id);
 alter table base.course_levels add constraint pk_1mqdklheeg8p8nx65q4l3og8g primary key (id);
 alter table base.course_levels add constraint uk_59cbmhw5789an69kcq0j5g9i8 unique (course_id,level_id);
@@ -44,6 +46,7 @@ alter table base.grades add constraint uk_enpnepu169ecfvnnni3oayeva unique (proj
 alter table base.graduate_seasons add constraint pk_ajyxkx6bgsd5hh3tst2x0qrs0 primary key (id);
 alter table base.graduate_seasons add constraint uk_q1npfkscf2dd26j0ie8sdlvl unique (project_id,code);
 alter table base.graduates add constraint pk_861dttwawbactk5wx2pb5sfg1 primary key (id);
+alter table base.graduates add constraint uk_fjm29o037eumvq25eojdp797r unique (std_id);
 alter table base.major_disciplines add constraint pk_oifn3upq6ylafj81hb805ut1l primary key (id);
 alter table base.major_journals add constraint pk_7gepwk5lg9b0ixt7ww2tum8gm primary key (id);
 alter table base.majors add constraint pk_p9yolyf8gx5n3i5kh4utj6klv primary key (id);
@@ -424,8 +427,8 @@ alter table std.degree_applies add constraint pk_85xktk94x3o87fc7wwtbo07i5 prima
 alter table std.degree_audit_items add constraint pk_p1g6j1m2uwxsqw5s7uypyirnh primary key (id);
 alter table std.degree_results add constraint pk_juk8stxairvjh8aqqgmus1vx2 primary key (id);
 alter table std.edu_work_records add constraint pk_ow2kjrrf2ckemfeaucvejvy7u primary key (id);
-alter table std.education_records add constraint pk_gh6h5bs9l2m0gjtym54pm8if2 primary key (id);
 alter table std.examinees add constraint pk_1e8il6rh29256vdjtbwh1y0fe primary key (id);
+alter table std.examinees add constraint uk_2bqu9xw63m537f7cby311u7vr unique (std_id);
 alter table std.exchange_exempt_applies add constraint pk_4f0enq2mbdihem9b0lc5rj508 primary key (id);
 alter table std.exchange_exempt_applies add constraint uk_f7vxeybmu4o943d82bxybjsn6 unique (extern_student_id);
 alter table std.exchange_exempt_credits add constraint pk_aipxrhi0ogijie0ba0jh224qw primary key (id);

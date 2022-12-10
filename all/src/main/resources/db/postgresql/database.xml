@@ -297,6 +297,32 @@
             <index name="idx_3y1hwcx0xh0apfawnr099698f" columns="classroom_id"/>
           </indexes>
         </table>
+        <table name="course_clusters" comment="课程群组@edu">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="code" type="varchar(20)" nullable="false" comment="代码"/>
+            <column name="component" type="boolean" nullable="false" comment="是否作为整体的一部分"/>
+            <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
+            <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+            <column name="target_id" type="bigint" comment="合成的课程ID"/>
+          </columns>
+          <primary-key name="pk_6gjj4kp1e06ob51efr5det0ot" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_sweltcp74ihdx1pajo1re38st" column="edu_type_id"
+                         referenced-table="base.c_education_types" referenced-column="id"/>
+            <foreign-key name="fk_nwdxeyujck948jylsxhumiblc" column="level_id" referenced-table="code.education_levels"
+                         referenced-column="id"/>
+            <foreign-key name="fk_s3wlxtejuii2qiubn7r49ichl" column="project_id" referenced-table="base.projects"
+                         referenced-column="id"/>
+            <foreign-key name="fk_dpwqno5uhcsw2c03pjel3kf9c" column="target_id" referenced-table="base.courses"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_jvovhm8hp7ph6s50s7fvq90wt" columns="project_id,code"/>
+          </unique-keys>
+        </table>
         <table name="course_hours" comment="课程分类课时信息@edu">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -365,6 +391,7 @@
             <column name="begin_on" type="date" nullable="false" comment="设立日期"/>
             <column name="calgp" type="boolean" nullable="false" comment="是否计算绩点"/>
             <column name="category_id" type="integer" comment="课程种类代码ID"/>
+            <column name="cluster_id" type="bigint" comment="课程群组ID"/>
             <column name="code" type="varchar(32)" nullable="false" comment="课程代码"/>
             <column name="course_type_id" type="integer" nullable="false" comment="建议课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" comment="学时/总课时"/>
@@ -385,6 +412,8 @@
           </columns>
           <primary-key name="pk_1lyj037fss3plmcutpx9b4r2x" columns="id"/>
           <foreign-keys>
+            <foreign-key name="fk_b3oqgd1pw427cuyrtoi5c3794" column="cluster_id" referenced-table="base.course_clusters"
+                         referenced-column="id"/>
             <foreign-key name="fk_4y8vq18sa3lnl8d9kbybqcpdt" column="course_type_id"
                          referenced-table="base.c_course_types" referenced-column="id"/>
             <foreign-key name="fk_dn65sxi9lag9qquiqhxbyy96h" column="project_id" referenced-table="base.projects"
@@ -683,10 +712,10 @@
             <column name="degree_id" type="integer" comment="学位ID"/>
             <column name="diploma_no" type="varchar(255)" comment="学位证书号"/>
             <column name="foreign_lang_passed_on" type="date" comment="外语通过年月"/>
-            <column name="grade_id" type="integer" nullable="false" comment="毕业界别ID"/>
             <column name="graduate_on" type="date" nullable="false" comment="毕结业日期"/>
             <column name="result_id" type="integer" nullable="false" comment="教育培训结果ID"/>
-            <column name="std_id" type="bigint" nullable="false" unique="true" comment="学籍信息实现ID"/>
+            <column name="season_id" type="integer" nullable="false" comment="毕业界别ID"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamp" nullable="false" comment="更新时间"/>
             <column name="whereto_go_id" type="integer" comment="毕业去向ID"/>
           </columns>
@@ -700,9 +729,12 @@
                          referenced-column="id"/>
             <foreign-key name="fk_qgtmcqt7yo0s9d8oaheoh193o" column="result_id"
                          referenced-table="code.education_results" referenced-column="id"/>
-            <foreign-key name="fk_2bnpmo91obg7ejdkxnfgg7rp7" column="grade_id" referenced-table="base.graduate_seasons"
+            <foreign-key name="fk_dw10v5hdljxykc44xobj5yf6f" column="season_id" referenced-table="base.graduate_seasons"
                          referenced-column="id"/>
           </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_fjm29o037eumvq25eojdp797r" columns="std_id"/>
+          </unique-keys>
         </table>
         <table name="major_disciplines" comment="专业学科信息@edu">
           <columns>
@@ -2962,6 +2994,9 @@
             <foreign-key name="fk_97iw0bu3guoo6hby3tuy1kfvn" column="writer_id" referenced-table="degree.writers"
                          referenced-column="id"/>
           </foreign-keys>
+          <indexes>
+            <index name="idx_o1tr5322a778ojj610im4awwf" columns="writer_id"/>
+          </indexes>
         </table>
         <table name="midterm_check_details" comment="中期检查明细@thesis">
           <columns>
@@ -3003,6 +3038,9 @@
             <foreign-key name="fk_jpkpmtn9skele9f4jkt6tp96u" column="writer_id" referenced-table="degree.writers"
                          referenced-column="id"/>
           </foreign-keys>
+          <indexes>
+            <index name="idx_pgwmev6yuaj7l0gqamm8q318f" columns="writer_id"/>
+          </indexes>
         </table>
         <table name="proposals" comment="开题报告@thesis">
           <columns>
@@ -3023,6 +3061,9 @@
             <foreign-key name="fk_s8o538e18m5v7t3e4wormvua" column="writer_id" referenced-table="degree.writers"
                          referenced-column="id"/>
           </foreign-keys>
+          <indexes>
+            <index name="idx_ro29y4ytkhp4ejqadt59emj6w" columns="writer_id"/>
+          </indexes>
         </table>
         <table name="subject_applies" comment="论文选题@thesis">
           <columns>
@@ -3163,6 +3204,10 @@
           <unique-keys>
             <unique-key name="uk_ii4fkei0dohqc92kvxlbbcopw" columns="std_id,season_id"/>
           </unique-keys>
+          <indexes>
+            <index name="idx_1msow45s5r22cpswq4uby1gyo" columns="season_id"/>
+            <index name="idx_8re320acxkwwypf6jedlbkkm6" columns="std_id"/>
+          </indexes>
         </table>
       </tables>
     </schema>
@@ -7412,20 +7457,6 @@
                          referenced-column="id"/>
           </foreign-keys>
         </table>
-        <table name="education_records" comment="教育经历@info">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_on" type="date" nullable="false" comment="开始年月"/>
-            <column name="end_on" type="date" nullable="false" comment="结束年月"/>
-            <column name="school" type="varchar(255)" nullable="false" comment="学校"/>
-            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-          </columns>
-          <primary-key name="pk_gh6h5bs9l2m0gjtym54pm8if2" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_fy7gu7yyw5kqggnk2wdr74pyj" column="std_id" referenced-table="base.students"
-                         referenced-column="id"/>
-          </foreign-keys>
-        </table>
         <table name="examinees" comment="考生信息@info">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -7457,6 +7488,9 @@
             <foreign-key name="fk_pmvt794yxsrbdf2asttcagv0j" column="enroll_mode_id"
                          referenced-table="code.enroll_modes" referenced-column="id"/>
           </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_2bqu9xw63m537f7cby311u7vr" columns="std_id"/>
+          </unique-keys>
         </table>
         <table name="exchange_exempt_applies" comment="免修申请@exchange">
           <columns>

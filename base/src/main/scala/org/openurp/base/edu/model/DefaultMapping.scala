@@ -41,6 +41,12 @@ class DefaultMapping extends MappingModule {
       index("", true, e.code)
     }
 
+    bind[CourseCluster] declare { e =>
+      e.name is length(100)
+      e.code is length(20)
+      index("", true, e.project, e.code)
+    }
+
     bind[Course] declare { e =>
       e.code is length(32)
       e.name is length(222)

@@ -107,7 +107,6 @@ class Student extends LongId with Coded with Named with EduLevelBased with Updat
 
   def direction: Option[Direction] = state.get.direction
 
-
 }
 
 /**
