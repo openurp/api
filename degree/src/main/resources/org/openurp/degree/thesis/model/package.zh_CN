@@ -95,6 +95,7 @@ Writer=写作学生
 Writer.squad=班级
 Writer.email=联系邮件
 Writer.mobile=联系手机
+Writer.thesisTitle=论文题目
 
 CopyCheck=复制检测结果
 CopyCheck.copyRatio=复制比

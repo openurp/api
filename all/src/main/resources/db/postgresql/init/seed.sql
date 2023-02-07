@@ -114,7 +114,6 @@ INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updat
 INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (15, '15', '因公出国', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.work_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (16, '16', '停薪留职', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 
-
 INSERT INTO code.staff_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (11, '11', '专任教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
 INSERT INTO code.staff_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (12, '12', '教辅教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
 INSERT INTO code.staff_types (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (13, '13', '兼职教师', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL );
@@ -169,6 +168,7 @@ INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, up
 INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (25, '25', '毕业', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '休学', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '退学', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (4, '04', '延期', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (1, 'course', '--');
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (2, 'exam', '--');
@@ -205,7 +205,23 @@ INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, upd
 INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (4, '2017-04-14', '4', NULL, NULL, '放弃学籍', '2017-04-14 14:41:36.211759');
 INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (5, '2017-04-14', '5', NULL, NULL, '转专业', '2017-04-14 14:42:10.183278');
 INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (6, '2017-04-26', '6', NULL, NULL, '恢复学籍', '2017-04-26 22:13:33.004115');
+INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (7, '2017-04-26', '7', NULL, NULL, '延期毕业', '2017-04-26 22:13:33.004115');
 INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (11, '2019-03-31', '11', NULL, NULL, '保留学籍', '2019-04-02 16:12:20.816552');
+
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(1,'01','哲学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(2,'02','经济学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(3,'03','法学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(4,'04','教育学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(5,'05','文学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(6,'06','历史学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(7,'07','理学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(8,'08','工学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(9,'09','农学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(10,'10','医学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(11,'11','军事学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(12,'12','管理学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(13,'13','艺术学',current_date -10*365,now());
+insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(14,'14','交叉学科',current_date -10*365,now());
 -----------如下代码需要插入后修改---------
 insert into code.institutions(id,code,name,begin_on,updated_at)
 values(10000,'10000','URP学院',current_date -10,now());

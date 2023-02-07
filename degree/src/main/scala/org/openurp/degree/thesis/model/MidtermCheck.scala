@@ -38,7 +38,10 @@ class MidtermCheck extends LongId {
   var details: mutable.Buffer[MidtermCheckDetail] = new mutable.ArrayBuffer[MidtermCheckDetail]
 
   /** 审核状态 */
-  var status: Option[AuditStatus] = None
+  var status: AuditStatus = _
+
+  /** 审查结论 */
+  var conclusion: Option[String] = None
 
   /** 提交时间 */
   var submitAt: Instant = _
@@ -50,7 +53,7 @@ class MidtermCheck extends LongId {
   def advisorAuditStatus: AuditStatus = {
     if details.isEmpty then AuditStatus.Blank
     else {
-      if details.forall(x => x.status == AuditStatus.Passed) then AuditStatus.Passed else AuditStatus.Rejected
+      if details.forall(_.passed) then AuditStatus.Passed else AuditStatus.Rejected
     }
   }
 }

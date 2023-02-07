@@ -26,7 +26,7 @@ class MidtermCheckDetail extends LongId {
 
   var check: MidtermCheck = _
 
-  var status: AuditStatus = _
+  var passed: Boolean = _
 
   var auditOpinion: Option[String] = None
 

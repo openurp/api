@@ -25,7 +25,7 @@ import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{ProjectBased, Semester}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.*
-import org.openurp.edu.clazz.model.Clazz
+import org.openurp.edu.clazz.model.{Clazz, CourseTaker}
 import org.openurp.edu.grade.model.Grade
 
 import java.time.Instant
@@ -213,5 +213,24 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
     if (score.isEmpty) return 1
     else if (grade.score.isEmpty) return -1
     grade.score.get.compareTo(score.get)
+  }
+}
+
+object CourseGrade {
+  def apply(taker: CourseTaker): CourseGrade = {
+    val g = new CourseGrade()
+    g.std = taker.std
+    val clazz = taker.clazz
+    g.clazz = Some(clazz)
+    g.crn = clazz.crn
+    g.semester = clazz.semester
+    g.course = clazz.course
+    g.courseType = taker.courseType
+    g.courseTakeType = taker.takeType
+    g.freeListening = taker.freeListening
+    g.createdAt = Instant.now
+    g.updatedAt = Instant.now
+    g.project = taker.clazz.project
+    g
   }
 }

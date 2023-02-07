@@ -89,13 +89,13 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
 
   override def getPlanCourse(std: Student, course: Course): Option[PlanCourse] = {
     val plan = getCoursePlan(std).orNull
-    var planCourseType: CourseType = null
-    if (null != plan) {
-      for (cg <- plan.groups; if (cg != null && planCourseType == null)) {
-        cg.planCourses.find(_.course == course) foreach (_ => planCourseType = cg.courseType)
+    var planCourse: PlanCourse = null
+    if (null != plan) { //search major or std plan
+      for (cg <- plan.groups; if (cg != null && planCourse == null)) {
+        cg.planCourses.find(_.course == course) foreach (x => planCourse = x)
       }
     }
-    if (null == planCourseType) {
+    if (null == planCourse) { //search share plan
       val grade = java.lang.Integer.valueOf(std.state.get.grade.code.substring(0, 4))
       val builder = OqlBuilder.from[PlanCourse](classOf[SharePlan].getName, "sp").join("sp.groups", "spg")
         .join("spg.planCourses", "spgp")
@@ -106,7 +106,7 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
         .cacheable()
       entityDao.search(builder).headOption
     } else {
-      None
+      Some(planCourse)
     }
   }
 

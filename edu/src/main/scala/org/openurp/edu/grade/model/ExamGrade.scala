@@ -22,6 +22,8 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{ExamStatus, GradeType, GradingMode}
 import org.openurp.edu.grade.model.Grade
 
+import java.time.Instant
+
 /**
  * 考试成绩
  * </p>
@@ -71,5 +73,17 @@ class ExamGrade extends LongId with Grade {
     this.gradingMode = gradingMode
     this.passed = passed
     this.status = status
+  }
+}
+
+object ExamGrade {
+  def apply(gradeType: GradeType, examStatus: ExamStatus, score: Option[Float]): ExamGrade = {
+    val eg = new ExamGrade
+    eg.gradeType = gradeType
+    eg.examStatus = examStatus
+    eg.score = score
+    eg.createdAt = Instant.now
+    eg.updatedAt = Instant.now
+    eg
   }
 }

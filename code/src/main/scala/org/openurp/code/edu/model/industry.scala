@@ -110,9 +110,8 @@ class HskLevel extends CodeBean {
 @code("industry")
 class Institution extends CodeBean
 
-/**
- * 修课类别
- * （重修、增修、免修不免试、主修，选修）
+/** 修课类别
+ * （正常初修、重修、免修、旁听）
  *
  * @author chaostone
  * @since 2005-12-2
@@ -129,17 +128,17 @@ class CourseTakeType extends CodeBean {
 }
 
 object CourseTakeType {
-
   /** 正常修读 */
   val Normal = 1
   /** 重修 */
   val Repeat = 3
   /** 免修 */
   val Exemption = 5
+  /** 旁听 * */
+  val Auditor = 6
 }
 
-/**
- * 考试情况
+/** 考试情况
  * 正常、作弊、旷考等
  */
 @code("industry")

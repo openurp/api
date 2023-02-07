@@ -15,26 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.grade.config
+package org.openurp.degree.thesis.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.model.LongId
 
-class DefaultMapping extends MappingModule {
+class ThesisScore extends LongId{
 
-  def binding(): Unit = {
-    bind[GradeRateConfig].declare { e =>
-      e.gradingMode is notnull
-      e.items is depends("config")
-    }
 
-    bind[GradeRateItem].declare { e =>
-      e.config is notnull
-    }
-
-    bind[GradeInputSwitch]
-
-    bind[TranscriptTemplate]
-
-    all.cacheAll()
-  }
 }

@@ -19,14 +19,15 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.lang.time.WeekState
 import org.beangle.data.model.LongIdEntity
+import org.openurp.base.edu.model.{Course, Terms}
 import org.openurp.base.model.{CalendarStage, Department}
 import org.openurp.code.edu.model.ExamMode
-import org.openurp.base.edu.model.{Course, Terms}
 
 /**
  * 培养计划中的课程.<import org.openurp.edu.program.plan.model.CourseGroup
  * br>
  * 具体体现了课程、开课和审核要求三部分.
+ *
  * @author chaostone
  */
 trait PlanCourse extends LongIdEntity {
@@ -59,6 +60,10 @@ trait PlanCourse extends LongIdEntity {
   def compulsory: Boolean
 
   def compulsory_=(c: Boolean): Unit
+
+  def credits: Float = {
+    course.getCredits(group.plan.program.level)
+  }
 }
 
 /**

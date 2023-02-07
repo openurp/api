@@ -23,6 +23,8 @@ import org.openurp.code.edu.model.{GradeType, GradingMode}
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.{AbstractGradeState, GradeState}
 
+import java.time.Instant
+
 /**
  * 成绩状态表
  * 记录了对应教学任务成绩<br>
@@ -110,6 +112,18 @@ class CourseGradeState extends AbstractGradeState {
       case Some(es) => es.scorePercent
       case None => None
     }
+  }
+
+  def updateStatus(gradeTypes: Iterable[GradeType], status: Int, updatedAt: Instant, operator: String): Unit = {
+    gradeTypes foreach { gradeType =>
+      if (gradeType.id == GradeType.EndGa) this.status = status
+      val gs = this.getState(gradeType).asInstanceOf[AbstractGradeState]
+      gs.operator = operator
+      gs.status = status
+      gs.updatedAt = updatedAt
+    }
+    this.updatedAt = updatedAt
+    this.operator = operator
   }
 
   def gradeType: GradeType = {

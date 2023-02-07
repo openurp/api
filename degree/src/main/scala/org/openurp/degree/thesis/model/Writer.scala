@@ -37,7 +37,7 @@ class Writer extends LongId {
   var advisor: Option[Advisor] = None
 
   /** 论文题目 */
-  var subject: Option[Subject] = None
+  var thesisTitle: Option[String] = None
 
   var mobile: Option[String] = None
 
