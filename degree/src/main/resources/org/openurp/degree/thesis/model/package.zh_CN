@@ -39,12 +39,13 @@ MidtermCheck=中期检查
 MidtermCheck.proceeding=写作进度
 MidtermCheck.status=审核状态
 MidtermCheck.submitAt=提交时间
+MidtermCheck.conclusion=审核结论
 
 MidtermCheckItem=中期检查项目
 
 MidtermCheckDetail=中期检查明细
 MidtermCheckDetail.auditOpinion=审核意见
-MidtermCheckDetail.status=审核状态
+MidtermCheckDetail.passed=审核是否通过
 
 DepartPlan=毕业设计院系计划
 DepartPlan.auditOpinion=审核意见
