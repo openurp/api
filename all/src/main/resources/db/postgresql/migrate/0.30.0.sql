@@ -6,15 +6,15 @@ select * from base.project_properties where name='edu.course.hours_per_credit';
 
 alter table edu.major_course_groups add credit_hours int4;
 alter table edu.major_course_groups add hour_ratios varchar(20);
-update edu.major_course_groups set credit_hours= credits*16;
+update edu.major_course_groups set credit_hours= credits*15;
 
 alter table edu.execution_course_groups add credit_hours int4;
 alter table edu.execution_course_groups add hour_ratios varchar(20);
-update edu.execution_course_groups set credit_hours= credits*16;
+update edu.execution_course_groups set credit_hours= credits*15;
 
 alter table edu.std_course_groups add credit_hours int4;
 alter table edu.std_course_groups add hour_ratios varchar(20);
-update edu.std_course_groups set credit_hours= credits*16;
+update edu.std_course_groups set credit_hours= credits*15;
 ---staff and teacher---------
 create table base.staffs (school_id integer not null, degree_award_by varchar(255), political_status_id integer,
                          code varchar(20) not null, id bigint not null, formal_hr boolean not null, homepage varchar(200),

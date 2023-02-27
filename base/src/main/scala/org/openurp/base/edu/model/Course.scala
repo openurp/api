@@ -74,6 +74,8 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var textbooks = Collections.newSet[Textbook]
   /** 教师 */
   var teachers = Collections.newSet[Teacher]
+  /** 先修课程 */
+  var prerequisites = Collections.newSet[Course]
   /** 是否计算绩点 * */
   var calgp: Boolean = _
   /** 是否有补考 */
@@ -106,6 +108,10 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
       case None => defaultCredits
       case Some(cl) => cl.credits.getOrElse(defaultCredits)
     }
+  }
+
+  def description: String = {
+    s"$code $name"
   }
 }
 

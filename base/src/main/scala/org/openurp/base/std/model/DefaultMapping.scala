@@ -60,9 +60,9 @@ class DefaultMapping extends MappingModule {
     bind[MinorMajor] generator IdGenerator.AutoIncrement
     bind[ExternStudent]
 
-    bind[GraduateSeason] declare { e =>
+    bind[GraduateSeason].declare { e =>
       index("", true, e.project, e.code)
-    }
+    }.generator(IdGenerator.Assigned)
 
     bind[Graduate] declare { e =>
       index("", true, e.std)

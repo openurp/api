@@ -51,3 +51,25 @@ select * from std.std_alteration_items  where meta is null;
 update std.std_alteration_items i set (oldvalue,oldtext)=(select s.id::varchar,s.name from base.squads s where s.name=i.oldvalue) where i.oldtext is null and meta=5;
 update std.std_alteration_items i set (newvalue,newtext)=(select s.id::varchar,s.name from base.squads s where s.name=i.newvalue) where i.newtext is null and meta=5;
 
+---spa----------
+create schema log;
+alter table spa.print_logs rename to spa_print_logs;
+alter table spa.spa_print_logs set schema log;
+alter table spa.download_logs rename to spa_download_logs;
+alter table spa.spa_download_logs set schema log;
+
+alter table spa.doc_types rename to cfg_doc_types;
+alter table spa.coupons rename to cfg_coupons;
+alter table spa.print_configs rename to cfg_print_configs;
+
+
+------------prerequists------------
+create table base.courses_prerequisites (prerequisite_id bigint not null, course_id bigint not null);
+alter table base.courses_prerequisites add constraint pk_oshk6vwdtq9ycqsmj1jh6nxki primary key (prerequisite_id,course_id);
+delete from base.course_hours c1 where exists(select * from base.course_hours c2 where c1.course_id=c2.course_id and c1.teaching_nature_id=c2.teaching_nature_id and c2.id >c1.id);
+alter table base.course_hours add constraint uk_pr9ombr8rdoadj4w1xbu80gk7 unique (course_id,teaching_nature_id);
+
+--------graduate season--------
+alter table base.graduate_seasons alter column id type bigint;
+alter table base.graduates alter column season_id type bigint;
+alter table std.graduate_batches alter column season_id type bigint;

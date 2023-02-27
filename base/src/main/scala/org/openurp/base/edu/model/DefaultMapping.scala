@@ -54,12 +54,14 @@ class DefaultMapping extends MappingModule {
       e.hours is depends("course")
       e.remark is length(500)
       e.levels is depends("course")
+      e.prerequisites is (joinColumn("course_id") , eleColumn("prerequisite_id"))
       index("", true, e.project, e.code)
       index("", false, e.code)
     }
 
     bind[CourseHour].declare { e =>
       index("", false, e.course)
+      index("", true, e.course, e.teachingNature)
     }
 
     bind[CourseLevel] declare { e =>
