@@ -90,7 +90,8 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     entityDao.saveOrUpdate(user)
 
     val password = defaultPassword(staff.idNumber.orNull)
-    createAccount(orgId, domainId, staff.code, staff.name, password, UserCategories.Teacher, teacherRoleId)
+    val existId = findUserId(userCode)
+    createAccount(existId, staff.code, staff.name, password, UserCategories.Teacher, teacherRoleId)
     user
   }
 
@@ -120,7 +121,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     entityDao.saveOrUpdate(user)
 
     val password = defaultPassword(std.person.code)
-    createAccount(orgId, domainId, std.code, std.name, password, UserCategories.Student, stdRoleId)
+    createAccount(findUserId(std.code), std.code, std.name, password, UserCategories.Student, stdRoleId)
     user
   }
 
@@ -149,7 +150,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
       case UserCategories.Teacher => teacherRoleId
       case _ => 0
     }
-    createAccount(orgId, domainId, user.code, user.name, password, user.category.id, roleId)
+    createAccount(findUserId(user.code), user.code, user.name, password, user.category.id, roleId)
   }
 
   private def defaultPassword(idNumber: String): String = {
@@ -162,10 +163,15 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
   }
 
-  private def createAccount(orgId: Int, domainId: Int, code: String, name: String, password: String, categoryId: Int, roleId: Long): Unit = {
-    val userIds = platformJdbcExecutor.unique[java.lang.Long]("select id from ems.usr_users where org_id=" + orgId + " and code=? ", code)
-    val userId = userIds match {
-      case Some(id) => id
+  private def findUserId(code: String): Option[java.lang.Long] = {
+    platformJdbcExecutor.unique[java.lang.Long]("select id from ems.usr_users where org_id=" + orgId + " and code=? ", code)
+  }
+
+  private def createAccount(existId: Option[java.lang.Long], code: String, name: String, password: String, categoryId: Int, roleId: Long): Unit = {
+    val userId = existId match {
+      case Some(id) =>
+        platformJdbcExecutor.update("update ems.usr_users set code=? ,name=? where id=?", code, name, id)
+        id
       case None =>
         val userId = platformJdbcExecutor.unique[java.lang.Long]("select datetime_id()").getOrElse(0L)
         platformJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,updated_at,begin_on)"
