@@ -32,10 +32,5 @@ class DefaultMapping extends MappingModule {
       e.courseName is length(400)
       e.scoreText is length(20)
     }
-    bind[CertExemptApply] declare { e =>
-      e.certificate is length(80)
-      e.attachmentPath is length(100)
-      e.reasons is length(500)
-    }
   }
 }

@@ -55,7 +55,7 @@ class CertificateGrade extends LongId with Updated{
 
   var examStatus: ExamStatus = _
 
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
+  var exempts: mutable.Set[Course] = Collections.newSet[Course]
 
   var status: Int = _
 }

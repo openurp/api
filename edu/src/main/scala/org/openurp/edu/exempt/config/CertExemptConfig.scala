@@ -15,17 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.exchange.model
+package org.openurp.edu.exempt.config
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.std.model.Student
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.InstantRange
+import org.openurp.base.edu.code.EducationType
+import org.openurp.base.model.{EduLevelBased, Project, Semester}
 
-class ExchangeExemptCredit extends LongId with Remark with Updated {
+import scala.collection.mutable
 
-  var std: Student = _
+/**
+ * 校外考试免修设置
+ */
+@config
+class CertExemptConfig extends LongId with InstantRange with EduLevelBased {
 
-  var exempted: Float = _
+  var semester: Semester = _
 
-  var maxValue: Float = _
+  var settings: mutable.Buffer[CertExemptSetting] = new mutable.ArrayBuffer[CertExemptSetting]
+
+  var notice: String = _
 }

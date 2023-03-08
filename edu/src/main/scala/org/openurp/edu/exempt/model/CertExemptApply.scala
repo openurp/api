@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.extern.model
+package org.openurp.edu.exempt.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
@@ -30,7 +30,8 @@ import java.time.LocalDate
 import scala.collection.mutable
 
 /**
- * 校外证书成绩申请
+ * 校外证书成绩免修课程申请
+ * 申请同意后，会落地到证书成绩和课程免修记录
  */
 class CertExemptApply extends LongId with Updated {
   /** 学生 */

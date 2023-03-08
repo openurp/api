@@ -14,6 +14,8 @@
   <mapping class="org.openurp.edu.grade.model.RegularMapping" name="grade.regular"/>
   <mapping class="org.openurp.edu.grade.model.PlanMapping" name="grade.plan"/>
   <mapping class="org.openurp.edu.program.model.DefaultMapping" name="program"/>
+  <mapping class="org.openurp.edu.exempt.model.DefaultMapping" name="exempt"/>
+  <mapping class="org.openurp.edu.exempt.config.DefaultMapping" name="exempt.config"/>
   <mapping class="org.openurp.edu.room.model.DefaultMapping" name="room"/>
   <mapping class="org.openurp.edu.textbook.model.DefaultMapping" name="textbook"/>
   <naming>

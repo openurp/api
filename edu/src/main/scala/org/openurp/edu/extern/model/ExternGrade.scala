@@ -21,6 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.Course
+import org.openurp.base.model.AuditStatus
 import org.openurp.base.std.model.ExternStudent
 
 import java.time.LocalDate
@@ -41,5 +42,7 @@ class ExternGrade extends LongId with Remark with Updated {
 
   var scoreText: String = _
 
-  var courses: mutable.Set[Course] = Collections.newSet[Course]
+  var exempts: mutable.Set[Course] = Collections.newSet[Course]
+
+  var status: AuditStatus = AuditStatus.Draft
 }

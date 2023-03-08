@@ -15,25 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.extern.config
+package org.openurp.edu.exempt.config
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.InstantRange
-import org.openurp.base.edu.code.EducationType
-import org.openurp.base.model.{EduLevelBased, Project, Semester}
+import org.beangle.data.orm.MappingModule
+import org.openurp.edu.exempt.config.{CertExemptConfig, CertExemptSetting}
 
-import scala.collection.mutable
+class DefaultMapping extends MappingModule {
 
-/**
- * 校外考试免修设置
- */
-@config
-class CertExemptConfig extends LongId with InstantRange with EduLevelBased {
+  def binding(): Unit = {
 
-  var semester: Semester = _
+    bind[CertExemptConfig] declare { e =>
+      e.settings is depends("config")
+      e.notice is length(2000)
+    }
 
-  var settings: mutable.Buffer[CertExemptSetting] = new mutable.ArrayBuffer[CertExemptSetting]
+    bind[CertExemptSetting] declare { e =>
+      e.courses is table("cfg_cert_exempt_courses")
+    }
+  }
 
-  var notice: String = _
 }

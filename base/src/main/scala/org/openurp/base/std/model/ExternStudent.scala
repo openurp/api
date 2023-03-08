@@ -32,4 +32,5 @@ class ExternStudent extends LongId with Updated with DateRange {
   var majorName: Option[String] = None
   var level: EducationLevel = null
   var category: EduCategory = null
+  var exchange: Boolean = _
 }

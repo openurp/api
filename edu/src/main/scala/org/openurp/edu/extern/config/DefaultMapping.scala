@@ -34,15 +34,6 @@ class DefaultMapping extends MappingModule {
     bind[CertSignupScope] declare { e =>
       e.codes is length(20000)
     }
-
-    bind[CertExemptConfig] declare { e =>
-      e.settings is depends("config")
-      e.notice is length(2000)
-    }
-
-    bind[CertExemptSetting] declare { e =>
-      e.courses is table("cfg_cert_exempt_courses")
-    }
   }
 
 }

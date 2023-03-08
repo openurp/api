@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.extern.config
+package org.openurp.edu.exempt.config
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId

@@ -9,7 +9,7 @@ CertificateGrade.certificate=证书编号
 CertificateGrade.gradingMode=成绩记录方式
 CertificateGrade.examStatus=考试情况
 CertificateGrade.acquiredOn=获得日期
-CertificateGrade.courses=证书成绩认定结果
+CertificateGrade.exempts=证书成绩免修课程
 CertificateGrade.status=状态
 
 ExternGrade=校外成绩
@@ -18,18 +18,8 @@ ExternGrade.acquiredOn=获得年月
 ExternGrade.scoreText=成绩字面值
 ExternGrade.score=分数
 ExternGrade.credits=学分
-ExternGrade.courses=冲抵课程
-
-CertExemptApply=校外证书成绩申请
-CertExemptApply.scoreText=成绩
-CertExemptApply.auditDepart=审核部门
-CertExemptApply.certificate=证书编号
-CertExemptApply.acquiredOn=获得日期
-CertExemptApply.courses=免修课程
-CertExemptApply.reasons=申请理由
-CertExemptApply.auditOpinion=审核意见
-CertExemptApply.attachmentPath=成绩单附件路径
-CertExemptApply.status=申请状态
+ExternGrade.exempts=校外成绩免修课程
+ExternGrade.status=审核状态
 
 CertSignup=资格考试报名记录
 CertSignup.fee=报名费

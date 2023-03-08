@@ -1,21 +1,3 @@
-ExchangeGrade=校外成绩
-ExchangeGrade.courseName=课程名称
-ExchangeGrade.acquiredOn=获得年月
-ExchangeGrade.scoreText=成绩字面值
-ExchangeGrade.credits=学分
-ExchangeGrade.courses=冲抵课程
-ExchangeGrade.status=审核状态
-
 ExchangeProgram=交换生计划
 ExchangeProgram.schools=交换生计划对应学校
 
-ExchangeExemptApply=免修申请
-ExchangeExemptApply.transcriptPath=成绩单附件路径
-ExchangeExemptApply.status=审核状态
-ExchangeExemptApply.auditOpinion=审核意见
-ExchangeExemptApply.credits=申请冲抵的外校课程学分总计
-ExchangeExemptApply.exemptionCredits=冲抵本校课程的学分总计
-
-ExchangeExemptCredit=免修学分上限
-ExchangeExemptCredit.exempted=已免修学分数
-ExchangeExemptCredit.maxValue=免修学分总和的最大值

@@ -72,6 +72,7 @@ StudentState.campus=校区
 
 ExternStudent=外校学习经历
 ExternStudent.majorName=学习专业
+ExternStudent.exchange=是否为交流经历
 
 GraduateSeason=毕业界别
 GraduateSeason.graduateYear=毕业年份
