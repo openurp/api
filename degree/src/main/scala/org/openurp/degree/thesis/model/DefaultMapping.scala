@@ -86,6 +86,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ThesisReview].declare { e =>
+      e.crossReviewOpinion is length(2000)
       index("", true, e.writer)
     }
 

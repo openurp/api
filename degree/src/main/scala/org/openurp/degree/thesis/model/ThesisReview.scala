@@ -26,22 +26,25 @@ class ThesisReview extends LongId {
   var writer: Writer = _
 
   /** 选题得分 */
-  var subjectScore: Int = _
+  var subjectScore: Option[Int] = None
 
   /** 写作规范 */
-  var writeScore: Int = _
+  var writeScore: Option[Int] = None
 
   /** 研究能力 */
-  var researchScore: Int = _
+  var researchScore: Option[Int] = None
 
   /** 创新水平 */
-  var innovationScore: Int = _
+  var innovationScore: Option[Int] = None
 
   /** 写作态度 */
-  var attitudeScore: Int = _
+  var attitudeScore: Option[Int] = None
 
   /** 指导教师得分 */
   var advisorScore: Option[Int] = None
+
+  /**交叉评阅人*/
+  var crossReviewer: Option[Advisor] = None
 
   /** 交叉评阅得分 */
   var crossReviewScore: Option[Int] = None
@@ -58,4 +61,5 @@ class ThesisReview extends LongId {
   /** 最终成绩 */
   var finalScore: Option[Int] = None
 
+  var defenseInfo:Option[DefenseInfo]=None
 }
