@@ -18,47 +18,28 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
 
-/** 论文评分 */
-class ThesisAssess extends LongId {
+class DefenseInfo extends LongId with Updated {
 
   /** 学生 */
   var writer: Writer = _
 
-  /** 选题得分 */
-  var subjectScore: Int = _
-
-  /** 写作规范 */
-  var writeScore: Int = _
-
-  /** 研究能力 */
-  var researchScore: Int = _
-
-  /** 创新水平 */
-  var innovationScore: Int = _
-
-  /** 写作态度 */
-  var attitudeScore: Int = _
-
-  /** 知道教师得分 */
-  var teacherScore: Option[Int] = None
-
-  /** 交叉评阅得分 */
-  var assessScore: Option[Int] = None
-
-  /** 交叉评阅意见 */
-  var assessOpinion: Option[String] = None
-
-  /** 是否同意答辩 */
-  var replyPermited: Option[Boolean] = None
-
-  /** 答辩情况 */
-  var replyInfo: Option[ReplyInfo] = None
-
   /** 答辩成绩 */
-  var replyScore: Option[Int] = None
+  var defenseScore: Option[Int] = None
 
-  /** 最终成绩 */
-  var finalScore: Option[Int] = None
+  /** 回答问题摘要 */
+  var questions: Option[String] = None
 
+  /** 答辩记录人 */
+  var recorder: Option[String] = None
+
+  /** 答辩小组评语 */
+  var groupOpinion: Option[String] = None
+
+  /** 论文概述情况 */
+  var thesisSummary: String = _
+
+  /** 回答问题情况 */
+  var answerSummary: String = _
 }

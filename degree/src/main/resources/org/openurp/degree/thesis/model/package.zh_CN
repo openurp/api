@@ -85,12 +85,13 @@ StageTime.stage=阶段
 StageTime.beginOn=起始日期
 StageTime.endOn=结束日期
 
-ThesisFile=论文文件
-ThesisFile.status=状态
-ThesisFile.filePath=文件路径
-ThesisFile.fileExt=文件扩展名
-ThesisFile.submitAt=提交时间
-ThesisFile.auditOpinion=审核意见
+ThesisPaper=论文文件
+ThesisPaper.status=状态
+ThesisPaper.filePath=文件路径
+ThesisPaper.fileExt=文件扩展名
+ThesisPaper.submitAt=提交时间
+ThesisPaper.auditOpinion=审核意见
+ThesisPaper.keywords=关键字
 
 Writer=写作学生
 Writer.squad=班级

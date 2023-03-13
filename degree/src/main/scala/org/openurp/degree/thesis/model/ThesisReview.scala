@@ -18,22 +18,44 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
-import org.openurp.base.model.AuditStatus
 
-import java.time.Instant
+/** 论文评分 */
+class ThesisReview extends LongId {
 
-class ThesisFile extends LongId with Named {
+  /** 学生 */
   var writer: Writer = _
 
-  var status: AuditStatus = _
+  /** 选题得分 */
+  var subjectScore: Int = _
 
-  var filePath: String = _
+  /** 写作规范 */
+  var writeScore: Int = _
 
-  var fileExt: String = _
+  /** 研究能力 */
+  var researchScore: Int = _
 
-  var submitAt: Instant = _
+  /** 创新水平 */
+  var innovationScore: Int = _
 
-  var auditOpinion: Option[String] = None
+  /** 写作态度 */
+  var attitudeScore: Int = _
+
+  /** 指导教师得分 */
+  var advisorScore: Option[Int] = None
+
+  /** 交叉评阅得分 */
+  var crossReviewScore: Option[Int] = None
+
+  /** 交叉评阅意见 */
+  var crossReviewOpinion: Option[String] = None
+
+  /** 是否同意答辩 */
+  var defensePermited: Option[Boolean] = None
+
+  /** 答辩成绩 */
+  var defenseScore: Option[Int] = None
+
+  /** 最终成绩 */
+  var finalScore: Option[Int] = None
 
 }

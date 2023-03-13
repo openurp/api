@@ -53,23 +53,26 @@ class DefaultMapping extends MappingModule {
       index("", true, e.writer)
     }
 
-    bind[Commitment]
+    bind[Commitment].declare { e =>
+      index("", true, e.writer)
+    }
+
     bind[Proposal].declare { e =>
       e.references is column("refers")
       e.methods & e.conditions & e.outline & e.advisorOpinion & e.meanings & e.references are lob
 
-      index("",false,e.writer)
+      index("", true, e.writer)
     }
 
     bind[Guidance].declare { e =>
       e.contents is lob
-      index("",false,e.writer)
+      index("", true, e.writer)
     }
 
     bind[MidtermCheck].declare { e =>
       e.details is depends("check")
       e.proceeding is lob
-      index("",false,e.writer)
+      index("", true, e.writer)
     }
 
     bind[MidtermCheckDetail].declare { e =>
@@ -78,7 +81,17 @@ class DefaultMapping extends MappingModule {
 
     bind[MidtermCheckItem]
     bind[Deadline]
-    bind[ThesisFile]
+    bind[ThesisPaper].declare { e =>
+      index("", true, e.writer)
+    }
+
+    bind[ThesisReview].declare { e =>
+      index("", true, e.writer)
+    }
+
+    bind[DefenseInfo].declare { e =>
+      index("", true, e.writer)
+    }
 
     bind[DefenseGroup].declare { e =>
       e.members is depends("group")
