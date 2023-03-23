@@ -18,27 +18,32 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Remark, Updated}
+
+import java.time.LocalDate
 
 /** 拷贝检测
  *
  */
-class CopyCheck extends LongId with Updated {
+class CopyCheck extends LongId, Remark {
 
   var writer: Writer = _
 
-  /** 复制比 */
-  var copyRatio: Float = _
+  /** 是否通过 */
+  var passed: Boolean = _
 
   /** 去除引用文献复制比 */
-  var copyRatioExtRefer: Float = _
+  var copyRatio: Option[Float] = None
 
   /** 总字数 */
-  var wordCount: Int = _
+  var wordCount: Option[Int] = None
 
-  /** 复制字数 */
-  var copyWordCount: Int = _
-
-  /**检测报告地址*/
+  /** 检测报告地址 */
   var report: Option[String] = None
+
+  /** 检测日期 */
+  var checkOn: Option[LocalDate] = None
+
+  /** 是否为复检结果 */
+  var recheck: Boolean = _
 }

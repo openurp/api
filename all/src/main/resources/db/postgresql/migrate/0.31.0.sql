@@ -73,3 +73,25 @@ alter table base.course_hours add constraint uk_pr9ombr8rdoadj4w1xbu80gk7 unique
 alter table base.graduate_seasons alter column id type bigint;
 alter table base.graduates alter column season_id type bigint;
 alter table std.graduate_batches alter column season_id type bigint;
+
+------base--------------
+alter table base.teachers add office_id bigint;
+alter table base.teachers add user_id bigint;
+update base.teachers t set user_id=(select u.id from base.users u ,base.staffs s where s.id=t.staff_id and s.code=u.code and s.school_id=u.school_id);
+alter table base.teachers alter column user_id set not null;
+alter table base.teachers add constraint uk_cd1k6xwg9jqtiwx9ybnxpmoh9 unique (user_id);
+alter table base.students add advisor_id bigint;
+---degree
+alter table degree.advisors add teacher_id bigint;
+update degree.advisors a set teacher_id=(select t.id from base.teachers t where t.user_id=a.user_id) where teacher_id is null;
+alter table degree.advisors add constraint uk_jcnlieyxd426oafao9vvhfd17 unique (teacher_id);
+
+alter table degree.advisors drop column user_id;
+alter table degree.advisors drop column project_id;
+
+alter table degree.defense_members add teacher_id bigint;
+update degree.defense_members a set teacher_id=(select t.id from base.teachers t where t.user_id=a.user_id);
+
+--alter table degree.advisors drop column office_id;
+--alter table degree.advisors drop column title_id;
+

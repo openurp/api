@@ -15,33 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.degree.thesis.model
+package org.openurp.base.service
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
-import org.openurp.base.model.AuditStatus
+import org.beangle.commons.event.{Event, EventMulticaster}
+import org.beangle.commons.logging.Logging
+import org.beangle.data.dao.EntityDao
 
-import java.time.Instant
+/**
+ * Abstract BaseServiceImpl class.
+ *
+ * @author chaostone
+ * @version $Id: $
+ */
+abstract class AbstractBaseService extends Logging {
 
-class ThesisPaper extends LongId with Named {
-  var writer: Writer = _
+  var entityDao: EntityDao = null
 
-  var title: String = _
+  var eventMulticaster: EventMulticaster = null
 
-  var status: AuditStatus = _
-
-  var keywords: Option[String] = _
-
-  var filePath: String = _
-
-  var fileExt: String = _
-
-  var submitAt: Instant = _
-
-  var auditOpinion: Option[String] = None
-
-  var copyCheck: Option[CopyCheck] = None
-
-  var recheck: Option[CopyCheck] = None
+  def publish(e: Event): Unit = {
+    if (null != eventMulticaster) eventMulticaster.multicast(e);
+  }
 
 }

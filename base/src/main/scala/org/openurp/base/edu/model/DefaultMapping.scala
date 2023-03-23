@@ -54,7 +54,7 @@ class DefaultMapping extends MappingModule {
       e.hours is depends("course")
       e.remark is length(500)
       e.levels is depends("course")
-      e.prerequisites is (joinColumn("course_id") , eleColumn("prerequisite_id"))
+      e.prerequisites is(joinColumn("course_id"), eleColumn("prerequisite_id"))
       index("", true, e.project, e.code)
       index("", false, e.code)
     }
@@ -114,6 +114,7 @@ class DefaultMapping extends MappingModule {
       e.oqc is length(200)
       e.name is length(100)
       index("", true, e.staff)
+      index("", true, e.user)
     }.generator(IdGenerator.Assigned)
 
     bind[Textbook] declare { e =>

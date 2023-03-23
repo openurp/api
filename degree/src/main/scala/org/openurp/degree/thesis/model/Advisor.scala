@@ -20,7 +20,7 @@ package org.openurp.degree.thesis.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.base.edu.model.TeachingOffice
+import org.openurp.base.edu.model.{Teacher, TeachingOffice}
 import org.openurp.base.model.{Department, Project, Staff, User}
 import org.openurp.code.job.model.ProfessionalTitle
 
@@ -28,20 +28,11 @@ import scala.collection.mutable
 
 /** 指导教师 */
 class Advisor extends LongId, TemporalOn {
-
-  var project: Project = _
-
-  /** 用户 */
-  var user: User = _
+  /** 教师 */
+  var teacher: Teacher = _
 
   /** 指导院系 */
   var departs: mutable.Buffer[Department] = Collections.newBuffer[Department]
-
-  /** 职称 */
-  var title: Option[ProfessionalTitle] = None
-
-  /** 所属教研室 */
-  var office: Option[TeachingOffice] = None
 
   /** 所带学生数 */
   var maxWriters: Long = _
@@ -54,4 +45,10 @@ class Advisor extends LongId, TemporalOn {
 
   /** 教师简介 */
   var description: Option[String] = None
+
+  /** 工号 */
+  def code: String = teacher.staff.code
+
+  /** 姓名 */
+  def name: String = teacher.name
 }

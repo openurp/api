@@ -18,7 +18,7 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.TeachingOffice
+import org.openurp.base.edu.model.{Teacher, TeachingOffice}
 import org.openurp.base.model.{Department, User}
 
 import java.time.Instant
@@ -52,6 +52,6 @@ class DefenseGroup extends LongId {
   def staffCount: Int = members.size + secretary.size
 
   def orderedWriters: mutable.Buffer[Writer] = {
-    writers.toBuffer.sortBy(x => x.advisor.get.user.code + "_" + x.code)
+    writers.toBuffer.sortBy(x => x.advisor.get.code + "_" + x.code)
   }
 }

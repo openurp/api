@@ -85,8 +85,11 @@ class Student extends LongId with Coded with Named with EduLevelBased with Updat
   /** 学习形式 全日制/业余/函授 */
   var studyType: StudyType = _
 
-  /** 导师 */
+  /** 专业导师 */
   var tutor: Option[Teacher] = None
+
+  /** 学位论文指导教师 */
+  var advisor: Option[Teacher] = None
 
   def calcCurrentState(): Unit = {
     this.state = Some(stateWhen(LocalDate.now()))

@@ -20,7 +20,7 @@ package org.openurp.base.edu.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.base.model.{Department, Project, User}
+import org.openurp.base.model.{Department, Project, Staff, User}
 
 import scala.collection.mutable
 
@@ -34,8 +34,6 @@ class TeachingOffice extends LongId with Coded with Named with Updated with Temp
   var department: Department = _
 
   /** 负责人 */
-  var director: Option[User] = None
+  var director: Option[Teacher] = None
 
-  /** 成员 */
-  var members: mutable.Buffer[User] = Collections.newBuffer[User]
 }

@@ -29,4 +29,7 @@ object Features {
 
   /** 学籍信息中是否支持导师 */
   val StdInfoTutorSupported = "std.info.tutor_supported"
+
+  /** 学籍信息钟是否支持学位论文导师 */
+  val StdInfoAdvisorSupported = "std.info.advisor_supported"
 }

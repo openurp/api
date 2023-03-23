@@ -31,7 +31,7 @@ class DefaultMapping extends MappingModule {
 
     bind[Advisor].declare { e =>
       e.description is length(4000)
-      index("", true, e.project, e.user)
+      index("", true, e.teacher)
     }
 
     bind[Subject] declare { e =>
@@ -77,6 +77,7 @@ class DefaultMapping extends MappingModule {
 
     bind[MidtermCheckDetail].declare { e =>
       e.auditOpinion is length(1000)
+      index("", true, e.check, e.item)
     }
 
     bind[MidtermCheckItem]

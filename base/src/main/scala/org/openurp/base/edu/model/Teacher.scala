@@ -21,7 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.model.*
-import org.openurp.code.job.model.TutorType
+import org.openurp.code.job.model.{ProfessionalTitle, TutorType}
 import org.openurp.code.person.model.Gender
 
 import scala.collection.mutable
@@ -33,6 +33,9 @@ class Teacher extends LongId with TemporalOn with Named with Remark {
 
   /** 教职工 */
   var staff: Staff = _
+
+  /** 用户 */
+  var user: User = _
 
   /** 所在教学部门 */
   var department: Department = _
@@ -52,11 +55,16 @@ class Teacher extends LongId with TemporalOn with Named with Remark {
   /** 其他职业资格证书和等级说明 */
   var oqc: Option[String] = None
 
+  /** 所在教研室 */
+  var office: Option[TeachingOffice] = None
+
   /** 工号 */
   def code: String = staff.code
 
   /** 性别 */
   def gender: Gender = staff.gender
+
+  def title: Option[ProfessionalTitle] = staff.title
 
   def description: String = s"$code $name ${department.shortName.getOrElse(department.name)}"
 }

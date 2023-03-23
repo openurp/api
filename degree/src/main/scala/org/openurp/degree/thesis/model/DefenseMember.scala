@@ -18,13 +18,14 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
+import org.openurp.base.edu.model.Teacher
 import org.openurp.base.model.User
 
 class DefenseMember extends LongId {
 
   var group: DefenseGroup = _
 
-  var user: User = _
+  var teacher: Teacher = _
 
   var leader: Boolean = _
 }
