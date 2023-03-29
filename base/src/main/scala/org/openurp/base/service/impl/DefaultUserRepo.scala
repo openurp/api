@@ -22,6 +22,7 @@ import org.beangle.commons.codec.digest.Digests
 import org.beangle.commons.lang.Strings
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.beangle.data.jdbc.query.JdbcExecutor
+import org.openurp.base.edu.model.Teacher
 import org.openurp.base.model.{Staff, User}
 import org.openurp.base.service.{UserCategories, UserRepo}
 import org.openurp.base.std.model.Student
@@ -54,7 +55,21 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
   }
 
+  override def createUser(teacher: Teacher): User = {
+    createStaffUser(teacher.staff, teacherRoleId)
+  }
+
+  /**
+   * Create a user for staff
+   *
+   * @param staff
+   * @return
+   */
   override def createUser(staff: Staff): User = {
+    createStaffUser(staff, 0)
+  }
+
+  private def createStaffUser(staff: Staff, roleId: Long): User = {
     var userCode: String = staff.code
     if (staff.persisted) {
       val existQuery = OqlBuilder.from[String](classOf[Staff].getName, "t").select("t.code")
@@ -91,7 +106,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
     val password = defaultPassword(staff.idNumber.orNull)
     val existId = findUserId(userCode)
-    createAccount(existId, staff.code, staff.name, password, UserCategories.Teacher, teacherRoleId)
+    createAccount(existId, staff.code, staff.name, password, UserCategories.Teacher, roleId)
     user
   }
 

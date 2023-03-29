@@ -17,12 +17,15 @@
 
 package org.openurp.base.service
 
+import org.openurp.base.edu.model.Teacher
 import org.openurp.base.model.{Staff, User}
 import org.openurp.base.std.model.Student
 
 trait UserRepo {
 
   def createUser(staff: Staff): User
+
+  def createUser(teacher: Teacher): User
 
   def createUser(std: Student): User
 
