@@ -130,7 +130,7 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
     }
   }
 
-  def planCourses(terms: Terms): collection.Seq[PlanCourse] = {
+  def getTermCourses(terms: Terms): collection.Seq[PlanCourse] = {
     if (Strings.isEmpty(null)) return planCourses.toList
     planCourses.filter(pc => pc.terms.matches(terms))
   }
