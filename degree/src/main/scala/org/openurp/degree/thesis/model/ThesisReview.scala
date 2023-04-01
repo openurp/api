@@ -18,6 +18,7 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
+import org.openurp.base.edu.model.Teacher
 
 /** 论文评分 */
 class ThesisReview extends LongId {
@@ -43,8 +44,11 @@ class ThesisReview extends LongId {
   /** 指导教师得分 */
   var advisorScore: Option[Int] = None
 
-  /**交叉评阅人*/
-  var crossReviewer: Option[Advisor] = None
+  /** 交叉评阅负责人 */
+  var crossReviewManager: Option[Teacher] = None
+
+  /** 交叉评阅人 */
+  var crossReviewer: Option[Teacher] = None
 
   /** 交叉评阅得分 */
   var crossReviewScore: Option[Int] = None
@@ -61,5 +65,5 @@ class ThesisReview extends LongId {
   /** 最终成绩 */
   var finalScore: Option[Int] = None
 
-  var defenseInfo:Option[DefenseInfo]=None
+  var defenseInfo: Option[DefenseInfo] = None
 }

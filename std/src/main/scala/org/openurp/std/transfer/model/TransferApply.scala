@@ -19,8 +19,8 @@ package org.openurp.std.transfer.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.{AuditStatus, Department}
 import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.model.{AuditStatus, Department}
 import org.openurp.base.std.model.{Grade, Squad, Student}
 import org.openurp.std.transfer.config.TransferOption
 
@@ -83,6 +83,9 @@ class TransferApply extends LongId with Updated {
 
   /** 平均绩点 */
   var gpa: Float = _
+
+  /** 转专业绩点 */
+  var transferGpa: Float = _
 
   /** 专业课GPA */
   var majorGpa: Float = _
