@@ -17,11 +17,12 @@
 
 package org.openurp.code.asset.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
+    defaultIdGenerator(classOf[Int], IdGenerator.Code)
     bind[RoomType]
     bind[BuildingType]
   }

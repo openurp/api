@@ -17,11 +17,12 @@
 
 package org.openurp.code.edu.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
+    defaultIdGenerator(classOf[Int], IdGenerator.Code)
     bind[AdmissionType]
     bind[ActivityType]
     bind[ClassroomType]
@@ -56,6 +57,7 @@ class DefaultMapping extends MappingModule {
     bind[TeachLangType]
     bind[TeachingNature]
     bind[TeachingMethod]
+
     all.cacheAll()
   }
 }

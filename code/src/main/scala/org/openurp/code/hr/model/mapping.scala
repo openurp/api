@@ -17,11 +17,13 @@
 
 package org.openurp.code.hr.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
+    defaultIdGenerator(classOf[Int], IdGenerator.Code)
+
     bind[StaffType].declare { e =>
       e.children.is(depends("parent"), orderby("code"))
     }

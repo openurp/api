@@ -17,11 +17,13 @@
 
 package org.openurp.code.person.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
+    defaultIdGenerator(classOf[Int], IdGenerator.Code)
+
     bind[BloodType]
     bind[DifficultyCause]
     bind[DifficultyDegree]
