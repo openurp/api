@@ -20,7 +20,9 @@ DefenseGroup.place=答辩地点
 DefenseGroup.beginAt=答辩开始时间
 DefenseGroup.endAt=答辩结束实践
 DefenseGroup.secretary=答辩秘书
-DefenseGroup.writers=组内学生
+DefenseGroup.published=是否发布
+
+DefenseWriter=答辩学生
 
 DefenseMember=答辩组成员
 DefenseMember.leader=是否答辩主席
@@ -87,6 +89,7 @@ StageTime.endOn=结束日期
 
 ThesisPaper=论文文件
 ThesisPaper.status=状态
+ThesisPaper.title=题目
 ThesisPaper.filePath=文件路径
 ThesisPaper.fileExt=文件扩展名
 ThesisPaper.submitAt=提交时间
@@ -105,3 +108,34 @@ CopyCheck.copyRatioExtRefer=去除引用文献复制比
 CopyCheck.wordCount=总字数
 CopyCheck.copyWordCount=复制字数
 CopyCheck.report=检测报告地址
+CopyCheck.checkOn=检测日期
+CopyCheck.recheck=是否复检
+CopyCheck.passed=是否通过
+
+DefenseInfo=答辩信息
+DefenseInfo.defenseOn=答辩日期
+DefenseInfo.defenseScore=答辩成绩
+DefenseInfo.questions=回答问题摘要
+DefenseInfo.recorder=答辩记录人
+DefenseInfo.groupOpinion=答辩小组评语
+DefenseInfo.thesisSummary=论文概述情况
+DefenseInfo.answerSummary=回答问题情况
+
+ThesisReview = 论文评分
+ThesisReview.subjectScore=选题得分
+ThesisReview.writeScore=写作规范
+ThesisReview.researchScore=研究能力
+ThesisReview.innovationScore=创新水平
+ThesisReview.attitudeScore=写作态度
+ThesisReview.advisorScore=指导教师得分
+ThesisReview.advisorReviewAt=指导教师评分时间
+ThesisReview.crossReviewManager=交叉评阅负责人
+ThesisReview.crossReviewer=交叉评阅人
+ThesisReview.crossReviewScore=交叉评阅得分
+ThesisReview.crossReviewOpinion=交叉评阅意见
+ThesisReview.crossReviewAt=交叉评阅时间
+ThesisReview.defensePermitted=是否同意答辩
+ThesisReview.defenseScore=答辩成绩
+ThesisReview.finalScore=最终成绩
+
+

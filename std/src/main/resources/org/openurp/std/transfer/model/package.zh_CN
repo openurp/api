@@ -19,6 +19,7 @@ TransferApply.passed=是否通过
 TransferApply.gpa=平均绩点
 TransferApply.majorGpa=专业课GPA
 TransferApply.otherGpa=专业课外GPA
+TransferApply.transferGpa=转专业GPA
 TransferApply.score=考核分数
 TransferApply.auditionScore=面试分数
 TransferApply.writtenScore=笔试分数

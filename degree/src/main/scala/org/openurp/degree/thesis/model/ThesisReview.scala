@@ -65,7 +65,7 @@ class ThesisReview extends LongId {
   var crossReviewAt:Option[Instant] = None
 
   /** 是否同意答辩 */
-  var defensePermited: Option[Boolean] = None
+  var defensePermitted: Option[Boolean] = None
 
   /** 答辩成绩 */
   var defenseScore: Option[Int] = None
