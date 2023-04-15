@@ -98,6 +98,11 @@ class DefaultMapping extends MappingModule {
     bind[DefenseGroup].declare { e =>
       e.members is depends("group")
       e.notices is depends("group")
+      e.writers is depends("group")
+    }
+
+    bind[DefenseWriter].declare { e =>
+      index("", true, e.writer)
     }
 
     bind[DefenseMember]

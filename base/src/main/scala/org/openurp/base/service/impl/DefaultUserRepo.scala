@@ -56,7 +56,8 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
   }
 
   override def createUser(teacher: Teacher): User = {
-    createStaffUser(teacher.staff, teacherRoleId)
+    val staff = entityDao.get(classOf[Staff], teacher.staff.id)
+    createStaffUser(staff, teacherRoleId)
   }
 
   /**

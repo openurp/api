@@ -169,6 +169,7 @@ INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, up
 INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (2, '02', '休学', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (3, '03', '退学', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (4, '04', '延期', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
+INSERT INTO code.student_statuses (id, code, name, en_name, begin_on, end_on, updated_at, remark) VALUES (5, '05', '未入学', NULL, '2015-06-23', NULL, '2015-06-23 00:00:00', NULL);
 
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (1, 'course', '--');
 INSERT INTO edu.room_occupy_apps (id, name, activity_url) VALUES (2, 'exam', '--');
@@ -207,6 +208,8 @@ INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, upd
 INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (6, '2017-04-26', '6', NULL, NULL, '恢复学籍', '2017-04-26 22:13:33.004115');
 INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (7, '2017-04-26', '7', NULL, NULL, '延期毕业', '2017-04-26 22:13:33.004115');
 INSERT INTO code.std_alter_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (11, '2019-03-31', '11', NULL, NULL, '保留学籍', '2019-04-02 16:12:20.816552');
+
+INSERT INTO code.std_alter_reasons(id, begin_on, code, en_name, end_on, name, updated_at) VALUES (11, '2019-03-31', '11', NULL, NULL, '个人原因', '2019-04-02 16:12:20.816552');
 
 insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(1,'01','哲学',current_date -10*365,now());
 insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(2,'02','经济学',current_date -10*365,now());

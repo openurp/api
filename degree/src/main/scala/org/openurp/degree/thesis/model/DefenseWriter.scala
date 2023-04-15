@@ -19,7 +19,15 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
 
-class ThesisScore extends LongId{
+class DefenseWriter extends LongId {
 
+  var group: DefenseGroup = _
 
+  var writer: Writer = _
+
+  def this(group: DefenseGroup, writer: Writer) = {
+    this()
+    this.group = group
+    this.writer = writer
+  }
 }

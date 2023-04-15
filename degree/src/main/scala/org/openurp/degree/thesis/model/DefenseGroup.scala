@@ -20,6 +20,7 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.{Teacher, TeachingOffice}
 import org.openurp.base.model.{Department, User}
+import org.openurp.base.std.model.GraduateSeason
 
 import java.time.Instant
 import scala.collection.mutable
@@ -30,6 +31,8 @@ import scala.collection.mutable
 class DefenseGroup extends LongId {
 
   var idx: Int = _
+
+  var season: GraduateSeason = _
 
   var department: Department = _
 
@@ -45,13 +48,43 @@ class DefenseGroup extends LongId {
 
   var members: mutable.Buffer[DefenseMember] = new mutable.ArrayBuffer[DefenseMember]
 
-  var writers: mutable.Set[Writer] = new mutable.HashSet[Writer]
+  var writers: mutable.Set[DefenseWriter] = new mutable.HashSet[DefenseWriter]
 
   var notices: mutable.Buffer[DefenseNotice] = new mutable.ArrayBuffer[DefenseNotice]
 
+  var published: Boolean = _
+
   def staffCount: Int = members.size + secretary.size
 
+  def this(season: GraduateSeason, department: Department) = {
+    this()
+    this.season = season
+    this.department = department
+  }
+
+  def leaderTeacher: Option[Teacher] = {
+    members.filter(_.leader).map(_.teacher).headOption
+  }
+
+  def memberTeachers: Iterable[Teacher] = {
+    members.filter(!_.leader).map(_.teacher)
+  }
+
+  def removeWriter(removedWriters: Iterable[Writer]): Unit = {
+    val removedSet = removedWriters.toSet
+    val removed = writers.filter(x => removedSet.contains(x.writer))
+    writers.subtractAll(removed)
+  }
+
+  def addWriters(newWriters: Iterable[Writer]): Unit = {
+    val exists = writers.map(_.writer)
+    newWriters foreach { w =>
+      if !exists.contains(w) then
+        writers.addOne(new DefenseWriter(this, w))
+    }
+  }
+
   def orderedWriters: mutable.Buffer[Writer] = {
-    writers.toBuffer.sortBy(x => x.advisor.get.code + "_" + x.code)
+    writers.map(_.writer).filter(_.advisor.nonEmpty).toBuffer.sortBy(x => x.advisor.get.code + "_" + x.code)
   }
 }
