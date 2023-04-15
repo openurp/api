@@ -20,6 +20,8 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 
+import java.time.LocalDate
+
 class DefenseInfo extends LongId with Updated {
 
   /** 学生 */
@@ -42,4 +44,7 @@ class DefenseInfo extends LongId with Updated {
 
   /** 回答问题情况 */
   var answerSummary: String = _
+
+  /** 答辩日期 */
+  var defenseOn: Option[LocalDate] = None
 }

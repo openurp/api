@@ -20,6 +20,8 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.Teacher
 
+import java.time.Instant
+
 /** 论文评分 */
 class ThesisReview extends LongId {
 
@@ -44,6 +46,9 @@ class ThesisReview extends LongId {
   /** 指导教师得分 */
   var advisorScore: Option[Int] = None
 
+  /**指导教师评分时间*/
+  var advisorReviewAt: Option[Instant] = None
+
   /** 交叉评阅负责人 */
   var crossReviewManager: Option[Teacher] = None
 
@@ -55,6 +60,9 @@ class ThesisReview extends LongId {
 
   /** 交叉评阅意见 */
   var crossReviewOpinion: Option[String] = None
+
+  /**交叉评阅时间*/
+  var crossReviewAt:Option[Instant] = None
 
   /** 是否同意答辩 */
   var defensePermited: Option[Boolean] = None
