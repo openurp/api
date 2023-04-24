@@ -9,7 +9,8 @@ alter table degree.defense_groups alter column season_id set not null;
 alter table degree.defense_groups alter column published set not null;
 alter table degree.thesis_reviews add advisor_review_at timestamptz;
 alter table degree.thesis_reviews add cross_review_at timestamptz;
-alter tab;e degree.thesis_reviews rename column defense_permited to defense_permitted;
+alter table degree.thesis_reviews rename column defense_permited to defense_permitted;
+alter table degree.defense_infoes add defense_on date;
 
 --base
 create table base.courses_prerequisites (course_id bigint not null, prerequisite_id bigint not null);
