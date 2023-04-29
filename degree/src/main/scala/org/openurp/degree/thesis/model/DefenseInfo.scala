@@ -40,10 +40,10 @@ class DefenseInfo extends LongId with Updated {
   var groupOpinion: Option[String] = None
 
   /** 论文概述情况 */
-  var thesisSummary: String = _
+  var thesisSummaryScore: Option[Int] = None
 
   /** 回答问题情况 */
-  var answerSummary: String = _
+  var answerSummaryScore: Option[Int] = None
 
   /** 答辩日期 */
   var defenseOn: Option[LocalDate] = None

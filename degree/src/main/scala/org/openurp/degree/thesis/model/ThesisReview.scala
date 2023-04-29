@@ -46,7 +46,7 @@ class ThesisReview extends LongId {
   /** 指导教师得分 */
   var advisorScore: Option[Int] = None
 
-  /**指导教师评分时间*/
+  /** 指导教师评分时间 */
   var advisorReviewAt: Option[Instant] = None
 
   /** 交叉评阅负责人 */
@@ -61,8 +61,8 @@ class ThesisReview extends LongId {
   /** 交叉评阅意见 */
   var crossReviewOpinion: Option[String] = None
 
-  /**交叉评阅时间*/
-  var crossReviewAt:Option[Instant] = None
+  /** 交叉评阅时间 */
+  var crossReviewAt: Option[Instant] = None
 
   /** 是否同意答辩 */
   var defensePermitted: Option[Boolean] = None
@@ -73,5 +73,9 @@ class ThesisReview extends LongId {
   /** 最终成绩 */
   var finalScore: Option[Int] = None
 
+  /** 最终成绩五级制 */
+  var finalScoreText: Option[String] = None
+
+  /**答辩信息*/
   var defenseInfo: Option[DefenseInfo] = None
 }
