@@ -15,36 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.workload.model
+package org.openurp.edu.workload.config
 
-import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.{Course, Teacher}
-import org.openurp.base.model.Semester
-import org.openurp.code.job.model.ProfessionalTitle
-import org.openurp.hr.workload.config.CapacityFactor
+import org.beangle.data.orm.MappingModule
 
-class TeachingLoad extends LongId {
+class DefaultMapping extends MappingModule {
 
-  var crn: String = _
-
-  var course: Course = _
-
-  var teacher: Teacher = _
-
-  var semester: Semester = _
-
-  var teacherTitle: ProfessionalTitle = _
-
-  var capacityFactor: CapacityFactor = _
-
-  var clazzTags: String = _
-
-  var factor: Float = _
-
-  var creditHours: Int = _
-
-  var stdCount: Int = _
-
-  var loadHours: Float = _
+  def binding(): Unit = {
+    bind[CapacityFactor] declare { e =>
+      e.segments is depends("factor")
+    }
+    bind[FactorSegment]
+  }
 
 }

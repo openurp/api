@@ -142,6 +142,20 @@ class DefaultMapping extends MappingModule {
       index("", true, e.school, e.code)
     }
 
-    all.except(classOf[User], classOf[Person]).cacheable()
+    bind[StaffProfile] declare { e =>
+      e.intro is length(60000)
+      e.harvest is length(60000)
+      e.career is length(4000)
+      e.titles is length(1000)
+
+      e.projects is length(1000)
+      e.courses is length(1000)
+      e.awards is length(1000)
+      index("", true, e.staff)
+    }
+
+    bind[StaffTitle]
+
+    all.except(classOf[User], classOf[Person], classOf[StaffProfile], classOf[StaffTitle]).cacheable()
   }
 }

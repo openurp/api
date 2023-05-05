@@ -15,19 +15,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.base.model
+package org.openurp.edu.workload.service
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.code.job.model.ProfessionalTitle
-import org.openurp.base.model.Staff
-/**
- * 职称信息
- */
-class TitleInfo extends LongId with TemporalOn {
+import org.openurp.base.edu.model.Teacher
+import org.openurp.base.model.Semester
+import org.openurp.code.hr.model.StaffType
+import org.openurp.code.job.model.ProfessionalGrade
 
-  var staff: Staff = _
+trait TeacherPeriodLimitService {
 
-  /** 职称 */
-  var title: ProfessionalTitle = _
+  def getMaxPeriod(teacher: Teacher): Int
+
+  def getMaxPeriod(grade: ProfessionalGrade, staffType: StaffType): Int
+
+  def getTeacherPeriods(teacher: Teacher, semester: Semester): Int
 }

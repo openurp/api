@@ -15,13 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.workload.model
+package org.openurp.base.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.TemporalOn
+import org.openurp.base.model.Staff
+import org.openurp.code.job.model.ProfessionalTitle
+/**
+ * 职称信息
+ */
+class StaffTitle extends LongId with TemporalOn {
 
-class DefaultMapping extends MappingModule {
+  var staff: Staff = _
 
-  def binding(): Unit ={
-    bind[TeachingLoad]
-  }
+  /** 职称 */
+  var title: ProfessionalTitle = _
 }

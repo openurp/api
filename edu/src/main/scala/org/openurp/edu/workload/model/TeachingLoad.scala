@@ -15,18 +15,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.workload.service
+package org.openurp.edu.workload.model
 
-import org.openurp.base.edu.model.Teacher
+import org.beangle.data.model.LongId
+import org.openurp.base.edu.model.{Course, Teacher}
 import org.openurp.base.model.Semester
-import org.openurp.code.hr.model.StaffType
-import org.openurp.code.job.model.ProfessionalGrade
+import org.openurp.code.job.model.ProfessionalTitle
+import org.openurp.edu.workload.config.CapacityFactor
 
-trait TeacherPeriodLimitService {
+class TeachingLoad extends LongId {
 
-  def getMaxPeriod(teacher: Teacher): Int
+  var crn: String = _
 
-  def getMaxPeriod(grade: ProfessionalGrade, staffType: StaffType): Int
+  var course: Course = _
 
-  def getTeacherPeriods(teacher: Teacher, semester: Semester): Int
+  var teacher: Teacher = _
+
+  var semester: Semester = _
+
+  var teacherTitle: ProfessionalTitle = _
+
+  var capacityFactor: CapacityFactor = _
+
+  var clazzTags: String = _
+
+  var factor: Float = _
+
+  var creditHours: Int = _
+
+  var stdCount: Int = _
+
+  var loadHours: Float = _
+
 }

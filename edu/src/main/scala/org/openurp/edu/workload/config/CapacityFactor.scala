@@ -15,17 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.workload.config
+package org.openurp.edu.workload.config
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.{Named, Remark, TemporalOn}
 
-class DefaultMapping extends MappingModule {
+@config
+class CapacityFactor extends LongId with Named with Remark with TemporalOn {
 
-  def binding(): Unit = {
-    bind[CapacityFactor] declare { e =>
-      e.segments is depends("factor")
-    }
-    bind[FactorSegment]
-  }
+  var conditionExp: String = _
 
+  var segments = Collections.newBuffer[FactorSegment]
+
+}
+
+@config
+class FactorSegment extends LongId {
+
+  var factor: CapacityFactor = _
+
+  var minCapacity: Int = _
+
+  var maxCapacity: Int = _
+
+  var factorExp: String = _
 }

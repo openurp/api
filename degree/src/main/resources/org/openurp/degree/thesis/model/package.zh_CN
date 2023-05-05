@@ -118,8 +118,8 @@ DefenseInfo.defenseScore=答辩成绩
 DefenseInfo.questions=回答问题摘要
 DefenseInfo.recorder=答辩记录人
 DefenseInfo.groupOpinion=答辩小组评语
-DefenseInfo.thesisSummary=论文概述情况
-DefenseInfo.answerSummary=回答问题情况
+DefenseInfo.thesisSummaryScore=论文概述情况
+DefenseInfo.answerSummaryScore=回答问题情况
 
 ThesisReview = 论文评分
 ThesisReview.subjectScore=选题得分
@@ -137,5 +137,4 @@ ThesisReview.crossReviewAt=交叉评阅时间
 ThesisReview.defensePermitted=是否同意答辩
 ThesisReview.defenseScore=答辩成绩
 ThesisReview.finalScore=最终成绩
-
-
+ThesisReview.finalScoreText=最终成绩(五级制)

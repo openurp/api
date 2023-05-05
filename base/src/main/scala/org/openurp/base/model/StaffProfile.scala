@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.base.model
+package org.openurp.base.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
@@ -31,26 +31,34 @@ import java.time.LocalDate
 /**
  * 教师基本情况
  */
-class TeacherProfile extends LongId with Updated {
+class StaffProfile extends LongId with Updated {
   /** 教师 */
   var staff: Staff = _
 
   /** 个人简介 */
   var intro: String = _
 
-  /** 教学工作经历 */
+  /** 教授课程 */
+  var courses: Option[String] = None
+
+  /** 教学工作经历、学术简历 */
   var career: Option[String] = None
 
   /** 科研成果 */
   var harvest: Option[String] = None
 
-  /** 研究方向 */
+  /** 研究领域、方向 */
   var research: Option[String] = None
 
-  /** 学术兼职 */
+  /** 职务、学术兼职 */
   var titles: Option[String] = None
+
+  /** 奖项荣誉 */
+  var awards: Option[String] = None
+
+  /** 研究项目 */
+  var projects: Option[String] = None
 
   /** 联系方式 */
   var contact: Option[String] = None
-
 }

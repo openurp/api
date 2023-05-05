@@ -15,23 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.hr.base.model
+package org.openurp.edu.workload.model
 
-import org.beangle.data.model.annotation.code
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
-  def binding(): Unit = {
-    bind[TeacherProfile] declare { e =>
-      e.intro is length(40000)
-      e.harvest is length(40000)
-      e.career is length(1000)
-      e.titles is length(1000)
-
-      index("", true, e.staff)
-    }
-
-    bind[TitleInfo]
+  def binding(): Unit ={
+    bind[TeachingLoad]
   }
 }
