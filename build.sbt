@@ -28,6 +28,7 @@ lazy val root = (project in file("."))
   .settings()
   .aggregate(code,base,edu,prac,qos,trd,spa,std,degree,all)
 
+val beangle_data_orm = "org.beangle.data" %% "beangle-data-orm" % "5.6.13-SNAPSHOT"
 lazy val code = (project in file("code"))
   .settings(
     organization := "org.openurp.code",

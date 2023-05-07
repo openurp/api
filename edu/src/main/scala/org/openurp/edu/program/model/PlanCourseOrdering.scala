@@ -15,31 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.code.person.model
+package org.openurp.edu.program.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+object PlanCourseOrdering extends Ordering[PlanCourse] {
 
-class DefaultMapping extends MappingModule {
-
-  def binding(): Unit = {
-    bind[BloodType]
-    bind[DifficultyCause]
-    bind[DifficultyDegree]
-    bind[FamilyCategory]
-    bind[HouseholdType]
-    bind[PassportType]
-    bind[VisaType]
-    bind[CompatriotType]
-    bind[FamilyRelationship]
-    bind[Gender]
-    bind[HealthStatus]
-    bind[IdType]
-    bind[JobStatus]
-    bind[MaritalStatus]
-    bind[Nation]
-    bind[PoliticalStatus]
-    bind[Religion]
-
-    all.cacheAll()
+  override def compare(o1: PlanCourse, o2: PlanCourse): Int = {
+    if (o1.compulsory ^ o2.compulsory) {
+      if o1.compulsory then -1 else 1
+    } else {
+      val termCmp = o1.terms.compareTo(o2.terms)
+      if termCmp == 0 then o1.course.code.compareTo(o2.course.code) else termCmp
+    }
   }
 }

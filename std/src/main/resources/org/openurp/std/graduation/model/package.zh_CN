@@ -33,7 +33,6 @@ DegreeResult.degree=学位
 DegreeResult.gpa=GPA
 DegreeResult.ga=平均分
 DegreeResult.foreignLangPassedOn=外语通过年月
-DegreeResult.batch=批次
 
 GraduateBatch=毕业批次
 GraduateBatch.name=名称

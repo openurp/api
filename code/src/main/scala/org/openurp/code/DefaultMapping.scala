@@ -17,7 +17,7 @@
 
 package org.openurp.code
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
@@ -30,7 +30,7 @@ class DefaultMapping extends MappingModule {
       e.name is length(100)
       e.enName is length(300)
       e.remark is length(200)
-    }.cacheable().generator("code")
+    }.cacheable().generator(IdGenerator.Code)
   }
 
 }

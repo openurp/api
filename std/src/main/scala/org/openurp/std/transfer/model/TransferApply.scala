@@ -49,7 +49,7 @@ class TransferApply extends LongId with Updated {
   var option: TransferOption = _
 
   /** 转入年级 */
-  var toGrade: Option[String] = None
+  var toGrade: Grade = _
 
   /** 转入院系 */
   var toDepart: Department = _
