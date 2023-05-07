@@ -60,6 +60,7 @@ create index idx_al164spgi1lk7vl66nht01qse on edu.cfg_cert_exempt_settings (conf
 create index idx_f02a2m7bqy6jxa231mv45l6xj on edu.cfg_cert_signup_exclusives (cert_signup_setting_id);
 create index idx_edov1lquvcs0l602abdn6wlaq on edu.cfg_cert_signup_scopes (setting_id);
 create index idx_e1jm14m4lkrxvokb269vlrw46 on edu.cfg_cert_signup_settings (config_id);
+create index idx_8phjsft3ht68389ab4xj7yvof on edu.cfg_factor_segments (factor_id);
 create index idx_8h5f9owky5n5vrcrd3xwojpqo on edu.cfg_grade_input_switches_types (grade_input_switch_id);
 create index idx_krohebe9mfogd0eh4v2d0g97r on edu.cfg_grade_rate_items (config_id);
 create index idx_q8ai1qbh3e9pvh1up7l4uuw6u on edu.cfg_schedule_setting_departs (setting_id);
@@ -153,7 +154,6 @@ create index idx_k2it4d6hlqi69f22ht73l2ogb on edu.std_year_gpas (std_gpa_id);
 create index idx_4kc8i1iwg3dcxgp93s9lcfui9 on edu.subclazzes (clazz_id);
 create index idx_mj7o7fx2dl4p7omsdqdln9122 on edu.syllabus_files (syllabus_id);
 create index idx_ks5c08r0ewjy6tqj2bdktvcnr on edu.term_campuses (program_id);
-create index idx_8phjsft3ht68389ab4xj7yvof on hr.cfg_factor_segments (factor_id);
 create index idx_685qcltuowforqswdtamn9twj on prac.inv_closure_review_details (review_id);
 create index idx_m2t7iuwlel6emr4vx22n4qehv on prac.inv_closure_review_groups_experts (closure_review_group_id);
 create index idx_jt69c02pxw1fluu7c5bcjoj36 on prac.inv_init_review_details (review_id);

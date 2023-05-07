@@ -15,19 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.course.model
+package org.openurp.base.profile.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp.edu.course", "read-write")
+    bind[CourseProfile] declare { e =>
+      e.description is length(40000)
+      e.enDescription is length(40000)
 
-    bind[Syllabus] declare { e =>
-      e.attachments is depends("syllabus")
+      index("", true, e.course)
     }
 
-    bind[SyllabusFile]
+    bind[StaffProfile] declare { e =>
+      e.intro is length(60000)
+      e.harvest is length(60000)
+      e.career is length(4000)
+      e.titles is length(1000)
+
+      e.projects is length(1000)
+      e.courses is length(1000)
+      e.awards is length(1000)
+      index("", true, e.staff)
+    }
   }
 }

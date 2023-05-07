@@ -3,34 +3,34 @@
   <system name="教学管理系统" version="0.31.1"/>
   <database xml="database.xml"/>
   <pages template="singlehtml" extension=".html">
-    <page name="index" />
+    <page name="index"/>
   </pages>
 
   <schemas>
     <schema name="code" title="基础代码">
       <module name="asset" title="资产">
-         <group name="all" title="代码" tables="*"/>
+        <group name="all" title="代码" tables="*"/>
       </module>
       <module name="edu" title="教务">
-         <group name="all" title="代码" tables="*"/>
+        <group name="all" title="代码" tables="*"/>
       </module>
       <module name="geo" title="地理">
-         <group name="all" title="代码" tables="*"/>
+        <group name="all" title="代码" tables="*"/>
       </module>
       <module name="hr" title="人事">
-         <group name="all" title="代码" tables="*"/>
+        <group name="all" title="代码" tables="*"/>
       </module>
       <module name="job" title="就业">
-         <group name="all" title="代码" tables="*"/>
+        <group name="all" title="代码" tables="*"/>
       </module>
       <module name="person" title="人员">
-         <group name="all" title="代码" tables="*"/>
+        <group name="all" title="代码" tables="*"/>
       </module>
       <module name="sin" title="科研">
-         <group name="all" title="代码" tables="*"/>
+        <group name="all" title="代码" tables="*"/>
       </module>
       <module name="std" title="学生">
-         <group name="all" title="代码" tables="*"/>
+        <group name="all" title="代码" tables="*"/>
       </module>
     </schema>
 
@@ -40,16 +40,17 @@
           <image name="space" title="校区、教学楼、教室" tables="campuses,buildings,rooms"/>
         </group>
         <group name="time" title="时间相关" tables="calendar*,semester*,*unit*,holiday*,time*">
-            <image name="time" title="学期和作息时间" tables="calendars,semesters,time_settings,course_units"/>
+          <image name="time" title="学期和作息时间" tables="calendars,semesters,time_settings,course_units"/>
         </group>
         <group name="user" title="用户相关" tables="user*,department*,people*">
-            <image name="user" title="用户和部门" tables="users,departments"/>
+          <image name="user" title="用户和部门" tables="users,departments"/>
         </group>
         <group name="misc" title="其他" tables="*"/>
       </module>
 
       <module name="edu" title="教学类基础信息">
-        <group name="core" title="核心部分" tables="squad*,project*,courses*,course_hour*,majors*,major_journals*,direction*,students*,student_state*,teachers*">
+        <group name="core" title="核心部分"
+               tables="squad*,project*,courses*,course_hour*,majors*,major_journals*,direction*,students*,student_state*,teachers*">
           <image name="squad" title="行政班级" tables="squad*,majors,directions*,projects,departments,instructors*"/>
           <image name="majors" title="专业" tables="major*,direction*,departments,school_length*"/>
           <image name="student" title="学生" tables="student*,directions,majors,departments,users,people,squads"/>
@@ -61,13 +62,18 @@
       <module name="std" title="学生类基础信息">
         <group name="core" title="所有表格" tables="*"/>
       </module>
+      <module name="profile" title="简介">
+        <group name="core" title="所有表格" tables="*"/>
+      </module>
     </schema>
 
     <schema name="edu" title="教务管理">
       <module name="clazz" title="课程安排">
-        <group name="clazz" title="教学任务" tables="clazz*,course_take*,restriction*,subclazzes,lesson*,teaching_plans*">
+        <group name="clazz" title="教学任务"
+               tables="clazz*,course_take*,restriction*,subclazzes,lesson*,teaching_plans*">
           <image name="clazz" title="教学任务" tables="clazzes*,restriction*"/>
-          <image name="course_taker" title="学生修读课程" tables="course_taker*,clazzes,code.course_take_types,code.election_modes"/>
+          <image name="course_taker" title="学生修读课程"
+                 tables="course_taker*,clazzes,code.course_take_types,code.election_modes"/>
           <image name="lesson" title="授课计划" tables="course_taker*,clazzes,subclazzes,lessons*,teaching_plan"/>
         </group>
         <group name="schedule" title="课程安排" tables="session*,clazz_group*">
@@ -128,7 +134,7 @@
         <group name="core" title="核心部分" tables="*"/>
       </module>
 
-      <module name="alter" title="学籍异动" >
+      <module name="alter" title="学籍异动">
         <group name="misc" title="学籍异动" tables="*">
         </group>
       </module>
@@ -169,7 +175,7 @@
         <group name="misc" title="学生信息" tables="*"/>
       </module>
 
-      <module name="register" title="报到注册" >
+      <module name="register" title="报到注册">
         <group name="misc" title="报到注册" tables="*"/>
       </module>
 
@@ -182,8 +188,10 @@
 
     <schema name="qos" title="教学质量">
       <module name="evaluation" title="评教信息">
-        <group name="questionnaires" title="问卷" tables="options,option_groups,questions,questionnaires,questionnaires_questions,question_types">
-          <image name="questionnaires" title="问卷" tables="options,option_groups,questions,questionnaires,questionnaires_questions"/>
+        <group name="questionnaires" title="问卷"
+               tables="options,option_groups,questions,questionnaires,questionnaires_questions,question_types">
+          <image name="questionnaires" title="问卷"
+                 tables="options,option_groups,questions,questionnaires,questionnaires_questions"/>
         </group>
         <group name="results" title="评教统计结果" tables="lesson_*">
           <image name="results" title="问卷" tables="lesson_*"/>

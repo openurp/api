@@ -2,7 +2,6 @@ create schema base;
 create schema code;
 create schema degree;
 create schema edu;
-create schema hr;
 create schema log;
 create schema prac;
 create schema qos;

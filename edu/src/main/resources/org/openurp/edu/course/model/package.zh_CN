@@ -1,13 +1,3 @@
-
-CourseProfile=课程简介
-CourseProfile.description=简介
-CourseProfile.enDescription=英文简介
-CourseProfile.prerequisites=先修课程
-CourseProfile.majors=适用专业
-CourseProfile.textbooks=教材和参考书目
-CourseProfile.materials=辅助资料
-CourseProfile.website=课程网站
-
 Syllabus=课程教学大纲
 Syllabus.department=开课院系
 Syllabus.attachments=大纲附件

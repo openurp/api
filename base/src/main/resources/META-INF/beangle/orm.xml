@@ -4,6 +4,7 @@
   <mapping class="org.openurp.base.edu.model.DefaultMapping" name="edu"/>
   <mapping class="org.openurp.base.edu.code.DefaultMapping" name="edu.code"/>
   <mapping class="org.openurp.base.std.model.DefaultMapping" name="std"/>
+  <mapping class="org.openurp.base.profile.model.DefaultMapping" name="profile"/>
   <mapping class="org.openurp.base.std.code.DefaultMapping" name="std.code"/>
   <naming>
     <profile package="org.openurp.base" pluralize="true" schema="base">
