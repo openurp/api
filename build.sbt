@@ -2,7 +2,7 @@ import org.openurp.parent.Settings._
 import org.openurp.parent.Dependencies._
 
 ThisBuild / organization := "org.openurp.api"
-ThisBuild / version := "0.31.3-SNAPSHOT"
+ThisBuild / version := "0.32.0"
 
 ThisBuild / scmInfo := Some(
   ScmInfo(
@@ -28,7 +28,6 @@ lazy val root = (project in file("."))
   .settings()
   .aggregate(code,base,edu,prac,qos,trd,spa,std,degree,all)
 
-val beangle_data_orm = "org.beangle.data" %% "beangle-data-orm" % "5.6.14-SNAPSHOT"
 lazy val code = (project in file("code"))
   .settings(
     organization := "org.openurp.code",
