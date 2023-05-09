@@ -38,7 +38,7 @@ class TuitionConfig extends IntId with Remark {
   var fromGrade: Grade = _
 
   /** 截止年级 */
-  var toGrade: Grade = _
+  var toGrade: Option[Grade] = None
 
   /** 学制 */
   var duration: Float = _

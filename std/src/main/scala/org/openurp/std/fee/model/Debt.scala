@@ -17,23 +17,20 @@
 
 package org.openurp.std.fee.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.std.code.FeeType
+import org.openurp.base.std.model.Student
 
-class DefaultMapping extends MappingModule {
+class Debt extends LongId, Updated {
 
-  def binding(): Unit = {
-    bind[Bill] declare { e =>
-      index("", false, e.std)
-    }
+  var std: Student = _
 
-    bind[Order] declare { e =>
-      e.code.is(length(50), unique)
-      e.payUrl is length(500)
-      index("", true, e.bill)
-    }
+  /** 交费类型 */
+  var feeType: FeeType = _
 
-    bind[Debt] declare { e =>
-      index("", false, e.std)
-    }
-  }
+  var amount: Int = _
+
+  var ignored: Boolean = _
+
 }

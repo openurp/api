@@ -16,3 +16,9 @@ Order.payUrl=支付地址
 Order.createdAt=创建时间
 Order.expiredAt=过期时间点
 Order.invoicePath=发票地址
+
+
+Debt=欠费信息
+Debt.items=欠费项目
+Debt.amount=欠费金额
+Debt.ignored=是否忽略
