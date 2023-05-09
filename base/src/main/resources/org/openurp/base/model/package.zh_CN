@@ -121,6 +121,10 @@ Semester.calendar=教学日历方案类别
 Semester.archived=是否归档
 Semester.stages=阶段列表
 
+Dayoff=调休
+Dayoff.workingDay=工作日
+Dayoff.shiftDay=调休日
+
 CalendarStage=日历阶段
 CalendarStage.vacation=是否假期
 

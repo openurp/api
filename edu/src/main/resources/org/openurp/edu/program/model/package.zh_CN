@@ -127,3 +127,8 @@ TermCampus=专业所在校区
 TermCampus.campus=校区
 TermCampus.program=培养方案
 TermCampus.terms=学期
+
+ExemptCourse=免修课程
+ExemptCourse.fromGrade=起始年级
+ExemptCourse.toGrade=结束年级
+ExemptCourse.stdTypes=适用学生类别范围

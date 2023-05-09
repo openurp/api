@@ -18,6 +18,7 @@
 package org.openurp.base.model
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.commons.lang.time.WeekDay
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
@@ -105,6 +106,7 @@ class SemesterStage extends IntId with DateRange with Remark {
 
 /** 节日调休
  */
+@beta
 class Dayoff extends IntId, Remark {
   var semester: Semester = _
   var workingDay: LocalDate = _
