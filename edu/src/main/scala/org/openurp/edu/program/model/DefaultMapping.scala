@@ -141,19 +141,21 @@ class DefaultMapping extends MappingModule {
       index("", false, e.std)
     }.table("std_alt_courses")
 
-    bind[ProgramDocTemplate] declare { e=>
+    bind[ProgramDocTemplate] declare { e =>
       e.metas is depends("template")
     }
 
     bind[ProgramDocMeta]
 
-    bind[ProgramDoc] declare {e=>
+    bind[ProgramDoc] declare { e =>
       e.sections is depends("doc")
     }
 
-    bind[ProgramDocSection] declare{e=>
+    bind[ProgramDocSection] declare { e =>
       e.contents is lob
       e.children is depends("parent")
     }
+
+    bind[ExemptCourse]
   }
 }
