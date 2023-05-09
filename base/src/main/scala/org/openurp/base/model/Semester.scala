@@ -68,6 +68,8 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
 
   /** 学期中的阶段 */
   var stages: mutable.Buffer[SemesterStage] = Collections.newBuffer[SemesterStage]
+  /** 调休 */
+  var dayoffs: mutable.Buffer[Dayoff] = Collections.newBuffer[Dayoff]
 
   def startWeek(): Int = {
     val gc = new GregorianCalendar();
@@ -99,4 +101,12 @@ class CalendarStage extends IntId with Named {
 class SemesterStage extends IntId with DateRange with Remark {
   var semester: Semester = _
   var stage: CalendarStage = _
+}
+
+/** 节日调休
+ */
+class Dayoff extends IntId, Remark {
+  var semester: Semester = _
+  var workingDay: LocalDate = _
+  var shiftDay: LocalDate = _
 }

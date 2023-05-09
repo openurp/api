@@ -124,11 +124,16 @@ class DefaultMapping extends MappingModule {
       e.code is length(15)
       e.name & e.schoolYear are length(10)
       e.stages is depends("semester")
+      e.dayoffs is depends("semester")
       index("", true, e.calendar, e.code)
     }.generator("code")
 
     bind[SemesterStage] declare { e =>
       e.remark is length(500)
+    }
+
+    bind[Dayoff] declare { e =>
+      e.remark is length(100)
     }
 
     bind[Staff].declare { e =>
