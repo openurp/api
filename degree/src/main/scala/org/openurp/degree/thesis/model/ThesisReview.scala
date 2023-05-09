@@ -18,12 +18,13 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.Teacher
 
 import java.time.Instant
 
 /** 论文评分 */
-class ThesisReview extends LongId {
+class ThesisReview extends LongId, Remark {
 
   /** 学生 */
   var writer: Writer = _
@@ -76,6 +77,6 @@ class ThesisReview extends LongId {
   /** 最终成绩五级制 */
   var finalScoreText: Option[String] = None
 
-  /**答辩信息*/
+  /** 答辩信息 */
   var defenseInfo: Option[DefenseInfo] = None
 }
