@@ -33,19 +33,11 @@ object DefaultProgramMatcher extends ProgramMatcher {
       false
     } else {
       var matched = true
-      program.campus foreach { pc =>
-        matched = pc == state.campus
-      }
+      program.campus foreach { pc => matched = pc == state.campus }
       if (matched) {
-        program.direction foreach { pd =>
-          matched = pd == state.direction.orNull
-        }
+        program.direction foreach { pd => matched = pd == state.direction.orNull }
       }
-      if (matched) {
-        program.stdType foreach { ps =>
-          matched = ps == std.stdType
-        }
-      }
+      if matched then matched = program.stdTypes.isEmpty || program.stdTypes.contains(std.stdType)
       matched
     }
   }
@@ -58,20 +50,13 @@ object DefaultProgramMatcher extends ProgramMatcher {
     } else {
       var matched = program.major == squad.major.orNull
       if (matched) {
-        program.campus foreach { pc =>
-          matched = pc == squad.campus
-        }
+        program.campus foreach { pc => matched = pc == squad.campus }
       }
       if (matched) {
-        program.direction foreach { pd =>
-          matched = pd == squad.direction.orNull
-        }
+        program.direction foreach { pd => matched = pd == squad.direction.orNull }
       }
-      if (matched) {
-        program.stdType foreach { ps =>
-          matched = ps == squad.stdType
-        }
-      }
+      if matched && squad.stdType.nonEmpty then
+        matched = program.stdTypes.isEmpty || program.stdTypes.contains(squad.stdType.get)
       matched
     }
   }

@@ -27,6 +27,8 @@ import org.openurp.base.std.code.StdType
 import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.{Degree, StudyType}
 
+import scala.collection.mutable
+
 /**
  * 专业培养方案
  *
@@ -48,7 +50,7 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
   var direction: Option[Direction] = None
 
   /** 学生类别 */
-  var stdType: Option[StdType] = None
+  var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]
 
   /** 校区 */
   var campus: Option[Campus] = None
@@ -57,7 +59,7 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
   var duration: Float = _
 
   /** 学习形式 */
-  var studyType: StudyType = _
+  var studyType: Option[StudyType] = None
 
   /** 学期对应校区 */
   var termCampuses = Collections.newBuffer[TermCampus]
