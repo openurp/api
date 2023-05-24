@@ -47,6 +47,7 @@ alter table base.courses_prerequisites add constraint pk_oshk6vwdtq9ycqsmj1jh6nx
 alter table base.courses_teachers add constraint pk_lj3gh310g6ro1s6t13qunca7a primary key (course_id,teacher_id);
 alter table base.courses_textbooks add constraint pk_su8h61lhgrbuv4l18nkjb874 primary key (course_id,textbook_id);
 alter table base.courses_xmajors add constraint pk_2g7t6j5hy2w3bltscs5tq09d4 primary key (course_id,major_id);
+alter table base.dayoffs add constraint pk_7180815am4o2cdnqinp2upxi1 primary key (id);
 alter table base.departments add constraint pk_njmudssqklm265fj3qxrl6v4i primary key (id);
 alter table base.departments add constraint uk_blem78dvbmeuekoy0jg6px6j7 unique (school_id,code);
 alter table base.departments_campuses add constraint pk_hayeukvl4wxa5t4wj8u012cvy primary key (department_id,campus_id);
@@ -352,6 +353,9 @@ alter table edu.clazz_groups add constraint pk_rk07cifqsq9cq5cscif6rre46 primary
 alter table edu.clazz_materials add constraint pk_nrnf4gf44n88mvd5efhg9ror0 primary key (id);
 alter table edu.clazz_notice_files add constraint pk_tc2n52103b3130x5jaaaxj7n1 primary key (id);
 alter table edu.clazz_notices add constraint pk_dhgey9skl0nde8lg46v723xi2 primary key (id);
+alter table edu.clazz_sessions add constraint pk_my44802emlsdhg3keroojgjx1 primary key (id);
+alter table edu.clazz_sessions_rooms add constraint pk_oalfmyc02q89r7o7p4s7r45it primary key (session_id,classroom_id);
+alter table edu.clazz_sessions_teachers add constraint pk_2pbu7ufj2k8q786twur3lmr71 primary key (session_id,teacher_id);
 alter table edu.clazzes add constraint pk_3ra1a077so5k9mwdt2kxb3k0b primary key (id);
 alter table edu.clazzes add constraint uk_8xuvd3v6lnrq5xmcl8jje0yau unique (project_id,semester_id,crn);
 alter table edu.clazzes_ability_rates add constraint pk_kx0jp80tganm39yvlc4lewj74 primary key (clazz_id,course_ability_rate_id);
@@ -388,6 +392,8 @@ alter table edu.execution_course_groups add constraint pk_i8ey4cvnf78oa7cq6536x3
 alter table edu.execution_plan_courses add constraint pk_8pnnwn3x0hml7i3beqlw29uwc primary key (id);
 alter table edu.execution_plan_courses add constraint uk_jod7x8jyse63x23hd4uwhcaio unique (group_id,course_id);
 alter table edu.execution_plans add constraint pk_5p24qpu2c2ydwpwg2qxabenb1 primary key (id);
+alter table edu.exempt_courses add constraint pk_q2fwu5hjcpjwsvnda5gql38gq primary key (id);
+alter table edu.exempt_courses_std_types add constraint pk_comjg7o4sak1o96o5jyca6spe primary key (exempt_course_id,std_type_id);
 alter table edu.extern_grades add constraint pk_c6lgnfjsyt425c90aek6a4cba primary key (id);
 alter table edu.extern_grades_exempts add constraint pk_1i3rqkxurk5pqwi4fjfxgqnul primary key (extern_grade_id,course_id);
 alter table edu.final_makeup_courses add constraint pk_nb8vd6udx54xefb3ngrsm90f0 primary key (id);
@@ -429,6 +435,7 @@ alter table edu.program_doc_templates_types add constraint pk_lwfg2w960gakch3fo4
 alter table edu.program_docs add constraint pk_tmprm3sm6os3l88qop5r89q9x primary key (id);
 alter table edu.programs add constraint pk_9osl20jg9o3ywqs65190pgm9v primary key (id);
 alter table edu.programs_degree_courses add constraint pk_c56n0ogp63uo4vcl3pp16l842 primary key (program_id,course_id);
+alter table edu.programs_std_types add constraint pk_9ehq0f2rhqjce1anhhw5bcf4b primary key (program_id,std_type_id);
 alter table edu.regular_grade_states add constraint pk_hnj9nkhhqpuj7yg9v7efhigo6 primary key (id);
 alter table edu.regular_grade_states add constraint uk_nv0dulh1dhs6ddpd0clg8tvac unique (clazz_id);
 alter table edu.regular_grade_states_percents add constraint pk_ljpyhuafbu8nwj7j6exu1wax1 primary key (regular_grade_state_id,value_,regular_test_type_id);
@@ -447,9 +454,6 @@ alter table edu.room_apply_depart_checks add constraint pk_9hbnf2sy4qro45xh5ujcm
 alter table edu.room_apply_final_checks add constraint pk_gcxfm7cd70mrjbi5ir5dq5yxe primary key (id);
 alter table edu.room_available_times add constraint pk_72hrirupp9pfx9rkg0b30rct2 primary key (id);
 alter table edu.room_occupy_apps add constraint pk_jhnnof3gdp1q99769e6htdi2x primary key (id);
-alter table edu.sessions add constraint pk_2k2jgch7v1cadr2171w0tlckn primary key (id);
-alter table edu.sessions_rooms add constraint pk_80wtvj2a6k7h396j14q81wg78 primary key (session_id,classroom_id);
-alter table edu.sessions_teachers add constraint pk_rsvgf6p9cggfgylwx7nsj7cuo primary key (session_id,teacher_id);
 alter table edu.share_course_groups add constraint pk_45hb6362voxm23n8sxy3fgo3b primary key (id);
 alter table edu.share_plan_courses add constraint pk_d5aukjiewdmk6smt3dwg7s8cq primary key (id);
 alter table edu.share_plan_courses add constraint uk_4g3u5b9itdu90iij2y6la2ms5 unique (group_id,course_id);
@@ -538,6 +542,7 @@ alter table std.cfg_transfer_scopes_majors add constraint pk_4pqavh6apkucku8olta
 alter table std.cfg_tuition_configs add constraint pk_rw7k52evbugyarc3xclwo7n21 primary key (id);
 alter table std.contacts add constraint pk_7ko2w4r57qng8yfiyi7n9snh4 primary key (id);
 alter table std.contacts add constraint uk_qopxi21m45bqtuemmwurk7dkl unique (std_id);
+alter table std.debts add constraint pk_hv6munekg3kbg6qh7yodxld9l primary key (id);
 alter table std.degree_applies add constraint pk_85xktk94x3o87fc7wwtbo07i5 primary key (id);
 alter table std.degree_audit_items add constraint pk_p1g6j1m2uwxsqw5s7uypyirnh primary key (id);
 alter table std.degree_results add constraint pk_juk8stxairvjh8aqqgmus1vx2 primary key (id);
@@ -558,9 +563,9 @@ alter table std.honor_levels add constraint pk_l53d6eu3akfl5s2gq3o74wqa9 primary
 alter table std.honor_types add constraint pk_c1tngwju5h6efg1jlicg9tvtj primary key (id);
 alter table std.major_students add constraint pk_ge7r9q9q5db7ne2cfjul9pnm5 primary key (id);
 alter table std.major_students add constraint uk_sp5y2w7s2e9uwp4okyf64ag63 unique (std_id);
-alter table std.orders add constraint idx_order_bill_id unique (bill_id);
 alter table std.orders add constraint orders_code_key unique (code);
 alter table std.orders add constraint pk_26gf4ikas867gkkiyjur6i708 primary key (id);
+alter table std.orders add constraint uk_5rbs2yuu4l5occesk8783g2sh unique (bill_id);
 alter table std.punishments add constraint pk_n9h4mdiiwcc2512hqfwdu3w3 primary key (id);
 alter table std.registers add constraint pk_6x7adbm1t7y079qhsobs4n9il primary key (id);
 alter table std.scholarship_awards add constraint pk_56u7g5vxife5b22kc1duq23ua primary key (id);

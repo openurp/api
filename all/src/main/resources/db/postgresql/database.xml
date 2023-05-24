@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.32.0">
+<db engine="PostgreSQL" version="0.32.2">
   <schemas>
     <schema name="base">
       <tables>
@@ -16,7 +16,8 @@
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="school_id" type="integer" nullable="false" comment="学校ID"/>
             <column name="short_name" type="varchar(100)" comment="简称"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_isptetvkhnkbsd7qqyed4vjy6" columns="id"/>
           <foreign-keys>
@@ -40,7 +41,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_h2auvi381y09pj3yogmu0dkcn" columns="id"/>
           <unique-keys>
@@ -56,7 +58,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_d8duuj55oxjq3a2diipdedlck" columns="id"/>
           <unique-keys>
@@ -73,7 +76,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="rate" type="integer" nullable="false" defaultValue="0" comment="等级值"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_bgsi7jt2ydrd4g7un61vyk0wq" columns="id"/>
           <unique-keys>
@@ -89,7 +93,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_4a82ko2a6rqjpct6lyocxtfw0" columns="id"/>
           <unique-keys>
@@ -109,7 +114,8 @@
             <column name="parent_id" type="integer" comment="课程类别ID"/>
             <column name="practical" type="boolean" nullable="false" defaultValue="false" comment="是否实践课"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_ad7srp158yyt3qqfnho3du3b2" columns="id"/>
           <foreign-keys>
@@ -129,7 +135,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_ct9svvtbjc2g6i7erusn11hgs" columns="id"/>
           <unique-keys>
@@ -145,7 +152,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_arhwas5ou48lb9euph8py4f1b" columns="id"/>
           <unique-keys>
@@ -161,7 +169,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_jsvqoo99gu44bmdynjo11lw7i" columns="id"/>
           <unique-keys>
@@ -178,7 +187,8 @@
             <column name="label_type_id" type="integer" nullable="false" comment="学生分类标签类型ID"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_eenp8ej7lgwccvfl9gely2b2d" columns="id"/>
           <foreign-keys>
@@ -198,7 +208,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_madxfpue18kxxvmx2an9k8fxb" columns="id"/>
           <unique-keys>
@@ -227,7 +238,8 @@
             <column name="first_weekday" type="integer" nullable="false" comment="每周开始时间"/>
             <column name="name" type="varchar(80)" nullable="false" comment="名称"/>
             <column name="school_id" type="integer" nullable="false" comment="学校ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_b2bvaskon8lysbk1srdwtml4f" columns="id"/>
           <foreign-keys>
@@ -249,7 +261,8 @@
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="school_id" type="integer" nullable="false" comment="学校ID"/>
             <column name="short_name" type="varchar(100)" comment="简称"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_7b3jpnegqwbvpg4marvqwpn46" columns="id"/>
           <foreign-keys>
@@ -278,7 +291,8 @@
             <column name="room_type_id" type="integer" nullable="false" comment="教室类型ID"/>
             <column name="school_id" type="integer" nullable="false" comment="学校信息ID"/>
             <column name="short_name" type="varchar(255)" comment="简称"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_d7h30ub9pduroys2e5318ti55" columns="id"/>
           <foreign-keys>
@@ -407,7 +421,8 @@
             <column name="materials" type="varchar(255)" comment="辅助资料"/>
             <column name="prerequisites" type="varchar(255)" comment="先修课程"/>
             <column name="textbooks" type="varchar(255)" comment="教材和参考书目"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="updated_by_id" type="bigint" comment="通用人员信息ID"/>
             <column name="website" type="varchar(255)" comment="课程网站"/>
           </columns>
@@ -454,7 +469,7 @@
             <column name="code" type="varchar(32)" nullable="false" comment="课程代码"/>
             <column name="course_type_id" type="integer" nullable="false" comment="建议课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时/总课时"/>
-            <column name="default_credits" type="float4" nullable="false" defaultValue="0.0" comment="默认学分"/>
+            <column name="default_credits" type="float4" nullable="false" comment="默认学分"/>
             <column name="department_id" type="integer" nullable="false" comment="院系ID"/>
             <column name="en_name" type="varchar(300)" comment="课程英文名"/>
             <column name="end_on" type="date" comment="失效日期"/>
@@ -465,7 +480,8 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(500)" comment="课程备注"/>
             <column name="teaching_office_id" type="bigint" comment="教研室ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="week_hours" type="integer" nullable="false" defaultValue="0" comment="周课时"/>
             <column name="weeks" type="integer" nullable="false" defaultValue="0" comment="周数"/>
           </columns>
@@ -607,6 +623,23 @@
             <index name="idx_2cpvhk7d040sh5temf5afvht8" columns="course_id"/>
           </indexes>
         </table>
+        <table name="dayoffs" comment="调休@common">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="remark" type="varchar(100)" comment="备注"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
+            <column name="shift_day" type="date" nullable="false" comment="调休日"/>
+            <column name="working_day" type="date" nullable="false" comment="工作日"/>
+          </columns>
+          <primary-key name="pk_7180815am4o2cdnqinp2upxi1" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_1m93oob1vwgaw129a39ouyyg1" column="semester_id" referenced-table="base.semesters"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_b927vofr1hyrul1haqk21kh4l" columns="semester_id"/>
+          </indexes>
+        </table>
         <table name="departments" comment="部门组织机构信息@common">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
@@ -623,7 +656,8 @@
             <column name="school_id" type="integer" nullable="false" comment="学校ID"/>
             <column name="short_name" type="varchar(100)" comment="简称"/>
             <column name="teaching" type="boolean" nullable="false" defaultValue="false" comment="是否教学部门"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_njmudssqklm265fj3qxrl6v4i" columns="id"/>
           <foreign-keys>
@@ -691,13 +725,14 @@
             <column name="name" type="varchar(100)" nullable="false" comment="专业方向名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_j2qwo6upqlwqexl7chxnno9mw" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_68y3kulyfxhqmaw3h61kwtfhp" column="major_id" referenced-table="base.majors"
-                         referenced-column="id"/>
             <foreign-key name="fk_819u659ke96emd17vve1870k0" column="project_id" referenced-table="base.projects"
+                         referenced-column="id"/>
+            <foreign-key name="fk_68y3kulyfxhqmaw3h61kwtfhp" column="major_id" referenced-table="base.majors"
                          referenced-column="id"/>
           </foreign-keys>
           <unique-keys>
@@ -714,7 +749,8 @@
             <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(255)" nullable="false" comment="学校名称"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_nj2mnlh45jh2wagd9heuq58dl" columns="id"/>
         </table>
@@ -729,7 +765,8 @@
             <column name="major_name" type="varchar(255)" comment="学习专业"/>
             <column name="school_id" type="integer" nullable="false" comment="校外教育机构ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_8omlfu3itguya4lmcd6pxe0wd" columns="id"/>
           <foreign-keys>
@@ -792,7 +829,8 @@
             <column name="result_id" type="integer" nullable="false" comment="教育培训结果ID"/>
             <column name="season_id" type="bigint" nullable="false" comment="毕业界别ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="whereto_go_id" type="integer" comment="毕业去向ID"/>
           </columns>
           <primary-key name="pk_861dttwawbactk5wx2pb5sfg1" columns="id"/>
@@ -866,7 +904,8 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(100)" comment="备注"/>
             <column name="short_name" type="varchar(255)" comment="简称"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_p9yolyf8gx5n3i5kh4utj6klv" columns="id"/>
           <foreign-keys>
@@ -937,7 +976,8 @@
             <column name="phonetic_name" type="varchar(100)" comment="姓名拼音"/>
             <column name="political_status_id" type="integer" comment="政治面貌ID"/>
             <column name="religion_id" type="integer" comment="宗教信仰ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_25uwl12dj9en3iflug9w23r1q" columns="id"/>
           <foreign-keys>
@@ -1005,7 +1045,8 @@
             <column name="minor" type="boolean" nullable="false" defaultValue="false" comment="是否辅修"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="school_id" type="integer" nullable="false" comment="适用学校ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_68i13lhb2otxe0ptivfl1qpeh" columns="id"/>
           <foreign-keys>
@@ -1130,7 +1171,8 @@
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="room_type_id" type="integer" nullable="false" comment="房间类型ID"/>
             <column name="school_id" type="integer" nullable="false" comment="学校ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_nsj160cru1j6fbgp9le397om7" columns="id"/>
           <foreign-keys>
@@ -1155,9 +1197,9 @@
             <column name="from_grade_id" type="bigint" nullable="false" comment="起始年级ID"/>
             <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
             <column name="major_id" type="bigint" nullable="false" comment="专业ID"/>
-            <column name="maximum" type="float4" nullable="false" defaultValue="0.0" comment="最长学习年限"/>
-            <column name="minimum" type="float4" nullable="false" defaultValue="0.0" comment="最低学习年限"/>
-            <column name="normal" type="float4" nullable="false" defaultValue="0.0" comment="学制"/>
+            <column name="maximum" type="float4" nullable="false" comment="最长学习年限"/>
+            <column name="minimum" type="float4" nullable="false" comment="最低学习年限"/>
+            <column name="normal" type="float4" nullable="false" comment="学制"/>
             <column name="to_grade_id" type="bigint" comment="结束年级ID"/>
           </columns>
           <primary-key name="pk_dy2p1op9w9eh33o0jks159fxe" columns="id"/>
@@ -1263,7 +1305,8 @@
             <column name="std_count" type="integer" nullable="false" defaultValue="0" comment="学籍有效人数"/>
             <column name="std_type_id" type="integer" comment="学生类别ID"/>
             <column name="tutor_id" type="bigint" comment="班导师ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_flc1bpx9eojc9pwda23uoujej" columns="id"/>
           <foreign-keys>
@@ -1312,7 +1355,8 @@
             <column name="research" type="varchar(255)" comment="研究方向"/>
             <column name="staff_id" type="bigint" nullable="false" comment="教职工信息ID"/>
             <column name="titles" type="varchar(1000)" comment="学术兼职"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_qhyynhx18vx1bi91rhlxlunkb" columns="id"/>
           <foreign-keys>
@@ -1368,7 +1412,8 @@
             <column name="staff_type_id" type="integer" nullable="false" comment="教职工类别ID"/>
             <column name="status_id" type="integer" nullable="false" comment="在职状态ID"/>
             <column name="title_id" type="integer" comment="最高职称ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_qi7hj56hag2uu4e5eu4egoxrl" columns="id"/>
           <foreign-keys>
@@ -1449,7 +1494,7 @@
             <column name="advisor_id" type="bigint" comment="教师信息ID"/>
             <column name="begin_on" type="date" nullable="false" comment="学籍生效日期"/>
             <column name="code" type="varchar(15)" nullable="false" comment="学号"/>
-            <column name="duration" type="float4" nullable="false" defaultValue="0.0" comment="学制/学习年限"/>
+            <column name="duration" type="float4" nullable="false" comment="学制/学习年限"/>
             <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
             <column name="en_name" type="varchar(200)" comment="姓名拼音"/>
             <column name="end_on" type="date" nullable="false" comment="学籍截止日期"/>
@@ -1466,7 +1511,8 @@
             <column name="study_on" type="date" nullable="false" comment="入学日期"/>
             <column name="study_type_id" type="integer" nullable="false" comment="学习形式ID"/>
             <column name="tutor_id" type="bigint" comment="导师ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_dp1c3lp7694lu2ri6rfh6n7g8" columns="id"/>
           <foreign-keys>
@@ -1592,7 +1638,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_cqhu9i1m9mg4ekr9tuv58c744" columns="id"/>
           <foreign-keys>
@@ -1677,7 +1724,8 @@
             <column name="name" type="varchar(80)" nullable="false" comment="姓名"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="school_id" type="integer" nullable="false" comment="学校ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_i4mlr3lp5ixml05sx2wuk8kp8" columns="id"/>
           <foreign-keys>
@@ -1698,7 +1746,8 @@
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="description" type="varchar(200)" nullable="false" comment="内容"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="version" type="varchar(20)" nullable="false" comment="版本"/>
           </columns>
           <primary-key name="pk_kn37tnh6h9broruk4q2gsyyip" columns="id"/>
@@ -1716,7 +1765,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_q51xfy75i97otjcrinh3ioojl" columns="id"/>
           <unique-keys>
@@ -1732,7 +1782,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_cmb1g96s43erp3tu63b3t5c3r" columns="id"/>
           <unique-keys>
@@ -1748,7 +1799,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_a6q355jjrx7gsqp1gfus8kc09" columns="id"/>
           <unique-keys>
@@ -1764,7 +1816,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_s815d9t06dbnd8qc42j9cmbiy" columns="id"/>
           <unique-keys>
@@ -1780,7 +1833,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_lkbpdt3molrx8lrsafy7ter00" columns="id"/>
           <unique-keys>
@@ -1796,7 +1850,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_9fv09o2b3rsbo9ynt7ik8coj1" columns="id"/>
           <unique-keys>
@@ -1812,7 +1867,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_jqhkc4fgq6xtd8q45034q62h9" columns="id"/>
           <unique-keys>
@@ -1828,7 +1884,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_72f3nrjp1nlnvxqku2roeb22x" columns="id"/>
           <unique-keys>
@@ -1847,7 +1904,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="short_name" type="varchar(50)" nullable="false" comment="简称"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_d8ehdli05dbs8aiu5yxq6ek0a" columns="id"/>
           <unique-keys>
@@ -1864,7 +1922,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="practical" type="boolean" nullable="false" defaultValue="false" comment="是否实践课"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_qmyas7mib2hjnqnj6ogbi2n7p" columns="id"/>
           <unique-keys>
@@ -1880,7 +1939,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_qkahh6b0jdyhg34u94jvoqseo" columns="id"/>
           <unique-keys>
@@ -1897,7 +1957,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_smmdo7fq2ewnj1lx98wxxdq91" columns="id"/>
           <unique-keys>
@@ -1913,7 +1974,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_fiqbw5nsr2mw36xoxhj1j2116" columns="id"/>
           <unique-keys>
@@ -1930,7 +1992,8 @@
             <column name="level_id" type="integer" nullable="false" comment="学位层次ID"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_2v97ef4fui6mhritxr8eaanvd" columns="id"/>
           <foreign-keys>
@@ -1952,7 +2015,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="parent_id" type="integer" comment="上级分类ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_mf4to82tja75w579ae7netvca" columns="id"/>
           <foreign-keys>
@@ -1975,7 +2039,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_lq6iocryw9m7olt9euio0caju" columns="id"/>
           <unique-keys>
@@ -1991,7 +2056,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_a4fi6imv2vy8ddql3he4ayuc" columns="id"/>
           <unique-keys>
@@ -2007,7 +2073,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_ldh031tie4eg35sgutxwnqorn" columns="id"/>
           <unique-keys>
@@ -2023,7 +2090,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_rnaagxursry83nehmsmy5wj87" columns="id"/>
           <unique-keys>
@@ -2041,7 +2109,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_dxv54dx9an08euovln6cd5s4x" columns="id"/>
           <foreign-keys>
@@ -2064,7 +2133,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="parent_id" type="integer" comment="父类ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_ckagbn1mtjluopfx7m4ddosoi" columns="id"/>
           <foreign-keys>
@@ -2088,7 +2158,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_sl8vmsl3f1jfpwosg32bccq9u" columns="id"/>
           <foreign-keys>
@@ -2108,7 +2179,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_rlhgyb1b3q18kigee1df4kde6" columns="id"/>
           <unique-keys>
@@ -2124,7 +2196,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_7p50hi0fsqia82miiqrf6ldas" columns="id"/>
           <unique-keys>
@@ -2142,7 +2215,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="result_id" type="integer" nullable="false" comment="毕结业结论ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_k83kie42e7dp161rew35xyojq" columns="id"/>
           <foreign-keys>
@@ -2166,7 +2240,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="to_level_id" type="integer" nullable="false" comment="结束ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_nqts5vnrhlor1x9p5xk5p8dsv" columns="id"/>
           <foreign-keys>
@@ -2188,7 +2263,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_riccou6iptrw79s4j9rh1r2ne" columns="id"/>
           <unique-keys>
@@ -2204,7 +2280,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_r5o2htr643q9k2keiote10x13" columns="id"/>
           <unique-keys>
@@ -2220,7 +2297,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_fe9eki74ur0gxgx89lk8y8vsc" columns="id"/>
           <unique-keys>
@@ -2236,7 +2314,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_9cdwwv62b6hnp2ci6f3os4eoo" columns="id"/>
           <unique-keys>
@@ -2252,7 +2331,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_obbn5syxqvad6epidl17icyh9" columns="id"/>
           <unique-keys>
@@ -2268,7 +2348,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_4o5nmb6jnnouf32b3fc53ts8n" columns="id"/>
           <unique-keys>
@@ -2284,7 +2365,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_3d9q7b2ojv9amkt3csmo82ams" columns="id"/>
           <unique-keys>
@@ -2304,7 +2386,8 @@
                     comment="是否需要参加下一次缓考"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_m4l6snovqru1ghupjbjld8qft" columns="id"/>
           <unique-keys>
@@ -2321,7 +2404,8 @@
             <column name="for_deferred" type="boolean" nullable="false" defaultValue="false" comment="是否是缓考"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_esav3g3q2ahu0i1l9d8g0k99y" columns="id"/>
           <unique-keys>
@@ -2337,7 +2421,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_ji2x0f0kp1ggjq21mcx1f8c5d" columns="id"/>
           <unique-keys>
@@ -2353,7 +2438,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_7hi9tb37nkn1yeaj4nr5g01d" columns="id"/>
           <unique-keys>
@@ -2369,7 +2455,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_pjb9g9qkf41txh2q10u0knayp" columns="id"/>
           <unique-keys>
@@ -2385,7 +2472,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_fbo2yxrjjfyqdyncfjyqmlhdb" columns="id"/>
           <unique-keys>
@@ -2402,7 +2490,8 @@
             <column name="exam_type_id" type="integer" comment="考试类型ID"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_8fir0v1hr6yn19vre8j6h9ddj" columns="id"/>
           <foreign-keys>
@@ -2423,7 +2512,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="numerical" type="boolean" nullable="false" defaultValue="false" comment="是否为数字类型"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_otmdo5hmda4yu6iv5xxa07307" columns="id"/>
           <unique-keys>
@@ -2439,7 +2529,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_ewtk7l63wlk6ptj855tfj5dfj" columns="id"/>
           <unique-keys>
@@ -2455,7 +2546,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_s7op8qppo9yfud198nlanf1pi" columns="id"/>
           <unique-keys>
@@ -2472,7 +2564,8 @@
             <column name="grade" type="integer" nullable="false" defaultValue="0" comment="等级"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_ljbtoh8dew8tptj5qj2hvw4o" columns="id"/>
           <unique-keys>
@@ -2488,7 +2581,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_4yqih3x42nqjh4tigc0evwlgm" columns="id"/>
           <unique-keys>
@@ -2504,7 +2598,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_bfw2t7ynqlyotm6eyi4dwgtk9" columns="id"/>
           <unique-keys>
@@ -2520,7 +2615,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_na0xycictcofkatnh5glv8day" columns="id"/>
           <unique-keys>
@@ -2536,7 +2632,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_qo5m05jp2cqjyioi5cll8fgar" columns="id"/>
           <unique-keys>
@@ -2552,7 +2649,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_sdlywiif4qur2robjmciupw07" columns="id"/>
           <unique-keys>
@@ -2568,7 +2666,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_gq36i33myef28ldxfx4mjb2nl" columns="id"/>
           <unique-keys>
@@ -2585,7 +2684,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_jae4hw2gt1sx4epxwbdkx3c12" columns="id"/>
           <unique-keys>
@@ -2601,7 +2701,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_gtg10x4u17ikg4x2fxlyxmgdy" columns="id"/>
           <unique-keys>
@@ -2617,7 +2718,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_7xjjklfwlo69nyhtpoe3qx1sw" columns="id"/>
           <unique-keys>
@@ -2633,7 +2735,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_lp7fwnrpynows9qmxo6uld7nb" columns="id"/>
           <unique-keys>
@@ -2649,7 +2752,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_4o6w1x4djydd1nskoh52mjr02" columns="id"/>
           <unique-keys>
@@ -2665,7 +2769,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_njmxmuicw8foumieqgjnko6cy" columns="id"/>
           <unique-keys>
@@ -2682,7 +2787,8 @@
             <column name="grade_id" type="integer" nullable="false" comment="级别ID"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_rk7ek6u5edrwv9xxydg7bc48q" columns="id"/>
           <foreign-keys>
@@ -2702,7 +2808,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_23d8s972h76b0xdatjfcxupe1" columns="id"/>
           <unique-keys>
@@ -2719,7 +2826,8 @@
             <column name="grade_id" type="integer" nullable="false" comment="职称等级ID"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_cjq04j9bh6xleeky128k1gswt" columns="id"/>
           <foreign-keys>
@@ -2739,7 +2847,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_r45qdwy0e7li10q5re3sfi8uf" columns="id"/>
           <unique-keys>
@@ -2756,7 +2865,8 @@
             <column name="grade_id" type="integer" nullable="false" comment="级别ID"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_posqs7doguprjnunmq0nhxbvh" columns="id"/>
           <foreign-keys>
@@ -2778,7 +2888,8 @@
             <column name="jianpin" type="varchar(50)" nullable="false" comment="简拼"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_mwpmgne9kbs3rqkr9yimeky4b" columns="id"/>
           <foreign-keys>
@@ -2798,7 +2909,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_db95knst6ss1grofhc0kkrap4" columns="id"/>
           <unique-keys>
@@ -2814,7 +2926,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_jru03m3vn58qmif6k5urq2y6s" columns="id"/>
           <unique-keys>
@@ -2830,7 +2943,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_jt9a7ljhk01bsevoj0qbjw2y3" columns="id"/>
           <unique-keys>
@@ -2847,7 +2961,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="parent_id" type="integer" comment="上级来源ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_jsm380evxdo115plu90m5dmtc" columns="id"/>
           <foreign-keys>
@@ -2871,7 +2986,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="parent_id" type="integer" comment="上级类别ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_a4368uis6hkcnv1jksw7hntap" columns="id"/>
           <foreign-keys>
@@ -2894,7 +3010,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_33wxn4eyascc7730eqdyu8nap" columns="id"/>
           <unique-keys>
@@ -2910,7 +3027,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_8eujmk9iw3oyow6csjap0m3jm" columns="id"/>
           <unique-keys>
@@ -2927,7 +3045,8 @@
             <column name="grade" type="integer" nullable="false" comment="处分等级"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_sefi5c7gqa45cyc6o4selwcb2" columns="id"/>
           <unique-keys>
@@ -2943,7 +3062,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_r0abq98f6x7nppqxk49b1xc0" columns="id"/>
           <unique-keys>
@@ -2959,7 +3079,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_m90ecgcdsvgkp9chbeuwwk9sk" columns="id"/>
           <unique-keys>
@@ -2975,7 +3096,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_r34pug3nqijvuda05m4ok825n" columns="id"/>
           <unique-keys>
@@ -2991,7 +3113,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_s2ob7rrxiu3hwv3dgtwvik47a" columns="id"/>
           <unique-keys>
@@ -3008,7 +3131,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_iidoc1hu3mfla79sh3ys7xr3c" columns="id"/>
           <unique-keys>
@@ -3024,7 +3148,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_blidh1mx6m4ci11jl2xhgmhyh" columns="id"/>
           <unique-keys>
@@ -3040,7 +3165,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_pp8tdd0qin0qphea92v03xq69" columns="id"/>
           <unique-keys>
@@ -3056,7 +3182,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_b2456k7m08w83dfw2ofx5yvx" columns="id"/>
           <unique-keys>
@@ -3072,7 +3199,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_a05jbnwecpcjh1vca74kq4u39" columns="id"/>
           <unique-keys>
@@ -3088,7 +3216,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_g22tbnb6clymkxmi560ll33em" columns="id"/>
           <unique-keys>
@@ -3104,7 +3233,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_5u4p2t27gbgicni5lyayh6tlv" columns="id"/>
           <unique-keys>
@@ -3120,7 +3250,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_4613lax8xj9thcny8sbdbs84j" columns="id"/>
           <unique-keys>
@@ -3136,7 +3267,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_ia5xweu6skbop6en26o5y4jxs" columns="id"/>
           <unique-keys>
@@ -3187,7 +3319,8 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="confirmed" type="boolean" nullable="false" defaultValue="false" comment="是否确认"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="writer_id" type="bigint" nullable="false" comment="写作学生ID"/>
           </columns>
           <primary-key name="pk_2wvfrxkxbdght6kk1hnen6o7f" columns="id"/>
@@ -3224,7 +3357,8 @@
             <column name="end_at" type="timestamptz" comment="结束时间"/>
             <column name="stage" type="integer" nullable="false" comment="阶段"/>
             <column name="submit_at" type="timestamptz" comment="提交时间"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="writer_id" type="bigint" nullable="false" comment="写作学生ID"/>
           </columns>
           <primary-key name="pk_nh4p2cwv6qeb8mg4f3mx0d5ot" columns="id"/>
@@ -3271,7 +3405,8 @@
             <column name="questions" type="varchar(255)" comment="回答问题摘要"/>
             <column name="recorder" type="varchar(255)" comment="答辩记录人"/>
             <column name="thesis_summary_score" type="integer" comment="论文概述情况"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="writer_id" type="bigint" nullable="false" comment="写作学生ID"/>
           </columns>
           <primary-key name="pk_45baqcrd3wtuqspgq9nkaj4ya" columns="id"/>
@@ -3308,7 +3443,8 @@
             <column name="group_id" type="bigint" nullable="false" comment="答辩组ID"/>
             <column name="read_count" type="integer" nullable="false" defaultValue="0" comment="阅读次数"/>
             <column name="title" type="varchar(255)" nullable="false" comment="标题"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_guoctyvgn106iuwq59325se1o" columns="id"/>
           <foreign-keys>
@@ -3380,7 +3516,8 @@
             <column name="contents" type="text" nullable="false" comment="内容"/>
             <column name="idx" type="smallint" nullable="false" defaultValue="0" comment="序号"/>
             <column name="stage" type="integer" nullable="false" comment="阶段"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="writer_id" type="bigint" nullable="false" comment="写作学生ID"/>
           </columns>
           <primary-key name="pk_ry9cqd94w60tjega5yn5hfcgc" columns="id"/>
@@ -3466,7 +3603,7 @@
         <table name="subject_applies" comment="论文选题@thesis">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="current_round" type="integer" nullable="false" defaultValue="0" comment="当前轮次"/>
+            <column name="current_round" type="integer" nullable="false" defaultValue="1" comment="当前轮次"/>
             <column name="first_id" type="bigint" comment="初次选题ID"/>
             <column name="last_id" type="bigint" comment="最终选题ID"/>
             <column name="second_id" type="bigint" comment="补选情况ID"/>
@@ -3606,6 +3743,7 @@
             <column name="final_score" type="integer" comment="最终成绩"/>
             <column name="final_score_text" type="varchar(255)" comment="最终成绩(五级制)"/>
             <column name="innovation_score" type="integer" comment="创新水平"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="research_score" type="integer" comment="研究能力"/>
             <column name="subject_score" type="integer" comment="选题得分"/>
             <column name="write_score" type="integer" comment="写作规范"/>
@@ -3666,7 +3804,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_3m235cp2hv9v5i4utxpulo6bi" columns="id"/>
           <unique-keys>
@@ -3685,7 +3824,8 @@
             <column name="institution_name" type="varchar(255)" comment="教育机构名称"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_hs292w1wl5211w0714lgb7jw9" columns="id"/>
           <foreign-keys>
@@ -3706,7 +3846,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_onkt7xkg420ekx0t7lbx5f2in" columns="id"/>
           <unique-keys>
@@ -3728,7 +3869,8 @@
             <column name="status" type="integer" nullable="false" comment="申请状态"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="subject_id" type="integer" nullable="false" comment="校外考试科目ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_9mw6wwhdud4s410804223kes5" columns="id"/>
           <foreign-keys>
@@ -3769,7 +3911,8 @@
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="subject_id" type="integer" nullable="false" comment="校外考试科目ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_buvpy5j8eye2vtlladutvfisn" columns="id"/>
           <foreign-keys>
@@ -3795,7 +3938,8 @@
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="状态"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="subject_id" type="integer" nullable="false" comment="科目ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_21bw15677thfojwd283r42rcx" columns="id"/>
           <foreign-keys>
@@ -3996,7 +4140,7 @@
             <column name="alloc_policy" type="integer" nullable="false" comment="分配策略"/>
             <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
             <column name="min_capacity" type="integer" nullable="false" defaultValue="0" comment="最小容量"/>
-            <column name="min_occupy_ratio" type="float4" nullable="false" defaultValue="0.0" comment="最低占用率"/>
+            <column name="min_occupy_ratio" type="float4" nullable="false" comment="最低占用率"/>
             <column name="min_std_exam_interval" type="integer" nullable="false" defaultValue="0"
                     comment="学生连续考试最小间隔"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
@@ -4066,7 +4210,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="grading_mode_id" type="integer" nullable="false" comment="成绩记录方式ID"/>
-            <column name="pass_score" type="float4" nullable="false" defaultValue="0.0" comment="及格线"/>
+            <column name="pass_score" type="float4" nullable="false" comment="及格线"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
           </columns>
           <primary-key name="pk_rkd2dqys3gp4j3xsb7e62lfvu" columns="id"/>
@@ -4081,11 +4225,11 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="config_id" type="bigint" nullable="false" comment="成绩配置ID"/>
-            <column name="default_score" type="float4" nullable="false" defaultValue="0.0" comment="默认分数"/>
+            <column name="default_score" type="float4" nullable="false" comment="默认分数"/>
             <column name="gp_exp" type="varchar(255)" comment="绩点表达式"/>
             <column name="grade" type="varchar(255)" nullable="false" comment="显示名称"/>
-            <column name="max_score" type="float4" nullable="false" defaultValue="0.0" comment="最高分"/>
-            <column name="min_score" type="float4" nullable="false" defaultValue="0.0" comment="最低分"/>
+            <column name="max_score" type="float4" nullable="false" comment="最高分"/>
+            <column name="min_score" type="float4" nullable="false" comment="最低分"/>
           </columns>
           <primary-key name="pk_3xlh22p64mf8gucpuakjisvct" columns="id"/>
           <foreign-keys>
@@ -4139,12 +4283,12 @@
         <table name="cfg_std_credit_stats" comment="学生每学期选择教学班限制和统计@clazz.config">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="max_credits" type="float4" nullable="false" defaultValue="0.0" comment="学分上限"/>
+            <column name="max_credits" type="float4" nullable="false" comment="学分上限"/>
             <column name="max_new_count" type="integer" nullable="false" defaultValue="0" comment="最多新选课程门数"/>
             <column name="repeat_count" type="integer" nullable="false" defaultValue="0" comment="重修数量"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="total_credits" type="float4" nullable="false" defaultValue="0.0" comment="已选学分"/>
+            <column name="total_credits" type="float4" nullable="false" comment="已选学分"/>
             <column name="total_new_count" type="integer" nullable="false" defaultValue="0"
                     comment="已选新课程门数(不含重修)"/>
           </columns>
@@ -4168,7 +4312,8 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="template" type="varchar(255)" nullable="false" comment="模板路径"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_gijmnia1rc7cdrugxm8bp7kqy" columns="id"/>
           <foreign-keys>
@@ -4237,7 +4382,8 @@
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="file_path" type="varchar(400)" comment="文件路径"/>
             <column name="name" type="varchar(300)" nullable="false" comment="材料名称"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="updated_by_id" type="bigint" nullable="false" comment="上传人ID"/>
             <column name="url" type="varchar(400)" comment="网址"/>
           </columns>
@@ -4259,7 +4405,8 @@
             <column name="media_type" type="varchar(100)" nullable="false" comment="类型"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="notice_id" type="bigint" nullable="false" comment="班内通知ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_tc2n52103b3130x5jaaaxj7n1" columns="id"/>
           <foreign-keys>
@@ -4276,7 +4423,8 @@
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="contents" type="varchar(1500)" nullable="false" comment="内容"/>
             <column name="title" type="varchar(300)" nullable="false" comment="标题"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="updated_by_id" type="bigint" nullable="false" comment="发布人ID"/>
           </columns>
           <primary-key name="pk_dhgey9skl0nde8lg46v723xi2" columns="id"/>
@@ -4290,6 +4438,66 @@
             <index name="idx_etjnc5p0edykl4yjenl8f5aqo" columns="clazz_id"/>
           </indexes>
         </table>
+        <table name="clazz_sessions" comment="教学活动@clazz">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
+            <column name="places" type="varchar(200)" comment="授课场所"/>
+            <column name="start_on" type="date" nullable="false" comment="开始日期"/>
+            <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
+            <column name="teaching_method_id" type="integer" nullable="false" comment="授课方式ID"/>
+            <column name="teaching_nature_id" type="integer" nullable="false" comment="授课性质ID"/>
+            <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
+          </columns>
+          <primary-key name="pk_my44802emlsdhg3keroojgjx1" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_skk3fen5yygdvxf2njo0l3eq4" column="teaching_nature_id"
+                         referenced-table="code.teaching_natures" referenced-column="id"/>
+            <foreign-key name="fk_tf8kumvm91fmplqqnllsyhwir" column="subclazz_id" referenced-table="edu.subclazzes"
+                         referenced-column="id"/>
+            <foreign-key name="fk_jwanv7jaw74x3nh3iv1608t6w" column="teaching_method_id"
+                         referenced-table="code.teaching_methods" referenced-column="id"/>
+            <foreign-key name="fk_4ulfx77j4pytlwchpdxlrt7l" column="clazz_id" referenced-table="edu.clazzes"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_ahlqsmv3qare86w3quw4stgrt" columns="clazz_id"/>
+          </indexes>
+        </table>
+        <table name="clazz_sessions_rooms" comment="教室列表@clazz">
+          <columns>
+            <column name="classroom_id" type="bigint" nullable="false" comment="教室ID"/>
+            <column name="session_id" type="bigint" nullable="false" comment="教学活动ID"/>
+          </columns>
+          <primary-key name="pk_oalfmyc02q89r7o7p4s7r45it" columns="session_id,classroom_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_jf895wmhykjcyct1h7jjisvv6" column="session_id" referenced-table="edu.clazz_sessions"
+                         referenced-column="id"/>
+            <foreign-key name="fk_hlwnf5glhm3rlel1b9ixy41ax" column="classroom_id" referenced-table="base.classrooms"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_tg45rasvabmvu3oh1obtt1uqk" columns="session_id"/>
+          </indexes>
+        </table>
+        <table name="clazz_sessions_teachers" comment="授课教师列表@clazz">
+          <columns>
+            <column name="session_id" type="bigint" nullable="false" comment="教学活动ID"/>
+            <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
+          </columns>
+          <primary-key name="pk_2pbu7ufj2k8q786twur3lmr71" columns="session_id,teacher_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_r7atc4es3rs4rumftsi9bqdf2" column="session_id" referenced-table="edu.clazz_sessions"
+                         referenced-column="id"/>
+            <foreign-key name="fk_mnbgp29j88kspq8ji0ug46lpv" column="teacher_id" referenced-table="base.teachers"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_hx7le71l2k26nqs8y2et2slch" columns="session_id"/>
+          </indexes>
+        </table>
         <table name="clazzes" comment="教学任务@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -4300,7 +4508,7 @@
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="已安排课时"/>
             <column name="crn" type="varchar(32)" nullable="false" comment="课程序号"/>
-            <column name="depart_arranged" type="boolean" nullable="false" defaultValue="false"
+            <column name="depart_arranged" type="boolean" nullable="false" defaultValue="true"
                     comment="是否开课院系负责安排"/>
             <column name="depart_id" type="integer" comment="学生所在部门ID"/>
             <column name="exam_begin_at" type="smallint" nullable="false" comment="考试开始时间"/>
@@ -4326,7 +4534,8 @@
             <column name="status" type="integer" nullable="false" comment="审核状态"/>
             <column name="subject" type="varchar(255)" comment="主题"/>
             <column name="teach_depart_id" type="integer" nullable="false" comment="开课院系ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
           </columns>
           <primary-key name="pk_3ra1a077so5k9mwdt2kxb3k0b" columns="id"/>
@@ -4446,7 +4655,8 @@
             <column name="operator" type="varchar(100)" nullable="false" comment="操作者"/>
             <column name="score_precision" type="integer" nullable="false" defaultValue="0" comment="保留小数位"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_ss5mvl6jqttk0ubobqdhdni8u" columns="id"/>
           <foreign-keys>
@@ -4483,14 +4693,13 @@
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_1ucmwigfmllurolusv5j8d5xv" columns="id"/>
           <foreign-keys>
             <foreign-key name="fk_kjuy4hionjv3ef43lvlniy4xn" column="course_type_id"
                          referenced-table="base.c_course_types" referenced-column="id"/>
-            <foreign-key name="fk_bfriycu9ape05xou5hmrd47in" column="std_id" referenced-table="base.students"
-                         referenced-column="id"/>
             <foreign-key name="fk_2cuxqnlwtfph8n11lfxyx24c2" column="project_id" referenced-table="base.projects"
                          referenced-column="id"/>
             <foreign-key name="fk_nfy88swiyqnn7g2tqy8j9ikw9" column="exam_mode_id" referenced-table="code.exam_modes"
@@ -4499,10 +4708,12 @@
                          referenced-table="code.grading_modes" referenced-column="id"/>
             <foreign-key name="fk_gwuis19phdhrfhsbirfrjg6c8" column="course_id" referenced-table="base.courses"
                          referenced-column="id"/>
-            <foreign-key name="fk_iqjgumy62st0ab2rstwps1kv6" column="semester_id" referenced-table="base.semesters"
-                         referenced-column="id"/>
             <foreign-key name="fk_hiltid295la5cxrm3o4dfdmsr" column="course_take_type_id"
                          referenced-table="code.course_take_types" referenced-column="id"/>
+            <foreign-key name="fk_bfriycu9ape05xou5hmrd47in" column="std_id" referenced-table="base.students"
+                         referenced-column="id"/>
+            <foreign-key name="fk_iqjgumy62st0ab2rstwps1kv6" column="semester_id" referenced-table="base.semesters"
+                         referenced-column="id"/>
             <foreign-key name="fk_bsq1vt0u09li5db217joowltu" column="clazz_id" referenced-table="edu.clazzes"
                          referenced-column="id"/>
           </foreign-keys>
@@ -4529,7 +4740,8 @@
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
             <column name="take_type_id" type="integer" nullable="false" comment="修读类别ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_r9e52tj7ca5ohhmokt4nw1h8e" columns="id"/>
           <foreign-keys>
@@ -4618,7 +4830,8 @@
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="score_percent" type="smallint" comment="百分比描述"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_4wy4ksg5gx6h85tb11hphty4b" columns="id"/>
           <foreign-keys>
@@ -4650,7 +4863,8 @@
             <column name="score_percent" type="smallint" comment="百分比描述"/>
             <column name="score_text" type="varchar(5)" comment="得分字面值"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_kgkg3a3map061ka3c7kevp21e" columns="id"/>
           <foreign-keys>
@@ -4678,15 +4892,15 @@
             <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
-            <column name="max_course_conflict_ratio" type="float4" nullable="false" defaultValue="0.0"
-                    comment="最大上课冲突比例"/>
+            <column name="max_course_conflict_ratio" type="float4" nullable="false" comment="最大上课冲突比例"/>
             <column name="min_course_conflict_count" type="integer" nullable="false" defaultValue="0"
                     comment="最小学生上课冲突人数"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="publish_state" type="integer" nullable="false" comment="发布状态"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_sibrdqqr0ie2m6sa4x21twlpa" columns="id"/>
           <foreign-keys>
@@ -4740,7 +4954,8 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_8e9jvyge9pm0yll17wkms3v01" columns="id"/>
           <foreign-keys>
@@ -4917,14 +5132,13 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="audit_opinion" type="varchar(255)" comment="审核意见"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0"
-                    comment="申请冲抵的外校课程学分总计"/>
-            <column name="exemption_credits" type="float4" nullable="false" defaultValue="0.0"
-                    comment="冲抵本校课程的学分总计"/>
+            <column name="credits" type="float4" nullable="false" comment="申请冲抵的外校课程学分总计"/>
+            <column name="exemption_credits" type="float4" nullable="false" comment="冲抵本校课程的学分总计"/>
             <column name="extern_student_id" type="bigint" nullable="false" comment="外校学习经历ID"/>
             <column name="status" type="integer" nullable="false" comment="审核状态"/>
             <column name="transcript_path" type="varchar(255)" comment="成绩单附件路径"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_dvqgwi75iysjg3gpvngqghb80" columns="id"/>
           <foreign-keys>
@@ -4938,11 +5152,12 @@
         <table name="exch_exempt_credits" comment="免修学分上限@exempt">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="exempted" type="float4" nullable="false" defaultValue="0.0" comment="已免修学分数"/>
-            <column name="max_value" type="float4" nullable="false" defaultValue="0.0" comment="免修学分总和的最大值"/>
+            <column name="exempted" type="float4" nullable="false" comment="已免修学分数"/>
+            <column name="max_value" type="float4" nullable="false" comment="免修学分总和的最大值"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_70ol4pjcehrrmb24hthnnu6no" columns="id"/>
           <foreign-keys>
@@ -4957,7 +5172,7 @@
             <column name="course_count" type="smallint" nullable="false" defaultValue="0" comment="要求课程门数"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="direction_id" type="bigint" comment="该组针对的专业方向ID"/>
             <column name="given_name" type="varchar(100)" comment="自定义别名"/>
             <column name="hour_ratios" type="varchar(255)" comment="要求学时比例"/>
@@ -5024,7 +5239,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
             <column name="campus_id" type="integer" comment="校区信息ID"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="end_term" type="smallint" nullable="false" defaultValue="0" comment="结束学期"/>
@@ -5033,7 +5248,8 @@
             <column name="start_term" type="smallint" nullable="false" defaultValue="0" comment="起始学期"/>
             <column name="status" type="integer" nullable="false" comment="审核状态"/>
             <column name="std_type_id" type="integer" comment="学生类别ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_5p24qpu2c2ydwpwg2qxabenb1" columns="id"/>
           <foreign-keys>
@@ -5050,17 +5266,63 @@
             <index name="idx_qgckajdcovnvbh5emipeorwqi" columns="program_id"/>
           </indexes>
         </table>
+        <table name="exempt_courses" comment="免修课程@program">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
+            <column name="from_grade_id" type="bigint" nullable="false" comment="起始年级ID"/>
+            <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="to_grade_id" type="bigint" comment="结束年级ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_q2fwu5hjcpjwsvnda5gql38gq" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_ndimc7ar1won7elw8nysdomkb" column="edu_type_id"
+                         referenced-table="base.c_education_types" referenced-column="id"/>
+            <foreign-key name="fk_bql94vuidfu85kogc9yrfguun" column="level_id" referenced-table="code.education_levels"
+                         referenced-column="id"/>
+            <foreign-key name="fk_jtup9ahs2joikxtx7xntip688" column="to_grade_id" referenced-table="base.grades"
+                         referenced-column="id"/>
+            <foreign-key name="fk_pporjdy8b6g0rhmxhracaet83" column="from_grade_id" referenced-table="base.grades"
+                         referenced-column="id"/>
+            <foreign-key name="fk_g9kvqt662q5kfb855y4y76vhe" column="course_id" referenced-table="base.courses"
+                         referenced-column="id"/>
+            <foreign-key name="fk_k94s89qpam1w28547nk34tk89" column="project_id" referenced-table="base.projects"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="exempt_courses_std_types" comment="适用学生类别范围@program">
+          <columns>
+            <column name="exempt_course_id" type="bigint" nullable="false" comment="免修课程ID"/>
+            <column name="std_type_id" type="integer" nullable="false" comment="学生类别ID"/>
+          </columns>
+          <primary-key name="pk_comjg7o4sak1o96o5jyca6spe" columns="exempt_course_id,std_type_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_22i30q7mn3bheej5gymu64gn2" column="exempt_course_id"
+                         referenced-table="edu.exempt_courses" referenced-column="id"/>
+            <foreign-key name="fk_3tww4egxbwhhieuf4b723k12k" column="std_type_id" referenced-table="base.c_std_types"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_3l1lv5lhap575efwfuyfklwa3" columns="exempt_course_id"/>
+          </indexes>
+        </table>
         <table name="extern_grades" comment="校外成绩@extern">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="acquired_on" type="date" nullable="false" comment="获得年月"/>
             <column name="course_name" type="varchar(400)" nullable="false" comment="课程名称"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="学分"/>
+            <column name="credits" type="float4" nullable="false" comment="学分"/>
             <column name="extern_student_id" type="bigint" nullable="false" comment="外校学习经历ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="score_text" type="varchar(20)" nullable="false" comment="成绩字面值"/>
             <column name="status" type="integer" nullable="false" comment="审核状态"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_c6lgnfjsyt425c90aek6a4cba" columns="id"/>
           <foreign-keys>
@@ -5135,7 +5397,8 @@
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="scores" type="varchar(255)" nullable="false" comment="分数"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_eh01n7uwcd4vicj1mwrn7on3s" columns="id"/>
           <foreign-keys>
@@ -5160,7 +5423,8 @@
             <column name="operator" type="varchar(100)" nullable="false" comment="操作者"/>
             <column name="remark" type="varchar(50)" comment="备注"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_14dswddj9gfs9i2v6ep2m05ku" columns="id"/>
           <foreign-keys>
@@ -5193,7 +5457,8 @@
             <column name="score" type="float4" comment="得分"/>
             <column name="score_text" type="varchar(5)" comment="得分字面值"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_bvbnlqsyj55povhh0l0g94so2" columns="id"/>
           <foreign-keys>
@@ -5214,18 +5479,18 @@
         <table name="group_audit_results" comment="组审核结果@grade.plan">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="converted_credits" type="float4" nullable="false" defaultValue="0.0" comment="转换学分"/>
+            <column name="converted_credits" type="float4" nullable="false" comment="转换学分"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="indexno" type="varchar(255)" nullable="false" comment="顺序号"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="parent_id" type="bigint" comment="组审核结果ID"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="passed_count" type="integer" nullable="false" defaultValue="0" comment="完成门数"/>
-            <column name="passed_credits" type="float4" nullable="false" defaultValue="0.0" comment="完成学分"/>
+            <column name="passed_credits" type="float4" nullable="false" comment="完成学分"/>
             <column name="plan_result_id" type="bigint" nullable="false" comment="计划审核结果ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="required_count" type="integer" nullable="false" defaultValue="0" comment="要求门数"/>
-            <column name="required_credits" type="float4" nullable="false" defaultValue="0.0" comment="要求学分"/>
+            <column name="required_credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="sub_count" type="smallint" nullable="false" defaultValue="0" comment="要求完成子组数量"/>
           </columns>
           <primary-key name="pk_mmbowc3nv9n1os7h68ubfddm6" columns="id"/>
@@ -5245,10 +5510,10 @@
         <table name="invigilation_clazz_quotas" comment="教学任务监考配额统计@exam">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="amount" type="float4" nullable="false" defaultValue="0.0" comment="配额"/>
+            <column name="amount" type="float4" nullable="false" comment="配额"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="credit_hours" type="float4" nullable="false" defaultValue="0.0" comment="学时"/>
-            <column name="ratio" type="float4" nullable="false" defaultValue="0.0" comment="比例"/>
+            <column name="credit_hours" type="float4" nullable="false" comment="学时"/>
+            <column name="ratio" type="float4" nullable="false" comment="比例"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
           </columns>
           <primary-key name="pk_21v272vaovqf9c0nuwoh1o095" columns="id"/>
@@ -5265,7 +5530,7 @@
         <table name="invigilation_quota_details" comment="监考统计明细@exam">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="amount" type="float4" nullable="false" defaultValue="0.0" comment="配额"/>
+            <column name="amount" type="float4" nullable="false" comment="配额"/>
             <column name="campus_id" type="integer" nullable="false" comment="校区信息ID"/>
             <column name="depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="quota_id" type="bigint" nullable="false" comment="监考配额ID"/>
@@ -5328,7 +5593,8 @@
             <column name="invigilator_id" type="bigint" comment="通用人员信息ID"/>
             <column name="invigilator_name" type="varchar(255)" comment="监考姓名"/>
             <column name="published" type="boolean" nullable="false" defaultValue="false" comment="是否发布"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_bg0m2o403b43vb9mkg3noo1td" columns="id"/>
           <foreign-keys>
@@ -5416,7 +5682,8 @@
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="std_type_id" type="integer" comment="学生类别ID"/>
             <column name="to_grade_id" type="bigint" nullable="false" comment="截至年级ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_scvgmvao9tsvfcm1whcnxvu3b" columns="id"/>
           <foreign-keys>
@@ -5478,7 +5745,7 @@
             <column name="course_count" type="smallint" nullable="false" defaultValue="0" comment="要求课程门数"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="direction_id" type="bigint" comment="该组针对的专业方向ID"/>
             <column name="given_name" type="varchar(100)" comment="自定义别名"/>
             <column name="hour_ratios" type="varchar(255)" comment="要求学时比例"/>
@@ -5544,14 +5811,15 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="end_term" type="smallint" nullable="false" defaultValue="0" comment="结束学期"/>
             <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="start_term" type="smallint" nullable="false" defaultValue="0" comment="起始学期"/>
             <column name="status" type="integer" nullable="false" comment="审核状态"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_ohol0jsnb6did1juitfw0awos" columns="id"/>
           <foreign-keys>
@@ -5631,7 +5899,8 @@
             <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="room_id" type="bigint" nullable="false" comment="房间ID"/>
             <column name="start_on" type="date" nullable="false" comment="开始日期"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
           </columns>
           <primary-key name="pk_cv4gsidr885aanuscffivwbb7" columns="id"/>
@@ -5653,15 +5922,16 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="archived" type="boolean" nullable="false" defaultValue="false" comment="是否归档"/>
-            <column name="converted_credits" type="float4" nullable="false" defaultValue="0.0" comment="转换学分"/>
+            <column name="converted_credits" type="float4" nullable="false" comment="转换学分"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="passed_count" type="integer" nullable="false" defaultValue="0" comment="完成门数"/>
-            <column name="passed_credits" type="float4" nullable="false" defaultValue="0.0" comment="完成学分"/>
+            <column name="passed_credits" type="float4" nullable="false" comment="完成学分"/>
             <column name="remark" type="varchar(100)" comment="备注"/>
             <column name="required_count" type="integer" nullable="false" defaultValue="0" comment="要求门数"/>
-            <column name="required_credits" type="float4" nullable="false" defaultValue="0.0" comment="要求学分"/>
+            <column name="required_credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="updates" type="varchar(500)" comment="更新内容"/>
           </columns>
           <primary-key name="pk_mwb3u8lgw1wqcabq4x21w7jc1" columns="id"/>
@@ -5722,7 +5992,8 @@
             <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_8e5naml4u9wbcyjrrhlmeb3ay" columns="id"/>
           <foreign-keys>
@@ -5757,7 +6028,8 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="doc_locale" type="varchar(255)" nullable="false" comment="语言"/>
             <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_tmprm3sm6os3l88qop5r89q9x" columns="id"/>
           <foreign-keys>
@@ -5774,7 +6046,7 @@
             <column name="degree_id" type="integer" comment="毕业授予学位ID"/>
             <column name="department_id" type="integer" nullable="false" comment="部门ID"/>
             <column name="direction_id" type="bigint" comment="专业方向ID"/>
-            <column name="duration" type="float4" nullable="false" defaultValue="0.0" comment="学制"/>
+            <column name="duration" type="float4" nullable="false" comment="学制"/>
             <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="grade_id" type="bigint" nullable="false" comment="年级ID"/>
@@ -5785,20 +6057,14 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="status" type="integer" nullable="false" comment="状态"/>
-            <column name="std_type_id" type="integer" comment="学生类别ID"/>
-            <column name="study_type_id" type="integer" nullable="false" comment="学习形式ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="study_type_id" type="integer" comment="学习形式ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_9osl20jg9o3ywqs65190pgm9v" columns="id"/>
           <foreign-keys>
             <foreign-key name="fk_sx0vrpm7rgwh04cvwlrya4dws" column="edu_type_id"
                          referenced-table="base.c_education_types" referenced-column="id"/>
-            <foreign-key name="fk_ne9yofos5qm2hyxt3j6u86pra" column="level_id" referenced-table="code.education_levels"
-                         referenced-column="id"/>
-            <foreign-key name="fk_fggj5qrnsyynms21jedryve85" column="campus_id" referenced-table="base.campuses"
-                         referenced-column="id"/>
-            <foreign-key name="fk_tbmrgc18tswwmth3afhou96ws" column="degree_id" referenced-table="code.degrees"
-                         referenced-column="id"/>
             <foreign-key name="fk_ge31soasm9dvlim30yjx8i190" column="offset_type_id"
                          referenced-table="base.c_course_types" referenced-column="id"/>
             <foreign-key name="fk_4rn8q2eyyntseukhs0l5tl6rq" column="project_id" referenced-table="base.projects"
@@ -5807,13 +6073,17 @@
                          referenced-column="id"/>
             <foreign-key name="fk_m0amu5fwiyr2y3m11jdfgarir" column="study_type_id" referenced-table="code.study_types"
                          referenced-column="id"/>
-            <foreign-key name="fk_repdcuryw948uhentmshwj8c0" column="grade_id" referenced-table="base.grades"
-                         referenced-column="id"/>
-            <foreign-key name="fk_s2js2p03ckmbultheiddoekj5" column="std_type_id" referenced-table="base.c_std_types"
-                         referenced-column="id"/>
             <foreign-key name="fk_7xrusj91mbbujeaxtrrdowj7e" column="department_id" referenced-table="base.departments"
                          referenced-column="id"/>
             <foreign-key name="fk_lgbdfiw5fkc6aqvy7hacfxi32" column="direction_id" referenced-table="base.directions"
+                         referenced-column="id"/>
+            <foreign-key name="fk_ne9yofos5qm2hyxt3j6u86pra" column="level_id" referenced-table="code.education_levels"
+                         referenced-column="id"/>
+            <foreign-key name="fk_fggj5qrnsyynms21jedryve85" column="campus_id" referenced-table="base.campuses"
+                         referenced-column="id"/>
+            <foreign-key name="fk_tbmrgc18tswwmth3afhou96ws" column="degree_id" referenced-table="code.degrees"
+                         referenced-column="id"/>
+            <foreign-key name="fk_repdcuryw948uhentmshwj8c0" column="grade_id" referenced-table="base.grades"
                          referenced-column="id"/>
           </foreign-keys>
         </table>
@@ -5833,14 +6103,31 @@
             <index name="idx_g6aj9g4hfn2pbwy6l2pkyh2mh" columns="program_id"/>
           </indexes>
         </table>
+        <table name="programs_std_types" comment="方案-学生类别@program">
+          <columns>
+            <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
+            <column name="std_type_id" type="integer" nullable="false" comment="学生类别ID"/>
+          </columns>
+          <primary-key name="pk_9ehq0f2rhqjce1anhhw5bcf4b" columns="program_id,std_type_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_79kom1hj1l5m30fmg3y85seyy" column="program_id" referenced-table="edu.programs"
+                         referenced-column="id"/>
+            <foreign-key name="fk_d0xks2296ubc0i8i26fvxcty7" column="std_type_id" referenced-table="base.c_std_types"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_5u4gknostdmf16gyfurc2u6eq" columns="program_id"/>
+          </indexes>
+        </table>
         <table name="regular_grade_states" comment="平时总评成绩状态@grade.regular">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="excellent_rate" type="float4" nullable="false" defaultValue="0.0" comment="优秀率"/>
-            <column name="excellent_rate_limit" type="float4" nullable="false" defaultValue="0.0" comment="优秀率上限"/>
+            <column name="excellent_rate" type="float4" nullable="false" comment="优秀率"/>
+            <column name="excellent_rate_limit" type="float4" nullable="false" comment="优秀率上限"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="状态"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_hnj9nkhhqpuj7yg9v7efhigo6" columns="id"/>
           <foreign-keys>
@@ -5871,10 +6158,11 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="score" type="float4" nullable="false" defaultValue="0.0" comment="分数"/>
+            <column name="score" type="float4" nullable="false" comment="分数"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="状态"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_83v4fybspmj863btsicnyux6h" columns="id"/>
           <foreign-keys>
@@ -6083,7 +6371,8 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="room_id" type="bigint" nullable="false" comment="教室ID"/>
             <column name="start_on" type="date" nullable="false" comment="开始日期"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
           </columns>
           <primary-key name="pk_72hrirupp9pfx9rkg0b30rct2" columns="id"/>
@@ -6101,66 +6390,6 @@
             <column name="name" type="varchar(200)" nullable="false" comment="名称"/>
           </columns>
           <primary-key name="pk_jhnnof3gdp1q99769e6htdi2x" columns="id"/>
-        </table>
-        <table name="sessions" comment="教学活动@clazz">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
-            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
-            <column name="places" type="varchar(200)" comment="授课场所"/>
-            <column name="start_on" type="date" nullable="false" comment="开始日期"/>
-            <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
-            <column name="teaching_method_id" type="integer" nullable="false" comment="授课方式ID"/>
-            <column name="teaching_nature_id" type="integer" nullable="false" comment="授课性质ID"/>
-            <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
-          </columns>
-          <primary-key name="pk_2k2jgch7v1cadr2171w0tlckn" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_indcesiu4vvyo0hl7s7cjairm" column="teaching_nature_id"
-                         referenced-table="code.teaching_natures" referenced-column="id"/>
-            <foreign-key name="fk_8mqwc7w2ppe535m8gp6exba08" column="subclazz_id" referenced-table="edu.subclazzes"
-                         referenced-column="id"/>
-            <foreign-key name="fk_cp0hb230utgrxs71b1w1e9aag" column="teaching_method_id"
-                         referenced-table="code.teaching_methods" referenced-column="id"/>
-            <foreign-key name="fk_ovyeue5h9l3fh9y79ioa2wd4p" column="clazz_id" referenced-table="edu.clazzes"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_epu4ne61rru6f5udqshomhdwx" columns="clazz_id"/>
-          </indexes>
-        </table>
-        <table name="sessions_rooms" comment="教室列表@clazz">
-          <columns>
-            <column name="classroom_id" type="bigint" nullable="false" comment="教室ID"/>
-            <column name="session_id" type="bigint" nullable="false" comment="教学活动ID"/>
-          </columns>
-          <primary-key name="pk_80wtvj2a6k7h396j14q81wg78" columns="session_id,classroom_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_qmegrf978npp6xidy9rugog4m" column="session_id" referenced-table="edu.sessions"
-                         referenced-column="id"/>
-            <foreign-key name="fk_27r77x6ax8x4chqsgyjohcq58" column="classroom_id" referenced-table="base.classrooms"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_8x2cffwmuo8bbpdljfnv5sxna" columns="session_id"/>
-          </indexes>
-        </table>
-        <table name="sessions_teachers" comment="授课教师列表@clazz">
-          <columns>
-            <column name="session_id" type="bigint" nullable="false" comment="教学活动ID"/>
-            <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
-          </columns>
-          <primary-key name="pk_rsvgf6p9cggfgylwx7nsj7cuo" columns="session_id,teacher_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_402r1wpnw947nfkb2ysvb17n6" column="session_id" referenced-table="edu.sessions"
-                         referenced-column="id"/>
-            <foreign-key name="fk_o09wbyk5dirr8x462kfb4wh5s" column="teacher_id" referenced-table="base.teachers"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_m8omy8lyt0n0jerbb2fk6he47" columns="session_id"/>
-          </indexes>
         </table>
         <table name="share_course_groups" comment="公共共享课程组@program">
           <columns>
@@ -6233,7 +6462,8 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="to_grade_id" type="bigint" nullable="false" comment="截止适用年级ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_i76on9h6wjqohanirds5n3flp" columns="id"/>
           <foreign-keys>
@@ -6254,7 +6484,8 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_fwqlciau51sypm3cjvy7rsqgp" columns="id"/>
           <foreign-keys>
@@ -6334,7 +6565,8 @@
             <column name="rate_id" type="integer" nullable="false" comment="课程能力等级ID"/>
             <column name="score" type="float4" comment="分数"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_ctriq5lvqq54p8st9q7qkkg20" columns="id"/>
           <foreign-keys>
@@ -6351,7 +6583,7 @@
             <column name="course_count" type="smallint" nullable="false" defaultValue="0" comment="要求课程门数"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="given_name" type="varchar(255)" comment="别名"/>
             <column name="hour_ratios" type="varchar(255)" comment="要求学时比例"/>
             <column name="indexno" type="varchar(20)" nullable="false" comment="索引号"/>
@@ -6379,14 +6611,15 @@
         <table name="std_gpas" comment="学生成绩绩点统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="获得学分"/>
-            <column name="ga" type="float4" nullable="false" defaultValue="0.0" comment="平均分"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0.0" comment="总平均绩点"/>
+            <column name="credits" type="float4" nullable="false" comment="获得学分"/>
+            <column name="ga" type="float4" nullable="false" comment="平均分"/>
+            <column name="gpa" type="float4" nullable="false" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
-            <column name="total_credits" type="float4" nullable="false" defaultValue="0.0" comment="总学分"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="total_credits" type="float4" nullable="false" comment="总学分"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_d8hmmf1mnbxhuj1fi91q1n9rj" columns="id"/>
           <foreign-keys>
@@ -6426,7 +6659,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="end_term" type="smallint" nullable="false" defaultValue="0" comment="结束学期"/>
             <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
@@ -6434,7 +6667,8 @@
             <column name="start_term" type="smallint" nullable="false" defaultValue="0" comment="起始学期"/>
             <column name="status" type="integer" nullable="false" comment="审核状态"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_n7x5kawng3p8xqf5wfya9s6ns" columns="id"/>
           <foreign-keys>
@@ -6450,13 +6684,13 @@
         <table name="std_semester_gpas" comment="学生成绩每学期统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="获得学分"/>
-            <column name="ga" type="float4" nullable="false" defaultValue="0.0" comment="平均分"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0.0" comment="总平均绩点"/>
+            <column name="credits" type="float4" nullable="false" comment="获得学分"/>
+            <column name="ga" type="float4" nullable="false" comment="平均分"/>
+            <column name="gpa" type="float4" nullable="false" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
-            <column name="total_credits" type="float4" nullable="false" defaultValue="0.0" comment="总学分"/>
+            <column name="total_credits" type="float4" nullable="false" comment="总学分"/>
           </columns>
           <primary-key name="pk_fqb6mob02oox7m3qiy43y5g3f" columns="id"/>
           <foreign-keys>
@@ -6475,13 +6709,13 @@
         <table name="std_year_gpas" comment="学生成绩每学期统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credits" type="float4" nullable="false" defaultValue="0.0" comment="获得学分"/>
-            <column name="ga" type="float4" nullable="false" defaultValue="0.0" comment="平均分"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0.0" comment="总平均绩点"/>
+            <column name="credits" type="float4" nullable="false" comment="获得学分"/>
+            <column name="ga" type="float4" nullable="false" comment="平均分"/>
+            <column name="gpa" type="float4" nullable="false" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="school_year" type="varchar(255)" nullable="false" comment="学年"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
-            <column name="total_credits" type="float4" nullable="false" defaultValue="0.0" comment="总学分"/>
+            <column name="total_credits" type="float4" nullable="false" comment="总学分"/>
           </columns>
           <primary-key name="pk_3ad0t5p7c2vmp6ktrbtgiwbwb" columns="id"/>
           <foreign-keys>
@@ -6543,7 +6777,8 @@
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="status" type="integer" nullable="false" comment="状态"/>
             <column name="teaching_office_id" type="bigint" comment="教研室ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_djhmwl2mslpebwr381gmwjina" columns="id"/>
           <foreign-keys>
@@ -6569,8 +6804,8 @@
             <column name="course_id" type="bigint" nullable="false" comment="课程ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="担任学时"/>
             <column name="crn" type="varchar(255)" nullable="false" comment="任务课程序号"/>
-            <column name="factor" type="float4" nullable="false" defaultValue="0.0" comment="工作量系数"/>
-            <column name="load_hours" type="float4" nullable="false" defaultValue="0.0" comment="折算课时"/>
+            <column name="factor" type="float4" nullable="false" comment="工作量系数"/>
+            <column name="load_hours" type="float4" nullable="false" comment="折算课时"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="std_count" type="integer" nullable="false" defaultValue="0" comment="教学班人数"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
@@ -6603,7 +6838,8 @@
             <column name="mime_type" type="varchar(255)" comment="文件类型"/>
             <column name="passed" type="boolean" comment="是否通过"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_fr5ve3vinn52vwsit7lgqxsjv" columns="id"/>
           <foreign-keys>
@@ -6645,7 +6881,8 @@
             <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
             <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
           </columns>
           <primary-key name="pk_lcqw7ty5jppf59n7h1l8uhbwq" columns="id"/>
@@ -6663,7 +6900,8 @@
             <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
             <column name="payed" type="integer" nullable="false" defaultValue="0" comment="支付费用"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
           </columns>
           <primary-key name="pk_2nfredgb8p5h5rejmbm3nwr5m" columns="id"/>
@@ -6717,7 +6955,8 @@
             <column name="review_id" type="bigint" nullable="false" comment="结项评审ID"/>
             <column name="score" type="float4" comment="分数"/>
             <column name="submited" type="boolean" nullable="false" defaultValue="false" comment="是否提交"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_1b4ggxr300ebb51fc212hx4r" columns="id"/>
           <foreign-keys>
@@ -6788,7 +7027,8 @@
             <column name="exemption_reason" type="varchar(200)" comment="免答辩理由"/>
             <column name="project_id" type="bigint" nullable="false" comment="项目ID"/>
             <column name="reply_score" type="integer" comment="答辩分数"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_22ch6g6tq6697mf0d2l4ip6vn" columns="id"/>
           <foreign-keys>
@@ -6817,7 +7057,8 @@
             <column name="review_id" type="bigint" nullable="false" comment="立项评审ID"/>
             <column name="score" type="float4" comment="分数"/>
             <column name="submited" type="boolean" nullable="false" defaultValue="false" comment="是否提交"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_djyah74eyn02aqlimc34rongv" columns="id"/>
           <foreign-keys>
@@ -6896,7 +7137,8 @@
             <column name="award_year" type="integer" nullable="false" defaultValue="0" comment="年度"/>
             <column name="level_id" type="integer" nullable="false" comment="项目等级ID"/>
             <column name="project_id" type="bigint" nullable="false" comment="项目ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_p32r7mb8i2943uveupn0n815a" columns="id"/>
           <foreign-keys>
@@ -6918,7 +7160,8 @@
             <column name="project_id" type="bigint" nullable="false" comment="项目ID"/>
             <column name="sha" type="varchar(255)" nullable="false" comment="sha摘要"/>
             <column name="stage_type_id" type="integer" nullable="false" comment="项目阶段类型ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_3ouunikiphs7y50md8yv0at1y" columns="id"/>
           <foreign-keys>
@@ -7086,7 +7329,8 @@
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数量"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_bq3ia61jmui8sv480n1sxf9ao" columns="id"/>
           <foreign-keys>
@@ -7101,12 +7345,12 @@
         <table name="category_stat_grades" comment="分类统计-指标级别@evaluation.clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="avg_score" type="float8" nullable="false" defaultValue="0.0" comment="平均分"/>
+            <column name="avg_score" type="float8" nullable="false" comment="平均分"/>
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数量"/>
             <column name="grade_id" type="integer" nullable="false" comment="评价名称对应项ID"/>
             <column name="indicator_id" type="bigint" nullable="false" comment="问题类型ID"/>
-            <column name="max_score" type="float8" nullable="false" defaultValue="0.0" comment="最高分"/>
-            <column name="min_score" type="float8" nullable="false" defaultValue="0.0" comment="最低分"/>
+            <column name="max_score" type="float8" nullable="false" comment="最高分"/>
+            <column name="min_score" type="float8" nullable="false" comment="最低分"/>
             <column name="stat_id" type="bigint" nullable="false" comment="分类统计ID"/>
           </columns>
           <primary-key name="pk_pmn7bnvtdgb2b8csk8dhtwtsi" columns="id"/>
@@ -7126,10 +7370,10 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数量"/>
-            <column name="from_score" type="float8" nullable="false" defaultValue="0.0" comment="起始分数"/>
+            <column name="from_score" type="float8" nullable="false" comment="起始分数"/>
             <column name="indicator_id" type="bigint" nullable="false" comment="问题类型ID"/>
             <column name="stat_id" type="bigint" nullable="false" comment="分类统计ID"/>
-            <column name="to_score" type="float8" nullable="false" defaultValue="0.0" comment="截至分数"/>
+            <column name="to_score" type="float8" nullable="false" comment="截至分数"/>
           </columns>
           <primary-key name="pk_cv2ip2dgyo0tdy2p0ung5jpi5" columns="id"/>
           <foreign-keys>
@@ -7162,8 +7406,8 @@
             <column name="criteria_id" type="bigint" nullable="false" comment="评教对照标准ID"/>
             <column name="description" type="varchar(255)" nullable="false" comment="描述"/>
             <column name="grade" type="integer" nullable="false" defaultValue="0" comment="数字级别"/>
-            <column name="max_score" type="float4" nullable="false" defaultValue="0.0" comment="最大分值"/>
-            <column name="min_score" type="float4" nullable="false" defaultValue="0.0" comment="最小分值"/>
+            <column name="max_score" type="float4" nullable="false" comment="最大分值"/>
+            <column name="min_score" type="float4" nullable="false" comment="最小分值"/>
             <column name="name" type="varchar(255)" nullable="false" comment="对应的评价名称"/>
           </columns>
           <primary-key name="pk_ej5u8q4u1byv5v1jhrp03ju7j" columns="id"/>
@@ -7185,7 +7429,8 @@
             <column name="name" type="varchar(50)" nullable="false" comment="中文名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(100)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_q5yhk83lvrc8m3oxtpe4j6gld" columns="id"/>
           <foreign-keys>
@@ -7210,7 +7455,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="group_id" type="bigint" nullable="false" comment="选项组ID"/>
             <column name="name" type="varchar(50)" nullable="false" comment="选项名"/>
-            <column name="proportion" type="float4" nullable="false" defaultValue="0.0" comment="选项所占比重（权重）"/>
+            <column name="proportion" type="float4" nullable="false" comment="选项所占比重（权重）"/>
           </columns>
           <primary-key name="pk_5qq1ungfdwv9293jrj7brslmp" columns="id"/>
           <foreign-keys>
@@ -7230,7 +7475,8 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="title" type="varchar(200)" nullable="false" comment="问卷标题"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_9j8tox7o94ub6klnjtx630sll" columns="id"/>
           <foreign-keys>
@@ -7265,8 +7511,9 @@
             <column name="option_group_id" type="bigint" nullable="false" comment="选项组ID"/>
             <column name="priority" type="integer" nullable="false" defaultValue="0" comment="优先级"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="score" type="float4" nullable="false" defaultValue="0.0" comment="分值"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="score" type="float4" nullable="false" comment="分值"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_srjq1kymoxpx8y5kk7521ttbj" columns="id"/>
           <foreign-keys>
@@ -7290,13 +7537,14 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="publish_status" type="integer" nullable="false" defaultValue="0" comment="发布状态"/>
             <column name="school_rank" type="integer" nullable="false" defaultValue="0" comment="全校排名"/>
-            <column name="score" type="float4" nullable="false" defaultValue="0.0" comment="平均得分"/>
+            <column name="score" type="float4" nullable="false" comment="平均得分"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="teach_depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="teacher_depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师ID"/>
             <column name="tickets" type="integer" nullable="false" defaultValue="0" comment="有效票数"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_29v0q7x5wi3rvbtua754ljbo" columns="id"/>
           <foreign-keys>
@@ -7324,7 +7572,7 @@
             <column name="category_rank" type="integer" nullable="false" defaultValue="0" comment="分类排名"/>
             <column name="grade_id" type="integer" nullable="false" comment="评价名称对应项ID"/>
             <column name="indicator_id" type="bigint" nullable="false" comment="问题类型ID"/>
-            <column name="score" type="float8" nullable="false" defaultValue="0.0" comment="问题类别统计平均分值"/>
+            <column name="score" type="float8" nullable="false" comment="问题类别统计平均分值"/>
             <column name="stat_id" type="bigint" nullable="false" comment="问卷评教结果ID"/>
           </columns>
           <primary-key name="pk_7jjkpgkgirlgdymq0juu64gy7" columns="id"/>
@@ -7362,7 +7610,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="question_id" type="bigint" nullable="false" comment="具体问题ID"/>
-            <column name="score" type="float8" nullable="false" defaultValue="0.0" comment="平均得分"/>
+            <column name="score" type="float8" nullable="false" comment="平均得分"/>
             <column name="stat_id" type="bigint" nullable="false" comment="问卷统计ID"/>
           </columns>
           <primary-key name="pk_rmgevn8gy92r0w10mmk5s7xyj" columns="id"/>
@@ -7379,12 +7627,13 @@
         <table name="depart_eval_stats" comment="开课院系评教问卷统计结果@evaluation.clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="avg_score" type="float8" nullable="false" defaultValue="0.0" comment="平均得分"/>
+            <column name="avg_score" type="float8" nullable="false" comment="平均得分"/>
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数"/>
             <column name="department_id" type="integer" nullable="false" comment="开课院系ID"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_p87qmm6ecwo7f9x37labrlk4y" columns="id"/>
           <foreign-keys>
@@ -7402,12 +7651,13 @@
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="department_id" type="integer" nullable="false" comment="开课院系ID"/>
             <column name="questionnaire_id" type="bigint" nullable="false" comment="问卷信息ID"/>
-            <column name="score" type="float4" nullable="false" defaultValue="0.0" comment="总分"/>
+            <column name="score" type="float4" nullable="false" comment="总分"/>
             <column name="stat_type" type="integer" nullable="false" defaultValue="0"
                     comment="1正常 2 无效 3异常(互斥)"/>
             <column name="student_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_sjln57t9wh1oadhcwy8aiagck" columns="id"/>
           <foreign-keys>
@@ -7434,7 +7684,8 @@
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="teach_depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_3w69do02finwr5csfag3hr00u" columns="id"/>
           <foreign-keys>
@@ -7461,7 +7712,8 @@
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="teach_depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_hh645iewh252rbq6jbpvlpuj1" columns="id"/>
           <foreign-keys>
@@ -7481,12 +7733,12 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="depart_rank" type="integer" nullable="false" defaultValue="0" comment="院系排名"/>
-            <column name="depart_score" type="float4" nullable="false" defaultValue="0.0" comment="部门评分"/>
+            <column name="depart_score" type="float4" nullable="false" comment="部门评分"/>
             <column name="school_rank" type="integer" nullable="false" defaultValue="0" comment="全校排名"/>
-            <column name="score" type="float4" nullable="false" defaultValue="0.0" comment="总分"/>
+            <column name="score" type="float4" nullable="false" comment="总分"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
-            <column name="std_score" type="float4" nullable="false" defaultValue="0.0" comment="学生评分"/>
-            <column name="supvi_score" type="float4" nullable="false" defaultValue="0.0" comment="督导评分"/>
+            <column name="std_score" type="float4" nullable="false" comment="学生评分"/>
+            <column name="supvi_score" type="float4" nullable="false" comment="督导评分"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师ID"/>
           </columns>
           <primary-key name="pk_9cv4kydmlobvgybnqpyyw68a" columns="id"/>
@@ -7504,7 +7756,7 @@
             <column name="option_id" type="bigint" nullable="false" comment="问题选项ID"/>
             <column name="question_id" type="bigint" nullable="false" comment="问题ID"/>
             <column name="result_id" type="bigint" nullable="false" comment="评教结果ID"/>
-            <column name="score" type="float4" nullable="false" defaultValue="0.0" comment="得分"/>
+            <column name="score" type="float4" nullable="false" comment="得分"/>
           </columns>
           <primary-key name="pk_rcpahtmwk6gyixcqpqcvwdtku" columns="id"/>
           <foreign-keys>
@@ -7539,11 +7791,12 @@
         <table name="school_eval_stats" comment="学校评教问卷统计结果@evaluation.clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="avg_score" type="float8" nullable="false" defaultValue="0.0" comment="平均得分"/>
+            <column name="avg_score" type="float8" nullable="false" comment="平均得分"/>
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="semester_id" type="integer" nullable="false" comment="教学日历ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_qtq0xmlybs0ch9pjdq4cbpom2" columns="id"/>
           <foreign-keys>
@@ -7565,7 +7818,8 @@
                     comment="每个人可以领取的数量"/>
             <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_4ecyrjftw6bj7f51hopijedpw" columns="id"/>
           <foreign-keys>
@@ -7599,7 +7853,8 @@
             <column name="max_limit" type="integer" nullable="false" defaultValue="0" comment="最多打印次数"/>
             <column name="price" type="integer" nullable="false" defaultValue="0"
                     comment="单价，以分为单位，免费设置为0"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_kef5i9nh8clc4t95hhtabs2at" columns="id"/>
           <foreign-keys>
@@ -7641,7 +7896,8 @@
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="updated_by" type="varchar(255)" nullable="false" comment="修改人"/>
           </columns>
           <primary-key name="pk_l2ycbilgr05krq0lg8r6qxnsp" columns="id"/>
@@ -7656,7 +7912,7 @@
                          referenced-column="id"/>
           </foreign-keys>
           <indexes>
-            <index name="idx_bill_std" columns="std_id"/>
+            <index name="idx_ntyfknpfh0x0vn49nm18bbh2i" columns="std_id"/>
           </indexes>
         </table>
         <table name="cfg_transfer_options" comment="转专业招收专业@transfer.config">
@@ -7714,7 +7970,8 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="published" type="boolean" nullable="false" defaultValue="false" comment="发布招生方案"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_cg0x0fw2km64d8xt7y5xbcot8" columns="id"/>
           <foreign-keys>
@@ -7777,14 +8034,14 @@
             <column name="amount" type="integer" nullable="false" defaultValue="0" comment="对应的金额"/>
             <column name="department_id" type="integer" comment="部门组织机构信息ID"/>
             <column name="direction_id" type="bigint" comment="方向信息 专业领域ID"/>
-            <column name="duration" type="float4" nullable="false" defaultValue="0.0" comment="学制"/>
+            <column name="duration" type="float4" nullable="false" comment="学制"/>
             <column name="fee_type_id" type="integer" nullable="false" comment="收费类型ID"/>
             <column name="from_grade_id" type="bigint" nullable="false" comment="起始年级ID"/>
             <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
             <column name="major_id" type="bigint" comment="专业ID"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="to_grade_id" type="bigint" nullable="false" comment="截止年级ID"/>
+            <column name="to_grade_id" type="bigint" comment="截止年级ID"/>
           </columns>
           <primary-key name="pk_rw7k52evbugyarc3xclwo7n21" columns="id"/>
           <foreign-keys>
@@ -7814,7 +8071,8 @@
             <column name="mobile" type="varchar(20)" comment="移动电话"/>
             <column name="phone" type="varchar(20)" comment="电话"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_7ko2w4r57qng8yfiyi7n9snh4" columns="id"/>
           <foreign-keys>
@@ -7825,15 +8083,37 @@
             <unique-key name="uk_qopxi21m45bqtuemmwurk7dkl" columns="std_id"/>
           </unique-keys>
         </table>
+        <table name="debts" comment="欠费信息@fee">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="amount" type="integer" nullable="false" defaultValue="0" comment="欠费金额"/>
+            <column name="fee_type_id" type="integer" nullable="false" comment="收费类型ID"/>
+            <column name="ignored" type="boolean" nullable="false" defaultValue="false" comment="是否忽略"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_hv6munekg3kbg6qh7yodxld9l" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_flmg2dl07o1dk9ns23avj676m" column="std_id" referenced-table="base.students"
+                         referenced-column="id"/>
+            <foreign-key name="fk_sx2987dlrr772cspsrnqoblr9" column="fee_type_id" referenced-table="base.c_fee_types"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_o6kjrquuoijirhvpeytmy2fxx" columns="std_id"/>
+          </indexes>
+        </table>
         <table name="degree_applies" comment="学位申请@graduation">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
             <column name="degree_id" type="integer" nullable="false" comment="学位ID"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0.0" comment="GPA"/>
+            <column name="gpa" type="float4" nullable="false" comment="GPA"/>
             <column name="passed" type="boolean" comment="是否通过"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_85xktk94x3o87fc7wwtbo07i5" columns="id"/>
           <foreign-keys>
@@ -7869,13 +8149,14 @@
             <column name="degree_comments" type="varchar(500)" comment="毕业备注"/>
             <column name="degree_id" type="integer" comment="学位ID"/>
             <column name="foreign_lang_passed_on" type="date" comment="外语通过年月"/>
-            <column name="ga" type="float4" nullable="false" defaultValue="0.0" comment="平均分"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0.0" comment="GPA"/>
+            <column name="ga" type="float4" nullable="false" comment="平均分"/>
+            <column name="gpa" type="float4" nullable="false" comment="GPA"/>
             <column name="locked" type="boolean" nullable="false" defaultValue="false" comment="锁定毕业审核结果"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过学位审核"/>
             <column name="published" type="boolean" nullable="false" defaultValue="false" comment="是否已发布"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_juk8stxairvjh8aqqgmus1vx2" columns="id"/>
           <foreign-keys>
@@ -7919,7 +8200,8 @@
             <column name="score" type="float4" comment="招生录取总分"/>
             <column name="scores" type="varchar(255)" comment="各科分数"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_1e8il6rh29256vdjtbwh1y0fe" columns="id"/>
           <foreign-keys>
@@ -7978,7 +8260,7 @@
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="direction_id" type="bigint" comment="方向信息 专业领域ID"/>
             <column name="dormitory_no" type="varchar(20)" comment="宿舍信息"/>
-            <column name="duration" type="float4" nullable="false" defaultValue="0.0" comment="学习年限"/>
+            <column name="duration" type="float4" nullable="false" comment="学习年限"/>
             <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
             <column name="education_mode_id" type="integer" comment="培养方式ID"/>
             <column name="email" type="varchar(100)" comment="电子邮箱"/>
@@ -8072,7 +8354,8 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="season_id" type="bigint" nullable="false" comment="毕业界别ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_kb2t7xdi7imcxukogahdjojtq" columns="id"/>
           <foreign-keys>
@@ -8085,18 +8368,19 @@
         <table name="graduate_results" comment="毕业审核结果@graduation">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="acquired_credits" type="float4" nullable="false" defaultValue="0.0" comment="获得学分"/>
+            <column name="acquired_credits" type="float4" nullable="false" comment="获得学分"/>
             <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
             <column name="batch_no" type="integer" nullable="false" defaultValue="0" comment="批次"/>
             <column name="education_result_id" type="integer" comment="毕结业情况ID"/>
-            <column name="elected_credits" type="float4" nullable="false" defaultValue="0.0" comment="修读学分"/>
+            <column name="elected_credits" type="float4" nullable="false" comment="修读学分"/>
             <column name="graduate_comments" type="varchar(500)" comment="毕业备注"/>
             <column name="locked" type="boolean" nullable="false" defaultValue="false" comment="锁定毕业审核结果"/>
             <column name="passed" type="boolean" comment="是否通过毕业审核"/>
             <column name="published" type="boolean" nullable="false" defaultValue="false" comment="是否已发布"/>
-            <column name="required_credits" type="float4" nullable="false" defaultValue="0.0" comment="要求学分"/>
+            <column name="required_credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_pwaqdnrn36ry8ef21e1k1kmu5" columns="id"/>
           <foreign-keys>
@@ -8119,7 +8403,8 @@
             <column name="postcode" type="varchar(20)" comment="家庭地址邮编"/>
             <column name="railway_station_id" type="integer" comment="火车站ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_ry45w9bb9c30yransxedxfoop" columns="id"/>
           <foreign-keys>
@@ -8207,7 +8492,8 @@
             <column name="major_name" type="varchar(255)" nullable="false" comment="主修专业"/>
             <column name="school_id" type="integer" nullable="false" comment="主修学校ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_ge7r9q9q5db7ne2cfjul9pnm5" columns="id"/>
           <foreign-keys>
@@ -8248,7 +8534,7 @@
           </foreign-keys>
           <unique-keys>
             <unique-key name="orders_code_key" columns="code"/>
-            <unique-key name="idx_order_bill_id" columns="bill_id"/>
+            <unique-key name="uk_5rbs2yuu4l5occesk8783g2sh" columns="bill_id"/>
           </unique-keys>
         </table>
         <table name="punishments" comment="处分@award">
@@ -8427,7 +8713,8 @@
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_a1ti0uv32d4ggaivn3y58e9c" columns="id"/>
           <foreign-keys>
@@ -8557,11 +8844,11 @@
             <column name="from_grade_id" type="bigint" nullable="false" comment="转出年级ID"/>
             <column name="from_major_id" type="bigint" nullable="false" comment="转出专业ID"/>
             <column name="from_squad_id" type="bigint" comment="转出班级ID"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0.0" comment="平均绩点"/>
-            <column name="major_gpa" type="float4" nullable="false" defaultValue="0.0" comment="专业课GPA"/>
+            <column name="gpa" type="float4" nullable="false" comment="平均绩点"/>
+            <column name="major_gpa" type="float4" nullable="false" comment="专业课GPA"/>
             <column name="mobile" type="varchar(255)" nullable="false" comment="联系电话"/>
             <column name="option_id" type="bigint" nullable="false" comment="选择的招生专业ID"/>
-            <column name="other_gpa" type="float4" nullable="false" defaultValue="0.0" comment="专业课外GPA"/>
+            <column name="other_gpa" type="float4" nullable="false" comment="专业课外GPA"/>
             <column name="passed" type="boolean" comment="是否通过"/>
             <column name="reason" type="varchar(255)" nullable="false" comment="申请理由"/>
             <column name="score" type="float4" comment="考核分数"/>
@@ -8572,8 +8859,9 @@
             <column name="to_grade_id" type="bigint" nullable="false" comment="转入年级ID"/>
             <column name="to_major_id" type="bigint" nullable="false" comment="转入专业ID"/>
             <column name="to_squad_id" type="bigint" comment="转入班级ID"/>
-            <column name="transfer_gpa" type="float4" nullable="false" defaultValue="0.0" comment="转专业GPA"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="transfer_gpa" type="float4" nullable="false" comment="转专业GPA"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="written_score" type="float4" comment="笔试分数"/>
           </columns>
           <primary-key name="pk_1636v9ke8tssygsebwc8he7ex" columns="id"/>
@@ -8617,7 +8905,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_s4hrxsthg6t50hx822ex2hm9s" columns="id"/>
           <unique-keys>
@@ -8633,7 +8922,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_ioa5fk53393f40cjpfs5k3c77" columns="id"/>
           <unique-keys>
@@ -8649,7 +8939,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_og5hhd27lnh0mkncdtyx6p8ol" columns="id"/>
           <unique-keys>
@@ -8666,7 +8957,8 @@
             <column name="for_course" type="boolean" nullable="false" defaultValue="false" comment="是否课程项目"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_7iu8cm1s0ud6qt6tufrgiqavv" columns="id"/>
           <unique-keys>
@@ -8682,7 +8974,8 @@
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="修改时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
           </columns>
           <primary-key name="pk_9dvpgojx972wqvhka58069g0x" columns="id"/>
           <unique-keys>
@@ -8742,7 +9035,8 @@
             <column name="end_on" type="date" nullable="false" comment="成果完成"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="org_name" type="varchar(255)" nullable="false" comment="完成单位"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
             <column name="website" type="varchar(255)" comment="成果网址"/>
           </columns>
           <primary-key name="pk_kcqw8m7fdba9xh17q6sm4kxtd" columns="id"/>
@@ -8785,7 +9079,8 @@
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="status_id" type="integer" nullable="false" comment="项目状态ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_sn8pn1wp0f8awmjy42hcmnmoc" columns="id"/>
           <foreign-keys>
@@ -8843,7 +9138,8 @@
             <column name="level_id" type="integer" nullable="false" comment="研究级别ID"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_k1qfb3g4prtlvhoqsw3cq0ska" columns="id"/>
           <foreign-keys>
@@ -8873,7 +9169,8 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="textbook_id" type="bigint" nullable="false" comment="教材ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" comment="更新时间"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
           </columns>
           <primary-key name="pk_301jawapmi8866dn1wo04dr62" columns="id"/>
           <foreign-keys>

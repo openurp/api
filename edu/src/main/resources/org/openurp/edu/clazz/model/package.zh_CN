@@ -84,12 +84,12 @@ Exam.examForm=考试方式
 Exam.hasMakeup=是否有补考
 Exam.examDuration=考试时长
 
-Session=教学活动
-Session.clazz=教学任务
-Session.time=上课时间
-Session.teachers=授课教师列表
-Session.rooms=教室列表
-Session.places=授课场所
+ClazzSession=教学活动
+ClazzSession.clazz=教学任务
+ClazzSession.time=上课时间
+ClazzSession.teachers=授课教师列表
+ClazzSession.rooms=教室列表
+ClazzSession.places=授课场所
 
 ClazzGroup=教学任务组
 ClazzGroup.name=组名称

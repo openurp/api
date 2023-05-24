@@ -35,7 +35,7 @@ class Schedule extends Component with Serializable with Cloneable {
   var weekstate: WeekState = _
 
   /** 具体排课结果 */
-  var sessions: collection.mutable.Set[Session] = _
+  var sessions: collection.mutable.Set[ClazzSession] = _
 
   /** 教室类型 */
   var roomType: ClassroomType = _

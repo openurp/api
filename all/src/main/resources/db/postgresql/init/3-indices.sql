@@ -11,6 +11,7 @@ create index idx_5uwkw1b4k9hep46wquup9fhus on base.courses_prerequisites (course
 create index idx_9p2rpmgl437gq3r5n1cwsjyo9 on base.courses_teachers (course_id);
 create index idx_cwi8j5mcog4kvgv6keicpliwn on base.courses_textbooks (course_id);
 create index idx_2cpvhk7d040sh5temf5afvht8 on base.courses_xmajors (course_id);
+create index idx_b927vofr1hyrul1haqk21kh4l on base.dayoffs (semester_id);
 create index idx_lloboi12ir2a1q541ntsr7kao on base.departments (parent_id);
 create index idx_4tia0kw51tgg3ruidjnm1q02k on base.departments_campuses (department_id);
 create index idx_1r68feb85enylfu5hhehp92vj on base.direction_journals (direction_id);
@@ -67,6 +68,9 @@ create index idx_q8ai1qbh3e9pvh1up7l4uuw6u on edu.cfg_schedule_setting_departs (
 create index idx_ftsvqtl0wf5lx885wwiw514hp on edu.clazz_materials (clazz_id);
 create index idx_ifw02k8m49nnnsixxeic5irmd on edu.clazz_notice_files (notice_id);
 create index idx_etjnc5p0edykl4yjenl8f5aqo on edu.clazz_notices (clazz_id);
+create index idx_ahlqsmv3qare86w3quw4stgrt on edu.clazz_sessions (clazz_id);
+create index idx_tg45rasvabmvu3oh1obtt1uqk on edu.clazz_sessions_rooms (session_id);
+create index idx_hx7le71l2k26nqs8y2et2slch on edu.clazz_sessions_teachers (session_id);
 create index idx_2nu751wwcosaoh3kd2a36ycdj on edu.clazzes (group_id);
 create index idx_9bwygbyci888eug6sjs5ihbqq on edu.clazzes (project_id, semester_id, teach_depart_id);
 create index idx_dtwnr7ysxuukruvulscomb6on on edu.clazzes_ability_rates (clazz_id);
@@ -98,6 +102,7 @@ create index idx_eiv4rp5l2gk4ememhrha2qq5j on edu.execution_course_groups (paren
 create index idx_kh1p3dlllkx7ldn2j23x1y2wk on edu.execution_course_groups (plan_id);
 create index idx_3ryteeplnbge7ri2uj5j5tsl7 on edu.execution_plan_courses (group_id);
 create index idx_qgckajdcovnvbh5emipeorwqi on edu.execution_plans (program_id);
+create index idx_3l1lv5lhap575efwfuyfklwa3 on edu.exempt_courses_std_types (exempt_course_id);
 create index idx_d3bxyon5uawiu9el72altkowk on edu.extern_grades_exempts (extern_grade_id);
 create index idx_kn96mnwxflrwspmtwlq970vhr on edu.final_makeup_courses_squads (final_makeup_course_id);
 create index idx_h87h8nwy1vu833fi9ddal46nd on edu.final_makeup_takers (makeup_course_id);
@@ -128,6 +133,7 @@ create index idx_jfn7je4lfhja46qtvdeka1dut on edu.program_doc_sections (parent_i
 create index idx_lkchplwh47vmakls9riujfgrw on edu.program_doc_sections (doc_id);
 create index idx_q0vt9i2ql8fjenu8ldm8fm5wu on edu.program_doc_templates_types (program_doc_template_id);
 create index idx_g6aj9g4hfn2pbwy6l2pkyh2mh on edu.programs_degree_courses (program_id);
+create index idx_5u4gknostdmf16gyfurc2u6eq on edu.programs_std_types (program_id);
 create index idx_qcchbnp54bci79i8mdudt2y63 on edu.regular_grade_states_percents (regular_grade_state_id);
 create index idx_79jpq20ahqs7fp9yhfb1k0eac on edu.regular_grades (clazz_id);
 create index idx_fmwrwh59gqwgfcs1jevsbahxw on edu.regular_grades (std_id);
@@ -137,9 +143,6 @@ create index idx_c2pllu9g7p0poy59op11nkab5 on edu.restrictions (clazz_id);
 create index idx_i8g6bl3jpwldie38iiqgw4kes on edu.restrictions (parent_id);
 create index idx_2ofh2k9b4pj51ftjaf0e9oj3s on edu.room_applies_rooms (room_apply_id);
 create index idx_oaii80w561p28ji3r86pv8djo on edu.room_applies_times (room_apply_id);
-create index idx_epu4ne61rru6f5udqshomhdwx on edu.sessions (clazz_id);
-create index idx_8x2cffwmuo8bbpdljfnv5sxna on edu.sessions_rooms (session_id);
-create index idx_m8omy8lyt0n0jerbb2fk6he47 on edu.sessions_teachers (session_id);
 create index idx_127cshdpus15xol454uaojjfe on edu.share_course_groups (parent_id);
 create index idx_dsgghmsmfesuqdn7ct736a6re on edu.share_course_groups (plan_id);
 create index idx_4kls4p6klclkgscfvak8pqsdf on edu.share_plan_courses (group_id);
@@ -173,11 +176,12 @@ create index idx_qg7n56vxh2knmj2tarp3k3mmp on qos.course_indicator_stats (stat_i
 create index idx_ge1xy7c75yebe89psnbqqnmmf on qos.course_option_stats (question_stat_id);
 create index idx_gll1inanpvdrco57654f2t0kr on qos.course_question_stats (stat_id);
 create index idx_8bhmm2vgbinad1w0aylpxt4n7 on qos.question_results (result_id);
-create index idx_bill_std on std.bills (std_id);
+create index idx_ntyfknpfh0x0vn49nm18bbh2i on std.bills (std_id);
 create index idx_o7qoertnh44gjrabduunvdl1y on std.cfg_transfer_options (scheme_id);
 create index idx_nn02lnwjdnjej5n6c6f7walwh on std.cfg_transfer_scopes (scheme_id);
 create index idx_52a8728cj1giy61b8c6g1p80a on std.cfg_transfer_scopes_grades (transfer_scope_id);
 create index idx_iv6e39jj2etpxlmxp17hsctxs on std.cfg_transfer_scopes_majors (transfer_scope_id);
+create index idx_o6kjrquuoijirhvpeytmy2fxx on std.debts (std_id);
 create index idx_6mgvfxpime2q3p8vuknbtghbo on std.degree_audit_items (result_id);
 create index idx_66bod6jp4lk8p1u4c3cf6pix4 on std.exchange_programs_schools (exchange_program_id);
 create index idx_2pucgaon5u33sjehbtj1u9nmj on std.graduate_audit_items (result_id);

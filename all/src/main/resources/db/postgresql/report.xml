@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <report title="数据库设计说明">
-  <system name="教学管理系统" version="0.31.1"/>
+  <system name="教学管理系统" version="0.32.1"/>
   <database xml="database.xml"/>
   <pages template="singlehtml" extension=".html">
     <page name="index"/>
@@ -133,10 +133,8 @@
       <module name="textbook" title="教材信息">
         <group name="core" title="核心部分" tables="*"/>
       </module>
-
-      <module name="alter" title="学籍异动">
-        <group name="misc" title="学籍异动" tables="*">
-        </group>
+      <module name="workload" title="工作量信息">
+        <group name="core" title="工作量" tables="*"/>
       </module>
     </schema>
 
@@ -175,6 +173,10 @@
         <group name="misc" title="学生信息" tables="*"/>
       </module>
 
+      <module name="alter" title="学籍异动">
+        <group name="misc" title="学籍异动" tables="*">
+        </group>
+      </module>
       <module name="register" title="报到注册">
         <group name="misc" title="报到注册" tables="*"/>
       </module>
@@ -216,24 +218,17 @@
       </module>
     </schema>
 
+    <!--
     <schema name="prac" title="实践教学">
       <module name="innovation" title="创新创业">
         <group name="misc" title="创新创业" tables="*"/>
       </module>
+    </schema>
+    <schema name="degree" title="学位">
       <module name="thesis" title="毕业设计">
         <group name="misc" title="毕业设计" tables="*"/>
       </module>
     </schema>
-
-    <schema name="hr" title="人事相关">
-      <module name="base" title="人事基本信息">
-        <group name="info" title="基本信息" tables="*"/>
-      </module>
-
-      <module name="workload" title="工作量信息">
-        <group name="core" title="工作量" tables="*"/>
-      </module>
-    </schema>
-
+    -->
   </schemas>
 </report>

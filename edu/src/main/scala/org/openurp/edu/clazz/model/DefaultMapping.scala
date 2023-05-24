@@ -60,8 +60,10 @@ class DefaultMapping extends MappingModule {
     }
 
     //schedule
-    bind[Session].declare { e =>
+    bind[ClazzSession].declare { e =>
       e.places is length(200)
+      e.teachers is joinColumn("session_id")
+      e.rooms is joinColumn("session_id")
       index("", false, e.clazz)
     }
 
