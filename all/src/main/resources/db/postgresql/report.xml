@@ -218,7 +218,6 @@
       </module>
     </schema>
 
-    <!--
     <schema name="prac" title="实践教学">
       <module name="innovation" title="创新创业">
         <group name="misc" title="创新创业" tables="*"/>
@@ -229,6 +228,5 @@
         <group name="misc" title="毕业设计" tables="*"/>
       </module>
     </schema>
-    -->
   </schemas>
 </report>

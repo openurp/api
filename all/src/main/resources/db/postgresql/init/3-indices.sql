@@ -65,12 +65,12 @@ create index idx_8phjsft3ht68389ab4xj7yvof on edu.cfg_factor_segments (factor_id
 create index idx_8h5f9owky5n5vrcrd3xwojpqo on edu.cfg_grade_input_switches_types (grade_input_switch_id);
 create index idx_krohebe9mfogd0eh4v2d0g97r on edu.cfg_grade_rate_items (config_id);
 create index idx_q8ai1qbh3e9pvh1up7l4uuw6u on edu.cfg_schedule_setting_departs (setting_id);
+create index idx_sjlgr9e0wh41aqb4wbj7tyqaj on edu.clazz_activities (clazz_id);
+create index idx_lp1ho1db4ui0l4lffulgfn0yk on edu.clazz_activities_rooms (activity_id);
+create index idx_15kq4qjipsyjesv30panl7d28 on edu.clazz_activities_teachers (activity_id);
 create index idx_ftsvqtl0wf5lx885wwiw514hp on edu.clazz_materials (clazz_id);
 create index idx_ifw02k8m49nnnsixxeic5irmd on edu.clazz_notice_files (notice_id);
 create index idx_etjnc5p0edykl4yjenl8f5aqo on edu.clazz_notices (clazz_id);
-create index idx_ahlqsmv3qare86w3quw4stgrt on edu.clazz_sessions (clazz_id);
-create index idx_tg45rasvabmvu3oh1obtt1uqk on edu.clazz_sessions_rooms (session_id);
-create index idx_hx7le71l2k26nqs8y2et2slch on edu.clazz_sessions_teachers (session_id);
 create index idx_2nu751wwcosaoh3kd2a36ycdj on edu.clazzes (group_id);
 create index idx_9bwygbyci888eug6sjs5ihbqq on edu.clazzes (project_id, semester_id, teach_depart_id);
 create index idx_dtwnr7ysxuukruvulscomb6on on edu.clazzes_ability_rates (clazz_id);

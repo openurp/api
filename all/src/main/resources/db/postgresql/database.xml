@@ -4321,6 +4321,68 @@
                          referenced-column="id"/>
           </foreign-keys>
         </table>
+        <table name="clazz_activities" comment="教学活动@clazz">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
+            <column name="begin_unit" type="smallint" nullable="false" defaultValue="0" comment="开始节次"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
+            <column name="end_unit" type="smallint" nullable="false" defaultValue="0" comment="结束节次"/>
+            <column name="places" type="varchar(100)" comment="授课场所"/>
+            <column name="start_on" type="date" nullable="false" comment="开始日期"/>
+            <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
+            <column name="teaching_method_id" type="integer" nullable="false" comment="授课方式ID"/>
+            <column name="teaching_nature_id" type="integer" nullable="false" comment="授课性质ID"/>
+            <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
+          </columns>
+          <primary-key name="pk_5rankuhqjj88fbic1k8vl9ib0" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_8yeg80l1esgc7bu944d22th1d" column="teaching_nature_id"
+                         referenced-table="code.teaching_natures" referenced-column="id"/>
+            <foreign-key name="fk_shdn2h3bwu9imnlrytj1vl3l2" column="subclazz_id" referenced-table="edu.subclazzes"
+                         referenced-column="id"/>
+            <foreign-key name="fk_6l9sty1mmsk69q1ba8bv3w2so" column="teaching_method_id"
+                         referenced-table="code.teaching_methods" referenced-column="id"/>
+            <foreign-key name="fk_f6c5dken729a254255clywcw4" column="clazz_id" referenced-table="edu.clazzes"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_sjlgr9e0wh41aqb4wbj7tyqaj" columns="clazz_id"/>
+          </indexes>
+        </table>
+        <table name="clazz_activities_rooms" comment="教室列表@clazz">
+          <columns>
+            <column name="activity_id" type="bigint" nullable="false" comment="教学活动ID"/>
+            <column name="classroom_id" type="bigint" nullable="false" comment="教室ID"/>
+          </columns>
+          <primary-key name="pk_mu2b4wc5pvt35yub2mwe0gndf" columns="activity_id,classroom_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_lo3w5ng35g751uq48dk7kod3" column="activity_id" referenced-table="edu.clazz_activities"
+                         referenced-column="id"/>
+            <foreign-key name="fk_2p7ikpukol4pwjx4sqwqha3pr" column="classroom_id" referenced-table="base.classrooms"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_lp1ho1db4ui0l4lffulgfn0yk" columns="activity_id"/>
+          </indexes>
+        </table>
+        <table name="clazz_activities_teachers" comment="授课教师列表@clazz">
+          <columns>
+            <column name="activity_id" type="bigint" nullable="false" comment="教学活动ID"/>
+            <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
+          </columns>
+          <primary-key name="pk_pikhy8td3magdbtgj9qqv6eqk" columns="activity_id,teacher_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_56onq6rl18wnpj7ykkuus5l31" column="activity_id"
+                         referenced-table="edu.clazz_activities" referenced-column="id"/>
+            <foreign-key name="fk_kw6yqbrntwcb14olegfksq0r8" column="teacher_id" referenced-table="base.teachers"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_15kq4qjipsyjesv30panl7d28" columns="activity_id"/>
+          </indexes>
+        </table>
         <table name="clazz_book_stats" comment="课程教材订购汇总@textbook">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -4436,66 +4498,6 @@
           </foreign-keys>
           <indexes>
             <index name="idx_etjnc5p0edykl4yjenl8f5aqo" columns="clazz_id"/>
-          </indexes>
-        </table>
-        <table name="clazz_sessions" comment="教学活动@clazz">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
-            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
-            <column name="places" type="varchar(200)" comment="授课场所"/>
-            <column name="start_on" type="date" nullable="false" comment="开始日期"/>
-            <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
-            <column name="teaching_method_id" type="integer" nullable="false" comment="授课方式ID"/>
-            <column name="teaching_nature_id" type="integer" nullable="false" comment="授课性质ID"/>
-            <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
-          </columns>
-          <primary-key name="pk_my44802emlsdhg3keroojgjx1" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_skk3fen5yygdvxf2njo0l3eq4" column="teaching_nature_id"
-                         referenced-table="code.teaching_natures" referenced-column="id"/>
-            <foreign-key name="fk_tf8kumvm91fmplqqnllsyhwir" column="subclazz_id" referenced-table="edu.subclazzes"
-                         referenced-column="id"/>
-            <foreign-key name="fk_jwanv7jaw74x3nh3iv1608t6w" column="teaching_method_id"
-                         referenced-table="code.teaching_methods" referenced-column="id"/>
-            <foreign-key name="fk_4ulfx77j4pytlwchpdxlrt7l" column="clazz_id" referenced-table="edu.clazzes"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_ahlqsmv3qare86w3quw4stgrt" columns="clazz_id"/>
-          </indexes>
-        </table>
-        <table name="clazz_sessions_rooms" comment="教室列表@clazz">
-          <columns>
-            <column name="classroom_id" type="bigint" nullable="false" comment="教室ID"/>
-            <column name="session_id" type="bigint" nullable="false" comment="教学活动ID"/>
-          </columns>
-          <primary-key name="pk_oalfmyc02q89r7o7p4s7r45it" columns="session_id,classroom_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_jf895wmhykjcyct1h7jjisvv6" column="session_id" referenced-table="edu.clazz_sessions"
-                         referenced-column="id"/>
-            <foreign-key name="fk_hlwnf5glhm3rlel1b9ixy41ax" column="classroom_id" referenced-table="base.classrooms"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_tg45rasvabmvu3oh1obtt1uqk" columns="session_id"/>
-          </indexes>
-        </table>
-        <table name="clazz_sessions_teachers" comment="授课教师列表@clazz">
-          <columns>
-            <column name="session_id" type="bigint" nullable="false" comment="教学活动ID"/>
-            <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
-          </columns>
-          <primary-key name="pk_2pbu7ufj2k8q786twur3lmr71" columns="session_id,teacher_id"/>
-          <foreign-keys>
-            <foreign-key name="fk_r7atc4es3rs4rumftsi9bqdf2" column="session_id" referenced-table="edu.clazz_sessions"
-                         referenced-column="id"/>
-            <foreign-key name="fk_mnbgp29j88kspq8ji0ug46lpv" column="teacher_id" referenced-table="base.teachers"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_hx7le71l2k26nqs8y2et2slch" columns="session_id"/>
           </indexes>
         </table>
         <table name="clazzes" comment="教学任务@clazz">

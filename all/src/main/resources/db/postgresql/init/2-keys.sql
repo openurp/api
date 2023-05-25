@@ -346,6 +346,9 @@ alter table edu.cfg_schedule_setting_departs add constraint pk_7kfe5pbruecyb1at3
 alter table edu.cfg_schedule_settings add constraint pk_pbt8gsrasxldxt9d4w988cgy6 primary key (id);
 alter table edu.cfg_std_credit_stats add constraint pk_1l485f6rmlnl41j59lt9wlxre primary key (id);
 alter table edu.cfg_transcript_templates add constraint pk_gijmnia1rc7cdrugxm8bp7kqy primary key (id);
+alter table edu.clazz_activities add constraint pk_5rankuhqjj88fbic1k8vl9ib0 primary key (id);
+alter table edu.clazz_activities_rooms add constraint pk_mu2b4wc5pvt35yub2mwe0gndf primary key (activity_id,classroom_id);
+alter table edu.clazz_activities_teachers add constraint pk_pikhy8td3magdbtgj9qqv6eqk primary key (activity_id,teacher_id);
 alter table edu.clazz_book_stats add constraint pk_baqp1iuvt4utj5ya9hn3k8w9p primary key (id);
 alter table edu.clazz_bulletins add constraint pk_qr18drp7kdfhmd4be5fgqvs2o primary key (id);
 alter table edu.clazz_bulletins add constraint uk_bw61pgrg2iw0irmhs8hof0q0g unique (clazz_id);
@@ -353,9 +356,6 @@ alter table edu.clazz_groups add constraint pk_rk07cifqsq9cq5cscif6rre46 primary
 alter table edu.clazz_materials add constraint pk_nrnf4gf44n88mvd5efhg9ror0 primary key (id);
 alter table edu.clazz_notice_files add constraint pk_tc2n52103b3130x5jaaaxj7n1 primary key (id);
 alter table edu.clazz_notices add constraint pk_dhgey9skl0nde8lg46v723xi2 primary key (id);
-alter table edu.clazz_sessions add constraint pk_my44802emlsdhg3keroojgjx1 primary key (id);
-alter table edu.clazz_sessions_rooms add constraint pk_oalfmyc02q89r7o7p4s7r45it primary key (session_id,classroom_id);
-alter table edu.clazz_sessions_teachers add constraint pk_2pbu7ufj2k8q786twur3lmr71 primary key (session_id,teacher_id);
 alter table edu.clazzes add constraint pk_3ra1a077so5k9mwdt2kxb3k0b primary key (id);
 alter table edu.clazzes add constraint uk_8xuvd3v6lnrq5xmcl8jje0yau unique (project_id,semester_id,crn);
 alter table edu.clazzes_ability_rates add constraint pk_kx0jp80tganm39yvlc4lewj74 primary key (clazz_id,course_ability_rate_id);
