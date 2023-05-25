@@ -31,13 +31,19 @@ import java.time.LocalDate
  * 上课对象是任务对应的教学班学生
  *
  */
-class ClazzSession extends LongId with Ordered[ClazzSession] with Activity {
+class ClazzActivity extends LongId with Ordered[ClazzActivity] with Activity {
 
   /** 教学任务 */
   var clazz: Clazz = _
 
   /** 上课时间 */
   var time: WeekTime = _
+
+  /** 开始节次 */
+  var beginUnit: Short = _
+
+  /** 结束节次 */
+  var endUnit: Short = _
 
   /** 授课教师列表 */
   var teachers: collection.mutable.Set[Teacher] = _
@@ -58,7 +64,7 @@ class ClazzSession extends LongId with Ordered[ClazzSession] with Activity {
   var subclazz: Option[Subclazz] = None
 
   /** 对比活动 */
-  override def compare(other: ClazzSession): Int = {
+  override def compare(other: ClazzActivity): Int = {
     //fix me
     -1
   }

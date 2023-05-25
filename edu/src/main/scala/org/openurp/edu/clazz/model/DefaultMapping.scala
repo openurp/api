@@ -43,7 +43,7 @@ class DefaultMapping extends MappingModule {
       e.exam.beginAt is column("exam_begin_at")
       e.exam.endAt is column("exam_end_at")
       e.enrollment.courseTakers & e.enrollment.restrictions & e.enrollment.subclazzes &
-        e.schedule.sessions are depends("clazz")
+        e.schedule.activities are depends("clazz")
 
       index("", true, e.project, e.semester, e.crn)
       index("", false, e.project, e.semester, e.teachDepart)
@@ -60,10 +60,11 @@ class DefaultMapping extends MappingModule {
     }
 
     //schedule
-    bind[ClazzSession].declare { e =>
+    bind[ClazzActivity].declare { e =>
       e.places is length(200)
-      e.teachers is joinColumn("session_id")
-      e.rooms is joinColumn("session_id")
+      e.teachers is joinColumn("activity_id")
+      e.rooms is joinColumn("activity_id")
+      e.places is length(100)
       index("", false, e.clazz)
     }
 

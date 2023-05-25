@@ -17,11 +17,13 @@
 
 package org.openurp.edu.clazz.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.WeekState
 import org.beangle.data.model.{Component, LongId}
 import org.openurp.code.edu.model.ClassroomType
 
 import java.time.LocalDate
+import scala.collection.mutable
 
 /**
  * 课程安排
@@ -35,7 +37,7 @@ class Schedule extends Component with Serializable with Cloneable {
   var weekstate: WeekState = _
 
   /** 具体排课结果 */
-  var sessions: collection.mutable.Set[ClazzSession] = _
+  var activities: mutable.Set[ClazzActivity] = Collections.newSet[ClazzActivity]
 
   /** 教室类型 */
   var roomType: ClassroomType = _
@@ -44,10 +46,11 @@ class Schedule extends Component with Serializable with Cloneable {
   var departArranged: Boolean = true
 
   /** 第一次上课时间
+   *
    * @return
    */
   def firstDate: Option[LocalDate] = {
-    sessions.map(_.startOn).toBuffer.sorted.headOption
+    activities.map(_.startOn).toBuffer.sorted.headOption
   }
 
   /** 起始周 */
