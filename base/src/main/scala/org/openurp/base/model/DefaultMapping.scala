@@ -76,11 +76,13 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Person].declare { e =>
-      e.code.is(unique, length(30))
+      e.code is length (30)
       e.name.familyName & e.name.givenName are length(80)
       e.name.formatedName is length(100)
       e.name.middleName is length(50)
       e.formerName & e.phoneticName are length(100)
+
+      index("", false, e.code)
     }
 
     bind[Version].declare { e =>
