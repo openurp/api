@@ -93,6 +93,9 @@ class TransferApply extends LongId with Updated {
   /** 专业课外GPA */
   var otherGpa: Float = _
 
+  /** 包含不及格课程 */
+  var hasFail: Boolean = _
+
   /** 考核分数 */
   var score: Option[Float] = None
 
