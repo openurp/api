@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.32.2">
+<db engine="PostgreSQL" version="0.33.1">
   <schemas>
     <schema name="base">
       <tables>
@@ -960,7 +960,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="birthday" type="date" comment="出生日期"/>
             <column name="birthplace" type="varchar(255)" comment="出生地"/>
-            <column name="code" type="varchar(30)" nullable="false" unique="true" comment="证件号码"/>
+            <column name="code" type="varchar(30)" nullable="false" comment="证件号码"/>
             <column name="compatriot_type_id" type="integer" comment="港澳台侨ID"/>
             <column name="country_id" type="integer" comment="国籍/地区ID"/>
             <column name="family_name" type="varchar(80)" comment="姓"/>
@@ -998,9 +998,9 @@
             <foreign-key name="fk_r8r7svcudbl3vg24u40ifx94a" column="compatriot_type_id"
                          referenced-table="code.compatriot_types" referenced-column="id"/>
           </foreign-keys>
-          <unique-keys>
-            <unique-key name="people_code_key" columns="code"/>
-          </unique-keys>
+          <indexes>
+            <index name="idx_ajflqx9dbuh26q7nfapkr0rkh" columns="code"/>
+          </indexes>
         </table>
         <table name="project_codes" comment="项目基础代码配置@common">
           <columns>
@@ -8847,6 +8847,7 @@
             <column name="from_major_id" type="bigint" nullable="false" comment="转出专业ID"/>
             <column name="from_squad_id" type="bigint" comment="转出班级ID"/>
             <column name="gpa" type="float4" nullable="false" comment="平均绩点"/>
+            <column name="has_fail" type="boolean" nullable="false" defaultValue="false" comment="是否有不及格课程"/>
             <column name="major_gpa" type="float4" nullable="false" comment="专业课GPA"/>
             <column name="mobile" type="varchar(255)" nullable="false" comment="联系电话"/>
             <column name="option_id" type="bigint" nullable="false" comment="选择的招生专业ID"/>

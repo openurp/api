@@ -69,7 +69,6 @@ alter table base.majors add constraint uk_8vnop0jo5r3n5lvausdjy13aj unique (proj
 alter table base.mentors add constraint pk_b2barjxncjg1kb2ilm8dw1r3s primary key (id);
 alter table base.mentors add constraint uk_4n9545nrhwav5b96nw9k2di1t unique (staff_id);
 alter table base.minor_majors add constraint pk_puyx3wltdpl9vv77rj77l9txc primary key (id);
-alter table base.people add constraint people_code_key unique (code);
 alter table base.people add constraint pk_25uwl12dj9en3iflug9w23r1q primary key (id);
 alter table base.project_codes add constraint pk_h8pb4rkgymaq67flwfvm8mdvg primary key (id);
 alter table base.project_properties add constraint pk_rfrpbcb39anra9nb0a5x1g6dd primary key (id);

@@ -3193,6 +3193,7 @@ comment on column std.transfer_applies.from_grade_id is '转出年级ID';
 comment on column std.transfer_applies.from_major_id is '转出专业ID';
 comment on column std.transfer_applies.from_squad_id is '转出班级ID';
 comment on column std.transfer_applies.gpa is '平均绩点';
+comment on column std.transfer_applies.has_fail is '是否有不及格课程';
 comment on column std.transfer_applies.id is '非业务主键:datetime';
 comment on column std.transfer_applies.major_gpa is '专业课GPA';
 comment on column std.transfer_applies.mobile is '联系电话';

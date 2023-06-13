@@ -24,3 +24,4 @@ TransferApply.score=考核分数
 TransferApply.auditionScore=面试分数
 TransferApply.writtenScore=笔试分数
 TransferApply.departOpinion=院系面试意见
+TransferApply.hasFail=是否有不及格课程
