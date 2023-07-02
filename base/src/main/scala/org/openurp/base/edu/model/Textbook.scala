@@ -19,14 +19,10 @@ package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.code.sin.model.Press
-import org.openurp.code.sin.model.BookCategory
-import org.openurp.base.edu.code.BookAwardType
-import org.openurp.base.edu.code.BookType
+import org.beangle.data.model.pojo.{Named, Remark, TemporalOn}
+import org.openurp.base.edu.code.{BookAwardType, BookType}
 import org.openurp.base.model.Project
+import org.openurp.code.sin.model.{BookCategory, Press}
 
 import java.time.LocalDate
 
@@ -41,8 +37,10 @@ class Textbook extends LongId with TemporalOn with Named with Remark {
 
   var author: String = _
 
+  /** 译作者 */
   var translator: Option[String] = None
 
+  /**出版社*/
   var press: Option[Press] = None
 
   var edition: String = _
@@ -55,6 +53,7 @@ class Textbook extends LongId with TemporalOn with Named with Remark {
 
   var category: Option[BookCategory] = None
 
+  /** 出版日期 */
   var publishedOn: LocalDate = _
 
   var awardType: Option[BookAwardType] = None

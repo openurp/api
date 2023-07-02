@@ -19,18 +19,25 @@ package org.openurp.trd.achievement.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Named, Updated}
 import org.openurp.base.edu.model.Textbook
+import org.openurp.code.sin.model.Press
 
+import java.time.LocalDate
 import scala.collection.mutable
 
-/** 教材信息
- *
+/** 教材获奖信息
  */
-class TextbookAchievement extends LongId with Updated {
+class TextbookAchievement extends LongId, Named, Updated {
 
   /** 教材 */
-  var textbook: Textbook = _
+  var isbn: String = _
+
+  /** 出版日期 */
+  var publishedOn: LocalDate = _
+
+  /** 出版社 */
+  var press: Option[Press] = None
 
   /** 编写作者 */
   var editors: mutable.Buffer[TextbookEditor] = Collections.newBuffer[TextbookEditor]

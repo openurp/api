@@ -1,5 +1,5 @@
 insert into base.versions(id,version,updated_at,description)
-values(next_id('base.versions'),'0.31.1',now(),'更改排课表名');
+values(next_id('base.versions'),'0.32.2',now(),'更改排课表名');
 
 alter table edu.sessions rename to clazz_activities;
 alter table edu.sessions_rooms rename to clazz_activities_rooms;
