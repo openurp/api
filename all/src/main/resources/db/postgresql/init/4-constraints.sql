@@ -872,7 +872,7 @@ alter table trd.teaching_teams add constraint fk_3o51s6k56umn5thxfoombqp19 forei
 alter table trd.teaching_teams add constraint fk_cljrbkx9h5tj5exkagaoffpl7 foreign key (level_id) references trd.c_rd_levels (id);
 alter table trd.teaching_teams_leaders add constraint fk_arns2gdyoytsqvrp4wld7jbln foreign key (user_id) references base.users (id);
 alter table trd.teaching_teams_leaders add constraint fk_erqumximio9whgmyo69wokoch foreign key (teaching_team_id) references trd.teaching_teams (id);
-alter table trd.textbook_achievements add constraint fk_qpm0bumhlc6bxyxqqk5a61cnq foreign key (textbook_id) references base.textbooks (id);
+alter table trd.textbook_achievements add constraint fk_sdlm5ueelu3dleay8hhvhbg1l foreign key (press_id) references code.presses (id);
 alter table trd.textbook_awards add constraint fk_58q10lahcm6sfwsp17s6q0k0y foreign key (level_id) references trd.c_rd_levels (id);
 alter table trd.textbook_awards add constraint fk_dkmobi2cjdvttefvsfcyejoim foreign key (grade_id) references trd.c_rd_award_grades (id);
 alter table trd.textbook_awards add constraint fk_h46np6gm06l99bci0qv2ntath foreign key (achievement_id) references trd.textbook_achievements (id);

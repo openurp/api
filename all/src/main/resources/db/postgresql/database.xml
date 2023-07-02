@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.33.1">
+<db engine="PostgreSQL" version="0.33.2">
   <schemas>
     <schema name="base">
       <tables>
@@ -9171,13 +9171,16 @@
         <table name="textbook_achievements" comment="教材成果@achievement">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="textbook_id" type="bigint" nullable="false" comment="教材ID"/>
+            <column name="isbn" type="varchar(255)" nullable="false" comment="ISBN"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="press_id" type="integer" comment="出版社ID"/>
+            <column name="published_on" type="date" nullable="false" comment="出版日期"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
                     comment="更新时间"/>
           </columns>
           <primary-key name="pk_301jawapmi8866dn1wo04dr62" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_qpm0bumhlc6bxyxqqk5a61cnq" column="textbook_id" referenced-table="base.textbooks"
+            <foreign-key name="fk_sdlm5ueelu3dleay8hhvhbg1l" column="press_id" referenced-table="code.presses"
                          referenced-column="id"/>
           </foreign-keys>
         </table>

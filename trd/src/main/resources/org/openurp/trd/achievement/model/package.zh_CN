@@ -18,6 +18,9 @@ TextbookAward=教材获奖
 TextbookAward.awardOn=获奖年月
 
 TextbookAchievement=教材成果
+TextbookAchievement.isbn=ISBN
+TextbookAchievement.publishedOn=出版日期
+
 TextbookEditor=教材成果编辑信息
 TextbookEditor.chief=是否主编
 TextbookEditor.idx=次序号

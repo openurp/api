@@ -423,6 +423,6 @@ create table trd.rd_projects_leaders (rd_project_id bigint not null, user_id big
 create table trd.teaching_team_members (id bigint not null, team_id bigint not null, idx integer default 0 not null, user_id bigint not null);
 create table trd.teaching_teams (award_title varchar(255), code varchar(255) not null, department_id integer not null, id bigint not null, begin_on date not null, level_id integer not null, name varchar(255) not null, remark varchar(255), updated_at timestamptz default current_timestamp not null);
 create table trd.teaching_teams_leaders (teaching_team_id bigint not null, user_id bigint not null);
-create table trd.textbook_achievements (textbook_id bigint not null, id bigint not null, updated_at timestamptz default current_timestamp not null);
+create table trd.textbook_achievements (published_on date not null, isbn varchar(255) not null, press_id integer, name varchar(255) not null, id bigint not null, updated_at timestamptz default current_timestamp not null);
 create table trd.textbook_awards (name varchar(255) not null, award_on date, id bigint not null, grade_id integer, level_id integer not null, achievement_id bigint not null);
 create table trd.textbook_editors (chief boolean default false not null, name varchar(255) not null, id bigint not null, idx integer default 0 not null, user_id bigint, achievement_id bigint not null);

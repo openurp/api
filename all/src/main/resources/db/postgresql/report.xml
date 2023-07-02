@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <report title="数据库设计说明">
-  <system name="教学管理系统" version="0.32.1"/>
+  <system name="教学管理系统" version="0.33.2"/>
   <database xml="database.xml"/>
   <pages template="singlehtml" extension=".html">
     <page name="index"/>
