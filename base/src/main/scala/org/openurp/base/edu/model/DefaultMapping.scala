@@ -26,7 +26,7 @@ class DefaultMapping extends MappingModule {
 
     bind[TimeSetting] declare { e =>
       e.name is length(20)
-      e.units is depends("setting")
+      e.units is (depends("setting"),orderby("indexno"))
     }
 
     bind[CourseUnit] declare { e =>

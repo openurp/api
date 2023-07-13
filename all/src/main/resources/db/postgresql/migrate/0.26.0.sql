@@ -70,8 +70,8 @@ alter table spa.doc_types rename to cfg_doc_types;
 alter table spa.print_configs  rename to cfg_print_configs;
 alter table spa.download_logs rename to spa_download_logs;
 alter table spa.print_logs rename to spa_print_logs;
-alter table spa_download_logs set schema log;
-alter table spa_print_logs set schema log;
+alter table spa.spa_download_logs set schema log;
+alter table spa.spa_print_logs set schema log;
 --qos
 alter table qos.assess_grades  rename to cfg_assess_grades;
 alter table qos.questionnaires_questions  rename to cfg_questionnaires_questions;

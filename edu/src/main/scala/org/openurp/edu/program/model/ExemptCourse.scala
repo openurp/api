@@ -37,8 +37,8 @@ class ExemptCourse extends LongId, EduLevelBased, Updated, Remark {
   var fromGrade: Grade = _
   /** 截止年级 */
   var toGrade: Option[Grade] = None
-
+  /** 免修课程 */
   var course: Course = _
-
+  /** 针对学生类别 */
   var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]
 }

@@ -17,30 +17,29 @@
 
 package org.openurp.edu.clazz.model
 
+import org.beangle.commons.lang.time.HourMinute
+import org.beangle.data.model.{Component, LongId}
+import org.openurp.code.edu.model.{ClassroomType, ExamForm, ExamMode}
+
 import java.time.LocalDate
 
-import org.beangle.commons.lang.time.HourMinute
-import org.beangle.data.model.Component
-import org.openurp.code.edu.model.ClassroomType
-import org.openurp.code.edu.model.ExamForm
-import org.openurp.code.edu.model.ExamMode
-
 /**
- * 考试安排
+ * 期末考试安排
+ * (排考仟用户指定）
  */
-class Exam extends Component with Serializable with Cloneable {
+class FinalExam extends LongId {
 
-  /** 期末考试日期 */
+  /** 教学任务 */
+  var clazz: Clazz = _
+
+  /** 考试日期 */
   var examOn: Option[LocalDate] = None
 
-  /** 期末考试开始时间   */
+  /** 开始时间 */
   var beginAt: HourMinute = HourMinute.Zero
 
-  /** 期末考试结束时间   */
+  /** 结束时间 */
   var endAt: HourMinute = HourMinute.Zero
-
-  /** 考核方式 */
-  var examMode: ExamMode = _
 
   /** 考试方式 */
   var examForm: Option[ExamForm] = None
@@ -49,9 +48,6 @@ class Exam extends Component with Serializable with Cloneable {
   var examDuration: Short = _
 
   /** 考试教室类型 */
-  var examRoomType: ClassroomType = _
-
-  /** 是否有补考 */
-  var hasMakeup: Boolean = _
+  var roomType: Option[ClassroomType] = None
 
 }

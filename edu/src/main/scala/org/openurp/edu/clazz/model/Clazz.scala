@@ -19,11 +19,11 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Named, Updated}
+import org.beangle.data.model.pojo.{Named, Remark, Updated}
 import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.{Course, Teacher}
 import org.openurp.base.model.*
-import org.openurp.code.edu.model.TeachLangType
+import org.openurp.code.edu.model.{ExamMode, TeachLangType}
 import org.openurp.edu.clazz.code.ClazzTag
 
 import scala.collection.mutable
@@ -37,7 +37,7 @@ import scala.collection.mutable
  * <li>5、任务要求（教室要求、课程要求（教材、参考书、案例）、是否挂牌、是否双语）</li>
  * <li>6、创建时间、修改时间、备注</li>
  */
-class Clazz extends LongId with ProjectBased with Updated with Cloneable with Named {
+class Clazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
 
   /** 课程序号 */
   var crn: String = _
@@ -60,6 +60,9 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   /** 开课校区 */
   var campus: Campus = _
 
+  /** 教学班名称 */
+  var clazzName: String = _
+
   /** 教学班 */
   var enrollment: Enrollment = _
 
@@ -69,11 +72,11 @@ class Clazz extends LongId with ProjectBased with Updated with Cloneable with Na
   /** 课程安排 */
   var schedule: Schedule = _
 
-  /** 考试安排 */
-  var exam: Exam = _
+  /** 考核方式 */
+  var examMode: ExamMode = _
 
-  /** 备注 */
-  var remark: Option[String] = None
+  /** 是否有补考 */
+  var hasMakeup: Boolean = _
 
   /** 授课语言类型 */
   var langType: TeachLangType = _

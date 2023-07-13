@@ -14,6 +14,7 @@ ExamActivity.task=排考任务
 ExamActivity.centralized=是否集中考试
 ExamActivity.examPaperNo=试卷号
 ExamActivity.examWeek=考试周
+ExamActivity.examDuration=考试时长
 
 ExamMonitor=监考信息
 ExamMonitor.teacher=监考人员

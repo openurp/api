@@ -36,17 +36,18 @@ class DefaultMapping extends MappingModule {
     bind[Clazz].declare { e =>
       e.crn is length(32)
       e.teachers is ordered
-      e.name is length(500)
+      e.clazzName is length(500)
       e.teachers is ordered
       e.enrollment.grades is length(40)
-      e.enrollment.actual is immutable
-      e.exam.beginAt is column("exam_begin_at")
-      e.exam.endAt is column("exam_end_at")
+      e.enrollment.stdCount is immutable
       e.enrollment.courseTakers & e.enrollment.restrictions & e.enrollment.subclazzes &
         e.schedule.activities are depends("clazz")
-
       index("", true, e.project, e.semester, e.crn)
       index("", false, e.project, e.semester, e.teachDepart)
+    }
+
+    bind[FinalExam].declare { e =>
+      e.clazz is unique
     }
 
     bind[Restriction].declare { e =>

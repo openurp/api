@@ -34,7 +34,7 @@ class Enrollment extends Cloneable with Component {
   var grades: Option[String] = None
 
   /** 学生人数 */
-  var actual: Int = _
+  var stdCount: Int = _
 
   /** 最大人数 */
   var capacity: Int = _
@@ -42,16 +42,16 @@ class Enrollment extends Cloneable with Component {
   /**
    * 是否锁定人数上限
    */
-  var locked: Boolean = false
+  var capacityLocked: Boolean = false
 
   /** 男女比例 */
   var genderRatio: GenderRatio = GenderRatio.empty
 
   /**
    * 保留人数<br>
-   * 一个任务的真实的人数上限 = capacity - reserved
+   * 一个任务的真实的人数上限 = capacity - reservedCount
    */
-  var reserved: Int = _
+  var reservedCount: Int = _
 
   /** 上课名单 */
   var courseTakers = Collections.newBuffer[CourseTaker]

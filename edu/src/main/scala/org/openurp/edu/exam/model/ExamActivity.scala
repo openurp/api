@@ -17,21 +17,18 @@
 
 package org.openurp.edu.exam.model
 
-import java.time.LocalDate
-
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Semester
-import org.openurp.code.edu.model.ExamType
+import org.openurp.code.edu.model.{ClassroomType, ExamForm, ExamType}
 import org.openurp.edu.clazz.model.Clazz
 
+import java.time.LocalDate
 import scala.collection.mutable
 
-/**
- * 考试活动 </p>
- *
+/** 考试活动
  */
 class ExamActivity extends LongId with Remark {
   /** 考试类型 */
@@ -55,6 +52,15 @@ class ExamActivity extends LongId with Remark {
   /** 结束时间 */
   var endAt: HourMinute = HourMinute.Zero
 
+  /** 考试方式 */
+  var examForm: Option[ExamForm] = None
+
+  /** 考试时长 */
+  var examDuration: Short = _
+
+  /** 考试教室类型 */
+  var roomType: Option[ClassroomType] = None
+
   /** 学生人数 */
   var stdCount: Int = _
 
@@ -75,5 +81,4 @@ class ExamActivity extends LongId with Remark {
 
   /** 发布状态 */
   var publishState: PublishState = _
-
 }

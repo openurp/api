@@ -33,6 +33,9 @@ class Schedule extends Component with Serializable with Cloneable {
   /** 要求排课课时 */
   var creditHours: Int = _
 
+  /** 周课时 */
+  var weekHours: Int = _
+
   /** 周状态 */
   var weekstate: WeekState = _
 
@@ -46,8 +49,6 @@ class Schedule extends Component with Serializable with Cloneable {
   var departArranged: Boolean = true
 
   /** 第一次上课时间
-   *
-   * @return
    */
   def firstDate: Option[LocalDate] = {
     activities.map(_.startOn).toBuffer.sorted.headOption
@@ -62,5 +63,6 @@ class Schedule extends Component with Serializable with Cloneable {
   def lastWeek: Int = {
     if (null != weekstate) weekstate.last else 0
   }
+
 
 }
