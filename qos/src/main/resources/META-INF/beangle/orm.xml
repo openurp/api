@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.qos.evaluation.clazz.model.DefaultMapping" name="evaluation.clazz" />
+  <mapping class="org.openurp.qos.evaluation.clazz.model.DefaultMapping" name="evaluation.clazz"/>
   <mapping class="org.openurp.qos.evaluation.config.DefaultMapping" name="evaluation"/>
   <naming>
     <profile package="org.openurp.qos" pluralize="true" schema="qos">
-      <annotation class="org.beangle.data.model.annotation.config" prefix="cfg_"/>
+      <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="qos_"/>
       <annotation class="org.beangle.data.model.annotation.code" value="school" prefix="c_"/>
-      <annotation class="org.beangle.data.model.annotation.log"  schema="log" prefix="qos_"/>
+      <annotation class="org.beangle.data.model.annotation.log" schema="log" prefix="qos_"/>
     </profile>
   </naming>
 </orm>

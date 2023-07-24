@@ -24,9 +24,9 @@
   <mapping class="org.openurp.edu.workload.config.DefaultMapping" name="workload.config"/>
   <naming>
     <profile package="org.openurp.edu" pluralize="true" schema="edu">
-      <annotation class="org.beangle.data.model.annotation.config" prefix="cfg_"/>
+      <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="edu_"/>
       <annotation class="org.beangle.data.model.annotation.code" value="school" prefix="c_"/>
-      <annotation class="org.beangle.data.model.annotation.log"  schema="log" prefix="edu_"/>
+      <annotation class="org.beangle.data.model.annotation.log" schema="log" prefix="edu_"/>
     </profile>
   </naming>
 </orm>

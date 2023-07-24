@@ -8,9 +8,9 @@
   <mapping class="org.openurp.trd.team.model.DefaultMapping" name="team"/>
   <naming>
     <profile package="org.openurp.trd" pluralize="true" schema="trd">
-      <annotation class="org.beangle.data.model.annotation.config" prefix="cfg_"/>
+      <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="trd_"/>
       <annotation class="org.beangle.data.model.annotation.code" value="school" prefix="c_"/>
-      <annotation class="org.beangle.data.model.annotation.log"  schema="log" prefix="trd_"/>
+      <annotation class="org.beangle.data.model.annotation.log" schema="log" prefix="trd_"/>
     </profile>
   </naming>
 </orm>
