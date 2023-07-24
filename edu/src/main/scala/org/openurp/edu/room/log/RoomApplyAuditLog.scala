@@ -15,27 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.room.model
+package org.openurp.edu.room.log
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.annotation.log
+import org.openurp.edu.room.model.RoomApply
 
-/**
- * 房间的使用系统
- */
-class RoomOccupyApp extends LongId with Named {
+import java.time.Instant
 
-  /** 活动明细url */
-  var activityUrl: String = _
-
-  def this(id: Long) = {
-    this()
-    this.id = id
-  }
-}
-
-object RoomOccupyApp {
-  val CourseAppId: Long = 1
-  val ExamAppId: Long = 2
-  val RoomAppId: Long = 3
+@log
+class RoomApplyAuditLog extends LongId {
+  var roomApply: RoomApply = _
+  var approved: Boolean = _
+  var auditBy: String = _
+  var auditAt: Instant = _
+  var opinions: Option[String] = None
 }

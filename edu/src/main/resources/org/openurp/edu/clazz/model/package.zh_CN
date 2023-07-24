@@ -49,6 +49,7 @@ Clazz.langType=授课语言类型
 Clazz.group=所属课程组
 Clazz.status=审核状态
 Clazz.project=项目
+Clazz.hasMakeup=是否有补考
 
 ClazzTag=教学任务标签
 ClazzTag.name=名称
@@ -68,18 +69,11 @@ Enrollment.shared=是否全校共享
 Enrollment.abilityRates=要求课程能力等级
 
 Schedule=课程安排
-Schedule.startWeek=起始周
-Schedule.endWeek=结束周
-Schedule.creditHours= 已安排课时
+Schedule.creditHours=学时
+Schedule.weekHours=周课时
 Schedule.weekstate=周状态
 Schedule.activities=具体排课结果
-Schedule.roomType=教室类型
 Schedule.departArranged=是否开课院系负责安排
-
-Exam=考试安排
-Exam.examMode=考核方式
-Exam.examForm=考试方式
-Exam.hasMakeup=是否有补考
 
 ClazzActivity=教学活动
 ClazzActivity.clazz=教学任务
@@ -145,3 +139,9 @@ ClazzBulletin=教学班公告板
 ClazzBulletin.contents=公告内容
 ClazzBulletin.contactChannel=日常联系渠道
 ClazzBulletin.contactQrcodePath=日常联系渠道二维码
+
+FinalExam=期末考试安排
+FinalExam.beginAt=开始时间
+FinalExam.endAt=结束时间
+FinalExam.examDuration=考试时长
+FinalExam.examOn=考试时间

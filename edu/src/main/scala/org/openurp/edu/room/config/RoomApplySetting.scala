@@ -15,27 +15,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.room.model
+package org.openurp.edu.room.config
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
+import org.beangle.commons.lang.time.HourMinute
+import org.beangle.data.model.IntId
+import org.beangle.data.model.annotation.config
+import org.openurp.base.model.School
 
-/**
- * 房间的使用系统
+/** 教室借用设置
  */
-class RoomOccupyApp extends LongId with Named {
+@config
+class RoomApplySetting extends IntId {
 
-  /** 活动明细url */
-  var activityUrl: String = _
+  var school: School = _
+  /** 申请提前量 */
+  var daysBeforeApply: Int = _
 
-  def this(id: Long) = {
-    this()
-    this.id = id
-  }
-}
+  /** 借用须知 */
+  var notice: Option[String] = None
 
-object RoomOccupyApp {
-  val CourseAppId: Long = 1
-  val ExamAppId: Long = 2
-  val RoomAppId: Long = 3
+  /** 开始时间 */
+  var beginAt: HourMinute = HourMinute.Zero
+
+  /** 结束时间 */
+  var endAt: HourMinute = HourMinute.Zero
+
+  /** 是否开放 */
+  var opened: Boolean = _
 }

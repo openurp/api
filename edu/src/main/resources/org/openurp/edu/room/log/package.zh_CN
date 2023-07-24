@@ -1,0 +1,6 @@
+
+RoomApplyAuditLog=教室申请审核日志
+RoomApplyAuditLog.approved=是否审核通过
+RoomApplyAuditLog.auditBy=审核人
+RoomApplyAuditLog.auditAt=审核时间
+RoomApplyAuditLog.opinions=具体意见

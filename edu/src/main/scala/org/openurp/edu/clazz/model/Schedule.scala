@@ -64,5 +64,4 @@ class Schedule extends Component with Serializable with Cloneable {
     if (null != weekstate) weekstate.last else 0
   }
 
-
 }

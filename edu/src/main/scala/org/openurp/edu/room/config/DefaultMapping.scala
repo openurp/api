@@ -15,27 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.room.model
+package org.openurp.edu.room.config
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
+import org.beangle.data.orm.MappingModule
+import org.openurp.edu.room.config.{RoomApplyDepartScope, RoomApplySetting}
 
-/**
- * 房间的使用系统
- */
-class RoomOccupyApp extends LongId with Named {
+class DefaultMapping extends MappingModule {
 
-  /** 活动明细url */
-  var activityUrl: String = _
+  def binding(): Unit = {
 
-  def this(id: Long) = {
-    this()
-    this.id = id
+    bind[RoomApplyDepartScope] declare { e =>
+      e.rooms is table("cfg_room_apply_depart_rooms")
+    }
+
+    bind[RoomApplySetting] declare { e =>
+      e.notice is length(1000)
+    }
   }
-}
-
-object RoomOccupyApp {
-  val CourseAppId: Long = 1
-  val ExamAppId: Long = 2
-  val RoomAppId: Long = 3
 }

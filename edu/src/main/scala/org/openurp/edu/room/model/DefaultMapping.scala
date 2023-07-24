@@ -18,6 +18,7 @@
 package org.openurp.edu.room.model
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.edu.room.config.{RoomApplyDepartScope, RoomApplySetting}
 
 class DefaultMapping extends MappingModule {
 
@@ -35,14 +36,7 @@ class DefaultMapping extends MappingModule {
 
     bind[RoomApply] declare { e =>
       e.activity.name is column("activity_name")
-    }
-
-    bind[RoomApplyDepartCheck] declare { e =>
-      e.opinions is length(100)
-    }
-
-    bind[RoomApplyFinalCheck] declare { e =>
-      e.opinions is length(100)
+      e.applicant.user is column("applicant_id")
     }
 
     bind[RoomAvailableTime]

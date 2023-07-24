@@ -1,0 +1,9 @@
+RoomApplyDepartScope=院系借教室设置
+RoomApplyDepartScope.rooms=可借教室范围
+
+RoomApplySetting=借用设置
+RoomApplySetting.daysBeforeApply=借用提前天数
+RoomApplySetting.beginAt=每天的开始时间
+RoomApplySetting.endAt=每天的结束时间
+RoomApplySetting.opened=是否开放
+RoomApplySetting.notice=借用须知

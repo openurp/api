@@ -17,6 +17,8 @@
   <mapping class="org.openurp.edu.exempt.model.DefaultMapping" name="exempt"/>
   <mapping class="org.openurp.edu.exempt.config.DefaultMapping" name="exempt.config"/>
   <mapping class="org.openurp.edu.room.model.DefaultMapping" name="room"/>
+  <mapping class="org.openurp.edu.room.config.DefaultMapping" name="room.config"/>
+  <mapping class="org.openurp.edu.room.log.DefaultMapping" name="room.log"/>
   <mapping class="org.openurp.edu.textbook.model.DefaultMapping" name="textbook"/>
   <mapping class="org.openurp.edu.workload.model.DefaultMapping" name="workload"/>
   <mapping class="org.openurp.edu.workload.config.DefaultMapping" name="workload.config"/>

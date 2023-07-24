@@ -13,7 +13,9 @@ RoomOccupyApp.activityUrl=活动明细url
 RoomApply=教室借用
 RoomApply.applyAt=申请时间
 RoomApply.approved=是否审核通过
+RoomApply.departApproved=是否部门审核通过
 RoomApply.rooms=已分配教室
+RoomApply.approvedAt=审核通过时间
 
 Activity.name=活动名称
 Activity.activityType=活动类型
@@ -21,10 +23,10 @@ Activity.speaker=主讲人
 Activity.attendance=出席对象
 Activity.attendanceNum=出席人数
 
-Borrower.department=借用人部门
-Borrower.applicant=借用人
-Borrower.mobile=移动电话
-Borrower.email=电子邮件
+Applicant.auditDepart=归口审核部门
+Applicant.user=借用人
+Applicant.mobile=移动电话
+Applicant.email=电子邮件
 
 TimeRequest.minutes=借用时长(分钟)
 TimeRequest.timeComment=借用时间要求
@@ -34,17 +36,21 @@ SpaceRequest.unitAttendance=每个教室单元需要的座位数
 SpaceRequest.requireMultimedia=是否使用多媒体设备
 SpaceRequest.roomComment=借用场所要求
 
-RoomApplyDepartCheck=归口审核
-RoomApplyDepartCheck.approved=是否审核通过
-RoomApplyDepartCheck.checkedBy=审核人
-RoomApplyDepartCheck.checkedAt=审核时间
-RoomApplyDepartCheck.opinions=具体意见
-
-RoomApplyFinalCheck=最终审核
-RoomApplyFinalCheck.approved=是否审核通过
-RoomApplyFinalCheck.checkedBy=审核人
-RoomApplyFinalCheck.checkedAt=审核时间
-RoomApplyFinalCheck.opinions=具体意见
+RoomApplyAuditLog=教室申请审核日志
+RoomApplyAuditLog.approved=是否审核通过
+RoomApplyAuditLog.auditBy=审核人
+RoomApplyAuditLog.auditAt=审核时间
+RoomApplyAuditLog.opinions=具体意见
 
 RoomAvailableTime=教室可用时间
 RoomAvailableTime.time=时间
+
+RoomApplyDepartScope=院系借教室设置
+RoomApplyDepartScope.rooms=可借教室范围
+
+RoomApplySetting=借用设置
+RoomApplySetting.daysBeforeApply=借用提前天数
+RoomApplySetting.beginAt=每天的开始时间
+RoomApplySetting.endAt=每天的结束时间
+RoomApplySetting.opened=是否开放
+RoomApplySetting.notice=借用须知
