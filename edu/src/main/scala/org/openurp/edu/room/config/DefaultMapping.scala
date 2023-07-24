@@ -25,7 +25,7 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
 
     bind[RoomApplyDepartScope] declare { e =>
-      e.rooms is table("cfg_room_apply_depart_rooms")
+      e.rooms is table("edu_room_apply_depart_rooms")
     }
 
     bind[RoomApplySetting] declare { e =>

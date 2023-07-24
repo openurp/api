@@ -28,7 +28,7 @@ class DefaultMapping extends MappingModule {
     }
     bind[CertSignupSetting] declare { e =>
       e.scopes is depends("setting")
-      e.exclusives is table("cfg_cert_signup_exclusives")
+      e.exclusives is table("edu_cert_signup_exclusives")
     }
 
     bind[CertSignupScope] declare { e =>

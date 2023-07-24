@@ -30,7 +30,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[CertExemptSetting] declare { e =>
-      e.courses is table("cfg_cert_exempt_courses")
+      e.courses is table("edu_cert_exempt_courses")
     }
   }
 
