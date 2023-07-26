@@ -55,6 +55,9 @@ class DefaultMapping extends MappingModule {
 
     bind[Feedback].declare { e =>
       e.contents is length(500)
+
+      index("", false, e.semester, e.teacher)
+      index("", false, e.semester, e.teachDepart)
     }
     bind[FinalComment].declare { e =>
       e.contents is length(500)
