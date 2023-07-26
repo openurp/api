@@ -1,4 +1,5 @@
 create schema base;
+create schema cfg;
 create schema code;
 create schema degree;
 create schema edu;
