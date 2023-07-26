@@ -19,7 +19,7 @@ package org.openurp.edu.room.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Strings
-import org.beangle.commons.lang.time.{WeekDay, WeekTime}
+import org.beangle.commons.lang.time.{CycleTimeDigest, WeekDay, WeekTime}
 import org.beangle.data.model.annotation.log
 import org.beangle.data.model.pojo.{DateRange, Named}
 import org.beangle.data.model.{Component, LongId}

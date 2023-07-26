@@ -17,8 +17,8 @@
 
 package org.openurp.edu.room.model
 
-import org.beangle.commons.lang.time.HourMinute
-import org.openurp.edu.room.model.CycleTime.CycleTimeType
+import org.beangle.commons.lang.time.CycleTime.CycleTimeType
+import org.beangle.commons.lang.time.{CycleTime, CycleTimeDigest, HourMinute}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
