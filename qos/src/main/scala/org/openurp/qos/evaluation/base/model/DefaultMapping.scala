@@ -15,12 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.config
+package org.openurp.qos.evaluation.base.model
 
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
-
   def binding(): Unit = {
     defaultCache("openurp.edu.evaluation", "read-write")
 

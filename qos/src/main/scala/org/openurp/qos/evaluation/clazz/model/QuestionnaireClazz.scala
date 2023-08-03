@@ -20,7 +20,7 @@ package org.openurp.qos.evaluation.clazz.model
 import org.beangle.data.model.LongId
 import org.openurp.edu.clazz.model.Clazz
 import org.beangle.data.model.LongId
-import org.openurp.qos.evaluation.config.Questionnaire
+import org.openurp.qos.evaluation.base.model.Questionnaire
 
 class QuestionnaireClazz extends LongId {
   /**教学任务*/

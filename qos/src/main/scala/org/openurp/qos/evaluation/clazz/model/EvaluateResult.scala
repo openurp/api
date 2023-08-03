@@ -24,7 +24,7 @@ import org.openurp.base.edu.model.Teacher
 import org.openurp.base.model.Department
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.qos.evaluation.config.Questionnaire
+import org.openurp.qos.evaluation.base.model.Questionnaire
 
 import java.time.Instant
 

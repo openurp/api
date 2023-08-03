@@ -50,6 +50,7 @@ Clazz.group=所属课程组
 Clazz.status=审核状态
 Clazz.project=项目
 Clazz.hasMakeup=是否有补考
+Clazz.planId=执行计划ID
 
 ClazzTag=教学任务标签
 ClazzTag.name=名称
@@ -145,3 +146,14 @@ FinalExam.beginAt=开始时间
 FinalExam.endAt=结束时间
 FinalExam.examDuration=考试时长
 FinalExam.examOn=考试时间
+
+StdCreditStat=学生每学期选择教学班限制和统计
+StdCreditStat.totalCredits=已选学分
+StdCreditStat.maxCredits=学分上限
+StdCreditStat.totalNewCount=已选新课程门数(不含重修)
+StdCreditStat.maxNewCount=最多新选课程门数
+StdCreditStat.repeatCount=重修数量
+
+ScheduleSuggest=排课建议
+ScheduleSuggestActivity=排课建议活动
+

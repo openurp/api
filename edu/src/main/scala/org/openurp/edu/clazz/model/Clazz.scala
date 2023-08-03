@@ -19,7 +19,7 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Named, Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.{Course, Teacher}
 import org.openurp.base.model.*
@@ -89,6 +89,9 @@ class Clazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
 
   /** 任务标签 */
   var tags: mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]
+
+  /** 执行计划ID */
+  var planId: Option[Long] = None
 
   def courseName: String = {
     subject match {

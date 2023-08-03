@@ -15,27 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.config
+package org.openurp.qos.evaluation.clazz.config
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
+import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
-import org.openurp.base.model.{Department, Project}
+import org.beangle.data.model.pojo.InstantRange
+import org.openurp.base.model.{ProjectBased, Semester}
 
-/** 评教问卷
- */
 @config
-class Questionnaire extends LongId with Updated with TemporalOn with Remark {
-  var project: Project = _
-  /** 问卷标题 */
-  var title: String = _
-  /** 简单描述 */
-  var description: String = _
-  /** 相关联的问题 */
-  var questions = Collections.newBuffer[Question]
+class StdEvaluateSwitch extends IntId, ProjectBased, InstantRange {
 
-  def totalScore: Float = {
-    questions.foldLeft(0f)(_ + _.score)
+  var semester: Semester = _
+
+  def isOpenedAt(d: java.time.Instant): Boolean = {
+    within(d)
   }
 }

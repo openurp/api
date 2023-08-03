@@ -23,7 +23,7 @@ import org.beangle.data.model.{LongId, LongIdEntity}
 import org.openurp.base.edu.code.CourseCategory
 import org.openurp.base.edu.model.{Course, Teacher}
 import org.openurp.base.model.{Department, Project, Semester}
-import org.openurp.qos.evaluation.config.{AssessGrade, Indicator, Option, Question, Questionnaire}
+import org.openurp.qos.evaluation.base.model.{AssessGrade, Indicator, Option, Question, Questionnaire}
 
 import scala.collection.mutable
 

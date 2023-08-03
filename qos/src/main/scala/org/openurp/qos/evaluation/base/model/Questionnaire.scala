@@ -15,19 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.qos.evaluation.base.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.std.model.Student
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.openurp.base.model.{Department, Project}
 
-/** 交换免修申请学分上限
+/** 评教问卷
  */
-class ExchExemptCredit extends LongId with Remark with Updated {
+class Questionnaire extends LongId with Updated with TemporalOn with Remark {
+  var project: Project = _
+  /** 问卷标题 */
+  var title: String = _
+  /** 简单描述 */
+  var description: String = _
+  /** 相关联的问题 */
+  var questions = Collections.newBuffer[Question]
 
-  var std: Student = _
-
-  var exempted: Float = _
-
-  var maxValue: Float = _
+  def totalScore: Float = {
+    questions.foldLeft(0f)(_ + _.score)
+  }
 }

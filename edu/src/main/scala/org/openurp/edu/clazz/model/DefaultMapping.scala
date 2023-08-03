@@ -112,5 +112,12 @@ class DefaultMapping extends MappingModule {
       e.contactQrcodePath is length(300)
       index("", true, e.clazz)
     }
+
+    bind[StdCreditStat]
+    bind[ScheduleSuggest] declare { e =>
+      e.activities is depends("suggest")
+      index("", true, e.clazz)
+    }
+    bind[ScheduleSuggestActivity]
   }
 }

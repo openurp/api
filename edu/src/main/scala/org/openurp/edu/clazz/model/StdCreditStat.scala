@@ -15,35 +15,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.config
+package org.openurp.edu.clazz.model
 
+import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.{IntId, LongId}
-import org.openurp.base.model.Project
+import org.openurp.base.model.Semester
+import org.openurp.base.std.model.Student
 
-/** 评价等级
- *
+/** 学生每学期选择教学班限制和统计
  */
-@config
-class AssessGrade extends IntId with Named with Ordered[AssessGrade] {
-  /** 最小分值 */
-  var minScore: Float = _
+class StdCreditStat extends LongId {
 
-  /** 最大分值 */
-  var maxScore: Float = _
+  var std: Student = _
 
-  /** 等级数字值 */
-  var grade: Int = _
+  var semester: Semester = _
 
-  /** 描述 */
-  var description: String = _
+  /** 已选学分 */
+  var totalCredits: Float = _
 
-  /** 评价 */
-  var criteria: AssessCriteria = _
+  /** 学分上限 */
+  var maxCredits: Float = _
 
-  override def compare(that: AssessGrade): Int = {
-    grade - that.grade
-  }
+  /** 已选新课程门数
+   * 不含重修 */
+  var totalNewCount: Int = _
 
+  /** 最多新选课程门数 */
+  var maxNewCount: Int = _
+
+  /** 重修数量 */
+  var repeatCount: Int = _
 }

@@ -22,7 +22,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.code.CourseCategory
 import org.openurp.base.model.{Project, Semester}
-import org.openurp.qos.evaluation.config.{AssessGrade, Indicator}
+import org.openurp.qos.evaluation.base.model.{AssessGrade, Indicator}
 
 import scala.collection.mutable
 

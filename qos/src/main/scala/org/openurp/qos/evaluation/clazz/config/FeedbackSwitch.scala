@@ -15,22 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.config
+package org.openurp.qos.evaluation.clazz.config
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
+import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.Named
-import org.openurp.base.model.Project
-import org.openurp.qos.evaluation.config.Option
+import org.beangle.data.model.pojo.InstantRange
+import org.openurp.base.model.{ProjectBased, Semester}
 
-/** 选项组
- * @author chaostone
- */
 @config
-class OptionGroup extends LongId with Named {
-  var project: Project = _
-
-  /** 各类选项 */
-  var options = Collections.newSet[Option]
+class FeedbackSwitch extends IntId, ProjectBased, InstantRange {
+  var semester: Semester = _
 }

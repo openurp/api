@@ -18,8 +18,8 @@
 package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
+import org.openurp.qos.evaluation.base.model.{Indicator, Option, Question}
 import org.openurp.qos.evaluation.clazz.model.EvaluateResult
-import org.openurp.qos.evaluation.config.{Indicator, Option, Question}
 
 /**
  * 问题评教结果

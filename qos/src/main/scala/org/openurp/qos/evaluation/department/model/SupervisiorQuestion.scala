@@ -18,7 +18,7 @@
 package org.openurp.qos.evaluation.department.model
 
 import org.beangle.data.model.LongId
-import org.openurp.qos.evaluation.config.Question
+import org.openurp.qos.evaluation.base.model.Question
 
 /**
  * 院系问题评教结果

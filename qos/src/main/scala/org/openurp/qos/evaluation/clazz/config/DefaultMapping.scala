@@ -15,24 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.config
+package org.openurp.qos.evaluation.clazz.config
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.*
-import org.openurp.base.model.Project
+import org.beangle.data.orm.MappingModule
 
-/**
- * 问题类型 指示器
- * @author  chaostone
- */
-@config
-class Indicator extends LongId with Coded with Named with Updated with TemporalOn with Remark with Ordered[Indicator] {
-  var project: Project = _
-  /** 英文名称 */
-  var enName: scala.Option[String] = None
+class DefaultMapping extends MappingModule {
 
-  override def compare(that: Indicator): Int = {
-    code.compare(that.code)
+  def binding(): Unit = {
+    defaultCache("openurp.qos.evaluation", "read-write")
+
+    bind[StdEvaluateSwitch]
+    bind[FeedbackSwitch]
   }
+
 }

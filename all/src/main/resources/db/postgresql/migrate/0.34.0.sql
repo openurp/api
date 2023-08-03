@@ -48,3 +48,29 @@ alter table cfg.cfg_cert_signup_settings rename to edu_cert_signup_settings;
 
 alter table edu.cfg_exam_alloc_settings set schema cfg;
 alter table cfg.cfg_exam_alloc_settings rename to edu_exam_alloc_settings;
+
+alter table std.cfg_transfer_options rename to std_transfer_options;
+alter table std.std_transfer_options set schema cfg;
+alter table std.cfg_transfer_schemes rename to std_transfer_schemes;
+alter table std.std_transfer_schemes set schema cfg;
+alter table std.cfg_transfer_scopes rename to std_transfer_scopes;
+alter table std.std_transfer_scopes set schema cfg;
+alter table std.cfg_transfer_scopes_grades rename to std_transfer_scopes_grades;
+alter table std.std_transfer_scopes_grades set schema cfg;
+alter table std.cfg_transfer_scopes_majors rename to std_transfer_scopes_majors;
+alter table std.std_transfer_scopes_majors set schema cfg;
+
+alter table std.cfg_tuition_configs rename to std_tuition_configs;
+alter table std.std_tuition_configs set schema cfg;
+
+alter table edu.arrange_suggests rename to schedule_suggests;
+
+alter table std.exemption_credits rename to exch_exempt_credits;
+
+update cfg.edu_schedule_settings ss set begin_at=(select s.begin_on from base.semesters s where s.id=ss.semester_id) where begin_at is null;
+update cfg.edu_schedule_settings ss set end_at=(select s.end_on from base.semesters s where s.id=ss.semester_id) where end_at is null;
+
+alter table edu.clazzes add plan_id bigint;
+update edu.clazzes clz set plan_id=(select min(r.plan_id) from edu.clazz_plan_relations r where r.clazz_id=clz.id);
+drop table edu.clazz_plan_relations;
+

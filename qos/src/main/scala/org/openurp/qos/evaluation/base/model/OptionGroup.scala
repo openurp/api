@@ -15,35 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.config
+package org.openurp.qos.evaluation.base.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.openurp.base.model.Semester
-import org.openurp.base.std.model.Student
+import org.beangle.data.model.pojo.Named
+import org.openurp.base.model.Project
 
-/** 学生每学期选择教学班限制和统计
+/** 选项组
+ * @author chaostone
  */
-@config
-class StdCreditStat extends LongId {
+class OptionGroup extends LongId with Named {
+  var project: Project = _
 
-  var std: Student = _
-
-  var semester: Semester = _
-
-  /** 已选学分 */
-  var totalCredits: Float = _
-
-  /** 学分上限 */
-  var maxCredits: Float = _
-
-  /** 已选新课程门数
-   * 不含重修 */
-  var totalNewCount: Int = _
-
-  /** 最多新选课程门数 */
-  var maxNewCount: Int = _
-
-  /** 重修数量 */
-  var repeatCount: Int = _
+  /** 各类选项 */
+  var options = Collections.newSet[Option]
 }

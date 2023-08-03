@@ -15,22 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.config
+package org.openurp.qos.evaluation.base.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{Named, TemporalOn}
-import org.openurp.base.model.{Department, Project}
+import org.beangle.data.model.pojo.*
+import org.openurp.base.model.Project
 
-/** 评价档次体系
- *
+/**
+ * 问题类型 指示器
+ * @author  chaostone
  */
-@config
-class AssessCriteria extends LongId with Named with TemporalOn {
+class Indicator extends LongId with Coded with Named with Updated with TemporalOn with Remark with Ordered[Indicator] {
   var project: Project = _
+  /** 英文名称 */
+  var enName: scala.Option[String] = None
 
-  /** 具体分值对照项 */
-  var grades = Collections.newBuffer[AssessGrade]
-
+  override def compare(that: Indicator): Int = {
+    code.compare(that.code)
+  }
 }

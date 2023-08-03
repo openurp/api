@@ -18,6 +18,7 @@
 package org.openurp.edu.clazz.config
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.openurp.edu.clazz.model.StdCreditStat
 
 class DefaultMapping extends MappingModule {
 
@@ -26,7 +27,5 @@ class DefaultMapping extends MappingModule {
       e.departs is depends("setting")
     }
     bind[ScheduleSettingDepart]
-
-    bind[StdCreditStat]
   }
 }

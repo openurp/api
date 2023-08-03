@@ -15,19 +15,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.qos.evaluation.base.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.std.model.Student
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.{IntId, LongId}
+import org.openurp.base.model.Project
 
-/** 交换免修申请学分上限
+/** 评价等级
+ *
  */
-class ExchExemptCredit extends LongId with Remark with Updated {
+class AssessGrade extends IntId with Named with Ordered[AssessGrade] {
+  /** 最小分值 */
+  var minScore: Float = _
 
-  var std: Student = _
+  /** 最大分值 */
+  var maxScore: Float = _
 
-  var exempted: Float = _
+  /** 等级数字值 */
+  var grade: Int = _
 
-  var maxValue: Float = _
+  /** 描述 */
+  var description: String = _
+
+  /** 评价 */
+  var criteria: AssessCriteria = _
+
+  override def compare(that: AssessGrade): Int = {
+    grade - that.grade
+  }
+
 }

@@ -15,19 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.qos.evaluation.config
+package org.openurp.edu.clazz.model
 
+import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.Named
+import org.openurp.base.edu.model.{Classroom, Teacher}
 
-/** 选项
- * @author chaostone
+/** 建议排课活动
+ *
  */
-@config
-class Option extends LongId with Named {
-  /** 选项所占比重（权重） */
-  var proportion: Float = _
-  /** 选项组 */
-  var group: OptionGroup = _
+class ScheduleSuggestActivity extends LongId {
+  var suggest: ScheduleSuggest = _
+
+  var time: WeekTime = _
+
+  var room: Option[Classroom] = None
+
+  var teacher: Option[Teacher] = None
 }
