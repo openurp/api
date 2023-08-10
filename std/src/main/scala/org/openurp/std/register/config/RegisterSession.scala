@@ -15,19 +15,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.std.register.config
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.InstantRange
+import org.openurp.base.model.{Project, Semester}
+import org.openurp.code.edu.model.EducationLevel
 
-import scala.collection.mutable
+import java.time.Instant
 
-/** 排课建议
- *
+/**
+ * 注册批次
  */
-class ScheduleSuggest extends LongId, Remark {
-  var clazz: Clazz = _
+@config
+class RegisterSession extends LongId with InstantRange {
 
-  var activities: mutable.Buffer[ScheduleSuggestActivity] = Collections.newBuffer[ScheduleSuggestActivity]
+  var project: Project = _
+
+  var semester: Semester = _
+
+  var grades: String = _
+
+  var level: EducationLevel = _
+
+  def canApply(): Boolean = {
+    val now = Instant.now
+    !(this.beginAt.isAfter(now) || this.endAt.isBefore(now))
+  }
 }

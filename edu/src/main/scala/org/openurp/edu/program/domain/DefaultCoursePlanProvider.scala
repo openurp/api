@@ -79,11 +79,7 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
 
   private def getExecutionPlan(p: Program, student: Student): Option[ExecutionPlan] = {
     val plans = entityDao.findBy(classOf[ExecutionPlan], "program", List(p))
-    val matched = plans.filter { p =>
-      DefaultProgramMatcher.departMatched(p.department, student.state.get.department) &&
-        (p.stdType.isEmpty || p.stdType.get == student.stdType) &&
-        (p.campus.isEmpty || p.campus.get == student.state.get.campus)
-    }
+    val matched = plans.filter { p => DefaultProgramMatcher.departMatched(p.department, student.state.get.department) }
     matched.headOption
   }
 

@@ -52,9 +52,6 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
   /** 学生类别 */
   var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]
 
-  /** 校区 */
-  var campus: Option[Campus] = None
-
   /** 学制 */
   var duration: Float = _
 

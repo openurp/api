@@ -20,10 +20,9 @@ package org.openurp.base.std.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.edu.model.{Direction, Major, Teacher}
+import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.model.*
 import org.openurp.base.std.code.StdType
-import org.openurp.base.std.model.{Mentor, StudentState}
 
 import scala.collection.mutable
 
@@ -62,5 +61,5 @@ class Squad extends LongId with EduLevelBased with Coded with Named with DateRan
   /** 学生状态 */
   var stdStates: mutable.Buffer[StudentState] = Collections.newBuffer[StudentState]
   /** 固定校区 */
-  var campus: Campus = _
+  var campus: Option[Campus] = None
 }

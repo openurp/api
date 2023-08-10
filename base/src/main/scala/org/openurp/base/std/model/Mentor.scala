@@ -17,10 +17,13 @@
 
 package org.openurp.base.std.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Named, TemporalOn}
 import org.openurp.base.model.*
 import org.openurp.code.person.model.Gender
+
+import scala.collection.mutable
 
 /**
  * 辅导员
@@ -33,10 +36,13 @@ class Mentor extends LongId with Named with TemporalOn {
   /** 部门 */
   def department: Department = staff.department
 
-  /**工号*/
+  /** 工号 */
   def code: String = staff.code
 
-  /**性别*/
+  /** 性别 */
   def gender: Gender = staff.gender
+
+  /** 项目列表 */
+  var projects: mutable.Set[Project] = Collections.newSet[Project]
 
 }

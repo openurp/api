@@ -15,19 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.std.alter.config
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.annotation.config
+import org.openurp.base.model.Project
+import org.openurp.code.std.model.{StdAlterType, StudentStatus}
 
-import scala.collection.mutable
-
-/** 排课建议
+/** 学籍异动配置
  *
  */
-class ScheduleSuggest extends LongId, Remark {
-  var clazz: Clazz = _
+@config
+class StdAlterConfig extends LongId {
 
-  var activities: mutable.Buffer[ScheduleSuggestActivity] = Collections.newBuffer[ScheduleSuggestActivity]
+  var project: Project = _
+
+  var alterType: StdAlterType = _
+
+  var status: StudentStatus = _
+
+  var alterEndOn: Boolean = _
+
+  var alterGraduateOn: Boolean = _
+
+  var inschool: Boolean = _
+
+  var attributes: String = _
 }

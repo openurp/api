@@ -15,19 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.std.alter.config
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
+import org.beangle.data.orm.MappingModule
 
-import scala.collection.mutable
+class DefaultMapping extends MappingModule {
 
-/** 排课建议
- *
- */
-class ScheduleSuggest extends LongId, Remark {
-  var clazz: Clazz = _
-
-  var activities: mutable.Buffer[ScheduleSuggestActivity] = Collections.newBuffer[ScheduleSuggestActivity]
+  def binding(): Unit = {
+    bind[StdAlterConfig]
+  }
 }

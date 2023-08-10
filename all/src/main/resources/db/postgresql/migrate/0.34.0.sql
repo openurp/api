@@ -1,3 +1,6 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.34.0',now(),'增加cfg');
+
 create schema cfg;
 
 alter table edu.clazzes rename column name to clazz_name;
@@ -73,4 +76,3 @@ update cfg.edu_schedule_settings ss set end_at=(select s.end_on from base.semest
 alter table edu.clazzes add plan_id bigint;
 update edu.clazzes clz set plan_id=(select min(r.plan_id) from edu.clazz_plan_relations r where r.clazz_id=clz.id);
 drop table edu.clazz_plan_relations;
-

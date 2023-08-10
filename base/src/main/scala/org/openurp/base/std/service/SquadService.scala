@@ -15,19 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.base.std.service
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
+import org.openurp.base.std.model.{Squad, Student}
 
-import scala.collection.mutable
+trait SquadService {
+  def statStdCount(squads: Iterable[Squad]): Int
 
-/** 排课建议
- *
- */
-class ScheduleSuggest extends LongId, Remark {
-  var clazz: Clazz = _
-
-  var activities: mutable.Buffer[ScheduleSuggestActivity] = Collections.newBuffer[ScheduleSuggestActivity]
+  def getStudents(squad: Squad): Seq[Student]
 }

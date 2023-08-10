@@ -15,19 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.base.std.service
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
+import org.beangle.data.dao.OqlBuilder
+import org.openurp.base.model.Person
+import org.openurp.base.std.model.{Graduate, Student, StudentState}
+import org.openurp.code.std.model.StudentStatus
 
-import scala.collection.mutable
+import java.time.LocalDate
+import scala.util.control.Breaks.{break, breakable}
 
-/** 排课建议
- *
- */
-class ScheduleSuggest extends LongId, Remark {
-  var clazz: Clazz = _
-
-  var activities: mutable.Buffer[ScheduleSuggestActivity] = Collections.newBuffer[ScheduleSuggestActivity]
+trait StudentService {
+  def graduate(std: Student, endOn: LocalDate, graduated: StudentStatus): Unit
 }

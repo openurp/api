@@ -29,13 +29,6 @@ class ExecutionPlan extends AbstractCoursePlan with CoursePlan {
 
   /** 部门(培养方案的部门或者子部门) */
   var department: Department = _
-
-  /** 学生类别 */
-  var stdType: Option[StdType] = None
-
-  /** 校区 */
-  var campus: Option[Campus] = None
-
 }
 
 /** 执行计划课程组
