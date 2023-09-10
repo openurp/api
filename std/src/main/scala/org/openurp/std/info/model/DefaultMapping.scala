@@ -74,5 +74,9 @@ class DefaultMapping extends MappingModule {
       e.phone is length(20)
       e.email is length(100)
     }
+
+    bind[Foreigner] declare { e =>
+      e.cscNo & e.visaNo & e.residenceNo & e.passportNo are length(20)
+    }
   }
 }

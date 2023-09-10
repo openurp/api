@@ -51,8 +51,73 @@ object WeekTimeBuilder {
     weektimes
   }
 
+  def build(beginOn: LocalDate, endOn: LocalDate, dayInterval: Int): Seq[WeekTime] = {
+    val timeMap = Collections.newMap[LocalDate, WeekTime]
+    var newBeginOn = beginOn
+    while (!newBeginOn.isAfter(endOn)) {
+      val t = WeekTime.of(newBeginOn)
+      timeMap.get(t.startOn) match {
+        case Some(existed) => existed.weekstate = existed.weekstate | t.weekstate
+        case None => timeMap.put(t.startOn, t)
+      }
+      newBeginOn = newBeginOn.plusDays(dayInterval)
+    }
+    val times = timeMap.values.toSeq.sortBy(x => x.startOn)
+    times
+  }
+
   def on(semester: Semester): WeekTimeBuilder = {
     new WeekTimeBuilder(semester.beginOn, semester.calendar.firstWeekday)
+  }
+
+  def digest(time: WeekTime, semester: Semester): String = {
+    if (null == time) return ""
+    val beginOn = semester.beginOn
+    val firstWeekday = beginOn.getDayOfWeek.getValue
+    var timeBeginOn = time.startOn
+    while (timeBeginOn.getDayOfWeek.getValue != firstWeekday) timeBeginOn = timeBeginOn.plusDays(-1)
+    val weeksDistance = Weeks.between(beginOn, timeBeginOn)
+    var weekstate = time.weekstate.value
+    if (weeksDistance < 0) weekstate >>= (0 - weeksDistance)
+    else weekstate <<= weeksDistance
+
+    val weekIndecies = new WeekState(weekstate).weeks.toArray
+    val seqs = NumSeqParser.digest(weekIndecies).map { s =>
+      if (s.step == 1) {
+        if (s.start == s.end) s.start.toString
+        else s"${s.start}-${s.end}"
+      } else if (s.step == 2) {
+        if (s.start % 2 == 1) s"${s.start}-${s.end}单"
+        else s"${s.start}-${s.end}双"
+      } else {
+        s.toString
+      }
+    }
+    seqs.mkString(" ")
+  }
+
+  /**
+   * 合并相邻或者重叠的时间段<br>
+   * 前提条件是待合并的
+   *
+   * @param tobeMerged
+   * @return
+   */
+  def mergeTimes(tobeMerged: mutable.Buffer[WeekTime], minGap: Int): mutable.Buffer[WeekTime] = {
+    if (tobeMerged.isEmpty) return tobeMerged
+    val mergedTimeUnits = Collections.newBuffer[WeekTime]
+    val activityIter = tobeMerged.iterator
+    var toMerged = activityIter.next()
+    mergedTimeUnits.+=(toMerged)
+    while (activityIter.hasNext) {
+      val unit = activityIter.next()
+      if (toMerged.mergeable(unit, minGap)) toMerged.merge(unit, minGap)
+      else {
+        toMerged = unit
+        mergedTimeUnits += toMerged
+      }
+    }
+    mergedTimeUnits
   }
 }
 

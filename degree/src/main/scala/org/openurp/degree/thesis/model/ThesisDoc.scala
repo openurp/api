@@ -15,34 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.extern.model
+package org.openurp.degree.thesis.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.Course
-import org.openurp.base.model.AuditStatus
-import org.openurp.base.std.model.ExternStudent
+import org.beangle.data.model.pojo.Updated
 
-import java.time.{LocalDate, YearMonth}
-import scala.collection.mutable
-
-/**
- * 外校学习成绩
+/** 学位论文相关文档
  */
-class ExternGrade extends LongId with Remark with Updated {
+class ThesisDoc extends LongId, Updated {
+  /** 所处阶段 */
+  var stage: Stage = _
 
-  var externStudent: ExternStudent = _
+  /** 学生 */
+  var writer: Writer = _
 
-  var courseName: String = _
+  /** 附件路径 */
+  var filePath: String = _
 
-  var credits: Float = _
-
-  var acquiredOn: YearMonth = _
-
-  var scoreText: String = _
-
-  var exempts: mutable.Set[Course] = Collections.newSet[Course]
-
-  var status: AuditStatus = AuditStatus.Draft
+  /** 附件类型 */
+  var fileExt: String = _
 }

@@ -15,34 +15,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.extern.model
+package org.openurp.std.info.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.Course
-import org.openurp.base.model.AuditStatus
-import org.openurp.base.std.model.ExternStudent
+import org.openurp.base.std.model.Student
 
-import java.time.{LocalDate, YearMonth}
-import scala.collection.mutable
+import java.time.LocalDate
 
-/**
- * 外校学习成绩
+/** 留学生信息
  */
-class ExternGrade extends LongId with Remark with Updated {
+class Foreigner extends LongId {
+  /** 学生 */
+  var std: Student = _
 
-  var externStudent: ExternStudent = _
+  /** 护照编号 */
+  var passportNo: Option[String] = None
 
-  var courseName: String = _
+  /** 签证编号 */
+  var visaNo: Option[String] = None
 
-  var credits: Float = _
+  /** CSC编号 */
+  var cscNo: Option[String] = None
 
-  var acquiredOn: YearMonth = _
+  /** 居住许可证编号 */
+  var residenceNo: Option[String] = None
 
-  var scoreText: String = _
+  /** 护照到期时间 */
+  var passportExpired: Option[LocalDate] = None
 
-  var exempts: mutable.Set[Course] = Collections.newSet[Course]
+  /** 签证到期时间 */
+  var visaExpired: Option[LocalDate] = None
 
-  var status: AuditStatus = AuditStatus.Draft
+  /** 居住许可证到期时间 */
+  var residenceExpired: Option[LocalDate] = None
+
 }

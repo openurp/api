@@ -20,28 +20,47 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.AuditStatus
+import org.openurp.code.edu.model.Language
 
 import java.time.Instant
 
+/** 论文信息
+ */
 class ThesisPaper extends LongId with Named {
+
   var writer: Writer = _
 
+  /** 题目 */
   var title: String = _
 
+  /** 状态 */
   var status: AuditStatus = _
 
-  var keywords: Option[String] = _
+  /** 论文关键词 */
+  var keywords: Option[String] = None
 
+  /** 研究领域 */
+  var researchField: Option[String] = None
+
+  /** 撰写语种 */
+  var language: Option[Language] = None
+
+  /** 附件路径 */
   var filePath: String = _
 
+  /** 附件类型 */
   var fileExt: String = _
 
+  /** 提交时间 */
   var submitAt: Instant = _
 
+  /** 审核意见 */
   var auditOpinion: Option[String] = None
 
+  /** 反抄袭检测 */
   var copyCheck: Option[CopyCheck] = None
 
+  /** 反抄袭复检 */
   var recheck: Option[CopyCheck] = None
 
 }

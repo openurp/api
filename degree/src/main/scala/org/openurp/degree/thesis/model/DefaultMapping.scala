@@ -114,5 +114,15 @@ class DefaultMapping extends MappingModule {
     bind[CopyCheck].declare { e =>
       e.report is length(200)
     }
+
+    bind[ThesisDoc].declare { e =>
+      e.filePath is length(300)
+      e.fileExt is length(100)
+      index("", true, e.writer, e.stage)
+    }
+
+    bind[ThesisCheck].declare { e =>
+      index("", true, e.season, e.writer)
+    }
   }
 }

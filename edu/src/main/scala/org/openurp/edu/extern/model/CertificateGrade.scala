@@ -17,23 +17,21 @@
 
 package org.openurp.edu.extern.model
 
-import java.time.LocalDate
-
-import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.ExamStatus
-import org.openurp.code.edu.model.GradingMode
-import org.openurp.base.edu.model.Course
-import org.openurp.edu.extern.code.CertificateSubject
 import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.{ExamStatus, GradingMode}
+import org.openurp.edu.extern.code.CertificateSubject
 
+import java.time.{LocalDate, YearMonth}
 import scala.collection.mutable
 
 /**
  * 校外证书成绩
  */
-class CertificateGrade extends LongId with Updated{
+class CertificateGrade extends LongId with Updated {
 
   var std: Student = _
 
@@ -45,11 +43,11 @@ class CertificateGrade extends LongId with Updated{
 
   var subject: CertificateSubject = _
 
-  var certificate: Option[String] = None
+  var certificate: String = _
 
   var examNo: Option[String] = None
 
-  var acquiredOn: LocalDate = _
+  var acquiredOn: YearMonth = _
 
   var gradingMode: GradingMode = _
 

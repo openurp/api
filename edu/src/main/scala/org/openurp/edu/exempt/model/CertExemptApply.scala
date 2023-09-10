@@ -23,10 +23,10 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{AuditStatus, Department, Semester}
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.{ExamStatus, GradingMode}
+import org.openurp.code.edu.model.GradingMode
 import org.openurp.edu.extern.code.CertificateSubject
 
-import java.time.LocalDate
+import java.time.{LocalDate, YearMonth}
 import scala.collection.mutable
 
 /**
@@ -47,9 +47,9 @@ class CertExemptApply extends LongId with Updated {
   /** 科目 */
   var subject: CertificateSubject = _
   /** 证书编号 */
-  var certificate: Option[String] = None
+  var certificate: String = _
   /** 获得日期 */
-  var acquiredOn: LocalDate = _
+  var acquiredOn: YearMonth = _
   /** 免修课程 */
   var courses: mutable.Set[Course] = Collections.newSet[Course]
   /** 申请理由 */

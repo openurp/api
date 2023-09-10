@@ -17,7 +17,6 @@
 
 package org.openurp.base.service.impl
 
-import org.beangle.commons.bean.Initializing
 import org.beangle.commons.codec.digest.Digests
 import org.beangle.commons.lang.Strings
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
@@ -41,6 +40,8 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
   var teacherRoleId: Int = _
 
+  var tutorRoleId: Int = _
+
   var platformJdbcExecutor: JdbcExecutor = _
 
   if (null != platformDataSource) {
@@ -52,12 +53,14 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
       orgId = first(1).asInstanceOf[Number].intValue
       stdRoleId = platformJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "学生").getOrElse(0)
       teacherRoleId = platformJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "教师").getOrElse(0)
+      tutorRoleId = platformJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "导师").getOrElse(0)
     }
   }
 
   override def createUser(teacher: Teacher): User = {
     val staff = entityDao.get(classOf[Staff], teacher.staff.id)
-    createStaffUser(staff, teacherRoleId)
+    val roleIds = if (teacher.tutorType.isEmpty) List(teacherRoleId) else List(teacherRoleId, tutorRoleId)
+    createStaffUser(staff, roleIds)
   }
 
   /**
@@ -67,20 +70,20 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
    * @return
    */
   override def createUser(staff: Staff): User = {
-    createStaffUser(staff, 0)
+    createStaffUser(staff, List.empty)
   }
 
-  private def createStaffUser(staff: Staff, roleId: Long): User = {
-    var userCode: String = staff.code
+  private def createStaffUser(staff: Staff, roleIds: Seq[Int]): User = {
+    var oldUserCode: String = staff.code
     if (staff.persisted) {
       val existQuery = OqlBuilder.from[String](classOf[Staff].getName, "t").select("t.code")
       existQuery.where("t.id = :staffId", staff.id)
       entityDao.search(existQuery).headOption foreach { code =>
-        userCode = code
+        oldUserCode = code
       }
     }
 
-    val userQuery = OqlBuilder.from(classOf[User], "user").where("user.code=:code", userCode)
+    val userQuery = OqlBuilder.from(classOf[User], "user").where("user.code=:code", oldUserCode)
       .where("user.school =:school", staff.school)
     val users = entityDao.search(userQuery)
     val user =
@@ -106,8 +109,8 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     entityDao.saveOrUpdate(user)
 
     val password = defaultPassword(staff.idNumber.orNull)
-    val existId = findUserId(userCode)
-    createAccount(existId, staff.code, staff.name, password, UserCategories.Teacher, roleId)
+    val existId = findUserId(oldUserCode)
+    createAccount(existId, staff.code, staff.name, password, UserCategories.Teacher, roleIds)
     user
   }
 
@@ -137,7 +140,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     entityDao.saveOrUpdate(user)
 
     val password = defaultPassword(std.person.code)
-    createAccount(findUserId(std.code), std.code, std.name, password, UserCategories.Student, stdRoleId)
+    createAccount(findUserId(std.code), std.code, std.name, password, UserCategories.Student, List(stdRoleId))
     user
   }
 
@@ -166,7 +169,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
       case UserCategories.Teacher => teacherRoleId
       case _ => 0
     }
-    createAccount(findUserId(user.code), user.code, user.name, password, user.category.id, roleId)
+    createAccount(findUserId(user.code), user.code, user.name, password, user.category.id, List(roleId))
   }
 
   private def defaultPassword(idNumber: String): String = {
@@ -183,10 +186,13 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     platformJdbcExecutor.unique[java.lang.Long]("select id from ems.usr_users where org_id=" + orgId + " and code=? ", code)
   }
 
-  private def createAccount(existId: Option[java.lang.Long], code: String, name: String, password: String, categoryId: Int, roleId: Long): Unit = {
+  private def createAccount(existId: Option[java.lang.Long], code: String, name: String, password: String, categoryId: Int, roleIds: Seq[Int]): Unit = {
     val userId = existId match {
       case Some(id) =>
-        platformJdbcExecutor.update("update ems.usr_users set code=? ,name=? where id=?", code, name, id)
+        val codeName = platformJdbcExecutor.query("select code,name from ems.usr_users where id=?", id).head
+        if (codeName(0) != code || codeName(1) != name) {
+          platformJdbcExecutor.update("update ems.usr_users set code=? ,name=? ,updated_at = now() where id=?", code, name, id)
+        }
         id
       case None =>
         val userId = platformJdbcExecutor.unique[java.lang.Long]("select datetime_id()").getOrElse(0L)
@@ -202,11 +208,13 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
           + "values(?,?,?,?,current_date+180,false,true,current_date,now());",
         accountId.get, userId, domainId, "{MD5}" + Digests.md5Hex(password))
     }
-    if (roleId > 0) {
-      val roleCount = platformJdbcExecutor.unique[Long]("select count(*) from ems.usr_role_members where user_id=? and role_id=? ", userId, roleId).getOrElse(0L)
-      if (roleCount == 0) {
-        platformJdbcExecutor.update("insert into ems.usr_role_members(id,user_id,role_id,is_member,is_granter,is_manager,updated_at)"
-          + "values(datetime_id(),?,?,true,false,false,current_date);", userId, roleId)
+    roleIds foreach { roleId =>
+      if (roleId > 0) {
+        val roleCount = platformJdbcExecutor.unique[Long]("select count(*) from ems.usr_role_members where user_id=? and role_id=? ", userId, roleId).getOrElse(0L)
+        if (roleCount == 0) {
+          platformJdbcExecutor.update("insert into ems.usr_role_members(id,user_id,role_id,is_member,is_granter,is_manager,updated_at)"
+            + "values(datetime_id(),?,?,true,false,false,now());", userId, roleId)
+        }
       }
     }
   }

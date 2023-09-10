@@ -17,6 +17,7 @@
 
 package org.openurp.edu.clazz.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.Activity
@@ -31,7 +32,7 @@ import java.time.LocalDate
  * 上课对象是任务对应的教学班学生
  *
  */
-class ClazzActivity extends LongId with Ordered[ClazzActivity] with Activity {
+class ClazzActivity extends LongId, Ordered[ClazzActivity], Activity, Cloneable {
 
   /** 教学任务 */
   var clazz: Clazz = _
@@ -64,12 +65,29 @@ class ClazzActivity extends LongId with Ordered[ClazzActivity] with Activity {
   var subclazz: Option[Subclazz] = None
 
   /** 对比活动 */
-  override def compare(other: ClazzActivity): Int = {
-    //fix me
+  override def compare(that: ClazzActivity): Int = {
+    var rs = 0
+    // compare teacher// compare teacher
+    if (rs == 0) rs = teachers.size - that.teachers.size
+    // compare room// compare room
+    if (rs == 0) rs = rooms.size - that.rooms.size
+    // compare weeks// compare weeks
+    if (rs == 0) rs = time.weekstate.compareTo(that.time.weekstate)
+    if (rs == 0) rs = time.startOn.compareTo(that.time.startOn)
+    if (rs == 0) rs = time.beginAt.value - that.time.beginAt.value
     -1
   }
 
   override def startOn: LocalDate = {
     if (null != time) time.firstDay else null
+  }
+
+  override def clone(): ClazzActivity = {
+    val obj = super.clone().asInstanceOf[ClazzActivity]
+    obj.rooms = Collections.newSet[Classroom]
+    obj.teachers = Collections.newSet[Teacher]
+    obj.rooms.addAll(this.rooms)
+    obj.teachers.addAll(this.teachers)
+    obj
   }
 }

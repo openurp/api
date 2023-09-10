@@ -17,7 +17,7 @@
 
 package org.openurp.edu.extern.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
@@ -27,6 +27,8 @@ class DefaultMapping extends MappingModule {
     bind[CertificateGrade].declare { e =>
       e.scoreText is length(5)
       e.certificate & e.examNo are length(80)
+
+      index("", true, e.std, e.subject, e.acquiredOn)
     }
     bind[ExternGrade] declare { e =>
       e.courseName is length(400)
