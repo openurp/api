@@ -22,7 +22,7 @@ import org.beangle.commons.lang.time.{WeekDay, WeekState, WeekTime, Weeks}
 import org.beangle.commons.lang.{Numbers, Strings}
 import org.openurp.base.model.Semester
 
-import java.time.LocalDate
+import java.time.{DayOfWeek, LocalDate}
 import scala.collection.mutable
 
 object WeekTimeBuilder {
@@ -72,10 +72,10 @@ object WeekTimeBuilder {
 
   def digest(time: WeekTime, semester: Semester): String = {
     if (null == time) return ""
-    val beginOn = semester.beginOn
-    val firstWeekday = beginOn.getDayOfWeek.getValue
-    var timeBeginOn = time.startOn
-    while (timeBeginOn.getDayOfWeek.getValue != firstWeekday) timeBeginOn = timeBeginOn.plusDays(-1)
+    val dayofWeek = DayOfWeek.of(time.weekday.id)
+    val firstDay = DayOfWeek.of(semester.calendar.firstWeekday.id)
+    val beginOn = toDay(firstDay, semester.beginOn, dayofWeek)
+    val timeBeginOn = time.startOn
     val weeksDistance = Weeks.between(beginOn, timeBeginOn)
     var weekstate = time.weekstate.value
     if (weeksDistance < 0) weekstate >>= (0 - weeksDistance)
@@ -119,6 +119,31 @@ object WeekTimeBuilder {
     }
     mergedTimeUnits
   }
+
+  def collect(semester: Semester, dates: Iterable[LocalDate]): WeekState = {
+    val dayofWeek = DayOfWeek.of(semester.calendar.firstWeekday.id)
+    val semesterFirstday = toDay(dayofWeek, semester.beginOn, dayofWeek)
+    val weeks = new mutable.HashSet[Int]
+    for (date <- dates) {
+      val oneday = toDay(dayofWeek, date, dayofWeek)
+      val weekIdx = 1 + Weeks.between(semesterFirstday, oneday)
+      weeks.add(weekIdx)
+    }
+    WeekState.of(weeks)
+  }
+
+  private def toDay(firstDay: DayOfWeek, date: LocalDate, day: DayOfWeek) = {
+    if (date.getDayOfWeek eq day) date
+    else {
+      if (firstDay eq DayOfWeek.MONDAY) {
+        date.plusDays(day.getValue - date.getDayOfWeek.getValue)
+      } else if (firstDay eq DayOfWeek.SUNDAY) {
+        if day eq DayOfWeek.SUNDAY then date.plusDays(day.getValue - date.getDayOfWeek.getValue - 7)
+        else date.plusDays(day.getValue - date.getDayOfWeek.getValue)
+      }
+      else throw new RuntimeException("Cannot accept first day " + firstDay)
+    }
+  }
 }
 
 class WeekTimeBuilder(val startOn: LocalDate, firstDay: WeekDay) {
@@ -157,5 +182,4 @@ class WeekTimeBuilder(val startOn: LocalDate, firstDay: WeekDay) {
     while (endOn.getDayOfWeek.getValue != weekendDay.id) endOn = endOn.plusDays(1)
     endOn
   }
-
 }
