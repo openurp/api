@@ -19,10 +19,12 @@ package org.openurp.edu.extern.model
 
 import org.beangle.data.orm.MappingModule
 
-class DefaultMapping extends MappingModule {
+object DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[CertSignup]
+    bind[CertSignup].declare { e =>
+      e.examNo is length(100)
+    }
 
     bind[CertificateGrade].declare { e =>
       e.scoreText is length(5)

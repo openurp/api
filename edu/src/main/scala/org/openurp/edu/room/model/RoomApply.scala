@@ -18,17 +18,14 @@
 package org.openurp.edu.room.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.Strings
-import org.beangle.commons.lang.time.{CycleTimeDigest, WeekDay, WeekTime}
-import org.beangle.data.model.annotation.log
+import org.beangle.commons.lang.time.{CycleTimeDigest, WeekTime}
 import org.beangle.data.model.pojo.{DateRange, Named}
 import org.beangle.data.model.{Component, LongId}
 import org.openurp.base.edu.model.Classroom
 import org.openurp.base.model.{Campus, Department, School, User}
 import org.openurp.code.edu.model.ActivityType
 
-import java.time.Instant
-import java.time.format.DateTimeFormatter
+import java.time.{Instant, LocalDate}
 import java.time.temporal.ChronoUnit
 import scala.collection.mutable
 
@@ -106,6 +103,23 @@ class TimeRequest extends Component with DateRange {
   /** 申请时间 */
   var times: mutable.Buffer[WeekTime] = Collections.newBuffer[WeekTime]
 
+  def toApplyTime(): ApplyTime = {
+    val t = new ApplyTime()
+    if (times.nonEmpty) {
+      val dates = Collections.newSet[LocalDate]
+      times foreach { t => dates.addAll(t.dates) }
+      val dateList = dates.toList.sorted
+      t.beginOn = dateList.head
+      t.endOn = dateList.last
+      t.cycle = Math.abs(ChronoUnit.DAYS.between(beginOn, endOn).toInt)
+      t.beginAt = times.head.beginAt
+      t.endAt = times.head.endAt
+      t
+    } else {
+      null
+    }
+  }
+
   override def toString: String = CycleTimeDigest.digest(times, "<br>")
 }
 
@@ -113,14 +127,10 @@ class TimeRequest extends Component with DateRange {
 class SpaceRequest extends Component {
   /** 借用校区 */
   var campus: Campus = _
-
   /** 每个教室单元需要的座位数 */
   var unitAttendance: Int = 0
-
   /** 是否使用多媒体设备 */
   var requireMultimedia: Boolean = false
-
   /** 借用场所要求 */
   var roomComment: Option[String] = None
-
 }

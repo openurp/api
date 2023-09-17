@@ -19,12 +19,9 @@ package org.openurp.edu.extern.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.{Campus, Semester}
+import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.edu.extern.code.CertificateSubject
-
-import java.time.Instant
-import java.util.Date
 
 /**
  * 资格考试报名记录
@@ -42,6 +39,10 @@ class CertSignup extends LongId with Updated {
   var fee: Int = _
   /** 准考证号码 */
   var examNo: Option[String] = None
+  /** 考场 */
+  var examRoom: Option[String] = None
+  /** 座位号 */
+  var seatNo: Int = _
   /** 报名IP */
   var ip: String = _
 }

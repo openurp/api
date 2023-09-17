@@ -26,7 +26,6 @@ import org.openurp.base.model.{ProjectBased, Semester}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.*
 import org.openurp.edu.clazz.model.{Clazz, CourseTaker}
-import org.openurp.edu.grade.model.Grade
 
 import java.time.Instant
 import scala.collection.mutable
@@ -100,6 +99,9 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
   var operator: Option[String] = None
 
   var clazz: Option[Clazz] = None
+
+  /** 数据来源 */
+  var provider: Option[String] = None
 
   def credits: Float = {
     if null == std || null == course then 0f else course.getCredits(std.level)
