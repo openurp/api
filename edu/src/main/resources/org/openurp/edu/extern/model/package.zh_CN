@@ -25,3 +25,5 @@ CertSignup=资格考试报名记录
 CertSignup.fee=报名费
 CertSignup.examNo=准考证号码
 CertSignup.ip=IP
+CertSignup.examRoom=考场
+CertSignup.seatNo=座位号

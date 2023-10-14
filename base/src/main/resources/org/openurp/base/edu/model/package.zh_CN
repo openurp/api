@@ -149,3 +149,7 @@ TimeSetting.minutesPerUnit=每小节分钟数
 TeachingOffice=教研室
 TeachingOffice.director=负责人
 TeachingOffice.members=成员
+
+Holiday=假期
+Holiday.startOn=起始日期
+Holiday.switchTo=排课调整到

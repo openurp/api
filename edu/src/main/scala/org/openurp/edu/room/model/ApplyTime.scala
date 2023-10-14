@@ -44,6 +44,20 @@ class ApplyTime {
     this
   }
 
+  def applyCount: Int = {
+    build()
+    if null == beginOn then 1
+    else {
+      var startOn = beginOn
+      var cnt = 0
+      while (!startOn.isAfter(endOn)) {
+        cnt += 1
+        startOn = startOn.plusDays(cycle)
+      }
+      cnt
+    }
+  }
+
   override def toString: String = {
     CycleTimeDigest.digest(toWeektimes(), "<br>")
   }

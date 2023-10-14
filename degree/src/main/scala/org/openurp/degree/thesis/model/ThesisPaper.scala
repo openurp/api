@@ -24,7 +24,7 @@ import org.openurp.code.edu.model.Language
 
 import java.time.Instant
 
-/** 论文信息
+/** 毕业论文信息
  */
 class ThesisPaper extends LongId with Named {
 

@@ -47,6 +47,8 @@ class CertSignupConfig extends LongId with Coded with Named with InstantRange {
   var semester: Semester = _
   /** 是否预报名 */
   var prediction: Boolean = _
+  /** 允许报名的最大门数 */
+  var maxSubject: Int = _
 
   def isTimeSuitable: Boolean = {
     within(Instant.now)

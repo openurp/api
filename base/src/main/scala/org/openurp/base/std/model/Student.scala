@@ -110,6 +110,8 @@ class Student extends LongId with Coded with Named with EduLevelBased with Updat
 
   def direction: Option[Direction] = state.get.direction
 
+  def description: String = s"$code $name ${department.shortName.getOrElse(department.name)}"
+
 }
 
 /**

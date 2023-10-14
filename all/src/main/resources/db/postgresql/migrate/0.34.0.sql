@@ -8,7 +8,7 @@ alter table edu.clazzes rename column locked to capacity_locked;
 alter table edu.clazzes rename column reserved to reserved_count;
 alter table edu.clazzes rename column actual to std_count;
 
-alter table edu.clazzes add week_hours int4 ;
+alter table edu.clazzes add week_hours int4;
 update edu.clazzes set week_hours=(select c.week_hours::int4 from base.courses c where c.id=course_id);
 alter table edu.clazzes alter week_hours set not null;
 
@@ -76,3 +76,8 @@ update cfg.edu_schedule_settings ss set end_at=(select s.end_on from base.semest
 alter table edu.clazzes add plan_id bigint;
 update edu.clazzes clz set plan_id=(select min(r.plan_id) from edu.clazz_plan_relations r where r.clazz_id=clz.id);
 drop table edu.clazz_plan_relations;
+
+alter table app.std_alter_configs rename to std_std_alter_configs;
+alter table app.std_std_alter_configs set schema cfg;
+
+alter table edu.extern_grades_courses rename to extern_grades_exempts;

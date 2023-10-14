@@ -15,28 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.extern.model
+package org.openurp.base.edu.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.Project
 
-object DefaultMapping extends MappingModule {
+import java.time.LocalDate
 
-  def binding(): Unit = {
-    bind[CertSignup].declare { e =>
-      e.examNo is length(100)
-      e.examRoom is length(100)
-      index("", true, e.std, e.semester, e.subject)
-    }
+/** 假日课程调整
+ */
+class Holiday extends LongId, Updated {
 
-    bind[CertificateGrade].declare { e =>
-      e.scoreText is length(5)
-      e.certificate & e.examNo are length(80)
+  var project: Project = _
 
-      index("", true, e.std, e.subject, e.acquiredOn)
-    }
-    bind[ExternGrade] declare { e =>
-      e.courseName is length(400)
-      e.scoreText is length(20)
-    }
-  }
+  /** 起始日期 */
+  var startOn: LocalDate = _
+
+  /** 排课调整到 */
+  var switchTo: Option[LocalDate] = None
 }

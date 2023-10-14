@@ -2,6 +2,7 @@ CertSignupConfig=资格考试报名设置
 CertSignupConfig.opened=在规定的时间段内,是否可以开放
 CertSignupConfig.notice=通知
 CertSignupConfig.prediction=是否预报名
+CertSignupConfig.maxSubject=最大报名科目数
 
 CertSignupSetting=资格考试报名科目设置
 CertSignupSetting.feeOfSignup=要求报名费

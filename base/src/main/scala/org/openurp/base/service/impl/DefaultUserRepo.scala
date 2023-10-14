@@ -110,7 +110,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
     val password = defaultPassword(staff.idNumber.orNull)
     val existId = findUserId(oldUserCode)
-    createAccount(existId, staff.code, staff.name, password, UserCategories.Teacher, roleIds)
+    createAccount(existId, user, password, UserCategories.Teacher, roleIds)
     user
   }
 
@@ -128,7 +128,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         newUser.code = std.code
         val category = entityDao.get(classOf[UserCategory], UserCategories.Student)
         newUser.category = category
-        newUser.email = Option(newUser.code + "@unkown.com")
+        newUser.email = Option(newUser.code + "@unknown.com")
         newUser.beginOn = std.beginOn
         newUser.endOn = Option(std.endOn)
         newUser
@@ -140,7 +140,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     entityDao.saveOrUpdate(user)
 
     val password = defaultPassword(std.person.code)
-    createAccount(findUserId(std.code), std.code, std.name, password, UserCategories.Student, List(stdRoleId))
+    createAccount(findUserId(std.code), user, password, UserCategories.Student, List(stdRoleId))
     user
   }
 
@@ -169,7 +169,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
       case UserCategories.Teacher => teacherRoleId
       case _ => 0
     }
-    createAccount(findUserId(user.code), user.code, user.name, password, user.category.id, List(roleId))
+    createAccount(findUserId(user.code), user, password, user.category.id, List(roleId))
   }
 
   private def defaultPassword(idNumber: String): String = {
@@ -186,18 +186,27 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     platformJdbcExecutor.unique[java.lang.Long]("select id from ems.usr_users where org_id=" + orgId + " and code=? ", code)
   }
 
-  private def createAccount(existId: Option[java.lang.Long], code: String, name: String, password: String, categoryId: Int, roleIds: Seq[Int]): Unit = {
+  private def createAccount(existId: Option[java.lang.Long], user: User, password: String, categoryId: Int, roleIds: Seq[Int]): Unit = {
+    val code = user.code
+    val name = user.name
+
     val userId = existId match {
       case Some(id) =>
-        val codeName = platformJdbcExecutor.query("select code,name from ems.usr_users where id=?", id).head
-        if (codeName(0) != code || codeName(1) != name) {
-          platformJdbcExecutor.update("update ems.usr_users set code=? ,name=? ,updated_at = now() where id=?", code, name, id)
+        val data = platformJdbcExecutor.query("select code,name,mobile,email from ems.usr_users where id=?", id).head
+        if (data(0) != code || data(1) != name) {
+          platformJdbcExecutor.update("update ems.usr_users set code=?, name=?, updated_at=now() where id=?", code, name, id)
+        }
+        user.mobile foreach { mobile =>
+          if (mobile != data(2)) platformJdbcExecutor.update("update ems.usr_users set mobile=?,updated_at=now() where id=?", mobile, id)
+        }
+        user.email foreach { email =>
+          if (email != data(3)) platformJdbcExecutor.update("update ems.usr_users set email=?,updated_at=now() where id=?", email, id)
         }
         id
       case None =>
         val userId = platformJdbcExecutor.unique[java.lang.Long]("select datetime_id()").getOrElse(0L)
-        platformJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,updated_at,begin_on)"
-          + "values(?,?,?,?,?,now(),current_date);", userId, code, name, orgId, categoryId)
+        platformJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,updated_at,begin_on)"
+          + "values(?,?,?,?,?,?,?,now(),current_date);", userId, code, name, orgId, categoryId, user.mobile.orNull, user.email.orNull)
         userId
     }
     val accountCount = platformJdbcExecutor.unique[Long]("select count(*) from ems.usr_accounts where user_id=? and domain_id=? ", userId, domainId).getOrElse(0L)

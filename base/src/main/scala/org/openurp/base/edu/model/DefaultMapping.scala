@@ -26,7 +26,7 @@ class DefaultMapping extends MappingModule {
 
     bind[TimeSetting] declare { e =>
       e.name is length(20)
-      e.units is (depends("setting"),orderby("indexno"))
+      e.units is(depends("setting"), orderby("indexno"))
     }
 
     bind[CourseUnit] declare { e =>
@@ -128,6 +128,8 @@ class DefaultMapping extends MappingModule {
     bind[TeachingOffice] declare { e =>
       index("", true, e.project, e.code)
     }
+
+    bind[Holiday]
 
     all.cacheAll()
   }

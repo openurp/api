@@ -74,3 +74,12 @@ EduWorkRecord.beginOn=起始年月
 EduWorkRecord.endOn=截至年月
 EduWorkRecord.organization=学校或单位
 EduWorkRecord.duty=职务
+
+Foreigner=留学生信息
+Foreigner.passportNo=护照编号
+Foreigner.passportExpired=护照到期时间
+Foreigner.visaNo=签证编号
+Foreigner.visaExpired=签证到期时间
+Foreigner.cscNo=CSC编号
+Foreigner.residenceNo=居住许可证编号
+Foreigner.residenceExpired=居住许可证到期时间

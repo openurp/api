@@ -25,8 +25,8 @@ import org.openurp.base.edu.model.Classroom
 import org.openurp.base.model.{Campus, Department, School, User}
 import org.openurp.code.edu.model.ActivityType
 
-import java.time.{Instant, LocalDate}
 import java.time.temporal.ChronoUnit
+import java.time.{Instant, LocalDate}
 import scala.collection.mutable
 
 class RoomApply extends LongId {
@@ -111,7 +111,9 @@ class TimeRequest extends Component with DateRange {
       val dateList = dates.toList.sorted
       t.beginOn = dateList.head
       t.endOn = dateList.last
-      t.cycle = Math.abs(ChronoUnit.DAYS.between(beginOn, endOn).toInt)
+      val secondDay = if dateList.size == 1 then t.beginOn else dateList.tail.head
+      t.cycle = Math.abs(ChronoUnit.DAYS.between(beginOn, secondDay).toInt)
+      if (t.cycle == 0) t.cycle = 1
       t.beginAt = times.head.beginAt
       t.endAt = times.head.endAt
       t

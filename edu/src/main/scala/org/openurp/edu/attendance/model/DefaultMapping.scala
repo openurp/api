@@ -15,28 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.extern.model
+package org.openurp.edu.attendance.model
 
 import org.beangle.data.orm.MappingModule
 
-object DefaultMapping extends MappingModule {
+class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[CertSignup].declare { e =>
-      e.examNo is length(100)
-      e.examRoom is length(100)
-      index("", true, e.std, e.semester, e.subject)
+
+    bind[Attendance] declare { e =>
+      index("", true, e.semester, e.course, e.std)
     }
 
-    bind[CertificateGrade].declare { e =>
-      e.scoreText is length(5)
-      e.certificate & e.examNo are length(80)
-
-      index("", true, e.std, e.subject, e.acquiredOn)
-    }
-    bind[ExternGrade] declare { e =>
-      e.courseName is length(400)
-      e.scoreText is length(20)
-    }
   }
 }

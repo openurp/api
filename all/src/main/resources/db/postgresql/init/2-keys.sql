@@ -62,12 +62,14 @@ alter table base.graduate_seasons add constraint pk_ajyxkx6bgsd5hh3tst2x0qrs0 pr
 alter table base.graduate_seasons add constraint uk_q1npfkscf2dd26j0ie8sdlvl unique (project_id,code);
 alter table base.graduates add constraint pk_861dttwawbactk5wx2pb5sfg1 primary key (id);
 alter table base.graduates add constraint uk_fjm29o037eumvq25eojdp797r unique (std_id);
+alter table base.holidays add constraint pk_o7r9qruakt8wxjndgnml60u7r primary key (id);
 alter table base.major_disciplines add constraint pk_oifn3upq6ylafj81hb805ut1l primary key (id);
 alter table base.major_journals add constraint pk_7gepwk5lg9b0ixt7ww2tum8gm primary key (id);
 alter table base.majors add constraint pk_p9yolyf8gx5n3i5kh4utj6klv primary key (id);
 alter table base.majors add constraint uk_8vnop0jo5r3n5lvausdjy13aj unique (project_id,code);
 alter table base.mentors add constraint pk_b2barjxncjg1kb2ilm8dw1r3s primary key (id);
 alter table base.mentors add constraint uk_4n9545nrhwav5b96nw9k2di1t unique (staff_id);
+alter table base.mentors_projects add constraint pk_p14hk70e30r9eyqy9ol7jn5xm primary key (mentor_id,project_id);
 alter table base.minor_majors add constraint pk_puyx3wltdpl9vv77rj77l9txc primary key (id);
 alter table base.people add constraint pk_25uwl12dj9en3iflug9w23r1q primary key (id);
 alter table base.project_codes add constraint pk_h8pb4rkgymaq67flwfvm8mdvg primary key (id);
@@ -137,6 +139,8 @@ alter table cfg.qos_std_evaluate_switches add constraint pk_81sba75u2yf8yhm3tjcy
 alter table cfg.spa_coupons add constraint pk_rwsiaat8v0lgqu155yayo8bdy primary key (id);
 alter table cfg.spa_doc_types add constraint pk_2w8y445q9wgvl9ddrtljltpwt primary key (id);
 alter table cfg.spa_print_configs add constraint pk_3f8qp6ur569ahp33vlyhyo4mb primary key (id);
+alter table cfg.std_register_sessions add constraint pk_ofhf9115x2ra5xlq0vxmx13t5 primary key (id);
+alter table cfg.std_std_alter_configs add constraint pk_nyp7vi8oa6vdk3x8sx15fkdrs primary key (id);
 alter table cfg.std_transfer_options add constraint pk_kjwut08vmlyklxegooc1nftgo primary key (id);
 alter table cfg.std_transfer_schemes add constraint pk_3ccwikukhp020f3uwobm76b0b primary key (id);
 alter table cfg.std_transfer_scopes add constraint pk_3kj34q98ib4bmssbl2n33jqww primary key (id);
@@ -339,6 +343,10 @@ alter table degree.subject_applies add constraint uk_9wcnvhckvqrd0mclhi4y2cbjr u
 alter table degree.subjects add constraint pk_trw6rmspx195oy01rpbtghlsf primary key (id);
 alter table degree.subjects add constraint uk_afynx14cx8h179uyu8gnwna1h unique (season_id,name);
 alter table degree.subjects_majors add constraint pk_f9uumbw2vd9v3qwx1qd4edi4f primary key (subject_id,major_id);
+alter table degree.thesis_checks add constraint pk_h3wix678400peq8mufhpn76u9 primary key (id);
+alter table degree.thesis_checks add constraint uk_ogbi6lgf5f4fvxmghph3h9irs unique (season_id,writer_id);
+alter table degree.thesis_docs add constraint pk_tjx4cxymbuw05ywcmv3mm73cr primary key (id);
+alter table degree.thesis_docs add constraint uk_9yxnw8wag8f7k4aexkwmrjjnq unique (writer_id,stage);
 alter table degree.thesis_papers add constraint pk_blkbqehyo53i9cn2bqleseray primary key (id);
 alter table degree.thesis_papers add constraint uk_p14pjyoels7xfyutr26h795md unique (writer_id);
 alter table degree.thesis_plans add constraint pk_tn31lepw015ftlf1hgvs8a8kj primary key (id);
@@ -356,7 +364,9 @@ alter table edu.c_clazz_tags add constraint pk_onkt7xkg420ekx0t7lbx5f2in primary
 alter table edu.cert_exempt_applies add constraint pk_9mw6wwhdud4s410804223kes5 primary key (id);
 alter table edu.cert_exempt_applies_courses add constraint pk_jin6irw0guks0awaktsymujxt primary key (cert_exempt_apply_id,course_id);
 alter table edu.cert_signups add constraint pk_buvpy5j8eye2vtlladutvfisn primary key (id);
+alter table edu.cert_signups add constraint uk_ox2hp3da9vvpwtuirtsrgtrdt unique (std_id,semester_id,subject_id);
 alter table edu.certificate_grades add constraint pk_21bw15677thfojwd283r42rcx primary key (id);
+alter table edu.certificate_grades add constraint uk_s5wek526ejranitx9q1nx2uxb unique (std_id,subject_id,acquired_on);
 alter table edu.certificate_grades_exempts add constraint pk_nbymota90h5p6y4yvufp7nmea primary key (certificate_grade_id,course_id);
 alter table edu.clazz_activities add constraint pk_5rankuhqjj88fbic1k8vl9ib0 primary key (id);
 alter table edu.clazz_activities_rooms add constraint pk_mu2b4wc5pvt35yub2mwe0gndf primary key (activity_id,classroom_id);
@@ -374,6 +384,7 @@ alter table edu.clazzes_ability_rates add constraint pk_kx0jp80tganm39yvlc4lewj7
 alter table edu.clazzes_tags add constraint pk_e1e2u69ixc5hje4f436327g1t primary key (clazz_id,clazz_tag_id);
 alter table edu.clazzes_teachers add constraint pk_38x8fp2quo9ykkur4hvt7khir primary key (clazz_id,teacher_id,idx);
 alter table edu.course_audit_results add constraint pk_e8y9knf7dh7k1rsjgal3b5d6x primary key (id);
+alter table edu.course_audit_results add constraint uk_f9jth1bg1w3pq7io6y2wtmw7a unique (group_result_id,course_id);
 alter table edu.course_grade_states add constraint pk_ss5mvl6jqttk0ubobqdhdni8u primary key (id);
 alter table edu.course_grades add constraint pk_1ucmwigfmllurolusv5j8d5xv primary key (id);
 alter table edu.course_grades add constraint uk_xitxltysiibv3efvpe69hk1j unique (std_id,course_id,semester_id,crn);
@@ -559,6 +570,7 @@ alter table std.examinees add constraint pk_1e8il6rh29256vdjtbwh1y0fe primary ke
 alter table std.examinees add constraint uk_2bqu9xw63m537f7cby311u7vr unique (std_id);
 alter table std.exchange_programs add constraint pk_md99sroe2nv8btxk3cr7tp2an primary key (id);
 alter table std.exchange_programs_schools add constraint pk_da8usceea51yrhkys93r6wcgw primary key (exchange_program_id,extern_school_id);
+alter table std.foreigners add constraint pk_tr2lwiprket01b5xwsnoci4qd primary key (id);
 alter table std.freshmen add constraint pk_lyewxqqmbjf9rgu4w4se50ddk primary key (id);
 alter table std.graduate_audit_items add constraint pk_dhwdi0ipn8oajjhrfb16u0ud primary key (id);
 alter table std.graduate_batches add constraint pk_kb2t7xdi7imcxukogahdjojtq primary key (id);

@@ -39,7 +39,7 @@ class DefaultMapping extends MappingModule {
       e.operator is length(100)
       e.scoreText is length(5)
       e.remark is length(200)
-      e.provider is length(50)
+      e.provider is length(80)
       e.examGrades & e.gaGrades are depends("courseGrade")
 
       index("", true, e.std, e.course, e.semester, e.crn)

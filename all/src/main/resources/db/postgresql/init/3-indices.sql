@@ -18,6 +18,7 @@ create index idx_1r68feb85enylfu5hhehp92vj on base.direction_journals (direction
 create index idx_7389oy88qypl4v9gudyudoi07 on base.directions (major_id);
 create index idx_3d8mbewqjbirn81bfhk47iwf5 on base.major_disciplines (major_id);
 create index idx_9tpxhrx7soog576asswjsm796 on base.major_journals (major_id);
+create index idx_ppbhk85s88rolvwv4tm8d2kmv on base.mentors_projects (mentor_id);
 create index idx_ajflqx9dbuh26q7nfapkr0rkh on base.people (code);
 create index idx_ars8ki40prfrp0dh90qqcsrxu on base.projects_campuses (project_id);
 create index idx_sy5ms6fqa1if8ox26dljlhk0v on base.projects_departments (project_id);
