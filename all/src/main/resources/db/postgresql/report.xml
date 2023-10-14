@@ -2,8 +2,14 @@
 <report title="数据库设计说明">
   <system name="教学管理系统" version="0.34.3"/>
   <database xml="database.xml"/>
+<!--
   <pages template="singlehtml" extension=".html">
     <page name="index"/>
+  </pages>
+-->
+  <pages template="jekyll" extension=".md">
+    <page name="index" />
+    <page name="group" iterable="true"/>
   </pages>
 
   <schemas>
