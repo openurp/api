@@ -1235,8 +1235,9 @@
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="category_id" type="integer" nullable="false" comment="高校性质类别ID"/>
             <column name="code" type="varchar(10)" nullable="false" unique="true" comment="代码"/>
-            <column name="division_id" type="integer" comment="省份ID"/>
+            <column name="division_id" type="integer" nullable="false" comment="省份ID"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="identifier" type="varchar(10)" comment="标识码(10位)"/>
             <column name="institution_id" type="integer" nullable="false" comment="研究机构ID"/>
@@ -1252,6 +1253,8 @@
                          referenced-column="id"/>
             <foreign-key name="fk_g91v3wtr0hm2wnlhslybilkph" column="institution_id"
                          referenced-table="code.institutions" referenced-column="id"/>
+            <foreign-key name="fk_ewpo25xxpkxlls6vv52k62vi8" column="category_id"
+                         referenced-table="code.institution_categories" referenced-column="id"/>
           </foreign-keys>
           <unique-keys>
             <unique-key name="schools_code_key" columns="code"/>
@@ -3266,6 +3269,23 @@
           <primary-key name="pk_4yqih3x42nqjh4tigc0evwlgm" columns="id"/>
           <unique-keys>
             <unique-key name="id_types_code_key" columns="code"/>
+          </unique-keys>
+        </table>
+        <table name="institution_categories" comment="高校性质类别@edu">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="修改时间"/>
+          </columns>
+          <primary-key name="pk_fd9fbuxbvexuhcw9jfsvrvdtp" columns="id"/>
+          <unique-keys>
+            <unique-key name="institution_categories_code_key" columns="code"/>
           </unique-keys>
         </table>
         <table name="institutions" comment="科研机构@edu">

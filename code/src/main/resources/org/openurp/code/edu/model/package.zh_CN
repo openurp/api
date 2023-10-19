@@ -26,6 +26,7 @@ HskLevel=汉语水平考试等级
 HskLevel.grade=等级
 
 Institution=科研机构
+InstitutionCategory=高校性质类别
 Language=语种
 LanguageAbility=语种熟练程度
 

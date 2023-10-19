@@ -110,6 +110,14 @@ class HskLevel extends CodeBean {
 @code("industry")
 class Institution extends CodeBean
 
+/** 学校性质类别
+ * 01综合大学,02理工院校,03农林院校,04林业院校,
+ * 05医药院校,06师范院校,07语文院校,08财经院校
+ * 09政法院校,10体育院校,11艺术院校,12民族院校,
+ */
+@code("nation")
+class InstitutionCategory extends CodeBean
+
 /** 修课类别
  * （正常初修、重修、免修、旁听）
  *

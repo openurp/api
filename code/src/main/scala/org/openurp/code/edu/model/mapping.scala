@@ -33,6 +33,7 @@ class DefaultMapping extends MappingModule {
     bind[EducationMode]
     bind[HskLevel]
     bind[Institution]
+    bind[InstitutionCategory]
     bind[Degree]
     bind[DegreeLevel]
     bind[DisciplineCategory]

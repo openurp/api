@@ -19,7 +19,7 @@ package org.openurp.base.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
-import org.openurp.code.edu.model.Institution
+import org.openurp.code.edu.model.{Institution, InstitutionCategory}
 import org.openurp.code.geo.model.Division
 
 /**
@@ -28,6 +28,10 @@ import org.openurp.code.geo.model.Division
 class School extends IntId with Coded with Named with TemporalOn {
   /** 机构 */
   var institution: Institution = _
+  /** 性质类别 */
+  var category: InstitutionCategory = _
+  /** 省份 */
+  var division: Division = _
   /** logo 地址 */
   var logoUrl: String = _
   /** 简称 */
@@ -38,7 +42,4 @@ class School extends IntId with Coded with Named with TemporalOn {
   var superiorOrg: Option[String] = None
   /** 统一信用代码（unified social credit code) */
   var uscc: Option[String] = None
-  /** 省份 */
-  var division: Option[Division] = None
-
 }

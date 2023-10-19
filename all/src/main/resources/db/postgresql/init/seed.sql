@@ -225,12 +225,26 @@ insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(
 insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(12,'12','管理学',current_date -10*365,now());
 insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(13,'13','艺术学',current_date -10*365,now());
 insert into code.discipline_categories(id,code,name,begin_on,updated_at) values(14,'14','交叉学科',current_date -10*365,now());
+--学校性质类别
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(1,'01','综合大学',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(2,'02','理工院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(3,'03','农林院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(4,'04','林业院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(5,'05','医药院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(6,'06','师范院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(7,'07','语文院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(8,'08','财经院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(9,'09','政法院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(10,'10','体育院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(11,'11','艺术院校',current_date -10,now());
+insert into code.institution_categories(id,code,name,begin_on,updated_at) values(12,'12','民族院校',current_date -10,now());
+
 -----------如下代码需要插入后修改---------
 insert into code.institutions(id,code,name,begin_on,updated_at)
 values(10000,'10000','URP学院',current_date -10,now());
 
 insert into base.schools(id,name,institution_id,logo_url,code,begin_on,short_name)
-values(10000,'URP学院',10000,'http://openurp.net/logo.png',10000,current_date -10,'上音');
+values(10000,'URP学院',10000,'http://openurp.net/logo.png',10000,current_date -10,'URP');
 
 insert into base.departments(id,code,name,research,teaching,school_id,begin_on,updated_at,indexno)
 values(1,'01','软件学院',true,true,10000,current_date -365,now(),'01');

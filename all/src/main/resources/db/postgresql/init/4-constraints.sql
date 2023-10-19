@@ -116,6 +116,7 @@ alter table base.school_lengths add constraint fk_87mhgodwqfrpxle8d86utpq7f fore
 alter table base.school_lengths add constraint fk_j1yagjj51c2c0kawbwj0id46w foreign key (to_grade_id) references base.grades (id);
 alter table base.school_lengths add constraint fk_lff6u1b9psve5syx6ptggugl5 foreign key (major_id) references base.majors (id);
 alter table base.school_lengths add constraint fk_ny033y7pameoqo6j69sw3xguk foreign key (from_grade_id) references base.grades (id);
+alter table base.schools add constraint fk_ewpo25xxpkxlls6vv52k62vi8 foreign key (category_id) references code.institution_categories (id);
 alter table base.schools add constraint fk_g91v3wtr0hm2wnlhslybilkph foreign key (institution_id) references code.institutions (id);
 alter table base.schools add constraint fk_i0amwk9vd4lhgjtb2c943edtf foreign key (division_id) references code.divisions (id);
 alter table base.semester_stages add constraint fk_jl04jvpom0k6wop7nh1eh3fse foreign key (semester_id) references base.semesters (id);

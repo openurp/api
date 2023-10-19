@@ -236,6 +236,8 @@ alter table code.hsk_levels add constraint hsk_levels_code_key unique (code);
 alter table code.hsk_levels add constraint pk_ljbtoh8dew8tptj5qj2hvw4o primary key (id);
 alter table code.id_types add constraint id_types_code_key unique (code);
 alter table code.id_types add constraint pk_4yqih3x42nqjh4tigc0evwlgm primary key (id);
+alter table code.institution_categories add constraint institution_categories_code_key unique (code);
+alter table code.institution_categories add constraint pk_fd9fbuxbvexuhcw9jfsvrvdtp primary key (id);
 alter table code.institutions add constraint institutions_code_key unique (code);
 alter table code.institutions add constraint pk_bfw2t7ynqlyotm6eyi4dwgtk9 primary key (id);
 alter table code.job_statuses add constraint job_statuses_code_key unique (code);
