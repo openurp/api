@@ -66,6 +66,10 @@ School=学校信息
 School.institution=研究机构
 School.shortName=简称
 School.logoUrl=Logo URL
+School.identifier=标识码(10位)
+School.superiorOrg=主管部门
+School.uscc=统一信用代码
+School.division=省份
 
 User=通用人员信息
 User.code=人员帐号
@@ -120,10 +124,6 @@ Semester.schoolYear=学年度,格式2005-2006
 Semester.calendar=教学日历方案类别
 Semester.archived=是否归档
 Semester.stages=阶段列表
-
-Dayoff=调休
-Dayoff.workingDay=工作日
-Dayoff.shiftDay=调休日
 
 CalendarStage=日历阶段
 CalendarStage.vacation=是否假期

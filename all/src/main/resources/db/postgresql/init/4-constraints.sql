@@ -48,7 +48,6 @@ alter table base.courses_textbooks add constraint fk_38taebjh83w5og5djoimpnhr4 f
 alter table base.courses_textbooks add constraint fk_ftx0i3celk0ea09wc5dnurtnn foreign key (course_id) references base.courses (id);
 alter table base.courses_xmajors add constraint fk_9biy5qi9daaupcyu0lc3i5qia foreign key (major_id) references base.majors (id);
 alter table base.courses_xmajors add constraint fk_gs85u3ho2s4ju0b0ri9vo1txo foreign key (course_id) references base.courses (id);
-alter table base.dayoffs add constraint fk_1m93oob1vwgaw129a39ouyyg1 foreign key (semester_id) references base.semesters (id);
 alter table base.departments add constraint fk_63q917a0aq92i7gcw6h7f1jrv foreign key (parent_id) references base.departments (id);
 alter table base.departments add constraint fk_8ouv4m3l92m888dhiwaoqesb0 foreign key (category_id) references code.department_categories (id);
 alter table base.departments add constraint fk_9fwvupr4xfhftlrl40k0ga8u5 foreign key (school_id) references base.schools (id);
@@ -118,6 +117,7 @@ alter table base.school_lengths add constraint fk_j1yagjj51c2c0kawbwj0id46w fore
 alter table base.school_lengths add constraint fk_lff6u1b9psve5syx6ptggugl5 foreign key (major_id) references base.majors (id);
 alter table base.school_lengths add constraint fk_ny033y7pameoqo6j69sw3xguk foreign key (from_grade_id) references base.grades (id);
 alter table base.schools add constraint fk_g91v3wtr0hm2wnlhslybilkph foreign key (institution_id) references code.institutions (id);
+alter table base.schools add constraint fk_i0amwk9vd4lhgjtb2c943edtf foreign key (division_id) references code.divisions (id);
 alter table base.semester_stages add constraint fk_jl04jvpom0k6wop7nh1eh3fse foreign key (semester_id) references base.semesters (id);
 alter table base.semester_stages add constraint fk_ngksdip5d5pfa6ucc660pc4fa foreign key (stage_id) references base.calendar_stages (id);
 alter table base.semesters add constraint fk_96a1r6k5ai5b4h27k6h5jqo08 foreign key (calendar_id) references base.calendars (id);

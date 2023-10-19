@@ -47,7 +47,6 @@ alter table base.courses_prerequisites add constraint pk_oshk6vwdtq9ycqsmj1jh6nx
 alter table base.courses_teachers add constraint pk_lj3gh310g6ro1s6t13qunca7a primary key (course_id,teacher_id);
 alter table base.courses_textbooks add constraint pk_su8h61lhgrbuv4l18nkjb874 primary key (course_id,textbook_id);
 alter table base.courses_xmajors add constraint pk_2g7t6j5hy2w3bltscs5tq09d4 primary key (course_id,major_id);
-alter table base.dayoffs add constraint pk_7180815am4o2cdnqinp2upxi1 primary key (id);
 alter table base.departments add constraint pk_njmudssqklm265fj3qxrl6v4i primary key (id);
 alter table base.departments add constraint uk_blem78dvbmeuekoy0jg6px6j7 unique (school_id,code);
 alter table base.departments_campuses add constraint pk_hayeukvl4wxa5t4wj8u012cvy primary key (department_id,campus_id);

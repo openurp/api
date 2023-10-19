@@ -28,6 +28,9 @@ class DefaultMapping extends MappingModule {
     bind[School] declare { e =>
       e.code.is(length(10), unique)
       e.name is length(50)
+      e.superiorOrg is length(50)
+      e.uscc is length(18)
+      e.identifier is length(10)
     }
 
     bind[Department] declare { e =>
@@ -76,7 +79,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Person].declare { e =>
-      e.code is length (30)
+      e.code is length(30)
       e.name.familyName & e.name.givenName are length(80)
       e.name.formatedName is length(100)
       e.name.middleName is length(50)
@@ -126,16 +129,11 @@ class DefaultMapping extends MappingModule {
       e.code is length(15)
       e.name & e.schoolYear are length(10)
       e.stages is depends("semester")
-      e.dayoffs is depends("semester")
       index("", true, e.calendar, e.code)
     }.generator("code")
 
     bind[SemesterStage] declare { e =>
       e.remark is length(500)
-    }
-
-    bind[Dayoff] declare { e =>
-      e.remark is length(100)
     }
 
     bind[Staff].declare { e =>

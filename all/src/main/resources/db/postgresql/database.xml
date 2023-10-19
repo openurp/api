@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.34.3">
+<db engine="PostgreSQL" version="0.34.4">
   <schemas>
     <schema name="base">
       <tables>
@@ -623,23 +623,6 @@
             <index name="idx_2cpvhk7d040sh5temf5afvht8" columns="course_id"/>
           </indexes>
         </table>
-        <table name="dayoffs" comment="调休@common">
-          <columns>
-            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="remark" type="varchar(100)" comment="备注"/>
-            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
-            <column name="shift_day" type="date" nullable="false" comment="调休日"/>
-            <column name="working_day" type="date" nullable="false" comment="工作日"/>
-          </columns>
-          <primary-key name="pk_7180815am4o2cdnqinp2upxi1" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_1m93oob1vwgaw129a39ouyyg1" column="semester_id" referenced-table="base.semesters"
-                         referenced-column="id"/>
-          </foreign-keys>
-          <indexes>
-            <index name="idx_b927vofr1hyrul1haqk21kh4l" columns="semester_id"/>
-          </indexes>
-        </table>
         <table name="departments" comment="部门组织机构信息@common">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
@@ -1253,14 +1236,20 @@
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
             <column name="code" type="varchar(10)" nullable="false" unique="true" comment="代码"/>
+            <column name="division_id" type="integer" comment="省份ID"/>
             <column name="end_on" type="date" comment="失效日期"/>
+            <column name="identifier" type="varchar(10)" comment="标识码(10位)"/>
             <column name="institution_id" type="integer" nullable="false" comment="研究机构ID"/>
             <column name="logo_url" type="varchar(255)" nullable="false" comment="Logo URL"/>
             <column name="name" type="varchar(50)" nullable="false" comment="名称"/>
             <column name="short_name" type="varchar(255)" comment="简称"/>
+            <column name="superior_org" type="varchar(50)" comment="主管部门"/>
+            <column name="uscc" type="varchar(18)" comment="统一信用代码"/>
           </columns>
           <primary-key name="pk_rb90lq0thr3gqpksvhme60v6r" columns="id"/>
           <foreign-keys>
+            <foreign-key name="fk_i0amwk9vd4lhgjtb2c943edtf" column="division_id" referenced-table="code.divisions"
+                         referenced-column="id"/>
             <foreign-key name="fk_g91v3wtr0hm2wnlhslybilkph" column="institution_id"
                          referenced-table="code.institutions" referenced-column="id"/>
           </foreign-keys>

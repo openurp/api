@@ -20,12 +20,25 @@ package org.openurp.base.model
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
 import org.openurp.code.edu.model.Institution
+import org.openurp.code.geo.model.Division
 
 /**
  * 学校
  */
 class School extends IntId with Coded with Named with TemporalOn {
+  /** 机构 */
   var institution: Institution = _
+  /** logo 地址 */
   var logoUrl: String = _
+  /** 简称 */
   var shortName: Option[String] = None
+  /** 标识码(10位) */
+  var identifier: Option[String] = None
+  /** 主管部门 */
+  var superiorOrg: Option[String] = None
+  /** 统一信用代码（unified social credit code) */
+  var uscc: Option[String] = None
+  /** 省份 */
+  var division: Option[Division] = None
+
 }

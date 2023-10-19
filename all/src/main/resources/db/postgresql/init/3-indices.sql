@@ -11,7 +11,6 @@ create index idx_5uwkw1b4k9hep46wquup9fhus on base.courses_prerequisites (course
 create index idx_9p2rpmgl437gq3r5n1cwsjyo9 on base.courses_teachers (course_id);
 create index idx_cwi8j5mcog4kvgv6keicpliwn on base.courses_textbooks (course_id);
 create index idx_2cpvhk7d040sh5temf5afvht8 on base.courses_xmajors (course_id);
-create index idx_b927vofr1hyrul1haqk21kh4l on base.dayoffs (semester_id);
 create index idx_lloboi12ir2a1q541ntsr7kao on base.departments (parent_id);
 create index idx_4tia0kw51tgg3ruidjnm1q02k on base.departments_campuses (department_id);
 create index idx_1r68feb85enylfu5hhehp92vj on base.direction_journals (direction_id);

@@ -1,0 +1,10 @@
+drop table base.dayoffs cascade;
+alter table base.schools add column division_id integer;
+alter table base.schools add column identifier varchar(10);
+alter table base.schools add column superior_org varchar(50);
+alter table base.schools add column uscc varchar(18);
+alter table base.schools add constraint fk_i0amwk9vd4lhgjtb2c943edtf foreign key (division_id) references code.divisions (id);
+comment on column base.schools.identifier is '标识码(10位)';
+comment on column base.schools.institution_id is '研究机构ID';
+comment on column base.schools.superior_org is '主管部门';
+comment on column base.schools.uscc is '统一信用代码';
