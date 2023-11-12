@@ -36,6 +36,8 @@ alter table base.courses add constraint fk_q1ondsu2pym3p0lq3jkvwrudn foreign key
 alter table base.courses add constraint fk_sv2mdywju86wq12x4did4xd78 foreign key (department_id) references base.departments (id);
 alter table base.courses_ability_rates add constraint fk_gmkdn8k97mgmyfmxr8t6qp4vq foreign key (course_ability_rate_id) references base.c_course_ability_rates (id);
 alter table base.courses_ability_rates add constraint fk_ny3ok1iohat9t522ldim3hhi7 foreign key (course_id) references base.courses (id);
+alter table base.courses_directions add constraint fk_mqh5wxs205vxjdn03nxd4xqwx foreign key (direction_id) references base.directions (id);
+alter table base.courses_directions add constraint fk_tonpu8hysqc3uwnthcu2jyhhd foreign key (course_id) references base.courses (id);
 alter table base.courses_grading_modes add constraint fk_7i9hlkj25vis9lrhu46o4uefx foreign key (grading_mode_id) references code.grading_modes (id);
 alter table base.courses_grading_modes add constraint fk_jrqhe3q83vm6pywb00r3py3ya foreign key (course_id) references base.courses (id);
 alter table base.courses_majors add constraint fk_dayh72llaqamf2xkwycii9yw9 foreign key (major_id) references base.majors (id);
@@ -333,6 +335,9 @@ alter table degree.thesis_reviews add constraint fk_p4cwkm8clkna9hce1b74yym12 fo
 alter table degree.writers add constraint fk_2v1d94tuy267k9epwofon37nx foreign key (season_id) references base.graduate_seasons (id);
 alter table degree.writers add constraint fk_s1d0osd7bxpkgr9514gsshs0s foreign key (advisor_id) references degree.advisors (id);
 alter table degree.writers add constraint fk_sp75hvrytpw8ewhr3upnj7b69 foreign key (std_id) references base.students (id);
+alter table edu.attendances add constraint fk_3rkwlet3ptnhlhlrkhjy0o2u7 foreign key (semester_id) references base.semesters (id);
+alter table edu.attendances add constraint fk_ejex8x13p9qoo55i6oqrmpvnd foreign key (std_id) references base.students (id);
+alter table edu.attendances add constraint fk_g8lphmp6k3q3l6gj7vl359tss foreign key (course_id) references base.courses (id);
 alter table edu.c_certificate_subjects add constraint fk_m1qdqwvk4xxiwp7psi53vfbxx foreign key (category_id) references edu.c_certificate_categories (id);
 alter table edu.cert_exempt_applies add constraint fk_72ghyx5kpvd8norg54u587q89 foreign key (semester_id) references base.semesters (id);
 alter table edu.cert_exempt_applies add constraint fk_e57o4cyo3l03jsic3ectaayd4 foreign key (subject_id) references edu.c_certificate_subjects (id);
@@ -636,6 +641,8 @@ alter table edu.std_course_groups add constraint fk_c4w3os7mbgrf9k17dxjg1bo4u fo
 alter table edu.std_course_groups add constraint fk_gx6cny9c0ossyt0x9vwd3kl1i foreign key (course_type_id) references base.c_course_types (id);
 alter table edu.std_credit_stats add constraint fk_4ha5yos34k4v7gy21pjjfxns1 foreign key (semester_id) references base.semesters (id);
 alter table edu.std_credit_stats add constraint fk_5v34kkq90rx1oik1hsu700fw3 foreign key (std_id) references base.students (id);
+alter table edu.std_dayoffs add constraint fk_2ka4wcnq73cywuhkuxstg0r35 foreign key (std_id) references base.students (id);
+alter table edu.std_dayoffs add constraint fk_kowipw86myhy0cmwskdjchv36 foreign key (semester_id) references base.semesters (id);
 alter table edu.std_gpas add constraint fk_bh0csdi3p4htsjgkvpi7yrikg foreign key (project_id) references base.projects (id);
 alter table edu.std_gpas add constraint fk_h1o63hxeorv31hy6x0palswoc foreign key (std_id) references base.students (id);
 alter table edu.std_plan_courses add constraint fk_4g11tb51xamggekgf8ldt04vn foreign key (course_id) references base.courses (id);

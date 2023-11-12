@@ -1,0 +1,7 @@
+StdDayoff=学生请假
+StdDayoff.dayoffType=请假类型
+StdDayoff.reason=请假事由
+
+Attendance=课程考勤
+Attendance.status=出勤状态
+Attendance.leave=请假状态

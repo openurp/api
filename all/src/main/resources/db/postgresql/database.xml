@@ -527,6 +527,22 @@
             <index name="idx_1frqftcod45ghtxsmgci3x40s" columns="course_id"/>
           </indexes>
         </table>
+        <table name="courses_directions" comment="面向专业方向@edu">
+          <columns>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="direction_id" type="bigint" nullable="false" comment="方向信息 专业领域ID"/>
+          </columns>
+          <primary-key name="pk_136dwy0fmose8fj6v9aak3pey" columns="course_id,direction_id"/>
+          <foreign-keys>
+            <foreign-key name="fk_tonpu8hysqc3uwnthcu2jyhhd" column="course_id" referenced-table="base.courses"
+                         referenced-column="id"/>
+            <foreign-key name="fk_mqh5wxs205vxjdn03nxd4xqwx" column="direction_id" referenced-table="base.directions"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <indexes>
+            <index name="idx_nsr0sov8n153ey2nvko5wgxei" columns="course_id"/>
+          </indexes>
+        </table>
         <table name="courses_grading_modes" comment="成绩记录方式@edu">
           <columns>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
@@ -543,7 +559,7 @@
             <index name="idx_stfe4bsgtttmfke9q01mcn86k" columns="course_id"/>
           </indexes>
         </table>
-        <table name="courses_majors" comment="针对专业@edu">
+        <table name="courses_majors" comment="面向专业@edu">
           <columns>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
             <column name="major_id" type="bigint" nullable="false" comment="专业ID"/>
@@ -2192,7 +2208,58 @@
                          referenced-column="id"/>
           </foreign-keys>
         </table>
-
+        <table name="spa_coupons" comment="优惠券@spa.config">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
+            <column name="count_per_std" type="integer" nullable="false" defaultValue="0"
+                    comment="每个人可以领取的数量"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="end_on" type="date" nullable="false" comment="结束日期"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_rwsiaat8v0lgqu155yayo8bdy" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_kqys2g369af3kdo2wahdghqmg" column="doc_type_id" referenced-table="cfg.spa_doc_types"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="spa_doc_types" comment="文档类型@spa.config">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="admin_url" type="varchar(255)" comment="管理人员打印地址"/>
+            <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
+            <column name="downloadable" type="boolean" nullable="false" defaultValue="false" comment="可下载的"/>
+            <column name="enable_user_password" type="boolean" nullable="false" defaultValue="false"
+                    comment="下载时是否启用用户密码"/>
+            <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="是否启用"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="notice" type="varchar(3000)" comment="通知公告"/>
+            <column name="orientation" type="integer" nullable="false" comment="纵向还是横向，默认纵向"/>
+            <column name="page_size" type="integer" nullable="false" comment="纸张大小"/>
+            <column name="url" type="varchar(255)" nullable="false" comment="访问地址"/>
+          </columns>
+          <primary-key name="pk_2w8y445q9wgvl9ddrtljltpwt" columns="id"/>
+        </table>
+        <table name="spa_print_configs" comment="打印配置@spa.config">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="max_limit" type="integer" nullable="false" defaultValue="0" comment="最多打印次数"/>
+            <column name="price" type="integer" nullable="false" defaultValue="0"
+                    comment="单价，以分为单位，免费设置为0"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
+          </columns>
+          <primary-key name="pk_3f8qp6ur569ahp33vlyhyo4mb" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_980vypmo5ogrida8elus811o5" column="doc_type_id" referenced-table="cfg.spa_doc_types"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
         <table name="std_register_sessions" comment="注册批次@register.config">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -4271,6 +4338,9 @@
           <unique-keys>
             <unique-key name="uk_9wcnvhckvqrd0mclhi4y2cbjr" columns="writer_id"/>
           </unique-keys>
+          <indexes>
+            <index name="idx_9pvh5lmgs2d11b304e8jmqt8q" columns="last_id"/>
+          </indexes>
         </table>
         <table name="subjects" comment="论文开题题目@thesis">
           <columns>
@@ -4519,6 +4589,28 @@
     </schema>
     <schema name="edu">
       <tables>
+        <table name="attendances" comment="课程考勤@attendance">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="leave" type="bigint" nullable="false" defaultValue="0" comment="请假状态"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
+            <column name="status" type="bigint" nullable="false" defaultValue="0" comment="出勤状态"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
+          </columns>
+          <primary-key name="pk_2t9o47wqtt7xk1qlypcetbjw8" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_ejex8x13p9qoo55i6oqrmpvnd" column="std_id" referenced-table="base.students"
+                         referenced-column="id"/>
+            <foreign-key name="fk_g8lphmp6k3q3l6gj7vl359tss" column="course_id" referenced-table="base.courses"
+                         referenced-column="id"/>
+            <foreign-key name="fk_3rkwlet3ptnhlhlrkhjy0o2u7" column="semester_id" referenced-table="base.semesters"
+                         referenced-column="id"/>
+          </foreign-keys>
+          <unique-keys>
+            <unique-key name="uk_cmxo2cohpt1qv4qsirn68cr3x" columns="semester_id,course_id,std_id"/>
+          </unique-keys>
+        </table>
         <table name="c_certificate_categories" comment="校外考试种类@extern.code">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
@@ -7030,6 +7122,24 @@
                          referenced-column="id"/>
           </foreign-keys>
         </table>
+        <table name="std_dayoffs" comment="学生请假@attendance">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_at" type="timestamptz" nullable="false" comment="开始时间"/>
+            <column name="dayoff_type" type="integer" nullable="false" comment="请假类型"/>
+            <column name="end_at" type="timestamptz" nullable="false" comment="结束时间"/>
+            <column name="reason" type="varchar(200)" nullable="false" comment="请假事由"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
+          </columns>
+          <primary-key name="pk_2qd9rpbufn0f9b49fw2mxetdn" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_2ka4wcnq73cywuhkuxstg0r35" column="std_id" referenced-table="base.students"
+                         referenced-column="id"/>
+            <foreign-key name="fk_kowipw86myhy0cmwskdjchv36" column="semester_id" referenced-table="base.semesters"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
         <table name="std_gpas" comment="学生成绩绩点统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -7312,7 +7422,43 @@
                          referenced-column="id"/>
           </foreign-keys>
         </table>
-
+        <table name="spa_download_logs" comment="下载流水@spa.log">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
+            <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
+          </columns>
+          <primary-key name="pk_lcqw7ty5jppf59n7h1l8uhbwq" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_avr0jfq4pxl6dk16i89v8u82v" column="doc_type_id" referenced-table="cfg.spa_doc_types"
+                         referenced-column="id"/>
+            <foreign-key name="fk_ky7l7hruvkldo49eq9vlkgofl" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
+        <table name="spa_print_logs" comment="打印流水@spa.log">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
+            <column name="payed" type="integer" nullable="false" defaultValue="0" comment="支付费用"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
+                    comment="更新时间"/>
+            <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
+          </columns>
+          <primary-key name="pk_2nfredgb8p5h5rejmbm3nwr5m" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_3d8hwkwr4xo3xw1fi17cyv1kv" column="doc_type_id" referenced-table="cfg.spa_doc_types"
+                         referenced-column="id"/>
+            <foreign-key name="fk_okwgt76nd0hg6s8hruatfjruv" column="user_id" referenced-table="base.users"
+                         referenced-column="id"/>
+          </foreign-keys>
+        </table>
         <table name="std_transfer_apply_logs" comment="转专业申请日志@transfer.config">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -8215,59 +8361,7 @@
     </schema>
     <schema name="spa">
       <tables>
-        <table name="coupons" comment="优惠券@core">
-          <columns>
-            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
-            <column name="count_per_std" type="integer" nullable="false" defaultValue="0"
-                    comment="每个人可以领取的数量"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
-            <column name="end_on" type="date" nullable="false" comment="结束日期"/>
-            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
-                    comment="更新时间"/>
-          </columns>
-          <primary-key name="pk_rwsiaat8v0lgqu155yayo8bdy" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_kqys2g369af3kdo2wahdghqmg" column="doc_type_id" referenced-table="spa.doc_types"
-                         referenced-column="id"/>
-          </foreign-keys>
-        </table>
-        <table name="doc_types" comment="文档类型@core">
-          <columns>
-            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="admin_url" type="varchar(255)" comment="管理人员打印地址"/>
-            <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
-            <column name="downloadable" type="boolean" nullable="false" defaultValue="false" comment="可下载的"/>
-            <column name="enable_user_password" type="boolean" nullable="false" defaultValue="false"
-                    comment="下载时是否启用用户密码"/>
-            <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="是否启用"/>
-            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
-            <column name="notice" type="varchar(3000)" comment="通知公告"/>
-            <column name="orientation" type="integer" nullable="false" comment="纵向还是横向，默认纵向"/>
-            <column name="page_size" type="integer" nullable="false" comment="纸张大小"/>
-            <column name="url" type="varchar(255)" nullable="false" comment="访问地址"/>
-          </columns>
-          <primary-key name="pk_2w8y445q9wgvl9ddrtljltpwt" columns="id"/>
-        </table>
-        <table name="print_configs" comment="打印配置@core">
-          <columns>
-            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
-            <column name="end_on" type="date" comment="失效日期"/>
-            <column name="max_limit" type="integer" nullable="false" defaultValue="0" comment="最多打印次数"/>
-            <column name="price" type="integer" nullable="false" defaultValue="0"
-                    comment="单价，以分为单位，免费设置为0"/>
-            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
-                    comment="更新时间"/>
-          </columns>
-          <primary-key name="pk_3f8qp6ur569ahp33vlyhyo4mb" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_980vypmo5ogrida8elus811o5" column="doc_type_id" referenced-table="spa.doc_types"
-                         referenced-column="id"/>
-          </foreign-keys>
-        </table>
-        <table name="print_quotas" comment="打印配额@core">
+        <table name="print_quotas" comment="打印配额@doc">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
@@ -8279,46 +8373,9 @@
           </columns>
           <primary-key name="pk_st8emevheay237gju9wkv7y2p" columns="id"/>
           <foreign-keys>
-            <foreign-key name="fk_81tnr7u2aq88bdoqobwagjjlu" column="doc_type_id" referenced-table="spa.doc_types"
+            <foreign-key name="fk_81tnr7u2aq88bdoqobwagjjlu" column="doc_type_id" referenced-table="cfg.spa_doc_types"
                          referenced-column="id"/>
             <foreign-key name="fk_j5ah9jicykofscsccinruktmi" column="user_id" referenced-table="base.users"
-                         referenced-column="id"/>
-          </foreign-keys>
-        </table>
-        <table name="download_logs" comment="下载流水@core">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
-            <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
-            <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
-                    comment="更新时间"/>
-            <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
-          </columns>
-          <primary-key name="pk_lcqw7ty5jppf59n7h1l8uhbwq" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_avr0jfq4pxl6dk16i89v8u82v" column="doc_type_id" referenced-table="spa.doc_types"
-                         referenced-column="id"/>
-            <foreign-key name="fk_ky7l7hruvkldo49eq9vlkgofl" column="user_id" referenced-table="base.users"
-                         referenced-column="id"/>
-          </foreign-keys>
-        </table>
-        <table name="print_logs" comment="打印流水@core">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
-            <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
-            <column name="payed" type="integer" nullable="false" defaultValue="0" comment="支付费用"/>
-            <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp"
-                    comment="更新时间"/>
-            <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
-          </columns>
-          <primary-key name="pk_2nfredgb8p5h5rejmbm3nwr5m" columns="id"/>
-          <foreign-keys>
-            <foreign-key name="fk_3d8hwkwr4xo3xw1fi17cyv1kv" column="doc_type_id" referenced-table="spa.doc_types"
-                         referenced-column="id"/>
-            <foreign-key name="fk_okwgt76nd0hg6s8hruatfjruv" column="user_id" referenced-table="base.users"
                          referenced-column="id"/>
           </foreign-keys>
         </table>
