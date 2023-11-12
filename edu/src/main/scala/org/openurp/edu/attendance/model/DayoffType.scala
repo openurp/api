@@ -17,18 +17,10 @@
 
 package org.openurp.edu.attendance.model
 
-import org.beangle.data.orm.MappingModule
+enum DayoffType(val id: Int, val name: String) {
+  case Issue extends DayoffType(0, "事假")
+  case Sick extends DayoffType(1, "病假")
+  case Business extends DayoffType(2, "公假")
 
-class DefaultMapping extends MappingModule {
-
-  def binding(): Unit = {
-
-    bind[Attendance] declare { e =>
-      index("", true, e.semester, e.course, e.std)
-    }
-
-    bind[StdDayoff] declare { e =>
-      e.reason is length(200)
-    }
-  }
+  override def toString: String = name
 }

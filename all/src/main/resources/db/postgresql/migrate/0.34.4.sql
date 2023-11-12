@@ -29,15 +29,19 @@ insert into code.institution_categories(id,code,name,begin_on,updated_at) values
 
 
 drop table base.dayoffs cascade;
+alter table base.schools add column category_id integer;
 alter table base.schools add column division_id integer;
 alter table base.schools add column identifier varchar(10);
 alter table base.schools add column superior_org varchar(50);
 alter table base.schools add column uscc varchar(18);
 alter table base.schools add constraint fk_i0amwk9vd4lhgjtb2c943edtf foreign key (division_id) references code.divisions (id);
+
 comment on column base.schools.identifier is '标识码(10位)';
 comment on column base.schools.institution_id is '研究机构ID';
 comment on column base.schools.superior_org is '主管部门';
 comment on column base.schools.uscc is '统一信用代码';
+
+insert into code.divisions (id,code,name,begin_on,updated_at) values(310000,'310000','上海',current_date-1,now());
 
 update base.schools set category_id=9,division_id=310000 where name='华东政法大学';
 update base.schools set category_id=8,division_id=310000 where name='上海财经大学';
@@ -46,7 +50,6 @@ update base.schools set category_id=2,division_id=310000 where name='上海理�
 update base.schools set category_id=11,division_id=310000 where name='上海音乐学院';
 update base.schools set category_id=2,division_id=310000 where name='上海工程技术大学';
 
-alter table base.schools add column category_id integer;
 alter table base.schools alter category_id set not null;
 alter table base.schools alter division_id set not null;
 alter table base.schools add constraint fk_ewpo25xxpkxlls6vv52k62vi8 foreign key (category_id) references code.institution_categories (id);

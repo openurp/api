@@ -22,6 +22,7 @@
   <mapping class="org.openurp.edu.textbook.model.DefaultMapping" name="textbook"/>
   <mapping class="org.openurp.edu.workload.model.DefaultMapping" name="workload"/>
   <mapping class="org.openurp.edu.workload.config.DefaultMapping" name="workload.config"/>
+  <mapping class="org.openurp.edu.attendance.model.DefaultMapping" name="attendance"/>
   <naming>
     <profile package="org.openurp.edu" pluralize="true" schema="edu">
       <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="edu_"/>

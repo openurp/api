@@ -19,9 +19,8 @@ CREATE OR REPLACE FUNCTION public.minutes(
     COST 100
     IMMUTABLE PARALLEL UNSAFE
 AS $BODY$
- select ($1/100)*60 + $1%100 end;
+ select ($1/100)*60 + $1%100;
 $BODY$;
-
 
 update edu.clazz_activities ca set
 begin_unit=(select min(cu.indexno) from base.course_units cu where abs(minutes(ca.begin_at )- minutes(cu.begin_at))<=15)

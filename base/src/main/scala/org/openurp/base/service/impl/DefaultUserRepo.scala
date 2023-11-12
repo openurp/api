@@ -19,6 +19,7 @@ package org.openurp.base.service.impl
 
 import org.beangle.commons.codec.digest.Digests
 import org.beangle.commons.lang.Strings
+import org.beangle.commons.logging.Logging
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.beangle.data.jdbc.query.JdbcExecutor
 import org.openurp.base.edu.model.Teacher
@@ -30,7 +31,7 @@ import org.openurp.code.hr.model.UserCategory
 import java.time.{Instant, LocalDate}
 import javax.sql.DataSource
 
-class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, hostname: String) extends UserRepo {
+class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, hostname: String) extends UserRepo, Logging {
 
   var orgId: Int = _
 
@@ -38,29 +39,32 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
   var stdRoleId: Int = _
 
+  var staffRoleId: Int = _
+
   var teacherRoleId: Int = _
 
   var tutorRoleId: Int = _
 
-  var platformJdbcExecutor: JdbcExecutor = _
+  var emsJdbcExecutor: JdbcExecutor = _
 
   if (null != platformDataSource) {
-    platformJdbcExecutor = new JdbcExecutor(platformDataSource)
-    val datas = platformJdbcExecutor.query("select id,org_id from ems.cfg_domains where hostname=?", hostname)
+    emsJdbcExecutor = new JdbcExecutor(platformDataSource)
+    val datas = emsJdbcExecutor.query("select id,org_id from ems.cfg_domains where hostname=?", hostname)
     if (datas.nonEmpty) {
       val first = datas.head
       domainId = first(0).asInstanceOf[Number].intValue
       orgId = first(1).asInstanceOf[Number].intValue
-      stdRoleId = platformJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "学生").getOrElse(0)
-      teacherRoleId = platformJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "教师").getOrElse(0)
-      tutorRoleId = platformJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "导师").getOrElse(0)
+      stdRoleId = emsJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "学生").getOrElse(0)
+      teacherRoleId = emsJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "教师").getOrElse(0)
+      staffRoleId = emsJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "教职工").getOrElse(0)
+      tutorRoleId = emsJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "导师").getOrElse(0)
     }
   }
 
   override def createUser(teacher: Teacher): User = {
     val staff = entityDao.get(classOf[Staff], teacher.staff.id)
     val roleIds = if (teacher.tutorType.isEmpty) List(teacherRoleId) else List(teacherRoleId, tutorRoleId)
-    createStaffUser(staff, roleIds)
+    createStaffUser(staff, roleIds, None)
   }
 
   /**
@@ -69,20 +73,12 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
    * @param staff
    * @return
    */
-  override def createUser(staff: Staff): User = {
-    createStaffUser(staff, List.empty)
+  override def createUser(staff: Staff, oldCode: Option[String]): User = {
+    createStaffUser(staff, List(staffRoleId), oldCode)
   }
 
-  private def createStaffUser(staff: Staff, roleIds: Seq[Int]): User = {
-    var oldUserCode: String = staff.code
-    if (staff.persisted) {
-      val existQuery = OqlBuilder.from[String](classOf[Staff].getName, "t").select("t.code")
-      existQuery.where("t.id = :staffId", staff.id)
-      entityDao.search(existQuery).headOption foreach { code =>
-        oldUserCode = code
-      }
-    }
-
+  private def createStaffUser(staff: Staff, roleIds: Seq[Int], oldCode: Option[String]): User = {
+    val oldUserCode = oldCode.getOrElse(staff.code)
     val userQuery = OqlBuilder.from(classOf[User], "user").where("user.code=:code", oldUserCode)
       .where("user.school =:school", staff.school)
     val users = entityDao.search(userQuery)
@@ -109,12 +105,11 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     entityDao.saveOrUpdate(user)
 
     val password = defaultPassword(staff.idNumber.orNull)
-    val existId = findUserId(oldUserCode)
-    createAccount(existId, user, password, UserCategories.Teacher, roleIds)
+    createAccount(findEmsUserId(oldUserCode), user, password, UserCategories.Teacher, roleIds)
     user
   }
 
-  override def createUser(std: Student): User = {
+  override def createUser(std: Student, oldCode: Option[String]): User = {
     val school = std.project.school
     val userBuilder = OqlBuilder.from(classOf[User], "user")
     userBuilder.where("user.code=:code", std.code)
@@ -140,7 +135,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     entityDao.saveOrUpdate(user)
 
     val password = defaultPassword(std.person.code)
-    createAccount(findUserId(std.code), user, password, UserCategories.Student, List(stdRoleId))
+    createAccount(findEmsUserId(oldCode.getOrElse(std.code)), user, password, UserCategories.Student, List(stdRoleId))
     user
   }
 
@@ -151,15 +146,19 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
     entityDao.saveOrUpdate(users)
     users.foreach(user => {
-      platformJdbcExecutor.update("update ems.usr_users u set end_on=?  where u.org_id= ? and u.code=?", user.endOn, if (null == user.endOn) true else false, orgId, user.code)
-      platformJdbcExecutor.update("update ems.usr_accounts a set end_on=? where a.domain_id= ? and exists(select * from ems.usr_users u where u.id=a.user_id and  u.code=?)", user.endOn, if (null == user.endOn) true else false, domainId, user.code)
+      emsJdbcExecutor.update("update ems.usr_users u set end_on=?  where u.org_id= ? and u.code=?",
+        user.endOn, if (null == user.endOn) true else false, orgId, user.code)
+      emsJdbcExecutor.update("update ems.usr_accounts a set end_on=? where a.domain_id= ? and " +
+        "exists(select * from ems.usr_users u where u.id=a.user_id and  u.code=?)",
+        user.endOn, if (null == user.endOn) true else false, domainId, user.code)
     })
   }
 
   override def updatePassword(userCode: String, password: String): Int = {
     val encoded = "{MD5}" + Digests.md5Hex(password)
-    platformJdbcExecutor
-      .update("update ems.usr_accounts acc set password=? where acc.domain_id=? and exists(select * from ems.usr_users u where u.code=? and u.id=acc.user_id)", encoded, domainId, userCode)
+    emsJdbcExecutor
+      .update("update ems.usr_accounts acc set password=? where acc.domain_id=? and " +
+        "exists(select * from ems.usr_users u where u.code=? and u.id=acc.user_id)", encoded, domainId, userCode)
   }
 
   override def createAccount(user: User): Unit = {
@@ -169,7 +168,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
       case UserCategories.Teacher => teacherRoleId
       case _ => 0
     }
-    createAccount(findUserId(user.code), user, password, user.category.id, List(roleId))
+    createAccount(findEmsUserId(user.code), user, password, user.category.id, List(roleId))
   }
 
   private def defaultPassword(idNumber: String): String = {
@@ -182,8 +181,8 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
   }
 
-  private def findUserId(code: String): Option[java.lang.Long] = {
-    platformJdbcExecutor.unique[java.lang.Long]("select id from ems.usr_users where org_id=" + orgId + " and code=? ", code)
+  private def findEmsUserId(code: String): Option[java.lang.Long] = {
+    emsJdbcExecutor.unique[java.lang.Long]("select id from ems.usr_users where org_id=" + orgId + " and code=? ", code)
   }
 
   private def createAccount(existId: Option[java.lang.Long], user: User, password: String, categoryId: Int, roleIds: Seq[Int]): Unit = {
@@ -192,36 +191,38 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
     val userId = existId match {
       case Some(id) =>
-        val data = platformJdbcExecutor.query("select code,name,mobile,email from ems.usr_users where id=?", id).head
+        val data = emsJdbcExecutor.query("select code,name,mobile,email from ems.usr_users where id=?", id).head
         if (data(0) != code || data(1) != name) {
-          platformJdbcExecutor.update("update ems.usr_users set code=?, name=?, updated_at=now() where id=?", code, name, id)
+          emsJdbcExecutor.update("update ems.usr_users set code=?, name=?, updated_at=now() where id=?", code, name, id)
+          logger.info(s"change ${id} code and name to ${code} ${name}")
         }
         user.mobile foreach { mobile =>
-          if (mobile != data(2)) platformJdbcExecutor.update("update ems.usr_users set mobile=?,updated_at=now() where id=?", mobile, id)
+          if (mobile != data(2)) emsJdbcExecutor.update("update ems.usr_users set mobile=?,updated_at=now() where id=?", mobile, id)
         }
         user.email foreach { email =>
-          if (email != data(3)) platformJdbcExecutor.update("update ems.usr_users set email=?,updated_at=now() where id=?", email, id)
+          if (email != data(3)) emsJdbcExecutor.update("update ems.usr_users set email=?,updated_at=now() where id=?", email, id)
         }
         id
       case None =>
-        val userId = platformJdbcExecutor.unique[java.lang.Long]("select datetime_id()").getOrElse(0L)
-        platformJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,updated_at,begin_on)"
+        val userId = emsJdbcExecutor.unique[java.lang.Long]("select datetime_id()").getOrElse(0L)
+        emsJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,updated_at,begin_on)"
           + "values(?,?,?,?,?,?,?,now(),current_date);", userId, code, name, orgId, categoryId, user.mobile.orNull, user.email.orNull)
+        logger.info(s"create user ${code} ${name}")
         userId
     }
-    val accountCount = platformJdbcExecutor.unique[Long]("select count(*) from ems.usr_accounts where user_id=? and domain_id=? ", userId, domainId).getOrElse(0L)
+    val accountCount = emsJdbcExecutor.unique[Long]("select count(*) from ems.usr_accounts where user_id=? and domain_id=? ", userId, domainId).getOrElse(0L)
     if (accountCount == 0) {
-      val accountId = platformJdbcExecutor.unique[java.lang.Long]("select datetime_id()")
-      platformJdbcExecutor.update(
+      val accountId = emsJdbcExecutor.unique[java.lang.Long]("select datetime_id()")
+      emsJdbcExecutor.update(
         "insert into ems.usr_accounts(id,user_id,domain_id,password,passwd_expired_on,locked,enabled,begin_on,updated_at)"
           + "values(?,?,?,?,current_date+180,false,true,current_date,now());",
         accountId.get, userId, domainId, "{MD5}" + Digests.md5Hex(password))
     }
     roleIds foreach { roleId =>
       if (roleId > 0) {
-        val roleCount = platformJdbcExecutor.unique[Long]("select count(*) from ems.usr_role_members where user_id=? and role_id=? ", userId, roleId).getOrElse(0L)
+        val roleCount = emsJdbcExecutor.unique[Long]("select count(*) from ems.usr_role_members where user_id=? and role_id=?", userId, roleId).getOrElse(0L)
         if (roleCount == 0) {
-          platformJdbcExecutor.update("insert into ems.usr_role_members(id,user_id,role_id,is_member,is_granter,is_manager,updated_at)"
+          emsJdbcExecutor.update("insert into ems.usr_role_members(id,user_id,role_id,is_member,is_granter,is_manager,updated_at)"
             + "values(datetime_id(),?,?,true,false,false,now());", userId, roleId)
         }
       }

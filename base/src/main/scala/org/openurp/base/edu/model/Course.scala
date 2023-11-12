@@ -24,8 +24,6 @@ import org.openurp.base.edu.code.*
 import org.openurp.base.model.{Department, ProjectBased}
 import org.openurp.code.edu.model.*
 
-import scala.collection.mutable
-
 /**
  * 课程基本信息 </p>
  * 记录课程代码、名称、学分、课时等基本信息，课程的关键业务属性为课程名称、学分、课时、考核方式等与课程有关的属性，其它类似课程类别、所属部门等
@@ -66,8 +64,10 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var gradingModes = Collections.newSet[GradingMode]
   /** 能力等级 */
   var abilityRates = Collections.newSet[CourseAbilityRate]
-  /** 针对专业 */
+  /** 面向专业 */
   var majors = Collections.newSet[Major]
+  /** 面向专业方向 */
+  var directions = Collections.newSet[Direction]
   /** 排除专业 */
   var xmajors = Collections.newSet[Major]
   /** 推荐教材 */
@@ -82,7 +82,6 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var hasMakeup: Boolean = _
   /** 教研室 */
   var teachingOffice: Option[TeachingOffice] = None
-
   /** 课程群组 */
   var cluster: Option[CourseCluster] = None
 

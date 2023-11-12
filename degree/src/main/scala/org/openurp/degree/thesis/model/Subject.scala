@@ -20,7 +20,7 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.edu.model.Major
-import org.openurp.base.model.{AuditStatus, Department, User}
+import org.openurp.base.model.{AuditStatus, Department}
 import org.openurp.base.std.model.GraduateSeason
 
 import scala.collection.mutable
@@ -45,4 +45,8 @@ class Subject extends LongId with Named {
   var advisor: Advisor = _
   /** 院系 */
   var depart: Department = _
+
+  def majorNames: String = {
+    majors.map(_.name).mkString(",")
+  }
 }

@@ -17,8 +17,7 @@
 
 package org.openurp.edu.program.domain
 
-import org.beangle.data.dao.{EntityDao, OqlBuilder}
-import org.openurp.base.edu.code.CourseType
+import org.beangle.data.dao.EntityDao
 import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 import org.openurp.edu.program.model.*
@@ -91,19 +90,8 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
         cg.planCourses.find(_.course == course) foreach (x => planCourse = x)
       }
     }
-    if (null == planCourse) { //search share plan
-      val grade = java.lang.Integer.valueOf(std.state.get.grade.code.substring(0, 4))
-      val builder = OqlBuilder.from[PlanCourse](classOf[SharePlan].getName, "sp").join("sp.groups", "spg")
-        .join("spg.planCourses", "spgp")
-        .where("spgp.course=:course", course)
-        .where("sp.project=:project", std.project)
-        .where("year(sp.beginOn)<=:grade and (sp.endOn is null or year(sp.endOn)>=:grade)", grade)
-        .select("spgp")
-        .cacheable()
-      entityDao.search(builder).headOption
-    } else {
-      Some(planCourse)
-    }
+    //不能查询公共课程，类型不匹配，SharePlanCourse is not a PlanCourse
+    Option(planCourse)
   }
 
 }

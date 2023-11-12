@@ -17,18 +17,20 @@
 
 package org.openurp.edu.attendance.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.InstantRange
+import org.openurp.base.model.Semester
+import org.openurp.base.std.model.Student
 
-class DefaultMapping extends MappingModule {
+/** 学生请假
+ */
+class StdDayoff extends LongId, InstantRange {
 
-  def binding(): Unit = {
+  var semester: Semester = _
 
-    bind[Attendance] declare { e =>
-      index("", true, e.semester, e.course, e.std)
-    }
+  var dayoffType: DayoffType = _
 
-    bind[StdDayoff] declare { e =>
-      e.reason is length(200)
-    }
-  }
+  var std: Student = _
+
+  var reason: String = _
 }

@@ -23,11 +23,11 @@ import org.openurp.base.std.model.Student
 
 trait UserRepo {
 
-  def createUser(staff: Staff): User
+  def createUser(staff: Staff, oldCode: Option[String]): User
 
   def createUser(teacher: Teacher): User
 
-  def createUser(std: Student): User
+  def createUser(std: Student, oldCode: Option[String]): User
 
   def createAccount(user: User): Unit
 

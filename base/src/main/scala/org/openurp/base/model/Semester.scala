@@ -101,4 +101,3 @@ class SemesterStage extends IntId with DateRange with Remark {
   var semester: Semester = _
   var stage: CalendarStage = _
 }
-
