@@ -19,4 +19,5 @@ package org.openurp.std
 
 object Features {
 
+  val ExchangeExemptionNeedScore = "std.exchange.exemption_need_score"
 }

@@ -1,3 +1,29 @@
+CREATE OR REPLACE FUNCTION public.hourminute_duration(bigint,bigint)
+RETURNS bigint
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE
+AS $BODY$
+declare rs bigint;
+begin
+  select abs(hourminute_value($1)-hourminute_value($2)) into rs ;
+  return rs;
+end;
+$BODY$;
+
+CREATE OR REPLACE FUNCTION public.hourminute_value(bigint)
+RETURNS bigint
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE
+AS $BODY$
+declare rs bigint;
+begin
+  select ($1 - mod($1,100))*6/10 into rs ;
+  return rs;
+end;
+$BODY$;
+
 CREATE OR REPLACE FUNCTION public.bitand(
 	bigint,
 	bigint)

@@ -24,7 +24,7 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[Occupancy] declare { e =>
-      e.comments is length(300)
+      e.comments is length(400)
       index("", false, e.room)
       index("", false, e.activityId)
       index("", false, e.time.startOn)
