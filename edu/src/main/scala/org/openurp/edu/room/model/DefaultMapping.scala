@@ -36,6 +36,7 @@ class DefaultMapping extends MappingModule {
 
     bind[RoomApply] declare { e =>
       e.activity.name is column("activity_name")
+      e.space.roomComment is length(1200)
       e.applicant.user is column("applicant_id")
     }
 

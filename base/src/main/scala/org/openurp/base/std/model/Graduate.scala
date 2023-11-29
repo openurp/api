@@ -35,8 +35,11 @@ class Graduate extends LongId, Updated {
   /** 学籍 */
   var std: Student = _
 
-  /** 毕结业证书编号（电子注册号） */
+  /** 学历证书编号（电子注册号） */
   var certificateNo: String = _
+
+  /** 毕结业证书序列号 */
+  var certificateSeqNo: Option[String] = None
 
   /** 毕结业日期 */
   var graduateOn: LocalDate = _
@@ -50,7 +53,7 @@ class Graduate extends LongId, Updated {
   /** 学位授予日期 */
   var degreeAwardOn: Option[LocalDate] = None
 
-  /** 学位证书号 */
+  /** 学位证书编号 */
   var diplomaNo: Option[String] = None
 
   /** 外语通过年月 */
