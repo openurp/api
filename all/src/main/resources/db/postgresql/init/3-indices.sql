@@ -40,6 +40,7 @@ create index idx_ov10ar0rv4dr3yywq2uct6kgj on base.students (state_id);
 create index idx_6p2ajoj9er8ayk42gcgammih3 on base.students_labels (student_id);
 create index idx_dryob4n9h2g16emfu7mhc2b7w on base.teachers_campuses (teacher_id);
 create index idx_swgo4qm8hl9fiixhbkynf4kmp on base.teachers_projects (teacher_id);
+create index idx_hcbg5wtcik11yo0iqe4do7w5u on cfg.edu_cert_exempt_configs_levels (cert_exempt_config_id);
 create index idx_8trplfnh70abytghtf6a1nuk2 on cfg.edu_cert_exempt_courses (cert_exempt_setting_id);
 create index idx_4w8nuo8e80kd8hdgticua1pik on cfg.edu_cert_exempt_settings (config_id);
 create index idx_2umtts876een1sjj83imo3yrs on cfg.edu_cert_signup_exclusives (cert_signup_setting_id);

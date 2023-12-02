@@ -194,10 +194,10 @@ alter table base.users add constraint fk_3gj5j7vnsoxf1wp9n5hsqdiq3 foreign key (
 alter table base.users add constraint fk_6a5j932mtf9sqiiythm0ey6a2 foreign key (category_id) references code.user_categories (id);
 alter table base.users add constraint fk_sbg59w8q63i0oo53rlgvlcnjq foreign key (department_id) references base.departments (id);
 alter table base.users add constraint fk_tjqd54krxpiam3m1xb1mdp64f foreign key (gender_id) references code.genders (id);
-alter table cfg.edu_cert_exempt_configs add constraint fk_2q8vw5com0vfbgn5mnyf3j8ld foreign key (level_id) references code.education_levels (id);
 alter table cfg.edu_cert_exempt_configs add constraint fk_eii9c17rmshic8l7t07spfuky foreign key (edu_type_id) references base.c_education_types (id);
-alter table cfg.edu_cert_exempt_configs add constraint fk_glgadjb064njhibmc3l8hjvl4 foreign key (semester_id) references base.semesters (id);
 alter table cfg.edu_cert_exempt_configs add constraint fk_n1x6fgny77oixcpqafim56c58 foreign key (project_id) references base.projects (id);
+alter table cfg.edu_cert_exempt_configs_levels add constraint fk_9l4k70sid7r5y919hdv3mkr24 foreign key (education_level_id) references code.education_levels (id);
+alter table cfg.edu_cert_exempt_configs_levels add constraint fk_hskk72xjk64g1vyv98ncdpl5 foreign key (cert_exempt_config_id) references cfg.edu_cert_exempt_configs (id);
 alter table cfg.edu_cert_exempt_courses add constraint fk_3qnuh67mw6r2eb8m295jqny5t foreign key (cert_exempt_setting_id) references cfg.edu_cert_exempt_settings (id);
 alter table cfg.edu_cert_exempt_courses add constraint fk_aok4oggm22xaigaujqpm4bglu foreign key (course_id) references base.courses (id);
 alter table cfg.edu_cert_exempt_settings add constraint fk_1uj25k9nqyyrd5u9rrko4i670 foreign key (config_id) references cfg.edu_cert_exempt_configs (id);

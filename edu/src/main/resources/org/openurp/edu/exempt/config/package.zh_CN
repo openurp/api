@@ -1,5 +1,6 @@
 CertExemptConfig=校外考试免修设置
 CertExemptConfig.notice=通知
+CertExemptConfig.levels=培养层次
 
 CertExemptSetting=校外考试免修科目设置
 CertExemptSetting.auditDepart=审核部门

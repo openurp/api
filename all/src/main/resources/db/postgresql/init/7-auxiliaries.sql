@@ -1,29 +1,3 @@
-CREATE OR REPLACE FUNCTION public.hourminute_duration(bigint,bigint)
-RETURNS bigint
-    LANGUAGE 'plpgsql'
-    COST 100
-    VOLATILE
-AS $BODY$
-declare rs bigint;
-begin
-  select abs(hourminute_value($1)-hourminute_value($2)) into rs ;
-  return rs;
-end;
-$BODY$;
-
-CREATE OR REPLACE FUNCTION public.hourminute_value(bigint)
-RETURNS bigint
-    LANGUAGE 'plpgsql'
-    COST 100
-    VOLATILE
-AS $BODY$
-declare rs bigint;
-begin
-  select ($1 - mod($1,100))*6/10 into rs ;
-  return rs;
-end;
-$BODY$;
-
 CREATE OR REPLACE FUNCTION public.bitand(
 	bigint,
 	bigint)
@@ -167,6 +141,27 @@ begin
   return $1 +  $2 * (interval '1' second);
 end;
 $BODY$;
+
+CREATE OR REPLACE FUNCTION public.bitand(
+  bigint,bigint)
+RETURNS bigint
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE
+AS $BODY$
+begin
+  return $1 &  $2 ;
+end;
+$BODY$;
+
+CREATE OR REPLACE FUNCTION abs (
+    p                           interval
+) RETURNS interval
+    LANGUAGE SQL IMMUTABLE STRICT
+    SET search_path FROM CURRENT
+AS $$
+SELECT GREATEST (p, -p)
+$$;
 CREATE SEQUENCE public.seq_date
     CYCLE
     INCREMENT 1

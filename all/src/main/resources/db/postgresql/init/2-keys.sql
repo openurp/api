@@ -116,6 +116,7 @@ alter table base.users add constraint uk_rtwk6iqyuv8d7se1gkkumd948 unique (schoo
 alter table base.versions add constraint pk_kn37tnh6h9broruk4q2gsyyip primary key (id);
 alter table cfg.edu_capacity_factors add constraint pk_svrnfofl3ds355csgefiyf0s8 primary key (id);
 alter table cfg.edu_cert_exempt_configs add constraint pk_25ogrkq3scobs3rr6jvtx7j01 primary key (id);
+alter table cfg.edu_cert_exempt_configs_levels add constraint pk_tf2xqvguag0l8xh1e8khnwgux primary key (cert_exempt_config_id,education_level_id);
 alter table cfg.edu_cert_exempt_courses add constraint pk_8vtdq21yu199uqukr5u4qgr2n primary key (cert_exempt_setting_id,course_id);
 alter table cfg.edu_cert_exempt_settings add constraint pk_bvnsnltdgqpnel6hg2wa8bl6s primary key (id);
 alter table cfg.edu_cert_signup_configs add constraint pk_ifi79764glfik2b7auy55mucv primary key (id);
