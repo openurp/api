@@ -109,6 +109,22 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
     }
   }
 
+  def creditsInfo: String = {
+    if levels.isEmpty then defaultCredits.toString
+    else {
+      val sb = Collections.newBuffer[String]
+      var containDefault = false
+      levels foreach { l =>
+        l.credits foreach { c =>
+          sb.append(l.level.name + " " + c.toString)
+          if (java.lang.Float.compare(this.defaultCredits, c) == 0) containDefault = true
+        }
+      }
+      if !containDefault then sb.prepend(defaultCredits.toString)
+      sb.mkString(" ")
+    }
+  }
+
   def description: String = {
     s"$code $name"
   }

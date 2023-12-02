@@ -1,8 +1,8 @@
-import org.openurp.parent.Settings._
-import org.openurp.parent.Dependencies._
+import org.openurp.parent.Dependencies.*
+import org.openurp.parent.Settings.*
 
 ThisBuild / organization := "org.openurp.api"
-ThisBuild / version := "0.34.5-SNAPSHOT"
+ThisBuild / version := "0.34.5"
 
 ThisBuild / scmInfo := Some(
   ScmInfo(
@@ -13,10 +13,10 @@ ThisBuild / scmInfo := Some(
 
 ThisBuild / developers := List(
   Developer(
-    id    = "chaostone",
-    name  = "Tihua Duan",
+    id = "chaostone",
+    name = "Tihua Duan",
     email = "duantihua@gmail.com",
-    url   = url("http://github.com/duantihua")
+    url = url("http://github.com/duantihua")
   )
 )
 
@@ -26,14 +26,14 @@ ThisBuild / resolvers += Resolver.mavenLocal
 
 lazy val root = (project in file("."))
   .settings()
-  .aggregate(code,base,edu,prac,qos,trd,spa,std,degree,all)
+  .aggregate(code, base, edu, prac, qos, trd, spa, std, degree, all)
 
 lazy val code = (project in file("code"))
   .settings(
     organization := "org.openurp.code",
     name := "openurp-code-api",
     common,
-    libraryDependencies ++= Seq(scalatest,beangle_commons_core,beangle_data_orm)
+    libraryDependencies ++= Seq(scalatest, beangle_commons_core, beangle_data_orm)
   )
 
 lazy val base = (project in file("base"))
@@ -97,8 +97,8 @@ lazy val all = (project in file("all"))
     organization := "org.openurp",
     name := "openurp-api-all",
     common,
-    libraryDependencies ++= Seq(scalatest,beangle_commons_core,beangle_data_orm),
+    libraryDependencies ++= Seq(scalatest, beangle_commons_core, beangle_data_orm),
     publish / skip := true
-  ).dependsOn(code,base,edu,prac,qos,trd,spa,std,degree)
+  ).dependsOn(code, base, edu, prac, qos, trd, spa, std, degree)
 
 publish / skip := true

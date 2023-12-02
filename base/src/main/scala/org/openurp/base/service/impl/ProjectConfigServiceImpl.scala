@@ -17,24 +17,34 @@
 
 package org.openurp.base.service.impl
 
-import org.beangle.commons.conversion.impl.DefaultConversion
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.model.{Project, ProjectProperty}
-import org.openurp.base.service.ProjectPropertyService
+import org.openurp.base.service.{Feature, ProjectConfigService}
 
-class ProjectPropertyServiceImpl extends ProjectPropertyService {
+class ProjectConfigServiceImpl extends ProjectConfigService {
 
   var entityDao: EntityDao = _
 
-  def get[T](project: Project, name: String, defaultValue: T): T = {
+  override def get[T](project: Project, name: String, defaultValue: T): T = {
     val query = OqlBuilder.from(classOf[ProjectProperty], "pp")
     query.where("pp.project=:project", project)
     query.where("pp.name=:name", name)
     query.cacheable()
-    val properties = entityDao.search(query)
-    properties.headOption match {
-      case Some(p) => DefaultConversion.Instance.convert(p.value, defaultValue.getClass)
+    entityDao.search(query).headOption match {
+      case Some(p) => Feature.convert(p.value, p.typeName).asInstanceOf[T]
       case None => defaultValue
     }
   }
+
+  override def get[T](project: Project, f: Feature): T = {
+    val query = OqlBuilder.from(classOf[ProjectProperty], "pp")
+    query.where("pp.project=:project", project)
+    query.where("pp.name=:name", f.name)
+    query.cacheable()
+    entityDao.search(query).headOption match {
+      case Some(p) => Feature.convert(p.value, p.typeName).asInstanceOf[T]
+      case None => Feature.convert(f.defaultValue, f.typeName).asInstanceOf[T]
+    }
+  }
+
 }

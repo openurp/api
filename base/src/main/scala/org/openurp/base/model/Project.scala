@@ -104,15 +104,6 @@ trait EduLevelBased extends ProjectBased {
   var eduType: EducationType = _
 }
 
-object ProjectPropertyType {
-  val Integer = "integer"
-  val Float = "float"
-  val String = "string"
-  val Boolean = "boolean"
-  val Json = "json"
-  val types = Set(Integer, Float, String, Boolean, Json)
-}
-
 class ProjectProperty extends LongId with ProjectBased {
   var name: String = _
   var description: String = _

@@ -19,7 +19,10 @@ package org.openurp.base.service
 
 import org.openurp.base.model.Project
 
-trait ProjectPropertyService {
+trait ProjectConfigService {
 
   def get[T](project: Project, name: String, defaultValue: T): T
+
+  def get[T](project: Project, feature: Feature): T
+
 }

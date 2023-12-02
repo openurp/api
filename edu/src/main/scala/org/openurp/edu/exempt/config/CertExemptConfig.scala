@@ -17,11 +17,13 @@
 
 package org.openurp.edu.exempt.config
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.InstantRange
 import org.openurp.base.edu.code.EducationType
-import org.openurp.base.model.{EduLevelBased, Project, Semester}
+import org.openurp.base.model.ProjectBased
+import org.openurp.code.edu.model.EducationLevel
 
 import scala.collection.mutable
 
@@ -29,9 +31,13 @@ import scala.collection.mutable
  * 校外考试免修设置
  */
 @config
-class CertExemptConfig extends LongId with InstantRange with EduLevelBased {
+class CertExemptConfig extends LongId with InstantRange with ProjectBased {
 
-  var semester: Semester = _
+  /** 培养类型 */
+  var eduType: EducationType = _
+
+  /** 培养层次 */
+  var levels: mutable.Set[EducationLevel] = Collections.newSet[EducationLevel]
 
   var settings: mutable.Buffer[CertExemptSetting] = new mutable.ArrayBuffer[CertExemptSetting]
 

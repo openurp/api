@@ -68,6 +68,9 @@ class DefaultMapping extends MappingModule {
     }.generator(IdGenerator.Assigned)
 
     bind[Graduate] declare { e =>
+      e.certificateNo is length(100)
+      e.certificateSeqNo is length(50)
+      e.diplomaNo is length(100)
       index("", true, e.std)
     }
 

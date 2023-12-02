@@ -15,21 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base
+package org.openurp.std.service
+
+import org.openurp.base.service.Feature
 
 object Features {
-  /** 每学分对应学时数 */
-  val EduCourseHoursPerCredit = "edu.course.hours_per_credit"
 
-  /** 课程是否支持不同层次学分不同 */
-  val EduCourseLevelCreditSupported = "edu.course.level_credit_supported"
-
-  /** 学籍信息是否支持分班管理 */
-  val StdInfoSquadSupported = "std.info.squad_supported"
-
-  /** 学籍信息中是否支持导师 */
-  val StdInfoTutorSupported = "std.info.tutor_supported"
-
-  /** 学籍信息钟是否支持学位论文导师 */
-  val StdInfoAdvisorSupported = "std.info.advisor_supported"
+  val ExchangeExemptionNeedScore = Feature("std.exchange.exemption_need_score", "交换成绩免修时是否需要填写课程成绩", true)
 }
