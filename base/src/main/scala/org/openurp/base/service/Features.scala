@@ -18,6 +18,9 @@
 package org.openurp.base.service
 
 object Features {
+  /** 教师的所在部门和任教部门完全一致 */
+  val EduTeacherSameDepartWithStaff = Feature("edu.teacher.same_depart_with_staff", "教师的所在部门和任教部门完全一致", false)
+
   /** 每学分对应学时数 */
   val EduCourseHoursPerCredit = Feature("edu.course.hours_per_credit", "每学分对应学时数", 16)
 

@@ -1,2 +1,2 @@
-addSbtPlugin("org.openurp" % "sbt-openurp-parent" % "0.8.10")
+addSbtPlugin("org.openurp" % "sbt-openurp-parent" % "0.8.11")
 addDependencyTreePlugin

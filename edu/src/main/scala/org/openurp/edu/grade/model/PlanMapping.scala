@@ -24,7 +24,7 @@ class PlanMapping extends MappingModule {
   def binding(): Unit = {
     bind[CourseAuditResult].declare { e =>
       e.scores is(length(50), default("--"))
-      e.remark is length(100)
+      e.remark is length(150)
       index("", true, e.groupResult, e.course)
     }
 

@@ -154,3 +154,14 @@ begin
   return rs;
 end;
 $BODY$;
+
+
+CREATE OR REPLACE FUNCTION public.minutes(
+	integer)
+    RETURNS integer
+    LANGUAGE 'sql'
+    COST 100
+    IMMUTABLE PARALLEL UNSAFE
+AS $BODY$
+ select ($1/100)*60 + $1%100;
+$BODY$;
