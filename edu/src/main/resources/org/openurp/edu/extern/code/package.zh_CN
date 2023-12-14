@@ -1,6 +1,6 @@
-CertificateSubject=校外考试科目
-CertificateSubject.category=考试种类
-CertificateSubject.institutionCode=教育机构代码
-CertificateSubject.institutionName=教育机构名称
+Certificate=校外证书
+Certificate.category=证书类型
+Certificate.institutionCode=教育机构代码
+Certificate.institutionName=教育机构名称
 
-CertificateCategory=校外考试种类
+CertificateCategory=校外证书类型

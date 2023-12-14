@@ -17,17 +17,16 @@
 
 package org.openurp.edu.exam.model
 
-import java.time.LocalDate
-
-import scala.collection.mutable.Buffer
-
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
+import org.openurp.base.edu.model.{Classroom, Course}
 import org.openurp.base.model.{Department, Semester}
 import org.openurp.code.edu.model.ExamType
-import org.openurp.base.edu.model.Classroom
 import org.openurp.edu.clazz.model.Clazz
+
+import java.time.LocalDate
+import scala.collection.mutable.Buffer
 
 /**
  * 考场
@@ -36,37 +35,37 @@ import org.openurp.edu.clazz.model.Clazz
  */
 class ExamRoom extends LongId {
 
-  /**考试学期*/
+  /** 考试学期 */
   var semester: Semester = _
 
-  /**开课院系*/
+  /** 开课院系 */
   var teachDepart: Department = _
 
-  /**考试类型*/
+  /** 考试类型 */
   var examType: ExamType = _
 
-  /**考试日期*/
+  /** 考试日期 */
   var examOn: LocalDate = _
 
-  /**开始时间*/
+  /** 开始时间 */
   var beginAt: HourMinute = _
 
-  /**结束时间*/
+  /** 结束时间 */
   var endAt: HourMinute = _
 
-  /**教室*/
+  /** 教室 */
   var room: Classroom = _
 
-  /**考试人数*/
+  /** 考试人数 */
   var stdCount: Int = _
 
-  /**考试活动*/
+  /** 考试活动 */
   var activities = Collections.newBuffer[ExamActivity]
 
-  /**监考信息*/
+  /** 监考信息 */
   var invigilations = Collections.newSet[Invigilation]
 
-  /**应考学生*/
+  /** 应考学生 */
   var examTakers = Collections.newSet[ExamTaker]
 
   def clazzs: Set[Clazz] = {
@@ -78,6 +77,10 @@ class ExamRoom extends LongId {
     this.room = classroom
     this.activities += activity
     activity.rooms.asInstanceOf[Buffer[ExamRoom]] += this
+  }
+
+  def courseExamTakers: collection.Map[Course, collection.Set[ExamTaker]] = {
+    examTakers.groupBy(_.clazz.course)
   }
 
 }

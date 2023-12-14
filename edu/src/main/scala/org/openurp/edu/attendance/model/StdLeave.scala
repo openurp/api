@@ -17,10 +17,20 @@
 
 package org.openurp.edu.attendance.model
 
-enum DayoffType(val id: Int, val name: String) {
-  case Issue extends DayoffType(0, "事假")
-  case Sick extends DayoffType(1, "病假")
-  case Business extends DayoffType(2, "公假")
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.InstantRange
+import org.openurp.base.model.Semester
+import org.openurp.base.std.model.Student
 
-  override def toString: String = name
+/** 学生请假
+ */
+class StdLeave extends LongId, InstantRange {
+
+  var semester: Semester = _
+
+  var leaveType: LeaveType = _
+
+  var std: Student = _
+
+  var reason: String = _
 }

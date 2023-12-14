@@ -20,7 +20,7 @@ package org.openurp.edu.extern.config
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.openurp.edu.extern.code.CertificateSubject
+import org.openurp.edu.extern.code.Certificate
 
 import java.time.LocalDate
 import scala.collection.mutable
@@ -33,7 +33,7 @@ import scala.collection.mutable
 @config
 class CertSignupSetting extends LongId {
   /** 报名科目 */
-  var subject: CertificateSubject = _
+  var certificate: Certificate = _
   /** 报名设置(期号) */
   var config: CertSignupConfig = _
   /** 要求报名费 */
@@ -45,9 +45,9 @@ class CertSignupSetting extends LongId {
   /** 最大学生数(0或者null表示不限制) */
   var maxStd: Int = _
   /** 报名时要求通过的科目 */
-  var dependsOn: Option[CertificateSubject] = None
+  var dependsOn: Option[Certificate] = None
   /** 有冲突的科目 */
-  var exclusives: mutable.Set[CertificateSubject] = new mutable.HashSet[CertificateSubject]
+  var exclusives: mutable.Set[Certificate] = new mutable.HashSet[Certificate]
   /** 通过后是否可以重考 */
   var reExamAllowed: Boolean = false
   /** 考试日期 */
@@ -59,9 +59,9 @@ class CertSignupSetting extends LongId {
   /** 报名条件 */
   var scopes: mutable.Buffer[CertSignupScope] = new mutable.ArrayBuffer[CertSignupScope]
 
-  def this(subject: CertificateSubject, examOn: LocalDate, beginAt: HourMinute, endAt: HourMinute) = {
+  def this(certificate: Certificate, examOn: LocalDate, beginAt: HourMinute, endAt: HourMinute) = {
     this()
-    this.subject = subject
+    this.certificate = certificate
     this.reExamAllowed = false
     this.examOn = Some(examOn)
     this.examBeginAt = beginAt

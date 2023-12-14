@@ -28,6 +28,7 @@ import org.openurp.base.model.School
 class RoomApplySetting extends IntId {
 
   var school: School = _
+
   /** 申请提前量 */
   var daysBeforeApply: Int = _
 

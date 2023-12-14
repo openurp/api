@@ -15,22 +15,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.edu.attendance.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.edu.exempt.model.{CertExemptApply, ExchExemptApply, ExchExemptCredit}
+import org.openurp.edu.attendance.model.AttendState.{Absent, Leave, LeaveEarly}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class DefaultMapping extends MappingModule {
 
-  def binding(): Unit = {
-    bind[CertExemptApply] declare { e =>
-      e.certificateNo is length(80)
-      e.attachmentPath is length(100)
-      e.reasons is length(500)
+class AttendStateTest extends AnyFunSpec with Matchers {
+  describe("AttendState") {
+    it("set") {
+      var a = AttendStates.Empty.add(1, Absent)
+      a = a.add(3, Leave)
+      a = a.add(5, LeaveEarly)
+      assert(a(1) == Absent)
+      assert(a(3) == Leave)
+      a=a.remove(5)
+
+      val b = AttendStates(Absent, LeaveEarly, Leave)
+      assert(b.values.size == 3)
+      assert(b(1) == Absent)
+      assert(b(2) == LeaveEarly)
+      assert(b(3) == Leave)
     }
-    bind[ExchExemptApply].declare { e =>
-      index("", true, e.externStudent)
-    }
-    bind[ExchExemptCredit]
   }
 }

@@ -24,10 +24,10 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
 
     bind[Attendance] declare { e =>
-      index("", true, e.semester, e.course, e.std)
+      index("", true, e.semester, e.clazz, e.std)
     }
 
-    bind[StdDayoff] declare { e =>
+    bind[StdLeave] declare { e =>
       e.reason is length(200)
     }
   }

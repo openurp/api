@@ -15,22 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.edu.attendance.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.edu.exempt.model.{CertExemptApply, ExchExemptApply, ExchExemptCredit}
+enum AttendState(val id: Int, val name: String, val absent: Boolean) {
+  case None extends AttendState(0, "未考勤", true)
+  case Present extends AttendState(1, "出勤", false)
+  case Absent extends AttendState(2, "旷课", true)
+  case Leave extends AttendState(3, "请假", true)
+  case Later extends AttendState(4, "迟到", false)
+  case LeaveEarly extends AttendState(5, "早退", false)
 
-class DefaultMapping extends MappingModule {
-
-  def binding(): Unit = {
-    bind[CertExemptApply] declare { e =>
-      e.certificateNo is length(80)
-      e.attachmentPath is length(100)
-      e.reasons is length(500)
-    }
-    bind[ExchExemptApply].declare { e =>
-      index("", true, e.externStudent)
-    }
-    bind[ExchExemptCredit]
-  }
+  override def toString: String = name
 }

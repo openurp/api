@@ -21,7 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
-import org.openurp.edu.extern.code.CertificateSubject
+import org.openurp.edu.extern.code.Certificate
 
 /**
  * 资格考试报名记录
@@ -33,8 +33,8 @@ class CertSignup extends LongId with Updated {
   var std: Student = _
   /** 学年学期 */
   var semester: Semester = _
-  /** 报名科目 */
-  var subject: CertificateSubject = _
+  /** 报名证书 */
+  var certificate: Certificate = _
   /** 报名费 */
   var fee: Int = _
   /** 准考证号码 */

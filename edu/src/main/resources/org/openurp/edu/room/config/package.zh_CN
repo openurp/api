@@ -7,3 +7,8 @@ RoomApplySetting.beginAt=每天的开始时间
 RoomApplySetting.endAt=每天的结束时间
 RoomApplySetting.opened=是否开放
 RoomApplySetting.notice=借用须知
+
+RoomApplyReservedTime=借用保留时间
+RoomApplyReservedTime.beginOn=开始日期
+RoomApplyReservedTime.endOn=结束日期
+RoomApplyReservedTime.remark=说明

@@ -15,22 +15,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.edu.room.config
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.edu.exempt.model.{CertExemptApply, ExchExemptApply, ExchExemptCredit}
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.{DateRange, Remark}
+import org.openurp.base.model.{Building, Campus, School}
 
-class DefaultMapping extends MappingModule {
-
-  def binding(): Unit = {
-    bind[CertExemptApply] declare { e =>
-      e.certificateNo is length(80)
-      e.attachmentPath is length(100)
-      e.reasons is length(500)
-    }
-    bind[ExchExemptApply].declare { e =>
-      index("", true, e.externStudent)
-    }
-    bind[ExchExemptCredit]
-  }
+/** 教室保留时间
+ */
+@config
+class RoomApplyReservedTime extends LongId, DateRange, Remark {
+  var school: School = _
+  var campus: Campus = _
+  var building: Option[Building] = None
 }

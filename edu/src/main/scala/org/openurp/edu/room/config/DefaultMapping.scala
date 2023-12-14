@@ -18,7 +18,6 @@
 package org.openurp.edu.room.config
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.room.config.{RoomApplyDepartScope, RoomApplySetting}
 
 class DefaultMapping extends MappingModule {
 
@@ -30,6 +29,10 @@ class DefaultMapping extends MappingModule {
 
     bind[RoomApplySetting] declare { e =>
       e.notice is length(1000)
+    }
+
+    bind[RoomApplyReservedTime].declare { e =>
+      e.remark is length(300)
     }
   }
 }

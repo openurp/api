@@ -19,9 +19,9 @@ package org.openurp.edu.extern.config
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{Coded, InstantRange, Named}
+import org.beangle.data.model.pojo.{InstantRange, Named}
 import org.openurp.base.model.{Project, Semester}
-import org.openurp.edu.extern.code.{CertificateCategory, CertificateSubject}
+import org.openurp.edu.extern.code.Certificate
 
 import java.time.Instant
 import scala.collection.mutable
@@ -32,30 +32,26 @@ import scala.collection.mutable
  * @author chaostone
  */
 @config
-class CertSignupConfig extends LongId with Coded with Named with InstantRange {
-  /** 考试类型 */
-  var category: CertificateCategory = _
+class CertSignupConfig extends LongId, Named, InstantRange {
   /** 教学项目 */
   var project: Project = _
-  /** 报名科目设置 */
-  var settings: mutable.Buffer[CertSignupSetting] = new mutable.ArrayBuffer[CertSignupSetting]
-  /** 在规定的时间段内,是否可以开放 */
-  var opened = false
-  /** 通知 */
-  var notice: String = _
   /** 学年学期 */
   var semester: Semester = _
+  /** 报名科目设置 */
+  var settings: mutable.Buffer[CertSignupSetting] = new mutable.ArrayBuffer[CertSignupSetting]
+  /** 通知 */
+  var notice: String = _
   /** 是否预报名 */
   var prediction: Boolean = _
   /** 允许报名的最大门数 */
-  var maxSubject: Int = _
+  var maxOptions: Int = _
 
   def isTimeSuitable: Boolean = {
     within(Instant.now)
   }
 
-  def getSetting(subject: CertificateSubject): Option[CertSignupSetting] = {
-    settings.find(_.subject == subject)
+  def getSetting(certificate: Certificate): Option[CertSignupSetting] = {
+    settings.find(_.certificate == certificate)
   }
 
   def addSetting(setting: CertSignupSetting): Unit = {
@@ -63,7 +59,7 @@ class CertSignupConfig extends LongId with Coded with Named with InstantRange {
     setting.config = this
   }
 
-  def subjects: List[CertificateSubject] = {
-    settings.map(_.subject).toList
+  def certificates: List[Certificate] = {
+    settings.map(_.certificate).toList
   }
 }

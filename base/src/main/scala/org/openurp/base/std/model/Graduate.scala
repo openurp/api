@@ -36,7 +36,7 @@ class Graduate extends LongId, Updated {
   var std: Student = _
 
   /** 学历证书编号（电子注册号） */
-  var certificateNo: String = _
+  var certificateNo: Option[String] = None
 
   /** 毕结业证书序列号 */
   var certificateSeqNo: Option[String] = None

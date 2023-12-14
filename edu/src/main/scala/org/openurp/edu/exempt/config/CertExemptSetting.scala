@@ -23,7 +23,7 @@ import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{InstantRange, Remark}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Department
-import org.openurp.edu.extern.code.CertificateSubject
+import org.openurp.edu.extern.code.Certificate
 
 import scala.collection.mutable
 
@@ -35,7 +35,7 @@ class CertExemptSetting extends LongId with Remark {
 
   var config: CertExemptConfig = _
   /** 考试科目 */
-  var subject: CertificateSubject = _
+  var certificate: Certificate = _
   /** 审核部门 */
   var auditDepart: Department = _
   /**

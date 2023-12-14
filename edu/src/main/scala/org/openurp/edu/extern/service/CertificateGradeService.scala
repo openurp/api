@@ -18,17 +18,16 @@
 package org.openurp.edu.extern.service
 
 import org.openurp.base.std.model.Student
+import org.openurp.edu.extern.code.Certificate
 import org.openurp.edu.extern.model.CertificateGrade
-import org.openurp.edu.extern.code.CertificateCategory
-import org.openurp.edu.extern.code.CertificateSubject
 
 trait CertificateGradeService {
 
-  def getBest(std: Student, category: CertificateCategory): CertificateGrade
+  def getBest(std: Student, certificate: Certificate): CertificateGrade
 
-  def getPassed(std: Student, subjects: Iterable[CertificateSubject]): List[CertificateGrade]
+  def getPassed(std: Student, certificates: Iterable[Certificate]): List[CertificateGrade]
 
-  def isPass(std: Student, subject: CertificateSubject): Boolean
+  def isPass(std: Student, certificate: Certificate): Boolean
 
   def get(std: Student, best: Boolean): Iterable[CertificateGrade]
 }

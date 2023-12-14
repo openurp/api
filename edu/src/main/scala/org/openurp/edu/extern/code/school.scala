@@ -19,18 +19,19 @@ package org.openurp.edu.extern.code
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
-/**
- * 校外考试科目
- */
+
+/** 校外考试证书 */
 @code("school")
-class CertificateSubject extends CodeBean {
+class Certificate extends CodeBean {
   var category: CertificateCategory = _
   var institutionCode: Option[String] = None
   var institutionName: Option[String] = None
 }
 
 /**
- * 校外考试种类
+ * 校外考试证书类型
  */
 @code("school")
-class CertificateCategory extends CodeBean
+class CertificateCategory extends CodeBean {
+
+}

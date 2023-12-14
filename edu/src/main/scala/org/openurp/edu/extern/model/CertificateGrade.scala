@@ -21,11 +21,12 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Course
+import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{ExamStatus, GradingMode}
-import org.openurp.edu.extern.code.CertificateSubject
+import org.openurp.edu.extern.code.Certificate
 
-import java.time.{LocalDate, YearMonth}
+import java.time.YearMonth
 import scala.collection.mutable
 
 /**
@@ -35,25 +36,42 @@ class CertificateGrade extends LongId with Updated {
 
   var std: Student = _
 
+  /** 学年学期 */
+  var semester: Semester = _
+
+  /** 数字分数 */
   var score: Option[Float] = None
 
+  /** 分数 */
   var scoreText: String = _
 
+  /** 是否通过 */
   var passed: Boolean = _
 
-  var subject: CertificateSubject = _
+  /** 证书名称 */
+  var certificate: Certificate = _
 
-  var certificate: String = _
+  /** 证书内课程 */
+  var subject: Option[String] = None
 
+  /** 证书号 */
+  var certificateNo: Option[String] = None
+
+  /** 准考证号 */
   var examNo: Option[String] = None
 
+  /** 获得年月 */
   var acquiredOn: YearMonth = _
 
+  /** 成绩记录方式 */
   var gradingMode: GradingMode = _
 
+  /** 考试状态 */
   var examStatus: ExamStatus = _
 
+  /** 免修课程 */
   var exempts: mutable.Set[Course] = Collections.newSet[Course]
 
+  /** 状态 */
   var status: Int = _
 }

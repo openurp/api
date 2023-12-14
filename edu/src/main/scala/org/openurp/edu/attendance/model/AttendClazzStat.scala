@@ -15,22 +15,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.edu.attendance.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.edu.exempt.model.{CertExemptApply, ExchExemptApply, ExchExemptCredit}
+import org.beangle.data.model.LongId
+import org.openurp.edu.clazz.model.Clazz
 
-class DefaultMapping extends MappingModule {
+import java.time.Instant
 
-  def binding(): Unit = {
-    bind[CertExemptApply] declare { e =>
-      e.certificateNo is length(80)
-      e.attachmentPath is length(100)
-      e.reasons is length(500)
-    }
-    bind[ExchExemptApply].declare { e =>
-      index("", true, e.externStudent)
-    }
-    bind[ExchExemptCredit]
-  }
+/** 课程考勤统计 */
+class AttendClazzStat extends LongId {
+
+  var clazz: Clazz = _
+
+  /** 考勤次数 */
+  var idx: Int = _
+
+  /** 上课开始时间 */
+  var beginAt: Instant = _
+
+  /** 实到人数 */
+  var present: Short = _
+
+  /** 缺席人数（包括旷课、请假） */
+  var absent: Short = _
+
+  /** 请假人数 */
+  var leave: Short = _
+
+  /** 迟到早退人数 */
+  var late: Short = _
+
 }

@@ -1,7 +1,7 @@
 CertExemptApply=校外证书成绩申请
 CertExemptApply.scoreText=成绩
 CertExemptApply.auditDepart=审核部门
-CertExemptApply.certificate=证书编号
+CertExemptApply.certificateNo=证书编号
 CertExemptApply.acquiredOn=获得日期
 CertExemptApply.courses=免修课程
 CertExemptApply.reasons=申请理由

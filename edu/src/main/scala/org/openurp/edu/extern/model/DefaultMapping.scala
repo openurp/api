@@ -25,14 +25,15 @@ object DefaultMapping extends MappingModule {
     bind[CertSignup].declare { e =>
       e.examNo is length(100)
       e.examRoom is length(100)
-      index("", true, e.std, e.semester, e.subject)
+      index("", true, e.std, e.semester, e.certificate)
     }
 
     bind[CertificateGrade].declare { e =>
-      e.scoreText is length(5)
-      e.certificate & e.examNo are length(80)
+      e.scoreText is length(10)
+      e.certificateNo & e.examNo are length(80)
 
-      index("", true, e.std, e.subject, e.acquiredOn)
+      index("", true, e.std, e.certificate, e.acquiredOn)
+      index("", false, e.semester)
     }
     bind[ExternGrade] declare { e =>
       e.courseName is length(400)

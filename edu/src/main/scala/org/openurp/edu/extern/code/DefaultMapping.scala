@@ -22,7 +22,7 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[CertificateSubject].generator(IdGenerator.Code)
     bind[CertificateCategory].generator(IdGenerator.Code)
+    bind[Certificate].generator(IdGenerator.Code)
   }
 }

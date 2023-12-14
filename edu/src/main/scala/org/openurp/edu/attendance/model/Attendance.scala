@@ -18,21 +18,35 @@
 package org.openurp.edu.attendance.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
+import org.openurp.edu.clazz.model.Clazz
 
-/** 出勤情况
+/** 学生出勤统计
  */
 class Attendance extends LongId {
 
+  /** 学生 */
   var std: Student = _
 
+  /** 课程 */
+  var clazz: Clazz = _
+
+  /** 学年学期 */
   var semester: Semester = _
 
-  var course: Course = _
+  /** 实到次数 */
+  var present: Short = _
 
-  var status: Long = _
+  /** 缺席次数（包括旷课、请假） */
+  var absent: Short = _
 
-  var leave: Long = _
+  /** 请假次数 */
+  var leave: Short = _
+
+  /** 迟到早退次数 */
+  var late: Short = _
+
+  /** 出勤状态 */
+  var states: AttendStates = AttendStates.Empty
 }

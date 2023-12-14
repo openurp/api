@@ -1,7 +1,18 @@
-StdDayoff=学生请假
-StdDayoff.dayoffType=请假类型
-StdDayoff.reason=请假事由
+StdLeave=学生请假
+StdLeave.leaveType=请假类型
+StdLeave.reason=请假事由
 
-Attendance=课程考勤
-Attendance.status=出勤状态
-Attendance.leave=请假状态
+Attendance=学生出勤统计
+Attendance.present=出勤次数
+Attendance.leave=请假次数
+Attendance.late=迟到早退次数
+Attendance.absent=缺勤次数
+Attendance.states=出勤状态
+
+AttendClazzStat=课程考勤统计
+AttendClazzStat.idx=考勤次数
+AttendClazzStat.beginAt=课程开始时间
+AttendClazzStat.present=出勤人数
+AttendClazzStat.absent=缺勤人数
+AttendClazzStat.leave=请假人数
+AttendClazzStat.late=迟到早退人数

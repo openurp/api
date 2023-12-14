@@ -34,6 +34,8 @@ class DefaultMapping extends MappingModule {
     bind[CertSignupScope] declare { e =>
       e.codes is length(20000)
     }
+
+    all.cacheAll()
   }
 
 }

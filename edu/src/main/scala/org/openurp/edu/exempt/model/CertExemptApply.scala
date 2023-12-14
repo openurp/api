@@ -24,9 +24,9 @@ import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{AuditStatus, Department, Semester}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.GradingMode
-import org.openurp.edu.extern.code.CertificateSubject
+import org.openurp.edu.extern.code.Certificate
 
-import java.time.{LocalDate, YearMonth}
+import java.time.YearMonth
 import scala.collection.mutable
 
 /**
@@ -44,10 +44,10 @@ class CertExemptApply extends LongId with Updated {
   var gradingMode: GradingMode = _
   /** 审核部门 */
   var auditDepart: Department = _
-  /** 科目 */
-  var subject: CertificateSubject = _
+  /** 证书类型 */
+  var certificate: Certificate = _
   /** 证书编号 */
-  var certificate: String = _
+  var certificateNo: Option[String] = None
   /** 获得日期 */
   var acquiredOn: YearMonth = _
   /** 免修课程 */
