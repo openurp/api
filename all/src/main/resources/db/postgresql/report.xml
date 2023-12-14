@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <report title="数据库设计说明" contextPath="/model">
-  <system name="教学管理系统" version="0.34.5"/>
+  <system name="教学管理系统" version="0.35.0"/>
   <database xml="database.xml"/>
 
   <!--

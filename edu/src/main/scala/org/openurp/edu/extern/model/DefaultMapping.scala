@@ -30,6 +30,7 @@ object DefaultMapping extends MappingModule {
 
     bind[CertificateGrade].declare { e =>
       e.scoreText is length(10)
+      e.subject is length(80)
       e.certificateNo & e.examNo are length(80)
 
       index("", true, e.std, e.certificate, e.acquiredOn)

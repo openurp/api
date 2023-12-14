@@ -73,6 +73,7 @@ create index idx_5ed3idyn3wloeml8w2hipr22i on degree.thesis_plans_times (thesis_
 create index idx_1msow45s5r22cpswq4uby1gyo on degree.writers (season_id);
 create index idx_8re320acxkwwypf6jedlbkkm6 on degree.writers (std_id);
 create index idx_8xnd8bvmns043fxpppt0rso0f on edu.cert_exempt_applies_courses (cert_exempt_apply_id);
+create index idx_5miknelheaykqp8o0l44o9em2 on edu.certificate_grades (semester_id);
 create index idx_7arggk33h5fogvdhxs390tc4c on edu.certificate_grades_exempts (certificate_grade_id);
 create index idx_sjlgr9e0wh41aqb4wbj7tyqaj on edu.clazz_activities (clazz_id);
 create index idx_lp1ho1db4ui0l4lffulgfn0yk on edu.clazz_activities_rooms (activity_id);
