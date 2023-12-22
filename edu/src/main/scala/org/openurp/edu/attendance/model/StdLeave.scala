@@ -17,20 +17,36 @@
 
 package org.openurp.edu.attendance.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.InstantRange
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 
-/** 学生请假
+import scala.collection.mutable
+
+/** 学生请假申请
  */
 class StdLeave extends LongId, InstantRange {
 
+  /** 学年学期 */
   var semester: Semester = _
 
+  /** 请假类型 */
   var leaveType: LeaveType = _
 
+  /** 学生 */
   var std: Student = _
 
+  /** 请假事由 */
   var reason: String = _
+
+  /** 影响上课次数 */
+  var lessons: Int = _
+
+  /** 请假天数 */
+  var days: Int = _
+
+  /** 请假附件 */
+  var files: mutable.Buffer[StdLeaveFile] = Collections.newBuffer[StdLeaveFile]
 }

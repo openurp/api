@@ -29,6 +29,14 @@ class DefaultMapping extends MappingModule {
 
     bind[StdLeave] declare { e =>
       e.reason is length(200)
+      e.files is depends("leave")
     }
+
+    bind[StdLeaveLesson] declare { e =>
+      e.lessonTime is length(11)
+      index("", false, e.clazz)
+    }
+
+    bind[StdLeaveFile]
   }
 }

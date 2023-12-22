@@ -17,25 +17,37 @@
 
 package org.openurp.edu.attendance.model
 
-import org.openurp.edu.attendance.model.AttendState.{Absent, Leave, LeaveEarly}
-import org.scalatest.funspec.AnyFunSpec
-import org.scalatest.matchers.should.Matchers
+import org.beangle.commons.lang.time.HourMinute
+import org.beangle.data.model.LongId
+import org.openurp.base.model.Semester
+import org.openurp.base.std.model.Student
+import org.openurp.edu.clazz.model.Clazz
 
-class AttendStateTest extends AnyFunSpec with Matchers {
-  describe("AttendState") {
-    it("set") {
-      var a = AttendStates.Empty.add(1, Absent)
-      a = a.add(3, Leave)
-      a = a.add(5, LeaveEarly)
-      assert(a(1) == Absent)
-      assert(a(3) == Leave)
-      a=a.remove(5)
+import java.time.LocalDate
 
-      val b = AttendStates(Absent, LeaveEarly, Leave)
-      assert(b.values.size == 3)
-      assert(b(1) == Absent)
-      assert(b(2) == LeaveEarly)
-      assert(b(3) == Leave)
-    }
-  }
+/**
+ * 学生课程请假记录
+ */
+class StdLeaveLesson extends LongId {
+
+  /** 学生 */
+  var std: Student = _
+
+  /** 请假学期 */
+  var semester: Semester = _
+
+  /** 请假的课程 */
+  var clazz: Clazz = _
+
+  /** 请假类型 */
+  var leaveType: LeaveType = _
+
+  /** 上课日期 */
+  var lessonOn: LocalDate = _
+
+  /** 上课时间 */
+  var lessonTime: String = _
+
+  /** 请假申请 */
+  var leave: Option[StdLeave] = None
 }

@@ -14,6 +14,7 @@ alter table cfg.edu_cert_signup_configs rename column max_subject to max_options
 
 alter table cfg.edu_cert_exempt_settings rename column subject_id to certificate_id;
 alter table edu.cert_exempt_applies rename column subject_id to certificate_id;
+alter table edu.cert_exempt_applies rename column certificate to certificate_no;
 
 alter table edu.cert_signups rename column subject_id to certificate_id;
 alter table edu.certificate_grades rename column subject_id to certificate_id;
@@ -47,6 +48,14 @@ alter table base.graduates alter certificate_no drop not null;
 
 --course audit results
 alter table edu.course_audit_results alter remark type varchar(150);
+
+--attendance
+alter table edu.attendances add present smallint default 0;
+alter table edu.attendances add absent smallint default 0;
+alter table edu.attendances add late smallint default 0;
+alter table edu.attendances alter leave type smallint;
+alter table edu.attendances add states bigint default 0;
+alter table edu.attendances add clazz_id bigint;
 
 --comments
 comment on table cfg.edu_room_apply_reserved_times is '借用保留时间@room.config';

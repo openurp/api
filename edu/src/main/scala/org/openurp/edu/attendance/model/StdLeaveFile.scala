@@ -17,25 +17,14 @@
 
 package org.openurp.edu.attendance.model
 
-import org.openurp.edu.attendance.model.AttendState.{Absent, Leave, LeaveEarly}
-import org.scalatest.funspec.AnyFunSpec
-import org.scalatest.matchers.should.Matchers
+import org.beangle.data.model.LongId
 
-class AttendStateTest extends AnyFunSpec with Matchers {
-  describe("AttendState") {
-    it("set") {
-      var a = AttendStates.Empty.add(1, Absent)
-      a = a.add(3, Leave)
-      a = a.add(5, LeaveEarly)
-      assert(a(1) == Absent)
-      assert(a(3) == Leave)
-      a=a.remove(5)
+/** 学生请假附件
+ */
+class StdLeaveFile extends LongId {
 
-      val b = AttendStates(Absent, LeaveEarly, Leave)
-      assert(b.values.size == 3)
-      assert(b(1) == Absent)
-      assert(b(2) == LeaveEarly)
-      assert(b(3) == Leave)
-    }
-  }
+  var leave: StdLeave = _
+
+  var filePath: String = _
+
 }
