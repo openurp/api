@@ -2,9 +2,11 @@ CertExemptConfig=校外考试免修设置
 CertExemptConfig.notice=通知
 CertExemptConfig.levels=培养层次
 
-CertExemptSetting=校外考试免修科目设置
+CertExemptSetting=校外证书免修科目设置
 CertExemptSetting.auditDepart=审核部门
 CertExemptSetting.validMonths=有效期长度，以月为单位
 CertExemptSetting.minScore=最低分
 CertExemptSetting.courses=免修课程
 CertExemptSetting.maxCount=免修最大门数
+CertExemptSetting.subjects=证书内科目
+CertExemptSetting.scoreExpr=认定成绩表达式

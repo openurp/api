@@ -22,8 +22,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Classroom
 import org.openurp.base.model.SemesterBased
+import org.openurp.base.space.model.Classroom
 import org.openurp.code.edu.model.ExamType
 import org.openurp.edu.exam.config.ExamAllocSetting
 

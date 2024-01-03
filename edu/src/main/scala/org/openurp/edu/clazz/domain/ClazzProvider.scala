@@ -18,7 +18,7 @@
 package org.openurp.edu.clazz.domain
 
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
-import org.openurp.base.edu.model.Teacher
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Project, Semester}
 import org.openurp.base.std.model.{Squad, Student}
 import org.openurp.edu.clazz.model.{Clazz, CourseTaker, RestrictionMeta}

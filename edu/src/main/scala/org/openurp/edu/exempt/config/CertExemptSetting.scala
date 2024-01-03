@@ -20,7 +20,7 @@ package org.openurp.edu.exempt.config
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{InstantRange, Remark}
+import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Department
 import org.openurp.edu.extern.code.Certificate
@@ -28,22 +28,26 @@ import org.openurp.edu.extern.code.Certificate
 import scala.collection.mutable
 
 /**
- * 校外考试免修科目设置
+ * 校外证书免修科目设置
  */
 @config
 class CertExemptSetting extends LongId with Remark {
-
+  /** 免修设置 */
   var config: CertExemptConfig = _
-  /** 考试科目 */
+  /** 证书类型 */
   var certificate: Certificate = _
+  /** 证书内课程 */
+  var subjects: Option[String] = None
   /** 审核部门 */
   var auditDepart: Department = _
-  /**
-   * 有效期长度，以月为单位
-   */
+
+  /** 有效期长度，以月为单位 */
   var validMonths: Option[Int] = None
   /** 最低分 */
   var minScore: Option[Float] = None
+
+  /** 认定得分表达式 */
+  var scoreExpr: Option[String] = None
   /** 免修课程 */
   var courses: mutable.Set[Course] = Collections.newSet[Course]
   /** 免修最大门数 */

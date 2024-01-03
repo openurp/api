@@ -25,7 +25,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.base.model.{Department, Project, Semester}
 import org.openurp.base.edu.model.Course
-import org.openurp.base.edu.model.Teacher
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.std.model.Squad
 
 /**

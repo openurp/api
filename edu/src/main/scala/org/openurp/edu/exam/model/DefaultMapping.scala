@@ -18,7 +18,6 @@
 package org.openurp.edu.exam.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.exam.config.ExamAllocSetting
 
 class DefaultMapping extends MappingModule {
 
@@ -93,6 +92,13 @@ class DefaultMapping extends MappingModule {
       e.studentNotice is length(1000)
       e.managerNotice is length(1000)
     }
+
+    bind[ExamDeferApply].declare { e =>
+      e.remark is length(300)
+      e.status is length(50)
+      index("", true, e.std, e.clazz, e.examType)
+    }
+
     cache().add(classOf[ExamNotice])
   }
 }

@@ -21,6 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.hr.model.Staff
 import org.openurp.base.model.*
 import org.openurp.base.std.code.StdType
 

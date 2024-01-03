@@ -15,34 +15,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.model
+package org.openurp.base.hr.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Named, TemporalOn}
-import org.openurp.base.model.*
-import org.openurp.code.person.model.Gender
+import org.beangle.data.model.pojo.TemporalOn
+import org.openurp.base.model.Department
 
-import scala.collection.mutable
-
-/**
- * 辅导员
+/** 领导干部
  */
-class Mentor extends LongId with Named with TemporalOn {
-
+class Official extends LongId, TemporalOn {
   /** 教职工 */
   var staff: Staff = _
 
   /** 部门 */
-  def department: Department = staff.department
+  var department: Department = _
 
-  /** 工号 */
-  def code: String = staff.code
+  /** 是否兼职 */
+  var parttime: Boolean = _
 
-  /** 性别 */
-  def gender: Gender = staff.gender
-
-  /** 项目列表 */
-  var projects: mutable.Set[Project] = Collections.newSet[Project]
-
+  /** 行政职务 */
+  var duty: String = _
 }

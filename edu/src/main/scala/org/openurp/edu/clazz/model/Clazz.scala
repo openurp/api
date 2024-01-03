@@ -21,7 +21,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.code.CourseType
-import org.openurp.base.edu.model.{Course, Teacher}
+import org.openurp.base.edu.model.Course
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.*
 import org.openurp.code.edu.model.{ExamMode, TeachLangType}
 import org.openurp.edu.clazz.code.ClazzTag

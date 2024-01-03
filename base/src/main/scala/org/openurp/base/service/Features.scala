@@ -18,21 +18,34 @@
 package org.openurp.base.service
 
 object Features {
-  /** 教师的所在部门和任教部门完全一致 */
-  val EduTeacherSameDepartWithStaff = Feature("edu.teacher.same_depart_with_staff", "教师的所在部门和任教部门完全一致", false)
 
-  /** 每学分对应学时数 */
-  val EduCourseHoursPerCredit = Feature("edu.course.hours_per_credit", "每学分对应学时数", 16)
+  object Std extends FeatureScope {
+    override def namespace: String = "base.std"
 
-  /** 课程是否支持不同层次学分不同 */
-  val EduCourseLevelCreditSupported = Feature("edu.course.level_credit_supported", "课程是否支持不同层次学分不同", false)
+    /** 学籍信息是否支持分班管理 */
+    val SquadSupported = Feature(this, "squad_supported", "学籍信息是否支持分班管理", true)
 
-  /** 学籍信息是否支持分班管理 */
-  val StdInfoSquadSupported = Feature("std.info.squad_supported", "学籍信息是否支持分班管理", true)
+    /** 学籍信息中是否支持导师 */
+    val TutorSupported = Feature(this, "tutor_supported", "学籍信息中是否支持导师", false)
 
-  /** 学籍信息中是否支持导师 */
-  val StdInfoTutorSupported = Feature("std.info.tutor_supported", "学籍信息中是否支持导师", false)
+    /** 学籍信息钟是否支持学位论文导师 */
+    val AdvisorSupported = Feature(this, "advisor_supported", "学籍信息钟是否支持学位论文导师", false)
+  }
 
-  /** 学籍信息钟是否支持学位论文导师 */
-  val StdInfoAdvisorSupported = Feature("std.info.advisor_supported", "学籍信息钟是否支持学位论文导师", false)
+  object Edu extends FeatureScope {
+    override def namespace: String = "base.edu"
+
+    /** 每学分对应学时数 */
+    val CourseHoursPerCredit = Feature(this, "course_hours_per_credit", "每学分对应学时数", 16)
+
+    /** 课程是否支持不同层次学分不同 */
+    val CourseLevelCreditSupported = Feature(this, "course_level_credit_supported", "课程是否支持不同层次学分不同", false)
+  }
+
+  object Hr extends FeatureScope {
+    override def namespace: String = "base.hr"
+
+    /** 教师的所在部门和任教部门完全一致 */
+    val TeacherSameDepartWithStaff = Feature(this, "teacher_same_depart_with_staff", "教师的所在部门和任教部门完全一致", false)
+  }
 }

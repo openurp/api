@@ -18,7 +18,6 @@
 package org.openurp.edu.exempt.config
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.exempt.config.{CertExemptConfig, CertExemptSetting}
 
 class DefaultMapping extends MappingModule {
 
@@ -31,6 +30,8 @@ class DefaultMapping extends MappingModule {
 
     bind[CertExemptSetting] declare { e =>
       e.courses is table("edu_cert_exempt_courses")
+      e.subjects is length(500)
+      e.scoreExpr is length(100)
     }
   }
 

@@ -17,8 +17,7 @@
 
 package org.openurp.edu.exam.model
 
-import org.openurp.base.model.Campus
-import org.openurp.base.model.Department
+import org.openurp.base.model.{Campus, Department}
 import org.beangle.data.model.LongId
 
 /**

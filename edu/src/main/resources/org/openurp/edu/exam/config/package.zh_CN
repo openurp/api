@@ -3,3 +3,7 @@ ExamAllocSetting.minOccupyRatio=最低占用率
 ExamAllocSetting.minCapacity=最小容量
 ExamAllocSetting.allocPolicy=分配策略
 ExamAllocSetting.minStdExamInterval=学生连续考试最小间隔
+
+ExamDeferSetting=缓考设置
+ExamDeferSetting.daysBeforeApply=申请提前量(天)
+ExamDeferSetting.applyOpened=是否开放申请

@@ -15,19 +15,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.model
+package org.openurp.edu.exam.config
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.base.model.Staff
-import org.openurp.code.job.model.ProfessionalTitle
-/**
- * 职称信息
- */
-class StaffTitle extends LongId with TemporalOn {
+import org.beangle.data.model.annotation.config
+import org.openurp.base.model.Project
+import org.openurp.code.edu.model.ExamType
 
-  var staff: Staff = _
+@config
+class ExamDeferSetting extends LongId {
 
-  /** 职称 */
-  var title: ProfessionalTitle = _
+  var project: Project = _
+
+  /** 考试类型 */
+  var examType: ExamType = _
+
+  /** 申请提前量(天) */
+  var daysBeforeApply: Int = _
+
+  /** 是否开放申请 */
+  var applyOpened: Boolean = _
 }

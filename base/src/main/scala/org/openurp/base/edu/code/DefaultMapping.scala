@@ -30,6 +30,7 @@ class DefaultMapping extends MappingModule {
     bind[CourseCategory]
     bind[CourseAbilityRate]
     bind[EducationType]
+    bind[ExamDeferReason]
     all.cacheAll()
   }
 }

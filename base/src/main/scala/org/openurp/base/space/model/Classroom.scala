@@ -15,12 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
+package org.openurp.base.space.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.base.model.{Building, Campus, Department, Project, School}
+import org.openurp.base.model.{Campus, Department, Project, School}
+import org.openurp.base.space.model.Building
 import org.openurp.code.edu.model.ClassroomType
 
 import scala.collection.mutable

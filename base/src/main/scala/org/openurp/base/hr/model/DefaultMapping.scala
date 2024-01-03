@@ -15,19 +15,47 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.profile.model
+package org.openurp.base.hr.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
-
   def binding(): Unit = {
-    bind[CourseProfile] declare { e =>
-      e.description is length(40000)
-      e.enDescription is length(40000)
-
-      index("", true, e.course)
+    bind[Staff].declare { e =>
+      e.idNumber is length(18)
+      e.mobile is length(20)
+      e.email is length(100)
+      e.homepage is length(200)
+      e.organization is length(200)
+      e.name is length(100)
+      e.code is length(20)
+      e.external is column("external_")
+      index("", true, e.school, e.code)
     }
+
+    bind[StaffTitle]
+
+    bind[Official] declare { e =>
+      e.duty is length(100)
+    }
+
+    bind[Secretary] declare { e =>
+      e.officeAddr is length(100)
+      e.officePhone is length(50)
+      e.officeEmail is length(100)
+    }
+
+    bind[Mentor].declare { e =>
+      index("", true, e.staff)
+    }.generator(IdGenerator.Assigned)
+
+    bind[Teacher].declare { e =>
+      e.tqcNumber is length(20)
+      e.oqc is length(200)
+      e.name is length(100)
+      index("", true, e.staff)
+      index("", true, e.user)
+    }.generator(IdGenerator.Assigned)
 
     bind[StaffProfile] declare { e =>
       e.intro is length(60000)

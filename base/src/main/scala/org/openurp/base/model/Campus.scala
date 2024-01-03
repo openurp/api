@@ -19,6 +19,7 @@ package org.openurp.base.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
+import org.openurp.base.model.School
 import org.openurp.code.asset.model.{BuildingType, RoomType}
 
 /**

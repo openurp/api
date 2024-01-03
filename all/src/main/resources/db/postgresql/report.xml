@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <report title="数据库设计说明" contextPath="/model">
-  <system name="教学管理系统" version="0.35.0"/>
+  <system name="教学管理系统" version="0.36.0"/>
   <database xml="database.xml"/>
 
-  <!--
   <pages template="singlehtml" extension=".html">
     <page name="index"/>
   </pages>
- -->
-  <pages template="jekyll" extension=".md">
+
+  <!--<pages template="jekyll" extension=".md">
     <page name="index" />
     <page name="group" iterable="true"/>
   </pages>
-
+-->
   <schemas>
     <schema name="code" title="基础代码">
       <module name="asset" title="资产">
@@ -42,10 +41,7 @@
     </schema>
 
     <schema name="base" title="基础信息">
-      <module name="common" title="基础信息">
-        <group name="space" title="空间相关" tables="building*,campu*,room*,school*">
-          <image name="space" title="校区、教学楼、教室" tables="campuses,buildings,rooms"/>
-        </group>
+      <module name="common" title="通用">
         <group name="time" title="时间相关" tables="calendar*,semester*,*unit*,holiday*,time*">
           <image name="time" title="学期和作息时间" tables="calendars,semesters,time_settings,course_units"/>
         </group>
@@ -55,21 +51,30 @@
         <group name="misc" title="其他" tables="*"/>
       </module>
 
-      <module name="edu" title="教学类基础信息">
+      <module name="edu" title="教学">
         <group name="core" title="核心部分"
                tables="squad*,project*,courses*,course_hour*,majors*,major_journals*,direction*,students*,student_state*,teachers*">
           <image name="squad" title="行政班级" tables="squad*,majors,directions*,projects,departments,instructors*"/>
           <image name="majors" title="专业" tables="major*,direction*,departments,school_length*"/>
           <image name="student" title="学生" tables="student*,directions,majors,departments,users,people,squads"/>
-          <image name="teacher" title="教师" tables="teacher*,departments,users,people"/>
+
         </group>
         <group name="misc" title="其他" tables="*"/>
       </module>
 
-      <module name="std" title="学生类基础信息">
-        <group name="core" title="所有表格" tables="*"/>
+      <module name="space" title="教室">
+        <group name="core" title="所有表格" tables="*">
+          <image name="space" title="校区、教学楼、教室" tables="campuses,buildings,rooms"/>
+        </group>
       </module>
-      <module name="profile" title="简介">
+
+      <module name="hr" title="教职工">
+        <group name="core" title="所有表格" tables="*">
+          <image name="teacher" title="教师" tables="teacher*,departments,users,people"/>
+        </group>
+      </module>
+
+      <module name="std" title="学生">
         <group name="core" title="所有表格" tables="*"/>
       </module>
     </schema>

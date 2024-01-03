@@ -19,7 +19,8 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.{Classroom, Teacher}
+import org.openurp.base.hr.model.Teacher
+import org.openurp.base.space.model.Classroom
 import org.openurp.code.edu.model.{TeachingMethod, TeachingNature}
 
 import java.time.LocalDate

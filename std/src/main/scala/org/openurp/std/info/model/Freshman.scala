@@ -19,7 +19,8 @@ package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named}
-import org.openurp.base.edu.model.{Direction, Major, Teacher}
+import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, EduLevelBased}
 import org.openurp.base.std.code.StdType
 import org.openurp.base.std.model.{Grade, Squad}

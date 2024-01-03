@@ -18,7 +18,8 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.{Teacher, TeachingOffice}
+import org.openurp.base.edu.model.TeachingOffice
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, User}
 import org.openurp.base.std.model.GraduateSeason
 

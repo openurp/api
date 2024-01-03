@@ -17,9 +17,9 @@
 
 package org.openurp.edu.exam.model
 
-import org.openurp.base.edu.model.Teacher
 import org.openurp.edu.clazz.model.Clazz
 import org.beangle.data.model.LongId
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.User
 
 /**

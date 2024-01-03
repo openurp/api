@@ -15,19 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.base.space.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.std.model.Student
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.*
+import org.openurp.base.model.{Campus, School}
+import org.openurp.code.asset.model.{BuildingType, RoomType}
 
-/** 交换免修申请学分上限
+/**
+ * 建筑
  */
-class ExchExemptCredit extends LongId with Remark with Updated {
-
-  var std: Student = _
-
-  var exempted: Float = _
-
-  var maxValue: Float = _
+class Building extends IntId with Coded with Named with TemporalOn with Updated with Remark {
+  var school: School = _
+  /**所属校区*/
+  var campus: Campus = _
+  var enName: Option[String] = None
+  var shortName: Option[String] = None
+  var buildingType: Option[BuildingType] = None
 }

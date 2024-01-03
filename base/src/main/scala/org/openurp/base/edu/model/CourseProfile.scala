@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.profile.model
+package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated

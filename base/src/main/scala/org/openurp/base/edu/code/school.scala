@@ -82,3 +82,8 @@ class CourseAbilityRate extends CodeBean {
 class EducationType extends CodeBean {
 
 }
+
+/** 考试缓考原因
+ */
+@code("school")
+class ExamDeferReason extends CodeBean

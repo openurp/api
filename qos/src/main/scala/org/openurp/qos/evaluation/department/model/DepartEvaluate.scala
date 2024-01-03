@@ -20,7 +20,7 @@ package org.openurp.qos.evaluation.department.model
 import org.beangle.data.model.LongId
 import org.openurp.base.model.{Department, Semester}
 import org.beangle.commons.collection.Collections
-import org.openurp.base.edu.model.Teacher
+import org.openurp.base.hr.model.Teacher
 import org.openurp.qos.evaluation.base.model.Questionnaire
 
 import java.time.Instant

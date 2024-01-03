@@ -33,23 +33,6 @@ Campus.enName=英文名称
 Campus.shortName=简称
 Campus.school=学校
 
-Room=房间
-Room.campus=所在校区
-Room.department=管理部门
-Room.roomType=房间类型
-Room.building=所在教学楼
-Room.floorNo=教室所处楼层
-Room.capacity=实际容量
-Room.enName=英文名称
-Room.school=学校
-
-Building=楼房建筑物
-Building.enName=英文名称
-Building.shortName=简称
-Building.campus=所在校区
-Building.school=学校
-Building.buildingType=建筑物类型
-
 Department=部门组织机构信息
 Department.enName=英文名称
 Department.shortName=简称
@@ -104,7 +87,7 @@ Person.birthplace=出生地
 Name.givenName =名
 Name.middleName=中间名
 Name.familyName=姓
-Name.formatedName=姓名
+Name.formattedName=姓名
 
 Version=版本迁移日志
 Version.updatedAt=更新时间
@@ -131,22 +114,3 @@ CalendarStage.vacation=是否假期
 SemesterStage=学期阶段
 SemesterStage.beginOn=开始日期
 SemesterStage.endOn=结束日期
-
-Staff =教职工信息
-Staff.idNumber=证件号码
-Staff.birthday=出生日期
-Staff.email=电子邮件
-Staff.mobile=联系手机
-Staff.formalHr=是否在编
-Staff.title=最高职称
-Staff.educationDegree=最高学历
-Staff.degreeLevel=最高学位
-Staff.degreeAwardBy=最高学位授予单位
-Staff.organization=全职工作单位
-Staff.homepage=个人主页
-Staff.parttime=是否兼职
-Staff.external=是否外聘
-
-StaffTitle=职称信息
-StaffTitle.staff=教职工
-StaffTitle.title=职称

@@ -34,31 +34,37 @@ object Feature {
     c
   }
 
-  def apply(name: String, description: String, defaultValue: Any): Feature = {
-    apply(name, description, defaultValue, List.empty)
+  def apply(scope: FeatureScope, name: String, description: String, defaultValue: Any): Feature = {
+    apply(scope, name, description, defaultValue, List.empty)
   }
 
-  def apply(name: String, description: String, options: Seq[Any]): Feature = {
+  def apply(scope: FeatureScope, name: String, description: String, options: Seq[Any]): Feature = {
     assert(options.nonEmpty)
-    apply(name, description, options.head, options)
+    apply(scope, name, description, options.head, options)
   }
 
-  def apply(name: String, description: String, defaultValue: Any, options: Seq[Any]): Feature = {
+  def apply(scope: FeatureScope, name: String, description: String, defaultValue: Any, options: Seq[Any]): Feature = {
     val list = options.map(_.toString)
+    val globalName = scope.namespace + "." + name
     defaultValue match {
-      case i: Int => Feature(name, description, IntType, i.toString, list)
-      case f: Float => Feature(name, description, FloatType, f.toString, list)
-      case b: Boolean => Feature(name, description, BooleanType, b.toString, list)
-      case _ => Feature(name, description, StringType, defaultValue.toString, list)
+      case i: Int => Feature(globalName, description, IntType, i.toString, list)
+      case f: Float => Feature(globalName, description, FloatType, f.toString, list)
+      case b: Boolean => Feature(globalName, description, BooleanType, b.toString, list)
+      case _ => Feature(globalName, description, StringType, defaultValue.toString, list)
     }
   }
 
-  def apply(name: String, description: String, typeName: String, defaultValue: String): Feature = {
+  def apply(scope: FeatureScope, name: String, description: String, typeName: String, defaultValue: String): Feature = {
     assert(types.contains(typeName), "given typeName should be one of integer/float/string/boolean")
-    Feature(name, description, typeName, defaultValue, List.empty)
+    val globalName = scope.namespace + "." + name
+    Feature(globalName, description, typeName, defaultValue, List.empty)
   }
 }
 
 case class Feature(name: String, description: String, typeName: String, defaultValue: String, options: Seq[String]) {
 
+}
+
+trait FeatureScope {
+  def namespace: String
 }

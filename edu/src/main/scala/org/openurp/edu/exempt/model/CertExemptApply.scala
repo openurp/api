@@ -46,6 +46,8 @@ class CertExemptApply extends LongId with Updated {
   var auditDepart: Department = _
   /** 证书类型 */
   var certificate: Certificate = _
+  /** 证书内课程 */
+  var subject: Option[String] = None
   /** 证书编号 */
   var certificateNo: Option[String] = None
   /** 获得日期 */

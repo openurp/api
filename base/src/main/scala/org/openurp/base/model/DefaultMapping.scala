@@ -18,7 +18,7 @@
 package org.openurp.base.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.base.profile.model.StaffProfile
+import org.openurp.base.hr.model.StaffTitle
 
 class DefaultMapping extends MappingModule {
 
@@ -52,23 +52,6 @@ class DefaultMapping extends MappingModule {
       index("", true, e.school, e.code)
     }
 
-    bind[Building] declare { e =>
-      e.code is length(10)
-      e.name is length(80)
-      e.enName & e.shortName are (length(100))
-      e.remark is length(200)
-
-      index("", true, e.school, e.code)
-    }
-
-    bind[Room] declare { e =>
-      e.code is length(10)
-      e.name is length(80)
-      e.remark is length(200)
-
-      index("", true, e.school, e.code)
-    }
-
     bind[User] declare { e =>
       e.code is length(30)
       e.name is length(80)
@@ -81,7 +64,7 @@ class DefaultMapping extends MappingModule {
     bind[Person].declare { e =>
       e.code is length(30)
       e.name.familyName & e.name.givenName are length(80)
-      e.name.formatedName is length(100)
+      e.name.formattedName is length(100)
       e.name.middleName is length(50)
       e.formerName & e.phoneticName are length(100)
 
@@ -136,20 +119,6 @@ class DefaultMapping extends MappingModule {
       e.remark is length(500)
     }
 
-    bind[Staff].declare { e =>
-      e.idNumber is length(18)
-      e.mobile is length(20)
-      e.email is length(100)
-      e.homepage is length(200)
-      e.organization is length(200)
-      e.name is length(100)
-      e.code is length(20)
-      e.external is column("external_")
-      index("", true, e.school, e.code)
-    }
-
-    bind[StaffTitle]
-
-    all.except(classOf[User], classOf[Person], classOf[StaffTitle]).cacheable()
+    all.except(classOf[User], classOf[Person]).cacheable()
   }
 }

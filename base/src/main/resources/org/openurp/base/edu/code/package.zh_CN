@@ -27,3 +27,4 @@ TeacherType.external=是否外聘
 TeacherType.retired=是否退休返聘
 
 EducationType=培养类型
+ExamDeferReason=缓考原因

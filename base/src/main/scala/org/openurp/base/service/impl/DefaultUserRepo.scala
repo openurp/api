@@ -22,8 +22,8 @@ import org.beangle.commons.lang.Strings
 import org.beangle.commons.logging.Logging
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.beangle.data.jdbc.query.JdbcExecutor
-import org.openurp.base.edu.model.Teacher
-import org.openurp.base.model.{Staff, User}
+import org.openurp.base.hr.model.{Staff, Teacher}
+import org.openurp.base.model.User
 import org.openurp.base.service.{UserCategories, UserRepo}
 import org.openurp.base.std.model.Student
 import org.openurp.code.hr.model.UserCategory

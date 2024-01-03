@@ -21,8 +21,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{InstantRange, Remark, Updated}
-import org.openurp.base.edu.model.Classroom
 import org.openurp.base.model.Department
+import org.openurp.base.space.model.Classroom
 
 import scala.collection.mutable
 

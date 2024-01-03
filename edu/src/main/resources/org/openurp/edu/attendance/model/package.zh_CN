@@ -1,6 +1,8 @@
 StdLeave=学生请假
 StdLeave.leaveType=请假类型
 StdLeave.reason=请假事由
+StdLeave.lessons=影响上课次数
+StdLeave.days=请假天数
 
 Attendance=学生出勤统计
 Attendance.present=出勤次数
@@ -16,3 +18,11 @@ AttendClazzStat.present=出勤人数
 AttendClazzStat.absent=缺勤人数
 AttendClazzStat.leave=请假人数
 AttendClazzStat.late=迟到早退人数
+
+StdLeaveFile=学生请假附件
+StdLeaveFile.filePath=附件路径
+
+StdLeaveLesson=学生课程请假记录
+StdLeaveLesson.lessonOn=上课日期
+StdLeaveLesson.lessonTime=上课时间
+StdLeaveLesson.leaveType=请假类型

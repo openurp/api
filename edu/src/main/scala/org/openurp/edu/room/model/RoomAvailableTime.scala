@@ -20,8 +20,8 @@ package org.openurp.edu.room.model
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Classroom
 import org.openurp.base.model.Project
+import org.openurp.base.space.model.Classroom
 
 /** 可用时间
  **/

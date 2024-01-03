@@ -2,22 +2,6 @@ MinorMajor=辅修专业
 MinorMajor.enName=英文名
 MinorMajor.major=对应本校的专业
 
-Classroom=教室
-Classroom.roomNo=房间号
-Classroom.name=名称
-Classroom.enName=英文名
-Classroom.shortName=简称
-Classroom.roomType=教室类型
-Classroom.capacity=容量
-Classroom.examCapacity=考试容量
-Classroom.courseCapacity=上课容量
-Classroom.project=项目
-Classroom.campus=校区
-Classroom.departs=使用部门
-Classroom.floorNo=楼层
-Classroom.building=教学楼
-Classroom.projects=使用项目
-
 CourseCluster=课程群组
 CourseCluster.component=是否作为整体的一部分
 CourseCluster.target=合成的课程
@@ -126,14 +110,6 @@ Textbook.series=丛书
 Textbook.category=图书分类
 Textbook.madeInSchool=是否自编
 
-Teacher=教师信息
-Teacher.projects=所在项目
-Teacher.department=所在部门
-Teacher.remark=备注
-Teacher.tqcNumber=教师资格证编号
-Teacher.oqc=其他职业资格证书和等级说明
-Teacher.campuses=任教校区
-
 CourseUnit=默认作息时间
 CourseUnit.indexno=小节编号
 CourseUnit.setting=时间设置
@@ -154,3 +130,12 @@ TeachingOffice.members=成员
 Holiday=假期
 Holiday.startOn=起始日期
 Holiday.switchTo=排课调整到
+
+CourseProfile=课程简介
+CourseProfile.description=简介
+CourseProfile.enDescription=英文简介
+CourseProfile.prerequisites=先修课程
+CourseProfile.majors=适用专业
+CourseProfile.textbooks=教材和参考书目
+CourseProfile.materials=辅助资料
+CourseProfile.website=课程网站

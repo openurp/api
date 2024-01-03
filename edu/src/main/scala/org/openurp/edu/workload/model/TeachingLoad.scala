@@ -18,7 +18,8 @@
 package org.openurp.edu.workload.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.{Course, Teacher}
+import org.openurp.base.edu.model.Course
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.Semester
 import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.edu.workload.config.CapacityFactor

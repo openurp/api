@@ -15,14 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.model
+package org.openurp.edu.exempt.model
 
-import org.openurp.base.model.{Project, Semester}
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.std.model.Student
 
-trait SemesterBased {
+/** 外校交流免修申请学分上限
+ */
+class ExternExemptCredit extends LongId with Remark with Updated {
 
-  var project: Project = _
+  var std: Student = _
 
-  var semester: Semester = _
+  var exempted: Float = _
 
+  var maxValue: Float = _
 }

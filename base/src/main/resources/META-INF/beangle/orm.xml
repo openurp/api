@@ -4,8 +4,9 @@
   <mapping class="org.openurp.base.edu.model.DefaultMapping" name="edu"/>
   <mapping class="org.openurp.base.edu.code.DefaultMapping" name="edu.code"/>
   <mapping class="org.openurp.base.std.model.DefaultMapping" name="std"/>
-  <mapping class="org.openurp.base.profile.model.DefaultMapping" name="profile"/>
   <mapping class="org.openurp.base.std.code.DefaultMapping" name="std.code"/>
+  <mapping class="org.openurp.base.hr.model.DefaultMapping" name="hr"/>
+  <mapping class="org.openurp.base.space.model.DefaultMapping" name="space"/>
   <naming>
     <profile package="org.openurp.base" pluralize="true" schema="base">
       <annotation class="org.beangle.data.model.annotation.code" value="school" prefix="c_"/>

@@ -27,6 +27,7 @@ import org.openurp.base.model.{Campus, Department, Project, Semester, User}
 /**
  * 监考人员
  * NatureId(teacher,semester)
+ *
  * @author chaostone
  */
 class InvigilationQuota extends LongId with Remark {

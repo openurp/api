@@ -15,31 +15,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.base.space.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.AuditStatus
-import org.openurp.base.std.model.ExternStudent
+import org.beangle.data.orm.MappingModule
 
-/** 交换免修申请
- */
-class ExchExemptApply extends LongId with Updated {
-  /** 外部学习经历 */
-  var externStudent: ExternStudent = _
+class DefaultMapping extends MappingModule {
 
-  /** 成绩单附件路径 */
-  var transcriptPath: Option[String] = None
+  def binding(): Unit = {
+    defaultCache("openurp.base", "read-write")
 
-  /** 审核状态 */
-  var status: AuditStatus = AuditStatus.Draft
+    bind[Building] declare { e =>
+      e.code is length(10)
+      e.name is length(80)
+      e.enName & e.shortName are (length(100))
+      e.remark is length(200)
 
-  /** 审核意见 */
-  var auditOpinion: Option[String] = None
+      index("", true, e.school, e.code)
+    }
 
-  /** 申请冲抵的外校课程学分总计 */
-  var credits: Float = _
+    bind[Room] declare { e =>
+      e.code is length(10)
+      e.name is length(80)
+      e.remark is length(200)
 
-  /** 冲抵本校课程的学分总计 */
-  var exemptionCredits: Float = _
+      index("", true, e.school, e.code)
+    }
+
+    bind[Classroom] declare { e =>
+      e.code is length(20)
+      e.name is length(100)
+      e.roomNo is length(20)
+      index("", true, e.code)
+    }
+
+  }
 }

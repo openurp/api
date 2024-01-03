@@ -21,6 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.code.*
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, ProjectBased}
 import org.openurp.code.edu.model.*
 

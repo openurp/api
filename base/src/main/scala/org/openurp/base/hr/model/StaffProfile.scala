@@ -15,12 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.profile.model
+package org.openurp.base.hr.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Teacher
-import org.openurp.base.model.{Department, Staff}
+import org.openurp.base.hr.model.Staff
+import org.openurp.base.model.Department
 import org.openurp.code.edu.model.{Degree, DegreeLevel, EducationDegree}
 import org.openurp.code.hr.model.WorkStatus
 import org.openurp.code.job.model.ProfessionalTitle

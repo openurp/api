@@ -8,14 +8,15 @@ CertExemptApply.reasons=申请理由
 CertExemptApply.auditOpinion=审核意见
 CertExemptApply.attachmentPath=成绩单附件路径
 CertExemptApply.status=申请状态
+CertExemptApply.subject=科目
 
-ExchExemptApply=免修申请
-ExchExemptApply.transcriptPath=成绩单附件路径
-ExchExemptApply.status=审核状态
-ExchExemptApply.auditOpinion=审核意见
-ExchExemptApply.exemptionCredits=冲抵本校课程的学分总计
-ExchExemptApply.credits=申请冲抵的外校课程学分总计
+ExternExemptApply=外校成绩免修申请
+ExternExemptApply.transcriptPath=成绩单附件路径
+ExternExemptApply.status=审核状态
+ExternExemptApply.auditOpinion=审核意见
+ExternExemptApply.exemptionCredits=冲抵本校课程的学分总计
+ExternExemptApply.credits=申请冲抵的外校课程学分总计
 
-ExchExemptCredit=免修学分上限
-ExchExemptCredit.exempted=已免修学分数
-ExchExemptCredit.maxValue=免修学分总和的最大值
+ExternExemptCredit=外校成绩免修学分上限
+ExternExemptCredit.exempted=已免修学分数
+ExternExemptCredit.maxValue=免修学分总和的最大值

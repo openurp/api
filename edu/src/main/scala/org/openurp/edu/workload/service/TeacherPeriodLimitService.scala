@@ -17,7 +17,7 @@
 
 package org.openurp.edu.workload.service
 
-import org.openurp.base.edu.model.Teacher
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.Semester
 import org.openurp.code.hr.model.StaffType
 import org.openurp.code.job.model.ProfessionalGrade

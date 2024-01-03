@@ -18,11 +18,11 @@
 package org.openurp.edu.exam.config
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.exam.config.ExamAllocSetting
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[ExamAllocSetting]
+    bind[ExamDeferSetting]
   }
 }

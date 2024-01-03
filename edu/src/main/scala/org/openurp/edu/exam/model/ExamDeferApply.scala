@@ -15,20 +15,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.model
+package org.openurp.edu.exam.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
-import org.openurp.code.asset.model.{ BuildingType, RoomType }
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.edu.code.ExamDeferReason
+import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.ExamType
+import org.openurp.edu.clazz.model.Clazz
 
-/**
- * 建筑
+import java.time.Instant
+
+/** 考试缓考申请
  */
-class Building extends IntId with Coded with Named with TemporalOn with Updated with Remark {
-  var school: School = _
-  /**所属校区*/
-  var campus: Campus = _
-  var enName: Option[String] = None
-  var shortName: Option[String] = None
-  var buildingType: Option[BuildingType] = None
+class ExamDeferApply extends LongId with Updated with Remark {
+
+  var clazz: Clazz = _
+
+  var std: Student = _
+
+  var examType: ExamType = _
+
+  var examBeginAt: Option[Instant] = None
+
+  var mobile: Option[String] = None
+
+  var reason: Option[ExamDeferReason] = None
+
+  var passed: Option[Boolean] = None
+
+  var status: String = _
 }

@@ -18,7 +18,6 @@
 package org.openurp.base.std.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.base.edu.model.MinorMajor
 
 class DefaultMapping extends MappingModule {
 
@@ -56,11 +55,6 @@ class DefaultMapping extends MappingModule {
       index("", false, e.squad)
     }
 
-    bind[Mentor].declare { e =>
-      index("", true, e.staff)
-    }.generator(IdGenerator.Assigned)
-
-    bind[MinorMajor] generator IdGenerator.AutoIncrement
     bind[ExternStudent]
 
     bind[GraduateSeason].declare { e =>

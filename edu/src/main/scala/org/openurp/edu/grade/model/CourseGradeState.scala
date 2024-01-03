@@ -63,7 +63,7 @@ class CourseGradeState extends AbstractGradeState {
   }
 
   def updateStatus(gradeType: GradeType, status: Int): Unit = {
-    val state = getState(gradeType).asInstanceOf[ExamGradeState]
+    val state = getState(gradeType)
     if (null == state) {
       if (gradeType.isGa) {
         val newstate = new GaGradeState

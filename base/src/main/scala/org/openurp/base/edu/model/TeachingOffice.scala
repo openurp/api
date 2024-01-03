@@ -17,12 +17,10 @@
 
 package org.openurp.base.edu.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.base.model.{Department, Project, Staff, User}
-
-import scala.collection.mutable
+import org.openurp.base.hr.model.Teacher
+import org.openurp.base.model.{Department, Project}
 
 /** 教研室 */
 class TeachingOffice extends LongId with Coded with Named with Updated with TemporalOn {

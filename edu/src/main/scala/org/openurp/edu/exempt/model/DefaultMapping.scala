@@ -17,8 +17,7 @@
 
 package org.openurp.edu.exempt.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.edu.exempt.model.{CertExemptApply, ExchExemptApply, ExchExemptCredit}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
@@ -26,11 +25,14 @@ class DefaultMapping extends MappingModule {
     bind[CertExemptApply] declare { e =>
       e.certificateNo is length(80)
       e.attachmentPath is length(100)
+      e.subject is length(200)
       e.reasons is length(500)
     }
-    bind[ExchExemptApply].declare { e =>
+    bind[ExternExemptApply].declare { e =>
       index("", true, e.externStudent)
     }
-    bind[ExchExemptCredit]
+    bind[ExternExemptCredit].declare { e =>
+      index("", true, e.std)
+    }
   }
 }

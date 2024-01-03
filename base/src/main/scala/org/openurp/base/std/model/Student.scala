@@ -21,6 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.*
 import org.beangle.data.model.{Component, LongId}
 import org.openurp.base.edu.model.*
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.*
 import org.openurp.base.std.code.{StdLabel, StdLabelType, StdType}
 import org.openurp.code.edu.model.{EducationLevel, StudyType}
@@ -105,6 +106,21 @@ class Student extends LongId with Coded with Named with EduLevelBased with Updat
   def grade: Grade = state.get.grade
 
   def department: Department = state.get.department
+
+  def college: Department = {
+    var depart = state.get.department
+    val departs = Collections.newSet[Department]
+    while (depart.parent.nonEmpty && !departs.contains(depart)) {
+      departs.addOne(depart)
+      val parent = depart.parent.get
+      if (parent.name == parent.school.name) {
+        departs.addOne(parent)
+      } else {
+        depart = parent
+      }
+    }
+    depart
+  }
 
   def major: Major = state.get.major
 

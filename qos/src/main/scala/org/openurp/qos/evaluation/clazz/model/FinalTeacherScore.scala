@@ -18,7 +18,7 @@
 package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Teacher
+import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.Semester
 
 class FinalTeacherScore extends LongId {

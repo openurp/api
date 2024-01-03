@@ -15,33 +15,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.model
+package org.openurp.base.hr.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{ Coded, Named, Remark, TemporalOn, Updated }
-import org.openurp.code.asset.model.{ BuildingType, RoomType }
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.TemporalOn
+import org.openurp.base.model.Project
 
-/**
- * 房间
+import scala.collection.mutable
+
+/** 教学秘书
  */
-class Room extends IntId with Coded with Named with TemporalOn with Updated with Remark {
+class Secretary extends LongId, TemporalOn {
 
-  /**所属学校*/
-  var school: School = _
+  /** 教职工 */
+  var staff: Staff = _
 
-  /**所属校区*/
-  var campus: Campus = _
+  /** 办公电话 */
+  var officePhone: Option[String] = None
 
-  /**管理部门*/
-  var department: Option[Department] = None
+  /** 办公室地址 */
+  var officeAddr: Option[String] = None
 
-  /**所属建筑*/
-  var building: Option[Building] = None
+  /** 办公邮件 */
+  var officeEmail: Option[String] = None
 
-  /**房间类型*/
-  var roomType: RoomType = _
-
-  /** 楼层 */
-  var floorNo: Int = _
-
+  /** 项目列表 */
+  var projects: mutable.Set[Project] = Collections.newSet[Project]
 }

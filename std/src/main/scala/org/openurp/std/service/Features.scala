@@ -17,9 +17,6 @@
 
 package org.openurp.std.service
 
-import org.openurp.base.service.Feature
-
 object Features {
 
-  val ExchangeExemptionNeedScore = Feature("std.exchange.exemption_need_score", "交换成绩免修时是否需要填写课程成绩", true)
 }

@@ -94,9 +94,9 @@ class Name extends Component {
   var familyName: Option[String] = None
 
   /** 姓名 */
-  var formatedName: String = _
+  var formattedName: String = _
 
   override def toString: String = {
-    formatedName
+    formattedName
   }
 }

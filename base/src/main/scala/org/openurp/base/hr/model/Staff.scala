@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.model
+package org.openurp.base.hr.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
@@ -83,6 +83,7 @@ class Staff extends LongId with Coded with Named with Updated with TemporalOn {
 
   /** 最高学位授予单位 */
   var degreeAwardBy: Option[String] = None
+
   /** 在职状态 */
   var status: WorkStatus = _
 

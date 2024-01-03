@@ -20,7 +20,8 @@ package org.openurp.edu.room.config
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{DateRange, Remark}
-import org.openurp.base.model.{Building, Campus, School}
+import org.openurp.base.model.{Campus, School}
+import org.openurp.base.space.model.Building
 
 /** 教室保留时间
  */

@@ -34,13 +34,6 @@ class DefaultMapping extends MappingModule {
       e.name & e.indexno are length(20)
     }
 
-    bind[Classroom] declare { e =>
-      e.code is length(20)
-      e.name is length(100)
-      e.roomNo is length(20)
-      index("", true, e.code)
-    }
-
     bind[CourseCluster] declare { e =>
       e.name is length(100)
       e.code is length(20)
@@ -109,14 +102,6 @@ class DefaultMapping extends MappingModule {
       e.fromGrade & e.toGrade are length(10)
     }
 
-    bind[Teacher].declare { e =>
-      e.tqcNumber is length(20)
-      e.oqc is length(200)
-      e.name is length(100)
-      index("", true, e.staff)
-      index("", true, e.user)
-    }.generator(IdGenerator.Assigned)
-
     bind[Textbook] declare { e =>
       e.name is length(300)
       e.isbn is length(100)
@@ -131,6 +116,14 @@ class DefaultMapping extends MappingModule {
 
     bind[Holiday]
 
-    all.cacheAll()
+    bind[CourseProfile] declare { e =>
+      e.description is length(40000)
+      e.enDescription is length(40000)
+
+      index("", true, e.course)
+    }
+    bind[MinorMajor] generator IdGenerator.AutoIncrement
+
+    all.except(classOf[CourseProfile]).cacheAll()
   }
 }
