@@ -27,6 +27,7 @@ create index idx_4ipswvqq8c1i50hh9cr762l61 on base.projects_levels (project_id);
 create index idx_9xea4f7jxyx6oo4ghwyr4ygfp on base.projects_std_labels (project_id);
 create index idx_pj8pjvjbvsbx8mbrg5enx6c31 on base.projects_std_types (project_id);
 create index idx_a0nnh2q7pmjkwgdafxxn3xyhx on base.school_lengths (major_id);
+create index idx_4751fgfwuvlgoag1als5q4hm2 on base.secretaries_projects (secretary_id);
 create index idx_oaj7k1ifx24c5uno3e8xhi4c7 on base.semester_stages (semester_id);
 create index idx_o7lu6fw6qehpr050je6d9rsa4 on base.semesters (calendar_id);
 create index idx_qv6ypfolegfolbywfx7d0gtlm on base.squads (code);
@@ -162,6 +163,8 @@ create index idx_1swj196xyqjha21237i35824w on edu.std_alt_courses_news (std_alte
 create index idx_xtxet4oto3m3lt6fkyq6l9vj on edu.std_alt_courses_olds (std_alternative_course_id);
 create index idx_e7b2h1mmriptticlepxklqk0c on edu.std_course_groups (parent_id);
 create index idx_fu51ynnn9xdnujcuopnl6nu7k on edu.std_course_groups (plan_id);
+create index idx_c642h40ncdah4eq1q71d1jat1 on edu.std_leave_files (leave_id);
+create index idx_b7n6dqvs1vm7wjyc5mcwern37 on edu.std_leave_lessons (clazz_id);
 create index idx_fyc4q8xtjps60xf5gfovi398s on edu.std_plan_courses (group_id);
 create index idx_oi064e8gd1lg81fdcrvgp4p2a on edu.std_semester_gpas (std_gpa_id);
 create index idx_k2it4d6hlqi69f22ht73l2ogb on edu.std_year_gpas (std_gpa_id);
