@@ -19,12 +19,16 @@ package org.openurp.edu.exempt.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.AuditStatus
+import org.openurp.base.model.{AuditStatus, Semester}
 import org.openurp.base.std.model.ExternStudent
 
 /** 外校成绩免修申请
  */
 class ExternExemptApply extends LongId with Updated {
+
+  /** 学年学期 */
+  var semester: Semester = _
+
   /** 外部学习经历 */
   var externStudent: ExternStudent = _
 
