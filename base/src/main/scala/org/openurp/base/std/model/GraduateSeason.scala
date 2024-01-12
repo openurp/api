@@ -21,12 +21,13 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named}
 import org.openurp.base.model.Project
 
-import java.time.LocalDate
-
-/**
- * 毕业界别
+/** 毕业界别
  */
 class GraduateSeason extends LongId with Coded with Named {
+  /** 毕业年份 */
   var graduateYear: Int = _
+  /** 项目 */
   var project: Project = _
+  /** 校长 */
+  var president: Option[String] = None
 }
