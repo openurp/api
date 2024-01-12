@@ -21,7 +21,6 @@ import org.beangle.commons.collection.Collections
 import org.openurp.base.model.User
 import org.openurp.code.edu.model.{GradeType, GradingMode}
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.edu.grade.model.{AbstractGradeState, GradeState}
 
 import java.time.Instant
 

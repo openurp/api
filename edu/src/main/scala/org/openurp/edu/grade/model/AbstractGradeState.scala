@@ -27,20 +27,20 @@ import org.openurp.code.edu.model.GradingMode
  */
 abstract class AbstractGradeState extends LongId with GradeState {
 
-  /**
-   * 成绩记录方式
-   */
+  /** 成绩记录方式 */
   var gradingMode: GradingMode = _
 
-  /**
-   * 成绩录入状态
-   */
+  /** 成绩录入状态 */
   var status: Int = Grade.Status.New
 
-  /**
-   * 操作者
-   */
+  /** 操作者 */
   var operator: String = _
+
+  /** 优秀率上限 */
+  var excellentRatioLimit: Option[Float] = None
+
+  /** 优秀率 */
+  var excellentRatio: Option[Float] = None
 
   /**
    * 确认的和发布的全部算作确认过的
