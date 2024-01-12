@@ -42,7 +42,6 @@ create table edu.exam_defer_applies (id bigint not null, clazz_id bigint not nul
 alter table base.c_exam_defer_reasons add constraint pk_gns6x3x63qxymksism3oqu17w primary key (id);
 alter table cfg.edu_exam_defer_settings add constraint pk_3q2pcggd70a60qvuei1nyi4vl primary key (id);
 alter table edu.exam_defer_applies add constraint pk_8xdjyc2to9kovj035mxi66d5i primary key (id);
-alter table base.c_exam_defer_reasons add constraint pk_gns6x3x63qxymksism3oqu17w primary key (id);
 alter table cfg.edu_exam_defer_settings add constraint fk_wqldjh36yp77lxqx7v1s08ek foreign key (project_id) references base.projects (id);
 alter table cfg.edu_exam_defer_settings add constraint fk_k4040od5g9n5xlfe8lye8ck8x foreign key (exam_type_id) references code.exam_types (id);
 alter table base.c_exam_defer_reasons add constraint c_exam_defer_reasons_code_key unique (code);

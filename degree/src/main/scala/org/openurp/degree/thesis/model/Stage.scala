@@ -17,8 +17,6 @@
 
 package org.openurp.degree.thesis.model
 
-import java.io.FileInputStream
-
 enum Stage(val id: Int, val name: String, val subCount: Int = 0) {
   case Subject extends Stage(1, "论文题目提交")
   case SubjectReview extends Stage(2, "论文题目审查")

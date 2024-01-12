@@ -20,7 +20,17 @@ package org.openurp.std.alter.model
 /**
  * 学籍异动属性
  */
-enum AlterMeta {
-  case None, Grade, Department, Major, Direction, Squad, Inschool, Status, Campus,GraduateOn
+enum AlterMeta(val id: Int, val name: String) {
+  case Grade extends AlterMeta(1, "年级")
+  case Department extends AlterMeta(2, "院系")
+  case Major extends AlterMeta(3, "专业")
+  case Direction extends AlterMeta(4, "专业方向")
+  case Squad extends AlterMeta(5, "班级")
+  case Inschool extends AlterMeta(6, "是否在校")
+  case Status extends AlterMeta(7, "学籍状态")
+  case Campus extends AlterMeta(8, "校区")
+  case GraduateOn extends AlterMeta(9, "毕业日期")
 
+
+  override def toString: String = name
 }

@@ -69,6 +69,9 @@ object Features {
 
     /** 学生成绩显示界面的默认风格(默认normal,[normal,simple]) */
     val StdPageStyle = Feature(this, "std_page_style", "学生成绩显示界面的默认风格", List("normal", "simple"))
+
+    /** 教师界面成绩是否需要录入两次 */
+    val InputTwice = Feature(this, "input_twice", "输入成绩时是否需要输入两次", false)
   }
 
   object Exam extends FeatureScope {

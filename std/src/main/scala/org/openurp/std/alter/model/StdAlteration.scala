@@ -19,28 +19,33 @@ package org.openurp.std.alter.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, DateRange, Remark, Updated}
+import org.beangle.data.model.pojo.{DateRange, Remark, Updated}
 import org.openurp.base.model.Semester
-import org.openurp.code.std.model.{StdAlterReason, StdAlterType}
 import org.openurp.base.std.model.Student
+import org.openurp.code.std.model.{StdAlterReason, StdAlterType}
 
+import java.time.LocalDate
+import scala.collection.mutable
 import scala.collection.mutable.Buffer
 
 /**
  * 学籍异动
  */
-class StdAlteration extends LongId with Coded with Updated with DateRange with Remark {
-
+class StdAlteration extends LongId with Updated with Remark {
+  /** 变动学生 */
   var std: Student = _
-
+  /** 学年学期 */
   var semester: Semester = _
-
+  /** 变动类型 */
   var alterType: StdAlterType = _
-
+  /** 变动日期 */
+  var alterOn: LocalDate = _
+  /** 变动原因 */
   var reason: Option[StdAlterReason] = None
-
-  var items: Buffer[StdAlterationItem] = Collections.newBuffer[StdAlterationItem]
-
+  /** 变动项目 */
+  var items: mutable.Buffer[StdAlterationItem] = Collections.newBuffer[StdAlterationItem]
+  /** 是否生效 */
   var effective: Boolean = _
-
+  /** 批准文号 */
+  var docNum: Option[String] = None
 }
