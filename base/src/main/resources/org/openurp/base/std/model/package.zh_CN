@@ -44,6 +44,7 @@ Student.states=状态日志
 Student.registed=是否有学籍
 Student.beginOn=学籍生效日期
 Student.endOn=学籍截止日期
+Student.maxEndOn=学籍最长截止日期
 Student.studyOn=入学日期
 Student.graduateOn=应毕业日期
 Student.person=基本信息
@@ -73,6 +74,7 @@ ExternStudent.exchange=是否为交流经历
 
 GraduateSeason=毕业界别
 GraduateSeason.graduateYear=毕业年份
+GraduateSeason.president=校长
 
 Grade=年级
 Grade.enName=英文名

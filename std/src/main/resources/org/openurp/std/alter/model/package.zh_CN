@@ -2,7 +2,8 @@
 StdAlteration=学籍异动
 StdAlteration.items=变动项目
 StdAlteration.effective=是否生效
-
+StdAlteration.alterOn=变动日期
+StdAlteration.docNum=批准文号
 
 StdAlterationItem=学籍异动明细
 StdAlterationItem.meta=变动属性

@@ -10,3 +10,4 @@ CertExemptSetting.courses=免修课程
 CertExemptSetting.maxCount=免修最大门数
 CertExemptSetting.subjects=证书内科目
 CertExemptSetting.scoreExpr=认定成绩表达式
+CertExemptSetting.collegeReviewRequired=是否需要学院审核

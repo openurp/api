@@ -28,7 +28,7 @@ alter table base.calendars add constraint uk_9k89gny3vqpqyk7mkhuxg16fi unique (s
 alter table base.campuses add constraint pk_7b3jpnegqwbvpg4marvqwpn46 primary key (id);
 alter table base.campuses add constraint uk_iyq5494wgreojxq596lo7iijs unique (school_id,code);
 alter table base.classrooms add constraint pk_d7h30ub9pduroys2e5318ti55 primary key (id);
-alter table base.classrooms add constraint uk_3rf701tm9q4qyua4q0ydybv95 unique (code);
+alter table base.classrooms add constraint uk_t23e7c95vph4sm7nva099kab0 unique (school_id,code);
 alter table base.classrooms_departs add constraint pk_n5duwpuh4oq58kk8i61odk7h7 primary key (classroom_id,department_id);
 alter table base.classrooms_projects add constraint pk_cjgojafxa077u3fb2vicargx primary key (classroom_id,project_id);
 alter table base.course_clusters add constraint pk_6gjj4kp1e06ob51efr5det0ot primary key (id);

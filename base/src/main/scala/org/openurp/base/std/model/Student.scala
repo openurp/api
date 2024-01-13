@@ -63,22 +63,23 @@ class Student extends LongId with Coded with Named with EduLevelBased with Updat
   /** 学生分类标签 */
   var labels = Collections.newMap[StdLabelType, StdLabel]
 
-  /**
-   * 入学日期
-   * <li> 入学日期+最长学习年限=学籍截止日期
-   * <li> 该日期也是学籍状态开始的日期(student.state.beginOn)，但不得早于学籍有效的开始日期(student.beginOn)
+  /** 入学日期
+   * 入学日期 + 学制 = 应毕业日期
+   * 入学日期 + 最长学习年限 = 学籍最晚截止日期
+   * 该日期也是学籍状态开始的日期(student.state.beginOn)，但不得早于学籍有效的开始日期(student.beginOn)
    */
   var studyOn: LocalDate = _
 
-  /**
-   * 预计毕业日期
-   * <li> 入学日期+学习年限=预计毕业日期
-   * <li> 该日期是学籍状态的最后截止日期，但预计毕业日期不得晚于学籍截止日期
+  /** 预计毕业日期
+   * 入学日期 + 学制 = 预计毕业日期
    */
   var graduateOn: LocalDate = _
 
-  /** 学习年限（允许0.5年出现） */
+  /** 学制（允许0.5年出现） */
   var duration: Float = _
+
+  /** 学籍最晚截止日期 */
+  var maxEndOn: LocalDate = _
 
   /** 是否有学籍 */
   var registed: Boolean = _

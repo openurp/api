@@ -1,4 +1,7 @@
 Grade.createdAt=创建时间
+AbstractGradeState.excellentRatioLimit=优秀比例限制
+AbstractGradeState.excellentRatio = 优秀比例
+
 CourseGrade=课程成绩实现
 CourseGrade.beyondSubmit=是否提交
 CourseGrade.course=课程
