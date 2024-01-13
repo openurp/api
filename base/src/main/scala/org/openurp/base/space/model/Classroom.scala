@@ -21,7 +21,6 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
 import org.openurp.base.model.{Campus, Department, Project, School}
-import org.openurp.base.space.model.Building
 import org.openurp.code.edu.model.ClassroomType
 
 import scala.collection.mutable
@@ -69,5 +68,4 @@ class Classroom extends LongId with Named with Coded with Updated with TemporalO
 
   /** 使用部门 */
   var departs: mutable.Set[Department] = Collections.newSet[Department]
-
 }

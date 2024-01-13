@@ -45,7 +45,7 @@ class DefaultMapping extends MappingModule {
       e.code is length(20)
       e.name is length(100)
       e.roomNo is length(20)
-      index("", true, e.code)
+      index("", true, e.school, e.code)
     }
 
   }
