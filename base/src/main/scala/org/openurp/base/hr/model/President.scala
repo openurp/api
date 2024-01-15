@@ -15,17 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.model
+package org.openurp.base.hr.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named}
-import org.openurp.base.model.Project
+import org.beangle.data.model.pojo.{Named, TemporalOn}
+import org.openurp.base.model.School
 
-/** 毕业界别
- */
-class GraduateSeason extends LongId with Coded with Named {
-  /** 毕业年份 */
-  var graduateYear: Int = _
-  /** 项目 */
-  var project: Project = _
+class President extends LongId, Named, TemporalOn {
+
+  var school: School = _
+
+  var enName: String = _
 }

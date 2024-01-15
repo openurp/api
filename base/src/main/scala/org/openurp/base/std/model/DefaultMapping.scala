@@ -59,7 +59,6 @@ class DefaultMapping extends MappingModule {
     bind[ExternStudent]
 
     bind[GraduateSeason].declare { e =>
-      e.president is length(20)
       index("", true, e.project, e.code)
     }.generator(IdGenerator.Assigned)
 

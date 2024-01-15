@@ -35,20 +35,20 @@ class Graduate extends LongId, Updated {
   /** 学籍 */
   var std: Student = _
 
+  /** 毕结业情况 */
+  var result: EducationResult = _
+
+  /** 结业日期 */
+  var finishOn: Option[LocalDate] = None
+
+  /** 毕业日期 */
+  var graduateOn: Option[LocalDate] = None
+
   /** 学历证书编号（电子注册号） */
   var certificateNo: Option[String] = None
 
   /** 毕结业证书序列号 */
   var certificateSeqNo: Option[String] = None
-
-  /** 毕结业日期 */
-  var graduateOn: LocalDate = _
-
-  /** 毕结业情况 */
-  var result: EducationResult = _
-
-  /** 学位 */
-  var degree: Option[Degree] = None
 
   /** 学位授予日期 */
   var degreeAwardOn: Option[LocalDate] = None
@@ -56,12 +56,15 @@ class Graduate extends LongId, Updated {
   /** 学位证书编号 */
   var diplomaNo: Option[String] = None
 
+  /** 学位 */
+  var degree: Option[Degree] = None
+
   /** 外语通过年月 */
   var foreignLangPassedOn: Option[LocalDate] = None
 
-  /** 毕业去向 */
+  /** 离校去向 */
   var wheretoGo: Option[WheretoGo] = None
 
-  /** 毕业批次 */
+  /** 毕结业批次 */
   var batchNo: Int = _
 }

@@ -68,5 +68,10 @@ class DefaultMapping extends MappingModule {
       e.awards is length(1000)
       index("", true, e.staff)
     }
+
+    bind[President] declare { e =>
+      e.name is length(50)
+      e.enName is length(100)
+    }
   }
 }

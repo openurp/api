@@ -50,3 +50,6 @@ Secretary.projects=教学秘书-项目列表
 Official=领导干部
 Official.duty=行政职务
 Official.parttime=是否兼职
+
+President=校长
+President.enName=英文名
