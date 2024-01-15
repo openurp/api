@@ -239,6 +239,22 @@ insert into code.institution_categories(id,code,name,begin_on,updated_at) values
 insert into code.institution_categories(id,code,name,begin_on,updated_at) values(11,'11','艺术院校',current_date -10,now());
 insert into code.institution_categories(id,code,name,begin_on,updated_at) values(12,'12','民族院校',current_date -10,now());
 
+--建筑物用途
+INSERT INTO code.building_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (11, '2019-03-31', '11', NULL, NULL, '教学楼', '2019-04-02 16:12:20.816552');
+INSERT INTO code.building_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (12, '2019-03-31', '12', NULL, NULL, '综合楼', '2019-04-02 16:12:20.816552');
+INSERT INTO code.building_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (13, '2019-03-31', '13', NULL, NULL, '实验楼', '2019-04-02 16:12:20.816552');
+INSERT INTO code.building_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (14, '2019-03-31', '14', NULL, NULL, '图书馆(室)', '2019-04-02 16:12:20.816552');
+INSERT INTO code.building_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (15, '2019-03-31', '15', NULL, NULL, '体育活动室', '2019-04-02 16:12:20.816552');
+INSERT INTO code.building_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (21, '2019-03-31', '21', NULL, NULL, '宿舍', '2019-04-02 16:12:20.816552');
+INSERT INTO code.building_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (31, '2019-03-31', '31', NULL, NULL, '办公楼', '2019-04-02 16:12:20.816552');
+INSERT INTO code.building_types (id, begin_on, code, en_name, end_on, name, updated_at) VALUES (41, '2019-03-31', '41', NULL, NULL, '其他用房', '2019-04-02 16:12:20.816552');
+
+--部门类别
+insert into code.department_categories(id,code,name,indexno,begin_on,updated_at) values(10,'10','党政机构','10',current_date-1,now());
+insert into code.department_categories(id,code,name,indexno,begin_on,updated_at) values(20,'20','教学科研单位','20',current_date-1,now());
+insert into code.department_categories(id,code,name,indexno,begin_on,updated_at) values(21,'21','科研机构','21',current_date-1,now());
+insert into code.department_categories(id,code,name,indexno,begin_on,updated_at) values(30,'30','直属单位','30',current_date-1,now());
+
 -----------如下代码需要插入后修改---------
 insert into code.institutions(id,code,name,begin_on,updated_at)
 values(10000,'10000','URP学院',current_date -10,now());

@@ -27,6 +27,7 @@ class DefaultMapping extends MappingModule {
     bind[Squad] declare { e =>
       e.code is length(20)
       e.name is length(100)
+      e.enName is length(250)
       e.grade is length(10)
       e.stdStates is one2many("squad")
       e.remark is length(100)
