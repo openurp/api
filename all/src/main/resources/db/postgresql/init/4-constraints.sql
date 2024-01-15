@@ -94,6 +94,7 @@ alter table base.people add constraint fk_o17jeffphuaspavcmd1ad0bhb foreign key 
 alter table base.people add constraint fk_oc3i2nyu6m10t9mhggo3q23h1 foreign key (gender_id) references code.genders (id);
 alter table base.people add constraint fk_qu9yxc8l50o3wk80guysv2glg foreign key (language_id) references code.languages (id);
 alter table base.people add constraint fk_r8r7svcudbl3vg24u40ifx94a foreign key (compatriot_type_id) references code.compatriot_types (id);
+alter table base.presidents add constraint fk_cuu0xfncdxdq3peluf04grdax foreign key (school_id) references base.schools (id);
 alter table base.project_codes add constraint fk_6co7o6oypbttwwbgls2mrymcn foreign key (project_id) references base.projects (id);
 alter table base.project_properties add constraint fk_lf8vnssrqpnwfk9lq9vakkmt6 foreign key (project_id) references base.projects (id);
 alter table base.projects add constraint fk_2ely3u2yvcgd00u5phw3htocy foreign key (school_id) references base.schools (id);
@@ -496,6 +497,7 @@ alter table edu.exempt_courses add constraint fk_ndimc7ar1won7elw8nysdomkb forei
 alter table edu.exempt_courses add constraint fk_pporjdy8b6g0rhmxhracaet83 foreign key (from_grade_id) references base.grades (id);
 alter table edu.exempt_courses_std_types add constraint fk_22i30q7mn3bheej5gymu64gn2 foreign key (exempt_course_id) references edu.exempt_courses (id);
 alter table edu.exempt_courses_std_types add constraint fk_3tww4egxbwhhieuf4b723k12k foreign key (std_type_id) references base.c_std_types (id);
+alter table edu.extern_exempt_applies add constraint fk_101nfu3hyftmpl5xx0stuf1a4 foreign key (semester_id) references base.semesters (id);
 alter table edu.extern_exempt_applies add constraint fk_8k5fws3uyoqdc4x7qa9f33bde foreign key (extern_student_id) references base.extern_students (id);
 alter table edu.extern_exempt_credits add constraint fk_4fyaovfd9a0etlatj0l3lkvn6 foreign key (std_id) references base.students (id);
 alter table edu.extern_grades add constraint fk_9cgka8cip9d1rh15y38wrvqef foreign key (extern_student_id) references base.extern_students (id);

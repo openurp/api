@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.36.1">
+<db engine="PostgreSQL" version="0.36.2">
   <schemas>
     <schema name="base">
       <tables>
@@ -732,7 +732,6 @@
             <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
             <column name="graduate_year" type="integer" nullable="false" defaultValue="0" comment="毕业年份"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
-            <column name="president" type="varchar(20)" comment="校长"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
           </columns>
           <primary-key name="pk_ajyxkx6bgsd5hh3tst2x0qrs0" columns="id"/>
@@ -752,8 +751,9 @@
             <column name="degree_award_on" type="date" comment="学位授予日期"/>
             <column name="degree_id" type="integer" comment="学位ID"/>
             <column name="diploma_no" type="varchar(100)" comment="学位证书号"/>
+            <column name="finish_on" type="date" comment="结业日期"/>
             <column name="foreign_lang_passed_on" type="date" comment="外语通过年月"/>
-            <column name="graduate_on" type="date" nullable="false" comment="毕结业日期"/>
+            <column name="graduate_on" type="date" comment="毕业日期"/>
             <column name="result_id" type="integer" nullable="false" comment="教育培训结果ID"/>
             <column name="season_id" type="bigint" nullable="false" comment="毕业界别ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
@@ -946,6 +946,20 @@
           <indexes>
             <index name="idx_ajflqx9dbuh26q7nfapkr0rkh" columns="code"/>
           </indexes>
+        </table>
+        <table name="presidents" comment="校长@hr">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="en_name" type="varchar(100)" nullable="false" comment="英文名"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(50)" nullable="false" comment="名称"/>
+            <column name="school_id" type="integer" nullable="false" comment="学校信息ID"/>
+          </columns>
+          <primary-key name="pk_cbv4hxj91u02s00no22yukttx" columns="id"/>
+          <foreign-keys>
+            <foreign-key name="fk_cuu0xfncdxdq3peluf04grdax" column="school_id" referenced-table="base.schools" referenced-column="id"/>
+          </foreign-keys>
         </table>
         <table name="project_codes" comment="项目基础代码配置@common">
           <columns>
@@ -1239,7 +1253,7 @@
             <column name="department_id" type="integer" nullable="false" comment="院系ID"/>
             <column name="direction_id" type="bigint" comment="方向ID"/>
             <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
-            <column name="en_name" type="varchar(255)" comment="英文名"/>
+            <column name="en_name" type="varchar(250)" comment="英文名"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="grade_id" type="bigint" nullable="false" comment="年级ID"/>
             <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>

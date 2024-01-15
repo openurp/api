@@ -75,6 +75,7 @@ alter table base.mentors_projects add constraint pk_p14hk70e30r9eyqy9ol7jn5xm pr
 alter table base.minor_majors add constraint pk_puyx3wltdpl9vv77rj77l9txc primary key (id);
 alter table base.officials add constraint pk_qvktne4gnlja38gqv0dh07sgx primary key (id);
 alter table base.people add constraint pk_25uwl12dj9en3iflug9w23r1q primary key (id);
+alter table base.presidents add constraint pk_cbv4hxj91u02s00no22yukttx primary key (id);
 alter table base.project_codes add constraint pk_h8pb4rkgymaq67flwfvm8mdvg primary key (id);
 alter table base.project_properties add constraint pk_rfrpbcb39anra9nb0a5x1g6dd primary key (id);
 alter table base.project_properties add constraint uk_1kgy8wfyw9wg1e28k8seg64se unique (project_id,name);
