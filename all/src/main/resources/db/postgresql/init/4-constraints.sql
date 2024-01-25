@@ -552,9 +552,9 @@ alter table edu.major_alt_courses add constraint fk_is1a5f0kxxrdh825rdi2vxvcb fo
 alter table edu.major_alt_courses add constraint fk_kw8nn4ka6l7bjwhe0585d13ri foreign key (department_id) references base.departments (id);
 alter table edu.major_alt_courses add constraint fk_qy740u3nwenq9kdultydn0bmk foreign key (to_grade_id) references base.grades (id);
 alter table edu.major_alt_courses add constraint fk_tje28di1a4lc9p4dc77uomij3 foreign key (project_id) references base.projects (id);
-alter table edu.major_alt_courses_news add constraint fk_60va5eeqjkq8v11ccjaebj37l foreign key (major_alternative_course_id) references edu.major_alt_courses (id);
 alter table edu.major_alt_courses_news add constraint fk_lddjfdvlcwthx2y8gis5rbp5i foreign key (course_id) references base.courses (id);
-alter table edu.major_alt_courses_olds add constraint fk_jfmmnwo9lc6wi48fpmbkuhru7 foreign key (major_alternative_course_id) references edu.major_alt_courses (id);
+alter table edu.major_alt_courses_news add constraint fk_q74bnkaxqtuleop0lyw1w1xeg foreign key (major_alt_course_id) references edu.major_alt_courses (id);
+alter table edu.major_alt_courses_olds add constraint fk_f488kjk8bfxelb3ob2m081k5r foreign key (major_alt_course_id) references edu.major_alt_courses (id);
 alter table edu.major_alt_courses_olds add constraint fk_q89c5jynwnebdsl47nk45nkfx foreign key (course_id) references base.courses (id);
 alter table edu.major_course_groups add constraint fk_1ah19w0xs2ws9l5q3yio92fjp foreign key (course_type_id) references base.c_course_types (id);
 alter table edu.major_course_groups add constraint fk_9g2r0wmg6d6q20b2tuxs4iupb foreign key (plan_id) references edu.major_plans (id);
@@ -640,10 +640,10 @@ alter table edu.share_plans add constraint fk_cny7nppj5dxgnv6f658ojhmyq foreign 
 alter table edu.share_plans add constraint fk_gigxbxd3mnkv802g9p4dit81h foreign key (project_id) references base.projects (id);
 alter table edu.share_plans add constraint fk_gj0ph5idb2riwbygtit2r1aa0 foreign key (to_grade_id) references base.grades (id);
 alter table edu.std_alt_courses add constraint fk_m4r4kwlknspq07nx10kptjp99 foreign key (std_id) references base.students (id);
-alter table edu.std_alt_courses_news add constraint fk_3598npm3ybogfvypjbqkdhlsm foreign key (std_alternative_course_id) references edu.std_alt_courses (id);
 alter table edu.std_alt_courses_news add constraint fk_6s622s9lgh94dxm8rdts3uacy foreign key (course_id) references base.courses (id);
+alter table edu.std_alt_courses_news add constraint fk_kf2ddu7dt808aivpblhcrxrmy foreign key (std_alt_course_id) references edu.std_alt_courses (id);
 alter table edu.std_alt_courses_olds add constraint fk_17lwdqgird951v1427i4bgj36 foreign key (course_id) references base.courses (id);
-alter table edu.std_alt_courses_olds add constraint fk_88jtb7a3cqnhssy92wmgd7bsg foreign key (std_alternative_course_id) references edu.std_alt_courses (id);
+alter table edu.std_alt_courses_olds add constraint fk_n7rxknr6pcsfqb2yxr1krt01h foreign key (std_alt_course_id) references edu.std_alt_courses (id);
 alter table edu.std_book_orders add constraint fk_2s5pren619nwcchjaxknvskwc foreign key (semester_id) references base.semesters (id);
 alter table edu.std_book_orders add constraint fk_57o6l6s01q1hrfb2yv4t28dh4 foreign key (teach_depart_id) references base.departments (id);
 alter table edu.std_book_orders add constraint fk_bhbb2e6fow3pnqt2b76fxwpe7 foreign key (project_id) references base.projects (id);

@@ -40,66 +40,43 @@ import scala.collection.mutable
  * @author chaostone
  * @since 2014
  */
-class CourseGrade extends LongId with ProjectBased with Grade with Remark {
-  /**
-   * 设置学生
-   */
+class CourseGrade extends LongId, ProjectBased, Grade, Remark {
+  /** 设置学生 */
   var std: Student = _
-  /**
-   * 设置课程
-   */
+  /** 设置课程 */
   var course: Course = _
-  /**
-   * 获得修读类别
-   */
+  /** 获得修读类别 */
   var courseTakeType: CourseTakeType = _
-  /**
-   * 学期
-   */
+  /** 学期 */
   var semester: Semester = _
-  /**
-   * 任务序号
-   */
+  /** 任务序号 */
   var crn: String = _
-  /**
-   * 课程类别
-   */
+  /** 课程类别 */
   var courseType: CourseType = _
-  /**
-   * 设置绩点
-   */
+  /** 设置绩点 */
   var gp: Option[Float] = None
-
   /** 是否免听 */
   var freeListening: Boolean = false
-  /**
-   * 总评成绩
-   */
+  /** 总评成绩 */
   var gaGrades: mutable.Buffer[GaGrade] = Collections.newBuffer[GaGrade]
-  /**
-   * 考核成绩
-   */
+  /** 考核成绩 */
   var examGrades: mutable.Buffer[ExamGrade] = Collections.newBuffer[ExamGrade]
-
-  /**
-   * 考核方式
-   */
+  /** 考核方式 */
   var examMode: ExamMode = _
-
+  /** 得分 */
   var score: Option[Float] = None
-
+  /** 成绩 */
   var scoreText: Option[String] = None
-
+  /** 是否通过 */
   var passed: Boolean = _
-
+  /** 状态 */
   var status: Int = _
-
+  /** 记录方式 */
   var gradingMode: GradingMode = _
-
+  /** 操作者 */
   var operator: Option[String] = None
-
+  /** 教学班 */
   var clazz: Option[Clazz] = None
-
   /** 数据来源 */
   var provider: Option[String] = None
 
@@ -209,13 +186,6 @@ class CourseGrade extends LongId with ProjectBased with Grade with Remark {
 
   @transient
   def gradeType: GradeType = new GradeType(GradeType.Final)
-
-  // 大的成绩放前面
-  override def compare(grade: Grade): Int = {
-    if (score.isEmpty) return 1
-    else if (grade.score.isEmpty) return -1
-    grade.score.get.compareTo(score.get)
-  }
 }
 
 object CourseGrade {

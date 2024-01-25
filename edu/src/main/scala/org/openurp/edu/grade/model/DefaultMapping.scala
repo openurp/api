@@ -83,6 +83,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[StdYearGpa].declare { e =>
+      e.schoolYear is length(10)
       index("", true, e.stdGpa, e.schoolYear)
     }
   }

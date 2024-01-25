@@ -31,6 +31,7 @@ class DefaultMapping extends MappingModule {
       e.remark is length(100)
       index("", true, e.std, e.course, e.semester)
       index("", false, e.clazz)
+      index("", false, e.semester)
     }
 
     bind[Clazz].declare { e =>

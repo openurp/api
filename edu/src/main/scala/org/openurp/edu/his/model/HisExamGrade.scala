@@ -15,23 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.grade.model
+package org.openurp.edu.his.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.annotation.archive
+import org.openurp.base.model.ArchivedByYear
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.{GradeType, GradingMode}
-import org.openurp.edu.grade.model.Grade
+import org.openurp.code.edu.model.{ExamStatus, GradeType, GradingMode}
+import org.openurp.edu.grade.model.{ExamGrade, Grade}
 
-/**
- * 总评成绩
- * </p>
- * 期末总评成绩,补考总评成绩
- *
- * @author chaostone
- * @since 2005
+/** 归档考试成绩
  */
-class GaGrade extends LongId, Grade, Updated, Remark {
+@archive
+class HisExamGrade extends LongId, Grade, ArchivedByYear {
   /** 成绩类型 */
   var gradeType: GradeType = _
   /** 成绩记录方式 */
@@ -41,30 +37,32 @@ class GaGrade extends LongId, Grade, Updated, Remark {
   /** 得分字面值 */
   var scoreText: Option[String] = None
   /** 对应的课程成绩 */
-  var courseGrade: CourseGrade = _
+  var courseGrade: HisCourseGrade = _
   /** 成绩状态 */
   var status: Int = _
   /** 是否通过 */
   var passed: Boolean = _
   /** 操作者 */
   var operator: Option[String] = None
-  /** 绩点 */
-  var gp: Option[Float] = None
-  /** 加减修正分 */
-  var delta: Option[Float] = None
+  /** 考试情况 */
+  var examStatus: ExamStatus = _
+  /** 百分比 */
+  var scorePercent: Option[Short] = None
 
   def std: Student = courseGrade.std
 
-  def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: Option[String],
-           gradingMode: GradingMode, passed: Boolean, status: Int) = {
-    this()
-    this.id = id
-    this.gradeType = gradeType
-    this.score = score
-    this.scoreText = scoreText
-    this.gradingMode = gradingMode
-    this.passed = passed
-    this.status = status
+  def convert(): ExamGrade = {
+    val eg = new ExamGrade()
+    eg.gradeType = gradeType
+    eg.gradingMode = gradingMode
+    eg.score = score
+    eg.scoreText = scoreText
+    eg.status = status
+    eg.passed = passed
+    eg.operator = operator
+    eg.examStatus = examStatus
+    eg.scorePercent = scorePercent
+    eg
   }
 
 }

@@ -135,11 +135,11 @@ class DefaultMapping extends MappingModule {
     bind[MajorAlternativeCourse].declare { e =>
       e.fromGrade & e.toGrade are length(10)
       index("", false, e.project)
-    }.table("major_alt_courses")
+    }
 
     bind[StdAlternativeCourse].declare { e =>
       index("", false, e.std)
-    }.table("std_alt_courses")
+    }
 
     bind[ProgramDocTemplate] declare { e =>
       e.metas is depends("template")

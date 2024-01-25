@@ -20,9 +20,18 @@ package org.openurp.edu.grade.domain
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.edu.grade.model.CourseGrade
-import org.openurp.edu.grade.model.CourseGrade
 
 trait CourseGradeProvider {
+  /**
+   * 查询学生发布的成绩
+   *
+   * @param std
+   * @param semesters
+   * @return
+   */
+  final def getPublished(std: Student): collection.Seq[CourseGrade] = {
+    getPublished(std, List.empty)
+  }
 
   /**
    * 查询学生发布的成绩
@@ -31,7 +40,7 @@ trait CourseGradeProvider {
    * @param semesters
    * @return
    */
-  def getPublished(std: Student, semesters: Semester*): collection.Seq[CourseGrade]
+  def getPublished(std: Student, semesters: Iterable[Semester]): collection.Seq[CourseGrade]
 
   /**
    * 查询学生所有成绩
@@ -40,24 +49,18 @@ trait CourseGradeProvider {
    * @param semesters
    * @return
    */
-  def getAll(std: Student, semesters: Semester*): collection.Seq[CourseGrade]
+  final def getAll(std: Student): collection.Seq[CourseGrade] = {
+    getAll(std, List.empty)
+  }
 
   /**
-   * 查询一批学生发布的成绩
+   * 查询学生所有成绩
    *
-   * @param stds
+   * @param std
    * @param semesters
    * @return
    */
-  def getPublished(stds: Iterable[Student], semesters: Semester*): collection.Map[Student, collection.Seq[CourseGrade]]
-  /**
-   * 查询一批学生所有成绩
-   *
-   * @param stds
-   * @param semesters
-   * @return
-   */
-  def getAll(stds: Iterable[Student], semesters: Semester*): collection.Map[Student, collection.Seq[CourseGrade]]
+  def getAll(std: Student, semesters: Iterable[Semester]): collection.Seq[CourseGrade]
 
   /**
    * 查看学生各个课程的通过状态

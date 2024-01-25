@@ -114,3 +114,5 @@ CalendarStage.vacation=是否假期
 SemesterStage=学期阶段
 SemesterStage.beginOn=开始日期
 SemesterStage.endOn=结束日期
+
+ArchivedByYear.schoolYear=学年度

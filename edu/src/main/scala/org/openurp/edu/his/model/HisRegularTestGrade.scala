@@ -15,27 +15,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.service
+package org.openurp.edu.his.model
 
-import org.openurp.base.model.{Project, Semester}
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.archive
+import org.openurp.base.model.ArchivedByYear
+import org.openurp.edu.grade.model.RegularTestType
 
-import java.time.LocalDate
-
-trait SemesterService {
-
-  def getActives(project: Project): Seq[Semester]
-
-  def get(project: Project, date: LocalDate): Semester
-
-  def get(project: Project, beginOn: LocalDate, endOn: LocalDate): (Seq[Semester], Seq[Semester])
-
-  /**
-   * get semester by index
-   *
-   * @param project
-   * @param beginOn
-   * @param endOn
-   * @param index start with 1
-   */
-  def get(project: Project, beginOn: LocalDate, endOn: LocalDate, index: Int): Option[Semester]
+/** 归档平时测试成绩 */
+@archive
+class HisRegularTestGrade extends LongId, ArchivedByYear {
+  /** 平时成绩 */
+  var regularGrade: HisRegularGrade = _
+  /** 测验类型 */
+  var testType: RegularTestType = _
+  /** 百分比 */
+  var scorePercent: Int = _
+  /** 分数 */
+  var score: Int = _
 }

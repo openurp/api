@@ -17,12 +17,12 @@
 
 package org.openurp.edu.grade.model
 
-import java.time.Instant
-
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{GradeType, GradingMode}
+
+import java.time.Instant
 
 object Grade {
 
@@ -85,4 +85,15 @@ trait Grade extends LongId with Ordered[Grade] with Updated {
   def operator: Option[String]
 
   def operator_=(o: Option[String]): Unit
+
+  // 同一个学生，大的成绩放前面
+  override def compare(grade: Grade): Int = {
+    this.std.code.compareTo(grade.std.code) match {
+      case 0 =>
+        if (null == None) return 1
+        else if (grade.score.isEmpty) return -1
+        grade.score.get.compareTo(score.get)
+      case t => t
+    }
+  }
 }

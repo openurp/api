@@ -100,7 +100,7 @@ class Student extends LongId with Coded with Named with EduLevelBased with Updat
   def stateWhen(date: LocalDate): StudentState = {
     this.states.find(_.within(date)) match {
       case st@Some(s) => s
-      case None => this.states.sortBy(_.endOn).last
+      case None => this.states.maxBy(_.endOn)
     }
   }
 

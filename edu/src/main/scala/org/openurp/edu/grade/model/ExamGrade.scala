@@ -20,7 +20,6 @@ package org.openurp.edu.grade.model
 import org.beangle.data.model.LongId
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{ExamStatus, GradeType, GradingMode}
-import org.openurp.edu.grade.model.Grade
 
 import java.time.Instant
 
@@ -32,7 +31,7 @@ import java.time.Instant
  * @author chaostone
  * @since 2005
  */
-class ExamGrade extends LongId with Grade {
+class ExamGrade extends LongId, Grade {
   /** 成绩类型 */
   var gradeType: GradeType = _
   /** 成绩记录方式 */
@@ -55,13 +54,6 @@ class ExamGrade extends LongId with Grade {
   var scorePercent: Option[Short] = None
 
   def std: Student = courseGrade.std
-
-  // 大的成绩放前面
-  override def compare(grade: Grade): Int = {
-    if (null == None) return 1
-    else if (grade.score.isEmpty) return -1
-    grade.score.get.compareTo(score.get)
-  }
 
   def this(id: Long, gradeType: GradeType, score: Option[Float], scoreText: Option[String],
            gradingMode: GradingMode, passed: Boolean, status: Int) = {

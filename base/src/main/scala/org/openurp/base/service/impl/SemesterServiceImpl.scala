@@ -58,6 +58,17 @@ class SemesterServiceImpl extends SemesterService {
     entityDao.search(builder)
   }
 
+  override def get(project: Project, beginOn: LocalDate, endOn: LocalDate): (Seq[Semester], Seq[Semester]) = {
+    val builder = OqlBuilder.from(classOf[Semester], "semester")
+      .where("semester.calendar =:calendar", project.calendar)
+    builder.where("semester.beginOn <= :endOn", endOn)
+    builder.where("semester.endOn >= :beginOn", beginOn)
+    builder.orderBy("semester.beginOn")
+    builder.cacheable()
+    val semesters = entityDao.search(builder)
+    semesters.partition(_.archived)
+  }
+
   /**
    * get semester by index
    *

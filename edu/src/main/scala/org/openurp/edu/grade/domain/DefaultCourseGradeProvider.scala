@@ -18,24 +18,38 @@
 package org.openurp.edu.grade.domain
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.time.Stopwatch
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.model.Semester
+import org.openurp.base.service.SemesterService
 import org.openurp.base.std.model.Student
-import org.openurp.edu.grade.model.CourseGrade
 import org.openurp.edu.grade.model.{CourseGrade, Grade}
-
-import scala.collection.mutable.Buffer
+import org.openurp.edu.his.model.HisCourseGrade
 
 class DefaultCourseGradeProvider extends CourseGradeProvider {
 
   var entityDao: EntityDao = _
 
+  var semesterService: SemesterService = _
+
+  override def getPublished(std: Student, semesters: Iterable[Semester]): Seq[CourseGrade] = {
+    get(std, Some(Grade.Status.Published), semesters)
+  }
+
+  override def getAll(std: Student, semesters: Iterable[Semester]): Seq[CourseGrade] = {
+    get(std, None, semesters)
+  }
+
   override def getPassedStatus(std: Student): collection.Map[Long, Boolean] = {
-    val query = OqlBuilder.from(classOf[CourseGrade], "cg")
-    query.where("cg.std = :std", std)
-    query.select("cg.course.id,cg.passed")
-    val rs = entityDao.search(query).asInstanceOf[List[Array[Any]]]
+    val terms = semesterService.get(std.project, std.beginOn, std.endOn)
+    val rs = Collections.newBuffer[Array[Any]]
+    if (terms._2.isEmpty) {
+      rs.addAll(getHisPassedStatus(std, terms._1.map(_.schoolYear.substring(0, 4).toInt).toSet))
+    } else if (terms._1.isEmpty) {
+      rs.addAll(getCurPassedStatus(std))
+    } else {
+      rs.addAll(getHisPassedStatus(std, terms._1.map(_.schoolYear.substring(0, 4).toInt).toSet))
+      rs.addAll(getCurPassedStatus(std))
+    }
     val courseMap = Collections.newMap[Long, Boolean]
     for (obj <- rs) {
       val courseId = obj(0).asInstanceOf[Number].longValue
@@ -50,57 +64,52 @@ class DefaultCourseGradeProvider extends CourseGradeProvider {
     courseMap
   }
 
-  override def getPublished(std: Student, semesters: Semester*): Seq[CourseGrade] = {
+  private def get(std: Student, status: Option[Int], semesters: Iterable[Semester]): Seq[CourseGrade] = {
+    val terms =
+      if semesters.isEmpty then semesterService.get(std.project, std.beginOn, std.endOn)
+      else semesters.partition(_.archived)
+
+    if (terms._2.isEmpty) {
+      getHisGrades(std, status, semesters, terms._1.map(_.schoolYear.substring(0, 4).toInt).toSet)
+    } else if (terms._1.isEmpty) {
+      getCurGrades(std, status, semesters)
+    } else {
+      getHisGrades(std, status, semesters, terms._1.map(_.schoolYear.substring(0, 4).toInt).toSet) ++ getCurGrades(std, status, semesters)
+    }
+  }
+
+  private def getCurPassedStatus(std: Student): Seq[Array[Any]] = {
     val query = OqlBuilder.from(classOf[CourseGrade], "grade")
     query.where("grade.std = :std", std)
-    query.where("grade.status =:status", Grade.Status.Published)
-    if (null != semesters && semesters.length > 0) {
-      query.where("grade.semester in(:semesters)", semesters)
-    }
-    query.orderBy("grade.semester.beginOn")
-    entityDao.search(query)
+    query.where("grade.status = :status", Grade.Status.Published)
+    query.select("grade.course.id,grade.passed")
+    entityDao.search(query).asInstanceOf[Seq[Array[Any]]]
   }
 
-  override def getAll(std: Student, semesters: Semester*): Seq[CourseGrade] = {
+  private def getHisPassedStatus(std: Student, schoolYears: Iterable[Int]): Seq[Array[Any]] = {
+    val query = OqlBuilder.from(classOf[HisCourseGrade], "grade")
+    query.where("grade.std = :std", std)
+    query.where("grade.status = :status", Grade.Status.Published)
+    query.where("grade.schoolYear in (:schoolYears)", schoolYears)
+    query.select("grade.course.id,grade.passed")
+    entityDao.search(query).asInstanceOf[Seq[Array[Any]]]
+  }
+
+  private def getCurGrades(std: Student, status: Option[Int], semesters: Iterable[Semester]): Seq[CourseGrade] = {
     val query = OqlBuilder.from(classOf[CourseGrade], "grade")
     query.where("grade.std = :std", std)
-    if (null != semesters && semesters.length > 0) {
-      query.where("grade.semester in(:semesters)", semesters)
-    }
-    query.orderBy("grade.semester.beginOn")
-    entityDao.search(query)
+    status foreach (s => query.where("grade.status =:status", s))
+    if semesters.nonEmpty then query.where("grade.semester in(:semesters)", semesters)
+    entityDao.search(query).sortBy(_.semester.beginOn)
   }
 
-  override def getPublished(stds: Iterable[Student], semesters: Semester*): collection.Map[Student, collection.Seq[CourseGrade]] = {
-    val sw = new Stopwatch()
-    sw.start()
-    val query = OqlBuilder.from(classOf[CourseGrade], "grade")
-    query.where("grade.std in (:stds)", stds)
-    query.where("grade.status =:status", Grade.Status.Published)
-    if (null != semesters && semesters.length > 0) {
-      query.where("grade.semester in(:semesters)", semesters)
-    }
-    val allGrades = entityDao.search(query)
-    val gradeMap = Collections.newMap[Student, Buffer[CourseGrade]]
-    for (std <- stds) {
-      gradeMap.put(std, Collections.newBuffer[CourseGrade])
-    }
-    for (g <- allGrades) gradeMap(g.std) += g
-    gradeMap
+  private def getHisGrades(std: Student, status: Option[Int], semesters: Iterable[Semester], schoolYears: Iterable[Int]): Seq[CourseGrade] = {
+    val query = OqlBuilder.from(classOf[HisCourseGrade], "grade")
+    query.where("grade.std = :std", std)
+    query.where("grade.schoolYear in (:schoolYears)", schoolYears)
+    status foreach (s => query.where("grade.status =:status", s))
+    if semesters.nonEmpty then query.where("grade.semester in(:semesters)", semesters)
+    entityDao.search(query).map(_.convert()).sortBy(_.semester.beginOn)
   }
 
-  override def getAll(stds: Iterable[Student], semesters: Semester*): collection.Map[Student, collection.Seq[CourseGrade]] = {
-    val query = OqlBuilder.from(classOf[CourseGrade], "grade")
-    query.where("grade.std in (:stds)", stds)
-    if (null != semesters && semesters.length > 0) {
-      query.where("grade.semester in(:semesters)", semesters)
-    }
-    val allGrades = entityDao.search(query)
-    val gradeMap = Collections.newMap[Student, Buffer[CourseGrade]]
-    for (std <- stds) {
-      gradeMap.put(std, Collections.newBuffer[CourseGrade])
-    }
-    for (g <- allGrades) gradeMap(g.std) += g
-    gradeMap
-  }
 }
