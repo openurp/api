@@ -38,6 +38,9 @@
       <module name="std" title="学生">
         <group name="all" title="代码" tables="*"/>
       </module>
+      <module name="trd" title="教研">
+        <group name="all" title="代码" tables="*"/>
+      </module>
     </schema>
 
     <schema name="base" title="基础信息">
@@ -286,6 +289,11 @@
     <schema name="degree" title="学位">
       <module name="thesis" title="毕业设计">
         <group name="misc" title="毕业设计" tables="*"/>
+      </module>
+    </schema>
+    <schema name="his" title="历史数据">
+      <module name="his" title="历史数据">
+        <group name="all" title="历史数据" tables="*"/>
       </module>
     </schema>
   </schemas>

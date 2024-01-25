@@ -6,7 +6,6 @@
   <naming>
     <profile package="org.openurp.qos" pluralize="true" schema="qos">
       <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="qos_"/>
-      <annotation class="org.beangle.data.model.annotation.code" value="school" prefix="c_"/>
       <annotation class="org.beangle.data.model.annotation.log" schema="log" prefix="qos_"/>
     </profile>
   </naming>

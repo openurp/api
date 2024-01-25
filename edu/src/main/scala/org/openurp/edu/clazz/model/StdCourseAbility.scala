@@ -19,8 +19,8 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.code.CourseAbilityRate
 import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.CourseAbilityRate
 
 /*** 学生课程能力等级
  */

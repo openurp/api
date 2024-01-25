@@ -15,17 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.code
+package org.openurp.code.trd.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.annotation.code
+import org.openurp.code.CodeBean
 
-class DefaultMapping extends MappingModule {
+/** 获奖等级 */
+@code("school")
+class RdAwardGrade extends CodeBean{
 
-  def binding(): Unit = {
-    defaultCache("openurp.base", "read-write")
-    bind[StdLabel]
-    bind[StdLabelType]
-    bind[FeeType]
-    bind[StdType]
-  }
 }

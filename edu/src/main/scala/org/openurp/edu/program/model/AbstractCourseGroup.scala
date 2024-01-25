@@ -20,8 +20,8 @@ package org.openurp.edu.program.model
 import org.beangle.commons.lang.{Numbers, Strings}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Hierarchical, Remark}
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Terms
+import org.openurp.code.edu.model.CourseType
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer

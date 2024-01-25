@@ -23,8 +23,7 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{AuditStatus, Department, Semester}
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.GradingMode
-import org.openurp.edu.extern.code.Certificate
+import org.openurp.code.edu.model.{Certificate, GradingMode}
 
 import java.time.YearMonth
 import scala.collection.mutable

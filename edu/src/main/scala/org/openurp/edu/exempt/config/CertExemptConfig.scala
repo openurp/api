@@ -21,9 +21,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.InstantRange
-import org.openurp.base.edu.code.EducationType
 import org.openurp.base.model.ProjectBased
-import org.openurp.code.edu.model.EducationLevel
+import org.openurp.code.edu.model.{EducationLevel, EducationType}
 
 import scala.collection.mutable
 

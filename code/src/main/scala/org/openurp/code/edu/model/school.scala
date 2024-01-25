@@ -15,10 +15,40 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.code
+package org.openurp.code.edu.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+
+/** 校外考试证书 */
+@code("school")
+class Certificate extends CodeBean {
+  var category: CertificateCategory = _
+  var institutionCode: Option[String] = None
+  var institutionName: Option[String] = None
+}
+
+/**
+ * 校外考试证书类型
+ */
+@code("school")
+class CertificateCategory extends CodeBean {
+
+}
+/**
+ * 教学任务标签
+ */
+@code("school")
+class ClazzTag extends CodeBean {
+  var color: String = _
+}
+
+object ClazzTag {
+  val GuapaiId = 1
+
+  val ElectableId = 2
+}
+
 
 /**
  * 教材类型
@@ -87,3 +117,4 @@ class EducationType extends CodeBean {
  */
 @code("school")
 class ExamDeferReason extends CodeBean
+

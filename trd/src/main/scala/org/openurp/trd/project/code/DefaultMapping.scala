@@ -18,7 +18,7 @@
 package org.openurp.trd.project.code
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.trd.code.RdLevel
+import org.openurp.code.trd.model.RdLevel
 
 class DefaultMapping extends MappingModule {
 

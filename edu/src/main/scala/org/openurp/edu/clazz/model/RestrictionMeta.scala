@@ -20,11 +20,10 @@ package org.openurp.edu.clazz.model
 import org.beangle.data.model.Entity
 import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.model.Department
-import org.openurp.base.std.code.{StdLabel, StdType}
 import org.openurp.base.std.model.Squad
-import org.openurp.base.edu.code.EducationType
-import org.openurp.code.edu.model.EducationLevel
+import org.openurp.code.edu.model.{EducationLevel, EducationType}
 import org.openurp.code.person.model.Gender
+import org.openurp.code.std.model.{StdLabel, StdType}
 
 import scala.language.implicitConversions
 

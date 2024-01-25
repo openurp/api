@@ -20,9 +20,8 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.value
 import org.beangle.data.model.Component
-import org.openurp.base.edu.code.CourseAbilityRate
 import org.openurp.base.model.Department
-import org.openurp.code.edu.model.EducationLevel
+import org.openurp.code.edu.model.{CourseAbilityRate, EducationLevel}
 import org.openurp.edu.clazz.model.Enrollment.GenderRatio
 
 class Enrollment extends Cloneable with Component {

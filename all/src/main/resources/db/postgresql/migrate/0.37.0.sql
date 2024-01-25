@@ -1,6 +1,64 @@
 insert into base.versions(id,version,updated_at,description)
-values(next_id('base.versions'),'0.36.3',now(),'增加历史数据信息');
+values(next_id('base.versions'),'0.37.0',now(),'重构基础代码，历史数据信息');
 
+alter table edu.c_certificate_categories set schema code;
+alter table code.c_certificate_categories rename to certificate_categories;
+
+alter table edu.c_certificates  set schema code;
+alter table code.c_certificates rename to certificates;
+
+alter table edu.c_clazz_tags  set schema code;
+alter table code.c_clazz_tags rename to clazz_tags;
+
+alter table base.c_book_award_types set schema code;
+alter table code.c_book_award_types rename to book_award_types;
+
+alter table base.c_book_types set schema code;
+alter table code.c_book_types rename to book_types;
+
+alter table base.c_course_ability_rates set schema code;
+alter table code.c_course_ability_rates rename to course_ability_rates;
+
+alter table base.c_course_categories set schema code;
+alter table code.c_course_categories rename to course_categories;
+
+alter table base.c_course_types set schema code;
+alter table code.c_course_types rename to course_types;
+
+alter table base.c_education_types set schema code;
+alter table code.c_education_types rename to education_types;
+
+alter table base.c_exam_defer_reasons set schema code;
+alter table code.c_exam_defer_reasons rename to exam_defer_reasons;
+
+alter table base.c_fee_types set schema code;
+alter table code.c_fee_types rename to fee_types;
+
+alter table base.c_std_label_types set schema code;
+alter table code.c_std_label_types rename to std_label_types;
+
+alter table base.c_std_labels set schema code;
+alter table code.c_std_labels rename to std_labels;
+
+alter table base.c_std_types set schema code;
+alter table code.c_std_types rename to std_types;
+
+alter table base.c_rd_achievement_types set schema code;
+alter table code.c_rd_achievement_types rename to rd_achievement_types;
+
+alter table base.c_rd_award_grades set schema code;
+alter table code.c_rd_award_grades rename to rd_award_grades;
+
+alter table base.c_rd_levels set schema code;
+alter table code.c_rd_levels rename to rd_levels;
+
+alter table base.c_rd_project_categories set schema code;
+alter table code.c_rd_project_categories rename to rd_project_categories;
+
+alter table base.c_rd_project_statuses set schema code;
+alter table code.c_rd_project_statuses rename to rd_project_statuses;
+
+--alternative courses
 alter table edu.major_alt_courses_news rename column major_alternative_course_id to major_alt_course_id;
 alter table edu.major_alt_courses_olds rename column major_alternative_course_id to major_alt_course_id;
 alter table edu.std_alt_courses_news rename column std_alternative_course_id to std_alt_course_id;
@@ -36,6 +94,7 @@ create index idx_oqnutavt0ni5equ6cxmx15yv9 on edu.std_alt_courses_news (std_alt_
 drop index edu.idx_xtxet4oto3m3lt6fkyq6l9vj;
 create index idx_limcsyiq30whrglyd56hbsv1a on edu.std_alt_courses_olds (std_alt_course_id);
 
+--his models
 create schema his;
 create table his.edu_course_grades (semester_id integer not null, course_id bigint not null, project_id integer not null, score float4, id bigint not null, remark varchar(200), crn varchar(20) not null, gp float4, score_text varchar(5), free_listening boolean default false not null, course_type_id integer not null, provider varchar(80), clazz_id bigint, passed boolean default false not null, std_id bigint not null, exam_mode_id integer not null, operator varchar(100), status integer default 0 not null, grading_mode_id integer not null, created_at timestamptz not null, course_take_type_id integer not null, school_year integer not null, updated_at timestamptz default current_timestamp not null);
 create table his.edu_course_takers (course_id bigint not null, course_type_id integer not null, clazz_id bigint not null, std_id bigint not null, alternative boolean default false not null, id bigint not null, take_type_id integer not null, free_listening boolean default false not null, subclazz_id bigint, semester_id integer not null, election_mode_id integer not null, remark varchar(100), school_year integer not null, updated_at timestamptz default current_timestamp not null);

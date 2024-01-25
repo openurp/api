@@ -20,7 +20,6 @@ package org.openurp.edu.grade.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{ProjectBased, Semester}
 import org.openurp.base.std.model.Student

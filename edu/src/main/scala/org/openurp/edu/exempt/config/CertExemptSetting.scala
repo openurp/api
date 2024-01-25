@@ -23,7 +23,7 @@ import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Department
-import org.openurp.edu.extern.code.Certificate
+import org.openurp.code.edu.model.Certificate
 
 import scala.collection.mutable
 

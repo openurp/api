@@ -5,7 +5,6 @@
   <mapping class="org.openurp.edu.course.model.DefaultMapping" name="course"/>
   <mapping class="org.openurp.edu.exam.model.DefaultMapping" name="exam"/>
   <mapping class="org.openurp.edu.exam.config.DefaultMapping" name="exam.config"/>
-  <mapping class="org.openurp.edu.extern.code.DefaultMapping" name="extern.code"/>
   <mapping class="org.openurp.edu.extern.model.DefaultMapping" name="extern"/>
   <mapping class="org.openurp.edu.extern.config.DefaultMapping" name="extern.config"/>
   <mapping class="org.openurp.edu.grade.config.DefaultMapping" name="grade.config"/>
@@ -27,7 +26,6 @@
   <naming>
     <profile package="org.openurp.edu" pluralize="true" schema="edu" abbrs="Alternative=Alt">
       <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="edu_"/>
-      <annotation class="org.beangle.data.model.annotation.code" value="school" prefix="c_"/>
       <annotation class="org.beangle.data.model.annotation.log" schema="log" prefix="edu_"/>
       <profile package="his" pluralize="true" schema="his" abbrs="His=" prefix="edu_"/>
     </profile>

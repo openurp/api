@@ -20,8 +20,8 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongIdEntity
 import org.beangle.data.model.pojo.{DateRange, TemporalOn}
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.model.AuditStatus
+import org.openurp.code.edu.model.CourseType
 
 import scala.collection.mutable
 

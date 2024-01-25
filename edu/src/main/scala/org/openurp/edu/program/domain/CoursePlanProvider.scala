@@ -17,9 +17,9 @@
 
 package org.openurp.edu.program.domain
 
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.CourseType
 import org.openurp.edu.program.model.*
 
 /**

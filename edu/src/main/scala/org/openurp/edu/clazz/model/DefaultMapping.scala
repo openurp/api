@@ -18,14 +18,10 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.edu.clazz.code.ClazzTag
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    //code
-    bind[ClazzTag].generator(IdGenerator.AutoIncrement)
-
     //course
     bind[CourseTaker].declare { e =>
       e.remark is length(100)

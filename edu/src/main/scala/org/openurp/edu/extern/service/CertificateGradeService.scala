@@ -18,7 +18,7 @@
 package org.openurp.edu.extern.service
 
 import org.openurp.base.std.model.Student
-import org.openurp.edu.extern.code.Certificate
+import org.openurp.code.edu.model.Certificate
 import org.openurp.edu.extern.model.CertificateGrade
 
 trait CertificateGradeService {

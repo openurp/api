@@ -21,7 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{InstantRange, Named}
 import org.openurp.base.model.{Project, Semester}
-import org.openurp.edu.extern.code.Certificate
+import org.openurp.code.edu.model.Certificate
 
 import java.time.Instant
 import scala.collection.mutable

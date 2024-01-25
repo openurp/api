@@ -20,8 +20,8 @@ package org.openurp.base.edu.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{Named, Remark, TemporalOn}
-import org.openurp.base.edu.code.{BookAwardType, BookType}
 import org.openurp.base.model.Project
+import org.openurp.code.edu.model.{BookAwardType, BookType}
 import org.openurp.code.sin.model.{BookCategory, Press}
 
 import java.time.LocalDate

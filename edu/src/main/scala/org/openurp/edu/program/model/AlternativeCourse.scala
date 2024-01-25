@@ -22,9 +22,9 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.*
 import org.openurp.base.model.{Department, Project}
-import org.openurp.base.std.code.StdType
 import org.openurp.base.std.model.{Grade, Student}
 import org.openurp.code.edu.model.AcademicLevel
+import org.openurp.code.std.model.StdType
 
 /**
  * 课程替代关系.

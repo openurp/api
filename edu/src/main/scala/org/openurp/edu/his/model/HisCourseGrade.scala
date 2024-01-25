@@ -21,11 +21,10 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{ArchivedByYear, ProjectBased, Semester}
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.{CourseTakeType, ExamMode, GradeType, GradingMode}
+import org.openurp.code.edu.model.{CourseTakeType, CourseType, ExamMode, GradeType, GradingMode}
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.{CourseGrade, Grade}
 

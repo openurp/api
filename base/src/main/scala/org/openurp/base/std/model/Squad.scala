@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.hr.model.Staff
 import org.openurp.base.model.*
-import org.openurp.base.std.code.StdType
+import org.openurp.code.std.model.StdType
 
 import scala.collection.mutable
 

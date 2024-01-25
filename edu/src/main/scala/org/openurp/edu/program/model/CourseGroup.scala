@@ -18,8 +18,8 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongIdEntity
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Terms
+import org.openurp.code.edu.model.CourseType
 
 /** 课程设置中的课程组.
  * </p> <li>1)对应计划</li> <li>2)课程类型</li> <li>3)要求学分</li> <li>4)是否必修课</li>

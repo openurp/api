@@ -20,12 +20,11 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.{Course, Direction, Major}
 import org.openurp.base.model.{AuditStatus, Campus, Department, EduLevelBased}
-import org.openurp.base.std.code.StdType
 import org.openurp.base.std.model.Grade
-import org.openurp.code.edu.model.{Degree, StudyType}
+import org.openurp.code.edu.model.{CourseType, Degree, StudyType}
+import org.openurp.code.std.model.StdType
 
 import scala.collection.mutable
 

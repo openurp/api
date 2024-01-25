@@ -19,9 +19,8 @@ package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.code.ExamDeferReason
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.ExamType
+import org.openurp.code.edu.model.{ExamDeferReason, ExamType}
 import org.openurp.edu.clazz.model.Clazz
 
 import java.time.Instant

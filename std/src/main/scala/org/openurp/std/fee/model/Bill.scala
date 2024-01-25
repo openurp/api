@@ -20,8 +20,8 @@ package org.openurp.std.fee.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.model.{Department, Semester}
-import org.openurp.base.std.code.FeeType
 import org.openurp.base.std.model.Student
+import org.openurp.code.std.model.FeeType
 
 import java.time.Instant
 

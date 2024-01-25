@@ -23,8 +23,8 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{EduLevelBased, Project}
-import org.openurp.base.std.code.StdType
 import org.openurp.base.std.model.Grade
+import org.openurp.code.std.model.StdType
 
 import scala.collection.mutable
 

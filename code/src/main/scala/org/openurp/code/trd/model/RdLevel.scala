@@ -15,32 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.code
+package org.openurp.code.trd.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
-/**
- * 学生类别
- * 例如留学生、港澳台等
- */
-@code("school")
-class StdType extends CodeBean
-/**
- * 学生分类标签
- */
-@code("school")
-class StdLabel extends CodeBean {
-  var labelType: StdLabelType = _
-}
 
-/**
- * 学生分类标签类型
- */
+/** 研究级别 */
 @code("school")
-class StdLabelType extends CodeBean
-
-/** 收费类型 */
-@code("school")
-class FeeType extends CodeBean {
+class RdLevel extends CodeBean {
 
 }

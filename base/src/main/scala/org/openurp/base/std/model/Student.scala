@@ -23,10 +23,9 @@ import org.beangle.data.model.{Component, LongId}
 import org.openurp.base.edu.model.*
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.*
-import org.openurp.base.std.code.{StdLabel, StdLabelType, StdType}
 import org.openurp.code.edu.model.{EducationLevel, StudyType}
 import org.openurp.code.person.model.Gender
-import org.openurp.code.std.model.StudentStatus
+import org.openurp.code.std.model.{StdLabel, StdLabelType, StdType, StudentStatus}
 
 import java.time.LocalDate
 import scala.collection.mutable

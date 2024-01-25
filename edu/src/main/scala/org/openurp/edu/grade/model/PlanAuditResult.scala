@@ -20,8 +20,8 @@ package org.openurp.edu.grade.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.CourseType
 
 import scala.collection.mutable
 

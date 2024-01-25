@@ -22,9 +22,9 @@ import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.model.{Department, Project}
-import org.openurp.base.std.code.FeeType
 import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.EducationLevel
+import org.openurp.code.std.model.FeeType
 
 /**
  * 收费缺省值

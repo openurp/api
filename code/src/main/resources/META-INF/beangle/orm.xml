@@ -9,6 +9,7 @@
   <mapping class="org.openurp.code.person.model.DefaultMapping" name="person"/>
   <mapping class="org.openurp.code.sin.model.DefaultMapping" name="sin"/>
   <mapping class="org.openurp.code.std.model.DefaultMapping" name="std"/>
+  <mapping class="org.openurp.code.trd.model.DefaultMapping" name="trd"/>
   <naming>
     <profile package="org.openurp.code" pluralize="true" schema="code"/>
   </naming>

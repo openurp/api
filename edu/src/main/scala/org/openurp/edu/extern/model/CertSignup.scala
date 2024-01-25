@@ -21,7 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
-import org.openurp.edu.extern.code.Certificate
+import org.openurp.code.edu.model.Certificate
 
 /**
  * 资格考试报名记录

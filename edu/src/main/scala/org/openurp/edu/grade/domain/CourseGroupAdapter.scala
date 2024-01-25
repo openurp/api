@@ -18,8 +18,8 @@
 package org.openurp.edu.grade.domain
 
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Terms
+import org.openurp.code.edu.model.CourseType
 import org.openurp.edu.program.model.{CourseGroup, CoursePlan, PlanCourse}
 
 class CourseGroupAdapter(var coursePlan: CoursePlan) extends LongId with CourseGroup {

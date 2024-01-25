@@ -21,8 +21,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{Hierarchical, Named, TemporalOn, Updated}
 import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.model.{Department, EduLevelBased, Project}
-import org.openurp.base.std.code.StdType
 import org.openurp.code.edu.model.EducationLevel
+import org.openurp.code.std.model.StdType
 
 import java.util.Locale
 import scala.collection.mutable

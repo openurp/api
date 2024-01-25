@@ -32,6 +32,12 @@ class DefaultMapping extends MappingModule {
     bind[UeeSubjectType]
     bind[FeeOrigin]
     bind[WheretoGo]
+
+    bind[StdLabel]
+    bind[StdLabelType]
+    bind[FeeType]
+    bind[StdType]
+
     all.cacheAll()
   }
 }

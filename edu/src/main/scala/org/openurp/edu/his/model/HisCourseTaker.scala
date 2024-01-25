@@ -20,11 +20,10 @@ package org.openurp.edu.his.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.code.CourseType
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{ArchivedByYear, Semester}
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.{CourseTakeType, ElectionMode}
+import org.openurp.code.edu.model.{CourseTakeType, CourseType, ElectionMode}
 import org.openurp.edu.clazz.model.{Clazz, Subclazz}
 
 /** 归档上课记录

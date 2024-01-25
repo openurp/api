@@ -18,19 +18,14 @@
 package org.openurp.base.edu.code
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.code.edu.model.{BookAwardType, BookType, CourseAbilityRate, CourseCategory, CourseType, EducationType, ExamDeferReason}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultCache("openurp.base", "read-write")
 
-    bind[BookType]
-    bind[BookAwardType]
-    bind[CourseType]
-    bind[CourseCategory]
-    bind[CourseAbilityRate]
-    bind[EducationType]
-    bind[ExamDeferReason]
+
     all.cacheAll()
   }
 }

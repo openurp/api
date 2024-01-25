@@ -22,11 +22,11 @@ import org.beangle.data.model.pojo.{Coded, Named}
 import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, EduLevelBased}
-import org.openurp.base.std.code.StdType
 import org.openurp.base.std.model.{Grade, Squad}
 import org.openurp.code.edu.model.{EducationDegree, EducationMode, EducationResult, StudyType}
 import org.openurp.code.geo.model.Country
 import org.openurp.code.person.model.*
+import org.openurp.code.std.model.StdType
 
 import java.time.{LocalDate, YearMonth}
 

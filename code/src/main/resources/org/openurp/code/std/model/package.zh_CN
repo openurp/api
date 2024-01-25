@@ -10,3 +10,9 @@ UeeSubjectType=高考科目
 FeeOrigin=费用来源
 StudentStatus=学生学籍状态
 WheretoGo=毕业去向
+
+FeeType=收费类型
+StdLabel=学生分类标签
+StdLabel.labelType=学生分类标签类型
+StdLabelType=学生分类标签类型
+StdType=学生类别

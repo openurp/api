@@ -59,6 +59,17 @@ class DefaultMapping extends MappingModule {
     bind[TeachingNature]
     bind[TeachingMethod]
 
+    bind[CertificateCategory]
+    bind[Certificate]
+    bind[ClazzTag]
+    bind[BookType]
+    bind[BookAwardType]
+    bind[CourseType]
+    bind[CourseCategory]
+    bind[CourseAbilityRate]
+    bind[EducationType]
+    bind[ExamDeferReason]
+
     all.cacheAll()
   }
 }
