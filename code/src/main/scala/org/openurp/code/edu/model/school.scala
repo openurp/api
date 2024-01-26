@@ -49,7 +49,6 @@ object ClazzTag {
   val ElectableId = 2
 }
 
-
 /**
  * 教材类型
  */
@@ -117,4 +116,3 @@ class EducationType extends CodeBean {
  */
 @code("school")
 class ExamDeferReason extends CodeBean
-

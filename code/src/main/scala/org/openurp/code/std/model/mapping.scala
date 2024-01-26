@@ -37,6 +37,7 @@ class DefaultMapping extends MappingModule {
     bind[StdLabelType]
     bind[FeeType]
     bind[StdType]
+    bind[StdDocArchiveType]
 
     all.cacheAll()
   }

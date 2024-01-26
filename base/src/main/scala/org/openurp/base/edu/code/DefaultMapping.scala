@@ -25,7 +25,6 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultCache("openurp.base", "read-write")
 
-
     all.cacheAll()
   }
 }

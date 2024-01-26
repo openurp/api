@@ -15,40 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.code.std.model
+package org.openurp.std.archive.model
 
-import org.beangle.data.model.annotation.code
-import org.openurp.code.CodeBean
+import org.beangle.data.orm.MappingModule
 
-/**
- * 学生类别
- * 例如留学生、港澳台等
- */
-@code("school")
-class StdType extends CodeBean
+class DefaultMapping extends MappingModule {
 
-/**
- * 学生分类标签
- */
-@code("school")
-class StdLabel extends CodeBean {
-  var labelType: StdLabelType = _
-}
-
-/**
- * 学生分类标签类型
- */
-@code("school")
-class StdLabelType extends CodeBean
-
-/** 收费类型 */
-@code("school")
-class FeeType extends CodeBean {
-
-}
-
-/** 学生文档归档类型 */
-@code("school")
-class StdDocArchiveType extends CodeBean {
-
+  def binding(): Unit = {
+    bind[StdDocArchive] declare { e =>
+      e.filePath is length(200)
+    }
+  }
 }

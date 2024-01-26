@@ -14,6 +14,7 @@
   <mapping class="org.openurp.std.transfer.log.DefaultMapping" name="transfer.config"/>
   <mapping class="org.openurp.std.graduation.model.DefaultMapping" name="graduation"/>
   <mapping class="org.openurp.std.exchange.model.DefaultMapping" name="exchange"/>
+  <mapping class="org.openurp.std.archive.model.DefaultMapping" name="std.archive"/>
   <naming>
     <profile package="org.openurp.std" pluralize="true" schema="std">
       <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="std_"/>
