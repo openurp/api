@@ -17,12 +17,13 @@
 
 package org.openurp.code.asset.model
 
-import org.openurp.code.CodeBean
 import org.beangle.data.model.annotation.code
+import org.openurp.code.CodeBean
 
 /**
  * 房间类型
  * 参考教育部标准JY/T 1001 4.7.5
+ *
  * @author chaostone
  * @since 2011-7-14
  * @since 3.0.0
@@ -35,9 +36,26 @@ class RoomType extends CodeBean {
 /**
  * 建筑物用途类型
  * 参考教育部标准JY/T 1001 4.7.20
+ *
  * @since 2016-07-03
  */
 @code("industry")
 class BuildingType extends CodeBean {
+
+}
+
+object DeviceType {
+  /** 摄像头 */
+  val Camera = 60101
+}
+
+/**
+ * 教学仪器设备产品（物资）分类
+ * 参考教育部标准JY/T 1001-2012
+ *
+ * @since 2016-07-03
+ */
+@code("industry")
+class DeviceType extends CodeBean {
 
 }

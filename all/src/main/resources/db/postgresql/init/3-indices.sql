@@ -14,6 +14,7 @@ create index idx_cwi8j5mcog4kvgv6keicpliwn on base.courses_textbooks (course_id)
 create index idx_2cpvhk7d040sh5temf5afvht8 on base.courses_xmajors (course_id);
 create index idx_lloboi12ir2a1q541ntsr7kao on base.departments (parent_id);
 create index idx_4tia0kw51tgg3ruidjnm1q02k on base.departments_campuses (department_id);
+create index idx_ovshoc5u1nrmelxy454pix0gm on base.devices (room_id);
 create index idx_1r68feb85enylfu5hhehp92vj on base.direction_journals (direction_id);
 create index idx_7389oy88qypl4v9gudyudoi07 on base.directions (major_id);
 create index idx_3d8mbewqjbirn81bfhk47iwf5 on base.major_disciplines (major_id);
@@ -67,6 +68,7 @@ create index idx_ne698xa5anj44drr9vbx8o26d on degree.defense_notices (group_id);
 create index idx_j7e8nufnixcsdgy5qippugbs5 on degree.defense_writers (group_id);
 create index idx_hhd23uu4g31k3qwk0dkqi508f on degree.depart_plans (thesis_plan_id);
 create index idx_aljt9k57y1h5hjipycrjvxvdd on degree.depart_plans_times (depart_plan_id);
+create index idx_o1tr5322a778ojj610im4awwf on degree.guidances (writer_id);
 create index idx_367fgdh8tq59609e5635nl8t1 on degree.midterm_check_details (check_id);
 create index idx_9pvh5lmgs2d11b304e8jmqt8q on degree.subject_applies (last_id);
 create index idx_6ybpxgvqceyalb2dv0r8khryx on degree.subjects_majors (subject_id);

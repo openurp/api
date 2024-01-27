@@ -22,7 +22,7 @@ import org.beangle.commons.lang.time.{CycleTimeDigest, WeekTime}
 import org.beangle.data.model.pojo.{DateRange, Named}
 import org.beangle.data.model.{Component, LongId}
 import org.openurp.base.model.{Campus, Department, School, User}
-import org.openurp.base.space.model.Classroom
+import org.openurp.base.resource.model.Classroom
 import org.openurp.code.edu.model.ActivityType
 
 import java.time.temporal.ChronoUnit

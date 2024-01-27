@@ -31,6 +31,7 @@ alter table base.courses_xmajors add constraint pk_2g7t6j5hy2w3bltscs5tq09d4 pri
 alter table base.departments add constraint pk_njmudssqklm265fj3qxrl6v4i primary key (id);
 alter table base.departments add constraint uk_blem78dvbmeuekoy0jg6px6j7 unique (school_id,code);
 alter table base.departments_campuses add constraint pk_hayeukvl4wxa5t4wj8u012cvy primary key (department_id,campus_id);
+alter table base.devices add constraint pk_q34m206q6wm6qh5d14b281wo9 primary key (id);
 alter table base.direction_journals add constraint pk_rvbr7ldfxrsat8i1nhedoinwk primary key (id);
 alter table base.directions add constraint pk_j2qwo6upqlwqexl7chxnno9mw primary key (id);
 alter table base.directions add constraint uk_ry4fda3w2fdnnsfl7yrnpha1 unique (project_id,code);
@@ -180,6 +181,8 @@ alter table code.degrees add constraint degrees_code_key unique (code);
 alter table code.degrees add constraint pk_2v97ef4fui6mhritxr8eaanvd primary key (id);
 alter table code.department_categories add constraint department_categories_code_key unique (code);
 alter table code.department_categories add constraint pk_mf4to82tja75w579ae7netvca primary key (id);
+alter table code.device_types add constraint device_types_code_key unique (code);
+alter table code.device_types add constraint pk_av3t8mqkliomcbnbg38tcllfe primary key (id);
 alter table code.difficulty_causes add constraint difficulty_causes_code_key unique (code);
 alter table code.difficulty_causes add constraint pk_lq6iocryw9m7olt9euio0caju primary key (id);
 alter table code.difficulty_degrees add constraint difficulty_degrees_code_key unique (code);
@@ -300,6 +303,8 @@ alter table code.std_alter_reasons add constraint pk_33wxn4eyascc7730eqdyu8nap p
 alter table code.std_alter_reasons add constraint std_alter_reasons_code_key unique (code);
 alter table code.std_alter_types add constraint pk_8eujmk9iw3oyow6csjap0m3jm primary key (id);
 alter table code.std_alter_types add constraint std_alter_types_code_key unique (code);
+alter table code.std_doc_archive_types add constraint pk_a65gaefr5yvww0tspce06vf1b primary key (id);
+alter table code.std_doc_archive_types add constraint std_doc_archive_types_code_key unique (code);
 alter table code.std_label_types add constraint pk_2o1x04mqhbpsuu4wsb4523iy3 primary key (id);
 alter table code.std_label_types add constraint std_label_types_code_key unique (code);
 alter table code.std_labels add constraint pk_l192yxgvwsecl9kqujivj6f59 primary key (id);
@@ -351,7 +356,6 @@ alter table degree.defense_writers add constraint uk_1e633rm3u83fkxi1k13kky877 u
 alter table degree.depart_plans add constraint pk_fosmq37orxkj5i1049jfx7y7 primary key (id);
 alter table degree.depart_plans_times add constraint pk_7ge72fgm68a7os42osuub2098 primary key (depart_plan_id,begin_on,stage,end_on);
 alter table degree.guidances add constraint pk_ry9cqd94w60tjega5yn5hfcgc primary key (id);
-alter table degree.guidances add constraint uk_o1tr5322a778ojj610im4awwf unique (writer_id);
 alter table degree.midterm_check_details add constraint pk_nyl6q04c7r0mr6x6jsrcrw1ra primary key (id);
 alter table degree.midterm_check_details add constraint uk_8n2cq37obd973bqb9gqmarwey unique (check_id,item_id);
 alter table degree.midterm_check_items add constraint pk_o9eunp3w0qjk6ot39ivv7vi92 primary key (id);
@@ -625,6 +629,7 @@ alter table std.scholarship_types add constraint pk_61wg2qxbi9mvbo8u75rkflwrx pr
 alter table std.social_relations add constraint pk_kqm1n06eaj1ydahbybcgtgqn2 primary key (id);
 alter table std.std_alteration_items add constraint pk_o3d8j0mujuxorms8a36jw7ic5 primary key (id);
 alter table std.std_alterations add constraint pk_a1ti0uv32d4ggaivn3y58e9c primary key (id);
+alter table std.std_doc_archives add constraint pk_ipo0wobilk95gxr34trymdybe primary key (id);
 alter table std.stipend_awards add constraint pk_7j9vvyns0himgc9ubwkixdnqa primary key (id);
 alter table std.stipend_categories add constraint pk_fcn9q6gllh4ox76aycyatqgy8 primary key (id);
 alter table std.stipend_levels add constraint pk_s2ptwfu0qp30q386yx6iedxsl primary key (id);

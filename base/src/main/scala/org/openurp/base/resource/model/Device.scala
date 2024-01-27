@@ -15,21 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.room.config
+package org.openurp.base.resource.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{InstantRange, Remark, Updated}
-import org.openurp.base.model.Department
-import org.openurp.base.resource.model.Classroom
+import org.beangle.data.model.pojo.*
+import org.openurp.base.model.School
+import org.openurp.code.asset.model.DeviceType
 
-import scala.collection.mutable
+/** 房间内的设备
+ */
+class Device extends LongId, Coded, Named, Updated, Remark, TemporalOn {
 
-@config
-class RoomApplyDepartScope extends LongId, InstantRange, Remark, Updated {
+  /** 学校 */
+  var school: School = _
 
-  var depart: Department = _
+  var deviceType: DeviceType = _
 
-  var rooms: mutable.Set[Classroom] = Collections.newSet[Classroom]
+  var ip: Option[String] = None
+
+  var uuid: Option[String] = None
+
+  var room: Option[Classroom] = None
 }

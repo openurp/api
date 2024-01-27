@@ -25,5 +25,6 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator(classOf[Int], IdGenerator.Code)
     bind[RoomType]
     bind[BuildingType]
+    bind[DeviceType]
   }
 }

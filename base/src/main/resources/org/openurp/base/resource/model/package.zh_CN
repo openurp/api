@@ -30,3 +30,7 @@ Building.shortName=简称
 Building.campus=所在校区
 Building.school=学校
 Building.buildingType=建筑物类型
+
+Device=教室设备
+Device.ip=IP地址
+Device.uuid=UUID

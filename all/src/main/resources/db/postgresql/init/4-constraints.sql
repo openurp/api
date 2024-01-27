@@ -53,6 +53,9 @@ alter table base.departments add constraint fk_8ouv4m3l92m888dhiwaoqesb0 foreign
 alter table base.departments add constraint fk_9fwvupr4xfhftlrl40k0ga8u5 foreign key (school_id) references base.schools (id);
 alter table base.departments_campuses add constraint fk_i37mcpntcm0xqxbuf3fn3nrqr foreign key (campus_id) references base.campuses (id);
 alter table base.departments_campuses add constraint fk_rc4icj2rppwa8r7p4e4afja9d foreign key (department_id) references base.departments (id);
+alter table base.devices add constraint fk_dnkla0ytc6j9494sxoe0gib62 foreign key (room_id) references base.classrooms (id);
+alter table base.devices add constraint fk_nxql64rw79jcil0iuomve9uhv foreign key (school_id) references base.schools (id);
+alter table base.devices add constraint fk_thsup9yv35eehh6hkt0jj3naw foreign key (device_type_id) references code.device_types (id);
 alter table base.direction_journals add constraint fk_2ogkktnypr1u24fcrlarun2e3 foreign key (direction_id) references base.directions (id);
 alter table base.direction_journals add constraint fk_kmw2ffdpem1fh5qahqu17e9yl foreign key (depart_id) references base.departments (id);
 alter table base.direction_journals add constraint fk_o3qcpdyy1nbbg3wj10hu61ovf foreign key (level_id) references code.education_levels (id);
@@ -885,6 +888,8 @@ alter table std.std_alterations add constraint fk_5idqwh89srxe5wyu3sde9a0w8 fore
 alter table std.std_alterations add constraint fk_76u6m29f9ysvfwer2t3wn09gj foreign key (reason_id) references code.std_alter_reasons (id);
 alter table std.std_alterations add constraint fk_ax8cric3f75uk5fm9nvsnb9un foreign key (alter_type_id) references code.std_alter_types (id);
 alter table std.std_alterations add constraint fk_r0vbetfoxnoqqwu5vkmh2f1l0 foreign key (semester_id) references base.semesters (id);
+alter table std.std_doc_archives add constraint fk_53axo13rebn8oau3miwwmaixr foreign key (std_id) references base.students (id);
+alter table std.std_doc_archives add constraint fk_721choq2tdmoa9bws1pbdor5y foreign key (doc_type_id) references code.std_doc_archive_types (id);
 alter table std.stipend_awards add constraint fk_buvr999au00c6gbtychgfxj4s foreign key (level_id) references std.stipend_levels (id);
 alter table std.stipend_awards add constraint fk_gcgc564nfx1rug5xloyilb0hn foreign key (std_id) references base.students (id);
 alter table std.stipend_awards add constraint fk_lat40nl08flxgoh6dv65ol4qs foreign key (category_id) references std.stipend_categories (id);

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.space.model
+package org.openurp.base.resource.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
@@ -68,4 +68,7 @@ class Classroom extends LongId with Named with Coded with Updated with TemporalO
 
   /** 使用部门 */
   var departs: mutable.Set[Department] = Collections.newSet[Department]
+
+  /** 设备列表 */
+  var devices: mutable.Set[Device] = Collections.newSet[Device]
 }

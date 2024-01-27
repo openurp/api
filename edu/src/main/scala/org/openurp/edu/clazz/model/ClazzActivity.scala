@@ -22,7 +22,7 @@ import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.Activity
 import org.openurp.base.hr.model.Teacher
-import org.openurp.base.space.model.Classroom
+import org.openurp.base.resource.model.Classroom
 import org.openurp.code.edu.model.{TeachingMethod, TeachingNature}
 
 import java.time.LocalDate

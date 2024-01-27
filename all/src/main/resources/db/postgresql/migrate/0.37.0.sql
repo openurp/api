@@ -124,6 +124,63 @@ create index idx_ge26c8oiqt7qus9se6lhkm1lm on his.edu_regular_grades (clazz_id);
 create index idx_qveyhipxc0xk5wlfghb0ypuoe on his.edu_regular_grades (std_id);
 create index idx_cgqdfncp4cyc44didyefmiem2 on his.edu_regular_test_grades (regular_grade_id);
 
+--device
+create table base.devices (id bigint not null, device_type_id integer not null, ip varchar(40), name varchar(40) not null, remark varchar(100), room_id bigint, updated_at timestamptz default current_timestamp not null, uuid varchar(255));
+create table code.device_types (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
+create table code.std_doc_archive_types (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
+create table std.std_doc_archives (id bigint not null, doc_type_id integer not null, file_path varchar(200) not null, file_size integer default 0 not null, remark varchar(255), std_id bigint not null, updated_at timestamptz default current_timestamp not null);
+alter table base.devices add constraint pk_q34m206q6wm6qh5d14b281wo9 primary key (id);
+alter table code.device_types add constraint pk_av3t8mqkliomcbnbg38tcllfe primary key (id);
+alter table code.std_doc_archive_types add constraint pk_a65gaefr5yvww0tspce06vf1b primary key (id);
+alter table std.std_doc_archives add constraint pk_ipo0wobilk95gxr34trymdybe primary key (id);
+alter table base.devices add constraint fk_thsup9yv35eehh6hkt0jj3naw foreign key (device_type_id) references code.device_types (id);
+alter table base.devices add constraint fk_dnkla0ytc6j9494sxoe0gib62 foreign key (room_id) references base.classrooms (id);
+alter table std.std_doc_archives add constraint fk_53axo13rebn8oau3miwwmaixr foreign key (std_id) references base.students (id);
+alter table std.std_doc_archives add constraint fk_721choq2tdmoa9bws1pbdor5y foreign key (doc_type_id) references code.std_doc_archive_types (id);
+alter table code.device_types add constraint device_types_code_key unique (code);
+alter table code.std_doc_archive_types add constraint std_doc_archive_types_code_key unique (code);
+create index idx_ovshoc5u1nrmelxy454pix0gm on base.devices (room_id);
+
+alter table degree.guidances drop constraint if exists uk_o1tr5322a778ojj610im4awwf cascade;
+create index idx_o1tr5322a778ojj610im4awwf on degree.guidances (writer_id);
+
+comment on table base.devices is '教室设备@resource';
+comment on column base.devices.id is '非业务主键:datetime';
+comment on column base.devices.device_type_id is '教学仪器设备产品ID';
+comment on column base.devices.ip is 'IP地址';
+comment on column base.devices.name is '名称';
+comment on column base.devices.remark is '备注';
+comment on column base.devices.room_id is '教室ID';
+comment on column base.devices.updated_at is '更新时间';
+comment on column base.devices.uuid is 'UUID';
+comment on table code.device_types is '教学仪器设备产品@asset';
+comment on column code.device_types.id is '非业务主键:code';
+comment on column code.device_types.begin_on is '生效日期';
+comment on column code.device_types.code is '代码';
+comment on column code.device_types.en_name is '英文名称';
+comment on column code.device_types.end_on is '失效日期';
+comment on column code.device_types.name is '名称';
+comment on column code.device_types.remark is '备注';
+comment on column code.device_types.updated_at is '修改时间';
+comment on table code.std_doc_archive_types is '学生文档归档类型@std';
+comment on column code.std_doc_archive_types.id is '非业务主键:code';
+comment on column code.std_doc_archive_types.begin_on is '生效日期';
+comment on column code.std_doc_archive_types.code is '代码';
+comment on column code.std_doc_archive_types.en_name is '英文名称';
+comment on column code.std_doc_archive_types.end_on is '失效日期';
+comment on column code.std_doc_archive_types.name is '名称';
+comment on column code.std_doc_archive_types.remark is '备注';
+comment on column code.std_doc_archive_types.updated_at is '修改时间';
+comment on table std.std_doc_archives is '学生文档归档记录@std.archive';
+comment on column std.std_doc_archives.id is '非业务主键:datetime';
+comment on column std.std_doc_archives.doc_type_id is '学生文档归档类型ID';
+comment on column std.std_doc_archives.file_path is '归档路径';
+comment on column std.std_doc_archives.file_size is '文件大小';
+comment on column std.std_doc_archives.remark is '备注';
+comment on column std.std_doc_archives.std_id is '学籍信息实现ID';
+comment on column std.std_doc_archives.updated_at is '更新时间';
+
+
 comment on column his.edu_course_grades.clazz_id is '教学任务ID';
 comment on column his.edu_course_grades.course_id is '课程ID';
 comment on column his.edu_course_grades.course_take_type_id is '修读类别ID';

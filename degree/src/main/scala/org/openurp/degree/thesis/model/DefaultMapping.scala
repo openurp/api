@@ -67,7 +67,7 @@ class DefaultMapping extends MappingModule {
 
     bind[Guidance].declare { e =>
       e.contents is lob
-      index("", true, e.writer)
+      index("", false, e.writer)
     }
 
     bind[MidtermCheck].declare { e =>

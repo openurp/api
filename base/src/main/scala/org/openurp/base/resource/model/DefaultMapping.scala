@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.space.model
+package org.openurp.base.resource.model
 
 import org.beangle.data.orm.MappingModule
 
@@ -45,8 +45,14 @@ class DefaultMapping extends MappingModule {
       e.code is length(20)
       e.name is length(100)
       e.roomNo is length(20)
+      e.devices is one2many("room")
       index("", true, e.school, e.code)
     }
 
+    bind[Device] declare { e =>
+      e.name is length(40)
+      e.remark is length(100)
+      e.ip is length(40)
+    }
   }
 }

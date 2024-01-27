@@ -22,16 +22,18 @@ import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.StdDocArchiveType
 
-
 /** 学生文档归档记录
  */
 class StdDocArchive extends LongId, Updated, Remark {
 
   var std: Student = _
 
+  /** 文档类型 */
   var docType: StdDocArchiveType = _
 
+  /** 文件存储路径 */
   var filePath: String = _
 
+  /** 文件大小 */
   var fileSize: Int = _
 }

@@ -22,7 +22,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.ProjectBased
-import org.openurp.base.space.model.Classroom
+import org.openurp.base.resource.model.Classroom
 
 /**
  * 教室组

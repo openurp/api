@@ -15,21 +15,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.space.model
+package org.openurp.base.resource.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.model.{Campus, School}
+import org.openurp.base.model.{Campus, Department, School}
+import org.openurp.base.resource.model.Building
 import org.openurp.code.asset.model.{BuildingType, RoomType}
 
 /**
- * 建筑
+ * 房间
  */
-class Building extends IntId with Coded with Named with TemporalOn with Updated with Remark {
+class Room extends IntId with Coded with Named with TemporalOn with Updated with Remark {
+
+  /**所属学校*/
   var school: School = _
+
   /**所属校区*/
   var campus: Campus = _
-  var enName: Option[String] = None
-  var shortName: Option[String] = None
-  var buildingType: Option[BuildingType] = None
+
+  /**管理部门*/
+  var department: Option[Department] = None
+
+  /**所属建筑*/
+  var building: Option[Building] = None
+
+  /**房间类型*/
+  var roomType: RoomType = _
+
+  /** 楼层 */
+  var floorNo: Int = _
+
 }
