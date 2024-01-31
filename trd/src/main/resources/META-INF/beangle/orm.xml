@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <orm>
-  <mapping class="org.openurp.code.trd.model.DefaultMapping" name="code"/>
   <mapping class="org.openurp.trd.project.model.DefaultMapping" name="project"/>
   <mapping class="org.openurp.trd.project.code.DefaultMapping" name="project"/>
   <mapping class="org.openurp.trd.achievement.model.DefaultMapping" name="achievement"/>

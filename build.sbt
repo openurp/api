@@ -97,7 +97,7 @@ lazy val all = (project in file("all"))
     organization := "org.openurp",
     name := "openurp-api-all",
     common,
-    libraryDependencies ++= Seq(scalatest, beangle_commons_core, beangle_data_orm),
+    libraryDependencies ++= Seq(scalatest, logback_classic),
     publish / skip := true
   ).dependsOn(code, base, edu, prac, qos, trd, spa, std, degree)
 
