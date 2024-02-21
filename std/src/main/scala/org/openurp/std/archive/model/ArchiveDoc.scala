@@ -20,16 +20,16 @@ package org.openurp.std.archive.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.std.model.Student
-import org.openurp.code.std.model.StdDocArchiveType
+import org.openurp.code.std.model.StdDocType
 
 /** 学生文档归档记录
  */
-class StdDocArchive extends LongId, Updated, Remark {
+class ArchiveDoc extends LongId, Updated, Remark {
 
   var std: Student = _
 
   /** 文档类型 */
-  var docType: StdDocArchiveType = _
+  var docType: StdDocType = _
 
   /** 文件存储路径 */
   var filePath: String = _

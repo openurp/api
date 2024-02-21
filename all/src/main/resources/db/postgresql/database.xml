@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.37.0">
+<db engine="PostgreSQL" version="0.37.1">
   <schemas>
     <schema name="base">
       <tables>
@@ -1859,46 +1859,68 @@
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
             <column name="count_per_std" type="integer" nullable="false" defaultValue="0" comment="每个人可以领取的数量"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
             <primary-key name="pk_rwsiaat8v0lgqu155yayo8bdy" columns="id"/>
-            <foreign-key name="fk_kqys2g369af3kdo2wahdghqmg" column="doc_type_id" referenced-table="cfg.spa_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_t9owg4l2wre000cg415nc45s7" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_e0iut684v8o2rb6sysexjhr0x" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="spa_doc_types" comment="文档类型@spa.config">
+        <table name="spa_doc_settings" comment="文档类型@spa.config">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="admin_url" type="varchar(255)" comment="管理人员打印地址"/>
-            <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
             <column name="downloadable" type="boolean" nullable="false" defaultValue="false" comment="可下载的"/>
             <column name="enable_user_password" type="boolean" nullable="false" defaultValue="false" comment="下载时是否启用用户密码"/>
             <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="是否启用"/>
-            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="notice" type="varchar(3000)" comment="通知公告"/>
             <column name="orientation" type="integer" nullable="false" comment="纵向还是横向，默认纵向"/>
             <column name="page_size" type="integer" nullable="false" comment="纸张大小"/>
+            <column name="printable" type="boolean" nullable="false" defaultValue="false" comment="可打印的"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="url" type="varchar(255)" nullable="false" comment="访问地址"/>
           </columns>
           <constraints>
-            <primary-key name="pk_2w8y445q9wgvl9ddrtljltpwt" columns="id"/>
+            <primary-key name="pk_dx2bfnfjjjgaxip0v36srjixy" columns="id"/>
+            <foreign-key name="fk_j1ews49c59vqc0qb7q5dpmeaf" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_oag1br9fkcmls1w8y4vg969ty" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
         </table>
         <table name="spa_print_configs" comment="打印配置@spa.config">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="max_limit" type="integer" nullable="false" defaultValue="0" comment="最多打印次数"/>
             <column name="price" type="integer" nullable="false" defaultValue="0" comment="单价，以分为单位，免费设置为0"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
             <primary-key name="pk_3f8qp6ur569ahp33vlyhyo4mb" columns="id"/>
-            <foreign-key name="fk_980vypmo5ogrida8elus811o5" column="doc_type_id" referenced-table="cfg.spa_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_axtjn7x3nrtcr32v9hc2736ew" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_pu9ou1wfr0a3ehxrovo2d3w2n" column="project_id" referenced-table="base.projects" referenced-column="id"/>
+          </constraints>
+        </table>
+        <table name="std_archive_doc_settings" comment="学生归档文档设置@archive.config">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
+            <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="是否启用"/>
+            <column name="orientation" type="integer" nullable="false" comment="打印方向"/>
+            <column name="page_size" type="integer" nullable="false" comment="纸张大小"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+            <column name="url" type="varchar(200)" nullable="false" comment="文档的访问地址"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_euy7kdgak01xqyafjoxogbjo2" columns="id"/>
+            <foreign-key name="fk_eru2pvypxdasm2q42gbqsfmv7" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_5v5hbujtev6txhxbrkknf4tc8" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
         </table>
         <table name="std_register_sessions" comment="注册批次@register.config">
@@ -3484,7 +3506,7 @@
             <unique-key name="std_alter_types_code_key" columns="code"/>
           </constraints>
         </table>
-        <table name="std_doc_archive_types" comment="学生文档归档类型@std">
+        <table name="std_doc_types" comment="学生文档类型@std">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
@@ -3496,8 +3518,8 @@
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
           </columns>
           <constraints>
-            <primary-key name="pk_a65gaefr5yvww0tspce06vf1b" columns="id"/>
-            <unique-key name="std_doc_archive_types_code_key" columns="code"/>
+            <primary-key name="pk_504qg1oldgtxqm3nb3cbtuye7" columns="id"/>
+            <unique-key name="std_doc_types_code_key" columns="code"/>
           </constraints>
         </table>
         <table name="std_label_types" comment="学生分类标签类型@std">
@@ -6902,7 +6924,7 @@
         <table name="spa_download_logs" comment="下载流水@spa.log">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
             <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -6910,14 +6932,14 @@
           </columns>
           <constraints>
             <primary-key name="pk_lcqw7ty5jppf59n7h1l8uhbwq" columns="id"/>
-            <foreign-key name="fk_avr0jfq4pxl6dk16i89v8u82v" column="doc_type_id" referenced-table="cfg.spa_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_fknen94qm9dgfvn814vt3kggk" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
             <foreign-key name="fk_ky7l7hruvkldo49eq9vlkgofl" column="user_id" referenced-table="base.users" referenced-column="id"/>
           </constraints>
         </table>
         <table name="spa_print_logs" comment="打印流水@spa.log">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
             <column name="ip" type="varchar(255)" nullable="false" comment="打印ip"/>
             <column name="payed" type="integer" nullable="false" defaultValue="0" comment="支付费用"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
@@ -6926,7 +6948,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_2nfredgb8p5h5rejmbm3nwr5m" columns="id"/>
-            <foreign-key name="fk_3d8hwkwr4xo3xw1fi17cyv1kv" column="doc_type_id" referenced-table="cfg.spa_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_3jju80t0ypjam2l5vkq59okn0" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
             <foreign-key name="fk_okwgt76nd0hg6s8hruatfjruv" column="user_id" referenced-table="base.users" referenced-column="id"/>
           </constraints>
         </table>
@@ -7727,7 +7749,7 @@
         <table name="print_quotas" comment="打印配额@doc">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="文档类型ID"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
             <column name="free_cnt" type="integer" nullable="false" defaultValue="0" comment="免支付打印张数"/>
             <column name="frees" type="integer" nullable="false" defaultValue="0" comment="剩余免支付的张数"/>
             <column name="last_print_at" type="timestamptz" nullable="false" comment="最后打印时间"/>
@@ -7736,7 +7758,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_st8emevheay237gju9wkv7y2p" columns="id"/>
-            <foreign-key name="fk_81tnr7u2aq88bdoqobwagjjlu" column="doc_type_id" referenced-table="cfg.spa_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_2xpeitkjoh0dc42e0qiskemg8" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
             <foreign-key name="fk_j5ah9jicykofscsccinruktmi" column="user_id" referenced-table="base.users" referenced-column="id"/>
           </constraints>
         </table>
@@ -7744,6 +7766,22 @@
     </schema>
     <schema name="std">
       <tables>
+        <table name="archive_docs" comment="学生文档归档记录@archive">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
+            <column name="file_path" type="varchar(200)" nullable="false" comment="归档路径"/>
+            <column name="file_size" type="integer" nullable="false" defaultValue="0" comment="文件大小"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_8m2rjy6rh2l0le6vij6nuin0e" columns="id"/>
+            <foreign-key name="fk_cudju8jp9f2a5h8a6fb11rk59" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_rglcljk9d35lj7jhm4xxfd5m9" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
+          </constraints>
+        </table>
         <table name="bills" comment="账单@fee">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -8370,23 +8408,6 @@
             <foreign-key name="fk_5idqwh89srxe5wyu3sde9a0w8" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_ax8cric3f75uk5fm9nvsnb9un" column="alter_type_id" referenced-table="code.std_alter_types" referenced-column="id"/>
             <foreign-key name="fk_r0vbetfoxnoqqwu5vkmh2f1l0" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
-          </constraints>
-        </table>
-        <table name="std_doc_archives" comment="学生文档归档记录@std.archive">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档归档类型ID"/>
-            <column name="file_path" type="varchar(200)" nullable="false" comment="归档路径"/>
-            <column name="file_size" type="integer" nullable="false" defaultValue="0" comment="文件大小"/>
-            <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_ipo0wobilk95gxr34trymdybe" columns="id"/>
-            <foreign-key name="fk_53axo13rebn8oau3miwwmaixr" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_721choq2tdmoa9bws1pbdor5y" column="doc_type_id" referenced-table="code.std_doc_archive_types"
-                         referenced-column="id"/>
           </constraints>
         </table>
         <table name="stipend_awards" comment="助学金评定结果@award">

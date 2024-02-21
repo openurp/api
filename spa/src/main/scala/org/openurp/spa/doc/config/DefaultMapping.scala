@@ -23,7 +23,7 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultCache("openurp.spa", "read-write")
-    bind[DocType] declare { e =>
+    bind[DocSetting] declare { e =>
       e.notice is length(3000)
     }
     bind[PrintConfig]

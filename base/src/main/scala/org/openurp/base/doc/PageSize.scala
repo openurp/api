@@ -15,15 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.archive.model
+package org.openurp.base.doc
 
-import org.beangle.data.orm.MappingModule
-
-class DefaultMapping extends MappingModule {
-
-  def binding(): Unit = {
-    bind[ArchiveDoc] declare { e =>
-      e.filePath is length(200)
-    }
-  }
+/** 纸张大小
+ * 定义常规的纸张大小
+ */
+enum PageSize {
+  case Undefined, A1, A2, A3, A4, A5, A6, Letter
 }

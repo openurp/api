@@ -21,7 +21,8 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.log
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.model.User
-import org.openurp.spa.doc.config.DocType
+import org.openurp.code.std.model.StdDocType
+import org.openurp.spa.doc.config.DocSetting
 
 /** 下载流水
  * 记录每次下载文档的流水
@@ -32,7 +33,7 @@ class DownloadLog extends LongId with Updated with Remark {
   var user: User = _
 
   /** 文档类型 */
-  var docType: DocType = _
+  var docType: StdDocType = _
 
   /** 打印ip */
   var ip: String = _

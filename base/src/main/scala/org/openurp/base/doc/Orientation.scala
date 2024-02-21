@@ -15,11 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.spa.doc.config
+package org.openurp.base.doc
 
-/** 纸张大小
- * 定义常规的纸张大小
+/** 打印方向
+ * Portrait 为纵向
+ * Landscape 为横向
  */
-enum PageSize {
-  case Undefined, A1, A2, A3, A4, A5, A6, Letter
+enum Orientation {
+  case None, Portrait, Landscape
 }

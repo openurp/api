@@ -19,7 +19,8 @@ package org.openurp.spa.doc.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.model.User
-import org.openurp.spa.doc.config.DocType
+import org.openurp.code.std.model.StdDocType
+import org.openurp.spa.doc.config.DocSetting
 
 import java.time.Instant
 
@@ -32,7 +33,7 @@ class PrintQuota extends LongId {
   var user: User = _
 
   /** 文档类型 */
-  var docType: DocType = _
+  var docType: StdDocType = _
 
   /** 免支付打印张数 */
   var freeCnt: Int = _
@@ -46,7 +47,7 @@ class PrintQuota extends LongId {
   /** 最后打印时间 */
   var lastPrintAt: Instant = _
 
-  def this(user: User, docType: DocType) = {
+  def this(user: User, docType: StdDocType) = {
     this()
     this.user = user
     this.docType = docType

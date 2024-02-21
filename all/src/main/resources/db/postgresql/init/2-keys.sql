@@ -125,8 +125,9 @@ alter table cfg.edu_transcript_templates add constraint pk_m87tyokii4burhxl6mcqo
 alter table cfg.qos_feedback_switches add constraint pk_b7whkf51jgmhbp82phl3dt2hr primary key (id);
 alter table cfg.qos_std_evaluate_switches add constraint pk_81sba75u2yf8yhm3tjcyrsns primary key (id);
 alter table cfg.spa_coupons add constraint pk_rwsiaat8v0lgqu155yayo8bdy primary key (id);
-alter table cfg.spa_doc_types add constraint pk_2w8y445q9wgvl9ddrtljltpwt primary key (id);
+alter table cfg.spa_doc_settings add constraint pk_dx2bfnfjjjgaxip0v36srjixy primary key (id);
 alter table cfg.spa_print_configs add constraint pk_3f8qp6ur569ahp33vlyhyo4mb primary key (id);
+alter table cfg.std_archive_doc_settings add constraint pk_euy7kdgak01xqyafjoxogbjo2 primary key (id);
 alter table cfg.std_register_sessions add constraint pk_ofhf9115x2ra5xlq0vxmx13t5 primary key (id);
 alter table cfg.std_std_alter_configs add constraint pk_nyp7vi8oa6vdk3x8sx15fkdrs primary key (id);
 alter table cfg.std_transfer_options add constraint pk_kjwut08vmlyklxegooc1nftgo primary key (id);
@@ -303,8 +304,8 @@ alter table code.std_alter_reasons add constraint pk_33wxn4eyascc7730eqdyu8nap p
 alter table code.std_alter_reasons add constraint std_alter_reasons_code_key unique (code);
 alter table code.std_alter_types add constraint pk_8eujmk9iw3oyow6csjap0m3jm primary key (id);
 alter table code.std_alter_types add constraint std_alter_types_code_key unique (code);
-alter table code.std_doc_archive_types add constraint pk_a65gaefr5yvww0tspce06vf1b primary key (id);
-alter table code.std_doc_archive_types add constraint std_doc_archive_types_code_key unique (code);
+alter table code.std_doc_types add constraint pk_504qg1oldgtxqm3nb3cbtuye7 primary key (id);
+alter table code.std_doc_types add constraint std_doc_types_code_key unique (code);
 alter table code.std_label_types add constraint pk_2o1x04mqhbpsuu4wsb4523iy3 primary key (id);
 alter table code.std_label_types add constraint std_label_types_code_key unique (code);
 alter table code.std_labels add constraint pk_l192yxgvwsecl9kqujivj6f59 primary key (id);
@@ -592,6 +593,7 @@ alter table qos.questionnaires_questions add constraint pk_41ugco3nqnt9c9x9taga0
 alter table qos.questions add constraint pk_8be2ix7e7pkg5mjne8qegaj76 primary key (id);
 alter table qos.school_eval_stats add constraint pk_qtq0xmlybs0ch9pjdq4cbpom2 primary key (id);
 alter table spa.print_quotas add constraint pk_st8emevheay237gju9wkv7y2p primary key (id);
+alter table std.archive_docs add constraint pk_8m2rjy6rh2l0le6vij6nuin0e primary key (id);
 alter table std.bills add constraint pk_l2ycbilgr05krq0lg8r6qxnsp primary key (id);
 alter table std.contacts add constraint pk_7ko2w4r57qng8yfiyi7n9snh4 primary key (id);
 alter table std.contacts add constraint uk_qopxi21m45bqtuemmwurk7dkl unique (std_id);
@@ -629,7 +631,6 @@ alter table std.scholarship_types add constraint pk_61wg2qxbi9mvbo8u75rkflwrx pr
 alter table std.social_relations add constraint pk_kqm1n06eaj1ydahbybcgtgqn2 primary key (id);
 alter table std.std_alteration_items add constraint pk_o3d8j0mujuxorms8a36jw7ic5 primary key (id);
 alter table std.std_alterations add constraint pk_a1ti0uv32d4ggaivn3y58e9c primary key (id);
-alter table std.std_doc_archives add constraint pk_ipo0wobilk95gxr34trymdybe primary key (id);
 alter table std.stipend_awards add constraint pk_7j9vvyns0himgc9ubwkixdnqa primary key (id);
 alter table std.stipend_categories add constraint pk_fcn9q6gllh4ox76aycyatqgy8 primary key (id);
 alter table std.stipend_levels add constraint pk_s2ptwfu0qp30q386yx6iedxsl primary key (id);

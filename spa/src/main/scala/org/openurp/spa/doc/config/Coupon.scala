@@ -17,10 +17,13 @@
 
 package org.openurp.spa.doc.config
 
-import java.time.{Instant, ZoneId}
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.openurp.base.model.Project
+import org.openurp.code.std.model.StdDocType
+
+import java.time.{Instant, ZoneId}
 
 /**
  * 优惠券
@@ -28,13 +31,16 @@ import org.beangle.data.model.pojo.{DateRange, Updated}
 @config
 class Coupon extends IntId with Updated with DateRange {
 
+  /**项目*/
+  var project: Project = _
+
   def validAt(updatedAt: Instant): Boolean = {
     val updatedOn = updatedAt.atZone(ZoneId.systemDefault()).toLocalDate
     !(updatedOn.isBefore(beginOn) || updatedOn.isAfter(endOn))
   }
 
   /** 适合文档 */
-  var docType: DocType = _
+  var docType: StdDocType = _
 
   /** 每个人可以领取的数量 */
   var countPerStd: Int = _

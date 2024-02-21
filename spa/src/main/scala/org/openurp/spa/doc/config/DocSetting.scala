@@ -19,9 +19,12 @@ package org.openurp.spa.doc.config
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{Coded, Enabled, Named}
+import org.beangle.data.model.pojo.Enabled
+import org.openurp.base.doc.{Orientation, PageSize}
+import org.openurp.base.model.Project
+import org.openurp.code.std.model.StdDocType
 
-object DocType {
+object DocSetting {
   val TranscriptZh = "transcript_zh";
   val TranscriptEn = "transcript_en";
 
@@ -32,19 +35,25 @@ object DocType {
 /** 打印文档的类型
  */
 @config
-class DocType extends IntId with Named with Coded with Enabled {
+class DocSetting extends IntId, Enabled {
+
+  /** 项目 */
+  var project: Project = _
+
+  /** 文档类型 */
+  var docType: StdDocType = _
 
   /** 访问地址 */
   var url: String = _
+
+  /** 可打印的 */
+  var printable: Boolean = _
 
   /** 可下载的 */
   var downloadable: Boolean = _
 
   /** 下载时是否启用用户密码 */
   var enableUserPassword: Boolean = _
-
-  /** 管理人员打印地址 */
-  var adminUrl: Option[String] = None
 
   /** 通知公告 */
   var notice: Option[String] = None

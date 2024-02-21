@@ -15,12 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.spa.doc.config
+package org.openurp.std.archive.config
 
-/** 打印方向
- * Portrait 为纵向
- * Landscape 为横向
- */
-enum Orientation {
-  case None, Portrait, Landscape
+import org.beangle.data.orm.MappingModule
+
+class DefaultMapping extends MappingModule {
+
+  def binding(): Unit = {
+    bind[ArchiveDocSetting] declare { e =>
+      e.url is length(200)
+    }
+  }
 }

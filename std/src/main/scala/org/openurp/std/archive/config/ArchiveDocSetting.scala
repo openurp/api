@@ -15,15 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.archive.model
+package org.openurp.std.archive.config
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.IntId
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.Enabled
+import org.openurp.base.doc.{Orientation, PageSize}
+import org.openurp.base.model.Project
+import org.openurp.code.std.model.StdDocType
 
-class DefaultMapping extends MappingModule {
+@config
+class ArchiveDocSetting extends IntId, Enabled {
 
-  def binding(): Unit = {
-    bind[ArchiveDoc] declare { e =>
-      e.filePath is length(200)
-    }
-  }
+  /** 项目 */
+  var project: Project = _
+
+  /** 文档类型 */
+  var docType: StdDocType = _
+
+  /** 访问地址 */
+  var url: String = _
+
+  /** 纵向还是横向，默认纵向 */
+  var orientation: Orientation = Orientation.Portrait
+
+  /** 纸张大小 */
+  var pageSize: PageSize = PageSize.A4
 }

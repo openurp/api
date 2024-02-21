@@ -21,23 +21,23 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.log
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.model.User
-import org.openurp.spa.doc.config.DocType
+import org.openurp.code.std.model.StdDocType
 
 /** 打印流水
-  *  记录每次打印文档的流水
-  */
+ * 记录每次打印文档的流水
+ */
 @log
 class PrintLog extends LongId with Updated with Remark {
-  /**学生*/
+  /** 学生 */
   var user: User = _
 
-  /**文档类型*/
-  var docType: DocType = _
+  /** 文档类型 */
+  var docType: StdDocType = _
 
-  /**支付费用*/
+  /** 支付费用 */
   var payed: Int = _
 
-  /**打印ip*/
+  /** 打印ip */
   var ip: String = _
 
 }

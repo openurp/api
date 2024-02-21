@@ -20,6 +20,8 @@ package org.openurp.spa.doc.config
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{TemporalOn, Updated}
+import org.openurp.base.model.Project
+import org.openurp.code.std.model.StdDocType
 
 /** 打印配置
  * 针对每种类型的文档配置单价和打印的上限
@@ -27,8 +29,11 @@ import org.beangle.data.model.pojo.{TemporalOn, Updated}
 @config
 class PrintConfig extends IntId with Updated with TemporalOn {
 
+  /** 项目 */
+  var project: Project = _
+
   /** 文档类型 */
-  var docType: DocType = _
+  var docType: StdDocType = _
 
   /** 单价，以分为单位，免费设置为0 */
   var price: Int = _

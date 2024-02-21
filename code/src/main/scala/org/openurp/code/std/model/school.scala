@@ -49,6 +49,6 @@ class FeeType extends CodeBean {
 
 /** 学生文档归档类型 */
 @code("school")
-class StdDocArchiveType extends CodeBean {
+class StdDocType extends CodeBean {
 
 }
