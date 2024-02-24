@@ -1,6 +1,0 @@
-PrintQuota=打印配额
-PrintQuota.user=学生
-PrintQuota.freeCnt=免支付打印张数
-PrintQuota.printCnt=打印张数
-PrintQuota.frees=剩余免支付的张数
-PrintQuota.lastPrintAt=最后打印时间

@@ -1,0 +1,8 @@
+SpaPrint=打印流水
+SpaPrint.user=学生
+SpaPrint.payed=支付费用
+SpaPrint.ip=打印ip
+
+SpaDownload=下载流水
+SpaDownload.user=学生
+SpaDownload.ip=打印ip

@@ -1,0 +1,15 @@
+SpaCoupon=优惠券
+SpaCoupon.countPerStd=每个人可以领取的数量
+
+SpaDocSetting=文档类型
+SpaDocSetting.downloadable=可下载的
+SpaDocSetting.printable=可打印的
+SpaDocSetting.enableUserPassword=下载时是否启用用户密码
+SpaDocSetting.notice=通知公告
+SpaDocSetting.orientation=纵向还是横向，默认纵向
+SpaDocSetting.pageSize=纸张大小
+SpaDocSetting.url=访问地址
+
+SpaPrintConfig=打印配置
+SpaPrintConfig.price=单价，以分为单位，免费设置为0
+SpaPrintConfig.maxLimit=最多打印次数

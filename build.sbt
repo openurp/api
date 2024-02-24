@@ -26,7 +26,7 @@ ThisBuild / resolvers += Resolver.mavenLocal
 
 lazy val root = (project in file("."))
   .settings()
-  .aggregate(code, base, edu, prac, qos, trd, spa, std, degree, all)
+  .aggregate(code, base, edu, prac, qos, trd, std, degree, all)
 
 lazy val code = (project in file("code"))
   .settings(
@@ -78,13 +78,6 @@ lazy val trd = (project in file("trd"))
     common
   ).dependsOn(base)
 
-lazy val spa = (project in file("spa"))
-  .settings(
-    organization := "org.openurp.spa",
-    name := "openurp-spa-api",
-    common
-  ).dependsOn(base)
-
 lazy val std = (project in file("std"))
   .settings(
     organization := "org.openurp.std",
@@ -99,6 +92,6 @@ lazy val all = (project in file("all"))
     common,
     libraryDependencies ++= Seq(scalatest, logback_classic),
     publish / skip := true
-  ).dependsOn(code, base, edu, prac, qos, trd, spa, std, degree)
+  ).dependsOn(code, base, edu, prac, qos, trd, std, degree)
 
 publish / skip := true

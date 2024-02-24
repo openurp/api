@@ -30,9 +30,9 @@ update cfg.spa_doc_settings set doc_type_id = id;
 
 alter table cfg.spa_print_configs add project_id int4;
 alter table cfg.spa_coupons add project_id int4;
-update cfg.spa_print_configs set project_id = 5;
-update cfg.spa_coupons set project_id = 5;
-update cfg.spa_doc_settings set project_id = 5;
+update cfg.spa_print_configs set project_id = 1027802;
+update cfg.spa_coupons set project_id = 1027802;
+update cfg.spa_doc_settings set project_id = 1027802;
 
 insert into cfg.std_archive_doc_settings(id,enabled,orientation,page_size,doc_type_id,url,project_id)
 select id,enabled,orientation,page_size,doc_type_id,admin_url,project_id from cfg.spa_doc_settings where admin_url is not null;
@@ -47,3 +47,16 @@ comment on column cfg.std_archive_doc_settings.url is '文档的访问地址';
 alter table cfg.spa_doc_settings drop column admin_url;
 alter table cfg.spa_doc_settings drop column code;
 alter table cfg.spa_doc_settings drop column name;
+
+alter table cfg.spa_doc_settings rename to std_spa_doc_settings;
+alter table cfg.spa_coupons rename to std_spa_coupons;
+alter table cfg.spa_print_configs rename to std_spa_print_configs;
+
+alter table log.spa_download_logs rename to std_spa_downloads;
+alter table log.spa_print_logs rename to std_spa_prints;
+
+alter table spa.print_quotas rename to spa_print_quotas;
+alter table spa.spa_print_quotas set schema std;
+drop schema spa;
+
+

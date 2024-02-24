@@ -15,13 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.spa.doc.model
+package org.openurp.std.spa.log
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[PrintQuota]
+    bind[SpaPrint]
+    bind[SpaDownload]
   }
 }

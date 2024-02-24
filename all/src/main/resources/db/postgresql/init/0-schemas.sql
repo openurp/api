@@ -7,6 +7,5 @@ create schema his;
 create schema log;
 create schema prac;
 create schema qos;
-create schema spa;
 create schema std;
 create schema trd;

@@ -1,8 +1,0 @@
-PrintLog=打印流水
-PrintLog.user=学生
-PrintLog.payed=支付费用
-PrintLog.ip=打印ip
-
-DownloadLog=下载流水
-DownloadLog.user=学生
-DownloadLog.ip=打印ip

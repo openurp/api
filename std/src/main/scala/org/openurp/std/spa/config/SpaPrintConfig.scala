@@ -15,41 +15,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.spa.doc.model
+package org.openurp.std.spa.config
 
-import org.beangle.data.model.LongId
-import org.openurp.base.model.User
+import org.beangle.data.model.IntId
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.{TemporalOn, Updated}
+import org.openurp.base.model.Project
 import org.openurp.code.std.model.StdDocType
-import org.openurp.spa.doc.config.DocSetting
 
-import java.time.Instant
-
-/** 打印配额
- *
+/** 打印配置
+ * 针对每种类型的文档配置单价和打印的上限
  */
-class PrintQuota extends LongId {
+@config
+class SpaPrintConfig extends IntId with Updated with TemporalOn {
 
-  /** 学生 */
-  var user: User = _
+  /** 项目 */
+  var project: Project = _
 
   /** 文档类型 */
   var docType: StdDocType = _
 
-  /** 免支付打印张数 */
-  var freeCnt: Int = _
+  /** 单价，以分为单位，免费设置为0 */
+  var price: Int = _
 
-  /** 打印张数 */
-  var printCnt: Int = _
-
-  /** 剩余免支付的张数 */
-  var frees: Int = _
-
-  /** 最后打印时间 */
-  var lastPrintAt: Instant = _
-
-  def this(user: User, docType: StdDocType) = {
-    this()
-    this.user = user
-    this.docType = docType
-  }
+  /** 最多打印次数 */
+  var maxLimit: Int = _
 }

@@ -15,27 +15,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.spa.doc.log
+package org.openurp.std.spa.config
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.log
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.model.User
+import org.beangle.data.model.IntId
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.openurp.base.model.Project
 import org.openurp.code.std.model.StdDocType
-import org.openurp.spa.doc.config.DocSetting
 
-/** 下载流水
- * 记录每次下载文档的流水
+import java.time.{Instant, ZoneId}
+
+/**
+ * 优惠券
  */
-@log
-class DownloadLog extends LongId with Updated with Remark {
-  /** 学生 */
-  var user: User = _
+@config
+class SpaCoupon extends IntId with Updated with DateRange {
 
-  /** 文档类型 */
+  /**项目*/
+  var project: Project = _
+
+  def validAt(updatedAt: Instant): Boolean = {
+    val updatedOn = updatedAt.atZone(ZoneId.systemDefault()).toLocalDate
+    !(updatedOn.isBefore(beginOn) || updatedOn.isAfter(endOn))
+  }
+
+  /** 适合文档 */
   var docType: StdDocType = _
 
-  /** 打印ip */
-  var ip: String = _
+  /** 每个人可以领取的数量 */
+  var countPerStd: Int = _
 
 }

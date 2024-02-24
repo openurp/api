@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <report title="数据库设计说明" contextPath="/model">
-  <system name="教学管理系统" version="0.36.1"/>
+  <system name="教学管理系统" version="0.37.1"/>
   <database xml="database.xml"/>
-  <!--
+
     <pages template="singlehtml" extension=".html">
       <page name="index"/>
     </pages>
-  -->
-    <pages template="jekyll" extension=".md">
-      <page name="index" />
-      <page name="group" iterable="true"/>
-    </pages>
-
+  <!--
+   <pages template="jekyll" extension=".md">
+     <page name="index" />
+     <page name="group" iterable="true"/>
+   </pages>
+-->
   <schemas>
     <schema name="code" title="基础代码">
       <module name="asset" title="资产">
@@ -201,6 +201,10 @@
           <image name="transfer" title="转专业申请结构" tables="std.transfer_*"/>
         </group>
       </module>
+
+      <module name="spa" title="自助打印">
+        <group name="all" title="自助打印" tables="*"/>
+      </module>
     </schema>
 
     <schema name="qos" title="教学质量">
@@ -230,12 +234,6 @@
         </group>
         <group name="misc" title="其他" tables="*">
         </group>
-      </module>
-    </schema>
-
-    <schema name="spa" title="自助打印">
-      <module name="doc" title="自助文档">
-        <group name="all" title="自助文档" tables="*"/>
       </module>
     </schema>
 
@@ -296,5 +294,17 @@
         <group name="all" title="历史数据" tables="*"/>
       </module>
     </schema>
+    <schema name="log" title="系统日志">
+      <module name="spa.log" title="自助打印日志">
+        <group name="all" title="自助打印日志" tables="*"/>
+      </module>
+      <module name="room.log" title="教室借用日志">
+        <group name="all" title="教室借用日志" tables="*"/>
+      </module>
+      <module name="transfer.log" title="转专业日志">
+        <group name="all" title="转专业日志" tables="*"/>
+      </module>
+    </schema>
+
   </schemas>
 </report>

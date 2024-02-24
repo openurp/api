@@ -124,11 +124,11 @@ alter table cfg.edu_schedule_settings add constraint pk_4m049ge32ldi4uglemj34w77
 alter table cfg.edu_transcript_templates add constraint pk_m87tyokii4burhxl6mcqok1a2 primary key (id);
 alter table cfg.qos_feedback_switches add constraint pk_b7whkf51jgmhbp82phl3dt2hr primary key (id);
 alter table cfg.qos_std_evaluate_switches add constraint pk_81sba75u2yf8yhm3tjcyrsns primary key (id);
-alter table cfg.spa_coupons add constraint pk_rwsiaat8v0lgqu155yayo8bdy primary key (id);
-alter table cfg.spa_doc_settings add constraint pk_dx2bfnfjjjgaxip0v36srjixy primary key (id);
-alter table cfg.spa_print_configs add constraint pk_3f8qp6ur569ahp33vlyhyo4mb primary key (id);
 alter table cfg.std_archive_doc_settings add constraint pk_euy7kdgak01xqyafjoxogbjo2 primary key (id);
 alter table cfg.std_register_sessions add constraint pk_ofhf9115x2ra5xlq0vxmx13t5 primary key (id);
+alter table cfg.std_spa_coupons add constraint pk_2vlrdsext43mu1iey1kobiccd primary key (id);
+alter table cfg.std_spa_doc_settings add constraint pk_cjg9tc1r9yaj1nunfa7l8axhx primary key (id);
+alter table cfg.std_spa_print_configs add constraint pk_qc425rtk3ppeeo6a3xex6f1kt primary key (id);
 alter table cfg.std_std_alter_configs add constraint pk_nyp7vi8oa6vdk3x8sx15fkdrs primary key (id);
 alter table cfg.std_transfer_options add constraint pk_kjwut08vmlyklxegooc1nftgo primary key (id);
 alter table cfg.std_transfer_schemes add constraint pk_3ccwikukhp020f3uwobm76b0b primary key (id);
@@ -543,8 +543,8 @@ alter table his.edu_ga_grades add constraint pk_jmcwmshd9usxt264y2pyj8wt4 primar
 alter table his.edu_regular_grades add constraint pk_lliu205c73xio4nmhoawmok7t primary key (id,school_year);
 alter table his.edu_regular_test_grades add constraint pk_bafso9a1qa1fb98sjcgaaohkq primary key (id,school_year);
 alter table log.edu_room_apply_audit_logs add constraint pk_ocfq5rdpfs7hbgaukwe3r0a3x primary key (id);
-alter table log.spa_download_logs add constraint pk_lcqw7ty5jppf59n7h1l8uhbwq primary key (id);
-alter table log.spa_print_logs add constraint pk_2nfredgb8p5h5rejmbm3nwr5m primary key (id);
+alter table log.std_spa_downloads add constraint pk_lvpw649482hrcwssqe7126o0x primary key (id);
+alter table log.std_spa_prints add constraint pk_6x1bwsiwfd5jdcats3mnjovex primary key (id);
 alter table log.std_transfer_apply_logs add constraint pk_je8lknq8ke5qe3u8vjyxrbqlo primary key (id);
 alter table prac.inv_batches add constraint pk_26eu4n6mvkkawtd9p8nyc58wb primary key (id);
 alter table prac.inv_closure_review_details add constraint pk_1b4ggxr300ebb51fc212hx4r primary key (id);
@@ -592,7 +592,6 @@ alter table qos.questionnaires add constraint pk_fufcai5j6hvvlr0wc6fpb8d6o prima
 alter table qos.questionnaires_questions add constraint pk_41ugco3nqnt9c9x9taga06agn primary key (questionnaire_id,question_id);
 alter table qos.questions add constraint pk_8be2ix7e7pkg5mjne8qegaj76 primary key (id);
 alter table qos.school_eval_stats add constraint pk_qtq0xmlybs0ch9pjdq4cbpom2 primary key (id);
-alter table spa.print_quotas add constraint pk_st8emevheay237gju9wkv7y2p primary key (id);
 alter table std.archive_docs add constraint pk_8m2rjy6rh2l0le6vij6nuin0e primary key (id);
 alter table std.bills add constraint pk_l2ycbilgr05krq0lg8r6qxnsp primary key (id);
 alter table std.contacts add constraint pk_7ko2w4r57qng8yfiyi7n9snh4 primary key (id);
@@ -629,6 +628,7 @@ alter table std.scholarship_categories add constraint pk_mq52nlda4709qvl5frjenas
 alter table std.scholarship_levels add constraint pk_e1wrr4oa17lgng47f5rp1r862 primary key (id);
 alter table std.scholarship_types add constraint pk_61wg2qxbi9mvbo8u75rkflwrx primary key (id);
 alter table std.social_relations add constraint pk_kqm1n06eaj1ydahbybcgtgqn2 primary key (id);
+alter table std.spa_print_quotas add constraint pk_tcgrsp5n95jn2la6yqef3cw5g primary key (id);
 alter table std.std_alteration_items add constraint pk_o3d8j0mujuxorms8a36jw7ic5 primary key (id);
 alter table std.std_alterations add constraint pk_a1ti0uv32d4ggaivn3y58e9c primary key (id);
 alter table std.stipend_awards add constraint pk_7j9vvyns0himgc9ubwkixdnqa primary key (id);

@@ -15,29 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.spa.doc.log
+package org.openurp.std.spa.config
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.log
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.model.User
-import org.openurp.code.std.model.StdDocType
+import org.beangle.data.orm.MappingModule
 
-/** 打印流水
- * 记录每次打印文档的流水
- */
-@log
-class PrintLog extends LongId with Updated with Remark {
-  /** 学生 */
-  var user: User = _
+class DefaultMapping extends MappingModule {
 
-  /** 文档类型 */
-  var docType: StdDocType = _
-
-  /** 支付费用 */
-  var payed: Int = _
-
-  /** 打印ip */
-  var ip: String = _
-
+  def binding(): Unit = {
+    defaultCache("openurp.spa", "read-write")
+    bind[SpaDocSetting] declare { e =>
+      e.notice is length(3000)
+    }
+    bind[SpaPrintConfig]
+    bind[SpaCoupon]
+    all.cacheable()
+  }
 }

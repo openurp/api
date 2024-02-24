@@ -15,29 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.spa.doc.config
+package org.openurp.std.spa.log
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{TemporalOn, Updated}
-import org.openurp.base.model.Project
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.log
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.model.User
 import org.openurp.code.std.model.StdDocType
 
-/** 打印配置
- * 针对每种类型的文档配置单价和打印的上限
+/** 下载流水
+ * 记录每次下载文档的流水
  */
-@config
-class PrintConfig extends IntId with Updated with TemporalOn {
-
-  /** 项目 */
-  var project: Project = _
+@log
+class SpaDownload extends LongId with Updated with Remark {
+  /** 学生 */
+  var user: User = _
 
   /** 文档类型 */
   var docType: StdDocType = _
 
-  /** 单价，以分为单位，免费设置为0 */
-  var price: Int = _
+  /** 打印ip */
+  var ip: String = _
 
-  /** 最多打印次数 */
-  var maxLimit: Int = _
 }

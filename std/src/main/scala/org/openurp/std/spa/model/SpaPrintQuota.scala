@@ -15,34 +15,40 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.spa.doc.config
+package org.openurp.std.spa.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{DateRange, Updated}
-import org.openurp.base.model.Project
+import org.beangle.data.model.LongId
+import org.openurp.base.model.User
 import org.openurp.code.std.model.StdDocType
 
-import java.time.{Instant, ZoneId}
+import java.time.Instant
 
-/**
- * 优惠券
+/** 打印配额
+ *
  */
-@config
-class Coupon extends IntId with Updated with DateRange {
+class SpaPrintQuota extends LongId {
 
-  /**项目*/
-  var project: Project = _
+  /** 学生 */
+  var user: User = _
 
-  def validAt(updatedAt: Instant): Boolean = {
-    val updatedOn = updatedAt.atZone(ZoneId.systemDefault()).toLocalDate
-    !(updatedOn.isBefore(beginOn) || updatedOn.isAfter(endOn))
-  }
-
-  /** 适合文档 */
+  /** 文档类型 */
   var docType: StdDocType = _
 
-  /** 每个人可以领取的数量 */
-  var countPerStd: Int = _
+  /** 免支付打印张数 */
+  var freeCnt: Int = _
 
+  /** 打印张数 */
+  var printCnt: Int = _
+
+  /** 剩余免支付的张数 */
+  var frees: Int = _
+
+  /** 最后打印时间 */
+  var lastPrintAt: Instant = _
+
+  def this(user: User, docType: StdDocType) = {
+    this()
+    this.user = user
+    this.docType = docType
+  }
 }

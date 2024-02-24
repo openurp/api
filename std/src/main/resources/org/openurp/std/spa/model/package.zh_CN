@@ -1,0 +1,6 @@
+SpaPrintQuota=打印配额
+SpaPrintQuota.user=学生
+SpaPrintQuota.freeCnt=免支付打印张数
+SpaPrintQuota.printCnt=打印张数
+SpaPrintQuota.frees=剩余免支付的张数
+SpaPrintQuota.lastPrintAt=最后打印时间

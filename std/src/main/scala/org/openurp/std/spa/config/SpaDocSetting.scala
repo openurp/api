@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.spa.doc.config
+package org.openurp.std.spa.config
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
@@ -35,7 +35,7 @@ object DocSetting {
 /** 打印文档的类型
  */
 @config
-class DocSetting extends IntId, Enabled {
+class SpaDocSetting extends IntId, Enabled {
 
   /** 项目 */
   var project: Project = _
