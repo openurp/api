@@ -324,6 +324,7 @@ alter table degree.guidances add constraint fk_97iw0bu3guoo6hby3tuy1kfvn foreign
 alter table degree.midterm_check_details add constraint fk_h4jhdlyrk5l4yp5w207bk2y19 foreign key (check_id) references degree.midterm_checks (id);
 alter table degree.midterm_check_details add constraint fk_moyjny0di3gb7m1q6v9840rvk foreign key (item_id) references degree.midterm_check_items (id);
 alter table degree.midterm_checks add constraint fk_jpkpmtn9skele9f4jkt6tp96u foreign key (writer_id) references degree.writers (id);
+alter table degree.paper_submissions add constraint fk_3wf54web19sak0maud1ikoowq foreign key (writer_id) references degree.writers (id);
 alter table degree.proposals add constraint fk_s8o538e18m5v7t3e4wormvua foreign key (writer_id) references degree.writers (id);
 alter table degree.subject_applies add constraint fk_1h3x33d5abw2pftxe34v96in2 foreign key (first_id) references degree.subjects (id);
 alter table degree.subject_applies add constraint fk_cfeu7i5t3s86x7esnka48dnm2 foreign key (last_id) references degree.subjects (id);

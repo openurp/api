@@ -4036,6 +4036,25 @@
             <unique-key name="uk_pgwmev6yuaj7l0gqamm8q318f" columns="writer_id"/>
           </constraints>
         </table>
+        <table name="paper_submissions" comment="论文提交记录@thesis">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="file_ext" type="varchar(255)" nullable="false" comment="附件类型"/>
+            <column name="file_path" type="varchar(255)" nullable="false" comment="附件路径"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="sha1sum" type="varchar(40)" nullable="false" comment="文件sha1摘要"/>
+            <column name="title" type="varchar(255)" nullable="false" comment="题目"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="writer_id" type="bigint" nullable="false" comment="写作学生ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_it7q5ku8f1k22d4rmd8nwm5yv" columns="id"/>
+            <foreign-key name="fk_3wf54web19sak0maud1ikoowq" column="writer_id" referenced-table="degree.writers" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_kuygvcpnq78g1uha15vxgmk47" columns="writer_id"/>
+          </indexes>
+        </table>
         <table name="proposals" comment="开题报告@thesis">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -4182,6 +4201,7 @@
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="recheck_id" type="bigint" comment="复制检测结果ID"/>
             <column name="research_field" type="varchar(255)" comment="研究领域"/>
+            <column name="sha1sum" type="varchar(40)" nullable="false" comment="文件sha1摘要"/>
             <column name="status" type="integer" nullable="false" comment="状态"/>
             <column name="submit_at" type="timestamptz" nullable="false" comment="提交时间"/>
             <column name="title" type="varchar(255)" nullable="false" comment="题目"/>
@@ -6893,7 +6913,7 @@
             <foreign-key name="fk_hmsnog164pjw4uh5vp4q7j70w" column="user_id" referenced-table="base.users" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="std_transfer_apply_logs" comment="转专业申请日志@transfer.config">
+        <table name="std_transfer_apply_logs" comment="转专业申请日志@transfer.log">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="contents" type="varchar(255)" nullable="false" comment="操作内容"/>

@@ -84,6 +84,7 @@ class DefaultMapping extends MappingModule {
     bind[MidtermCheckItem]
     bind[Deadline]
     bind[ThesisPaper].declare { e =>
+      e.sha1sum is length(40)
       index("", true, e.writer)
     }
 
@@ -124,6 +125,11 @@ class DefaultMapping extends MappingModule {
 
     bind[ThesisCheck].declare { e =>
       index("", true, e.season, e.writer)
+    }
+
+    bind[PaperSubmission].declare { e =>
+      e.sha1sum is length(40)
+      index("", false, e.writer)
     }
   }
 }

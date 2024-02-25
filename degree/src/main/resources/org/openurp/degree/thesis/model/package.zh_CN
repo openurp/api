@@ -96,6 +96,7 @@ ThesisPaper.submitAt=提交时间
 ThesisPaper.auditOpinion=审核意见
 ThesisPaper.keywords=关键字
 ThesisPaper.researchField=研究领域
+ThesisPaper.sha1sum=文件sha1摘要
 
 Writer=写作学生
 Writer.squad=班级
@@ -173,3 +174,9 @@ ThesisDoc=学位论文相关文档
 ThesisDoc.stage=所处阶段
 ThesisDoc.filePath=附件路径
 ThesisDoc.fileExt=附件类型
+
+PaperSubmission=论文提交记录
+PaperSubmission.title=题目
+PaperSubmission.filePath=附件路径
+PaperSubmission.fileExt=附件类型
+PaperSubmission.sha1sum=文件sha1摘要

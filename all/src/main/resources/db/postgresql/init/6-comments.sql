@@ -1761,6 +1761,7 @@ comment on column degree.midterm_checks.proceeding is '写作进度';
 comment on column degree.midterm_checks.status is '审核状态';
 comment on column degree.midterm_checks.submit_at is '提交时间';
 comment on column degree.midterm_checks.writer_id is '写作学生ID';
+
 comment on column degree.proposals.advisor_opinion is '指导教师意见';
 comment on column degree.proposals.conditions is '现状';
 comment on column degree.proposals.confirm_at is '指导教师确认时间';
@@ -1835,6 +1836,7 @@ comment on column degree.thesis_papers.language_id is '语种ID';
 comment on column degree.thesis_papers.name is '名称';
 comment on column degree.thesis_papers.recheck_id is '复制检测结果ID';
 comment on column degree.thesis_papers.research_field is '研究领域';
+
 comment on column degree.thesis_papers.status is '状态';
 comment on column degree.thesis_papers.submit_at is '提交时间';
 comment on column degree.thesis_papers.title is '题目';
@@ -3900,6 +3902,7 @@ comment on table degree.guidances is '教师指导@thesis';
 comment on table degree.midterm_check_details is '中期检查明细@thesis';
 comment on table degree.midterm_check_items is '中期检查项目@thesis';
 comment on table degree.midterm_checks is '中期检查@thesis';
+
 comment on table degree.proposals is '开题报告@thesis';
 comment on table degree.subject_applies is '论文选题@thesis';
 comment on table degree.subjects is '论文开题题目@thesis';
@@ -4040,7 +4043,7 @@ comment on table his.edu_regular_test_grades is '历史平时测试成绩@his';
 comment on table log.edu_room_apply_audit_logs is '教室申请审核日志@room.log';
 comment on table log.std_spa_downloads is '下载流水@spa.log';
 comment on table log.std_spa_prints is '打印流水@spa.log';
-comment on table log.std_transfer_apply_logs is '转专业申请日志@transfer.config';
+comment on table log.std_transfer_apply_logs is '转专业申请日志@transfer.log';
 comment on table prac.inv_batches is '创新批次@innovation';
 comment on table prac.inv_closure_review_details is '结项评审明细@innovation';
 comment on table prac.inv_closure_review_groups is '结项评审组@innovation';

@@ -362,6 +362,7 @@ alter table degree.midterm_check_details add constraint uk_8n2cq37obd973bqb9gqma
 alter table degree.midterm_check_items add constraint pk_o9eunp3w0qjk6ot39ivv7vi92 primary key (id);
 alter table degree.midterm_checks add constraint pk_ltkl47flxa7xhbfixg14oo09j primary key (id);
 alter table degree.midterm_checks add constraint uk_pgwmev6yuaj7l0gqamm8q318f unique (writer_id);
+alter table degree.paper_submissions add constraint pk_it7q5ku8f1k22d4rmd8nwm5yv primary key (id);
 alter table degree.proposals add constraint pk_na7fgi69wfwklq4i2jw3k68n8 primary key (id);
 alter table degree.proposals add constraint uk_ro29y4ytkhp4ejqadt59emj6w unique (writer_id);
 alter table degree.subject_applies add constraint pk_cx4p6gchh5wjpf6v3yh2mq5pn primary key (id);

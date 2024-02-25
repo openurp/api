@@ -70,6 +70,7 @@ create index idx_hhd23uu4g31k3qwk0dkqi508f on degree.depart_plans (thesis_plan_i
 create index idx_aljt9k57y1h5hjipycrjvxvdd on degree.depart_plans_times (depart_plan_id);
 create index idx_o1tr5322a778ojj610im4awwf on degree.guidances (writer_id);
 create index idx_367fgdh8tq59609e5635nl8t1 on degree.midterm_check_details (check_id);
+create index idx_kuygvcpnq78g1uha15vxgmk47 on degree.paper_submissions (writer_id);
 create index idx_9pvh5lmgs2d11b304e8jmqt8q on degree.subject_applies (last_id);
 create index idx_6ybpxgvqceyalb2dv0r8khryx on degree.subjects_majors (subject_id);
 create index idx_5ed3idyn3wloeml8w2hipr22i on degree.thesis_plans_times (thesis_plan_id);

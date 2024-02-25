@@ -30,9 +30,9 @@ update cfg.spa_doc_settings set doc_type_id = id;
 
 alter table cfg.spa_print_configs add project_id int4;
 alter table cfg.spa_coupons add project_id int4;
-update cfg.spa_print_configs set project_id = 1027802;
-update cfg.spa_coupons set project_id = 1027802;
-update cfg.spa_doc_settings set project_id = 1027802;
+update cfg.spa_print_configs set project_id = ?;
+update cfg.spa_coupons set project_id = ?;
+update cfg.spa_doc_settings set project_id = ?;
 
 insert into cfg.std_archive_doc_settings(id,enabled,orientation,page_size,doc_type_id,url,project_id)
 select id,enabled,orientation,page_size,doc_type_id,admin_url,project_id from cfg.spa_doc_settings where admin_url is not null;
@@ -59,4 +59,19 @@ alter table spa.print_quotas rename to spa_print_quotas;
 alter table spa.spa_print_quotas set schema std;
 drop schema spa;
 
+create table degree.paper_submissions (writer_id bigint not null, id bigint not null, remark varchar(255), file_path varchar(255) not null, file_ext varchar(255) not null, title varchar(255) not null, sha1sum varchar(40) not null, updated_at timestamptz default current_timestamp not null);
+alter table degree.thesis_papers add sha1sum varchar(40) default '--';
+alter table degree.paper_submissions add constraint pk_it7q5ku8f1k22d4rmd8nwm5yv primary key (id);
+alter table degree.paper_submissions add constraint fk_3wf54web19sak0maud1ikoowq foreign key (writer_id) references degree.writers (id);
+create index idx_kuygvcpnq78g1uha15vxgmk47 on degree.paper_submissions (writer_id);
 
+comment on column degree.paper_submissions.file_ext is '附件类型';
+comment on column degree.paper_submissions.file_path is '附件路径';
+comment on column degree.paper_submissions.id is '非业务主键:datetime';
+comment on column degree.paper_submissions.remark is '备注';
+comment on column degree.paper_submissions.sha1sum is '文件sha1摘要';
+comment on column degree.paper_submissions.title is '题目';
+comment on column degree.paper_submissions.updated_at is '更新时间';
+comment on column degree.paper_submissions.writer_id is '写作学生ID';
+comment on table degree.paper_submissions is '论文提交记录@thesis';
+comment on column degree.thesis_papers.sha1sum is '文件sha1摘要';
