@@ -28,12 +28,12 @@ trait GpaStat {
   /**
    * 总平均绩点 gp/totalCredits
    */
-  var gpa: Float = _
+  var gpa: Double = _
 
   /**
    * 平均分
    */
-  var ga: Float = _
+  var ga: Double = _
 
   /**
    * 修读总学分
@@ -91,11 +91,11 @@ class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
     this.yearGpas = new collection.mutable.ListBuffer[StdYearGpa]
     this.credits = 0f
     this.gradeCount = 0
-    this.ga = 0f
-    this.gpa = 0f
+    this.ga = 0d
+    this.gpa = 0d
   }
 
-  def getGpa(semester: Semester): Float = {
+  def getGpa(semester: Semester): Double = {
     val gpterm = getStdTermGpa(semester)
     if (null == gpterm) 0 else gpterm.gpa
   }

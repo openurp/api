@@ -32,7 +32,7 @@ trait GpaPolicy {
    * @param grades
    * @return
    */
-  def calcGpa(grades: Iterable[CourseGrade]): Float
+  def calcGpa(grades: Iterable[CourseGrade]): BigDecimal
 
   /**
    * 计算平均分
@@ -40,7 +40,7 @@ trait GpaPolicy {
    * @param grades
    * @return
    */
-  def calcGa(grades: Iterable[CourseGrade]): Float
+  def calcGa(grades: Iterable[CourseGrade]): BigDecimal
 
   /**
    * 计算平均绩点
@@ -50,10 +50,4 @@ trait GpaPolicy {
    */
   def calc(std: Student, grades: Iterable[CourseGrade], calcDetail: Boolean): StdGpa
 
-  /**
-   * 平均绩点和平均分的小数点后精确位数,默认为2
-   *
-   * @return
-   */
-  def precision: Int
 }

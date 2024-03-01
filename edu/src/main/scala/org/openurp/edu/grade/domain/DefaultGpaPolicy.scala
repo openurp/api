@@ -28,16 +28,12 @@ import scala.collection.mutable.Buffer
 
 class DefaultGpaPolicy extends GpaPolicy {
 
-  var precision = 2
-
-  var rounder: NumRounder = NumRounder.Normal
-
-  def calcGa(grades: Iterable[CourseGrade]): Float = {
-    rounder.round(WeightedMean.calcGa(grades), precision)
+  def calcGa(grades: Iterable[CourseGrade]): BigDecimal = {
+    WeightedMean.calcGa(grades)
   }
 
-  def calcGpa(grades: Iterable[CourseGrade]): Float = {
-    rounder.round(WeightedMean.calcGpa(grades), precision)
+  def calcGpa(grades: Iterable[CourseGrade]): BigDecimal = {
+    WeightedMean.calcGpa(grades)
   }
 
   def calc(std: Student, grades: Iterable[CourseGrade], statDetail: Boolean): StdGpa = {
@@ -58,8 +54,8 @@ class DefaultGpaPolicy extends GpaPolicy {
           val yearGrades = yearGradeMap.getOrElseUpdate(semester.schoolYear, Collections.newBuffer)
           yearGrades ++= semesterGrades
 
-          stdTermGpa.gpa = this.calcGpa(semesterGrades)
-          stdTermGpa.ga = this.calcGa(semesterGrades)
+          stdTermGpa.gpa = this.calcGpa(semesterGrades).doubleValue
+          stdTermGpa.ga = this.calcGa(semesterGrades).doubleValue
           stdTermGpa.gradeCount = semesterGrades.size
           val stats = statCredits(semesterGrades)
           stdTermGpa.totalCredits = stats(0)
@@ -70,16 +66,16 @@ class DefaultGpaPolicy extends GpaPolicy {
           val stdYearGpa = new StdYearGpa()
           stdYearGpa.schoolYear = year
           stdGpa.add(stdYearGpa)
-          stdYearGpa.gpa = this.calcGpa(yearGrades)
-          stdYearGpa.ga = this.calcGa(yearGrades)
+          stdYearGpa.gpa = this.calcGpa(yearGrades).doubleValue
+          stdYearGpa.ga = this.calcGa(yearGrades).doubleValue
           stdYearGpa.gradeCount = yearGrades.size
           val stats = statCredits(yearGrades)
           stdYearGpa.totalCredits = stats(0)
           stdYearGpa.credits = stats(1)
       }
     }
-    stdGpa.gpa = this.calcGpa(grades)
-    stdGpa.ga = this.calcGa(grades)
+    stdGpa.gpa = this.calcGpa(grades).doubleValue
+    stdGpa.ga = this.calcGa(grades).doubleValue
 
     val courseMap = Collections.newMap[Course, CourseGrade]
     for (grade <- grades) {

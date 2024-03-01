@@ -26,7 +26,7 @@ class DefaultMapping extends MappingModule {
       e.grade is length(10)
       e.name is length(100)
       e.termCampuses is depends("program")
-      e.remark is length(200)
+      e.remark is length(500)
     }
 
     bind[TermCampus]

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.37.1">
+<db engine="PostgreSQL" version="0.37.2">
   <schemas>
     <schema name="base">
       <tables>
@@ -5937,7 +5937,7 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="offset_type_id" type="integer" comment="任选课类别ID"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="remark" type="varchar(500)" comment="备注"/>
             <column name="status" type="integer" nullable="false" comment="状态"/>
             <column name="study_type_id" type="integer" comment="学习形式ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -6064,7 +6064,7 @@
         <table name="restriction_items" comment="课程限制项@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="contents" type="varchar(255)" nullable="false" comment="限制内容"/>
+            <column name="contents" type="varchar(1000)" nullable="false" comment="限制内容"/>
             <column name="included" type="boolean" nullable="false" defaultValue="false" comment="是否包含限定内容"/>
             <column name="meta" type="integer" nullable="false" comment="限制具体项目"/>
             <column name="restriction_id" type="bigint" nullable="false" comment="所在限制组ID"/>
@@ -6424,8 +6424,8 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="credits" type="float4" nullable="false" comment="获得学分"/>
-            <column name="ga" type="float4" nullable="false" comment="平均分"/>
-            <column name="gpa" type="float4" nullable="false" comment="总平均绩点"/>
+            <column name="ga" type="float8" nullable="false" comment="平均分"/>
+            <column name="gpa" type="float8" nullable="false" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
@@ -6537,8 +6537,8 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="credits" type="float4" nullable="false" comment="获得学分"/>
-            <column name="ga" type="float4" nullable="false" comment="平均分"/>
-            <column name="gpa" type="float4" nullable="false" comment="总平均绩点"/>
+            <column name="ga" type="float8" nullable="false" comment="平均分"/>
+            <column name="gpa" type="float8" nullable="false" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
@@ -6558,8 +6558,8 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="credits" type="float4" nullable="false" comment="获得学分"/>
-            <column name="ga" type="float4" nullable="false" comment="平均分"/>
-            <column name="gpa" type="float4" nullable="false" comment="总平均绩点"/>
+            <column name="ga" type="float8" nullable="false" comment="平均分"/>
+            <column name="gpa" type="float8" nullable="false" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="school_year" type="varchar(10)" nullable="false" comment="学年"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>

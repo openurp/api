@@ -17,7 +17,7 @@
 
 package org.openurp.edu.clazz.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
@@ -54,6 +54,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[RestrictionItem].declare { e =>
+      e.contents is length(1000)
       index("", false, e.restriction)
     }
 
