@@ -17,7 +17,7 @@
 
 package org.openurp.prac.innovation.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
@@ -84,6 +84,14 @@ class DefaultMapping extends MappingModule {
     }
     bind[ClosureReviewDetail].declare { e =>
       e.comments is length(600)
+    }
+
+    bind[PromotionDefenseGroup].declare { e =>
+      e.members is depends("group")
+    }
+
+    bind[PromotionDefenseMember].declare { e =>
+      index("", true, e.group, e.idx)
     }
   }
 }

@@ -20,9 +20,10 @@ package org.openurp.base.resource.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.base.model.{Campus, Department, Project, School}
+import org.openurp.base.model.{Campus, Department, Project, School, Semester}
 import org.openurp.code.edu.model.ClassroomType
 
+import java.time.LocalDate
 import scala.collection.mutable
 
 /**
@@ -71,4 +72,8 @@ class Classroom extends LongId with Named with Coded with Updated with TemporalO
 
   /** 设备列表 */
   var devices: mutable.Set[Device] = Collections.newSet[Device]
+
+  def activeDevices(semester: Semester): Iterable[Device] = {
+    devices.filter(_.within(semester.beginOn))
+  }
 }

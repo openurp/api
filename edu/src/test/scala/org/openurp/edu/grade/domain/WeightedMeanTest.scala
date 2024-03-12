@@ -72,4 +72,3 @@ class WeightedMeanTest extends AnyFunSpec with Matchers {
   }
 
 }
-
