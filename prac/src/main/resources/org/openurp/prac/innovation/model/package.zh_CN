@@ -70,3 +70,13 @@ Stage=项目阶段
 Stage.noticeHref=外部通知超链接
 
 StageType=项目阶段类型
+
+PromotionDefenseGroup=推优答辩组
+PromotionDefenseGroup.capacity=计划人数
+PromotionDefenseGroup.defenseOn=答辩日期
+PromotionDefenseGroup.beginAt=答辩开始时间
+PromotionDefenseGroup.endAt=答辩结束时间
+PromotionDefenseGroup.location=答辩地点
+
+PromotionDefenseMember=推优答辩项目
+PromotionDefenseMember.idx=答辩次序

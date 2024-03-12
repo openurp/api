@@ -28,5 +28,6 @@ class PromotionDefenseMember extends LongId, Updated {
 
   var project: Project = _
 
+  /**答辩次序*/
   var idx: Int = _
 }

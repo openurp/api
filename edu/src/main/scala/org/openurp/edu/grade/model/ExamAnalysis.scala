@@ -21,6 +21,8 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.edu.clazz.model.Clazz
 
+/** 考试试卷分析表
+ */
 class ExamAnalysis extends LongId, Updated {
 
   var clazz: Clazz = _

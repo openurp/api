@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.37.2">
+<db engine="PostgreSQL" version="0.37.3">
   <schemas>
     <schema name="base">
       <tables>
@@ -4852,6 +4852,19 @@
             <index name="idx_pjwqn6d874ljreci8v9elrxac" columns="exam_room_id"/>
           </indexes>
         </table>
+        <table name="exam_analyses" comment="考试试卷分析@grade.course">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="contents" type="varchar(3500)" nullable="false" comment="分析内容"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_950ruvj5m4hf04gmkfwwyj9da" columns="id"/>
+            <foreign-key name="fk_d687atvkk0qjymkbstnv1pss9" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
+            <unique-key name="uk_5plw503n3jbjkxyi8ti9df4my" columns="clazz_id"/>
+          </constraints>
+        </table>
         <table name="exam_defer_applies" comment="考试延期申请@exam">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -7240,6 +7253,40 @@
           </constraints>
           <indexes>
             <index name="idx_frrxd4jd7ukujwlkkhfixewsk" columns="project_id"/>
+          </indexes>
+        </table>
+        <table name="inv_promotion_defense_groups" comment="推优答辩组@innovation">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="batch_id" type="integer" nullable="false" comment="创新批次ID"/>
+            <column name="begin_at" type="smallint" nullable="false" comment="答辩开始时间"/>
+            <column name="capacity" type="integer" nullable="false" defaultValue="0" comment="计划人数"/>
+            <column name="defense_on" type="date" nullable="false" comment="答辩日期"/>
+            <column name="end_at" type="smallint" nullable="false" comment="答辩结束时间"/>
+            <column name="location" type="varchar(255)" nullable="false" comment="答辩地点"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_34o2p0mvvg6mfy9tv5mm8hupe" columns="id"/>
+            <foreign-key name="fk_dlofenq6ue5er1402n64fuf6e" column="batch_id" referenced-table="prac.inv_batches" referenced-column="id"/>
+          </constraints>
+        </table>
+        <table name="inv_promotion_defense_members" comment="推优答辩项目@innovation">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="group_id" type="bigint" nullable="false" comment="推优答辩组ID"/>
+            <column name="idx" type="integer" nullable="false" defaultValue="0" comment="答辩次序"/>
+            <column name="project_id" type="bigint" nullable="false" comment="项目ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_b4nhltmsnowel3c1ogfvdnt7d" columns="id"/>
+            <foreign-key name="fk_sh7gkxgum9ean06dmamngquan" column="project_id" referenced-table="prac.inv_projects" referenced-column="id"/>
+            <foreign-key name="fk_i0264dwyp2s8j2sjnw8r0duwi" column="group_id" referenced-table="prac.inv_promotion_defense_groups" referenced-column="id"/>
+            <unique-key name="uk_gouy23rxmvq3qpcbyfdphdthj" columns="group_id,idx"/>
+          </constraints>
+          <indexes>
+            <index name="idx_b7p23pjlvtc8tseu6kp1vw66h" columns="group_id"/>
           </indexes>
         </table>
         <table name="inv_stage_types" comment="项目阶段类型@innovation">

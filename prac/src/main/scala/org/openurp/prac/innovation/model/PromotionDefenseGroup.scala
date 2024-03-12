@@ -31,6 +31,7 @@ class PromotionDefenseGroup extends LongId, Named {
 
   var batch: Batch = _
 
+  /** 计划人数 */
   var capacity: Int = _
 
   /** 答辩日期 */
@@ -42,8 +43,10 @@ class PromotionDefenseGroup extends LongId, Named {
   /** 答辩结束时间 */
   var endAt: HourMinute = _
 
+  /** 答辩地点 */
   var location: String = _
 
+  /** 答辩成员 */
   var members: mutable.Buffer[PromotionDefenseMember] = Collections.newBuffer[PromotionDefenseMember]
 
 }

@@ -32,6 +32,6 @@ object DelayDays {
   days.put(Stage.Commitment, 3)
   days.put(Stage.Proposal, 3)
   days.put(Stage.MidtermCheck, 3)
-  days.put(Stage.ThesisSubmit, 3)
+  days.put(Stage.ThesisDraftSubmit, 3)
 
 }
