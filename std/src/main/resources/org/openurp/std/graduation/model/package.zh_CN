@@ -42,3 +42,7 @@ GraduateBatch.degreeOffered=是否授学位
 DegreeApply=学位申请
 DegreeApply.gpa=GPA
 DegreeApply.passed=是否通过
+
+Bachelor2ndApply=毕业学生二学位申请
+Bachelor2ndApply.gpa=平均绩点
+Bachelor2ndApply.gradeDetail=成绩明细

@@ -41,7 +41,9 @@ class DefaultMapping extends MappingModule {
       e.items is depends("result")
       e.comments.is(column("degree_comments"), length(500))
     }
-
+    bind[Bachelor2ndApply] declare { e =>
+      e.gradeDetail is length(3000)
+    }
     bind[DegreeApply]
   }
 }
