@@ -25,9 +25,30 @@ class DefaultMapping extends MappingModule {
     defaultCache("openurp.edu.course", "read-write")
 
     bind[Syllabus] declare { e =>
-      e.attachments is depends("syllabus")
+      e.hours is depends("syllabus")
+      e.texts is depends("syllabus")
+      e.objectives is depends("syllabus")
+      e.outcomes is depends("syllabus")
+      e.topics is depends("syllabus")
+      e.percents is depends("syllabus")
     }
 
-    bind[SyllabusFile]
+    bind[SyllabusTopic] declare { e =>
+      e.elements is depends("topic")
+      e.hours is depends("topic")
+    }
+
+    bind[SyllabusTopicHour]
+    bind[SyllabusTopicElement]
+
+    bind[SyllabusObjective]
+    bind[SyllabusOutcome]
+    bind[SyllabusCreditHour]
+    bind[SyllabusAssessPercent]
+    bind[SyllabusText] declare { e =>
+      e.children is depends("parent")
+    }
+
+    bind[SyllabusDoc]
   }
 }

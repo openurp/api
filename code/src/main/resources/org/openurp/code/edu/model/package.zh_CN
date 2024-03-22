@@ -58,7 +58,7 @@ GradingMode.numerical=是否为数字类型
 TeachLangType=授课语言类型
 TeachingNature=授课性质
 TeachingNature.category=授课性质大类
-TeachingMethod=授课方式
+TeachingMethod=授课方式方法
 
 DayPart=时段
 DayPart.color=css颜色
@@ -103,4 +103,8 @@ TeacherType.retired=是否退休返聘
 
 EducationType=培养类型
 ExamDeferReason=缓考原因
-
+SyllabusTopicLabel=教学主题标签
+TeachingSection=教学环节
+TeachingForm=教学形式
+CourseRank=课程属性
+CourseModule=课程模块

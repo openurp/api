@@ -15,33 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.model.Semester
-import org.openurp.base.std.model.Student
+import org.beangle.data.model.pojo.{Coded, Named}
 
-/** 学生每学期选择教学班限制和统计
+/** 教学大纲-毕业要求
+ *
  */
-class StdCreditStat extends LongId {
+class SyllabusOutcome extends LongId, Coded, Named {
+  var syllabus: Syllabus = _
 
-  var std: Student = _
+  /** 内容 */
+  var contents: String = _
 
-  var semester: Semester = _
-
-  /** 已选学分 */
-  var totalCredits: Float = _
-
-  /** 学分上限 */
-  var maxCredits: Float = _
-
-  /** 已选新课程门数
-   * 不含重修 */
-  var totalNewCount: Int = _
-
-  /** 最多新选课程门数 */
-  var maxNewCount: Int = _
-
-  /** 重修数量 */
-  var repeatCount: Int = _
+  /** 对应课程目标 */
+  var objectives: String = _
 }

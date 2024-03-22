@@ -21,7 +21,7 @@ import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.resource.model.Classroom
-import org.openurp.code.edu.model.{TeachingMethod, TeachingNature}
+import org.openurp.code.edu.model.{TeachingForm, TeachingNature}
 
 import java.time.LocalDate
 
@@ -55,10 +55,10 @@ class Lesson extends LongId {
   var endAt: HourMinute = _
 
   /** 授课性质 */
-  var teachingNature: TeachingNature = _
+  var nature: TeachingNature = _
 
-  /** 授课方式 */
-  var teachingMethod: TeachingMethod = _
+  /** 授课形式 */
+  var form: TeachingForm = _
 
   /** 授课教师列表 */
   var teachers: collection.mutable.Set[Teacher] = _

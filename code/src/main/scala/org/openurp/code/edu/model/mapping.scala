@@ -57,7 +57,10 @@ class DefaultMapping extends MappingModule {
     bind[GradingMode]
     bind[TeachLangType]
     bind[TeachingNature]
+
+    bind[TeachingForm]
     bind[TeachingMethod]
+    bind[TeachingSection]
 
     bind[CertificateCategory]
     bind[Certificate]
@@ -69,6 +72,9 @@ class DefaultMapping extends MappingModule {
     bind[CourseAbilityRate]
     bind[EducationType]
     bind[ExamDeferReason]
+    bind[CourseModule]
+    bind[CourseRank]
+    bind[SyllabusTopicLabel]
 
     all.cacheAll()
   }

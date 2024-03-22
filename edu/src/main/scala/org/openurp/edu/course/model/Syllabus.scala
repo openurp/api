@@ -19,35 +19,115 @@ package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.beangle.data.model.pojo.{TemporalOn, Updated}
 import org.openurp.base.edu.model.*
-import org.openurp.base.model.{AuditStatus, Department, Semester, User}
+import org.openurp.base.model.*
+import org.openurp.code.edu.model.*
 
 import java.time.Instant
-import scala.collection.mutable
+import java.util.Locale
 
 /** 课程教学大纲
  *
  */
-class Syllabus extends LongId with Updated with DateRange {
+class Syllabus extends LongId with Updated with TemporalOn {
 
   /** 课程 */
   var course: Course = _
 
-  /** 修订时的学年学期 */
+  /** 语种 */
+  var locale: Locale = _
+
+  /** 简介 */
+  var description: String = _
+
+  /** 生效学年学期 */
   var semester: Semester = _
 
+  //object targets
+  /** 面向的培养层次 */
+  var levels = Collections.newSet[EducationLevel]
+
+  /** 面向的专业 */
+  var majors = Collections.newSet[Major]
+
+  /** 分类课时 */
+  var hours = Collections.newBuffer[SyllabusCreditHour]
+
+  /** 教学方式 */
+  var methods = Collections.newSet[TeachingMethod]
+
+  //course natures
+  /** 学期中的开课阶段 */
+  var stage: Option[CalendarStage] = None
+
+  /** 课程模块 */
+  var module: CourseModule = _
+
+  /** 必修选修 */
+  var rank: CourseRank = _
+
+  /** 课程性质 */
+  var nature: CourseNature = _
+
+  /** 考试方式 */
+  var examMode: ExamMode = _
+
+  /** 计分方式 */
+  var gradingMode: GradingMode = _
+
+  // other course relations
+  /** 先修课程 */
+  var prerequisites: Option[String] = None
+
+  /** 并修课程 */
+  var corequisites: Option[String] = None
+
+  /** 后续课程 */
+  var subsequents: Option[String] = None
+
+  //obe
+  /** 课程目标 */
+  var objectives = Collections.newBuffer[SyllabusObjective]
+
+  /** 对毕业要求的支撑 */
+  var outcomes = Collections.newBuffer[SyllabusOutcome]
+
+  //topic and lessons
+  /** 教学内容 */
+  var topics = Collections.newBuffer[SyllabusTopic]
+
+  /** 考核百分比 */
+  var percents = Collections.newBuffer[SyllabusAssessPercent]
+
+  //textbooks and resources
+  /** 教材和参考书目 */
+  var textbooks = Collections.newBuffer[Textbook]
+
+  /** 参考数目 */
+  var bibliography: Option[String] = None
+
+  /** 其他教学资源 */
+  var materials: Option[String] = None
+
+  /** 课程网站地址 */
+  var website: Option[String] = None
+
+  //text sections
+  var texts = Collections.newBuffer[SyllabusText]
+
+  //admin and audit infoes
   /** 开课院系 */
   var department: Department = _
 
   /** 教研室 */
-  var teachingOffice: Option[TeachingOffice] = None
+  var office: Option[TeachingOffice] = None
 
-  /** 附件 */
-  var attachments: mutable.Buffer[SyllabusFile] = Collections.newBuffer[SyllabusFile]
+  /** 课程负责人 */
+  var director: Option[User] = None
 
   /** 作者 */
-  var author: User = _
+  var writer: User = _
 
   /** 状态 */
   var status: AuditStatus = AuditStatus.Draft

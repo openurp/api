@@ -24,14 +24,14 @@ import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.Activity
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.resource.model.Classroom
-import org.openurp.code.edu.model.{TeachingForm, TeachingNature}
+import org.openurp.code.edu.model.TeachingNature
 
 import java.time.LocalDate
 
 /** 教学活动
  * 上课对象是任务对应的教学班学生
  */
-class ClazzActivity extends LongId, Ordered[ClazzActivity], Activity, Cloneable,Remark {
+class ClazzActivity extends LongId, Ordered[ClazzActivity], Activity, Cloneable, Remark {
 
   /** 教学任务 */
   var clazz: Clazz = _

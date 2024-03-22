@@ -32,9 +32,8 @@ class Certificate extends CodeBean {
  * 校外考试证书类型
  */
 @code("school")
-class CertificateCategory extends CodeBean {
+class CertificateCategory extends CodeBean
 
-}
 /**
  * 教学任务标签
  */
@@ -61,8 +60,12 @@ class BookType extends CodeBean
 @code("school")
 class BookAwardType extends CodeBean
 
-/**
- * 课程类别
+/** 课程模块
+ */
+@code("school")
+class CourseModule extends CodeBean
+
+/** 课程类别
  * 从专业培养方案角度进行划分
  *
  * @author chaostone
@@ -116,3 +119,32 @@ class EducationType extends CodeBean {
  */
 @code("school")
 class ExamDeferReason extends CodeBean
+
+/** 授课形式
+ * 线下授课、线上直播、线上录播、线上线下同步等
+ */
+@code("school")
+class TeachingForm extends CodeBean
+
+object TeachingForm {
+  val Offline = 1 //线下授课
+}
+
+/** 教学方式方法
+ * 讲授，案例分析，项目训练
+ */
+@code("school")
+class TeachingMethod extends CodeBean
+
+/** 教学环节
+ * 讲授，上机课、期中考试，习题课、讨论课
+ */
+@code("school")
+class TeachingSection extends CodeBean
+
+
+/** 教学主题其他元素的类型
+ * 教学目的与要求，复习与作业要求，考核要点，辅助教学活动等
+ */
+@code("school")
+class SyllabusTopicLabel extends CodeBean

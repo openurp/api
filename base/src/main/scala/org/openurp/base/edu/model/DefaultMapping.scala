@@ -34,9 +34,9 @@ class DefaultMapping extends MappingModule {
       e.name & e.indexno are length(20)
     }
 
-    bind[CourseCluster] declare { e =>
+    bind[Curriculum] declare { e =>
       e.name is length(100)
-      e.code is length(20)
+      e.courses is one2many("curriculum")
       index("", true, e.project, e.code)
     }
 
@@ -47,14 +47,13 @@ class DefaultMapping extends MappingModule {
       e.hours is depends("course")
       e.remark is length(500)
       e.levels is depends("course")
-      e.prerequisites is(joinColumn("course_id"), eleColumn("prerequisite_id"))
       index("", true, e.project, e.code)
       index("", false, e.code)
     }
 
     bind[CourseHour].declare { e =>
       index("", false, e.course)
-      index("", true, e.course, e.teachingNature)
+      index("", true, e.course, e.nature)
     }
 
     bind[CourseLevel] declare { e =>
@@ -119,9 +118,15 @@ class DefaultMapping extends MappingModule {
     bind[CourseProfile] declare { e =>
       e.description is length(40000)
       e.enDescription is length(40000)
-
       index("", true, e.course)
     }
+
+    bind[CourseMajor]
+    bind[CourseDirector]
+    bind[CourseTextbook]
+
+    bind[MajorDirector]
+
     bind[MinorMajor] generator IdGenerator.AutoIncrement
 
     all.except(classOf[CourseProfile]).cacheAll()

@@ -39,4 +39,7 @@ abstract class CodeBean extends IntId with Code with TemporalOn with Updated wit
   var enName: Option[String] = None
 
   def codeName: String = s"$code $name"
+  def enName2: String = {
+    enName.getOrElse(name)
+  }
 }

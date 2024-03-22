@@ -17,23 +17,16 @@
 
 package org.openurp.edu.course.model
 
-import java.util.Locale
-
 import org.beangle.data.model.LongId
+import org.openurp.code.edu.model.SyllabusTopicLabel
 
-/**
- * 课程教学大纲附件
+/** 教学主题的内容要素
  */
-class SyllabusFile extends LongId {
+class SyllabusTopicElement extends LongId {
 
-  var syllabus: Syllabus = _
+  var topic: SyllabusTopic = _
 
-  var docLocale: Locale = _
+  var label: SyllabusTopicLabel = _
 
-  var fileSize: Int = _
-
-  var mimeType: String = _
-
-  var filePath: String = _
-
+  var contents: String = _
 }

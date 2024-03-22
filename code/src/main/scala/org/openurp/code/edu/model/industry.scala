@@ -20,8 +20,7 @@ package org.openurp.code.edu.model
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
 
-/**
- * 录取类别
+/** 录取类别
  * 参见教育部标准JY/T 1001 4.2.28.3
  */
 @code("industry")
@@ -361,13 +360,10 @@ enum TeachingNatureCategory(val id: Int, val title: String) {
   override def toString: String = title
 }
 
-/**
- * 授课方式
- * 线下授课、线上直播、线上录播、线上线下同步等
+/** 课程属性
+ * 参见教育部标准JY/T 1001 4.3.10
+ * 一般有，必修、选修、限选、任选，其他等
  */
 @code("industry")
-class TeachingMethod extends CodeBean
-
-object TeachingMethod {
-  val Offline = 1 //线下授课
+class CourseRank extends CodeBean {
 }

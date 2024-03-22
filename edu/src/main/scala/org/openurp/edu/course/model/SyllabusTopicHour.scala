@@ -15,33 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.model.Semester
-import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.TeachingNature
 
-/** 学生每学期选择教学班限制和统计
+/** 大纲课程安排的学时分布
  */
-class StdCreditStat extends LongId {
-
-  var std: Student = _
-
-  var semester: Semester = _
-
-  /** 已选学分 */
-  var totalCredits: Float = _
-
-  /** 学分上限 */
-  var maxCredits: Float = _
-
-  /** 已选新课程门数
-   * 不含重修 */
-  var totalNewCount: Int = _
-
-  /** 最多新选课程门数 */
-  var maxNewCount: Int = _
-
-  /** 重修数量 */
-  var repeatCount: Int = _
+class SyllabusTopicHour extends LongId {
+  var topic: SyllabusTopic = _
+  /** 学时 */
+  var creditHours: Int = _
+  /** 实践周 */
+  var weeks: Int = _
+  /** 自主学习学时 */
+  var learning: Int = _
+  /** 课时分类 */
+  var nature: TeachingNature = _
 }

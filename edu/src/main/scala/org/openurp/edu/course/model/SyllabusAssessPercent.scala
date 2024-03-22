@@ -15,33 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
-import org.openurp.base.model.Semester
-import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.GradeType
 
-/** 学生每学期选择教学班限制和统计
+/** 教学大纲-成绩评分比例
  */
-class StdCreditStat extends LongId {
+class SyllabusAssessPercent extends LongId {
 
-  var std: Student = _
+  var syllabus: Syllabus = _
 
-  var semester: Semester = _
+  /** 成绩类型 */
+  var gradeType: GradeType = _
 
-  /** 已选学分 */
-  var totalCredits: Float = _
+  /** 小项 */
+  var component: Option[String] = None
 
-  /** 学分上限 */
-  var maxCredits: Float = _
+  /** 百分比 */
+  var scorePercent: Int = _
 
-  /** 已选新课程门数
-   * 不含重修 */
-  var totalNewCount: Int = _
-
-  /** 最多新选课程门数 */
-  var maxNewCount: Int = _
-
-  /** 重修数量 */
-  var repeatCount: Int = _
+  /** 对应课程目标 */
+  var objectives: Option[String] = None
 }
