@@ -129,7 +129,13 @@ class DefaultMapping extends MappingModule {
 
     bind[PaperSubmission].declare { e =>
       e.sha1sum is length(40)
+      e.advisorOpinion is length(800)
       index("", false, e.writer)
+    }
+
+    bind[BlindPeerReview].declare { e =>
+      e.remark is length(100)
+      index("", true, e.writer)
     }
   }
 }

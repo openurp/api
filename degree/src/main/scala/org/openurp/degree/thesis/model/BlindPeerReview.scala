@@ -17,36 +17,17 @@
 
 package org.openurp.degree.thesis.model
 
-import org.beangle.data.model.Component
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Remark, Updated}
 
-import java.time.{Instant, LocalDate, ZoneId}
-
-/** 各阶段的时间安排
- *
+/** 盲审名单
  */
-class StageTime extends Component {
-  var stage: Stage = _
-  var beginAt: Instant = _
-  var endAt: Instant = _
+class BlindPeerReview extends LongId, Updated, Remark {
 
-  def this(stage: Stage, beginOn: Instant, endOn: Instant) = {
-    this()
-    this.stage = stage
-    this.beginAt = beginOn
-    this.endAt = endOn
-  }
+  /** 作者 */
+  var writer: Writer = _
 
-  def timeSuitable(date: Instant): Int = {
-    if beginAt.isAfter(date) then -1
-    else if endAt.isBefore(date) then 1
-    else 0
-  }
+  /** 分数 */
+  var score: Option[Float] = None
 
-  def beginOn: LocalDate = {
-    beginAt.atZone(ZoneId.systemDefault).toLocalDate
-  }
-
-  def endOn: LocalDate = {
-    endAt.atZone(ZoneId.systemDefault).toLocalDate
-  }
 }

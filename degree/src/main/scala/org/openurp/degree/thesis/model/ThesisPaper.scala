@@ -45,17 +45,23 @@ class ThesisPaper extends LongId with Named {
   /** 撰写语种 */
   var language: Option[Language] = None
 
+  /** 初稿路径 */
+  var draftPath: Option[String] = None
+
   /** 附件路径 */
   var filePath: String = _
 
-  /** 附件类型 */
-  var fileExt: String = _
+  /** 是否定稿 */
+  var finalized: Boolean = _
 
   /** sha1sum */
   var sha1sum: String = _
 
   /** 提交时间 */
   var submitAt: Instant = _
+
+  /** 导师是否通过 */
+  var advisorPassed: Option[Boolean] = None
 
   /** 审核意见 */
   var auditOpinion: Option[String] = None

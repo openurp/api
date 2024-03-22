@@ -34,4 +34,5 @@ class ThesisDoc extends LongId, Updated {
 
   /** 附件类型 */
   var fileExt: String = _
+
 }

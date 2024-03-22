@@ -21,7 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.base.model.{AuditStatus, Department}
 
-import java.time.LocalDate
+import java.time.{Instant, LocalDate}
 import scala.collection.mutable
 
 /** 学院毕业设计工作计划
@@ -41,18 +41,18 @@ class DepartPlan extends LongId with Cloneable {
   }
 
   def currentTimes: Seq[StageTime] = {
-    val now = LocalDate.now()
+    val now = Instant.now
     times.filter { x =>
       x.timeSuitable(now) == 0
     }.toSeq
   }
 
-  def addTime(stage: Stage, begin: LocalDate, end: LocalDate): Unit = {
+  def addTime(stage: Stage, begin: Instant, end: Instant): Unit = {
     times.find(x => x.stage == stage) match {
       case None => times.addOne(StageTime(stage, begin, end))
       case Some(st) =>
-        st.beginOn = begin
-        st.endOn = end
+        st.beginAt = begin
+        st.endAt = end
     }
   }
 
@@ -60,7 +60,7 @@ class DepartPlan extends LongId with Cloneable {
     val plan = super.clone().asInstanceOf[DepartPlan]
     plan.times = Collections.newBuffer
     this.times foreach { st =>
-      plan.addTime(st.stage, st.beginOn, st.endOn)
+      plan.addTime(st.stage, st.beginAt, st.endAt)
     }
     plan
   }

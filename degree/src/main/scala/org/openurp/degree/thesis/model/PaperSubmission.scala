@@ -31,9 +31,18 @@ class PaperSubmission extends LongId, Updated, Remark {
   /** 附件路径 */
   var filePath: String = _
 
-  /** 附件类型 */
-  var fileExt: String = _
-
   /** 文件sha1摘要 */
   var sha1sum: String = _
+
+  /** 是否定稿 */
+  var finalized: Boolean = _
+
+  /** 导师是否通过 */
+  var advisorPassed: Option[Boolean] = None
+
+  /** 审核意见 */
+  var advisorOpinion: Option[String] = None
+
+  /** 修订意见附件 */
+  var revisionPath: Option[String] = None
 }

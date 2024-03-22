@@ -32,7 +32,7 @@ enum Stage(val id: Int, val name: String, val subCount: Int = 0) {
   case Guidance2 extends Stage(18, "教师指导Ⅱ")
 
   case ThesisDraftSubmit extends Stage(20, "初稿论文提交")
-  case ThesisFinalSubmit extends Stage(21, "终稿提交")
+  case ThesisFinalSubmit extends Stage(21, "终稿论文提交")
 
   case ThesisReview extends Stage(31, "论文评阅") //21=>31 22=>32
   case OralDefense extends Stage(32, "论文答辩")

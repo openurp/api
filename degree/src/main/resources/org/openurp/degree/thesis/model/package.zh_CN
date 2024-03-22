@@ -84,8 +84,8 @@ SubjectApply.currentRound=当前轮次
 
 StageTime=各阶段的时间安排
 StageTime.stage=阶段
-StageTime.beginOn=起始日期
-StageTime.endOn=结束日期
+StageTime.beginAt=起始时间
+StageTime.endAt=结束时间
 
 ThesisPaper=论文文件
 ThesisPaper.status=状态
@@ -97,6 +97,10 @@ ThesisPaper.auditOpinion=审核意见
 ThesisPaper.keywords=关键字
 ThesisPaper.researchField=研究领域
 ThesisPaper.sha1sum=文件sha1摘要
+ThesisPaper.advisorPassed=指导教师是否通过
+ThesisPaper.advisorOpinion=指导教师意见
+ThesisPaper.draftPath=草稿文件路径
+ThesisPaper.finalized=是否定稿
 
 Writer=写作学生
 Writer.squad=班级
@@ -180,3 +184,10 @@ PaperSubmission.title=题目
 PaperSubmission.filePath=附件路径
 PaperSubmission.fileExt=附件类型
 PaperSubmission.sha1sum=文件sha1摘要
+PaperSubmission.finalized=是否定稿
+PaperSubmission.advisorPassed=导师是否通过
+PaperSubmission.advisorOpinion=审核意见
+PaperSubmission.revisionPath=修订意见附件
+
+BlindPeerReview=盲审名单
+BlindPeerReview.score=盲审总分
