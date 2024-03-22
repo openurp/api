@@ -18,20 +18,18 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named}
-import org.openurp.base.model.EduLevelBased
+import org.openurp.base.hr.model.Teacher
 
-/**
- * 课程群组
+/** 课程负责人
  */
-class CourseCluster extends LongId, Coded, Named, EduLevelBased {
+class CourseDirector extends LongId {
+  /** 课程*/
+  var course: Course = _
 
-  /**
-   * 是否每个课程都是一部分
-   */
-  var component: Boolean = _
-  /**
-   * 组成的课程是什么
-   */
-  var target: Option[Course] = None
+  /** 教研室 */
+  var office: Option[TeachingOffice] = None
+
+  /** 负责人 */
+  var director: Option[Teacher] = None
+
 }

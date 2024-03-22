@@ -20,7 +20,6 @@ package org.openurp.base.edu.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.edu.code.*
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, ProjectBased}
 import org.openurp.code.edu.model.*
@@ -62,29 +61,15 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   /** 考试方式 */
   var examMode: ExamMode = _
   /** 成绩记录方式 */
-  var gradingModes = Collections.newSet[GradingMode]
+  var gradingMode: GradingMode = _
   /** 能力等级 */
   var abilityRates = Collections.newSet[CourseAbilityRate]
-  /** 面向专业 */
-  var majors = Collections.newSet[Major]
-  /** 面向专业方向 */
-  var directions = Collections.newSet[Direction]
-  /** 排除专业 */
-  var xmajors = Collections.newSet[Major]
-  /** 推荐教材 */
-  var textbooks = Collections.newSet[Textbook]
-  /** 教师 */
-  var teachers = Collections.newSet[Teacher]
-  /** 先修课程 */
-  var prerequisites = Collections.newSet[Course]
   /** 是否计算绩点 * */
   var calgp: Boolean = _
   /** 是否有补考 */
   var hasMakeup: Boolean = _
-  /** 教研室 */
-  var teachingOffice: Option[TeachingOffice] = None
   /** 课程群组 */
-  var cluster: Option[CourseCluster] = None
+  var curriculum: Option[Curriculum] = None
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
@@ -141,7 +126,7 @@ class CourseHour extends LongId {
   var course: Course = _
   var creditHours: Int = _
   var weeks: Int = _
-  var teachingNature: TeachingNature = _
+  var nature: TeachingNature = _
 }
 
 /**
