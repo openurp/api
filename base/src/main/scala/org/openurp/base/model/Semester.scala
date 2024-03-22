@@ -18,13 +18,12 @@
 package org.openurp.base.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.commons.lang.time.WeekDay
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
 
-import java.time.temporal.{ChronoUnit, TemporalUnit}
-import java.time.{LocalDate, ZoneId}
+import java.time.ZoneId
+import java.time.temporal.ChronoUnit
 import java.util.GregorianCalendar
 import scala.collection.mutable
 
@@ -88,11 +87,19 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
     this.schoolYear = schoolYear
     this.name = name
   }
+
+  /**
+   * 是否是小学期 暑期、寒假学期等(时间<=2月)
+   */
+  def shortTerm: Boolean = weeks <= 8
 }
 
 /** 教学日历中的阶段 */
 class CalendarStage extends IntId with Named {
   var school: School = _
+  val enName: Option[String] = None
+  var startWeek: Int = _
+  var endWeek: Int = _
   var vacation: Boolean = _
 }
 
@@ -101,6 +108,7 @@ class SemesterStage extends IntId with DateRange with Remark {
   var semester: Semester = _
   var stage: CalendarStage = _
 }
+
 trait SemesterBased {
 
   var project: Project = _

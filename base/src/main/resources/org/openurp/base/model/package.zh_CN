@@ -110,6 +110,9 @@ Semester.stages=阶段列表
 
 CalendarStage=日历阶段
 CalendarStage.vacation=是否假期
+CalendarStage.startWeek=起始周
+CalendarStage.endWeek=结束周
+CalendarStage.enName=英文名
 
 SemesterStage=学期阶段
 SemesterStage.beginOn=开始日期
