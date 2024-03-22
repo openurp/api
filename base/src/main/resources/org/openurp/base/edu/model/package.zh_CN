@@ -132,6 +132,7 @@ CourseProfile.materials=辅助资料
 CourseProfile.website=课程网站
 
 Curriculum=课程群组
+Curriculum.enName=英文名
 Curriculum.director=负责人
 Curriculum.teachers=教师列表
 Curriculum.courses=课程列表
@@ -147,3 +148,5 @@ CourseTextbook.recommended=是否推荐教材
 
 CourseDirector=课程负责人
 CourseDirector.director=负责人
+
+MajorDirector=专业负责人
