@@ -60,10 +60,9 @@ class DefaultMapping extends MappingModule {
 
     //schedule
     bind[ClazzActivity].declare { e =>
-      e.places is length(200)
+      e.remark is length(200)
       e.teachers is joinColumn("activity_id")
       e.rooms is joinColumn("activity_id")
-      e.places is length(100)
       index("", false, e.clazz)
     }
 

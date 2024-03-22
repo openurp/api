@@ -20,20 +20,18 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.Activity
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.resource.model.Classroom
-import org.openurp.code.edu.model.{TeachingMethod, TeachingNature}
+import org.openurp.code.edu.model.{TeachingForm, TeachingNature}
 
 import java.time.LocalDate
 
-/**
- * 教学活动
- * </p>
+/** 教学活动
  * 上课对象是任务对应的教学班学生
- *
  */
-class ClazzActivity extends LongId, Ordered[ClazzActivity], Activity, Cloneable {
+class ClazzActivity extends LongId, Ordered[ClazzActivity], Activity, Cloneable,Remark {
 
   /** 教学任务 */
   var clazz: Clazz = _
@@ -53,23 +51,16 @@ class ClazzActivity extends LongId, Ordered[ClazzActivity], Activity, Cloneable 
   /** 教室列表 */
   var rooms: collection.mutable.Set[Classroom] = _
 
-  /** 授课场所 */
-  var places: Option[String] = None
-
   /** 授课性质 */
-  var teachingNature: TeachingNature = _
-
-  /** 授课方式 */
-  var teachingMethod: TeachingMethod = _
+  var nature: TeachingNature = _
 
   /** 针对授课小班 */
   var subclazz: Option[Subclazz] = None
 
   /** 对比活动 */
   override def compare(that: ClazzActivity): Int = {
-    var rs = 0
     // compare teacher// compare teacher
-    if (rs == 0) rs = teachers.size - that.teachers.size
+    var rs = teachers.size - that.teachers.size
     // compare room// compare room
     if (rs == 0) rs = rooms.size - that.rooms.size
     // compare weeks// compare weeks
