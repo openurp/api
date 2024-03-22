@@ -19,12 +19,12 @@ package org.openurp.edu.grade.domain
 
 import org.beangle.commons.collection.Collections
 import org.openurp.base.std.model.Student
-import org.openurp.edu.grade.model.PlanAuditResult
+import org.openurp.edu.grade.model.AuditPlanResult
 import org.openurp.edu.program.model.CoursePlan
 
 class PlanAuditContext(val std: Student, val coursePlan: CoursePlan, val stdGrade: StdGrade, val listeners: collection.Seq[PlanAuditListener]) {
 
-  var result: PlanAuditResult = _
+  var result: AuditPlanResult = _
 
   val params = Collections.newMap[String, Any]
 

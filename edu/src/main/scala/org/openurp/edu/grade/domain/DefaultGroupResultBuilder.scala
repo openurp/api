@@ -17,13 +17,13 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.edu.grade.model.GroupAuditResult
+import org.openurp.edu.grade.model.AuditGroupResult
 import org.openurp.edu.program.model.CourseGroup
 
 object DefaultGroupResultBuilder extends GroupResultBuilder {
 
-  def buildResult(context: PlanAuditContext, group: CourseGroup): GroupAuditResult = {
-    val result = new GroupAuditResult()
+  def buildResult(context: PlanAuditContext, group: CourseGroup): AuditGroupResult = {
+    val result = new AuditGroupResult()
     var creditsRequired = group.credits
     result.auditStat.requiredCredits = creditsRequired
     result.auditStat.requiredCount = group.courseCount

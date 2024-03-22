@@ -17,40 +17,40 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.edu.grade.model.{CourseAuditResult, GroupAuditResult, PlanAuditResult}
+import org.openurp.edu.grade.model.{AuditCourseResult, AuditGroupResult, AuditPlanResult}
 
-class GroupResultAdapter(var result: PlanAuditResult) extends GroupAuditResult {
+class GroupResultAdapter(var result: AuditPlanResult) extends AuditGroupResult {
 
   subCount = -1
   name = "计划"
   planResult = result
   passed = result.passed
 
-  override def removeChild(gr: GroupAuditResult): Unit = {
+  override def removeChild(gr: AuditGroupResult): Unit = {
   }
 
-  override def addChild(gr: GroupAuditResult): Unit = {
+  override def addChild(gr: AuditGroupResult): Unit = {
     //    this.auditResult = result.auditResult
   }
 
-  override def attachTo(planResult: PlanAuditResult): Unit = {
+  override def attachTo(planResult: AuditPlanResult): Unit = {
   }
 
   override def detach(): Unit = {
   }
 
-  override def addCourseResult(courseResult: CourseAuditResult): Unit = {
+  override def addCourseResult(cr: AuditCourseResult): Unit = {
   }
 
-  override def updateCourseResult(rs: CourseAuditResult): Unit = {
+  override def updateCourseResult(rs: AuditCourseResult): Unit = {
   }
 
   def checkPassed(): Unit = {
-    GroupAuditResult.checkPassed(this, false)
+    AuditGroupResult.checkPassed(this, false)
   }
 
   override def checkPassed(isRecursive: Boolean): Unit = {
-    GroupAuditResult.checkPassed(this, isRecursive)
+    AuditGroupResult.checkPassed(this, isRecursive)
   }
 
 }

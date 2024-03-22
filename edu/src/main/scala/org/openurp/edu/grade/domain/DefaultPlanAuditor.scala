@@ -17,15 +17,15 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.edu.grade.model.{AuditStat, CourseAuditResult, GroupAuditResult, PlanAuditResult}
+import org.openurp.edu.grade.model.{AuditStat, AuditCourseResult, AuditGroupResult, AuditPlanResult}
 import org.openurp.edu.program.model.CourseGroup
 
 import java.time.Instant
 
 class DefaultPlanAuditor extends PlanAuditor {
 
-  def audit(context: PlanAuditContext): PlanAuditResult = {
-    val planAuditResult = new PlanAuditResult(context.std)
+  def audit(context: PlanAuditContext): AuditPlanResult = {
+    val planAuditResult = new AuditPlanResult(context.std)
     planAuditResult.passed = false
     planAuditResult.remark = null
     planAuditResult.updatedAt = Instant.now
@@ -48,7 +48,7 @@ class DefaultPlanAuditor extends PlanAuditor {
     for (group <- context.coursePlan.groups if group.parent == null) {
       numRequired += group.courseCount
     }
-    planAuditResult.auditStat.requiredCount = numRequired
+    planAuditResult.auditStat.requiredCount = numRequired.toShort
     auditGroup(context, courseGroupAdapter, groupResultAdapter)
     for (listener <- context.listeners) {
       listener.end(context)
@@ -64,7 +64,7 @@ class DefaultPlanAuditor extends PlanAuditor {
     planAuditResult
   }
 
-  private def auditGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupAuditResult: GroupAuditResult): Unit = {
+  private def auditGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupAuditResult: AuditGroupResult): Unit = {
     val planAuditResult = context.result
     courseGroup.children foreach { child =>
       val childResult = DefaultGroupResultBuilder.buildResult(context, child)
@@ -80,7 +80,7 @@ class DefaultPlanAuditor extends PlanAuditor {
     }
 
     courseGroup.planCourses foreach { planCourse =>
-      val planCourseAuditResult = new CourseAuditResult(planCourse)
+      val planCourseAuditResult = new AuditCourseResult(planCourse)
       val courseGrades = context.stdGrade.useGrades(planCourse.course)
       if (courseGrades.nonEmpty || planCourse.compulsory) {
         planCourseAuditResult.checkPassed(courseGrades)

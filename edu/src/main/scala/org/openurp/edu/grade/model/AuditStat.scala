@@ -20,37 +20,67 @@ package org.openurp.edu.grade.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.Component
 import org.openurp.base.edu.model.Course
+import org.openurp.code.edu.model.EducationLevel
 
 class AuditStat extends Component {
 
+  /** 要求学分 */
   var requiredCredits: Float = _
 
+  /** 通过学分 */
   var passedCredits: Float = _
 
-  var requiredCount: Int = _
+  /** 要求门数 */
+  var requiredCount: Short = _
 
-  var passedCount: Int = _
+  /** 完成门数 */
+  var passedCount: Short = _
+
+  /** 正在修读学分 */
+  var takingCredits: Float = _
+
+  /** 正在修读的门数 */
+  var takingCount: Short = _
 
   @transient var passedCourses = Collections.newSet[Course]
+  @transient var takingCourses = Collections.newSet[Course]
 
+  /** 转换学分 */
   var convertedCredits: Float = _
 
   def this(passedCredits: Float, totalNum: Int) = {
     this()
     this.passedCredits = passedCredits
-    this.passedCount = totalNum
+    this.passedCount = totalNum.toShort
   }
 
-  def addCredits(credits: Float): Unit = {
-    this.passedCredits += credits
+  def addPassed(course: Course, level: EducationLevel): Unit = {
+    if (!this.passedCourses.contains(course)) {
+      this.passedCourses.add(course)
+      val credits = course.getCredits(level)
+      this.passedCredits += credits
+      this.passedCount = (this.passedCount + 1).toShort
+    }
   }
 
-  def addNum(num: Int): Unit = {
-    this.passedCount += num
+  def addTaking(course: Course, level: EducationLevel): Unit = {
+    if (!this.passedCourses.contains(course) && !this.takingCourses.contains(course)) {
+      this.takingCourses.add(course)
+      val credits = course.getCredits(level)
+      this.takingCredits += credits
+      this.takingCount = (this.takingCount + 1).toShort
+    }
   }
 
   def passed: Boolean = {
     java.lang.Float.compare(requiredCredits, passedCredits + convertedCredits) <= 0 && requiredCount <= passedCount
+  }
+
+  def predicted: Boolean = {
+    if passed then true
+    else
+      java.lang.Float.compare(requiredCredits, passedCredits + convertedCredits + takingCredits) <= 0
+        && requiredCount <= (passedCount + takingCount)
   }
 
   def creditNeeded(returnNegative: Boolean): Float = {
@@ -65,7 +95,7 @@ class AuditStat extends Component {
   def reduceRequired(credits: Float, num: Int): Unit = {
     this.requiredCredits -= credits
     this.requiredCredits = if (this.requiredCredits < 0) 0 else this.requiredCredits
-    this.requiredCount -= num
+    this.requiredCount = (this.requiredCount - num).toShort
     this.requiredCount = if (this.requiredCount < 0) 0 else this.requiredCount
   }
 }

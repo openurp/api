@@ -21,22 +21,32 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Course, Terms}
-import org.openurp.edu.grade.model.CourseGrade
 import org.openurp.edu.program.model.PlanCourse
 
-class CourseAuditResult extends LongId with Remark {
+/** 课程审核结果
+ */
+class AuditCourseResult extends LongId with Remark {
 
-  var groupResult: GroupAuditResult = _
+  /** 课程组审核结果 */
+  var groupResult: AuditGroupResult = _
 
+  /** 课程 */
   var course: Course = _
 
+  /** 成绩 */
   var scores: String = _
 
+  /** 是否通过 */
   var passed: Boolean = _
 
+  /** 计划就读学期 */
   var terms: Terms = Terms.empty
 
+  /** 是否必修 */
   var compulsory: Boolean = _
+
+  /** 是否在读 */
+  var taking: Boolean = _
 
   def checkPassed(grades: collection.Seq[CourseGrade]): Unit = {
     val sb = new StringBuilder

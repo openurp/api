@@ -17,7 +17,7 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.edu.grade.model.PlanAuditResult
+import org.openurp.edu.grade.model.AuditPlanResult
 
 trait PlanAuditor {
 
@@ -25,6 +25,6 @@ trait PlanAuditor {
    * 即时审核一个学生，结果不保存<br>
    * context 中得设置好standard, coursePlan
    */
-  def audit(context: PlanAuditContext): PlanAuditResult
+  def audit(context: PlanAuditContext): AuditPlanResult
 
 }

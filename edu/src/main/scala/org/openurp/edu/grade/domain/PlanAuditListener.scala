@@ -17,7 +17,7 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.edu.grade.model.GroupAuditResult
+import org.openurp.edu.grade.model.AuditGroupResult
 import org.openurp.edu.program.model.CourseGroup
 
 trait PlanAuditListener {
@@ -33,7 +33,7 @@ trait PlanAuditListener {
    *  开始审核课程组
    *  @return false 表示不能继续审核
    */
-  def startGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupResult: GroupAuditResult): Boolean
+  def startGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupResult: AuditGroupResult): Boolean
 
   /**
    * 结束审核计划

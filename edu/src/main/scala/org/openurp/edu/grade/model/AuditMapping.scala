@@ -19,21 +19,22 @@ package org.openurp.edu.grade.model
 
 import org.beangle.data.orm.MappingModule
 
-class PlanMapping extends MappingModule {
+class AuditMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[CourseAuditResult].declare { e =>
+    bind[AuditCourseResult].declare { e =>
       e.scores is(length(50), default("--"))
       e.remark is length(150)
       index("", true, e.groupResult, e.course)
     }
 
-    bind[GroupAuditResult].declare { e =>
+    bind[AuditGroupResult].declare { e =>
       e.name is length(100)
       e.children is depends("parent")
       e.courseResults is depends("groupResult")
     }
-    bind[PlanAuditResult].declare { e =>
+
+    bind[AuditPlanResult].declare { e =>
       e.groupResults is depends("planResult")
       e.remark is length(100)
       e.updates is length(500)

@@ -17,10 +17,10 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.edu.grade.model.GroupAuditResult
+import org.openurp.edu.grade.model.AuditGroupResult
 import org.openurp.edu.program.model.CourseGroup
 
 trait GroupResultBuilder {
 
-  def buildResult(context: PlanAuditContext, group: CourseGroup): GroupAuditResult
+  def buildResult(context: PlanAuditContext, group: CourseGroup): AuditGroupResult
 }

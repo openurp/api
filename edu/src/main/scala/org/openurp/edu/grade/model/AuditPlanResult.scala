@@ -25,54 +25,58 @@ import org.openurp.code.edu.model.CourseType
 
 import scala.collection.mutable
 
-class PlanAuditResult extends LongId with Updated with Remark {
+class AuditPlanResult extends LongId with Updated with Remark {
 
   var std: Student = _
 
   var auditStat = new AuditStat
 
-  var groupResults: mutable.Buffer[GroupAuditResult] = Collections.newBuffer[GroupAuditResult]
+  var groupResults: mutable.Buffer[AuditGroupResult] = Collections.newBuffer[AuditGroupResult]
 
+  /** 是否通过 */
   var passed: Boolean = _
 
+  /** 预计是否通过 */
+  var predicted: Boolean = _
+
+  /** 和上次比较的更新内容 */
   var updates: Option[String] = None
 
   var archived: Boolean = false
 
-  def topGroupResults: collection.Seq[GroupAuditResult] = {
-    val results = new collection.mutable.ListBuffer[GroupAuditResult]
+  def topGroupResults: collection.Seq[AuditGroupResult] = {
+    val results = new collection.mutable.ListBuffer[AuditGroupResult]
     for (result <- groupResults if result.parent.isEmpty) {
       results += result
     }
     results
   }
 
-  def addGroupResult(rs: GroupAuditResult): Unit = {
+  def addGroupResult(rs: AuditGroupResult): Unit = {
     rs.planResult = this
     this.groupResults += rs
   }
 
-  def removeGroupResult(rs: GroupAuditResult): Unit = {
+  def removeGroupResult(rs: AuditGroupResult): Unit = {
     rs.planResult = null
     this.groupResults -= rs
   }
 
-  def getGroupResult(typ: CourseType): Option[GroupAuditResult] = {
-    if (null == groupResults) {
-      return None
-    }
-    var rs: Option[GroupAuditResult] = None
-    for (groupAuditResult <- groupResults; if rs.isEmpty) {
-      rs = findGroupResult(groupAuditResult, typ)
-    }
-    rs
+  def getGroupResult(typ: CourseType): Option[AuditGroupResult] = {
+    if null == groupResults then None
+    else
+      var rs: Option[AuditGroupResult] = None
+      for (groupAuditResult <- groupResults; if rs.isEmpty) {
+        rs = findGroupResult(groupAuditResult, typ)
+      }
+      rs
   }
 
-  private def findGroupResult(groupResult: GroupAuditResult, typ: CourseType): Option[GroupAuditResult] = {
+  private def findGroupResult(groupResult: AuditGroupResult, typ: CourseType): Option[AuditGroupResult] = {
     if (typ == groupResult.courseType) {
       return Some(groupResult)
     }
-    var rs: Option[GroupAuditResult] = None
+    var rs: Option[AuditGroupResult] = None
     for (childResult <- groupResult.children; if rs.isEmpty) {
       rs = findGroupResult(childResult, typ)
     }
