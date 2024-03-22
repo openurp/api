@@ -43,17 +43,17 @@ class DefaultMapping extends MappingModule {
       index("", false, e.project, e.semester, e.teachDepart)
     }
 
-    bind[FinalExam].declare { e =>
+    bind[ClazzFinalExam].declare { e =>
       e.clazz is unique
     }
 
-    bind[Restriction].declare { e =>
+    bind[ClazzRestriction].declare { e =>
       e.items is depends("restriction")
       e.children is depends("parent")
       index("", false, e.clazz)
     }
 
-    bind[RestrictionItem].declare { e =>
+    bind[ClazzRestrictionItem].declare { e =>
       e.contents is length(1000)
       index("", false, e.restriction)
     }

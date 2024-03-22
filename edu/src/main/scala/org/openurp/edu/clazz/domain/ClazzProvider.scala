@@ -21,7 +21,7 @@ import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Project, Semester}
 import org.openurp.base.std.model.{Squad, Student}
-import org.openurp.edu.clazz.model.{Clazz, CourseTaker, RestrictionMeta}
+import org.openurp.edu.clazz.model.{Clazz, CourseTaker, ClazzRestrictionMeta}
 
 trait ClazzProvider {
   def getClazzes(semester: Semester, std: Student): Seq[CourseTaker]
@@ -38,7 +38,7 @@ class DefaultClazzProvider extends ClazzProvider {
     val builder = OqlBuilder.from(classOf[Clazz], "clazz")
     builder.where("clazz.project = :project", squad.project)
     builder.where("clazz.semester = :semester", semester)
-    val con = RestrictionHelper.build(RestrictionMeta.Squad, "lgi", squad.id.toString)
+    val con = RestrictionHelper.build(ClazzRestrictionMeta.Squad, "lgi", squad.id.toString)
     val params = con.params
     builder.where("exists(from clazz.enrollment.restrictions lg join lg.items as lgi where" + con.content + ")", params(0))
     entityDao.search(builder)

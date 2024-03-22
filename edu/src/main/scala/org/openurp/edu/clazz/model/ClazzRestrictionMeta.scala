@@ -27,26 +27,26 @@ import org.openurp.code.std.model.{StdLabel, StdType}
 
 import scala.language.implicitConversions
 
-enum RestrictionMeta(val id: Int, contentType: Class[_]) {
+enum ClazzRestrictionMeta(val id: Int, contentType: Class[_]) {
 
-  case Grade extends RestrictionMeta(1, classOf[String])
+  case Grade extends ClazzRestrictionMeta(1, classOf[String])
 
-  case StdType extends RestrictionMeta(2, classOf[StdType])
+  case StdType extends ClazzRestrictionMeta(2, classOf[StdType])
 
-  case Gender extends RestrictionMeta(3, classOf[Gender])
+  case Gender extends ClazzRestrictionMeta(3, classOf[Gender])
 
-  case Department extends RestrictionMeta(4, classOf[Department])
+  case Department extends ClazzRestrictionMeta(4, classOf[Department])
 
-  case Major extends RestrictionMeta(5, classOf[Major])
+  case Major extends ClazzRestrictionMeta(5, classOf[Major])
 
-  case Direction extends RestrictionMeta(6, classOf[Direction])
+  case Direction extends ClazzRestrictionMeta(6, classOf[Direction])
 
-  case Squad extends RestrictionMeta(7, classOf[Squad])
+  case Squad extends ClazzRestrictionMeta(7, classOf[Squad])
 
-  case Level extends RestrictionMeta(8, classOf[EducationLevel])
+  case Level extends ClazzRestrictionMeta(8, classOf[EducationLevel])
 
-  case EduType extends RestrictionMeta(9, classOf[EducationType])
+  case EduType extends ClazzRestrictionMeta(9, classOf[EducationType])
 
-  case StdLabel extends RestrictionMeta(11, classOf[StdLabel])
+  case StdLabel extends ClazzRestrictionMeta(11, classOf[StdLabel])
 
 }

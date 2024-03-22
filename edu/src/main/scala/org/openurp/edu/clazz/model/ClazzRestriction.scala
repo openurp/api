@@ -21,18 +21,18 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 
 /**
- * 课程限制条件组
+ * 教学任务限制条件组
  */
-class Restriction extends LongId with Cloneable {
+class ClazzRestriction extends LongId, Cloneable {
 
   /** 教学任务 */
   var clazz: Clazz = _
 
-  /**是否主要开课对象*/
+  /** 是否主要开课对象 */
   var prime: Boolean = _
 
   /** 条件列表 */
-  var items = Collections.newBuffer[RestrictionItem]
+  var items = Collections.newBuffer[ClazzRestrictionItem]
 
   /** 最大人数 */
   var maxCount: Int = _
@@ -41,7 +41,8 @@ class Restriction extends LongId with Cloneable {
   var curCount: Int = _
 
   /** 父级菜单 */
-  var parent: Option[Restriction] = None
+  var parent: Option[ClazzRestriction] = None
 
-  var children = Collections.newBuffer[Restriction]
+  /** 下级限制 */
+  var children = Collections.newBuffer[ClazzRestriction]
 }

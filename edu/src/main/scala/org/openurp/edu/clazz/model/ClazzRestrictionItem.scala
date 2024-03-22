@@ -22,16 +22,15 @@ import org.beangle.data.model.LongId
 /**
  * 选课限制条件项
  */
-class RestrictionItem extends LongId with Cloneable {
+class ClazzRestrictionItem extends LongId with Cloneable {
 
   /** 限制具体项目 */
-  var meta: RestrictionMeta = _
+  var meta: ClazzRestrictionMeta = _
 
   /** 所在限制组 */
-  var restriction: Restriction = _
+  var restriction: ClazzRestriction = _
 
-  /**
-   * 是否包含限定内容
+  /**是否包含限定内容
    * 不包含exclusive情况下，为排除限定内容
    */
   var included: Boolean = _

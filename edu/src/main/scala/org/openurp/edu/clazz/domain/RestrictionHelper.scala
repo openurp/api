@@ -19,11 +19,11 @@ package org.openurp.edu.clazz.domain
 
 import org.beangle.commons.lang.Strings
 import org.beangle.data.dao.Condition
-import org.openurp.edu.clazz.model.RestrictionMeta
+import org.openurp.edu.clazz.model.ClazzRestrictionMeta
 
 object RestrictionHelper {
 
-  def build(meta: RestrictionMeta, alias: String, id: String): Condition = {
+  def build(meta: ClazzRestrictionMeta, alias: String, id: String): Condition = {
     var template = s" alias.meta = ${meta.id} and (case when alias.included=true and locate(:values,','||alias.contents||',')>0 then 1 else 0 end) = 1 "
     val paramName = "metaValue" + randomInt + "s"
     template = Strings.replace(template, "alias", alias)

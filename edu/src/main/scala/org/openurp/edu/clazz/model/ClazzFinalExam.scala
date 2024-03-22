@@ -25,9 +25,9 @@ import java.time.LocalDate
 
 /**
  * 期末考试安排
- * (排考仟用户指定）
+ * (排考用户指定）
  */
-class FinalExam extends LongId {
+class ClazzFinalExam extends LongId {
 
   /** 教学任务 */
   var clazz: Clazz = _

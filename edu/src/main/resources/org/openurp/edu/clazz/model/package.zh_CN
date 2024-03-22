@@ -1,19 +1,19 @@
-Restriction=课程限制条件组
-Restriction.name=名称
-Restriction.clazz=教学任务
-Restriction.items=条件列表
-Restriction.maxCount=最大人数
-Restriction.curCount=当前人数
-Restriction.prime=是否主要授课对象
-Restriction.parent=上级组
+ClazzRestriction=课程限制条件组
+ClazzRestriction.name=名称
+ClazzRestriction.clazz=教学任务
+ClazzRestriction.items=条件列表
+ClazzRestriction.maxCount=最大人数
+ClazzRestriction.curCount=当前人数
+ClazzRestriction.prime=是否主要授课对象
+ClazzRestriction.parent=上级组
 
-RestrictionItem=课程限制项
-RestrictionItem.name=限制项名称
-RestrictionItem.meta=限制具体项目
-RestrictionItem.restriction=所在限制组
-RestrictionItem.operator=操作符
-RestrictionItem.contents=限制内容
-RestrictionItem.included=是否包含限定内容
+ClazzRestrictionItem=课程限制项
+ClazzRestrictionItem.name=限制项名称
+ClazzRestrictionItem.meta=限制具体项目
+ClazzRestrictionItem.restriction=所在限制组
+ClazzRestrictionItem.operator=操作符
+ClazzRestrictionItem.contents=限制内容
+ClazzRestrictionItem.included=是否包含限定内容
 
 CourseTaker=学生修读课程信息
 CourseTaker.clazz=教学任务
@@ -141,11 +141,11 @@ ClazzBulletin.contents=公告内容
 ClazzBulletin.contactChannel=日常联系渠道
 ClazzBulletin.contactQrcodePath=日常联系渠道二维码
 
-FinalExam=期末考试安排
-FinalExam.beginAt=开始时间
-FinalExam.endAt=结束时间
-FinalExam.examDuration=考试时长
-FinalExam.examOn=考试时间
+ClazzFinalExam=期末考试安排
+ClazzFinalExam.beginAt=开始时间
+ClazzFinalExam.endAt=结束时间
+ClazzFinalExam.examDuration=考试时长
+ClazzFinalExam.examOn=考试时间
 
 StdCreditStat=学生每学期选择教学班限制和统计
 StdCreditStat.totalCredits=已选学分

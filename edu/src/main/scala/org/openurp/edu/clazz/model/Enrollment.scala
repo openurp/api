@@ -56,7 +56,7 @@ class Enrollment extends Cloneable with Component {
   var courseTakers = Collections.newBuffer[CourseTaker]
 
   /** 限制条件组 */
-  var restrictions = Collections.newBuffer[Restriction]
+  var restrictions = Collections.newBuffer[ClazzRestriction]
 
   /** 要求课程能力等级 */
   var abilityRates = Collections.newSet[CourseAbilityRate]
