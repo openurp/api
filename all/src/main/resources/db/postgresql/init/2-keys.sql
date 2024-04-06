@@ -409,9 +409,7 @@ alter table edu.clazzes_teachers add constraint pk_38x8fp2quo9ykkur4hvt7khir pri
 alter table edu.course_audit_results add constraint pk_e8y9knf7dh7k1rsjgal3b5d6x primary key (id);
 alter table edu.course_audit_results add constraint uk_f9jth1bg1w3pq7io6y2wtmw7a unique (group_result_id,course_id);
 alter table edu.course_grade_states add constraint pk_ss5mvl6jqttk0ubobqdhdni8u primary key (id);
-alter table edu.course_grades add constraint pk_1ucmwigfmllurolusv5j8d5xv primary key (id);
 alter table edu.course_grades add constraint uk_xitxltysiibv3efvpe69hk1j unique (std_id,course_id,semester_id,crn);
-alter table edu.course_takers add constraint pk_r9e52tj7ca5ohhmokt4nw1h8e primary key (id);
 alter table edu.course_takers add constraint uk_9pqkafkcyi7pe6799lg614vay unique (std_id,course_id,semester_id);
 alter table edu.exam_activities add constraint pk_1n892fv0956m99fkw49r4k5y7 primary key (id);
 alter table edu.exam_activities_rooms add constraint pk_6cw1w9e67eqd2bybivya2qb8h primary key (exam_activity_id,exam_room_id);

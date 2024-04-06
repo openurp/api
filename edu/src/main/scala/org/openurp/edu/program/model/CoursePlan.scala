@@ -19,9 +19,10 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongIdEntity
-import org.beangle.data.model.pojo.{DateRange, TemporalOn}
+import org.beangle.data.model.pojo.DateRange
+import org.openurp.base.edu.model.Course
 import org.openurp.base.model.AuditStatus
-import org.openurp.code.edu.model.CourseType
+import org.openurp.code.edu.model.{CourseType, EducationLevel}
 
 import scala.collection.mutable
 
@@ -33,6 +34,8 @@ import scala.collection.mutable
  * @since 2009
  */
 trait CoursePlan extends LongIdEntity with Cloneable with DateRange {
+
+  def level: EducationLevel
 
   /**
    * 获得总学分
@@ -47,7 +50,21 @@ trait CoursePlan extends LongIdEntity with Cloneable with DateRange {
   /**
    * 查询指定类型的组
    */
-  def getGroup(courseType: CourseType): Option[CourseGroup]
+  def getGroup(courseType: CourseType): Seq[CourseGroup]
+
+  /** 根据组名查找课程组
+   *
+   * @param name
+   * @return
+   */
+  def getGroup(name: String): Option[CourseGroup]
+
+  /** 根据课程查找课程组
+   *
+   * @param name
+   * @return
+   */
+  def getGroup(course: Course): Option[CourseGroup]
 
   /**
    * 获得顶级课程组

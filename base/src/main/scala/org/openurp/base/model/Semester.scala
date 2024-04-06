@@ -91,7 +91,7 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
   /**
    * 是否是小学期 暑期、寒假学期等(时间<=2月)
    */
-  def shortTerm: Boolean = weeks <= 8
+  def shortTerm: Boolean = weeks <= 9
 }
 
 /** 教学日历中的阶段 */

@@ -17,52 +17,40 @@
 
 package org.openurp.edu.grade.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Hierarchical, Named, Remark}
 import org.openurp.base.edu.model.Course
 import org.openurp.code.edu.model.CourseType
-import org.openurp.edu.grade.domain.GroupResultAdapter
 import org.openurp.edu.program.model.CourseGroup
 
-import scala.annotation.tailrec
 import scala.collection.mutable.Buffer
-
-object AuditGroupResult {
-
-  def checkPassed(groupResult: AuditGroupResult, isRecursive: Boolean): Unit = {
-    if (null == groupResult) {
-      return
-    }
-    var childrenPassed = true
-    var childrenPredicted = true
-    if (groupResult.children.nonEmpty) {
-      val requiredNum = if (groupResult.subCount >= 0) groupResult.subCount else groupResult.children.size.toShort
-      var passed = 0
-      var predictedPassed = 0
-      for (childResult <- groupResult.children) {
-        if childResult.passed then passed += 1
-        if childResult.predicted then predictedPassed += 1
-      }
-      childrenPassed = passed >= requiredNum
-      childrenPredicted = predictedPassed >= requiredNum
-    }
-    groupResult.passed = childrenPassed && groupResult.auditStat.passed
-    groupResult.predicted = childrenPredicted && groupResult.auditStat.predicted
-    if (isRecursive) {
-      groupResult.parent match {
-        case None => checkPassed(new GroupResultAdapter(groupResult.planResult), false)
-        case Some(p) => checkPassed(p, true)
-      }
-    }
-  }
-}
 
 /** 课程组审核结果
  */
 class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Remark {
 
-  /** 学分统计 */
-  var auditStat = new AuditStat
+  /** 要求学分 */
+  var requiredCredits: Float = _
+
+  /** 通过学分 */
+  var passedCredits: Float = _
+
+  /** 欠学分 */
+  var owedCredits: Float = _
+
+  /** 预计通过后所欠学分 */
+  var owedCredits2: Float = _
+
+  /** 在读通过后所欠学分 */
+  var owedCredits3: Float = _
+
+  /** 转换学分 */
+  var convertedCredits: Float = _
+
+  @transient var passedCourses = Collections.newSet[Course]
+  @transient var predictedCourses = Collections.newSet[Course]
+  @transient var takingCourses = Collections.newSet[Course]
 
   /** 课程审核结果 */
   var courseResults: Buffer[AuditCourseResult] = new collection.mutable.ListBuffer[AuditCourseResult]
@@ -72,9 +60,6 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
 
   /** 是否通过 */
   var passed: Boolean = _
-
-  /** 预计是否通过 */
-  var predicted: Boolean = _
 
   /** 子组数量 */
   var subCount: Short = _
@@ -96,47 +81,40 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
     for (groupResult <- children) groupResult.detach()
   }
 
-  def this(group: CourseGroup) = {
+  def this(name: String, courseType: CourseType) = {
     this()
-    this.name = group.name
-    this.courseType = group.courseType
+    this.name = name
+    this.courseType = courseType
+    this.subCount = 0.toShort
   }
 
-  def SuperResult: AuditGroupResult = {
-    if ((null != planResult)) new GroupResultAdapter(planResult) else null
+  def this(group: CourseGroup) = {
+    this(group.name, group.courseType)
+    this.subCount = group.subCount
   }
 
   def addCourseResult(cr: AuditCourseResult): Unit = {
     cr.groupResult = this
-    courseResults += cr
-    if cr.passed then addPassedCourse(this, cr.course)
-    else if cr.taking then addTakingCourse(this, cr.course)
+    if !courseResults.exists(_.course == cr.course) then courseResults += cr
+    //may passed and taking are both true.
+    if cr.passed then addCourse(this, cr.course, AuditCourseLevel.Passed)
+    else if cr.predicted then addCourse(this, cr.course, AuditCourseLevel.Predicted)
+    else if cr.taking then addCourse(this, cr.course, AuditCourseLevel.Taking)
   }
 
-  def updateCourseResult(rs: AuditCourseResult): Unit = {
-    if (rs.passed) addPassedCourse(rs.groupResult, rs.course)
+  def getCourseResult(course: Course): Option[AuditCourseResult] = {
+    courseResults.find(_.course == course)
   }
 
-  @tailrec
-  private def addPassedCourse(groupResult: AuditGroupResult, course: Course): Unit = {
-    if null != groupResult then
-      groupResult.auditStat.addPassed(course, groupResult.planResult.std.level)
-      groupResult.parent match {
-        case None =>
-          groupResult.planResult.auditStat.addPassed(course, groupResult.planResult.std.level)
-        case Some(p) => addPassedCourse(p, course)
-      }
-  }
-
-  @tailrec
-  private def addTakingCourse(groupResult: AuditGroupResult, course: Course): Unit = {
-    if null != groupResult then
-      groupResult.auditStat.addTaking(course, groupResult.planResult.std.level)
-      groupResult.parent match {
-        case None =>
-          groupResult.planResult.auditStat.addTaking(course, groupResult.planResult.std.level)
-        case Some(p) => addTakingCourse(p, course)
-      }
+  private def addCourse(gr: AuditGroupResult, course: Course, level: AuditCourseLevel): Unit = {
+    val eduLevel = gr.planResult.std.level
+    val credits = course.getCredits(eduLevel)
+    level match
+      case AuditCourseLevel.Passed => gr.passedCourses.add(course)
+      case AuditCourseLevel.Predicted => gr.predictedCourses.add(course)
+      case AuditCourseLevel.Taking => gr.takingCourses.add(course)
+    //防止多个子组有相同课程，通过学分重复累计
+    gr.parent foreach { p => addCourse(p, course, level) }
   }
 
   def addChild(gr: AuditGroupResult): Unit = {
@@ -149,7 +127,71 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
     this.children -= gr
   }
 
-  def checkPassed(isRecursive: Boolean): Unit = {
-    AuditGroupResult.checkPassed(this, isRecursive)
+  /** 计算子节点和自身的学分以及完成状态
+   */
+  def stat(): Unit = {
+    var sonPassed = true
+    var sonOwedCredits: Float = 0f
+    var sonOwedCredits2: Float = 0f
+    var sonOwedCredits3: Float = 0f
+    var childOwedList = Collections.newBuffer[AuditGroupResult]
+    var childOwedList2 = Collections.newBuffer[AuditGroupResult]
+    var childOwedList3 = Collections.newBuffer[AuditGroupResult]
+    if (this.children.nonEmpty) {
+      //每个子节点也进行统计
+      this.children.foreach(_.stat())
+      val requiredNum = if (this.subCount >= 0) this.subCount else this.children.size.toShort
+      var passedCnt = 0
+      for (childResult <- this.children) {
+        if childResult.passed then passedCnt += 1
+        //不管是否完成，都要登记，以备按照欠分排序
+        if (requiredNum > 0 && childResult.requiredCredits > 0) { //忽略没有完成的组
+          childOwedList.addOne(childResult)
+          childOwedList2.addOne(childResult)
+          childOwedList3.addOne(childResult)
+        }
+      }
+      //取欠分最小的前requiredNum个组
+      childOwedList = childOwedList.sortBy(_.owedCredits).take(requiredNum)
+      childOwedList2 = childOwedList2.sortBy(_.owedCredits2).take(requiredNum)
+      childOwedList3 = childOwedList3.sortBy(_.owedCredits3).take(requiredNum)
+      sonPassed = passedCnt >= requiredNum
+
+      sonOwedCredits = childOwedList.map(_.owedCredits).sum
+      sonOwedCredits2 = childOwedList2.map(_.owedCredits2).sum
+      sonOwedCredits3 = childOwedList3.map(_.owedCredits3).sum
+    }
+
+    //统计完成学分
+    val eduLevel = this.planResult.std.level
+    this.passedCredits = passedCourses.toSeq.map(_.getCredits(eduLevel)).sum //must toseq
+    val passedCredits2 = predictedCourses.toSeq.map(_.getCredits(eduLevel)).sum
+    val passedCredits3 = takingCourses.toSeq.map(_.getCredits(eduLevel)).sum
+
+    //计算必修部分(compulsory part)的欠分、欠分2
+    val cp = courseResults.filter(_.compulsory)
+    val cpOwedCredits = cp.filter(!_.passed).map(_.course.getCredits(eduLevel)).sum
+    val cpOwedCredits2 = cp.filter(x => !x.passed && !x.predicted).map(_.course.getCredits(eduLevel)).sum
+    val cpOwedCredits3 = cp.filter(x => !x.passed && !x.predicted && !x.taking).map(_.course.getCredits(eduLevel)).sum
+
+    //计算剩余的欠分
+    val totalOwed = requiredCredits - convertedCredits - (cpOwedCredits + sonOwedCredits + passedCredits)
+    val totalOwed2 = requiredCredits - convertedCredits - (cpOwedCredits2 + sonOwedCredits2 + passedCredits + passedCredits2)
+    val totalOwed3 = requiredCredits - convertedCredits - (cpOwedCredits3 + sonOwedCredits3 + passedCredits + passedCredits2 + passedCredits3)
+
+    this.owedCredits = cpOwedCredits + sonOwedCredits + (if (totalOwed < 0) 0 else totalOwed)
+    this.owedCredits2 = cpOwedCredits2 + sonOwedCredits2 + (if (totalOwed2 < 0) 0 else totalOwed2)
+    this.owedCredits3 = cpOwedCredits3 + sonOwedCredits3 + (if (totalOwed3 < 0) 0 else totalOwed3)
+    this.passed = sonPassed && this.owedCredits <= 0
   }
+
+  /** 未完成的组
+   *
+   * @return
+   */
+  def neededGroups: Int = {
+    subCount - children.count(_.passed)
+  }
+
+  def predicted: Boolean = owedCredits2 <= 0
 }

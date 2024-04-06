@@ -36,13 +36,11 @@ class CertExemptSetting extends LongId with Remark {
   var config: CertExemptConfig = _
   /** 证书类型 */
   var certificate: Certificate = _
-  /** 证书内课程 */
-  var subjects: Option[String] = None
 
   /** 是否需要学院审核 */
   var collegeReviewRequired: Boolean = _
   /** 审核部门 */
-  var auditDepart: Department = _
+  var auditDepart: Option[Department] = None
 
   /** 有效期长度，以月为单位 */
   var validMonths: Option[Int] = None

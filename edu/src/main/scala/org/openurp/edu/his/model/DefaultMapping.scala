@@ -26,7 +26,7 @@ class DefaultMapping extends MappingModule {
 
     defaultIdGenerator(classOf[Long], IdGenerator.Assigned)
 
-    bind[ArchivedByYear].declare{e=>
+    bind[ArchivedByYear].declare { e =>
       e.schoolYear is partitionKey
     }
 
@@ -70,6 +70,8 @@ class DefaultMapping extends MappingModule {
       index("", false, e.clazz)
       index("", false, e.examRoom)
     }
+
+    bind[HisCourseProfile]
   }
 
 }

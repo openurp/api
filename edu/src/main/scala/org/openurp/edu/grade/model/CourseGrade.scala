@@ -18,6 +18,7 @@
 package org.openurp.edu.grade.model
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.Objects
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.Course
@@ -81,6 +82,14 @@ class CourseGrade extends LongId, ProjectBased, Grade, Remark {
 
   def credits: Float = {
     if null == std || null == course then 0f else course.getCredits(std.level)
+  }
+
+  // 同一个学生，同一门课程，成绩好的放前面
+  override def compare(grade: Grade): Int = {
+    Objects.compareBuilder
+      .add(this.std.id, grade.std.id)
+      .add(this.course.id, grade.asInstanceOf[CourseGrade].course.id)
+      .add(grade.score.orNull, this.score.orNull).build()
   }
 
   /**
@@ -154,6 +163,7 @@ class CourseGrade extends LongId, ProjectBased, Grade, Remark {
         this.gaGrades.addOne(ga)
         ga
     }
+
   }
 
   /**

@@ -18,14 +18,14 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Named, Updated}
 import org.openurp.base.model.Project
 
 import java.time.LocalDate
 
 /** 假日课程调整
  */
-class Holiday extends LongId, Updated {
+class Holiday extends LongId, Updated, Named {
 
   var project: Project = _
 

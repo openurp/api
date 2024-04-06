@@ -23,6 +23,7 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.EducationResult
 
+import java.time.Instant
 import scala.collection.mutable
 
 /**
@@ -42,15 +43,6 @@ class GraduateResult extends LongId with Updated {
   /** 毕业审核详细结果 */
   var items: mutable.Buffer[GraduateAuditItem] = Collections.newBuffer[GraduateAuditItem]
 
-  /** 获得学分 */
-  var acquiredCredits: Float = _
-
-  /** 要求学分 */
-  var requiredCredits: Float = _
-
-  /** 修读学分 */
-  var electedCredits: Float = _
-
   /** 是否通过毕业审核 */
   var passed: Option[Boolean] = None
 
@@ -65,4 +57,12 @@ class GraduateResult extends LongId with Updated {
 
   /** 毕结业情况 */
   var educationResult: Option[EducationResult] = None
+
+  def this(std: Student, batch: GraduateBatch) = {
+    this()
+    this.batch = batch
+    this.std = std
+    this.updatedAt = Instant.now
+    this.batchNo = 1
+  }
 }

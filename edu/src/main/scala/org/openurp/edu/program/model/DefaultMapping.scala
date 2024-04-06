@@ -157,5 +157,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ExemptCourse]
+
+    bind[ExemptCourseType]
   }
 }

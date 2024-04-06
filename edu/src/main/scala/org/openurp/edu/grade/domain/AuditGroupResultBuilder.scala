@@ -17,14 +17,25 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.edu.grade.model.AuditPlanResult
+import org.openurp.edu.grade.model.AuditGroupResult
+import org.openurp.edu.program.model.CourseGroup
 
-trait PlanAuditor {
+trait AuditGroupResultBuilder {
 
-  /**
-   * 即时审核一个学生，结果不保存<br>
-   * context 中得设置好standard, coursePlan
-   */
-  def audit(context: AuditPlanContext): AuditPlanResult
+  def buildResult(context: AuditPlanContext, group: CourseGroup): AuditGroupResult
+}
 
+object DefaultAuditGroupResultBuilder extends AuditGroupResultBuilder {
+
+  def buildResult(context: AuditPlanContext, group: CourseGroup): AuditGroupResult = {
+    val result = new AuditGroupResult()
+    val creditsRequired = group.credits
+    result.requiredCredits = creditsRequired
+    result.courseType = group.courseType
+    result.name = group.name
+    result.subCount = Math.min(group.subCount, group.children.size).toShort
+    result.indexno = group.indexno
+    result.planResult = context.result
+    result
+  }
 }

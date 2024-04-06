@@ -15,39 +15,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
+package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.*
-import org.openurp.base.hr.model.Teacher
-import org.openurp.base.model.{Department, ProjectBased}
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.model.EduLevelBased
+import org.openurp.base.std.model.{Grade, Student}
+import org.openurp.code.edu.model.CourseType
+import org.openurp.code.std.model.StdType
 
-/** 课程群组
+import scala.collection.mutable
+
+/** 免修课程类别
  */
-class Curriculum extends LongId, ProjectBased, Updated, Coded, TemporalOn, Named, Remark {
-
-  /** 课程英文名 */
-  var enName: Option[String] = None
-
-  /** 院系 */
-  var department: Department = _
-
-  /** 教研室 */
-  var office: Option[TeachingOffice] = None
-
-  /** 负责人 */
-  var director: Option[Teacher] = None
-
-  /** 教师 */
-  var teachers = Collections.newSet[Teacher]
-
-  /** 课程 */
-  var courses = Collections.newBuffer[Course]
-
-  /** 课程数量 */
-  var courseCount: Int = _
-
-  /** 教师数量 */
-  var teacherCount: Int = _
+class ExemptCourseType extends LongId, EduLevelBased, Updated, Remark {
+  /** 起始年级 */
+  var fromGrade: Grade = _
+  /** 截止年级 */
+  var toGrade: Option[Grade] = None
+  /** 免修课程类别 */
+  var courseType: CourseType = _
+  /** 针对学生类别 */
+  var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]
+  /** 针对的学生 */
+  var stds: mutable.Set[Student] = Collections.newSet[Student]
 }

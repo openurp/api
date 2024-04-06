@@ -17,66 +17,50 @@
 
 package org.openurp.edu.grade.domain
 
-import org.beangle.commons.bean.orderings.MultiPropertyOrdering
+import org.beangle.commons.bean.orderings.PropertyOrdering
 import org.beangle.commons.collection.Collections
 import org.openurp.base.edu.model.Course
 import org.openurp.edu.grade.model.CourseGrade
-import org.openurp.edu.grade.model.CourseGrade
 
-class StdGrade(val grades: collection.Seq[CourseGrade]) {
+object StdGrade {
+  def filterGrades(grades: collection.Seq[CourseGrade]): Map[Course, CourseGrade] = {
+    grades.sorted(PropertyOrdering.by("course,score desc")).groupBy(g => g.course) map { case (c, glist) =>
+      if (glist.head.passed) (c, glist.head)
+      else (c, glist.find(_.passed).getOrElse(glist.head))
+    }
+  }
+}
 
-  private val gradeMap = grades.sorted(new MultiPropertyOrdering("course,score desc")).groupBy(g => g.course)
+class StdGrade(grades: collection.Seq[CourseGrade]) {
 
-  private val usedCourses = Collections.newSet[Course]
+  private val gradeMap = StdGrade.filterGrades(grades)
 
-  private val noGradeCourses = Collections.newSet[Course]
+  private val used = Collections.newSet[Course]
 
-  /**
-   * 查询课程对应的成绩，不会被标记为usedCourses
-   *
+  /** 查询课程对应的成绩，不会被标记为usedCourses
    */
-  def getGrades(course: Course): collection.Seq[CourseGrade] = {
-    if (noGradeCourses.contains(course)) return List.empty
-    gradeMap.get(course).getOrElse(List.empty)
+  def getGrade(course: Course): Option[CourseGrade] = {
+    if used.contains(course) then None else gradeMap.get(course)
   }
 
-  /**
-   * 使用课程课程拿成绩之后，会被标记为usedCourses
+  def hasGrade(course: Course): Boolean = {
+    if used.contains(course) then false else gradeMap.contains(course)
+  }
+
+  /** 使用课程课程拿成绩之后，会被标记为usedCourses
    */
-  def useGrades(course: Course): collection.Seq[CourseGrade] = {
-    if (noGradeCourses.contains(course)) {
-      List.empty
+  def useGrade(course: Course): Option[CourseGrade] = {
+    if (used.contains(course)) {
+      None
     } else {
-      usedCourses += course
-      gradeMap.get(course) match {
-        case None => List.empty
-        case Some(l) => l.toList
-      }
+      used += course
+      gradeMap.get(course)
     }
   }
 
-  /**
-   * 拿到还未使用过的课程
-   *
+  /** 拿到还未使用过的课程
    */
   def restCourses: Set[Course] = {
-    gradeMap.keySet -- usedCourses
-  }
-
-  /**
-   * 获得一个课程的成绩，并且会标记该课程已被使用过
-   *
-   */
-  def addNoGradeCourse(course: Course): Unit = {
-    noGradeCourses += course
-  }
-
-  /**
-   * 返回每个课程是否通过
-   */
-  def getCoursePassedMap: Map[Long, Boolean] = {
-    gradeMap.map {
-      case (k, l) => k.id -> l.exists(_.passed)
-    }
+    gradeMap.keySet -- used
   }
 }

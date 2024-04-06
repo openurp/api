@@ -48,6 +48,7 @@ SharePlan.education=培养层次
 
 SharePlanCourse=公共共享课程组课程
 SharePlanCourse.terms=学期
+SharePlanCourse.compulsory=是否必修
 
 StdCourseGroup=学生共享课程组
 
@@ -73,6 +74,7 @@ AbstractCourseGroup.indexno=索引号
 AbstractCourseGroup.autoAddup=自动累加学分
 AbstractCourseGroup.terms=开课学期
 AbstractCourseGroup.givenName=别名
+AbstractCourseGroup.allowUnplanned=是否允许计划外课程
 
 AbstractCoursePlan=抽象课程方案
 AbstractCoursePlan.groups=课程组
@@ -131,4 +133,9 @@ TermCampus.terms=学期
 ExemptCourse=免修课程
 ExemptCourse.fromGrade=起始年级
 ExemptCourse.toGrade=结束年级
-ExemptCourse.stdTypes=适用学生类别范围
+ExemptCourse.stdTypes=免修课程-适用学生类别范围
+ExemptCourse.stds=免修课程-适用学生
+
+ExemptCourseType=免修课程类别
+ExemptCourseType.stdTypes=免息课程类别-学生类别
+ExemptCourseType.stds=免息课程类别-特殊学生

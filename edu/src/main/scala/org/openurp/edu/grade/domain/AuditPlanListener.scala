@@ -17,19 +17,27 @@
 
 package org.openurp.edu.grade.domain
 
-import org.beangle.commons.collection.Collections
-import org.openurp.base.std.model.Student
-import org.openurp.edu.grade.model.AuditPlanResult
-import org.openurp.edu.program.model.CoursePlan
+import org.openurp.edu.grade.model.AuditGroupResult
+import org.openurp.edu.program.model.CourseGroup
 
-class PlanAuditContext(val std: Student, val coursePlan: CoursePlan, val stdGrade: StdGrade, val listeners: collection.Seq[PlanAuditListener]) {
+trait AuditPlanListener {
 
-  var result: AuditPlanResult = _
+  /**
+   * 开始审核计划
+   *
+   * @return false 表示不能继续审核
+   */
+  def start(context: AuditPlanContext): Unit = {}
 
-  val params = Collections.newMap[String, Any]
+  /**
+   * 开始审核课程组
+   *
+   * @return false 表示不能继续审核
+   */
+  def startGroup(context: AuditPlanContext, courseGroup: CourseGroup, groupResult: AuditGroupResult): Boolean = true
 
-  def getParam[T](paramName: String, clazz: Class[T]): T = {
-    params.get(paramName).orNull.asInstanceOf[T]
-  }
-
+  /**
+   * 结束审核计划
+   */
+  def end(context: AuditPlanContext): Unit = {}
 }

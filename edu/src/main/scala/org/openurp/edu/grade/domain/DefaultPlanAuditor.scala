@@ -17,77 +17,125 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.edu.grade.model.{AuditStat, AuditCourseResult, AuditGroupResult, AuditPlanResult}
+import org.beangle.commons.collection.Collections
+import org.openurp.edu.grade.model.*
 import org.openurp.edu.program.model.CourseGroup
 
 import java.time.Instant
 
 class DefaultPlanAuditor extends PlanAuditor {
 
-  def audit(context: PlanAuditContext): AuditPlanResult = {
-    val planAuditResult = new AuditPlanResult(context.std)
-    planAuditResult.passed = false
-    planAuditResult.remark = null
-    planAuditResult.updatedAt = Instant.now
-    planAuditResult.auditStat = new AuditStat()
-    context.result = planAuditResult
+  def audit(context: AuditPlanContext): AuditPlanResult = {
+    val apr = new AuditPlanResult(context.std)
+    apr.passed = false
+    apr.remark = null
+    apr.updatedAt = Instant.now
+    context.result = apr
     val plan = context.coursePlan
     if (null == plan || null == context.stdGrade) {
       return context.result
     }
 
-    if (context.listeners.exists(!_.start(context))) {
-      return planAuditResult
-    }
-
-    val courseGroupAdapter = new CourseGroupAdapter(context.coursePlan)
-    val groupResultAdapter = new GroupResultAdapter(planAuditResult)
     val creditsRequired = context.coursePlan.credits
-    planAuditResult.auditStat.requiredCredits = creditsRequired
-    var numRequired = 0
-    for (group <- context.coursePlan.groups if group.parent == null) {
-      numRequired += group.courseCount
+    apr.requiredCredits = creditsRequired
+    plan.topGroups foreach { g =>
+      val topResult = DefaultAuditGroupResultBuilder.buildResult(context, g)
+      apr.addGroupResult(topResult)
+      initResult(context, g, topResult)
     }
-    planAuditResult.auditStat.requiredCount = numRequired.toShort
-    auditGroup(context, courseGroupAdapter, groupResultAdapter)
-    for (listener <- context.listeners) {
-      listener.end(context)
-    }
+    apr.buildGroupCache() //注册所有的组
+    context.listeners.foreach(_.start(context))
+    plan.topGroups foreach (g => auditGroup(context, g, apr.getGroupResult(g.name).get))
+    context.listeners.foreach(_.end(context))
+    apr.stat()
     context.coursePlan.program.offsetType foreach { offsetType =>
-      context.result.getGroupResult(offsetType) foreach { lastTarget =>
-        if (lastTarget.auditStat.passedCredits == 0 && lastTarget.auditStat.requiredCredits == 0 &&
-          lastTarget.courseResults.isEmpty) {
-          context.result.removeGroupResult(lastTarget)
-        }
+      apr.getGroupResult(offsetType.name) foreach { lastTarget =>
+        processConvertCredits(lastTarget, apr)
+        if lastTarget.passedCredits == 0 && lastTarget.requiredCredits == 0 && lastTarget.courseResults.isEmpty then
+          apr.removeGroupResult(lastTarget)
       }
     }
-    planAuditResult
+    cleanupElectiveCourses(apr)
+    apr
   }
 
-  private def auditGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupAuditResult: AuditGroupResult): Unit = {
-    val planAuditResult = context.result
+  private def initResult(context: AuditPlanContext, courseGroup: CourseGroup, gr: AuditGroupResult): Unit = {
+    val result = context.result
     courseGroup.children foreach { child =>
-      val childResult = DefaultGroupResultBuilder.buildResult(context, child)
-      groupAuditResult.addChild(childResult)
-      planAuditResult.addGroupResult(childResult)
+      val childResult = DefaultAuditGroupResultBuilder.buildResult(context, child)
+      gr.addChild(childResult)
+      result.addGroupResult(childResult)
+      initResult(context, child, childResult)
+    }
+  }
+
+  private def auditGroup(context: AuditPlanContext, courseGroup: CourseGroup, gr: AuditGroupResult): Unit = {
+    val result = context.result
+    //先组内课程，然后再审核审核子组
+    courseGroup.planCourses foreach { pc =>
+      val cr = new AuditCourseResult(pc)
+      val courseGrades = context.stdGrade.useGrade(pc.course)
+      //不要过滤计划内的课程，对于选修组内的选修课，无成绩的情况下，事后在删除
+      cr.updatePassed(courseGrades)
+      gr.addCourseResult(cr)
+    }
+
+    courseGroup.children foreach { child =>
+      val childResult = context.result.getGroupResult(child.name).get
       if (context.listeners.exists(!_.startGroup(context, child, childResult))) {
-        planAuditResult.auditStat.reduceRequired(childResult.auditStat.requiredCredits, childResult.auditStat.requiredCount)
-        groupAuditResult.removeChild(childResult)
-        planAuditResult.removeGroupResult(childResult)
+        result.reduceRequired(childResult.requiredCredits)
+        gr.removeChild(childResult)
+        result.removeGroupResult(childResult)
+        result.buildGroupCache()
       } else {
         auditGroup(context, child, childResult)
       }
     }
-
-    courseGroup.planCourses foreach { planCourse =>
-      val planCourseAuditResult = new AuditCourseResult(planCourse)
-      val courseGrades = context.stdGrade.useGrades(planCourse.course)
-      if (courseGrades.nonEmpty || planCourse.compulsory) {
-        planCourseAuditResult.checkPassed(courseGrades)
-        groupAuditResult.addCourseResult(planCourseAuditResult)
-      }
-    }
-    groupAuditResult.checkPassed(false)
   }
 
+  /** 将其他组多出的学分转移到最后的【公选课】上
+   *
+   * @param target
+   * @param result
+   */
+  protected def processConvertCredits(target: AuditGroupResult, result: AuditPlanResult): Unit = {
+    val parents = Collections.newSet[AuditGroupResult] // 从当前节点查找祖先
+    val sibling = Collections.newSet[AuditGroupResult] // 同一级别的兄弟节点
+    var start = target.parent.orNull
+    while (null != start && !parents.contains(start)) {
+      parents.add(start)
+      start = start.parent.orNull
+    }
+    target.parent foreach { p =>
+      sibling ++= p.children
+      sibling.remove(target)
+    }
+    var otherConverted = 0f
+    var siblingConverted = 0f
+    for (gr <- result.groupResults) {
+      // 自己和父节点过滤掉
+      if (gr != target && !parents.contains(gr)) {
+        if (sibling.contains(gr)) {
+          siblingConverted += (if gr.passed then gr.passedCredits - gr.requiredCredits else 0f)
+        } else if (gr.parent.isEmpty) {
+          otherConverted += (if gr.passed then gr.passedCredits - gr.requiredCredits else 0f)
+        }
+      }
+    }
+    target.convertedCredits = otherConverted + siblingConverted
+    for (r <- parents) r.convertedCredits = otherConverted
+    target.stat()
+    result.stat(false)
+  }
+
+  /** 清除空的不及格的选修课
+   *
+   * @param result
+   */
+  def cleanupElectiveCourses(result: AuditPlanResult): Unit = {
+    for (gr <- result.groupResults; if gr.courseType.optional || gr.passed) {
+      val empties = gr.courseResults filter (x => !x.compulsory && !x.passed && !x.predicted && !x.taking && !x.hasGrade)
+      gr.courseResults.subtractAll(empties)
+    }
+  }
 }

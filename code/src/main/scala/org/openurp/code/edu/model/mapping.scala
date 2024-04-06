@@ -63,19 +63,28 @@ class DefaultMapping extends MappingModule {
     bind[TeachingSection]
 
     bind[CertificateCategory]
-    bind[Certificate]
+    bind[Certificate] declare { e =>
+      e.subjects is length(500)
+    }
     bind[ClazzTag]
     bind[BookType]
     bind[BookAwardType]
     bind[CourseType]
     bind[CourseCategory]
     bind[CourseAbilityRate]
+    bind[CourseAbilitySubject]
     bind[EducationType]
     bind[ExamDeferReason]
     bind[CourseModule]
     bind[CourseRank]
     bind[SyllabusTopicLabel]
+    bind[GraduateObjective]
 
+    bind[CourseAwardType]
+    bind[CourseAwardCategory]
+    bind[CourseGeneralType].declare { e =>
+      e.children is depends("parent")
+    }
     all.cacheAll()
   }
 }

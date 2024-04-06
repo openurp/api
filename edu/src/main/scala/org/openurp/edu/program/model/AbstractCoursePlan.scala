@@ -18,9 +18,10 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{DateRange, Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.edu.model.Course
 import org.openurp.base.model.AuditStatus
-import org.openurp.code.edu.model.CourseType
+import org.openurp.code.edu.model.{CourseType, EducationLevel}
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
@@ -53,6 +54,8 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Remark
 
   def terms: Short = (endTerm - startTerm + 1).asInstanceOf[Short]
 
+  def level: EducationLevel = program.level
+
   def addGroup(group: CourseGroup): Unit = {
     groups += group
   }
@@ -63,7 +66,15 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Remark
     res
   }
 
-  override def getGroup(courseType: CourseType): Option[CourseGroup] = {
-    groups.find(_.courseType == courseType)
+  override def getGroup(courseType: CourseType): Seq[CourseGroup] = {
+    groups.filter(_.courseType == courseType).toSeq
+  }
+
+  override def getGroup(name: String): Option[CourseGroup] = {
+    groups.find(_.name == name)
+  }
+
+  override def getGroup(course: Course): Option[CourseGroup] = {
+    groups.find(_.planCourses.exists(_.course == course))
   }
 }

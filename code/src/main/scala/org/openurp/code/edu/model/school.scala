@@ -18,6 +18,7 @@
 package org.openurp.code.edu.model
 
 import org.beangle.data.model.annotation.code
+import org.beangle.data.model.pojo.Hierarchical
 import org.openurp.code.CodeBean
 
 /** 校外考试证书 */
@@ -26,6 +27,8 @@ class Certificate extends CodeBean {
   var category: CertificateCategory = _
   var institutionCode: Option[String] = None
   var institutionName: Option[String] = None
+  /** 证书内课程 */
+  var subjects: Option[String] = None
 }
 
 /**
@@ -107,7 +110,14 @@ class CourseCategory extends CodeBean
 @code("school")
 class CourseAbilityRate extends CodeBean {
   var rate: Int = _
+  var subject: CourseAbilitySubject = _
 }
+
+/**
+ * 课程能力等级分类
+ */
+@code("school")
+class CourseAbilitySubject extends CodeBean
 
 /** 培养类型 */
 @code("school")
@@ -142,9 +152,30 @@ class TeachingMethod extends CodeBean
 @code("school")
 class TeachingSection extends CodeBean
 
-
 /** 教学主题其他元素的类型
  * 教学目的与要求，复习与作业要求，考核要点，辅助教学活动等
  */
 @code("school")
 class SyllabusTopicLabel extends CodeBean
+
+/** 毕业目标和要求
+ */
+@code("school")
+class GraduateObjective extends CodeBean
+
+/** 课程获奖类型
+ */
+@code("school")
+class CourseAwardType extends CodeBean {
+  var category: CourseAwardCategory = _
+}
+
+/** 课程获奖分类
+ */
+class CourseAwardCategory extends CodeBean
+
+/** 课程通用分类
+ */
+class CourseGeneralType extends CodeBean, Hierarchical[CourseGeneralType] {
+  var color: Option[String] = None
+}

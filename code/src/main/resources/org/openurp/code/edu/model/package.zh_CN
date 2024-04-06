@@ -71,6 +71,7 @@ Certificate=校外证书
 Certificate.category=证书类型
 Certificate.institutionCode=教育机构代码
 Certificate.institutionName=教育机构名称
+Certificate.subjects=证书内课程
 
 CertificateCategory=校外证书类型
 BookType=教材类型
@@ -108,3 +109,10 @@ TeachingSection=教学环节
 TeachingForm=教学形式
 CourseRank=课程属性
 CourseModule=课程模块
+
+CourseAwardType=课程获奖类型
+GraduateObjective=毕业要求
+CourseGeneralType=课程通用分类
+CourseGeneralType.color=分类颜色
+CourseAwardCategory=课程获奖分类
+CourseAbilitySubject=课程能力等级分类

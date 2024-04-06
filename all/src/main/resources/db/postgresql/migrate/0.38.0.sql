@@ -1,6 +1,45 @@
 insert into base.versions(id,version,updated_at,description)
 values(next_id('base.versions'),'0.38.0',now(),'增加教学大纲和督导听课');
 
+--audit results
+alter table edu.course_audit_results rename to audit_course_results;
+alter table edu.group_audit_results rename to audit_group_results;
+alter table edu.plan_audit_results rename to audit_plan_results;
+
+alter table edu.audit_course_results add taking bool default false;
+alter table edu.audit_course_results add predicted bool default false;
+alter table edu.audit_course_results add has_grade bool default false;
+alter table edu.audit_course_results add passed_way int4;
+
+update edu.audit_course_results set predicted=passed;
+update edu.audit_course_results set scores='--' where scores is null;
+alter table edu.audit_course_results alter column scores set not null;
+update edu.audit_course_results set has_grade=true where length(scores)>0 and scores<>'--';
+update edu.audit_course_results cr set has_grade=true where has_grade=false
+and exists(select * from edu.audit_group_results gr,edu.audit_plan_results pr ,edu.course_grades cg
+		  where cr.group_result_id=gr.id and gr.plan_result_id=pr.id and pr.std_id=cg.std_id and cr.course_id=cg.course_id);
+
+alter table  edu.audit_plan_results drop column required_count;
+alter table  edu.audit_plan_results drop column passed_count;
+alter table  edu.audit_plan_results drop column converted_credits;
+alter table  edu.audit_group_results drop column required_count;
+alter table  edu.audit_group_results drop column passed_count;
+
+alter table  edu.audit_plan_results add owed_credits float default 0;
+alter table  edu.audit_plan_results add owed_credits2 float default 0;
+alter table  edu.audit_plan_results add owed_credits3 float default 0;
+alter table  edu.audit_group_results add owed_credits float default 0;
+alter table  edu.audit_group_results add owed_credits2 float default 0;
+alter table  edu.audit_group_results add owed_credits3 float default 0;
+
+alter table edu.audit_plan_results add predicted bool default false;
+update edu.audit_plan_results  set predicted=passed;
+--program
+alter table edu.share_plan_courses add compulsory bool default false;
+update  edu.share_plan_courses set compulsory=false where compulsory is null;
+alter table edu.share_plan_courses alter compulsory set not null;
+
+
 --course
 alter table base.courses drop column cluster_id;
 alter table base.courses add column curriculum_id bigint;
@@ -12,6 +51,11 @@ alter table base.course_hours rename column teaching_nature_id to nature_id;
 drop table base.courses_grading_modes;
 drop table base.course_clusters;
 drop table base.courses_prerequisites;
+--program
+alter table edu.major_course_groups add allow_unplanned bool default false;
+alter table edu.execution_course_groups add allow_unplanned bool default false;
+alter table edu.std_course_groups add allow_unplanned bool default false;
+create table edu.exempt_courses_stds (exempt_course_id bigint not null, student_id bigint not null);
 
 --syllabus_files
 alter table edu.syllabus_files rename to syllabus_docs;
@@ -63,5 +107,3 @@ alter table base.calendar_stages add start_week int4 default 1;
 alter table base.calendar_stages add end_week int4 default 16;
 alter table base.calendar_stages add en_name varchar(40);
 
-teachers
-office_id

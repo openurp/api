@@ -65,13 +65,9 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
 
   /**
    * 要求完成组数
+   * 默认是全部子组
    */
-  var subCount: Short = _
-
-  /**
-   * 要求门数
-   */
-  var courseCount: Short = _
+  var subCount: Short = -1
 
   /**
    * 学期学分分布
@@ -80,6 +76,9 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
 
   /** 自动累加学分 */
   var autoAddup: Boolean = _
+
+  /** 选修课时，是否允许计划外课程 */
+  var allowUnplanned: Boolean = _
 
   /** 开课学期 */
   var terms: Terms = Terms.empty

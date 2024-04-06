@@ -78,3 +78,16 @@ HisGaGrade.passed=是否通过
 HisGaGrade.operator=操作者
 HisGaGrade.gp=绩点
 HisGaGrade.delta=加减修正分
+
+HisCourseProfile=历史课程简介
+HisCourseProfile.description=简介
+HisCourseProfile.enDescription=英文简介
+HisCourseProfile.prerequisites=先修课程
+HisCourseProfile.majors=适用专业
+HisCourseProfile.textbooks=教材和参考书目
+HisCourseProfile.materials=辅助资料
+HisCourseProfile.website=课程网站
+HisCourseProfile.bibliography=参考书目
+HisCourseProfile.status=状态
+HisCourseProfile.auditAt=审核时间
+HisCourseProfile.auditor=审核人

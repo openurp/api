@@ -17,7 +17,7 @@
 
 package org.openurp.edu.program.domain
 
-import org.beangle.data.dao.EntityDao
+import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 import org.openurp.edu.program.model.*
@@ -50,7 +50,7 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
   /**
    * 获得单个学生的个人计划
    */
-  def getStdPlan(student: Student): Option[StdPlan] = {
+  override def getStdPlan(student: Student): Option[StdPlan] = {
     entityDao.findBy(classOf[StdPlan], "std", List(student)).headOption
   }
 
@@ -60,7 +60,7 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
    * @param std
    * @return
    */
-  def getCoursePlan(std: Student): Option[CoursePlan] = {
+  override def getCoursePlan(std: Student): Option[CoursePlan] = {
     getStdPlan(std) match {
       case Some(stdPlan) => Some(stdPlan)
       case None =>
@@ -70,6 +70,15 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
           case None => None
         }
     }
+  }
+
+  override def getSharePlan(std: Student): Option[SharePlan] = {
+    val query = OqlBuilder.from(classOf[SharePlan], "sp")
+    query.where("sp.project=:project", std.project)
+    query.where("sp.level=:level and sp.eduType =:eduType", std.level, std.eduType)
+    query.where(":grade between sp.fromGrade.code and sp.toGrade.code", std.state.get.grade.code)
+    query.cacheable()
+    entityDao.search(query).headOption
   }
 
   private def getMajorPlan(p: Program): Option[MajorPlan] = {

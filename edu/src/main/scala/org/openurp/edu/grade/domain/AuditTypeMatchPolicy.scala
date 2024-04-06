@@ -17,10 +17,29 @@
 
 package org.openurp.edu.grade.domain
 
-import org.openurp.edu.grade.model.AuditGroupResult
 import org.openurp.edu.program.model.CourseGroup
 
-trait GroupResultBuilder {
+/**
+ * 课程审核到组时，某个组是否接受按照课程类型匹配的策略
+ */
+trait AuditTypeMatchPolicy {
 
-  def buildResult(context: PlanAuditContext, group: CourseGroup): AuditGroupResult
+  def allowMatchType(g: CourseGroup): Boolean
+}
+
+object DefaultAuditTypeMatchPolicy extends AuditTypeMatchPolicy {
+
+  override def allowMatchType(g: CourseGroup): Boolean = {
+    if null == g then true
+    else if g.courseType.optional then
+      //没有子组且没有课程
+      if g.children.isEmpty && g.planCourses.isEmpty then true
+      else if g.allowUnplanned then
+        true
+      else
+        val level = g.plan.level
+        //没有子组且学分超过直接课程学分之和
+        g.children.isEmpty && g.credits > g.planCourses.map(_.course.getCredits(level)).sum
+    else false
+  }
 }

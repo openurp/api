@@ -15,23 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.grade.domain
+package org.openurp.edu.grade.model
 
-import org.openurp.edu.grade.model.AuditGroupResult
-import org.openurp.edu.program.model.CourseGroup
-
-object DefaultGroupResultBuilder extends GroupResultBuilder {
-
-  def buildResult(context: PlanAuditContext, group: CourseGroup): AuditGroupResult = {
-    val result = new AuditGroupResult()
-    var creditsRequired = group.credits
-    result.auditStat.requiredCredits = creditsRequired
-    result.auditStat.requiredCount = group.courseCount
-    result.courseType = group.courseType
-    result.name = group.name
-    result.subCount = group.subCount
-    result.indexno = group.indexno
-    result.planResult = context.result
-    result
-  }
+enum AuditCourseLevel {
+  case Passed, Predicted, Taking
 }

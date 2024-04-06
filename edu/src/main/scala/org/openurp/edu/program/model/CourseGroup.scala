@@ -71,11 +71,6 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
   /** 课时比例 */
   def hourRatios: Option[String]
 
-  /**
-   * 获得组内要求门数
-   */
-  def courseCount: Short
-
   /** 组内课程
    *
    * @return
@@ -83,11 +78,13 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
   def planCourses: collection.Seq[PlanCourse]
 
   /** 组内排序课程
+   *
    * @return
    */
   def orderedPlanCourses: collection.Seq[PlanCourse] = {
     this.planCourses.sorted(PlanCourseOrdering)
   }
+
   /**
    * 获得备注.
    */
@@ -106,4 +103,7 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
 
   /** 开课学期 */
   def terms: Terms
+
+  /** 是否开放范围，允许计划外课程进行类型匹配 */
+  def allowUnplanned: Boolean
 }

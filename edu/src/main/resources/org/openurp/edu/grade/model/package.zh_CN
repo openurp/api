@@ -128,16 +128,30 @@ AuditPlanResult.passed=是否通过
 AuditPlanResult.archived=是否归档
 AuditPlanResult.updates=更新内容
 AuditPlanResult.predicted=预计是否通过
+AuditPlanResult.passedCredits=完成学分
+AuditPlanResult.requiredCredits=要求学分
+AuditPlanResult.owedCredits=不足学分
+AuditPlanResult.owedCredits2=预计完成不足学分
+AuditPlanResult.owedCredits3=考虑在读情况下不足学分
 
 AuditGroupResult.subCount=要求完成子组数量
 AuditGroupResult.passed=是否通过
 AuditGroupResult.predicted=预计是否通过
+AuditGroupResult.convertedCredits=转换学分
+AuditGroupResult.passedCredits=完成学分
+AuditGroupResult.requiredCredits=要求学分
+AuditGroupResult.owedCredits=不足学分
+AuditGroupResult.owedCredits2=预计完成不足学分
+AuditGroupResult.owedCredits3=考虑在读情况下不足学分
 
 AuditCourseResult.passed=是否通过
 AuditCourseResult.scores=分数
 AuditCourseResult.compulsory=是否必修
 AuditCourseResult.taking=是否正在修读
 AuditCourseResult.terms=开课学期
+AuditCourseResult.predicted=预计是否通过
+AuditCourseResult.hasGrade=是否有成绩
+AuditCourseResult.passedWay=通过方式
 
 AuditStat=审核学分统计
 AuditStat.requiredCredits=要求学分

@@ -21,7 +21,8 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Course, Terms}
-import org.openurp.edu.program.model.PlanCourse
+import org.openurp.code.edu.model.CourseTakeType
+import org.openurp.edu.program.model.{PlanCourse, SharePlanCourse}
 
 /** 课程审核结果
  */
@@ -48,30 +49,76 @@ class AuditCourseResult extends LongId with Remark {
   /** 是否在读 */
   var taking: Boolean = _
 
-  def checkPassed(grades: collection.Seq[CourseGrade]): Unit = {
-    val sb = new StringBuilder
+  /** 是否预计能通过 */
+  var predicted: Boolean = _
+
+  /** 是否修读过，产生过成绩记录 */
+  var hasGrade: Boolean = _
+
+  /** 若通过，通过的途径 */
+  var passedWay: Option[CoursePassedWay] = None
+
+  def updatePassed(grades: Iterable[CourseGrade]): AuditCourseResult = {
+    hasGrade = false
     if (Collections.isEmpty(grades)) {
       scores = "--"
     } else {
+      hasGrade = true
+      val sb = new StringBuilder
       for (grade <- grades) {
         sb.append(grade.scoreText.getOrElse("--")).append(" ")
         if (!passed) passed = grade.passed
       }
       scores = sb.toString
+      if passed then
+        val isRepeat = grades.head.courseTakeType.id == CourseTakeType.Repeat
+        updatePassedWay(if isRepeat then CoursePassedWay.ByGrade else CoursePassedWay.ByRepeat)
     }
+    this
   }
 
-  def checkPassed(grades: collection.Seq[CourseGrade], substituteGrades: collection.Seq[CourseGrade]): Unit = {
-    checkPassed(grades)
+  def updatePassed(grades: Iterable[CourseGrade], substituteGrades: Iterable[CourseGrade]): AuditCourseResult = {
+    updatePassed(grades)
+    if passed then updatePassedWay(CoursePassedWay.ByGrade)
     if (!passed && substituteGrades.nonEmpty) {
-      passed = substituteGrades.head.passed
+      if substituteGrades.head.passed then
+        updatePassedWay(CoursePassedWay.ByAlternative)
+        val tempStr = new StringBuffer()
+        substituteGrades foreach { grade =>
+          tempStr.append(grade.course.name).append('[').append(grade.course.code).append("],")
+        }
+        if (tempStr.length > 0) tempStr.deleteCharAt(tempStr.length - 1)
+        addRemark(tempStr.toString)
     }
+    this
   }
 
-  def this(planCourse: PlanCourse) = {
+  def updatePassedWay(way: CoursePassedWay): Unit = {
+    this.passed = true
+    this.passedWay = Some(way)
+  }
+
+  def this(course: Course) = {
     this()
-    this.course = planCourse.course
-    this.compulsory = planCourse.compulsory
+    this.course = course
+    this.scores = "--"
   }
 
+  def this(pc: PlanCourse) = {
+    this(pc.course)
+    this.terms = pc.terms
+    this.compulsory = pc.compulsory
+  }
+
+  def this(pc: SharePlanCourse) = {
+    this(pc.course)
+    this.terms = pc.terms
+    this.compulsory = pc.compulsory
+  }
+
+  def addRemark(remark: String): Unit = {
+    this.remark = this.remark match
+      case None => Some(remark)
+      case Some(r) => if r.contains(remark) then Some(r) else Some(r + " " + remark)
+  }
 }

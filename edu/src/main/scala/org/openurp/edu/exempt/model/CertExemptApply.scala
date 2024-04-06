@@ -54,7 +54,7 @@ class CertExemptApply extends LongId with Updated {
   /** 免修课程 */
   var courses: mutable.Set[Course] = Collections.newSet[Course]
   /** 申请理由 */
-  var reasons: String = _
+  var reasons: Option[String] = None
   /** 审核意见 */
   var auditOpinion: Option[String] = None
   /** 成绩单附件路径 */

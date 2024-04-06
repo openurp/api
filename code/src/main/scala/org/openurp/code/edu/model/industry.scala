@@ -365,5 +365,4 @@ enum TeachingNatureCategory(val id: Int, val title: String) {
  * 一般有，必修、选修、限选、任选，其他等
  */
 @code("industry")
-class CourseRank extends CodeBean {
-}
+class CourseRank extends CodeBean

@@ -17,6 +17,7 @@
 
 package org.openurp.edu.program.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.model.{Course, Terms}
@@ -55,6 +56,14 @@ class SharePlan extends LongId with EduLevelBased with Named with Updated with T
 
   def getGroup(courseType: CourseType): Option[ShareCourseGroup] = {
     groups.find(_.courseType == courseType)
+  }
+
+  def course2Types: Map[Course, CourseType] = {
+    val data = Collections.newMap[Course, CourseType]
+    for (group <- groups; pc <- group.planCourses) {
+      data.put(pc.course, group.courseType)
+    }
+    data.toMap
   }
 }
 
@@ -97,19 +106,16 @@ class ShareCourseGroup extends LongId with Hierarchical[ShareCourseGroup] {
  * @author chaostone
  */
 class SharePlanCourse extends LongId with Executable {
-  /**
-   * 课程组
-   */
+  /** 课程组 */
   var group: ShareCourseGroup = _
 
-  /**
-   * 课程
-   */
+  /** 课程 */
   var course: Course = _
 
-  /**
-   * 学期
-   */
+  /** 是否必修 */
+  var compulsory: Boolean = _
+
+  /** 学期 */
   var terms: Terms = _
 
 }

@@ -21,15 +21,12 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.CourseType
 
 import scala.collection.mutable
 
 class AuditPlanResult extends LongId with Updated with Remark {
 
   var std: Student = _
-
-  var auditStat = new AuditStat
 
   var groupResults: mutable.Buffer[AuditGroupResult] = Collections.newBuffer[AuditGroupResult]
 
@@ -39,10 +36,31 @@ class AuditPlanResult extends LongId with Updated with Remark {
   /** 预计是否通过 */
   var predicted: Boolean = _
 
+  /** 要求学分 */
+  var requiredCredits: Float = _
+
+  /** 通过学分 */
+  var passedCredits: Float = _
+
+  /** 欠学分 */
+  var owedCredits: Float = _
+
+  /** 预计通过后所欠学分 */
+  var owedCredits2: Float = _
+
+  /** 在读通过后所欠学分 */
+  var owedCredits3: Float = _
+
   /** 和上次比较的更新内容 */
   var updates: Option[String] = None
 
   var archived: Boolean = false
+
+  @transient private var groupCache: Map[String, AuditGroupResult] = _
+
+  def buildGroupCache(): Unit = {
+    groupCache = groupResults.map(x => x.name -> x).toMap
+  }
 
   def topGroupResults: collection.Seq[AuditGroupResult] = {
     val results = new collection.mutable.ListBuffer[AuditGroupResult]
@@ -62,25 +80,10 @@ class AuditPlanResult extends LongId with Updated with Remark {
     this.groupResults -= rs
   }
 
-  def getGroupResult(typ: CourseType): Option[AuditGroupResult] = {
+  def getGroupResult(name: String): Option[AuditGroupResult] = {
     if null == groupResults then None
-    else
-      var rs: Option[AuditGroupResult] = None
-      for (groupAuditResult <- groupResults; if rs.isEmpty) {
-        rs = findGroupResult(groupAuditResult, typ)
-      }
-      rs
-  }
-
-  private def findGroupResult(groupResult: AuditGroupResult, typ: CourseType): Option[AuditGroupResult] = {
-    if (typ == groupResult.courseType) {
-      return Some(groupResult)
-    }
-    var rs: Option[AuditGroupResult] = None
-    for (childResult <- groupResult.children; if rs.isEmpty) {
-      rs = findGroupResult(childResult, typ)
-    }
-    rs
+    else if (null == groupCache) groupResults.find(_.name == name)
+    else groupCache.get(name)
   }
 
   def this(student: Student) = {
@@ -88,4 +91,20 @@ class AuditPlanResult extends LongId with Updated with Remark {
     std = student
   }
 
+  /** 计算子节点和自身的学分以及完成状态
+   */
+  def stat(cascade: Boolean = true): Unit = {
+    val tops = topGroupResults
+    //每个子节点也进行统计
+    if (cascade) tops.foreach(_.stat())
+    this.owedCredits = tops.map(_.owedCredits).sum
+    this.owedCredits2 = tops.map(_.owedCredits2).sum
+    this.owedCredits3 = tops.map(_.owedCredits3).sum
+    this.passed = tops.count(_.passed) == tops.size && this.owedCredits <= 0.00000001f
+    this.predicted = this.owedCredits2 <= 0.00000001f
+  }
+
+  def reduceRequired(credits: Float): Unit = {
+    this.requiredCredits = Math.max(this.requiredCredits - credits, 0)
+  }
 }

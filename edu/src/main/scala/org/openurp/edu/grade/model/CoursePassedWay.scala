@@ -15,28 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.grade.domain
+package org.openurp.edu.grade.model
 
-import org.openurp.edu.grade.model.AuditGroupResult
-import org.openurp.edu.program.model.CourseGroup
-
-trait PlanAuditListener {
-
-  /**
-   * 开始审核计划
-   *
-   * @return false 表示不能继续审核
-   */
-  def start(context: PlanAuditContext): Boolean
-
-  /**
-   *  开始审核课程组
-   *  @return false 表示不能继续审核
-   */
-  def startGroup(context: PlanAuditContext, courseGroup: CourseGroup, groupResult: AuditGroupResult): Boolean
-
-  /**
-   * 结束审核计划
-   */
-  def end(context: PlanAuditContext): Unit
+enum CoursePassedWay(val id: Int, val name: String) {
+  case ByGrade extends CoursePassedWay(1, "正常通过")
+  case ByRepeat extends CoursePassedWay(2, "重修通过")
+  case ByAlternative extends CoursePassedWay(3, "替代通过")
+  case ByExemption extends CoursePassedWay(4, "免修通过")
 }
