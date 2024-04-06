@@ -34,12 +34,6 @@ class DefaultMapping extends MappingModule {
       e.name & e.indexno are length(20)
     }
 
-    bind[Curriculum] declare { e =>
-      e.name is length(100)
-      e.courses is one2many("curriculum")
-      index("", true, e.project, e.code)
-    }
-
     bind[Course] declare { e =>
       e.code is length(32)
       e.name is length(222)
@@ -47,10 +41,15 @@ class DefaultMapping extends MappingModule {
       e.hours is depends("course")
       e.remark is length(500)
       e.levels is depends("course")
+      e.names is depends("course")
       index("", true, e.project, e.code)
       index("", false, e.code)
     }
 
+    bind[CourseName] declare { e =>
+      e.name is length(222)
+      e.enName is length(300)
+    }
     bind[CourseHour].declare { e =>
       index("", false, e.course)
       index("", true, e.course, e.nature)
@@ -115,12 +114,6 @@ class DefaultMapping extends MappingModule {
 
     bind[Holiday]
 
-    bind[CourseProfile] declare { e =>
-      e.description is length(40000)
-      e.enDescription is length(40000)
-      index("", true, e.course)
-    }
-
     bind[CourseMajor]
     bind[CourseDirector]
     bind[CourseTextbook]
@@ -128,6 +121,17 @@ class DefaultMapping extends MappingModule {
     bind[MajorDirector]
 
     bind[MinorMajor] generator IdGenerator.AutoIncrement
+
+    bind[CourseProfile] declare { e =>
+      e.description is length(800)
+      e.enDescription is length(800)
+      e.bibliography is length(2000)
+      e.textbooks is length(500)
+      e.materials is length(1000)
+      e.majors is length(200)
+      index("", false, e.course)
+    }
+    bind[CourseAward]
 
     all.except(classOf[CourseProfile]).cacheAll()
   }

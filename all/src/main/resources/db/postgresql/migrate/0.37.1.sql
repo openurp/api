@@ -30,9 +30,9 @@ update cfg.spa_doc_settings set doc_type_id = id;
 
 alter table cfg.spa_print_configs add project_id int4;
 alter table cfg.spa_coupons add project_id int4;
-update cfg.spa_print_configs set project_id = ?;
-update cfg.spa_coupons set project_id = ?;
-update cfg.spa_doc_settings set project_id = ?;
+update cfg.spa_print_configs set project_id = 1027601;
+update cfg.spa_coupons set project_id = 1027601;
+update cfg.spa_doc_settings set project_id = 1027601;
 
 insert into cfg.std_archive_doc_settings(id,enabled,orientation,page_size,doc_type_id,url,project_id)
 select id,enabled,orientation,page_size,doc_type_id,admin_url,project_id from cfg.spa_doc_settings where admin_url is not null;

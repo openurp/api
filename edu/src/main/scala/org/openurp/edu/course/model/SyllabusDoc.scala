@@ -47,9 +47,6 @@ class SyllabusDoc extends LongId with Updated with TemporalOn {
   /** 存储路径 */
   var docPath: String = _
 
-  /** 教研室 */
-  var office: Option[TeachingOffice] = None
-
   /** 作者 */
   var writer: User = _
 

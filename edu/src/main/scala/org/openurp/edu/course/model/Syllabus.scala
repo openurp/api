@@ -101,7 +101,7 @@ class Syllabus extends LongId with Updated with TemporalOn {
   var percents = Collections.newBuffer[SyllabusAssessPercent]
 
   //textbooks and resources
-  /** 教材和参考书目 */
+  /** 教材 */
   var textbooks = Collections.newBuffer[Textbook]
 
   /** 参考数目 */
@@ -119,9 +119,6 @@ class Syllabus extends LongId with Updated with TemporalOn {
   //admin and audit infoes
   /** 开课院系 */
   var department: Department = _
-
-  /** 教研室 */
-  var office: Option[TeachingOffice] = None
 
   /** 课程负责人 */
   var director: Option[User] = None

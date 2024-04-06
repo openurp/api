@@ -24,7 +24,6 @@ Course.endOn=失效日期
 Course.courseType=建议课程类别
 Course.examMode=考试方式
 Course.gradingMode=成绩记录方式
-Course.abilityRates=能力等级
 Course.calgp=是否计算绩点
 Course.hasMakeup=是否有补考
 Course.project=项目
@@ -130,14 +129,10 @@ CourseProfile.majors=适用专业
 CourseProfile.textbooks=教材和参考书目
 CourseProfile.materials=辅助资料
 CourseProfile.website=课程网站
-
-Curriculum=课程群组
-Curriculum.enName=英文名
-Curriculum.director=负责人
-Curriculum.teachers=教师列表
-Curriculum.courses=课程列表
-Curriculum.courseCount=课程数量
-Curriculum.teacherCount=教师数量
+CourseProfile.bibliography=参考书目
+CourseProfile.status=状态
+CourseProfile.auditAt=审核时间
+CourseProfile.auditor=审核人
 
 CourseMajor=课程面向专业
 CourseMajor.included=是否包含
@@ -150,3 +145,8 @@ CourseDirector=课程负责人
 CourseDirector.director=负责人
 
 MajorDirector=专业负责人
+
+CourseAward=课程获奖
+CourseAward.schoolYear=获奖年度
+
+CourseName=课程名称

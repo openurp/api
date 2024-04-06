@@ -107,3 +107,39 @@ alter table base.calendar_stages add start_week int4 default 1;
 alter table base.calendar_stages add end_week int4 default 16;
 alter table base.calendar_stages add en_name varchar(40);
 
+--insert into base.calendar_stages(id,name,start_week,end_week,en_name,vacation) values(1,'上课周',1,16,'Long',false);
+--insert into base.calendar_stages(id,name,start_week,end_week,en_name,vacation) values(2,'考试周',17,18,'Short',false);
+
+--insert into code.course_modules(id,code,name,begin_on,updated_at) values(1,'1','通识课模块',current_date,now());
+--insert into code.course_modules(id,code,name,begin_on,updated_at) values(2,'2','学科专业模块',current_date,now());
+--insert into code.course_modules(id,code,name,begin_on,updated_at) values(2,'3','实践模块',current_date,now());
+
+insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(1,'01','课程思政',current_date,current_timestamp);
+insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(2,'02','本章重点',current_date,current_timestamp);
+insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(3,'03','本章难点',current_date,current_timestamp);
+insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(4,'04','学生学习成果',current_date,current_timestamp);
+
+
+create table code.graduate_objectives (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
+
+insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(1,'1','思想政治素质',current_date,current_timestamp);
+insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(2,'2','诚信品质',current_date,current_timestamp);
+insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(3,'3','身心健康',current_date,current_timestamp);
+insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(4,'4','通识知识/学科专业基础知识',current_date,current_timestamp);
+insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(5,'5','数据和信息素养',current_date,current_timestamp);
+insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(6,'6','创新意识',current_date,current_timestamp);
+insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(7,'7','实践能力',current_date,current_timestamp);
+insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(8,'8','国际视野',current_date,current_timestamp);
+
+create table code.course_ranks (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
+
+insert into code.course_ranks(id,code,name,begin_on,updated_at) values(1,'1','必修',current_date,current_timestamp);
+insert into code.course_ranks(id,code,name,begin_on,updated_at) values(2,'2','限选',current_date,current_timestamp);
+insert into code.course_ranks(id,code,name,begin_on,updated_at) values(3,'3','任选',current_date,current_timestamp);
+
+create table code.course_ability_subjects (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
+insert into code.course_ability_subjects(id,code,name,begin_on,updated_at)
+values(1,'1','英语分级',current_date,now());
+
+alter table code.course_ability_rates add subject_id int4;
+update code.course_ability_rates set subject_id=1;

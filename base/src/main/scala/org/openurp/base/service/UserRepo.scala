@@ -17,7 +17,7 @@
 
 package org.openurp.base.service
 
-import org.openurp.base.hr.model.{Staff, Teacher}
+import org.openurp.base.hr.model.{Secretary, Staff, Teacher}
 import org.openurp.base.model.User
 import org.openurp.base.std.model.Student
 
@@ -26,6 +26,8 @@ trait UserRepo {
   def createUser(staff: Staff, oldCode: Option[String]): User
 
   def createUser(teacher: Teacher): User
+
+  def createUser(secretary: Secretary): Unit
 
   def createUser(std: Student, oldCode: Option[String]): User
 

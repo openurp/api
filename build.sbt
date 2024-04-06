@@ -2,7 +2,7 @@ import org.openurp.parent.Dependencies.*
 import org.openurp.parent.Settings.*
 
 ThisBuild / organization := "org.openurp.api"
-ThisBuild / version := "0.37.4-SNAPSHOT"
+ThisBuild / version := "0.38.0"
 
 ThisBuild / scmInfo := Some(
   ScmInfo(
@@ -33,7 +33,7 @@ lazy val code = (project in file("code"))
     organization := "org.openurp.code",
     name := "openurp-code-api",
     common,
-    libraryDependencies ++= Seq(scalatest, beangle_commons_core, beangle_data_orm)
+    libraryDependencies ++= Seq(scalatest, beangle_commons, beangle_model,beangle_jdbc)
   )
 
 lazy val base = (project in file("base"))

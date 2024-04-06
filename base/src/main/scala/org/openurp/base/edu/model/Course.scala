@@ -20,9 +20,11 @@ package org.openurp.base.edu.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, ProjectBased}
 import org.openurp.code.edu.model.*
+
+import java.time.LocalDate
+import scala.collection.mutable
 
 /**
  * 课程基本信息 </p>
@@ -34,10 +36,9 @@ import org.openurp.code.edu.model.*
  * @author chaostone
  * @since 2008-09-24
  */
-class Course extends LongId with ProjectBased with Ordered[Course] with Updated
-  with TemporalOn with Coded with Named with Remark {
-  /** 课程英文名 */
-  var enName: Option[String] = None
+class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn, Coded, Named, EnNamed, Remark {
+  /** 历史名称 */
+  var names: mutable.Buffer[CourseName] = Collections.newBuffer[CourseName]
   /** 培养层次要求 */
   var levels = Collections.newBuffer[CourseLevel]
   /** 默认学分 */
@@ -62,17 +63,33 @@ class Course extends LongId with ProjectBased with Ordered[Course] with Updated
   var examMode: ExamMode = _
   /** 成绩记录方式 */
   var gradingMode: GradingMode = _
-  /** 能力等级 */
-  var abilityRates = Collections.newSet[CourseAbilityRate]
   /** 是否计算绩点 * */
   var calgp: Boolean = _
   /** 是否有补考 */
   var hasMakeup: Boolean = _
-  /** 课程群组 */
-  var curriculum: Option[Curriculum] = None
+  /** 课程分类 */
+  var generalType: Option[CourseGeneralType] = None
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
+  }
+
+  /** 查找给定日期的名称
+   *
+   * @param date
+   * @return
+   */
+  def nameOn(date: LocalDate): String = {
+    names.find(_.within(date)).map(_.name).getOrElse(name)
+  }
+
+  /** 查找给定日期的英文名称
+   *
+   * @param date
+   * @return
+   */
+  def enNameOn(date: LocalDate): String = {
+    names.find(_.within(date)).flatMap(_.enName).getOrElse(enName.getOrElse(name))
   }
 
   def this(id: Long, code: String, name: String, enName: String) = {

@@ -68,3 +68,7 @@ SyllabusDoc.auditAt=审核时间
 SyllabusDoc.writer=作者
 SyllabusDoc.status=状态
 SyllabusDoc.auditor=审核人
+
+
+CourseTask=课程任务
+CourseTask.teachers=课程任务-任课教师

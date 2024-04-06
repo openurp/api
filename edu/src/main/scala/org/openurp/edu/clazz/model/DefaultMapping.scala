@@ -70,7 +70,9 @@ class DefaultMapping extends MappingModule {
       e.clazzes is one2many("group")
     }
 
-    bind[StdCourseAbility]
+    bind[StdCourseAbility] declare { e =>
+      index("", false, e.std)
+    }
 
     bind[Subclazz] declare { e =>
       e.name is length(100)

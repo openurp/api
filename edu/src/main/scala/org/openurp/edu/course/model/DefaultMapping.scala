@@ -49,6 +49,12 @@ class DefaultMapping extends MappingModule {
       e.children is depends("parent")
     }
 
-    bind[SyllabusDoc]
+    bind[SyllabusDoc] declare { e =>
+      index("", false, e.course)
+    }
+
+    bind[CourseTask] declare { e =>
+      index("", true, e.semester, e.course, e.department)
+    }
   }
 }

@@ -20,3 +20,4 @@ ExternExemptApply.credits=申请冲抵的外校课程学分总计
 ExternExemptCredit=外校成绩免修学分上限
 ExternExemptCredit.exempted=已免修学分数
 ExternExemptCredit.maxValue=免修学分总和的最大值
+

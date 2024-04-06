@@ -18,14 +18,17 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.Course
-import org.openurp.base.model.User
+import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.openurp.base.hr.model.Teacher
+import org.openurp.base.model.{AuditStatus, Department, User}
+import org.openurp.code.edu.model.CourseGeneralType
+
+import java.time.Instant
 
 /** 课程简介
  *
  */
-class CourseProfile extends LongId with Updated {
+class CourseProfile extends LongId, Updated, TemporalOn, Remark {
 
   /** 课程 */
   var course: Course = _
@@ -42,8 +45,11 @@ class CourseProfile extends LongId with Updated {
   /** 适用专业 */
   var majors: Option[String] = None
 
-  /** 教材和参考书目 */
+  /** 教材 */
   var textbooks: Option[String] = None
+
+  /** 参考数目 */
+  var bibliography: Option[String] = None
 
   /** 辅助资料 */
   var materials: Option[String] = None
@@ -52,5 +58,26 @@ class CourseProfile extends LongId with Updated {
   var website: Option[String] = None
 
   /** 更新人 */
-  var updatedBy: Option[User] = None
+  var writer: Option[User] = None
+
+  /** 课程分类 */
+  var generalType: Option[CourseGeneralType] = None
+
+  /** 状态 */
+  var status: AuditStatus = AuditStatus.Draft
+
+  /** 开课院系 */
+  var department: Department = _
+
+  /** 负责人 */
+  var director: Option[Teacher] = None
+
+  /** 审核人 */
+  var auditor: Option[User] = None
+
+  /** 审核时间 */
+  var auditAt: Option[Instant] = None
+
+  def published: Boolean = status == AuditStatus.Published
+
 }
