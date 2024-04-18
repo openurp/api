@@ -40,7 +40,7 @@ class GradeRateConfig extends LongId with ProjectBased {
   /**
    * 成绩分级配置项
    */
-  var items: mutable.Buffer[GradeRateItem] =Collections.newBuffer[GradeRateItem]
+  var items: mutable.Buffer[GradeRateItem] = Collections.newBuffer[GradeRateItem]
 
   /**
    * 及格线
@@ -55,7 +55,7 @@ class GradeRateConfig extends LongId with ProjectBased {
    * @return
    */
   def convert(grade: String): Option[Float] = {
-    items.find(_.grade == grade).map(i => i.defaultScore)
+    items.find(_.grade.contains(grade)).flatMap(i => i.defaultScore)
   }
 
   /**
@@ -69,7 +69,7 @@ class GradeRateConfig extends LongId with ProjectBased {
     if (gradingMode.numerical) {
       Some(NumberFormat.getInstance.format(score))
     } else {
-      items.find(_.contains(score)).map(_.grade)
+      items.find(_.contains(score)).flatMap(_.grade)
     }
   }
 

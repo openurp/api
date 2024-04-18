@@ -73,8 +73,11 @@ object Features {
     /** 教师界面成绩是否需要录入两次 */
     val InputTwice = Feature(this, "input_twice", "输入成绩时是否需要输入两次", false)
 
+    /** 计划完成审核规则 */
+    val AuditPlanRules = Feature(this, "audit_plan_listeners", "毕业审核的规则", "default")
+
     /** 毕业审核规则 */
-    val AuditRules = Feature(this, "audit_listeners", "毕业审核的规则", "default")
+    val AutoAuditPlan = Feature(this, "auto_audit_plan", "是否自动进行计划完成审核", true)
   }
 
   object Exam extends FeatureScope {

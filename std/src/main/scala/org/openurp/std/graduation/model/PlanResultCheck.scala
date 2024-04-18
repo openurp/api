@@ -15,36 +15,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.grade.config
+package org.openurp.std.graduation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.std.model.Student
 
-/**
- * 成绩分级配置项
+/** 计划完成情况确认
  */
-@config
-class GradeRateItem extends LongId {
+class PlanResultCheck extends LongId, Updated {
 
-  /** 成绩配置 */
-  var config: GradeRateConfig = _
+  /** 学生 */
+  var std: Student = _
 
-  /** 最低分 */
-  var minScore: Float = _
+  /** 各个类别完成情况 */
+  var contents: String = _
 
-  /** 最高分 */
-  var maxScore: Float = _
+  /** 要求学分 */
+  var requiredCredits: Float = _
 
-  /** 绩点表达式 */
-  var gpExp: Option[String] = None
+  /** 通过学分 */
+  var passedCredits: Float = _
 
-  /** 显示名称 */
-  var grade: Option[String] = None
+  /** 欠学分 */
+  var owedCredits: Float = _
 
-  /** 默认分数 */
-  var defaultScore: Option[Float] = None
+  /** 预计通过后所欠学分 */
+  var owedCredits2: Float = _
 
-  def contains(f: Float): Boolean = {
-    minScore <= f && f <= maxScore
+  /** 在读通过后所欠学分 */
+  var owedCredits3: Float = _
+
+  def this(std: Student) = {
+    this()
+    this.std = std
   }
 }

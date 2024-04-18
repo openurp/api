@@ -194,4 +194,11 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
   }
 
   def predicted: Boolean = owedCredits2 <= 0
+
+  def reduceRequired(credits: Float): Unit = {
+    this.requiredCredits = Math.max(this.requiredCredits - credits, 0)
+    if (parent.nonEmpty) {
+      parent.get.reduceRequired(credits)
+    }
+  }
 }

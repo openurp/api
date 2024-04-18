@@ -43,7 +43,7 @@ class DefaultPlanAuditor extends PlanAuditor {
       apr.addGroupResult(topResult)
       initResult(context, g, topResult)
     }
-    apr.buildGroupCache() //注册所有的组
+    apr.buildGroupCache() //所有监听启动之前，注册所有的组
     context.listeners.foreach(_.start(context))
     plan.topGroups foreach (g => auditGroup(context, g, apr.getGroupResult(g.name).get))
     context.listeners.foreach(_.end(context))
@@ -84,9 +84,7 @@ class DefaultPlanAuditor extends PlanAuditor {
       val childResult = context.result.getGroupResult(child.name).get
       if (context.listeners.exists(!_.startGroup(context, child, childResult))) {
         result.reduceRequired(childResult.requiredCredits)
-        gr.removeChild(childResult)
-        result.removeGroupResult(childResult)
-        result.buildGroupCache()
+        childResult.reduceRequired(childResult.requiredCredits)
       } else {
         auditGroup(context, child, childResult)
       }
@@ -115,10 +113,11 @@ class DefaultPlanAuditor extends PlanAuditor {
     for (gr <- result.groupResults) {
       // 自己和父节点过滤掉
       if (gr != target && !parents.contains(gr)) {
+        val rest = gr.passedCredits - gr.requiredCredits
         if (sibling.contains(gr)) {
-          siblingConverted += (if gr.passed then gr.passedCredits - gr.requiredCredits else 0f)
+          siblingConverted += (if rest > 0 then rest else 0f)
         } else if (gr.parent.isEmpty) {
-          otherConverted += (if gr.passed then gr.passedCredits - gr.requiredCredits else 0f)
+          otherConverted += (if rest > 0 then rest else 0f)
         }
       }
     }

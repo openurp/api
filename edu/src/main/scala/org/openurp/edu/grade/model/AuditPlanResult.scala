@@ -20,6 +20,7 @@ package org.openurp.edu.grade.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 
 import scala.collection.mutable
@@ -86,6 +87,18 @@ class AuditPlanResult extends LongId with Updated with Remark {
     else groupCache.get(name)
   }
 
+  def getCourseResult(course: Course): Option[AuditCourseResult] = {
+    if null == groupResults then None
+    else
+      val gIter = groupResults.iterator
+      var result: Option[AuditCourseResult] = None
+      while (gIter.hasNext && result.isEmpty) {
+        val g = gIter.next()
+        result = g.courseResults.find(_.course == course)
+      }
+      result
+  }
+
   def this(student: Student) = {
     this()
     std = student
@@ -106,5 +119,38 @@ class AuditPlanResult extends LongId with Updated with Remark {
 
   def reduceRequired(credits: Float): Unit = {
     this.requiredCredits = Math.max(this.requiredCredits - credits, 0)
+  }
+
+  def failedGroups(category: Int = 1): Seq[AuditGroupResult] = {
+    val failed = Collections.newBuffer[AuditGroupResult]
+    topGroupResults foreach { g =>
+      collectFailed(category, g, failed)
+    }
+    failed.sortBy(_.indexno).toSeq
+  }
+
+  private def collectFailed(category: Int, g: AuditGroupResult, failed: mutable.Buffer[AuditGroupResult]): Unit = {
+    val passed = category match
+      case 1 => g.passed
+      case 2 => g.predicted
+      case 3 => g.owedCredits3 <= 0
+      case _ => false
+
+    if (!passed) {
+      if (g.children.isEmpty) failed.addOne(g)
+      else {
+        val owed = category match
+          case 1 => g.owedCredits - g.children.map(_.owedCredits).sum
+          case 2 => g.owedCredits2 - g.children.map(_.owedCredits2).sum
+          case 3 => g.owedCredits3 - g.children.map(_.owedCredits3).sum
+          case _ => 1
+
+        if (Math.abs(owed) < 0.01) {
+          for (c <- g.children) collectFailed(category, c, failed)
+        } else {
+          failed.addOne(g)
+        }
+      }
+    }
   }
 }

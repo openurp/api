@@ -44,6 +44,13 @@ class DefaultMapping extends MappingModule {
     bind[Bachelor2ndApply] declare { e =>
       e.gradeDetail is length(3000)
     }
-    bind[DegreeApply]
+
+    bind[DegreeApply] declare { e =>
+      index("", true, e.std)
+    }
+    bind[PlanResultCheck] declare { e =>
+      e.contents is length(3000)
+      index("", true, e.std)
+    }
   }
 }
