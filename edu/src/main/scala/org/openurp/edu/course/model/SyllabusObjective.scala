@@ -26,4 +26,11 @@ class SyllabusObjective extends LongId, Coded, Named {
 
   var contents: String = _
 
+  def this(syllabus: Syllabus, code: String, name: String, contents: String) = {
+    this()
+    this.syllabus = syllabus
+    this.code = code
+    this.name = name
+    this.contents = contents
+  }
 }

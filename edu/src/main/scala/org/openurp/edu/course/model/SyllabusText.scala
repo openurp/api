@@ -24,4 +24,12 @@ class SyllabusText extends LongId, Named, Hierarchical[SyllabusText] {
   var syllabus: Syllabus = _
   /** 内容 */
   var contents: String = _
+
+  def this(syllabus: Syllabus, indexno: String, name: String, contents: String) = {
+    this()
+    this.syllabus = syllabus
+    this.indexno = indexno
+    this.name = name
+    this.contents = contents
+  }
 }

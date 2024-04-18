@@ -17,18 +17,35 @@
 
 package org.openurp.edu.course.model
 
+import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named}
+import org.openurp.code.edu.model.GraduateObjective
 
 /** 教学大纲-毕业要求
  *
  */
-class SyllabusOutcome extends LongId, Coded, Named {
+class SyllabusOutcome extends LongId {
   var syllabus: Syllabus = _
+
+  /** 毕业要求 */
+  var objective: GraduateObjective = _
 
   /** 内容 */
   var contents: String = _
 
   /** 对应课程目标 */
-  var objectives: String = _
+  var courseObjectives: String = _
+
+  def this(syllabus: Syllabus, objective: GraduateObjective, contents: String, courseObjectives: String) = {
+    this()
+    this.syllabus = syllabus
+    this.objective = objective
+    this.contents = contents
+    this.courseObjectives = courseObjectives
+  }
+
+  def support(syllabusObjective: SyllabusObjective): Boolean = {
+    Strings.split(courseObjectives).toSet.contains(syllabusObjective.code)
+  }
+
 }

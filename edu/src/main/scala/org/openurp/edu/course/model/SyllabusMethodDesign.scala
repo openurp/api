@@ -18,23 +18,19 @@
 package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.GradeType
+import org.beangle.data.model.pojo.Named
 
-/** 教学大纲-成绩评分比例
+/** 教学大纲教学方法
  */
-class SyllabusAssessPercent extends LongId {
+class SyllabusMethodDesign extends LongId, Named {
 
   var syllabus: Syllabus = _
 
-  /** 成绩类型 */
-  var gradeType: GradeType = _
+  var idx: Int = _
 
-  /** 小项 */
-  var component: Option[String] = None
+  var contents: String = _
 
-  /** 百分比 */
-  var scorePercent: Int = _
+  var hasCase: Boolean = _
 
-  /** 对应课程目标 */
-  var objectives: Option[String] = None
+  var hasExperiment: Boolean = _
 }

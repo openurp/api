@@ -24,12 +24,20 @@ import org.openurp.code.edu.model.TeachingNature
  */
 class SyllabusCreditHour extends LongId {
   var syllabus: Syllabus = _
+  /** 课时分类 */
+  var nature: TeachingNature = _
   /** 学时 */
   var creditHours: Int = _
   /** 实践周 */
   var weeks: Int = _
   /** 自主学习学时 */
   var learning: Int = _
-  /** 课时分类 */
-  var nature: TeachingNature = _
+
+  def this(syllabus: Syllabus, nature: TeachingNature, creditHours: Int, weeks: Int) = {
+    this()
+    this.syllabus = syllabus
+    this.nature = nature
+    this.creditHours = creditHours
+    this.weeks = weeks
+  }
 }

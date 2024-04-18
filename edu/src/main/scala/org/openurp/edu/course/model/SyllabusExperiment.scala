@@ -18,22 +18,27 @@
 package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.SyllabusTopicLabel
+import org.beangle.data.model.pojo.Named
+import org.openurp.code.edu.model.ExperimentType
 
-/** 教学主题的内容要素
+/** 课程大纲中的实验
  */
-class SyllabusTopicElement extends LongId {
+class SyllabusExperiment extends LongId, Named {
 
-  var topic: SyllabusTopic = _
+  var syllabus: Syllabus = _
 
-  var label: SyllabusTopicLabel = _
+  var idx: Int = _
 
-  var contents: String = _
+  var online: Boolean = _
 
-  def this(topic: SyllabusTopic, label: SyllabusTopicLabel, contents: String) = {
+  var experimentType: ExperimentType = _
+
+  def this(syllabus: Syllabus, idx: Int, name: String, experimentType: ExperimentType, online: Boolean) = {
     this()
-    this.topic = topic
-    this.label = label
-    this.contents = contents
+    this.syllabus = syllabus
+    this.idx = idx
+    this.name = name
+    this.experimentType = experimentType
+    this.online = online
   }
 }

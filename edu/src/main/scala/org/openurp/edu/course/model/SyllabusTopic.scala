@@ -18,18 +18,26 @@
 package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.code.edu.model.TeachingMethod
+import org.openurp.code.edu.model.{SyllabusTopicLabel, TeachingMethod, TeachingNature}
 
 /** 教学大纲-教学主题
  */
 class SyllabusTopic extends LongId, Named {
 
+  /** 教学大纲 */
   var syllabus: Syllabus = _
+
+  /** 大纲内顺序 */
+  var idx: Short = _
 
   /** 教学内容 */
   var contents: String = _
+
+  /** 自主学习学时 */
+  var learningHours: Int = _
 
   /** 其他要素 */
   var elements = Collections.newBuffer[SyllabusTopicElement]
@@ -43,4 +51,17 @@ class SyllabusTopic extends LongId, Named {
   /** 分类课时 */
   var hours = Collections.newBuffer[SyllabusTopicHour]
 
+  def getHour(nature: TeachingNature): Option[SyllabusTopicHour] = {
+    hours.find(_.nature == nature)
+  }
+
+  def getElement(label: SyllabusTopicLabel): Option[SyllabusTopicElement] = {
+    elements.find(_.label == label)
+  }
+
+  def matchedObjectives: Seq[SyllabusObjective] = {
+    objectives match
+      case None => List.empty
+      case Some(s) => Strings.split(s).flatMap(x => syllabus.objectives.find(_.code == x)).toSeq
+  }
 }
