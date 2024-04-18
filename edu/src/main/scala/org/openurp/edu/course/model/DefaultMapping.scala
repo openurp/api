@@ -17,6 +17,7 @@
 
 package org.openurp.edu.course.model
 
+import org.beangle.commons.lang.reflect.{BeanInfo, BeanInfos}
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
@@ -30,7 +31,10 @@ class DefaultMapping extends MappingModule {
       e.objectives is depends("syllabus")
       e.outcomes is depends("syllabus")
       e.topics is depends("syllabus")
-      e.percents is depends("syllabus")
+      e.assessments is depends("syllabus")
+      e.cases is depends("syllabus")
+      e.experiments is depends("syllabus")
+      e.designs is depends("syllabus")
     }
 
     bind[SyllabusTopic] declare { e =>
@@ -44,13 +48,30 @@ class DefaultMapping extends MappingModule {
     bind[SyllabusObjective]
     bind[SyllabusOutcome]
     bind[SyllabusCreditHour]
-    bind[SyllabusAssessPercent]
+
+    bind[SyllabusAssessment] declare { e =>
+      e.description is length(4000)
+      e.scoreTable is length(4000)
+    }
     bind[SyllabusText] declare { e =>
       e.children is depends("parent")
     }
 
+    bind[SyllabusCase] declare { e =>
+      e.name is length(100)
+    }
+
+    bind[SyllabusExperiment] declare { e =>
+      e.name is length(100)
+    }
+
     bind[SyllabusDoc] declare { e =>
+      e.docPath is length(200)
       index("", false, e.course)
+    }
+
+    bind[SyllabusMethodDesign] declare { e =>
+      e.contents is length(2000)
     }
 
     bind[CourseTask] declare { e =>

@@ -85,6 +85,7 @@ class DefaultMapping extends MappingModule {
     bind[CourseGeneralType].declare { e =>
       e.children is depends("parent")
     }
+    bind[ExperimentType]
     all.cacheAll()
   }
 }

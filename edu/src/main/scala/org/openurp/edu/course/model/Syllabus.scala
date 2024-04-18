@@ -97,8 +97,8 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 教学内容 */
   var topics = Collections.newBuffer[SyllabusTopic]
 
-  /** 考核百分比 */
-  var percents = Collections.newBuffer[SyllabusAssessPercent]
+  /** 考核办法 */
+  var assessments = Collections.newBuffer[SyllabusAssessment]
 
   //textbooks and resources
   /** 教材 */
@@ -115,6 +115,15 @@ class Syllabus extends LongId with Updated with TemporalOn {
 
   //text sections
   var texts = Collections.newBuffer[SyllabusText]
+
+  /** 教学设计 */
+  var designs = Collections.newBuffer[SyllabusMethodDesign]
+
+  /** 教学案例 */
+  var cases = Collections.newBuffer[SyllabusCase]
+
+  /** 教学实验 */
+  var experiments = Collections.newBuffer[SyllabusExperiment]
 
   //admin and audit infoes
   /** 开课院系 */
@@ -134,4 +143,46 @@ class Syllabus extends LongId with Updated with TemporalOn {
 
   /** 审核时间 */
   var auditAt: Option[Instant] = None
+
+  def teachingNatures: Seq[TeachingNature] = hours.map(_.nature).toSeq
+
+  def getHour(nature: TeachingNature): Option[SyllabusCreditHour] = {
+    hours.find(_.nature == nature)
+  }
+
+  def getTopicCreditHours(nature: TeachingNature): Int = {
+    topics.flatMap(t => t.getHour(nature).map(_.creditHours)).sum
+  }
+
+  def getTopicWeeks(nature: TeachingNature): Int = {
+    topics.flatMap(t => t.getHour(nature).map(_.weeks)).sum
+  }
+
+  def getText(name: String): Option[SyllabusText] = {
+    texts.find(_.name == name)
+  }
+
+  def getObjective(code: String): Option[SyllabusObjective] = {
+    objectives.find(_.code == code)
+  }
+
+  def getOutcome(o: GraduateObjective): Option[SyllabusOutcome] = {
+    outcomes.find(_.objective == o)
+  }
+
+  def getAssessments(gradeType: GradeType): Seq[SyllabusAssessment] = {
+    assessments.filter(x => x.gradeType == gradeType).toSeq
+  }
+
+  def getAssessment(gradeType: GradeType, componentName: String): Option[SyllabusAssessment] = {
+    if (null == componentName) {
+      assessments.find(x => x.gradeType == gradeType && x.component.isEmpty)
+    } else {
+      assessments.find(x => x.gradeType == gradeType && x.component.contains(componentName))
+    }
+  }
+
+  def getUsualAssessment(index: Int): Option[SyllabusAssessment] = {
+    assessments.find(x => x.gradeType.id == GradeType.Usual && x.component.nonEmpty && x.idx == index)
+  }
 }

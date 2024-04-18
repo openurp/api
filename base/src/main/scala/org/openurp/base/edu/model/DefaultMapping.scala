@@ -115,7 +115,10 @@ class DefaultMapping extends MappingModule {
     bind[Holiday]
 
     bind[CourseMajor]
-    bind[CourseDirector]
+    bind[CourseDirector] declare { e =>
+      index("", true, e.course)
+    }
+
     bind[CourseTextbook]
 
     bind[MajorDirector]

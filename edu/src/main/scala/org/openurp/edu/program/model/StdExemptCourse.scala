@@ -17,27 +17,14 @@
 
 package org.openurp.edu.program.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.model.EduLevelBased
-import org.openurp.base.std.model.{Grade, Student}
-import org.openurp.code.edu.model.CourseType
-import org.openurp.code.std.model.StdType
+import org.openurp.base.edu.model.Course
+import org.openurp.base.std.model.Student
 
-import scala.collection.mutable
-
-/** 免修课程类别
- */
-class ExemptCourseType extends LongId, EduLevelBased, Updated, Remark {
-  /** 起始年级 */
-  var fromGrade: Grade = _
-  /** 截止年级 */
-  var toGrade: Option[Grade] = None
-  /** 免修课程类别 */
-  var courseType: CourseType = _
-  /** 针对学生类别 */
-  var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]
-  /** 针对的学生 */
-  var stds: mutable.Set[Student] = Collections.newSet[Student]
+class StdExemptCourse extends LongId, Remark, Updated {
+  /** 学生 */
+  var std: Student = _
+  /** 免修课程 */
+  var course: Course = _
 }

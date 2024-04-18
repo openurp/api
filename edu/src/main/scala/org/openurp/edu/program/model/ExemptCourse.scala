@@ -22,7 +22,8 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.EduLevelBased
-import org.openurp.base.std.model.{Grade, Student}
+import org.openurp.base.std.model.Grade
+import org.openurp.code.edu.model.CourseType
 import org.openurp.code.std.model.StdType
 
 import scala.collection.mutable
@@ -36,9 +37,9 @@ class ExemptCourse extends LongId, EduLevelBased, Updated, Remark {
   /** 截止年级 */
   var toGrade: Option[Grade] = None
   /** 免修课程 */
-  var course: Course = _
+  var course: Option[Course] = None
+  /** 免修课程类别 */
+  var courseType: CourseType = _
   /** 针对学生类别 */
   var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]
-  /** 针对的学生 */
-  var stds: mutable.Set[Student] = Collections.newSet[Student]
 }

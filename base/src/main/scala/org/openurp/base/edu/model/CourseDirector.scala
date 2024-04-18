@@ -23,7 +23,7 @@ import org.openurp.base.hr.model.Teacher
 /** 课程负责人
  */
 class CourseDirector extends LongId {
-  /** 课程*/
+  /** 课程 */
   var course: Course = _
 
   /** 教研室 */
@@ -32,4 +32,8 @@ class CourseDirector extends LongId {
   /** 负责人 */
   var director: Option[Teacher] = None
 
+  def this(course: Course) = {
+    this()
+    this.course = course
+  }
 }

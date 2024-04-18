@@ -77,6 +77,9 @@ class CourseModule extends CodeBean
 @code("school")
 class CourseType extends CodeBean {
 
+  /** 简称 */
+  var shortName: Option[String] = None
+
   /** 是否实践课程 */
   var practical: Boolean = _
 
@@ -179,3 +182,8 @@ class CourseAwardCategory extends CodeBean
 class CourseGeneralType extends CodeBean, Hierarchical[CourseGeneralType] {
   var color: Option[String] = None
 }
+
+/** 实验类型
+ */
+@code("industry")
+class ExperimentType extends CodeBean
