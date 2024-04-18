@@ -20,10 +20,8 @@ package org.openurp.degree.thesis.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.base.edu.model.TeachingOffice
-import org.openurp.base.hr.model.{Staff, Teacher}
-import org.openurp.base.model.{Department, Project, User}
-import org.openurp.code.job.model.ProfessionalTitle
+import org.openurp.base.hr.model.Teacher
+import org.openurp.base.model.Department
 
 import scala.collection.mutable
 
@@ -52,4 +50,7 @@ class Advisor extends LongId, TemporalOn {
 
   /** 姓名 */
   def name: String = teacher.name
+
+  /** 签名 */
+  var signature: Option[String] = None
 }

@@ -120,7 +120,7 @@ class DefaultMapping extends MappingModule {
     bind[ThesisDoc].declare { e =>
       e.filePath is length(300)
       e.fileExt is length(100)
-      index("", true, e.writer, e.stage)
+      index("", true, e.writer, e.docType)
     }
 
     bind[ThesisCheck].declare { e =>
@@ -136,6 +136,17 @@ class DefaultMapping extends MappingModule {
     bind[BlindPeerReview].declare { e =>
       e.remark is length(100)
       index("", true, e.writer)
+    }
+
+    bind[ThesisDocType].declare { e =>
+      e.code is length(30)
+      e.name is length(100)
+      index("", true, e.code)
+    }
+
+    bind[ThesisDocArchive].declare { e =>
+      index("", true, e.writer)
+      e.feedback is length(400)
     }
   }
 }

@@ -19,23 +19,21 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.User
 
-/** 学位论文相关文档
+import java.time.Instant
+
+/** 论文归档信息
  */
-class ThesisDoc extends LongId, Updated {
-  /** 所处阶段 */
-  var stage: Stage = _
-
-  /** 学生 */
+class ThesisDocArchive extends LongId, Updated {
+  /** 作者 */
   var writer: Writer = _
-
-  /** 附件路径 */
-  var filePath: String = _
-
-  /** 附件类型 */
-  var fileExt: String = _
-
-  /** 文档类型 */
-  var docType: ThesisDocType = _
-
+  /** 指导老师是否确认 */
+  var advisorConfirmed: Option[Boolean] = None
+  /** 确认人 */
+  var confirmedBy: Option[User] = None
+  /** 确认时间 */
+  var confirmAt: Option[Instant] = None
+  /** 意见反馈 */
+  var feedback: Option[String] = None
 }

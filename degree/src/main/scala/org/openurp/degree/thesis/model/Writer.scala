@@ -17,11 +17,9 @@
 
 package org.openurp.degree.thesis.model
 
-import org.beangle.commons.lang.SystemInfo.user
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
 import org.openurp.base.edu.model.Major
-import org.openurp.base.model.{Department, User}
+import org.openurp.base.model.Department
 import org.openurp.base.std.model.{GraduateSeason, Squad, Student}
 
 import java.time.Instant
@@ -44,6 +42,9 @@ class Writer extends LongId {
   var email: Option[String] = None
 
   var deadlines: mutable.Buffer[Deadline] = new mutable.ArrayBuffer[Deadline]
+
+  /** 签名 */
+  var signature: Option[String] = None
 
   def code: String = std.code
 

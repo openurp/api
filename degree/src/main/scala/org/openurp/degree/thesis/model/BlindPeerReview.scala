@@ -28,6 +28,6 @@ class BlindPeerReview extends LongId, Updated, Remark {
   var writer: Writer = _
 
   /** 分数 */
-  var score: Option[Float] = None
+  var score: Option[Int] = None
 
 }

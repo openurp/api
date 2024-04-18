@@ -18,28 +18,30 @@
 package org.openurp.std.graduation.model
 
 import org.beangle.data.model.LongId
-
-import java.time.LocalDate
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Project
 import org.openurp.base.std.model.GraduateSeason
 
-/**
- * 毕业批次
+import java.time.LocalDate
+
+/** 毕业批次
  */
 class GraduateBatch extends LongId with Updated {
 
   var project: Project = _
 
-  /**毕业界别*/
-  var season:GraduateSeason =_
+  /** 毕业界别 */
+  var season: GraduateSeason = _
 
   /** 名称 */
   var name: String = _
 
-  /**是否授学位*/
+  /** 是否授学位 */
   var degreeOffered: Boolean = _
 
-  /**毕业日期*/
-  var graduateOn:LocalDate=_
+  /** 毕业日期 */
+  var graduateOn: LocalDate = _
+
+  /** 是否启用计划完成情况确认 */
+  var enableProgressConfirm: Boolean = false
 }

@@ -44,6 +44,12 @@ class ThesisReview extends LongId, Remark {
   /** 写作态度 */
   var attitudeScore: Option[Int] = None
 
+  /** 校外送审成绩 */
+  var blindReviewScore: Option[Int] = None
+
+  /** 指导教师自己打分 */
+  var advisorSelfScore: Option[Int] = None
+
   /** 指导教师得分 */
   var advisorScore: Option[Int] = None
 

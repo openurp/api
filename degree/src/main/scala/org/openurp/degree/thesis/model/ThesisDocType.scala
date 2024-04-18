@@ -17,25 +17,19 @@
 
 package org.openurp.degree.thesis.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{Coded, Named}
 
-/** 学位论文相关文档
- */
-class ThesisDoc extends LongId, Updated {
-  /** 所处阶段 */
+class ThesisDocType extends IntId, Coded, Named {
+  var idx: Int = _
   var stage: Stage = _
 
-  /** 学生 */
-  var writer: Writer = _
-
-  /** 附件路径 */
-  var filePath: String = _
-
-  /** 附件类型 */
-  var fileExt: String = _
-
-  /** 文档类型 */
-  var docType: ThesisDocType = _
+  def this(idx: Int, stage: Stage, code: String, name: String) = {
+    this()
+    this.idx = idx
+    this.stage = stage
+    this.code = code
+    this.name = name
+  }
 
 }

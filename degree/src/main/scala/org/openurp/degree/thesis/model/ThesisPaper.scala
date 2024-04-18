@@ -45,6 +45,9 @@ class ThesisPaper extends LongId with Named {
   /** 撰写语种 */
   var language: Option[Language] = None
 
+  /** 毕业论文类型 */
+  var thesisType: Option[String] = None
+
   /** 初稿路径 */
   var draftPath: Option[String] = None
 
