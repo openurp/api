@@ -144,9 +144,15 @@ class DefaultMapping extends MappingModule {
       index("", true, e.code)
     }
 
-    bind[ThesisDocArchive].declare { e =>
+    bind[ThesisArchive].declare { e =>
       index("", true, e.writer)
       e.feedback is length(400)
+    }
+
+    bind[Signature].declare { e =>
+      index("", true, e.writer)
+      e.writerUrl is length(200)
+      e.advisorUrl is length(200)
     }
   }
 }

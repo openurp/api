@@ -17,37 +17,22 @@
 
 package org.openurp.degree.thesis.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.base.hr.model.Teacher
-import org.openurp.base.model.Department
 
-import scala.collection.mutable
+/** 签名信息
+ */
+class Signature extends LongId {
 
-/** 指导教师 */
-class Advisor extends LongId, TemporalOn {
-  /** 教师 */
-  var teacher: Teacher = _
+  def this(writer: Writer) = {
+    this()
+    this.writer = writer
+  }
 
-  /** 指导院系 */
-  var departs: mutable.Buffer[Department] = Collections.newBuffer[Department]
+  /** 作者 */
+  var writer: Writer = _
+  /** 学生签名 */
+  var writerUrl: Option[String] = None
+  /** 指导老师签名 */
+  var advisorUrl: Option[String] = None
 
-  /** 所带学生数 */
-  var maxWriters: Long = _
-
-  /** 手机 */
-  var mobile: Option[String] = None
-
-  /** 联系方式 */
-  var email: Option[String] = None
-
-  /** 教师简介 */
-  var description: Option[String] = None
-
-  /** 工号 */
-  def code: String = teacher.staff.code
-
-  /** 姓名 */
-  def name: String = teacher.name
 }

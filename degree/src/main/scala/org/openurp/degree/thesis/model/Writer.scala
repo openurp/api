@@ -43,9 +43,6 @@ class Writer extends LongId {
 
   var deadlines: mutable.Buffer[Deadline] = new mutable.ArrayBuffer[Deadline]
 
-  /** 签名 */
-  var signature: Option[String] = None
-
   def code: String = std.code
 
   def name: String = std.name

@@ -25,7 +25,7 @@ import java.time.Instant
 
 /** 论文归档信息
  */
-class ThesisDocArchive extends LongId, Updated {
+class ThesisArchive extends LongId, Updated {
   /** 作者 */
   var writer: Writer = _
   /** 指导老师是否确认 */
@@ -36,9 +36,4 @@ class ThesisDocArchive extends LongId, Updated {
   var confirmAt: Option[Instant] = None
   /** 意见反馈 */
   var feedback: Option[String] = None
-
-  /** 学生签名 */
-  var writerSignature: Option[String] = None
-  /** 指导老师签名 */
-  var advisorSignature: Option[String] = None
 }
