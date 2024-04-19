@@ -59,7 +59,10 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   var minor: Boolean = _
   /** 教育类别 */
   var category: EduCategory = _
-
+  /** 主管部门 */
+  var administration: String = _
+  /** 二级部门 */
+  var administration2nd: Option[String] = None
 }
 
 /**

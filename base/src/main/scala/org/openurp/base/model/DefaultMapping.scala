@@ -18,7 +18,6 @@
 package org.openurp.base.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.base.hr.model.StaffTitle
 
 class DefaultMapping extends MappingModule {
 
@@ -82,6 +81,8 @@ class DefaultMapping extends MappingModule {
       e.code.is(length(10), unique)
       e.name is length(100)
       e.description is length(500)
+      e.administration is length(70)
+      e.administration2nd is length(20)
     }
 
     bind[ProjectProperty] declare { e =>
