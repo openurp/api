@@ -19,6 +19,7 @@ package org.openurp.edu.exempt.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{AuditStatus, Department, Semester}
@@ -32,6 +33,7 @@ import scala.collection.mutable
  * 校外证书成绩免修课程申请
  * 申请同意后，会落地到证书成绩和课程免修记录
  */
+@deprecated("move to flow")
 class CertExemptApply extends LongId with Updated {
   /** 学生 */
   var std: Student = _

@@ -15,35 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exam.model
+package org.openurp.edu.program.flow
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.{ExamDeferReason, ExamType}
-import org.openurp.edu.clazz.model.Clazz
+import org.beangle.data.orm.MappingModule
 
-import java.time.Instant
+class DefaultMapping extends MappingModule {
 
-/** 考试缓考申请
- */
-@deprecated("move to flow")
-class ExamDeferApply extends LongId with Updated with Remark {
+  def binding(): Unit = {
+    bind[AlternativeCourseApply] declare { e =>
+      index("", false, e.std)
+    }
 
-  var clazz: Clazz = _
+    bind[CourseTypeChangeApply] declare { e =>
+      index("", false, e.std)
+    }
 
-  var std: Student = _
-
-  var examType: ExamType = _
-
-  var examBeginAt: Option[Instant] = None
-
-  var mobile: Option[String] = None
-
-  var reason: Option[ExamDeferReason] = None
-
-  var passed: Option[Boolean] = None
-
-  var status: String = _
+  }
 }

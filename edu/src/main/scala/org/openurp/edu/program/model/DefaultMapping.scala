@@ -18,6 +18,7 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.edu.program.flow.{AlternativeCourseApply, CourseTypeChangeApply}
 
 class DefaultMapping extends MappingModule {
 
@@ -159,14 +160,6 @@ class DefaultMapping extends MappingModule {
     bind[ExemptCourse]
 
     bind[StdExemptCourse] declare { e =>
-      index("", false, e.std)
-    }
-
-    bind[AlternativeApply] declare { e =>
-      index("", false, e.std)
-    }
-
-    bind[CourseTypeChangeApply] declare { e =>
       index("", false, e.std)
     }
   }

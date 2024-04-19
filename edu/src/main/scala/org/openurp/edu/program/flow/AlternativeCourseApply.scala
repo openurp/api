@@ -15,10 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.program.model
+package org.openurp.edu.program.flow
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.User
@@ -28,7 +29,8 @@ import java.time.Instant
 
 /** 学生个人替代课程申请
  */
-class AlternativeApply extends LongId with Updated with Remark {
+@flow
+class AlternativeCourseApply extends LongId with Updated with Remark {
 
   /** 学生 */
   var std: Student = _

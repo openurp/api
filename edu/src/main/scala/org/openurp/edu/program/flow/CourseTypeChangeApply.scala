@@ -15,9 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.program.model
+package org.openurp.edu.program.flow
 
 import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.User
@@ -28,6 +29,7 @@ import java.time.Instant
 
 /** 课程类别转换申请
  */
+@flow
 class CourseTypeChangeApply extends LongId with Updated with Remark {
 
   /** 学生 */
