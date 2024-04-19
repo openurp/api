@@ -161,5 +161,13 @@ class DefaultMapping extends MappingModule {
     bind[StdExemptCourse] declare { e =>
       index("", false, e.std)
     }
+
+    bind[AlternativeApply] declare { e =>
+      index("", false, e.std)
+    }
+
+    bind[CourseTypeChangeApply] declare { e =>
+      index("", false, e.std)
+    }
   }
 }

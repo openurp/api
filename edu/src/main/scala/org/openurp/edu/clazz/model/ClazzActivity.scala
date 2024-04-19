@@ -18,7 +18,7 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.time.WeekTime
+import org.beangle.commons.lang.time.{WeekState, WeekTime}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.Activity
@@ -81,5 +81,17 @@ class ClazzActivity extends LongId, Ordered[ClazzActivity], Activity, Cloneable,
     obj.rooms.addAll(this.rooms)
     obj.teachers.addAll(this.teachers)
     obj
+  }
+
+  /** 合并两个教学活动的时间
+   *
+   * @param that
+   */
+  def mergeTime(that: ClazzActivity): Unit = {
+    if (this.time.beginAt >= that.time.beginAt) this.time.beginAt = that.time.beginAt
+    if (this.time.endAt <= that.time.endAt) this.time.endAt = that.time.endAt
+    this.beginUnit = math.min(this.beginUnit, that.beginUnit).toShort
+    this.endUnit = math.max(this.endUnit, that.endUnit).toShort
+    this.time.weekstate = new WeekState(this.time.weekstate.value | that.time.weekstate.value)
   }
 }

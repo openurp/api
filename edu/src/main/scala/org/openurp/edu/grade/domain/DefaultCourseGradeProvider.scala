@@ -81,6 +81,7 @@ class DefaultCourseGradeProvider extends CourseGradeProvider {
   private def getCurPassedStatus(std: Student): Seq[Array[Any]] = {
     val query = OqlBuilder.from(classOf[CourseGrade], "grade")
     query.where("grade.std = :std", std)
+    query.where("grade.project = :project", std.project)
     query.where("grade.status = :status", Grade.Status.Published)
     query.select("grade.course.id,grade.passed")
     entityDao.search(query).asInstanceOf[Seq[Array[Any]]]
@@ -89,6 +90,7 @@ class DefaultCourseGradeProvider extends CourseGradeProvider {
   private def getHisPassedStatus(std: Student, schoolYears: Iterable[Int]): Seq[Array[Any]] = {
     val query = OqlBuilder.from(classOf[HisCourseGrade], "grade")
     query.where("grade.std = :std", std)
+    query.where("grade.project = :project", std.project)
     query.where("grade.status = :status", Grade.Status.Published)
     query.where("grade.schoolYear in (:schoolYears)", schoolYears)
     query.select("grade.course.id,grade.passed")
@@ -98,6 +100,7 @@ class DefaultCourseGradeProvider extends CourseGradeProvider {
   private def getCurGrades(std: Student, status: Option[Int], semesters: Iterable[Semester]): Seq[CourseGrade] = {
     val query = OqlBuilder.from(classOf[CourseGrade], "grade")
     query.where("grade.std = :std", std)
+    query.where("grade.project = :project", std.project)
     status foreach (s => query.where("grade.status =:status", s))
     if semesters.nonEmpty then query.where("grade.semester in(:semesters)", semesters)
     entityDao.search(query).sortBy(_.semester.beginOn)
@@ -106,6 +109,7 @@ class DefaultCourseGradeProvider extends CourseGradeProvider {
   private def getHisGrades(std: Student, status: Option[Int], semesters: Iterable[Semester], schoolYears: Iterable[Int]): Seq[CourseGrade] = {
     val query = OqlBuilder.from(classOf[HisCourseGrade], "grade")
     query.where("grade.std = :std", std)
+    query.where("grade.project = :project", std.project)
     query.where("grade.schoolYear in (:schoolYears)", schoolYears)
     status foreach (s => query.where("grade.status =:status", s))
     if semesters.nonEmpty then query.where("grade.semester in(:semesters)", semesters)

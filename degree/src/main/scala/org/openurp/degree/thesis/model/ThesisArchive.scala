@@ -36,4 +36,9 @@ class ThesisDocArchive extends LongId, Updated {
   var confirmAt: Option[Instant] = None
   /** 意见反馈 */
   var feedback: Option[String] = None
+
+  /** 学生签名 */
+  var writerSignature: Option[String] = None
+  /** 指导老师签名 */
+  var advisorSignature: Option[String] = None
 }
