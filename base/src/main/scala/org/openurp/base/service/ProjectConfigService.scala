@@ -19,10 +19,23 @@ package org.openurp.base.service
 
 import org.openurp.base.model.Project
 
+import scala.reflect.ClassTag
+
+/** 项目属性提供服务
+ */
 trait ProjectConfigService {
 
   def get[T](project: Project, name: String, defaultValue: T): T
 
-  def get[T](project: Project, feature: Feature): T
+  def get[T: ClassTag](project: Project, feature: Feature): T
 
+  def getInt(project: Project, f: Feature): Int
+
+  def getString(project: Project, f: Feature): String
+
+  def getBoolean(project: Project, f: Feature): Boolean
+
+  def getFloat(project: Project, f: Feature): Float
+
+  def getDouble(project: Project, f: Feature): Double
 }

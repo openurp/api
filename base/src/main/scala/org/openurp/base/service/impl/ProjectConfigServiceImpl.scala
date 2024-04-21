@@ -21,6 +21,8 @@ import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.model.{Project, ProjectProperty}
 import org.openurp.base.service.{Feature, ProjectConfigService}
 
+import scala.reflect.ClassTag
+
 class ProjectConfigServiceImpl extends ProjectConfigService {
 
   var entityDao: EntityDao = _
@@ -36,7 +38,7 @@ class ProjectConfigServiceImpl extends ProjectConfigService {
     }
   }
 
-  override def get[T](project: Project, f: Feature): T = {
+  override def get[T: ClassTag](project: Project, f: Feature): T = {
     val query = OqlBuilder.from(classOf[ProjectProperty], "pp")
     query.where("pp.project=:project", project)
     query.where("pp.name=:name", f.name)
@@ -47,4 +49,23 @@ class ProjectConfigServiceImpl extends ProjectConfigService {
     }
   }
 
+  override def getInt(project: Project, f: Feature): Int = {
+    get[Int](project, f)
+  }
+
+  override def getString(project: Project, f: Feature): String = {
+    get[String](project, f)
+  }
+
+  override def getBoolean(project: Project, f: Feature): Boolean = {
+    get[Boolean](project, f)
+  }
+
+  override def getFloat(project: Project, f: Feature): Float = {
+    get[Float](project, f)
+  }
+
+  override def getDouble(project: Project, f: Feature): Double = {
+    get[Double](project, f)
+  }
 }

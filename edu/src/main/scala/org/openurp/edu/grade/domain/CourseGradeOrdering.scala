@@ -23,8 +23,7 @@ import org.openurp.edu.grade.model.CourseGrade
 import org.openurp.code.edu.model.GradeType
 import org.openurp.edu.grade.model.CourseGrade
 
-/**
- * 可按照成绩组成部分排序的排序类
+/**可按照成绩组成部分排序的排序类
  */
 class CourseGradeOrdering(cmpWhat: String, isAsc: Boolean, gradeTypes: Iterable[GradeType]) extends Ordering[CourseGrade] {
 
@@ -32,7 +31,7 @@ class CourseGradeOrdering(cmpWhat: String, isAsc: Boolean, gradeTypes: Iterable[
 
   override def compare(g0: CourseGrade, g1: CourseGrade): Int = {
     if (cmpWhat.startsWith("gradeType")) {
-      val gradeType = gradeTypeMap(cmpWhat).asInstanceOf[GradeType]
+      val gradeType = gradeTypeMap(cmpWhat)
       val eg0 = g0.getGrade(gradeType)
       val eg1 = g1.getGrade(gradeType)
       if (eg0.isEmpty) -1
@@ -40,8 +39,8 @@ class CourseGradeOrdering(cmpWhat: String, isAsc: Boolean, gradeTypes: Iterable[
       else cmpScore(eg0.get.score, eg1.get.score, isAsc)
     } else {
       val myCollator = Collator.getInstance
-      val what0: Any = Properties.get(g0, cmpWhat)
-      val what1: Any = Properties.get(g1, cmpWhat)
+      val what0 = Properties.get[Any](g0, cmpWhat)
+      val what1 = Properties.get[Any](g1, cmpWhat)
       if (isAsc) {
         myCollator.compare(if ((null == what0)) "" else what0.toString, if ((null == what1)) "" else what1.toString)
       } else {

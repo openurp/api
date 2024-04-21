@@ -29,11 +29,16 @@ class ThesisArchive extends LongId, Updated {
   /** 作者 */
   var writer: Writer = _
   /** 指导老师是否确认 */
-  var advisorConfirmed: Option[Boolean] = None
+  var confirmed: Option[Boolean] = None
   /** 确认人 */
   var confirmedBy: Option[User] = None
   /** 确认时间 */
   var confirmAt: Option[Instant] = None
   /** 意见反馈 */
   var feedback: Option[String] = None
+
+  def this(writer: Writer) = {
+    this()
+    this.writer = writer
+  }
 }

@@ -18,7 +18,7 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.program.flow.{AlternativeCourseApply, CourseTypeChangeApply}
+import org.openurp.edu.program.flow.{CourseAlternativeApply, CourseTypeChangeApply}
 
 class DefaultMapping extends MappingModule {
 

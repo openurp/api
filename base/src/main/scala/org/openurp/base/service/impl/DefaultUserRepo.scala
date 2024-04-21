@@ -31,6 +31,12 @@ import org.openurp.code.hr.model.UserCategory
 import java.time.{Instant, LocalDate}
 import javax.sql.DataSource
 
+/**
+ * FIXME hard code rolename
+ * @param entityDao
+ * @param platformDataSource
+ * @param hostname
+ */
 class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, hostname: String) extends UserRepo, Logging {
 
   private var orgId: Int = _
@@ -80,8 +86,8 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
   }
 
   override def createUser(secretary: Secretary): Unit = {
-    println("staffRuleId "+ staffRoleId)
-    println("secretaryRoleId "+ secretaryRoleId)
+    println("staffRuleId " + staffRoleId)
+    println("secretaryRoleId " + secretaryRoleId)
     val staff = secretary.staff
     createStaffUser(staff, List(staffRoleId), None)
     val userId = findEmsUserId(staff.code).get
@@ -160,19 +166,14 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
     entityDao.saveOrUpdate(users)
     users.foreach(user => {
-      emsJdbcExecutor.update("update ems.usr_users u set end_on=?  where u.org_id= ? and u.code=?",
+      emsJdbcExecutor.update("update ems.usr_users u set end_on=? ,enabled=true,locked=false where u.org_id= ? and u.code=?",
         user.endOn, if (null == user.endOn) true else false, orgId, user.code)
-      emsJdbcExecutor.update("update ems.usr_accounts a set end_on=? where a.domain_id= ? and " +
-        "exists(select * from ems.usr_users u where u.id=a.user_id and  u.code=?)",
-        user.endOn, if (null == user.endOn) true else false, domainId, user.code)
     })
   }
 
   override def updatePassword(userCode: String, password: String): Int = {
     val encoded = "{MD5}" + Digests.md5Hex(password)
-    emsJdbcExecutor
-      .update("update ems.usr_accounts acc set password=? where acc.domain_id=? and " +
-        "exists(select * from ems.usr_users u where u.code=? and u.id=acc.user_id)", encoded, domainId, userCode)
+    emsJdbcExecutor.update("update ems.usr_users u set password=? where u.org_id=? and u.code=?", encoded, orgId, userCode)
   }
 
   override def createAccount(user: User): Unit = {
@@ -219,18 +220,12 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         id
       case None =>
         val userId = nextId()
-        emsJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,updated_at,begin_on)"
-          + "values(?,?,?,?,?,?,?,now(),current_date);", userId, code, name, orgId, categoryId, user.mobile.orNull, user.email.orNull)
+        emsJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,password," +
+          "passwd_expired_on,updated_at,begin_on,enabled,locked)"
+          + "values(?,?,?,?,?,?,?,?,current_date+180,now(),current_date,true,false);", userId, code, name, orgId,
+          categoryId, user.mobile.orNull, user.email.orNull, "{MD5}" + Digests.md5Hex(password))
         logger.info(s"create user $code $name")
         userId
-    }
-    val accountCount = emsJdbcExecutor.unique[Long]("select count(*) from ems.usr_accounts where user_id=? and domain_id=? ", userId, domainId).getOrElse(0L)
-    if (accountCount == 0) {
-      val accountId = nextId()
-      emsJdbcExecutor.update(
-        "insert into ems.usr_accounts(id,user_id,domain_id,password,passwd_expired_on,locked,enabled,begin_on,updated_at)"
-          + "values(?,?,?,?,current_date+180,false,true,current_date,now());",
-        accountId, userId, domainId, "{MD5}" + Digests.md5Hex(password))
     }
     grantRoles(userId, roleIds)
   }

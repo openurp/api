@@ -24,8 +24,9 @@ $BODY$;
 
 update edu.clazz_activities ca set
 begin_unit=(select min(cu.indexno) from base.course_units cu where abs(minutes(ca.begin_at )- minutes(cu.begin_at))<=15)
-where ca.begin_unit is null;
+where ca.begin_unit is null or ca.begin_unit=0;
 
 update edu.clazz_activities ca set
 end_unit=(select min(cu.indexno) from base.course_units cu where abs(minutes(ca.end_at) - minutes(cu.end_at))<=15)
-where ca.end_unit is null;
+where (ca.end_unit is null or ca.end_unit=0)
+and exists(select * from base.course_units cu where abs(minutes(ca.end_at) - minutes(cu.end_at))<=15)

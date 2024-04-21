@@ -92,6 +92,9 @@ class Student extends LongId with Coded with Named with EduLevelBased with Updat
   /** 学位论文指导教师 */
   var advisor: Option[Teacher] = None
 
+  /** 是否延期毕业 */
+  var graduationDeferred: Boolean = _
+
   def calcCurrentState(): Unit = {
     this.state = Some(stateWhen(LocalDate.now()))
   }

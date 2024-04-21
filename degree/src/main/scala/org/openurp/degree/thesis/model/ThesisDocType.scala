@@ -18,11 +18,14 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{Coded, Named}
+import org.beangle.data.model.pojo.{Coded, Named, Remark, TemporalOn}
 
-class ThesisDocType extends IntId, Coded, Named {
+class ThesisDocType extends IntId, Coded, Named, TemporalOn, Remark {
   var idx: Int = _
   var stage: Stage = _
+
+  var maxSize: Int = _
+  var extensions: String = _
 
   def this(idx: Int, stage: Stage, code: String, name: String) = {
     this()
