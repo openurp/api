@@ -66,7 +66,7 @@ class AuditCourseResult extends LongId with Remark {
       hasGrade = true
       val sb = new StringBuilder
       for (grade <- grades) {
-        sb.append(grade.scoreText.getOrElse("--")).append(" ")
+        sb.append(getScoreText(grade)).append(" ")
         if (!passed) passed = grade.passed
       }
       scores = sb.toString
@@ -83,14 +83,19 @@ class AuditCourseResult extends LongId with Remark {
     if (!passed && substituteGrades.nonEmpty) {
       if substituteGrades.head.passed then
         updatePassedWay(CoursePassedWay.ByAlternative)
-        val tempStr = new StringBuffer()
+        val r = Collections.newBuffer[String]
         substituteGrades foreach { grade =>
-          tempStr.append(grade.course.name).append('[').append(grade.course.code).append("],")
+          r.addOne(s"${grade.course.name}(${grade.course.code} ${getScoreText(grade)})")
         }
-        if (tempStr.length > 0) tempStr.deleteCharAt(tempStr.length - 1)
-        addRemark(tempStr.toString)
+        addRemark(r.mkString(" "))
     }
     this
+  }
+
+  private def getScoreText(grade: CourseGrade): String = {
+    grade.scoreText match
+      case None => if grade.courseTakeType.id == CourseTakeType.Exemption then grade.courseTakeType.name else "--"
+      case Some(s) => s
   }
 
   def updatePassedWay(way: CoursePassedWay): Unit = {

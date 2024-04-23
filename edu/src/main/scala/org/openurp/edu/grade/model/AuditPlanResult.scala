@@ -113,6 +113,7 @@ class AuditPlanResult extends LongId with Updated with Remark {
     this.owedCredits = tops.map(_.owedCredits).sum
     this.owedCredits2 = tops.map(_.owedCredits2).sum
     this.owedCredits3 = tops.map(_.owedCredits3).sum
+    this.passedCredits = tops.flatMap(_.passedCourses).map(x => x.getCredits(std.level)).sum
     this.passed = tops.count(_.passed) == tops.size && this.owedCredits <= 0.00000001f
     this.predicted = this.owedCredits2 <= 0.00000001f
   }

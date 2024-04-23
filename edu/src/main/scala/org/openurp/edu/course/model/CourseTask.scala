@@ -19,7 +19,7 @@ package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Course
+import org.openurp.base.edu.model.{Course, TeachingOffice}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Semester}
 import org.openurp.code.edu.model.CourseType
@@ -39,6 +39,8 @@ class CourseTask extends LongId {
   var courseType: CourseType = _
 
   var teachers: mutable.Set[Teacher] = Collections.newSet[Teacher]
+  /** 教研室 */
+  var office: Option[TeachingOffice] = None
 
   var director: Option[Teacher] = None
 

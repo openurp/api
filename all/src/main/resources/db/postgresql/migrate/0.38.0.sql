@@ -173,5 +173,6 @@ alter table base.course_directors add constraint uk_e3nnjcbf3esj437l6tj2tqt5r un
 --certificates
 alter table code.certificates add subjects varchar(300);
 
-
-
+--clazz
+alter table edu.restrictions rename to clazz_restrictions;
+alter table edu.restriction_items rename to clazz_restriction_items;
