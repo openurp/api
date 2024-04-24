@@ -49,6 +49,10 @@ alter table base.course_hours rename column teaching_nature_id to nature_id;
 drop table base.courses_grading_modes;
 drop table base.course_clusters;
 drop table base.courses_prerequisites;
+alter table edu.clazz_activities rename column teaching_nature_id to nature_id;
+alter table edu.clazz_activities drop column teaching_method_id;
+alter table edu.clazz_activities rename column places to remark;
+
 --program
 alter table edu.major_course_groups add allow_unplanned bool default false;
 alter table edu.execution_course_groups add allow_unplanned bool default false;
@@ -79,22 +83,24 @@ alter table edu.syllabus_docs rename file_path to doc_path;
 
 create table code.course_modules (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 
---??
-create table edu.syllabus_assess_percents (id bigint not null, objectives varchar(255), "percent" integer default 0 not null, syllabus_id bigint not null, component varchar(255), grade_type_id integer not null);
-create table edu.syllabus_credit_hours (weeks integer default 0 not null, credit_hours integer default 0 not null, id bigint not null, nature_id integer not null, syllabus_id bigint not null);
-create table edu.syllabus_lesson_hours (weeks integer default 0 not null, credit_hours integer default 0 not null, lesson_id bigint not null, id bigint not null, nature_id integer not null, learning integer default 0 not null);
-create table edu.syllabus_lessons (id bigint not null, topic varchar(255) not null, syllabus_id bigint not null);
-create table edu.syllabus_objectives (name varchar(255) not null, outcome_codes varchar(255), id bigint not null, syllabus_id bigint not null, code varchar(255) not null, contents varchar(255) not null);
-create table edu.syllabus_outcomes (name varchar(255) not null, id bigint not null, syllabus_id bigint not null, code varchar(255) not null, contents varchar(255) not null);
+--syllabus
+create table edu.syllabus_assessments (description varchar(4000), score_table varchar(4000), objective_percents varchar(255), id bigint not null, idx integer default 0 not null, syllabus_id bigint not null, score_percent integer default 0 not null, component varchar(255), grade_type_id integer not null, assess_count integer default 0 not null);
+create table edu.syllabus_cases (name varchar(100) not null, id bigint not null, idx integer default 0 not null, syllabus_id bigint not null);
+create table edu.syllabus_credit_hours (weeks integer default 0 not null, credit_hours integer default 0 not null, id bigint not null, nature_id integer not null, syllabus_id bigint not null, learning integer default 0 not null);
+create table edu.syllabus_docs (semester_id integer not null, doc_size integer default 0 not null, course_id bigint not null, writer_id bigint not null, audit_at timestamptz, doc_locale varchar(255) not null, department_id integer not null, id bigint not null, end_on date, doc_path varchar(200) not null, auditor_id bigint, begin_on date not null, status integer not null, updated_at timestamptz default current_timestamp not null);
+create table edu.syllabus_experiments (name varchar(100) not null, experiment_type_id integer not null, online boolean default false not null, credit_hours integer default 0 not null, id bigint not null, idx integer default 0 not null, syllabus_id bigint not null);
+create table edu.syllabus_method_designs (name varchar(255) not null, contents varchar(2000) not null, id bigint not null, idx integer default 0 not null, syllabus_id bigint not null, has_experiment boolean default false not null, has_case boolean default false not null);
+create table edu.syllabus_objectives (name varchar(255) not null, id bigint not null, syllabus_id bigint not null, code varchar(255) not null, contents varchar(255) not null);
+create table edu.syllabus_outcomes (contents varchar(255) not null, course_objectives varchar(255) not null, syllabus_id bigint not null, objective_id integer not null, id bigint not null);
 create table edu.syllabus_texts (name varchar(255) not null, contents varchar(255) not null, id bigint not null, indexno varchar(255) not null, syllabus_id bigint not null, parent_id bigint);
-create table edu.syllabus_topics (name varchar(255) not null, contents varchar(255) not null, id bigint not null, objectives varchar(255), syllabus_id bigint not null);
+create table edu.syllabus_topic_elements (label_id integer not null, contents varchar(255) not null, id bigint not null, topic_id bigint not null);
+create table edu.syllabus_topic_hours (weeks integer default 0 not null, credit_hours integer default 0 not null, id bigint not null, nature_id integer not null, topic_id bigint not null);
+create table edu.syllabus_topics (name varchar(255) not null, contents varchar(255) not null, objectives varchar(255), idx smallint default 0 not null, syllabus_id bigint not null, learning_hours integer default 0 not null, id bigint not null);
 create table edu.syllabus_topics_methods (syllabus_topic_id bigint not null, teaching_method_id integer not null);
-create table edu.syllabuses_corequisites (syllabus_id bigint not null, curriculum_id bigint not null);
+create table edu.syllabuses (semester_id integer not null, course_id bigint not null, exam_mode_id integer not null, locale varchar(255) not null, director_id bigint, grading_mode_id integer not null, nature_id integer not null, prerequisites varchar(255), website varchar(255), module_id integer not null, stage_id integer, writer_id bigint not null, materials varchar(255), subsequents varchar(255), description varchar(255) not null, audit_at timestamptz, rank_id integer not null, department_id integer not null, id bigint not null, begin_on date not null, status integer not null, end_on date, bibliography varchar(255), auditor_id bigint, corequisites varchar(255), updated_at timestamptz default current_timestamp not null);
 create table edu.syllabuses_levels (syllabus_id bigint not null, education_level_id integer not null);
 create table edu.syllabuses_majors (syllabus_id bigint not null, major_id bigint not null);
 create table edu.syllabuses_methods (syllabus_id bigint not null, teaching_method_id integer not null);
-create table edu.syllabuses_prerequisites (syllabus_id bigint not null, curriculum_id bigint not null);
-create table edu.syllabuses_subsequents (syllabus_id bigint not null, curriculum_id bigint not null);
 create table edu.syllabuses_textbooks (syllabus_id bigint not null, textbook_id bigint not null);
 
 --calendar
@@ -109,28 +115,28 @@ alter table base.calendar_stages add en_name varchar(40);
 --insert into code.course_modules(id,code,name,begin_on,updated_at) values(2,'2','学科专业模块',current_date,now());
 --insert into code.course_modules(id,code,name,begin_on,updated_at) values(2,'3','实践模块',current_date,now());
 create table code.syllabus_topic_labels (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamp default current_timestamp not null);
-insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(1,'01','课程思政',current_date,current_timestamp);
-insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(2,'02','本章重点',current_date,current_timestamp);
-insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(3,'03','本章难点',current_date,current_timestamp);
-insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(4,'04','学生学习成果',current_date,current_timestamp);
+--insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(1,'01','课程思政',current_date,current_timestamp);
+--insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(2,'02','本章重点',current_date,current_timestamp);
+--insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(3,'03','本章难点',current_date,current_timestamp);
+--insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(4,'04','学生学习成果',current_date,current_timestamp);
 
 create table code.experiment_types (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
-insert into code.experiment_types(id,code,name,begin_on,updated_at) values(1,'01','演示性',current_date,current_timestamp);
-insert into code.experiment_types(id,code,name,begin_on,updated_at) values(2,'02','验证性',current_date,current_timestamp);
-insert into code.experiment_types(id,code,name,begin_on,updated_at) values(3,'03','综合性',current_date,current_timestamp);
-insert into code.experiment_types(id,code,name,begin_on,updated_at) values(4,'04','设计研究',current_date,current_timestamp);
-insert into code.experiment_types(id,code,name,begin_on,updated_at) values(5,'05','其它',current_date,current_timestamp);
+--insert into code.experiment_types(id,code,name,begin_on,updated_at) values(1,'01','演示性',current_date,current_timestamp);
+--insert into code.experiment_types(id,code,name,begin_on,updated_at) values(2,'02','验证性',current_date,current_timestamp);
+--insert into code.experiment_types(id,code,name,begin_on,updated_at) values(3,'03','综合性',current_date,current_timestamp);
+--insert into code.experiment_types(id,code,name,begin_on,updated_at) values(4,'04','设计研究',current_date,current_timestamp);
+--insert into code.experiment_types(id,code,name,begin_on,updated_at) values(5,'05','其它',current_date,current_timestamp);
 
 create table code.graduate_objectives (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 
-insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(1,'1','思想政治素质',current_date,current_timestamp);
-insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(2,'2','诚信品质',current_date,current_timestamp);
-insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(3,'3','身心健康',current_date,current_timestamp);
-insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(4,'4','通识知识/学科专业基础知识',current_date,current_timestamp);
-insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(5,'5','数据和信息素养',current_date,current_timestamp);
-insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(6,'6','创新意识',current_date,current_timestamp);
-insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(7,'7','实践能力',current_date,current_timestamp);
-insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(8,'8','国际视野',current_date,current_timestamp);
+--insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(1,'1','思想政治素质',current_date,current_timestamp);
+--insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(2,'2','诚信品质',current_date,current_timestamp);
+--insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(3,'3','身心健康',current_date,current_timestamp);
+--insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(4,'4','通识知识/学科专业基础知识',current_date,current_timestamp);
+--insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(5,'5','数据和信息素养',current_date,current_timestamp);
+--insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(6,'6','创新意识',current_date,current_timestamp);
+--insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(7,'7','实践能力',current_date,current_timestamp);
+--insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(8,'8','国际视野',current_date,current_timestamp);
 
 create table code.course_ranks (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 
@@ -158,8 +164,9 @@ alter table base.course_profiles add auditor_id bigint;
 alter table base.course_profiles add audit_at timestamptz;
 alter table base.course_profiles add BIBLIOGRAPHY varchar(2000);
 --course task
-create table edu.course_tasks (semester_id integer not null, course_id bigint not null, course_type_id integer not null, department_id integer not null, id bigint not null, director_id bigint);
+create table edu.course_tasks (semester_id integer not null, course_id bigint not null, course_type_id integer not null, office_id bigint, department_id integer not null, id bigint not null, director_id bigint);
 create table edu.course_tasks_teachers (course_task_id bigint not null, teacher_id bigint not null);
+
 alter table edu.course_tasks add constraint pk_t2hnkntagl4pt5brhlsq5idg7 primary key (id);
 alter table edu.course_tasks add constraint uk_3frid92ox3grog2rfffm12lci unique (semester_id,course_id,department_id);
 alter table edu.course_tasks_teachers add constraint pk_oj0gk5qp3paxe0shf72mu0a72 primary key (course_task_id,teacher_id);

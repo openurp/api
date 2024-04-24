@@ -33,9 +33,6 @@ create table edu.std_exempt_courses (course_id bigint not null, std_id bigint no
 alter table edu.std_exempt_courses add constraint pk_pmf5t4ig9yr2d7l6cha1r2b53 primary key (id);
 create index idx_56fbv4yt2d1wshrjys9mjfarf on edu.std_exempt_courses (std_id);
 
---flow
-
-
 --std
 alter table base.students add graduation_deferred bool default false;
 
