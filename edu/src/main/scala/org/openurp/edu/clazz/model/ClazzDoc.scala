@@ -15,44 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.textbook.model
+package org.openurp.edu.clazz.model
 
-import java.time.Instant
-
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.model.Textbook
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.User
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.edu.course.model.BookAdoption
-
-import scala.collection.mutable
 
 /**
- * 教学材料说明
- * 包括教材、参考书等
+ * 教学班文件资料
  */
-class Material extends LongId with Serializable with Cloneable with Remark {
+class ClazzDoc extends LongId with Updated {
 
-  /** 教学任务 */
   var clazz: Clazz = _
 
-  /** 历史已经订购过 */
-  var ordered: Boolean = _
+  var name: String = _
 
-  /** 教材列表 */
-  var books: mutable.Buffer[Textbook] = Collections.newBuffer[Textbook]
+  var filePath: Option[String] = None
 
-  /** 教材选用类型 */
-  var adoption: BookAdoption = _
+  var url: Option[String] = None
 
-  /** 辅助资料 */
-  var materials: Option[String] = None
-
-  /** 是否审核通过 */
-  var passed: Option[Boolean] = None
-
-  /** 提交时间 */
-  var submitAt: Option[Instant] = None
+  var updatedBy: User = _
 
 }

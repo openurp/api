@@ -134,8 +134,5 @@ ExemptCourse=免修课程
 ExemptCourse.fromGrade=起始年级
 ExemptCourse.toGrade=结束年级
 ExemptCourse.stdTypes=免修课程-适用学生类别范围
-ExemptCourse.stds=免修课程-适用学生
 
-ExemptCourseType=免修课程类别
-ExemptCourseType.stdTypes=免息课程类别-学生类别
-ExemptCourseType.stds=免息课程类别-特殊学生
+StdExemptCourse=学生个人免修课程

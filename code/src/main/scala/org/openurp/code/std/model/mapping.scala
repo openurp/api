@@ -38,6 +38,7 @@ class DefaultMapping extends MappingModule {
     bind[FeeType]
     bind[StdType]
     bind[StdDocType]
+    bind[GraduateType]
 
     all.cacheAll()
   }

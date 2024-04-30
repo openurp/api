@@ -19,10 +19,11 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.WeekState
-import org.beangle.data.model.{Component, LongId}
+import org.beangle.data.model.Component
 import org.openurp.code.edu.model.ClassroomType
+import org.openurp.edu.clazz.domain.WeekTimeBuilder
 
-import java.time.LocalDate
+import java.time.LocalDateTime
 import scala.collection.mutable
 
 /**
@@ -50,8 +51,10 @@ class Schedule extends Component with Serializable with Cloneable {
 
   /** 第一次上课时间
    */
-  def firstDate: Option[LocalDate] = {
-    activities.map(_.startOn).toBuffer.sorted.headOption
+  def firstDateTime: Option[LocalDateTime] = {
+    activities.map { x =>
+      x.time.startOn.plusWeeks(x.time.weekstate.first - 1).atTime(x.time.beginAt.toLocalTime)
+    }.toBuffer.sorted.headOption
   }
 
   /** 起始周 */
@@ -63,5 +66,7 @@ class Schedule extends Component with Serializable with Cloneable {
   def lastWeek: Int = {
     if (null != weekstate) weekstate.last else 0
   }
+
+  def weekInfo: String = WeekTimeBuilder.digest(weekstate)
 
 }

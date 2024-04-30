@@ -81,6 +81,8 @@ CourseAbilityRate=课程能力等级
 CourseAbilityRate.rate=等级值
 
 CourseType=课程类别
+CourseType.shortName=简称
+
 CourseCategory=课程评教分类
 
 CourseType.practical=是否实践课
@@ -116,3 +118,4 @@ CourseGeneralType=课程通用分类
 CourseGeneralType.color=分类颜色
 CourseAwardCategory=课程获奖分类
 CourseAbilitySubject=课程能力等级分类
+ExperimentType=实验类型

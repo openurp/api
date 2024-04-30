@@ -88,6 +88,7 @@ class DefaultMapping extends MappingModule {
 
     bind[MajorDiscipline] declare { e =>
       e.disciplineCode is length(50)
+      e.disciplineName is length(100)
       index("", false, e.major)
     }
 

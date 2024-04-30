@@ -18,14 +18,13 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.User
 
 import java.time.Instant
 
 /** 论文归档信息
  */
-class ThesisArchive extends LongId, Updated {
+class ThesisArchive extends LongId {
   /** 作者 */
   var writer: Writer = _
   /** 指导老师是否确认 */
@@ -34,8 +33,12 @@ class ThesisArchive extends LongId, Updated {
   var confirmedBy: Option[User] = None
   /** 确认时间 */
   var confirmAt: Option[Instant] = None
+  /** 是否归档 */
+  var archived: Option[Boolean] = None
   /** 意见反馈 */
   var feedback: Option[String] = None
+  /** 上传时间 */
+  var uploadAt: Option[Instant] = None
 
   def this(writer: Writer) = {
     this()

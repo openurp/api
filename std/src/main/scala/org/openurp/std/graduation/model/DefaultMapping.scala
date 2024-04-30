@@ -25,6 +25,10 @@ class DefaultMapping extends MappingModule {
     bind[GraduateBatch].declare { e =>
       e.name is length(100)
     }
+    bind[Graduation] declare { e =>
+      index("", true, e.batch, e.std)
+    }
+
     bind[GraduateAuditItem].declare { e =>
       e.name is length(100)
       e.comments is length(500)

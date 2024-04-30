@@ -69,7 +69,8 @@ Major.remark=备注
 MajorDiscipline=专业学科信息
 MajorDiscipline.major=专业
 MajorDiscipline.category=学科门类
-MajorDiscipline.disciplineCode=教育部代码
+MajorDiscipline.disciplineCode=学科专业代码
+MajorDiscipline.disciplineName=学科专业名称
 
 MajorJournal=专业建设历程
 MajorJournal.major=专业

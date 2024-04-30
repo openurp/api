@@ -120,11 +120,11 @@ TeachingPlan.filePath=附件关键字
 TeachingPlan.fileSize=大小
 TeachingPlan.auditAt=审核时间
 
-ClazzMaterial=教学班资料
-ClazzMaterial.name=材料名称
-ClazzMaterial.filePath=文件路径
-ClazzMaterial.url=网址
-ClazzMaterial.updatedBy=上传人
+ClazzDoc=教学班资料
+ClazzDoc.name=材料名称
+ClazzDoc.filePath=文件路径
+ClazzDoc.url=网址
+ClazzDoc.updatedBy=上传人
 
 ClazzNotice=班内通知
 ClazzNotice.title=标题

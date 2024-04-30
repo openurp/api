@@ -16,6 +16,8 @@ Project.beginOn=生效日期
 Project.endOn=失效日期
 Project.stdTypes=项目-学生类别
 Project.eduTypes=项目-培养类型
+Project.administration=主管部门
+Project.administration2nd=二级部门
 
 ProjectCode=项目基础代码配置
 ProjectCode.project=项目

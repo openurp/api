@@ -30,10 +30,12 @@ SyllabusObjective.contents=内容
 SyllabusObjective.objectives=对应的课程目标
 
 SyllabusTopic=教学大纲-教学主题
+SyllabusTopic.idx=顺序号
 SyllabusTopic.contents=教学内容
 SyllabusTopic.methods=教学主题-教学方式方法
 SyllabusTopic.objectives=对应的课程目标
 SyllabusTopic.hours=分类课时
+SyllabusTopic.learningHours=自主学习学时
 
 SyllabusTopicElement=教学大纲-教学主题-教学主题元素
 SyllabusTopicElement.contents=教学内容
@@ -53,12 +55,17 @@ SyllabusText.contents=内容
 
 SyllabusOutcome=教学大纲毕业要求
 SyllabusOutcome.contents=内容
-SyllabusOutcome.objectives=对应的课程目标
+SyllabusOutcome.courseObjectives=对应的课程目标
 
-SyllabusAssessPercent=教学大纲-评估方式比例
-SyllabusAssessPercent.scorePercent=百分比
-SyllabusAssessPercent.objectives=对应的课程目标
-SyllabusAssessPercent.component=小项
+SyllabusAssessment=教学大纲-评估方式比例
+SyllabusAssessment.scorePercent=百分比
+SyllabusAssessment.objectives=对应的课程目标
+SyllabusAssessment.component=小项
+SyllabusAssessment.assessCount=考核次数
+SyllabusAssessment.objectivePercents=对应课程目标的支撑比例
+SyllabusAssessment.description=具体办法
+SyllabusAssessment.scoreTable=评分表
+SyllabusAssessment.idx=序号
 
 SyllabusDoc=教学大纲附件
 SyllabusDoc.docLocale=语言
@@ -69,6 +76,19 @@ SyllabusDoc.writer=作者
 SyllabusDoc.status=状态
 SyllabusDoc.auditor=审核人
 
+SyllabusExperiment=教学大纲-实践环节
+SyllabusExperiment.idx=序号
+SyllabusExperiment.online=是否在线实验
+SyllabusExperiment.creditHours=学时
 
 CourseTask=课程任务
 CourseTask.teachers=课程任务-任课教师
+
+SyllabusCase=教学大纲-案例
+SyllabusCase.idx=序号
+
+SyllabusMethodDesign=教学法设计
+SyllabusMethodDesign.idx=序号
+SyllabusMethodDesign.contents=内容
+SyllabusMethodDesign.hasCase=包含案例
+SyllabusMethodDesign.hasExperiment=包含实验

@@ -22,6 +22,8 @@ import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 
+/** 学生个人免修课程
+ */
 class StdExemptCourse extends LongId, Remark, Updated {
   /** 学生 */
   var std: Student = _

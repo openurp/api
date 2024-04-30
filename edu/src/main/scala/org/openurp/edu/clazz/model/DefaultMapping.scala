@@ -98,7 +98,7 @@ class DefaultMapping extends MappingModule {
       e.mediaType is length(100)
     }
 
-    bind[ClazzMaterial].declare { e =>
+    bind[ClazzDoc].declare { e =>
       e.name is length(300)
       e.filePath is length(400)
       e.url is length(400)

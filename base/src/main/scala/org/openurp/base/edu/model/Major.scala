@@ -17,18 +17,14 @@
 
 package org.openurp.base.edu.model
 
-import java.time.LocalDate
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Coded
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.*
 import org.openurp.base.model.{Department, ProjectBased}
 import org.openurp.base.std.model.Grade
-import org.openurp.code.edu.model.DisciplineCategory
-import org.openurp.code.edu.model.EducationLevel
+import org.openurp.code.edu.model.{DisciplineCategory, EducationLevel}
+
+import java.time.LocalDate
 
 /**
  * 专业
@@ -52,7 +48,7 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
   /** 建设过程 */
   var journals = Collections.newBuffer[MajorJournal]
 
-  /**学制*/
+  /** 学制 */
   var schoolLengths = Collections.newBuffer[SchoolLength]
 
   /** 培养层次 */
@@ -76,6 +72,10 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
   def disciplineCode(date: LocalDate): String = {
     disciplines.find(_.contains(date)).map(_.disciplineCode.getOrElse("")).getOrElse("")
   }
+
+  def disciplineName(date: LocalDate): String = {
+    disciplines.find(_.contains(date)).map(_.disciplineName.getOrElse("")).getOrElse("")
+  }
 }
 
 /**
@@ -83,11 +83,14 @@ class Major extends LongId with ProjectBased with TemporalOn with Updated with C
  */
 class MajorDiscipline extends LongId with TemporalOn {
 
-  /**专业*/
+  /** 专业 */
   var major: Major = _
 
   /** 学科门类 */
   var category: DisciplineCategory = _
+
+  /** 教育部名称 */
+  var disciplineName: Option[String] = None
 
   /** 教育部代码 */
   var disciplineCode: Option[String] = None
@@ -103,18 +106,19 @@ class MajorDiscipline extends LongId with TemporalOn {
 
 /**
  * 专业建设过程
+ *
  * @author chaostone
  *
  */
 class MajorJournal extends LongId with TemporalOn with Remark {
 
-  /**专业*/
+  /** 专业 */
   var major: Major = _
 
-  /**培养层次*/
+  /** 培养层次 */
   var level: EducationLevel = _
 
-  /**部门*/
+  /** 部门 */
   var depart: Department = _
 
 }
@@ -123,25 +127,25 @@ class MajorJournal extends LongId with TemporalOn with Remark {
  * 学制
  */
 class SchoolLength extends LongId {
-  /**专业*/
+  /** 专业 */
   var major: Major = _
 
-  /**培养层次*/
+  /** 培养层次 */
   var level: EducationLevel = _
 
-  /**起始年级*/
+  /** 起始年级 */
   var fromGrade: Grade = _
 
-  /**结束年级*/
+  /** 结束年级 */
   var toGrade: Option[Grade] = None
 
-  /**学制*/
+  /** 学制 */
   var normal: Float = _
 
-  /**最低学习年限*/
+  /** 最低学习年限 */
   var minimum: Float = _
 
-  /**最长学习年限*/
+  /** 最长学习年限 */
   var maximum: Float = _
 
 }

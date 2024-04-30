@@ -81,7 +81,11 @@ object WeekTimeBuilder {
     if (weeksDistance < 0) weekstate >>= (0 - weeksDistance)
     else weekstate <<= weeksDistance
 
-    val weekIndecies = new WeekState(weekstate).weeks.toArray
+    digest(new WeekState(weekstate))
+  }
+
+  def digest(weekstate: WeekState): String = {
+    val weekIndecies = weekstate.weeks.toArray
     val seqs = NumSeqParser.digest(weekIndecies).map { s =>
       if (s.step == 1) {
         if (s.start == s.end) s.start.toString

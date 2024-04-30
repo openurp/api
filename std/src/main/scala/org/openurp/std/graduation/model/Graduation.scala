@@ -15,26 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.std.graduation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.User
-import org.openurp.edu.clazz.model.Clazz
+import org.openurp.base.std.model.Student
+import org.openurp.code.std.model.GraduateType
 
-/**
- * 教学班资料
+/** 预毕业信息
  */
-class ClazzMaterial extends LongId with Updated {
+class Graduation extends LongId {
 
-  var clazz: Clazz = _
+  /** 学籍 */
+  var std: Student = _
 
-  var name: String = _
+  /** 批次 */
+  var batch: GraduateBatch = _
 
-  var filePath: Option[String] = None
+  /** 毕业生类型 */
+  var graduateType: GraduateType = _
 
-  var url: Option[String] = None
-
-  var updatedBy: User = _
-
+  /** 是否审核学位 */
+  var hasDegree: Boolean = _
 }

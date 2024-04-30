@@ -15,9 +15,7 @@ update edu.audit_course_results set predicted=passed;
 update edu.audit_course_results set scores='--' where scores is null;
 alter table edu.audit_course_results alter column scores set not null;
 update edu.audit_course_results set has_grade=true where length(scores)>0 and scores<>'--';
-update edu.audit_course_results cr set has_grade=true where has_grade=false
-and exists(select * from edu.audit_group_results gr,edu.audit_plan_results pr ,edu.course_grades cg
-		  where cr.group_result_id=gr.id and gr.plan_result_id=pr.id and pr.std_id=cg.std_id and cr.course_id=cg.course_id);
+update edu.audit_course_results cr set has_grade=true where has_grade=false and exists(select * from edu.audit_group_results gr,edu.audit_plan_results pr ,edu.course_grades cg where cr.group_result_id=gr.id and gr.plan_result_id=pr.id and pr.std_id=cg.std_id and cr.course_id=cg.course_id);
 
 alter table  edu.audit_plan_results drop column required_count;
 alter table  edu.audit_plan_results drop column passed_count;

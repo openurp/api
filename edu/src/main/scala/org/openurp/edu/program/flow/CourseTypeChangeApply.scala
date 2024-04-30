@@ -37,8 +37,10 @@ class CourseTypeChangeApply extends LongId with Updated with Remark {
 
   var course: Course = _
 
+  /** 原类型 */
   var oldType: CourseType = _
 
+  /** 新类型 */
   var newType: CourseType = _
 
   /** 是否审批通过 */

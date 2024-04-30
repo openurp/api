@@ -20,11 +20,16 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.{Coded, Named, Remark, TemporalOn}
 
+/** 论文材料归档类型
+ */
 class ThesisDocType extends IntId, Coded, Named, TemporalOn, Remark {
+  /** 排序 */
   var idx: Int = _
+  /** 阶段 */
   var stage: Stage = _
-
+  /** 最大以MB为单位 */
   var maxSize: Int = _
+  /** 扩展名 */
   var extensions: String = _
 
   def this(idx: Int, stage: Stage, code: String, name: String) = {

@@ -1,0 +1,15 @@
+CourseTypeChangeApply=课程类别变更申请
+CourseTypeChangeApply.oldType=原课程类别
+CourseTypeChangeApply.newType=新课程类别
+CourseTypeChangeApply.approved=是否审批通过
+CourseTypeChangeApply.auditor=审核人
+CourseTypeChangeApply.reply=回复
+CourseTypeChangeApply.auditAt=审核时间
+
+CourseAlternativeApply=课程替代申请
+CourseAlternativeApply.olds=课程替代申请-原课程
+CourseAlternativeApply.news=课程替代申请-新课程
+CourseAlternativeApply.approved=是否审批通过
+CourseAlternativeApply.auditor=审核人
+CourseAlternativeApply.reply=回复
+CourseAlternativeApply.auditAt=审核时间

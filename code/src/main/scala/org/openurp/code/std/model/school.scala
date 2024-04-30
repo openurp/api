@@ -52,3 +52,9 @@ class FeeType extends CodeBean {
 class StdDocType extends CodeBean {
 
 }
+
+/** 毕业生类型 */
+@code("school")
+class GraduateType extends CodeBean {
+
+}

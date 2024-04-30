@@ -104,7 +104,7 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 教材 */
   var textbooks = Collections.newBuffer[Textbook]
 
-  /** 参考数目 */
+  /** 参考书目 */
   var bibliography: Option[String] = None
 
   /** 其他教学资源 */

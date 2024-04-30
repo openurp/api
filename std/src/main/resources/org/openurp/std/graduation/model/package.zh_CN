@@ -38,6 +38,7 @@ GraduateBatch=毕业批次
 GraduateBatch.name=名称
 GraduateBatch.graduateOn=毕业日期
 GraduateBatch.degreeOffered=是否授学位
+GraduateBatch.enableProgressConfirm=是否启用计划完成情况确认
 
 DegreeApply=学位申请
 DegreeApply.gpa=GPA
@@ -46,3 +47,14 @@ DegreeApply.passed=是否通过
 Bachelor2ndApply=毕业学生二学位申请
 Bachelor2ndApply.gpa=平均绩点
 Bachelor2ndApply.gradeDetail=成绩明细
+
+Graduation=预毕业信息
+Graduation.hasDegree=是否审核学位
+
+PlanResultCheck=计划完成情况确认
+PlanResultCheck.contents=各个类别完成情况
+PlanResultCheck.requiredCredits=要求学分
+PlanResultCheck.passedCredits=通过学分
+PlanResultCheck.owedCredits=欠学分
+PlanResultCheck.owedCredits2=预计通过后所欠学分
+PlanResultCheck.owedCredits3=在读通过后所欠学分

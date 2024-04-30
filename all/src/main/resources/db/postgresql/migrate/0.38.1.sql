@@ -3,11 +3,10 @@ values(next_id('base.versions'),'0.38.1',now(),'免修课程调整');
 
 --course_types
 alter table code.course_types add short_name varchar(20);
-
+alter table base.courses add general_type_id int4;
 --projects
 alter table base.projects add administration varchar(80) default '教务处';
-alter table base.projects add administration2nd varchar(80);
-
+alter table base.projects add administration2nd varchar(80);[]
 alter table std.graduate_batches add enable_progress_confirm bool default false;
 
 --flow
@@ -40,3 +39,4 @@ alter table base.students add graduation_deferred bool default false;
 create table degree.thesis_archives (writer_id bigint not null, confirm_at timestamptz, confirmed_by_id bigint, confirmed boolean, feedback varchar(400), id bigint not null, updated_at timestamptz default current_timestamp not null);
 alter table degree.thesis_archives add constraint pk_3w21a253lbmr3pu2cqxayq301 primary key (id);
 alter table degree.thesis_archives add constraint uk_6ppgmacal52hjo8831um7qon8 unique (writer_id);
+

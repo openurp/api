@@ -96,6 +96,7 @@ ThesisPaper.submitAt=提交时间
 ThesisPaper.auditOpinion=审核意见
 ThesisPaper.keywords=关键字
 ThesisPaper.researchField=研究领域
+ThesisPaper.thesisType=毕业论文类型
 ThesisPaper.sha1sum=文件sha1摘要
 ThesisPaper.advisorPassed=指导教师是否通过
 ThesisPaper.advisorOpinion=指导教师意见
@@ -193,3 +194,21 @@ PaperSubmission.revisionPath=修订意见附件
 
 BlindPeerReview=盲审名单
 BlindPeerReview.score=盲审总分
+
+ThesisArchive=论文归档信息
+ThesisArchive.confirmed=指导老师是否确认
+ThesisArchive.confirmedBy=确认人
+ThesisArchive.confirmAt=确认时间
+ThesisArchive.archived=是否归档
+ThesisArchive.feedback=意见反馈
+ThesisArchive.uploadAt=上传时间
+
+Signature=签名信息
+Signature.advisorUrl=指导老师签名
+Signature.writerUrl=学生签名
+
+ThesisDocType=论文材料归档类型
+ThesisDocType.idx=排序
+ThesisDocType.maxSize=最大以MB为单位
+ThesisDocType.extensions=扩展名
+ThesisDocType.stage=阶段

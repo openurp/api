@@ -53,6 +53,7 @@ Student.remark=备注
 Student.stdType=学生类别
 Student.studyType=学习形式
 Student.tutor=导师
+Student.graduationDeferred=是否延期毕业
 
 StudentState=学籍状态日志
 StudentState.std=学生
