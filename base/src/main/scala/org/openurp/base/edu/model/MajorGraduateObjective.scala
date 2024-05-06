@@ -15,35 +15,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.base.edu.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.openurp.base.hr.model.Teacher
-import org.openurp.code.edu.model.TeachingMethod
+import org.beangle.data.model.pojo.TemporalOn
+import org.openurp.code.edu.model.GraduateObjective
 
-import scala.collection.mutable
-
-/**
- * 授课内容
+/** 专业培养目标
  */
-class Lesson extends LongId {
+class MajorGraduateObjective extends LongId, TemporalOn {
 
-  /** 授课计划 */
-  var plan: TeachingPlan = _
+  var major: Major = _
 
-  /** 针对授课小班 */
-  var subclazz: Option[Subclazz] = None
+  var objective: GraduateObjective = _
 
-  /** 序号 */
-  var idx: Int = _
-
-  /** 内容 */
-  var contents: String = _
-
-  /** 授课形式 */
-  var methods: mutable.Set[TeachingMethod] = Collections.newSet
-
-  /** 授课教师列表 */
-  var teachers: collection.mutable.Set[Teacher] = _
 }

@@ -46,12 +46,6 @@ class TeachingPlan extends LongId with Updated {
   /** 授课内容 */
   var lessons: mutable.Buffer[Lesson] = Collections.newBuffer[Lesson]
 
-  /** 文件大小 */
-  var fileSize: Int = _
-
-  /** 文件类型 */
-  var mimeType: Option[String] = None
-
   /** 文件路径 */
   var filePath: Option[String] = None
 

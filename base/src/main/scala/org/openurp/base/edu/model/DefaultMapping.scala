@@ -137,6 +137,8 @@ class DefaultMapping extends MappingModule {
     }
     bind[CourseAward]
 
+    bind[MajorGraduateObjective]
+
     all.except(classOf[CourseProfile]).cacheAll()
   }
 }

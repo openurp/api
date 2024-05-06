@@ -85,4 +85,7 @@ class ThesisReview extends LongId, Remark {
 
   /** 答辩信息 */
   var defenseInfo: Option[DefenseInfo] = None
+
+  /** 成绩是否同步到课程成绩 */
+  var courseGradeSynced: Boolean = _
 }

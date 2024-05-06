@@ -201,7 +201,9 @@ class GradingMode extends CodeBean {
 }
 
 object GradingMode {
-  val Percent = 1
+  val Percent = 1 //百分制
+  val RankEn = 2 //英文等级制
+  val RankCn = 3 //中文等级制
 }
 
 /**
@@ -310,6 +312,11 @@ object ElectionMode {
  */
 @code("industry")
 class ExamMode extends CodeBean
+
+object ExamMode {
+  val Exam = 1 //考试
+  val Check = 3 //考查
+}
 
 /**
  * 考试方式
