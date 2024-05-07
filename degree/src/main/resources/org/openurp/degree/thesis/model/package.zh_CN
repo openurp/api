@@ -147,6 +147,7 @@ ThesisReview.defensePermitted=是否同意答辩
 ThesisReview.defenseScore=答辩成绩
 ThesisReview.finalScore=最终成绩
 ThesisReview.finalScoreText=最终成绩(五级制)
+ThesisReview.courseGradeSynced=成绩是否同步
 
 ThesisCheck=论文抽检信息
 ThesisCheck.season=毕业季

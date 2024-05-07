@@ -43,6 +43,9 @@ class TeachingPlan extends LongId with Updated {
   /** 作者 */
   var author: Option[User] = None
 
+  /** 分环节课时 */
+  var hours = Collections.newBuffer[TeachingPlanHour]
+
   /** 授课内容 */
   var lessons: mutable.Buffer[Lesson] = Collections.newBuffer[Lesson]
 
