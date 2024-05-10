@@ -15,6 +15,7 @@ Program.termCampuses=学期对应校区
 Program.campus=校区
 Program.offsetType=任选课类别
 Program.degreeCourses=学位课程
+Program.degreeCertificates=学位要求证书
 
 MajorCourseGroup=专业计划课程组
 MajorCourseGroup.givenName=自定义别名
@@ -75,6 +76,7 @@ AbstractCourseGroup.autoAddup=自动累加学分
 AbstractCourseGroup.terms=开课学期
 AbstractCourseGroup.givenName=别名
 AbstractCourseGroup.allowUnplanned=是否允许计划外课程
+AbstractCourseGroup.required=是否必须完成
 
 AbstractCoursePlan=抽象课程方案
 AbstractCoursePlan.groups=课程组

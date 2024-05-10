@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
 import org.openurp.base.edu.model.{Course, Direction, Major}
 import org.openurp.base.model.{AuditStatus, Campus, Department, EduLevelBased}
 import org.openurp.base.std.model.Grade
-import org.openurp.code.edu.model.{CourseType, Degree, StudyType}
+import org.openurp.code.edu.model.{Certificate, CourseType, Degree, StudyType}
 import org.openurp.code.std.model.StdType
 
 import scala.collection.mutable
@@ -71,6 +71,9 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
 
   /** 学位课程 */
   var degreeCourses = Collections.newSet[Course]
+
+  /** 学位审核要求的证书 */
+  var degreeCertificates = Collections.newSet[Certificate]
 
   /** 审核状态 */
   var status: AuditStatus = AuditStatus.Draft

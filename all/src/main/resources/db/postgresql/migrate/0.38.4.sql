@@ -45,3 +45,8 @@ create table std.person_checks (confirmed boolean, id bigint not null, mobile va
 alter table std.person_check_items add constraint pk_5l9cllp6owmy5ni6yldt59wxp primary key (id);
 alter table std.person_checks add constraint pk_gu67dbl0npvd2vc7mfb8fe51l primary key (id);
 create index idx_i1rmelienjou7tluo440dlom1 on std.person_check_items (check_id);
+
+--program
+create table edu.programs_degree_certificates (program_id bigint not null, certificate_id integer not null);
+alter table edu.programs_degree_certificates add constraint pk_4coy86rddcbvfyvyoxdone26l primary key (program_id,certificate_id);
+create index idx_7w0yqeo8hxaggvl60x9vedi3d on edu.programs_degree_certificates (program_id);

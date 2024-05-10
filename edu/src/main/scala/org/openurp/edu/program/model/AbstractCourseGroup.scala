@@ -80,6 +80,9 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
   /** 选修课时，是否允许计划外课程 */
   var allowUnplanned: Boolean = _
 
+  /** 是否必须 */
+  var required: Boolean = _
+
   /** 开课学期 */
   var terms: Terms = Terms.empty
 
