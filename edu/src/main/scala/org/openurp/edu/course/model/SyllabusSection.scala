@@ -15,41 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.edu.course.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
-import org.openurp.code.edu.model.TeachingMethod
+import org.openurp.code.edu.model.TeachingSection
 
-import scala.collection.mutable
-
-/**
- * 授课内容
+/** 环节学时
+ *
  */
-class Lesson extends LongId, Remark {
+class SyllabusSection extends LongId {
 
-  /** 授课计划 */
-  var plan: TeachingPlan = _
+  var syllabus: Syllabus = _
 
-  /** 针对授课小班 */
-  var subclazz: Option[Subclazz] = None
+  var section: TeachingSection = _
 
-  /** 序号 */
-  var idx: Int = _
-
-  /** 内容 */
-  var contents: String = _
-
-  /** 授课形式 */
-  var methods: mutable.Set[TeachingMethod] = Collections.newSet
-
-  /** 家庭作业 */
-  var homework: Option[String] = None
-
-  /** 自主学习内容 */
-  var learning: Option[String] = None
-
-  /** 自主学习课时 */
-  var learningHours: Int = _
+  /** 学时 */
+  var creditHours: Int = _
 }

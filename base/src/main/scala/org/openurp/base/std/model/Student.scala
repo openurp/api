@@ -106,6 +106,10 @@ class Student extends LongId with Coded with Named with EduLevelBased with Updat
     }
   }
 
+  def isInschool(beginOn: LocalDate, endOn: LocalDate): Boolean = {
+    this.states.exists(x => x.beginOn.isBefore(endOn) && beginOn.isBefore(x.endOn) && x.inschool)
+  }
+
   def grade: Grade = state.get.grade
 
   def department: Department = state.get.department

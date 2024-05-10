@@ -78,5 +78,14 @@ class DefaultMapping extends MappingModule {
     bind[Foreigner] declare { e =>
       e.cscNo & e.visaNo & e.residenceNo & e.passportNo are length(20)
     }
+
+    bind[PersonCheckItem] declare { e =>
+      e.oldValue & e.newValue is length(200)
+    }
+
+    bind[PersonCheck] declare { e =>
+      e.changes is depends("check")
+      e.auditOpinion is length(100)
+    }
   }
 }

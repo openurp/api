@@ -83,3 +83,16 @@ Foreigner.visaExpired=签证到期时间
 Foreigner.cscNo=CSC编号
 Foreigner.residenceNo=居住许可证编号
 Foreigner.residenceExpired=居住许可证到期时间
+
+PersonCheck=学生基本信息核对
+PersonCheck.details=确认信息明细
+PersonCheck.mobile=移动电话
+PersonCheck.attachment=附件路径
+PersonCheck.confirmed=是否确认
+PersonCheck.auditOpinion=审核意见
+
+PersonCheckItem=学生基本信息核对项
+PersonCheckItem.field=更改项目
+PersonCheckItem.oldValue=变更前
+PersonCheckItem.newValue=变更后
+

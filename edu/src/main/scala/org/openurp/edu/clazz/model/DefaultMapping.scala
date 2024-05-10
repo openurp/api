@@ -85,6 +85,7 @@ class DefaultMapping extends MappingModule {
 
     bind[Lesson] declare { e =>
       e.contents is length(500)
+      e.homework is length(400)
     }
 
     bind[TeachingPlanHour]

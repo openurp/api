@@ -15,41 +15,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.std.info.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
-import org.openurp.code.edu.model.TeachingMethod
 
-import scala.collection.mutable
-
-/**
- * 授课内容
+/** 基本信息更改项目
  */
-class Lesson extends LongId, Remark {
+class PersonCheckItem extends LongId {
 
-  /** 授课计划 */
-  var plan: TeachingPlan = _
+  var check: PersonCheck = _
 
-  /** 针对授课小班 */
-  var subclazz: Option[Subclazz] = None
+  var field: PersonField = _
 
-  /** 序号 */
-  var idx: Int = _
+  var oldValue: String = _
 
-  /** 内容 */
-  var contents: String = _
+  var newValue: String = _
 
-  /** 授课形式 */
-  var methods: mutable.Set[TeachingMethod] = Collections.newSet
+  def this(check: PersonCheck, field: PersonField, oldValue: String, newValue: String) = {
+    this()
+    this.check = check
+    this.field = field
+    this.oldValue = oldValue
+    this.newValue = newValue
+  }
 
-  /** 家庭作业 */
-  var homework: Option[String] = None
-
-  /** 自主学习内容 */
-  var learning: Option[String] = None
-
-  /** 自主学习课时 */
-  var learningHours: Int = _
+  def update(oldValue: String, newValue: String): Unit = {
+    this.oldValue = oldValue
+    this.newValue = newValue
+  }
 }

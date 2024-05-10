@@ -21,6 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.{Semester, User}
+import org.openurp.code.edu.model.TeachingSection
 
 import java.time.Instant
 import java.util.Locale
@@ -39,6 +40,12 @@ class TeachingPlan extends LongId with Updated {
 
   /** 学期 */
   var semester: Semester = _
+
+  /** 自主学习课时 */
+  var learningHours: Int = _
+
+  /** 考核课时 */
+  var examHours: Int = _
 
   /** 作者 */
   var author: Option[User] = None
@@ -61,4 +68,45 @@ class TeachingPlan extends LongId with Updated {
   /** 审核时间 */
   var auditAt: Option[Instant] = None
 
+  def getHours(section: TeachingSection): Int = {
+    hours.filter(_.section == section).map(_.creditHours).headOption.getOrElse(0)
+  }
+
+  def getLesson(idx: Int): Option[Lesson] = {
+    lessons.find(_.idx == idx)
+  }
+
+  def this(clazz: Clazz) = {
+    this()
+    this.clazz = clazz
+    this.semester = clazz.semester
+  }
+
+  def copyTo(p: TeachingPlan): Unit = {
+    p.docLocale = this.docLocale
+    p.learningHours = this.learningHours
+    p.examHours = this.examHours
+    p.hours.clear()
+    this.hours foreach { h =>
+      val nh = new TeachingPlanHour
+      nh.plan = p
+      nh.section = h.section
+      nh.creditHours = h.creditHours
+      p.hours.addOne(nh)
+    }
+    p.lessons.clear()
+    p.author = this.author
+    this.lessons foreach { l =>
+      val nl = new Lesson
+      nl.idx = l.idx
+      nl.contents = l.contents
+      nl.homework = l.homework
+      nl.learningHours = l.learningHours
+      nl.learning = l.learning
+      nl.methods.addAll(l.methods)
+      nl.plan = p
+      p.lessons.addOne(nl)
+    }
+    p.updatedAt = Instant.now
+  }
 }

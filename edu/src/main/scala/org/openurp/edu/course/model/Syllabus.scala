@@ -54,8 +54,17 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 分类课时 */
   var hours = Collections.newBuffer[SyllabusCreditHour]
 
+  /** 环节学时 */
+  var sections = Collections.newBuffer[SyllabusSection]
+
   /** 教学方式 */
   var methods = Collections.newSet[TeachingMethod]
+
+  /** 自主学习课时 */
+  var learningHours: Int = _
+
+  /** 考核课时 */
+  var examHours: Int = _
 
   //course natures
   /** 学期中的开课阶段 */

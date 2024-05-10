@@ -21,9 +21,14 @@ Syllabus.textbooks=教材
 Syllabus.bibliography=参考书目
 Syllabus.materials=其他教学资源
 Syllabus.website=课程网站地址
+Syllabus.examHours=考核课时
+Syllabus.learningHours=自主学习课时
 
 SyllabusObjective=教学大纲课程目标
 SyllabusObjective.contents=内容
+
+SyllabusSection=教学大纲-教学环节
+SyllabusSection.creditHours=学时
 
 SyllabusOutcome=教学大纲毕业要求
 SyllabusObjective.contents=内容
