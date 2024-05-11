@@ -5,6 +5,12 @@ alter table degree.thesis_reviews add course_grade_synced boolean default false;
 alter table base.graduate_seasons add graduate_on date;
 update base.graduate_seasons set graduate_on=to_date(graduate_year::varchar||'06','yyyyMM');
 
+alter table edu.syllabuses add learning_hours int4 default 0;
+alter table edu.syllabuses add exam_hours int4 default 0;
+create table edu.syllabus_sections (credit_hours integer default 0 not null, id bigint not null, syllabus_id bigint not null, section_id integer not null);
+alter table edu.syllabus_sections add constraint pk_l6ydyiqja6pnxltgccjbfh4yf primary key (id);
+create index idx_hp6fm8o3v2ei70ja34wfx91wr on edu.syllabus_sections (syllabus_id);
+
 alter table edu.teaching_plans add learning_hours int4 default 0;
 alter table edu.teaching_plans add exam_hours int4 default 0;
 

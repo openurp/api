@@ -20,8 +20,7 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.{Semester, User}
-import org.openurp.code.edu.model.TeachingSection
+import org.openurp.base.model.{AuditStatus, Semester, User}
 
 import java.time.Instant
 import java.util.Locale
@@ -41,17 +40,8 @@ class TeachingPlan extends LongId with Updated {
   /** 学期 */
   var semester: Semester = _
 
-  /** 自主学习课时 */
-  var learningHours: Int = _
-
-  /** 考核课时 */
-  var examHours: Int = _
-
-  /** 作者 */
-  var author: Option[User] = None
-
   /** 分环节课时 */
-  var hours = Collections.newBuffer[TeachingPlanHour]
+  var sections = Collections.newBuffer[TeachingPlanSection]
 
   /** 授课内容 */
   var lessons: mutable.Buffer[Lesson] = Collections.newBuffer[Lesson]
@@ -59,17 +49,23 @@ class TeachingPlan extends LongId with Updated {
   /** 文件路径 */
   var filePath: Option[String] = None
 
-  /** 是否通过 */
-  var passed: Option[Boolean] = None
+  /** 状态 */
+  var status: AuditStatus = AuditStatus.Draft
+
+  /** 作者 */
+  var writer: Option[User] = None
 
   /** 审核人 */
   var auditor: Option[User] = None
 
-  /** 审核时间 */
-  var auditAt: Option[Instant] = None
+  /** 院长 */
+  var dean: Option[User] = None
 
-  def getHours(section: TeachingSection): Int = {
-    hours.filter(_.section == section).map(_.creditHours).headOption.getOrElse(0)
+  /** 发布时间 */
+  var publishAt: Option[Instant] = None
+
+  def getHours(section: String): Int = {
+    sections.filter(_.name == section).map(_.creditHours).headOption.getOrElse(0)
   }
 
   def getLesson(idx: Int): Option[Lesson] = {
@@ -82,20 +78,33 @@ class TeachingPlan extends LongId with Updated {
     this.semester = clazz.semester
   }
 
+  def reserveSections(names: Iterable[String]): Unit = {
+    val nameSet = names.toSet
+    val removed = sections.filter(x => !nameSet.contains(x.name))
+    sections.subtractAll(removed)
+  }
+
+  def addSection(name: String, creditHours: Int): Unit = {
+    sections.find(_.name == name) match
+      case None =>
+        val s = new TeachingPlanSection(this, name, creditHours)
+        sections.addOne(s)
+      case Some(s) =>
+        s.creditHours = creditHours
+  }
+
   def copyTo(p: TeachingPlan): Unit = {
     p.docLocale = this.docLocale
-    p.learningHours = this.learningHours
-    p.examHours = this.examHours
-    p.hours.clear()
-    this.hours foreach { h =>
-      val nh = new TeachingPlanHour
+    p.sections.clear()
+    this.sections foreach { h =>
+      val nh = new TeachingPlanSection
       nh.plan = p
-      nh.section = h.section
+      nh.name = h.name
       nh.creditHours = h.creditHours
-      p.hours.addOne(nh)
+      p.sections.addOne(nh)
     }
     p.lessons.clear()
-    p.author = this.author
+    p.writer = this.writer
     this.lessons foreach { l =>
       val nl = new Lesson
       nl.idx = l.idx
@@ -103,7 +112,7 @@ class TeachingPlan extends LongId with Updated {
       nl.homework = l.homework
       nl.learningHours = l.learningHours
       nl.learning = l.learning
-      nl.methods.addAll(l.methods)
+      nl.forms = l.forms
       nl.plan = p
       p.lessons.addOne(nl)
     }

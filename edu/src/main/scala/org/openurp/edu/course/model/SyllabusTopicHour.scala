@@ -26,7 +26,7 @@ class SyllabusTopicHour extends LongId {
   var topic: SyllabusTopic = _
   /** 学时 */
   var creditHours: Int = _
-  /** 实践周 */
+  /** 周 */
   var weeks: Int = _
   /** 课时分类 */
   var nature: TeachingNature = _

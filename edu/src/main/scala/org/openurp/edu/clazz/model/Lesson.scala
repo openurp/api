@@ -17,12 +17,8 @@
 
 package org.openurp.edu.clazz.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.code.edu.model.TeachingMethod
-
-import scala.collection.mutable
 
 /**
  * 授课内容
@@ -41,8 +37,8 @@ class Lesson extends LongId, Remark {
   /** 内容 */
   var contents: String = _
 
-  /** 授课形式 */
-  var methods: mutable.Set[TeachingMethod] = Collections.newSet
+  /** 上课形式 */
+  var forms: Option[String] = None
 
   /** 家庭作业 */
   var homework: Option[String] = None

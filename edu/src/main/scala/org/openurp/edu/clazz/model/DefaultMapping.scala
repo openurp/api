@@ -80,7 +80,7 @@ class DefaultMapping extends MappingModule {
 
     bind[TeachingPlan] declare { e =>
       e.lessons is depends("plan")
-      e.hours is depends("plan")
+      e.sections is depends("plan")
     }
 
     bind[Lesson] declare { e =>
@@ -88,7 +88,7 @@ class DefaultMapping extends MappingModule {
       e.homework is length(400)
     }
 
-    bind[TeachingPlanHour]
+    bind[TeachingPlanSection]
 
     bind[ClazzNotice] declare { e =>
       e.title is length(300)

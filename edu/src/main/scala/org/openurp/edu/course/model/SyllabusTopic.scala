@@ -43,7 +43,7 @@ class SyllabusTopic extends LongId, Named {
   var elements = Collections.newBuffer[SyllabusTopicElement]
 
   /** 教学方式 */
-  var methods = Collections.newBuffer[TeachingMethod]
+  var methods: Option[String] = None
 
   /** 对应课程目标 */
   var objectives: Option[String] = None
@@ -57,6 +57,12 @@ class SyllabusTopic extends LongId, Named {
 
   def getElement(label: SyllabusTopicLabel): Option[SyllabusTopicElement] = {
     elements.find(_.label == label)
+  }
+
+  def teachingMethods: Seq[String] = {
+    methods match
+      case None => Seq.empty
+      case Some(m) => Strings.split(m, Array('、', ',', '；')).toSeq
   }
 
   def matchedObjectives: Seq[SyllabusObjective] = {

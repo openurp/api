@@ -18,6 +18,7 @@
 package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{TemporalOn, Updated}
 import org.openurp.base.edu.model.*
@@ -54,17 +55,17 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 分类课时 */
   var hours = Collections.newBuffer[SyllabusCreditHour]
 
-  /** 环节学时 */
-  var sections = Collections.newBuffer[SyllabusSection]
-
   /** 教学方式 */
-  var methods = Collections.newSet[TeachingMethod]
+  var methods: String = _
+
+  /** 考核课时 */
+  var examCreditHours: Int = _
+
+  /** 分类课时 */
+  var examHours = Collections.newBuffer[SyllabusExamHour]
 
   /** 自主学习课时 */
   var learningHours: Int = _
-
-  /** 考核课时 */
-  var examHours: Int = _
 
   //course natures
   /** 学期中的开课阶段 */
@@ -138,29 +139,39 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 开课院系 */
   var department: Department = _
 
-  /** 课程负责人 */
-  var director: Option[User] = None
+  /** 状态 */
+  var status: AuditStatus = AuditStatus.Draft
 
   /** 作者 */
   var writer: User = _
 
-  /** 状态 */
-  var status: AuditStatus = AuditStatus.Draft
-
   /** 审核人 */
   var auditor: Option[User] = None
 
-  /** 审核时间 */
-  var auditAt: Option[Instant] = None
+  /** 院长 */
+  var dean: Option[User] = None
+
+  /** 发布时间 */
+  var publishAt: Option[Instant] = None
+
+  def teachingMethods: Seq[String] = {
+    methods match
+      case null => Seq.empty
+      case m => Strings.split(m, Array('、', ',', '；')).toSeq
+  }
 
   def teachingNatures: Seq[TeachingNature] = hours.map(_.nature).toSeq
 
-  def getHour(nature: TeachingNature): Option[SyllabusCreditHour] = {
+  def getCreditHour(nature: TeachingNature): Option[SyllabusCreditHour] = {
     hours.find(_.nature == nature)
   }
 
   def getTopicCreditHours(nature: TeachingNature): Int = {
     topics.flatMap(t => t.getHour(nature).map(_.creditHours)).sum
+  }
+
+  def getCreditHours(nature: TeachingNature): Int = {
+    topics.flatMap(t => t.getHour(nature).map(_.creditHours)).sum + examHours.find(_.nature == nature).map(_.creditHours).getOrElse(0)
   }
 
   def getTopicWeeks(nature: TeachingNature): Int = {

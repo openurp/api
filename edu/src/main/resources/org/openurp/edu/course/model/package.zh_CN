@@ -2,8 +2,9 @@ Syllabus=课程教学大纲
 Syllabus.department=开课院系
 Syllabus.writer=作者
 Syllabus.status=状态
-Syllabus.auditAt=审核时间
 Syllabus.auditor=审核人
+Syllabus.dean=教学院长
+Syllabus.publishAt=发布时间
 
 Syllabus.locale=语种
 Syllabus.description=简介
@@ -21,7 +22,7 @@ Syllabus.textbooks=教材
 Syllabus.bibliography=参考书目
 Syllabus.materials=其他教学资源
 Syllabus.website=课程网站地址
-Syllabus.examHours=考核课时
+Syllabus.examCreditHours=考核课时
 Syllabus.learningHours=自主学习课时
 
 SyllabusObjective=教学大纲课程目标
@@ -54,6 +55,9 @@ SyllabusCreditHour=教学大纲-分类课时
 SyllabusCreditHour.creditHours=学时
 SyllabusCreditHour.weeks=实践周
 SyllabusCreditHour.learning=自主学习学时
+
+SyllabusExamHour=教学大纲-考核课时
+SyllabusExamHour.creditHours=学时
 
 SyllabusText=教学大纲文本
 SyllabusText.contents=内容

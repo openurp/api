@@ -28,10 +28,8 @@ class SyllabusCreditHour extends LongId {
   var nature: TeachingNature = _
   /** 学时 */
   var creditHours: Int = _
-  /** 实践周 */
+  /** 周 */
   var weeks: Int = _
-  /** 自主学习学时 */
-  var learning: Int = _
 
   def this(syllabus: Syllabus, nature: TeachingNature, creditHours: Int, weeks: Int) = {
     this()
