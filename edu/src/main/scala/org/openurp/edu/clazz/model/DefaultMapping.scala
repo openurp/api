@@ -78,18 +78,6 @@ class DefaultMapping extends MappingModule {
       e.name is length(100)
     }
 
-    bind[TeachingPlan] declare { e =>
-      e.lessons is depends("plan")
-      e.sections is depends("plan")
-    }
-
-    bind[Lesson] declare { e =>
-      e.contents is length(500)
-      e.homework is length(400)
-    }
-
-    bind[TeachingPlanSection]
-
     bind[ClazzNotice] declare { e =>
       e.title is length(300)
       e.contents is length(1500)

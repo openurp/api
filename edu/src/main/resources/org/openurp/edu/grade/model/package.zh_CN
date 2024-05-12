@@ -177,6 +177,3 @@ RegularTestGrade.score=分数
 RegularTestGrade.scorePercent=百分比
 
 RegularTestType=平时测试类型
-
-ExamAnalysis=考试试卷分析
-ExamAnalysis.contents=分析内容

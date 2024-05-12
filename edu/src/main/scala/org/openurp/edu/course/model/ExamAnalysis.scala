@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.grade.model
+package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated

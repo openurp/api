@@ -79,5 +79,22 @@ class DefaultMapping extends MappingModule {
     bind[CourseTask] declare { e =>
       index("", true, e.semester, e.course, e.department)
     }
+
+    bind[TeachingPlan] declare { e =>
+      e.lessons is depends("plan")
+      e.sections is depends("plan")
+    }
+
+    bind[Lesson] declare { e =>
+      e.contents is length(500)
+      e.homework is length(400)
+    }
+
+    bind[TeachingPlanSection]
+
+    bind[ExamAnalysis].declare { e =>
+      e.contents is length(3500)
+      index("", true, e.clazz)
+    }
   }
 }

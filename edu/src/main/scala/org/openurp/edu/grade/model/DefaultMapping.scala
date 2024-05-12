@@ -86,10 +86,5 @@ class DefaultMapping extends MappingModule {
       e.schoolYear is length(10)
       index("", true, e.stdGpa, e.schoolYear)
     }
-
-    bind[ExamAnalysis].declare { e =>
-      e.contents is length(3500)
-      index("", true, e.clazz)
-    }
   }
 }

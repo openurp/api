@@ -100,29 +100,6 @@ Subclazz = 教学任务小班
 Subclazz.maxCount = 最大人数
 Subclazz.curCount = 当前人数
 
-Lesson=授课内容
-Lesson.idx=序号
-Lesson.contents=内容
-Lesson.homework=作业
-Lesson.forms=教学方法
-Lesson.learning=自主学习内容
-Lesson.learningHours=自主学习课时
-
-TeachingPlan=授课计划
-TeachingPlan.author=作者
-TeachingPlan.passed=是否通过
-TeachingPlan.docLocale=语言
-TeachingPlan.filePath=附件关键字
-TeachingPlan.learningHours=自主学习课时
-TeachingPlan.examHours=考核课时
-TeachingPlan.auditor=审核人
-TeachingPlan.dean=教学院长
-TeachingPlan.publishAt=发布时间
-TeachingPlan.status=状态
-
-TeachingPlanSection=环节课时
-TeachingPlanSection.creditHours=课时
-
 ClazzDoc=教学班资料
 ClazzDoc.name=材料名称
 ClazzDoc.filePath=文件路径

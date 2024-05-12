@@ -15,12 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.{AuditStatus, Semester, User}
+import org.openurp.edu.clazz.model.Clazz
+import org.openurp.edu.course.model.Lesson
 
 import java.time.Instant
 import java.util.Locale
