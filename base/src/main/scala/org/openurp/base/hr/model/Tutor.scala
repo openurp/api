@@ -15,17 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.model
+package org.openurp.base.hr.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Named, Remark, TemporalOn}
+import org.openurp.code.job.model.TutorType
 
-/** 用户组成员
+/** 导师信息
  */
-class UserGroupMember extends LongId, Updated {
+class Tutor extends LongId, TemporalOn, Named, Remark {
 
-  var group: UserGroup = _
+  /** 教职工 */
+  var staff: Staff = _
 
-  var user: User = _
+  /** 导师类型 */
+  var tutorType: TutorType = _
 
 }

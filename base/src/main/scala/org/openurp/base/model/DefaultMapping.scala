@@ -57,6 +57,7 @@ class DefaultMapping extends MappingModule {
       e.email is length(80)
       e.mobile is length(15)
       e.remark is length(200)
+      e.groups is depends("user")
       index("", true, e.school, e.code)
     }
 
@@ -120,6 +121,16 @@ class DefaultMapping extends MappingModule {
       e.remark is length(500)
     }
 
-    all.except(classOf[User], classOf[Person]).cacheable()
+    bind[UserGroup] declare { e =>
+      e.name is length(100)
+      e.children is depends("parent")
+      index("idx_group", true, e.school, e.code)
+    }
+
+    bind[UserGroupMember].declare { e =>
+      index("", true, e.group, e.user)
+    }
+
+    all.except(classOf[User], classOf[Person], classOf[UserGroupMember]).cacheable()
   }
 }

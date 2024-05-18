@@ -29,25 +29,12 @@ class StaffServiceImpl extends Logging, StaffService {
   var userRepo: UserRepo = _
 
   override def createActiveUsers(): Unit = {
-    val query = OqlBuilder.from(classOf[Teacher], "teacher")
-    query.where("teacher.endOn is null")
-    val teachers = entityDao.search(query)
-    teachers.foreach { teacher =>
-      userRepo.createUser(teacher)
-    }
-
     val query2 = OqlBuilder.from(classOf[Staff], "staff")
     query2.where("staff.endOn is null")
     query2.where(s"not exists(from ${classOf[Teacher].getName} t where t.staff=staff)")
     val staffs = entityDao.search(query2)
     staffs.foreach { staff =>
       userRepo.createUser(staff, None)
-    }
-
-    val query3 = OqlBuilder.from(classOf[Secretary], "s")
-    val secretaries = entityDao.search(query3)
-    secretaries.foreach { secretary =>
-      userRepo.createUser(secretary)
     }
   }
 }

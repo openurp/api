@@ -47,5 +47,11 @@ object Features {
 
     /** 教师的所在部门和任教部门完全一致 */
     val TeacherSameDepartWithStaff = Feature(this, "teacher_same_depart_with_staff", "教师的所在部门和任教部门完全一致", false)
+
+    /** 教师信息上其他的必填属性 */
+    var TeacherExtraRequiredProperties = Feature(this, "teacher_extra_required_properties", "教师信息上其他的必填属性", "")
+
+    /** 教职工信息上其他的必填属性 */
+    var StaffExtraRequiredProperties = Feature(this, "staff_extra_required_properties", "教职工信息上其他的必填属性", "")
   }
 }

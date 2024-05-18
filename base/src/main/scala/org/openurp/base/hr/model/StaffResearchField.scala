@@ -15,17 +15,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.model
+package org.openurp.base.hr.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.code.edu.model.{EducationLevel, EducationType}
 
-/** 用户组成员
+import scala.collection.mutable
+
+/** 导师研究领域
  */
-class UserGroupMember extends LongId, Updated {
+class StaffResearchField extends LongId {
 
-  var group: UserGroup = _
+  /** 导师 */
+  var staff: Staff = _
 
-  var user: User = _
+  /** 培养类型 */
+  var eduType: EducationType = _
 
+  /** 培养层次 */
+  var level: EducationLevel = _
+
+  /** 专业 */
+  var major: Major = _
+
+  /** 方向 */
+  var directions: mutable.Set[Direction] = Collections.newSet[Direction]
 }

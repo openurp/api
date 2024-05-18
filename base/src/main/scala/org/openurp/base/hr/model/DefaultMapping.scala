@@ -54,7 +54,6 @@ class DefaultMapping extends MappingModule {
       e.oqc is length(200)
       e.name is length(100)
       index("", true, e.staff)
-      index("", true, e.user)
     }.generator(IdGenerator.Assigned)
 
     bind[StaffProfile] declare { e =>

@@ -21,7 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.job.model.ProfessionalTitle
 /**
- * 职称信息
+ * 职称聘任信息
  */
 class StaffTitle extends LongId with TemporalOn {
 

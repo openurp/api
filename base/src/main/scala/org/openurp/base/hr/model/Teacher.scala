@@ -31,13 +31,10 @@ import scala.collection.mutable
 /**
  * 教师信息
  */
-class Teacher extends LongId with TemporalOn with Named with Remark {
+class Teacher extends LongId, TemporalOn, Named, Remark {
 
   /** 教职工 */
   var staff: Staff = _
-
-  /** 用户 */
-  var user: User = _
 
   /** 所在教学部门 */
   var department: Department = _
@@ -47,9 +44,6 @@ class Teacher extends LongId with TemporalOn with Named with Remark {
 
   /** 任教校区 */
   var campuses: mutable.Set[Campus] = Collections.newSet[Campus]
-
-  /** 导师类型 */
-  var tutorType: Option[TutorType] = None
 
   /** 教师资格证编号 */
   var tqcNumber: Option[String] = None
