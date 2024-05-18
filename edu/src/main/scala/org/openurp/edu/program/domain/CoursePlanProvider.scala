@@ -33,7 +33,7 @@ trait CoursePlanProvider {
 
   /** 获得执行专业培养计划
    */
-  def getExecutionPlan(student: Student): Option[ExecutivePlan]
+  def getExecutivePlan(student: Student): Option[ExecutivePlan]
 
   /** 获得单个学生的个人计划
    */

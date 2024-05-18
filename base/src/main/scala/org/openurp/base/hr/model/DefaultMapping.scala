@@ -72,5 +72,14 @@ class DefaultMapping extends MappingModule {
       e.name is length(50)
       e.enName is length(100)
     }
+
+    bind[Tutor].declare { e =>
+      e.name is length(150)
+      index("", true, e.staff)
+    }.generator(IdGenerator.Assigned)
+
+    bind[TutorJournal]
+
+    bind[TutorMajor]
   }
 }

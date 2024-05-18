@@ -57,4 +57,5 @@ President.enName=英文名
 Tutor=导师
 TutorJournal=导师聘任记录
 
-StaffResearchField=教师研究领域
+TutorMajor=教师研究领域
+TutorMajor.directions=教师研究方向

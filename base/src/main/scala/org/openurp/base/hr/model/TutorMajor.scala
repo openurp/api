@@ -26,7 +26,7 @@ import scala.collection.mutable
 
 /** 导师研究领域
  */
-class StaffResearchField extends LongId {
+class TutorMajor extends LongId {
 
   /** 导师 */
   var staff: Staff = _

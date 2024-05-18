@@ -42,6 +42,30 @@ comment on column base.calendar_stages.en_name is '英文名';
 comment on column base.schools.en_name is '英文名';
 comment on column base.users.group_id is '用户组ID';
 
+create table base.tutors (name varchar(150) not null, tutor_type_id integer not null, id bigint not null, remark varchar(255), begin_on date not null, staff_id bigint not null, end_on date);
+create table base.tutor_journals (tutor_type_id integer not null, id bigint not null, begin_on date not null, staff_id bigint not null, end_on date);
+create table base.tutor_majors (id bigint not null, staff_id bigint not null, major_id bigint not null, edu_type_id integer not null, level_id integer not null);
+create table base.tutor_majors_directions (tutor_major_id bigint not null, direction_id bigint not null);
+
+alter table base.tutors add constraint pk_8r47vuh10lfcefyfvo79t8rfv primary key (id);
+alter table base.tutors add constraint uk_lonogs2jkkjbfaxouv5vlstd unique (staff_id);
+alter table base.tutor_journals add constraint pk_32owy21iwr7ww8f1c3jvg1sbf primary key (id);
+alter table base.tutor_majors add constraint pk_ox9qxt7x077f85q0wtepv4abq primary key (id);
+alter table base.tutor_majors_directions add constraint pk_6pqyqlrugulyv0it8b4txbyap primary key (tutor_major_id,direction_id);
+
+create index idx_xwp64q9jqda0yiypgwq9mw5n on base.tutor_majors_directions (tutor_major_id);
+
+alter table base.tutor_journals add constraint fk_jg5x47w71obyvh9uhfgh5l70m foreign key (staff_id) references base.staffs (id);
+alter table base.tutor_journals add constraint fk_taqn2nd8jw64b2hilpx22wofm foreign key (tutor_type_id) references code.tutor_types (id);
+alter table base.tutor_majors add constraint fk_3la34qsb7vinn23ls3v2aw3kd foreign key (level_id) references code.education_levels (id);
+alter table base.tutor_majors add constraint fk_o03mqi9gghvymej67sqa3lmn9 foreign key (major_id) references base.majors (id);
+alter table base.tutor_majors add constraint fk_qk49ybofykqdejd70ynqnsxp5 foreign key (edu_type_id) references code.education_types (id);
+alter table base.tutor_majors add constraint fk_r8chc8ye8heuxuoyx7gunhghg foreign key (staff_id) references base.staffs (id);
+alter table base.tutor_majors_directions add constraint fk_ca7s2ggg6iad9yq9hv2k815eq foreign key (tutor_major_id) references base.tutor_majors (id);
+alter table base.tutor_majors_directions add constraint fk_kbn9pgxumminghp19n839yorn foreign key (direction_id) references base.directions (id);
+alter table base.tutors add constraint fk_jr7962nrthbdgq93d92jd5o8 foreign key (tutor_type_id) references code.tutor_types (id);
+alter table base.tutors add constraint fk_l73myokv8i5bsml70eusrd4ps foreign key (staff_id) references base.staffs (id);
+
 --edu.program
 alter table edu.major_course_groups add required bool default false;
 alter table edu.execution_course_groups add required bool default false;
@@ -125,3 +149,4 @@ update code.syllabus_topic_labels set en_name ='Course leading value' where name
 update code.syllabus_topic_labels set en_name ='Emphasis in this topic' where name='本章重点';
 update code.syllabus_topic_labels set en_name ='Difficulties in this topic' where name='本章难点';
 update code.syllabus_topic_labels set en_name ='Students’ learning outcomes' where name='学生学习成果';
+
