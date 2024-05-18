@@ -95,9 +95,8 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
 }
 
 /** 教学日历中的阶段 */
-class CalendarStage extends IntId with Named {
+class CalendarStage extends IntId, Named, EnNamed {
   var school: School = _
-  val enName: Option[String] = None
   var startWeek: Int = _
   var endWeek: Int = _
   var vacation: Boolean = _

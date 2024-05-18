@@ -17,26 +17,21 @@
 
 package org.openurp.base.edu.model
 
-import scala.collection.mutable.Buffer
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Coded
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Remark
-import org.beangle.data.model.pojo.TemporalOn
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.*
 import org.openurp.base.model.{Department, Project}
 import org.openurp.code.edu.model.EducationLevel
+
+import scala.collection.mutable.Buffer
 
 /**
  * 方向信息 专业领域.
  *
  * @author chaostone
  */
-class Direction extends LongId with TemporalOn with Coded with Named with Updated with Remark {
+class Direction extends LongId, TemporalOn, Coded, Named, EnNamed, Updated, Remark {
 
   var project: Project = _
-  /** 专业方向英文名 */
-  var enName: Option[String] = None
   /** 所属专业 */
   var major: Major = _
   /** 部门 */
@@ -44,11 +39,10 @@ class Direction extends LongId with TemporalOn with Coded with Named with Update
 }
 
 class DirectionJournal extends LongId with TemporalOn with Remark {
-
-  /**专业方向*/
+  /** 专业方向 */
   var direction: Direction = _
-  /**培养层次*/
+  /** 培养层次 */
   var level: EducationLevel = _
-  /**部门*/
+  /** 部门 */
   var depart: Department = _
 }

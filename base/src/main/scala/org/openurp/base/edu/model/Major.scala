@@ -31,10 +31,7 @@ import java.time.LocalDate
  *
  * @author hs
  */
-class Major extends LongId with ProjectBased with TemporalOn with Updated with Coded with Named with Remark {
-
-  /** 专业英文名 */
-  var enName: Option[String] = None
+class Major extends LongId, ProjectBased, TemporalOn, Updated, Coded, Named, EnNamed, Remark {
 
   /** 简称 */
   var shortName: Option[String] = None

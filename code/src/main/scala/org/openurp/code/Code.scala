@@ -20,9 +20,7 @@ package org.openurp.code
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
 
-trait Code extends IntId with Named with Coded {
-
-  def enName: Option[String]
+trait Code extends IntId, Named, EnNamed, Coded {
 }
 
 object CodeCategory {
@@ -35,10 +33,9 @@ object CodeCategory {
   val School = "school"
 }
 
-abstract class CodeBean extends IntId with Code with TemporalOn with Updated with Remark {
-  var enName: Option[String] = None
-
+abstract class CodeBean extends IntId, Code, TemporalOn, Updated, Remark {
   def codeName: String = s"$code $name"
+
   def enName2: String = {
     enName.getOrElse(name)
   }

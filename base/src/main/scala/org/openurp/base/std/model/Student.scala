@@ -39,13 +39,10 @@ import scala.collection.mutable
  * @author chaostone
  * @since 2005
  */
-class Student extends LongId with Coded with Named with EduLevelBased with Updated with Remark with DateRange {
+class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Remark, DateRange {
 
   /** 基本信息 */
   var person: Person = _
-
-  /** 英文名 */
-  var enName: Option[String] = None
 
   /** 性别 */
   var gender: Gender = _

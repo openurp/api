@@ -19,17 +19,16 @@ package org.openurp.base.resource.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.base.model.{Campus, Department, Project, School, Semester}
+import org.beangle.data.model.pojo.*
+import org.openurp.base.model.*
 import org.openurp.code.edu.model.ClassroomType
 
-import java.time.LocalDate
 import scala.collection.mutable
 
 /**
  * 教室
  */
-class Classroom extends LongId with Named with Coded with Updated with TemporalOn {
+class Classroom extends LongId, Named, EnNamed, Coded, Updated, TemporalOn {
 
   /** 学校 */
   var school: School = _
@@ -45,9 +44,6 @@ class Classroom extends LongId with Named with Coded with Updated with TemporalO
 
   /** 所属建筑 */
   var building: Option[Building] = None
-
-  /** 英文名 */
-  var enName: Option[String] = None
 
   /** 简称 */
   var shortName: Option[String] = None

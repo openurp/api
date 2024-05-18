@@ -25,7 +25,7 @@ import org.openurp.code.geo.model.Division
 /**
  * 学校
  */
-class School extends IntId with Coded with Named with TemporalOn {
+class School extends IntId, Coded, Named, EnNamed, TemporalOn {
   /** 机构 */
   var institution: Institution = _
   /** 性质类别 */

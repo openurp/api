@@ -19,14 +19,10 @@ package org.openurp.base.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.model.School
-import org.openurp.code.asset.model.{BuildingType, RoomType}
 
-/**
- * 校区
+/** 校区
  */
-class Campus extends IntId with Cloneable with Coded with Named with TemporalOn with Updated with Remark {
+class Campus extends IntId, Cloneable, Coded, Named, EnNamed, TemporalOn, Updated, Remark {
   var school: School = _
-  var enName: Option[String] = None
   var shortName: Option[String] = None
 }

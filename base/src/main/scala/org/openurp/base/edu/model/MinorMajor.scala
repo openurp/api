@@ -18,20 +18,16 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
-import org.openurp.base.edu.model.Major
+import org.beangle.data.model.pojo.{Coded, EnNamed, Named, TemporalOn}
 import org.openurp.code.edu.model.{DisciplineCategory, Institution}
 
 /**
  * 辅修专业
  */
-class MinorMajor extends LongId with Coded with Named with TemporalOn {
+class MinorMajor extends LongId, Coded, Named, EnNamed, TemporalOn {
 
   /** 教育机构 */
   var institution: Institution = _
-
-  /** 英文名 */
-  var enName: Option[String] = None
 
   /** 学科门类 */
   var category: DisciplineCategory = _

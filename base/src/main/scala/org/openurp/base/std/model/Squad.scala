@@ -33,14 +33,12 @@ import scala.collection.mutable
  * @author chaostone
  * @since 2005-9-12
  */
-class Squad extends LongId with EduLevelBased with Coded with Named with DateRange with Updated with Remark {
+class Squad extends LongId, EduLevelBased, Coded, Named, EnNamed, DateRange, Updated, Remark {
 
   /** 年级,形式为yyyy-p */
   var grade: Grade = _
   /** 简称 */
   var shortName: Option[String] = None
-  /** 专业英文名 */
-  var enName: Option[String] = None
   /** 院系 */
   var department: Department = _
   /** 专业 */
@@ -55,8 +53,6 @@ class Squad extends LongId with EduLevelBased with Coded with Named with DateRan
   var stdCount: Int = _
   /** 辅导员 */
   var mentor: Option[Staff] = None
-  /** 班导师 */
-  var tutor: Option[Staff] = None
   /** 班主任 */
   var master: Option[Staff] = None
   /** 学生状态 */

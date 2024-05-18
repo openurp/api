@@ -18,20 +18,18 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo._
+import org.beangle.data.model.pojo.*
 import org.openurp.code.hr.model.UserCategory
 import org.openurp.code.person.model.Gender
 
 /**
  * 通用人员信息
  */
-class User extends LongId with Coded with Named with Updated with Remark with TemporalOn {
+class User extends LongId, Coded, Named, EnNamed, Updated, Remark, TemporalOn {
 
   var school: School = _
 
   var gender: Gender = _
-
-  var enName: Option[String] = None
 
   var department: Department = _
 

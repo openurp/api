@@ -20,16 +20,15 @@ package org.openurp.base.resource.model
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.model.{Campus, School}
-import org.openurp.code.asset.model.{BuildingType, RoomType}
+import org.openurp.code.asset.model.BuildingType
 
 /**
  * 建筑
  */
-class Building extends IntId with Coded with Named with TemporalOn with Updated with Remark {
+class Building extends IntId, Coded, Named, EnNamed, TemporalOn, Updated, Remark {
   var school: School = _
-  /**所属校区*/
+  /** 所属校区 */
   var campus: Campus = _
-  var enName: Option[String] = None
   var shortName: Option[String] = None
   var buildingType: Option[BuildingType] = None
 }

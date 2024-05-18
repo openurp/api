@@ -18,17 +18,13 @@
 package org.openurp.base.std.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, DateRange, Named}
+import org.beangle.data.model.pojo.{Coded, DateRange, EnNamed, Named}
 import org.openurp.base.model.Project
-
-import java.time.LocalDate
 
 /** 学生入学年级
  * */
-class Grade extends LongId, Coded, Named, DateRange {
+class Grade extends LongId, Coded, Named, EnNamed, DateRange {
   var project: Project = _
-  /** 英文名 */
-  var enName: Option[String] = None
 
   override def toString: String = {
     name
