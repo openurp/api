@@ -15,21 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.service
+package org.openurp.base.model
 
-import org.openurp.base.hr.model.{Staff, Teacher, Tutor}
-import org.openurp.base.model.User
-import org.openurp.base.std.model.Student
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.*
 
-trait UserRepo {
+/** 用户组
+ */
+class UserGroup extends IntId, Named, Coded, Enabled, Hierarchical[UserGroup], Remark {
 
-  def createUser(staff: Staff, oldCode: Option[String]): User
+  var school: School = _
 
-  def createUser(std: Student, oldCode: Option[String]): User
+  var manager: Option[User] = None
 
-  def createAccount(user: User): Unit
+  def isParentOf(p: UserGroup): Boolean = {
+    val pts = Collections.newSet[UserGroup]
+    var pt: UserGroup = p
+    while (null != pt && !pts.contains(pt) && !pts.contains(this)) {
+      pts.add(pt)
+      pt = pt.parent.orNull
+    }
+    pts.contains(this)
+  }
 
-  def activate(users: Iterable[User], active: Boolean): Unit
-
-  def updatePassword(user: User, password: String): Int
+  /** 自动管理，无需手动增加成员 */
+  var autoManage: Boolean = _
 }

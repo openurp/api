@@ -18,12 +18,13 @@
 package org.openurp.base.service.impl
 
 import org.beangle.commons.codec.digest.Digests
+import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Strings
 import org.beangle.commons.logging.Logging
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.beangle.jdbc.query.JdbcExecutor
-import org.openurp.base.hr.model.{Secretary, Staff, Teacher}
-import org.openurp.base.model.{Department, Project, User}
+import org.openurp.base.hr.model.{Secretary, Staff, Teacher, Tutor}
+import org.openurp.base.model.{Department, Project, User, UserGroup}
 import org.openurp.base.service.{UserCategories, UserRepo}
 import org.openurp.base.std.model.Student
 import org.openurp.code.hr.model.UserCategory
@@ -33,6 +34,7 @@ import javax.sql.DataSource
 
 /**
  * FIXME hard code rolename
+ *
  * @param entityDao
  * @param platformDataSource
  * @param hostname
@@ -41,16 +43,16 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
   private var orgId: Int = _
   private var domainId: Int = _
-  private var stdRoleId: Int = _
-  private var staffRoleId: Int = _
-  private var teacherRoleId: Int = _
-  private var tutorRoleId: Int = _
-  private var secretaryRoleId: Int = _
-
   private var dimensionProjectId: Int = _
   private var dimensionDepartmentId: Int = _
 
   private var emsJdbcExecutor: JdbcExecutor = _
+
+  var studentGroupName = "学生"
+  var staffGroupName = "教职工"
+  var teacherGroupName = "教师"
+  var tutorGroupName = "导师"
+  var secretaryGroupName = "教学秘书"
 
   if (null != platformDataSource) {
     emsJdbcExecutor = new JdbcExecutor(platformDataSource)
@@ -59,21 +61,9 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
       val first = datas.head
       domainId = first(0).asInstanceOf[Number].intValue
       orgId = first(1).asInstanceOf[Number].intValue
-      stdRoleId = emsJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "学生").getOrElse(0)
-      teacherRoleId = emsJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "教师").getOrElse(0)
-      staffRoleId = emsJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "教职工").getOrElse(0)
-      tutorRoleId = emsJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "导师").getOrElse(0)
-      secretaryRoleId = emsJdbcExecutor.unique[Int]("select id from ems.usr_roles where domain_id=? and name=?", domainId, "教学秘书").getOrElse(0)
-
       dimensionProjectId = emsJdbcExecutor.unique[Int]("select id from ems.usr_dimensions where domain_id=? and name=?", domainId, "project").getOrElse(0)
       dimensionDepartmentId = emsJdbcExecutor.unique[Int]("select id from ems.usr_dimensions where domain_id=? and name=?", domainId, "department").getOrElse(0)
     }
-  }
-
-  override def createUser(teacher: Teacher): User = {
-    val staff = entityDao.get(classOf[Staff], teacher.staff.id)
-    val roleIds = if (teacher.tutorType.isEmpty) List(teacherRoleId) else List(teacherRoleId, tutorRoleId)
-    createStaffUser(staff, roleIds, None)
   }
 
   /** Create a user for staff
@@ -82,22 +72,30 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
    * @return
    */
   override def createUser(staff: Staff, oldCode: Option[String]): User = {
-    createStaffUser(staff, List(staffRoleId), oldCode)
-  }
-
-  override def createUser(secretary: Secretary): Unit = {
-    println("staffRuleId " + staffRoleId)
-    println("secretaryRoleId " + secretaryRoleId)
-    val staff = secretary.staff
-    createStaffUser(staff, List(staffRoleId), None)
-    val userId = findEmsUserId(staff.code).get
-    grantRoles(userId, List(secretaryRoleId))
-    secretary.projects foreach { p =>
-      createProfile(userId, p, staff.department)
+    val primaryGroups = Collections.newBuffer[UserGroup]
+    primaryGroups.addAll(getGroup(staffGroupName))
+    val teachers = entityDao.findBy(classOf[Teacher], "staff", staff)
+    if (teachers.nonEmpty) {
+      primaryGroups.addAll(getGroup(teacherGroupName))
     }
+    val tutors = entityDao.findBy(classOf[Tutor], "staff", staff)
+    if (tutors.nonEmpty) {
+      primaryGroups.addAll(getGroup(tutorGroupName))
+    }
+    val secretaries = entityDao.findBy(classOf[Secretary], "staff", staff)
+    if (secretaries.nonEmpty) {
+      primaryGroups.addAll(getGroup(secretaryGroupName))
+    }
+    val user = createStaffUser(staff, primaryGroups.lastOption, oldCode)
+    secretaries foreach { s =>
+      s.projects foreach { p =>
+        createProfile(user.id, p, staff.department)
+      }
+    }
+    user
   }
 
-  private def createStaffUser(staff: Staff, roleIds: Seq[Int], oldCode: Option[String]): User = {
+  private def createStaffUser(staff: Staff, group: Option[UserGroup], oldCode: Option[String]): User = {
     val oldUserCode = oldCode.getOrElse(staff.code)
     val userQuery = OqlBuilder.from(classOf[User], "user").where("user.code=:code", oldUserCode)
       .where("user.school =:school", staff.school)
@@ -109,6 +107,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         val u = new User
         u.school = staff.school
         u.category = UserCategory(UserCategories.Teacher)
+        u.group = group
         u
       }
     user.beginOn = staff.beginOn
@@ -121,16 +120,27 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     user.mobile = staff.mobile
     user.email = staff.email
     user.updatedAt = Instant.now
+    group foreach { g =>
+      user.group match
+        case None => user.group = Some(g)
+        case Some(pg) =>
+          if pg.isParentOf(g) || g.isParentOf(pg) then user.group = Some(g)
+          else
+            user.addGroup(pg)
+            user.group = Some(g)
 
+      user.removeGroup(g) //从附加用户组删除主组
+    }
     entityDao.saveOrUpdate(user)
 
     val password = defaultPassword(staff.idNumber.orNull)
-    createAccount(findEmsUserId(oldUserCode), user, password, UserCategories.Teacher, roleIds)
+    createAccount(findEmsUserId(oldUserCode), user, password, UserCategories.Teacher)
     user
   }
 
   override def createUser(std: Student, oldCode: Option[String]): User = {
     val school = std.project.school
+
     val userBuilder = OqlBuilder.from(classOf[User], "user")
     userBuilder.where("user.code=:code", std.code)
     userBuilder.where("user.school=:school", school)
@@ -146,6 +156,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         newUser.email = Option(newUser.code + "@unknown.com")
         newUser.beginOn = std.beginOn
         newUser.endOn = Option(std.endOn)
+        newUser.group = getGroup(studentGroupName)
         newUser
     }
     user.department = std.state.get.department
@@ -154,8 +165,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     user.updatedAt = Instant.now()
     entityDao.saveOrUpdate(user)
 
-    val password = defaultPassword(std.person.code)
-    createAccount(findEmsUserId(oldCode.getOrElse(std.code)), user, password, UserCategories.Student, List(stdRoleId))
+    createAccount(findEmsUserId(oldCode.getOrElse(std.code)), user, defaultPassword(std.person.code), UserCategories.Student)
     user
   }
 
@@ -171,28 +181,20 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     })
   }
 
-  override def updatePassword(userCode: String, password: String): Int = {
+  override def updatePassword(user: User, password: String): Int = {
     val encoded = "{MD5}" + Digests.md5Hex(password)
-    emsJdbcExecutor.update("update ems.usr_users u set password=? where u.org_id=? and u.code=?", encoded, orgId, userCode)
+    emsJdbcExecutor.update("update ems.usr_users u set password=? where u.org_id=? and u.code=?", encoded, user.school.id, user.code)
   }
 
   override def createAccount(user: User): Unit = {
-    val password = defaultPassword(user.code)
-    val roleId = user.category.id match {
-      case UserCategories.Student => stdRoleId
-      case UserCategories.Teacher => teacherRoleId
-      case _ => 0
-    }
-    createAccount(findEmsUserId(user.code), user, password, user.category.id, List(roleId))
+    createAccount(findEmsUserId(user), user, defaultPassword(user.code), user.category.id)
   }
 
   private def defaultPassword(idNumber: String): String = {
     if Strings.isEmpty(idNumber) then "123456"
     else {
-      if idNumber.length > 6 then
-        Strings.substring(idNumber, idNumber.length - 6, idNumber.length)
-      else
-        idNumber
+      if idNumber.length > 6 then Strings.substring(idNumber, idNumber.length - 6, idNumber.length)
+      else idNumber
     }
   }
 
@@ -200,13 +202,22 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     emsJdbcExecutor.unique[Long]("select id from ems.usr_users where org_id=" + orgId + " and code=? ", code)
   }
 
-  private def createAccount(existId: Option[Long], user: User, password: String, categoryId: Int, roleIds: Seq[Int]): Unit = {
+  private def findEmsUserId(user: User): Option[Long] = {
+    emsJdbcExecutor.unique[Long]("select id from ems.usr_users where org_id=" + user.school.id + " and code=? ", user.code)
+  }
+
+  private def findEmsGroupId(group: UserGroup): Option[Int] = {
+    emsJdbcExecutor.unique[Int]("select id from ems.usr_groups where org_id=" + group.school.id + " and code=? ", group.code)
+  }
+
+  private def createAccount(existId: Option[Long], user: User, password: String, categoryId: Int): Unit = {
     val code = user.code
     val name = user.name
+    val groupId = user.group.flatMap(findEmsGroupId)
 
     val userId = existId match {
       case Some(id) =>
-        val data = emsJdbcExecutor.query("select code,name,mobile,email from ems.usr_users where id=?", id).head
+        val data = emsJdbcExecutor.query("select code,name,mobile,email,group_id from ems.usr_users where id=?", id).head
         if (data(0) != code || data(1) != name) {
           emsJdbcExecutor.update("update ems.usr_users set code=?, name=?, updated_at=now() where id=?", code, name, id)
           logger.info(s"change user($id) code and name to $code $name")
@@ -217,17 +228,20 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         user.email foreach { email =>
           if (email != data(3)) emsJdbcExecutor.update("update ems.usr_users set email=?,updated_at=now() where id=?", email, id)
         }
+        groupId foreach { gid =>
+          if (gid != data(4)) emsJdbcExecutor.update("update ems.usr_users set group_id=?,updated_at=now() where id=?", gid, id)
+        }
         id
       case None =>
         val userId = nextId()
-        emsJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,password," +
+        emsJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,password,group_id," +
           "passwd_expired_on,updated_at,begin_on,enabled,locked)"
           + "values(?,?,?,?,?,?,?,?,current_date+180,now(),current_date,true,false);", userId, code, name, orgId,
-          categoryId, user.mobile.orNull, user.email.orNull, "{MD5}" + Digests.md5Hex(password))
+          categoryId, user.mobile.orNull, user.email.orNull, "{MD5}" + Digests.md5Hex(password), groupId)
         logger.info(s"create user $code $name")
         userId
     }
-    grantRoles(userId, roleIds)
+    grantGroups(userId, user.groups.map(_.group.id))
   }
 
   private def createProfile(userId: Long, project: Project, department: Department): Unit = {
@@ -271,16 +285,23 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
   }
 
-  private def grantRoles(userId: Long, roleIds: Seq[Int]): Unit = {
-    roleIds foreach { roleId =>
-      if (roleId > 0) {
-        val roleCount = emsJdbcExecutor.unique[Long]("select count(*) from ems.usr_role_members where user_id=? and role_id=?", userId, roleId).getOrElse(0L)
-        if (roleCount == 0) {
-          emsJdbcExecutor.update("insert into ems.usr_role_members(id,user_id,role_id,is_member,is_granter,is_manager,updated_at)"
-            + "values(datetime_id(),?,?,true,false,false,now());", userId, roleId)
+  private def grantGroups(userId: Long, groupIds: Iterable[Int]): Unit = {
+    groupIds foreach { groupId =>
+      if (groupId > 0) {
+        val cnt = emsJdbcExecutor.unique[Long]("select count(*) from ems.usr_group_members where user_id=? and group_id=?", userId, groupId).getOrElse(0L)
+        if (cnt == 0) {
+          emsJdbcExecutor.update("insert into ems.usr_role_members(id,user_id,group_id,updated_at)"
+            + "values(datetime_id(),?,?,now());", userId, groupId)
         }
       }
     }
+  }
+
+  private def getGroup(name: String): Option[UserGroup] = {
+    val q = OqlBuilder.from(classOf[UserGroup], "g")
+    q.where("g.name = :name", name)
+    q.cacheable()
+    entityDao.search(q).headOption
   }
 
   private def nextId(): Long = {
