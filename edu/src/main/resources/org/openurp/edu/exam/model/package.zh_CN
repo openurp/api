@@ -120,9 +120,3 @@ ExamNotice=考试通知
 ExamNotice.studentNotice=学生通知
 ExamNotice.managerNotice=管理人员通知
 
-ExamDeferApply=考试延期申请
-ExamDeferApply.reason=申请原因
-ExamDeferApply.mobile=移动电话
-ExamDeferApply.status=状态
-ExamDeferApply.passed=是否通过
-ExamDeferApply.examBeginAt=考试开始时间

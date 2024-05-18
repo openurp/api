@@ -12,7 +12,6 @@ Squad.planCount=计划人数
 Squad.stdCount=学籍有效人数
 Squad.stdType=学生类别
 Squad.students=学生列表 班级学生
-Squad.tutor=班导师
 Squad.project=项目
 Squad.education=培养层次
 Squad.shortName=简称

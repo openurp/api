@@ -17,11 +17,9 @@
 
 package org.openurp.std.info.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Major
-import org.openurp.base.model.Department
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{EducationMode, EnrollMode}
 import org.openurp.code.geo.model.Division
@@ -37,7 +35,7 @@ class Examinee extends LongId with Updated {
   var std: Student = _
 
   /** 考生号 */
-  var code: String = _
+  var code: Option[String] = None
 
   /** 准考证号 */
   var examNo: Option[String] = None
@@ -69,6 +67,6 @@ class Examinee extends LongId with Updated {
   /** 培养方式 */
   var educationMode: Option[EducationMode] = None
 
-  /**委培单位*/
-  var client:Option[String]=None
+  /** 委培单位 */
+  var client: Option[String] = None
 }

@@ -6,7 +6,7 @@ alter table code.course_types add short_name varchar(20);
 alter table base.courses add general_type_id int4;
 --projects
 alter table base.projects add administration varchar(80) default '教务处';
-alter table base.projects add administration2nd varchar(80);[]
+alter table base.projects add administration2nd varchar(80);
 alter table std.graduate_batches add enable_progress_confirm bool default false;
 
 --flow

@@ -44,7 +44,7 @@ class DefaultMapping extends MappingModule {
     bind[Contact].declare { e =>
       e.email is length(100)
       e.phone is length(20)
-      e.mobile is length(20)
+      e.mobile is length(50)
       e.address is length(150)
       index("", true, e.std)
     }
