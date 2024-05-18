@@ -20,6 +20,7 @@ package org.openurp.edu.course.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
+import org.openurp.base.edu.model.TeachingOffice
 import org.openurp.base.model.{AuditStatus, Semester, User}
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.course.model.Lesson
@@ -51,6 +52,9 @@ class TeachingPlan extends LongId with Updated {
   /** 文件路径 */
   var filePath: Option[String] = None
 
+  /** 教研室 */
+  var office: Option[TeachingOffice] = None
+
   /** 状态 */
   var status: AuditStatus = AuditStatus.Draft
 
@@ -58,10 +62,10 @@ class TeachingPlan extends LongId with Updated {
   var writer: Option[User] = None
 
   /** 审核人 */
-  var auditor: Option[User] = None
+  var reviewer: Option[User] = None
 
   /** 院长 */
-  var dean: Option[User] = None
+  var approver: Option[User] = None
 
   /** 发布时间 */
   var publishAt: Option[Instant] = None

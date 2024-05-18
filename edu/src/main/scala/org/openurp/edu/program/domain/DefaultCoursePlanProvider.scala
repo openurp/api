@@ -40,7 +40,7 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
   /**
    * 获得专业培养计划
    */
-  override def getExecutionPlan(student: Student): Option[ExecutionPlan] = {
+  override def getExecutionPlan(student: Student): Option[ExecutivePlan] = {
     programProvider.getProgram(student) match {
       case Some(p) => getExecutionPlan(p, student)
       case None => None
@@ -85,8 +85,8 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
     entityDao.findBy(classOf[MajorPlan], "program", List(p)).headOption
   }
 
-  private def getExecutionPlan(p: Program, student: Student): Option[ExecutionPlan] = {
-    val plans = entityDao.findBy(classOf[ExecutionPlan], "program", List(p))
+  private def getExecutionPlan(p: Program, student: Student): Option[ExecutivePlan] = {
+    val plans = entityDao.findBy(classOf[ExecutivePlan], "program", List(p))
     val matched = plans.filter { p => DefaultProgramMatcher.departMatched(p.department, student.state.get.department) }
     matched.headOption
   }

@@ -15,35 +15,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exam.model
+package org.openurp.edu.exempt.flow
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.{ExamDeferReason, ExamType}
-import org.openurp.edu.clazz.model.Clazz
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.{AuditStatus, Semester}
+import org.openurp.base.std.model.ExternStudent
 
-import java.time.Instant
-
-/** 考试缓考申请
+/** 外校成绩免修申请
  */
-@deprecated("move to flow")
-class ExamDeferApply extends LongId with Updated with Remark {
+@flow
+class ExternExemptApply extends LongId with Updated {
 
-  var clazz: Clazz = _
+  /** 学年学期 */
+  var semester: Semester = _
 
-  var std: Student = _
+  /** 外部学习经历 */
+  var externStudent: ExternStudent = _
 
-  var examType: ExamType = _
+  /** 成绩单附件路径 */
+  var transcriptPath: Option[String] = None
 
-  var examBeginAt: Option[Instant] = None
+  /** 审核状态 */
+  var status: AuditStatus = AuditStatus.Draft
 
-  var mobile: Option[String] = None
+  /** 审核意见 */
+  var auditOpinion: Option[String] = None
 
-  var reason: Option[ExamDeferReason] = None
+  /** 申请冲抵的外校课程学分总计 */
+  var credits: Float = _
 
-  var passed: Option[Boolean] = None
-
-  var status: String = _
+  /** 冲抵本校课程的学分总计 */
+  var exemptionCredits: Float = _
 }

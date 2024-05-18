@@ -63,6 +63,7 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
   /** 多出学分可以冲抵的课程类别 */
   var offsetType: Option[CourseType] = None
 
+  //----学位部分--------
   /** 毕业授予学位 */
   var degree: Option[Degree] = None
 

@@ -139,6 +139,9 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 开课院系 */
   var department: Department = _
 
+  /** 教研室 */
+  var office: Option[TeachingOffice] = None
+
   /** 状态 */
   var status: AuditStatus = AuditStatus.Draft
 
@@ -146,10 +149,10 @@ class Syllabus extends LongId with Updated with TemporalOn {
   var writer: User = _
 
   /** 审核人 */
-  var auditor: Option[User] = None
+  var reviewer: Option[User] = None
 
   /** 院长 */
-  var dean: Option[User] = None
+  var approver: Option[User] = None
 
   /** 发布时间 */
   var publishAt: Option[Instant] = None

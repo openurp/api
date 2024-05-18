@@ -1,0 +1,6 @@
+ExamDeferApply=考试延期申请
+ExamDeferApply.reason=申请原因
+ExamDeferApply.mobile=移动电话
+ExamDeferApply.status=状态
+ExamDeferApply.passed=是否通过
+ExamDeferApply.examBeginAt=考试开始时间

@@ -15,15 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.edu.exam.flow
 
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[ExternExemptCredit].declare { e =>
-      index("", true, e.std)
+    bind[ExamDeferApply].declare { e =>
+      e.remark is length(300)
+      e.status is length(50)
+      index("", true, e.std, e.clazz, e.examType)
     }
   }
 }

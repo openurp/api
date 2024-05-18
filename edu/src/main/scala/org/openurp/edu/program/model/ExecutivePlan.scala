@@ -25,7 +25,7 @@ import org.openurp.code.std.model.StdType
  *
  * @author chaostone
  */
-class ExecutionPlan extends AbstractCoursePlan with CoursePlan {
+class ExecutivePlan extends AbstractCoursePlan with CoursePlan {
 
   /** 部门(培养方案的部门或者子部门) */
   var department: Department = _
@@ -35,7 +35,7 @@ class ExecutionPlan extends AbstractCoursePlan with CoursePlan {
  *
  * @author chaostone
  */
-class ExecutionCourseGroup extends AbstractCourseGroup {
+class ExecutiveCourseGroup extends AbstractCourseGroup {
 
   /** 该组针对的专业方向 */
   var direction: Option[Direction] = None
@@ -44,7 +44,7 @@ class ExecutionCourseGroup extends AbstractCourseGroup {
 
 /** 执行计划课程
  */
-class ExecutionPlanCourse extends AbstractPlanCourse with Executable {
+class ExecutivePlanCourse extends AbstractPlanCourse with Executable {
 
   /** 建议修读学期 */
   var suggestTerms: Terms = Terms.empty

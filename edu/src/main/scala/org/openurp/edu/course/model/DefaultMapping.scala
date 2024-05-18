@@ -39,15 +39,25 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[SyllabusTopic] declare { e =>
+      e.contents is length(1000)
       e.elements is depends("topic")
       e.hours is depends("topic")
     }
 
     bind[SyllabusTopicHour]
-    bind[SyllabusTopicElement]
 
-    bind[SyllabusObjective]
-    bind[SyllabusOutcome]
+    bind[SyllabusTopicElement] declare { e =>
+      e.contents is length(1000)
+    }
+
+    bind[SyllabusObjective] declare { e =>
+      e.contents is length(1000)
+    }
+
+    bind[SyllabusOutcome] declare { e =>
+      e.contents is length(1000)
+    }
+
     bind[SyllabusCreditHour]
     bind[SyllabusExamHour]
 
@@ -56,6 +66,7 @@ class DefaultMapping extends MappingModule {
       e.scoreTable is length(4000)
     }
     bind[SyllabusText] declare { e =>
+      e.contents is length(4000)
       e.children is depends("parent")
     }
 
@@ -73,7 +84,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[SyllabusMethodDesign] declare { e =>
-      e.contents is length(2000)
+      e.contents is length(4000)
     }
 
     bind[CourseTask] declare { e =>

@@ -93,12 +93,6 @@ class DefaultMapping extends MappingModule {
       e.managerNotice is length(1000)
     }
 
-    bind[ExamDeferApply].declare { e =>
-      e.remark is length(300)
-      e.status is length(50)
-      index("", true, e.std, e.clazz, e.examType)
-    }
-
     cache().add(classOf[ExamNotice])
   }
 }

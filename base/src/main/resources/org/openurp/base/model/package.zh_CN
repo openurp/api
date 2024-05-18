@@ -121,3 +121,8 @@ SemesterStage.beginOn=开始日期
 SemesterStage.endOn=结束日期
 
 ArchivedByYear.schoolYear=学年度
+
+UserGroup=用户组
+UserGroup.autoManage=自动管理
+
+UserGroupMember=用户组成员

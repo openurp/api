@@ -63,7 +63,7 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Remark
   override def topGroups: collection.Seq[CourseGroup] = {
     val res = new ListBuffer[CourseGroup]
     for (group <- groups if group.parent.isEmpty) res += group
-    res
+    res.sortBy(_.indexno)
   }
 
   override def getGroup(courseType: CourseType): Seq[CourseGroup] = {

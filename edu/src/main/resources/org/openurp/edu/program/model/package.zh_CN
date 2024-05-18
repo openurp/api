@@ -27,14 +27,14 @@ MajorPlan=专业培养计划
 MajorPlanCourse=专业计划课程
 MajorPlanCourse.suggestTerms=建议修读学期
 
-ExecutionCourseGroup=执行计划课程组
-ExecutionCourseGroup.givenName=自定义别名
-ExecutionCourseGroup.direction=该组针对的专业方向
-ExecutionCourseGroup.autoAddup=自动累加学分
+ExecutiveCourseGroup=执行计划课程组
+ExecutiveCourseGroup.givenName=自定义别名
+ExecutiveCourseGroup.direction=该组针对的专业方向
+ExecutiveCourseGroup.autoAddup=自动累加学分
 
-ExecutionPlan=执行培养计划
-ExecutionPlanCourse=执行计划课程
-ExecutionPlanCourse.suggestTerms=建议修读学期
+ExecutivePlan=执行培养计划
+ExecutivePlanCourse=执行计划课程
+ExecutivePlanCourse.suggestTerms=建议修读学期
 
 ShareCourseGroup=公共共享课程组
 ShareCourseGroup.language=要求外语语种

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exempt.model
+package org.openurp.edu.exempt.flow
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
@@ -29,11 +29,10 @@ import org.openurp.code.edu.model.{Certificate, GradingMode}
 import java.time.YearMonth
 import scala.collection.mutable
 
-/**
- * 校外证书成绩免修课程申请
+/** 校外证书成绩免修课程申请
  * 申请同意后，会落地到证书成绩和课程免修记录
  */
-@deprecated("move to flow")
+@flow
 class CertExemptApply extends LongId with Updated {
   /** 学生 */
   var std: Student = _

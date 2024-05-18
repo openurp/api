@@ -65,26 +65,26 @@ class DefaultMapping extends MappingModule {
     }
 
     // execution plan
-    bind[ExecutionCourseGroup].declare { e =>
-      e.plan is target[ExecutionPlan]
-      e.parent is target[ExecutionCourseGroup]
-      e.children is depends(classOf[ExecutionCourseGroup], "parent")
-      e.planCourses is depends(classOf[ExecutionPlanCourse], "group")
+    bind[ExecutiveCourseGroup].declare { e =>
+      e.plan is target[ExecutivePlan]
+      e.parent is target[ExecutiveCourseGroup]
+      e.children is depends(classOf[ExecutiveCourseGroup], "parent")
+      e.planCourses is depends(classOf[ExecutivePlanCourse], "group")
       e.termCredits is length(40)
       e.givenName is length(100)
       index("", false, e.plan)
       index("", false, e.parent)
     }
 
-    bind[ExecutionPlan].declare { e =>
+    bind[ExecutivePlan].declare { e =>
       e.endOn is notnull
-      e.groups is depends(classOf[ExecutionCourseGroup], "plan")
+      e.groups is depends(classOf[ExecutiveCourseGroup], "plan")
       e.remark is length(200)
       index("", false, e.program)
     }
 
-    bind[ExecutionPlanCourse].declare { e =>
-      e.group is target[ExecutionCourseGroup]
+    bind[ExecutivePlanCourse].declare { e =>
+      e.group is target[ExecutiveCourseGroup]
       index("", true, e.group, e.course)
       index("", false, e.group)
     }
