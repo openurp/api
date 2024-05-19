@@ -18,12 +18,12 @@
 package org.openurp.base.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.SystemInfo.user
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.code.hr.model.UserCategory
 import org.openurp.code.person.model.Gender
 
+import java.time.Instant
 import scala.collection.mutable
 
 /**
@@ -62,6 +62,7 @@ class User extends LongId, Coded, Named, EnNamed, Updated, Remark, TemporalOn {
   def addGroup(g: UserGroup): Unit = {
     if !groups.exists(_.group == g) then
       val m = new UserGroupMember
+      m.updatedAt = Instant.now
       m.group = g
       m.user = this
       groups.addOne(m)
@@ -74,15 +75,12 @@ class User extends LongId, Coded, Named, EnNamed, Updated, Remark, TemporalOn {
   def addGroups(gs: collection.Seq[UserGroup]): Unit = {
     gs.headOption foreach { g =>
       this.group match
-        case None => this.group = Some(g)
+        case None =>
+          this.group = Some(g)
+          if gs.size > 1 then gs.tail foreach { x => this.addGroup(x) }
         case Some(pg) =>
-          if pg.isParentOf(g) || g.isParentOf(pg) then this.group = Some(g)
-          else
-            this.addGroup(pg)
-            this.group = Some(g)
-
-      this.removeGroup(g) //从附加用户组删除主组
+          gs foreach { g => this.addGroup(g) }
     }
-    gs.tail foreach { g => this.addGroup(g) }
+    this.group foreach { g => this.removeGroup(g) } //从附加用户组删除主组
   }
 }

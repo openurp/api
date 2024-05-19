@@ -79,8 +79,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         groupCodes.insert(0, "mentor")
       }
     } else {
-      val tutors = entityDao.findBy(classOf[Tutor], "staff", staff)
-      if (tutors.nonEmpty) groupCodes.addOne("tutor")
+      if (staff.tutorType.nonEmpty) groupCodes.addOne("tutor")
       val teachers = entityDao.findBy(classOf[Teacher], "staff", staff)
       teachers foreach { t =>
         groupCodes = t.projects.map(p => s"teacher.${p.id}").toBuffer.sorted
@@ -90,8 +89,9 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
     val user = createStaffUser(staff, getGroups(groupCodes), oldCode)
     // 创建秘书的数据权限
+    val emsUserId = findEmsUserId(user).get
     secretaries foreach { s =>
-      s.projects foreach { p => createProfile(user.id, p, staff.department) }
+      s.projects foreach { p => createProfile(emsUserId, p, staff.department) }
     }
     user
   }
@@ -235,16 +235,16 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     grantGroups(userId, user.groups.map(_.group.id))
   }
 
-  private def createProfile(userId: Long, project: Project, department: Department): Unit = {
+  private def createProfile(emsUserId: Long, project: Project, department: Department): Unit = {
     val departId = department.id.toString
     var missingProject = true
-    val existProfileIds = emsJdbcExecutor.query(s"select id from ems.usr_profiles where domain_id=$domainId and user_id=$userId")
+    val existProfileIds = emsJdbcExecutor.query(s"select id from ems.usr_profiles where domain_id=$domainId and user_id=$emsUserId")
     if (existProfileIds.nonEmpty) {
       for (pid <- existProfileIds if missingProject) {
         val profileId = pid.head.asInstanceOf[Number].longValue()
         val projectValues = emsJdbcExecutor.query("select value_ from ems.usr_profiles_properties where profile_id=? and dimension_id=?", profileId, dimensionProjectId)
         if (projectValues.nonEmpty) {
-          val projectValue = projectValues.head.head
+          val projectValue = projectValues.head.head.toString.trim()
           if (projectValue == "*" || projectValue == project.id.toString) {
             missingProject = false
             var missingDepart = true
@@ -270,7 +270,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
     if (missingProject) {
       val profileId = nextId()
-      emsJdbcExecutor.update("insert into ems.usr_profiles(id,user_id,domain_id,name) values(?,?,?,?);", profileId, userId, domainId, project.name)
+      emsJdbcExecutor.update("insert into ems.usr_profiles(id,user_id,domain_id,name) values(?,?,?,?);", profileId, emsUserId, domainId, project.name)
       emsJdbcExecutor.update("insert into ems.usr_profiles_properties(profile_id,dimension_id,value_) values(?,?,?);", profileId, dimensionProjectId, project.id.toString)
       emsJdbcExecutor.update("insert into ems.usr_profiles_properties(profile_id,dimension_id,value_) values(?,?,?);", profileId, dimensionDepartmentId, departId)
     }
@@ -281,7 +281,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
       if (groupId > 0) {
         val cnt = emsJdbcExecutor.unique[Long]("select count(*) from ems.usr_group_members where user_id=? and group_id=?", userId, groupId).getOrElse(0L)
         if (cnt == 0) {
-          emsJdbcExecutor.update("insert into ems.usr_role_members(id,user_id,group_id,updated_at)"
+          emsJdbcExecutor.update("insert into ems.usr_group_members(id,user_id,group_id,updated_at)"
             + "values(datetime_id(),?,?,now());", userId, groupId)
         }
       }
@@ -291,7 +291,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
   private def getGroups(codes: Iterable[String]): Seq[UserGroup] = {
     if (codes.isEmpty) return Seq.empty
     val q = OqlBuilder.from(classOf[UserGroup], "g")
-    q.where("g.codes in (:codes)", codes)
+    q.where("g.code in (:codes)", codes)
     q.cacheable()
     entityDao.search(q)
   }

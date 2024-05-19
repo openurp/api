@@ -19,6 +19,7 @@ package org.openurp.base.hr.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Direction, Major}
 import org.openurp.code.edu.model.{EducationLevel, EducationType}
 
@@ -26,7 +27,7 @@ import scala.collection.mutable
 
 /** 导师研究领域
  */
-class TutorMajor extends LongId {
+class TutorMajor extends LongId, Remark {
 
   /** 导师 */
   var staff: Staff = _

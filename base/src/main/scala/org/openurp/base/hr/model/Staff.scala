@@ -17,13 +17,12 @@
 
 package org.openurp.base.hr.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.base.model.{Department, Person, School, User}
+import org.openurp.base.model.{Department, School}
 import org.openurp.code.edu.model.{Degree, DegreeLevel, EducationDegree}
-import org.openurp.code.hr.model.{EmployType, StaffSourceType, StaffType, WorkStatus}
-import org.openurp.code.job.model.ProfessionalTitle
+import org.openurp.code.hr.model.{StaffType, WorkStatus}
+import org.openurp.code.job.model.{ProfessionalTitle, TutorType}
 import org.openurp.code.person.model.{Gender, IdType, Nation, PoliticalStatus}
 
 import java.time.LocalDate
@@ -65,6 +64,9 @@ class Staff extends LongId with Coded with Named with Updated with TemporalOn {
 
   /** 教职工类别 */
   var staffType: StaffType = _
+
+  /** 导师类型 */
+  var tutorType: Option[TutorType] = None
 
   /** 是否在编 */
   var formalHr: Boolean = _

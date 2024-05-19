@@ -17,7 +17,7 @@
 
 package org.openurp.base.service
 
-import org.openurp.base.hr.model.{Staff, Teacher, Tutor}
+import org.openurp.base.hr.model.Staff
 import org.openurp.base.model.User
 import org.openurp.base.std.model.Student
 
