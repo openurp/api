@@ -25,7 +25,6 @@ class DefaultMapping extends MappingModule {
     defaultIdGenerator(classOf[Int], IdGenerator.Code)
     bind[AdmissionType]
     bind[ActivityType]
-    bind[ClassroomType]
     bind[CourseNature]
     bind[DisciplineCatalog]
     bind[Discipline]
@@ -40,7 +39,6 @@ class DefaultMapping extends MappingModule {
     bind[EducationDegree]
     bind[AcademicLevel]
     bind[EducationResult]
-    bind[Language]
     bind[LanguageAbility]
     bind[StudyType]
     bind[EducationLevel]

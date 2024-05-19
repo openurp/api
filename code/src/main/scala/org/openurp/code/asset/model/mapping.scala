@@ -26,5 +26,6 @@ class DefaultMapping extends MappingModule {
     bind[RoomType]
     bind[BuildingType]
     bind[DeviceType]
+    bind[ClassroomType]
   }
 }

@@ -19,7 +19,8 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.{Component, LongId}
-import org.openurp.code.edu.model.{ClassroomType, ExamForm, ExamMode}
+import org.openurp.code.asset.model.ClassroomType
+import org.openurp.code.edu.model.{ExamForm, ExamMode}
 
 import java.time.LocalDate
 

@@ -20,7 +20,7 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.AuditStatus
-import org.openurp.code.edu.model.Language
+import org.openurp.code.person.model.Language
 
 import java.time.Instant
 

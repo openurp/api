@@ -1,5 +1,4 @@
 AdmissionType=录取类别
-ClassroomType=教室类型
 ActivityType=活动类型
 
 CourseNature=课程性质
@@ -27,7 +26,6 @@ HskLevel.grade=等级
 
 Institution=科研机构
 InstitutionCategory=高校性质类别
-Language=语种
 LanguageAbility=语种熟练程度
 
 StudyType=学习形式

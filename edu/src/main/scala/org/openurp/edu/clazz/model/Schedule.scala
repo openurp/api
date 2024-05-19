@@ -20,7 +20,7 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.WeekState
 import org.beangle.data.model.Component
-import org.openurp.code.edu.model.ClassroomType
+import org.openurp.code.asset.model.ClassroomType
 import org.openurp.edu.clazz.domain.WeekTimeBuilder
 
 import java.time.LocalDateTime

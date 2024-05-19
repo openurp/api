@@ -74,16 +74,6 @@ class AcademicLevel extends CodeBean
 class EducationResult extends CodeBean
 
 /**
- * 语种
- * 参见国家推荐标准 GB/T 4880.2-2000
- * @see http://www.gfjl.org/thread-78200-1-1.html
- * @see http://zh.wikipedia.org/zh-cn/ISO_639-1%E4%BB%A3%E7%A0%81%E8%A1%A8
- * @see http://zh.wikipedia.org/wiki/ISO_639-2
- */
-@code("nation")
-class Language extends CodeBean
-
-/**
  * 语种熟练程度
  * 参见国家推荐标准 GB/T 6865
  */

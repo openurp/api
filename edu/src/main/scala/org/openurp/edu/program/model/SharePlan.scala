@@ -23,7 +23,8 @@ import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.model.{Course, Terms}
 import org.openurp.base.model.EduLevelBased
 import org.openurp.base.std.model.Grade
-import org.openurp.code.edu.model.{CourseAbilityRate, CourseType, Language}
+import org.openurp.code.edu.model.{CourseAbilityRate, CourseType}
+import org.openurp.code.person.model.Language
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer

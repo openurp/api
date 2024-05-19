@@ -57,6 +57,20 @@ class StdPunishmentType extends CodeBean{
 }
 
 /**
+ * 困难原因
+ * 参见教育部标准JY/T 1001 4.2.23
+ */
+@code("industry")
+class DifficultyCause extends CodeBean
+
+/**
+ * 困难程度
+ * 参见教育部标准JY/T 1001 4.2.22
+ */
+@code("industry")
+class DifficultyDegree extends CodeBean
+
+/**
  * 学生当前状态
  * 参见教育部标准JY/T 1001 4.2.42
  */

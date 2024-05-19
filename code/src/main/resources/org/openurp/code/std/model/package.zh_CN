@@ -19,3 +19,5 @@ StdType=学生类别
 StdDocType=学生文档类型
 
 GraduateType=毕业生类型
+DifficultyCause=困难原因
+DifficultyDegree=困难程度

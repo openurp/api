@@ -59,3 +59,9 @@ object DeviceType {
 class DeviceType extends CodeBean {
 
 }
+/**
+ * 教室类型
+ * 参见教育部标准JY/T 1001 4.3.3
+ */
+@code("industry")
+class ClassroomType extends CodeBean

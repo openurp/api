@@ -19,7 +19,6 @@ package org.openurp.base.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Updated}
-import org.openurp.code.edu.model.Language
 import org.openurp.code.geo.model.Country
 import org.openurp.code.person.model.*
 

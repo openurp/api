@@ -28,20 +28,6 @@ import org.openurp.code.CodeBean
 class BloodType extends CodeBean
 
 /**
- * 困难原因
- * 参见教育部标准JY/T 1001 4.2.23
- */
-@code("industry")
-class DifficultyCause extends CodeBean
-
-/**
- * 困难程度
- * 参见教育部标准JY/T 1001 4.2.22
- */
-@code("industry")
-class DifficultyDegree extends CodeBean
-
-/**
  * 家庭类别
  * 参见教育部标准JY/T 1001 4.2.19
  */

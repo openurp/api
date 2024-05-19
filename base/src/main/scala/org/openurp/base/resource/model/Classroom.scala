@@ -21,7 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.model.*
-import org.openurp.code.edu.model.ClassroomType
+import org.openurp.code.asset.model.ClassroomType
 
 import scala.collection.mutable
 

@@ -23,7 +23,8 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Remark}
 import org.openurp.base.model.{Department, SemesterBased}
 import org.openurp.base.resource.model.{Building, Classroom}
-import org.openurp.code.edu.model.{ClassroomType, ExamType}
+import org.openurp.code.asset.model.ClassroomType
+import org.openurp.code.edu.model.ExamType
 
 import java.time.LocalDate
 

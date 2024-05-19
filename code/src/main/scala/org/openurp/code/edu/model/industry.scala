@@ -34,13 +34,6 @@ class AdmissionType extends CodeBean
 class ActivityType extends CodeBean
 
 /**
- * 教室类型
- * 参见教育部标准JY/T 1001 4.3.3
- */
-@code("industry")
-class ClassroomType extends CodeBean
-
-/**
  * 学科目录
  *
  * 一般有：本科学科目录、研究生学术性学位目录、研究生专业性学位目录
