@@ -72,15 +72,15 @@ class User extends LongId, Coded, Named, EnNamed, Updated, Remark, TemporalOn {
     groups.subtractAll(groups.find(_.group == g))
   }
 
-  def addGroups(gs: collection.Seq[UserGroup]): Unit = {
+  def updateGroups(gs: collection.Seq[UserGroup]): Unit = {
     gs.headOption foreach { g =>
-      this.group match
-        case None =>
-          this.group = Some(g)
-          if gs.size > 1 then gs.tail foreach { x => this.addGroup(x) }
-        case Some(pg) =>
-          gs foreach { g => this.addGroup(g) }
+      this.group = Some(g)
+      if gs.size > 1 then gs.tail foreach { x => this.addGroup(x) }
     }
     this.group foreach { g => this.removeGroup(g) } //从附加用户组删除主组
+  }
+
+  def addGroups(gs: collection.Seq[UserGroup]): Unit = {
+    gs foreach { x => this.addGroup(x) }
   }
 }

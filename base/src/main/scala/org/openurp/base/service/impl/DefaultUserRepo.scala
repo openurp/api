@@ -67,27 +67,27 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
   override def createUser(staff: Staff, oldCode: Option[String]): User = {
     val secretaries = entityDao.findBy(classOf[Secretary], "staff", staff)
     val mentors = entityDao.findBy(classOf[Mentor], "staff", staff)
-    var groupCodes: collection.mutable.Buffer[String] = Collections.newBuffer[String]
+    var groups: collection.mutable.Buffer[UserGroup] = Collections.newBuffer[UserGroup]
     if (secretaries.nonEmpty) {
       secretaries foreach { s =>
-        groupCodes = s.projects.map(p => s"secretary.${p.id}").toBuffer.sorted
-        groupCodes.insert(0, "secretary")
+        groups.addAll(getGroups(s.projects.map(p => s"secretary.${p.id}")))
+        groups.addAll(getGroups(List("secretary")))
       }
     } else if (mentors.nonEmpty) {
       mentors foreach { m =>
-        groupCodes = m.projects.map(p => s"mentor.${p.id}").toBuffer.sorted
-        groupCodes.insert(0, "mentor")
+        groups.addAll(getGroups(m.projects.map(p => s"mentor.${p.id}")))
+        groups.addAll(getGroups(List("mentor")))
       }
     } else {
-      if (staff.tutorType.nonEmpty) groupCodes.addOne("tutor")
+      if (staff.tutorType.nonEmpty) groups.addAll(getGroups(List("tutor")))
       val teachers = entityDao.findBy(classOf[Teacher], "staff", staff)
       teachers foreach { t =>
-        groupCodes = t.projects.map(p => s"teacher.${p.id}").toBuffer.sorted
-        groupCodes.insert(0, "teacher")
+        groups.addAll(getGroups(t.projects.map(p => s"teacher.${p.id}")))
+        groups.addAll(getGroups(List("teacher")))
       }
-      groupCodes.addOne("staff")
+      groups.addAll(getGroups(List("staff")))
     }
-    val user = createStaffUser(staff, getGroups(groupCodes), oldCode)
+    val user = createStaffUser(staff, groups, oldCode)
     // 创建秘书的数据权限
     val emsUserId = findEmsUserId(user).get
     secretaries foreach { s =>
@@ -96,7 +96,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     user
   }
 
-  private def createStaffUser(staff: Staff, groups: Seq[UserGroup], oldCode: Option[String]): User = {
+  private def createStaffUser(staff: Staff, groups: collection.Seq[UserGroup], oldCode: Option[String]): User = {
     val oldUserCode = oldCode.getOrElse(staff.code)
     val userQuery = OqlBuilder.from(classOf[User], "user").where("user.code=:code", oldUserCode)
       .where("user.school =:school", staff.school)
@@ -121,7 +121,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     user.email = staff.email
     user.updatedAt = Instant.now
 
-    user.addGroups(groups)
+    user.updateGroups(groups)
     entityDao.saveOrUpdate(user)
 
     val password = defaultPassword(staff.idNumber.orNull)
@@ -227,12 +227,13 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         val userId = nextId()
         emsJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,password,group_id," +
           "passwd_expired_on,updated_at,begin_on,enabled,locked)"
-          + "values(?,?,?,?,?,?,?,?,current_date+180,now(),current_date,true,false);", userId, code, name, orgId,
-          categoryId, user.mobile.orNull, user.email.orNull, "{MD5}" + Digests.md5Hex(password), groupId)
+          + "values(?,?,?,?,?,?,?,?,?,current_date+180,now(),current_date,true,false);", userId, code, name, orgId,
+          categoryId, user.mobile.orNull, user.email.orNull, "{MD5}" + Digests.md5Hex(password), groupId.orNull)
         logger.info(s"create user $code $name")
         userId
     }
-    grantGroups(userId, user.groups.map(_.group.id))
+
+    grantGroups(userId, user.groups.flatMap(x => findEmsGroupId(x.group)))
   }
 
   private def createProfile(emsUserId: Long, project: Project, department: Department): Unit = {
