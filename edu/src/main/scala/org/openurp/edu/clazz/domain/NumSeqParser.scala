@@ -18,6 +18,7 @@
 package org.openurp.edu.clazz.domain
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.{Numbers, Strings}
 
 import java.util
 
@@ -75,6 +76,10 @@ object NumSeqParser {
       if next.accept(number) then next
       else continuous(number)
     }
+
+    def nums: Seq[Int] = {
+      Range(start, end, step)
+    }
   }
 
   /**
@@ -103,5 +108,28 @@ object NumSeqParser {
       }
     }
     patterns
+  }
+
+  def parse(str: String): Array[Int] = {
+    val newstr = Strings.replace(Strings.replace(Strings.replace(str, "，", ","), "－", "-"), "—", "-")
+    val weekPairs = Strings.split(newstr, ",")
+
+    val numbers = Collections.newBuffer[Int]
+    for (weekPair <- weekPairs) {
+      if (Strings.contains(weekPair, "-")) {
+        var step = 1
+        if (weekPair.indexOf('单') != -1) step = 2
+        else if (weekPair.indexOf('双') != -1) step = 2
+        val pair = weekPair.replaceAll("[^\\d-]", "")
+        val startWeek = Strings.substringBefore(pair, "-")
+        val endWeek = Strings.substringAfter(pair, "-")
+        if (Numbers.isDigits(startWeek) && Numbers.isDigits(endWeek)) {
+          val r = NumRange(Numbers.toInt(startWeek), Numbers.toInt(endWeek), step)
+          numbers.addAll(r.nums)
+        }
+      }
+      else if (Numbers.isDigits(weekPair)) numbers.addOne(Numbers.toInt(weekPair))
+    }
+    numbers.toArray
   }
 }

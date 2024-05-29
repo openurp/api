@@ -15,30 +15,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.graduation.model
+package org.openurp.edu.program.model
 
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Named
 
-/**
- * 毕业审核明细
+/** 大纲内容
  */
-class GraduateAuditItem extends LongId {
+@beta
+class ProgramText extends LongId, Named {
 
-  /** 项目名称 */
-  var name: String = _
+  var doc: ProgramDoc = _
 
-  /** 是否通过 */
-  var passed: Boolean = _
+  var title: String = _
+  /** 内容 */
+  var contents: String = _
 
-  /** 具体状态信息 */
-  var comments: Option[String] = None
+  /** 链接表格的名称 */
+  var linkTable: Option[String] = None
 
-  /** 毕业审核结果 */
-  var result: GraduateResult = _
-
-  def this(name: String, auditResult: GraduateResult) = {
+  def this(doc: ProgramDoc, name: String, title: String, contents: String) = {
     this()
+    this.title = title
+    this.doc = doc
     this.name = name
-    this.result = auditResult
+    this.contents = contents
   }
 }

@@ -15,25 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.course.model
+package org.openurp.std.graduation.domain
 
-import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.TeachingNature
+import org.openurp.std.graduation.model.GraduateResult
 
-/** 教学大纲考核课时分配
- */
-class SyllabusExamHour extends LongId {
-  /** 大纲 */
-  var syllabus: Syllabus = _
-  /** 课时分类 */
-  var nature: TeachingNature = _
-  /** 学时 */
-  var creditHours: Float = _
+trait GraduateAuditChecker {
 
-  def this(syllabus: Syllabus, nature: TeachingNature, creditHours: Float) = {
-    this()
-    this.syllabus = syllabus
-    this.nature = nature
-    this.creditHours = creditHours
-  }
+  def check(result: GraduateResult): (Boolean, String, String)
 }

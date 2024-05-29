@@ -17,19 +17,17 @@
 
 package org.openurp.std.graduation.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.EducationResult
 
 import java.time.Instant
-import scala.collection.mutable
 
 /**
  * 毕业审核结果
  */
-class GraduateResult extends LongId with Updated {
+class GraduateResult extends LongId, Updated, Remark {
 
   /** 所属的毕业审核批次 */
   var batch: GraduateBatch = _
@@ -40,9 +38,6 @@ class GraduateResult extends LongId with Updated {
   /** 学生 */
   var std: Student = _
 
-  /** 毕业审核详细结果 */
-  var items: mutable.Buffer[GraduateAuditItem] = Collections.newBuffer[GraduateAuditItem]
-
   /** 是否通过毕业审核 */
   var passed: Option[Boolean] = None
 
@@ -52,11 +47,14 @@ class GraduateResult extends LongId with Updated {
   /** 是否已发布 */
   var published: Boolean = _
 
-  /** 毕业备注 */
-  var comments: Option[String] = None
-
   /** 毕结业情况 */
   var educationResult: Option[EducationResult] = None
+
+  /** 通过的项目 */
+  var passedItems: Option[String] = None
+
+  /** 不通过的的项目 */
+  var failedItems: Option[String] = None
 
   def this(std: Student, batch: GraduateBatch) = {
     this()
@@ -64,5 +62,17 @@ class GraduateResult extends LongId with Updated {
     this.std = std
     this.updatedAt = Instant.now
     this.batchNo = 1
+  }
+
+  def addPassed(item: String, remark: String): Unit = {
+    passedItems match
+      case None => passedItems = Some(s"${item}:${remark}")
+      case Some(s) => passedItems = Some(s + "\n" + s"${item}:${remark}")
+  }
+
+  def addFailed(item: String, remark: String): Unit = {
+    failedItems match
+      case None => failedItems = Some(s"${item}:${remark}")
+      case Some(s) => failedItems = Some(s + "\n" + s"${item}:${remark}")
   }
 }

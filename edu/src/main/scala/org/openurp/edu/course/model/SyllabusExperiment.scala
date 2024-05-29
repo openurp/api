@@ -39,11 +39,12 @@ class SyllabusExperiment extends LongId, Named {
   /** 实验类型 */
   var experimentType: ExperimentType = _
 
-  def this(syllabus: Syllabus, idx: Int, name: String, experimentType: ExperimentType, online: Boolean) = {
+  def this(syllabus: Syllabus, idx: Int, name: String, creditHours: Int, experimentType: ExperimentType, online: Boolean) = {
     this()
     this.syllabus = syllabus
     this.idx = idx
     this.name = name
+    this.creditHours = creditHours
     this.experimentType = experimentType
     this.online = online
   }

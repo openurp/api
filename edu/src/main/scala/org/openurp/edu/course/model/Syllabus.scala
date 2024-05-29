@@ -52,8 +52,14 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 面向的专业 */
   var majors = Collections.newSet[Major]
 
+  /** 总学时 */
+  var creditHours: Int = _
+
   /** 分类课时 */
   var hours = Collections.newBuffer[SyllabusCreditHour]
+
+  /** 周学时 */
+  var weekHours: Int = _
 
   /** 教学方式 */
   var methods: String = _
@@ -65,7 +71,7 @@ class Syllabus extends LongId with Updated with TemporalOn {
   var examHours = Collections.newBuffer[SyllabusExamHour]
 
   /** 自主学习课时 */
-  var learningHours: Int = _
+  var learningHours: Float = _
 
   //course natures
   /** 学期中的开课阶段 */
@@ -160,7 +166,7 @@ class Syllabus extends LongId with Updated with TemporalOn {
   def teachingMethods: Seq[String] = {
     methods match
       case null => Seq.empty
-      case m => Strings.split(m, Array('、', ',', '；')).toSeq
+      case m => Strings.split(m, Array('、', ',', '；', '，')).toSeq
   }
 
   def teachingNatures: Seq[TeachingNature] = hours.map(_.nature).toSeq
@@ -169,12 +175,13 @@ class Syllabus extends LongId with Updated with TemporalOn {
     hours.find(_.nature == nature)
   }
 
-  def getTopicCreditHours(nature: TeachingNature): Int = {
+  def getTopicCreditHours(nature: TeachingNature): Float = {
     topics.flatMap(t => t.getHour(nature).map(_.creditHours)).sum
   }
 
-  def getCreditHours(nature: TeachingNature): Int = {
-    topics.flatMap(t => t.getHour(nature).map(_.creditHours)).sum + examHours.find(_.nature == nature).map(_.creditHours).getOrElse(0)
+  def getCreditHours(nature: TeachingNature): Float = {
+    topics.flatMap(t => t.getHour(nature).map(_.creditHours)).sum
+      + examHours.find(_.nature == nature).map(_.creditHours).getOrElse(0f)
   }
 
   def getTopicWeeks(nature: TeachingNature): Int = {
@@ -189,8 +196,8 @@ class Syllabus extends LongId with Updated with TemporalOn {
     objectives.find(_.code == code)
   }
 
-  def getOutcome(o: GraduateObjective): Option[SyllabusOutcome] = {
-    outcomes.find(_.objective == o)
+  def getOutcome(title: String): Option[SyllabusOutcome] = {
+    outcomes.find(_.title == title)
   }
 
   def getAssessments(gradeType: GradeType): Seq[SyllabusAssessment] = {

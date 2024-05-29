@@ -15,24 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.graduation.model
+package org.openurp.std.graduation.domain
 
-import org.beangle.data.model.LongId
+import org.openurp.edu.program.model.Program
+import org.openurp.std.graduation.model.DegreeResult
 
-/**
- * 学位审核条目
- */
-class DegreeAuditItem extends LongId {
-
-  /** 项目名称 */
-  var name: String = _
-
-  /** 是否通过 */
-  var passed: Boolean = _
-
-  /** 具体状态信息 */
-  var comments: Option[String] = None
-
-  /** 毕业审核结果 */
-  var result: DegreeResult = _
+trait DegreeAuditChecker {
+  def check(result: DegreeResult, program: Program): (Boolean, String, String)
 }

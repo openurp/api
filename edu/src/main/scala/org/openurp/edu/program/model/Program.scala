@@ -57,6 +57,15 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
   /** 学习形式 */
   var studyType: Option[StudyType] = None
 
+  /** 要求学分 */
+  var credits: Float = _
+
+  /** 起始学期 */
+  var startTerm: Short = _
+
+  /** 结束学期 */
+  var endTerm: Short = _
+
   /** 学期对应校区 */
   var termCampuses = Collections.newBuffer[TermCampus]
 
@@ -82,4 +91,7 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
   def campuses: Set[Campus] = {
     termCampuses.map(_.campus).toSet
   }
+
+  def terms: Short = (endTerm - startTerm + 1).asInstanceOf[Short]
+
 }

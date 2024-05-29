@@ -21,7 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.code.edu.model.{SyllabusTopicLabel, TeachingMethod, TeachingNature}
+import org.openurp.code.edu.model.{SyllabusTopicLabel, TeachingNature}
 
 /** 教学大纲-教学主题
  */
@@ -37,7 +37,7 @@ class SyllabusTopic extends LongId, Named {
   var contents: String = _
 
   /** 自主学习学时 */
-  var learningHours: Int = _
+  var learningHours: Float = _
 
   /** 其他要素 */
   var elements = Collections.newBuffer[SyllabusTopicElement]
@@ -62,7 +62,7 @@ class SyllabusTopic extends LongId, Named {
   def teachingMethods: Seq[String] = {
     methods match
       case None => Seq.empty
-      case Some(m) => Strings.split(m, Array('、', ',', '；')).toSeq
+      case Some(m) => Strings.split(m, Array('、', ',', '；', '，')).toSeq
   }
 
   def matchedObjectives: Seq[SyllabusObjective] = {

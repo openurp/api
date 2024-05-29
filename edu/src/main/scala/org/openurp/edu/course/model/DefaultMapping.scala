@@ -36,10 +36,11 @@ class DefaultMapping extends MappingModule {
       e.cases is depends("syllabus")
       e.experiments is depends("syllabus")
       e.designs is depends("syllabus")
+      e.bibliography is length(2000)
     }
 
     bind[SyllabusTopic] declare { e =>
-      e.contents is length(1000)
+      e.contents is length(4000)
       e.elements is depends("topic")
       e.hours is depends("topic")
     }
@@ -47,7 +48,7 @@ class DefaultMapping extends MappingModule {
     bind[SyllabusTopicHour]
 
     bind[SyllabusTopicElement] declare { e =>
-      e.contents is length(1000)
+      e.contents is length(3000)
     }
 
     bind[SyllabusObjective] declare { e =>
@@ -97,7 +98,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[Lesson] declare { e =>
-      e.contents is length(500)
+      e.contents is length(2000)
       e.homework is length(400)
     }
 

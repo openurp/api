@@ -60,4 +60,11 @@ trait CoursePlanProvider {
    * @return
    */
   def getPlanCourse(std: Student, course: Course): Option[PlanCourse]
+
+  /** 查询学生的可选课程
+   *
+   * @param std
+   * @return
+   */
+  def getCourses(std: Student): Seq[Course]
 }

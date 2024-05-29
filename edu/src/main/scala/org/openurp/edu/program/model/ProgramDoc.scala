@@ -20,8 +20,7 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.pojo.{Hierarchical, Named, TemporalOn, Updated}
 import org.beangle.data.model.{IntId, LongId}
-import org.openurp.base.model.{Department, EduLevelBased, Project}
-import org.openurp.code.edu.model.EducationLevel
+import org.openurp.base.model.{Department, EduLevelBased}
 import org.openurp.code.std.model.StdType
 
 import java.util.Locale
@@ -35,9 +34,38 @@ class ProgramDoc extends LongId with Updated {
   var docLocale: Locale = _
   /** 方案 */
   var program: Program = _
-
+  /** 培养目标 */
+  var objectives = Collections.newBuffer[ProgramObjective]
+  /** 毕业要求对培养目标的支撑 */
+  var outcomes = Collections.newBuffer[ProgramOutcome]
+  //text sections
+  var texts = Collections.newBuffer[ProgramText]
+  //text sections
+  var tables = Collections.newBuffer[ProgramTable]
+  /** 课程对毕业要求的支撑 */
+  var courseOutcomes = Collections.newBuffer[ProgramCourseOutcome]
   /** 章节列表 */
   var sections: mutable.Buffer[ProgramDocSection] = Collections.newBuffer[ProgramDocSection]
+
+  def getText(name: String): Option[ProgramText] = {
+    texts.find(_.name == name)
+  }
+
+  def getTexts(prefix: String): mutable.Buffer[ProgramText] = {
+    texts.filter(_.name.startsWith(prefix))
+  }
+
+  def getTable(name: String): Option[ProgramTable] = {
+    tables.find(_.name == name)
+  }
+
+  def getObjective(code: String): Option[ProgramObjective] = {
+    objectives.find(_.code == code)
+  }
+
+  def getOutcome(o: String): Option[ProgramOutcome] = {
+    outcomes.find(_.title == o)
+  }
 }
 
 /** 培养方案章节

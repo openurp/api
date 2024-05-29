@@ -17,9 +17,11 @@
 
 package org.openurp.edu.program.domain
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.CourseType
 import org.openurp.edu.program.model.*
 
 class DefaultCoursePlanProvider extends CoursePlanProvider {
@@ -102,4 +104,45 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
     Option(planCourse)
   }
 
+  /** 查询学生的可选课程
+   *
+   * @param std
+   * @return
+   */
+  override def getCourses(std: Student): Seq[Course] = {
+    val courses = Collections.newSet[Course]
+    val emptyCourseTypes = Collections.newSet[CourseType]
+    //添加计划内课程
+    getCoursePlan(std) foreach { plan =>
+      for (group <- plan.groups) {
+        if (group.planCourses.isEmpty && group.children.isEmpty) {
+          emptyCourseTypes += group.courseType
+        } else {
+          group.planCourses foreach { pc => courses.addOne }
+          if !group.autoAddup then emptyCourseTypes += group.courseType
+        }
+      }
+    }
+    //添加公共课程
+    val spQuery = OqlBuilder.from(classOf[SharePlan], "sp")
+    spQuery.where("sp.project=:project", std.project)
+    spQuery.where("sp.level=:level and sp.eduType =:eduType", std.level, std.eduType)
+    spQuery.where(":grade between sp.fromGrade.code and sp.toGrade.code", std.state.get.grade.code)
+    entityDao.search(spQuery) foreach { sp =>
+      for (cg <- sp.groups; planCourse <- cg.planCourses) {
+        courses.add(planCourse.course)
+      }
+      sp.groups foreach { cg => emptyCourseTypes.subtractOne(cg.courseType) }
+    }
+    //添加其他课程库的公共课程
+    if (emptyCourseTypes.nonEmpty) {
+      val typeQuery = OqlBuilder.from(classOf[CourseType], "ct").where("ct.parent in(:parents)", emptyCourseTypes)
+      emptyCourseTypes ++= entityDao.search(typeQuery)
+      val q = OqlBuilder.from(classOf[Course], "c")
+      q.where("c.project=:project", std.project)
+      q.where("c.endOn is null and c.courseType in(:courseTypes)", emptyCourseTypes)
+      courses.addAll(entityDao.search(q))
+    }
+    courses.toSeq
+  }
 }

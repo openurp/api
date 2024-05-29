@@ -84,7 +84,7 @@ trait CoursePlan extends LongIdEntity with Cloneable with DateRange {
 
   def program: Program
 
-  def status: AuditStatus
+  def addGroup(newGroup: CourseGroup, parent: Option[CourseGroup]): Unit
 }
 
 object CoursePlan {

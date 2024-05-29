@@ -15,25 +15,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.course.model
+package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.TeachingNature
 
-/** 教学大纲考核课时分配
+/** 培养方案毕业要求
  */
-class SyllabusExamHour extends LongId {
-  /** 大纲 */
-  var syllabus: Syllabus = _
-  /** 课时分类 */
-  var nature: TeachingNature = _
-  /** 学时 */
-  var creditHours: Float = _
+class ProgramOutcome extends LongId {
 
-  def this(syllabus: Syllabus, nature: TeachingNature, creditHours: Float) = {
+  var doc: ProgramDoc = _
+  /** 顺序号 */
+  var idx: Int = _
+  /** 毕业要求 */
+  var title: String = _
+  /** 内容 */
+  var contents: String = _
+
+  def this(doc: ProgramDoc, idx: Int, title: String, contents: String) = {
     this()
-    this.syllabus = syllabus
-    this.nature = nature
-    this.creditHours = creditHours
+    this.doc = doc
+    this.idx = idx
+    this.title = title
+    this.contents = contents
   }
+
+  def code: String = s"R${idx}"
 }

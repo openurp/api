@@ -25,13 +25,13 @@ import org.openurp.code.edu.model.TeachingNature
 class SyllabusTopicHour extends LongId {
   var topic: SyllabusTopic = _
   /** 学时 */
-  var creditHours: Int = _
+  var creditHours: Float = _
   /** 周 */
   var weeks: Int = _
   /** 课时分类 */
   var nature: TeachingNature = _
 
-  def this(topic: SyllabusTopic, nature: TeachingNature, creditHours: Int, weeks: Int) = {
+  def this(topic: SyllabusTopic, nature: TeachingNature, creditHours: Float, weeks: Int) = {
     this()
     this.topic = topic
     this.nature = nature

@@ -19,16 +19,19 @@ package org.openurp.edu.course.model
 
 import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
-import org.openurp.code.edu.model.GraduateObjective
 
 /** 教学大纲-毕业要求
  *
  */
 class SyllabusOutcome extends LongId {
+
   var syllabus: Syllabus = _
 
+  /** 顺序号 */
+  var idx: Int = _
+
   /** 毕业要求 */
-  var objective: GraduateObjective = _
+  var title: String = _
 
   /** 内容 */
   var contents: String = _
@@ -36,16 +39,18 @@ class SyllabusOutcome extends LongId {
   /** 对应课程目标 */
   var courseObjectives: String = _
 
-  def this(syllabus: Syllabus, objective: GraduateObjective, contents: String, courseObjectives: String) = {
+  def this(syllabus: Syllabus, idx: Int, title: String, contents: String, courseObjectives: String) = {
     this()
     this.syllabus = syllabus
-    this.objective = objective
+    this.idx = idx
+    this.title = title
     this.contents = contents
     this.courseObjectives = courseObjectives
   }
 
-  def support(syllabusObjective: SyllabusObjective): Boolean = {
+  def supportWith(syllabusObjective: SyllabusObjective): Boolean = {
     Strings.split(courseObjectives).toSet.contains(syllabusObjective.code)
   }
 
+  def code: String = s"R${idx}"
 }

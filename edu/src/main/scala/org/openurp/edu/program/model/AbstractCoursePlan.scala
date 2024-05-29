@@ -20,7 +20,6 @@ package org.openurp.edu.program.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.Course
-import org.openurp.base.model.AuditStatus
 import org.openurp.code.edu.model.{CourseType, EducationLevel}
 
 import scala.collection.mutable
@@ -32,29 +31,17 @@ import scala.collection.mutable.ListBuffer
  * @author chaostone
  * @since 2009
  */
-trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Remark {
-
+trait AbstractCoursePlan extends LongId, CoursePlan, Updated {
   /** 培养方案 */
   var program: Program = _
-
   /** 课程组 */
   var groups: mutable.Buffer[CourseGroup] = new ListBuffer[CourseGroup]
-
   /** 要求学分 */
   var credits: Float = _
 
-  /** 起始学期 */
-  var startTerm: Short = _
+  override def level: EducationLevel = program.level
 
-  /** 结束学期 */
-  var endTerm: Short = _
-
-  /** 审核状态 */
-  var status: AuditStatus = AuditStatus.Draft
-
-  def terms: Short = (endTerm - startTerm + 1).asInstanceOf[Short]
-
-  def level: EducationLevel = program.level
+  override def terms: Short = program.terms
 
   def addGroup(group: CourseGroup): Unit = {
     groups += group
@@ -77,4 +64,15 @@ trait AbstractCoursePlan extends LongId with CoursePlan with Updated with Remark
   override def getGroup(course: Course): Option[CourseGroup] = {
     groups.find(_.planCourses.exists(_.course == course))
   }
+
+  override def addGroup(newGroup: CourseGroup, parent: Option[CourseGroup]): Unit = {
+    val g = newGroup.asInstanceOf[AbstractCourseGroup]
+    groups.addOne(g)
+    g.plan = this
+    g.parent = parent
+    parent foreach { p =>
+      p.asInstanceOf[AbstractCourseGroup].children.addOne(newGroup)
+    }
+  }
+
 }

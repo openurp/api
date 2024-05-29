@@ -17,17 +17,14 @@
 
 package org.openurp.std.graduation.model
 
-import java.time.LocalDate
-
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Degree
 
-import scala.collection.mutable
+import java.time.{Instant, LocalDate}
 
-class DegreeResult extends LongId with Updated {
+class DegreeResult extends LongId, Updated, Remark {
 
   /** 所属的毕业审核批次 */
   var batch: GraduateBatch = _
@@ -35,17 +32,14 @@ class DegreeResult extends LongId with Updated {
   /** 学生 */
   var std: Student = _
 
-  /** 学位审核详细结果 */
-  var items: mutable.Buffer[DegreeAuditItem] = Collections.newBuffer[DegreeAuditItem]
-
   /** GPA */
-  var gpa: Float = _
+  var gpa: Option[Float] = None
 
   /** 平均分 */
-  var ga: Float = _
+  var ga: Option[Float] = None
 
   /** 是否通过学位审核 */
-  var passed: Boolean = _
+  var passed: Option[Boolean] = None
 
   /** 锁定审核结果 */
   var locked: Boolean = _
@@ -53,16 +47,38 @@ class DegreeResult extends LongId with Updated {
   /** 是否已发布 */
   var published: Boolean = _
 
-  /** 毕业备注 */
-  var comments: Option[String] = None
-
   /** 学位 */
   var degree: Option[Degree] = None
 
   /** 外语通过年月 */
   var foreignLangPassedOn: Option[LocalDate] = None
 
+  /** 通过的项目 */
+  var passedItems: Option[String] = None
+
+  /** 不通过的的项目 */
+  var failedItems: Option[String] = None
+
+  def this(std: Student, batch: GraduateBatch) = {
+    this()
+    this.batch = batch
+    this.std = std
+    this.updatedAt = Instant.now
+  }
+
   def deciplineCode: String = {
     std.state.map(_.major.disciplineCode(batch.graduateOn)).getOrElse("")
+  }
+
+  def addPassed(item: String, remark: String): Unit = {
+    passedItems match
+      case None => passedItems = Some(s"${item}:${remark}")
+      case Some(s) => passedItems = Some(s + "\n" + s"${item}:${remark}")
+  }
+
+  def addFailed(item: String, remark: String): Unit = {
+    failedItems match
+      case None => failedItems = Some(s"${item}:${remark}")
+      case Some(s) => failedItems = Some(s + "\n" + s"${item}:${remark}")
   }
 }

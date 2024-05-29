@@ -23,7 +23,6 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.TeachingOffice
 import org.openurp.base.model.{AuditStatus, Semester, User}
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.edu.course.model.Lesson
 
 import java.time.Instant
 import java.util.Locale
@@ -111,6 +110,8 @@ class TeachingPlan extends LongId with Updated {
     }
     p.lessons.clear()
     p.writer = this.writer
+    p.office = this.office
+    p.reviewer = this.reviewer
     this.lessons foreach { l =>
       val nl = new Lesson
       nl.idx = l.idx

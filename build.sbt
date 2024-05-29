@@ -83,7 +83,7 @@ lazy val std = (project in file("std"))
     organization := "org.openurp.std",
     name := "openurp-std-api",
     common
-  ).dependsOn(base)
+  ).dependsOn(base, edu)
 
 lazy val all = (project in file("all"))
   .settings(

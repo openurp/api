@@ -35,6 +35,9 @@ class Lesson extends LongId, Remark {
   /** 序号 */
   var idx: Int = _
 
+  /** 课时 */
+  var hours: Int = _
+
   /** 内容 */
   var contents: String = _
 
@@ -49,4 +52,7 @@ class Lesson extends LongId, Remark {
 
   /** 自主学习课时 */
   var learningHours: Int = _
+
+  /** 是否是考核 */
+  var exam: Boolean = _
 }

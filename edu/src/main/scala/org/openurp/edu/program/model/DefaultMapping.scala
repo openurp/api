@@ -18,7 +18,6 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.program.flow.{CourseAlternativeApply, CourseTypeChangeApply}
 
 class DefaultMapping extends MappingModule {
 
@@ -54,7 +53,6 @@ class DefaultMapping extends MappingModule {
 
     bind[MajorPlan].declare { e =>
       e.groups is depends(classOf[MajorCourseGroup], "plan")
-      e.remark is length(200)
       index("", false, e.program)
     }
 
@@ -79,7 +77,6 @@ class DefaultMapping extends MappingModule {
     bind[ExecutivePlan].declare { e =>
       e.endOn is notnull
       e.groups is depends(classOf[ExecutiveCourseGroup], "plan")
-      e.remark is length(200)
       index("", false, e.program)
     }
 
@@ -122,7 +119,6 @@ class DefaultMapping extends MappingModule {
 
     bind[StdPlan].declare { e =>
       e.groups is depends(classOf[StdCourseGroup], "plan")
-      e.remark is length(200)
       index("", true, e.std)
     }
 
@@ -149,7 +145,12 @@ class DefaultMapping extends MappingModule {
     bind[ProgramDocMeta]
 
     bind[ProgramDoc] declare { e =>
+      e.objectives is depends("doc")
       e.sections is depends("doc")
+      e.outcomes is depends("doc")
+      e.texts is depends("doc")
+      e.tables is depends("doc")
+      e.courseOutcomes is depends("doc")
     }
 
     bind[ProgramDocSection] declare { e =>
@@ -161,6 +162,29 @@ class DefaultMapping extends MappingModule {
 
     bind[StdExemptCourse] declare { e =>
       index("", false, e.std)
+    }
+
+    bind[ProgramObjective] declare { e =>
+      e.contents is length(100)
+      e.outcomes is length(40)
+    }
+
+    bind[ProgramTitle]
+
+    bind[ProgramText] declare { e =>
+      e.contents is length(4000)
+    }
+
+    bind[ProgramTable] declare { e =>
+      e.contents is length(10000)
+    }
+
+    bind[ProgramOutcome] declare { e =>
+      e.contents is length(1000)
+    }
+
+    bind[ProgramCourseOutcome] declare { e =>
+      e.outcomes is length(50)
     }
   }
 }

@@ -22,6 +22,8 @@ import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 
+import java.time.Instant
+
 /** 学生个人免修课程
  */
 class StdExemptCourse extends LongId, Remark, Updated {
@@ -29,4 +31,11 @@ class StdExemptCourse extends LongId, Remark, Updated {
   var std: Student = _
   /** 免修课程 */
   var course: Course = _
+
+  def this(std: Student, course: Course) = {
+    this()
+    this.std = std
+    this.course = course
+    this.updatedAt = Instant.now
+  }
 }

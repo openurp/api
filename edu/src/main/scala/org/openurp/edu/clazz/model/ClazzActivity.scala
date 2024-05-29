@@ -76,6 +76,8 @@ class ClazzActivity extends LongId, Ordered[ClazzActivity], Activity, Cloneable,
 
   override def clone(): ClazzActivity = {
     val obj = super.clone().asInstanceOf[ClazzActivity]
+    obj.time = new WeekTime(this.time)
+    obj.time.weekstate = new WeekState(this.time.weekstate.value)
     obj.rooms = Collections.newSet[Classroom]
     obj.teachers = Collections.newSet[Teacher]
     obj.rooms.addAll(this.rooms)

@@ -29,22 +29,16 @@ class DefaultMapping extends MappingModule {
       index("", true, e.batch, e.std)
     }
 
-    bind[GraduateAuditItem].declare { e =>
-      e.name is length(100)
-      e.comments is length(500)
-    }
-    bind[DegreeAuditItem].declare { e =>
-      e.name is length(100)
-      e.comments is length(500)
-    }
     bind[GraduateResult].declare { e =>
-      e.items is depends("result")
-      e.comments.is(column("graduate_comments"), length(500))
+      e.passedItems & e.failedItems are length(500)
+      index("", false, e.std)
     }
+
     bind[DegreeResult].declare { e =>
-      e.items is depends("result")
-      e.comments.is(column("degree_comments"), length(500))
+      e.passedItems & e.failedItems are length(500)
+      index("", false, e.std)
     }
+
     bind[Bachelor2ndApply] declare { e =>
       e.gradeDetail is length(3000)
     }
