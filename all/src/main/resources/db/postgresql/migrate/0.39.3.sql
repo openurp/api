@@ -17,3 +17,4 @@ alter table edu.syllabus_outcomes alter column code set not null;
 alter table edu.syllabus_outcomes alter column title set not null;
 
 alter table edu.syllabuses alter column bibliography type varchar(2000);
+alter table edu.program_outcomes alter column contents type varchar(4000);

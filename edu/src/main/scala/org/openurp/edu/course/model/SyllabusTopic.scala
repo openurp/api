@@ -33,6 +33,9 @@ class SyllabusTopic extends LongId, Named {
   /** 大纲内顺序 */
   var idx: Short = _
 
+  /** 是否是考核 */
+  var exam: Boolean = _
+
   /** 教学内容 */
   var contents: String = _
 

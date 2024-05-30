@@ -180,7 +180,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ProgramOutcome] declare { e =>
-      e.contents is length(1000)
+      e.contents is length(4000)
     }
 
     bind[ProgramCourseOutcome] declare { e =>
