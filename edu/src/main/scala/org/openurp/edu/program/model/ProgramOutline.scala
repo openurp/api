@@ -20,6 +20,8 @@ package org.openurp.edu.program.model
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.{Coded, Named}
 
-class ProgramTitle extends IntId, Coded, Named {
+/** 培养方案内容大纲
+ */
+class ProgramOutline extends IntId, Coded, Named {
 
 }

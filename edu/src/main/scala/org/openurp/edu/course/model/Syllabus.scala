@@ -58,9 +58,6 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 分类课时 */
   var hours = Collections.newBuffer[SyllabusCreditHour]
 
-  /** 周学时 */
-  var weekHours: Int = _
-
   /** 教学方式 */
   var methods: String = _
 

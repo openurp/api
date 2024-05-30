@@ -3,6 +3,7 @@ create schema cfg;
 create schema code;
 create schema degree;
 create schema edu;
+create schema flow;
 create schema his;
 create schema log;
 create schema prac;

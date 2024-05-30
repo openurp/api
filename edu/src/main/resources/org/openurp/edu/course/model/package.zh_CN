@@ -24,6 +24,7 @@ Syllabus.materials=其他教学资源
 Syllabus.website=课程网站地址
 Syllabus.examCreditHours=考核课时
 Syllabus.learningHours=自主学习课时
+Syllabus.creditHours=学时
 
 SyllabusObjective=教学大纲课程目标
 SyllabusObjective.contents=内容
@@ -42,6 +43,7 @@ SyllabusTopic.methods=教学主题-教学方式方法
 SyllabusTopic.objectives=对应的课程目标
 SyllabusTopic.hours=分类课时
 SyllabusTopic.learningHours=自主学习学时
+SyllabusTopic.exam=是否考试环节
 
 SyllabusTopicElement=教学大纲-教学主题-教学主题元素
 SyllabusTopicElement.contents=教学内容
@@ -64,6 +66,8 @@ SyllabusText.contents=内容
 
 SyllabusOutcome=教学大纲毕业要求
 SyllabusOutcome.contents=内容
+SyllabusOutcome.idx=顺序号
+SyllabusOutcome.title=标题
 SyllabusOutcome.courseObjectives=对应的课程目标
 
 SyllabusAssessment=教学大纲-评估方式比例
@@ -102,7 +106,6 @@ SyllabusMethodDesign.contents=内容
 SyllabusMethodDesign.hasCase=包含案例
 SyllabusMethodDesign.hasExperiment=包含实验
 
-
 Lesson=授课内容
 Lesson.idx=序号
 Lesson.contents=内容
@@ -110,6 +113,8 @@ Lesson.homework=作业
 Lesson.forms=教学方法
 Lesson.learning=自主学习内容
 Lesson.learningHours=自主学习课时
+Lesson.hours=课时
+Lesson.exam=是否考试
 
 TeachingPlan=授课计划
 TeachingPlan.author=作者

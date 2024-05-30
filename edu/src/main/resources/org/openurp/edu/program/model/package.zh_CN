@@ -13,9 +13,12 @@ Program.status=状态
 Program.project=项目
 Program.termCampuses=学期对应校区
 Program.campus=校区
+Program.credits=学分
 Program.offsetType=任选课类别
 Program.degreeCourses=学位课程
 Program.degreeCertificates=学位要求证书
+Program.startTerm=起始学期
+Program.endTerm=结束学期
 
 MajorCourseGroup=专业计划课程组
 MajorCourseGroup.givenName=自定义别名
@@ -81,9 +84,6 @@ AbstractCourseGroup.required=是否必须完成
 AbstractCoursePlan=抽象课程方案
 AbstractCoursePlan.groups=课程组
 AbstractCoursePlan.credits=要求学分
-AbstractCoursePlan.startTerm=起始学期
-AbstractCoursePlan.endTerm=结束学期
-AbstractCoursePlan.status=审核状态
 AbstractCoursePlan.remark=备注
 
 AbstractPlanCourse=抽象计划内课程
@@ -138,3 +138,29 @@ ExemptCourse.toGrade=结束年级
 ExemptCourse.stdTypes=免修课程-适用学生类别范围
 
 StdExemptCourse=学生个人免修课程
+
+ProgramObjective=培养方案-培养目标
+ProgramObjective.contents=内容
+ProgramObjective.outcomes=对应毕业要求
+
+ProgramOutcome=培养方案-毕业要求
+ProgramOutcome.idx=顺序号
+ProgramOutcome.title=标题
+ProgramOutcome.contents=毕业要求
+
+ProgramTable=培养方案-表格
+ProgramTable.caption=标题
+ProgramTable.contents=内容
+
+ProgramText=培养方案-文本
+ProgramText.title=标题
+ProgramText.contents=内容
+ProgramText.linkTable=链接表格的名称
+
+ProgramCourseOutcome=课程对应课表目标
+ProgramCourseOutcome.idx=顺序号
+ProgramCourseOutcome.groupName=分组
+ProgramCourseOutcome.courseName=课程名
+ProgramCourseOutcome.outcomes=对应毕业要求
+
+ProgramOutline=培养方案大纲

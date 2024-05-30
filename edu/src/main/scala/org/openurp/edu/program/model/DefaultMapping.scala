@@ -169,7 +169,7 @@ class DefaultMapping extends MappingModule {
       e.outcomes is length(40)
     }
 
-    bind[ProgramTitle]
+    bind[ProgramOutline]
 
     bind[ProgramText] declare { e =>
       e.contents is length(4000)

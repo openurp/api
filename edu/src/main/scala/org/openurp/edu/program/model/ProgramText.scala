@@ -28,7 +28,9 @@ class ProgramText extends LongId, Named {
 
   var doc: ProgramDoc = _
 
+  /** 标题 */
   var title: String = _
+
   /** 内容 */
   var contents: String = _
 

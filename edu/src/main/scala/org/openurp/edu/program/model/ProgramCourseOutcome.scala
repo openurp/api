@@ -18,11 +18,13 @@
 package org.openurp.edu.program.model
 
 import org.beangle.commons.lang.Strings
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.Course
 
 /** 计划课程对应的毕业要求
  */
+@beta
 class ProgramCourseOutcome extends LongId {
 
   var doc: ProgramDoc = _
