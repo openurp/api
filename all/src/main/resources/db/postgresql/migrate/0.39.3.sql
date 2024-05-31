@@ -14,11 +14,10 @@ alter table edu.syllabus_credit_hours alter credit_hours type float4;
 alter table edu.syllabus_topic_hours alter credit_hours type float4;
 alter table edu.syllabus_exam_hours alter credit_hours type float4;
 
-alter table edu.syllabus_outcomes drop objective_id cascade;
-alter table edu.syllabus_outcomes add code varchar(20);
+update edu.syllabus_outcomes set idx=replace(code,'R','')::int4 where code like 'R%';
+alter table edu.syllabus_outcomes drop column code;
 alter table edu.syllabus_outcomes add title varchar(100);
 alter table edu.syllabus_outcomes add idx integer default 0;
-alter table edu.syllabus_outcomes alter column code set not null;
 alter table edu.syllabus_outcomes alter column title set not null;
 alter table edu.syllabus_outcomes drop constraint if exists fk_tejpgbfo0a3mdwswqbvcbpujc cascade;
 
@@ -76,7 +75,6 @@ alter table std.graduate_results add column passed_items varchar(500);
 create index idx_h6txa38ww6xmjierqkvw1u4d7 on std.degree_results (std_id);
 create index idx_b4r23ej9bc55e8rkjosbder4w on std.graduate_results (std_id);
 
-
 alter table edu.executive_plans drop end_term cascade;
 alter table edu.executive_plans drop remark cascade;
 alter table edu.executive_plans drop start_term cascade;
@@ -89,7 +87,6 @@ alter table edu.std_plans drop end_term cascade;
 alter table edu.std_plans drop remark cascade;
 alter table edu.std_plans drop start_term cascade;
 alter table edu.std_plans drop status cascade;
-
 
 comment on column base.minor_majors.project_id is '项目ID';
 comment on table edu.program_course_outcomes is '课程对应课表目标@program';
