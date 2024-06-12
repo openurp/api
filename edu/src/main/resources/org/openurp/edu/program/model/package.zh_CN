@@ -27,9 +27,6 @@ MajorCourseGroup.autoAddup=自动累加学分
 
 MajorPlan=专业培养计划
 
-MajorPlanCourse=专业计划课程
-MajorPlanCourse.suggestTerms=建议修读学期
-
 ExecutiveCourseGroup=执行计划课程组
 ExecutiveCourseGroup.givenName=自定义别名
 ExecutiveCourseGroup.direction=该组针对的专业方向
@@ -89,10 +86,17 @@ AbstractCoursePlan.remark=备注
 AbstractPlanCourse=抽象计划内课程
 AbstractPlanCourse.group=课程组
 AbstractPlanCourse.course=课程
-AbstractPlanCourse.terms=开课学期
 AbstractPlanCourse.compulsory=是否必修
 AbstractPlanCourse.remark=备注
-AbstractPlanCourse.labels=课程标签
+AbstractPlanCourse.terms=开课学期
+AbstractPlanCourse.idx=序号
+
+MajorPlanCourse=专业计划课程
+MajorPlanCourse.suggestTerms=建议修读学期
+
+Executable.weekstate=开课周
+Executable.termText=开课学期文本
+Executable.stage=开课阶段
 
 ProgramDoc=培养方案文档
 ProgramDoc.docLocale=语言
@@ -105,10 +109,6 @@ ProgramDocTemplate.types=文档对应学生类别
 ProgramDocMeta=培养方案章节定义
 ProgramDocMeta.indexno=章节编号
 ProgramDocMeta.maxlength=最大长度
-
-Executable.department=开课部门
-Executable.examMode=考核方式
-Executable.weekstate=开课周
 
 AlternativeCourse=课程替代关系
 AlternativeCourse.olds=原课程
@@ -164,3 +164,5 @@ ProgramCourseOutcome.courseName=课程名
 ProgramCourseOutcome.outcomes=对应毕业要求
 
 ProgramOutline=培养方案大纲
+
+ProgramCourseLabel=培养方案方案课程标签

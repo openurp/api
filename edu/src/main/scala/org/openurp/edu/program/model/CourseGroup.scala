@@ -19,6 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongIdEntity
 import org.openurp.base.edu.model.Terms
+import org.openurp.base.model.CalendarStage
 import org.openurp.code.edu.model.CourseType
 
 /** 课程设置中的课程组.
@@ -106,4 +107,7 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
 
   /** 是否开放范围，允许计划外课程进行类型匹配 */
   def allowUnplanned: Boolean
+
+  /** 开课阶段 */
+  def stage: Option[CalendarStage]
 }

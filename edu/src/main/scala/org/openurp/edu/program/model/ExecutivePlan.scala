@@ -17,15 +17,16 @@
 
 package org.openurp.edu.program.model
 
-import org.openurp.base.edu.model.{Direction, Terms}
-import org.openurp.base.model.{Campus, Department}
-import org.openurp.code.std.model.StdType
+import org.beangle.data.model.pojo.Remark
+import org.openurp.base.edu.model.Direction
+import org.openurp.base.model.Department
+import org.openurp.code.edu.model.CourseRank
 
 /** 执行计划
  *
  * @author chaostone
  */
-class ExecutivePlan extends AbstractCoursePlan with CoursePlan {
+class ExecutivePlan extends AbstractCoursePlan, CoursePlan {
 
   /** 部门(培养方案的部门或者子部门) */
   var department: Department = _
@@ -39,14 +40,10 @@ class ExecutiveCourseGroup extends AbstractCourseGroup {
 
   /** 该组针对的专业方向 */
   var direction: Option[Direction] = None
-
 }
 
 /** 执行计划课程
  */
-class ExecutivePlanCourse extends AbstractPlanCourse with Executable {
-
-  /** 建议修读学期 */
-  var suggestTerms: Terms = Terms.empty
+class ExecutivePlanCourse extends AbstractPlanCourse, Executable, Remark {
 
 }

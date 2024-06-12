@@ -34,7 +34,7 @@ import scala.collection.mutable
  * @author chaostone
  *
  */
-class Program extends LongId with Updated with Named with Cloneable with DateRange with EduLevelBased with Remark {
+class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBased, Remark {
 
   /** 年级 */
   var grade: Grade = _
@@ -84,6 +84,9 @@ class Program extends LongId with Updated with Named with Cloneable with DateRan
 
   /** 学位审核要求的证书 */
   var degreeCertificates = Collections.newSet[Certificate]
+
+  /** 分类标签 */
+  var labels: mutable.Buffer[ProgramCourseLabel] = Collections.newBuffer[ProgramCourseLabel]
 
   /** 审核状态 */
   var status: AuditStatus = AuditStatus.Draft

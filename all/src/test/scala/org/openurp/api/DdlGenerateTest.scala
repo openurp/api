@@ -15,26 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.program.model
+package org.openurp.api
 
-object PlanCourseOrdering extends Ordering[PlanCourse] {
+import org.beangle.commons.lang.SystemInfo
+import org.beangle.data.orm.tool.DdlGenerator
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-  /** 必修排在前，选修中按照学期以及课程代码
-   *
-   * @param o1
-   * @param o2
-   * @return
-   */
-  override def compare(o1: PlanCourse, o2: PlanCourse): Int = {
-    if (o1.compulsory ^ o2.compulsory) {
-      if o1.compulsory then -1 else 1
-    } else {
-      o1 match
-        case e: Executable =>
-          val termCmp = e.terms.first.compareTo(o2.terms.first)
-          if termCmp == 0 then o1.course.code.compareTo(o2.course.code) else termCmp
-        case _ =>
-          o1.course.code.compareTo(o2.course.code)
+class DdlGenerateTest extends AnyFunSpec with Matchers {
+  describe("Ddl") {
+    it("generate ddl") {
+      val dir = SystemInfo.tmpDir + "/ddl"
+      DdlGenerator.main(Array("PostgreSQL", dir, "zh_CN", null))
+      println("generate ddl in " + dir)
     }
   }
+
 }

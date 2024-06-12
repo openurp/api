@@ -30,4 +30,6 @@ class StdPlan extends AbstractCoursePlan {
 
 class StdCourseGroup extends AbstractCourseGroup
 
-class StdPlanCourse extends AbstractPlanCourse
+class StdPlanCourse extends AbstractPlanCourse {
+
+}

@@ -17,11 +17,13 @@
 
 package org.openurp.edu.program.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.{Numbers, Strings}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Hierarchical, Remark}
 import org.openurp.base.edu.model.Terms
-import org.openurp.code.edu.model.CourseType
+import org.openurp.base.model.CalendarStage
+import org.openurp.code.edu.model.{CourseRank, CourseType}
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
@@ -32,59 +34,37 @@ import scala.collection.mutable.ListBuffer
  * @author chaostone
  * @since 2009
  */
-abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneable with Hierarchical[CourseGroup] with Remark {
-  /**
-   * 计划
-   */
+abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hierarchical[CourseGroup], Remark {
+  /** 计划 */
   var plan: CoursePlan = _
-  /**
-   * 计划课程列表
-   */
+  /** 计划课程列表 */
   var planCourses: mutable.Buffer[PlanCourse] = new ListBuffer[PlanCourse]
-
-  /**
-   * 自定义别名
-   */
+  /** 自定义别名 */
   var givenName: Option[String] = None
-
-  /**
-   * 课程类别
-   */
+  /** 课程类别 */
   var courseType: CourseType = _
-
-  /**
-   * 要求学分
-   */
+  /** 要求学分 */
   var credits: Float = _
-
   /** 课时 */
   var creditHours: Int = _
-
   /** 课时比例 */
   var hourRatios: Option[String] = None
-
-  /**
-   * 要求完成组数
-   * 默认是全部子组
-   */
+  /** 要求完成组数(默认是全部子组) */
   var subCount: Short = -1
-
-  /**
-   * 学期学分分布
-   */
+  /** 学期学分分布 */
   var termCredits: String = _
-
-  /** 自动累加学分 */
-  var autoAddup: Boolean = _
-
-  /** 选修课时，是否允许计划外课程 */
-  var allowUnplanned: Boolean = _
-
-  /** 是否必须 */
-  var required: Boolean = _
-
+  /** 课程属性 */
+  var rank: CourseRank = _
   /** 开课学期 */
   var terms: Terms = Terms.empty
+  /** 开课阶段 */
+  var stage: Option[CalendarStage] = None
+
+  def required: Boolean = rank.id == CourseRank.Compulsory
+
+  def autoAddup: Boolean = rank.id == CourseRank.Compulsory
+
+  def allowUnplanned: Boolean = rank.id == CourseRank.Selective || rank.id == CourseRank.FreeSelective
 
   override def name: String = {
     val sb = new StringBuilder()
@@ -107,9 +87,10 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
   }
 
   def addCourse(planCourse: AbstractPlanCourse): Unit = {
-    if (planCourses.exists(_.course == planCourse.course)) return
+    if (!planCourses.exists(_.course == planCourse.course)) {
       planCourse.group = this
-    planCourses += planCourse
+      planCourses += planCourse
+    }
   }
 
   def removeCourse(pc: PlanCourse): Unit = {
@@ -132,9 +113,19 @@ abstract class AbstractCourseGroup extends LongId with CourseGroup with Cloneabl
     }
   }
 
+  def parents(): Seq[CourseGroup] = {
+    val ps = Collections.newBuffer[CourseGroup]
+    var p = parent
+    while (p.isDefined) {
+      ps.insert(0, p.get)
+      p = p.get.parent
+    }
+    ps.toSeq
+  }
+
   def getTermCourses(terms: Terms): collection.Seq[PlanCourse] = {
     if (Strings.isEmpty(null)) return planCourses.toList
-    planCourses.filter(pc => pc.terms.matches(terms))
+    planCourses.filter(pc => pc.matchTerm(terms))
   }
 
   override def compare(o: CourseGroup): Int = {

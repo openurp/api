@@ -57,6 +57,21 @@ class Terms(val value: Int) extends Ordered[Terms] with Serializable {
     (value & (1 << term)) > 0
   }
 
+  def first: Int = {
+    if (value > 0) {
+      val str = java.lang.Integer.toBinaryString(value)
+      var i = str.length - 1
+      var f = 0
+      while (f == 0 && i >= 0) {
+        if (str.charAt(i) == '1') f = (str.length - i - 1)
+        i -= 1
+      }
+      f
+    } else {
+      0
+    }
+  }
+
   def termList: List[Int] = {
     if (value > 0) {
       val str = java.lang.Integer.toBinaryString(value)
@@ -78,5 +93,11 @@ class Terms(val value: Int) extends Ordered[Terms] with Serializable {
 
   override def toString: String = {
     termList.mkString(",")
+  }
+
+  override def equals(obj: Any): Boolean = {
+    obj match
+      case e: Terms => this.value == e.value
+      case _ => false
   }
 }

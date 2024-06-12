@@ -20,8 +20,7 @@ package org.openurp.edu.program.model
 import org.beangle.commons.lang.time.WeekState
 import org.beangle.data.model.LongIdEntity
 import org.openurp.base.edu.model.{Course, Terms}
-import org.openurp.base.model.{CalendarStage, Department}
-import org.openurp.code.edu.model.ExamMode
+import org.openurp.base.model.CalendarStage
 
 /**
  * 培养计划中的课程.<import org.openurp.edu.program.plan.model.CourseGroup
@@ -32,53 +31,42 @@ import org.openurp.code.edu.model.ExamMode
  */
 trait PlanCourse extends LongIdEntity {
 
-  /**
-   * 查询课程.
-   */
+  /** 查询课程. */
   def course: Course
-
-  def course_=(c: Course): Unit
-
-  /**
-   * 课程开设的学期.<br>
-   * 格式一般为数字或者汉字，例如：5,6或者春、秋、春秋.
-   */
-  def terms: Terms
-
-  def terms_=(t: Terms): Unit
 
   /**
    * 课程组
    */
   def group: CourseGroup
 
-  def group_=(g: CourseGroup): Unit
-
   /**
    * 课程是否必修.
    */
   def compulsory: Boolean
 
-  def compulsory_=(c: Boolean): Unit
-
   def credits: Float = {
     course.getCredits(group.plan.program.level)
   }
+
+  def terms: Terms
+
+  def idx: Short
+
+  def matchTerm(terms: Terms): Boolean
 }
 
 /**
  * 执行计划课程，例如MajorPlanCourse,SharePlanCourse
  */
 trait Executable {
-  /** 开课部门 */
-  var department: Department = _
 
-  /** 考核方式 */
-  var examMode: ExamMode = _
+  def compulsory: Boolean
+
+  def course: Course
+
+  /** 开课学期文本 */
+  var termText: Option[String] = None
 
   /** 开课周 */
   var weekstate: WeekState = WeekState.Zero
-
-  /** 开课阶段 */
-  var stage: Option[CalendarStage] = None
 }

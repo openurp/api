@@ -84,6 +84,10 @@ class DefaultMapping extends MappingModule {
       e.children is depends("parent")
     }
     bind[ExperimentType]
+    bind[ThesisTopicSource]
+    bind[ThesisType]
+    bind[CourseTag]
+    bind[ProgramCourseTag]
     all.cacheAll()
   }
 }

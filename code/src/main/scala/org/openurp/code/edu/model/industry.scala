@@ -365,4 +365,25 @@ enum TeachingNatureCategory(val id: Int, val title: String) {
  * 一般有，必修、选修、限选、任选，其他等
  */
 @code("industry")
-class CourseRank extends CodeBean
+class CourseRank extends CodeBean {
+  def compulsory: Boolean = {
+    id == CourseRank.Compulsory
+  }
+}
+
+object CourseRank {
+  val Compulsory = 1 // 必修
+  val Selective = 2 //选修
+  val DesignatedSelective = 3 // 限选
+  val FreeSelective = 4 // 任选
+}
+
+/** 论文选题来源
+ */
+@code("industry")
+class ThesisTopicSource extends CodeBean
+
+/** 论文类型
+ */
+@code("industry")
+class ThesisType extends CodeBean

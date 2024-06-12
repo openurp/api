@@ -87,3 +87,15 @@ Graduate.degreeAwardOn=学位授予日期
 Graduate.diplomaNo=学位证书号
 Graduate.foreignLangPassedOn=外语通过年月
 Graduate.certificateSeqNo=毕业证书序列号
+
+Thesis=学生论文信息
+Thesis.title=论文题目
+Thesis.advisor=指导老师
+Thesis.score=分数
+Thesis.scoreText=成绩
+Thesis.keywords=论文关键词
+Thesis.researchField=研究领域
+Thesis.language=撰写语种
+Thesis.thesisType=论文类型
+Thesis.source=选题来源
+Thesis.comments=评语

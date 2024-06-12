@@ -32,8 +32,17 @@ Course.levels=学历层次列表
 CourseHour=课程分类课时信息
 CourseHour.creditHours=学时/总课时
 CourseHour.weeks=周数
-CourseHour.course=课程
-CourseHour.hourType=课时类别代码
+
+CourseJournal=课程记录
+CourseJournal.creditHours=学时
+CourseJournal.weekHours=周课时
+CourseJournal.weeks=周数
+CourseJournal.grade=年级
+CourseJournal.tags=课程标签
+
+CourseJournalHour=课程记录-学时
+CourseJournalHour.creditHours=学时
+CourseJournalHour.weeks=周数
 
 CourseLevel=课程分层次要求
 CourseLevel.credits=学分

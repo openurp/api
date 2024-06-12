@@ -26,9 +26,11 @@ class DefaultMapping extends MappingModule {
       e.grade is length(10)
       e.name is length(100)
       e.termCampuses is depends("program")
+      e.labels is depends("program")
       e.remark is length(500)
     }
 
+    bind[ProgramCourseLabel]
     bind[TermCampus]
 
     bind[AbstractCourseGroup].declare { e =>
@@ -36,9 +38,6 @@ class DefaultMapping extends MappingModule {
       e.remark is length(200)
     }
 
-    bind[AbstractPlanCourse].declare { e =>
-      e.remark is length(200)
-    }
     //major plan
     bind[MajorCourseGroup].declare { e =>
       e.plan is target[MajorPlan]
@@ -58,6 +57,8 @@ class DefaultMapping extends MappingModule {
 
     bind[MajorPlanCourse].declare { e =>
       e.group is target[MajorCourseGroup]
+      e.termText is length(20)
+      e.remark is length(200)
       index("", true, e.group, e.course)
       index("", false, e.group)
     }
@@ -75,13 +76,14 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ExecutivePlan].declare { e =>
-      e.endOn is notnull
       e.groups is depends(classOf[ExecutiveCourseGroup], "plan")
       index("", false, e.program)
     }
 
     bind[ExecutivePlanCourse].declare { e =>
       e.group is target[ExecutiveCourseGroup]
+      e.termText is length(20)
+      e.remark is length(200)
       index("", true, e.group, e.course)
       index("", false, e.group)
     }

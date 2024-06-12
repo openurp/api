@@ -21,6 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.model.{Department, ProjectBased}
+import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.*
 
 import java.time.LocalDate
@@ -69,6 +70,8 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   var hasMakeup: Boolean = _
   /** 课程分类 */
   var generalType: Option[CourseGeneralType] = None
+  /** 课程建设过程 */
+  var journals = Collections.newBuffer[CourseJournal]
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
@@ -112,6 +115,24 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
     }
   }
 
+  def getJournal(grade: Grade): CourseJournal = {
+    journals.find(_.contains(grade)) match
+      case None => new CourseJournal(grade, this)
+      case Some(j) => j
+  }
+
+  def getHour(grade: Grade, nature: TeachingNature): Option[Int] = {
+    journals.find(_.contains(grade)) match
+      case None => hours.find(_.nature == nature).map(_.creditHours)
+      case Some(j) => j.getHour(nature)
+  }
+
+  def getWeek(grade: Grade, nature: TeachingNature): Option[Int] = {
+    journals.find(_.contains(grade)) match
+      case None => hours.find(_.nature == nature).map(_.weeks)
+      case Some(j) => j.getWeek(nature)
+  }
+
   def creditsInfo: String = {
     if levels.isEmpty then defaultCredits.toString
     else {
@@ -138,7 +159,6 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
  *
  * @author chaostone
  */
-
 class CourseHour extends LongId {
   var course: Course = _
   var creditHours: Int = _

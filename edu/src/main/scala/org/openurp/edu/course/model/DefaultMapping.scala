@@ -26,6 +26,7 @@ class DefaultMapping extends MappingModule {
     defaultCache("openurp.edu.course", "read-write")
 
     bind[Syllabus] declare { e =>
+      e.methods is length(500)
       e.hours is depends("syllabus")
       e.examHours is depends("syllabus")
       e.texts is depends("syllabus")
@@ -37,6 +38,7 @@ class DefaultMapping extends MappingModule {
       e.experiments is depends("syllabus")
       e.designs is depends("syllabus")
       e.bibliography is length(2000)
+      e.materials is length(2000)
     }
 
     bind[SyllabusTopic] declare { e =>

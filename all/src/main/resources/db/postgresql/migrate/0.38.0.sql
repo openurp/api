@@ -126,20 +126,11 @@ create table code.experiment_types (id integer not null, begin_on date not null,
 
 create table code.graduate_objectives (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 
---insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(1,'1','思想政治素质',current_date,current_timestamp);
---insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(2,'2','诚信品质',current_date,current_timestamp);
---insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(3,'3','身心健康',current_date,current_timestamp);
---insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(4,'4','通识知识/学科专业基础知识',current_date,current_timestamp);
---insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(5,'5','数据和信息素养',current_date,current_timestamp);
---insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(6,'6','创新意识',current_date,current_timestamp);
---insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(7,'7','实践能力',current_date,current_timestamp);
---insert into code.graduate_objectives(id,code,name,begin_on,updated_at) values(8,'8','国际视野',current_date,current_timestamp);
-
 create table code.course_ranks (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 
 insert into code.course_ranks(id,code,name,begin_on,updated_at) values(1,'1','必修',current_date,current_timestamp);
-insert into code.course_ranks(id,code,name,begin_on,updated_at) values(2,'2','限选',current_date,current_timestamp);
-insert into code.course_ranks(id,code,name,begin_on,updated_at) values(3,'3','任选',current_date,current_timestamp);
+insert into code.course_ranks(id,code,name,begin_on,updated_at) values(3,'3','限选',current_date,current_timestamp);
+insert into code.course_ranks(id,code,name,begin_on,updated_at) values(4,'4','任选',current_date,current_timestamp);
 
 create table code.course_ability_subjects (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 alter table code.course_ability_rates add subject_id int4;

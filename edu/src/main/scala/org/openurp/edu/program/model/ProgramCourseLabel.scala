@@ -17,24 +17,24 @@
 
 package org.openurp.edu.program.model
 
-object PlanCourseOrdering extends Ordering[PlanCourse] {
+import org.beangle.data.model.LongId
+import org.openurp.base.edu.model.Course
+import org.openurp.code.edu.model.ProgramCourseTag
 
-  /** 必修排在前，选修中按照学期以及课程代码
-   *
-   * @param o1
-   * @param o2
-   * @return
-   */
-  override def compare(o1: PlanCourse, o2: PlanCourse): Int = {
-    if (o1.compulsory ^ o2.compulsory) {
-      if o1.compulsory then -1 else 1
-    } else {
-      o1 match
-        case e: Executable =>
-          val termCmp = e.terms.first.compareTo(o2.terms.first)
-          if termCmp == 0 then o1.course.code.compareTo(o2.course.code) else termCmp
-        case _ =>
-          o1.course.code.compareTo(o2.course.code)
-    }
+/** 培养方案课程标签
+ */
+class ProgramCourseLabel extends LongId {
+
+  var program: Program = _
+
+  var tag: ProgramCourseTag = _
+
+  var course: Course = _
+
+  def this(program: Program, course: Course, tag: ProgramCourseTag) = {
+    this()
+    this.program = program
+    this.course = course
+    this.tag = tag
   }
 }

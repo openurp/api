@@ -19,9 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongIdEntity
-import org.beangle.data.model.pojo.DateRange
 import org.openurp.base.edu.model.Course
-import org.openurp.base.model.AuditStatus
 import org.openurp.code.edu.model.{CourseType, EducationLevel}
 
 import scala.collection.mutable
@@ -33,7 +31,7 @@ import scala.collection.mutable
  * @author chaostone
  * @since 2009
  */
-trait CoursePlan extends LongIdEntity with Cloneable with DateRange {
+trait CoursePlan extends LongIdEntity, Cloneable {
 
   def level: EducationLevel
 

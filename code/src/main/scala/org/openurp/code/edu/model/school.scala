@@ -187,3 +187,25 @@ class CourseGeneralType extends CodeBean, Hierarchical[CourseGeneralType] {
  */
 @code("industry")
 class ExperimentType extends CodeBean
+
+/** 课程标签
+ */
+@code("school")
+class CourseTag extends CodeBean {
+  /** 简称 */
+  var shortName: Option[String] = None
+
+  /** 符号 */
+  var sign: Option[String] = None
+}
+
+/** 培养方案课程标签
+ */
+@code("school")
+class ProgramCourseTag extends CodeBean {
+  /** 简称 */
+  var shortName: Option[String] = None
+
+  /** 符号 */
+  var sign: Option[String] = None
+}

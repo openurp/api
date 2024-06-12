@@ -42,6 +42,7 @@ class DefaultMapping extends MappingModule {
       e.remark is length(500)
       e.levels is depends("course")
       e.names is depends("course")
+      e.journals is depends("course")
       index("", true, e.project, e.code)
       index("", false, e.code)
     }
@@ -138,6 +139,13 @@ class DefaultMapping extends MappingModule {
     bind[CourseAward]
 
     bind[MajorGraduateObjective]
+
+    bind[CourseJournal].declare { e =>
+      e.hours is depends("journal")
+      index("", true, e.grade, e.course)
+    }
+
+    bind[CourseJournalHour]
 
     all.except(classOf[CourseProfile]).cacheAll()
   }

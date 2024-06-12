@@ -17,34 +17,33 @@
 
 package org.openurp.edu.program.model
 
-import scala.collection.mutable
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Course, Terms}
+
 /**
  * 抽象计划内课程
  *
  * @author chaostone
  * @since 2009
  */
-abstract class AbstractPlanCourse extends LongId with PlanCourse with Cloneable with Remark {
-  /**
-   * 课程组
-   */
+abstract class AbstractPlanCourse extends LongId, PlanCourse, Cloneable {
+
+  /** 课程组 */
   var group: CourseGroup = _
 
-  /**
-   * 课程
-   */
+  /** 课程 */
   var course: Course = _
 
-  /**
-   * 学期
-   */
+  /** 是否必修 */
+  var compulsory: Boolean = _
+
+  /** 开课学期 */
   var terms: Terms = _
 
-  /**
-   * 是否必修
-   */
-  var compulsory: Boolean = _
+  /** 序号 */
+  var idx: Short = _
+
+  def matchTerm(t: Terms): Boolean = {
+    this.terms.matches(t)
+  }
 }

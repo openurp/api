@@ -73,6 +73,14 @@ class DefaultMapping extends MappingModule {
       index("", true, e.project, e.code)
     }.generator(IdGenerator.Assigned)
 
+    bind[Thesis] declare { e =>
+      e.title is length(500)
+      e.comments is length(500)
+      e.keywords is length(200)
+      e.researchField is length(200)
+      e.scoreText is length(20)
+      index("", true, e.std)
+    }
     all.except(classOf[Student], classOf[StudentState], classOf[ExternStudent], classOf[Graduate]).cacheAll()
   }
 }

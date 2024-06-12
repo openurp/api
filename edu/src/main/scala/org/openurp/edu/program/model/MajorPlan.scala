@@ -17,32 +17,42 @@
 
 package org.openurp.edu.program.model
 
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Direction, Terms}
+
+import java.time.Instant
 
 /**
  * @author chaostone
  */
-class MajorPlan extends AbstractCoursePlan
+class MajorPlan extends AbstractCoursePlan {
+  def this(program: Program) = {
+    this()
+    this.program = program
+    this.credits = program.credits
+    this.updatedAt = Instant.now
+  }
+}
 
 /**
  * 专业计划课程组.
- *   @author chaostone
+ *
+ * @author chaostone
  */
 class MajorCourseGroup extends AbstractCourseGroup {
 
-  /**
-   * 该组针对的专业方向
-   */
+  /** 该组针对的专业方向 */
   var direction: Option[Direction] = None
 
 }
+
 /**
  * 专业计划课程
  *
  */
-class MajorPlanCourse extends AbstractPlanCourse with Executable {
+class MajorPlanCourse extends AbstractPlanCourse, Executable, Remark {
 
   /** 建议修读学期 */
   var suggestTerms: Terms = Terms.empty
-
 }

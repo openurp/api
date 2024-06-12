@@ -106,7 +106,7 @@ class ShareCourseGroup extends LongId with Hierarchical[ShareCourseGroup] {
  *
  * @author chaostone
  */
-class SharePlanCourse extends LongId with Executable {
+class SharePlanCourse extends LongId {
   /** 课程组 */
   var group: ShareCourseGroup = _
 

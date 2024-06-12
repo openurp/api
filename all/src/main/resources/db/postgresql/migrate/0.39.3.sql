@@ -3,7 +3,7 @@ values(next_id('base.versions'),'0.39.3',now(),'改进培养方案模型');
 
 alter table edu.syllabuses alter column bibliography type varchar(2000);
 alter table edu.syllabuses alter learning_hours type float4;
-alter table edu.syllabuses alter column materials type varchar(500);
+alter table edu.syllabuses alter column materials type varchar(2000);
 
 alter table edu.syllabus_topics alter learning_hours type float4;
 alter table edu.syllabus_topics add column exam boolean default false;
@@ -87,6 +87,8 @@ alter table edu.std_plans drop end_term cascade;
 alter table edu.std_plans drop remark cascade;
 alter table edu.std_plans drop start_term cascade;
 alter table edu.std_plans drop status cascade;
+
+alter table base.courses add general_type_id int4;
 
 comment on column base.minor_majors.project_id is '项目ID';
 comment on table edu.program_course_outcomes is '课程对应课表目标@program';
