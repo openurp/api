@@ -28,7 +28,7 @@ import org.openurp.code.edu.model.CourseType
  *
  * @author chaostone
  */
-trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
+trait CourseGroup extends LongIdEntity, Ordered[CourseGroup] {
   /** 组名 */
   def name: String
 
@@ -110,4 +110,8 @@ trait CourseGroup extends LongIdEntity with Ordered[CourseGroup] {
 
   /** 开课阶段 */
   def stage: Option[CalendarStage]
+
+  def depth: Int
+
+  def isLeaf:Boolean
 }

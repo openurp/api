@@ -87,6 +87,8 @@ alter table edu.std_course_groups add column rank_id integer;
 alter table edu.executive_plan_courses add column idx smallint default 0;
 alter table edu.major_plan_courses add column idx smallint default 0;
 alter table edu.std_plan_courses add column idx smallint default 0;
+alter table edu.executive_course_groups add column weeks integer;
+alter table edu.major_course_groups add column weeks integer;
 
 update edu.executive_plan_courses pc set term_text=(select s.name from base.calendar_stages s where s.id=pc.stage_id);
 update edu.major_plan_courses pc set term_text=(select s.name from base.calendar_stages s where s.id=pc.stage_id);
@@ -97,6 +99,10 @@ alter table edu.major_plan_courses drop stage_id cascade;
 update edu.executive_course_groups g set rank_id=1 where auto_addup=true and exists(select * from edu.executive_plan_courses pc where pc.group_id=g.id);
 update edu.executive_course_groups g set rank_id=3 where rank_id is null and exists(select * from code.course_types ct where ct.id=g.course_type_id and ct.name like '%限制%');
 update edu.executive_course_groups set rank_id=4 where rank_id is null;
+
+update edu.major_course_groups g set rank_id=1 where auto_addup=true and exists(select * from edu.executive_plan_courses pc where pc.group_id=g.id);
+update edu.major_course_groups g set rank_id=3 where rank_id is null and exists(select * from code.course_types ct where ct.id=g.course_type_id and ct.name like '%限制%');
+update edu.major_course_groups set rank_id=4 where rank_id is null;
 
 alter table edu.executive_plan_courses drop department_id cascade;
 alter table edu.executive_plan_courses drop exam_mode_id cascade;

@@ -369,6 +369,11 @@ class CourseRank extends CodeBean {
   def compulsory: Boolean = {
     id == CourseRank.Compulsory
   }
+
+  def this(id: Int) = {
+    this()
+    this.id = id
+  }
 }
 
 object CourseRank {

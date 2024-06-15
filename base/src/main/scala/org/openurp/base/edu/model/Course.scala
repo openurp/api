@@ -70,6 +70,8 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   var hasMakeup: Boolean = _
   /** 课程分类 */
   var generalType: Option[CourseGeneralType] = None
+  /** 课程分组 */
+  var cluster: Option[CourseCluster] = None
   /** 课程建设过程 */
   var journals = Collections.newBuffer[CourseJournal]
 
@@ -146,6 +148,18 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
       }
       if !containDefault then sb.prepend(defaultCredits.toString)
       sb.mkString(" ")
+    }
+  }
+
+  def addHour(nature: TeachingNature, hours: Int): Unit = {
+    this.hours.find(_.nature == nature) match {
+      case None =>
+        val nh = new CourseHour
+        nh.nature = nature
+        nh.creditHours = hours
+        nh.course = this
+        this.hours.addOne(nh)
+      case Some(h) => h.creditHours += hours
     }
   }
 

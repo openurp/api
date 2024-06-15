@@ -31,7 +31,7 @@ class DefaultMapping extends MappingModule {
 
     bind[GraduateResult].declare { e =>
       e.passedItems & e.failedItems are length(500)
-      index("", false, e.std)
+      index("", true, e.batch, e.std)
     }
 
     bind[DegreeResult].declare { e =>

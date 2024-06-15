@@ -26,15 +26,20 @@ object PlanCourseOrdering extends Ordering[PlanCourse] {
    * @return
    */
   override def compare(o1: PlanCourse, o2: PlanCourse): Int = {
-    if (o1.compulsory ^ o2.compulsory) {
-      if o1.compulsory then -1 else 1
+    val idxDiff = o1.idx - o2.idx
+    if (idxDiff == 0) {
+      if (o1.compulsory ^ o2.compulsory) {
+        if o1.compulsory then -1 else 1
+      } else {
+        o1 match
+          case e: Executable =>
+            val termCmp = e.terms.first.compareTo(o2.terms.first)
+            if termCmp == 0 then o1.course.code.compareTo(o2.course.code) else termCmp
+          case _ =>
+            o1.course.code.compareTo(o2.course.code)
+      }
     } else {
-      o1 match
-        case e: Executable =>
-          val termCmp = e.terms.first.compareTo(o2.terms.first)
-          if termCmp == 0 then o1.course.code.compareTo(o2.course.code) else termCmp
-        case _ =>
-          o1.course.code.compareTo(o2.course.code)
+      idxDiff
     }
   }
 }

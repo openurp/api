@@ -136,6 +136,11 @@ class DefaultMapping extends MappingModule {
       e.majors is length(200)
       index("", false, e.course)
     }
+
+    bind[CourseCluster].declare { e =>
+      e.courses is one2many("cluster")
+    }
+
     bind[CourseAward]
 
     bind[MajorGraduateObjective]

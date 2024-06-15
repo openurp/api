@@ -33,6 +33,11 @@ object Terms {
           (start to end) foreach { i =>
             value |= (1 << i)
           }
+        } else if (t.contains("+")) {
+          val start = Strings.substringBefore(t, "+").trim().toInt
+          val end = Strings.substringAfter(t, "+").trim().toInt
+          value |= (1 << start)
+          value |= (1 << end)
         } else {
           value |= 1 << Numbers.toInt(t)
         }

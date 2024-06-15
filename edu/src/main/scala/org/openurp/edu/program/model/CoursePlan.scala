@@ -83,9 +83,35 @@ trait CoursePlan extends LongIdEntity, Cloneable {
   def program: Program
 
   def addGroup(newGroup: CourseGroup, parent: Option[CourseGroup]): Unit
+
+  def depth: Int = CoursePlan.calcLevel(this)
+
+  def branchDepth: Int = CoursePlan.calcBranchLevel(this)
 }
 
 object CoursePlan {
+
+  def calcLevel(plan: CoursePlan): Int = {
+    val tops = plan.topGroups
+    if tops.isEmpty then 0 else tops.map(g => calcLevel(g, 0)).max
+  }
+
+  def calcBranchLevel(plan: CoursePlan): Int = {
+    val tops = plan.topGroups
+    if tops.isEmpty then 0 else tops.map(g => calcBranchLevel(g, 0)).max
+  }
+
+  private def calcLevel(group: CourseGroup, fromLevel: Int): Int = {
+    if group.children.isEmpty then fromLevel + 1
+    else group.children.map(c => calcLevel(c, fromLevel + 1)).max
+  }
+
+  private def calcBranchLevel(group: CourseGroup, fromLevel: Int): Int = {
+    if group.children.isEmpty then
+      if group.planCourses.isEmpty then fromLevel else fromLevel + 1
+    else group.children.map(c => calcBranchLevel(c, fromLevel + 1)).max
+  }
+
   /**
    * @param groups
    * @param planCourses

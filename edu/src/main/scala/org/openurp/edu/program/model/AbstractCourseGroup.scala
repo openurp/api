@@ -23,7 +23,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Hierarchical, Remark}
 import org.openurp.base.edu.model.Terms
 import org.openurp.base.model.CalendarStage
-import org.openurp.code.edu.model.{CourseRank, CourseType}
+import org.openurp.code.edu.model.{CourseRank, CourseType, TeachingNature}
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
@@ -47,6 +47,8 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
   var credits: Float = _
   /** 课时 */
   var creditHours: Int = _
+  /** 周数 */
+  var weeks: Option[Int] = None
   /** 课时比例 */
   var hourRatios: Option[String] = None
   /** 要求完成组数(默认是全部子组) */
@@ -123,6 +125,17 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
     ps.toSeq
   }
 
+  def path(): Seq[CourseGroup] = {
+    val ps = Collections.newBuffer[CourseGroup]
+    var p = parent
+    while (p.isDefined) {
+      ps.insert(0, p.get)
+      p = p.get.parent
+    }
+    ps.addOne(this)
+    ps.toSeq
+  }
+
   def getTermCourses(terms: Terms): collection.Seq[PlanCourse] = {
     if (Strings.isEmpty(null)) return planCourses.toList
     planCourses.filter(pc => pc.matchTerm(terms))
@@ -132,4 +145,17 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
     indexno.compareTo(o.indexno)
   }
 
+  override def isLeaf: Boolean = {
+    children.isEmpty && planCourses.isEmpty
+  }
+
+  def getHours(natures: Seq[TeachingNature]): Map[TeachingNature, Int] = {
+    hourRatios match
+      case None => Map(natures.head -> creditHours)
+      case Some(r) =>
+        val ratios = Strings.split(r, ":").map(_.toFloat)
+        val total = ratios.sum
+        val rs = ratios.indices.map { x => (natures(x) -> (creditHours * (ratios(x) / total)).toInt) }
+        rs.toMap
+  }
 }
