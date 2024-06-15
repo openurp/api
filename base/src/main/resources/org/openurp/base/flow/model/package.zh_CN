@@ -1,0 +1,7 @@
+FlowType = 业务类型
+ProcessLog = 审核日志
+ProcessLog.entityId=实体
+ProcessLog.fromStatus=起始状态
+ProcessLog.toStatus=目标状态
+ProcessLog.operator=操作人
+ProcessLog.comments=说明

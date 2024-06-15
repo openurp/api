@@ -5,7 +5,9 @@
   <mapping class="org.openurp.base.std.model.DefaultMapping" name="std"/>
   <mapping class="org.openurp.base.hr.model.DefaultMapping" name="hr"/>
   <mapping class="org.openurp.base.resource.model.DefaultMapping" name="resource"/>
+  <mapping class="org.openurp.base.flow.model.DefaultMapping" name="resource"/>
   <naming>
     <profile package="org.openurp.base" pluralize="true" schema="base"/>
+    <profile package="org.openurp.base.flow.model"  pluralize="true" schema="flow"/>
   </naming>
 </orm>
