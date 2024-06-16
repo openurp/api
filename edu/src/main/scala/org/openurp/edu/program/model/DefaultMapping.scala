@@ -167,7 +167,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ProgramObjective] declare { e =>
-      e.contents is length(100)
+      e.contents is length(500)
       e.outcomes is length(40)
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.39.3">
+<db engine="PostgreSQL" version="0.40.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -147,6 +147,18 @@
             <foreign-key name="fk_e6hhmt1rl0hcrgff6jn3wg48w" column="award_type_id" referenced-table="code.course_award_types" referenced-column="id"/>
           </constraints>
         </table>
+        <table name="course_clusters" comment="课程群组@edu">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="en_name" type="varchar(255)" comment="英文名"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_6gjj4kp1e06ob51efr5det0ot" columns="id"/>
+            <foreign-key name="fk_s3wlxtejuii2qiubn7r49ichl" column="project_id" referenced-table="base.projects" referenced-column="id"/>
+          </constraints>
+        </table>
         <table name="course_directors" comment="课程负责人@edu">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -165,7 +177,7 @@
         <table name="course_hours" comment="课程分类课时信息@edu">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="course_id" type="bigint" nullable="false" comment="课程ID"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时/总课时"/>
             <column name="nature_id" type="integer" nullable="false" comment="授课性质ID"/>
             <column name="weeks" type="integer" nullable="false" defaultValue="0" comment="周数"/>
@@ -178,6 +190,49 @@
           </constraints>
           <indexes>
             <index name="idx_cio9wl9gex7fo85575w4112c4" columns="course_id"/>
+          </indexes>
+        </table>
+        <table name="course_journal_hours" comment="课程记录-学时@edu">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时"/>
+            <column name="journal_id" type="bigint" nullable="false" comment="课程记录ID"/>
+            <column name="nature_id" type="integer" nullable="false" comment="授课性质ID"/>
+            <column name="weeks" type="integer" nullable="false" defaultValue="0" comment="周数"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_s8496i9wb7uknu72vs44i8dx7" columns="id"/>
+            <foreign-key name="fk_3g22ci8gemkcmatixwx8b55v4" column="journal_id" referenced-table="base.course_journals" referenced-column="id"/>
+            <foreign-key name="fk_sw2xt1t4sfo7csdpnpoqink66" column="nature_id" referenced-table="code.teaching_natures" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_lm5drr3y1vinuxh8pqi0up3pw" columns="journal_id"/>
+          </indexes>
+        </table>
+        <table name="course_journals" comment="课程记录@edu">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时"/>
+            <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
+            <column name="en_name" type="varchar(400)" comment="英文名"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="exam_mode_id" type="integer" nullable="false" comment="考核方式ID"/>
+            <column name="name" type="varchar(200)" nullable="false" comment="名称"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="week_hours" type="integer" nullable="false" defaultValue="0" comment="周课时"/>
+            <column name="weeks" type="integer" nullable="false" defaultValue="0" comment="周数"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_do83gjyf4jjoo7724iwkd5thn" columns="id"/>
+            <foreign-key name="fk_wl82w2eiwtrqt6hu3n1531l9" column="exam_mode_id" referenced-table="code.exam_modes" referenced-column="id"/>
+            <foreign-key name="fk_ifs9452ityx8mgd2ex4dghhuv" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_7wbxgtnbiskdo1yudf1u0m22w" column="department_id" referenced-table="base.departments" referenced-column="id"/>
+            <unique-key name="uk_16iu8nblky3qtm9ani5pu7vcs" columns="course_id,begin_on"/>
+          </constraints>
+          <indexes>
+            <index name="idx_63qf0hjsyy394vrfl9ui51oe4" columns="course_id"/>
           </indexes>
         </table>
         <table name="course_levels" comment="课程分层次要求@edu">
@@ -211,23 +266,6 @@
             <foreign-key name="fk_jluiaqhjrjdu4ie57mry0lufc" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_pko53wn8tmk8cq8rdr8k2yrjk" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
           </constraints>
-        </table>
-        <table name="course_names" comment="课程名称@edu">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
-            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
-            <column name="en_name" type="varchar(300)" comment="英文名"/>
-            <column name="end_on" type="date" comment="失效日期"/>
-            <column name="name" type="varchar(222)" nullable="false" comment="名称"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_5f53j8q5wqrjpcowho862hxlr" columns="id"/>
-            <foreign-key name="fk_7963b1561i6tqgpvxblg1htli" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_mjovf6o248wptv3tnax2im4f5" columns="course_id"/>
-          </indexes>
         </table>
         <table name="course_profiles" comment="课程简介@edu">
           <columns>
@@ -308,6 +346,7 @@
             <column name="begin_on" type="date" nullable="false" comment="设立日期"/>
             <column name="calgp" type="boolean" nullable="false" defaultValue="false" comment="是否计算绩点"/>
             <column name="category_id" type="integer" comment="课程种类代码ID"/>
+            <column name="cluster_id" type="bigint" comment="课程群组ID"/>
             <column name="code" type="varchar(32)" nullable="false" comment="课程代码"/>
             <column name="course_type_id" type="integer" nullable="false" comment="建议课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时/总课时"/>
@@ -329,6 +368,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_1lyj037fss3plmcutpx9b4r2x" columns="id"/>
+            <foreign-key name="fk_b3oqgd1pw427cuyrtoi5c3794" column="cluster_id" referenced-table="base.course_clusters" referenced-column="id"/>
             <foreign-key name="fk_4f3etk0ltox5d1s1fwcrvqw9f" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
             <foreign-key name="fk_dn65sxi9lag9qquiqhxbyy96h" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_ookm209qceyacbwgkhs83iubj" column="exam_mode_id" referenced-table="code.exam_modes" referenced-column="id"/>
@@ -341,6 +381,21 @@
           </constraints>
           <indexes>
             <index name="idx_61og8rbqdd2y28rx2et5fdnxd" columns="code"/>
+            <index name="idx_gsyp40xj7elqlco0688yda587" columns="cluster_id"/>
+          </indexes>
+        </table>
+        <table name="courses_tags" comment="课程标签@edu">
+          <columns>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="course_tag_id" type="integer" nullable="false" comment="课程标签ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_46nuykr92j7qtyny8dwsa0dbl" columns="course_id,course_tag_id"/>
+            <foreign-key name="fk_65r8l9b82e7ervbu7wijui68c" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_goebdflj73egcv00l2y3cio1d" column="course_tag_id" referenced-table="code.course_tags" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_b33k2icegejva3ino103aa5eb" columns="course_id"/>
           </indexes>
         </table>
         <table name="departments" comment="部门组织机构信息@common">
@@ -1365,6 +1420,30 @@
             <foreign-key name="fk_qdcxrp51l0xy98kkhmut4prx7" column="press_id" referenced-table="code.presses" referenced-column="id"/>
             <foreign-key name="fk_7y6ogoixp5nlmhc0wnytv1voa" column="award_type_id" referenced-table="code.book_award_types" referenced-column="id"/>
             <foreign-key name="fk_ek107pbph1mr10fq1j8utyjqn" column="book_type_id" referenced-table="code.book_types" referenced-column="id"/>
+          </constraints>
+        </table>
+        <table name="theses" comment="学生论文信息@std">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="advisor" type="varchar(255)" comment="指导老师"/>
+            <column name="comments" type="varchar(500)" comment="评语"/>
+            <column name="keywords" type="varchar(200)" comment="论文关键词"/>
+            <column name="language_id" type="integer" comment="撰写语种ID"/>
+            <column name="research_field" type="varchar(200)" comment="研究领域"/>
+            <column name="score" type="float4" comment="分数"/>
+            <column name="score_text" type="varchar(20)" comment="成绩"/>
+            <column name="source_id" type="integer" comment="选题来源ID"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
+            <column name="thesis_type_id" type="integer" comment="论文类型ID"/>
+            <column name="title" type="varchar(500)" nullable="false" comment="论文题目"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_pm8dei1ncn39xbda439mpqao7" columns="id"/>
+            <foreign-key name="fk_j7kxlr162akb05faq2yrai6hg" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_45ed0que67j7gybjurqr8qku8" column="thesis_type_id" referenced-table="code.thesis_types" referenced-column="id"/>
+            <foreign-key name="fk_oafq4q0wewve8islr8w6sk3r9" column="language_id" referenced-table="code.languages" referenced-column="id"/>
+            <foreign-key name="fk_9nyn3ylmfc0reag5iuy2nyqtm" column="source_id" referenced-table="code.thesis_topic_sources" referenced-column="id"/>
+            <unique-key name="uk_2bybvwu388u4f0mo9cw49nkwe" columns="std_id"/>
           </constraints>
         </table>
         <table name="time_settings" comment="每个小节的时间设置@edu">
@@ -2538,6 +2617,24 @@
             <unique-key name="course_ranks_code_key" columns="code"/>
           </constraints>
         </table>
+        <table name="course_tags" comment="课程标签@edu">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="short_name" type="varchar(255)" comment="简称"/>
+            <column name="sign" type="varchar(255)" comment="注记符号"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_satpi3byt6c5baol3b5m090dh" columns="id"/>
+            <unique-key name="course_tags_code_key" columns="code"/>
+          </constraints>
+        </table>
         <table name="course_take_types" comment="修读类别@edu">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
@@ -3513,6 +3610,24 @@
             <unique-key name="professional_titles_code_key" columns="code"/>
           </constraints>
         </table>
+        <table name="program_course_tags" comment="专业课程标签@edu">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="short_name" type="varchar(255)" comment="简称"/>
+            <column name="sign" type="varchar(255)" comment="注记符号"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_mxsf2utw2s5dh63wx9s44pf4n" columns="id"/>
+            <unique-key name="program_course_tags_code_key" columns="code"/>
+          </constraints>
+        </table>
         <table name="publication_grades" comment="刊物级别@sin">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
@@ -3930,6 +4045,38 @@
           <constraints>
             <primary-key name="pk_docvjyxvufaf2y8wly8pqnp4d" columns="id"/>
             <unique-key name="teaching_sections_code_key" columns="code"/>
+          </constraints>
+        </table>
+        <table name="thesis_topic_sources" comment="选题来源@edu">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_3lderniukaq5dpqfvlh0qejob" columns="id"/>
+            <unique-key name="thesis_topic_sources_code_key" columns="code"/>
+          </constraints>
+        </table>
+        <table name="thesis_types" comment="论文类型@edu">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_4tcotln8xe9p0p18p0fjqeul2" columns="id"/>
+            <unique-key name="thesis_types_code_key" columns="code"/>
           </constraints>
         </table>
         <table name="tutor_types" comment="导师类别@job">
@@ -5618,8 +5765,6 @@
         <table name="executive_course_groups" comment="执行计划课程组@program">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="allow_unplanned" type="boolean" nullable="false" defaultValue="false" comment="是否允许计划外课程"/>
-            <column name="auto_addup" type="boolean" nullable="false" defaultValue="false" comment="自动累加学分"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
             <column name="credits" type="float4" nullable="false" comment="要求学分"/>
@@ -5629,16 +5774,20 @@
             <column name="indexno" type="varchar(20)" nullable="false" comment="索引号"/>
             <column name="parent_id" type="bigint" comment="上级组ID"/>
             <column name="plan_id" type="bigint" nullable="false" comment="计划ID"/>
+            <column name="rank_id" type="integer" nullable="false" comment="课程属性ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="required" type="boolean" nullable="false" defaultValue="false" comment="是否必须完成"/>
+            <column name="stage_id" type="integer" comment="日历阶段ID"/>
             <column name="sub_count" type="smallint" nullable="false" defaultValue="-1" comment="要求完成组数"/>
             <column name="term_credits" type="varchar(40)" nullable="false" comment="学期学分分布"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
+            <column name="weeks" type="integer" comment="周数"/>
           </columns>
           <constraints>
             <primary-key name="pk_1youdaxcg42qn6nhvwcbwad9g" columns="id"/>
             <foreign-key name="fk_56dhnv2u0mj39lg7utkuwegmg" column="parent_id" referenced-table="edu.executive_course_groups" referenced-column="id"/>
             <foreign-key name="fk_a0ab8elp15ghrbghqqxu0x0rn" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
+            <foreign-key name="fk_6mh987hal1axohw2uqqpb6n6b" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
+            <foreign-key name="fk_qws3d63si4v6xhjnqrkjq7dq7" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
             <foreign-key name="fk_8sryyotbjk7ax803pbug4iu71" column="plan_id" referenced-table="edu.executive_plans" referenced-column="id"/>
             <foreign-key name="fk_77ekapj66u96x3imgngeial0m" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
           </constraints>
@@ -5652,21 +5801,16 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="compulsory" type="boolean" nullable="false" defaultValue="false" comment="是否必修"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程ID"/>
-            <column name="department_id" type="integer" nullable="false" comment="开课部门ID"/>
-            <column name="exam_mode_id" type="integer" nullable="false" comment="考核方式ID"/>
             <column name="group_id" type="bigint" nullable="false" comment="课程组ID"/>
+            <column name="idx" type="smallint" nullable="false" defaultValue="0" comment="序号"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="stage_id" type="integer" comment="日历阶段ID"/>
-            <column name="suggest_terms" type="integer" nullable="false" comment="建议修读学期"/>
+            <column name="term_text" type="varchar(20)" comment="开课学期文本"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
             <column name="weekstate" type="bigint" nullable="false" comment="开课周"/>
           </columns>
           <constraints>
             <primary-key name="pk_lhpe3jgx7uq87hwmc6t332mge" columns="id"/>
-            <foreign-key name="fk_n0kl5cs7n9ud4keyann63bdt6" column="exam_mode_id" referenced-table="code.exam_modes" referenced-column="id"/>
-            <foreign-key name="fk_18f6shjjvisy7v08ajv64f86d" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
             <foreign-key name="fk_3irsjah8bv57ll08ke16ip3nt" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_al1gnursmvf6djxjru6n7ic90" column="department_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_bxpc5hpop09uieul3wd6s1gor" column="group_id" referenced-table="edu.executive_course_groups" referenced-column="id"/>
             <unique-key name="uk_aqtnrm89r68onugcbfp1jcbwa" columns="group_id,course_id"/>
           </constraints>
@@ -5677,10 +5821,8 @@
         <table name="executive_plans" comment="执行培养计划@program">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
             <column name="credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
-            <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
@@ -6053,8 +6195,6 @@
         <table name="major_course_groups" comment="专业计划课程组@program">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="allow_unplanned" type="boolean" nullable="false" defaultValue="false" comment="是否允许计划外课程"/>
-            <column name="auto_addup" type="boolean" nullable="false" defaultValue="false" comment="自动累加学分"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
             <column name="credits" type="float4" nullable="false" comment="要求学分"/>
@@ -6064,16 +6204,20 @@
             <column name="indexno" type="varchar(20)" nullable="false" comment="索引号"/>
             <column name="parent_id" type="bigint" comment="上级组ID"/>
             <column name="plan_id" type="bigint" nullable="false" comment="计划ID"/>
+            <column name="rank_id" type="integer" nullable="false" comment="课程属性ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="required" type="boolean" nullable="false" defaultValue="false" comment="是否必须完成"/>
+            <column name="stage_id" type="integer" comment="日历阶段ID"/>
             <column name="sub_count" type="smallint" nullable="false" defaultValue="-1" comment="要求完成组数"/>
             <column name="term_credits" type="varchar(40)" nullable="false" comment="学期学分分布"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
+            <column name="weeks" type="integer" comment="周数"/>
           </columns>
           <constraints>
             <primary-key name="pk_3nxbhw8uol7n3nw0kpsdr6lvr" columns="id"/>
             <foreign-key name="fk_pc8q580jvu7xjgou4je6pbo5o" column="parent_id" referenced-table="edu.major_course_groups" referenced-column="id"/>
             <foreign-key name="fk_meex9q80ousce5vb0n9ph64p8" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
+            <foreign-key name="fk_436wsxxoka11ym0dysdeeg4ip" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
+            <foreign-key name="fk_er4c5awycvn4b3so4q9mfx52k" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
             <foreign-key name="fk_9g2r0wmg6d6q20b2tuxs4iupb" column="plan_id" referenced-table="edu.major_plans" referenced-column="id"/>
             <foreign-key name="fk_kod0hb5pnmeiqrr7jgq3shctv" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
           </constraints>
@@ -6087,21 +6231,17 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="compulsory" type="boolean" nullable="false" defaultValue="false" comment="是否必修"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程ID"/>
-            <column name="department_id" type="integer" nullable="false" comment="开课部门ID"/>
-            <column name="exam_mode_id" type="integer" nullable="false" comment="考核方式ID"/>
             <column name="group_id" type="bigint" nullable="false" comment="课程组ID"/>
+            <column name="idx" type="smallint" nullable="false" defaultValue="0" comment="序号"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="stage_id" type="integer" comment="日历阶段ID"/>
             <column name="suggest_terms" type="integer" nullable="false" comment="建议修读学期"/>
+            <column name="term_text" type="varchar(20)" comment="开课学期文本"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
             <column name="weekstate" type="bigint" nullable="false" comment="开课周"/>
           </columns>
           <constraints>
             <primary-key name="pk_3wd4vyblbfks1j2lwty25qnbu" columns="id"/>
-            <foreign-key name="fk_gqrlejyl7apbt5n37c4eto8qb" column="exam_mode_id" referenced-table="code.exam_modes" referenced-column="id"/>
-            <foreign-key name="fk_cpur8aumdrrxdxdcxosq9i8e9" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
             <foreign-key name="fk_5y31fkbotohec2w77hlqvb3an" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_j38xjy3f1lmbr5qmylh1kklnh" column="department_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_fy23vsj0y540goto20im2k2b7" column="group_id" referenced-table="edu.major_course_groups" referenced-column="id"/>
             <unique-key name="uk_bmxrewotma5nd0dxovv1m77cw" columns="group_id,course_id"/>
           </constraints>
@@ -6112,9 +6252,7 @@
         <table name="major_plans" comment="专业培养计划@program">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
             <column name="credits" type="float4" nullable="false" comment="要求学分"/>
-            <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
@@ -6169,6 +6307,23 @@
             <index name="idx_5c8y9mjfcmi8qfg5ktnfmhq8e" columns="room_id"/>
             <index name="idx_cibqwhtpc8x3gdpclaxfh296j" columns="activity_id"/>
             <index name="idx_ddxl05y02vs65yn5vwqhnn5rk" columns="start_on"/>
+          </indexes>
+        </table>
+        <table name="program_course_labels" comment="培养方案方案课程标签@program">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
+            <column name="tag_id" type="integer" nullable="false" comment="专业课程标签ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_aejk5w39nv0dg8818jwpg67bq" columns="id"/>
+            <foreign-key name="fk_lh6g9pye62c4655juhxng74yu" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_8enehe9sa6p3va1drnjtia6ke" column="program_id" referenced-table="edu.programs" referenced-column="id"/>
+            <foreign-key name="fk_1g3koth47oni9h0coergbns76" column="tag_id" referenced-table="code.program_course_tags" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_gfyumr969ca1ykkkgat7biy2t" columns="program_id"/>
           </indexes>
         </table>
         <table name="program_course_outcomes" comment="课程对应课表目标@program">
@@ -6276,7 +6431,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
-            <column name="contents" type="varchar(100)" nullable="false" comment="内容"/>
+            <column name="contents" type="varchar(500)" nullable="false" comment="内容"/>
             <column name="doc_id" type="bigint" nullable="false" comment="培养方案文档ID"/>
             <column name="outcomes" type="varchar(40)" nullable="false" comment="对应毕业要求"/>
           </columns>
@@ -6659,20 +6814,13 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="compulsory" type="boolean" nullable="false" defaultValue="false" comment="是否必修"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
-            <column name="department_id" type="integer" nullable="false" comment="开课部门ID"/>
-            <column name="exam_mode_id" type="integer" nullable="false" comment="考核方式ID"/>
             <column name="group_id" type="bigint" nullable="false" comment="公共共享课程组ID"/>
-            <column name="stage_id" type="integer" comment="日历阶段ID"/>
             <column name="terms" type="integer" nullable="false" comment="学期"/>
-            <column name="weekstate" type="bigint" nullable="false" comment="开课周"/>
           </columns>
           <constraints>
             <primary-key name="pk_d5aukjiewdmk6smt3dwg7s8cq" columns="id"/>
-            <foreign-key name="fk_to7u0blska65ya55myb46qt1f" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
             <foreign-key name="fk_gk31f102f07n600dmxtk3r5wd" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_b0ekb19c7goh9fp1ql5hcb8cx" column="department_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_4x1x85crd70rtcn7jprkwcvqg" column="group_id" referenced-table="edu.share_course_groups" referenced-column="id"/>
-            <foreign-key name="fk_7w6p0gedk311maqiuoh96lmwt" column="exam_mode_id" referenced-table="code.exam_modes" referenced-column="id"/>
             <unique-key name="uk_4g3u5b9itdu90iij2y6la2ms5" columns="group_id,course_id"/>
           </constraints>
           <indexes>
@@ -6793,8 +6941,6 @@
         <table name="std_course_groups" comment="学生共享课程组@program">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="allow_unplanned" type="boolean" nullable="false" defaultValue="false" comment="是否允许计划外课程"/>
-            <column name="auto_addup" type="boolean" nullable="false" defaultValue="false" comment="自动累加学分"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
             <column name="credits" type="float4" nullable="false" comment="要求学分"/>
@@ -6803,16 +6949,20 @@
             <column name="indexno" type="varchar(20)" nullable="false" comment="索引号"/>
             <column name="parent_id" type="bigint" comment="上级组ID"/>
             <column name="plan_id" type="bigint" nullable="false" comment="计划ID"/>
+            <column name="rank_id" type="integer" nullable="false" comment="课程属性ID"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="required" type="boolean" nullable="false" defaultValue="false" comment="是否必须完成"/>
+            <column name="stage_id" type="integer" comment="日历阶段ID"/>
             <column name="sub_count" type="smallint" nullable="false" defaultValue="-1" comment="要求完成组数"/>
             <column name="term_credits" type="varchar(255)" nullable="false" comment="学期学分分布"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
+            <column name="weeks" type="integer" comment="周数"/>
           </columns>
           <constraints>
             <primary-key name="pk_br4kq5lj281tok3i7bqla6v3r" columns="id"/>
             <foreign-key name="fk_bwu0heksavkrqlo7nhipanxj9" column="parent_id" referenced-table="edu.std_course_groups" referenced-column="id"/>
             <foreign-key name="fk_hnx6b5qq4o84g9pl0wywrslgb" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
+            <foreign-key name="fk_nnc7tsf6jo9l2lcl6qhcwetvu" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
+            <foreign-key name="fk_k4mjbn5rvj3e23uvore7mh4kx" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
             <foreign-key name="fk_c4w3os7mbgrf9k17dxjg1bo4u" column="plan_id" referenced-table="edu.std_plans" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -6933,7 +7083,7 @@
             <column name="compulsory" type="boolean" nullable="false" defaultValue="false" comment="是否必修"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程ID"/>
             <column name="group_id" type="bigint" nullable="false" comment="课程组ID"/>
-            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="idx" type="smallint" nullable="false" defaultValue="0" comment="序号"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
           </columns>
           <constraints>
@@ -6949,9 +7099,7 @@
         <table name="std_plans" comment="个人计划@program">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
             <column name="credits" type="float4" nullable="false" comment="要求学分"/>
-            <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -7278,8 +7426,8 @@
             <column name="grading_mode_id" type="integer" nullable="false" comment="成绩记录方式ID"/>
             <column name="learning_hours" type="float4" nullable="false" comment="自主学习课时"/>
             <column name="locale" type="varchar(255)" nullable="false" comment="语种"/>
-            <column name="materials" type="varchar(255)" comment="其他教学资源"/>
-            <column name="methods" type="varchar(255)" nullable="false" comment="教学大纲-教学方式"/>
+            <column name="materials" type="varchar(2000)" comment="其他教学资源"/>
+            <column name="methods" type="varchar(500)" nullable="false" comment="教学大纲-教学方式"/>
             <column name="module_id" type="integer" nullable="false" comment="课程模块ID"/>
             <column name="nature_id" type="integer" nullable="false" comment="课程性质ID"/>
             <column name="office_id" type="bigint" comment="教研室ID"/>
@@ -7594,6 +7742,35 @@
             <foreign-key name="fk_ffl3de69p916fkvwvrv3yxbsi" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <unique-key name="uk_ewl3g4qnuueaav63fnu8x9mtn" columns="extern_student_id"/>
           </constraints>
+        </table>
+        <table name="flow_types" comment="业务类型@resource">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_ehgs3p5kwrerow9mydbi4j3tc" columns="id"/>
+          </constraints>
+        </table>
+        <table name="process_logs" comment="审核日志@resource">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="comments" type="varchar(2000)" nullable="false" comment="说明"/>
+            <column name="entity_id" type="bigint" nullable="false" defaultValue="0" comment="实体"/>
+            <column name="flow_type_id" type="integer" nullable="false" comment="业务类型ID"/>
+            <column name="from_status" type="varchar(100)" nullable="false" comment="起始状态"/>
+            <column name="operator_id" type="bigint" nullable="false" comment="操作人ID"/>
+            <column name="to_status" type="varchar(100)" nullable="false" comment="目标状态"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_pg4kxtmg5fqls4l221xt6b9cn" columns="id"/>
+            <foreign-key name="fk_ig1v0881ecbatm73ftrr83mbg" column="operator_id" referenced-table="base.users" referenced-column="id"/>
+            <foreign-key name="fk_k72l3ohawu5uhm4i09xdnr320" column="flow_type_id" referenced-table="flow.flow_types" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_8f6pd4rrn6otdrimouy7sb65i" columns="flow_type_id,entity_id"/>
+          </indexes>
         </table>
       </tables>
     </schema>
@@ -8985,10 +9162,8 @@
             <foreign-key name="fk_60tarsb0wps3cmsumt4fmx7ki" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_hbuho60rwd7cp7n9jd316qqk1" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
             <foreign-key name="fk_aw2crvlxuwnxsbyexehnmhbnj" column="education_result_id" referenced-table="code.education_results" referenced-column="id"/>
+            <unique-key name="uk_6xobo8150fh0351vpgl7apacm" columns="batch_id,std_id"/>
           </constraints>
-          <indexes>
-            <index name="idx_b4r23ej9bc55e8rkjosbder4w" columns="std_id"/>
-          </indexes>
         </table>
         <table name="graduations" comment="预毕业信息@graduation">
           <columns>

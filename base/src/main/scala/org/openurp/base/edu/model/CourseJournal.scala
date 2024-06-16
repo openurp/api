@@ -19,25 +19,19 @@ package org.openurp.base.edu.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{EnNamed, Named, TemporalOn, Updated}
 import org.openurp.base.model.Department
 import org.openurp.base.std.model.Grade
-import org.openurp.code.edu.model.{CourseTag, CourseType, ExamMode, TeachingNature}
+import org.openurp.code.edu.model.{ExamMode, TeachingNature}
 
-import scala.collection.mutable
+import java.time.LocalDate
 
-/** 年级课程
+/** 课程变化日志
  */
-class CourseJournal extends LongId, Updated {
-
-  /** 年级 */
-  var grade: Grade = _
+class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
 
   /** 课程 */
   var course: Course = _
-
-  /** 课程类型 */
-  var courseType: CourseType = _
 
   /** 开课部门 */
   var department: Department = _
@@ -57,14 +51,9 @@ class CourseJournal extends LongId, Updated {
   /** 分类课时 */
   var hours = Collections.newBuffer[CourseJournalHour]
 
-  /** 分类标签 */
-  var tags: mutable.Set[CourseTag] = Collections.newSet[CourseTag]
-
-  def this(grade: Grade, course: Course) = {
+  def this(course: Course, beginOn: LocalDate) = {
     this()
-    this.grade = grade
     this.course = course
-    this.courseType = course.courseType
     this.department = course.department
     this.examMode = course.examMode
     this.creditHours = course.creditHours
@@ -72,6 +61,7 @@ class CourseJournal extends LongId, Updated {
     course.hours foreach { h =>
       this.hours.addOne(new CourseJournalHour(this, h.nature, h.creditHours, h.weeks))
     }
+    this.beginOn = beginOn
   }
 
   def getHour(nature: TeachingNature): Option[Int] = {
@@ -82,7 +72,7 @@ class CourseJournal extends LongId, Updated {
     hours.find(_.nature == nature).map(_.weeks)
   }
 
-  def contains(grade: Grade): Boolean = grade == this.grade
+  def contains(grade: Grade): Boolean = this.within(grade.beginOn)
 }
 
 class CourseJournalHour extends LongId {

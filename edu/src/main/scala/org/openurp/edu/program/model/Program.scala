@@ -97,4 +97,7 @@ class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBase
 
   def terms: Short = (endTerm - startTerm + 1).asInstanceOf[Short]
 
+  def disciplineCode: String = {
+    major.getDisciplineCode(beginOn)
+  }
 }

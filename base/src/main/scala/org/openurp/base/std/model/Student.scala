@@ -132,9 +132,9 @@ class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Rem
 
   def description: String = s"$code $name ${department.shortName.getOrElse(department.name)}"
 
-  def disciplineCode: String = state.get.major.disciplineCode(beginOn)
+  def disciplineCode: String = state.get.major.getDisciplineCode(beginOn)
 
-  def disciplineName: String = state.get.major.disciplineName(beginOn)
+  def disciplineName: String = state.get.major.getDisciplineName(beginOn)
 }
 
 /**

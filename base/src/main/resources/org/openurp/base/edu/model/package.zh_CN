@@ -28,6 +28,7 @@ Course.calgp=是否计算绩点
 Course.hasMakeup=是否有补考
 Course.project=项目
 Course.levels=学历层次列表
+Course.tags=课程标签
 
 CourseHour=课程分类课时信息
 CourseHour.creditHours=学时/总课时
@@ -38,7 +39,6 @@ CourseJournal.creditHours=学时
 CourseJournal.weekHours=周课时
 CourseJournal.weeks=周数
 CourseJournal.grade=年级
-CourseJournal.tags=课程标签
 
 CourseJournalHour=课程记录-学时
 CourseJournalHour.creditHours=学时
@@ -158,7 +158,5 @@ MajorDirector=专业负责人
 
 CourseAward=课程获奖
 CourseAward.schoolYear=获奖年度
-
-CourseName=课程名称
 
 MajorGraduateObjective=专业培养目标

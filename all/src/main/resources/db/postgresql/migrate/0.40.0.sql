@@ -1,23 +1,29 @@
-
+create table base.courses_tags (course_id bigint not null, course_tag_id integer not null);
 create table base.course_journal_hours (id bigint not null, credit_hours integer default 0 not null, journal_id bigint not null, nature_id integer not null, weeks integer default 0 not null);
 create table base.course_journals (id bigint not null, course_id bigint not null, course_type_id integer not null, credit_hours integer default 0 not null, department_id integer not null, exam_mode_id integer not null, grade_id bigint not null, updated_at timestamptz default current_timestamp not null, week_hours integer default 0 not null, weeks integer default 0 not null);
-create table base.course_journals_tags (course_journal_id bigint not null, course_tag_id integer not null);
 create table base.theses (id bigint not null, advisor varchar(255), comments varchar(500), keywords varchar(200), language_id integer, research_field varchar(200), score float4, score_text varchar(20), source_id integer, std_id bigint not null, thesis_type_id integer, title varchar(500) not null);
+create table base.course_clusters (id bigint not null, en_name varchar(255), name varchar(255) not null, project_id integer not null);
 create table code.course_tags (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), short_name varchar(255), sign varchar(255), updated_at timestamptz default current_timestamp not null);
 create table code.program_course_tags (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), short_name varchar(255), sign varchar(255), updated_at timestamptz default current_timestamp not null);
 create table code.thesis_topic_sources (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 create table code.thesis_types (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 create table edu.program_course_labels (id bigint not null, course_id bigint not null, program_id bigint not null, tag_id integer not null);
 
+alter table base.course_clusters add constraint pk_6gjj4kp1e06ob51efr5det0ot primary key (id);
+alter table base.courses_tags add constraint pk_46nuykr92j7qtyny8dwsa0dbl primary key (course_id,course_tag_id);
 alter table base.course_journal_hours add constraint pk_s8496i9wb7uknu72vs44i8dx7 primary key (id);
 alter table base.course_journals add constraint pk_do83gjyf4jjoo7724iwkd5thn primary key (id);
-alter table base.course_journals_tags add constraint pk_oc31bgxn1cvhvmk0qm0ggi2xx primary key (course_journal_id,course_tag_id);
 alter table base.theses add constraint pk_pm8dei1ncn39xbda439mpqao7 primary key (id);
 alter table code.course_tags add constraint pk_satpi3byt6c5baol3b5m090dh primary key (id);
 alter table code.program_course_tags add constraint pk_mxsf2utw2s5dh63wx9s44pf4n primary key (id);
 alter table code.thesis_topic_sources add constraint pk_3lderniukaq5dpqfvlh0qejob primary key (id);
 alter table code.thesis_types add constraint pk_4tcotln8xe9p0p18p0fjqeul2 primary key (id);
 alter table edu.program_course_labels add constraint pk_aejk5w39nv0dg8818jwpg67bq primary key (id);
+
+alter table base.courses add constraint fk_b3oqgd1pw427cuyrtoi5c3794 foreign key (cluster_id) references base.course_clusters (id);
+alter table base.course_clusters add constraint fk_s3wlxtejuii2qiubn7r49ichl foreign key (project_id) references base.projects (id);
+alter table base.courses_tags add constraint fk_65r8l9b82e7ervbu7wijui68c foreign key (course_id) references base.courses (id);
+alter table base.courses_tags add constraint fk_goebdflj73egcv00l2y3cio1d foreign key (course_tag_id) references code.course_tags (id);
 alter table base.course_journal_hours add constraint fk_3g22ci8gemkcmatixwx8b55v4 foreign key (journal_id) references base.course_journals (id);
 alter table base.course_journal_hours add constraint fk_sw2xt1t4sfo7csdpnpoqink66 foreign key (nature_id) references code.teaching_natures (id);
 alter table base.course_journals add constraint fk_op7rb7kl5lt5s55ucsqgcb2ec foreign key (course_type_id) references code.course_types (id);
@@ -25,8 +31,6 @@ alter table base.course_journals add constraint fk_wl82w2eiwtrqt6hu3n1531l9 fore
 alter table base.course_journals add constraint fk_74w9jwmn8xx548vnbu8d6o9yf foreign key (grade_id) references base.grades (id);
 alter table base.course_journals add constraint fk_ifs9452ityx8mgd2ex4dghhuv foreign key (course_id) references base.courses (id);
 alter table base.course_journals add constraint fk_7wbxgtnbiskdo1yudf1u0m22w foreign key (department_id) references base.departments (id);
-alter table base.course_journals_tags add constraint fk_r2phyx0i8jsm70swiqwdkqp76 foreign key (course_journal_id) references base.course_journals (id);
-alter table base.course_journals_tags add constraint fk_6f95s2i987nm7hqwj2nqdwxih foreign key (course_tag_id) references code.course_tags (id);
 alter table base.theses add constraint fk_j7kxlr162akb05faq2yrai6hg foreign key (std_id) references base.students (id);
 alter table base.theses add constraint fk_45ed0que67j7gybjurqr8qku8 foreign key (thesis_type_id) references code.thesis_types (id);
 alter table base.theses add constraint fk_oafq4q0wewve8islr8w6sk3r9 foreign key (language_id) references code.languages (id);
@@ -57,8 +61,8 @@ alter table code.thesis_topic_sources add constraint thesis_topic_sources_code_k
 alter table code.thesis_types add constraint thesis_types_code_key unique (code);
 create index idx_lm5drr3y1vinuxh8pqi0up3pw on base.course_journal_hours (journal_id);
 create index idx_63qf0hjsyy394vrfl9ui51oe4 on base.course_journals (course_id);
-create index idx_fa43felt9lxq3wse8lp20bdgg on base.course_journals_tags (course_journal_id);
 create index idx_gfyumr969ca1ykkkgat7biy2t on edu.program_course_labels (program_id);
+create index idx_b33k2icegejva3ino103aa5eb on base.courses_tags (course_id);
 
 alter table edu.syllabuses alter materials type varchar(2000);
 alter table edu.syllabuses alter methods type varchar(500);
@@ -127,6 +131,21 @@ alter table edu.major_plan_courses alter idx set not null;
 alter table edu.executive_plan_courses alter idx set not null;
 alter table edu.std_plan_courses alter idx set not null;
 
+drop table base.course_names cascade;
+
+create table flow.flow_types (id integer not null, name varchar(255) not null);
+create table flow.process_logs (id bigint not null, comments varchar(2000) not null, entity_id bigint default 0 not null, flow_type_id integer not null, from_status varchar(100) not null, operator_id bigint not null, to_status varchar(100) not null, updated_at timestamptz default current_timestamp not null);
+alter table flow.flow_types add constraint pk_ehgs3p5kwrerow9mydbi4j3tc primary key (id);
+alter table flow.process_logs add constraint pk_pg4kxtmg5fqls4l221xt6b9cn primary key (id);
+alter table flow.process_logs add constraint fk_ig1v0881ecbatm73ftrr83mbg foreign key (operator_id) references base.users (id);
+alter table flow.process_logs add constraint fk_k72l3ohawu5uhm4i09xdnr320 foreign key (flow_type_id) references flow.flow_types (id);
+create index idx_8f6pd4rrn6otdrimouy7sb65i on flow.process_logs (flow_type_id, entity_id);
+
+comment on table base.course_clusters is '课程群组@edu';
+comment on column base.course_clusters.id is '非业务主键:datetime';
+comment on column base.course_clusters.en_name is '英文名';
+comment on column base.course_clusters.name is '名称';
+comment on column base.course_clusters.project_id is '项目ID';
 comment on table base.course_journal_hours is '课程记录-学时@edu';
 comment on column base.course_journal_hours.id is '非业务主键:datetime';
 comment on column base.course_journal_hours.credit_hours is '学时';
@@ -144,9 +163,9 @@ comment on column base.course_journals.grade_id is '年级ID';
 comment on column base.course_journals.updated_at is '更新时间';
 comment on column base.course_journals.week_hours is '周课时';
 comment on column base.course_journals.weeks is '周数';
-comment on table base.course_journals_tags is '课程标签@edu';
-comment on column base.course_journals_tags.course_journal_id is '课程记录ID';
-comment on column base.course_journals_tags.course_tag_id is '课程标签ID';
+comment on table base.courses_tags is '课程标签@edu';
+comment on column base.courses_tags.course_id is '课程基本信息ID';
+comment on column base.courses_tags.course_tag_id is '课程标签ID';
 comment on table base.theses is '学生论文信息@std';
 comment on column base.theses.id is '非业务主键:datetime';
 comment on column base.theses.advisor is '指导老师';
@@ -216,3 +235,15 @@ comment on column edu.major_plan_courses.term_text is '开课学期文本';
 comment on column edu.std_course_groups.rank_id is '课程属性ID';
 comment on column edu.std_course_groups.stage_id is '日历阶段ID';
 comment on column edu.std_plan_courses.idx is '序号';
+comment on table flow.flow_types is '业务类型@resource';
+comment on column flow.flow_types.id is '非业务主键:auto_increment';
+comment on column flow.flow_types.name is '名称';
+comment on table flow.process_logs is '审核日志@resource';
+comment on column flow.process_logs.id is '非业务主键:datetime';
+comment on column flow.process_logs.comments is '说明';
+comment on column flow.process_logs.entity_id is '实体';
+comment on column flow.process_logs.flow_type_id is '业务类型ID';
+comment on column flow.process_logs.from_status is '起始状态';
+comment on column flow.process_logs.operator_id is '操作人ID';
+comment on column flow.process_logs.to_status is '目标状态';
+comment on column flow.process_logs.updated_at is '更新时间';

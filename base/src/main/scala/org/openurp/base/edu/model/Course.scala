@@ -25,7 +25,6 @@ import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.*
 
 import java.time.LocalDate
-import scala.collection.mutable
 
 /**
  * 课程基本信息 </p>
@@ -38,8 +37,6 @@ import scala.collection.mutable
  * @since 2008-09-24
  */
 class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn, Coded, Named, EnNamed, Remark {
-  /** 历史名称 */
-  var names: mutable.Buffer[CourseName] = Collections.newBuffer[CourseName]
   /** 培养层次要求 */
   var levels = Collections.newBuffer[CourseLevel]
   /** 默认学分 */
@@ -74,6 +71,8 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   var cluster: Option[CourseCluster] = None
   /** 课程建设过程 */
   var journals = Collections.newBuffer[CourseJournal]
+  /** 课程标签 */
+  var tags = Collections.newSet[CourseTag]
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
@@ -84,8 +83,8 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
    * @param date
    * @return
    */
-  def nameOn(date: LocalDate): String = {
-    names.find(_.within(date)).map(_.name).getOrElse(name)
+  def getNameOn(date: LocalDate): String = {
+    journals.find(_.within(date)).map(_.name).getOrElse(name)
   }
 
   /** 查找给定日期的英文名称
@@ -93,8 +92,8 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
    * @param date
    * @return
    */
-  def enNameOn(date: LocalDate): String = {
-    names.find(_.within(date)).flatMap(_.enName).getOrElse(enName.getOrElse(name))
+  def getEnNameOn(date: LocalDate): String = {
+    journals.find(_.within(date)).flatMap(_.enName).getOrElse(enName.getOrElse(name))
   }
 
   def this(id: Long, code: String, name: String, enName: String) = {
@@ -119,7 +118,7 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
 
   def getJournal(grade: Grade): CourseJournal = {
     journals.find(_.contains(grade)) match
-      case None => new CourseJournal(grade, this)
+      case None => new CourseJournal(this, grade.beginOn)
       case Some(j) => j
   }
 

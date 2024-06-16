@@ -58,19 +58,19 @@ class Major extends LongId, ProjectBased, TemporalOn, Updated, Coded, Named, EnN
   }
 
   def departmentsNow: Set[Department] = {
-    departments(LocalDate.now)
+    getDepartments(LocalDate.now)
   }
 
-  def departments(date: LocalDate): Set[Department] = {
+  def getDepartments(date: LocalDate): Set[Department] = {
     journals.filter(j => date.isAfter(j.beginOn) && (j.endOn.isEmpty || date.isBefore(j.endOn.get)))
       .map(_.depart).toSet
   }
 
-  def disciplineCode(date: LocalDate): String = {
+  def getDisciplineCode(date: LocalDate): String = {
     disciplines.find(_.contains(date)).map(_.disciplineCode.getOrElse("")).getOrElse("")
   }
 
-  def disciplineName(date: LocalDate): String = {
+  def getDisciplineName(date: LocalDate): String = {
     disciplines.find(_.contains(date)).map(_.disciplineName.getOrElse("")).getOrElse("")
   }
 }
