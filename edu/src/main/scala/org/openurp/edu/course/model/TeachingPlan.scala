@@ -116,6 +116,8 @@ class TeachingPlan extends LongId with Updated {
     p.writer = this.writer
     p.office = this.office
     p.reviewer = this.reviewer
+    p.lessonHours = this.lessonHours
+    p.examHours = this.examHours
     this.lessons foreach { l =>
       val nl = new Lesson
       nl.idx = l.idx
