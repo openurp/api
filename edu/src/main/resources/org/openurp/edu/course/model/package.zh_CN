@@ -6,7 +6,7 @@ Syllabus.auditor=审核人
 Syllabus.dean=教学院长
 Syllabus.publishAt=发布时间
 
-Syllabus.locale=语种
+Syllabus.docLocale=语种
 Syllabus.description=简介
 Syllabus.semester=生效学年学期
 Syllabus.levels=教学大纲-面向的培养层次
@@ -25,6 +25,7 @@ Syllabus.website=课程网站地址
 Syllabus.examCreditHours=考核课时
 Syllabus.learningHours=自主学习课时
 Syllabus.creditHours=学时
+Syllabus.opinions=驳回意见
 
 SyllabusObjective=教学大纲课程目标
 SyllabusObjective.contents=内容
@@ -96,6 +97,7 @@ SyllabusExperiment.creditHours=学时
 
 CourseTask=课程任务
 CourseTask.teachers=课程任务-任课教师
+CourseTask.syllabusRequired=是否需要大纲
 
 SyllabusCase=教学大纲-案例
 SyllabusCase.idx=序号
@@ -121,12 +123,13 @@ TeachingPlan.author=作者
 TeachingPlan.passed=是否通过
 TeachingPlan.docLocale=语言
 TeachingPlan.filePath=附件关键字
-TeachingPlan.learningHours=自主学习课时
+TeachingPlan.lessonHours=课堂课时
 TeachingPlan.examHours=考核课时
 TeachingPlan.auditor=审核人
 TeachingPlan.dean=教学院长
 TeachingPlan.publishAt=发布时间
 TeachingPlan.status=状态
+TeachingPlan.opinions=驳回意见
 
 TeachingPlanSection=环节课时
 TeachingPlanSection.creditHours=课时

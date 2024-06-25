@@ -15,29 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.code
+package org.openurp.edu.course.flow
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.*
+import org.beangle.data.orm.MappingModule
 
-trait Code extends IntId, Named, EnNamed, Coded {
-}
+class DefaultMapping extends MappingModule {
 
-object CodeCategory {
+  def binding(): Unit = {
+    bind[NewCourseApply].declare { e =>
+      e.hours is depends("courseApply")
+    }
+    bind[NewCourseApplyHour]
 
-  //  基础代码种类
-  val Nation = "nation"
+    bind[NewCourseCategory]
 
-  val Industry = "industry"
-
-  val School = "school"
-}
-
-abstract class CodeBean extends IntId, Code, TemporalOn, Updated, Remark {
-  def codeName: String = s"$code $name"
-
-  def enName2: String = {
-    enName.getOrElse(name)
+    bind[NewCourseDepart]
   }
 
 }

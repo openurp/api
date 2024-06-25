@@ -304,7 +304,12 @@ object ElectionMode {
  * 考核方式
  */
 @code("industry")
-class ExamMode extends CodeBean
+class ExamMode extends CodeBean {
+  def this(id: Int) = {
+    this()
+    this.id = id
+  }
+}
 
 object ExamMode {
   val Exam = 1 //考试
@@ -341,6 +346,11 @@ object CourseNature {
  */
 @code("industry")
 class TeachingNature extends CodeBean {
+  def this(id: Int) = {
+    this()
+    this.id = id
+  }
+
   /** 性质分类 */
   var category: TeachingNatureCategory = _
 }

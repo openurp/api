@@ -81,7 +81,9 @@ CourseAbilityRate.rate=等级值
 CourseType=课程类别
 CourseType.shortName=简称
 
-CourseCategory=课程评教分类
+CourseCategory=课程分类
+CourseCategory.color=分类颜色
+CourseCategoryDimension=课程分类维度
 
 CourseType.practical=是否实践课
 CourseType.major=是否专业课
@@ -112,8 +114,7 @@ CourseModule=课程模块
 
 CourseAwardType=课程获奖类型
 GraduateObjective=毕业要求
-CourseGeneralType=课程通用分类
-CourseGeneralType.color=分类颜色
+
 CourseAwardCategory=课程获奖分类
 CourseAbilitySubject=课程能力等级分类
 ExperimentType=实验类型

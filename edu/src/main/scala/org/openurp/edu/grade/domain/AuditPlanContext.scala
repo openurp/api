@@ -48,7 +48,7 @@ class AuditPlanContext(val std: Student, val coursePlan: CoursePlan, val sharePl
           case Some(g) => Some(g)
           case None =>
             getGroupBySharePlan(course) match
-              case None => getGroupByType(Some(course.courseType))
+              case None => getGroupByType(course.courseType)
               case Some(g) => Some(g)
   }
 

@@ -24,7 +24,7 @@ import org.beangle.commons.logging.Logging
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.beangle.jdbc.query.JdbcExecutor
 import org.openurp.base.hr.model.*
-import org.openurp.base.model.{Department, Project, User, UserGroup}
+import org.openurp.base.model.*
 import org.openurp.base.service.{UserCategories, UserRepo}
 import org.openurp.base.std.model.Student
 import org.openurp.code.hr.model.UserCategory
@@ -66,26 +66,27 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
    */
   override def createUser(staff: Staff, oldCode: Option[String]): User = {
     val secretaries = entityDao.findBy(classOf[Secretary], "staff", staff)
+    val school = staff.school
     val mentors = entityDao.findBy(classOf[Mentor], "staff", staff)
-    var groups: collection.mutable.Buffer[UserGroup] = Collections.newBuffer[UserGroup]
+    val groups: collection.mutable.Buffer[UserGroup] = Collections.newBuffer[UserGroup]
     if (secretaries.nonEmpty) {
       secretaries foreach { s =>
-        groups.addAll(getGroups(s.projects.map(p => s"secretary.${p.id}")))
-        groups.addAll(getGroups(List("secretary")))
+        groups.addAll(getGroups(school, s.projects.map(p => s"secretary.${p.id}")))
+        groups.addAll(getGroups(school, List("secretary")))
       }
     } else if (mentors.nonEmpty) {
       mentors foreach { m =>
-        groups.addAll(getGroups(m.projects.map(p => s"mentor.${p.id}")))
-        groups.addAll(getGroups(List("mentor")))
+        groups.addAll(getGroups(school, m.projects.map(p => s"mentor.${p.id}")))
+        groups.addAll(getGroups(school, List("mentor")))
       }
     } else {
-      if (staff.tutorType.nonEmpty) groups.addAll(getGroups(List("tutor")))
+      if (staff.tutorType.nonEmpty) groups.addAll(getGroups(school, List("tutor")))
       val teachers = entityDao.findBy(classOf[Teacher], "staff", staff)
       teachers foreach { t =>
-        groups.addAll(getGroups(t.projects.map(p => s"teacher.${p.id}")))
-        groups.addAll(getGroups(List("teacher")))
+        groups.addAll(getGroups(school, t.projects.map(p => s"teacher.${p.id}")))
+        groups.addAll(getGroups(school, List("teacher")))
       }
-      groups.addAll(getGroups(List("staff")))
+      groups.addAll(getGroups(school, List("staff")))
     }
     val user = createStaffUser(staff, groups, oldCode)
     // 创建秘书的数据权限
@@ -147,8 +148,10 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         newUser.email = Option(newUser.code + "@unknown.com")
         newUser.beginOn = std.beginOn
         newUser.endOn = Option(std.endOn)
-        newUser.group = getGroups(Seq(s"student.${std.project.id}", "student")).headOption
         newUser
+    }
+    if (user.group.isEmpty) {
+      user.group = getGroups(school, Seq(s"student.${std.project.id}", "student")).headOption
     }
     user.department = std.state.get.department
     user.name = std.name
@@ -289,10 +292,10 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
   }
 
-  private def getGroups(codes: Iterable[String]): Seq[UserGroup] = {
+  private def getGroups(school: School, codes: Iterable[String]): Seq[UserGroup] = {
     if (codes.isEmpty) return Seq.empty
     val q = OqlBuilder.from(classOf[UserGroup], "g")
-    q.where("g.code in (:codes)", codes)
+    q.where("g.school=:school and g.code in (:codes)", school, codes)
     q.cacheable()
     entityDao.search(q)
   }

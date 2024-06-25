@@ -21,7 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{AuditStatus, Department, User}
-import org.openurp.code.edu.model.CourseGeneralType
+import org.openurp.code.edu.model.CourseCategory
 
 import java.time.Instant
 
@@ -61,7 +61,7 @@ class CourseProfile extends LongId, Updated, TemporalOn, Remark {
   var writer: Option[User] = None
 
   /** 课程分类 */
-  var generalType: Option[CourseGeneralType] = None
+  var category: Option[CourseCategory] = None
 
   /** 状态 */
   var status: AuditStatus = AuditStatus.Draft

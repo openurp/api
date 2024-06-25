@@ -56,23 +56,47 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
   /** 学期学分分布 */
   var termCredits: String = _
   /** 课程属性 */
-  var rank: CourseRank = _
+  var rank: Option[CourseRank] = None
   /** 开课学期 */
   var terms: Terms = Terms.empty
   /** 开课阶段 */
   var stage: Option[CalendarStage] = None
 
-  def required: Boolean = rank.id == CourseRank.Compulsory
+  def required: Boolean = {
+    rank match
+      case Some(r) => r.id == CourseRank.Compulsory
+      case None => true
+  }
 
-  def autoAddup: Boolean = rank.id == CourseRank.Compulsory
+  def autoAddup: Boolean = {
+    rank match
+      case Some(r) => r.id == CourseRank.Compulsory
+      case None => true
+  }
 
-  def allowUnplanned: Boolean = rank.id == CourseRank.Selective || rank.id == CourseRank.FreeSelective
+  def allowUnplanned: Boolean = {
+    rank match
+      case Some(r) => r.id == CourseRank.Selective || r.id == CourseRank.FreeSelective
+      case None => false
+  }
+
+  def optional: Boolean = {
+    rank match
+      case Some(r) => r.id != CourseRank.Compulsory
+      case None => false
+  }
 
   override def name: String = {
     val sb = new StringBuilder()
     if (null != courseType) sb.append(courseType.name)
     givenName foreach { x => sb.append(" ").append(x) }
     sb.toString
+  }
+
+  def shortName: String = {
+    givenName match
+      case None => courseType.shortName.getOrElse(courseType.name)
+      case Some(gn) => gn
   }
 
   def index(): Int = {
@@ -149,13 +173,55 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
     children.isEmpty && planCourses.isEmpty
   }
 
-  def getHours(natures: Seq[TeachingNature]): Map[TeachingNature, Int] = {
+  override def getHours(natures: collection.Seq[TeachingNature]): Map[TeachingNature, Int] = {
+    val natureMap = natures.map(x => (x.id.toString, x)).toMap
+
+    val ratioMap = getHourRatioMap(natures)
+    if (ratioMap.isEmpty) {
+      val targetNature =
+        if (this.courseType.practical) natures.find(_.id == TeachingNature.Practice).get else natures.find(_.id == TeachingNature.Theory).get
+      Map(targetNature -> creditHours)
+    } else {
+      ratioMap.map(e => (e._1, (e._2 * creditHours).toInt))
+    }
+  }
+
+  override def getHourRatioMap(natures: collection.Seq[TeachingNature]): Map[TeachingNature, Float] = {
     hourRatios match
-      case None => Map(natures.head -> creditHours)
-      case Some(r) =>
-        val ratios = Strings.split(r, ":").map(_.toFloat)
-        val total = ratios.sum
-        val rs = ratios.indices.map { x => (natures(x) -> (creditHours * (ratios(x) / total)).toInt) }
-        rs.toMap
+      case None => Map.empty
+      case Some(ratios) =>
+        val natureMap = natures.map(x => (x.id.toString, x)).toMap
+        val ratioMap = Collections.newMap[TeachingNature, Float]
+        var sum = 0f
+        for (r <- Strings.split(ratios, ",")) {
+          val natureId = Strings.substringBefore(r, ":")
+          val value = Strings.substringAfter(r, ":").toFloat
+          sum += value
+          natureMap.get(natureId) foreach { n =>
+            ratioMap.put(n, value)
+          }
+        }
+        for (n <- ratioMap.keySet) {
+          ratioMap.put(n, ratioMap(n) / sum)
+        }
+        ratioMap.toMap
+  }
+
+  def isTermCreditsEmpty: Boolean = {
+    if Strings.isEmpty(termCredits) then true
+    else
+      val credits = Strings.split(termCredits, ",").map(_.trim).toSet
+      if credits.size == 1 then credits.head == "0"
+      else false
+  }
+
+  def termCreditSeq: Seq[Double] = {
+    if Strings.isEmpty(termCredits) then Seq.empty
+    else
+      Strings.split(termCredits, ",").map(_.toDouble).toSeq
+  }
+
+  override def toString: String = {
+    s"${this.indexno} ${this.name}"
   }
 }

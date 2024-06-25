@@ -24,7 +24,7 @@ import org.openurp.base.model.Department
 import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.{ExamMode, TeachingNature}
 
-import java.time.LocalDate
+import java.time.{Instant, LocalDate}
 
 /** 课程变化日志
  */
@@ -54,38 +54,55 @@ class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
   def this(course: Course, beginOn: LocalDate) = {
     this()
     this.course = course
+    this.name = course.name
+    this.enName = course.enName
     this.department = course.department
     this.examMode = course.examMode
     this.creditHours = course.creditHours
+    this.weekHours = course.weekHours
     this.weeks = course.weeks
     course.hours foreach { h =>
-      this.hours.addOne(new CourseJournalHour(this, h.nature, h.creditHours, h.weeks))
+      this.hours.addOne(new CourseJournalHour(this, h.nature, h.creditHours))
     }
     this.beginOn = beginOn
+    this.updatedAt = Instant.now
   }
 
   def getHour(nature: TeachingNature): Option[Int] = {
     hours.find(_.nature == nature).map(_.creditHours)
   }
 
-  def getWeek(nature: TeachingNature): Option[Int] = {
-    hours.find(_.nature == nature).map(_.weeks)
+  def updateHour(nature: TeachingNature, hours: Int): Unit = {
+    this.hours.find(_.nature == nature) match {
+      case None =>
+        if (hours > 0) {
+          val nh = new CourseJournalHour
+          nh.nature = nature
+          nh.creditHours = hours
+          this.weeks = weeks
+          nh.journal = this
+          this.hours.addOne(nh)
+        }
+      case Some(h) =>
+        if (hours > 0) {
+          h.creditHours = hours
+          this.weeks = weeks
+        } else this.hours.subtractOne(h)
+    }
   }
 
   def contains(grade: Grade): Boolean = this.within(grade.beginOn)
 }
 
 class CourseJournalHour extends LongId {
-  def this(journal: CourseJournal, nature: TeachingNature, creditHours: Int, weeks: Int) = {
+  def this(journal: CourseJournal, nature: TeachingNature, creditHours: Int) = {
     this()
     this.journal = journal
     this.nature = nature
     this.creditHours = creditHours
-    this.weeks = weeks
   }
 
   var journal: CourseJournal = _
   var creditHours: Int = _
-  var weeks: Int = _
   var nature: TeachingNature = _
 }

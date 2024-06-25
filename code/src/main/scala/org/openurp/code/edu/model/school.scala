@@ -101,11 +101,20 @@ class CourseType extends CodeBean {
   }
 }
 
+/** 分类维度 */
+@code("school")
+class CourseCategoryDimension extends CodeBean {
+
+}
+
 /** 课程分类
  * 从课程内容进行划分，一般分为英语课、体育课等
  */
 @code("school")
-class CourseCategory extends CodeBean
+class CourseCategory extends CodeBean, Hierarchical[CourseCategory] {
+  var dimension: CourseCategoryDimension = _
+  var color: Option[String] = None
+}
 
 /**
  * 课程能力等级
@@ -176,12 +185,6 @@ class CourseAwardType extends CodeBean {
 /** 课程获奖分类
  */
 class CourseAwardCategory extends CodeBean
-
-/** 课程通用分类
- */
-class CourseGeneralType extends CodeBean, Hierarchical[CourseGeneralType] {
-  var color: Option[String] = None
-}
 
 /** 实验类型
  */

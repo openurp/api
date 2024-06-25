@@ -24,6 +24,7 @@ MajorCourseGroup=专业计划课程组
 MajorCourseGroup.givenName=自定义别名
 MajorCourseGroup.direction=该组针对的专业方向
 MajorCourseGroup.autoAddup=自动累加学分
+MajorCourseGroup.departments=开课院系说明
 
 MajorPlan=专业培养计划
 

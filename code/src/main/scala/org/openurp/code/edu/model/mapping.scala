@@ -68,7 +68,10 @@ class DefaultMapping extends MappingModule {
     bind[BookType]
     bind[BookAwardType]
     bind[CourseType]
-    bind[CourseCategory]
+    bind[CourseCategory].declare { e =>
+      e.children is depends("parent")
+    }
+    bind[CourseCategoryDimension]
     bind[CourseAbilityRate]
     bind[CourseAbilitySubject]
     bind[EducationType]
@@ -80,9 +83,6 @@ class DefaultMapping extends MappingModule {
 
     bind[CourseAwardType]
     bind[CourseAwardCategory]
-    bind[CourseGeneralType].declare { e =>
-      e.children is depends("parent")
-    }
     bind[ExperimentType]
     bind[ThesisTopicSource]
     bind[ThesisType]

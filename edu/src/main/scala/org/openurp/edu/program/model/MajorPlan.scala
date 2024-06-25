@@ -45,6 +45,8 @@ class MajorCourseGroup extends AbstractCourseGroup {
   /** 该组针对的专业方向 */
   var direction: Option[Direction] = None
 
+  /** 开课院系 */
+  var departments: Option[String] = None
 }
 
 /**

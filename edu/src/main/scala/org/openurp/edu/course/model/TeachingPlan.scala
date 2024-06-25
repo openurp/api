@@ -25,7 +25,6 @@ import org.openurp.base.model.{AuditStatus, Semester, User}
 import org.openurp.edu.clazz.model.Clazz
 
 import java.time.Instant
-import java.util.Locale
 import scala.collection.mutable
 
 /** 授课计划
@@ -36,14 +35,17 @@ class TeachingPlan extends LongId with Updated {
   /** 教学任务 */
   var clazz: Clazz = _
 
-  /** 授课计划语言 */
-  var docLocale: Locale = _
-
   /** 学期 */
   var semester: Semester = _
 
   /** 分环节课时 */
   var sections = Collections.newBuffer[TeachingPlanSection]
+
+  /** 课堂学时 */
+  var lessonHours: Int = _
+
+  /** 考核课时 */
+  var examHours: Int = _
 
   /** 授课内容 */
   var lessons: mutable.Buffer[Lesson] = Collections.newBuffer[Lesson]
@@ -58,7 +60,7 @@ class TeachingPlan extends LongId with Updated {
   var status: AuditStatus = AuditStatus.Draft
 
   /** 作者 */
-  var writer: Option[User] = None
+  var writer: User = _
 
   /** 审核人 */
   var reviewer: Option[User] = None
@@ -68,6 +70,9 @@ class TeachingPlan extends LongId with Updated {
 
   /** 发布时间 */
   var publishAt: Option[Instant] = None
+
+  /** 驳回意见 */
+  var opinions: Option[String] = None
 
   def getHours(section: String): Int = {
     sections.filter(_.name == section).map(_.creditHours).headOption.getOrElse(0)
@@ -99,7 +104,6 @@ class TeachingPlan extends LongId with Updated {
   }
 
   def copyTo(p: TeachingPlan): Unit = {
-    p.docLocale = this.docLocale
     p.sections.clear()
     this.sections foreach { h =>
       val nh = new TeachingPlanSection

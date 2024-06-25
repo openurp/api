@@ -39,6 +39,8 @@ class DefaultMapping extends MappingModule {
       e.designs is depends("syllabus")
       e.bibliography is length(2000)
       e.materials is length(2000)
+      e.opinions is length(300)
+      index("", true, e.semester, e.course, e.writer, e.docLocale)
     }
 
     bind[SyllabusTopic] declare { e =>
@@ -97,6 +99,8 @@ class DefaultMapping extends MappingModule {
     bind[TeachingPlan] declare { e =>
       e.lessons is depends("plan")
       e.sections is depends("plan")
+      e.opinions is length(300)
+      index("", true, e.clazz)
     }
 
     bind[Lesson] declare { e =>

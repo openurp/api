@@ -26,16 +26,13 @@ class SyllabusTopicHour extends LongId {
   var topic: SyllabusTopic = _
   /** 学时 */
   var creditHours: Float = _
-  /** 周 */
-  var weeks: Int = _
   /** 课时分类 */
   var nature: TeachingNature = _
 
-  def this(topic: SyllabusTopic, nature: TeachingNature, creditHours: Float, weeks: Int) = {
+  def this(topic: SyllabusTopic, nature: TeachingNature, creditHours: Float) = {
     this()
     this.topic = topic
     this.nature = nature
     this.creditHours = creditHours
-    this.weeks = weeks
   }
 }

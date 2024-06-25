@@ -17,17 +17,15 @@
 
 package org.openurp.edu.his.model
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
 import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
-import org.openurp.base.edu.model.{Course, TeachingOffice}
+import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{AuditStatus, Department, Semester, User}
-import org.openurp.code.edu.model.CourseGeneralType
+import org.openurp.code.edu.model.CourseCategory
 
 import java.time.Instant
-import scala.collection.mutable
 
 @archive
 class HisCourseProfile extends LongId, Updated, TemporalOn, Remark {
@@ -66,7 +64,7 @@ class HisCourseProfile extends LongId, Updated, TemporalOn, Remark {
   var writer: Option[User] = None
 
   /** 课程分类 */
-  var generalType: Option[CourseGeneralType] = None
+  var category: Option[CourseCategory] = None
 
   /** 状态 */
   var status: AuditStatus = AuditStatus.Draft

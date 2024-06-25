@@ -9,6 +9,24 @@ create table code.thesis_topic_sources (id integer not null, begin_on date not n
 create table code.thesis_types (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 create table edu.program_course_labels (id bigint not null, course_id bigint not null, program_id bigint not null, tag_id integer not null);
 
+--course_categories idex??
+alter table code.course_categories add color varchar(10);
+alter table code.course_categories add indexno varchar(10);
+alter table code.course_categories add parent_id int4;
+alter table edu.teaching_plans drop column doc_locale;
+alter table edu.syllabuses rename column locale to doc_locale;
+alter table edu.teaching_plans add column opinions varchar(300);
+alter table edu.syllabuses add column opinions varchar(300);
+alter table edu.teaching_plans add column lesson_hours int4 default 0;
+alter table edu.teaching_plans add column exam_hours int4 default 0;
+
+alter table edu.course_tasks add syllabus_required boolean default true;
+
+create table code.course_category_dimensions (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
+alter table code.course_category_dimensions add constraint course_category_dimensions_code_key unique (code);
+alter table code.course_category_dimensions add constraint pk_qx35190x8nbbv5p2u2x4obn8j primary key (id);
+alter table code.course_categories add dimension_id int4;
+
 alter table base.course_clusters add constraint pk_6gjj4kp1e06ob51efr5det0ot primary key (id);
 alter table base.courses_tags add constraint pk_46nuykr92j7qtyny8dwsa0dbl primary key (course_id,course_tag_id);
 alter table base.course_journal_hours add constraint pk_s8496i9wb7uknu72vs44i8dx7 primary key (id);
@@ -67,6 +85,7 @@ create index idx_b33k2icegejva3ino103aa5eb on base.courses_tags (course_id);
 alter table edu.syllabuses alter materials type varchar(2000);
 alter table edu.syllabuses alter methods type varchar(500);
 
+alter table edu.major_course_groups add departments varchar(100);
 alter table edu.executive_plans drop begin_on cascade;
 alter table edu.executive_plans drop end_on cascade;
 alter table edu.major_plans drop begin_on cascade;
@@ -135,11 +154,41 @@ drop table base.course_names cascade;
 
 create table flow.flow_types (id integer not null, name varchar(255) not null);
 create table flow.process_logs (id bigint not null, comments varchar(2000) not null, entity_id bigint default 0 not null, flow_type_id integer not null, from_status varchar(100) not null, operator_id bigint not null, to_status varchar(100) not null, updated_at timestamptz default current_timestamp not null);
+create table flow.edu_new_course_applies (module_id integer, applicant_id bigint not null, project_id integer not null, rank_id integer, credit_hours integer default 0 not null, exam_mode_id integer not null, code varchar(255), department_id integer not null, grading_mode_id integer not null, end_on date, default_credits float4 not null, name varchar(255) not null, en_name varchar(255), id bigint not null, begin_on date not null, status integer not null, nature_id integer not null, week_hours integer default 0 not null, category_id integer not null, updated_at timestamptz default current_timestamp not null);
+create table flow.edu_new_course_applies_tags (new_course_apply_id bigint not null, course_tag_id integer not null);
+create table flow.edu_new_course_apply_hours (weeks integer default 0 not null, credit_hours integer default 0 not null, id bigint not null, course_apply_id bigint not null, nature_id integer not null);
+create table flow.edu_new_course_categories (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
+create table flow.edu_new_course_departs (school_id integer not null, code varchar(255) not null, id bigint not null, depart_id integer not null);
+alter table flow.edu_new_course_applies add constraint pk_c2hfstwqwcmyo86xfc4v4llu3 primary key (id);
+alter table flow.edu_new_course_applies_tags add constraint pk_6n9cq37up5f509auhglv3lqqk primary key (new_course_apply_id,course_tag_id);
+alter table flow.edu_new_course_apply_hours add constraint pk_9o8bhp7vs4pxwkcyeluduysai primary key (id);
+alter table flow.edu_new_course_categories add constraint edu_new_course_categories_code_key unique (code);
+alter table flow.edu_new_course_categories add constraint pk_ooyymrpkh76y78k7y935mt7l4 primary key (id);
+alter table flow.edu_new_course_departs add constraint pk_jbaiwlql5545t7atoyyltjl6p primary key (id);
+
 alter table flow.flow_types add constraint pk_ehgs3p5kwrerow9mydbi4j3tc primary key (id);
 alter table flow.process_logs add constraint pk_pg4kxtmg5fqls4l221xt6b9cn primary key (id);
 alter table flow.process_logs add constraint fk_ig1v0881ecbatm73ftrr83mbg foreign key (operator_id) references base.users (id);
 alter table flow.process_logs add constraint fk_k72l3ohawu5uhm4i09xdnr320 foreign key (flow_type_id) references flow.flow_types (id);
+alter table flow.edu_new_course_applies add constraint fk_16m7eofbd6bcstu4riw5ni7yv foreign key (exam_mode_id) references code.exam_modes (id);
+alter table flow.edu_new_course_applies add constraint fk_21at3bdoub5eqiyc2eula4d05 foreign key (applicant_id) references base.users (id);
+alter table flow.edu_new_course_applies add constraint fk_27hoy1o9c07bt4tn6i0e5995 foreign key (project_id) references base.projects (id);
+alter table flow.edu_new_course_applies add constraint fk_387g9ljivru3jxdgxsocc0tcy foreign key (category_id) references flow.edu_new_course_categories (id);
+alter table flow.edu_new_course_applies add constraint fk_eac9ye2h4tti5u6rrp4b3y2au foreign key (rank_id) references code.course_ranks (id);
+alter table flow.edu_new_course_applies add constraint fk_eapmxr3lhv7973w7opidip8qk foreign key (department_id) references base.departments (id);
+alter table flow.edu_new_course_applies add constraint fk_em5mh2clty1avltli9m0hfins foreign key (nature_id) references code.course_natures (id);
+alter table flow.edu_new_course_applies add constraint fk_o8g0dsa3lxr5xf3q13dska24y foreign key (grading_mode_id) references code.grading_modes (id);
+alter table flow.edu_new_course_applies add constraint fk_tj7ujf1r03hg4y6crjtw1dyir foreign key (module_id) references code.course_modules (id);
+alter table flow.edu_new_course_applies_tags add constraint fk_e337xxmu3xn8dytgblifdwpjx foreign key (course_tag_id) references code.course_tags (id);
+alter table flow.edu_new_course_applies_tags add constraint fk_eomhr7dsfvsxkl31jkr8xohxb foreign key (new_course_apply_id) references flow.edu_new_course_applies (id);
+alter table flow.edu_new_course_apply_hours add constraint fk_l7wcmtqtes34hk7qe97j2fco6 foreign key (course_apply_id) references flow.edu_new_course_applies (id);
+alter table flow.edu_new_course_apply_hours add constraint fk_tovmuehvajioljjit4b4673fa foreign key (nature_id) references code.teaching_natures (id);
+alter table flow.edu_new_course_departs add constraint fk_60iccrk2txx4k767h41bfseao foreign key (school_id) references base.schools (id);
+alter table flow.edu_new_course_departs add constraint fk_gls870o0jcts93hkbx7g4da8s foreign key (depart_id) references base.departments (id);
+
 create index idx_8f6pd4rrn6otdrimouy7sb65i on flow.process_logs (flow_type_id, entity_id);
+create index idx_2mk8rl7id68acmo8sk7h8gs4b on flow.edu_new_course_applies_tags (new_course_apply_id);
+create index idx_pfxpk2do32b5txki4hkw2jnxn on flow.edu_new_course_apply_hours (course_apply_id);
 
 comment on table base.course_clusters is '课程群组@edu';
 comment on column base.course_clusters.id is '非业务主键:datetime';
@@ -247,3 +296,15 @@ comment on column flow.process_logs.from_status is '起始状态';
 comment on column flow.process_logs.operator_id is '操作人ID';
 comment on column flow.process_logs.to_status is '目标状态';
 comment on column flow.process_logs.updated_at is '更新时间';
+
+create table base.course_textbooks (course_id bigint not null, id bigint not null, begin_on date not null, textbook_id bigint not null, end_on date, recommended boolean default false not null, required boolean default false not null);
+alter table base.course_textbooks add constraint pk_g7q36h5ul3cxttlc4n44ko4yy primary key (id);
+alter table base.course_textbooks add constraint fk_4stnq1rke2gsqq6ltx8k0n5yl foreign key (textbook_id) references base.textbooks (id);
+alter table base.course_textbooks add constraint fk_qh2cf5dfbnaqunjflbooxg5e foreign key (course_id) references base.courses (id);
+comment on column base.course_textbooks.begin_on is '生效日期';
+comment on column base.course_textbooks.course_id is '课程基本信息ID';
+comment on column base.course_textbooks.end_on is '失效日期';
+comment on column base.course_textbooks.id is '非业务主键:datetime';
+comment on column base.course_textbooks.recommended is '是否推荐教材';
+comment on column base.course_textbooks.required is '是否必选教材';
+comment on column base.course_textbooks.textbook_id is '教材ID';

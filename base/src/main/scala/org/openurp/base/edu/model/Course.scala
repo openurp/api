@@ -39,24 +39,29 @@ import java.time.LocalDate
 class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn, Coded, Named, EnNamed, Remark {
   /** 培养层次要求 */
   var levels = Collections.newBuffer[CourseLevel]
+  /** 院系 */
+  var department: Department = _
   /** 默认学分 */
   var defaultCredits: Float = _
+
+  /** 课程模块 */
+  var module: Option[CourseModule] = None
+  /** 必修/选修/限选 */
+  var rank: Option[CourseRank] = None
+  /** 课程类别 */
+  var courseType: Option[CourseType] = None
+  /** 课程性质 (理论、实践、术科、实验) */
+  var nature: CourseNature = _
+
   /** 学时/总课时 */
   var creditHours: Int = _
-  /** 课程类别 */
-  var courseType: CourseType = _
-  /** 课程大类 */
-  var category: Option[CourseCategory] = None
-  /** 课程性质 */
-  var nature: CourseNature = _
   /** 分类课时 */
   var hours = Collections.newBuffer[CourseHour]
-  /** 周数 */
+  /** 实践周 */
   var weeks: Int = _
   /** 周课时 */
   var weekHours: Int = _
-  /** 院系 */
-  var department: Department = _
+
   /** 考试方式 */
   var examMode: ExamMode = _
   /** 成绩记录方式 */
@@ -65,8 +70,9 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   var calgp: Boolean = _
   /** 是否有补考 */
   var hasMakeup: Boolean = _
+
   /** 课程分类 */
-  var generalType: Option[CourseGeneralType] = None
+  var categories = Collections.newSet[CourseCategory]
   /** 课程分组 */
   var cluster: Option[CourseCluster] = None
   /** 课程建设过程 */
@@ -130,8 +136,8 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
 
   def getWeek(grade: Grade, nature: TeachingNature): Option[Int] = {
     journals.find(_.contains(grade)) match
-      case None => hours.find(_.nature == nature).map(_.weeks)
-      case Some(j) => j.getWeek(nature)
+      case None => if (weeks > 0) then Some(this.weeks) else None
+      case Some(j) => if (j.weeks > 0) then Some(j.weeks) else None
   }
 
   def creditsInfo: String = {
@@ -162,6 +168,25 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
     }
   }
 
+  def updateHour(nature: TeachingNature, hours: Int): Unit = {
+    this.hours.find(_.nature == nature) match {
+      case None =>
+        if (hours > 0) {
+          val nh = new CourseHour
+          nh.nature = nature
+          nh.creditHours = hours
+          nh.course = this
+          this.hours.addOne(nh)
+        }
+      case Some(h) =>
+        if (hours > 0) {
+          h.creditHours = hours
+        } else {
+          this.hours.subtractOne(h)
+        }
+    }
+  }
+
   def description: String = {
     s"$code $name"
   }
@@ -175,7 +200,6 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
 class CourseHour extends LongId {
   var course: Course = _
   var creditHours: Int = _
-  var weeks: Int = _
   var nature: TeachingNature = _
 }
 

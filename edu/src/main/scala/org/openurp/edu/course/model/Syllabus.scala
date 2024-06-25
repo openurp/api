@@ -37,7 +37,7 @@ class Syllabus extends LongId with Updated with TemporalOn {
   var course: Course = _
 
   /** 语种 */
-  var locale: Locale = _
+  var docLocale: Locale = _
 
   /** 简介 */
   var description: String = _
@@ -160,6 +160,9 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 发布时间 */
   var publishAt: Option[Instant] = None
 
+  /** 驳回意见 */
+  var opinions: Option[String] = None
+
   def teachingMethods: Seq[String] = {
     methods match
       case null => Seq.empty
@@ -179,10 +182,6 @@ class Syllabus extends LongId with Updated with TemporalOn {
   def getCreditHours(nature: TeachingNature): Float = {
     topics.flatMap(t => t.getHour(nature).map(_.creditHours)).sum
       + examHours.find(_.nature == nature).map(_.creditHours).getOrElse(0f)
-  }
-
-  def getTopicWeeks(nature: TeachingNature): Int = {
-    topics.flatMap(t => t.getHour(nature).map(_.weeks)).sum
   }
 
   def getText(name: String): Option[SyllabusText] = {

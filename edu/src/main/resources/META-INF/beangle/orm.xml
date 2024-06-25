@@ -3,6 +3,7 @@
   <mapping class="org.openurp.edu.clazz.model.DefaultMapping" name="clazz"/>
   <mapping class="org.openurp.edu.clazz.config.DefaultMapping" name="clazz.config"/>
   <mapping class="org.openurp.edu.course.model.DefaultMapping" name="course"/>
+  <mapping class="org.openurp.edu.course.flow.DefaultMapping" name="course.flow"/>
   <mapping class="org.openurp.edu.exam.model.DefaultMapping" name="exam"/>
   <mapping class="org.openurp.edu.exam.config.DefaultMapping" name="exam.config"/>
   <mapping class="org.openurp.edu.exam.flow.DefaultMapping" name="exam.flow"/>
