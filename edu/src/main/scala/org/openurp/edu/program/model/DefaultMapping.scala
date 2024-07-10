@@ -27,10 +27,13 @@ class DefaultMapping extends MappingModule {
       e.name is length(100)
       e.termCampuses is depends("program")
       e.labels is depends("program")
+      e.prerequisites is depends("program")
+      e.opinions is length(200)
       e.remark is length(500)
     }
 
     bind[ProgramCourseLabel]
+    bind[ProgramPrerequisite]
     bind[TermCampus]
 
     bind[AbstractCourseGroup].declare { e =>
@@ -46,11 +49,14 @@ class DefaultMapping extends MappingModule {
       e.planCourses is depends(classOf[MajorPlanCourse], "group")
       e.termCredits is length(40)
       e.givenName is length(100)
+      e.hourRatios is length(50)
+      e.departments is length(100)
       index("", false, e.plan)
       index("", false, e.parent)
     }
 
     bind[MajorPlan].declare { e =>
+      e.hourRatios is length(50)
       e.groups is depends(classOf[MajorCourseGroup], "plan")
       index("", false, e.program)
     }
@@ -71,11 +77,13 @@ class DefaultMapping extends MappingModule {
       e.planCourses is depends(classOf[ExecutivePlanCourse], "group")
       e.termCredits is length(40)
       e.givenName is length(100)
+      e.hourRatios is length(50)
       index("", false, e.plan)
       index("", false, e.parent)
     }
 
     bind[ExecutivePlan].declare { e =>
+      e.hourRatios is length(50)
       e.groups is depends(classOf[ExecutiveCourseGroup], "plan")
       index("", false, e.program)
     }
@@ -115,11 +123,13 @@ class DefaultMapping extends MappingModule {
       e.parent is target[StdCourseGroup]
       e.children is depends(classOf[StdCourseGroup], "parent")
       e.planCourses is depends(classOf[StdPlanCourse], "group")
+      e.hourRatios is length(50)
       index("", false, e.parent)
       index("", false, e.plan)
     }
 
     bind[StdPlan].declare { e =>
+      e.hourRatios is length(50)
       e.groups is depends(classOf[StdCourseGroup], "plan")
       index("", true, e.std)
     }

@@ -129,6 +129,7 @@ create table code.graduate_objectives (id integer not null, begin_on date not nu
 create table code.course_ranks (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 
 insert into code.course_ranks(id,code,name,begin_on,updated_at) values(1,'1','必修',current_date,current_timestamp);
+insert into code.course_ranks(id,code,name,begin_on,updated_at) values(2,'2','选修',current_date,current_timestamp);
 insert into code.course_ranks(id,code,name,begin_on,updated_at) values(3,'3','限选',current_date,current_timestamp);
 insert into code.course_ranks(id,code,name,begin_on,updated_at) values(4,'4','自由选修',current_date,current_timestamp);
 

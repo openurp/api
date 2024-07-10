@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
 import org.openurp.base.edu.model.{Course, Direction, Major}
 import org.openurp.base.model.{AuditStatus, Campus, Department, EduLevelBased}
 import org.openurp.base.std.model.Grade
-import org.openurp.code.edu.model.{Certificate, CourseType, Degree, StudyType}
+import org.openurp.code.edu.model.*
 import org.openurp.code.std.model.StdType
 
 import scala.collection.mutable
@@ -88,14 +88,24 @@ class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBase
   /** 分类标签 */
   var labels: mutable.Buffer[ProgramCourseLabel] = Collections.newBuffer[ProgramCourseLabel]
 
+  /** 先修课程 */
+  var prerequisites: mutable.Buffer[ProgramPrerequisite] = Collections.newBuffer[ProgramPrerequisite]
+
   /** 审核状态 */
   var status: AuditStatus = AuditStatus.Draft
+
+  /** 审核意见 */
+  var opinions: Option[String] = None
 
   def campuses: Set[Campus] = {
     termCampuses.map(_.campus).toSet
   }
 
   def terms: Short = (endTerm - startTerm + 1).asInstanceOf[Short]
+
+  def courseTags: Map[Course, Set[ProgramCourseTag]] = {
+    labels.groupBy(x => x.course).map(x => (x._1, x._2.map(_.tag).toSet))
+  }
 
   def disciplineCode: String = {
     major.getDisciplineCode(beginOn)

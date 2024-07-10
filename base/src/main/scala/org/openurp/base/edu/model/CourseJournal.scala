@@ -22,34 +22,29 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{EnNamed, Named, TemporalOn, Updated}
 import org.openurp.base.model.Department
 import org.openurp.base.std.model.Grade
-import org.openurp.code.edu.model.{ExamMode, TeachingNature}
+import org.openurp.code.edu.model.{CourseTag, ExamMode, TeachingNature}
 
 import java.time.{Instant, LocalDate}
 
 /** 课程变化日志
  */
 class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
-
   /** 课程 */
   var course: Course = _
-
   /** 开课部门 */
   var department: Department = _
-
   /** 考核方式 */
   var examMode: ExamMode = _
-
   /** 学时/总课时 */
   var creditHours: Int = _
-
   /** 周数 */
   var weeks: Int = _
-
   /** 周课时 */
   var weekHours: Int = _
-
   /** 分类课时 */
   var hours = Collections.newBuffer[CourseJournalHour]
+  /** 课程标签 */
+  var tags = Collections.newSet[CourseTag]
 
   def this(course: Course, beginOn: LocalDate) = {
     this()
@@ -64,6 +59,7 @@ class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
     course.hours foreach { h =>
       this.hours.addOne(new CourseJournalHour(this, h.nature, h.creditHours))
     }
+    this.tags.addAll(course.tags)
     this.beginOn = beginOn
     this.updatedAt = Instant.now
   }
@@ -92,6 +88,14 @@ class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
   }
 
   def contains(grade: Grade): Boolean = this.within(grade.beginOn)
+
+  /** 学时是否一致
+   *
+   * @return
+   */
+  def creditHourIdentical: Boolean = {
+    hours.map(_.creditHours).sum == creditHours
+  }
 }
 
 class CourseJournalHour extends LongId {

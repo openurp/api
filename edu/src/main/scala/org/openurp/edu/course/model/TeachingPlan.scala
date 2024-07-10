@@ -104,30 +104,33 @@ class TeachingPlan extends LongId with Updated {
   }
 
   def copyTo(p: TeachingPlan): Unit = {
-    p.sections.clear()
+    val sectionNames = this.sections.map(_.name).toSet
+    val abandons = p.sections.filter(x => !sectionNames.contains(x.name))
+    p.sections.subtractAll(abandons)
+
     this.sections foreach { h =>
-      val nh = new TeachingPlanSection
-      nh.plan = p
-      nh.name = h.name
-      nh.creditHours = h.creditHours
-      p.sections.addOne(nh)
+      p.sections.find(x => x.name == h.name) match
+        case None => p.sections.addOne(new TeachingPlanSection(p, h.name, h.creditHours))
+        case Some(nh) => nh.creditHours = h.creditHours
     }
-    p.lessons.clear()
+
     p.writer = this.writer
     p.office = this.office
     p.reviewer = this.reviewer
     p.lessonHours = this.lessonHours
     p.examHours = this.examHours
-    this.lessons foreach { l =>
-      val nl = new Lesson
-      nl.idx = l.idx
+
+    val targetLessons = p.lessons.sortBy(_.idx)
+    var i = 0
+    this.lessons.sortBy(_.idx) foreach { l =>
+      val nl = if i < targetLessons.length then targetLessons(i) else new Lesson(p, i + 1)
       nl.contents = l.contents
       nl.homework = l.homework
       nl.learningHours = l.learningHours
       nl.learning = l.learning
       nl.forms = l.forms
-      nl.plan = p
-      p.lessons.addOne(nl)
+      if (!nl.persisted) p.lessons.addOne(nl)
+      i += 1
     }
     p.updatedAt = Instant.now
   }

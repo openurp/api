@@ -23,6 +23,7 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[NewCourseApply].declare { e =>
+      e.opinions is length(200)
       e.hours is depends("courseApply")
     }
     bind[NewCourseApplyHour]

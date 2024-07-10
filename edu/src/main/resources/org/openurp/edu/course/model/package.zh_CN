@@ -98,6 +98,7 @@ SyllabusExperiment.creditHours=学时
 CourseTask=课程任务
 CourseTask.teachers=课程任务-任课教师
 CourseTask.syllabusRequired=是否需要大纲
+CourseTask.renewSyllabus=是否需要修订大纲
 
 SyllabusCase=教学大纲-案例
 SyllabusCase.idx=序号
@@ -115,7 +116,7 @@ Lesson.homework=作业
 Lesson.forms=教学方法
 Lesson.learning=自主学习内容
 Lesson.learningHours=自主学习课时
-Lesson.hours=课时
+Lesson.creditHours=课时
 Lesson.exam=是否考试
 
 TeachingPlan=授课计划

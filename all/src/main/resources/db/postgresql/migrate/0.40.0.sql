@@ -1,3 +1,6 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.40.0',now(),'改进课程和培养方案');
+
 create table base.courses_tags (course_id bigint not null, course_tag_id integer not null);
 create table base.course_journal_hours (id bigint not null, credit_hours integer default 0 not null, journal_id bigint not null, nature_id integer not null, weeks integer default 0 not null);
 create table base.course_journals (id bigint not null, course_id bigint not null, course_type_id integer not null, credit_hours integer default 0 not null, department_id integer not null, exam_mode_id integer not null, grade_id bigint not null, updated_at timestamptz default current_timestamp not null, week_hours integer default 0 not null, weeks integer default 0 not null);
@@ -19,6 +22,9 @@ alter table edu.teaching_plans add column opinions varchar(300);
 alter table edu.syllabuses add column opinions varchar(300);
 alter table edu.teaching_plans add column lesson_hours int4 default 0;
 alter table edu.teaching_plans add column exam_hours int4 default 0;
+alter table base.courses add cluster_id bigint;
+alter table base.courses add module_id bigint;
+alter table base.courses add rank_id bigint;
 
 alter table edu.course_tasks add syllabus_required boolean default true;
 
@@ -135,13 +141,10 @@ alter table edu.major_plan_courses drop exam_mode_id cascade;
 
 alter table edu.major_course_groups drop allow_unplanned cascade;
 alter table edu.major_course_groups drop auto_addup cascade;
-alter table edu.major_course_groups drop required cascade;
 alter table edu.std_course_groups drop allow_unplanned cascade;
 alter table edu.std_course_groups drop auto_addup cascade;
-alter table edu.std_course_groups drop required cascade;
 alter table edu.executive_course_groups drop allow_unplanned cascade;
 alter table edu.executive_course_groups drop auto_addup cascade;
-alter table edu.executive_course_groups drop required cascade;
 
 alter table edu.major_course_groups alter rank_id set not null;
 alter table edu.executive_course_groups alter rank_id set not null;

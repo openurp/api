@@ -18,9 +18,9 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.Updated
 import org.openurp.base.edu.model.Course
-import org.openurp.code.edu.model.{CourseType, EducationLevel}
+import org.openurp.code.edu.model.{CourseType, EducationLevel, TeachingNature}
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
@@ -38,6 +38,10 @@ trait AbstractCoursePlan extends LongId, CoursePlan, Updated {
   var groups: mutable.Buffer[CourseGroup] = new ListBuffer[CourseGroup]
   /** 要求学分 */
   var credits: Float = _
+  /** 课时 */
+  var creditHours: Int = _
+  /** 课时比例 */
+  var hourRatios: String = _
 
   override def level: EducationLevel = program.level
 
@@ -75,4 +79,7 @@ trait AbstractCoursePlan extends LongId, CoursePlan, Updated {
     }
   }
 
+  def getHours(natures: collection.Seq[TeachingNature]): Map[TeachingNature, Int] = {
+    CreditHours.toHours(creditHours, hourRatios, natures, false)
+  }
 }

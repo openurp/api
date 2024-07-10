@@ -61,6 +61,8 @@ class NewCourseApply extends LongId, ProjectBased, Updated, TemporalOn, Named, E
   var status: AuditStatus = _
   /** 申请人 */
   var applicant: User = _
+  /** 审核意见 */
+  var opinions: Option[String] = None
 }
 
 @flow

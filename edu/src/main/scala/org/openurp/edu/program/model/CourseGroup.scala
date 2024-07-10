@@ -54,7 +54,7 @@ trait CourseGroup extends LongIdEntity, Ordered[CourseGroup] {
   def creditHours: Int
 
   /** 课时比例 */
-  def hourRatios: Option[String]
+  def hourRatios: String
 
   /** 组内课程 */
   def planCourses: collection.Seq[PlanCourse]
@@ -96,6 +96,4 @@ trait CourseGroup extends LongIdEntity, Ordered[CourseGroup] {
   def isLeaf: Boolean
 
   def getHours(natures: collection.Seq[TeachingNature]): Map[TeachingNature, Int]
-
-  def getHourRatioMap(natures: collection.Seq[TeachingNature]): Map[TeachingNature, Float]
 }

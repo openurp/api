@@ -190,6 +190,14 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   def description: String = {
     s"$code $name"
   }
+
+  /** 学时是否一致
+   *
+   * @return
+   */
+  def creditHourIdentical: Boolean = {
+    hours.map(_.creditHours).sum == creditHours
+  }
 }
 
 /**

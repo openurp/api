@@ -19,6 +19,7 @@ Program.degreeCourses=学位课程
 Program.degreeCertificates=学位要求证书
 Program.startTerm=起始学期
 Program.endTerm=结束学期
+Program.opinions=审核意见
 
 MajorCourseGroup=专业计划课程组
 MajorCourseGroup.givenName=自定义别名
@@ -83,6 +84,8 @@ AbstractCourseGroup.required=是否必须完成
 AbstractCoursePlan=抽象课程方案
 AbstractCoursePlan.groups=课程组
 AbstractCoursePlan.credits=要求学分
+AbstractCoursePlan.creditHours=要求学时
+AbstractCoursePlan.hourRatios=学时比例
 AbstractCoursePlan.remark=备注
 
 AbstractPlanCourse=抽象计划内课程
@@ -168,3 +171,6 @@ ProgramCourseOutcome.outcomes=对应毕业要求
 ProgramOutline=培养方案大纲
 
 ProgramCourseLabel=培养方案方案课程标签
+ProgramPrerequisite=培养方案先修课程
+ProgramPrerequisite.course=课程
+ProgramPrerequisite.prerequisite=先修课程

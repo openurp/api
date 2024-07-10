@@ -50,23 +50,19 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
   /** 周数 */
   var weeks: Option[Int] = None
   /** 课时比例 */
-  var hourRatios: Option[String] = None
+  var hourRatios: String = _
   /** 要求完成组数(默认是全部子组) */
   var subCount: Short = -1
   /** 学期学分分布 */
   var termCredits: String = _
   /** 课程属性 */
   var rank: Option[CourseRank] = None
+  /** 是否必选 */
+  var required: Boolean = true
   /** 开课学期 */
   var terms: Terms = Terms.empty
   /** 开课阶段 */
   var stage: Option[CalendarStage] = None
-
-  def required: Boolean = {
-    rank match
-      case Some(r) => r.id == CourseRank.Compulsory
-      case None => true
-  }
 
   def autoAddup: Boolean = {
     rank match
@@ -174,37 +170,11 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
   }
 
   override def getHours(natures: collection.Seq[TeachingNature]): Map[TeachingNature, Int] = {
-    val natureMap = natures.map(x => (x.id.toString, x)).toMap
-
-    val ratioMap = getHourRatioMap(natures)
-    if (ratioMap.isEmpty) {
-      val targetNature =
-        if (this.courseType.practical) natures.find(_.id == TeachingNature.Practice).get else natures.find(_.id == TeachingNature.Theory).get
-      Map(targetNature -> creditHours)
+    if (null == courseType) {
+      Map.empty
     } else {
-      ratioMap.map(e => (e._1, (e._2 * creditHours).toInt))
+      CreditHours.toHours(creditHours, hourRatios, natures, this.courseType.practical)
     }
-  }
-
-  override def getHourRatioMap(natures: collection.Seq[TeachingNature]): Map[TeachingNature, Float] = {
-    hourRatios match
-      case None => Map.empty
-      case Some(ratios) =>
-        val natureMap = natures.map(x => (x.id.toString, x)).toMap
-        val ratioMap = Collections.newMap[TeachingNature, Float]
-        var sum = 0f
-        for (r <- Strings.split(ratios, ",")) {
-          val natureId = Strings.substringBefore(r, ":")
-          val value = Strings.substringAfter(r, ":").toFloat
-          sum += value
-          natureMap.get(natureId) foreach { n =>
-            ratioMap.put(n, value)
-          }
-        }
-        for (n <- ratioMap.keySet) {
-          ratioMap.put(n, ratioMap(n) / sum)
-        }
-        ratioMap.toMap
   }
 
   def isTermCreditsEmpty: Boolean = {

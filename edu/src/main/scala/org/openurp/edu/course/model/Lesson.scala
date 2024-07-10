@@ -26,17 +26,23 @@ import org.openurp.edu.clazz.model.Subclazz
  */
 class Lesson extends LongId, Remark {
 
+  def this(plan: TeachingPlan, idx: Int) = {
+    this()
+    this.plan = plan
+    this.idx = idx
+  }
+
   /** 授课计划 */
   var plan: TeachingPlan = _
 
   /** 针对授课小班 */
   var subclazz: Option[Subclazz] = None
 
-  /** 序号 */
+  /** 序号(从1开始) */
   var idx: Int = _
 
-  /** 课时 */
-  var hours: Int = _
+  /** 学时 */
+  var creditHours: Int = _
 
   /** 内容 */
   var contents: String = _
@@ -51,7 +57,7 @@ class Lesson extends LongId, Remark {
   var learning: Option[String] = None
 
   /** 自主学习课时 */
-  var learningHours: Int = _
+  var learningHours: Float = _
 
   /** 是否是考核 */
   var exam: Boolean = _

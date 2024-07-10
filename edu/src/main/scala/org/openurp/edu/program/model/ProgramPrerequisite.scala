@@ -15,23 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
+package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.TemporalOn
-import org.openurp.base.hr.model.Teacher
-import org.openurp.code.edu.model.EducationLevel
+import org.openurp.base.edu.model.Course
 
-/** 专业负责人
+/** 培养方案先修课程
  */
-class MajorDirector extends LongId, TemporalOn {
-  /** 培养层次 */
-  var level: EducationLevel = _
-  /** 专业 */
-  var major: Major = _
-  /** 专业方向 */
-  var direction: Option[Direction] = None
-  /** 负责人 */
-  var director: Option[Teacher] = None
+class ProgramPrerequisite extends LongId {
 
+  def this(program: Program, course: Course, prerequisite: Course) = {
+    this()
+    this.program = program
+    this.course = course
+    this.prerequisite = prerequisite
+  }
+
+  var program: Program = _
+
+  var course: Course = _
+
+  var prerequisite: Course = _
 }

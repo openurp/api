@@ -19,8 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.lang.time.WeekState
 import org.beangle.data.model.LongIdEntity
-import org.openurp.base.edu.model.{Course, Terms}
-import org.openurp.base.model.CalendarStage
+import org.openurp.base.edu.model.{Course, CourseJournal, Terms}
 
 /**
  * 培养计划中的课程.<import org.openurp.edu.program.plan.model.CourseGroup
@@ -53,6 +52,11 @@ trait PlanCourse extends LongIdEntity {
   def idx: Short
 
   def matchTerm(terms: Terms): Boolean
+
+  /** 查看对应的课程记录 */
+  def journal: CourseJournal = {
+    course.getJournal(group.plan.program.grade)
+  }
 }
 
 /**

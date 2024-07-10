@@ -14,6 +14,7 @@ NewCourseApply.endOn=失效日期
 NewCourseApply.courseType=建议课程类别
 NewCourseApply.status=状态
 NewCourseApply.tags=标签
+NewCourseApply.opinions=审核意见
 
 NewCourseApplyHour=新开课程课时
 NewCourseApplyHour.creditHours=学时

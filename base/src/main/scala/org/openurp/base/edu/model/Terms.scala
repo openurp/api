@@ -20,12 +20,16 @@ package org.openurp.base.edu.model
 import org.beangle.commons.lang.annotation.value
 import org.beangle.commons.lang.{Numbers, Strings}
 
+import scala.annotation.targetName
+
 object Terms {
   val empty = new Terms(0)
 
-  def apply(terms: String): Terms = {
-    if (Strings.isNotBlank(terms) && "*" != terms) {
+  def apply(termSeq: String): Terms = {
+    if (Strings.isNotBlank(termSeq) && "*" != termSeq) {
       var value = 0
+      var terms = termSeq
+      terms = Strings.replace(terms, "+", ",")
       Strings.split(terms, ",") foreach { t =>
         if (t.contains("-")) {
           val start = Strings.substringBefore(t, "-").trim().toInt
@@ -33,11 +37,6 @@ object Terms {
           (start to end) foreach { i =>
             value |= (1 << i)
           }
-        } else if (t.contains("+")) {
-          val start = Strings.substringBefore(t, "+").trim().toInt
-          val end = Strings.substringAfter(t, "+").trim().toInt
-          value |= (1 << start)
-          value |= (1 << end)
         } else {
           value |= 1 << Numbers.toInt(t)
         }
@@ -60,6 +59,11 @@ class Terms(val value: Int) extends Ordered[Terms] with Serializable {
 
   def contains(term: Int): Boolean = {
     (value & (1 << term)) > 0
+  }
+
+  @targetName("add")
+  def +(t: Terms): Terms = {
+    new Terms(this.value | t.value)
   }
 
   def first: Int = {

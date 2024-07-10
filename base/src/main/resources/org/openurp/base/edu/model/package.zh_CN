@@ -40,6 +40,7 @@ CourseJournal.creditHours=学时
 CourseJournal.weekHours=周课时
 CourseJournal.weeks=周数
 CourseJournal.grade=年级
+CourseJournal.tags=课程标签
 
 CourseJournalHour=课程记录-学时
 CourseJournalHour.creditHours=学时

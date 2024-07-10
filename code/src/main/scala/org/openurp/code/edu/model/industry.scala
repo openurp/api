@@ -313,7 +313,7 @@ class ExamMode extends CodeBean {
 
 object ExamMode {
   val Exam = 1 //考试
-  val Check = 3 //考查
+  val Check = 2 //考查
 }
 
 /**
