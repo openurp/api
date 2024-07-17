@@ -26,15 +26,25 @@ class SyllabusMethodDesign extends LongId, Named {
 
   var syllabus: Syllabus = _
 
-  /**序号*/
+  /** 序号 */
   var idx: Int = _
 
-  /**内容*/
+  /** 内容 */
   var contents: String = _
 
-  /**包含案例*/
+  /** 包含案例 */
   var hasCase: Boolean = _
 
-  /**包含实验*/
+  /** 包含实验 */
   var hasExperiment: Boolean = _
+
+  def this(syllabus: Syllabus, idx: Int, name: String, contents: String, hasCase: Boolean, hasExperiment: Boolean) = {
+    this()
+    this.syllabus = syllabus
+    this.idx = idx
+    this.name = name
+    this.contents = contents
+    this.hasCase = hasCase
+    this.hasExperiment = hasExperiment
+  }
 }

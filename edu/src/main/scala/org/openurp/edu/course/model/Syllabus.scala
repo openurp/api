@@ -212,3 +212,115 @@ class Syllabus extends LongId with Updated with TemporalOn {
     assessments.find(x => x.gradeType.id == GradeType.Usual && x.component.nonEmpty && x.idx == index)
   }
 }
+
+object Syllabus {
+
+  def copy(syllabus: Syllabus, semester: Semester, course: Course): Syllabus = {
+    val newer = new Syllabus
+    newer.semester = semester
+    newer.beginOn = semester.beginOn
+    newer.docLocale = syllabus.docLocale
+    newer.status = AuditStatus.Draft
+
+    //copy course info
+    newer.course = course
+    val journal =
+      course.journals.find(_.within(semester.beginOn)) match
+        case None => new CourseJournal(course, semester.beginOn)
+        case Some(j) => j
+    newer.department = journal.department
+    newer.creditHours = journal.creditHours
+    syllabus.hours foreach { h =>
+      val nh = new SyllabusCreditHour(newer, h.nature, h.creditHours, h.weeks)
+      newer.hours.addOne(nh)
+    }
+    newer.learningHours = syllabus.learningHours
+    newer.examCreditHours = syllabus.examCreditHours
+    syllabus.examHours foreach { eh =>
+      val neh = new SyllabusExamHour(newer, eh.nature, eh.creditHours)
+      newer.examHours.addOne(neh)
+    }
+
+    //copy syllabus basis info
+    newer.rank = syllabus.rank
+    newer.module = syllabus.module
+    newer.stage = syllabus.stage
+    newer.nature = syllabus.nature
+    newer.examMode = syllabus.examMode
+    newer.gradingMode = syllabus.gradingMode
+    newer.methods = syllabus.methods
+    newer.description = syllabus.description
+    newer.subsequents = syllabus.subsequents
+    newer.prerequisites = syllabus.prerequisites
+    newer.levels.addAll(syllabus.levels)
+    newer.majors.addAll(syllabus.majors)
+
+    //copy objectives
+    syllabus.objectives foreach { obj =>
+      val nobj = new SyllabusObjective(newer, obj.code, obj.name, obj.contents)
+      newer.objectives.addOne(nobj)
+    }
+    //copy outcomes
+    syllabus.outcomes foreach { oc =>
+      val noc = new SyllabusOutcome(newer, oc.idx, oc.title, oc.contents, oc.courseObjectives)
+      newer.outcomes.addOne(noc)
+    }
+    //copy topics
+    syllabus.topics foreach { topic =>
+      val nt = new SyllabusTopic
+      nt.idx = topic.idx
+      nt.exam = topic.exam
+      nt.name = topic.name
+      nt.contents = topic.contents
+      nt.learningHours = topic.learningHours
+      nt.methods = topic.methods
+      nt.objectives = topic.objectives
+      topic.elements foreach { ele =>
+        val ne = new SyllabusTopicElement(nt, ele.label, ele.contents)
+        nt.elements.addOne(ne)
+      }
+      topic.hours foreach { h =>
+        val nh = new SyllabusTopicHour(nt, h.nature, h.creditHours)
+        nt.hours.addOne(nh)
+      }
+      nt.syllabus = newer
+      newer.topics.addOne(nt)
+    }
+
+    // copy designs
+    syllabus.designs foreach { d =>
+      val nd = new SyllabusMethodDesign(newer, d.idx, d.name, d.contents, d.hasCase, d.hasExperiment)
+      newer.designs.addOne(nd)
+    }
+    syllabus.cases foreach { c =>
+      val nc = new SyllabusCase(newer, c.idx, c.name)
+      newer.cases.addOne(nc)
+    }
+    syllabus.experiments foreach { e =>
+      val ne = new SyllabusExperiment(newer, e.idx, e.name, e.creditHours, e.experimentType, e.online)
+      newer.experiments.addOne(ne)
+    }
+    //copy assessment
+    syllabus.assessments foreach { a =>
+      val na = new SyllabusAssessment(newer, a.gradeType, a.component)
+      na.idx = a.idx
+      na.description = a.description
+      na.scorePercent = a.scorePercent
+      na.scoreTable = a.scoreTable
+      na.assessCount = a.assessCount
+      na.objectivePercents = a.objectivePercents
+      newer.assessments.addOne(na)
+    }
+    syllabus.texts foreach { t =>
+      val nt = new SyllabusText(newer, t.indexno, t.name, t.contents)
+      newer.texts.addOne(nt)
+    }
+    //copy resources
+    newer.materials = syllabus.materials
+    newer.bibliography = syllabus.bibliography
+    newer.website = syllabus.website
+    newer.textbooks.addAll(syllabus.textbooks)
+    newer.updatedAt = Instant.now
+    newer
+  }
+}
