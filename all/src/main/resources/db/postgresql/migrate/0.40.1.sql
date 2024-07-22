@@ -1,4 +1,4 @@
-insert into base.versions(id,version,updated_at,description)
+﻿insert into base.versions(id,version,updated_at,description)
 values(next_id('base.versions'),'0.40.1',now(),'改进课程和培养方案2');
 
 --code

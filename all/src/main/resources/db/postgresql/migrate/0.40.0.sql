@@ -146,9 +146,6 @@ alter table edu.std_course_groups drop auto_addup cascade;
 alter table edu.executive_course_groups drop allow_unplanned cascade;
 alter table edu.executive_course_groups drop auto_addup cascade;
 
-alter table edu.major_course_groups alter rank_id set not null;
-alter table edu.executive_course_groups alter rank_id set not null;
-alter table edu.std_course_groups alter rank_id set not null;
 alter table edu.major_plan_courses alter idx set not null;
 alter table edu.executive_plan_courses alter idx set not null;
 alter table edu.std_plan_courses alter idx set not null;
