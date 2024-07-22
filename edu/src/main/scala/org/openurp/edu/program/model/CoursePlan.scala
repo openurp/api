@@ -86,6 +86,10 @@ trait CoursePlan extends LongIdEntity, Cloneable {
 
   def depth: Int = CoursePlan.calcLevel(this)
 
+  def startTerm: Int = program.startTerm
+
+  def endTerm: Int = program.endTerm
+
 }
 
 object CoursePlan {
