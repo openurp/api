@@ -19,6 +19,7 @@ package org.openurp.code.job.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+
 /**
  * 职务类别
  */
@@ -57,6 +58,7 @@ class PostGrade extends CodeBean
 /**
  * 职称
  * 本代码引自GB/T 8561-2001，
+ *
  * @author chaostone
  * @since 2005-9-7
  */
@@ -65,5 +67,5 @@ class ProfessionalTitle extends CodeBean {
   /**
    * 职称等级
    */
-  var grade: ProfessionalGrade = _
+  var grade: Option[ProfessionalGrade] = None
 }
