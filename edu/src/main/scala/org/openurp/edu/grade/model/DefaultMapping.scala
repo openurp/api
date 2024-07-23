@@ -46,7 +46,6 @@ class DefaultMapping extends MappingModule {
       index("", false, e.std)
       index("", false, e.clazz)
       index("", false, e.project)
-
     }
 
     bind[ExamGrade].declare { e =>

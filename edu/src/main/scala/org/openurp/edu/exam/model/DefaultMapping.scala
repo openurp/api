@@ -39,7 +39,6 @@ class DefaultMapping extends MappingModule {
 
     bind[ExamTask].declare { e =>
       e.activities is depends("task")
-      index("", true, e.project, e.semester, e.code)
       index("", false, e.semester)
       index("", false, e.group)
     }

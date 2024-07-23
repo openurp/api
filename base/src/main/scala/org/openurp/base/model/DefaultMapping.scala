@@ -124,7 +124,7 @@ class DefaultMapping extends MappingModule {
     bind[UserGroup] declare { e =>
       e.name is length(100)
       e.children is depends("parent")
-      index("idx_group", true, e.school, e.code)
+      index("", true, e.school, e.code)
     }
 
     bind[UserGroupMember].declare { e =>

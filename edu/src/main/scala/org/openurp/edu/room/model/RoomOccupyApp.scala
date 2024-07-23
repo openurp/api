@@ -26,7 +26,7 @@ import org.beangle.data.model.pojo.Named
 class RoomOccupyApp extends LongId with Named {
 
   /** 活动明细url */
-  var activityUrl: String = _
+  var activityUrl: Option[String] = None
 
   def this(id: Long) = {
     this()

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.40.1">
+<db engine="PostgreSQL" version="0.40.3">
   <schemas>
     <schema name="base">
       <tables>
@@ -896,7 +896,7 @@
             <foreign-key name="fk_stekawubheoexvpodfhpi4rfq" column="calendar_id" referenced-table="base.calendars" referenced-column="id"/>
             <foreign-key name="fk_2ely3u2yvcgd00u5phw3htocy" column="school_id" referenced-table="base.schools" referenced-column="id"/>
             <foreign-key name="fk_qaxsrgi2qwv4tap2mfb9ca7i6" column="category_id" referenced-table="code.edu_categories" referenced-column="id"/>
-            <unique-key name="projects_code_key" columns="code"/>
+            <unique-key name="uk_clujw4wu21d33ssgde022aymk" columns="code"/>
           </constraints>
         </table>
         <table name="projects_campuses" comment="项目-校区列表@common">
@@ -1053,7 +1053,7 @@
             <foreign-key name="fk_i0amwk9vd4lhgjtb2c943edtf" column="division_id" referenced-table="code.divisions" referenced-column="id"/>
             <foreign-key name="fk_g91v3wtr0hm2wnlhslybilkph" column="institution_id" referenced-table="code.institutions" referenced-column="id"/>
             <foreign-key name="fk_ewpo25xxpkxlls6vv52k62vi8" column="category_id" referenced-table="code.institution_categories" referenced-column="id"/>
-            <unique-key name="schools_code_key" columns="code"/>
+            <unique-key name="uk_m5x8j64nhdcprk9ghc6622swx" columns="code"/>
           </constraints>
         </table>
         <table name="secretaries" comment="教学秘书@hr">
@@ -1570,7 +1570,7 @@
             <foreign-key name="fk_ps8lxr5y8ayileomp50g5p84v" column="parent_id" referenced-table="base.user_groups" referenced-column="id"/>
             <foreign-key name="fk_p52a4ej904fycrv2r4us8grgr" column="manager_id" referenced-table="base.users" referenced-column="id"/>
             <foreign-key name="fk_iy0l5y1wvvx5ha19ag7pg2lvx" column="school_id" referenced-table="base.schools" referenced-column="id"/>
-            <unique-key name="idx_group" columns="school_id,code"/>
+            <unique-key name="uk_n3w9nvii9wui5ldmpdvtyooe1" columns="school_id,code"/>
           </constraints>
           <indexes>
             <index name="idx_psg4y38f0pvgmc8v0axsp9ac0" columns="parent_id"/>
@@ -2268,7 +2268,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_q51xfy75i97otjcrinh3ioojl" columns="id"/>
-            <unique-key name="academic_levels_code_key" columns="code"/>
+            <unique-key name="uk_h35t9eht6ihmhsi6ttx0xu5u0" columns="code"/>
           </constraints>
         </table>
         <table name="activity_types" comment="活动类型@edu">
@@ -2284,7 +2284,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_cmb1g96s43erp3tu63b3t5c3r" columns="id"/>
-            <unique-key name="activity_types_code_key" columns="code"/>
+            <unique-key name="uk_40dp7vraisnxtj04mahsegm5f" columns="code"/>
           </constraints>
         </table>
         <table name="admission_types" comment="录取类别@edu">
@@ -2300,7 +2300,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_a6q355jjrx7gsqp1gfus8kc09" columns="id"/>
-            <unique-key name="admission_types_code_key" columns="code"/>
+            <unique-key name="uk_s7tnd3ykp7egjddmrhm6hgkdv" columns="code"/>
           </constraints>
         </table>
         <table name="blood_types" comment="血型@person">
@@ -2316,7 +2316,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_s815d9t06dbnd8qc42j9cmbiy" columns="id"/>
-            <unique-key name="blood_types_code_key" columns="code"/>
+            <unique-key name="uk_cw185pu60enlogx4catcnx4x4" columns="code"/>
           </constraints>
         </table>
         <table name="book_award_types" comment="教材获奖类型@edu">
@@ -2332,7 +2332,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_sp9cov5mhwsjgxa1vqprr1opx" columns="id"/>
-            <unique-key name="book_award_types_code_key" columns="code"/>
+            <unique-key name="uk_bmuou3h9n3eql52ix5srm5cm0" columns="code"/>
           </constraints>
         </table>
         <table name="book_categories" comment="图书分类@sin">
@@ -2348,7 +2348,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_lkbpdt3molrx8lrsafy7ter00" columns="id"/>
-            <unique-key name="book_categories_code_key" columns="code"/>
+            <unique-key name="uk_kvn03vqif4d5kvwwdm002an9j" columns="code"/>
           </constraints>
         </table>
         <table name="book_types" comment="教材类型@edu">
@@ -2364,7 +2364,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_fw4f43brmqed51jhonpo6kc1r" columns="id"/>
-            <unique-key name="book_types_code_key" columns="code"/>
+            <unique-key name="uk_bu6h6nn9hx6ns9ujc99of3rmb" columns="code"/>
           </constraints>
         </table>
         <table name="building_types" comment="建筑物用途类型@asset">
@@ -2380,7 +2380,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_9fv09o2b3rsbo9ynt7ik8coj1" columns="id"/>
-            <unique-key name="building_types_code_key" columns="code"/>
+            <unique-key name="uk_68npuqi7xnxjvprta4p402413" columns="code"/>
           </constraints>
         </table>
         <table name="certificate_categories" comment="校外证书类型@edu">
@@ -2396,7 +2396,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_qhwrswgo8sbr37lfry41n9vn6" columns="id"/>
-            <unique-key name="certificate_categories_code_key" columns="code"/>
+            <unique-key name="uk_oh5vjbhf5wqjqj56dk0gb4h0p" columns="code"/>
           </constraints>
         </table>
         <table name="certificates" comment="校外证书@edu">
@@ -2417,7 +2417,7 @@
           <constraints>
             <primary-key name="pk_72jvjm56lmlxv2bscp1j4opmj" columns="id"/>
             <foreign-key name="fk_esh5jna9bcsijcdbupw12wocx" column="category_id" referenced-table="code.certificate_categories" referenced-column="id"/>
-            <unique-key name="certificates_code_key" columns="code"/>
+            <unique-key name="uk_mkx2966u5d4brh13s2rh5qubj" columns="code"/>
           </constraints>
         </table>
         <table name="classroom_types" comment="教室类型@asset">
@@ -2433,7 +2433,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_jqhkc4fgq6xtd8q45034q62h9" columns="id"/>
-            <unique-key name="classroom_types_code_key" columns="code"/>
+            <unique-key name="uk_jnbxj0dxvs5hlql3nfr0x87b3" columns="code"/>
           </constraints>
         </table>
         <table name="clazz_tags" comment="任务标签@edu">
@@ -2450,7 +2450,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_7s2u2syjpg69gecn2ei2l4a37" columns="id"/>
-            <unique-key name="clazz_tags_code_key" columns="code"/>
+            <unique-key name="uk_9de4r9wq9x1xubugtm1nhicos" columns="code"/>
           </constraints>
         </table>
         <table name="compatriot_types" comment="港澳台侨类型@person">
@@ -2466,7 +2466,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_72f3nrjp1nlnvxqku2roeb22x" columns="id"/>
-            <unique-key name="compatriot_types_code_key" columns="code"/>
+            <unique-key name="uk_cvym46ixfc8otn8b8ijmn1g12" columns="code"/>
           </constraints>
         </table>
         <table name="countries" comment="国家地区@geo">
@@ -2485,7 +2485,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_d8ehdli05dbs8aiu5yxq6ek0a" columns="id"/>
-            <unique-key name="countries_code_key" columns="code"/>
+            <unique-key name="uk_5dhgnik9p8t72kaktdb8kd8dt" columns="code"/>
           </constraints>
         </table>
         <table name="course_ability_rates" comment="课程能力等级@edu">
@@ -2504,7 +2504,7 @@
           <constraints>
             <primary-key name="pk_ixp9hq9d3g6ggc30g8py4poq5" columns="id"/>
             <foreign-key name="fk_71dwis01s95gd1p5lu1h76737" column="subject_id" referenced-table="code.course_ability_subjects" referenced-column="id"/>
-            <unique-key name="course_ability_rates_code_key" columns="code"/>
+            <unique-key name="uk_ihcloqdo5h0okf4jchujnfilv" columns="code"/>
           </constraints>
         </table>
         <table name="course_ability_subjects" comment="课程能力等级分类@edu">
@@ -2520,7 +2520,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_l1poef4qsh7ebwdgv3uxkfkif" columns="id"/>
-            <unique-key name="course_ability_subjects_code_key" columns="code"/>
+            <unique-key name="uk_fu4x4wggce13plvehho1gtlpi" columns="code"/>
           </constraints>
         </table>
         <table name="course_award_categories" comment="课程获奖分类@edu">
@@ -2536,7 +2536,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_6pmqguebdtvjxivt8hqmxfyaa" columns="id"/>
-            <unique-key name="course_award_categories_code_key" columns="code"/>
+            <unique-key name="uk_2b1aggre0kouucl9x8rc54p57" columns="code"/>
           </constraints>
         </table>
         <table name="course_award_types" comment="课程获奖类型@edu">
@@ -2554,7 +2554,7 @@
           <constraints>
             <primary-key name="pk_m0n8wfi3rt5detkp55foa7nxp" columns="id"/>
             <foreign-key name="fk_p1i1dn7gojnu8mf3v9di6fypj" column="category_id" referenced-table="code.course_award_categories" referenced-column="id"/>
-            <unique-key name="course_award_types_code_key" columns="code"/>
+            <unique-key name="uk_brsg073sqnh28tt27cfoke6jy" columns="code"/>
           </constraints>
         </table>
         <table name="course_categories" comment="课程分类@edu">
@@ -2576,7 +2576,7 @@
             <primary-key name="pk_oqysoxcp8dqo4wmygpdpatqu4" columns="id"/>
             <foreign-key name="fk_c5k6uw6byn2wdwqo5in0bi5rf" column="parent_id" referenced-table="code.course_categories" referenced-column="id"/>
             <foreign-key name="fk_dcguulpdpunq4d9j3eofi6i2w" column="dimension_id" referenced-table="code.course_category_dimensions" referenced-column="id"/>
-            <unique-key name="course_categories_code_key" columns="code"/>
+            <unique-key name="uk_2f852vsgkix9h35aukbasxq0x" columns="code"/>
           </constraints>
           <indexes>
             <index name="idx_o0yv8bij0wlo1dbukqmgjfd6p" columns="parent_id"/>
@@ -2595,7 +2595,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_qx35190x8nbbv5p2u2x4obn8j" columns="id"/>
-            <unique-key name="course_category_dimensions_code_key" columns="code"/>
+            <unique-key name="uk_itjwhqnqcserqfrssyuemcj3w" columns="code"/>
           </constraints>
         </table>
         <table name="course_modules" comment="课程模块@edu">
@@ -2611,7 +2611,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_980xisiiqjohylc8kw96antk2" columns="id"/>
-            <unique-key name="course_modules_code_key" columns="code"/>
+            <unique-key name="uk_fg6kojr9d970f6o6v5rx9bod" columns="code"/>
           </constraints>
         </table>
         <table name="course_natures" comment="课程性质@edu">
@@ -2628,7 +2628,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_qmyas7mib2hjnqnj6ogbi2n7p" columns="id"/>
-            <unique-key name="course_natures_code_key" columns="code"/>
+            <unique-key name="uk_rw1hkv2df9qb30k705iwphq58" columns="code"/>
           </constraints>
         </table>
         <table name="course_ranks" comment="课程属性@edu">
@@ -2644,7 +2644,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_4vta14i320j1pgah3fdytr3sd" columns="id"/>
-            <unique-key name="course_ranks_code_key" columns="code"/>
+            <unique-key name="uk_ogoy8l02n66ogmy9avptu6hl8" columns="code"/>
           </constraints>
         </table>
         <table name="course_tags" comment="课程标签@edu">
@@ -2662,7 +2662,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_satpi3byt6c5baol3b5m090dh" columns="id"/>
-            <unique-key name="course_tags_code_key" columns="code"/>
+            <unique-key name="uk_kcx6hro48hdaiu9hukowtnkuo" columns="code"/>
           </constraints>
         </table>
         <table name="course_take_types" comment="修读类别@edu">
@@ -2678,7 +2678,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_qkahh6b0jdyhg34u94jvoqseo" columns="id"/>
-            <unique-key name="course_take_types_code_key" columns="code"/>
+            <unique-key name="uk_fgwbxogl105wdygubia4x0ak6" columns="code"/>
           </constraints>
         </table>
         <table name="course_types" comment="课程类别@edu">
@@ -2700,7 +2700,7 @@
           <constraints>
             <primary-key name="pk_30stnnqhnpw79pr0yyslpql58" columns="id"/>
             <foreign-key name="fk_smb9je2ssiv6o3gshdjvc5b42" column="parent_id" referenced-table="code.course_types" referenced-column="id"/>
-            <unique-key name="course_types_code_key" columns="code"/>
+            <unique-key name="uk_fngi9siu21ndq00kc435oj2go" columns="code"/>
           </constraints>
         </table>
         <table name="day_parts" comment="时段@edu">
@@ -2717,7 +2717,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_smmdo7fq2ewnj1lx98wxxdq91" columns="id"/>
-            <unique-key name="day_parts_code_key" columns="code"/>
+            <unique-key name="uk_n758xomdiif4e0txke6wsnh96" columns="code"/>
           </constraints>
         </table>
         <table name="degree_levels" comment="学位层次@edu">
@@ -2733,7 +2733,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_fiqbw5nsr2mw36xoxhj1j2116" columns="id"/>
-            <unique-key name="degree_levels_code_key" columns="code"/>
+            <unique-key name="uk_paatawgj9c6hs54qs3gbglvj6" columns="code"/>
           </constraints>
         </table>
         <table name="degrees" comment="学位@edu">
@@ -2751,7 +2751,7 @@
           <constraints>
             <primary-key name="pk_2v97ef4fui6mhritxr8eaanvd" columns="id"/>
             <foreign-key name="fk_ggx3cc5jp7jo2u6g6anvuntrk" column="level_id" referenced-table="code.degree_levels" referenced-column="id"/>
-            <unique-key name="degrees_code_key" columns="code"/>
+            <unique-key name="uk_3wc34egir46fjb9eu1acggkj5" columns="code"/>
           </constraints>
         </table>
         <table name="department_categories" comment="部门分类@hr">
@@ -2770,7 +2770,7 @@
           <constraints>
             <primary-key name="pk_mf4to82tja75w579ae7netvca" columns="id"/>
             <foreign-key name="fk_27atg8v8893nxuo8mod6iuc8x" column="parent_id" referenced-table="code.department_categories" referenced-column="id"/>
-            <unique-key name="department_categories_code_key" columns="code"/>
+            <unique-key name="uk_1267ypqnna5uxvk1p0wl2fuh8" columns="code"/>
           </constraints>
           <indexes>
             <index name="idx_rjl6jeb6fw4xp9247gv68vw64" columns="parent_id"/>
@@ -2789,7 +2789,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_av3t8mqkliomcbnbg38tcllfe" columns="id"/>
-            <unique-key name="device_types_code_key" columns="code"/>
+            <unique-key name="uk_pp5sfw4fjv6fyc6wglgok63ap" columns="code"/>
           </constraints>
         </table>
         <table name="difficulty_causes" comment="困难原因@std">
@@ -2805,7 +2805,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_lq6iocryw9m7olt9euio0caju" columns="id"/>
-            <unique-key name="difficulty_causes_code_key" columns="code"/>
+            <unique-key name="uk_buabmyat6a2sviii2q5liikbl" columns="code"/>
           </constraints>
         </table>
         <table name="difficulty_degrees" comment="困难程度@std">
@@ -2821,7 +2821,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_a4fi6imv2vy8ddql3he4ayuc" columns="id"/>
-            <unique-key name="difficulty_degrees_code_key" columns="code"/>
+            <unique-key name="uk_5fox8obj9j7c0qvwojfdoqqks" columns="code"/>
           </constraints>
         </table>
         <table name="discipline_catalogs" comment="学科目录@edu">
@@ -2837,7 +2837,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ldh031tie4eg35sgutxwnqorn" columns="id"/>
-            <unique-key name="discipline_catalogs_code_key" columns="code"/>
+            <unique-key name="uk_1279dmr4pp7umw94eavqlr4il" columns="code"/>
           </constraints>
         </table>
         <table name="discipline_categories" comment="学科门类@edu">
@@ -2853,7 +2853,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_rnaagxursry83nehmsmy5wj87" columns="id"/>
-            <unique-key name="discipline_categories_code_key" columns="code"/>
+            <unique-key name="uk_smxy3kfhfpgwy542xeyt24rym" columns="code"/>
           </constraints>
         </table>
         <table name="disciplines" comment="学科@edu">
@@ -2873,7 +2873,7 @@
             <primary-key name="pk_dxv54dx9an08euovln6cd5s4x" columns="id"/>
             <foreign-key name="fk_450f1pic65rbe7fdobqnlesvu" column="catalog_id" referenced-table="code.discipline_catalogs" referenced-column="id"/>
             <foreign-key name="fk_ppqr5tdr0ugyeacn692j1tpsh" column="category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
-            <unique-key name="disciplines_code_key" columns="code"/>
+            <unique-key name="uk_osah0lag5rsel21i6uu1gqixb" columns="code"/>
           </constraints>
         </table>
         <table name="divisions" comment="行政区划@geo">
@@ -2891,7 +2891,7 @@
           <constraints>
             <primary-key name="pk_ckagbn1mtjluopfx7m4ddosoi" columns="id"/>
             <foreign-key name="fk_97sm4solm6hajvo8du2qopoht" column="parent_id" referenced-table="code.divisions" referenced-column="id"/>
-            <unique-key name="divisions_code_key" columns="code"/>
+            <unique-key name="uk_hccml8hpwk506p2l66y8tg1ki" columns="code"/>
           </constraints>
           <indexes>
             <index name="idx_6n5shiehsmeu47y6hblapon9j" columns="parent_id"/>
@@ -2912,7 +2912,7 @@
           <constraints>
             <primary-key name="pk_sl8vmsl3f1jfpwosg32bccq9u" columns="id"/>
             <foreign-key name="fk_5p4215ynsvbx5dsjta7lyio8q" column="duty_type_id" referenced-table="code.duty_types" referenced-column="id"/>
-            <unique-key name="duty_grades_code_key" columns="code"/>
+            <unique-key name="uk_faqn3nsn6cpyhtgwljnq6f4mo" columns="code"/>
           </constraints>
         </table>
         <table name="duty_types" comment="职务类别@job">
@@ -2928,7 +2928,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_rlhgyb1b3q18kigee1df4kde6" columns="id"/>
-            <unique-key name="duty_types_code_key" columns="code"/>
+            <unique-key name="uk_mkju5mr9eblx404xkv3dhockf" columns="code"/>
           </constraints>
         </table>
         <table name="edu_categories" comment="教学类型@edu">
@@ -2944,7 +2944,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_7p50hi0fsqia82miiqrf6ldas" columns="id"/>
-            <unique-key name="edu_categories_code_key" columns="code"/>
+            <unique-key name="uk_39n65oi32jiuycaqsvesys3ek" columns="code"/>
           </constraints>
         </table>
         <table name="education_degrees" comment="学历(文化程度)@edu">
@@ -2964,7 +2964,7 @@
             <primary-key name="pk_k83kie42e7dp161rew35xyojq" columns="id"/>
             <foreign-key name="fk_5o2mlp0fjg7xgdmgfadnt46g8" column="result_id" referenced-table="code.education_results" referenced-column="id"/>
             <foreign-key name="fk_ifwdqwmamdyu95e1onir7iesr" column="level_id" referenced-table="code.academic_levels" referenced-column="id"/>
-            <unique-key name="education_degrees_code_key" columns="code"/>
+            <unique-key name="uk_shx6ottwax2nmo1rw58u78bkl" columns="code"/>
           </constraints>
         </table>
         <table name="education_levels" comment="培养层次@edu">
@@ -2984,7 +2984,7 @@
             <primary-key name="pk_nqts5vnrhlor1x9p5xk5p8dsv" columns="id"/>
             <foreign-key name="fk_gp24wron3bs3tos9ykc2x3dt8" column="to_level_id" referenced-table="code.academic_levels" referenced-column="id"/>
             <foreign-key name="fk_gy6vfijmwfxxj8n98yklxibax" column="from_level_id" referenced-table="code.academic_levels" referenced-column="id"/>
-            <unique-key name="education_levels_code_key" columns="code"/>
+            <unique-key name="uk_7g26adhgvuu97atuy1j8x79um" columns="code"/>
           </constraints>
         </table>
         <table name="education_modes" comment="培养方式@edu">
@@ -3000,7 +3000,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_riccou6iptrw79s4j9rh1r2ne" columns="id"/>
-            <unique-key name="education_modes_code_key" columns="code"/>
+            <unique-key name="uk_sefk02fm6l1jly10imshq5p9i" columns="code"/>
           </constraints>
         </table>
         <table name="education_results" comment="教育培训结果@edu">
@@ -3016,7 +3016,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_r5o2htr643q9k2keiote10x13" columns="id"/>
-            <unique-key name="education_results_code_key" columns="code"/>
+            <unique-key name="uk_42ltpdxra5laem73s06676wol" columns="code"/>
           </constraints>
         </table>
         <table name="education_types" comment="培养类型@edu">
@@ -3032,7 +3032,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_m95dmly9i2drstg3oebpkjybp" columns="id"/>
-            <unique-key name="education_types_code_key" columns="code"/>
+            <unique-key name="uk_fyos3e22eyhws7nvx2eq17mgw" columns="code"/>
           </constraints>
         </table>
         <table name="election_modes" comment="选课方式@edu">
@@ -3048,7 +3048,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_fe9eki74ur0gxgx89lk8y8vsc" columns="id"/>
-            <unique-key name="election_modes_code_key" columns="code"/>
+            <unique-key name="uk_e1svykmcg99gw7si27h9xrc7p" columns="code"/>
           </constraints>
         </table>
         <table name="employ_types" comment="用工形式@hr">
@@ -3064,7 +3064,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_9cdwwv62b6hnp2ci6f3os4eoo" columns="id"/>
-            <unique-key name="employ_types_code_key" columns="code"/>
+            <unique-key name="uk_q0rd5okmcshdcors7iu8b46tp" columns="code"/>
           </constraints>
         </table>
         <table name="enroll_modes" comment="入学方式@edu">
@@ -3080,7 +3080,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_obbn5syxqvad6epidl17icyh9" columns="id"/>
-            <unique-key name="enroll_modes_code_key" columns="code"/>
+            <unique-key name="uk_j3e78icm5cskq84oufww3hnyk" columns="code"/>
           </constraints>
         </table>
         <table name="exam_defer_reasons" comment="缓考原因@edu">
@@ -3096,7 +3096,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_kamdjbmhxhefplh32bbslqbei" columns="id"/>
-            <unique-key name="exam_defer_reasons_code_key" columns="code"/>
+            <unique-key name="uk_a163soi3n0flqmw3idgohok2g" columns="code"/>
           </constraints>
         </table>
         <table name="exam_forms" comment="考试形式@edu">
@@ -3112,7 +3112,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_4o5nmb6jnnouf32b3fc53ts8n" columns="id"/>
-            <unique-key name="exam_forms_code_key" columns="code"/>
+            <unique-key name="uk_q7mk62ugd1gdajtvbxt2py6b0" columns="code"/>
           </constraints>
         </table>
         <table name="exam_modes" comment="考核方式@edu">
@@ -3128,7 +3128,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_3d9q7b2ojv9amkt3csmo82ams" columns="id"/>
-            <unique-key name="exam_modes_code_key" columns="code"/>
+            <unique-key name="uk_r6joowy1dni4gljtoe92v2uhs" columns="code"/>
           </constraints>
         </table>
         <table name="exam_statuses" comment="考试情况@edu">
@@ -3147,7 +3147,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_m4l6snovqru1ghupjbjld8qft" columns="id"/>
-            <unique-key name="exam_statuses_code_key" columns="code"/>
+            <unique-key name="uk_jkwl9gx5i72i9xkycc76x68so" columns="code"/>
           </constraints>
         </table>
         <table name="exam_types" comment="考试类型@edu">
@@ -3164,7 +3164,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_esav3g3q2ahu0i1l9d8g0k99y" columns="id"/>
-            <unique-key name="exam_types_code_key" columns="code"/>
+            <unique-key name="uk_b45j7kamdkrhm9qd2ufgbiyfl" columns="code"/>
           </constraints>
         </table>
         <table name="experiment_types" comment="实验类型@edu">
@@ -3180,7 +3180,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_lsvohbd75n1t5hjvqi1ns0ice" columns="id"/>
-            <unique-key name="experiment_types_code_key" columns="code"/>
+            <unique-key name="uk_ojnotfulo4sssvhe583atg34r" columns="code"/>
           </constraints>
         </table>
         <table name="family_categories" comment="家庭类别@person">
@@ -3196,7 +3196,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ji2x0f0kp1ggjq21mcx1f8c5d" columns="id"/>
-            <unique-key name="family_categories_code_key" columns="code"/>
+            <unique-key name="uk_1t23bsp894wnybtqv3mf5he4m" columns="code"/>
           </constraints>
         </table>
         <table name="family_relationships" comment="家庭关系@person">
@@ -3212,7 +3212,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_7hi9tb37nkn1yeaj4nr5g01d" columns="id"/>
-            <unique-key name="family_relationships_code_key" columns="code"/>
+            <unique-key name="uk_1x471cgit9jgmgjrnno32l3cn" columns="code"/>
           </constraints>
         </table>
         <table name="fee_origins" comment="费用来源@std">
@@ -3228,7 +3228,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_pjb9g9qkf41txh2q10u0knayp" columns="id"/>
-            <unique-key name="fee_origins_code_key" columns="code"/>
+            <unique-key name="uk_e7o1bghwdfjri8pp4awwosra3" columns="code"/>
           </constraints>
         </table>
         <table name="fee_types" comment="收费类型@std">
@@ -3244,7 +3244,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ehkm3mi23mhgfbmohw6keg9vg" columns="id"/>
-            <unique-key name="fee_types_code_key" columns="code"/>
+            <unique-key name="uk_qwg36jxftoi87236ypjx0jcw8" columns="code"/>
           </constraints>
         </table>
         <table name="genders" comment="性别@person">
@@ -3260,7 +3260,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_fbo2yxrjjfyqdyncfjyqmlhdb" columns="id"/>
-            <unique-key name="genders_code_key" columns="code"/>
+            <unique-key name="uk_6uwkx8yhh4w794lagv7uvnntx" columns="code"/>
           </constraints>
         </table>
         <table name="grade_types" comment="成绩类型@edu">
@@ -3278,7 +3278,7 @@
           <constraints>
             <primary-key name="pk_8fir0v1hr6yn19vre8j6h9ddj" columns="id"/>
             <foreign-key name="fk_fjlag47fumfl93ltvr9i825pp" column="exam_type_id" referenced-table="code.exam_types" referenced-column="id"/>
-            <unique-key name="grade_types_code_key" columns="code"/>
+            <unique-key name="uk_ssv6qvkbkbx6455gsmptkc54e" columns="code"/>
           </constraints>
         </table>
         <table name="grading_modes" comment="成绩记录方式@edu">
@@ -3295,7 +3295,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_otmdo5hmda4yu6iv5xxa07307" columns="id"/>
-            <unique-key name="grading_modes_code_key" columns="code"/>
+            <unique-key name="uk_b97msvfxl2du5qxj3gaav8vkd" columns="code"/>
           </constraints>
         </table>
         <table name="graduate_objectives" comment="毕业要求@edu">
@@ -3311,7 +3311,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_i5c9grb12fgyo5n3uo30bcs7c" columns="id"/>
-            <unique-key name="graduate_objectives_code_key" columns="code"/>
+            <unique-key name="uk_ipru1n0o561cuwyc6o0ogd3p6" columns="code"/>
           </constraints>
         </table>
         <table name="graduate_types" comment="毕业生类型@std">
@@ -3327,7 +3327,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_dy4s401v9m865dryabd1fxtn0" columns="id"/>
-            <unique-key name="graduate_types_code_key" columns="code"/>
+            <unique-key name="uk_9die6co9800of7rw2vh6a63cr" columns="code"/>
           </constraints>
         </table>
         <table name="health_statuses" comment="健康状况@person">
@@ -3343,7 +3343,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ewtk7l63wlk6ptj855tfj5dfj" columns="id"/>
-            <unique-key name="health_statuses_code_key" columns="code"/>
+            <unique-key name="uk_styg2klnvn0k1w4s864ifol19" columns="code"/>
           </constraints>
         </table>
         <table name="household_types" comment="户口类别@person">
@@ -3359,7 +3359,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_s7op8qppo9yfud198nlanf1pi" columns="id"/>
-            <unique-key name="household_types_code_key" columns="code"/>
+            <unique-key name="uk_cnav0pni6ce5cyyxef7tqtp12" columns="code"/>
           </constraints>
         </table>
         <table name="hsk_levels" comment="汉语水平考试等级@edu">
@@ -3376,7 +3376,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ljbtoh8dew8tptj5qj2hvw4o" columns="id"/>
-            <unique-key name="hsk_levels_code_key" columns="code"/>
+            <unique-key name="uk_gtvnlv6mjjmcdwgh17ltrqqlt" columns="code"/>
           </constraints>
         </table>
         <table name="id_types" comment="证件类型@person">
@@ -3392,7 +3392,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_4yqih3x42nqjh4tigc0evwlgm" columns="id"/>
-            <unique-key name="id_types_code_key" columns="code"/>
+            <unique-key name="uk_beex3aqbbv2nqkicpjadtdvdv" columns="code"/>
           </constraints>
         </table>
         <table name="institution_categories" comment="高校性质类别@edu">
@@ -3408,7 +3408,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_fd9fbuxbvexuhcw9jfsvrvdtp" columns="id"/>
-            <unique-key name="institution_categories_code_key" columns="code"/>
+            <unique-key name="uk_k5ar1dxviaioiewl76ct7jlga" columns="code"/>
           </constraints>
         </table>
         <table name="institutions" comment="科研机构@edu">
@@ -3424,7 +3424,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_bfw2t7ynqlyotm6eyi4dwgtk9" columns="id"/>
-            <unique-key name="institutions_code_key" columns="code"/>
+            <unique-key name="uk_90wcwrx6ap068pspum25xhtyu" columns="code"/>
           </constraints>
         </table>
         <table name="job_statuses" comment="从业状况@person">
@@ -3440,7 +3440,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_na0xycictcofkatnh5glv8day" columns="id"/>
-            <unique-key name="job_statuses_code_key" columns="code"/>
+            <unique-key name="uk_k02k1s3sjqc9v9dvqrarjgc1c" columns="code"/>
           </constraints>
         </table>
         <table name="language_abilities" comment="语种熟练程度@edu">
@@ -3456,7 +3456,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_qo5m05jp2cqjyioi5cll8fgar" columns="id"/>
-            <unique-key name="language_abilities_code_key" columns="code"/>
+            <unique-key name="uk_6p3nor27f0i5e8ryfh5ppa9un" columns="code"/>
           </constraints>
         </table>
         <table name="languages" comment="语种@person">
@@ -3472,7 +3472,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_sdlywiif4qur2robjmciupw07" columns="id"/>
-            <unique-key name="languages_code_key" columns="code"/>
+            <unique-key name="uk_myc139vxcejowe4q8qm3ca5jn" columns="code"/>
           </constraints>
         </table>
         <table name="marital_statuses" comment="婚姻状况@person">
@@ -3488,7 +3488,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_gq36i33myef28ldxfx4mjb2nl" columns="id"/>
-            <unique-key name="marital_statuses_code_key" columns="code"/>
+            <unique-key name="uk_8p2hd9frpqs2fbulxhe8mtskj" columns="code"/>
           </constraints>
         </table>
         <table name="nations" comment="民族@person">
@@ -3505,7 +3505,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_jae4hw2gt1sx4epxwbdkx3c12" columns="id"/>
-            <unique-key name="nations_code_key" columns="code"/>
+            <unique-key name="uk_791yx3rdfmeevupxwptmm30o3" columns="code"/>
           </constraints>
         </table>
         <table name="passport_types" comment="护照类别@person">
@@ -3521,7 +3521,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_gtg10x4u17ikg4x2fxlyxmgdy" columns="id"/>
-            <unique-key name="passport_types_code_key" columns="code"/>
+            <unique-key name="uk_10c0292fifdx77x100dtk2ho2" columns="code"/>
           </constraints>
         </table>
         <table name="political_statuses" comment="政治面貌@person">
@@ -3537,7 +3537,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_7xjjklfwlo69nyhtpoe3qx1sw" columns="id"/>
-            <unique-key name="political_statuses_code_key" columns="code"/>
+            <unique-key name="uk_2giyhgqrhixando5e6pkr48of" columns="code"/>
           </constraints>
         </table>
         <table name="post_grades" comment="岗位等级@job">
@@ -3553,7 +3553,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_lp7fwnrpynows9qmxo6uld7nb" columns="id"/>
-            <unique-key name="post_grades_code_key" columns="code"/>
+            <unique-key name="uk_6mcnlu55dfti3itsiig9s36p" columns="code"/>
           </constraints>
         </table>
         <table name="post_types" comment="岗位类别@job">
@@ -3569,7 +3569,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_4o6w1x4djydd1nskoh52mjr02" columns="id"/>
-            <unique-key name="post_types_code_key" columns="code"/>
+            <unique-key name="uk_5ll10mqocole6bnix353h3w2b" columns="code"/>
           </constraints>
         </table>
         <table name="press_grades" comment="出版社级别@sin">
@@ -3585,7 +3585,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_njmxmuicw8foumieqgjnko6cy" columns="id"/>
-            <unique-key name="press_grades_code_key" columns="code"/>
+            <unique-key name="uk_tetfawlge4670eycic2edwetv" columns="code"/>
           </constraints>
         </table>
         <table name="presses" comment="出版社@sin">
@@ -3603,7 +3603,7 @@
           <constraints>
             <primary-key name="pk_rk7ek6u5edrwv9xxydg7bc48q" columns="id"/>
             <foreign-key name="fk_5tnc7qqtci18xsxjaqu8yffxs" column="grade_id" referenced-table="code.press_grades" referenced-column="id"/>
-            <unique-key name="presses_code_key" columns="code"/>
+            <unique-key name="uk_8idhuopnq9vabab63pyqfqir6" columns="code"/>
           </constraints>
         </table>
         <table name="professional_grades" comment="职称等级@job">
@@ -3619,7 +3619,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_23d8s972h76b0xdatjfcxupe1" columns="id"/>
-            <unique-key name="professional_grades_code_key" columns="code"/>
+            <unique-key name="uk_j783ewxhftk3q9ixbyavljn5j" columns="code"/>
           </constraints>
         </table>
         <table name="professional_titles" comment="职称@job">
@@ -3629,7 +3629,7 @@
             <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
             <column name="en_name" type="varchar(300)" comment="英文名称"/>
             <column name="end_on" type="date" comment="失效日期"/>
-            <column name="grade_id" type="integer" nullable="false" comment="职称等级ID"/>
+            <column name="grade_id" type="integer" comment="职称等级ID"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
@@ -3637,7 +3637,7 @@
           <constraints>
             <primary-key name="pk_cjq04j9bh6xleeky128k1gswt" columns="id"/>
             <foreign-key name="fk_iw0bv3csihm03js8h55dtdp56" column="grade_id" referenced-table="code.professional_grades" referenced-column="id"/>
-            <unique-key name="professional_titles_code_key" columns="code"/>
+            <unique-key name="uk_bncxdgi5xdsp50jnrwvyii5yg" columns="code"/>
           </constraints>
         </table>
         <table name="program_course_tags" comment="专业课程标签@edu">
@@ -3655,7 +3655,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_mxsf2utw2s5dh63wx9s44pf4n" columns="id"/>
-            <unique-key name="program_course_tags_code_key" columns="code"/>
+            <unique-key name="uk_ieqp9ajuh1804wlmmjhwjentb" columns="code"/>
           </constraints>
         </table>
         <table name="publication_grades" comment="刊物级别@sin">
@@ -3671,7 +3671,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_r45qdwy0e7li10q5re3sfi8uf" columns="id"/>
-            <unique-key name="publication_grades_code_key" columns="code"/>
+            <unique-key name="uk_5cwt30wjytp7kqqxxg9mgciql" columns="code"/>
           </constraints>
         </table>
         <table name="publications" comment="刊物@sin">
@@ -3689,7 +3689,7 @@
           <constraints>
             <primary-key name="pk_posqs7doguprjnunmq0nhxbvh" columns="id"/>
             <foreign-key name="fk_r0suni42e42c2rmrqguvv9l90" column="grade_id" referenced-table="code.publication_grades" referenced-column="id"/>
-            <unique-key name="publications_code_key" columns="code"/>
+            <unique-key name="uk_ojr6l8tqoupm6dq3els21esn" columns="code"/>
           </constraints>
         </table>
         <table name="railway_stations" comment="火车站@geo">
@@ -3708,7 +3708,7 @@
           <constraints>
             <primary-key name="pk_mwpmgne9kbs3rqkr9yimeky4b" columns="id"/>
             <foreign-key name="fk_35n24s996ovtutjo31t3uy5i9" column="division_id" referenced-table="code.divisions" referenced-column="id"/>
-            <unique-key name="railway_stations_code_key" columns="code"/>
+            <unique-key name="uk_liaskyn9dcenlbxc2p3sjlr6h" columns="code"/>
           </constraints>
         </table>
         <table name="rd_award_grades" comment="获奖级别@trd">
@@ -3724,7 +3724,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ij1rtygc537ykj7n9n0fonlm" columns="id"/>
-            <unique-key name="rd_award_grades_code_key" columns="code"/>
+            <unique-key name="uk_6i8kdj7snafxjqhed4wm4nwn7" columns="code"/>
           </constraints>
         </table>
         <table name="rd_levels" comment="研究级别@trd">
@@ -3740,7 +3740,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_oblsjsi7q9bdeq4kxmf4j3qc9" columns="id"/>
-            <unique-key name="rd_levels_code_key" columns="code"/>
+            <unique-key name="uk_5bw4yswj1h9pyo86b0wrm1f09" columns="code"/>
           </constraints>
         </table>
         <table name="religions" comment="宗教信仰@person">
@@ -3756,7 +3756,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_db95knst6ss1grofhc0kkrap4" columns="id"/>
-            <unique-key name="religions_code_key" columns="code"/>
+            <unique-key name="uk_rmojysk9alhr0ih800fyw2af" columns="code"/>
           </constraints>
         </table>
         <table name="room_types" comment="房间用途类型@asset">
@@ -3772,7 +3772,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_jru03m3vn58qmif6k5urq2y6s" columns="id"/>
-            <unique-key name="room_types_code_key" columns="code"/>
+            <unique-key name="uk_pwg4oqr4ylc28g701vfys5hc4" columns="code"/>
           </constraints>
         </table>
         <table name="social_unit_types" comment="社会单位性质@job">
@@ -3788,7 +3788,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_jt9a7ljhk01bsevoj0qbjw2y3" columns="id"/>
-            <unique-key name="social_unit_types_code_key" columns="code"/>
+            <unique-key name="uk_bc5712vn0ag3o2gbjb8jx7hbu" columns="code"/>
           </constraints>
         </table>
         <table name="staff_source_types" comment="教职工来源@hr">
@@ -3806,7 +3806,7 @@
           <constraints>
             <primary-key name="pk_jsm380evxdo115plu90m5dmtc" columns="id"/>
             <foreign-key name="fk_rnymavikabd5h015rxix2u5r0" column="parent_id" referenced-table="code.staff_source_types" referenced-column="id"/>
-            <unique-key name="staff_source_types_code_key" columns="code"/>
+            <unique-key name="uk_jy2k3tq0rnovx9qni4hbo3ear" columns="code"/>
           </constraints>
           <indexes>
             <index name="idx_pkni877r20i1vkg4n2jk2lb31" columns="parent_id"/>
@@ -3827,7 +3827,7 @@
           <constraints>
             <primary-key name="pk_a4368uis6hkcnv1jksw7hntap" columns="id"/>
             <foreign-key name="fk_lears29b5824e1p2j01yj69he" column="parent_id" referenced-table="code.staff_types" referenced-column="id"/>
-            <unique-key name="staff_types_code_key" columns="code"/>
+            <unique-key name="uk_gwihxgl4bspt7wg34tfsln42t" columns="code"/>
           </constraints>
           <indexes>
             <index name="idx_bqnq6ihum5omb2520bavufwbs" columns="parent_id"/>
@@ -3846,7 +3846,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_33wxn4eyascc7730eqdyu8nap" columns="id"/>
-            <unique-key name="std_alter_reasons_code_key" columns="code"/>
+            <unique-key name="uk_d61fcrrbis8g296gvq0aoswdw" columns="code"/>
           </constraints>
         </table>
         <table name="std_alter_types" comment="学籍异动类别@std">
@@ -3862,7 +3862,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_8eujmk9iw3oyow6csjap0m3jm" columns="id"/>
-            <unique-key name="std_alter_types_code_key" columns="code"/>
+            <unique-key name="uk_d0hmv5idntvp604d8rv5ffwn1" columns="code"/>
           </constraints>
         </table>
         <table name="std_doc_types" comment="学生文档类型@std">
@@ -3878,7 +3878,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_504qg1oldgtxqm3nb3cbtuye7" columns="id"/>
-            <unique-key name="std_doc_types_code_key" columns="code"/>
+            <unique-key name="uk_88xe3fjb0lxyfmaywg9ov25gk" columns="code"/>
           </constraints>
         </table>
         <table name="std_label_types" comment="学生分类标签类型@std">
@@ -3894,7 +3894,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_2o1x04mqhbpsuu4wsb4523iy3" columns="id"/>
-            <unique-key name="std_label_types_code_key" columns="code"/>
+            <unique-key name="uk_hryqvm8sj4a4w3fwfsg1tsjl2" columns="code"/>
           </constraints>
         </table>
         <table name="std_labels" comment="学生分类标签@std">
@@ -3912,7 +3912,7 @@
           <constraints>
             <primary-key name="pk_l192yxgvwsecl9kqujivj6f59" columns="id"/>
             <foreign-key name="fk_ngk79kdecg0l8rrcxqh2m0xrw" column="label_type_id" referenced-table="code.std_label_types" referenced-column="id"/>
-            <unique-key name="std_labels_code_key" columns="code"/>
+            <unique-key name="uk_jviknlfon7h8c5sgvtbxwfpxa" columns="code"/>
           </constraints>
         </table>
         <table name="std_punishment_types" comment="学生处分类型@std">
@@ -3929,7 +3929,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_sefi5c7gqa45cyc6o4selwcb2" columns="id"/>
-            <unique-key name="std_punishment_types_code_key" columns="code"/>
+            <unique-key name="uk_mw835oirmjqh1xkdbfkfsrfg1" columns="code"/>
           </constraints>
         </table>
         <table name="std_types" comment="学生类别@std">
@@ -3945,7 +3945,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_6ant2dfueuaiqo9p6i2jkkqqf" columns="id"/>
-            <unique-key name="std_types_code_key" columns="code"/>
+            <unique-key name="uk_jm6qwf4cy0gayqcsrpddyjbey" columns="code"/>
           </constraints>
         </table>
         <table name="student_statuses" comment="学生学籍状态@std">
@@ -3961,7 +3961,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_r0abq98f6x7nppqxk49b1xc0" columns="id"/>
-            <unique-key name="student_statuses_code_key" columns="code"/>
+            <unique-key name="uk_58ik22jbawb1i8ht83lk11o87" columns="code"/>
           </constraints>
         </table>
         <table name="study_types" comment="学习形式@edu">
@@ -3977,7 +3977,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_m90ecgcdsvgkp9chbeuwwk9sk" columns="id"/>
-            <unique-key name="study_types_code_key" columns="code"/>
+            <unique-key name="uk_rp1j8oeth9sda21pk71dqp8m8" columns="code"/>
           </constraints>
         </table>
         <table name="syllabus_topic_labels" comment="教学主题标签@edu">
@@ -3993,7 +3993,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ba2qkaicpiw5oog5u9sm3d1wr" columns="id"/>
-            <unique-key name="syllabus_topic_labels_code_key" columns="code"/>
+            <unique-key name="uk_olq7lmxw1if38fl9gsmauhn0a" columns="code"/>
           </constraints>
         </table>
         <table name="teach_lang_types" comment="授课语言类型@edu">
@@ -4009,7 +4009,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_r34pug3nqijvuda05m4ok825n" columns="id"/>
-            <unique-key name="teach_lang_types_code_key" columns="code"/>
+            <unique-key name="uk_8whak4jl313vch6unmqvsguuc" columns="code"/>
           </constraints>
         </table>
         <table name="teaching_forms" comment="教学形式@edu">
@@ -4025,7 +4025,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_im37ftwfe3857370qito8al7d" columns="id"/>
-            <unique-key name="teaching_forms_code_key" columns="code"/>
+            <unique-key name="uk_e6dw7nu15cnb29jw939qy7o4a" columns="code"/>
           </constraints>
         </table>
         <table name="teaching_methods" comment="授课方式方法@edu">
@@ -4041,7 +4041,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_s2ob7rrxiu3hwv3dgtwvik47a" columns="id"/>
-            <unique-key name="teaching_methods_code_key" columns="code"/>
+            <unique-key name="uk_2oid1oma03fwmia8yeepjtaxy" columns="code"/>
           </constraints>
         </table>
         <table name="teaching_natures" comment="授课性质@edu">
@@ -4058,7 +4058,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_iidoc1hu3mfla79sh3ys7xr3c" columns="id"/>
-            <unique-key name="teaching_natures_code_key" columns="code"/>
+            <unique-key name="uk_ft2l2vqf6ue19y570m8n2jb1i" columns="code"/>
           </constraints>
         </table>
         <table name="teaching_sections" comment="教学环节@edu">
@@ -4074,7 +4074,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_docvjyxvufaf2y8wly8pqnp4d" columns="id"/>
-            <unique-key name="teaching_sections_code_key" columns="code"/>
+            <unique-key name="uk_pl7lusqa27g9jxm2rlvot4qmm" columns="code"/>
           </constraints>
         </table>
         <table name="thesis_topic_sources" comment="选题来源@edu">
@@ -4090,7 +4090,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_3lderniukaq5dpqfvlh0qejob" columns="id"/>
-            <unique-key name="thesis_topic_sources_code_key" columns="code"/>
+            <unique-key name="uk_h0vhsaoskfugync7c9g7l9wsk" columns="code"/>
           </constraints>
         </table>
         <table name="thesis_types" comment="论文类型@edu">
@@ -4106,7 +4106,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_4tcotln8xe9p0p18p0fjqeul2" columns="id"/>
-            <unique-key name="thesis_types_code_key" columns="code"/>
+            <unique-key name="uk_rvlh56ev01vw0s1m2727ulta3" columns="code"/>
           </constraints>
         </table>
         <table name="tutor_types" comment="导师类别@job">
@@ -4122,7 +4122,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_blidh1mx6m4ci11jl2xhgmhyh" columns="id"/>
-            <unique-key name="tutor_types_code_key" columns="code"/>
+            <unique-key name="uk_mvnftvqyie0v05l9t7khdnxp2" columns="code"/>
           </constraints>
         </table>
         <table name="uee_subject_types" comment="高考科目@std">
@@ -4138,7 +4138,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_pp8tdd0qin0qphea92v03xq69" columns="id"/>
-            <unique-key name="uee_subject_types_code_key" columns="code"/>
+            <unique-key name="uk_9ohkri73dgrruvg1noi5cjqvm" columns="code"/>
           </constraints>
         </table>
         <table name="uncheckin_reasons" comment="未报到原因@std">
@@ -4154,7 +4154,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_b2456k7m08w83dfw2ofx5yvx" columns="id"/>
-            <unique-key name="uncheckin_reasons_code_key" columns="code"/>
+            <unique-key name="uk_erpbu68elyqcrwgi8w0suoqou" columns="code"/>
           </constraints>
         </table>
         <table name="unregistered_reasons" comment="未注册原因@std">
@@ -4170,7 +4170,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_a05jbnwecpcjh1vca74kq4u39" columns="id"/>
-            <unique-key name="unregistered_reasons_code_key" columns="code"/>
+            <unique-key name="uk_t1sd0t3npnyfes867y9rlipbc" columns="code"/>
           </constraints>
         </table>
         <table name="user_categories" comment="人员分类@hr">
@@ -4186,7 +4186,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_g22tbnb6clymkxmi560ll33em" columns="id"/>
-            <unique-key name="user_categories_code_key" columns="code"/>
+            <unique-key name="uk_j3ynn4qkfqo4imt05sbforud3" columns="code"/>
           </constraints>
         </table>
         <table name="visa_types" comment="中国签证类别@person">
@@ -4202,7 +4202,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_5u4p2t27gbgicni5lyayh6tlv" columns="id"/>
-            <unique-key name="visa_types_code_key" columns="code"/>
+            <unique-key name="uk_3yagdiemtpdg1ohnf12cofgfs" columns="code"/>
           </constraints>
         </table>
         <table name="whereto_goes" comment="毕业去向@std">
@@ -4218,7 +4218,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_4613lax8xj9thcny8sbdbs84j" columns="id"/>
-            <unique-key name="whereto_goes_code_key" columns="code"/>
+            <unique-key name="uk_kgwluf8uj4fa2bgtefeq1ta0y" columns="code"/>
           </constraints>
         </table>
         <table name="work_statuses" comment="在职状态@hr">
@@ -4234,7 +4234,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ia5xweu6skbop6en26o5y4jxs" columns="id"/>
-            <unique-key name="work_statuses_code_key" columns="code"/>
+            <unique-key name="uk_8iau4k90qik38mmw3v600qll6" columns="code"/>
           </constraints>
         </table>
       </tables>
@@ -4872,7 +4872,7 @@
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="passed_way" type="integer" comment="通过方式"/>
             <column name="predicted" type="boolean" nullable="false" defaultValue="false" comment="预计是否通过"/>
-            <column name="remark" type="varchar(150)" comment="备注"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="scores" type="varchar(50)" nullable="false" defaultValue="'--'" comment="分数"/>
             <column name="taking" type="boolean" nullable="false" defaultValue="false" comment="是否正在修读"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
@@ -4926,7 +4926,7 @@
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="passed_credits" type="float4" nullable="false" comment="完成学分"/>
             <column name="predicted" type="boolean" nullable="false" defaultValue="false" comment="预计是否通过"/>
-            <column name="remark" type="varchar(100)" comment="备注"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="required_credits" type="float4" nullable="false" comment="要求学分"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -5120,7 +5120,7 @@
             <foreign-key name="fk_8cpxkf5hybj84ya0io9shjhtm" column="exam_form_id" referenced-table="code.exam_forms" referenced-column="id"/>
             <foreign-key name="fk_t3fjgklrbsfs2u0vilt4yvoi4" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
             <foreign-key name="fk_1im1uj0cfikxmqym4qme2nv2l" column="room_type_id" referenced-table="code.classroom_types" referenced-column="id"/>
-            <unique-key name="clazz_final_exams_clazz_id_key" columns="clazz_id"/>
+            <unique-key name="uk_j4vo8w3lb8v157ssmw709sga8" columns="clazz_id"/>
           </constraints>
         </table>
         <table name="clazz_groups" comment="教学任务组@clazz">
@@ -5756,7 +5756,6 @@
             <foreign-key name="fk_7kpdmkpkj4rmpnd3axureujj3" column="teach_depart_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_6nqnua9kbo2oussu1u6wqh4ai" column="room_type_id" referenced-table="code.classroom_types" referenced-column="id"/>
             <foreign-key name="fk_ir80a5a9j5ub493ty79i2cgly" column="group_id" referenced-table="edu.exam_groups" referenced-column="id"/>
-            <unique-key name="uk_hblf5miprku52a8qklxm4lvpi" columns="project_id,semester_id,code"/>
           </constraints>
           <indexes>
             <index name="idx_t7hobv2c1smv3okkui80qnent" columns="semester_id"/>
@@ -6803,7 +6802,7 @@
         <table name="room_occupy_apps" comment="房间占用用户系统@room">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="activity_url" type="varchar(200)" nullable="false" comment="活动明细url"/>
+            <column name="activity_url" type="varchar(200)" comment="活动明细url"/>
             <column name="name" type="varchar(200)" nullable="false" comment="名称"/>
           </columns>
           <constraints>
@@ -7888,7 +7887,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ooyymrpkh76y78k7y935mt7l4" columns="id"/>
-            <unique-key name="edu_new_course_categories_code_key" columns="code"/>
+            <unique-key name="uk_9uibg29bcb9318kfgrx82ce0l" columns="code"/>
           </constraints>
         </table>
         <table name="edu_new_course_departs" comment="新开课程院系编码@course.flow">
@@ -9464,7 +9463,7 @@
             <primary-key name="pk_26gf4ikas867gkkiyjur6i708" columns="id"/>
             <foreign-key name="fk_hnkrx4fhp4c4lsdcjaoc913um" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_3dqe88rim46vdltxjdeo8lvi5" column="bill_id" referenced-table="std.bills" referenced-column="id"/>
-            <unique-key name="orders_code_key" columns="code"/>
+            <unique-key name="uk_gt3o4a5bqj59e9y6wakgk926t" columns="code"/>
             <unique-key name="uk_5rbs2yuu4l5occesk8783g2sh" columns="bill_id"/>
           </constraints>
         </table>
@@ -9904,7 +9903,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ta42fnnl0b3oljvweg6mflnwd" columns="id"/>
-            <unique-key name="rd_achievement_types_code_key" columns="code"/>
+            <unique-key name="uk_sg5cv23t8wxl2pdm7hs44oovv" columns="code"/>
           </constraints>
         </table>
         <table name="rd_achievements" comment="教学成果@achievement">
@@ -9939,7 +9938,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_8ad75c7otnko05ptv7cs56eos" columns="id"/>
-            <unique-key name="rd_project_categories_code_key" columns="code"/>
+            <unique-key name="uk_lm068o3s4253ai1s8dkm17r77" columns="code"/>
           </constraints>
         </table>
         <table name="rd_project_members" comment="项目成员@project">
@@ -9972,7 +9971,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_2l8sy0rmcghk1vv78aur11wmw" columns="id"/>
-            <unique-key name="rd_project_statuses_code_key" columns="code"/>
+            <unique-key name="uk_64ybhe0mvvwxkaw2woo44aycp" columns="code"/>
           </constraints>
         </table>
         <table name="rd_projects" comment="研究项目@project">

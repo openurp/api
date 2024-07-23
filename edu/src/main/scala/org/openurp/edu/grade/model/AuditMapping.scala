@@ -24,7 +24,7 @@ class AuditMapping extends MappingModule {
   def binding(): Unit = {
     bind[AuditCourseResult].declare { e =>
       e.scores is(length(50), default("--"))
-      e.remark is length(150)
+      e.remark is length(200)
       index("", true, e.groupResult, e.course)
     }
 
@@ -36,7 +36,7 @@ class AuditMapping extends MappingModule {
 
     bind[AuditPlanResult].declare { e =>
       e.groupResults is depends("planResult")
-      e.remark is length(100)
+      e.remark is length(200)
       e.updates is length(500)
       index("", true, e.std)
     }

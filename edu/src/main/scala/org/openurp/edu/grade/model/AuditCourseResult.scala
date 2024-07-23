@@ -18,6 +18,7 @@
 package org.openurp.edu.grade.model
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Course, Terms}
@@ -125,5 +126,7 @@ class AuditCourseResult extends LongId with Remark {
     this.remark = this.remark match
       case None => Some(remark)
       case Some(r) => if r.contains(remark) then Some(r) else Some(r + " " + remark)
+
+    this.remark foreach { r => if (r.length > 200) then this.remark = Some(Strings.abbreviate(r, 200)) }
   }
 }
