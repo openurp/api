@@ -66,7 +66,16 @@ class BookAwardType extends CodeBean
 /** 课程模块
  */
 @code("school")
-class CourseModule extends CodeBean
+class CourseModule extends CodeBean {
+  var major: Boolean = _
+  var practical: Boolean = _
+
+  /** 是否是通识课程或者公共课
+   *
+   * @return
+   */
+  def general: Boolean = !major && !practical
+}
 
 /** 课程类别
  * 从专业培养方案角度进行划分
@@ -80,13 +89,22 @@ class CourseType extends CodeBean {
   /** 简称 */
   var shortName: Option[String] = None
 
+  /** 课程模块 */
+  var module: Option[CourseModule] = None
+
+  /** 课程属性 */
+  var rank: Option[CourseRank] = None
+
   /** 是否实践课程 */
+  @deprecated
   var practical: Boolean = _
 
   /** 是否专业课 */
+  @deprecated
   var major: Boolean = _
 
   /** 是否选修 */
+  @deprecated
   var optional: Boolean = _
 
   /** 上级类别 */
