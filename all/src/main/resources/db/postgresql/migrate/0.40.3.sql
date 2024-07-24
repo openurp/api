@@ -369,13 +369,23 @@ insert into code.course_modules(id,code,name,begin_on,updated_at) values(3,'3','
 
 alter table code.course_modules add column major boolean default false;
 alter table code.course_modules add column practical boolean default false;
+
 update code.course_modules set major=true where id=2;
 update code.course_modules set practical=true where id=3;
+
 alter table code.course_modules alter major set not null;
 alter table code.course_modules alter practical set not null;
 
 alter table code.course_types add column module_id integer;
 alter table code.course_types add column rank_id integer;
+update code.course_types set module_id=2 where major = true and module_id is null;
+update code.course_types set module_id=3 where practical = true and module_id is null;
+update code.course_types set module_id=1 where module_id is null;
+
+update code.course_types set rank_id=2 where optional=true and rank_id is null;
+update code.course_types set rank_id=3 where optional=true and name like '%限制%';
+update code.course_types set rank_id=1 where optional=false and rank_id is null;
+
 alter table edu.audit_group_results add column rank_id integer;
 update edu.audit_group_results gr set rank_id=2 where exists(select * from code.course_types ct where ct.id=gr.course_type_id and ct.optional=true);
 update edu.audit_group_results gr set rank_id=1
