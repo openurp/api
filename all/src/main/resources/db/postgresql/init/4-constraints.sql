@@ -316,6 +316,8 @@ alter table code.course_ability_rates add constraint fk_71dwis01s95gd1p5lu1h7673
 alter table code.course_award_types add constraint fk_p1i1dn7gojnu8mf3v9di6fypj foreign key (category_id) references code.course_award_categories (id);
 alter table code.course_categories add constraint fk_c5k6uw6byn2wdwqo5in0bi5rf foreign key (parent_id) references code.course_categories (id);
 alter table code.course_categories add constraint fk_dcguulpdpunq4d9j3eofi6i2w foreign key (dimension_id) references code.course_category_dimensions (id);
+alter table code.course_types add constraint fk_5ufodafafis1r7h88r1mva11l foreign key (rank_id) references code.course_ranks (id);
+alter table code.course_types add constraint fk_buyplucphy8v3df4dxorj0lj1 foreign key (module_id) references code.course_modules (id);
 alter table code.course_types add constraint fk_smb9je2ssiv6o3gshdjvc5b42 foreign key (parent_id) references code.course_types (id);
 alter table code.degrees add constraint fk_ggx3cc5jp7jo2u6g6anvuntrk foreign key (level_id) references code.degree_levels (id);
 alter table code.department_categories add constraint fk_27atg8v8893nxuo8mod6iuc8x foreign key (parent_id) references code.department_categories (id);
@@ -401,6 +403,7 @@ alter table edu.attendances add constraint fk_ejex8x13p9qoo55i6oqrmpvnd foreign 
 alter table edu.audit_course_results add constraint fk_7h4mhuqxlovmwuklnie24ces5 foreign key (course_id) references base.courses (id);
 alter table edu.audit_course_results add constraint fk_klucok7xe6txt0fuwn8c0dmw2 foreign key (group_result_id) references edu.audit_group_results (id);
 alter table edu.audit_group_results add constraint fk_9s1c6lthsrdj3p9pp7c16don5 foreign key (course_type_id) references code.course_types (id);
+alter table edu.audit_group_results add constraint fk_d3cyoyo0nubvnqix4i5b6wetq foreign key (rank_id) references code.course_ranks (id);
 alter table edu.audit_group_results add constraint fk_iyi6xmtlaay2h1ffxj538htam foreign key (plan_result_id) references edu.audit_plan_results (id);
 alter table edu.audit_group_results add constraint fk_o5t4yave4tu5dxcnpm2fiby3d foreign key (parent_id) references edu.audit_group_results (id);
 alter table edu.audit_plan_results add constraint fk_9udjn6ysvs77vv7va1dtd43xp foreign key (std_id) references base.students (id);

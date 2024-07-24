@@ -110,7 +110,8 @@ alter table base.calendar_stages add en_name varchar(40);
 
 --insert into code.course_modules(id,code,name,begin_on,updated_at) values(1,'1','通识课模块',current_date,now());
 --insert into code.course_modules(id,code,name,begin_on,updated_at) values(2,'2','学科专业模块',current_date,now());
---insert into code.course_modules(id,code,name,begin_on,updated_at) values(2,'3','实践模块',current_date,now());
+--insert into code.course_modules(id,code,name,begin_on,updated_at) values(3,'3','实践模块',current_date,now());
+
 create table code.syllabus_topic_labels (id integer not null, begin_on date not null, end_on date, code varchar(20) not null, en_name varchar(300), name varchar(100) not null, remark varchar(200), updated_at timestamp default current_timestamp not null);
 --insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(1,'01','课程思政',current_date,current_timestamp);
 --insert into code.syllabus_topic_labels(id,code,name,begin_on,updated_at) values(2,'02','本章重点',current_date,current_timestamp);

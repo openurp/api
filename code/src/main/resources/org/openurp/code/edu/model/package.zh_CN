@@ -111,6 +111,8 @@ TeachingSection=教学环节
 TeachingForm=教学形式
 CourseRank=课程属性
 CourseModule=课程模块
+CourseModule.major=是否专业课
+CourseModule.practical=是否实践课
 
 CourseAwardType=课程获奖类型
 GraduateObjective=毕业要求

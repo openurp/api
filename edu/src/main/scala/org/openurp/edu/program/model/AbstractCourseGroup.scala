@@ -173,7 +173,8 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
     if (null == courseType) {
       Map.empty
     } else {
-      CreditHours.toHours(creditHours, hourRatios, natures, this.courseType.practical)
+      val practical = this.courseType.module.exists(_.practical)
+      CreditHours.toHours(creditHours, hourRatios, natures, practical)
     }
   }
 

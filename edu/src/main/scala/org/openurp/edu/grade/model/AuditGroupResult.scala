@@ -21,7 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Hierarchical, Named, Remark}
 import org.openurp.base.edu.model.Course
-import org.openurp.code.edu.model.CourseType
+import org.openurp.code.edu.model.{CourseRank, CourseType}
 import org.openurp.edu.program.model.CourseGroup
 
 import scala.collection.mutable.Buffer
@@ -54,6 +54,9 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
 
   /** 课程审核结果 */
   var courseResults: Buffer[AuditCourseResult] = new collection.mutable.ListBuffer[AuditCourseResult]
+
+  /** 课程属性 */
+  var rank: Option[CourseRank] = None
 
   /** 课程类型 */
   var courseType: CourseType = _
@@ -91,6 +94,12 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
   def this(group: CourseGroup) = {
     this(group.name, group.courseType)
     this.subCount = group.subCount
+  }
+
+  def optional: Boolean = {
+    rank match
+      case Some(r) => r.id != CourseRank.Compulsory
+      case None => false
   }
 
   def addCourseResult(cr: AuditCourseResult): Unit = {

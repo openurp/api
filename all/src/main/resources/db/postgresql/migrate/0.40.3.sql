@@ -363,3 +363,31 @@ alter table std.transfer_applies alter major_gpa set default 0;
 alter table std.transfer_applies alter other_gpa set default 0;
 alter table std.transfer_applies alter transfer_gpa set default 0;
 
+insert into code.course_modules(id,code,name,begin_on,updated_at) values(1,'1','通识课模块',current_date,now());
+insert into code.course_modules(id,code,name,begin_on,updated_at) values(2,'2','学科专业模块',current_date,now());
+insert into code.course_modules(id,code,name,begin_on,updated_at) values(3,'3','实践模块',current_date,now());
+
+alter table code.course_modules add column major boolean default false;
+alter table code.course_modules add column practical boolean default false;
+update code.course_modules set major=true where id=2;
+update code.course_modules set practical=true where id=3;
+alter table code.course_modules alter major set not null;
+alter table code.course_modules alter practical set not null;
+
+alter table code.course_types add column module_id integer;
+alter table code.course_types add column rank_id integer;
+alter table edu.audit_group_results add column rank_id integer;
+update edu.audit_group_results gr set rank_id=2 where exists(select * from code.course_types ct where ct.id=gr.course_type_id and ct.optional=true);
+update edu.audit_group_results gr set rank_id=1
+where exists(select * from code.course_types ct where ct.id=gr.course_type_id and ct.optional=false)
+      exists(select * from edu.audit_course_results cr where cr.group_result_id=gr.id);
+update edu.audit_group_results gr set rank_id=1 where rank_id is null;
+
+alter table code.course_types add constraint fk_5ufodafafis1r7h88r1mva11l foreign key (rank_id) references code.course_ranks (id);
+alter table code.course_types add constraint fk_buyplucphy8v3df4dxorj0lj1 foreign key (module_id) references code.course_modules (id);
+alter table edu.audit_group_results add constraint fk_d3cyoyo0nubvnqix4i5b6wetq foreign key (rank_id) references code.course_ranks (id);
+comment on column code.course_modules.major is '是否专业课';
+comment on column code.course_modules.practical is '是否实践课';
+comment on column code.course_types.module_id is '课程模块ID';
+comment on column code.course_types.rank_id is '课程属性ID';
+comment on column edu.audit_group_results.rank_id is '课程属性ID';

@@ -31,7 +31,7 @@ object DefaultAuditTypeMatchPolicy extends AuditTypeMatchPolicy {
 
   override def allowMatchType(g: CourseGroup): Boolean = {
     if null == g then true
-    else if g.courseType.optional then
+    else if g.optional then
       //没有子组且没有课程
       if g.children.isEmpty && g.planCourses.isEmpty then true
       else if g.allowUnplanned then
