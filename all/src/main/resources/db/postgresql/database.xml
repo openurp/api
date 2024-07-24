@@ -361,7 +361,7 @@
             <column name="code" type="varchar(32)" nullable="false" comment="课程代码"/>
             <column name="course_type_id" type="integer" comment="建议课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时/总课时"/>
-            <column name="default_credits" type="float4" nullable="false" comment="默认学分"/>
+            <column name="default_credits" type="float4" nullable="false" defaultValue="0" comment="默认学分"/>
             <column name="department_id" type="integer" nullable="false" comment="院系ID"/>
             <column name="en_name" type="varchar(300)" comment="课程英文名"/>
             <column name="end_on" type="date" comment="失效日期"/>
@@ -1015,9 +1015,9 @@
             <column name="from_grade_id" type="bigint" nullable="false" comment="起始年级ID"/>
             <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
             <column name="major_id" type="bigint" nullable="false" comment="专业ID"/>
-            <column name="maximum" type="float4" nullable="false" comment="最长学习年限"/>
-            <column name="minimum" type="float4" nullable="false" comment="最低学习年限"/>
-            <column name="normal" type="float4" nullable="false" comment="学制"/>
+            <column name="maximum" type="float4" nullable="false" defaultValue="0" comment="最长学习年限"/>
+            <column name="minimum" type="float4" nullable="false" defaultValue="0" comment="最低学习年限"/>
+            <column name="normal" type="float4" nullable="false" defaultValue="0" comment="学制"/>
             <column name="to_grade_id" type="bigint" comment="结束年级ID"/>
           </columns>
           <constraints>
@@ -1293,7 +1293,7 @@
             <column name="advisor_id" type="bigint" comment="教师信息ID"/>
             <column name="begin_on" type="date" nullable="false" comment="学籍生效日期"/>
             <column name="code" type="varchar(15)" nullable="false" comment="学号"/>
-            <column name="duration" type="float4" nullable="false" comment="学制/学习年限"/>
+            <column name="duration" type="float4" nullable="false" defaultValue="0" comment="学制/学习年限"/>
             <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
             <column name="en_name" type="varchar(200)" comment="姓名拼音"/>
             <column name="end_on" type="date" nullable="false" comment="学籍截止日期"/>
@@ -1779,7 +1779,7 @@
             <column name="alloc_policy" type="integer" nullable="false" comment="分配策略"/>
             <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
             <column name="min_capacity" type="integer" nullable="false" defaultValue="0" comment="最小容量"/>
-            <column name="min_occupy_ratio" type="float4" nullable="false" comment="最低占用率"/>
+            <column name="min_occupy_ratio" type="float4" nullable="false" defaultValue="0" comment="最低占用率"/>
             <column name="min_std_exam_interval" type="integer" nullable="false" defaultValue="0" comment="学生连续考试最小间隔"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
@@ -1854,7 +1854,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="grading_mode_id" type="integer" nullable="false" comment="成绩记录方式ID"/>
-            <column name="pass_score" type="float4" nullable="false" comment="及格线"/>
+            <column name="pass_score" type="float4" nullable="false" defaultValue="0" comment="及格线"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
           </columns>
           <constraints>
@@ -1870,8 +1870,8 @@
             <column name="default_score" type="float4" comment="默认分数"/>
             <column name="gp_exp" type="varchar(255)" comment="绩点表达式"/>
             <column name="grade" type="varchar(255)" comment="显示名称"/>
-            <column name="max_score" type="float4" nullable="false" comment="最高分"/>
-            <column name="min_score" type="float4" nullable="false" comment="最低分"/>
+            <column name="max_score" type="float4" nullable="false" defaultValue="0" comment="最高分"/>
+            <column name="min_score" type="float4" nullable="false" defaultValue="0" comment="最低分"/>
           </columns>
           <constraints>
             <primary-key name="pk_bl6jfoa15bivbeyy7bp965w81" columns="id"/>
@@ -2230,7 +2230,7 @@
             <column name="amount" type="integer" nullable="false" defaultValue="0" comment="对应的金额"/>
             <column name="department_id" type="integer" comment="部门组织机构信息ID"/>
             <column name="direction_id" type="bigint" comment="方向信息 专业领域ID"/>
-            <column name="duration" type="float4" nullable="false" comment="学制"/>
+            <column name="duration" type="float4" nullable="false" defaultValue="0" comment="学制"/>
             <column name="fee_type_id" type="integer" nullable="false" comment="收费类型ID"/>
             <column name="from_grade_id" type="bigint" nullable="false" comment="起始年级ID"/>
             <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
@@ -4890,19 +4890,19 @@
         <table name="audit_group_results" comment="组审核结果@grade.audit">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="converted_credits" type="float4" nullable="false" comment="转换学分"/>
+            <column name="converted_credits" type="float4" nullable="false" defaultValue="0" comment="转换学分"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="indexno" type="varchar(255)" nullable="false" comment="顺序号"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
-            <column name="owed_credits" type="float4" nullable="false" comment="不足学分"/>
-            <column name="owed_credits2" type="float4" nullable="false" comment="预计完成不足学分"/>
-            <column name="owed_credits3" type="float4" nullable="false" comment="考虑在读情况下不足学分"/>
+            <column name="owed_credits" type="float4" nullable="false" defaultValue="0" comment="不足学分"/>
+            <column name="owed_credits2" type="float4" nullable="false" defaultValue="0" comment="预计完成不足学分"/>
+            <column name="owed_credits3" type="float4" nullable="false" defaultValue="0" comment="考虑在读情况下不足学分"/>
             <column name="parent_id" type="bigint" comment="组审核结果ID"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
-            <column name="passed_credits" type="float4" nullable="false" comment="完成学分"/>
+            <column name="passed_credits" type="float4" nullable="false" defaultValue="0" comment="完成学分"/>
             <column name="plan_result_id" type="bigint" nullable="false" comment="计划审核结果ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="required_credits" type="float4" nullable="false" comment="要求学分"/>
+            <column name="required_credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="sub_count" type="smallint" nullable="false" defaultValue="0" comment="要求完成子组数量"/>
           </columns>
           <constraints>
@@ -4920,14 +4920,14 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="archived" type="boolean" nullable="false" defaultValue="false" comment="是否归档"/>
-            <column name="owed_credits" type="float4" nullable="false" comment="不足学分"/>
-            <column name="owed_credits2" type="float4" nullable="false" comment="预计完成不足学分"/>
-            <column name="owed_credits3" type="float4" nullable="false" comment="考虑在读情况下不足学分"/>
+            <column name="owed_credits" type="float4" nullable="false" defaultValue="0" comment="不足学分"/>
+            <column name="owed_credits2" type="float4" nullable="false" defaultValue="0" comment="预计完成不足学分"/>
+            <column name="owed_credits3" type="float4" nullable="false" defaultValue="0" comment="考虑在读情况下不足学分"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
-            <column name="passed_credits" type="float4" nullable="false" comment="完成学分"/>
+            <column name="passed_credits" type="float4" nullable="false" defaultValue="0" comment="完成学分"/>
             <column name="predicted" type="boolean" nullable="false" defaultValue="false" comment="预计是否通过"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="required_credits" type="float4" nullable="false" comment="要求学分"/>
+            <column name="required_credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="updates" type="varchar(500)" comment="更新内容"/>
@@ -5600,7 +5600,7 @@
             <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
-            <column name="max_course_conflict_ratio" type="float4" nullable="false" comment="最大上课冲突比例"/>
+            <column name="max_course_conflict_ratio" type="float4" nullable="false" defaultValue="0" comment="最大上课冲突比例"/>
             <column name="min_course_conflict_count" type="integer" nullable="false" defaultValue="0" comment="最小学生上课冲突人数"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
@@ -5798,7 +5798,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
-            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="direction_id" type="bigint" comment="该组针对的专业方向ID"/>
             <column name="given_name" type="varchar(100)" comment="自定义别名"/>
             <column name="hour_ratios" type="varchar(50)" nullable="false" comment="要求学时比例"/>
@@ -5854,7 +5854,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
-            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="hour_ratios" type="varchar(50)" nullable="false" comment="学时比例"/>
             <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
@@ -5910,8 +5910,8 @@
         <table name="extern_exempt_credits" comment="外校成绩免修学分上限@exempt">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="exempted" type="float4" nullable="false" comment="已免修学分数"/>
-            <column name="max_value" type="float4" nullable="false" comment="免修学分总和的最大值"/>
+            <column name="exempted" type="float4" nullable="false" defaultValue="0" comment="已免修学分数"/>
+            <column name="max_value" type="float4" nullable="false" defaultValue="0" comment="免修学分总和的最大值"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -5927,7 +5927,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="acquired_on" type="date" nullable="false" comment="获得年月"/>
             <column name="course_name" type="varchar(400)" nullable="false" comment="课程名称"/>
-            <column name="credits" type="float4" nullable="false" comment="学分"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="学分"/>
             <column name="extern_student_id" type="bigint" nullable="false" comment="外校学习经历ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="score_text" type="varchar(20)" nullable="false" comment="成绩字面值"/>
@@ -6065,10 +6065,10 @@
         <table name="invigilation_clazz_quotas" comment="教学任务监考配额统计@exam">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="amount" type="float4" nullable="false" comment="配额"/>
+            <column name="amount" type="float4" nullable="false" defaultValue="0" comment="配额"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="credit_hours" type="float4" nullable="false" comment="学时"/>
-            <column name="ratio" type="float4" nullable="false" comment="比例"/>
+            <column name="credit_hours" type="float4" nullable="false" defaultValue="0" comment="学时"/>
+            <column name="ratio" type="float4" nullable="false" defaultValue="0" comment="比例"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
           </columns>
           <constraints>
@@ -6081,7 +6081,7 @@
         <table name="invigilation_quota_details" comment="监考统计明细@exam">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="amount" type="float4" nullable="false" comment="配额"/>
+            <column name="amount" type="float4" nullable="false" defaultValue="0" comment="配额"/>
             <column name="campus_id" type="integer" nullable="false" comment="校区信息ID"/>
             <column name="depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="quota_id" type="bigint" nullable="false" comment="监考配额ID"/>
@@ -6157,7 +6157,7 @@
             <column name="homework" type="varchar(400)" comment="作业"/>
             <column name="idx" type="integer" nullable="false" defaultValue="0" comment="序号"/>
             <column name="learning" type="varchar(255)" comment="自主学习内容"/>
-            <column name="learning_hours" type="float4" nullable="false" comment="自主学习课时"/>
+            <column name="learning_hours" type="float4" nullable="false" defaultValue="0" comment="自主学习课时"/>
             <column name="plan_id" type="bigint" nullable="false" comment="授课计划ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
@@ -6231,7 +6231,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
-            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="departments" type="varchar(100)" comment="开课院系说明"/>
             <column name="direction_id" type="bigint" comment="该组针对的专业方向ID"/>
             <column name="given_name" type="varchar(100)" comment="自定义别名"/>
@@ -6289,7 +6289,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
-            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="hour_ratios" type="varchar(50)" nullable="false" comment="学时比例"/>
             <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -6561,12 +6561,12 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
-            <column name="credits" type="float4" nullable="false" comment="学分"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="学分"/>
             <column name="degree_gpa" type="float4" comment="学位绩点"/>
             <column name="degree_id" type="integer" comment="毕业授予学位ID"/>
             <column name="department_id" type="integer" nullable="false" comment="部门ID"/>
             <column name="direction_id" type="bigint" comment="专业方向ID"/>
-            <column name="duration" type="float4" nullable="false" comment="学制"/>
+            <column name="duration" type="float4" nullable="false" defaultValue="0" comment="学制"/>
             <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
             <column name="end_on" type="date" nullable="false" comment="结束日期"/>
             <column name="end_term" type="smallint" nullable="false" defaultValue="0" comment="结束学期"/>
@@ -6643,8 +6643,8 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="excellent_rate" type="float4" nullable="false" comment="优秀率"/>
-            <column name="excellent_rate_limit" type="float4" nullable="false" comment="优秀率上限"/>
+            <column name="excellent_rate" type="float4" nullable="false" defaultValue="0" comment="优秀率"/>
+            <column name="excellent_rate_limit" type="float4" nullable="false" defaultValue="0" comment="优秀率上限"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="状态"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
@@ -6672,7 +6672,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="score" type="float4" nullable="false" comment="分数"/>
+            <column name="score" type="float4" nullable="false" defaultValue="0" comment="分数"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="状态"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -6999,7 +6999,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
-            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="given_name" type="varchar(255)" comment="别名"/>
             <column name="hour_ratios" type="varchar(50)" nullable="false" comment="要求学时比例"/>
             <column name="indexno" type="varchar(20)" nullable="false" comment="索引号"/>
@@ -7030,12 +7030,12 @@
         <table name="std_credit_stats" comment="学生每学期选择教学班限制和统计@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="max_credits" type="float4" nullable="false" comment="学分上限"/>
+            <column name="max_credits" type="float4" nullable="false" defaultValue="0" comment="学分上限"/>
             <column name="max_new_count" type="integer" nullable="false" defaultValue="0" comment="最多新选课程门数"/>
             <column name="repeat_count" type="integer" nullable="false" defaultValue="0" comment="重修数量"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
-            <column name="total_credits" type="float4" nullable="false" comment="已选学分"/>
+            <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="已选学分"/>
             <column name="total_new_count" type="integer" nullable="false" defaultValue="0" comment="已选新课程门数(不含重修)"/>
           </columns>
           <constraints>
@@ -7064,13 +7064,13 @@
         <table name="std_gpas" comment="学生成绩绩点统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credits" type="float4" nullable="false" comment="获得学分"/>
-            <column name="ga" type="float8" nullable="false" comment="平均分"/>
-            <column name="gpa" type="float8" nullable="false" comment="总平均绩点"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
+            <column name="ga" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
+            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
-            <column name="total_credits" type="float4" nullable="false" comment="总学分"/>
+            <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
@@ -7157,7 +7157,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="要求学时"/>
-            <column name="credits" type="float4" nullable="false" comment="要求学分"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="hour_ratios" type="varchar(50)" nullable="false" comment="学时比例"/>
             <column name="program_id" type="bigint" nullable="false" comment="专业培养方案ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
@@ -7173,13 +7173,13 @@
         <table name="std_semester_gpas" comment="学生成绩每学期统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credits" type="float4" nullable="false" comment="获得学分"/>
-            <column name="ga" type="float8" nullable="false" comment="平均分"/>
-            <column name="gpa" type="float8" nullable="false" comment="总平均绩点"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
+            <column name="ga" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
+            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
-            <column name="total_credits" type="float4" nullable="false" comment="总学分"/>
+            <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
           </columns>
           <constraints>
             <primary-key name="pk_fqb6mob02oox7m3qiy43y5g3f" columns="id"/>
@@ -7194,13 +7194,13 @@
         <table name="std_year_gpas" comment="学生成绩每学期统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credits" type="float4" nullable="false" comment="获得学分"/>
-            <column name="ga" type="float8" nullable="false" comment="平均分"/>
-            <column name="gpa" type="float8" nullable="false" comment="总平均绩点"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
+            <column name="ga" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
+            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="school_year" type="varchar(10)" nullable="false" comment="学年"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
-            <column name="total_credits" type="float4" nullable="false" comment="总学分"/>
+            <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
           </columns>
           <constraints>
             <primary-key name="pk_3ad0t5p7c2vmp6ktrbtgiwbwb" columns="id"/>
@@ -7267,7 +7267,7 @@
         <table name="syllabus_credit_hours" comment="教学大纲-分类课时@course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credit_hours" type="float4" nullable="false" comment="学时"/>
+            <column name="credit_hours" type="float4" nullable="false" defaultValue="0" comment="学时"/>
             <column name="nature_id" type="integer" nullable="false" comment="授课性质ID"/>
             <column name="syllabus_id" type="bigint" nullable="false" comment="课程教学大纲ID"/>
             <column name="weeks" type="integer" nullable="false" defaultValue="0" comment="实践周"/>
@@ -7313,7 +7313,7 @@
         <table name="syllabus_exam_hours" comment="教学大纲-考核课时@course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credit_hours" type="float4" nullable="false" comment="学时"/>
+            <column name="credit_hours" type="float4" nullable="false" defaultValue="0" comment="学时"/>
             <column name="nature_id" type="integer" nullable="false" comment="授课性质ID"/>
             <column name="syllabus_id" type="bigint" nullable="false" comment="课程教学大纲ID"/>
           </columns>
@@ -7434,7 +7434,7 @@
         <table name="syllabus_topic_hours" comment="教学大纲-教学主题-分类课时@course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credit_hours" type="float4" nullable="false" comment="学时"/>
+            <column name="credit_hours" type="float4" nullable="false" defaultValue="0" comment="学时"/>
             <column name="nature_id" type="integer" nullable="false" comment="授课性质ID"/>
             <column name="topic_id" type="bigint" nullable="false" comment="教学大纲-教学主题ID"/>
           </columns>
@@ -7453,7 +7453,7 @@
             <column name="contents" type="varchar(4000)" nullable="false" comment="教学内容"/>
             <column name="exam" type="boolean" nullable="false" defaultValue="false" comment="是否考试环节"/>
             <column name="idx" type="smallint" nullable="false" defaultValue="0" comment="顺序号"/>
-            <column name="learning_hours" type="float4" nullable="false" comment="自主学习学时"/>
+            <column name="learning_hours" type="float4" nullable="false" defaultValue="0" comment="自主学习学时"/>
             <column name="methods" type="varchar(255)" comment="教学主题-教学方式方法"/>
             <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
             <column name="objectives" type="varchar(255)" comment="对应的课程目标"/>
@@ -7483,7 +7483,7 @@
             <column name="exam_credit_hours" type="integer" nullable="false" defaultValue="0" comment="考核课时"/>
             <column name="exam_mode_id" type="integer" nullable="false" comment="考核方式ID"/>
             <column name="grading_mode_id" type="integer" nullable="false" comment="成绩记录方式ID"/>
-            <column name="learning_hours" type="float4" nullable="false" comment="自主学习课时"/>
+            <column name="learning_hours" type="float4" nullable="false" defaultValue="0" comment="自主学习课时"/>
             <column name="materials" type="varchar(2000)" comment="其他教学资源"/>
             <column name="methods" type="varchar(500)" nullable="false" comment="教学大纲-教学方式"/>
             <column name="module_id" type="integer" nullable="false" comment="课程模块ID"/>
@@ -7570,8 +7570,8 @@
             <column name="course_id" type="bigint" nullable="false" comment="课程ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="担任学时"/>
             <column name="crn" type="varchar(255)" nullable="false" comment="任务课程序号"/>
-            <column name="factor" type="float4" nullable="false" comment="工作量系数"/>
-            <column name="load_hours" type="float4" nullable="false" comment="折算课时"/>
+            <column name="factor" type="float4" nullable="false" defaultValue="0" comment="工作量系数"/>
+            <column name="load_hours" type="float4" nullable="false" defaultValue="0" comment="折算课时"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="std_count" type="integer" nullable="false" defaultValue="0" comment="教学班人数"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师信息ID"/>
@@ -7791,8 +7791,8 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="audit_opinion" type="varchar(255)" comment="审核意见"/>
-            <column name="credits" type="float4" nullable="false" comment="申请冲抵的外校课程学分总计"/>
-            <column name="exemption_credits" type="float4" nullable="false" comment="冲抵本校课程的学分总计"/>
+            <column name="credits" type="float4" nullable="false" defaultValue="0" comment="申请冲抵的外校课程学分总计"/>
+            <column name="exemption_credits" type="float4" nullable="false" defaultValue="0" comment="冲抵本校课程的学分总计"/>
             <column name="extern_student_id" type="bigint" nullable="false" comment="外校学习经历ID"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="status" type="integer" nullable="false" comment="审核状态"/>
@@ -7814,7 +7814,7 @@
             <column name="category_id" type="integer" nullable="false" comment="新开课程分类ID"/>
             <column name="code" type="varchar(255)" comment="课程代码"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时"/>
-            <column name="default_credits" type="float4" nullable="false" comment="默认学分"/>
+            <column name="default_credits" type="float4" nullable="false" defaultValue="0" comment="默认学分"/>
             <column name="department_id" type="integer" nullable="false" comment="院系ID"/>
             <column name="en_name" type="varchar(255)" comment="课程英文名"/>
             <column name="end_on" type="date" comment="失效日期"/>
@@ -8101,7 +8101,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:assigned"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="school_year" type="integer" nullable="false" comment="学年度"/>
-            <column name="score" type="float4" nullable="false" comment="分数"/>
+            <column name="score" type="float4" nullable="false" defaultValue="0" comment="分数"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="状态"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -8602,8 +8602,8 @@
             <column name="criteria_id" type="bigint" nullable="false" comment="评教对照标准ID"/>
             <column name="description" type="varchar(255)" nullable="false" comment="描述"/>
             <column name="grade" type="integer" nullable="false" defaultValue="0" comment="数字级别"/>
-            <column name="max_score" type="float4" nullable="false" comment="最大分值"/>
-            <column name="min_score" type="float4" nullable="false" comment="最小分值"/>
+            <column name="max_score" type="float4" nullable="false" defaultValue="0" comment="最大分值"/>
+            <column name="min_score" type="float4" nullable="false" defaultValue="0" comment="最小分值"/>
             <column name="name" type="varchar(255)" nullable="false" comment="对应的评价名称"/>
           </columns>
           <constraints>
@@ -8633,12 +8633,12 @@
         <table name="category_stat_grades" comment="分类统计-指标级别@qos.clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="avg_score" type="float8" nullable="false" comment="平均分"/>
+            <column name="avg_score" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数量"/>
             <column name="grade_id" type="integer" nullable="false" comment="评价名称对应项ID"/>
             <column name="indicator_id" type="bigint" nullable="false" comment="问题类型ID"/>
-            <column name="max_score" type="float8" nullable="false" comment="最高分"/>
-            <column name="min_score" type="float8" nullable="false" comment="最低分"/>
+            <column name="max_score" type="float8" nullable="false" defaultValue="0" comment="最高分"/>
+            <column name="min_score" type="float8" nullable="false" defaultValue="0" comment="最低分"/>
             <column name="stat_id" type="bigint" nullable="false" comment="分类统计ID"/>
           </columns>
           <constraints>
@@ -8655,10 +8655,10 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数量"/>
-            <column name="from_score" type="float8" nullable="false" comment="起始分数"/>
+            <column name="from_score" type="float8" nullable="false" defaultValue="0" comment="起始分数"/>
             <column name="indicator_id" type="bigint" nullable="false" comment="问题类型ID"/>
             <column name="stat_id" type="bigint" nullable="false" comment="分类统计ID"/>
-            <column name="to_score" type="float8" nullable="false" comment="截至分数"/>
+            <column name="to_score" type="float8" nullable="false" defaultValue="0" comment="截至分数"/>
           </columns>
           <constraints>
             <primary-key name="pk_cv2ip2dgyo0tdy2p0ung5jpi5" columns="id"/>
@@ -8681,7 +8681,7 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="publish_status" type="integer" nullable="false" defaultValue="0" comment="发布状态"/>
             <column name="school_rank" type="integer" nullable="false" defaultValue="0" comment="全校排名"/>
-            <column name="score" type="float4" nullable="false" comment="平均得分"/>
+            <column name="score" type="float4" nullable="false" defaultValue="0" comment="平均得分"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="teach_depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="teacher_depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
@@ -8707,7 +8707,7 @@
             <column name="category_rank" type="integer" nullable="false" defaultValue="0" comment="分类排名"/>
             <column name="grade_id" type="integer" nullable="false" comment="评价名称对应项ID"/>
             <column name="indicator_id" type="bigint" nullable="false" comment="问题类型ID"/>
-            <column name="score" type="float8" nullable="false" comment="问题类别统计平均分值"/>
+            <column name="score" type="float8" nullable="false" defaultValue="0" comment="问题类别统计平均分值"/>
             <column name="stat_id" type="bigint" nullable="false" comment="问卷评教结果ID"/>
           </columns>
           <constraints>
@@ -8740,7 +8740,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="question_id" type="bigint" nullable="false" comment="具体问题ID"/>
-            <column name="score" type="float8" nullable="false" comment="平均得分"/>
+            <column name="score" type="float8" nullable="false" defaultValue="0" comment="平均得分"/>
             <column name="stat_id" type="bigint" nullable="false" comment="问卷统计ID"/>
           </columns>
           <constraints>
@@ -8755,7 +8755,7 @@
         <table name="depart_eval_stats" comment="开课院系评教问卷统计结果@qos.clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="avg_score" type="float8" nullable="false" comment="平均得分"/>
+            <column name="avg_score" type="float8" nullable="false" defaultValue="0" comment="平均得分"/>
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数"/>
             <column name="department_id" type="integer" nullable="false" comment="开课院系ID"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
@@ -8775,7 +8775,7 @@
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="department_id" type="integer" nullable="false" comment="开课院系ID"/>
             <column name="questionnaire_id" type="bigint" nullable="false" comment="问卷信息ID"/>
-            <column name="score" type="float4" nullable="false" comment="总分"/>
+            <column name="score" type="float4" nullable="false" defaultValue="0" comment="总分"/>
             <column name="stat_type" type="integer" nullable="false" defaultValue="0" comment="1正常 2 无效 3异常(互斥)"/>
             <column name="student_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师ID"/>
@@ -8842,12 +8842,12 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="depart_rank" type="integer" nullable="false" defaultValue="0" comment="院系排名"/>
-            <column name="depart_score" type="float4" nullable="false" comment="部门评分"/>
+            <column name="depart_score" type="float4" nullable="false" defaultValue="0" comment="部门评分"/>
             <column name="school_rank" type="integer" nullable="false" defaultValue="0" comment="全校排名"/>
-            <column name="score" type="float4" nullable="false" comment="总分"/>
+            <column name="score" type="float4" nullable="false" defaultValue="0" comment="总分"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
-            <column name="std_score" type="float4" nullable="false" comment="学生评分"/>
-            <column name="supvi_score" type="float4" nullable="false" comment="督导评分"/>
+            <column name="std_score" type="float4" nullable="false" defaultValue="0" comment="学生评分"/>
+            <column name="supvi_score" type="float4" nullable="false" defaultValue="0" comment="督导评分"/>
             <column name="teacher_id" type="bigint" nullable="false" comment="教师ID"/>
           </columns>
           <constraints>
@@ -8889,7 +8889,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="group_id" type="bigint" nullable="false" comment="选项组ID"/>
             <column name="name" type="varchar(50)" nullable="false" comment="选项名"/>
-            <column name="proportion" type="float4" nullable="false" comment="选项所占比重（权重）"/>
+            <column name="proportion" type="float4" nullable="false" defaultValue="0" comment="选项所占比重（权重）"/>
           </columns>
           <constraints>
             <primary-key name="pk_h7d0xw570w8ojgjkwivq1cng6" columns="id"/>
@@ -8906,7 +8906,7 @@
             <column name="option_id" type="bigint" nullable="false" comment="问题选项ID"/>
             <column name="question_id" type="bigint" nullable="false" comment="问题ID"/>
             <column name="result_id" type="bigint" nullable="false" comment="评教结果ID"/>
-            <column name="score" type="float4" nullable="false" comment="得分"/>
+            <column name="score" type="float4" nullable="false" defaultValue="0" comment="得分"/>
           </columns>
           <constraints>
             <primary-key name="pk_rcpahtmwk6gyixcqpqcvwdtku" columns="id"/>
@@ -8973,7 +8973,7 @@
             <column name="option_group_id" type="bigint" nullable="false" comment="选项组ID"/>
             <column name="priority" type="integer" nullable="false" defaultValue="0" comment="优先级"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="score" type="float4" nullable="false" comment="分值"/>
+            <column name="score" type="float4" nullable="false" defaultValue="0" comment="分值"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
@@ -8986,7 +8986,7 @@
         <table name="school_eval_stats" comment="学校评教问卷统计结果@qos.clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="avg_score" type="float8" nullable="false" comment="平均得分"/>
+            <column name="avg_score" type="float8" nullable="false" defaultValue="0" comment="平均得分"/>
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="semester_id" type="integer" nullable="false" comment="教学日历ID"/>
@@ -9022,7 +9022,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
-            <column name="gpa" type="float4" nullable="false" comment="平均绩点"/>
+            <column name="gpa" type="float4" nullable="false" defaultValue="0" comment="平均绩点"/>
             <column name="grade_detail" type="varchar(3000)" nullable="false" comment="成绩明细"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -9098,7 +9098,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
             <column name="degree_id" type="integer" nullable="false" comment="学位ID"/>
-            <column name="gpa" type="float4" nullable="false" comment="GPA"/>
+            <column name="gpa" type="float4" nullable="false" defaultValue="0" comment="GPA"/>
             <column name="passed" type="boolean" comment="是否通过"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -9235,7 +9235,7 @@
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="direction_id" type="bigint" comment="方向信息 专业领域ID"/>
             <column name="dormitory_no" type="varchar(20)" comment="宿舍信息"/>
-            <column name="duration" type="float4" nullable="false" comment="学习年限"/>
+            <column name="duration" type="float4" nullable="false" defaultValue="0" comment="学习年限"/>
             <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
             <column name="education_mode_id" type="integer" comment="培养方式ID"/>
             <column name="email" type="varchar(100)" comment="电子邮箱"/>
@@ -9503,11 +9503,11 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="contents" type="varchar(3000)" nullable="false" comment="各个类别完成情况"/>
-            <column name="owed_credits" type="float4" nullable="false" comment="欠学分"/>
-            <column name="owed_credits2" type="float4" nullable="false" comment="预计通过后所欠学分"/>
-            <column name="owed_credits3" type="float4" nullable="false" comment="在读通过后所欠学分"/>
-            <column name="passed_credits" type="float4" nullable="false" comment="通过学分"/>
-            <column name="required_credits" type="float4" nullable="false" comment="要求学分"/>
+            <column name="owed_credits" type="float4" nullable="false" defaultValue="0" comment="欠学分"/>
+            <column name="owed_credits2" type="float4" nullable="false" defaultValue="0" comment="预计通过后所欠学分"/>
+            <column name="owed_credits3" type="float4" nullable="false" defaultValue="0" comment="在读通过后所欠学分"/>
+            <column name="passed_credits" type="float4" nullable="false" defaultValue="0" comment="通过学分"/>
+            <column name="required_credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
@@ -9812,12 +9812,12 @@
             <column name="from_grade_id" type="bigint" nullable="false" comment="转出年级ID"/>
             <column name="from_major_id" type="bigint" nullable="false" comment="转出专业ID"/>
             <column name="from_squad_id" type="bigint" comment="转出班级ID"/>
-            <column name="gpa" type="float4" nullable="false" comment="平均绩点"/>
+            <column name="gpa" type="float4" nullable="false" defaultValue="0" comment="平均绩点"/>
             <column name="has_fail" type="boolean" nullable="false" defaultValue="false" comment="是否有不及格课程"/>
-            <column name="major_gpa" type="float4" nullable="false" comment="专业课GPA"/>
+            <column name="major_gpa" type="float4" nullable="false" defaultValue="0" comment="专业课GPA"/>
             <column name="mobile" type="varchar(255)" nullable="false" comment="联系电话"/>
             <column name="option_id" type="bigint" nullable="false" comment="选择的招生专业ID"/>
-            <column name="other_gpa" type="float4" nullable="false" comment="专业课外GPA"/>
+            <column name="other_gpa" type="float4" nullable="false" defaultValue="0" comment="专业课外GPA"/>
             <column name="passed" type="boolean" comment="是否通过"/>
             <column name="reason" type="varchar(255)" nullable="false" comment="申请理由"/>
             <column name="score" type="float4" comment="考核分数"/>
@@ -9828,7 +9828,7 @@
             <column name="to_grade_id" type="bigint" nullable="false" comment="转入年级ID"/>
             <column name="to_major_id" type="bigint" nullable="false" comment="转入专业ID"/>
             <column name="to_squad_id" type="bigint" comment="转入班级ID"/>
-            <column name="transfer_gpa" type="float4" nullable="false" comment="转专业GPA"/>
+            <column name="transfer_gpa" type="float4" nullable="false" defaultValue="0" comment="转专业GPA"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="written_score" type="float4" comment="笔试分数"/>
           </columns>
