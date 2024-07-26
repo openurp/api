@@ -739,8 +739,6 @@ alter table edu.syllabus_docs add constraint fk_6hgp03420v9h2gbjcf4yj1qln foreig
 alter table edu.syllabus_docs add constraint fk_cbgp40yeb3rkj27f6wt85fxic foreign key (writer_id) references base.users (id);
 alter table edu.syllabus_docs add constraint fk_l06x7ny20kxmon2au60rnkdj4 foreign key (department_id) references base.departments (id);
 alter table edu.syllabus_docs add constraint fk_sbo56dh80yng4sy9rxvy2sf63 foreign key (auditor_id) references base.users (id);
-alter table edu.syllabus_exam_hours add constraint fk_f36h2daknrbly4g7q6r6faav5 foreign key (syllabus_id) references edu.syllabuses (id);
-alter table edu.syllabus_exam_hours add constraint fk_t0utaqto2seq8033s9n95e5jy foreign key (nature_id) references code.teaching_natures (id);
 alter table edu.syllabus_experiments add constraint fk_grw66d0pyjiqxydbhaicjkg0y foreign key (experiment_type_id) references code.experiment_types (id);
 alter table edu.syllabus_experiments add constraint fk_shhhmyva71kihwtqwgujnklum foreign key (syllabus_id) references edu.syllabuses (id);
 alter table edu.syllabus_method_designs add constraint fk_k5c1hajoxddphqgoiwl0fn0xr foreign key (syllabus_id) references edu.syllabuses (id);

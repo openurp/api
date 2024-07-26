@@ -592,7 +592,6 @@ alter table edu.syllabus_assessments add constraint pk_kkqki8ddvk7onx4uuooy2utc6
 alter table edu.syllabus_cases add constraint pk_c6rj8fnvnwtvocppfplamaej primary key (id);
 alter table edu.syllabus_credit_hours add constraint pk_om7aawhdv6equ6vgvlq89h9pf primary key (id);
 alter table edu.syllabus_docs add constraint pk_a2faop911g1x1pkx4mtf3mool primary key (id);
-alter table edu.syllabus_exam_hours add constraint pk_ect6q20arbiqruymsfh9iabsf primary key (id);
 alter table edu.syllabus_experiments add constraint pk_baulexp8qydt31g95omfugrnb primary key (id);
 alter table edu.syllabus_method_designs add constraint pk_8t8k3wtg8lwwd8useqr6t9r7 primary key (id);
 alter table edu.syllabus_objectives add constraint pk_nqtxa7ru8pkinx8a58ed3mwac primary key (id);

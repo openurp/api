@@ -64,9 +64,6 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 考核课时 */
   var examCreditHours: Int = _
 
-  /** 分类课时 */
-  var examHours = Collections.newBuffer[SyllabusExamHour]
-
   /** 自主学习课时 */
   var learningHours: Float = _
 
@@ -163,6 +160,9 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 驳回意见 */
   var opinions: Option[String] = None
 
+  /** 大纲自动检查是否完整 */
+  var complete: Boolean = _
+
   def teachingMethods: Seq[String] = {
     methods match
       case null => Seq.empty
@@ -181,7 +181,6 @@ class Syllabus extends LongId with Updated with TemporalOn {
 
   def getCreditHours(nature: TeachingNature): Float = {
     topics.flatMap(t => t.getHour(nature).map(_.creditHours)).sum
-      + examHours.find(_.nature == nature).map(_.creditHours).getOrElse(0f)
   }
 
   def getText(name: String): Option[SyllabusText] = {
@@ -236,10 +235,6 @@ object Syllabus {
     }
     newer.learningHours = syllabus.learningHours
     newer.examCreditHours = syllabus.examCreditHours
-    syllabus.examHours foreach { eh =>
-      val neh = new SyllabusExamHour(newer, eh.nature, eh.creditHours)
-      newer.examHours.addOne(neh)
-    }
 
     //copy syllabus basis info
     newer.rank = syllabus.rank

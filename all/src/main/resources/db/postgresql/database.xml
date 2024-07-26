@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.40.3">
+<db engine="PostgreSQL" version="0.40.4">
   <schemas>
     <schema name="base">
       <tables>
@@ -7318,22 +7318,6 @@
             <index name="idx_8qx3072jupsnmwta4pr2am1wq" columns="course_id"/>
           </indexes>
         </table>
-        <table name="syllabus_exam_hours" comment="教学大纲-考核课时@course">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credit_hours" type="float4" nullable="false" defaultValue="0" comment="学时"/>
-            <column name="nature_id" type="integer" nullable="false" comment="授课性质ID"/>
-            <column name="syllabus_id" type="bigint" nullable="false" comment="课程教学大纲ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_ect6q20arbiqruymsfh9iabsf" columns="id"/>
-            <foreign-key name="fk_f36h2daknrbly4g7q6r6faav5" column="syllabus_id" referenced-table="edu.syllabuses" referenced-column="id"/>
-            <foreign-key name="fk_t0utaqto2seq8033s9n95e5jy" column="nature_id" referenced-table="code.teaching_natures" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_sekt0eg3iv22sxqbigc26w5m1" columns="syllabus_id"/>
-          </indexes>
-        </table>
         <table name="syllabus_experiments" comment="教学大纲-实践环节@course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -7394,7 +7378,7 @@
             <column name="course_objectives" type="varchar(255)" nullable="false" comment="对应的课程目标"/>
             <column name="idx" type="integer" nullable="false" defaultValue="0" comment="顺序号"/>
             <column name="syllabus_id" type="bigint" nullable="false" comment="课程教学大纲ID"/>
-            <column name="title" type="varchar(255)" nullable="false" comment="标题"/>
+            <column name="title" type="varchar(150)" nullable="false" comment="标题"/>
           </columns>
           <constraints>
             <primary-key name="pk_fkpwvl02mv1b3t242nvjdhc7y" columns="id"/>
@@ -7481,6 +7465,7 @@
             <column name="approver_id" type="bigint" comment="通用人员信息ID"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
             <column name="bibliography" type="varchar(2000)" comment="参考书目"/>
+            <column name="complete" type="boolean" nullable="false" defaultValue="false" comment="检查是否完整"/>
             <column name="corequisites" type="varchar(255)" comment="并修课程"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时"/>

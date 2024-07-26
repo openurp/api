@@ -188,7 +188,6 @@ create index idx_6wbdmn5a9toyucjxt4pqyxjh5 on edu.syllabus_assessments (syllabus
 create index idx_hqrxviradweba2ve2ptwofbql on edu.syllabus_cases (syllabus_id);
 create index idx_8sl5w9jfgibrpr6amljeme2g4 on edu.syllabus_credit_hours (syllabus_id);
 create index idx_8qx3072jupsnmwta4pr2am1wq on edu.syllabus_docs (course_id);
-create index idx_sekt0eg3iv22sxqbigc26w5m1 on edu.syllabus_exam_hours (syllabus_id);
 create index idx_khcn79d0h9o2224wnk5sul1f6 on edu.syllabus_experiments (syllabus_id);
 create index idx_dfywiu9r8v1lje8xa5ewsykt on edu.syllabus_method_designs (syllabus_id);
 create index idx_boimgnna7omgr47k2ekt5gqjh on edu.syllabus_objectives (syllabus_id);

@@ -261,7 +261,6 @@ alter table trd.rd_project_categories add constraint uk_lm068o3s4253ai1s8dkm17r7
 alter table trd.rd_project_statuses drop constraint if exists rd_project_statuses_code_key cascade;
 alter table trd.rd_project_statuses add constraint uk_64ybhe0mvvwxkaw2woo44aycp unique (code);
 
-
 alter table base.courses alter default_credits set default 0;
 alter table base.school_lengths alter maximum set default 0;
 alter table base.school_lengths alter minimum set default 0;
