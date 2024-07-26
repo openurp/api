@@ -63,6 +63,12 @@ class BookType extends CodeBean
 @code("school")
 class BookAwardType extends CodeBean
 
+object CourseModule {
+  val General = 1 //通识课程或者公共课程
+  val Major = 2 //专业课程
+  val Practical = 3 //实践课程
+}
+
 /** 课程模块
  */
 @code("school")

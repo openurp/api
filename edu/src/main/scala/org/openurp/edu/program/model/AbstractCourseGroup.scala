@@ -23,7 +23,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Hierarchical, Remark}
 import org.openurp.base.edu.model.Terms
 import org.openurp.base.model.CalendarStage
-import org.openurp.code.edu.model.{CourseRank, CourseType, TeachingNature}
+import org.openurp.code.edu.model.{CourseModule, CourseRank, CourseType, TeachingNature}
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
@@ -79,6 +79,12 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
   def optional: Boolean = {
     rank match
       case Some(r) => r.id != CourseRank.Compulsory
+      case None => false
+  }
+
+  def practical: Boolean = {
+    courseType.module match
+      case Some(r) => r.id == CourseModule.Practical
       case None => false
   }
 
