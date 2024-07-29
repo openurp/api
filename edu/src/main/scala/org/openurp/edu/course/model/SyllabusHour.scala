@@ -20,22 +20,20 @@ package org.openurp.edu.course.model
 import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.TeachingNature
 
-/** 教学大纲课时分配
+/** 课程大纲课时分配
  */
-class SyllabusCreditHour extends LongId {
+class SyllabusHour extends LongId {
+  /** 课程大纲 */
   var syllabus: Syllabus = _
   /** 课时分类 */
   var nature: TeachingNature = _
   /** 学时 */
   var creditHours: Float = _
-  /** 周 */
-  var weeks: Int = _
 
-  def this(syllabus: Syllabus, nature: TeachingNature, creditHours: Float, weeks: Int) = {
+  def this(syllabus: Syllabus, nature: TeachingNature, creditHours: Float) = {
     this()
     this.syllabus = syllabus
     this.nature = nature
     this.creditHours = creditHours
-    this.weeks = weeks
   }
 }

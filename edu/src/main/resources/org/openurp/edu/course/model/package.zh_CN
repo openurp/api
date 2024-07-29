@@ -25,14 +25,12 @@ Syllabus.website=课程网站地址
 Syllabus.examCreditHours=考核课时
 Syllabus.learningHours=自主学习课时
 Syllabus.creditHours=学时
+Syllabus.weeks=实践周
 Syllabus.opinions=驳回意见
 Syllabus.complete=检查是否完整
 
 SyllabusObjective=教学大纲课程目标
 SyllabusObjective.contents=内容
-
-SyllabusSection=教学大纲-教学环节
-SyllabusSection.creditHours=学时
 
 SyllabusOutcome=教学大纲毕业要求
 SyllabusObjective.contents=内容
@@ -55,10 +53,8 @@ SyllabusTopicHour.creditHours=学时
 SyllabusTopicHour.weeks=实践周
 SyllabusTopicHour.learning=自主学习学时
 
-SyllabusCreditHour=教学大纲-分类课时
-SyllabusCreditHour.creditHours=学时
-SyllabusCreditHour.weeks=实践周
-SyllabusCreditHour.learning=自主学习学时
+SyllabusHour=教学大纲-分类课时
+SyllabusHour.creditHours=学时
 
 SyllabusText=教学大纲文本
 SyllabusText.contents=内容

@@ -63,7 +63,7 @@ class DefaultMapping extends MappingModule {
       e.contents is length(1000)
     }
 
-    bind[SyllabusCreditHour]
+    bind[SyllabusHour]
 
     bind[SyllabusAssessment] declare { e =>
       e.description is length(4000)

@@ -55,8 +55,11 @@ class Syllabus extends LongId with Updated with TemporalOn {
   /** 总学时 */
   var creditHours: Int = _
 
+  /** 总实践周 */
+  var weeks: Option[Int] = None
+
   /** 分类课时 */
-  var hours = Collections.newBuffer[SyllabusCreditHour]
+  var hours = Collections.newBuffer[SyllabusHour]
 
   /** 教学方式 */
   var methods: String = _
@@ -171,7 +174,7 @@ class Syllabus extends LongId with Updated with TemporalOn {
 
   def teachingNatures: Seq[TeachingNature] = hours.map(_.nature).toSeq
 
-  def getCreditHour(nature: TeachingNature): Option[SyllabusCreditHour] = {
+  def getCreditHour(nature: TeachingNature): Option[SyllabusHour] = {
     hours.find(_.nature == nature)
   }
 
@@ -229,8 +232,9 @@ object Syllabus {
         case Some(j) => j
     newer.department = journal.department
     newer.creditHours = journal.creditHours
+    newer.weeks = syllabus.weeks
     syllabus.hours foreach { h =>
-      val nh = new SyllabusCreditHour(newer, h.nature, h.creditHours, h.weeks)
+      val nh = new SyllabusHour(newer, h.nature, h.creditHours)
       newer.hours.addOne(nh)
     }
     newer.learningHours = syllabus.learningHours
