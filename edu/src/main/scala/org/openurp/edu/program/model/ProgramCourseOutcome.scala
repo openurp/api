@@ -28,7 +28,7 @@ import org.openurp.base.edu.model.Course
 class ProgramCourseOutcome extends LongId {
 
   var doc: ProgramDoc = _
-
+  /** 序号(从1开始) */
   var idx: Int = _
 
   var groupName: String = _

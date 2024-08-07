@@ -20,7 +20,7 @@ package org.openurp.base.edu.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.model.{Department, ProjectBased}
+import org.openurp.base.model.{Department, ProjectBased, Semester}
 import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.*
 
@@ -125,6 +125,12 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   def getJournal(grade: Grade): CourseJournal = {
     journals.find(_.contains(grade)) match
       case None => new CourseJournal(this, grade.beginOn)
+      case Some(j) => j
+  }
+
+  def getJournal(semester: Semester): CourseJournal = {
+    journals.find(_.within(semester.beginOn)) match
+      case None => new CourseJournal(this, semester.beginOn)
       case Some(j) => j
   }
 

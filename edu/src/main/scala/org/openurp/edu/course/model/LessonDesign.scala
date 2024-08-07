@@ -17,41 +17,57 @@
 
 package org.openurp.edu.course.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
-import org.openurp.base.edu.model.Experiment
-import org.openurp.code.edu.model.ExperimentType
+import org.beangle.data.model.pojo.Remark
 
-/** 课程大纲中的实验
+/**
+ * 具体授课内容和方法设计
  */
 @beta
-class SyllabusExperiment extends LongId, Named {
+class LessonDesign extends LongId, Remark {
 
-  var syllabus: Syllabus = _
+  def this(program: ClazzProgram, idx: Int) = {
+    this()
+    this.program = program
+    this.idx = idx
+  }
+
+  /** 教案 */
+  var program: ClazzProgram = _
 
   /** 序号(从1开始) */
   var idx: Int = _
 
-  /** 实验 */
-  var experiment: Option[Experiment] = None
-
-  /** 是否在线实验 */
-  var online: Boolean = _
-
   /** 学时 */
   var creditHours: Int = _
 
-  /** 实验类型 */
-  var experimentType: ExperimentType = _
+  /** 教学主题 */
+  var subject: String = _
 
-  def this(syllabus: Syllabus, idx: Int, name: String, creditHours: Int, experimentType: ExperimentType, online: Boolean) = {
-    this()
-    this.syllabus = syllabus
-    this.idx = idx
-    this.name = name
-    this.creditHours = creditHours
-    this.experimentType = experimentType
-    this.online = online
+  /** 课程文字说明 */
+  var texts = Collections.newBuffer[LessonDesignText]
+
+  /** 课程内容环节 */
+  var sections = Collections.newBuffer[LessonDesignSection]
+
+  /** 课后作业明细 */
+  var homework: Option[String] = None
+
+  /** 附件 */
+  var filePath: Option[String] = None
+
+  def getSection(idx: Int): Option[LessonDesignSection] = {
+    sections.find(_.idx == idx)
   }
+
+  def getText(name: String): Option[LessonDesignText] = {
+    texts.find(_.name == name)
+  }
+
+  def get(name: String): Option[String] = {
+    getText(name).map(_.contents)
+  }
+
 }

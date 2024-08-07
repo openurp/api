@@ -27,10 +27,10 @@ import org.openurp.edu.clazz.model.Clazz
 import java.time.Instant
 import scala.collection.mutable
 
-/** 授课计划
+/** 授课计划(教学进度表）
  * 每个任务唯一
  */
-class TeachingPlan extends LongId with Updated {
+class ClazzPlan extends LongId, Updated {
 
   /** 教学任务 */
   var clazz: Clazz = _
@@ -39,7 +39,7 @@ class TeachingPlan extends LongId with Updated {
   var semester: Semester = _
 
   /** 分环节课时 */
-  var sections = Collections.newBuffer[TeachingPlanSection]
+  var hours = Collections.newBuffer[ClazzSectionHour]
 
   /** 课堂学时 */
   var lessonHours: Int = _
@@ -50,7 +50,7 @@ class TeachingPlan extends LongId with Updated {
   /** 授课内容 */
   var lessons: mutable.Buffer[Lesson] = Collections.newBuffer[Lesson]
 
-  /** 文件路径 */
+  /** 附件文件路径 */
   var filePath: Option[String] = None
 
   /** 教研室 */
@@ -74,43 +74,44 @@ class TeachingPlan extends LongId with Updated {
   /** 驳回意见 */
   var opinions: Option[String] = None
 
+  def this(clazz: Clazz) = {
+    this()
+    this.clazz = clazz
+    this.semester = clazz.semester
+    this.updatedAt = Instant.now
+  }
+
   def getHours(section: String): Int = {
-    sections.filter(_.name == section).map(_.creditHours).headOption.getOrElse(0)
+    hours.filter(_.name == section).map(_.creditHours).headOption.getOrElse(0)
   }
 
   def getLesson(idx: Int): Option[Lesson] = {
     lessons.find(_.idx == idx)
   }
 
-  def this(clazz: Clazz) = {
-    this()
-    this.clazz = clazz
-    this.semester = clazz.semester
-  }
-
-  def reserveSections(names: Iterable[String]): Unit = {
+  def reserveHours(names: Iterable[String]): Unit = {
     val nameSet = names.toSet
-    val removed = sections.filter(x => !nameSet.contains(x.name))
-    sections.subtractAll(removed)
+    val removed = hours.filter(x => !nameSet.contains(x.name))
+    hours.subtractAll(removed)
   }
 
-  def addSection(name: String, creditHours: Int): Unit = {
-    sections.find(_.name == name) match
+  def addHour(section: String, creditHours: Int): Unit = {
+    hours.find(_.name == section) match
       case None =>
-        val s = new TeachingPlanSection(this, name, creditHours)
-        sections.addOne(s)
+        val s = new ClazzSectionHour(this, section, creditHours)
+        hours.addOne(s)
       case Some(s) =>
         s.creditHours = creditHours
   }
 
-  def copyTo(p: TeachingPlan): Unit = {
-    val sectionNames = this.sections.map(_.name).toSet
-    val abandons = p.sections.filter(x => !sectionNames.contains(x.name))
-    p.sections.subtractAll(abandons)
+  def copyTo(p: ClazzPlan): Unit = {
+    val sectionNames = this.hours.map(_.name).toSet
+    val abandons = p.hours.filter(x => !sectionNames.contains(x.name))
+    p.hours.subtractAll(abandons)
 
-    this.sections foreach { h =>
-      p.sections.find(x => x.name == h.name) match
-        case None => p.sections.addOne(new TeachingPlanSection(p, h.name, h.creditHours))
+    this.hours foreach { h =>
+      p.hours.find(x => x.name == h.name) match
+        case None => p.hours.addOne(new ClazzSectionHour(p, h.name, h.creditHours))
         case Some(nh) => nh.creditHours = h.creditHours
     }
 

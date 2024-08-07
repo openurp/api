@@ -17,19 +17,40 @@
 
 package org.openurp.edu.course.model
 
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
 
-class TeachingPlanSection extends LongId, Named {
+/** 课程设计教学环节
+ */
+@beta
+class LessonDesignSection extends LongId {
 
-  var plan: TeachingPlan = _
+  /** 序号(从1开始) */
+  var idx: Int = _
 
-  var creditHours: Int = _
+  /** 授课内容 */
+  var design: LessonDesign = _
 
-  def this(plan: TeachingPlan, name: String, creditHours: Int) = {
+  /** 标题 */
+  var title: String = _
+
+  /** 教学内容提要 */
+  var summary: String = _
+
+  /** 分钟 */
+  var duration: Int = _
+
+  /** 教学过程设计 */
+  var details: String = _
+
+  def this(design: LessonDesign, idx: Int, title: String, duration: Int, summary: String, details: String) = {
     this()
-    this.name = name
-    this.plan = plan
-    this.creditHours = creditHours
+    this.design = design
+    this.idx = idx
+    this.title = title
+    this.summary = summary
+    this.duration = duration
+    this.details = details
   }
+
 }

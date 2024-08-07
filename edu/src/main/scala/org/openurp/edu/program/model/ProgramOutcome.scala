@@ -24,7 +24,7 @@ import org.beangle.data.model.LongId
 class ProgramOutcome extends LongId {
 
   var doc: ProgramDoc = _
-  /** 顺序号 */
+  /** 序号(从1开始) */
   var idx: Int = _
   /** 毕业要求 */
   var title: String = _

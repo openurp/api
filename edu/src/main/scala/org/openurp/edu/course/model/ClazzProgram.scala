@@ -17,34 +17,41 @@
 
 package org.openurp.edu.course.model
 
+import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.{Semester, User}
+import org.openurp.edu.clazz.model.Clazz
 
-/** 教学大纲教学方法
+import java.time.Instant
+import scala.collection.mutable
+
+/** 教案
  */
-class SyllabusMethodDesign extends LongId, Named {
+@beta
+class ClazzProgram extends LongId, Updated {
 
-  var syllabus: Syllabus = _
+  /** 教学任务 */
+  var clazz: Clazz = _
 
-  /** 序号(从1开始) */
-  var idx: Int = _
+  /** 学期 */
+  var semester: Semester = _
 
-  /** 内容 */
-  var contents: String = _
+  /** 授课内容 */
+  var designs: mutable.Buffer[LessonDesign] = Collections.newBuffer[LessonDesign]
 
-  /** 包含案例 */
-  var hasCase: Boolean = _
+  /** 作者 */
+  var writer: User = _
 
-  /** 包含实验 */
-  var hasExperiment: Boolean = _
-
-  def this(syllabus: Syllabus, idx: Int, name: String, contents: String, hasCase: Boolean, hasExperiment: Boolean) = {
+  def this(clazz: Clazz) = {
     this()
-    this.syllabus = syllabus
-    this.idx = idx
-    this.name = name
-    this.contents = contents
-    this.hasCase = hasCase
-    this.hasExperiment = hasExperiment
+    this.clazz = clazz
+    this.semester = clazz.semester
+    this.updatedAt = Instant.now
+  }
+
+  def get(idx: Int): Option[LessonDesign] = {
+    designs.find(_.idx == idx)
   }
 }

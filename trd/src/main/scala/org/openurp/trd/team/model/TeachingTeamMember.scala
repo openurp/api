@@ -27,10 +27,10 @@ class TeachingTeamMember extends LongId {
 
   var team: TeachingTeam = _
 
-  /**顺序号*/
+  /** 序号(从1开始) */
   var idx: Int = _
 
-  /**成员账户*/
+  /** 成员账户 */
   var user: User = _
 
 }

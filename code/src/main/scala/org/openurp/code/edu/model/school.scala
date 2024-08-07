@@ -210,11 +210,6 @@ class CourseAwardType extends CodeBean {
  */
 class CourseAwardCategory extends CodeBean
 
-/** 实验类型
- */
-@code("industry")
-class ExperimentType extends CodeBean
-
 /** 课程标签
  */
 @code("school")

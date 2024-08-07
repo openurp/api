@@ -24,7 +24,7 @@ import org.beangle.data.model.pojo.Named
  */
 class SyllabusCase extends LongId, Named {
 
-  /** 序号 */
+  /** 序号(从1开始) */
   var idx: Int = _
 
   var syllabus: Syllabus = _

@@ -42,9 +42,9 @@ class ActivityType extends CodeBean
 class DisciplineCatalog extends CodeBean
 
 /**
- * 学科
+ * 二级学科
  * （来自本专科科学科目录、研究生学术性学位目录、研究生专业性学位目录的学科）<br>
- * 一般认为4位代码的是一级学科，2位代码的是二级学科，但实际上可能没有一级学科、二级学科这种叫法
+ * 一般认为6位代码
  *
  * @author chaostone
  */
@@ -52,6 +52,13 @@ class DisciplineCatalog extends CodeBean
 class Discipline extends CodeBean {
   var category: DisciplineCategory = _
   var catalog: DisciplineCatalog = _
+}
+
+/** 一级学科
+ */
+@code("industry")
+class Level1Discipline extends CodeBean {
+  var category: DisciplineCategory = _
 }
 
 /**
@@ -402,3 +409,13 @@ class ThesisTopicSource extends CodeBean
  */
 @code("industry")
 class ThesisType extends CodeBean
+
+/** 实验类型
+ */
+@code("industry")
+class ExperimentType extends CodeBean
+
+/** 实验类别
+ */
+@code("industry")
+class ExperimentCategory extends CodeBean

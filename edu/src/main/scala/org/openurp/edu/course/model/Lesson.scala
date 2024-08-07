@@ -22,18 +22,18 @@ import org.beangle.data.model.pojo.Remark
 import org.openurp.edu.clazz.model.Subclazz
 
 /**
- * 授课内容
+ * 具体授课内容
  */
 class Lesson extends LongId, Remark {
 
-  def this(plan: TeachingPlan, idx: Int) = {
+  def this(plan: ClazzPlan, idx: Int) = {
     this()
     this.plan = plan
     this.idx = idx
   }
 
   /** 授课计划 */
-  var plan: TeachingPlan = _
+  var plan: ClazzPlan = _
 
   /** 针对授课小班 */
   var subclazz: Option[Subclazz] = None

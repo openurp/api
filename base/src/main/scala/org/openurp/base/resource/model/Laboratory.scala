@@ -15,36 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.course.model
+package org.openurp.base.resource.model
 
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
+import org.openurp.base.model.{Campus, School}
 
-/** 教学大纲教学方法
+/** 实验室
  */
-class SyllabusMethodDesign extends LongId, Named {
-
-  var syllabus: Syllabus = _
-
-  /** 序号(从1开始) */
-  var idx: Int = _
-
-  /** 内容 */
-  var contents: String = _
-
-  /** 包含案例 */
-  var hasCase: Boolean = _
-
-  /** 包含实验 */
-  var hasExperiment: Boolean = _
-
-  def this(syllabus: Syllabus, idx: Int, name: String, contents: String, hasCase: Boolean, hasExperiment: Boolean) = {
-    this()
-    this.syllabus = syllabus
-    this.idx = idx
-    this.name = name
-    this.contents = contents
-    this.hasCase = hasCase
-    this.hasExperiment = hasExperiment
-  }
+@beta
+class Laboratory extends LongId, Named, Coded, Updated, TemporalOn {
+  /** 学校 */
+  var school: School = _
+  /** 房间号 */
+  var roomNo: Option[String] = None
+  /** 所属校区 */
+  var campus: Campus = _
+  /** 所属建筑 */
+  var building: Option[Building] = None
+  /** 简称 */
+  var shortName: Option[String] = None
 }

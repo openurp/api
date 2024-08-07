@@ -17,34 +17,23 @@
 
 package org.openurp.edu.course.model
 
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 
-/** 教学大纲教学方法
+/** 课程设计文本内容
  */
-class SyllabusMethodDesign extends LongId, Named {
+@beta
+class LessonDesignText extends LongId, Named {
 
-  var syllabus: Syllabus = _
+  var design: LessonDesign = _
 
-  /** 序号(从1开始) */
-  var idx: Int = _
-
-  /** 内容 */
   var contents: String = _
 
-  /** 包含案例 */
-  var hasCase: Boolean = _
-
-  /** 包含实验 */
-  var hasExperiment: Boolean = _
-
-  def this(syllabus: Syllabus, idx: Int, name: String, contents: String, hasCase: Boolean, hasExperiment: Boolean) = {
+  def this(design: LessonDesign, name: String, contents: String) = {
     this()
-    this.syllabus = syllabus
-    this.idx = idx
+    this.design = design
     this.name = name
     this.contents = contents
-    this.hasCase = hasCase
-    this.hasExperiment = hasExperiment
   }
 }

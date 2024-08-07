@@ -78,9 +78,7 @@ class DefaultMapping extends MappingModule {
       e.name is length(100)
     }
 
-    bind[SyllabusExperiment] declare { e =>
-      e.name is length(100)
-    }
+    bind[SyllabusExperiment]
 
     bind[SyllabusDoc] declare { e =>
       e.docPath is length(200)
@@ -95,19 +93,39 @@ class DefaultMapping extends MappingModule {
       index("", true, e.semester, e.course, e.department)
     }
 
-    bind[TeachingPlan] declare { e =>
+    bind[ClazzPlan] declare { e =>
       e.lessons is depends("plan")
-      e.sections is depends("plan")
+      e.hours is depends("plan")
       e.opinions is length(300)
       index("", true, e.clazz)
     }
+
+    bind[ClazzSectionHour]
 
     bind[Lesson] declare { e =>
       e.contents is length(2000)
       e.homework is length(400)
     }
 
-    bind[TeachingPlanSection]
+    bind[ClazzProgram] declare { e =>
+      e.designs is depends("program")
+    }
+
+    bind[LessonDesign] declare { e =>
+      e.texts is depends("design")
+      e.sections is depends("design")
+    }
+
+    bind[LessonDesignText] declare { e =>
+      e.name is length(100)
+      e.contents is length(4000)
+    }
+
+    bind[LessonDesignSection] declare { e =>
+      e.title is length(200)
+      e.summary is length(1000)
+      e.details is length(3000)
+    }
 
     bind[ExamAnalysis].declare { e =>
       e.contents is length(3500)

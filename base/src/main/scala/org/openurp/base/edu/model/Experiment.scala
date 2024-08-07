@@ -15,43 +15,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.course.model
+package org.openurp.base.edu.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
-import org.openurp.base.edu.model.Experiment
-import org.openurp.code.edu.model.ExperimentType
+import org.beangle.data.model.pojo.{Coded, EnNamed, Named, TemporalOn}
+import org.openurp.base.model.Project
+import org.openurp.code.edu.model.{EducationLevel, ExperimentCategory, ExperimentType, Level1Discipline}
 
-/** 课程大纲中的实验
+import scala.collection.mutable
+
+/** 实验项目
  */
 @beta
-class SyllabusExperiment extends LongId, Named {
-
-  var syllabus: Syllabus = _
-
-  /** 序号(从1开始) */
-  var idx: Int = _
-
-  /** 实验 */
-  var experiment: Option[Experiment] = None
-
-  /** 是否在线实验 */
-  var online: Boolean = _
-
-  /** 学时 */
-  var creditHours: Int = _
-
+class Experiment extends LongId, Coded, Named, EnNamed, TemporalOn {
+  /** 项目 */
+  var project: Project = _
+  /** 课程 */
+  var course: Course = _
+  /** 实验类别 */
+  var category: ExperimentCategory = _
   /** 实验类型 */
   var experimentType: ExperimentType = _
-
-  def this(syllabus: Syllabus, idx: Int, name: String, creditHours: Int, experimentType: ExperimentType, online: Boolean) = {
-    this()
-    this.syllabus = syllabus
-    this.idx = idx
-    this.name = name
-    this.creditHours = creditHours
-    this.experimentType = experimentType
-    this.online = online
-  }
+  /** 一级学科 */
+  var discipline: Level1Discipline = _
+  /** 对应培养层次 */
+  var levels: mutable.Buffer[EducationLevel] = Collections.newBuffer[EducationLevel]
+  /** 是否在线实验 */
+  var online: Boolean = _
+  /** 学时 */
+  var creditHours: Int = _
+  /** 每组人数 */
+  var groupStdCount: Int = _
 }

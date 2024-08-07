@@ -20,7 +20,7 @@ package org.openurp.edu.course.model
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{TemporalOn, Updated}
+import org.beangle.data.model.pojo.{DateRange, Updated}
 import org.openurp.base.edu.model.*
 import org.openurp.base.model.*
 import org.openurp.code.edu.model.*
@@ -31,7 +31,7 @@ import java.util.Locale
 /** 课程教学大纲
  *
  */
-class Syllabus extends LongId with Updated with TemporalOn {
+class Syllabus extends LongId with Updated with DateRange {
 
   /** 课程 */
   var course: Course = _
@@ -221,6 +221,7 @@ object Syllabus {
     val newer = new Syllabus
     newer.semester = semester
     newer.beginOn = semester.beginOn
+    newer.endOn = semester.endOn
     newer.docLocale = syllabus.docLocale
     newer.status = AuditStatus.Draft
 

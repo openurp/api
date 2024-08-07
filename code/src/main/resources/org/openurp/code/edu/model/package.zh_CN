@@ -12,6 +12,7 @@ Discipline=学科
 Discipline.category=学科门类
 Discipline.catalog=学科目录
 DisciplineCatalog=学科目录
+Level1Discipline=一级学科
 
 AcademicLevel=学历层次
 EducationDegree=学历(文化程度)
@@ -120,6 +121,7 @@ GraduateObjective=毕业要求
 CourseAwardCategory=课程获奖分类
 CourseAbilitySubject=课程能力等级分类
 ExperimentType=实验类型
+ExperimentCategory=实验类别
 ThesisTopicSource=选题来源
 ThesisType=论文类型
 CourseTag=课程标签

@@ -34,3 +34,7 @@ Building.buildingType=建筑物类型
 Device=教室设备
 Device.ip=IP地址
 Device.uuid=UUID
+
+Laboratory=实验室
+Laboratory.roomNo=房间号
+Laboratory.shortName=简称

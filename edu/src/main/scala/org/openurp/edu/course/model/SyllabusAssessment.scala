@@ -27,7 +27,7 @@ class SyllabusAssessment extends LongId {
 
   var syllabus: Syllabus = _
 
-  /** 顺序号 */
+  /** 序号(从1开始) */
   var idx: Int = _
 
   /** 成绩类型 */

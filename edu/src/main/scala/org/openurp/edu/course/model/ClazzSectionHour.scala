@@ -20,31 +20,16 @@ package org.openurp.edu.course.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 
-/** 教学大纲教学方法
- */
-class SyllabusMethodDesign extends LongId, Named {
+class ClazzSectionHour extends LongId, Named {
 
-  var syllabus: Syllabus = _
+  var plan: ClazzPlan = _
 
-  /** 序号(从1开始) */
-  var idx: Int = _
+  var creditHours: Int = _
 
-  /** 内容 */
-  var contents: String = _
-
-  /** 包含案例 */
-  var hasCase: Boolean = _
-
-  /** 包含实验 */
-  var hasExperiment: Boolean = _
-
-  def this(syllabus: Syllabus, idx: Int, name: String, contents: String, hasCase: Boolean, hasExperiment: Boolean) = {
+  def this(plan: ClazzPlan, name: String, creditHours: Int) = {
     this()
-    this.syllabus = syllabus
-    this.idx = idx
+    this.plan = plan
     this.name = name
-    this.contents = contents
-    this.hasCase = hasCase
-    this.hasExperiment = hasExperiment
+    this.creditHours = creditHours
   }
 }
