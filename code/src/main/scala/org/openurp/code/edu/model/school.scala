@@ -101,18 +101,6 @@ class CourseType extends CodeBean {
   /** 课程属性 */
   var rank: Option[CourseRank] = None
 
-  /** 是否实践课程 */
-  @deprecated
-  var practical: Boolean = _
-
-  /** 是否专业课 */
-  @deprecated
-  var major: Boolean = _
-
-  /** 是否选修 */
-  @deprecated
-  var optional: Boolean = _
-
   /** 上级类别 */
   var parent: Option[CourseType] = None
 
@@ -122,6 +110,18 @@ class CourseType extends CodeBean {
     this.code = code
     this.name = name
     this.enName = Some(enName)
+  }
+
+  def major: Boolean = {
+    module.exists(_.major)
+  }
+
+  def practical: Boolean = {
+    module.exists(_.practical)
+  }
+
+  def optional: Boolean = {
+    rank.exists(x => !x.compulsory)
   }
 }
 
