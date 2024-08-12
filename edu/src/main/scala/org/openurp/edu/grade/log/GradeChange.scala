@@ -15,32 +15,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.grade.model
+package org.openurp.edu.grade.log
 
-import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.clazz.model.Clazz
+import org.beangle.data.model.annotation.log
+import org.beangle.data.model.pojo.Remark
+import org.openurp.base.edu.model.Course
+import org.openurp.base.model.{ProjectBased, Semester, User}
+import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.GradeType
 
-import scala.collection.mutable
+import java.time.Instant
 
-/** 平时成绩状态
- *
+/** 成绩变化历史
  */
-class RegularGradeState extends LongId with Updated {
+@log
+class GradeChange extends LongId, ProjectBased, Remark {
 
-  /** 教学任务 */
-  var clazz: Clazz = _
+  var courseGradeId: Long = _
 
-  /** 各个成绩类型的百分比 */
-  var items: mutable.Buffer[RegularGradeStateItem] = Collections.newBuffer[RegularGradeStateItem]
+  var semester: Semester = _
 
-  /** 成绩状态 */
-  var status: Int = _
+  var course: Course = _
 
-  /** 平时成绩优秀率上限 */
-  var excellentRateLimit: Float = _
+  var std: Student = _
 
-  /** 优秀率 */
-  var excellentRate: Float = _
+  var gradeType: GradeType = _
+
+  var scoreBefore: Option[String] = None
+
+  var scoreAfter: Option[String] = None
+
+  var operator: User = _
+
+  var operateAt: Instant = _
+
 }

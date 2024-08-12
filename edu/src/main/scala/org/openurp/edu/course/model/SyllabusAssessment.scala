@@ -58,18 +58,18 @@ class SyllabusAssessment extends LongId {
     this.component = componentName
   }
 
-  def updateObjectivePercents(percents: Map[String, Int]): Unit = {
+  def updateObjectivePercents(percents: Map[String, Float]): Unit = {
     if percents.isEmpty then objectivePercents = None
     else objectivePercents = Some(percents.map(x => s"${x._1}:${x._2}").mkString(","))
   }
 
-  def objectivePercentMap: Map[String, Int] = {
-    val map = Collections.newMap[String, Int]
+  def objectivePercentMap: Map[String, Float] = {
+    val map = Collections.newMap[String, Float]
     objectivePercents.foreach { str =>
       val lines = str.split(",")
       lines.foreach { line =>
         val kv = line.split(":")
-        map += (kv(0) -> kv(1).toInt)
+        map += (kv(0) -> kv(1).toFloat)
       }
     }
     map.toMap

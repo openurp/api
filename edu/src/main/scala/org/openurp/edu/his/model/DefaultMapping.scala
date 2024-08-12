@@ -34,7 +34,7 @@ class DefaultMapping extends MappingModule {
       e.crn is length(20)
       e.course & e.courseTakeType & e.project & e.courseType & e.semester & e.gradingMode are notnull
       e.operator is length(100)
-      e.scoreText is length(5)
+      e.scoreText is length(10)
       e.remark is length(200)
       e.provider is length(80)
       e.examGrades & e.gaGrades are depends("courseGrade")
@@ -45,9 +45,11 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[HisExamGrade].declare { e =>
+      e.scoreText is length(10)
     }
 
     bind[HisGaGrade].declare { e =>
+      e.scoreText is length(10)
     }
 
     bind[HisRegularGrade].declare { e =>

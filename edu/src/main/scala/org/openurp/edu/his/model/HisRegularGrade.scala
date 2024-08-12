@@ -24,7 +24,7 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.ArchivedByYear
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.edu.grade.model.RegularTestType
+import org.openurp.edu.grade.model.RegularComponent
 
 import scala.collection.mutable
 
@@ -43,7 +43,7 @@ class HisRegularGrade extends LongId, Updated, ArchivedByYear {
   /** 状态 */
   var status: Int = _
 
-  def getTestGrade(gt: RegularTestType): Option[HisRegularTestGrade] = {
+  def getTestGrade(gt: RegularComponent): Option[HisRegularTestGrade] = {
     tests.find(_.testType == gt)
   }
 }

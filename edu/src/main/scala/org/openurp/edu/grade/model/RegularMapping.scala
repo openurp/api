@@ -22,23 +22,26 @@ import org.beangle.data.orm.MappingModule
 class RegularMapping extends MappingModule {
 
   def binding(): Unit = {
+    bind[RegularGradeState].declare { e =>
+      e.items is depends("state")
+      index("", true, e.clazz)
+    }
+
+    bind[RegularGradeStateItem]
+
     bind[RegularGrade].declare { e =>
-      e.tests is depends("regularGrade")
+      e.items is depends("grade")
 
       index("", true, e.std, e.clazz)
       index("", false, e.std)
       index("", false, e.clazz)
     }
 
-    bind[RegularGradeState].declare { e =>
-      index("", true, e.clazz)
+    bind[RegularGradeItem].declare { e =>
+      index("", true, e.grade, e.component)
     }
 
-    bind[RegularTestGrade].declare { e =>
-      index("", true, e.regularGrade, e.testType)
-    }
-
-    bind[RegularTestType].declare { e =>
+    bind[RegularComponent].declare { e =>
       index("", true, e.name)
     }
   }

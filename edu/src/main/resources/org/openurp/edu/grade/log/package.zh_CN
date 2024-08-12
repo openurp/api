@@ -1,0 +1,6 @@
+GradeChange=成绩变化历史
+GradeChange.scoreBefore=变更前分数
+GradeChange.scoreAfter=变更后分数
+GradeChange.operateAt=变更时间
+GradeChange.operator=变更人
+GradeChange.courseGradeId=课程成绩ID

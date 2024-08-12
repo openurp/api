@@ -17,9 +17,13 @@
 
 package org.openurp.edu.grade.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Named
+import org.beangle.data.model.LongId
 
-class RegularTestType extends IntId with Named {
+class RegularGradeStateItem extends LongId {
 
+  var state: RegularGradeState = _
+
+  var scorePercent: Int = _
+
+  var component: RegularComponent = _
 }

@@ -15,32 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.grade.model
+package org.openurp.edu.grade.log
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.clazz.model.Clazz
+import org.beangle.data.orm.MappingModule
 
-import scala.collection.mutable
+class DefaultMapping extends MappingModule {
 
-/** 平时成绩状态
- *
- */
-class RegularGradeState extends LongId with Updated {
-
-  /** 教学任务 */
-  var clazz: Clazz = _
-
-  /** 各个成绩类型的百分比 */
-  var items: mutable.Buffer[RegularGradeStateItem] = Collections.newBuffer[RegularGradeStateItem]
-
-  /** 成绩状态 */
-  var status: Int = _
-
-  /** 平时成绩优秀率上限 */
-  var excellentRateLimit: Float = _
-
-  /** 优秀率 */
-  var excellentRate: Float = _
+  def binding(): Unit = {
+    bind[GradeChange] declare { e =>
+      e.scoreBefore & e.scoreAfter are length(10)
+      e.remark is length(100)
+    }
+  }
 }

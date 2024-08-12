@@ -14,6 +14,7 @@
   <mapping class="org.openurp.edu.grade.model.MoralMapping" name="grade.moral"/>
   <mapping class="org.openurp.edu.grade.model.RegularMapping" name="grade.regular"/>
   <mapping class="org.openurp.edu.grade.model.AuditMapping" name="grade.audit"/>
+  <mapping class="org.openurp.edu.grade.log.DefaultMapping" name="grade.log"/>
   <mapping class="org.openurp.edu.program.model.DefaultMapping" name="program"/>
   <mapping class="org.openurp.edu.program.flow.DefaultMapping" name="program.flow"/>
   <mapping class="org.openurp.edu.exempt.model.DefaultMapping" name="exempt"/>

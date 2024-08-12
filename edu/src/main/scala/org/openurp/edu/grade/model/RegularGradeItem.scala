@@ -22,12 +22,12 @@ import org.beangle.data.model.LongId
 /** 平时测验成绩
  *
  */
-class RegularTestGrade extends LongId {
+class RegularGradeItem extends LongId {
   /** 平时总评 */
-  var regularGrade: RegularGrade = _
+  var grade: RegularGrade = _
 
   /** 测验类型 */
-  var testType: RegularTestType = _
+  var component: RegularComponent = _
 
   /** 百分比 */
   var scorePercent: Int = _

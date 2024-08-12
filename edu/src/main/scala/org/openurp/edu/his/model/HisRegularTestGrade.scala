@@ -20,7 +20,7 @@ package org.openurp.edu.his.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
 import org.openurp.base.model.ArchivedByYear
-import org.openurp.edu.grade.model.RegularTestType
+import org.openurp.edu.grade.model.RegularComponent
 
 /** 归档平时测试成绩 */
 @archive
@@ -28,7 +28,7 @@ class HisRegularTestGrade extends LongId, ArchivedByYear {
   /** 平时成绩 */
   var regularGrade: HisRegularGrade = _
   /** 测验类型 */
-  var testType: RegularTestType = _
+  var testType: RegularComponent = _
   /** 百分比 */
   var scorePercent: Int = _
   /** 分数 */

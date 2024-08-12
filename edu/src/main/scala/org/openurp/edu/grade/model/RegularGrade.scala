@@ -29,17 +29,18 @@ import scala.collection.mutable
  *
  */
 class RegularGrade extends LongId with Updated {
+
   var clazz: Clazz = _
 
   var std: Student = _
 
   var score: Float = _
 
-  var tests: mutable.Buffer[RegularTestGrade] = Collections.newBuffer[RegularTestGrade]
+  var items: mutable.Buffer[RegularGradeItem] = Collections.newBuffer[RegularGradeItem]
 
   var status: Int = _
 
-  def getTestGrade(gt: RegularTestType): Option[RegularTestGrade] = {
-    tests.find(_.testType == gt)
+  def getComponent(gt: RegularComponent): Option[RegularGradeItem] = {
+    items.find(_.component == gt)
   }
 }

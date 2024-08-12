@@ -17,30 +17,9 @@
 
 package org.openurp.edu.grade.model
 
-import org.beangle.commons.collection.Collections
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
-import org.openurp.edu.clazz.model.Clazz
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.Named
 
-import scala.collection.mutable
+class RegularComponent extends IntId with Named {
 
-/** 平时成绩状态
- *
- */
-class RegularGradeState extends LongId with Updated {
-
-  /** 教学任务 */
-  var clazz: Clazz = _
-
-  /** 各个成绩类型的百分比 */
-  var items: mutable.Buffer[RegularGradeStateItem] = Collections.newBuffer[RegularGradeStateItem]
-
-  /** 成绩状态 */
-  var status: Int = _
-
-  /** 平时成绩优秀率上限 */
-  var excellentRateLimit: Float = _
-
-  /** 优秀率 */
-  var excellentRate: Float = _
 }
