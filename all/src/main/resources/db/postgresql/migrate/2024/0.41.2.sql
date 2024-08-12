@@ -7,8 +7,13 @@ select datetime_id(),id,name,en_name,credit_hours,department_id,
 exam_mode_id,week_hours,weeks,begin_on,end_on,updated_at from base.courses c
 where not exists(select * from base.course_journals cj where cj.course_id=c.id);
 
+
 alter table edu.regular_test_grades rename to regular_grade_items;
+alter table edu.regular_grade_items rename column regular_grade_id to grade_id;
+alter table edu.regular_grade_items rename column test_type_id to component_id;
+
 alter table edu.regular_test_types rename to regular_components;
+
 alter table edu.regular_grade_states_percents rename to regular_grade_state_items;
 alter table edu.regular_grade_state_items rename column value_ to score_percent;
 alter table edu.regular_grade_state_items rename column regular_grade_state_id to state_id;
@@ -16,6 +21,8 @@ alter table edu.regular_grade_state_items rename column regular_test_type_id to 
 
 alter table edu.regular_grade_state_items add column id bigint;
 update edu.regular_grade_state_items set id= datetime_id();
+alter table edu.regular_grade_state_items alter id set not null;
+alter table edu.regular_grade_state_items alter score_percent set default 0;
 alter table edu.regular_grade_state_items add constraint pk_5xpxhr1ltbqfxiqgmhpmnmh7a primary key (id);
 
 alter table his.edu_course_grades alter score_text type varchar(10);
