@@ -560,15 +560,15 @@ alter table edu.programs add constraint pk_9osl20jg9o3ywqs65190pgm9v primary key
 alter table edu.programs_degree_certificates add constraint pk_4coy86rddcbvfyvyoxdone26l primary key (program_id,certificate_id);
 alter table edu.programs_degree_courses add constraint pk_c56n0ogp63uo4vcl3pp16l842 primary key (program_id,course_id);
 alter table edu.programs_std_types add constraint pk_9ehq0f2rhqjce1anhhw5bcf4b primary key (program_id,std_type_id);
+alter table edu.regular_components add constraint pk_tgvg8q95c32arfjwhvab0e9jl primary key (id);
+alter table edu.regular_components add constraint uk_fer6poij5pu1faeesmobjgrd6 unique (name);
+alter table edu.regular_grade_items add constraint pk_rtv7ycykiee2ps0qiw0qqkveo primary key (id);
+alter table edu.regular_grade_items add constraint uk_lwhulox2yu8sphb2o3nv0a29k unique (grade_id,component_id);
+alter table edu.regular_grade_state_items add constraint pk_5xpxhr1ltbqfxiqgmhpmnmh7a primary key (id);
 alter table edu.regular_grade_states add constraint pk_hnj9nkhhqpuj7yg9v7efhigo6 primary key (id);
 alter table edu.regular_grade_states add constraint uk_nv0dulh1dhs6ddpd0clg8tvac unique (clazz_id);
-alter table edu.regular_grade_states_percents add constraint pk_ljpyhuafbu8nwj7j6exu1wax1 primary key (regular_grade_state_id,value_,regular_test_type_id);
 alter table edu.regular_grades add constraint pk_83v4fybspmj863btsicnyux6h primary key (id);
 alter table edu.regular_grades add constraint uk_ek8kmmv077hq3rh4docowoqw7 unique (std_id,clazz_id);
-alter table edu.regular_test_grades add constraint pk_5cprha5ugb0e1uuo3cuof6jxj primary key (id);
-alter table edu.regular_test_grades add constraint uk_8n2yq76yji9pqu6q0ccfcymaw unique (regular_grade_id,test_type_id);
-alter table edu.regular_test_types add constraint pk_t3a6autvcdxavg3jngtnoa9u7 primary key (id);
-alter table edu.regular_test_types add constraint uk_pjg3i553nwubmj92t250lraw9 unique (name);
 alter table edu.room_applies add constraint pk_bc80rnoxs22g3i49cprrotgaq primary key (id);
 alter table edu.room_applies_rooms add constraint pk_f3isa2ggycb2cyjdu9cg3ow5q primary key (room_apply_id,classroom_id);
 alter table edu.room_applies_times add constraint pk_gut4id17joy6x8d5psmvc1pd2 primary key (room_apply_id,weekstate,begin_at,start_on,end_at);
@@ -648,6 +648,7 @@ alter table his.edu_exam_takers add constraint pk_s7u6opjyel7xwlqxxavdnikq3 prim
 alter table his.edu_ga_grades add constraint pk_jmcwmshd9usxt264y2pyj8wt4 primary key (id,school_year);
 alter table his.edu_regular_grades add constraint pk_lliu205c73xio4nmhoawmok7t primary key (id,school_year);
 alter table his.edu_regular_test_grades add constraint pk_bafso9a1qa1fb98sjcgaaohkq primary key (id,school_year);
+alter table log.edu_grade_changes add constraint pk_avwxfilyf3q6wgc4oepc6up77 primary key (id);
 alter table log.edu_room_apply_audit_logs add constraint pk_ocfq5rdpfs7hbgaukwe3r0a3x primary key (id);
 alter table log.std_spa_downloads add constraint pk_lvpw649482hrcwssqe7126o0x primary key (id);
 alter table log.std_spa_prints add constraint pk_6x1bwsiwfd5jdcats3mnjovex primary key (id);

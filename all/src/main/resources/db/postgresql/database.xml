@@ -6850,6 +6850,50 @@
             <index name="idx_5u4gknostdmf16gyfurc2u6eq" columns="program_id"/>
           </indexes>
         </table>
+        <table name="regular_components" comment="平时测试类型@grade.regular">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
+            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_tgvg8q95c32arfjwhvab0e9jl" columns="id"/>
+            <unique-key name="uk_fer6poij5pu1faeesmobjgrd6" columns="name"/>
+          </constraints>
+        </table>
+        <table name="regular_grade_items" comment="平时测试成绩@grade.regular">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="component_id" type="integer" nullable="false" comment="平时测试类型ID"/>
+            <column name="grade_id" type="bigint" nullable="false" comment="平时过程总评成绩ID"/>
+            <column name="score" type="integer" nullable="false" defaultValue="0" comment="分数"/>
+            <column name="score_percent" type="integer" nullable="false" defaultValue="0" comment="百分比"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_rtv7ycykiee2ps0qiw0qqkveo" columns="id"/>
+            <foreign-key name="fk_r2yycgfww3wreia8ef6s7ocdm" column="component_id" referenced-table="edu.regular_components" referenced-column="id"/>
+            <foreign-key name="fk_7lpsuggyy1w71kyxblmibw5uo" column="grade_id" referenced-table="edu.regular_grades" referenced-column="id"/>
+            <unique-key name="uk_lwhulox2yu8sphb2o3nv0a29k" columns="grade_id,component_id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_14m7wmsbs6oni9av9kd6jmqkp" columns="grade_id"/>
+          </indexes>
+        </table>
+        <table name="regular_grade_state_items" comment="平时成绩百分比@grade.regular">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="component_id" type="integer" nullable="false" comment="平时测试类型ID"/>
+            <column name="score_percent" type="integer" nullable="false" defaultValue="0" comment="百分比"/>
+            <column name="state_id" type="bigint" nullable="false" comment="平时总评成绩状态ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_5xpxhr1ltbqfxiqgmhpmnmh7a" columns="id"/>
+            <foreign-key name="fk_e3xonkpsyvu7i3lg3gyxqbf5w" column="component_id" referenced-table="edu.regular_components" referenced-column="id"/>
+            <foreign-key name="fk_4s3kgsruvn6b28stf9hj6mrx3" column="state_id" referenced-table="edu.regular_grade_states" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_omlv3ro1grrnowa1v67kx5riv" columns="state_id"/>
+          </indexes>
+        </table>
         <table name="regular_grade_states" comment="平时总评成绩状态@grade.regular">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -6864,20 +6908,6 @@
             <foreign-key name="fk_j5ace0mxflctid23oeqqhaq8q" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
             <unique-key name="uk_nv0dulh1dhs6ddpd0clg8tvac" columns="clazz_id"/>
           </constraints>
-        </table>
-        <table name="regular_grade_states_percents" comment="各类测试百分比@grade.regular">
-          <columns>
-            <column name="regular_grade_state_id" type="bigint" nullable="false" comment="平时总评成绩状态ID"/>
-            <column name="regular_test_type_id" type="integer" nullable="false" comment="平时测试类型ID"/>
-            <column name="value_" type="integer" nullable="false" comment="各类测试百分比"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_ljpyhuafbu8nwj7j6exu1wax1" columns="regular_grade_state_id,value_,regular_test_type_id"/>
-            <foreign-key name="fk_lprivn68a8s69hcr0demiaoer" column="regular_grade_state_id" referenced-table="edu.regular_grade_states" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_qcchbnp54bci79i8mdudt2y63" columns="regular_grade_state_id"/>
-          </indexes>
         </table>
         <table name="regular_grades" comment="平时过程总评成绩@grade.regular">
           <columns>
@@ -6898,34 +6928,6 @@
             <index name="idx_fmwrwh59gqwgfcs1jevsbahxw" columns="std_id"/>
             <index name="idx_79jpq20ahqs7fp9yhfb1k0eac" columns="clazz_id"/>
           </indexes>
-        </table>
-        <table name="regular_test_grades" comment="平时测试成绩@grade.regular">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="regular_grade_id" type="bigint" nullable="false" comment="平时过程总评成绩ID"/>
-            <column name="score" type="integer" nullable="false" defaultValue="0" comment="分数"/>
-            <column name="score_percent" type="integer" nullable="false" defaultValue="0" comment="百分比"/>
-            <column name="test_type_id" type="integer" nullable="false" comment="平时测试类型ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_5cprha5ugb0e1uuo3cuof6jxj" columns="id"/>
-            <foreign-key name="fk_9vjsk4osepdtwogp19en7yohw" column="regular_grade_id" referenced-table="edu.regular_grades" referenced-column="id"/>
-            <foreign-key name="fk_j1t7tkui9uk5j2avv9v9gl1gr" column="test_type_id" referenced-table="edu.regular_test_types" referenced-column="id"/>
-            <unique-key name="uk_8n2yq76yji9pqu6q0ccfcymaw" columns="regular_grade_id,test_type_id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_4uha48ytsvm0oy0dn16v694u3" columns="regular_grade_id"/>
-          </indexes>
-        </table>
-        <table name="regular_test_types" comment="平时测试类型@grade.regular">
-          <columns>
-            <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_t3a6autvcdxavg3jngtnoa9u7" columns="id"/>
-            <unique-key name="uk_pjg3i553nwubmj92t250lraw9" columns="name"/>
-          </constraints>
         </table>
         <table name="room_applies" comment="教室借用@room">
           <columns>
@@ -8111,7 +8113,7 @@
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="score" type="float4" comment="得分"/>
-            <column name="score_text" type="varchar(5)" comment="得分字面值"/>
+            <column name="score_text" type="varchar(10)" comment="得分字面值"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
@@ -8193,7 +8195,7 @@
             <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="score" type="float4" comment="得分"/>
             <column name="score_percent" type="smallint" comment="百分比描述"/>
-            <column name="score_text" type="varchar(5)" comment="得分字面值"/>
+            <column name="score_text" type="varchar(10)" comment="得分字面值"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
@@ -8240,7 +8242,7 @@
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="score" type="float4" comment="得分"/>
-            <column name="score_text" type="varchar(5)" comment="得分字面值"/>
+            <column name="score_text" type="varchar(10)" comment="得分字面值"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
@@ -8289,6 +8291,31 @@
     </schema>
     <schema name="log">
       <tables>
+        <table name="edu_grade_changes" comment="成绩变化历史@grade.log">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="course_grade_id" type="bigint" nullable="false" defaultValue="0" comment="课程成绩ID"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="grade_type_id" type="integer" nullable="false" comment="成绩类型ID"/>
+            <column name="operate_at" type="timestamptz" nullable="false" comment="变更时间"/>
+            <column name="operator_id" type="bigint" nullable="false" comment="变更人ID"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+            <column name="remark" type="varchar(100)" comment="备注"/>
+            <column name="score_after" type="varchar(10)" comment="变更后分数"/>
+            <column name="score_before" type="varchar(10)" comment="变更前分数"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_avwxfilyf3q6wgc4oepc6up77" columns="id"/>
+            <foreign-key name="fk_dhtwpadqf2mrrs4q669g69fdv" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_bbf68h65kecxthfl3usdru1yr" column="project_id" referenced-table="base.projects" referenced-column="id"/>
+            <foreign-key name="fk_3thetdmwvjo7ocgbxj1w43fp5" column="operator_id" referenced-table="base.users" referenced-column="id"/>
+            <foreign-key name="fk_mhydxpk49ayt92b9qj04i0dlm" column="grade_type_id" referenced-table="code.grade_types" referenced-column="id"/>
+            <foreign-key name="fk_mq4k6fykdvubeknsumes38xaj" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_ay1t1sv01m6kjjxxs68l0lsu1" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
+          </constraints>
+        </table>
         <table name="edu_room_apply_audit_logs" comment="教室申请审核日志@room.log">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
