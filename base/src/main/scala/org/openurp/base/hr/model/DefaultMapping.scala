@@ -22,7 +22,7 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     bind[Staff].declare { e =>
-      e.idNumber is length(18)
+      e.idNumber is length(20) //container wrong number
       e.mobile is length(20)
       e.email is length(100)
       e.homepage is length(200)
