@@ -18,7 +18,7 @@ AcademicLevel=学历层次
 EducationDegree=学历(文化程度)
 EducationDegree.result=毕结业结论
 EducationDegree.level=学历层次
-EducationResult=教育培训结果
+EducationResult=毕结业结论
 EducationMode=培养方式
 EnrollMode=入学方式
 
