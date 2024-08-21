@@ -122,13 +122,13 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[LessonDesignSection] declare { e =>
-      e.title is length(200)
-      e.summary is length(1000)
-      e.details is length(3000)
+      e.title is length(400)
+      e.summary is length(10000)
+      e.details is length(10000)
     }
 
     bind[ExamAnalysis].declare { e =>
-      e.contents is length(3500)
+      e.contents is length(4000)
       index("", true, e.clazz)
     }
   }

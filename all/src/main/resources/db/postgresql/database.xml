@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.41.2">
+<db engine="PostgreSQL" version="0.41.4">
   <schemas>
     <schema name="base">
       <tables>
@@ -220,7 +220,7 @@
             <column name="name" type="varchar(200)" nullable="false" comment="名称"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="week_hours" type="integer" nullable="false" defaultValue="0" comment="周课时"/>
-            <column name="weeks" type="integer" nullable="false" defaultValue="0" comment="周数"/>
+            <column name="weeks" type="integer" comment="周数"/>
           </columns>
           <constraints>
             <primary-key name="pk_do83gjyf4jjoo7724iwkd5thn" columns="id"/>
@@ -360,12 +360,13 @@
             <column name="cluster_id" type="bigint" comment="课程群组ID"/>
             <column name="code" type="varchar(32)" nullable="false" comment="课程代码"/>
             <column name="course_type_id" type="integer" comment="建议课程类别ID"/>
-            <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时/总课时"/>
+            <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="总学时"/>
             <column name="default_credits" type="float4" nullable="false" defaultValue="0" comment="默认学分"/>
             <column name="department_id" type="integer" nullable="false" comment="院系ID"/>
             <column name="en_name" type="varchar(300)" comment="课程英文名"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="exam_mode_id" type="integer" nullable="false" comment="考试方式ID"/>
+            <column name="extra_hours" type="integer" comment="课外学时"/>
             <column name="grading_mode_id" type="integer" nullable="false" comment="成绩记录方式ID"/>
             <column name="has_makeup" type="boolean" nullable="false" defaultValue="false" comment="是否有补考"/>
             <column name="module_id" type="integer" comment="课程模块ID"/>
@@ -376,7 +377,7 @@
             <column name="remark" type="varchar(500)" comment="备注"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="week_hours" type="integer" nullable="false" defaultValue="0" comment="周课时"/>
-            <column name="weeks" type="integer" nullable="false" defaultValue="0" comment="周数"/>
+            <column name="weeks" type="integer" comment="周数"/>
           </columns>
           <constraints>
             <primary-key name="pk_1lyj037fss3plmcutpx9b4r2x" columns="id"/>
@@ -651,7 +652,7 @@
             <column name="finish_on" type="date" comment="结业日期"/>
             <column name="foreign_lang_passed_on" type="date" comment="外语通过年月"/>
             <column name="graduate_on" type="date" comment="毕业日期"/>
-            <column name="result_id" type="integer" nullable="false" comment="教育培训结果ID"/>
+            <column name="result_id" type="integer" nullable="false" comment="毕结业结论ID"/>
             <column name="season_id" type="bigint" nullable="false" comment="毕业界别ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学籍信息实现ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -1282,7 +1283,7 @@
             <column name="formal_hr" type="boolean" nullable="false" defaultValue="false" comment="是否在编"/>
             <column name="gender_id" type="integer" nullable="false" comment="性别ID"/>
             <column name="homepage" type="varchar(200)" comment="个人主页"/>
-            <column name="id_number" type="varchar(18)" comment="证件号码"/>
+            <column name="id_number" type="varchar(20)" comment="证件号码"/>
             <column name="id_type_id" type="integer" comment="证件类型ID"/>
             <column name="mobile" type="varchar(20)" comment="联系手机"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
@@ -3068,7 +3069,7 @@
             <unique-key name="uk_sefk02fm6l1jly10imshq5p9i" columns="code"/>
           </constraints>
         </table>
-        <table name="education_results" comment="教育培训结果@edu">
+        <table name="education_results" comment="毕结业结论@edu">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
@@ -5689,7 +5690,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="contents" type="varchar(3500)" nullable="false" comment="分析内容"/>
+            <column name="contents" type="varchar(4000)" nullable="false" comment="分析内容"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
@@ -6310,11 +6311,11 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="design_id" type="bigint" nullable="false" comment="教案课程设计ID"/>
-            <column name="details" type="varchar(3000)" nullable="false" comment="教学过程设计"/>
+            <column name="details" type="varchar(10000)" nullable="false" comment="教学过程设计"/>
             <column name="duration" type="integer" nullable="false" defaultValue="0" comment="时长"/>
             <column name="idx" type="integer" nullable="false" defaultValue="0" comment="序号"/>
-            <column name="summary" type="varchar(1000)" nullable="false" comment="教学内容提要"/>
-            <column name="title" type="varchar(200)" nullable="false" comment="标题"/>
+            <column name="summary" type="varchar(10000)" nullable="false" comment="教学内容提要"/>
+            <column name="title" type="varchar(400)" nullable="false" comment="标题"/>
           </columns>
           <constraints>
             <primary-key name="pk_8kppfknajixthr1k69jiv7rp3" columns="id"/>
@@ -7509,7 +7510,7 @@
         <table name="syllabus_experiments" comment="教学大纲-实践环节@course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时"/>
+            <column name="credit_hours" type="float4" nullable="false" defaultValue="0" comment="学时"/>
             <column name="experiment_id" type="bigint" comment="实验项目ID"/>
             <column name="experiment_type_id" type="integer" nullable="false" comment="实验类型ID"/>
             <column name="idx" type="integer" nullable="false" defaultValue="0" comment="序号"/>

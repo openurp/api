@@ -58,9 +58,11 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   /** 分类课时 */
   var hours = Collections.newBuffer[CourseHour]
   /** 实践周 */
-  var weeks: Int = _
+  var weeks: Option[Int] = None
   /** 周课时 */
   var weekHours: Int = _
+  /** 课外学时 */
+  var extraHours: Option[Int] = None
 
   /** 考试方式 */
   var examMode: ExamMode = _
@@ -142,8 +144,8 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
 
   def getWeek(grade: Grade, nature: TeachingNature): Option[Int] = {
     journals.find(_.contains(grade)) match
-      case None => if (weeks > 0) then Some(this.weeks) else None
-      case Some(j) => if (j.weeks > 0) then Some(j.weeks) else None
+      case None => this.weeks
+      case Some(j) => j.weeks
   }
 
   def creditsInfo: String = {

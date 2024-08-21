@@ -38,7 +38,7 @@ class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
   /** 学时/总课时 */
   var creditHours: Int = _
   /** 周数 */
-  var weeks: Int = _
+  var weeks: Option[Int] = None
   /** 周课时 */
   var weekHours: Int = _
   /** 分类课时 */
