@@ -36,14 +36,14 @@ object GradeFilters {
     }
   }
 
-  /** 只要及格的  */
+  /** 只要及格的 */
   object Passed extends GradeFilter {
     override def filter(grades: Iterable[CourseGrade]): Iterable[CourseGrade] = {
       grades.filter(_.passed)
     }
   }
 
-  /** 只要不免修的  */
+  /** 只要不免修的 */
   object NotExemption extends GradeFilter {
     override def filter(grades: Iterable[CourseGrade]): Iterable[CourseGrade] = {
       grades.filter(_.courseTakeType.id != CourseTakeType.Exemption)
@@ -53,16 +53,12 @@ object GradeFilters {
   /** 缓考没出成绩的不要 */
   object Stable extends GradeFilter {
     override def filter(grades: Iterable[CourseGrade]): Iterable[CourseGrade] = {
+      val deplayGradeType = new GradeType(GradeType.Delay)
+      val endGradeType = new GradeType(GradeType.End)
       grades.filter { grade =>
-        val score = grade.score.getOrElse(0f)
-        if (score <= 0 && grade.getGrade(new GradeType(GradeType.Delay)).isEmpty) {
-          grade.getExamGrade(new GradeType(GradeType.End)) match {
-            case None => true
-            case Some(eg) => !eg.examStatus.hasDeferred // 期末存在记录，但是考试情况是缓考
-          }
-        } else {
-          true
-        }
+        if !grade.passed && grade.getGrade(deplayGradeType).isEmpty then
+          !grade.getExamGrade(endGradeType).exists(_.examStatus.hasDeferred)
+        else true
       }
     }
   }
