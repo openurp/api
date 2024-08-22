@@ -53,4 +53,11 @@ class CourseAlternativeApply extends LongId with Updated with Remark {
   /** 审核时间 */
   var auditAt: Option[Instant] = None
 
+  def approve(passed: Boolean, auditor: User, reply: Option[String]): Unit = {
+    this.approved = Some(passed)
+    this.auditAt = Some(Instant.now)
+    this.auditor = Some(auditor)
+    this.reply = reply
+  }
+
 }

@@ -23,8 +23,9 @@ import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.*
 import org.openurp.base.model.{Department, Project}
 import org.openurp.base.std.model.{Grade, Student}
-import org.openurp.code.edu.model.AcademicLevel
 import org.openurp.code.std.model.StdType
+
+import java.time.Instant
 
 /**
  * 课程替代关系.
@@ -46,6 +47,14 @@ trait AlternativeCourse extends LongId with Updated {
     news ++= olds
     olds.clear()
     olds ++= nolds
+  }
+
+  def update(olds: Iterable[Course], news: Iterable[Course]): Unit = {
+    this.olds.clear()
+    this.olds.addAll(olds)
+    this.news.clear()
+    this.news.addAll(olds)
+    this.updatedAt = Instant.now
   }
 }
 
@@ -92,8 +101,11 @@ class MajorAlternativeCourse extends AlternativeCourse with Remark {
  */
 class StdAlternativeCourse extends AlternativeCourse with Remark {
 
-  /**
-   * 获取学生
-   */
+  /** 获取学生 */
   var std: Student = _
+
+  def this(std: Student) = {
+    this()
+    this.std = std
+  }
 }

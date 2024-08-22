@@ -208,32 +208,18 @@
     </schema>
 
     <schema name="qos" title="教学质量">
-      <module name="evaluation" title="评教信息">
+      <module name="qos.base" title="评教信息">
         <group name="questionnaires" title="问卷"
-               tables="options,option_groups,questions,questionnaires,questionnaires_questions,question_types">
+               tables="options,option_groups,questions,questionnaires,questionnaires_questions,indicators">
           <image name="questionnaires" title="问卷"
                  tables="options,option_groups,questions,questionnaires,questionnaires_questions"/>
         </group>
-        <group name="results" title="评教统计结果" tables="lesson_*">
-          <image name="results" title="问卷" tables="lesson_*"/>
-        </group>
-        <group name="detail_results" title="评教明细" tables="evaluate_results,question_results">
-          <image name="detail_results" title="评教明细" tables="evaluate_results,question_results"/>
-        </group>
-        <group name="college_results" title="全校排名" tables="school_*">
-          <image name="college_results" title="全校排名" tables="school_*"/>
-        </group>
-        <group name="depart_results" title="院系排名" tables="depart_*">
-          <image name="depart_results" title="院系排名" tables="depart_*"/>
-        </group>
-        <group name="teacher_results" title="教师排名" tables="teacher_*">
-          <image name="teacher_results" title="教师排名" tables="teacher_*"/>
-        </group>
-        <group name="course_results" title="教师课程排名" tables="course_*">
-          <image name="course_results" title="教师课程排名" tables="course_*"/>
-        </group>
-        <group name="misc" title="其他" tables="*">
-        </group>
+      </module>
+      <module name="qos.base" title="课程评教">
+        <group name="all" title="课程评教" tables="*"/>
+      </module>
+      <module name="qos.department" title="部门评教">
+        <group name="all" title="部门评教" tables="*"/>
       </module>
     </schema>
 
