@@ -101,7 +101,7 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
       case Some(gn) => gn
   }
 
-  def index(): Int = {
+  def index: Int = {
     var index = Strings.substringAfterLast(indexno, ".")
     if (Strings.isEmpty(index)) index = indexno
     var idx = Numbers.toInt(index)

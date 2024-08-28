@@ -18,6 +18,7 @@
 package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.{Numbers, Strings}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.model.{Course, Terms}
@@ -49,7 +50,16 @@ class SharePlan extends LongId with EduLevelBased with Named with Updated with T
     groups += group
   }
 
-  def tops: collection.Seq[ShareCourseGroup] = {
+  def addGroup(g: ShareCourseGroup, parent: Option[ShareCourseGroup]): Unit = {
+    groups.addOne(g)
+    g.plan = this
+    g.parent = parent
+    parent foreach { p =>
+      p.children.addOne(g)
+    }
+  }
+
+  def topGroups: collection.Seq[ShareCourseGroup] = {
     val res = new ListBuffer[ShareCourseGroup]
     for (group <- groups if group.parent == null) res += group
     res
@@ -65,6 +75,25 @@ class SharePlan extends LongId with EduLevelBased with Named with Updated with T
       data.put(pc.course, group.courseType)
     }
     data.toMap
+  }
+
+  def planCourses: collection.Seq[SharePlanCourse] = {
+    val rs = Collections.newBuffer[SharePlanCourse]
+    addPlanCourse(this.groups, rs)
+    rs
+  }
+
+  /**
+   * @param groups
+   * @param planCourses
+   */
+  private def addPlanCourse(groups: collection.Seq[ShareCourseGroup], planCourses: mutable.Buffer[SharePlanCourse]): Unit = {
+    if (groups.nonEmpty) {
+      groups foreach { g =>
+        planCourses.addAll(g.planCourses)
+        addPlanCourse(g.children, planCourses)
+      }
+    }
   }
 }
 
@@ -99,6 +128,13 @@ class ShareCourseGroup extends LongId with Hierarchical[ShareCourseGroup] {
    */
   var courseType: CourseType = _
 
+  def index: Int = {
+    var index = Strings.substringAfterLast(indexno, ".")
+    if (Strings.isEmpty(index)) index = indexno
+    var idx = Numbers.toInt(index)
+    if (idx <= 0) idx = 1
+    idx
+  }
 }
 
 /**
