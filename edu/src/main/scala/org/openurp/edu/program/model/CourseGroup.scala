@@ -17,6 +17,7 @@
 
 package org.openurp.edu.program.model
 
+import org.beangle.commons.lang.{Numbers, Strings}
 import org.beangle.data.model.LongIdEntity
 import org.openurp.base.edu.model.Terms
 import org.openurp.base.model.CalendarStage

@@ -27,9 +27,9 @@ class ProgramTable extends LongId, Named {
 
   def this(doc: ProgramDoc, name: String, caption: String, contents: String) = {
     this()
-    this.caption = caption
     this.doc = doc
     this.name = name
+    this.caption = caption
     this.contents = contents
   }
 }

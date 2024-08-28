@@ -67,7 +67,7 @@ class DefaultMapping extends MappingModule {
 
     bind[SyllabusAssessment] declare { e =>
       e.description is length(4000)
-      e.scoreTable is length(4000)
+      e.scoreTable is length(10000)
     }
     bind[SyllabusText] declare { e =>
       e.contents is length(4000)

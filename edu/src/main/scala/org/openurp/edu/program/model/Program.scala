@@ -26,6 +26,7 @@ import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.*
 import org.openurp.code.std.model.StdType
 
+import java.time.Instant
 import scala.collection.mutable
 
 /**
@@ -96,6 +97,38 @@ class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBase
 
   /** 审核意见 */
   var opinions: Option[String] = None
+
+  def this(p: Program) = {
+    this()
+    this.name = p.name
+    this.beginOn = p.beginOn
+    this.endOn = p.endOn
+
+    this.grade = p.grade
+    this.eduType = p.eduType
+    this.level = p.level
+    this.department = p.department
+    this.major = p.major
+    this.direction = p.direction
+    this.stdTypes.addAll(p.stdTypes)
+    this.duration = p.duration
+    this.studyType = p.studyType
+    this.credits = p.credits
+    this.startTerm = p.startTerm
+    this.endTerm = p.endTerm
+    this.offsetType = p.offsetType
+    this.degree = p.degree
+    this.degreeGpa = p.degreeGpa
+    this.degreeCourses.addAll(p.degreeCourses)
+    p.labels foreach { l =>
+      this.labels.addOne(new ProgramCourseLabel(this, l.course, l.tag))
+    }
+    p.prerequisites foreach { p =>
+      this.prerequisites.addOne(new ProgramPrerequisite(this, p.course, p.prerequisite))
+    }
+    this.remark = p.remark
+    this.updatedAt = Instant.now
+  }
 
   def campuses: Set[Campus] = {
     termCampuses.map(_.campus).toSet

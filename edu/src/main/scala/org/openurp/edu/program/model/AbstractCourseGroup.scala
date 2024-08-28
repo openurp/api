@@ -194,8 +194,7 @@ abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hiera
 
   def termCreditSeq: Seq[Double] = {
     if Strings.isEmpty(termCredits) then Seq.empty
-    else
-      Strings.split(termCredits, ",").map(_.toDouble).toSeq
+    else Strings.split(termCredits, ",").map(_.toDouble).toIndexedSeq
   }
 
   override def toString: String = {

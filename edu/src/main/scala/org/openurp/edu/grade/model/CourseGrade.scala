@@ -81,7 +81,15 @@ class CourseGrade extends LongId, ProjectBased, Grade, Remark {
   var provider: Option[String] = None
 
   def credits: Float = {
-    if null == std || null == course then 0f else course.getCredits(std.level)
+    course.getCredits(std.level)
+  }
+
+  def this(id: Long, std: Student, course: Course, semester: Semester, crn: String) = {
+    this()
+    this.id = id
+    this.std = std
+    this.course = course
+    this.semester = semester
   }
 
   // 同一个学生，同一门课程，成绩好的放前面
@@ -195,6 +203,22 @@ class CourseGrade extends LongId, ProjectBased, Grade, Remark {
 
   @transient
   def gradeType: GradeType = new GradeType(GradeType.Final)
+
+  def updateScore(score: Option[Float], scoreText: Option[String], gp: Option[Float], passed: Boolean): CourseGrade = {
+    this.score = score
+    this.scoreText = scoreText
+    this.gp = gp
+    this.passed = passed
+    this
+  }
+
+  def updateScore(score: Float, scoreText: String, gp: Float, passed: Boolean): CourseGrade = {
+    this.score = Some(score)
+    this.scoreText = Some(scoreText)
+    this.gp = Some(gp)
+    this.passed = passed
+    this
+  }
 }
 
 object CourseGrade {

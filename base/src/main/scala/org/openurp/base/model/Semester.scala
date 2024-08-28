@@ -22,8 +22,8 @@ import org.beangle.commons.lang.time.WeekDay
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
 
-import java.time.ZoneId
 import java.time.temporal.ChronoUnit
+import java.time.{LocalDate, ZoneId}
 import java.util.GregorianCalendar
 import scala.collection.mutable
 
@@ -68,6 +68,16 @@ class Semester extends IntId with Coded with Named with DateRange with Remark {
 
   /** 学期中的阶段 */
   var stages: mutable.Buffer[SemesterStage] = Collections.newBuffer[SemesterStage]
+
+  def this(id: Int, code: String, schoolYear: String, name: String, beginOn: LocalDate, endOn: LocalDate) = {
+    this()
+    this.id = id
+    this.code = code
+    this.schoolYear = schoolYear
+    this.name = name
+    this.beginOn = beginOn
+    this.endOn = endOn
+  }
 
   def startWeek(): Int = {
     val gc = new GregorianCalendar();

@@ -31,7 +31,22 @@ class MajorPlan extends AbstractCoursePlan {
     this()
     this.program = program
     this.credits = program.credits
+    this.creditHours = 0
+    this.hourRatios = " "
     this.updatedAt = Instant.now
+  }
+
+  def this(program: Program, other: AbstractCoursePlan) = {
+    this()
+    this.program = program
+    this.credits = other.credits
+    this.creditHours = other.creditHours
+    this.hourRatios = other.hourRatios
+    this.updatedAt = Instant.now
+
+    other.topGroups foreach { g =>
+      new MajorCourseGroup(this, g.asInstanceOf[AbstractCourseGroup])
+    }
   }
 }
 
@@ -47,6 +62,50 @@ class MajorCourseGroup extends AbstractCourseGroup {
 
   /** 开课院系 */
   var departments: Option[String] = None
+
+  def this(plan: MajorPlan, group: AbstractCourseGroup) = {
+    this()
+    this.plan = plan
+    plan.groups.addOne(this)
+
+    this.credits = group.credits
+    this.creditHours = group.creditHours
+    this.hourRatios = group.hourRatios
+    this.weeks = group.weeks
+
+    this.terms = group.terms
+    this.termCredits = group.termCredits
+
+    this.indexno = group.indexno
+    this.courseType = group.courseType
+    this.givenName = group.givenName
+
+    this.rank = group.rank
+    this.required = group.required
+    this.subCount = group.subCount
+
+    this.stage = group.stage
+    this.remark = group.remark
+
+    group match
+      case m: MajorCourseGroup =>
+        this.direction = m.direction
+        this.departments = m.departments
+      case e: ExecutiveCourseGroup => this.direction = e.direction
+      case _ =>
+
+    group.planCourses foreach { pc =>
+      val epc = new MajorPlanCourse(this, pc)
+      this.planCourses.addOne(epc)
+    }
+    group.children foreach { c =>
+      val cc = new MajorCourseGroup(plan, c.asInstanceOf[AbstractCourseGroup])
+      cc.parent = Some(this)
+      this.children.addOne(cc)
+      cc.plan = plan
+      plan.groups.addOne(cc)
+    }
+  }
 }
 
 /**
@@ -57,4 +116,27 @@ class MajorPlanCourse extends AbstractPlanCourse, Executable, Remark {
 
   /** 建议修读学期 */
   var suggestTerms: Terms = Terms.empty
+
+  def this(group: MajorCourseGroup, planCourse: PlanCourse) = {
+    this()
+    this.group = group
+    this.idx = planCourse.idx
+    this.course = planCourse.course
+    this.terms = planCourse.terms
+    this.compulsory = planCourse.compulsory
+
+    planCourse match
+      case e: Executable =>
+        this.termText = e.termText
+        this.weekstate = e.weekstate
+      case _ =>
+
+    planCourse match
+      case r: Remark => this.remark = r.remark
+      case _ =>
+
+    planCourse match
+      case r: MajorPlanCourse => this.suggestTerms = r.suggestTerms
+      case _ =>
+  }
 }

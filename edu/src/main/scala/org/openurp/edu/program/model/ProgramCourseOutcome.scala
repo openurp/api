@@ -28,6 +28,7 @@ import org.openurp.base.edu.model.Course
 class ProgramCourseOutcome extends LongId {
 
   var doc: ProgramDoc = _
+
   /** 序号(从1开始) */
   var idx: Int = _
 
@@ -38,6 +39,16 @@ class ProgramCourseOutcome extends LongId {
   var course: Option[Course] = None
 
   var outcomes: String = _
+
+  def this(doc: ProgramDoc, idx: Int, groupName: String, courseName: String, course: Option[Course], outcomes: String) = {
+    this()
+    this.doc = doc
+    this.idx = idx
+    this.groupName = groupName
+    this.courseName = courseName
+    this.course = course
+    this.outcomes = outcomes
+  }
 
   def support(outcome: ProgramOutcome): Boolean = {
     Strings.split(outcomes).toSet.contains(outcome.code)

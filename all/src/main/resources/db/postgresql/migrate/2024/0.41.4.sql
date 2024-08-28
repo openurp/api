@@ -6,6 +6,7 @@ alter table edu.exam_analyses alter contents type varchar(4000);
 alter table edu.lesson_design_sections alter details type varchar(10000);
 alter table edu.lesson_design_sections alter summary type varchar(10000);
 alter table edu.lesson_design_sections alter title type varchar(400);
+alter table edu.syllabus_assessments alter score_table type varchar(10000);
 alter table edu.syllabus_experiments alter credit_hours type float4;
 comment on table code.education_results is '毕结业结论';
 

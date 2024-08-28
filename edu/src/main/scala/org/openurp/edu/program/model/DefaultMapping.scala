@@ -47,7 +47,7 @@ class DefaultMapping extends MappingModule {
       e.parent is target[MajorCourseGroup]
       e.children is depends(classOf[MajorCourseGroup], "parent")
       e.planCourses is depends(classOf[MajorPlanCourse], "group")
-      e.termCredits is length(40)
+      e.termCredits is length(60)
       e.givenName is length(100)
       e.hourRatios is length(50)
       e.departments is length(100)
@@ -75,7 +75,7 @@ class DefaultMapping extends MappingModule {
       e.parent is target[ExecutiveCourseGroup]
       e.children is depends(classOf[ExecutiveCourseGroup], "parent")
       e.planCourses is depends(classOf[ExecutivePlanCourse], "group")
-      e.termCredits is length(40)
+      e.termCredits is length(60)
       e.givenName is length(100)
       e.hourRatios is length(50)
       index("", false, e.plan)
@@ -124,6 +124,7 @@ class DefaultMapping extends MappingModule {
       e.children is depends(classOf[StdCourseGroup], "parent")
       e.planCourses is depends(classOf[StdPlanCourse], "group")
       e.hourRatios is length(50)
+      e.termCredits is length(60)
       index("", false, e.parent)
       index("", false, e.plan)
     }

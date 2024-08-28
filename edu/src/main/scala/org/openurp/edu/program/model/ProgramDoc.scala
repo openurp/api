@@ -23,6 +23,7 @@ import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.model.{Department, EduLevelBased}
 import org.openurp.code.std.model.StdType
 
+import java.time.Instant
 import java.util.Locale
 import scala.collection.mutable
 
@@ -46,6 +47,35 @@ class ProgramDoc extends LongId with Updated {
   var courseOutcomes = Collections.newBuffer[ProgramCourseOutcome]
   /** 章节列表 */
   var sections: mutable.Buffer[ProgramDocSection] = Collections.newBuffer[ProgramDocSection]
+
+  def this(program: Program, other: ProgramDoc) = {
+    this()
+    this.docLocale = other.docLocale
+    this.program = program
+    other.objectives foreach { o =>
+      val po = new ProgramObjective(this, o.code, o.contents)
+      po.outcomes = o.outcomes
+      this.objectives.addOne(po)
+    }
+    other.outcomes foreach { o =>
+      this.outcomes.addOne(new ProgramOutcome(this, o.idx, o.title, o.contents))
+    }
+    other.texts foreach { o =>
+      this.texts.addOne(new ProgramText(this, o.name, o.title, o.contents))
+    }
+    other.tables foreach { o =>
+      this.tables.addOne(new ProgramTable(this, o.name, o.caption, o.contents))
+    }
+    other.courseOutcomes foreach { o =>
+      val pco = new ProgramCourseOutcome(this, o.idx, o.groupName, o.courseName, o.course, o.outcomes)
+      this.courseOutcomes.addOne(pco)
+    }
+    other.sections foreach { s =>
+      val section = new ProgramDocSection(this, s.indexno, s.name, s.contents)
+      this.sections.addOne(section)
+    }
+    this.updatedAt = Instant.now
+  }
 
   def getText(name: String): Option[ProgramText] = {
     texts.find(_.name == name)
@@ -77,6 +107,14 @@ class ProgramDocSection extends LongId with Named with Hierarchical[ProgramDocSe
 
   /** 文档 */
   var doc: ProgramDoc = _
+
+  def this(doc: ProgramDoc, indexno: String, name: String, contents: String) = {
+    this()
+    this.doc = doc
+    this.name = name
+    this.contents = contents
+    this.indexno = indexno
+  }
 }
 
 /** 培养方案文档模板

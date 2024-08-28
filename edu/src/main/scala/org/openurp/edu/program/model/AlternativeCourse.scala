@@ -53,7 +53,7 @@ trait AlternativeCourse extends LongId with Updated {
     this.olds.clear()
     this.olds.addAll(olds)
     this.news.clear()
-    this.news.addAll(olds)
+    this.news.addAll(news)
     this.updatedAt = Instant.now
   }
 }
@@ -107,5 +107,10 @@ class StdAlternativeCourse extends AlternativeCourse with Remark {
   def this(std: Student) = {
     this()
     this.std = std
+  }
+
+  def this(std: Student, olds: Iterable[Course], news: Iterable[Course]) = {
+    this(std)
+    this.update(olds, news)
   }
 }

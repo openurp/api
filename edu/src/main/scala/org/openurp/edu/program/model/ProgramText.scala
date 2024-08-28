@@ -39,9 +39,9 @@ class ProgramText extends LongId, Named {
 
   def this(doc: ProgramDoc, name: String, title: String, contents: String) = {
     this()
-    this.title = title
     this.doc = doc
     this.name = name
+    this.title = title
     this.contents = contents
   }
 }
