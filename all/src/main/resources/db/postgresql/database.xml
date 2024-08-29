@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.41.4">
+<db engine="PostgreSQL" version="0.41.5">
   <schemas>
     <schema name="base">
       <tables>
@@ -5970,7 +5970,7 @@
             <column name="required" type="boolean" nullable="false" defaultValue="true" comment="是否必须完成"/>
             <column name="stage_id" type="integer" comment="日历阶段ID"/>
             <column name="sub_count" type="smallint" nullable="false" defaultValue="-1" comment="要求完成组数"/>
-            <column name="term_credits" type="varchar(40)" nullable="false" comment="学期学分分布"/>
+            <column name="term_credits" type="varchar(60)" nullable="false" comment="学期学分分布"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
             <column name="weeks" type="integer" comment="周数"/>
           </columns>
@@ -5996,12 +5996,14 @@
             <column name="group_id" type="bigint" nullable="false" comment="课程组ID"/>
             <column name="idx" type="smallint" nullable="false" defaultValue="0" comment="序号"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="stage_id" type="integer" comment="开课阶段ID"/>
             <column name="term_text" type="varchar(20)" comment="开课学期文本"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
             <column name="weekstate" type="bigint" nullable="false" comment="开课周"/>
           </columns>
           <constraints>
             <primary-key name="pk_lhpe3jgx7uq87hwmc6t332mge" columns="id"/>
+            <foreign-key name="fk_18f6shjjvisy7v08ajv64f86d" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
             <foreign-key name="fk_3irsjah8bv57ll08ke16ip3nt" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_bxpc5hpop09uieul3wd6s1gor" column="group_id" referenced-table="edu.executive_course_groups" referenced-column="id"/>
             <unique-key name="uk_aqtnrm89r68onugcbfp1jcbwa" columns="group_id,course_id"/>
@@ -6456,7 +6458,7 @@
             <column name="required" type="boolean" nullable="false" defaultValue="true" comment="是否必须完成"/>
             <column name="stage_id" type="integer" comment="日历阶段ID"/>
             <column name="sub_count" type="smallint" nullable="false" defaultValue="-1" comment="要求完成组数"/>
-            <column name="term_credits" type="varchar(40)" nullable="false" comment="学期学分分布"/>
+            <column name="term_credits" type="varchar(60)" nullable="false" comment="学期学分分布"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
             <column name="weeks" type="integer" comment="周数"/>
           </columns>
@@ -6482,6 +6484,7 @@
             <column name="group_id" type="bigint" nullable="false" comment="课程组ID"/>
             <column name="idx" type="smallint" nullable="false" defaultValue="0" comment="序号"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="stage_id" type="integer" comment="开课阶段ID"/>
             <column name="suggest_terms" type="integer" nullable="false" comment="建议修读学期"/>
             <column name="term_text" type="varchar(20)" comment="开课学期文本"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
@@ -6489,6 +6492,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_3wd4vyblbfks1j2lwty25qnbu" columns="id"/>
+            <foreign-key name="fk_cpur8aumdrrxdxdcxosq9i8e9" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
             <foreign-key name="fk_5y31fkbotohec2w77hlqvb3an" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_fy23vsj0y540goto20im2k2b7" column="group_id" referenced-table="edu.major_course_groups" referenced-column="id"/>
             <unique-key name="uk_bmxrewotma5nd0dxovv1m77cw" columns="group_id,course_id"/>
@@ -7224,7 +7228,7 @@
             <column name="required" type="boolean" nullable="false" defaultValue="true" comment="是否必须完成"/>
             <column name="stage_id" type="integer" comment="日历阶段ID"/>
             <column name="sub_count" type="smallint" nullable="false" defaultValue="-1" comment="要求完成组数"/>
-            <column name="term_credits" type="varchar(255)" nullable="false" comment="学期学分分布"/>
+            <column name="term_credits" type="varchar(60)" nullable="false" comment="学期学分分布"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
             <column name="weeks" type="integer" comment="周数"/>
           </columns>
@@ -7451,7 +7455,7 @@
             <column name="idx" type="integer" nullable="false" defaultValue="0" comment="序号"/>
             <column name="objective_percents" type="varchar(255)" comment="对应课程目标的支撑比例"/>
             <column name="score_percent" type="integer" nullable="false" defaultValue="0" comment="百分比"/>
-            <column name="score_table" type="varchar(4000)" comment="评分表"/>
+            <column name="score_table" type="varchar(10000)" comment="评分表"/>
             <column name="syllabus_id" type="bigint" nullable="false" comment="课程教学大纲ID"/>
           </columns>
           <constraints>

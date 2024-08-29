@@ -567,6 +567,7 @@ alter table edu.executive_course_groups add constraint fk_77ekapj66u96x3imgngeia
 alter table edu.executive_course_groups add constraint fk_8sryyotbjk7ax803pbug4iu71 foreign key (plan_id) references edu.executive_plans (id);
 alter table edu.executive_course_groups add constraint fk_a0ab8elp15ghrbghqqxu0x0rn foreign key (course_type_id) references code.course_types (id);
 alter table edu.executive_course_groups add constraint fk_qws3d63si4v6xhjnqrkjq7dq7 foreign key (rank_id) references code.course_ranks (id);
+alter table edu.executive_plan_courses add constraint fk_18f6shjjvisy7v08ajv64f86d foreign key (stage_id) references base.calendar_stages (id);
 alter table edu.executive_plan_courses add constraint fk_3irsjah8bv57ll08ke16ip3nt foreign key (course_id) references base.courses (id);
 alter table edu.executive_plan_courses add constraint fk_bxpc5hpop09uieul3wd6s1gor foreign key (group_id) references edu.executive_course_groups (id);
 alter table edu.executive_plans add constraint fk_et79eqg7pxspppjsn2v1lubwf foreign key (program_id) references edu.programs (id);
@@ -635,6 +636,7 @@ alter table edu.major_course_groups add constraint fk_kod0hb5pnmeiqrr7jgq3shctv 
 alter table edu.major_course_groups add constraint fk_meex9q80ousce5vb0n9ph64p8 foreign key (course_type_id) references code.course_types (id);
 alter table edu.major_course_groups add constraint fk_pc8q580jvu7xjgou4je6pbo5o foreign key (parent_id) references edu.major_course_groups (id);
 alter table edu.major_plan_courses add constraint fk_5y31fkbotohec2w77hlqvb3an foreign key (course_id) references base.courses (id);
+alter table edu.major_plan_courses add constraint fk_cpur8aumdrrxdxdcxosq9i8e9 foreign key (stage_id) references base.calendar_stages (id);
 alter table edu.major_plan_courses add constraint fk_fy23vsj0y540goto20im2k2b7 foreign key (group_id) references edu.major_course_groups (id);
 alter table edu.major_plans add constraint fk_n3g1jvkcrf58m586jfv9adglm foreign key (program_id) references edu.programs (id);
 alter table edu.moral_grades add constraint fk_ajmpi0vpnwedkblj97agkampw foreign key (std_id) references base.students (id);
