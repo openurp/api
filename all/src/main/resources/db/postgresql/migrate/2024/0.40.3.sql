@@ -389,7 +389,7 @@ alter table edu.audit_group_results add column rank_id integer;
 update edu.audit_group_results gr set rank_id=2 where exists(select * from code.course_types ct where ct.id=gr.course_type_id and ct.optional=true);
 update edu.audit_group_results gr set rank_id=1
 where exists(select * from code.course_types ct where ct.id=gr.course_type_id and ct.optional=false)
-      exists(select * from edu.audit_course_results cr where cr.group_result_id=gr.id);
+      and exists(select * from edu.audit_course_results cr where cr.group_result_id=gr.id);
 update edu.audit_group_results gr set rank_id=1 where rank_id is null;
 
 alter table code.course_types add constraint fk_5ufodafafis1r7h88r1mva11l foreign key (rank_id) references code.course_ranks (id);

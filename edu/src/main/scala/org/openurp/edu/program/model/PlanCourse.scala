@@ -20,6 +20,7 @@ package org.openurp.edu.program.model
 import org.beangle.commons.lang.time.WeekState
 import org.beangle.data.model.LongIdEntity
 import org.openurp.base.edu.model.{Course, CourseJournal, Terms}
+import org.openurp.base.model.CalendarStage
 
 /**
  * 培养计划中的课程.<import org.openurp.edu.program.plan.model.CourseGroup
@@ -67,6 +68,9 @@ trait Executable {
   def compulsory: Boolean
 
   def course: Course
+
+  /** 开课阶段 */
+  var stage: Option[CalendarStage] = None
 
   /** 开课学期文本 */
   var termText: Option[String] = None

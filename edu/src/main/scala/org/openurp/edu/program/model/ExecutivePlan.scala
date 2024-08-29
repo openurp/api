@@ -111,10 +111,12 @@ class ExecutivePlanCourse extends AbstractPlanCourse, Executable, Remark {
     this.terms = planCourse.terms
     this.compulsory = planCourse.compulsory
 
+
     planCourse match
       case e: Executable =>
         this.termText = e.termText
         this.weekstate = e.weekstate
+        this.stage = e.stage
       case _ =>
 
     planCourse match

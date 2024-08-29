@@ -129,6 +129,7 @@ class MajorPlanCourse extends AbstractPlanCourse, Executable, Remark {
       case e: Executable =>
         this.termText = e.termText
         this.weekstate = e.weekstate
+        this.stage = e.stage
       case _ =>
 
     planCourse match
