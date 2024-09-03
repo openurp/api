@@ -42,6 +42,9 @@ class ThesisCheck extends LongId, Updated {
   /** 毕业年月 */
   var graduateOn: YearMonth = _
 
+  /**考生号*/
+  var examineeCode:Option[String]=None
+
   /** 学位专业代码 */
   var degreeMajorCode: String = _
 

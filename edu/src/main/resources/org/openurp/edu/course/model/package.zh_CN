@@ -93,6 +93,7 @@ CourseTask=课程任务
 CourseTask.teachers=课程任务-任课教师
 CourseTask.syllabusRequired=是否需要大纲
 CourseTask.renewSyllabus=是否需要修订大纲
+CourseTask.extraHours=课外学时
 
 SyllabusCase=教学大纲-案例
 SyllabusCase.idx=序号
@@ -120,6 +121,7 @@ ClazzPlan.docLocale=语言
 ClazzPlan.filePath=附件关键字
 ClazzPlan.lessonHours=课堂课时
 ClazzPlan.examHours=考核课时
+ClazzPlan.extraHours=课外学时
 ClazzPlan.auditor=审核人
 ClazzPlan.dean=教学院长
 ClazzPlan.publishAt=发布时间

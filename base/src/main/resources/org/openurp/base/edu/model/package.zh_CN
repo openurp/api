@@ -15,7 +15,6 @@ Course.category=课程种类代码
 Course.credits=学分
 Course.defaultCredits=默认学分
 Course.creditHours=总学时
-Course.extraHours=课外学时
 Course.hours=分类课时
 Course.weekHours=周课时
 Course.weeks=周数

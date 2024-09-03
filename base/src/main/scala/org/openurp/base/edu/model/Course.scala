@@ -61,9 +61,6 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   var weeks: Option[Int] = None
   /** 周课时 */
   var weekHours: Int = _
-  /** 课外学时 */
-  var extraHours: Option[Int] = None
-
   /** 考试方式 */
   var examMode: ExamMode = _
   /** 成绩记录方式 */

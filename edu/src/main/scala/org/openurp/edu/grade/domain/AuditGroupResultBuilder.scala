@@ -28,13 +28,10 @@ trait AuditGroupResultBuilder {
 object DefaultAuditGroupResultBuilder extends AuditGroupResultBuilder {
 
   def buildResult(context: AuditPlanContext, group: CourseGroup): AuditGroupResult = {
-    val result = new AuditGroupResult()
+    val result = new AuditGroupResult(group.indexno, group.name,group.courseType)
     val creditsRequired = group.credits
     result.requiredCredits = creditsRequired
-    result.courseType = group.courseType
-    result.name = group.name
     result.subCount = Math.min(group.subCount, group.children.size).toShort
-    result.indexno = group.indexno
     result.planResult = context.result
     result
   }

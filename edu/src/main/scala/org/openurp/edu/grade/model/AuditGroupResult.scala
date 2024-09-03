@@ -52,6 +52,12 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
   @transient var predictedCourses = Collections.newSet[Course]
   @transient var takingCourses = Collections.newSet[Course]
 
+  def this(indexno:String,name:String,courseType:CourseType)={
+    this()
+    this.indexno = indexno
+    this.name = name
+    this.courseType = courseType
+  }
   /** 课程审核结果 */
   var courseResults: Buffer[AuditCourseResult] = new collection.mutable.ListBuffer[AuditCourseResult]
 

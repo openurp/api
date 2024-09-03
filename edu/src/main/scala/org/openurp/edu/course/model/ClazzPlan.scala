@@ -44,6 +44,9 @@ class ClazzPlan extends LongId, Updated {
   /** 课堂学时 */
   var lessonHours: Int = _
 
+  /** 课外学时 */
+  var extraHours: Int=_
+
   /** 考核课时 */
   var examHours: Int = _
 
