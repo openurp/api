@@ -1,5 +1,5 @@
 insert into base.versions(id,version,updated_at,description)
-values(next_id('base.versions'),'0.41.4',now(),'增加课外学时');
+values(next_id('base.versions'),'0.41.4',now(),'开课周数可选');
 
 alter table base.staffs alter id_number type varchar(20);
 alter table edu.exam_analyses alter contents type varchar(4000);
@@ -12,7 +12,5 @@ comment on table code.education_results is '毕结业结论';
 
 alter table base.course_journals alter weeks drop default;
 alter table base.course_journals alter weeks drop not null;
-alter table base.courses add column extra_hours integer;
 alter table base.courses alter weeks drop default;
 alter table base.courses alter weeks drop not null;
-comment on column base.courses.extra_hours is '课外学时';

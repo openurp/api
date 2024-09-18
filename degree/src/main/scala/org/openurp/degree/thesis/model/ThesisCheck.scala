@@ -96,8 +96,11 @@ class ThesisCheck extends LongId, Updated {
   /** 撰写语种 */
   var language: Option[Language] = None
 
+  /** 论文封面 */
+  var coverDoc: Option[ThesisDoc] = None
+
   /** 论文 */
-  var paperDoc: Option[ThesisPaper] = None
+  var paperDoc: Option[ThesisDoc] = None
 
   /** 开题报告 */
   var proposalDoc: Option[ThesisDoc] = None
@@ -105,7 +108,9 @@ class ThesisCheck extends LongId, Updated {
   /** 答辩评分表 */
   var defenseDoc: Option[ThesisDoc] = None
 
+  /**部门代码*/
   var departNo: Option[String] = None
 
+  /**部门名称*/
   var departName: Option[String] = None
 }

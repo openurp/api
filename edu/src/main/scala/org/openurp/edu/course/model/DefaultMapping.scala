@@ -56,6 +56,7 @@ class DefaultMapping extends MappingModule {
 
     bind[SyllabusObjective] declare { e =>
       e.contents is length(1000)
+      index("", true, e.syllabus, e.code)
     }
 
     bind[SyllabusOutcome] declare { e =>

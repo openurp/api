@@ -124,7 +124,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ThesisCheck].declare { e =>
-      index("", true, e.season, e.writer)
+      index("", true, e.season, e.writer, e.degreeMajorCode)
     }
 
     bind[PaperSubmission].declare { e =>

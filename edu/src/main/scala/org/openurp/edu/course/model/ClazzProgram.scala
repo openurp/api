@@ -44,6 +44,12 @@ class ClazzProgram extends LongId, Updated {
   /** 作者 */
   var writer: User = _
 
+  /** 已填写次数 */
+  var designCount: Short = _
+
+  /** 课程次数 */
+  var lessonCount: Short = _
+
   def this(clazz: Clazz) = {
     this()
     this.clazz = clazz

@@ -22,6 +22,8 @@ import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 
+import java.time.LocalDate
+
 /**
  * 具体授课内容和方法设计
  */
@@ -39,6 +41,12 @@ class LessonDesign extends LongId, Remark {
 
   /** 序号(从1开始) */
   var idx: Int = _
+
+  /** 上课日期 */
+  var lessonOn: LocalDate = _
+
+  /** 开始和结束小节 */
+  var units: ShortInterval = _
 
   /** 学时 */
   var creditHours: Int = _

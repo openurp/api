@@ -8,7 +8,7 @@ alter table edu.syllabuses alter end_on set not null;
 
 --clazz_plans
 alter table edu.teaching_plans rename to clazz_plans;
-alter table edu.teaching_plan_sections to clazz_section_hours;
+alter table edu.teaching_plan_sections rename to clazz_section_hours;
 
 create table base.experiments (id bigint not null, begin_on date not null, category_id integer not null, code varchar(255) not null, course_id bigint not null, credit_hours integer default 0 not null, discipline_id integer not null, en_name varchar(255), end_on date, experiment_type_id integer not null, group_std_count integer default 0 not null, name varchar(255) not null, online boolean default false not null, project_id integer not null);
 create table base.experiments_levels (education_level_id integer not null, experiment_id bigint not null);
@@ -19,7 +19,6 @@ create table edu.clazz_programs (id bigint not null, clazz_id bigint not null, s
 create table edu.lesson_design_sections (id bigint not null, design_id bigint not null, details varchar(3000) not null, duration integer default 0 not null, idx integer default 0 not null, summary varchar(1000) not null, title varchar(200) not null);
 create table edu.lesson_design_texts (id bigint not null, contents varchar(4000) not null, design_id bigint not null, name varchar(100) not null);
 create table edu.lesson_designs (id bigint not null, credit_hours integer default 0 not null, file_path varchar(255), homework varchar(255), idx integer default 0 not null, program_id bigint not null, remark varchar(255), subject varchar(255) not null);
-
 
 alter table base.experiments add constraint pk_9bocam72pq84nbf7q7r1jn5py primary key (id);
 alter table base.experiments_levels add constraint pk_kj340wjteh4rn3r4ot248bec3 primary key (experiment_id,education_level_id);
