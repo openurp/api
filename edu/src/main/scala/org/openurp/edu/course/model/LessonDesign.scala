@@ -19,6 +19,7 @@ package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.beta
+import org.beangle.commons.lang.math.SmallInterval
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 
@@ -46,7 +47,7 @@ class LessonDesign extends LongId, Remark {
   var lessonOn: LocalDate = _
 
   /** 开始和结束小节 */
-  var units: ShortInterval = _
+  var units: SmallInterval = _
 
   /** 学时 */
   var creditHours: Int = _

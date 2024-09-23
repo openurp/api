@@ -45,10 +45,12 @@ class CourseTask extends LongId {
   var director: Option[Teacher] = None
   /** 是否需要教学大纲 */
   var syllabusRequired: Boolean = true
-  /**是否需要修订教学大纲*/
-  var renewSyllabus:Option[Boolean]=None
+  /** 是否需要修订教学大纲 */
+  var renewSyllabus: Option[Boolean] = None
   /** 课外学时 */
   var extraHours: Option[Int] = None
+  /** 是否确认 */
+  var confirmed: Boolean = _
 
   def this(course: Course, department: Department, semester: Semester, courseType: CourseType) = {
     this()
