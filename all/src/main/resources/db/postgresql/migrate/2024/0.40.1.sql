@@ -47,6 +47,9 @@ alter table base.major_directors alter column level_id set not null;
 alter table his.edu_course_profiles drop general_type_id cascade;
 alter table his.edu_course_profiles add column category_id integer;
 
+insert into base.courses_categories(course_id,course_category_id)
+select id,category_id from base.courses where category_id is not null;
+
 --danger....
 alter table base.course_profiles drop general_type_id cascade;
 alter table base.courses drop general_type_id cascade;

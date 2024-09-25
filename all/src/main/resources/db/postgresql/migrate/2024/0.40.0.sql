@@ -12,7 +12,7 @@ create table code.thesis_topic_sources (id integer not null, begin_on date not n
 create table code.thesis_types (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 create table edu.program_course_labels (id bigint not null, course_id bigint not null, program_id bigint not null, tag_id integer not null);
 
---course_categories idex??
+--course_categories index??
 alter table code.course_categories add color varchar(10);
 alter table code.course_categories add indexno varchar(10);
 alter table code.course_categories add parent_id int4;
