@@ -70,6 +70,7 @@ Proposal.confirmAt=指导教师确认时间
 
 Subject=论文开题题目
 Subject.majors=面向专业
+Subject.researchField=研究方向
 Subject.conditions=现有条件
 Subject.requirements=对学生要求
 Subject.contents=内容
@@ -95,13 +96,14 @@ ThesisPaper.fileExt=文件扩展名
 ThesisPaper.submitAt=提交时间
 ThesisPaper.auditOpinion=审核意见
 ThesisPaper.keywords=关键字
-ThesisPaper.researchField=研究领域
+ThesisPaper.researchField=研究方向
 ThesisPaper.thesisType=毕业论文类型
 ThesisPaper.sha1sum=文件sha1摘要
 ThesisPaper.advisorPassed=指导教师是否通过
 ThesisPaper.advisorOpinion=指导教师意见
 ThesisPaper.draftPath=草稿文件路径
 ThesisPaper.finalized=是否定稿
+ThesisPaper.excellent=是否优秀毕业论文
 
 Writer=写作学生
 Writer.squad=班级

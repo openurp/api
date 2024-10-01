@@ -75,4 +75,6 @@ class ThesisPaper extends LongId with Named {
   /** 反抄袭复检 */
   var recheck: Option[CopyCheck] = None
 
+  /** 优秀论文 */
+  var excellent: Boolean = _
 }

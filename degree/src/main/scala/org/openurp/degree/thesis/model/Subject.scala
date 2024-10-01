@@ -29,6 +29,8 @@ import scala.collection.mutable
  */
 class Subject extends LongId with Named {
   var season: GraduateSeason = _
+  /** 研究领域 */
+  var researchField: Option[String] = None
   /** 面向专业 */
   var majors: mutable.Set[Major] = new mutable.HashSet[Major]
   /** 现有条件 */
