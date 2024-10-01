@@ -94,6 +94,7 @@ CourseTask.teachers=课程任务-任课教师
 CourseTask.syllabusRequired=是否需要大纲
 CourseTask.renewSyllabus=是否需要修订大纲
 CourseTask.extraHours=课外学时
+CourseTask.confirmed=是否确认
 
 SyllabusCase=教学大纲-案例
 SyllabusCase.idx=序号
@@ -136,6 +137,8 @@ ExamAnalysis.contents=分析内容
 
 ClazzProgram=教案
 ClazzProgram.writer=作者
+ClazzProgram.designCount=已填写次数
+ClazzProgram.lessonCount=上课次数
 
 LessonDesign=教案课程设计
 LessonDesign.idx=序号
@@ -143,6 +146,8 @@ LessonDesign.subject=主题
 LessonDesign.homework=作业
 LessonDesign.creditHours=学时
 LessonDesign.filePath=附件路径
+LessonDesign.lessonOn=上课日期
+LessonDesign.units=节次
 
 LessonDesignText=教案课程设计文本
 LessonDesignText.contents=内容

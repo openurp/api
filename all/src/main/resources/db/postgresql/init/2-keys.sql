@@ -428,7 +428,7 @@ alter table degree.subjects_majors add constraint pk_f9uumbw2vd9v3qwx1qd4edi4f p
 alter table degree.thesis_archives add constraint pk_3w21a253lbmr3pu2cqxayq301 primary key (id);
 alter table degree.thesis_archives add constraint uk_6ppgmacal52hjo8831um7qon8 unique (writer_id);
 alter table degree.thesis_checks add constraint pk_h3wix678400peq8mufhpn76u9 primary key (id);
-alter table degree.thesis_checks add constraint uk_ogbi6lgf5f4fvxmghph3h9irs unique (season_id,writer_id);
+alter table degree.thesis_checks add constraint uk_8vgla3u0x7jq1whmak4w9in13 unique (season_id,writer_id,degree_major_code);
 alter table degree.thesis_doc_types add constraint pk_cal9ppgryp24jb153gd5cw31r primary key (id);
 alter table degree.thesis_doc_types add constraint uk_lpdaqpaxb6r8my16k48gl6xa9 unique (code);
 alter table degree.thesis_docs add constraint pk_tjx4cxymbuw05ywcmv3mm73cr primary key (id);
@@ -610,6 +610,7 @@ alter table edu.syllabus_experiments add constraint pk_baulexp8qydt31g95omfugrnb
 alter table edu.syllabus_hours add constraint pk_esenbqqojcpudxho42gvtfpne primary key (id);
 alter table edu.syllabus_method_designs add constraint pk_8t8k3wtg8lwwd8useqr6t9r7 primary key (id);
 alter table edu.syllabus_objectives add constraint pk_nqtxa7ru8pkinx8a58ed3mwac primary key (id);
+alter table edu.syllabus_objectives add constraint uk_qcf83a87e0bfew53ny7n8wyrt unique (syllabus_id,code);
 alter table edu.syllabus_outcomes add constraint pk_fkpwvl02mv1b3t242nvjdhc7y primary key (id);
 alter table edu.syllabus_texts add constraint pk_2rachttiq9lrns6e7hg27u4qi primary key (id);
 alter table edu.syllabus_topic_elements add constraint pk_96jmnw2djmc7krs2lmajwimmu primary key (id);

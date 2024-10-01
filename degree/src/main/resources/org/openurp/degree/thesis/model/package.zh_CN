@@ -179,6 +179,7 @@ ThesisCheck.proposalDoc=开题报告
 ThesisCheck.defenseDoc=答辩评分表
 ThesisCheck.departNo=院系代码
 ThesisCheck.departName=院系名称
+ThesisCheck.examineeCode=考生号
 
 ThesisDoc=学位论文相关文档
 ThesisDoc.stage=所处阶段

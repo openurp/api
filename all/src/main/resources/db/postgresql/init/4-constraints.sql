@@ -386,11 +386,12 @@ alter table degree.subjects_majors add constraint fk_e9xtd0e9eu0ik2orbkqbvhl6 fo
 alter table degree.subjects_majors add constraint fk_iclt5jg5lv3xrr2xdj0rog0xa foreign key (subject_id) references degree.subjects (id);
 alter table degree.thesis_archives add constraint fk_4p85e25ge8xc27ttsh3rwsp1h foreign key (confirmed_by_id) references base.users (id);
 alter table degree.thesis_archives add constraint fk_fxuk0v2lsfoy066si9g58awpo foreign key (writer_id) references degree.writers (id);
+alter table degree.thesis_checks add constraint fk_15nlot5p3f4frhgl13rpt3e5m foreign key (cover_doc_id) references degree.thesis_docs (id);
 alter table degree.thesis_checks add constraint fk_6emgfig7bqj088xanwrb5k735 foreign key (season_id) references base.graduate_seasons (id);
 alter table degree.thesis_checks add constraint fk_7r7hal30aly581v98tjr77q4h foreign key (writer_id) references degree.writers (id);
+alter table degree.thesis_checks add constraint fk_jl08bb9bx4xtmmqaq7iyapwjp foreign key (paper_doc_id) references degree.thesis_docs (id);
 alter table degree.thesis_checks add constraint fk_n8mhag3ki0l5e61bfrv0xdmyi foreign key (language_id) references code.languages (id);
 alter table degree.thesis_checks add constraint fk_qovasc4mkuhgo2smr4yg44iob foreign key (proposal_doc_id) references degree.thesis_docs (id);
-alter table degree.thesis_checks add constraint fk_qrfjf2f7wb8irycu5c7cjf70l foreign key (paper_doc_id) references degree.thesis_papers (id);
 alter table degree.thesis_checks add constraint fk_rm090hmlrmtac2o3clrn6q5ud foreign key (defense_doc_id) references degree.thesis_docs (id);
 alter table degree.thesis_docs add constraint fk_ahcxfk3p5bedhayllqv34g946 foreign key (writer_id) references degree.writers (id);
 alter table degree.thesis_docs add constraint fk_ltqh48smdu2d818y7akr7eqma foreign key (doc_type_id) references degree.thesis_doc_types (id);
