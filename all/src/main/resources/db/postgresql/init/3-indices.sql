@@ -37,7 +37,9 @@ create index idx_cefnmy5upxnnsata9x559sf6a on base.student_states (department_id
 create index idx_lcxttegmywvdx7t18fp94onnp on base.student_states (major_id);
 create index idx_qwnmnr5yx5gquk3kon03wmevm on base.student_states (std_id);
 create index idx_7fh2oh8g5uif40be11jf9ohfm on base.students (project_id);
+create index idx_eaxjc9jjy2ylssnue0eqcxrjp on base.students (person_id);
 create index idx_eqa1d4jiyg5m5rnuja7ifgw73 on base.students (code);
+create index idx_g4fwvutq09fjdlb4bb0byp7t on base.students (user_id);
 create index idx_ov10ar0rv4dr3yywq2uct6kgj on base.students (state_id);
 create index idx_6p2ajoj9er8ayk42gcgammih3 on base.students_labels (student_id);
 create index idx_dryob4n9h2g16emfu7mhc2b7w on base.teachers_campuses (teacher_id);

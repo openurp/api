@@ -38,6 +38,7 @@ alter table base.course_profiles add constraint fk_7did5f00gvtgft87jqveuveon for
 alter table base.course_profiles add constraint fk_agtty6gn7mb3bvte5qbdeaof1 foreign key (writer_id) references base.users (id);
 alter table base.course_profiles add constraint fk_iwy7pjla6fga45ss6kq2uv3q6 foreign key (auditor_id) references base.users (id);
 alter table base.course_profiles add constraint fk_kw6uenienmdqnf98csgcntf0m foreign key (course_id) references base.courses (id);
+alter table base.course_profiles add constraint fk_oy1dk1d3542ssfoij0kt717xl foreign key (semester_id) references base.semesters (id);
 alter table base.course_textbooks add constraint fk_4stnq1rke2gsqq6ltx8k0n5yl foreign key (textbook_id) references base.textbooks (id);
 alter table base.course_textbooks add constraint fk_qh2cf5dfbnaqunjflbooxg5e foreign key (course_id) references base.courses (id);
 alter table base.course_units add constraint fk_pnnr46j0pw0nwn4w1ub9w63xg foreign key (part_id) references code.day_parts (id);
@@ -193,6 +194,7 @@ alter table base.student_states add constraint fk_r7mo41ef1b8jijc798wqqgu8n fore
 alter table base.students add constraint fk_6d9gurs0fdamr1cdg06sekvge foreign key (gender_id) references code.genders (id);
 alter table base.students add constraint fk_9x7brwurtag62dg4e4eugfaf0 foreign key (person_id) references base.people (id);
 alter table base.students add constraint fk_ckx8nxa2wus0fx409kf9yxml1 foreign key (std_type_id) references code.std_types (id);
+alter table base.students add constraint fk_dt1cjx5ve5bdabmuuf3ibrwaq foreign key (user_id) references base.users (id);
 alter table base.students add constraint fk_f9btqdhvos27xdp2qk113lovf foreign key (advisor_id) references base.teachers (id);
 alter table base.students add constraint fk_fpvosmoocxrxvxmr4pc4jd5nd foreign key (edu_type_id) references code.education_types (id);
 alter table base.students add constraint fk_iwt6av1g9bak73nt4sdnyy2t4 foreign key (state_id) references base.student_states (id);
