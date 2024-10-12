@@ -25,7 +25,7 @@ trait UserRepo {
 
   def createUser(staff: Staff, oldCode: Option[String]): User
 
-  def createUser(std: Student, oldCode: Option[String]): User
+  def createUser(std: Student, userCode: String, oldCode: Option[String]): User
 
   def createAccount(user: User): Unit
 

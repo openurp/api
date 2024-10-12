@@ -41,6 +41,9 @@ import scala.collection.mutable
  */
 class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Remark, DateRange {
 
+  /** 用户 */
+  var user: User = _
+
   /** 基本信息 */
   var person: Person = _
 

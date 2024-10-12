@@ -130,11 +130,11 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     user
   }
 
-  override def createUser(std: Student, oldCode: Option[String]): User = {
+  override def createUser(std: Student, userCode: String, oldCode: Option[String]): User = {
     val school = std.project.school
 
     val userBuilder = OqlBuilder.from(classOf[User], "user")
-    userBuilder.where("user.code=:code", std.code)
+    userBuilder.where("user.code=:code", userCode)
     userBuilder.where("user.school=:school", school)
     val users = entityDao.search(userBuilder)
     val user = users.headOption match {
@@ -142,7 +142,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
       case None =>
         val newUser = new User
         newUser.school = school
-        newUser.code = std.code
+        newUser.code = userCode
         val category = entityDao.get(classOf[UserCategory], UserCategories.Student)
         newUser.category = category
         newUser.email = Option(newUser.code + "@unknown.com")
@@ -156,10 +156,11 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     user.department = std.state.get.department
     user.name = std.name
     user.gender = std.gender
-    user.updatedAt = Instant.now()
+    if !user.persisted then user.updatedAt = Instant.now()
     entityDao.saveOrUpdate(user)
 
-    createAccount(findEmsUserId(oldCode.getOrElse(std.code)), user, defaultPassword(std.person.code), UserCategories.Student)
+    createAccount(findEmsUserId(oldCode.getOrElse(userCode)), user, defaultPassword(std.person.code), UserCategories.Student)
+    std.user = user
     user
   }
 

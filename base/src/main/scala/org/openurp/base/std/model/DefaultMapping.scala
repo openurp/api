@@ -46,6 +46,8 @@ class DefaultMapping extends MappingModule {
       index("", false, e.code)
       index("", false, e.state)
       index("", false, e.project)
+      index("", false, e.person)
+      index("", false, e.user)
     }
 
     bind[StudentState] declare { e =>

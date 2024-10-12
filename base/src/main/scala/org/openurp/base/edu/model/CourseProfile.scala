@@ -20,7 +20,7 @@ package org.openurp.base.edu.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
 import org.openurp.base.hr.model.Teacher
-import org.openurp.base.model.{AuditStatus, Department, User}
+import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 import org.openurp.code.edu.model.CourseCategory
 
 import java.time.Instant
@@ -29,6 +29,9 @@ import java.time.Instant
  *
  */
 class CourseProfile extends LongId, Updated, TemporalOn, Remark {
+
+  /** 学期 */
+  var semester: Semester = _
 
   /** 课程 */
   var course: Course = _
