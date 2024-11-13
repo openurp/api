@@ -46,6 +46,10 @@ object Terms {
       empty
     }
   }
+
+  def main(args: Array[String]): Unit = {
+    println(Terms("8").value)
+  }
 }
 
 @value

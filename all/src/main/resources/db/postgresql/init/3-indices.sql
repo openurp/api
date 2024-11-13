@@ -58,6 +58,11 @@ create index idx_53afh6m93slftsy0gkjfg6acr on cfg.edu_grade_input_switches_types
 create index idx_77lbljk2g828tygwxkxed8bkb on cfg.edu_grade_rate_items (config_id);
 create index idx_s8lp615fkmfph46u6cdovk0p4 on cfg.edu_room_apply_depart_rooms (room_apply_depart_scope_id);
 create index idx_khgja88dtey7iiamxbn00qcwq on cfg.edu_schedule_setting_departs (setting_id);
+create index idx_hxhjfg7x56i21jyaki0rkvg9l on cfg.rule_param_metas (rule_meta_id);
+create index idx_hna20lgrudoep14oismm0m9uv on cfg.rule_params (rule_id);
+create index idx_ef0xtrmh9123lo5x41dpfm07u on cfg.std_audit_settings_drules (audit_setting_id);
+create index idx_r7qgh6ihyer4bnydmhanh0o3f on cfg.std_audit_settings_grules (audit_setting_id);
+create index idx_3j4odlyj9di9w4pv7uxhcjxk4 on cfg.std_audit_settings_levels (audit_setting_id);
 create index idx_35f6ka7arp3j75onw142dn7cr on cfg.std_transfer_options (scheme_id);
 create index idx_84i8icrfu33dut8an8tn9qrgu on cfg.std_transfer_scopes (scheme_id);
 create index idx_eijut5ihl52n15i4j2akr6cfe on cfg.std_transfer_scopes_grades (transfer_scope_id);

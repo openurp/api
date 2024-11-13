@@ -114,6 +114,7 @@ alter table base.user_groups add constraint uk_n3w9nvii9wui5ldmpdvtyooe1 unique 
 alter table base.users add constraint pk_i4mlr3lp5ixml05sx2wuk8kp8 primary key (id);
 alter table base.users add constraint uk_rtwk6iqyuv8d7se1gkkumd948 unique (school_id,code);
 alter table base.versions add constraint pk_kn37tnh6h9broruk4q2gsyyip primary key (id);
+alter table cfg.businesses add constraint pk_hwk1w6gci03htaw42gsh91oci primary key (id);
 alter table cfg.edu_capacity_factors add constraint pk_svrnfofl3ds355csgefiyf0s8 primary key (id);
 alter table cfg.edu_cert_exempt_configs add constraint pk_25ogrkq3scobs3rr6jvtx7j01 primary key (id);
 alter table cfg.edu_cert_exempt_configs_levels add constraint pk_tf2xqvguag0l8xh1e8khnwgux primary key (cert_exempt_config_id,education_level_id);
@@ -139,7 +140,15 @@ alter table cfg.edu_schedule_settings add constraint pk_4m049ge32ldi4uglemj34w77
 alter table cfg.edu_transcript_templates add constraint pk_m87tyokii4burhxl6mcqok1a2 primary key (id);
 alter table cfg.qos_feedback_switches add constraint pk_b7whkf51jgmhbp82phl3dt2hr primary key (id);
 alter table cfg.qos_std_evaluate_switches add constraint pk_81sba75u2yf8yhm3tjcyrsns primary key (id);
+alter table cfg.rule_metas add constraint pk_oa0ynexmn1eqxisovviwxgv1w primary key (id);
+alter table cfg.rule_param_metas add constraint pk_5qdluxes7lil2fquhfmyye9br primary key (id);
+alter table cfg.rule_params add constraint pk_q0krx8koxest0cn2fsjoylsn7 primary key (id);
+alter table cfg.rules add constraint pk_j73u8s0y7cjco3vmns7wsnu0j primary key (id);
 alter table cfg.std_archive_doc_settings add constraint pk_euy7kdgak01xqyafjoxogbjo2 primary key (id);
+alter table cfg.std_audit_settings add constraint pk_1tmso8l97p7jm20tsc4ua4y3x primary key (id);
+alter table cfg.std_audit_settings_drules add constraint pk_rb4qw3e2v6cvoa2ixkdxaimuf primary key (audit_setting_id,rule_id);
+alter table cfg.std_audit_settings_grules add constraint pk_o6trqq27d9c8lg9323pnw589b primary key (audit_setting_id,rule_id);
+alter table cfg.std_audit_settings_levels add constraint pk_dy465bk4jkltlc3rxdeupjame primary key (audit_setting_id,education_level_id);
 alter table cfg.std_register_sessions add constraint pk_ofhf9115x2ra5xlq0vxmx13t5 primary key (id);
 alter table cfg.std_spa_coupons add constraint pk_2vlrdsext43mu1iey1kobiccd primary key (id);
 alter table cfg.std_spa_doc_settings add constraint pk_cjg9tc1r9yaj1nunfa7l8axhx primary key (id);

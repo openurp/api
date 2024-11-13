@@ -15,38 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.degree.thesis.model
+package org.openurp.std.graduation.config
 
-import org.beangle.data.model.Component
+import org.beangle.data.orm.{IdGenerator, MappingModule}
 
-import java.time.{Instant, LocalDate, ZoneId}
+class DefaultMapping extends MappingModule {
 
-/** 各阶段的时间安排
- *
- */
-class StageTime extends Component {
-  var stage: Stage = _
-  var beginAt: Instant = _
-  var endAt: Instant = _
-
-  def this(stage: Stage, beginAt: Instant, endAt: Instant) = {
-    this()
-    this.stage = stage
-    this.beginAt = beginAt
-    this.endAt = endAt
-  }
-
-  def timeSuitable(date: Instant): Int = {
-    if beginAt.isAfter(date) then -1
-    else if endAt.isBefore(date) then 1
-    else 0
-  }
-
-  def beginOn: LocalDate = {
-    beginAt.atZone(ZoneId.systemDefault).toLocalDate
-  }
-
-  def endOn: LocalDate = {
-    endAt.atZone(ZoneId.systemDefault).toLocalDate
+  def binding(): Unit = {
+    bind[AuditSetting].generator("auto_increment")
   }
 }

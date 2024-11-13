@@ -82,6 +82,7 @@ create table base.user_group_members (id bigint not null, group_id integer not n
 create table base.user_groups (name varchar(100) not null, enabled boolean default false not null, code varchar(255) not null, id integer not null, remark varchar(255), auto_manage boolean default false not null, school_id integer not null, parent_id integer, manager_id bigint, indexno varchar(255) not null);
 create table base.users (school_id integer not null, email varchar(80), code varchar(30) not null, department_id integer not null, id bigint not null, remark varchar(200), begin_on date not null, category_id integer not null, end_on date, mobile varchar(15), group_id integer, name varchar(80) not null, en_name varchar(255), gender_id integer not null, updated_at timestamptz default current_timestamp not null);
 create table base.versions (description varchar(200) not null, version varchar(20) not null, id integer not null, updated_at timestamptz default current_timestamp not null);
+create table cfg.businesses (code varchar(50) not null, name varchar(100) not null, id bigint not null);
 create table cfg.edu_capacity_factors (name varchar(255) not null, id bigint not null, remark varchar(255), begin_on date not null, end_on date, condition_exp varchar(255) not null);
 create table cfg.edu_cert_exempt_configs (begin_at timestamptz not null, id bigint not null, notice varchar(2000) not null, project_id integer not null, edu_type_id integer not null, end_at timestamptz not null);
 create table cfg.edu_cert_exempt_configs_levels (cert_exempt_config_id bigint not null, education_level_id integer not null);
@@ -107,7 +108,15 @@ create table cfg.edu_schedule_settings (semester_id integer not null, place_publ
 create table cfg.edu_transcript_templates (page_size varchar(255) not null, project_id integer not null, code varchar(255) not null, options varchar(255) not null, id bigint not null, remark varchar(255), orientation varchar(255) not null, name varchar(255) not null, category varchar(255) not null, template varchar(255) not null, updated_at timestamptz default current_timestamp not null);
 create table cfg.qos_feedback_switches (semester_id integer not null, project_id integer not null, begin_at timestamptz not null, id integer not null, end_at timestamptz not null);
 create table cfg.qos_std_evaluate_switches (semester_id integer not null, project_id integer not null, begin_at timestamptz not null, id integer not null, end_at timestamptz not null);
+create table cfg.rule_metas (business_id bigint not null, name varchar(50) not null, description varchar(500) not null, id bigint not null, title varchar(80) not null);
+create table cfg.rule_param_metas (name varchar(50) not null, description varchar(200) not null, id bigint not null, rule_meta_id bigint not null, title varchar(80) not null, data_type varchar(255) not null);
+create table cfg.rule_params (rule_id bigint not null, contents varchar(500) not null, id bigint not null, meta_id bigint not null);
+create table cfg.rules (enabled boolean default false not null, id bigint not null, meta_id bigint not null);
 create table cfg.std_archive_doc_settings (page_size integer not null, url varchar(200) not null, project_id integer not null, enabled boolean default false not null, id integer not null, orientation integer not null, doc_type_id integer not null);
+create table cfg.std_audit_settings (id bigint not null, remark varchar(255), begin_on date not null, end_on date, project_id integer not null);
+create table cfg.std_audit_settings_drules (audit_setting_id bigint not null, rule_id bigint not null);
+create table cfg.std_audit_settings_grules (audit_setting_id bigint not null, rule_id bigint not null);
+create table cfg.std_audit_settings_levels (audit_setting_id bigint not null, education_level_id integer not null);
 create table cfg.std_register_sessions (semester_id integer not null, project_id integer not null, begin_at timestamptz not null, id bigint not null, grades varchar(255) not null, level_id integer not null, end_at timestamptz not null);
 create table cfg.std_spa_coupons (project_id integer not null, id integer not null, begin_on date not null, end_on date not null, count_per_std integer default 0 not null, doc_type_id integer not null, updated_at timestamptz default current_timestamp not null);
 create table cfg.std_spa_doc_settings (page_size integer not null, url varchar(255) not null, project_id integer not null, enable_user_password boolean default false not null, enabled boolean default false not null, id integer not null, notice varchar(3000), downloadable boolean default false not null, orientation integer not null, printable boolean default false not null, doc_type_id integer not null);

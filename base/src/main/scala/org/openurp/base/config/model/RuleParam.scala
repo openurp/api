@@ -15,38 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.degree.thesis.model
+package org.openurp.base.config.model
 
-import org.beangle.data.model.Component
-
-import java.time.{Instant, LocalDate, ZoneId}
-
-/** 各阶段的时间安排
- *
+import org.beangle.data.model.LongId
+/**
+ * 规则参数
  */
-class StageTime extends Component {
-  var stage: Stage = _
-  var beginAt: Instant = _
-  var endAt: Instant = _
+class RuleParam extends LongId {
 
-  def this(stage: Stage, beginAt: Instant, endAt: Instant) = {
-    this()
-    this.stage = stage
-    this.beginAt = beginAt
-    this.endAt = endAt
-  }
+  var rule: Rule = _
 
-  def timeSuitable(date: Instant): Int = {
-    if beginAt.isAfter(date) then -1
-    else if endAt.isBefore(date) then 1
-    else 0
-  }
+  var meta: RuleParamMeta = _
 
-  def beginOn: LocalDate = {
-    beginAt.atZone(ZoneId.systemDefault).toLocalDate
-  }
-
-  def endOn: LocalDate = {
-    endAt.atZone(ZoneId.systemDefault).toLocalDate
-  }
+  var contents: String = _
 }

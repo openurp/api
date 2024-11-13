@@ -13,6 +13,7 @@
   <mapping class="org.openurp.std.transfer.config.DefaultMapping" name="transfer.config"/>
   <mapping class="org.openurp.std.transfer.log.DefaultMapping" name="transfer.log"/>
   <mapping class="org.openurp.std.graduation.model.DefaultMapping" name="graduation"/>
+  <mapping class="org.openurp.std.graduation.config.DefaultMapping" name="graduation.config"/>
   <mapping class="org.openurp.std.exchange.model.DefaultMapping" name="exchange"/>
   <mapping class="org.openurp.std.archive.model.DefaultMapping" name="archive"/>
   <mapping class="org.openurp.std.archive.config.DefaultMapping" name="archive.config"/>

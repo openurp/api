@@ -23,6 +23,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Course, Terms}
 import org.openurp.code.edu.model.CourseTakeType
+import org.openurp.edu.grade.domain.GradeRemarkDigester
 import org.openurp.edu.program.model.{PlanCourse, SharePlanCourse}
 
 /** 课程审核结果
@@ -74,6 +75,8 @@ class AuditCourseResult extends LongId with Remark {
       if passed then
         val isRepeat = grades.head.courseTakeType.id == CourseTakeType.Repeat
         updatePassedWay(if isRepeat then CoursePassedWay.ByGrade else CoursePassedWay.ByRepeat)
+      else if !passed && grades.nonEmpty then
+        remark = Some(GradeRemarkDigester.digest(grades, false))
     }
     this
   }
