@@ -17,13 +17,13 @@
 
 package org.openurp.code.geo.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
-import org.beangle.commons.collection.Collections
 
-/**
- * 国家地区
+/** 国家地区
  * 参见国家推荐标准 GB/T 2659-2000
+ *
  * @see http://en.wikipedia.org/wiki/ISO_3166-1
  * @see http://wenku.baidu.com/view/bd105c235901020207409cd1.html
  */
@@ -34,9 +34,9 @@ class Country extends CodeBean {
   var shortName: String = _
 }
 
-/**
- * 行政区划
+/** 行政区划
  * 参见国家推荐标准 GB/T 2260-1999
+ *
  * @see http://www.gfjl.org/thread-83266-1-1.html
  */
 @code("nation")

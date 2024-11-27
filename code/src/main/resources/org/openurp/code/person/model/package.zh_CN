@@ -4,6 +4,7 @@ Nation=民族
 FamilyRelationship=家庭关系
 IdType=证件类型
 PoliticalStatus=政治面貌
+PoliticalStatus.shortName=简称
 MaritalStatus=婚姻状况
 BloodType=血型
 FamilyCategory=家庭类别
