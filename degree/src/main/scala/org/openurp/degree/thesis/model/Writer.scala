@@ -37,10 +37,16 @@ class Writer extends LongId {
   /** 论文题目 */
   var thesisTitle: Option[String] = None
 
+  /** 研究领域 */
+  var researchField: Option[String] = None
+
+  /** 移动电话 */
   var mobile: Option[String] = None
 
+  /** 电子邮箱 */
   var email: Option[String] = None
 
+  /** 各阶段截止日期 */
   var deadlines: mutable.Buffer[Deadline] = new mutable.ArrayBuffer[Deadline]
 
   def code: String = std.code

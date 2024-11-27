@@ -44,6 +44,8 @@ class DefaultMapping extends MappingModule {
 
     bind[Writer].declare { e =>
       e.deadlines is depends("writer")
+      e.thesisTitle is length(300)
+      e.researchField is length(100)
       index("", true, e.std, e.season)
       index("", false, e.season)
       index("", false, e.std)
@@ -85,6 +87,8 @@ class DefaultMapping extends MappingModule {
     bind[Deadline]
     bind[ThesisPaper].declare { e =>
       e.sha1sum is length(40)
+      e.title is length(300)
+      e.researchField is length(100)
       index("", true, e.writer)
     }
 
@@ -124,6 +128,8 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[ThesisCheck].declare { e =>
+      e.title is length(300)
+      e.researchField is length(100)
       index("", true, e.season, e.writer, e.degreeMajorCode)
     }
 
