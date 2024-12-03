@@ -1,4 +1,4 @@
 AuditSetting=毕业审核设置
 AuditSetting.levels=审核设置-层次
-AuditSetting.grules=审核设置-毕业规则
-AuditSetting.drules=审核设置-学位规则
+AuditSetting.gruleIds=审核设置-毕业规则IDs
+AuditSetting.druleIds=审核设置-学位规则IDs

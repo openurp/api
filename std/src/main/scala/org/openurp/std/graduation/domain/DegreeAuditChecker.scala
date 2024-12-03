@@ -21,5 +21,5 @@ import org.openurp.edu.program.model.Program
 import org.openurp.std.graduation.model.DegreeResult
 
 trait DegreeAuditChecker {
-  def check(result: DegreeResult, program: Program): (Boolean, String, String)
+  def check(result: DegreeResult, program: Program): (Boolean, String)
 }

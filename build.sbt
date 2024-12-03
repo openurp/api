@@ -2,7 +2,7 @@ import org.openurp.parent.Dependencies.*
 import org.openurp.parent.Settings.*
 
 ThisBuild / organization := "org.openurp.api"
-ThisBuild / version := "0.41.13-SNAPSHOT"
+ThisBuild / version := "0.41.13"
 
 ThisBuild / scmInfo := Some(
   ScmInfo(
@@ -25,7 +25,7 @@ ThisBuild / homepage := Some(url("http://openurp.github.io/api/index.html"))
 ThisBuild / resolvers += Resolver.mavenLocal
 
 lazy val root = (project in file("."))
-  .settings()
+  .settings(common)
   .aggregate(code, base, edu, prac, qos, trd, std, degree, all)
 
 lazy val code = (project in file("code"))

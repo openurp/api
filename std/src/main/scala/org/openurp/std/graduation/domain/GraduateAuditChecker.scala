@@ -21,5 +21,5 @@ import org.openurp.std.graduation.model.GraduateResult
 
 trait GraduateAuditChecker {
 
-  def check(result: GraduateResult): (Boolean, String, String)
+  def check(result: GraduateResult): (Boolean, String)
 }

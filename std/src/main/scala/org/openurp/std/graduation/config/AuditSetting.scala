@@ -17,24 +17,24 @@
 
 package org.openurp.std.graduation.config
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, TemporalOn}
-import org.openurp.base.model.ProjectBased
-import org.openurp.base.config.model.Rule
 import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.{Named, Remark, TemporalOn}
+import org.openurp.base.model.ProjectBased
 import org.openurp.code.edu.model.EducationLevel
 
 import scala.collection.mutable
+
 /**
  * 毕业审核配置
  */
 @config
-class AuditSetting extends LongId, ProjectBased, TemporalOn, Remark {
+class AuditSetting extends LongId, ProjectBased, TemporalOn, Remark, Named {
   /** 培养层次集合 */
   var levels: mutable.Set[EducationLevel] = Collections.newSet[EducationLevel]
   /** 毕业审核规则 */
-  var grules: mutable.Set[Rule] = Collections.newSet[Rule]
+  var gruleIds: String = _
   /** 学位审核规则 */
-  var drules: mutable.Set[Rule] = Collections.newSet[Rule]
+  var druleIds: Option[String] = None
 }
