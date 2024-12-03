@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.41.12">
+<db engine="PostgreSQL" version="0.41.13">
   <schemas>
     <schema name="base">
       <tables>
@@ -1687,16 +1687,6 @@
     </schema>
     <schema name="cfg">
       <tables>
-        <table name="businesses" comment="业务类型@cfg">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:auto_increment"/>
-            <column name="code" type="varchar(50)" nullable="false" comment="代码"/>
-            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_hwk1w6gci03htaw42gsh91oci" columns="id"/>
-          </constraints>
-        </table>
         <table name="edu_capacity_factors" comment="教学工作量系数@workload.config">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -2100,63 +2090,6 @@
             <foreign-key name="fk_1e32626tegq3xg2xgdbcq65a6" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="rule_metas" comment="规则元数据@cfg">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="business_id" type="bigint" nullable="false" comment="业务类型ID"/>
-            <column name="description" type="varchar(500)" nullable="false" comment="描述"/>
-            <column name="name" type="varchar(50)" nullable="false" comment="名称"/>
-            <column name="title" type="varchar(80)" nullable="false" comment="标题"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_oa0ynexmn1eqxisovviwxgv1w" columns="id"/>
-            <foreign-key name="fk_ep7oi1qpmhehcruw1qw5jqnwh" column="business_id" referenced-table="cfg.businesses" referenced-column="id"/>
-          </constraints>
-        </table>
-        <table name="rule_param_metas" comment="规则参数元数据@cfg">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="data_type" type="varchar(255)" nullable="false" comment="数据类型"/>
-            <column name="description" type="varchar(200)" nullable="false" comment="描述"/>
-            <column name="name" type="varchar(50)" nullable="false" comment="名称"/>
-            <column name="rule_meta_id" type="bigint" nullable="false" comment="规则元数据ID"/>
-            <column name="title" type="varchar(80)" nullable="false" comment="标题"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_5qdluxes7lil2fquhfmyye9br" columns="id"/>
-            <foreign-key name="fk_qjq55jc6py1k24ts1vddu9c4v" column="rule_meta_id" referenced-table="cfg.rule_metas" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_hxhjfg7x56i21jyaki0rkvg9l" columns="rule_meta_id"/>
-          </indexes>
-        </table>
-        <table name="rule_params" comment="规则参数@cfg">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="contents" type="varchar(500)" nullable="false" comment="值"/>
-            <column name="meta_id" type="bigint" nullable="false" comment="规则参数元数据ID"/>
-            <column name="rule_id" type="bigint" nullable="false" comment="规则ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_q0krx8koxest0cn2fsjoylsn7" columns="id"/>
-            <foreign-key name="fk_177xngtk7gkvaqmswvjlqouo4" column="meta_id" referenced-table="cfg.rule_param_metas" referenced-column="id"/>
-            <foreign-key name="fk_kj0ksjtxdmuhi8k5oqo9dv936" column="rule_id" referenced-table="cfg.rules" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_hna20lgrudoep14oismm0m9uv" columns="rule_id"/>
-          </indexes>
-        </table>
-        <table name="rules" comment="规则@cfg">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="是否启用"/>
-            <column name="meta_id" type="bigint" nullable="false" comment="规则元数据ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_j73u8s0y7cjco3vmns7wsnu0j" columns="id"/>
-            <foreign-key name="fk_o3cv2wsi7kv42s5dripgw5jus" column="meta_id" referenced-table="cfg.rule_metas" referenced-column="id"/>
-          </constraints>
-        </table>
         <table name="std_archive_doc_settings" comment="学生归档文档设置@archive.config">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
@@ -2177,7 +2110,10 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="drule_ids" type="varchar(255)" comment="审核设置-学位规则IDs"/>
             <column name="end_on" type="date" comment="失效日期"/>
+            <column name="grule_ids" type="varchar(255)" nullable="false" comment="审核设置-毕业规则IDs"/>
+            <column name="name" type="varchar(200)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
           </columns>
@@ -2185,34 +2121,6 @@
             <primary-key name="pk_1tmso8l97p7jm20tsc4ua4y3x" columns="id"/>
             <foreign-key name="fk_7a1325mn6knpmwqawtlsa61vm" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
-        </table>
-        <table name="std_audit_settings_drules" comment="审核设置-学位规则@graduation.config">
-          <columns>
-            <column name="audit_setting_id" type="bigint" nullable="false" comment="毕业审核设置ID"/>
-            <column name="rule_id" type="bigint" nullable="false" comment="规则ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_rb4qw3e2v6cvoa2ixkdxaimuf" columns="audit_setting_id,rule_id"/>
-            <foreign-key name="fk_o6yptdfm0ihbl98rp0rcaoidl" column="audit_setting_id" referenced-table="cfg.std_audit_settings" referenced-column="id"/>
-            <foreign-key name="fk_ekad1lyggnjxhvvwhbnrlnc3n" column="rule_id" referenced-table="cfg.rules" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_ef0xtrmh9123lo5x41dpfm07u" columns="audit_setting_id"/>
-          </indexes>
-        </table>
-        <table name="std_audit_settings_grules" comment="审核设置-毕业规则@graduation.config">
-          <columns>
-            <column name="audit_setting_id" type="bigint" nullable="false" comment="毕业审核设置ID"/>
-            <column name="rule_id" type="bigint" nullable="false" comment="规则ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_o6trqq27d9c8lg9323pnw589b" columns="audit_setting_id,rule_id"/>
-            <foreign-key name="fk_qs4aii1nd2lgrss1jad767qao" column="audit_setting_id" referenced-table="cfg.std_audit_settings" referenced-column="id"/>
-            <foreign-key name="fk_fjp0w2ajp7a721jur25gte02v" column="rule_id" referenced-table="cfg.rules" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_r7qgh6ihyer4bnydmhanh0o3f" columns="audit_setting_id"/>
-          </indexes>
         </table>
         <table name="std_audit_settings_levels" comment="审核设置-层次@graduation.config">
           <columns>

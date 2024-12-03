@@ -17,11 +17,14 @@
 
 package org.openurp.std.graduation.config
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[AuditSetting].generator("auto_increment")
+    bind[AuditSetting].declare { e =>
+      e.name is length(200)
+      e.gruleIds & e.druleIds are length(500)
+    }.generator("auto_increment")
   }
 }
