@@ -231,3 +231,10 @@ class ProgramCourseTag extends CodeBean {
   /** 符号 */
   var sign: Option[String] = None
 }
+
+/** 课程规章资料文档类型
+ */
+@code("school")
+class ClazzArchiveDoc extends CodeBean {
+
+}

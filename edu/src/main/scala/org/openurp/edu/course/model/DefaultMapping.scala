@@ -134,5 +134,10 @@ class DefaultMapping extends MappingModule {
       e.contents is length(4000)
       index("", true, e.clazz)
     }
+
+    bind[ClazzArchive].declare { e =>
+      e.docPath is length(400)
+      index("", true, e.clazz, e.doc)
+    }
   }
 }

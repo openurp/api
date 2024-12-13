@@ -204,6 +204,7 @@ object GradingMode {
   val Percent = 1 //百分制
   val RankEn = 2 //英文等级制
   val RankCn = 3 //中文等级制
+  val TwoLevel = 5 //中文两级制
 }
 
 /**

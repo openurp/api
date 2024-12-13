@@ -1,0 +1,17 @@
+AbilityCreditApply=学生能力证书学分申请
+AbilityCreditApply.auditDepart=审核部门
+AbilityCreditApply.subjectCnt=通过门数
+AbilityCreditApply.subjects=证书内课程
+AbilityCreditApply.finished=是否完成证书所有课程
+AbilityCreditApply.certificateNo=证书编号
+AbilityCreditApply.acquiredOn=获得年月
+AbilityCreditApply.reasons=申请理由
+AbilityCreditApply.auditOpinion=审核意见
+AbilityCreditApply.attachmentPath=成绩单附件路径
+AbilityCreditApply.status=申请状态
+AbilityCreditApply.credits=认定的学分数
+
+AbilityCredit=学生能力素质能力认定学分
+
+AbilityCredit.credits=学分
+AbilityCredit.courseGradeId=认定的成绩ID

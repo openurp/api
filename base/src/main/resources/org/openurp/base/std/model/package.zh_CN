@@ -17,7 +17,7 @@ Squad.education=培养层次
 Squad.shortName=简称
 Squad.campus=校区
 
-Student=学籍信息实现
+Student=学生
 Student.squad=行政班级
 Student.campus=校区
 Student.code=学号

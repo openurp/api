@@ -1,0 +1,14 @@
+AbilityCreditConfig=能力拓展配置
+
+AbilityCreditConfig.levels=能力拓展配置-培养类型
+AbilityCreditConfig.notice=通知
+AbilityCreditConfig.credits=认定的学分
+
+AbilityCreditSetting=能力拓展学分证书配置
+AbilityCreditSetting.auditDepart=审核学院
+AbilityCreditSetting.collegeReviewRequired=是否需要学院审核
+AbilityCreditSetting.validMonths=有效期长度
+AbilityCreditSetting.credits=学分数
+AbilityCreditSetting.special=学科专业特定还是全校通用
+AbilityCreditSetting.departs=能力拓展学分证书配置-面向学院
+AbilityCreditSetting.majors=能力拓展学分证书配置-面向专业

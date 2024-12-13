@@ -90,6 +90,7 @@ class DefaultMapping extends MappingModule {
     bind[ThesisType]
     bind[CourseTag]
     bind[ProgramCourseTag]
+    bind[ClazzArchiveDoc]
     all.cacheAll()
   }
 }

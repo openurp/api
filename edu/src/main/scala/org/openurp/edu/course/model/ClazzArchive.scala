@@ -18,44 +18,27 @@
 package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{TemporalOn, Updated}
-import org.openurp.base.edu.model.Course
-import org.openurp.base.model.{AuditStatus, Department, Semester, User}
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.User
+import org.openurp.code.edu.model.ClazzArchiveDoc
+import org.openurp.edu.clazz.model.Clazz
 
-import java.time.Instant
-import java.util.Locale
-
-/**
- * 课程教学大纲文档
+/** 课程资料归档
  */
-class SyllabusDoc extends LongId, Updated, TemporalOn {
-  /** 课程 */
-  var course: Course = _
+class ClazzArchive extends LongId, Updated {
 
-  /** 修订时的学年学期 */
-  var semester: Semester = _
+  /** 文档类型 */
+  var doc: ClazzArchiveDoc = _
 
-  /** 开课院系 */
-  var department: Department = _
+  /** 教学班 */
+  var clazz: Clazz = _
 
-  /** 文件语言 */
-  var docLocale: Locale = _
+  /** 归档人 */
+  var archivedBy: User = _
 
   /** 文件大小 */
   var docSize: Int = _
 
   /** 存储路径 */
   var docPath: String = _
-
-  /** 作者 */
-  var writer: User = _
-
-  /** 状态 */
-  var status: AuditStatus = AuditStatus.Draft
-
-  /** 审核人 */
-  var auditor: Option[User] = None
-
-  /** 审核时间 */
-  var auditAt: Option[Instant] = None
 }

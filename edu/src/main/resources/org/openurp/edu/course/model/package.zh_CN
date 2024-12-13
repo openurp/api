@@ -158,3 +158,8 @@ LessonDesignSection.summary=教学内容提要
 LessonDesignSection.title=标题
 LessonDesignSection.duration=时长
 LessonDesignSection.details=教学过程设计
+
+ClazzArchive=课程资料归档
+ClazzArchive.archivedBy=归档人
+ClazzArchive.docSize=文件大小
+ClazzArchive.docPath=存储路径
