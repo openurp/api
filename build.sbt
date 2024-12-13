@@ -1,7 +1,7 @@
 import org.openurp.parent.Dependencies.*
 import org.openurp.parent.Settings.*
 
-ThisBuild / organization := "org.openurp.api"
+ThisBuild / organization := "org.openurp"
 ThisBuild / version := "0.41.14"
 
 ThisBuild / scmInfo := Some(
@@ -26,7 +26,6 @@ ThisBuild / resolvers += Resolver.mavenLocal
 
 lazy val root = (project in file("."))
   .settings(
-    organization := "org.openurp",
     name := "openurp-api",
     common)
   .aggregate(code, base, edu, prac, qos, trd, std, degree, all)
