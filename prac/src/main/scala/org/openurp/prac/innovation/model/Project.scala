@@ -88,5 +88,4 @@ class Project extends LongId with TemporalOn with Remark {
     }
     materials.find(_.stageType.id == stageTypeId)
   }
-
 }

@@ -21,7 +21,7 @@ import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
 import org.openurp.code.hr.model.DepartmentCategory
 
-import scala.collection.mutable.{Buffer, ListBuffer}
+import scala.collection.mutable
 
 /**
  * 部门
@@ -34,5 +34,15 @@ class Department extends IntId, Coded, Named, EnNamed, Hierarchical[Department]
   var teaching: Boolean = _
   var research: Boolean = _
   /** 校区列表 */
-  var campuses: Buffer[Campus] = new ListBuffer[Campus]
+  var campuses: mutable.Buffer[Campus] = new mutable.ListBuffer[Campus]
+
+  def topDepartName: String = {
+    parent match {
+      case None => name
+      case Some(p) =>
+        //不能和学校同名
+        if (p.name == school.name) name else p.topDepartName
+    }
+  }
+
 }

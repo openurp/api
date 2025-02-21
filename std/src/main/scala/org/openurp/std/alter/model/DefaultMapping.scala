@@ -29,5 +29,13 @@ class DefaultMapping extends MappingModule {
       e.oldvalue is length(100)
       e.oldvalue is length(100)
     }
+
+    bind[StdAlterApply].declare { e =>
+      e.steps is depends("alterApply")
+      e.formDataJson is length(500)
+      e.alterDataJson is length(500)
+    }
+
+    bind[StdAlterApplyStep]
   }
 }

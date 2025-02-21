@@ -30,6 +30,8 @@ enum AlterMeta(val id: Int, val name: String) {
   case Status extends AlterMeta(7, "学籍状态")
   case Campus extends AlterMeta(8, "校区")
   case GraduateOn extends AlterMeta(9, "毕业日期")
+  case Tutor extends AlterMeta(10, "导师")
+  case Advisor extends AlterMeta(11, "学位论文指导教师")
 
   override def toString: String = name
 }

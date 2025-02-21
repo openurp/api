@@ -63,6 +63,14 @@ class Project extends IntId with Coded with TemporalOn with Updated with Named {
   var administration: String = _
   /** 二级部门 */
   var administration2nd: Option[String] = None
+
+  /** isLifeLongEducation
+   *
+   * @return
+   */
+  def lle: Boolean = {
+    null != category && category.name.contains("成人高等教育")
+  }
 }
 
 /**

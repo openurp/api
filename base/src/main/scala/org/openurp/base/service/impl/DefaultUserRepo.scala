@@ -205,14 +205,19 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     emsJdbcExecutor.unique[Int]("select id from ems.usr_groups where org_id=" + group.school.id + " and code=? ", group.code)
   }
 
+  private def findEmsDepartId(d: Department): Option[Int] = {
+    emsJdbcExecutor.unique[Int]("select id from ems.usr_departs where org_id=" + d.school.id + " and code=? ", d.code)
+  }
+
   private def createAccount(existId: Option[Long], user: User, password: String, categoryId: Int): Unit = {
     val code = user.code
     val name = user.name
     val groupId = user.group.flatMap(findEmsGroupId)
+    val departId = findEmsDepartId(user.department)
 
     val userId = existId match {
       case Some(id) =>
-        val data = emsJdbcExecutor.query("select code,name,mobile,email,group_id from ems.usr_users where id=?", id).head
+        val data = emsJdbcExecutor.query("select code,name,mobile,email,group_id,depart_id,begin_on,end_on from ems.usr_users where id=?", id).head
         if (data(0) != code || data(1) != name) {
           emsJdbcExecutor.update("update ems.usr_users set code=?, name=?, updated_at=now() where id=?", code, name, id)
           logger.info(s"change user($id) code and name to $code $name")
@@ -226,13 +231,26 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         groupId foreach { gid =>
           if (gid != data(4)) emsJdbcExecutor.update("update ems.usr_users set group_id=?,updated_at=now() where id=?", gid, id)
         }
+        departId foreach { did =>
+          if (did != data(5)) emsJdbcExecutor.update("update ems.usr_users set depart_id=?,updated_at=now() where id=?", did, id)
+        }
+        if (user.beginOn != data(6)) {
+          emsJdbcExecutor.update("update ems.usr_users set begin_on=?,updated_at=now() where id=?", user.beginOn, id)
+        }
+        if (user.endOn.isEmpty && null != data(7)) {
+          emsJdbcExecutor.update("update ems.usr_users set end_on=null,updated_at=now() where id=?", id)
+        } else if (user.endOn.nonEmpty && (null == data(7) || !user.endOn.contains(data(7)))) {
+          emsJdbcExecutor.update("update ems.usr_users set end_on=?,updated_at=now() where id=?", user.endOn.get, id)
+        }
         id
       case None =>
         val userId = nextId()
-        emsJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,password,group_id," +
-          "passwd_expired_on,updated_at,begin_on,enabled,locked)"
-          + "values(?,?,?,?,?,?,?,?,?,current_date+180,now(),current_date,true,false);", userId, code, name, orgId,
-          categoryId, user.mobile.orNull, user.email.orNull, "{MD5}" + Digests.md5Hex(password), groupId.orNull)
+        emsJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,password,group_id,depart_id," +
+          "begin_on,end_on,passwd_expired_on,updated_at,enabled,locked)"
+          + "values(?,?,?,?,?,?,?,?,?,?,?,?,current_date+180,now(),true,false);", userId, code, name, orgId,
+          categoryId, user.mobile.orNull, user.email.orNull, "{MD5}" + Digests.md5Hex(password), groupId.orNull, departId.orNull,
+          user.beginOn, user.endOn.orNull
+        )
         logger.info(s"create user $code $name")
         userId
     }

@@ -15,30 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.alter.config
+package org.openurp.base.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.config
-import org.openurp.base.model.Project
-import org.openurp.code.std.model.{StdAlterType, StudentStatus}
+import org.beangle.data.model.Component
+import org.beangle.data.model.pojo.Named
 
-/** 学籍异动配置
- *
- */
-@config
-class StdAlterConfig extends LongId {
+import java.time.Instant
 
-  var project: Project = _
-
-  var alterType: StdAlterType = _
-
-  var status: StudentStatus = _
-
-  var alterEndOn: Boolean = _
-
-  var alterGraduateOn: Boolean = _
-
-  var inschool: Boolean = _
-
-  var attributes: String = _
+trait AuditStep extends Component,Named {
+  /** 受理人 */
+  var assignee: Option[User] = None
+  /** 审核时间 */
+  var auditAt: Option[Instant] = None
+  /** 审核意见 */
+  var comments: Option[String] = None
+  /** 审核结果 */
+  var passed: Option[Boolean] = None
 }

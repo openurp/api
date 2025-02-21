@@ -17,11 +17,28 @@
 
 package org.openurp.std.alter.config
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.config
+import org.openurp.base.model.Project
+import org.openurp.code.std.model.{StdAlterType, StudentStatus}
 
-class DefaultMapping extends MappingModule {
+/** 学籍异动配置
+ *
+ */
+@config
+class AlterConfig extends LongId {
 
-  def binding(): Unit = {
-    bind[AlterConfig]
-  }
+  var project: Project = _
+
+  var alterType: StdAlterType = _
+
+  var status: StudentStatus = _
+
+  var alterEndOn: Boolean = _
+
+  var alterGraduateOn: Boolean = _
+
+  var inschool: Boolean = _
+
+  var attributes: String = _
 }

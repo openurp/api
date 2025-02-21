@@ -36,6 +36,9 @@ import scala.collection.mutable
  * 学籍信息记录了四部分内容： <li>基本内容 学号、姓名、英文名(拼音)、性别</li> <li>培养内容 项目、年级、院系、专业、方向、班级、培养层次、学习形式、学生分类标签</li> <li>
  * 培养时间 录取时间、入学时间、预计毕业时间、学制</li> <li>学籍状态日志 各时段的是否在校、专业、方向以及学籍状态</li>
  *
+ * 入学日期 + 学制 = 应毕业日期
+ * 入学日期 + 最长学习年限 = 学籍最晚截止日期
+ *
  * @author chaostone
  * @since 2005
  */
@@ -61,13 +64,6 @@ class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Rem
 
   /** 学生分类标签 */
   var labels = Collections.newMap[StdLabelType, StdLabel]
-
-  /** 入学日期
-   * 入学日期 + 学制 = 应毕业日期
-   * 入学日期 + 最长学习年限 = 学籍最晚截止日期
-   * 该日期也是学籍状态开始的日期(student.state.beginOn)，但不得早于学籍有效的开始日期(student.beginOn)
-   */
-  var studyOn: LocalDate = _
 
   /** 预计毕业日期
    * 入学日期 + 学制 = 预计毕业日期
@@ -112,8 +108,16 @@ class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Rem
 
   def grade: Grade = state.get.grade
 
+  /** 所在部门
+   *
+   * @return
+   */
   def department: Department = state.get.department
 
+  /** 所在学院
+   *
+   * @return
+   */
   def college: Department = {
     var depart = state.get.department
     val departs = Collections.newSet[Department]
@@ -129,15 +133,35 @@ class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Rem
     depart
   }
 
+  /** 所在专业 */
   def major: Major = state.get.major
 
+  /** 所在专业方向 */
   def direction: Option[Direction] = state.get.direction
+
+  /** 学生所在班级 */
+  def squad: Option[Squad] = state.get.squad
 
   def description: String = s"$code $name ${department.shortName.getOrElse(department.name)}"
 
+  /** 入学时的学科专业代码
+   *
+   * @return
+   */
   def disciplineCode: String = state.get.major.getDisciplineCode(beginOn)
 
+  /** 入学时的学科专业名称
+   *
+   * @return
+   */
   def disciplineName: String = state.get.major.getDisciplineName(beginOn)
+
+  /** 入学日期
+   *
+   * @deprecated("using beginOn")
+   * @return
+   */
+  def studyOn: LocalDate = beginOn
 }
 
 /**
