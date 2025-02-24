@@ -147,7 +147,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         newUser.category = category
         newUser.email = Option(newUser.code + "@unknown.com")
         newUser.beginOn = std.beginOn
-        newUser.endOn = Option(std.endOn)
+        newUser.endOn = Option(std.maxEndOn)
         newUser
     }
     if (user.group.isEmpty) {
