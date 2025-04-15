@@ -31,7 +31,7 @@ import java.util.Locale
 /** 课程教学大纲
  *
  */
-class Syllabus extends LongId with Updated with DateRange {
+class Syllabus extends LongId, Updated, DateRange {
 
   /** 课程 */
   var course: Course = _

@@ -22,7 +22,7 @@ import org.beangle.data.model.pojo.Updated
 
 import java.time.Instant
 
-class Deadline extends LongId with Updated {
+class Deadline extends LongId, Updated {
 
   def this(stage: Stage, writer: Writer) = {
     this()

@@ -30,7 +30,7 @@ import scala.collection.mutable
  * 成绩分级配置
  */
 @config
-class GradeRateConfig extends LongId with ProjectBased {
+class GradeRateConfig extends LongId, ProjectBased {
 
   /**
    * 成绩记录方式

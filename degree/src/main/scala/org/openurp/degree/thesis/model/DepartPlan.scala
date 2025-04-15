@@ -19,16 +19,16 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.openurp.base.model.{AuditStatus, Department}
+import org.openurp.base.model.Department
 
-import java.time.{Instant, LocalDate}
+import java.time.Instant
 import scala.collection.mutable
 
 /** 学院毕业设计工作计划
  *
  * @author duant
  */
-class DepartPlan extends LongId with Cloneable {
+class DepartPlan extends LongId, Cloneable {
   var department: Department = _
   var status: PlanStatus = _
   var thesisPlan: ThesisPlan = _

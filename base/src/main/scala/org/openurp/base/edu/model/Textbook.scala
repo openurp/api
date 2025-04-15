@@ -18,50 +18,52 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{Named, Remark, TemporalOn}
 import org.openurp.base.model.Project
-import org.openurp.code.edu.model.{BookAwardType, BookType}
-import org.openurp.code.sin.model.{BookCategory, Press}
+import org.openurp.code.edu.model.{BookAwardType, BookType, DisciplineCategory}
+import org.openurp.code.sin.model.{BookCategory, ForeignBookType, Press, TextbookForm}
 
 import java.time.LocalDate
 
 /**
  * 教材基本信息
  */
-class Textbook extends LongId with TemporalOn with Named with Remark {
-
+class Textbook extends LongId, TemporalOn, Named, Remark {
   var project: Project = _
-
+  /** ISBN */
   var isbn: Option[String] = None
-
+  /** 编著者 */
   var author: String = _
-
   /** 译作者 */
   var translator: Option[String] = None
-
-  /**出版社*/
+  /** 出版社 */
   var press: Option[Press] = None
-
+  /** 版次 */
   var edition: String = _
-
+  /** 价格 */
   var price: Option[Float] = None
-
+  /** 简介 */
   var description: Option[String] = None
-
+  /** 教材类型 */
   var bookType: Option[BookType] = None
-
+  /** 图书分类 */
   var category: Option[BookCategory] = None
-
   /** 出版日期 */
   var publishedOn: LocalDate = _
-
+  /** 获奖类型 */
   var awardType: Option[BookAwardType] = None
-
+  /** 颁发单位 */
   var awardOrg: Option[String] = None
-
+  /** 图书系列 */
   var series: Option[String] = None
-
+  /** 校内编著 */
   var madeInSchool: Boolean = false
-
+  /** 是否是境内教材 */
+  var domestic: Boolean = true
+  /** 境外教材类型 */
+  var foreignBookType: Option[ForeignBookType] = None
+  /** 学科门类 */
+  var disciplineCategory: Option[DisciplineCategory] = None
+  /** 教材形态 */
+  var bookForm: Option[TextbookForm] = None
 }

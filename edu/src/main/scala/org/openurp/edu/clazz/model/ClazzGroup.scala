@@ -19,21 +19,21 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.base.model.{Department, ProjectBased, Semester}
 import org.openurp.base.edu.model.Course
+import org.openurp.base.model.{Department, ProjectBased, Semester}
 
 /**
  * 教学任务课程组
  */
-class ClazzGroup extends LongId with ProjectBased with Named {
+class ClazzGroup extends LongId, ProjectBased, Named {
 
   /** 学期 */
   var semester: Semester = _
 
-  /**开课部门*/
+  /** 开课部门 */
   var teachDepart: Option[Department] = None
 
-  /**课程*/
+  /** 课程 */
   var course: Option[Course] = None
 
   /** 任务集合 */

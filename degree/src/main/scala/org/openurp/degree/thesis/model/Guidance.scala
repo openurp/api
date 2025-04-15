@@ -20,7 +20,7 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 
-class Guidance extends LongId with Updated {
+class Guidance extends LongId, Updated {
 
   var writer: Writer = _
 

@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.Updated
 /**
  * 项目结项
  */
-class Closure extends LongId with Updated {
+class Closure extends LongId, Updated {
   var project: Project = _
 
   var applyExemptionReply: Boolean = _

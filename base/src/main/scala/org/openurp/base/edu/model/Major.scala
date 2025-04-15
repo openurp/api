@@ -78,7 +78,7 @@ class Major extends LongId, ProjectBased, TemporalOn, Updated, Coded, Named, EnN
 /**
  * 专业学科信息
  */
-class MajorDiscipline extends LongId with TemporalOn {
+class MajorDiscipline extends LongId, TemporalOn {
 
   /** 专业 */
   var major: Major = _
@@ -107,7 +107,7 @@ class MajorDiscipline extends LongId with TemporalOn {
  * @author chaostone
  *
  */
-class MajorJournal extends LongId with TemporalOn with Remark {
+class MajorJournal extends LongId, TemporalOn, Remark {
 
   /** 专业 */
   var major: Major = _

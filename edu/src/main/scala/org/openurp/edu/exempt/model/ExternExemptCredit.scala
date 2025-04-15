@@ -23,7 +23,7 @@ import org.openurp.base.std.model.Student
 
 /** 外校交流免修申请学分上限
  */
-class ExternExemptCredit extends LongId with Remark with Updated {
+class ExternExemptCredit extends LongId, Remark, Updated {
 
   var std: Student = _
 

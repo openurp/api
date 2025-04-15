@@ -22,7 +22,7 @@ import org.beangle.data.model.pojo.Updated
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Degree
 
-class DegreeApply extends LongId with Updated {
+class DegreeApply extends LongId, Updated {
 
   var batch: GraduateBatch = _
 

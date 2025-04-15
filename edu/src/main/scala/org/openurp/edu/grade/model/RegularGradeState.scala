@@ -27,7 +27,7 @@ import scala.collection.mutable
 /** 平时成绩状态
  *
  */
-class RegularGradeState extends LongId with Updated {
+class RegularGradeState extends LongId, Updated {
 
   /** 教学任务 */
   var clazz: Clazz = _

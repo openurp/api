@@ -23,7 +23,7 @@ import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{Named, Remark, TemporalOn}
 
 @config
-class CapacityFactor extends LongId with Named with Remark with TemporalOn {
+class CapacityFactor extends LongId, Named, Remark, TemporalOn {
 
   var conditionExp: String = _
 

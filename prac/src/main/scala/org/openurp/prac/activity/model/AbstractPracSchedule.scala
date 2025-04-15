@@ -29,7 +29,7 @@ import scala.collection.mutable
 
 /** 实践课程安排
  */
-abstract class AbstractPracSchedule extends LongId with DateRange with Remark {
+abstract class AbstractPracSchedule extends LongId, DateRange, Remark {
   var weekTime: WeekTime = _
   /** 主题 */
   var topic: Option[String] = None

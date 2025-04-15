@@ -24,9 +24,10 @@ import org.openurp.base.model.{Department, Project}
 
 /**
  * 评教问题
+ *
  * @author chaostone
  */
-class Question extends LongId with Updated with TemporalOn {
+class Question extends LongId, Updated, TemporalOn {
   var project: Project = _
   /** 问题内容 */
   var contents: String = _

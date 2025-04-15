@@ -29,7 +29,7 @@ import java.time.Instant
  * 注册批次
  */
 @config
-class RegisterSession extends LongId with InstantRange {
+class RegisterSession extends LongId, InstantRange {
 
   var project: Project = _
 

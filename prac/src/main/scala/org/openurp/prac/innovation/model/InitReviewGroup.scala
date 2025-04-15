@@ -26,12 +26,12 @@ import scala.collection.mutable
 
 /** 立项评审组
  */
-class InitReviewGroup extends LongId with Named {
+class InitReviewGroup extends LongId, Named {
 
   var batch: Batch = _
 
   var discipline: Discipline = _
 
-  /**评审专家*/
+  /** 评审专家 */
   var experts: mutable.Buffer[Expert] = Collections.newBuffer[Expert]
 }

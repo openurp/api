@@ -26,7 +26,7 @@ import org.openurp.edu.grade.model.AbstractGradeState
  *
  * @author chaostone
  */
-class ExamGradeState extends AbstractGradeState  with Remark{
+class ExamGradeState extends AbstractGradeState, Remark {
 
   /**
    * 成绩类型

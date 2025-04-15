@@ -22,9 +22,10 @@ import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Named
 
 /** 选项
+ *
  * @author chaostone
  */
-class Option extends LongId with Named {
+class Option extends LongId, Named {
   /** 选项所占比重（权重） */
   var proportion: Float = _
   /** 选项组 */

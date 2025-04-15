@@ -18,13 +18,11 @@
 package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{DateRange, Named}
-import org.beangle.data.model.pojo.Remark
-import java.time.LocalDate
-import org.beangle.data.model.pojo.InstantRange
-import java.time.Instant
+import org.beangle.data.model.pojo.{DateRange, InstantRange, Named, Remark}
 
-class Stage extends IntId with InstantRange with Remark {
+import java.time.{Instant, LocalDate}
+
+class Stage extends IntId, InstantRange, Remark {
 
   var stageType: StageType = _
 

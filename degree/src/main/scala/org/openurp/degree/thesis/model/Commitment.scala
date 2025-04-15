@@ -22,7 +22,7 @@ import org.beangle.data.model.pojo.Updated
 
 import java.time.Instant
 
-class Commitment extends LongId with Updated{
+class Commitment extends LongId, Updated {
 
   var writer: Writer = _
 

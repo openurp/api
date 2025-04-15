@@ -28,7 +28,7 @@ import scala.collection.mutable.Buffer
 /**
  * 时间设置
  */
-class TimeSetting extends IntId with Named with TemporalOn {
+class TimeSetting extends IntId, Named, TemporalOn {
   var project: Project = _
   var campus: Option[Campus] = None
   var minutesPerUnit: Short = _
@@ -51,7 +51,7 @@ class TimeSetting extends IntId with Named with TemporalOn {
 /**
  * 课程小节
  */
-class CourseUnit extends IntId with Named {
+class CourseUnit extends IntId, Named {
   var indexno: Int = _
   var beginAt: HourMinute = _
   var endAt: HourMinute = _

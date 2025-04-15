@@ -24,9 +24,10 @@ import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.Project
 
 /** 选项组
+ *
  * @author chaostone
  */
-class OptionGroup extends LongId with Named {
+class OptionGroup extends LongId, Named {
   var project: Project = _
 
   /** 各类选项 */

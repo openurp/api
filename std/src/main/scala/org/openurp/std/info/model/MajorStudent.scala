@@ -24,7 +24,7 @@ import org.openurp.code.edu.model.{DisciplineCategory, Institution}
 
 /** 学生的主修信息
  */
-class MajorStudent extends LongId with Updated {
+class MajorStudent extends LongId, Updated {
 
   /** 主修学号 */
   var code: String = _

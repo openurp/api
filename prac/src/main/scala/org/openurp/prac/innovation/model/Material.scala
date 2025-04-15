@@ -18,21 +18,20 @@
 package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Named, Updated}
 
 /** 项目材料
  */
-class Material extends LongId with Updated {
+class Material extends LongId, Updated {
   var project: Project = _
   var stageType: StageType = _
-  /**文件名*/
+  /** 文件名 */
   var fileName: String = _
-  /**大小*/
+  /** 大小 */
   var fileSize: Int = _
-  /**sha*/
+  /** sha */
   var sha: String = _
-  /**路径*/
+  /** 路径 */
   var filePath: String = _
 
   def this(project: Project, stageType: StageType) = {

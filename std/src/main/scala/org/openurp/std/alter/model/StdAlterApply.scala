@@ -42,7 +42,7 @@ class StdAlterApply extends LongId, Remark {
   /** 状态 */
   var status: String = _
   /** 变动开始日期 */
-  var alterFrom: LocalDate = _
+  var alterFrom: Option[LocalDate] = None
   /** 变动结束日期 */
   var alterTo: Option[LocalDate] = None
   /** 提交表单其他 数据 */
@@ -58,7 +58,7 @@ class StdAlterApply extends LongId, Remark {
   /** 负责人/受理人账户 */
   var assignees: Option[String] = None
 
-  def newStep(name: String,assignees: Option[String]): StdAlterApplyStep = {
+  def newStep(name: String, assignees: Option[String]): StdAlterApplyStep = {
     steps find (_.name == name) match
       case None =>
         val step = new StdAlterApplyStep(this, this.steps.size, name)

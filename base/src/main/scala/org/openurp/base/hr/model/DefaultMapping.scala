@@ -74,7 +74,6 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[TutorJournal]
-
     bind[TutorMajor]
   }
 }

@@ -29,7 +29,7 @@ import java.time.Instant
 /** 考试缓考申请
  */
 @flow
-class ExamDeferApply extends LongId with Updated with Remark {
+class ExamDeferApply extends LongId, Updated, Remark {
 
   var clazz: Clazz = _
 

@@ -26,7 +26,7 @@ import java.time.Instant
 
 /** 毕业论文信息
  */
-class ThesisPaper extends LongId with Named {
+class ThesisPaper extends LongId, Named {
 
   var writer: Writer = _
 

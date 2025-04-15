@@ -25,7 +25,7 @@ import org.openurp.base.model.{Department, Project}
 
 /** 评教问卷
  */
-class Questionnaire extends LongId with Updated with TemporalOn with Remark {
+class Questionnaire extends LongId, Updated, TemporalOn, Remark {
   var project: Project = _
   /** 问卷标题 */
   var title: String = _

@@ -17,6 +17,14 @@
 
 package org.openurp.std.alter.model
 
+import org.beangle.commons.lang.Strings
+
+object AlterMeta {
+  def of(shortName: String): AlterMeta = {
+    AlterMeta.valueOf(Strings.capitalize(shortName))
+  }
+}
+
 /**
  * 学籍异动属性
  */
@@ -29,9 +37,11 @@ enum AlterMeta(val id: Int, val name: String) {
   case Inschool extends AlterMeta(6, "是否在校")
   case Status extends AlterMeta(7, "学籍状态")
   case Campus extends AlterMeta(8, "校区")
-  case GraduateOn extends AlterMeta(9, "毕业日期")
+  case EndOn extends AlterMeta(9, "毕业日期")
   case Tutor extends AlterMeta(10, "导师")
   case Advisor extends AlterMeta(11, "学位论文指导教师")
+  case GraduateOn extends AlterMeta(12, "预计毕业日期")
 
   override def toString: String = name
+
 }

@@ -115,7 +115,7 @@ class DefaultMapping extends MappingModule {
     bind[LessonDesign] declare { e =>
       e.texts is depends("design")
       e.subject is length(300)
-      e.homework is length(500)
+      e.homework is length(1000)
       e.sections is depends("design")
     }
 

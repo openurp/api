@@ -31,7 +31,7 @@ import java.time.LocalDate
 /**
  * 教师基本情况
  */
-class StaffProfile extends LongId with Updated {
+class StaffProfile extends LongId, Updated {
   /** 教师 */
   var staff: Staff = _
 

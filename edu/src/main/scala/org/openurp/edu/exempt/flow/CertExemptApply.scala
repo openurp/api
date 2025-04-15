@@ -33,7 +33,7 @@ import scala.collection.mutable
  * 申请同意后，会落地到证书成绩和课程免修记录
  */
 @flow
-class CertExemptApply extends LongId with Updated {
+class CertExemptApply extends LongId, Updated {
   /** 学生 */
   var std: Student = _
   /** 申请学期 */

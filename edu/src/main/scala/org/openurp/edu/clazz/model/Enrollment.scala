@@ -21,10 +21,10 @@ import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.value
 import org.beangle.data.model.Component
 import org.openurp.base.model.Department
-import org.openurp.code.edu.model.{CourseAbilityRate, EducationLevel}
+import org.openurp.code.edu.model.CourseAbilityRate
 import org.openurp.edu.clazz.model.Enrollment.GenderRatio
 
-class Enrollment extends Cloneable with Component {
+class Enrollment extends Cloneable, Component {
 
   /** 学生所在部门 */
   var depart: Option[Department] = None
@@ -71,7 +71,7 @@ class Enrollment extends Cloneable with Component {
 object Enrollment {
 
   @value
-  class GenderRatio(val value: Short) extends Ordered[GenderRatio] with Serializable {
+  class GenderRatio(val value: Short) extends Ordered[GenderRatio], Serializable {
     override def compare(other: GenderRatio): Int = {
       if (this.value < other.value) -1
       else if (this.value == other.value) 0

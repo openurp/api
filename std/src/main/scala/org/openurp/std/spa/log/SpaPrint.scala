@@ -27,7 +27,7 @@ import org.openurp.code.std.model.StdDocType
  * 记录每次打印文档的流水
  */
 @log
-class SpaPrint extends LongId with Updated with Remark {
+class SpaPrint extends LongId, Updated, Remark {
   /** 学生 */
   var user: User = _
 

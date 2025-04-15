@@ -31,7 +31,7 @@ import java.time.Instant
 /**
  * 开放式文字评教
  */
-class Feedback extends LongId with Updated {
+class Feedback extends LongId, Updated {
   /** 课程序号 */
   var crn: String = _
   /** 教学任务 */

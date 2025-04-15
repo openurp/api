@@ -31,7 +31,7 @@ import scala.collection.mutable
  * 校外证书免修科目设置
  */
 @config
-class CertExemptSetting extends LongId with Remark {
+class CertExemptSetting extends LongId, Remark {
   /** 免修设置 */
   var config: CertExemptConfig = _
   /** 证书类型 */

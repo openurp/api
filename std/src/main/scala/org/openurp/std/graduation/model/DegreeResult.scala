@@ -67,7 +67,7 @@ class DegreeResult extends LongId, Updated, Remark {
   }
 
   def disciplineCode: String = {
-    std.state.map(_.major.getDisciplineCode(std.studyOn)).getOrElse("")
+    std.state.map(_.major.getDisciplineCode(std.beginOn)).getOrElse("")
   }
 
   def addPassed(item: String, remark: String): Unit = {

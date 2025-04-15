@@ -22,48 +22,48 @@ import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{Coded, Named}
 
 @code("school")
-class HonorCategory extends IntId with Coded with Named {
+class HonorCategory extends IntId, Coded, Named {
 
-  /**荣誉类型*/
+  /** 荣誉类型 */
   var honorType: HonorType = _
 
-  /**荣誉描述*/
+  /** 荣誉描述 */
   var discription: Option[String] = None
 
-  /**评定周期*/
+  /** 评定周期 */
   var assessPeriod: String = _
 
-  /**颁奖单位*/
+  /** 颁奖单位 */
   var awardUnit: String = _
 
-  /**使用状态*/
+  /** 使用状态 */
   var enabled: Boolean = _
 
-  /**是否分等级*/
+  /** 是否分等级 */
   var rated: Boolean = _
 
 }
 
 @code("school")
-class HonorLevel extends IntId with Coded with Named {
+class HonorLevel extends IntId, Coded, Named {
 
-  /**荣誉种类*/
+  /** 荣誉种类 */
   var category: HonorCategory = _
 
-  /**奖励金额*/
+  /** 奖励金额 */
   var amount: Int = _
 
-  /**使用状态*/
+  /** 使用状态 */
   var enabled: Boolean = _
 
-  /**描述*/
+  /** 描述 */
   var discription: Option[String] = None
 }
 
 @code("school")
-class HonorType extends IntId with Coded with Named {
-  /**使用状态*/
+class HonorType extends IntId, Coded, Named {
+  /** 使用状态 */
   var enabled: Boolean = _
-  /**排序序号*/
+  /** 排序序号 */
   var idx: String = _
 }

@@ -22,7 +22,7 @@ import org.beangle.data.model.pojo.Updated
 
 import java.time.LocalDate
 
-class DefenseInfo extends LongId with Updated {
+class DefenseInfo extends LongId, Updated {
 
   /** 学生 */
   var writer: Writer = _

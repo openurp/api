@@ -29,9 +29,9 @@ import java.time.{Instant, ZoneId}
  * 优惠券
  */
 @config
-class SpaCoupon extends IntId with Updated with DateRange {
+class SpaCoupon extends IntId, Updated, DateRange {
 
-  /**项目*/
+  /** 项目 */
   var project: Project = _
 
   def validAt(updatedAt: Instant): Boolean = {

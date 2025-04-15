@@ -29,8 +29,8 @@ import scala.collection.mutable
 /** 分课程大类统计
  *
  */
-class CategoryEvalStat extends LongId with Updated{
-  var project:Project=_
+class CategoryEvalStat extends LongId, Updated {
+  var project: Project = _
 
   /** 教学日历 */
   var semester: Semester = _
@@ -104,7 +104,7 @@ class CategoryStatGrade extends LongId {
 /**
  * 指标分段统计
  */
-class CategoryStatRange extends LongId  {
+class CategoryStatRange extends LongId {
 
   var stat: CategoryEvalStat = _
 

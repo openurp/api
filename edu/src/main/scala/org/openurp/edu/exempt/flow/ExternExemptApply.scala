@@ -26,7 +26,7 @@ import org.openurp.base.std.model.ExternStudent
 /** 外校成绩免修申请
  */
 @flow
-class ExternExemptApply extends LongId with Updated {
+class ExternExemptApply extends LongId, Updated {
 
   /** 学年学期 */
   var semester: Semester = _

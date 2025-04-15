@@ -27,7 +27,7 @@ import org.openurp.code.std.model.StdDocType
  * 针对每种类型的文档配置单价和打印的上限
  */
 @config
-class SpaPrintConfig extends IntId with Updated with TemporalOn {
+class SpaPrintConfig extends IntId, Updated, TemporalOn {
 
   /** 项目 */
   var project: Project = _

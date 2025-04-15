@@ -25,7 +25,7 @@ import org.openurp.base.model.Semester
  *
  * @author chaostone
  */
-class StdSemesterGpa extends LongId with GpaStat {
+class StdSemesterGpa extends LongId, GpaStat {
 
   /**
    * 学生绩点

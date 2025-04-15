@@ -26,14 +26,14 @@ import org.openurp.code.edu.model.ExamType
 /** 考试分配设定
  */
 @config
-class ExamAllocSetting extends LongId with Named with ProjectBased {
+class ExamAllocSetting extends LongId, Named, ProjectBased {
   var examType: ExamType = _
-  /**考场分配人数占容量的最小比例*/
+  /** 考场分配人数占容量的最小比例 */
   var minOccupyRatio: Float = _
-  /**考场容量的下限*/
+  /** 考场容量的下限 */
   var minCapacity: Int = _
-  /**考场分配策略*/
+  /** 考场分配策略 */
   var allocPolicy: RoomAllocPolicy = _
-  /**考生连续考试的最小间隔(按小时计算)*/
+  /** 考生连续考试的最小间隔(按小时计算) */
   var minStdExamInterval: Int = _
 }

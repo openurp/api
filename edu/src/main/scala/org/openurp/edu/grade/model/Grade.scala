@@ -45,7 +45,7 @@ object Grade {
  * @author chaostone
  * @since 2006
  */
-trait Grade extends LongId with Ordered[Grade] with Updated {
+trait Grade extends LongId, Ordered[Grade], Updated {
 
   var createdAt: Instant = _
 

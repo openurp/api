@@ -29,7 +29,7 @@ import scala.collection.mutable
  * 课程安排设置
  */
 @config
-class ScheduleSetting extends LongId with InstantRange {
+class ScheduleSetting extends LongId, InstantRange {
 
   var project: Project = _
 

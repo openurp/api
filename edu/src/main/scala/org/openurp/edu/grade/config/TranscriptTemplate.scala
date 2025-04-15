@@ -35,7 +35,7 @@ import org.openurp.base.model.Project
  * 项目和代码 联合唯一
  */
 @config
-class TranscriptTemplate extends LongId with Updated with Remark with Coded with Named {
+class TranscriptTemplate extends LongId, Updated, Remark, Coded, Named {
 
   /** 项目 */
   var project: Project = _

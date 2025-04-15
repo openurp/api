@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.InstantRange
 import org.openurp.base.model.Department
 
 @config
-class ScheduleSettingDepart extends LongId with InstantRange {
+class ScheduleSettingDepart extends LongId, InstantRange {
   var setting: ScheduleSetting = _
   var depart: Department = _
 }

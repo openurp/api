@@ -20,7 +20,7 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 
-class DefenseNotice extends LongId with Updated {
+class DefenseNotice extends LongId, Updated {
 
   var title: String = _
 
@@ -28,5 +28,5 @@ class DefenseNotice extends LongId with Updated {
 
   var contents: String = _
 
-  var readCount:Int=_
+  var readCount: Int = _
 }

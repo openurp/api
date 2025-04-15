@@ -53,7 +53,7 @@ object Terms {
 }
 
 @value
-class Terms(val value: Int) extends Ordered[Terms] with Serializable {
+class Terms(val value: Int) extends Ordered[Terms], Serializable {
 
   override def compare(other: Terms): Int = {
     if (this.value < other.value) -1

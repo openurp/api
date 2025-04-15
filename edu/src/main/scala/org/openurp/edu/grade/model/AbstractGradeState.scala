@@ -25,7 +25,7 @@ import org.openurp.code.edu.model.GradingMode
  *
  * @author chaostone
  */
-abstract class AbstractGradeState extends LongId with GradeState {
+abstract class AbstractGradeState extends LongId, GradeState {
 
   /** 成绩记录方式 */
   var gradingMode: GradingMode = _

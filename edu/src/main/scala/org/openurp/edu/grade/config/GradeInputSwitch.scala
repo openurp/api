@@ -30,7 +30,7 @@ import java.time.Instant
  * 成绩录入开关
  */
 @config
-class GradeInputSwitch extends LongId with InstantRange with Remark {
+class GradeInputSwitch extends LongId, InstantRange, Remark {
 
   var project: Project = _
 

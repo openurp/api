@@ -31,7 +31,7 @@ import scala.collection.mutable
  * 教学日历方案
  * 校历（日历方案）记录了一整套学年学期的设置，是连贯性学年学期设置的集合，也可称日历方案。
  */
-class Calendar extends IntId with Coded with Named with TemporalOn with Updated {
+class Calendar extends IntId, Coded, Named, TemporalOn, Updated {
 
   var school: School = _
 
@@ -55,7 +55,7 @@ class Calendar extends IntId with Coded with Named with TemporalOn with Updated 
 /**
  * 学年学期 </p> 代表的是具体学年度的 学期设置，每个学期的起始日期（起始日期beginOn第一天）和结束日期。
  */
-class Semester extends IntId with Coded with Named with DateRange with Remark {
+class Semester extends IntId, Coded, Named, DateRange, Remark {
 
   /** 日历 */
   var calendar: Calendar = _
@@ -113,7 +113,7 @@ class CalendarStage extends IntId, Named, EnNamed {
 }
 
 /** 学期中的阶段 */
-class SemesterStage extends IntId with DateRange with Remark {
+class SemesterStage extends IntId, DateRange, Remark {
   var semester: Semester = _
   var stage: CalendarStage = _
 }

@@ -33,7 +33,7 @@ import java.time.Instant
  *
  * @author chaostone
  */
-class EvaluateResult extends LongId with Updated{
+class EvaluateResult extends LongId, Updated {
   /** 教学任务 */
   var clazz: Clazz = _
   /** 教师 */
@@ -46,12 +46,13 @@ class EvaluateResult extends LongId with Updated{
   var questionnaire: Questionnaire = _
   /** 问题评教结果 */
   var questionResults = Collections.newSet[QuestionResult]
-  /**问卷状态 */
+
+  /** 问卷状态 */
   /**
    * 1正常 2 无效 3异常(互斥)
    * 总数=有效问卷+无效问卷+异常问卷        无效问卷=无效比例*(总数-异常问卷)
    */
   var statType: Int = _
-  /**总分*/
-  var score :Float = _
+  /** 总分 */
+  var score: Float = _
 }

@@ -23,7 +23,7 @@ import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Project}
 
 /** 教研室 */
-class TeachingOffice extends LongId with Coded with Named with Updated with TemporalOn {
+class TeachingOffice extends LongId, Coded, Named, Updated, TemporalOn {
 
   /** 项目 */
   var project: Project = _

@@ -20,10 +20,11 @@ package org.openurp.base.hr.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.job.model.ProfessionalTitle
+
 /**
  * 职称聘任信息
  */
-class StaffTitle extends LongId with TemporalOn {
+class StaffTitle extends LongId, TemporalOn {
 
   var staff: Staff = _
 

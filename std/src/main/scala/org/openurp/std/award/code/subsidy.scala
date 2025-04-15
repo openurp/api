@@ -16,6 +16,7 @@
  */
 
 package org.openurp.std.award.code
+
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{Coded, Named}
@@ -24,7 +25,7 @@ import org.beangle.data.model.pojo.{Coded, Named}
  *
  */
 @code("school")
-class SubsidyCategory extends IntId with Coded with Named {
+class SubsidyCategory extends IntId, Coded, Named {
 
   /** 困难补助描述 */
   var discription: Option[String] = None
@@ -44,7 +45,7 @@ class SubsidyCategory extends IntId with Coded with Named {
 }
 
 @code("school")
-class SubsidyLevel extends IntId with Coded with Named {
+class SubsidyLevel extends IntId, Coded, Named {
 
   /** 困难补助种类 */
   var category: SubsidyCategory = _

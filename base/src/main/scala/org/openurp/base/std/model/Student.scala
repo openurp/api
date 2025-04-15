@@ -36,8 +36,9 @@ import scala.collection.mutable
  * 学籍信息记录了四部分内容： <li>基本内容 学号、姓名、英文名(拼音)、性别</li> <li>培养内容 项目、年级、院系、专业、方向、班级、培养层次、学习形式、学生分类标签</li> <li>
  * 培养时间 录取时间、入学时间、预计毕业时间、学制</li> <li>学籍状态日志 各时段的是否在校、专业、方向以及学籍状态</li>
  *
- * 入学日期 + 学制 = 应毕业日期
- * 入学日期 + 最长学习年限 = 学籍最晚截止日期
+ * 入学日期 + 学制 = 预计毕业日期（延长和提前情况另算）
+ * 入学日期 + 最长学习年限 = 学籍有效最晚日期
+ * beginOn 入学日期 / endOn 预计离校日期
  *
  * @author chaostone
  * @since 2005
@@ -65,16 +66,16 @@ class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Rem
   /** 学生分类标签 */
   var labels = Collections.newMap[StdLabelType, StdLabel]
 
-  /** 预计毕业日期
-   * 入学日期 + 学制 = 预计毕业日期
-   */
-  var graduateOn: LocalDate = _
-
   /** 学制（允许0.5年出现） */
   var duration: Float = _
 
-  /** 学籍最晚截止日期 */
+  /** 最晚离校日期
+   * 最晚日期 =入学日期 + 最长学习年限
+   */
   var maxEndOn: LocalDate = _
+
+  /** 预计毕业日期 */
+  var graduateOn: LocalDate = _
 
   /** 是否有学籍 */
   var registed: Boolean = _
@@ -155,13 +156,6 @@ class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Rem
    * @return
    */
   def disciplineName: String = state.get.major.getDisciplineName(beginOn)
-
-  /** 入学日期
-   *
-   * @deprecated("using beginOn")
-   * @return
-   */
-  def studyOn: LocalDate = beginOn
 }
 
 /**
@@ -172,7 +166,7 @@ class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Rem
  *
  * @author chaostone
  */
-class StudentState extends LongId with StdEnrollment with DateRange with Remark {
+class StudentState extends LongId, StdEnrollment, DateRange, Remark {
 
   /** 学生 */
   var std: Student = _

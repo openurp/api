@@ -38,7 +38,7 @@ class Direction extends LongId, TemporalOn, Coded, Named, EnNamed, Updated, Rema
   var journals: Buffer[DirectionJournal] = new collection.mutable.ListBuffer[DirectionJournal]
 }
 
-class DirectionJournal extends LongId with TemporalOn with Remark {
+class DirectionJournal extends LongId, TemporalOn, Remark {
   /** 专业方向 */
   var direction: Direction = _
   /** 培养层次 */

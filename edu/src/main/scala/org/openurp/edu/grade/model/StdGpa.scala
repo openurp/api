@@ -54,7 +54,7 @@ trait GpaStat {
 /**
  * 学生成绩绩点统计
  */
-class StdGpa extends LongId with Updated with ProjectBased with GpaStat {
+class StdGpa extends LongId, Updated, ProjectBased, GpaStat {
   /**
    * 学生
    */

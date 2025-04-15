@@ -21,11 +21,21 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.job.model.TutorType
 
+import java.time.LocalDate
+
 /** 导师资格聘任记录
  */
 class TutorJournal extends LongId, TemporalOn {
-
+  /** 教职工 */
   var staff: Staff = _
 
+  /** 导师类型 */
   var tutorType: TutorType = _
+
+  def this(staff: Staff, tutorType: TutorType, appointOn: LocalDate) = {
+    this()
+    this.staff = staff
+    this.tutorType = tutorType
+    this.beginOn = appointOn
+  }
 }

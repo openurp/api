@@ -25,7 +25,7 @@ import org.openurp.code.person.model.{FamilyRelationship, IdType}
 /**
  * 社会关系
  */
-class SocialRelation extends LongId with Named {
+class SocialRelation extends LongId, Named {
 
   /** 学生 */
   var std: Student = _

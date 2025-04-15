@@ -27,7 +27,7 @@ import org.openurp.code.edu.model.{CourseTakeType, CourseType, ElectionMode}
 /**
  * 上课名单
  */
-class CourseTaker extends LongId with Updated with Cloneable with Remark {
+class CourseTaker extends LongId, Updated, Cloneable, Remark {
 
   /** 教学任务 */
   var clazz: Clazz = _

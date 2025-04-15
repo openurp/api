@@ -5,3 +5,5 @@ Press=出版社
 Press.grade=级别
 PressGrade=出版社级别
 BookCategory=图书分类
+ForeignBookType=境外教材类别
+TextbookForm=教材形态

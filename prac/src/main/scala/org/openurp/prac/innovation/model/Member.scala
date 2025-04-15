@@ -31,7 +31,8 @@ object Member {
     m
   }
 }
-class Member extends LongId with Remark {
+
+class Member extends LongId, Remark {
 
   var std: Student = _
 

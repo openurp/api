@@ -21,7 +21,7 @@ import org.openurp.edu.attendance.model.AttendState.{Absent, Leave, LeaveEarly}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
-class AttendStateTest extends AnyFunSpec with Matchers {
+class AttendStateTest extends AnyFunSpec, Matchers {
   describe("AttendState") {
     it("set") {
       var a = AttendStates.Empty.add(1, Absent)
@@ -29,7 +29,7 @@ class AttendStateTest extends AnyFunSpec with Matchers {
       a = a.add(5, LeaveEarly)
       assert(a(1) == Absent)
       assert(a(3) == Leave)
-      a=a.remove(5)
+      a = a.remove(5)
 
       val b = AttendStates(Absent, LeaveEarly, Leave)
       assert(b.values.size == 3)

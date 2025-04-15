@@ -24,7 +24,7 @@ import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
 /** 助学金类别
  */
 @code("school")
-class StipendCategory extends IntId with Coded with Named with TemporalOn {
+class StipendCategory extends IntId, Coded, Named, TemporalOn {
 
   /** 助学金描述 */
   var discription: Option[String] = None
@@ -44,7 +44,7 @@ class StipendCategory extends IntId with Coded with Named with TemporalOn {
 }
 
 @code("school")
-class StipendLevel extends IntId with Coded with Named {
+class StipendLevel extends IntId, Coded, Named {
 
   /** 助学金种类 */
   var category: StipendCategory = _

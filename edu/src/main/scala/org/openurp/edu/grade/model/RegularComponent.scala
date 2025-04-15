@@ -20,6 +20,6 @@ package org.openurp.edu.grade.model
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.Named
 
-class RegularComponent extends IntId with Named {
+class RegularComponent extends IntId, Named {
 
 }

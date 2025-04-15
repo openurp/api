@@ -29,7 +29,7 @@ import scala.collection.mutable
 /**
  * 课程安排
  */
-class Schedule extends Component with Serializable with Cloneable {
+class Schedule extends Component, Serializable, Cloneable {
 
   /** 要求排课课时 */
   var creditHours: Int = _

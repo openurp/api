@@ -28,6 +28,8 @@ class DefaultMapping extends MappingModule {
     bind[Press]
     bind[PressGrade]
     bind[BookCategory]
+    bind[ForeignBookType]
+    bind[TextbookForm]
 
     all.cacheAll()
   }

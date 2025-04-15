@@ -31,7 +31,7 @@ import scala.collection.mutable
 /**
  * 校外证书成绩
  */
-class CertificateGrade extends LongId with Updated {
+class CertificateGrade extends LongId, Updated {
 
   var std: Student = _
 

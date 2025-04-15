@@ -30,7 +30,7 @@ import java.time.Instant
 /** 课程类别转换申请
  */
 @flow
-class CourseTypeChangeApply extends LongId with Updated with Remark {
+class CourseTypeChangeApply extends LongId, Updated, Remark {
 
   /** 学生 */
   var std: Student = _

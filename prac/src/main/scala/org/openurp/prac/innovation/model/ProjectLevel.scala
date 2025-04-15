@@ -29,7 +29,7 @@ object ProjectLevel {
 /**
  * 项目级别
  */
-class ProjectLevel extends IntId with Named with Coded {
+class ProjectLevel extends IntId, Named, Coded {
   def this(id: Int) = {
     this()
     this.id = id

@@ -24,8 +24,8 @@ import org.openurp.base.model.Project
 import org.openurp.base.resource.model.Classroom
 
 /** 可用时间
- **/
-class RoomAvailableTime extends LongId with Updated {
+ * */
+class RoomAvailableTime extends LongId, Updated {
 
   var project: Project = _
 

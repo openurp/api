@@ -30,7 +30,7 @@ import scala.collection.mutable
 /** 研究项目
  * 包含课程建设项目、教改项目
  */
-class RdProject extends LongId with Coded with Named with Remark with Updated {
+class RdProject extends LongId, Coded, Named, Remark, Updated {
 
   /** 是否课程建设项目 */
   var forCourse: Boolean = _

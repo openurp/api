@@ -26,7 +26,7 @@ import org.openurp.code.edu.model.ActivityType
 /**
  * 房间占用情况
  */
-class Occupancy extends LongId with Updated {
+class Occupancy extends LongId, Updated {
 
   /** 房间 */
   var room: Classroom = _
@@ -37,7 +37,7 @@ class Occupancy extends LongId with Updated {
   /** 活动类型 */
   var activityType: ActivityType = _
 
-  /**用户系统*/
+  /** 用户系统 */
   var app: RoomOccupyApp = _
 
   /** 活动ID */

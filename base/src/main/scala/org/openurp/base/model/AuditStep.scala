@@ -22,7 +22,10 @@ import org.beangle.data.model.pojo.Named
 
 import java.time.Instant
 
-trait AuditStep extends Component,Named {
+/**
+ * 审核步骤
+ */
+trait AuditStep extends Component, Named {
   /** 受理人 */
   var assignee: Option[User] = None
   /** 审核时间 */

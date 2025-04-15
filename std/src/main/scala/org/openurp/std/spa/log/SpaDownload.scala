@@ -27,7 +27,7 @@ import org.openurp.code.std.model.StdDocType
  * 记录每次下载文档的流水
  */
 @log
-class SpaDownload extends LongId with Updated with Remark {
+class SpaDownload extends LongId, Updated, Remark {
   /** 学生 */
   var user: User = _
 

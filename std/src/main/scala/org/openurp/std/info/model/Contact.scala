@@ -24,7 +24,7 @@ import org.openurp.base.std.model.Student
 /**
  * 联系信息
  */
-class Contact extends LongId with Updated{
+class Contact extends LongId , Updated{
 
   /**学生*/
   var std: Student = _

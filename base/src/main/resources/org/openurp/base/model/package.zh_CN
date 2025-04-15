@@ -126,3 +126,9 @@ UserGroup=用户组
 UserGroup.autoManage=自动管理
 
 UserGroupMember=用户组成员
+
+AuditStep=审核步骤
+AuditStep.assignee=受理人
+AuditStep.auditAt=审核时间
+AuditStep.comments=审核意见
+AuditStep.passed=审核结果

@@ -22,7 +22,7 @@ import org.beangle.data.orm.tool.DdlGenerator
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
-class DdlGenerateTest extends AnyFunSpec with Matchers {
+class DdlGenerateTest extends AnyFunSpec, Matchers {
   describe("Ddl") {
     it("generate ddl") {
       val dir = SystemInfo.tmpDir + "/ddl"

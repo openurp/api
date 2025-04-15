@@ -28,7 +28,7 @@ import java.time.LocalDate
 /** 转专业招收专业
  */
 @config
-class TransferOption extends LongId with Remark {
+class TransferOption extends LongId, Remark {
 
   /** 转专业招生方案 */
   var scheme: TransferScheme = _

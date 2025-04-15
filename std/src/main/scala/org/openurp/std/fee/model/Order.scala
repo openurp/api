@@ -25,7 +25,7 @@ import org.openurp.base.std.model.Student
 
 /** 支付订单记录
  * */
-class Order extends LongId with Coded with Remark {
+class Order extends LongId , Coded , Remark {
 
   /** 用户 */
   var std: Student = _

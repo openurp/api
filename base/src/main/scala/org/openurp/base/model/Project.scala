@@ -35,7 +35,7 @@ import scala.collection.mutable
  * @author chaostone
  * @since 3.0.0
  */
-class Project extends IntId with Coded with TemporalOn with Updated with Named {
+class Project extends IntId, Coded, TemporalOn, Updated, Named {
   /** 适用学校 */
   var school: School = _
   /** 校区列表 */
@@ -112,7 +112,7 @@ trait EduLevelBased extends ProjectBased {
   var eduType: EducationType = _
 }
 
-class ProjectProperty extends LongId with ProjectBased {
+class ProjectProperty extends LongId, ProjectBased {
   var name: String = _
   var description: String = _
   var typeName: String = _

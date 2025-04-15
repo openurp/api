@@ -41,8 +41,8 @@ class PublicationGrade extends CodeBean {
  * 出版社
  */
 @code("industry")
-class Press extends CodeBean{
-   var grade: PressGrade = _
+class Press extends CodeBean {
+  var grade: PressGrade = _
 }
 
 /**
@@ -54,7 +54,26 @@ class PressGrade extends CodeBean
 
 /**
  * 图书分类
+ *
  * @see http://ztflh.com/
  */
 @code("industry")
 class BookCategory extends CodeBean
+
+/**
+ * 境外教材类别
+ * 原版、影印、翻译
+ *
+ * @see http://ztflh.com/
+ */
+@code("industry")
+class ForeignBookType extends CodeBean
+
+/**
+ * 教材形态
+ * 纸质、数字化、立体化、其他
+ *
+ * @see http://ztflh.com/
+ */
+@code("industry")
+class TextbookForm extends CodeBean

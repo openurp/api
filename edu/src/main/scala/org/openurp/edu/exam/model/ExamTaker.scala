@@ -20,15 +20,14 @@ package org.openurp.edu.exam.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Semester
-import org.openurp.code.edu.model.ExamStatus
-import org.openurp.code.edu.model.ExamType
 import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.{ExamStatus, ExamType}
 import org.openurp.edu.clazz.model.Clazz
 
 /**
  * 应考学生
  */
-class ExamTaker extends LongId with Remark {
+class ExamTaker extends LongId, Remark {
 
   /** 教学任务 */
   var clazz: Clazz = _

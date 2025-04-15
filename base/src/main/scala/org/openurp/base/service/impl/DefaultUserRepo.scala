@@ -112,7 +112,14 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         u
       }
     user.beginOn = staff.beginOn
-    user.endOn = staff.endOn
+    //有条件的更新教职工账户的结束日期
+    user.endOn match
+      case None =>
+        if (!user.persisted) user.endOn = staff.endOn //如果是新用户则设置过期时间
+      case Some(endOn) =>
+        staff.endOn foreach { staffEndOn =>
+          if (staffEndOn.isAfter(endOn)) user.endOn = Some(staffEndOn)
+        }
     user.updatedAt = Instant.now
     user.gender = staff.gender
     user.department = staff.department
@@ -124,6 +131,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
     user.updateGroups(groups)
     entityDao.saveOrUpdate(user)
+    entityDao.refresh(user) //这句非常重要，否则user.department中只有ID，但是创建账户需要depart.school属性
 
     val password = defaultPassword(staff.idNumber.orNull)
     createAccount(findEmsUserId(oldUserCode), user, password, UserCategories.Teacher)

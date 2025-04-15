@@ -28,7 +28,7 @@ object StageType {
   val PromotionNation = 6
 }
 
-class StageType extends IntId with Named with Coded with TemporalOn with Hierarchical[StageType] {
+class StageType extends IntId, Named, Coded, TemporalOn, Hierarchical[StageType] {
 
   def this(id: Int) = {
     this()

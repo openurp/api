@@ -27,7 +27,7 @@ import scala.collection.mutable
 
 /** 论文开题题目
  */
-class Subject extends LongId with Named {
+class Subject extends LongId, Named {
   var season: GraduateSeason = _
   /** 研究领域 */
   var researchField: Option[String] = None

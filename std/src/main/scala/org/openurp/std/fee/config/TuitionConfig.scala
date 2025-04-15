@@ -30,7 +30,7 @@ import org.openurp.code.std.model.FeeType
  * 收费缺省值
  */
 @config
-class TuitionConfig extends IntId with Remark {
+class TuitionConfig extends IntId, Remark {
 
   var project: Project = _
 

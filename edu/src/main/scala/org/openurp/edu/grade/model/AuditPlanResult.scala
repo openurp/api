@@ -25,7 +25,7 @@ import org.openurp.base.std.model.Student
 
 import scala.collection.mutable
 
-class AuditPlanResult extends LongId with Updated with Remark {
+class AuditPlanResult extends LongId, Updated, Remark {
 
   var std: Student = _
 

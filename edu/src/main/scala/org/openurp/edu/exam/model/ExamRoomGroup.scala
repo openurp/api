@@ -19,14 +19,13 @@ package org.openurp.edu.exam.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Named, Updated}
 import org.openurp.base.model.ProjectBased
 import org.openurp.base.resource.model.Classroom
 
 /**
  * 教室组
  */
-class ExamRoomGroup extends LongId with Named with ProjectBased with Updated {
+class ExamRoomGroup extends LongId, Named, ProjectBased, Updated {
   var rooms = Collections.newBuffer[Classroom]
 }

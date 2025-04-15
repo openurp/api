@@ -24,7 +24,7 @@ object Version {
   val Latest = "0.20.4"
 }
 
-class Version extends IntId with Updated {
+class Version extends IntId, Updated {
 
   var version: String = _
 

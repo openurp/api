@@ -18,8 +18,8 @@
 package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.{ Named, Coded }
+import org.beangle.data.model.pojo.{Coded, Named}
 
-class ProjectCategory extends IntId with Named with Coded {
+class ProjectCategory extends IntId, Named, Coded {
 
 }

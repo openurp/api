@@ -30,7 +30,7 @@ import scala.collection.mutable
  * 校外考试免修设置
  */
 @config
-class CertExemptConfig extends LongId with InstantRange with ProjectBased {
+class CertExemptConfig extends LongId, InstantRange, ProjectBased {
 
   /** 培养类型 */
   var eduType: EducationType = _

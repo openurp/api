@@ -30,7 +30,7 @@ import java.time.LocalDate
 /**
  * 教职工信息
  */
-class Staff extends LongId with Coded with Named with Updated with TemporalOn {
+class Staff extends LongId, Coded, Named, Updated, TemporalOn {
 
   /** 学校 */
   var school: School = _

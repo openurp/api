@@ -17,15 +17,15 @@
 
 package org.openurp.std.register.model
 
-import java.time.Instant
-
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Semester
-import org.openurp.code.std.model.{UncheckinReason, UnregisteredReason}
 import org.openurp.base.std.model.Student
+import org.openurp.code.std.model.{UncheckinReason, UnregisteredReason}
 
-class Register extends LongId with Remark {
+import java.time.Instant
+
+class Register extends LongId, Remark {
 
   var std: Student = _
 

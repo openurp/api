@@ -31,7 +31,7 @@ import scala.collection.mutable
 
 /** 考试活动
  */
-class ExamActivity extends LongId with Remark {
+class ExamActivity extends LongId, Remark {
   /** 考试类型 */
   var examType: ExamType = _
 

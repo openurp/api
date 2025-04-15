@@ -23,7 +23,7 @@ import org.openurp.base.std.model.Student
 
 /** 本科学生第二学士学位学位申请
  */
-class Bachelor2ndApply extends LongId with Updated {
+class Bachelor2ndApply extends LongId, Updated {
 
   /** 毕业批次 */
   var batch: GraduateBatch = _

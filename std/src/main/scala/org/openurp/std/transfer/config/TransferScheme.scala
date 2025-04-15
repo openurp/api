@@ -30,7 +30,7 @@ import scala.collection.mutable
 /** 转专业招生计划
  */
 @config
-class TransferScheme extends LongId with Named with Updated {
+class TransferScheme extends LongId, Named, Updated {
   /** 项目 */
   var project: Project = _
   /** 学年学期 */

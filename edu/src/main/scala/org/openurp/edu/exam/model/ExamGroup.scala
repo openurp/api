@@ -17,18 +17,18 @@
 
 package org.openurp.edu.exam.model
 
-import java.time.LocalDate
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.{Named, Updated}
 import org.openurp.base.model.SemesterBased
 import org.openurp.base.resource.model.Classroom
 import org.openurp.code.edu.model.ExamType
 import org.openurp.edu.exam.config.ExamAllocSetting
 
-/**排考组*/
-class ExamGroup extends LongId with Named with SemesterBased with Updated {
+import java.time.LocalDate
+
+/** 排考组 */
+class ExamGroup extends LongId, Named, SemesterBased, Updated {
 
   /** 考试类型 */
   var examType: ExamType = _
@@ -39,27 +39,27 @@ class ExamGroup extends LongId with Named with SemesterBased with Updated {
   /** 结束日期 */
   var endOn: LocalDate = _
 
-  /** 场次列表*/
+  /** 场次列表 */
   var turns = Collections.newBuffer[ExamTurn]
 
-  /** 允许随堂考试*/
+  /** 允许随堂考试 */
   var allowInClass: Boolean = _
 
-  /**最小学生上课冲突人数*/
+  /** 最小学生上课冲突人数 */
   var minCourseConflictCount: Int = _
 
-  /**最大学生上课冲突比率*/
+  /** 最大学生上课冲突比率 */
   var maxCourseConflictRatio: Float = _
 
-  /**发布状态*/
+  /** 发布状态 */
   var publishState: PublishState = _
 
-  /** 排考任务列表*/
+  /** 排考任务列表 */
   var tasks = Collections.newBuffer[ExamTask]
 
-  /** 可用教室*/
+  /** 可用教室 */
   var rooms = Collections.newBuffer[Classroom]
 
-  /**教室分配设置*/
+  /** 教室分配设置 */
   var allocSetting: ExamAllocSetting = _
 }

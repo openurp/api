@@ -27,7 +27,7 @@ import org.scalatest.matchers.should.Matchers
 import java.text.DecimalFormat
 import scala.math.BigDecimal.RoundingMode
 
-class WeightedMeanTest extends AnyFunSpec with Matchers {
+class WeightedMeanTest extends AnyFunSpec, Matchers {
   val std = new Student
   std.level = new EducationLevel
 

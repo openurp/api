@@ -28,7 +28,7 @@ import scala.collection.mutable
 /** 平时总评成绩
  *
  */
-class RegularGrade extends LongId with Updated {
+class RegularGrade extends LongId, Updated {
 
   var clazz: Clazz = _
 

@@ -68,4 +68,4 @@ object UserCategory {
  * 部门分类
  */
 @code("industry")
-class DepartmentCategory extends CodeBean with Hierarchical[DepartmentCategory]
+class DepartmentCategory extends CodeBean, Hierarchical[DepartmentCategory]

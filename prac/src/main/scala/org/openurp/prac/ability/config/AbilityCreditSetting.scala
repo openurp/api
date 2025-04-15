@@ -31,7 +31,7 @@ import scala.collection.mutable
 /** 能力拓展学分证书配置
  */
 @config
-class AbilityCreditSetting extends LongId with Remark {
+class AbilityCreditSetting extends LongId, Remark {
   /** 认定设置 */
   var config: AbilityCreditConfig = _
   /** 证书类型 */

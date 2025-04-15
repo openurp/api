@@ -28,7 +28,7 @@ import org.openurp.code.edu.model.Certificate
  *
  * @author chaostone
  */
-class CertSignup extends LongId with Updated {
+class CertSignup extends LongId, Updated {
   /** 学生 */
   var std: Student = _
   /** 学年学期 */

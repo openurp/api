@@ -17,25 +17,24 @@
 
 package org.openurp.edu.exam.model;
 
-import java.time.Instant
-
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Department
-import org.openurp.base.model.User
+import org.openurp.base.model.{Department, User}
+
+import java.time.Instant
 
 /**
  * 监考任务
  */
-class Invigilation extends LongId with Updated {
+class Invigilation extends LongId, Updated {
 
-  /**考场*/
+  /** 考场 */
   var examRoom: ExamRoom = _
 
   /** 监考院系 */
   var department: Department = _
 
-  /**监考人*/
+  /** 监考人 */
   var invigilator: Option[User] = None
 
   /** 自定义监考 */

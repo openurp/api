@@ -26,7 +26,7 @@ import org.openurp.base.model.{Department, Project}
 /** 评价档次体系
  *
  */
-class AssessCriteria extends LongId with Named with TemporalOn {
+class AssessCriteria extends LongId, Named, TemporalOn {
   var project: Project = _
 
   /** 具体分值对照项 */

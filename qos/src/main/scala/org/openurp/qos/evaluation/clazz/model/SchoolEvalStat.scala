@@ -24,7 +24,7 @@ import org.openurp.base.model.{Department, Project, Semester}
 /** 全校统计
  *
  */
-class SchoolEvalStat extends LongId with Updated {
+class SchoolEvalStat extends LongId, Updated {
 
   /** 项目 */
   var project: Project = _

@@ -32,7 +32,7 @@ import java.time.Instant
  *
  * @author new
  */
-trait AlternativeCourse extends LongId with Updated {
+trait AlternativeCourse extends LongId, Updated {
 
   /** 原课程 */
   var olds = Collections.newSet[Course]
@@ -61,7 +61,7 @@ trait AlternativeCourse extends LongId with Updated {
 /**
  * 专业替代课程.
  */
-class MajorAlternativeCourse extends AlternativeCourse with Remark {
+class MajorAlternativeCourse extends AlternativeCourse, Remark {
 
   /**
    * 项目
@@ -99,7 +99,7 @@ class MajorAlternativeCourse extends AlternativeCourse with Remark {
 /**
  * 学生替代课程.
  */
-class StdAlternativeCourse extends AlternativeCourse with Remark {
+class StdAlternativeCourse extends AlternativeCourse, Remark {
 
   /** 获取学生 */
   var std: Student = _

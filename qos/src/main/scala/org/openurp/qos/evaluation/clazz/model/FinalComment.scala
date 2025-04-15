@@ -24,14 +24,14 @@ import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Semester}
 import org.openurp.base.std.model.Student
 
-/**期末文字评价
+/** 期末文字评价
  *
  */
-class FinalComment extends LongId with Updated {
+class FinalComment extends LongId, Updated {
 
   var std: Student = _
 
-  /**课程序号*/
+  /** 课程序号 */
   var crn: String = _
 
   /** 教学日历 */

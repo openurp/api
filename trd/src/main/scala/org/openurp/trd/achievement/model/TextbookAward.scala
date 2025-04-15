@@ -24,7 +24,7 @@ import org.openurp.code.trd.model.{RdAwardGrade, RdLevel}
 import java.time.YearMonth
 
 /** 教材获奖 */
-class TextbookAward extends LongId with Named {
+class TextbookAward extends LongId, Named {
 
   /** 教材成果 */
   var achievement: TextbookAchievement = _

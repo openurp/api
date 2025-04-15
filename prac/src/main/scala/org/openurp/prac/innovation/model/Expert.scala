@@ -20,7 +20,7 @@ package org.openurp.prac.innovation.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, DateRange, Named}
 
-class Expert extends LongId with Coded with Named with DateRange {
+class Expert extends LongId, Coded, Named, DateRange {
 
   var password: String = _
 

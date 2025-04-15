@@ -1,5 +1,5 @@
 AlterConfig=学籍异动配置
-AlterConfig.alterEndOn=异动结束日期
-AlterConfig.alterGraduateOn=异动毕业日期
+AlterConfig.alterEndOn=异动预计离校日期
+AlterConfig.alterGraduateOn=异动预计毕业日期
 AlterConfig.inschool=异动后是否在校
 AlterConfig.attributes=异动影响属性

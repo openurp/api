@@ -17,12 +17,12 @@
 
 package org.openurp.edu.exam.model
 
-import java.time.LocalDate
-
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.model.{Campus, Department, Project, Semester, User}
+import org.openurp.base.model.*
+
+import java.time.LocalDate
 
 /**
  * 监考人员
@@ -30,7 +30,7 @@ import org.openurp.base.model.{Campus, Department, Project, Semester, User}
  *
  * @author chaostone
  */
-class InvigilationQuota extends LongId with Remark {
+class InvigilationQuota extends LongId, Remark {
 
   /** 项目 */
   var project: Project = _

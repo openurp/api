@@ -26,7 +26,7 @@ import java.time.YearMonth
 /** 教学成果获奖信息
  *
  */
-class RdAchievementAward extends LongId with Named {
+class RdAchievementAward extends LongId, Named {
 
   /** 获奖年份 */
   var awardYear: Int = _

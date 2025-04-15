@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.Named
 /**
  * 任务内分配的小班
  */
-class Subclazz extends LongId with Named {
+class Subclazz extends LongId, Named {
 
   var clazz: Clazz = _
 

@@ -30,7 +30,7 @@ import scala.collection.mutable
 /**
  * 外校学习成绩
  */
-class ExternGrade extends LongId with Remark with Updated {
+class ExternGrade extends LongId, Remark, Updated {
 
   var externStudent: ExternStudent = _
 

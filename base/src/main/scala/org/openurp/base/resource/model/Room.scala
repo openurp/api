@@ -26,21 +26,21 @@ import org.openurp.code.asset.model.{BuildingType, RoomType}
 /**
  * 房间
  */
-class Room extends IntId with Coded with Named with TemporalOn with Updated with Remark {
+class Room extends IntId, Coded, Named, TemporalOn, Updated, Remark {
 
-  /**所属学校*/
+  /** 所属学校 */
   var school: School = _
 
-  /**所属校区*/
+  /** 所属校区 */
   var campus: Campus = _
 
-  /**管理部门*/
+  /** 管理部门 */
   var department: Option[Department] = None
 
-  /**所属建筑*/
+  /** 所属建筑 */
   var building: Option[Building] = None
 
-  /**房间类型*/
+  /** 房间类型 */
   var roomType: RoomType = _
 
   /** 楼层 */

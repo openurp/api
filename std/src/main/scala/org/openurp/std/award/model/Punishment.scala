@@ -15,9 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.award.model
-
-;
+package org.openurp.std.award.model;
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Remark}
@@ -30,7 +28,7 @@ import java.time.LocalDate
 /**
  * 处分记录
  */
-class Punishment extends LongId with Named with Remark {
+class Punishment extends LongId, Named, Remark {
 
   /** 处分文号 */
   var docSeq: String = _

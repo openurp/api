@@ -30,7 +30,7 @@ import scala.collection.mutable
 /** 培养方案文档
  * 该文档与培养方案一对一
  */
-class ProgramDoc extends LongId with Updated {
+class ProgramDoc extends LongId, Updated {
   /** 语言 */
   var docLocale: Locale = _
   /** 方案 */
@@ -100,7 +100,7 @@ class ProgramDoc extends LongId with Updated {
 
 /** 培养方案章节
  * */
-class ProgramDocSection extends LongId with Named with Hierarchical[ProgramDocSection] {
+class ProgramDocSection extends LongId, Named, Hierarchical[ProgramDocSection] {
 
   /** 内容 */
   var contents: String = _
@@ -133,7 +133,7 @@ class ProgramDocTemplate extends IntId, Named, EduLevelBased, TemporalOn, Update
 
 /** 方案模板章节定义
  * */
-class ProgramDocMeta extends IntId with Named {
+class ProgramDocMeta extends IntId, Named {
 
   /** 章节编号 */
   var indexno: String = _

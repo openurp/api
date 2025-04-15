@@ -25,7 +25,7 @@ import org.openurp.base.model.Project
 /** 评价等级
  *
  */
-class AssessGrade extends IntId with Named with Ordered[AssessGrade] {
+class AssessGrade extends IntId, Named, Ordered[AssessGrade] {
   /** 最小分值 */
   var minScore: Float = _
 

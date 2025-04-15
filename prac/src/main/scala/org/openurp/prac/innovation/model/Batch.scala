@@ -17,23 +17,22 @@
 
 package org.openurp.prac.innovation.model
 
-import org.beangle.data.model.pojo.{DateRange, Named}
-import org.beangle.data.model.IntId
 import org.beangle.commons.collection.Collections
-
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{DateRange, Named}
 import org.openurp.base.model.School
 
 import scala.collection.mutable
 
 /** 批次 */
-class Batch extends IntId with Named with DateRange {
+class Batch extends IntId, Named, DateRange {
 
   var school: School = _
 
   /** 是否归档 */
   var archived: Boolean = _
 
-  /**阶段*/
+  /** 阶段 */
   var stages: mutable.Buffer[Stage] = Collections.newBuffer[Stage]
 
   def getStage(stageType: StageType): Option[Stage] = {

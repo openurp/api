@@ -27,7 +27,7 @@ import java.time.YearMonth
 
 /** 学生能力证书学分申请
  */
-class AbilityCreditApply extends LongId with Updated {
+class AbilityCreditApply extends LongId, Updated {
   /** 学生 */
   var std: Student = _
   /** 申请学期 */

@@ -28,7 +28,7 @@ import org.openurp.edu.program.model.{PlanCourse, SharePlanCourse}
 
 /** 课程审核结果
  */
-class AuditCourseResult extends LongId with Remark {
+class AuditCourseResult extends LongId, Remark {
 
   /** 课程组审核结果 */
   var groupResult: AuditGroupResult = _

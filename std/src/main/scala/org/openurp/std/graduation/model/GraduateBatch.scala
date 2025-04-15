@@ -26,7 +26,7 @@ import java.time.LocalDate
 
 /** 毕业批次
  */
-class GraduateBatch extends LongId with Updated {
+class GraduateBatch extends LongId, Updated {
 
   var project: Project = _
 

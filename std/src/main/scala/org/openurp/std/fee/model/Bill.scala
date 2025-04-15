@@ -26,7 +26,7 @@ import org.openurp.code.std.model.FeeType
 import java.time.Instant
 
 /** 账单 */
-class Bill extends LongId with Updated with Remark {
+class Bill extends LongId, Updated, Remark {
 
   /** 用户 */
   var std: Student = _

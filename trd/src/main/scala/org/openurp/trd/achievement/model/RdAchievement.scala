@@ -35,7 +35,7 @@ import scala.collection.mutable
  * d：成果属本科教育填 1，研究生教育填 2，其他填 0。
  * </p>
  */
-class RdAchievement extends LongId with Coded with Named with Updated {
+class RdAchievement extends LongId, Coded, Named, Updated {
 
   /** 成果类型 */
   var achievementType: RdAchievementType = _

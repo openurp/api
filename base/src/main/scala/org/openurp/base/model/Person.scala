@@ -27,7 +27,7 @@ import java.time.LocalDate
 /**
  * 通用自然人信息
  */
-class Person extends LongId with Updated with Coded {
+class Person extends LongId, Updated, Coded {
 
   /** 身份证件类型 */
   var idType: IdType = _

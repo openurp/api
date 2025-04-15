@@ -28,7 +28,7 @@ import scala.collection.mutable
 /**
  * 教学班通知
  */
-class ClazzNotice extends LongId with Updated {
+class ClazzNotice extends LongId, Updated {
 
   var clazz: Clazz = _
 

@@ -111,6 +111,7 @@ Textbook.awardOrg=授予单位
 Textbook.series=丛书
 Textbook.category=图书分类
 Textbook.madeInSchool=是否自编
+Textbook.domestic=是否是境内教材
 
 CourseUnit=默认作息时间
 CourseUnit.indexno=小节编号

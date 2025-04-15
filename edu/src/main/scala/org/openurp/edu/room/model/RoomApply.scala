@@ -66,7 +66,7 @@ class RoomApply extends LongId {
 
 }
 
-class Activity extends Component with Named {
+class Activity extends Component, Named {
   /** 主讲人 */
   var speaker: String = _
 
@@ -81,7 +81,7 @@ class Activity extends Component with Named {
 }
 
 /** 借用人 */
-class Applicant extends Cloneable with Component {
+class Applicant extends Cloneable, Component {
   /** 借用人 */
   var user: User = _
 
@@ -96,7 +96,7 @@ class Applicant extends Cloneable with Component {
 }
 
 /** 时间要求 */
-class TimeRequest extends Component with DateRange {
+class TimeRequest extends Component, DateRange {
   /** 借用时间要求 */
   var timeComment: Option[String] = None
 

@@ -24,7 +24,7 @@ import org.scalatest.matchers.should.Matchers
 
 import java.time.LocalDate
 
-class CycleTimeTest extends AnyFunSpec with Matchers {
+class CycleTimeTest extends AnyFunSpec, Matchers {
   describe("CycleTime") {
     it("digest every day") {
       val ct = CycleTime(LocalDate.parse("2023-07-04"), LocalDate.parse("2023-07-09"), HourMinute("08:00"), HourMinute("21:00"))

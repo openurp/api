@@ -29,7 +29,7 @@ import scala.collection.mutable
 /** 教学团队
  *
  */
-class TeachingTeam extends LongId with Coded with Named with Updated with Remark {
+class TeachingTeam extends LongId, Coded, Named, Updated, Remark {
 
   /** 所在学院 */
   var department: Department = _
@@ -46,8 +46,8 @@ class TeachingTeam extends LongId with Coded with Named with Updated with Remark
   /** 获奖信息 */
   var awardTitle: Option[String] = None
 
-  /**立项年月*/
-  var beginOn:YearMonth=_
+  /** 立项年月 */
+  var beginOn: YearMonth = _
 
   def leaderNames: String = {
     leaders.map(_.name).mkString(",")

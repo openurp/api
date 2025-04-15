@@ -26,7 +26,7 @@ import org.openurp.code.edu.model.{EduCategory, EducationLevel}
 /**
  * 外部学习经历
  */
-class ExternStudent extends LongId with Updated with DateRange {
+class ExternStudent extends LongId, Updated, DateRange {
   var std: Student = null
   var school: ExternSchool = null
   var majorName: Option[String] = None

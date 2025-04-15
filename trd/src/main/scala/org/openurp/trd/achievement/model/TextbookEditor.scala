@@ -22,7 +22,7 @@ import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.User
 
 /** 教材作者 */
-class TextbookEditor extends LongId with Named {
+class TextbookEditor extends LongId, Named {
 
   /** 教材成果 */
   var achievement: TextbookAchievement = _

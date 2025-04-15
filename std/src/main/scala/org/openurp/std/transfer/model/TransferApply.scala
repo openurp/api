@@ -25,7 +25,7 @@ import org.openurp.base.std.model.{Grade, Squad, Student}
 import org.openurp.std.transfer.config.TransferOption
 
 /** 转专业申请 */
-class TransferApply extends LongId with Updated {
+class TransferApply extends LongId, Updated {
 
   /** 学生 */
   var std: Student = _

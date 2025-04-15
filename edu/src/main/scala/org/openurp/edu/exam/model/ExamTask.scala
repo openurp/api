@@ -31,7 +31,7 @@ import java.time.LocalDate
 /**
  * 排考任务
  */
-class ExamTask extends LongId with Coded with SemesterBased with Remark {
+class ExamTask extends LongId, Coded, SemesterBased, Remark {
 
   /** 考试类型 */
   var examType: ExamType = _

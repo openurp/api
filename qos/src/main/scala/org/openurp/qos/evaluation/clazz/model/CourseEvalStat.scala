@@ -29,17 +29,17 @@ import org.openurp.qos.evaluation.base.model.{AssessGrade, Indicator, Option, Qu
 import scala.collection.mutable
 
 trait Rank {
-  /**分类排名*/
+  /** 分类排名 */
   var categoryRank: Int = _
 
-  /**部门排名*/
+  /** 部门排名 */
   var departRank: Int = _
 
-  /**全校排名*/
+  /** 全校排名 */
   var schoolRank: Int = _
 }
 
-class CourseEvalStat extends LongId with Updated  with Rank {
+class CourseEvalStat extends LongId, Updated, Rank {
   /** 课程序号 */
   var crn: scala.Option[String] = None
   /** 项目 */

@@ -28,7 +28,7 @@ import scala.collection.mutable
 /**
  * 学生辅导员
  */
-class Mentor extends LongId with Named with TemporalOn {
+class Mentor extends LongId, Named, TemporalOn {
 
   /** 教职工 */
   var staff: Staff = _

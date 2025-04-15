@@ -25,9 +25,9 @@ import org.openurp.code.geo.model.RailwayStation
 /**
  * 家庭信息
  */
-class Home extends LongId with Updated{
+class Home extends LongId, Updated {
 
-  /**学生*/
+  /** 学生 */
   var std: Student = _
 
   /** 家庭电话 */

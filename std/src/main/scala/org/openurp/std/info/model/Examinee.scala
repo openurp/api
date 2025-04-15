@@ -29,7 +29,7 @@ import java.time.LocalDate
 /**
  * 考生信息
  */
-class Examinee extends LongId with Updated {
+class Examinee extends LongId, Updated {
 
   /** 学生 */
   var std: Student = _

@@ -20,7 +20,7 @@ package org.openurp.base.edu.model
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
-class TermsTest extends AnyFunSpec with Matchers {
+class TermsTest extends AnyFunSpec, Matchers {
   describe("Terms") {
     it("list empty") {
       val empty = Terms.empty

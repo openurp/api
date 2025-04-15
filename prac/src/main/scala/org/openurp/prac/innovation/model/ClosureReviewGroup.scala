@@ -24,7 +24,7 @@ import org.openurp.code.edu.model.Discipline
 
 import scala.collection.mutable
 
-class ClosureReviewGroup extends LongId with Named {
+class ClosureReviewGroup extends LongId, Named {
 
   var batch: Batch = _
 

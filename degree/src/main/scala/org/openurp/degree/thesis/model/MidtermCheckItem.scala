@@ -20,6 +20,6 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.{Coded, Named}
 
-class MidtermCheckItem extends IntId with Coded with Named {
+class MidtermCheckItem extends IntId, Coded, Named {
 
 }

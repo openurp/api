@@ -25,7 +25,7 @@ import org.openurp.edu.clazz.model.Clazz
 /**
  * 教学班文件资料
  */
-class ClazzDoc extends LongId with Updated {
+class ClazzDoc extends LongId, Updated {
 
   var clazz: Clazz = _
 

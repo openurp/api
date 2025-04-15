@@ -20,7 +20,7 @@ package org.openurp.prac.innovation.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 
-class InitReviewDetail extends LongId with Updated {
+class InitReviewDetail extends LongId, Updated {
   var review: InitReview = _
   var expert: Expert = _
   var score: Option[Float] = None
