@@ -61,9 +61,9 @@ alter table base.students drop column graduateddd_on;
 
 --clazz archive doc
 create table code.clazz_archive_docs (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
+create table edu.clazz_archives (id bigint not null, archived_by_id bigint not null, clazz_id bigint not null, doc_id integer not null, doc_path varchar(400) not null, doc_size integer default 0 not null, updated_at timestamptz default current_timestamp not null);
 create table code.foreign_book_types (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 create table code.textbook_forms (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
-create table edu.clazz_archives (id bigint not null, archived_by_id bigint not null, clazz_id bigint not null, doc_id integer not null, doc_path varchar(400) not null, doc_size integer default 0 not null, updated_at timestamptz default current_timestamp not null);
 
 --textbook
 alter table base.textbooks add column book_form_id integer;
@@ -78,7 +78,6 @@ alter table edu.lesson_designs alter homework type varchar(1000);
 alter table prac.std_practice_hours add column course_grade_id bigint;
 alter table prac.std_practice_hours add column required_hours integer default 0;
 alter table prac.std_practice_hours alter required_hours set not null;
-
 
 alter table code.clazz_archive_docs add constraint pk_rdl7dyua7mq986uedf1tuo1sg primary key (id);
 alter table code.foreign_book_types add constraint pk_27dwcqmg6miv7f4freg62bb4b primary key (id);
