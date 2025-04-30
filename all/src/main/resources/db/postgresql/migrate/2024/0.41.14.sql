@@ -1,5 +1,4 @@
-insert into base.versions(id,version,updated_at,description)
-values(next_id('base.versions'),'0.41.14',now(),'增加实践活动');
+insert into base.versions(id,version,updated_at,description) values(next_id('base.versions'),'0.41.14',now(),'增加实践活动');
 
 create table cfg.prac_ability_credit_configs (id bigint not null, begin_at timestamptz not null, credits integer default 0 not null, edu_type_id integer not null, end_at timestamptz not null, notice varchar(255) not null, project_id integer not null);
 create table cfg.prac_ability_credit_configs_levels (ability_credit_config_id bigint not null, education_level_id integer not null);

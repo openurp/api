@@ -66,4 +66,12 @@ class Textbook extends LongId, TemporalOn, Named, Remark {
   var disciplineCategory: Option[DisciplineCategory] = None
   /** 教材形态 */
   var bookForm: Option[TextbookForm] = None
+
+  override def toString: String = {
+    title
+  }
+
+  def title: String = {
+    Seq(name, author, press.map(_.name).getOrElse(" "), "ISBN:" + isbn.getOrElse(""), "版次:" + edition).mkString(" ")
+  }
 }

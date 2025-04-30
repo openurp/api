@@ -28,6 +28,7 @@ Syllabus.creditHours=学时
 Syllabus.weeks=实践周
 Syllabus.opinions=驳回意见
 Syllabus.complete=检查是否完整
+Syllabus.courseProfileId=课程介绍ID
 
 SyllabusObjective=教学大纲课程目标
 SyllabusObjective.contents=内容

@@ -20,7 +20,7 @@ package org.openurp.edu.clazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.edu.model.Course
+import org.openurp.base.edu.model.{Course, Textbook}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.*
 import org.openurp.code.edu.model.{ClazzTag, CourseType, ExamMode, TeachLangType}
@@ -91,6 +91,12 @@ class Clazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
 
   /** 执行计划ID */
   var planId: Option[Long] = None
+
+  /** 教材列表 */
+  var books: mutable.Set[Textbook] = Collections.newSet[Textbook]
+
+  /** 课程介绍 */
+  var courseProfileId: Option[Long] = None
 
   def courseName: String = {
     subject match {

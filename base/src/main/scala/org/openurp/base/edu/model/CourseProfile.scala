@@ -17,20 +17,23 @@
 
 package org.openurp.base.edu.model
 
+import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.openurp.base.edu.model.BookAdoption.UseTextBook
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 import org.openurp.code.edu.model.CourseCategory
 
 import java.time.Instant
+import scala.collection.mutable
 
 /** 课程简介
  *
  */
 class CourseProfile extends LongId, Updated, TemporalOn, Remark {
 
-  /** 学期 */
+  /** 修订学期 */
   var semester: Semester = _
 
   /** 课程 */
@@ -48,10 +51,16 @@ class CourseProfile extends LongId, Updated, TemporalOn, Remark {
   /** 适用专业 */
   var majors: Option[String] = None
 
-  /** 教材 */
+  /** 教材选用类型 */
+  var bookAdoption: BookAdoption = UseTextBook
+
+  /** 自定义教材 */
   var textbooks: Option[String] = None
 
-  /** 参考数目 */
+  /** 教材列表 */
+  var books: mutable.Set[Textbook] = Collections.newSet[Textbook]
+
+  /** 参考书目 */
   var bibliography: Option[String] = None
 
   /** 辅助资料 */
@@ -77,6 +86,9 @@ class CourseProfile extends LongId, Updated, TemporalOn, Remark {
 
   /** 审核人 */
   var auditor: Option[User] = None
+
+  /** 提交时间 */
+  var submitAt: Option[Instant] = None
 
   /** 审核时间 */
   var auditAt: Option[Instant] = None

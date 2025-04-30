@@ -15,13 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.course.model
+package org.openurp.base.edu.model
 
-enum BookAdoption(val title: String) {
+enum BookAdoption(val id: Int, val name: String) {
 
-  case None extends BookAdoption("推荐参考资料")
-  case UseTextBook extends BookAdoption("使用教材")
-  case UseLecture extends BookAdoption("使用讲义")
+  case None extends BookAdoption(0, "推荐参考资料")
+  case UseTextBook extends BookAdoption(1, "使用教材")
+  case UseLecture extends BookAdoption(2, "使用讲义")
 
-  override def toString: String = title
+  override def toString: String = name
 }

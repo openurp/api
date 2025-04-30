@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.42.0">
+<db engine="PostgreSQL" version="0.42.1">
   <schemas>
     <schema name="base">
       <tables>
@@ -286,6 +286,7 @@
             <column name="auditor_id" type="bigint" comment="审核人ID"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
             <column name="bibliography" type="varchar(2000)" comment="参考书目"/>
+            <column name="book_adoption" type="integer" nullable="false" comment="教材选用类型"/>
             <column name="category_id" type="integer" comment="课程分类ID"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
@@ -299,6 +300,7 @@
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="status" type="integer" nullable="false" comment="状态"/>
+            <column name="submit_at" type="timestamptz" comment="提及时间"/>
             <column name="textbooks" type="varchar(500)" comment="教材和参考书目"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="website" type="varchar(255)" comment="课程网站"/>
@@ -306,16 +308,30 @@
           </columns>
           <constraints>
             <primary-key name="pk_faiglxbssjx4v3eskg2fjq6uy" columns="id"/>
+            <foreign-key name="fk_kw6uenienmdqnf98csgcntf0m" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_7did5f00gvtgft87jqveuveon" column="department_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_25kdc0r4p0rcm92bxatx8oehu" column="director_id" referenced-table="base.teachers" referenced-column="id"/>
             <foreign-key name="fk_iwy7pjla6fga45ss6kq2uv3q6" column="auditor_id" referenced-table="base.users" referenced-column="id"/>
-            <foreign-key name="fk_kw6uenienmdqnf98csgcntf0m" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_oy1dk1d3542ssfoij0kt717xl" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <foreign-key name="fk_agtty6gn7mb3bvte5qbdeaof1" column="writer_id" referenced-table="base.users" referenced-column="id"/>
             <foreign-key name="fk_635e263hw0c3erxkus9fe4ndr" column="category_id" referenced-table="code.course_categories" referenced-column="id"/>
-            <foreign-key name="fk_7did5f00gvtgft87jqveuveon" column="department_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_tjt1ybpj33nkgqek0j2fylp7g" columns="course_id"/>
+          </indexes>
+        </table>
+        <table name="course_profiles_books" comment="课程简介-教材列表@edu">
+          <columns>
+            <column name="course_profile_id" type="bigint" nullable="false" comment="课程简介ID"/>
+            <column name="textbook_id" type="bigint" nullable="false" comment="教材ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_mi2bbaqlh7saryv4xvnugl2du" columns="course_profile_id,textbook_id"/>
+            <foreign-key name="fk_ec8h93pedbvuk37imgo1q4r02" column="course_profile_id" referenced-table="base.course_profiles" referenced-column="id"/>
+            <foreign-key name="fk_cj7moo3jd8hjihwqaw8p3nfdi" column="textbook_id" referenced-table="base.textbooks" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_h55h1s4mtw979tqx7jqam6p4h" columns="course_profile_id"/>
           </indexes>
         </table>
         <table name="course_textbooks" comment="课程教材@edu">
@@ -5657,6 +5673,7 @@
             <column name="capacity_locked" type="boolean" nullable="false" defaultValue="false" comment="是否锁定上限"/>
             <column name="clazz_name" type="varchar(500)" nullable="false" comment="教学班名称"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程ID"/>
+            <column name="course_profile_id" type="bigint" comment="课程介绍ID"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类别ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时"/>
             <column name="crn" type="varchar(32)" nullable="false" comment="课程序号"/>
@@ -5686,16 +5703,16 @@
           <constraints>
             <primary-key name="pk_3ra1a077so5k9mwdt2kxb3k0b" columns="id"/>
             <foreign-key name="fk_k1on3s0nstu9h5u88ebmxbrti" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
-            <foreign-key name="fk_nqgf0575169sy11uuq85nt6ly" column="campus_id" referenced-table="base.campuses" referenced-column="id"/>
             <foreign-key name="fk_ja57a2e0464xn8trontkhjpmq" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_johck69naqsh1qoahc9tjnxlk" column="lang_type_id" referenced-table="code.teach_lang_types" referenced-column="id"/>
-            <foreign-key name="fk_bs614gilx7iajy7ughxjeus4v" column="depart_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_m8wojifa5fnkdkbn9ddjic3qw" column="exam_mode_id" referenced-table="code.exam_modes" referenced-column="id"/>
-            <foreign-key name="fk_10oiit4lpe9mkj7dhgm8dqh4p" column="room_type_id" referenced-table="code.classroom_types" referenced-column="id"/>
             <foreign-key name="fk_4me0k9kach5poc785tr3uqnid" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_sscc45j4np46bdjaflb5tk87f" column="group_id" referenced-table="edu.clazz_groups" referenced-column="id"/>
+            <foreign-key name="fk_nqgf0575169sy11uuq85nt6ly" column="campus_id" referenced-table="base.campuses" referenced-column="id"/>
+            <foreign-key name="fk_bs614gilx7iajy7ughxjeus4v" column="depart_id" referenced-table="base.departments" referenced-column="id"/>
+            <foreign-key name="fk_10oiit4lpe9mkj7dhgm8dqh4p" column="room_type_id" referenced-table="code.classroom_types" referenced-column="id"/>
             <foreign-key name="fk_6mphnhqo0tvqpwjh74gaqth40" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <foreign-key name="fk_1brihu1u29o0h0rwyof7kgsug" column="teach_depart_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_sscc45j4np46bdjaflb5tk87f" column="group_id" referenced-table="edu.clazz_groups" referenced-column="id"/>
             <unique-key name="uk_8xuvd3v6lnrq5xmcl8jje0yau" columns="project_id,semester_id,crn"/>
           </constraints>
           <indexes>
@@ -5715,6 +5732,20 @@
           </constraints>
           <indexes>
             <index name="idx_dtwnr7ysxuukruvulscomb6on" columns="clazz_id"/>
+          </indexes>
+        </table>
+        <table name="clazzes_books" comment="教学任务-对应教材@clazz">
+          <columns>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="textbook_id" type="bigint" nullable="false" comment="教材ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_blgbfvis5pagursyudqrjkkaf" columns="clazz_id,textbook_id"/>
+            <foreign-key name="fk_aa7corpgdoxtfdquwlxdc73n" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
+            <foreign-key name="fk_iqaoim3gfr6vl3ripj8p3mjjp" column="textbook_id" referenced-table="base.textbooks" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_k0yuoagy6nvrf7ofks8j0dyg5" columns="clazz_id"/>
           </indexes>
         </table>
         <table name="clazzes_tags" comment="教学任务标签@clazz">
@@ -7931,6 +7962,7 @@
             <column name="complete" type="boolean" nullable="false" defaultValue="false" comment="检查是否完整"/>
             <column name="corequisites" type="varchar(255)" comment="并修课程"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="course_profile_id" type="bigint" comment="课程介绍ID"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时"/>
             <column name="department_id" type="integer" nullable="false" comment="开课院系ID"/>
             <column name="description" type="varchar(255)" nullable="false" comment="简介"/>
@@ -7964,12 +7996,12 @@
             <foreign-key name="fk_jlg5w66qkywoph4gthbbg6rsg" column="office_id" referenced-table="base.teaching_offices" referenced-column="id"/>
             <foreign-key name="fk_bmlcddtuf9x52khci12xx9c7c" column="exam_mode_id" referenced-table="code.exam_modes" referenced-column="id"/>
             <foreign-key name="fk_45658i3vc0d65nrux1y0gtng5" column="grading_mode_id" referenced-table="code.grading_modes" referenced-column="id"/>
-            <foreign-key name="fk_l1lrt2t5wtuggruu5q99qr17x" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_ftdg6klmi45h8gv9ox2sfklhg" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
+            <foreign-key name="fk_ewy8s99rnsns2pxe0w8n228ex" column="module_id" referenced-table="code.course_modules" referenced-column="id"/>
+            <foreign-key name="fk_l1lrt2t5wtuggruu5q99qr17x" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_bcjr4d78cmwxtof1akent1apw" column="department_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_fg7i2h8r7lp0g07p9ervan4bk" column="approver_id" referenced-table="base.users" referenced-column="id"/>
             <foreign-key name="fk_sh2nkojxdotmdpk1ju06htw7m" column="nature_id" referenced-table="code.course_natures" referenced-column="id"/>
-            <foreign-key name="fk_ewy8s99rnsns2pxe0w8n228ex" column="module_id" referenced-table="code.course_modules" referenced-column="id"/>
             <foreign-key name="fk_tp4vwoay61pfman7xor8hr27m" column="reviewer_id" referenced-table="base.users" referenced-column="id"/>
             <foreign-key name="fk_pitbbvb92nt6pk7rehm5upwqg" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
             <foreign-key name="fk_2lrbxwrdxyj55yagxtdk27ue7" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>

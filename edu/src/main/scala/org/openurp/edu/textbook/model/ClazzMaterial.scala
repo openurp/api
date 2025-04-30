@@ -22,8 +22,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.Textbook
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.edu.course.model.BookAdoption
-
+import org.openurp.base.edu.model.BookAdoption
 import java.time.Instant
 import scala.collection.mutable
 
@@ -31,6 +30,7 @@ import scala.collection.mutable
  * 教学材料说明
  * 包括教材、参考书等
  */
+@deprecated("using clazz textbooks")
 class ClazzMaterial extends LongId, Remark {
 
   /** 教学任务 */

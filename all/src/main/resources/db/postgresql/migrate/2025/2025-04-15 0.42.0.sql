@@ -1,5 +1,4 @@
-insert into base.versions(id,version,updated_at,description)
-values(next_id('base.versions'),'0.42.0',now(),'增加学籍异动申请');
+insert into base.versions(id,version,updated_at,description) values(next_id('base.versions'),'0.42.0',now(),'增加学籍异动申请');
 
 alter table cfg.std_std_alter_configs rename to std_alter_configs;
 create table std.std_alter_applies (passed boolean, assignees varchar(255), id bigint not null, alter_from date not null, remark varchar(255), status varchar(255) not null, alter_type_id integer not null, form_data_json varchar(500) not null, process_id varchar(255), alter_to date, apply_at timestamptz not null, std_id bigint not null, alter_data_json varchar(500) not null, reason varchar(255) not null);
@@ -23,6 +22,7 @@ update base.students set max_end_on =  case when end_on > graduate_on then end_o
 where case when end_on > graduate_on then end_on else graduate_on end > max_end_on;
 
 alter table base.students add graduateddd_on date;
+alter table base.graduates add constraint uk_fjm29o037eumvq25eojdp797r unique (std_id);
 update base.students std set graduateddd_on=(select g.graduate_on from base.graduates g where g.std_id=std.id);
 
 update base.student_states ss set end_on = (select std.graduateddd_on from base.students std where ss.id=std.state_id)
@@ -39,7 +39,7 @@ select ss.* from base.student_states ss where exists(select * from base.students
 
 create table tmp_ss2 as select * from tmp_ss;
 update tmp_ss set begin_on = end_on;
-update tmp_ss2 set id=datetime_id(),end_on = end_on - 1,inschool=true,status_id=1;
+update tmp_ss2 set id=datetime_id(),end_on = end_on - '1 day'::interval,inschool=true,status_id=1;
 
 update base.student_states ss set begin_on= end_on where ss.id in(select id from tmp_ss);
 insert into base.student_states  select * from tmp_ss2;
@@ -50,6 +50,7 @@ drop table tmp_ss;
 --danger 2(endOn = graduate_on)
 update base.student_states ss set end_on=(select std.graduate_on from base.students std where std.state_id=ss.id)
 where exists(select * from base.students std where std.graduateddd_on is null and std.end_on > std.graduate_on and ss.id=std.state_id);
+
 update base.students std set end_on = graduate_on where graduateddd_on is null and end_on > graduate_on;
 
 --update states end_on = student end_on

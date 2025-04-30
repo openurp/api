@@ -166,6 +166,9 @@ class Syllabus extends LongId, Updated, DateRange {
   /** 大纲自动检查是否完整 */
   var complete: Boolean = _
 
+  /** 课程介绍 */
+  var courseProfileId: Option[Long] = None
+
   def teachingMethods: Seq[String] = {
     methods match
       case null => Seq.empty

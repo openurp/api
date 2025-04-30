@@ -20,7 +20,7 @@ package org.openurp.base.edu.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 
-/** 课程默认教材
+/** 课程默认教材设置
  */
 class CourseTextbook extends LongId, TemporalOn {
 

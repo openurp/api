@@ -146,6 +146,9 @@ CourseProfile.bibliography=参考书目
 CourseProfile.status=状态
 CourseProfile.auditAt=审核时间
 CourseProfile.auditor=审核人
+CourseProfile.bookAdoption=教材选用类型
+CourseProfile.submitAt=提及时间
+CourseProfile.books=课程简介-教材列表
 
 CourseMajor=课程面向专业
 CourseMajor.included=是否包含
