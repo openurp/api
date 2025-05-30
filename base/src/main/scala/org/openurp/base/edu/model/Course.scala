@@ -173,14 +173,24 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
     }
   }
 
+  def updateHours(newHours: Map[TeachingNature, Int]): Unit = {
+    val cshours = this.hours.map(x => (x.nature, x)).toMap
+    newHours foreach { h =>
+      cshours.get(h._1) match {
+        case None => this.addHour(h._1, h._2)
+        case Some(h) => h.creditHours = h.creditHours
+      }
+    }
+    val newNatures = newHours.keys.toSet
+    val abandoned = this.hours.find(x => newNatures.contains(x.nature))
+    this.hours.subtractAll(abandoned)
+  }
+
   def updateHour(nature: TeachingNature, hours: Int): Unit = {
     this.hours.find(_.nature == nature) match {
       case None =>
         if (hours > 0) {
-          val nh = new CourseHour
-          nh.nature = nature
-          nh.creditHours = hours
-          nh.course = this
+          val nh = new CourseHour(this, nature, hours)
           this.hours.addOne(nh)
         }
       case Some(h) =>
@@ -214,6 +224,13 @@ class CourseHour extends LongId {
   var course: Course = _
   var creditHours: Int = _
   var nature: TeachingNature = _
+
+  def this(course: Course, nature: TeachingNature, hours: Int) = {
+    this()
+    this.course = course
+    this.nature = nature
+    this.creditHours = hours
+  }
 }
 
 /**

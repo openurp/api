@@ -45,10 +45,10 @@ class ThesisReview extends LongId, Remark {
   var attitudeScore: Option[Int] = None
 
   /** 校外送审成绩 */
-  var blindReviewScore: Option[Int] = None
+  var blindReviewScore: Option[Float] = None
 
   /** 指导教师自己打分 */
-  var advisorSelfScore: Option[Int] = None
+  var advisorSelfScore: Option[Float] = None
 
   /** 指导教师得分 */
   var advisorScore: Option[Int] = None
@@ -63,7 +63,7 @@ class ThesisReview extends LongId, Remark {
   var crossReviewer: Option[Teacher] = None
 
   /** 交叉评阅得分 */
-  var crossReviewScore: Option[Int] = None
+  var crossReviewScore: Option[Float] = None
 
   /** 交叉评阅意见 */
   var crossReviewOpinion: Option[String] = None
@@ -75,10 +75,10 @@ class ThesisReview extends LongId, Remark {
   var defensePermitted: Option[Boolean] = None
 
   /** 答辩成绩 */
-  var defenseScore: Option[Int] = None
+  var defenseScore: Option[Float] = None
 
   /** 最终成绩 */
-  var finalScore: Option[Int] = None
+  var finalScore: Option[Float] = None
 
   /** 最终成绩五级制 */
   var finalScoreText: Option[String] = None

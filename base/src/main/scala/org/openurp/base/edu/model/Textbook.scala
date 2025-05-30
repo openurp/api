@@ -19,11 +19,11 @@ package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Remark, TemporalOn}
-import org.openurp.base.model.Project
+import org.openurp.base.model.{Project, User}
 import org.openurp.code.edu.model.{BookAwardType, BookType, DisciplineCategory}
 import org.openurp.code.sin.model.{BookCategory, ForeignBookType, Press, TextbookForm}
 
-import java.time.LocalDate
+import java.time.{LocalDate, YearMonth}
 
 /**
  * 教材基本信息
@@ -49,7 +49,7 @@ class Textbook extends LongId, TemporalOn, Named, Remark {
   /** 图书分类 */
   var category: Option[BookCategory] = None
   /** 出版日期 */
-  var publishedOn: LocalDate = _
+  var publishedOn: YearMonth = _
   /** 获奖类型 */
   var awardType: Option[BookAwardType] = None
   /** 颁发单位 */
@@ -66,6 +66,8 @@ class Textbook extends LongId, TemporalOn, Named, Remark {
   var disciplineCategory: Option[DisciplineCategory] = None
   /** 教材形态 */
   var bookForm: Option[TextbookForm] = None
+  /** 添加人 */
+  var creator: Option[User] = None
 
   override def toString: String = {
     title

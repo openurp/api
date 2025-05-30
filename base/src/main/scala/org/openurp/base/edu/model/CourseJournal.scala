@@ -96,6 +96,27 @@ class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
   def creditHourIdentical: Boolean = {
     hours.map(_.creditHours).sum == creditHours
   }
+
+  def cloneToGrade(grade: Grade): CourseJournal = {
+    val j = this
+    val n = new CourseJournal()
+    n.course = j.course
+    n.name = j.name
+    n.enName = j.enName
+    n.department = j.department
+    n.examMode = j.examMode
+    n.creditHours = j.creditHours
+    n.weekHours = j.weekHours
+    n.weeks = j.weeks
+    j.hours foreach { h =>
+      n.hours.addOne(new CourseJournalHour(n, h.nature, h.creditHours))
+    }
+    n.tags.addAll(j.tags)
+    n.updatedAt = Instant.now
+    n.beginOn = grade.beginOn
+    n
+  }
+
 }
 
 class CourseJournalHour extends LongId {

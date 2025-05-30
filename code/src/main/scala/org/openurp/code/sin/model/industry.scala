@@ -45,12 +45,23 @@ class Press extends CodeBean {
   var grade: PressGrade = _
 }
 
+object PressGrade {
+  val Country = 1
+  val Province = 2
+  val Other = 3
+}
+
 /**
  * 出版社别
  * 参见教育部标准JY/T 1001 4.6.1
  */
 @code("industry")
-class PressGrade extends CodeBean
+class PressGrade extends CodeBean {
+  def this(i: Int) = {
+    this()
+    this.id = i
+  }
+}
 
 /**
  * 图书分类

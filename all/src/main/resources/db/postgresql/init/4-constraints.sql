@@ -223,6 +223,7 @@ alter table base.textbooks add constraint fk_aftif3qqoxsrlj8mhemyeyy7c foreign k
 alter table base.textbooks add constraint fk_ek107pbph1mr10fq1j8utyjqn foreign key (book_type_id) references code.book_types (id);
 alter table base.textbooks add constraint fk_h33rngxx01ex7ea8tb4xysiiy foreign key (foreign_book_type_id) references code.foreign_book_types (id);
 alter table base.textbooks add constraint fk_kcen97hvqclls3daxbs8gwd03 foreign key (discipline_category_id) references code.discipline_categories (id);
+alter table base.textbooks add constraint fk_l4j33r7sd6r0j9w6aryo7k117 foreign key (creator_id) references base.users (id);
 alter table base.textbooks add constraint fk_qdcxrp51l0xy98kkhmut4prx7 foreign key (press_id) references code.presses (id);
 alter table base.theses add constraint fk_45ed0que67j7gybjurqr8qku8 foreign key (thesis_type_id) references code.thesis_types (id);
 alter table base.theses add constraint fk_9nyn3ylmfc0reag5iuy2nyqtm foreign key (source_id) references code.thesis_topic_sources (id);

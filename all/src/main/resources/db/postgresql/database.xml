@@ -1511,6 +1511,7 @@
             <column name="book_form_id" type="integer" comment="教材形态ID"/>
             <column name="book_type_id" type="integer" comment="教材类型ID"/>
             <column name="category_id" type="integer" comment="图书分类ID"/>
+            <column name="creator_id" type="bigint" comment="通用人员信息ID"/>
             <column name="description" type="varchar(300)" comment="描述"/>
             <column name="discipline_category_id" type="integer" comment="学科门类ID"/>
             <column name="domestic" type="boolean" nullable="false" defaultValue="true" comment="是否是境内教材"/>
@@ -1532,6 +1533,7 @@
             <primary-key name="pk_8fiuofquw103fs3v8kkco0orm" columns="id"/>
             <foreign-key name="fk_4lfclnxxs1r2tdedwgnvlrq20" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_qdcxrp51l0xy98kkhmut4prx7" column="press_id" referenced-table="code.presses" referenced-column="id"/>
+            <foreign-key name="fk_l4j33r7sd6r0j9w6aryo7k117" column="creator_id" referenced-table="base.users" referenced-column="id"/>
             <foreign-key name="fk_h33rngxx01ex7ea8tb4xysiiy" column="foreign_book_type_id" referenced-table="code.foreign_book_types" referenced-column="id"/>
             <foreign-key name="fk_kcen97hvqclls3daxbs8gwd03" column="discipline_category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
             <foreign-key name="fk_4mqbsq2ipe8go0rxhpgvjpgqc" column="book_form_id" referenced-table="code.textbook_forms" referenced-column="id"/>
@@ -5127,19 +5129,19 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="advisor_review_at" type="timestamptz" comment="指导教师评分时间"/>
             <column name="advisor_score" type="integer" comment="指导教师得分"/>
-            <column name="advisor_self_score" type="integer" comment="指导教师个人评分"/>
+            <column name="advisor_self_score" type="float4" comment="指导教师个人评分"/>
             <column name="attitude_score" type="integer" comment="写作态度"/>
-            <column name="blind_review_score" type="integer" comment="校外送审得分"/>
+            <column name="blind_review_score" type="float4" comment="校外送审得分"/>
             <column name="course_grade_synced" type="boolean" nullable="false" defaultValue="false" comment="成绩是否同步"/>
             <column name="cross_review_at" type="timestamptz" comment="交叉评阅时间"/>
             <column name="cross_review_manager_id" type="bigint" comment="交叉评阅负责人ID"/>
             <column name="cross_review_opinion" type="varchar(2000)" comment="交叉评阅意见"/>
-            <column name="cross_review_score" type="integer" comment="交叉评阅得分"/>
+            <column name="cross_review_score" type="float4" comment="交叉评阅得分"/>
             <column name="cross_reviewer_id" type="bigint" comment="交叉评阅人ID"/>
             <column name="defense_info_id" type="bigint" comment="答辩信息ID"/>
             <column name="defense_permitted" type="boolean" comment="是否同意答辩"/>
-            <column name="defense_score" type="integer" comment="答辩成绩"/>
-            <column name="final_score" type="integer" comment="最终成绩"/>
+            <column name="defense_score" type="float4" comment="答辩成绩"/>
+            <column name="final_score" type="float4" comment="最终成绩"/>
             <column name="final_score_text" type="varchar(255)" comment="最终成绩(五级制)"/>
             <column name="innovation_score" type="integer" comment="创新水平"/>
             <column name="remark" type="varchar(255)" comment="备注"/>

@@ -18,6 +18,7 @@
 package org.openurp.edu.clazz.domain
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.math.IntSeg
 import org.beangle.commons.lang.time.{WeekDay, WeekState, WeekTime, Weeks}
 import org.beangle.commons.lang.{Numbers, Strings}
 import org.openurp.base.model.Semester
@@ -86,18 +87,7 @@ object WeekTimeBuilder {
 
   def digest(weekstate: WeekState): String = {
     val weekIndecies = weekstate.weeks.toArray
-    val seqs = NumSeqParser.digest(weekIndecies).map { s =>
-      if (s.step == 1) {
-        if (s.start == s.end) s.start.toString
-        else s"${s.start}-${s.end}"
-      } else if (s.step == 2) {
-        if (s.start % 2 == 1) s"${s.start}-${s.end}单"
-        else s"${s.start}-${s.end}双"
-      } else {
-        s.toString
-      }
-    }
-    seqs.mkString(" ")
+    IntSeg.digest(weekIndecies, "-", " ")
   }
 
   /**

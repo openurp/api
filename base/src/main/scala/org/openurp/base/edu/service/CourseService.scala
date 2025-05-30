@@ -15,16 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
+package org.openurp.base.edu.service
 
-enum BookAdoption(val id: Int, val name: String) {
+import org.openurp.base.edu.model.Course
 
-  @deprecated
-  case None extends BookAdoption(0, "使用参考资料")
-
-  case UseTextBook extends BookAdoption(1, "使用教材")
-  case UseLecture extends BookAdoption(2, "使用讲义")
-  case UseRefer extends BookAdoption(3, "使用参考资料")
-
-  override def toString: String = name
+trait CourseService {
+  /** 重新排序和设置Journals的结束日期，更新课程课时信息
+   *
+   * @param course target course
+   */
+  def rebuild(course: Course): Unit
 }

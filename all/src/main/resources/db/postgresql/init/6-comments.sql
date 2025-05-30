@@ -607,6 +607,7 @@ comment on column base.textbooks.begin_on is '生效日期';
 comment on column base.textbooks.book_form_id is '教材形态ID';
 comment on column base.textbooks.book_type_id is '教材类型ID';
 comment on column base.textbooks.category_id is '图书分类ID';
+comment on column base.textbooks.creator_id is '通用人员信息ID';
 comment on column base.textbooks.description is '描述';
 comment on column base.textbooks.discipline_category_id is '学科门类ID';
 comment on column base.textbooks.domestic is '是否是境内教材';

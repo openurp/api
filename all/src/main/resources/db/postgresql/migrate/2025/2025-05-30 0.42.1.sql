@@ -1,4 +1,5 @@
-insert into base.versions(id,version,updated_at,description) values(next_id('base.versions'),'0.42.1',now(),'完善教材选用');
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.42.1',now(),'完善教材选用');
 
 create table base.course_profiles_books (course_profile_id bigint not null, textbook_id bigint not null);
 create table edu.clazzes_books (clazz_id bigint not null, textbook_id bigint not null);
@@ -16,6 +17,16 @@ alter table edu.clazzes_books add constraint fk_aa7corpgdoxtfdquwlxdc73n foreign
 alter table edu.clazzes_books add constraint fk_iqaoim3gfr6vl3ripj8p3mjjp foreign key (textbook_id) references base.textbooks (id);
 create index idx_h55h1s4mtw979tqx7jqam6p4h on base.course_profiles_books (course_profile_id);
 create index idx_k0yuoagy6nvrf7ofks8j0dyg5 on edu.clazzes_books (clazz_id);
+
+alter table degree.thesis_reviews alter advisor_self_score type float4;
+alter table degree.thesis_reviews alter blind_review_score type float4;
+alter table degree.thesis_reviews alter cross_review_score type float4;
+alter table degree.thesis_reviews alter defense_score type float4;
+alter table degree.thesis_reviews alter final_score type float4;
+
+alter table base.textbooks add column creator_id bigint;
+alter table base.textbooks add constraint fk_l4j33r7sd6r0j9w6aryo7k117 foreign key (creator_id) references base.users (id);
+comment on column base.textbooks.creator_id is '通用人员信息ID';
 
 comment on table base.course_profiles_books is '课程简介-教材列表@edu';
 comment on column base.course_profiles_books.course_profile_id is '课程简介ID';
