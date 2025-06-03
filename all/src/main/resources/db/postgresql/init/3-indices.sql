@@ -97,7 +97,6 @@ create index idx_sjlgr9e0wh41aqb4wbj7tyqaj on edu.clazz_activities (clazz_id);
 create index idx_lp1ho1db4ui0l4lffulgfn0yk on edu.clazz_activities_rooms (activity_id);
 create index idx_15kq4qjipsyjesv30panl7d28 on edu.clazz_activities_teachers (activity_id);
 create index idx_bte7jeq8ko72gnghvj3wxrln1 on edu.clazz_docs (clazz_id);
-create index idx_ytymsw5lymtmg2d521wkl05d on edu.clazz_materials_books (clazz_material_id);
 create index idx_ifw02k8m49nnnsixxeic5irmd on edu.clazz_notice_files (notice_id);
 create index idx_etjnc5p0edykl4yjenl8f5aqo on edu.clazz_notices (clazz_id);
 create index idx_tarm0ae4yoy7g95d7dlndehcj on edu.clazz_restriction_items (restriction_id);

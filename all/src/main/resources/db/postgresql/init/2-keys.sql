@@ -485,9 +485,6 @@ alter table edu.clazz_docs add constraint pk_bncaja4f5dv9wyhhyhm8o8p5f primary k
 alter table edu.clazz_final_exams add constraint pk_s5iu9lktk5j5hcddn8hifbr8e primary key (id);
 alter table edu.clazz_final_exams add constraint uk_j4vo8w3lb8v157ssmw709sga8 unique (clazz_id);
 alter table edu.clazz_groups add constraint pk_rk07cifqsq9cq5cscif6rre46 primary key (id);
-alter table edu.clazz_materials add constraint pk_nrnf4gf44n88mvd5efhg9ror0 primary key (id);
-alter table edu.clazz_materials add constraint uk_ftsvqtl0wf5lx885wwiw514hp unique (clazz_id);
-alter table edu.clazz_materials_books add constraint pk_19ptw67po3yu7qi332nbrrh0h primary key (clazz_material_id,textbook_id);
 alter table edu.clazz_notice_files add constraint pk_tc2n52103b3130x5jaaaxj7n1 primary key (id);
 alter table edu.clazz_notices add constraint pk_dhgey9skl0nde8lg46v723xi2 primary key (id);
 alter table edu.clazz_plans add constraint pk_31hgwvg2869u4lvi7jah005em primary key (id);

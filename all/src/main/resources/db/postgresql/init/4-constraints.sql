@@ -474,9 +474,6 @@ alter table edu.clazz_groups add constraint fk_bp32yts659i0g2bqsejvc8q56 foreign
 alter table edu.clazz_groups add constraint fk_myqnc31ku366fbee01hkeobrl foreign key (project_id) references base.projects (id);
 alter table edu.clazz_groups add constraint fk_n3c1ubsjxa095g7ql9mtuuidx foreign key (teach_depart_id) references base.departments (id);
 alter table edu.clazz_groups add constraint fk_qvvy3qhierdlr43hcp995yxcp foreign key (course_id) references base.courses (id);
-alter table edu.clazz_materials add constraint fk_kfad3pto3ceqqfxhqqy16t2h9 foreign key (clazz_id) references edu.clazzes (id);
-alter table edu.clazz_materials_books add constraint fk_20ashad7fidc7xjai8pxfid8u foreign key (clazz_material_id) references edu.clazz_materials (id);
-alter table edu.clazz_materials_books add constraint fk_929tvb99v1g0629hkmf1a6roy foreign key (textbook_id) references base.textbooks (id);
 alter table edu.clazz_notice_files add constraint fk_s4pejjaormgirmxawvpjyofv9 foreign key (notice_id) references edu.clazz_notices (id);
 alter table edu.clazz_notices add constraint fk_fxdtj5wxg9x5voej00ql1e5ck foreign key (updated_by_id) references base.users (id);
 alter table edu.clazz_notices add constraint fk_oynlsgrdhhwo8rnkbgp7haljn foreign key (clazz_id) references edu.clazzes (id);

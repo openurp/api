@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.42.1">
+<db engine="PostgreSQL" version="0.43.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -884,15 +884,12 @@
             <column name="code" type="varchar(30)" nullable="false" comment="证件号码"/>
             <column name="compatriot_type_id" type="integer" comment="港澳台侨ID"/>
             <column name="country_id" type="integer" comment="国籍/地区ID"/>
-            <column name="family_name" type="varchar(80)" comment="姓"/>
-            <column name="formatted_name" type="varchar(100)" nullable="false" comment="姓名"/>
             <column name="former_name" type="varchar(100)" comment="曾用名"/>
             <column name="gender_id" type="integer" nullable="false" comment="性别ID"/>
-            <column name="given_name" type="varchar(80)" comment="名"/>
             <column name="home_town" type="varchar(255)" comment="籍贯"/>
             <column name="id_type_id" type="integer" nullable="false" comment="身份证件类型ID"/>
             <column name="language_id" type="integer" comment="首要使用语言ID"/>
-            <column name="middle_name" type="varchar(50)" comment="中间名"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="姓名"/>
             <column name="nation_id" type="integer" comment="民族ID"/>
             <column name="phonetic_name" type="varchar(100)" comment="姓名拼音"/>
             <column name="political_status_id" type="integer" comment="政治面貌ID"/>
@@ -1295,6 +1292,7 @@
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="education_degree_id" type="integer" comment="最高学历ID"/>
             <column name="email" type="varchar(100)" comment="电子邮件"/>
+            <column name="en_name" type="varchar(255)" comment="英文名"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="external_" type="boolean" nullable="false" defaultValue="false" comment="是否外聘"/>
             <column name="formal_hr" type="boolean" nullable="false" defaultValue="false" comment="是否在编"/>
@@ -1375,7 +1373,6 @@
             <column name="code" type="varchar(15)" nullable="false" comment="学号"/>
             <column name="duration" type="float4" nullable="false" defaultValue="0" comment="学制/学习年限"/>
             <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
-            <column name="en_name" type="varchar(200)" comment="姓名拼音"/>
             <column name="end_on" type="date" nullable="false" comment="预计离校日期"/>
             <column name="gender_id" type="integer" nullable="false" comment="性别ID"/>
             <column name="graduate_on" type="date" nullable="false" comment="预计毕业日期"/>
@@ -1676,7 +1673,6 @@
             <column name="code" type="varchar(30)" nullable="false" comment="人员帐号"/>
             <column name="department_id" type="integer" nullable="false" comment="所在部门ID"/>
             <column name="email" type="varchar(80)" comment="邮箱"/>
-            <column name="en_name" type="varchar(255)" comment="英文名"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="gender_id" type="integer" nullable="false" comment="性别ID"/>
             <column name="group_id" type="integer" comment="用户组ID"/>
@@ -5503,38 +5499,6 @@
             <foreign-key name="fk_bp32yts659i0g2bqsejvc8q56" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <foreign-key name="fk_n3c1ubsjxa095g7ql9mtuuidx" column="teach_depart_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
-        </table>
-        <table name="clazz_materials" comment="教材选用@textbook">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="adoption" type="integer" nullable="false" comment="教材状态"/>
-            <column name="bibliography" type="varchar(255)" comment="参考书目"/>
-            <column name="clazz_id" type="bigint" nullable="false" comment="课程ID"/>
-            <column name="materials" type="varchar(255)" comment="辅助资料"/>
-            <column name="ordered" type="boolean" nullable="false" defaultValue="false" comment="教材已订购"/>
-            <column name="passed" type="boolean" comment="是否通过"/>
-            <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="submit_at" type="timestamptz" comment="提交时间"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_nrnf4gf44n88mvd5efhg9ror0" columns="id"/>
-            <foreign-key name="fk_kfad3pto3ceqqfxhqqy16t2h9" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
-            <unique-key name="uk_ftsvqtl0wf5lx885wwiw514hp" columns="clazz_id"/>
-          </constraints>
-        </table>
-        <table name="clazz_materials_books" comment="教材@textbook">
-          <columns>
-            <column name="clazz_material_id" type="bigint" nullable="false" comment="教材选用ID"/>
-            <column name="textbook_id" type="bigint" nullable="false" comment="教材ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_19ptw67po3yu7qi332nbrrh0h" columns="clazz_material_id,textbook_id"/>
-            <foreign-key name="fk_20ashad7fidc7xjai8pxfid8u" column="clazz_material_id" referenced-table="edu.clazz_materials" referenced-column="id"/>
-            <foreign-key name="fk_929tvb99v1g0629hkmf1a6roy" column="textbook_id" referenced-table="base.textbooks" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_ytymsw5lymtmg2d521wkl05d" columns="clazz_material_id"/>
-          </indexes>
         </table>
         <table name="clazz_notice_files" comment="班级公告附件@clazz">
           <columns>
