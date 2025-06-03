@@ -25,12 +25,5 @@ class DefaultMapping extends MappingModule {
     bind[StdBookOrder]
 
     bind[ClazzBookStat]
-
-    bind[ClazzMaterial] declare { e =>
-      e.clazz is notnull
-      e.remark is length(200)
-
-      index("", true, e.clazz)
-    }
   }
 }
