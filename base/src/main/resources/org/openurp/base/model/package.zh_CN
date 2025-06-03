@@ -63,7 +63,6 @@ User.department=所在部门
 User.category=人员分类
 User.mobile=电话
 User.name=姓名
-User.enName=英文名
 User.school=学校
 
 Person=人员信息
@@ -86,10 +85,6 @@ Person.religion=宗教信仰
 Person.language=首要使用语言
 Person.birthplace=出生地
 
-Name.givenName =名
-Name.middleName=中间名
-Name.familyName=姓
-Name.formattedName=姓名
 
 Version=版本迁移日志
 Version.updatedAt=更新时间

@@ -63,9 +63,7 @@ class DefaultMapping extends MappingModule {
 
     bind[Person].declare { e =>
       e.code is length(30)
-      e.name.familyName & e.name.givenName are length(80)
-      e.name.formattedName is length(100)
-      e.name.middleName is length(50)
+      e.name is length(100)
       e.formerName & e.phoneticName are length(100)
 
       index("", false, e.code)

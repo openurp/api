@@ -22,7 +22,6 @@ Student.squad=行政班级
 Student.campus=校区
 Student.code=学号
 Student.name=姓名
-Student.enName=姓名拼音
 Student.grade=年级
 Student.department=管理院系
 Student.major=专业

@@ -18,7 +18,7 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, Updated}
 import org.openurp.code.geo.model.Country
 import org.openurp.code.person.model.*
 
@@ -27,13 +27,10 @@ import java.time.LocalDate
 /**
  * 通用自然人信息
  */
-class Person extends LongId, Updated, Coded {
+class Person extends LongId, Named, Updated, Coded {
 
   /** 身份证件类型 */
   var idType: IdType = _
-
-  /** 姓名 */
-  var name: Name = new Name
 
   /** 姓名拼音 */
   var phoneticName: Option[String] = None
@@ -71,31 +68,4 @@ class Person extends LongId, Updated, Coded {
   /** 宗教信仰 */
   var religion: Option[Religion] = None
 
-}
-
-import org.beangle.data.model.Component
-
-/**
- * 姓名
- *
- * @see http://www.w3.org/International/questions/qa-personal-names
- * @see http://www.wikitree.com/wiki/Name_Fields
- */
-class Name extends Component {
-
-  /** 名 */
-  var givenName: Option[String] = None
-
-  /** 中间名 */
-  var middleName: Option[String] = None
-
-  /** 姓 */
-  var familyName: Option[String] = None
-
-  /** 姓名 */
-  var formattedName: String = _
-
-  override def toString: String = {
-    formattedName
-  }
 }

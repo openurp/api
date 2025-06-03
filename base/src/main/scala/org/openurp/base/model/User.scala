@@ -29,7 +29,7 @@ import scala.collection.mutable
 /**
  * 通用人员信息
  */
-class User extends LongId, Coded, Named, EnNamed, Updated, Remark, TemporalOn {
+class User extends LongId, Coded, Named, Updated, Remark, TemporalOn {
 
   /** 学校 */
   var school: School = _

@@ -43,7 +43,7 @@ import scala.collection.mutable
  * @author chaostone
  * @since 2005
  */
-class Student extends LongId, Coded, Named, EnNamed, EduLevelBased, Updated, Remark, DateRange {
+class Student extends LongId, Coded, Named, EduLevelBased, Updated, Remark, DateRange {
 
   /** 用户 */
   var user: User = _
