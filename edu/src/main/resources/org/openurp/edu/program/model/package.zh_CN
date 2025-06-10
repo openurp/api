@@ -53,13 +53,6 @@ SharePlanCourse=公共共享课程组课程
 SharePlanCourse.terms=学期
 SharePlanCourse.compulsory=是否必修
 
-StdCourseGroup=学生共享课程组
-
-StdPlan=个人计划
-StdPlan.std=学生
-
-StdPlanCourse=学生共享课程组课程
-
 AbstractCourseGroup=课程设置中的课程组
 AbstractCourseGroup.plan=计划
 AbstractCourseGroup.parent=上级组

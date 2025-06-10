@@ -120,31 +120,6 @@ class DefaultMapping extends MappingModule {
     bind[StdProgramBinding].declare { e =>
       e.std is unique
     }
-
-    // std plan
-    bind[StdCourseGroup].declare { e =>
-      e.plan is target[StdPlan]
-      e.parent is target[StdCourseGroup]
-      e.children is depends(classOf[StdCourseGroup], "parent")
-      e.planCourses is depends(classOf[StdPlanCourse], "group")
-      e.hourRatios is length(50)
-      e.termCredits is length(60)
-      index("", false, e.parent)
-      index("", false, e.plan)
-    }
-
-    bind[StdPlan].declare { e =>
-      e.hourRatios is length(50)
-      e.groups is depends(classOf[StdCourseGroup], "plan")
-      index("", true, e.std)
-    }
-
-    bind[StdPlanCourse].declare { e =>
-      e.group is target[StdCourseGroup]
-      index("", true, e.group, e.course)
-      index("", false, e.group)
-    }
-
     // alternative course
     bind[MajorAlternativeCourse].declare { e =>
       e.fromGrade & e.toGrade are length(10)
