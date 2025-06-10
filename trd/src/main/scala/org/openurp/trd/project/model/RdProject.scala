@@ -19,7 +19,7 @@ package org.openurp.trd.project.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, Remark, Updated}
+import org.beangle.data.model.pojo.*
 import org.openurp.base.model.{Department, User}
 import org.openurp.code.trd.model.RdLevel
 import org.openurp.trd.project.code.{RdProjectCategory, RdProjectStatus}
@@ -30,7 +30,7 @@ import scala.collection.mutable
 /** 研究项目
  * 包含课程建设项目、教改项目
  */
-class RdProject extends LongId, Coded, Named, Remark, Updated {
+class RdProject extends LongId, Coded, Named, Remark, Updated, YearMonthRange {
 
   /** 是否课程建设项目 */
   var forCourse: Boolean = _
@@ -53,14 +53,8 @@ class RdProject extends LongId, Coded, Named, Remark, Updated {
   /** 资金 */
   var funds: Int = _
 
-  /** 立项年月 */
-  var beginOn: YearMonth = _
-
-  /** 应结束年月 */
-  var endOn: YearMonth = _
-
   /** 实际结项年月 */
-  var finishedOn: Option[YearMonth] = None
+  var finishedIn: Option[YearMonth] = None
 
   /** 状态 */
   var status: RdProjectStatus = _

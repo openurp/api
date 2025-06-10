@@ -47,7 +47,7 @@ class TeachingTeam extends LongId, Coded, Named, Updated, Remark {
   var awardTitle: Option[String] = None
 
   /** 立项年月 */
-  var beginOn: YearMonth = _
+  var beginIn: YearMonth = _
 
   def leaderNames: String = {
     leaders.map(_.name).mkString(",")

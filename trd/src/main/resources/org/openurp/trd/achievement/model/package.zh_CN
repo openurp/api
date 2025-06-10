@@ -1,6 +1,6 @@
 RdAchievement=教学成果
-RdAchievement.beginOn=成果起始
-RdAchievement.endOn=成果完成
+RdAchievement.beginIn=成果起始
+RdAchievement.endIn=成果完成
 RdAchievement.categoryCode=科类代码
 RdAchievement.orgName=完成单位
 RdAchievement.website=成果网址
@@ -19,7 +19,7 @@ TextbookAward.awardOn=获奖年月
 
 TextbookAchievement=教材成果
 TextbookAchievement.isbn=ISBN
-TextbookAchievement.publishedOn=出版日期
+TextbookAchievement.publishedIn=出版日期
 
 TextbookEditor=教材成果编辑信息
 TextbookEditor.chief=是否主编

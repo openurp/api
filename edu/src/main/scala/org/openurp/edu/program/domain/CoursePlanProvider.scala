@@ -35,10 +35,6 @@ trait CoursePlanProvider {
    */
   def getExecutivePlan(student: Student): Option[ExecutivePlan]
 
-  /** 获得单个学生的个人计划
-   */
-  def getStdPlan(student: Student): Option[StdPlan]
-
   /** 获得学生的计划
    *
    * @param std

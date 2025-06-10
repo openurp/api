@@ -1,8 +1,8 @@
 RdProject=研究项目
 RdProject.leaders=负责人
-RdProject.beginOn=立项年月
-RdProject.endOn=应结项年月
-RdProject.finishedOn=实际结项年月
+RdProject.beginIn=立项年月
+RdProject.endIn=应结项年月
+RdProject.finishedIn=实际结项年月
 RdProject.funds=资金
 
 

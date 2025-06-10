@@ -60,7 +60,7 @@ class CertificateGrade extends LongId, Updated {
   var examNo: Option[String] = None
 
   /** 获得年月 */
-  var acquiredOn: YearMonth = _
+  var acquiredIn: YearMonth = _
 
   /** 成绩记录方式 */
   var gradingMode: GradingMode = _

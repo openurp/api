@@ -8,13 +8,13 @@ CertificateGrade.examNo=准考证号
 CertificateGrade.certificateNo=证书编号
 CertificateGrade.gradingMode=成绩记录方式
 CertificateGrade.examStatus=考试情况
-CertificateGrade.acquiredOn=获得日期
+CertificateGrade.acquiredIn=获得年月
 CertificateGrade.exempts=证书成绩免修课程
 CertificateGrade.status=状态
 
 ExternGrade=校外成绩
 ExternGrade.courseName=课程名称
-ExternGrade.acquiredOn=获得年月
+ExternGrade.acquiredIn=获得年月
 ExternGrade.scoreText=成绩字面值
 ExternGrade.score=分数
 ExternGrade.credits=学分

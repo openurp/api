@@ -33,7 +33,7 @@ object DefaultMapping extends MappingModule {
       e.subject is length(80)
       e.certificateNo & e.examNo are length(80)
 
-      index("", true, e.std, e.certificate, e.acquiredOn)
+      index("", true, e.std, e.certificate, e.acquiredIn)
       index("", false, e.semester)
     }
     bind[ExternGrade] declare { e =>

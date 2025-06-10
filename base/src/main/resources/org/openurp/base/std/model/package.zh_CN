@@ -71,7 +71,7 @@ ExternStudent.majorName=学习专业
 ExternStudent.exchange=是否为交流经历
 
 GraduateSeason=毕业界别
-GraduateSeason.graduateOn=毕业年份
+GraduateSeason.graduateIn=毕业年月
 
 Grade=年级
 Grade.enName=英文名

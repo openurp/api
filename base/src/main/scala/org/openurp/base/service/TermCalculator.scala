@@ -93,6 +93,6 @@ class TermCalculator(project: Project, semester: Semester, entityDao: EntityDao)
   }
 
   def getTerm(grade: Grade, omitSmallTerm: Boolean): Int = {
-    getTerm(grade.beginOn.minusDays(10), omitSmallTerm)
+    getTerm(grade.beginIn.atDay(1), omitSmallTerm)
   }
 }

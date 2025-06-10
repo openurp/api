@@ -50,26 +50,15 @@ class DefaultCoursePlanProvider extends CoursePlanProvider {
   }
 
   /**
-   * 获得单个学生的个人计划
-   */
-  override def getStdPlan(student: Student): Option[StdPlan] = {
-    entityDao.findBy(classOf[StdPlan], "std", List(student)).headOption
-  }
-
-  /**
    * 获得学生的计划
    *
    * @param std
    * @return
    */
   override def getCoursePlan(std: Student): Option[CoursePlan] = {
-    getStdPlan(std) match {
-      case Some(stdPlan) => Some(stdPlan)
-      case None =>
-        programProvider.getProgram(std) match {
-          case Some(p) => getExecutivePlan(p, std).orElse(getMajorPlan(p))
-          case None => None
-        }
+    programProvider.getProgram(std) match {
+      case Some(p) => getExecutivePlan(p, std).orElse(getMajorPlan(p))
+      case None => None
     }
   }
 

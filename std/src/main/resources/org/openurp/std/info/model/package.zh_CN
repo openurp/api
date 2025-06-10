@@ -1,16 +1,8 @@
-Admission=招生信息
-Admission.std=学生
-Admission.enrollOn=录取年月
-Admission.admissionIndex=录取志愿
-Admission.letterNo=录取通知书号
-Admission.enrollMode=入学方式
-Admission.educationMode=培养方式
-
 Contact=联系信息
 Contact.email=电子邮箱
 Contact.phone=电话
 Contact.mobile=移动电话
-Contact.address=地址 入校后联系地址
+Contact.address=入校后联系地址
 
 EducationRecord=教育经历
 EducationRecord.beginOn=开始年月

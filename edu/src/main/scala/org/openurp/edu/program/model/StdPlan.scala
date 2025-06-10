@@ -24,6 +24,7 @@ import java.time.Instant
 /**
  * 个人计划
  */
+@deprecated("using program binding,removed on 0.44.x")
 class StdPlan extends AbstractCoursePlan {
 
   /** 学生 */
@@ -44,6 +45,7 @@ class StdPlan extends AbstractCoursePlan {
   }
 }
 
+@deprecated("using program binding,removed on 0.44.x")
 class StdCourseGroup extends AbstractCourseGroup {
 
   def this(plan: StdPlan, group: AbstractCourseGroup) = {
@@ -84,6 +86,7 @@ class StdCourseGroup extends AbstractCourseGroup {
   }
 }
 
+@deprecated("using program binding,removed on 0.44.x")
 class StdPlanCourse extends AbstractPlanCourse {
 
   def this(group: StdCourseGroup, planCourse: PlanCourse) = {

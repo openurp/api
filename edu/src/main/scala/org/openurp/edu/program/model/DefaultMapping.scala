@@ -117,6 +117,10 @@ class DefaultMapping extends MappingModule {
       index("", false, e.group)
     }
 
+    bind[StdProgramBinding].declare { e =>
+      e.std is unique
+    }
+
     // std plan
     bind[StdCourseGroup].declare { e =>
       e.plan is target[StdPlan]

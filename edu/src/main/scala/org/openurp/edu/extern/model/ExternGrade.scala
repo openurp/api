@@ -38,7 +38,8 @@ class ExternGrade extends LongId, Remark, Updated {
 
   var credits: Float = _
 
-  var acquiredOn: YearMonth = _
+  /** 获得年月 */
+  var acquiredIn: YearMonth = _
 
   var scoreText: String = _
 

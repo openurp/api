@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.{Named, Updated}
 import org.openurp.base.edu.model.Textbook
 import org.openurp.code.sin.model.Press
 
-import java.time.LocalDate
+import java.time.{LocalDate, YearMonth}
 import scala.collection.mutable
 
 /** 教材获奖信息
@@ -33,8 +33,8 @@ class TextbookAchievement extends LongId, Named, Updated {
   /** 教材 */
   var isbn: String = _
 
-  /** 出版日期 */
-  var publishedOn: LocalDate = _
+  /** 出版年月 */
+  var publishedIn: YearMonth = _
 
   /** 出版社 */
   var press: Option[Press] = None

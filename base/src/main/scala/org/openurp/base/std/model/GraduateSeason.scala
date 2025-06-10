@@ -27,7 +27,7 @@ import java.time.YearMonth
  */
 class GraduateSeason extends LongId, Coded, Named {
   /** 毕业年月 */
-  var graduateOn: YearMonth = _
+  var graduateIn: YearMonth = _
   /** 项目 */
   var project: Project = _
 }

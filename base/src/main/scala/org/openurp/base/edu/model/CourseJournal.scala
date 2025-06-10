@@ -87,7 +87,7 @@ class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
     }
   }
 
-  def contains(grade: Grade): Boolean = this.within(grade.beginOn)
+  def contains(grade: Grade): Boolean = this.within(grade.beginIn.atEndOfMonth())
 
   /** 学时是否一致
    *
@@ -113,7 +113,7 @@ class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
     }
     n.tags.addAll(j.tags)
     n.updatedAt = Instant.now
-    n.beginOn = grade.beginOn
+    n.beginOn = grade.beginIn.atDay(1)
     n
   }
 

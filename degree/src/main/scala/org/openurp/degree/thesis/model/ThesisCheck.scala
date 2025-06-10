@@ -37,10 +37,10 @@ class ThesisCheck extends LongId, Updated {
   var writerName: String = _
 
   /** 入学年月 */
-  var enrollOn: YearMonth = _
+  var enrollIn: YearMonth = _
 
   /** 毕业年月 */
-  var graduateOn: YearMonth = _
+  var graduateIn: YearMonth = _
 
   /**考生号*/
   var examineeCode:Option[String]=None

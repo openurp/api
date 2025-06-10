@@ -123,7 +123,7 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
 
   def getJournal(grade: Grade): CourseJournal = {
     journals.find(_.contains(grade)) match
-      case None => new CourseJournal(this, grade.beginOn)
+      case None => new CourseJournal(this, grade.beginIn.atDay(1))
       case Some(j) => j
   }
 

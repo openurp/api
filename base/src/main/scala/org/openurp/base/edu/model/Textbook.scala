@@ -49,7 +49,7 @@ class Textbook extends LongId, TemporalOn, Named, Remark {
   /** 图书分类 */
   var category: Option[BookCategory] = None
   /** 出版日期 */
-  var publishedOn: YearMonth = _
+  var publishedIn: YearMonth = _
   /** 获奖类型 */
   var awardType: Option[BookAwardType] = None
   /** 颁发单位 */

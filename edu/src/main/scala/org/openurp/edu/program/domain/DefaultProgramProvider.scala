@@ -21,15 +21,19 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.model.Department
 import org.openurp.base.std.model.{Student, StudentState}
-import org.openurp.edu.program.model.Program
+import org.openurp.edu.program.model.{Program, StdProgramBinding}
 
 class DefaultProgramProvider extends ProgramProvider {
   var entityDao: EntityDao = _
 
   override def getProgram(std: Student): Option[Program] = {
-    std.state match {
-      case Some(s) => getProgram(s)
-      case None => None
+    entityDao.findBy(classOf[StdProgramBinding], "std", std).headOption match {
+      case None =>
+        std.state match {
+          case Some(s) => getProgram(s)
+          case None => None
+        }
+      case Some(binding) => Some(binding.program)
     }
   }
 

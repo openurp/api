@@ -45,7 +45,7 @@ class AbilityCreditApply extends LongId, Updated {
   /** 证书编号 */
   var certificateNo: Option[String] = None
   /** 获得年月 */
-  var acquiredOn: YearMonth = _
+  var acquiredIn: YearMonth = _
   /** 申请理由 */
   var reasons: Option[String] = None
   /** 审核意见 */

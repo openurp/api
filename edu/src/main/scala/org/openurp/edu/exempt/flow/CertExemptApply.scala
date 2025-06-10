@@ -50,8 +50,8 @@ class CertExemptApply extends LongId, Updated {
   var subject: Option[String] = None
   /** 证书编号 */
   var certificateNo: Option[String] = None
-  /** 获得日期 */
-  var acquiredOn: YearMonth = _
+  /** 获得年月 */
+  var acquiredIn: YearMonth = _
   /** 免修课程 */
   var courses: mutable.Set[Course] = Collections.newSet[Course]
   /** 申请理由 */
