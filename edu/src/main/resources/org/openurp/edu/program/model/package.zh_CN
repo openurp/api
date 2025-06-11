@@ -167,3 +167,5 @@ ProgramCourseLabel=培养方案方案课程标签
 ProgramPrerequisite=培养方案先修课程
 ProgramPrerequisite.course=课程
 ProgramPrerequisite.prerequisite=先修课程
+
+StdProgramBinding=特殊学生方案绑定

@@ -15,13 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
+package org.openurp.lab.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, EnNamed, Named, TemporalOn}
-import org.openurp.base.model.Project
+import org.beangle.data.model.pojo.{Coded, Named}
+import org.openurp.base.edu.model.Course
+import org.openurp.base.model.{ProjectBased, Semester}
 import org.openurp.code.edu.model.{EducationLevel, ExperimentCategory, ExperimentType, Level1Discipline}
 
 import scala.collection.mutable
@@ -29,9 +30,9 @@ import scala.collection.mutable
 /** 实验项目
  */
 @beta
-class Experiment extends LongId, Coded, Named, EnNamed, TemporalOn {
-  /** 项目 */
-  var project: Project = _
+class Experiment extends LongId, Coded, Named, ProjectBased {
+  /** 学年学期 */
+  var semester: Semester = _
   /** 课程 */
   var course: Course = _
   /** 实验类别 */
@@ -41,11 +42,14 @@ class Experiment extends LongId, Coded, Named, EnNamed, TemporalOn {
   /** 一级学科 */
   var discipline: Level1Discipline = _
   /** 对应培养层次 */
-  var levels: mutable.Buffer[EducationLevel] = Collections.newBuffer[EducationLevel]
+  var level: EducationLevel = _
   /** 是否在线实验 */
   var online: Boolean = _
   /** 学时 */
   var creditHours: Int = _
   /** 每组人数 */
   var groupStdCount: Int = _
+  /** 具体排课结果 */
+  var activities: mutable.Set[ExperimentActivity] = Collections.newSet[ExperimentActivity]
+
 }

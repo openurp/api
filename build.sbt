@@ -28,7 +28,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "openurp-api",
     common)
-  .aggregate(code, base, edu, prac, qos, trd, std, degree, all)
+  .aggregate(code, base, edu, prac, qos, trd, std, degree, lab, all)
 
 lazy val code = (project in file("code"))
   .settings(
@@ -87,6 +87,13 @@ lazy val std = (project in file("std"))
     common
   ).dependsOn(base, edu)
 
+lazy val lab = (project in file("lab"))
+  .settings(
+    organization := "org.openurp.lab",
+    name := "openurp-lab-api",
+    common
+  ).dependsOn(base)
+
 lazy val all = (project in file("all"))
   .settings(
     organization := "org.openurp",
@@ -94,6 +101,6 @@ lazy val all = (project in file("all"))
     common,
     libraryDependencies ++= Seq(scalatest, logback_classic),
     publish / skip := true
-  ).dependsOn(code, base, edu, prac, qos, trd, std, degree)
+  ).dependsOn(code, base, edu, prac, qos, trd, std, degree, lab)
 
 publish / skip := true

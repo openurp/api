@@ -15,39 +15,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.workload.model
+package org.openurp.lab.model
 
+import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.Course
-import org.openurp.base.hr.model.Teacher
-import org.openurp.base.model.Semester
-import org.openurp.code.job.model.ProfessionalTitle
-import org.openurp.edu.workload.config.CapacityFactor
+import org.openurp.base.resource.model.Laboratory
 
-/** 教学工作量
+/** 实验安排
  */
-class TeachingLoad extends LongId {
+class ExperimentActivity extends LongId {
 
-  var crn: String = _
+  var experiment: Experiment = _
 
-  var course: Course = _
+  /** 上课时间 */
+  var time: WeekTime = _
 
-  var teacher: Teacher = _
+  /** 开始节次 */
+  var beginUnit: Short = _
 
-  var semester: Semester = _
+  /** 结束节次 */
+  var endUnit: Short = _
 
-  var teacherTitle: ProfessionalTitle = _
-
-  var capacityFactor: CapacityFactor = _
-
-  var clazzTags: String = _
-
-  var factor: Float = _
-
-  var creditHours: Int = _
-
-  var stdCount: Int = _
-
-  var loadHours: Float = _
-
+  /** 实验室列表 */
+  var labs: collection.mutable.Set[Laboratory] = Collections.newSet[Laboratory]
 }

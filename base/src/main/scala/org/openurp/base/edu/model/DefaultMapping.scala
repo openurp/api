@@ -149,9 +149,6 @@ class DefaultMapping extends MappingModule {
 
     bind[CourseJournalHour]
 
-    bind[Experiment] declare { e =>
-
-    }
     all.except(classOf[CourseProfile]).cacheAll()
   }
 }

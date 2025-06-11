@@ -20,7 +20,6 @@ package org.openurp.edu.course.model
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.base.edu.model.Experiment
 import org.openurp.code.edu.model.ExperimentType
 
 /** 课程大纲中的实验
@@ -32,9 +31,6 @@ class SyllabusExperiment extends LongId, Named {
 
   /** 序号(从1开始) */
   var idx: Int = _
-
-  /** 实验 */
-  var experiment: Option[Experiment] = None
 
   /** 是否在线实验 */
   var online: Boolean = _

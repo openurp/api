@@ -5,6 +5,7 @@ create schema degree;
 create schema edu;
 create schema flow;
 create schema his;
+create schema lab;
 create schema log;
 create schema prac;
 create schema qos;
