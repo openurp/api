@@ -21,7 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Objects
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.model.Course
+import org.openurp.base.edu.model.{Course, CourseJournal}
 import org.openurp.base.model.{ProjectBased, Semester}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.*
@@ -171,7 +171,10 @@ class CourseGrade extends LongId, ProjectBased, Grade, Remark {
         this.gaGrades.addOne(ga)
         ga
     }
+  }
 
+  def courseJournal: CourseJournal = {
+    this.course.getJournal(this.semester)
   }
 
   /**

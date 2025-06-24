@@ -18,11 +18,12 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.hr.model.Teacher
 
 /** 课程负责人
  */
-class CourseDirector extends LongId {
+class CourseDirector extends LongId, TemporalOn {
   /** 课程 */
   var course: Course = _
 

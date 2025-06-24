@@ -18,10 +18,12 @@
 package org.openurp.base.service
 
 import org.openurp.base.hr.model.Staff
-import org.openurp.base.model.User
+import org.openurp.base.model.{Department, User}
 import org.openurp.base.std.model.Student
 
 trait UserRepo {
+
+  def createDepart(depart: Department): Unit
 
   def createUser(staff: Staff, oldCode: Option[String]): User
 

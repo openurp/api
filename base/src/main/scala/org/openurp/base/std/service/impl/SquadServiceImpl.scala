@@ -30,7 +30,7 @@ class SquadServiceImpl extends SquadService {
   override def statStdCount(squads: Iterable[Squad]): Int = {
     var updated = 0
     squads foreach { squad =>
-      val newCount = squad.stdStates.filter(x => x.std.state.get.squad == x.squad).map(_.std).distinct.size
+      val newCount = squad.stdStates.filter(x => x.std.state.nonEmpty && x.std.state.get.squad == x.squad).map(_.std).distinct.size
       if (newCount != squad.stdCount) {
         squad.stdCount = newCount
         updated += 1

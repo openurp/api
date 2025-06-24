@@ -2,7 +2,7 @@ insert into base.versions(id,version,updated_at,description)
 values(next_id('base.versions'),'0.44.0',now(),'增加实验教学、删除个人计划');
 
 create schema lab;
-alter table base.experiments set schema exp;
+alter table base.experiments set schema lab;
 alter table lab.experiments add level_id int4;
 drop table base.experiments_levels cascade;
 create table lab.experiment_activities (id bigint not null, begin_unit smallint default 0 not null, start_on date not null, end_at smallint not null, begin_at smallint not null, weekstate bigint not null, end_unit smallint default 0 not null, experiment_id bigint not null);
@@ -12,6 +12,11 @@ alter table lab.experiment_activities add constraint fk_qudxn3hwrria27ahil4qtvhw
 alter table lab.experiment_activities_labs add constraint pk_6d6sxl429xb47llm9k41unvgo primary key (experiment_activity_id,laboratory_id);
 
 create table edu.std_program_bindings (id bigint not null, program_id bigint not null, std_id bigint not null, updated_at timestamptz default current_timestamp not null);
+alter table edu.std_program_bindings add constraint pk_9n0qo30hsm8dlofhfqppv2o94 primary key (id);
+alter table edu.std_program_bindings add constraint uk_c966tfqv5ixyy0sxufc8w6osc unique (std_id);
+alter table edu.std_program_bindings add constraint fk_20a1u2fkkwntttaj61a2d3gt2 foreign key (std_id) references base.students (id);
+alter table edu.std_program_bindings add constraint fk_n1e76uwd9xe1cw1hb93lx3ibc foreign key (program_id) references edu.programs (id);
+
 drop table edu.std_course_groups cascade;
 drop table edu.std_plan_courses cascade;
 drop table edu.std_plans cascade;

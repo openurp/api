@@ -59,6 +59,20 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     }
   }
 
+  override def createDepart(depart: Department): Unit = {
+    val emsDepart = emsJdbcExecutor.query("select id,name from ems.usr_departs where org_id=" + depart.school.id + " and code=? ", depart.code).headOption
+    emsDepart match {
+      case None =>
+        emsJdbcExecutor.update("insert into ems.usr_departs(id,code,name,short_name,indexno,begin_on,updated_at,org_id) values(next_id('ems.usr_departs'),?,?,?,?,?,?,?)",
+          depart.code, depart.name, depart.shortName.orNull, depart.indexno, depart.beginOn, depart.updatedAt, depart.school.id)
+        logger.info(s"create depart ${depart.name}")
+      case Some(d) =>
+        if (d(1) != depart.name) {
+          emsJdbcExecutor.update("update ems.usr_departs set name=? where id=?", depart.name, d(0))
+        }
+    }
+  }
+
   /** Create a user for staff
    *
    * @param staff staff
