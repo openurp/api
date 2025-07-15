@@ -15,46 +15,57 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.course.model
+package org.openurp.lab.experiment.model
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.{Course, TeachingOffice}
+import org.openurp.base.edu.model.{Course, Experiment}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Semester}
-import org.openurp.code.edu.model.CourseType
+import org.openurp.base.resource.model.Laboratory
+import org.openurp.code.edu.model.CourseRank
 
 import scala.collection.mutable
 
-/** 课程执教信息
+/** 实验任务
  */
-class CourseTask extends LongId {
+@beta
+class LabTask extends LongId {
   /** 课程 */
   var course: Course = _
   /** 开课院系 */
   var department: Department = _
   /** 学年学期 */
   var semester: Semester = _
-  /** 课程类型 */
-  var courseType: CourseType = _
-  /** 任课教师 */
-  var teachers: mutable.Set[Teacher] = Collections.newSet[Teacher]
-  /** 教研室 */
-  var office: Option[TeachingOffice] = None
   /** 负责人 */
   var director: Option[Teacher] = None
-  /** 是否需要教学大纲 */
-  var syllabusRequired: Boolean = true
-  /** 课外学时 */
-  var extraHours: Option[Int] = None
-  /** 是否确认 */
-  var confirmed: Boolean = _
+  /** 是否要求填写实验项目 */
+  var required: Option[Boolean] = None
+  /** 填写实验项目数 */
+  var expCount: Int = _
+  /** 实验人数 */
+  var stdCount: Int = _
+  /** 实验室列表 */
+  var labs: mutable.Set[Laboratory] = Collections.newSet[Laboratory]
+  /** 必选修 */
+  var rank: CourseRank = _
+  /** 班级数 */
+  var clazzCount: Int = _
+  /** 实验列表 */
+  var experiments: mutable.Buffer[LabExperiment] = Collections.newBuffer[LabExperiment]
 
-  def this(course: Course, department: Department, semester: Semester, courseType: CourseType) = {
+  def this(course: Course, semester: Semester, department: Department) = {
     this()
     this.course = course
-    this.department = department
     this.semester = semester
-    this.courseType = courseType
+    this.department = department
+  }
+
+  def remove(exp: Experiment): Boolean = {
+    val removed = this.experiments.filter(_.experiment == exp)
+    this.experiments.subtractAll(removed)
+    this.expCount = this.experiments.size
+    removed.nonEmpty
   }
 }

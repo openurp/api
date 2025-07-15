@@ -1,9 +1,0 @@
-Experiment=实验项目
-Experiment.online=是否在线实验
-Experiment.creditHours=学时
-Experiment.groupStdCount=每组人数
-
-ExperimentActivity=实验活动
-ExperimentActivity.beginUnit=开始节次
-ExperimentActivity.endUnit=结束节次
-ExperimentActivity.labs=实验室列表

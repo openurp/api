@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.44.0">
+<db engine="PostgreSQL" version="0.44.1">
   <schemas>
     <schema name="base">
       <tables>
@@ -162,8 +162,10 @@
         <table name="course_directors" comment="课程负责人@edu">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
-            <column name="director_id" type="bigint" comment="负责人ID"/>
+            <column name="director_id" type="bigint" nullable="false" comment="负责人ID"/>
+            <column name="end_on" type="date" comment="失效日期"/>
             <column name="office_id" type="bigint" comment="教研室ID"/>
           </columns>
           <constraints>
@@ -553,6 +555,33 @@
             <index name="idx_7389oy88qypl4v9gudyudoi07" columns="major_id"/>
           </indexes>
         </table>
+        <table name="experiments" comment="实验项目@edu">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="category_id" type="integer" comment="实验类别ID"/>
+            <column name="code" type="varchar(20)" nullable="false" comment="代码"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="credit_hours" type="float4" nullable="false" defaultValue="0" comment="学时"/>
+            <column name="discipline_id" type="integer" comment="一级学科ID"/>
+            <column name="en_name" type="varchar(400)" comment="英文名"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="experiment_type_id" type="integer" nullable="false" comment="实验类型ID"/>
+            <column name="group_std_count" type="integer" nullable="false" defaultValue="0" comment="每组人数"/>
+            <column name="name" type="varchar(300)" nullable="false" comment="名称"/>
+            <column name="online" type="boolean" nullable="false" defaultValue="false" comment="是否在线实验"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_9bocam72pq84nbf7q7r1jn5py" columns="id"/>
+            <foreign-key name="fk_syicnxr0u0po3ou1cf9l1n1so" column="discipline_id" referenced-table="code.level1_disciplines" referenced-column="id"/>
+            <foreign-key name="fk_bsj5luxworu1ale3fq4bv5m7h" column="experiment_type_id" referenced-table="code.experiment_types" referenced-column="id"/>
+            <foreign-key name="fk_cnbo41vj9grh5xljkjie3jiw5" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_qdjbtewk6kkhmrrlcxkrr6h6" column="category_id" referenced-table="code.experiment_categories" referenced-column="id"/>
+            <unique-key name="uk_4t6s3rhpyuivur62lwcyy7ul5" columns="course_id,code"/>
+          </constraints>
+        </table>
         <table name="extern_schools" comment="校外教育机构@common">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
@@ -663,21 +692,18 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
-            <column name="building_id" type="integer" comment="楼房建筑物ID"/>
-            <column name="campus_id" type="integer" nullable="false" comment="校区信息ID"/>
             <column name="code" type="varchar(20)" nullable="false" comment="代码"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
-            <column name="room_no" type="varchar(20)" comment="房间号"/>
+            <column name="room_id" type="bigint" comment="教室ID"/>
             <column name="school_id" type="integer" nullable="false" comment="学校信息ID"/>
             <column name="short_name" type="varchar(255)" comment="简称"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
             <primary-key name="pk_217f1ui65li444828qnn85h1d" columns="id"/>
-            <foreign-key name="fk_kadqxrk7yv9gvuh7gui93wci5" column="campus_id" referenced-table="base.campuses" referenced-column="id"/>
-            <foreign-key name="fk_9n6gopv0qgujb6fyah77a1n1w" column="building_id" referenced-table="base.buildings" referenced-column="id"/>
             <foreign-key name="fk_j94hdmq0cx18wd3kvbvwvn4vn" column="school_id" referenced-table="base.schools" referenced-column="id"/>
+            <foreign-key name="fk_ngw65r8tuth5tpr6ox5r0m3kk" column="room_id" referenced-table="base.classrooms" referenced-column="id"/>
             <unique-key name="uk_2quxs44337ol9rk7t7g6x5pha" columns="school_id,code"/>
           </constraints>
         </table>
@@ -5813,7 +5839,6 @@
             <column name="director_id" type="bigint" comment="教师信息ID"/>
             <column name="extra_hours" type="integer" comment="课外学时"/>
             <column name="office_id" type="bigint" comment="教研室ID"/>
-            <column name="renew_syllabus" type="boolean" comment="是否需要修订大纲"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="syllabus_required" type="boolean" nullable="false" defaultValue="true" comment="是否需要大纲"/>
           </columns>
@@ -5821,9 +5846,9 @@
             <primary-key name="pk_t2hnkntagl4pt5brhlsq5idg7" columns="id"/>
             <foreign-key name="fk_4p283ey16d4vucl25radomhf3" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
             <foreign-key name="fk_cqr6alvvovahiqrmik0w7yx7s" column="director_id" referenced-table="base.teachers" referenced-column="id"/>
-            <foreign-key name="fk_8orryf4ykp81il5nm3mxxoavy" column="office_id" referenced-table="base.teaching_offices" referenced-column="id"/>
             <foreign-key name="fk_a2tal3bxk0lh94b1mh5tbeppx" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_9y4fahxcv53ackqgyye3ybh3r" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
+            <foreign-key name="fk_8orryf4ykp81il5nm3mxxoavy" column="office_id" referenced-table="base.teaching_offices" referenced-column="id"/>
             <foreign-key name="fk_fk1kvrmumyid0nwwn1on41d6g" column="department_id" referenced-table="base.departments" referenced-column="id"/>
             <unique-key name="uk_3frid92ox3grog2rfffm12lci" columns="semester_id,course_id,department_id"/>
           </constraints>
@@ -7667,17 +7692,14 @@
         <table name="syllabus_experiments" comment="教学大纲-实践环节@course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="credit_hours" type="float4" nullable="false" defaultValue="0" comment="学时"/>
-            <column name="experiment_type_id" type="integer" nullable="false" comment="实验类型ID"/>
+            <column name="experiment_id" type="bigint" nullable="false" comment="实验项目ID"/>
             <column name="idx" type="integer" nullable="false" defaultValue="0" comment="序号"/>
-            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
-            <column name="online" type="boolean" nullable="false" defaultValue="false" comment="是否在线实验"/>
             <column name="syllabus_id" type="bigint" nullable="false" comment="课程教学大纲ID"/>
           </columns>
           <constraints>
             <primary-key name="pk_baulexp8qydt31g95omfugrnb" columns="id"/>
             <foreign-key name="fk_shhhmyva71kihwtqwgujnklum" column="syllabus_id" referenced-table="edu.syllabuses" referenced-column="id"/>
-            <foreign-key name="fk_grw66d0pyjiqxydbhaicjkg0y" column="experiment_type_id" referenced-table="code.experiment_types" referenced-column="id"/>
+            <foreign-key name="fk_8d9d58buigjgts7ix2fjdmaqe" column="experiment_id" referenced-table="base.experiments" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_khcn79d0h9o2224wnk5sul1f6" columns="syllabus_id"/>
@@ -8449,65 +8471,58 @@
     </schema>
     <schema name="lab">
       <tables>
-        <table name="experiment_activities" comment="实验活动@lab">
+        <table name="lab_experiments" comment="每学期实验任务@lab">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
-            <column name="begin_unit" type="smallint" nullable="false" defaultValue="0" comment="开始节次"/>
-            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
-            <column name="end_unit" type="smallint" nullable="false" defaultValue="0" comment="结束节次"/>
             <column name="experiment_id" type="bigint" nullable="false" comment="实验项目ID"/>
-            <column name="start_on" type="date" nullable="false" comment="开始日期"/>
-            <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
+            <column name="idx" type="integer" nullable="false" defaultValue="0" comment="顺序号"/>
+            <column name="task_id" type="bigint" nullable="false" comment="实验任务ID"/>
           </columns>
           <constraints>
-            <primary-key name="pk_faduj0gr0b26fal96vmmpw5as" columns="id"/>
-            <foreign-key name="fk_qudxn3hwrria27ahil4qtvhwi" column="experiment_id" referenced-table="lab.experiments" referenced-column="id"/>
+            <primary-key name="pk_cluasve2mn5lsm6jvfxqs77v8" columns="id"/>
+            <foreign-key name="fk_i0vuapwcokj3be9h2p3lli057" column="task_id" referenced-table="lab.lab_tasks" referenced-column="id"/>
+            <foreign-key name="fk_llngpoxmckvmntm8dp5jo2h9n" column="experiment_id" referenced-table="base.experiments" referenced-column="id"/>
+            <unique-key name="uk_eopmlqm6bmh71p4qw6wdxrfoo" columns="task_id,idx"/>
           </constraints>
           <indexes>
-            <index name="idx_hn9ums9atciucv0ql2e3mh6f1" columns="experiment_id"/>
+            <index name="idx_5pdh9qryix36eaw5nrncfwlji" columns="task_id"/>
           </indexes>
         </table>
-        <table name="experiment_activities_labs" comment="实验室列表@lab">
+        <table name="lab_tasks" comment="实验任务@lab">
           <columns>
-            <column name="experiment_activity_id" type="bigint" nullable="false" comment="实验活动ID"/>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="clazz_count" type="integer" nullable="false" defaultValue="0" comment="班级数"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
+            <column name="director_id" type="bigint" comment="教师信息ID"/>
+            <column name="exp_count" type="integer" nullable="false" defaultValue="0" comment="实验数"/>
+            <column name="rank_id" type="integer" nullable="false" comment="课程属性ID"/>
+            <column name="required" type="boolean" comment="是否要求填写实验"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
+            <column name="std_count" type="integer" nullable="false" defaultValue="0" comment="实验人数"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_pobmn5lqgf0ngijre9cvc3id9" columns="id"/>
+            <foreign-key name="fk_rtm2nghx8jx980pvos7l3qoic" column="director_id" referenced-table="base.teachers" referenced-column="id"/>
+            <foreign-key name="fk_o2mk6oai9b2e3naujyiik6o2w" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_nlctcagnfkpkgvms7e4y3j6vf" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
+            <foreign-key name="fk_fo8who9que0f2ihy9o155emae" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
+            <foreign-key name="fk_ap3i990156cnq9891r4nxked5" column="department_id" referenced-table="base.departments" referenced-column="id"/>
+          </constraints>
+        </table>
+        <table name="lab_tasks_labs" comment="实验项目占用实验室@lab">
+          <columns>
+            <column name="lab_task_id" type="bigint" nullable="false" comment="实验任务ID"/>
             <column name="laboratory_id" type="bigint" nullable="false" comment="实验室ID"/>
           </columns>
           <constraints>
-            <primary-key name="pk_6d6sxl429xb47llm9k41unvgo" columns="experiment_activity_id,laboratory_id"/>
-            <foreign-key name="fk_a27ujbg6ro4ir5ckg4gllafwc" column="experiment_activity_id" referenced-table="lab.experiment_activities" referenced-column="id"/>
-            <foreign-key name="fk_4puwyhr3eejpt6lkmqilp7836" column="laboratory_id" referenced-table="base.laboratories" referenced-column="id"/>
+            <primary-key name="pk_m055on3ewsrwn869g19w0fixo" columns="lab_task_id,laboratory_id"/>
+            <foreign-key name="fk_ngp72ymfqmd11qfh2wmqk49k1" column="lab_task_id" referenced-table="lab.lab_tasks" referenced-column="id"/>
+            <foreign-key name="fk_7c3oy6rnq7vh9wkpt23yhh084" column="laboratory_id" referenced-table="base.laboratories" referenced-column="id"/>
           </constraints>
           <indexes>
-            <index name="idx_mb8mw8hrmefu0u1g1l36nxoe3" columns="experiment_activity_id"/>
+            <index name="idx_375h8err64n0ull44fwcu8pw9" columns="lab_task_id"/>
           </indexes>
-        </table>
-        <table name="experiments" comment="实验项目@lab">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="category_id" type="integer" nullable="false" comment="实验类别ID"/>
-            <column name="code" type="varchar(255)" nullable="false" comment="代码"/>
-            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
-            <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时"/>
-            <column name="discipline_id" type="integer" nullable="false" comment="一级学科ID"/>
-            <column name="experiment_type_id" type="integer" nullable="false" comment="实验类型ID"/>
-            <column name="group_std_count" type="integer" nullable="false" defaultValue="0" comment="每组人数"/>
-            <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
-            <column name="name" type="varchar(255)" nullable="false" comment="名称"/>
-            <column name="online" type="boolean" nullable="false" defaultValue="false" comment="是否在线实验"/>
-            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_9bocam72pq84nbf7q7r1jn5py" columns="id"/>
-            <foreign-key name="fk_kyjk0r2r990rt6ij0te0xdj27" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
-            <foreign-key name="fk_j4upj8ugk50h75xid7oxxc4dd" column="project_id" referenced-table="base.projects" referenced-column="id"/>
-            <foreign-key name="fk_syicnxr0u0po3ou1cf9l1n1so" column="discipline_id" referenced-table="code.level1_disciplines" referenced-column="id"/>
-            <foreign-key name="fk_bsj5luxworu1ale3fq4bv5m7h" column="experiment_type_id" referenced-table="code.experiment_types" referenced-column="id"/>
-            <foreign-key name="fk_cnbo41vj9grh5xljkjie3jiw5" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_20lrxv70g98lxtmf8y235ebgk" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
-            <foreign-key name="fk_qdjbtewk6kkhmrrlcxkrr6h6" column="category_id" referenced-table="code.experiment_categories" referenced-column="id"/>
-          </constraints>
         </table>
       </tables>
     </schema>

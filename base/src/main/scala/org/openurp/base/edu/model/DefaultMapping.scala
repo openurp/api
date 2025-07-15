@@ -149,6 +149,13 @@ class DefaultMapping extends MappingModule {
 
     bind[CourseJournalHour]
 
-    all.except(classOf[CourseProfile]).cacheAll()
+    bind[Experiment].declare { e =>
+      e.name is length(300)
+      e.enName is length(400)
+      e.code is length(20)
+      index("", true, e.course, e.code)
+    }
+
+    all.except(classOf[CourseProfile], classOf[Experiment]).cacheAll()
   }
 }

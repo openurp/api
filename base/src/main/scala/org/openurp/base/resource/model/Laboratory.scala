@@ -20,7 +20,7 @@ package org.openurp.base.resource.model
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
-import org.openurp.base.model.{Campus, School}
+import org.openurp.base.model.School
 
 /** 实验室
  */
@@ -29,11 +29,7 @@ class Laboratory extends LongId, Named, Coded, Updated, TemporalOn {
   /** 学校 */
   var school: School = _
   /** 房间号 */
-  var roomNo: Option[String] = None
-  /** 所属校区 */
-  var campus: Campus = _
-  /** 所属建筑 */
-  var building: Option[Building] = None
+  var room: Option[Classroom] = None
   /** 简称 */
   var shortName: Option[String] = None
 }

@@ -1,0 +1,10 @@
+LabTask=实验任务
+LabTask.labs=实验项目占用实验室
+LabTask.stdCount=实验人数
+LabTask.clazzCount=班级数
+LabTask.expCount=实验数
+LabTask.required=是否要求填写实验
+
+LabExperiment=每学期实验任务
+LabExperiment.idx=顺序号
+

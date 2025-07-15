@@ -31,7 +31,7 @@ class CourseDirector extends LongId, TemporalOn {
   var office: Option[TeachingOffice] = None
 
   /** 负责人 */
-  var director: Option[Teacher] = None
+  var director: Teacher = _
 
   def this(course: Course) = {
     this()

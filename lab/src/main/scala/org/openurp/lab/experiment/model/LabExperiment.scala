@@ -15,28 +15,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.lab.model
+package org.openurp.lab.experiment.model
 
-import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.time.WeekTime
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.openurp.base.resource.model.Laboratory
+import org.beangle.data.model.pojo.Coded
+import org.openurp.base.edu.model.Experiment
 
-/** 实验安排
+/** 实验项目对应的课程
  */
-class ExperimentActivity extends LongId {
-
+@beta
+class LabExperiment extends LongId {
+  /** 序号(从1开始) */
+  var idx: Int = _
+  /** 修订任务 */
+  var task: LabTask = _
+  /** 实验 */
   var experiment: Experiment = _
 
-  /** 上课时间 */
-  var time: WeekTime = _
-
-  /** 开始节次 */
-  var beginUnit: Short = _
-
-  /** 结束节次 */
-  var endUnit: Short = _
-
-  /** 实验室列表 */
-  var labs: collection.mutable.Set[Laboratory] = Collections.newSet[Laboratory]
+  def this(idx: Int, task: LabTask, experiment: Experiment) = {
+    this()
+    this.idx = idx
+    this.task = task
+    this.experiment = experiment
+  }
 }

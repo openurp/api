@@ -87,13 +87,10 @@ SyllabusDoc.auditor=审核人
 
 SyllabusExperiment=教学大纲-实践环节
 SyllabusExperiment.idx=序号
-SyllabusExperiment.online=是否在线实验
-SyllabusExperiment.creditHours=学时
 
 CourseTask=课程任务
 CourseTask.teachers=课程任务-任课教师
 CourseTask.syllabusRequired=是否需要大纲
-CourseTask.renewSyllabus=是否需要修订大纲
 CourseTask.extraHours=课外学时
 CourseTask.confirmed=是否确认
 

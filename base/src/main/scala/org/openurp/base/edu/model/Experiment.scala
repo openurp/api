@@ -15,41 +15,52 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.lab.model
+package org.openurp.base.edu.model
 
-import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named}
-import org.openurp.base.edu.model.Course
-import org.openurp.base.model.{ProjectBased, Semester}
-import org.openurp.code.edu.model.{EducationLevel, ExperimentCategory, ExperimentType, Level1Discipline}
+import org.beangle.data.model.pojo.*
+import org.openurp.code.edu.model.{ExperimentCategory, ExperimentType, Level1Discipline}
 
-import scala.collection.mutable
-
-/** 实验项目
+/** 课程实验库
  */
-@beta
-class Experiment extends LongId, Coded, Named, ProjectBased {
-  /** 学年学期 */
-  var semester: Semester = _
+class Experiment extends LongId, Coded, Named, EnNamed, Updated, TemporalOn, Remark {
+
   /** 课程 */
   var course: Course = _
+
   /** 实验类别 */
-  var category: ExperimentCategory = _
-  /** 实验类型 */
-  var experimentType: ExperimentType = _
+  var category: Option[ExperimentCategory] = None
+
   /** 一级学科 */
-  var discipline: Level1Discipline = _
-  /** 对应培养层次 */
-  var level: EducationLevel = _
+  var discipline: Option[Level1Discipline] = None
+
   /** 是否在线实验 */
   var online: Boolean = _
+
   /** 学时 */
-  var creditHours: Int = _
+  var creditHours: Float = _
+
+  /** 实验类型 */
+  var experimentType: ExperimentType = _
+
   /** 每组人数 */
   var groupStdCount: Int = _
-  /** 具体排课结果 */
-  var activities: mutable.Set[ExperimentActivity] = Collections.newSet[ExperimentActivity]
 
+  def this(course: Course) = {
+    this()
+    this.course = course
+  }
+
+  def this(course: Course, name: String, creditHours: Float, experimentType: ExperimentType, online: Boolean) = {
+    this()
+    this.course = course
+    this.name = name
+    this.creditHours = creditHours
+    this.experimentType = experimentType
+    this.online = online
+  }
+
+  def description: String = {
+    s"${this.code} ${this.name} ${this.experimentType.name} ${this.creditHours}学时"
+  }
 }

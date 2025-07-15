@@ -20,34 +20,26 @@ package org.openurp.edu.course.model
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
-import org.openurp.code.edu.model.ExperimentType
+import org.openurp.base.edu.model.Experiment
+import org.openurp.code.edu.model.{ExperimentCategory, ExperimentType, Level1Discipline}
 
 /** 课程大纲中的实验
  */
 @beta
-class SyllabusExperiment extends LongId, Named {
+class SyllabusExperiment extends LongId {
 
   var syllabus: Syllabus = _
 
   /** 序号(从1开始) */
   var idx: Int = _
 
-  /** 是否在线实验 */
-  var online: Boolean = _
+  /** 实验 */
+  var experiment: Experiment = _
 
-  /** 学时 */
-  var creditHours: Float = _
-
-  /** 实验类型 */
-  var experimentType: ExperimentType = _
-
-  def this(syllabus: Syllabus, idx: Int, name: String, creditHours: Float, experimentType: ExperimentType, online: Boolean) = {
+  def this(syllabus: Syllabus, idx: Int, experiment: Experiment) = {
     this()
     this.syllabus = syllabus
     this.idx = idx
-    this.name = name
-    this.creditHours = creditHours
-    this.experimentType = experimentType
-    this.online = online
+    this.experiment = experiment
   }
 }

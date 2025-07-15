@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.lab.model
+package org.openurp.lab.experiment.model
 
 import org.beangle.data.orm.MappingModule
 
@@ -23,10 +23,12 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultCache("openurp.lab", "read-write")
-    bind[Experiment] declare { e =>
-      e.activities is depends("experiment")
+    bind[LabExperiment].declare { e =>
+      index("", true, e.task, e.idx)
     }
-    bind[ExperimentActivity]
+    bind[LabTask].declare { e =>
+      e.experiments is depends("task")
+    }
   }
 
 }

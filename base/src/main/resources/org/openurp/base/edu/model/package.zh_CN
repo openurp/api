@@ -166,3 +166,8 @@ CourseAward=课程获奖
 CourseAward.schoolYear=获奖年度
 
 MajorGraduateObjective=专业培养目标
+
+Experiment=实验项目
+Experiment.online=是否在线实验
+Experiment.creditHours=学时
+Experiment.groupStdCount=每组人数

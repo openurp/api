@@ -93,10 +93,10 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updated, Remark, Date
   var graduationDeferred: Boolean = _
 
   def calcCurrentState(): Unit = {
-    this.state = Some(stateWhen(LocalDate.now()))
+    this.state = Some(stateOn(LocalDate.now()))
   }
 
-  def stateWhen(date: LocalDate): StudentState = {
+  def stateOn(date: LocalDate): StudentState = {
     this.states.find(_.within(date)) match {
       case st@Some(s) => s
       case None => this.states.maxBy(_.endOn)

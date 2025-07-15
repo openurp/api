@@ -213,8 +213,60 @@ class Syllabus extends LongId, Updated, DateRange {
     }
   }
 
-  def getUsualAssessment(index: Int): Option[SyllabusAssessment] = {
-    assessments.find(x => x.gradeType.id == GradeType.Usual && x.component.nonEmpty && x.idx == index)
+  /** 获取第idx(1based)个平时成绩评价标准
+   *
+   * @param idx
+   * @return
+   */
+  def getUsualAssessment(idx: Int): Option[SyllabusAssessment] = {
+    val uas = assessments.filter(x => x.gradeType.id == GradeType.Usual && x.component.nonEmpty)
+    if (idx >= 1 && idx <= uas.length) {
+      Some(uas(idx - 1))
+    } else {
+      None
+    }
+  }
+
+  def removeExperiment(exp: Experiment): Boolean = {
+    val removed = this.experiments.filter(_.experiment == exp)
+    this.experiments.subtractAll(removed)
+    removed.nonEmpty
+  }
+
+  /** 重新生成内部元素的顺序索引号
+   */
+  def reIndex(): Unit = {
+    var idx = 1
+    this.designs.sortBy(_.idx) foreach { d =>
+      d.idx = idx
+      idx += 1
+    }
+
+    idx = 1
+    this.experiments.sortBy(_.idx) foreach { d =>
+      d.idx = idx
+      idx += 1
+    }
+
+    idx = 1
+    this.cases.sortBy(_.idx) foreach { d =>
+      d.idx = idx
+      idx += 1
+    }
+    //0不参与排序
+    this.assessments.filter(_.component.isEmpty) foreach { d =>
+      d.idx = 0
+    }
+    idx = 1
+    this.assessments.filter(_.component.nonEmpty).sortBy(_.idx) foreach { d =>
+      d.idx = idx
+      idx += 1
+    }
+    idx = 1
+    this.outcomes.sortBy(_.idx) foreach { d =>
+      d.idx = idx
+      idx += 1
+    }
   }
 }
 
@@ -300,7 +352,7 @@ object Syllabus {
       newer.cases.addOne(nc)
     }
     syllabus.experiments foreach { e =>
-      val ne = new SyllabusExperiment(newer, e.idx, e.name, e.creditHours, e.experimentType, e.online)
+      val ne = new SyllabusExperiment(newer, e.idx, e.experiment)
       newer.experiments.addOne(ne)
     }
     //copy assessment

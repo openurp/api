@@ -39,6 +39,46 @@ begin
   return rs;
 end;
 $BODY$;
+
+
+CREATE OR REPLACE FUNCTION public.plus_days(date,int4)
+    RETURNS date
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+declare rs date;
+begin
+  select $1 + $2 into rs ;
+  return rs;
+end;
+$BODY$;
+
+CREATE OR REPLACE FUNCTION public.plus_days(timestamptz,int4)
+    RETURNS timestamptz
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+declare rs timestamptz;
+begin
+  select $1 + ($2||' day')::interval into rs ;
+  return rs;
+end;
+$BODY$;
+
+CREATE OR REPLACE FUNCTION public.day_diff(date,date)
+    RETURNS int4
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+declare rs int4;
+begin
+  select $2 - $1 into rs ;
+  return rs;
+end;
+$BODY$;
 CREATE OR REPLACE FUNCTION public.bitand(
 	bigint,
 	bigint)

@@ -37,6 +37,8 @@ alter table base.devices add constraint pk_q34m206q6wm6qh5d14b281wo9 primary key
 alter table base.direction_journals add constraint pk_rvbr7ldfxrsat8i1nhedoinwk primary key (id);
 alter table base.directions add constraint pk_j2qwo6upqlwqexl7chxnno9mw primary key (id);
 alter table base.directions add constraint uk_ry4fda3w2fdnnsfl7yrnpha1 unique (project_id,code);
+alter table base.experiments add constraint pk_9bocam72pq84nbf7q7r1jn5py primary key (id);
+alter table base.experiments add constraint uk_4t6s3rhpyuivur62lwcyy7ul5 unique (course_id,code);
 alter table base.extern_schools add constraint pk_nj2mnlh45jh2wagd9heuq58dl primary key (id);
 alter table base.extern_students add constraint pk_8omlfu3itguya4lmcd6pxe0wd primary key (id);
 alter table base.grades add constraint pk_tfax6erblyil71kws4l93yhnv primary key (id);
@@ -664,9 +666,10 @@ alter table his.edu_exam_takers add constraint pk_s7u6opjyel7xwlqxxavdnikq3 prim
 alter table his.edu_ga_grades add constraint pk_jmcwmshd9usxt264y2pyj8wt4 primary key (id,school_year);
 alter table his.edu_regular_grades add constraint pk_lliu205c73xio4nmhoawmok7t primary key (id,school_year);
 alter table his.edu_regular_test_grades add constraint pk_bafso9a1qa1fb98sjcgaaohkq primary key (id,school_year);
-alter table lab.experiment_activities add constraint pk_faduj0gr0b26fal96vmmpw5as primary key (id);
-alter table lab.experiment_activities_labs add constraint pk_6d6sxl429xb47llm9k41unvgo primary key (experiment_activity_id,laboratory_id);
-alter table lab.experiments add constraint pk_9bocam72pq84nbf7q7r1jn5py primary key (id);
+alter table lab.lab_experiments add constraint pk_cluasve2mn5lsm6jvfxqs77v8 primary key (id);
+alter table lab.lab_experiments add constraint uk_eopmlqm6bmh71p4qw6wdxrfoo unique (task_id,idx);
+alter table lab.lab_tasks add constraint pk_pobmn5lqgf0ngijre9cvc3id9 primary key (id);
+alter table lab.lab_tasks_labs add constraint pk_m055on3ewsrwn869g19w0fixo primary key (lab_task_id,laboratory_id);
 alter table log.edu_grade_changes add constraint pk_avwxfilyf3q6wgc4oepc6up77 primary key (id);
 alter table log.edu_room_apply_audit_logs add constraint pk_ocfq5rdpfs7hbgaukwe3r0a3x primary key (id);
 alter table log.std_spa_downloads add constraint pk_lvpw649482hrcwssqe7126o0x primary key (id);

@@ -230,8 +230,8 @@ create index idx_7jjbv89v7xsd97ul68dg75q48 on his.edu_ga_grades (course_grade_id
 create index idx_ge26c8oiqt7qus9se6lhkm1lm on his.edu_regular_grades (clazz_id);
 create index idx_qveyhipxc0xk5wlfghb0ypuoe on his.edu_regular_grades (std_id);
 create index idx_cgqdfncp4cyc44didyefmiem2 on his.edu_regular_test_grades (regular_grade_id);
-create index idx_hn9ums9atciucv0ql2e3mh6f1 on lab.experiment_activities (experiment_id);
-create index idx_mb8mw8hrmefu0u1g1l36nxoe3 on lab.experiment_activities_labs (experiment_activity_id);
+create index idx_5pdh9qryix36eaw5nrncfwlji on lab.lab_experiments (task_id);
+create index idx_375h8err64n0ull44fwcu8pw9 on lab.lab_tasks_labs (lab_task_id);
 create index idx_685qcltuowforqswdtamn9twj on prac.inv_closure_review_details (review_id);
 create index idx_m2t7iuwlel6emr4vx22n4qehv on prac.inv_closure_review_groups_experts (closure_review_group_id);
 create index idx_jt69c02pxw1fluu7c5bcjoj36 on prac.inv_init_review_details (review_id);
