@@ -17,6 +17,7 @@
 
 package org.openurp.base.service.impl
 
+import org.beangle.commons.bean.Initializing
 import org.beangle.commons.codec.digest.Digests
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Strings
@@ -38,7 +39,7 @@ import javax.sql.DataSource
  * @param platformDataSource
  * @param hostname
  */
-class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, hostname: String) extends UserRepo, Logging {
+class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, hostname: String) extends UserRepo, Logging, Initializing {
 
   private var orgId: Int = _
   private var domainId: Int = _
@@ -46,6 +47,13 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
   private var dimensionDepartmentId: Int = _
 
   private var emsJdbcExecutor: JdbcExecutor = _
+
+  /** 用户过期后，账户仍然可用的天数 */
+  var idleDays: Int = 90
+
+  override def init(): Unit = {
+    require(idleDays >= 0, "账户停滞天数需要为非负整数")
+  }
 
   if (null != platformDataSource) {
     emsJdbcExecutor = new JdbcExecutor(platformDataSource)
@@ -129,10 +137,10 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     //有条件的更新教职工账户的结束日期
     user.endOn match
       case None =>
-        if (!user.persisted) user.endOn = staff.endOn //如果是新用户则设置过期时间
+        if (!user.persisted) user.endOn = staff.endOn.map(_.plusDays(idleDays)) //如果是新用户则设置过期日期+idleDays天
       case Some(endOn) =>
         staff.endOn foreach { staffEndOn =>
-          if (staffEndOn.isAfter(endOn)) user.endOn = Some(staffEndOn)
+          if (staffEndOn.isAfter(endOn)) user.endOn = Some(staffEndOn.plusDays(idleDays))
         }
     user.updatedAt = Instant.now
     user.gender = staff.gender
@@ -169,7 +177,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         newUser.category = category
         newUser.email = Option(newUser.code + "@unknown.com")
         newUser.beginOn = std.beginOn
-        newUser.endOn = Option(std.maxEndOn)
+        newUser.endOn = Option(std.maxEndOn.plusDays(idleDays)) //初始为结束日期+idleDays天
         newUser
     }
     if (user.group.isEmpty) {
