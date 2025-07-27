@@ -143,4 +143,12 @@ class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBase
   def disciplineCode: String = {
     major.getDisciplineCode(beginOn)
   }
+
+  def stdTypeNames: String = {
+    stdTypeNames("，")
+  }
+
+  def stdTypeNames(sep: String): String = {
+    stdTypes.map(_.name).mkString(sep)
+  }
 }
