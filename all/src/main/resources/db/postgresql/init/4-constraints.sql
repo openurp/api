@@ -661,6 +661,15 @@ alter table edu.major_plan_courses add constraint fk_5y31fkbotohec2w77hlqvb3an f
 alter table edu.major_plan_courses add constraint fk_cpur8aumdrrxdxdcxosq9i8e9 foreign key (stage_id) references base.calendar_stages (id);
 alter table edu.major_plan_courses add constraint fk_fy23vsj0y540goto20im2k2b7 foreign key (group_id) references edu.major_course_groups (id);
 alter table edu.major_plans add constraint fk_n3g1jvkcrf58m586jfv9adglm foreign key (program_id) references edu.programs (id);
+alter table edu.mini_clazz_activities add constraint fk_2ud09ne4h8n8j2ds3hhajp5a9 foreign key (advisor1_id) references base.users (id);
+alter table edu.mini_clazz_activities add constraint fk_lyrbqkvrq062g0qkwffp8tnrv foreign key (mini_clazz_id) references edu.mini_clazzes (id);
+alter table edu.mini_clazz_activities add constraint fk_ocss8b1rk38m8rupwrvyysv1g foreign key (advisor2_id) references base.users (id);
+alter table edu.mini_clazz_activities add constraint fk_qgqcs7mn2kbspko6hinps92ts foreign key (teacher_id) references base.teachers (id);
+alter table edu.mini_clazzes add constraint fk_fmhlll73mqj7xkjrk87vd263t foreign key (project_id) references base.projects (id);
+alter table edu.mini_clazzes add constraint fk_g54qg0i9hm1nbmg2m6a7n839i foreign key (teacher_id) references base.teachers (id);
+alter table edu.mini_clazzes add constraint fk_hnrgbw7etthlww63oc1ryxuhn foreign key (course_id) references base.courses (id);
+alter table edu.mini_clazzes_stds add constraint fk_daujuml3i7o557awedjldp7wv foreign key (mini_clazz_id) references edu.mini_clazzes (id);
+alter table edu.mini_clazzes_stds add constraint fk_j7dorxuc3wd616p5c69d12lsq foreign key (student_id) references base.students (id);
 alter table edu.moral_grades add constraint fk_ajmpi0vpnwedkblj97agkampw foreign key (std_id) references base.students (id);
 alter table edu.moral_grades add constraint fk_d5ao36odp5nxtmtlcvklnb0ug foreign key (semester_id) references base.semesters (id);
 alter table edu.moral_grades add constraint fk_rstufccmh1773bqit1b9v8cat foreign key (grading_mode_id) references code.grading_modes (id);

@@ -505,7 +505,7 @@ alter table edu.course_grades add constraint uk_xitxltysiibv3efvpe69hk1j unique 
 alter table edu.course_takers add constraint pk_r9e52tj7ca5ohhmokt4nw1h8e primary key (id);
 alter table edu.course_takers add constraint uk_9pqkafkcyi7pe6799lg614vay unique (std_id,course_id,semester_id);
 alter table edu.course_tasks add constraint pk_t2hnkntagl4pt5brhlsq5idg7 primary key (id);
-alter table edu.course_tasks add constraint uk_3frid92ox3grog2rfffm12lci unique (semester_id,course_id,department_id);
+alter table edu.course_tasks add constraint uk_rp2ft51pyobp9n4y4u0hx6hso unique (semester_id,course_id,idx);
 alter table edu.course_tasks_teachers add constraint pk_oj0gk5qp3paxe0shf72mu0a72 primary key (course_task_id,teacher_id);
 alter table edu.exam_activities add constraint pk_1n892fv0956m99fkw49r4k5y7 primary key (id);
 alter table edu.exam_activities_rooms add constraint pk_6cw1w9e67eqd2bybivya2qb8h primary key (exam_activity_id,exam_room_id);
@@ -561,6 +561,9 @@ alter table edu.major_course_groups add constraint pk_3nxbhw8uol7n3nw0kpsdr6lvr 
 alter table edu.major_plan_courses add constraint pk_3wd4vyblbfks1j2lwty25qnbu primary key (id);
 alter table edu.major_plan_courses add constraint uk_bmxrewotma5nd0dxovv1m77cw unique (group_id,course_id);
 alter table edu.major_plans add constraint pk_ohol0jsnb6did1juitfw0awos primary key (id);
+alter table edu.mini_clazz_activities add constraint pk_6km9ontbm925da7x6y1d0jxh6 primary key (id);
+alter table edu.mini_clazzes add constraint pk_6b9ghfkpxs4254cqx2ta74dmx primary key (id);
+alter table edu.mini_clazzes_stds add constraint pk_gf6ecj0anc2bodb5uq0f2jtx0 primary key (mini_clazz_id,student_id);
 alter table edu.moral_grades add constraint pk_t3qyjinvsnfy0y84um9prvcmq primary key (id);
 alter table edu.occupancies add constraint pk_cv4gsidr885aanuscffivwbb7 primary key (id);
 alter table edu.program_course_labels add constraint pk_aejk5w39nv0dg8818jwpg67bq primary key (id);

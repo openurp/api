@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.44.1">
+<db engine="PostgreSQL" version="0.44.2">
   <schemas>
     <schema name="base">
       <tables>
@@ -5838,6 +5838,7 @@
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="director_id" type="bigint" comment="教师信息ID"/>
             <column name="extra_hours" type="integer" comment="课外学时"/>
+            <column name="idx" type="smallint" nullable="false" defaultValue="1" comment="顺序号"/>
             <column name="office_id" type="bigint" comment="教研室ID"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="syllabus_required" type="boolean" nullable="false" defaultValue="true" comment="是否需要大纲"/>
@@ -5846,11 +5847,11 @@
             <primary-key name="pk_t2hnkntagl4pt5brhlsq5idg7" columns="id"/>
             <foreign-key name="fk_4p283ey16d4vucl25radomhf3" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
             <foreign-key name="fk_cqr6alvvovahiqrmik0w7yx7s" column="director_id" referenced-table="base.teachers" referenced-column="id"/>
+            <foreign-key name="fk_8orryf4ykp81il5nm3mxxoavy" column="office_id" referenced-table="base.teaching_offices" referenced-column="id"/>
             <foreign-key name="fk_a2tal3bxk0lh94b1mh5tbeppx" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_9y4fahxcv53ackqgyye3ybh3r" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
-            <foreign-key name="fk_8orryf4ykp81il5nm3mxxoavy" column="office_id" referenced-table="base.teaching_offices" referenced-column="id"/>
             <foreign-key name="fk_fk1kvrmumyid0nwwn1on41d6g" column="department_id" referenced-table="base.departments" referenced-column="id"/>
-            <unique-key name="uk_3frid92ox3grog2rfffm12lci" columns="semester_id,course_id,department_id"/>
+            <unique-key name="uk_rp2ft51pyobp9n4y4u0hx6hso" columns="semester_id,course_id,idx"/>
           </constraints>
         </table>
         <table name="course_tasks_teachers" comment="课程任务-任课教师@course">
@@ -6749,6 +6750,62 @@
           </constraints>
           <indexes>
             <index name="idx_5kjqjfeqltk9lomhga2doccnh" columns="program_id"/>
+          </indexes>
+        </table>
+        <table name="mini_clazz_activities" comment="小课上课安排@clazz">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="advisor1_id" type="bigint" comment="辅导老师1ID"/>
+            <column name="advisor2_id" type="bigint" comment="辅导老师2ID"/>
+            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
+            <column name="begin_unit" type="smallint" nullable="false" defaultValue="0" comment="开始节次"/>
+            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
+            <column name="end_unit" type="smallint" nullable="false" defaultValue="0" comment="结束节次"/>
+            <column name="mini_clazz_id" type="bigint" nullable="false" comment="小课ID"/>
+            <column name="start_on" type="date" nullable="false" comment="开始日期"/>
+            <column name="teacher_id" type="bigint" comment="授课教师ID"/>
+            <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_6km9ontbm925da7x6y1d0jxh6" columns="id"/>
+            <foreign-key name="fk_qgqcs7mn2kbspko6hinps92ts" column="teacher_id" referenced-table="base.teachers" referenced-column="id"/>
+            <foreign-key name="fk_ocss8b1rk38m8rupwrvyysv1g" column="advisor2_id" referenced-table="base.users" referenced-column="id"/>
+            <foreign-key name="fk_lyrbqkvrq062g0qkwffp8tnrv" column="mini_clazz_id" referenced-table="edu.mini_clazzes" referenced-column="id"/>
+            <foreign-key name="fk_2ud09ne4h8n8j2ds3hhajp5a9" column="advisor1_id" referenced-table="base.users" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_q821i08k5uk8aef9ku718jnhw" columns="mini_clazz_id"/>
+          </indexes>
+        </table>
+        <table name="mini_clazzes" comment="小课@clazz">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="crn" type="varchar(255)" nullable="false" comment="课程序号"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="teacher_id" type="bigint" comment="授课教师ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_6b9ghfkpxs4254cqx2ta74dmx" columns="id"/>
+            <foreign-key name="fk_g54qg0i9hm1nbmg2m6a7n839i" column="teacher_id" referenced-table="base.teachers" referenced-column="id"/>
+            <foreign-key name="fk_hnrgbw7etthlww63oc1ryxuhn" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_fmhlll73mqj7xkjrk87vd263t" column="project_id" referenced-table="base.projects" referenced-column="id"/>
+          </constraints>
+        </table>
+        <table name="mini_clazzes_stds" comment="小课学生名单@clazz">
+          <columns>
+            <column name="mini_clazz_id" type="bigint" nullable="false" comment="小课ID"/>
+            <column name="student_id" type="bigint" nullable="false" comment="学生ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_gf6ecj0anc2bodb5uq0f2jtx0" columns="mini_clazz_id,student_id"/>
+            <foreign-key name="fk_daujuml3i7o557awedjldp7wv" column="mini_clazz_id" referenced-table="edu.mini_clazzes" referenced-column="id"/>
+            <foreign-key name="fk_j7dorxuc3wd616p5c69d12lsq" column="student_id" referenced-table="base.students" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_jdfyocb0rx7cybidywsoje2ge" columns="mini_clazz_id"/>
           </indexes>
         </table>
         <table name="moral_grades" comment="德育成绩@grade.moral">

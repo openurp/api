@@ -156,6 +156,8 @@ create index idx_h0ysdj9584dxm8l728cffxrrl on edu.major_course_groups (plan_id);
 create index idx_k721uxxb3t08ojvw2gw6s4nt5 on edu.major_course_groups (parent_id);
 create index idx_lew5g9v57qxwekv4aherpblii on edu.major_plan_courses (group_id);
 create index idx_5kjqjfeqltk9lomhga2doccnh on edu.major_plans (program_id);
+create index idx_q821i08k5uk8aef9ku718jnhw on edu.mini_clazz_activities (mini_clazz_id);
+create index idx_jdfyocb0rx7cybidywsoje2ge on edu.mini_clazzes_stds (mini_clazz_id);
 create index idx_5c8y9mjfcmi8qfg5ktnfmhq8e on edu.occupancies (room_id);
 create index idx_cibqwhtpc8x3gdpclaxfh296j on edu.occupancies (activity_id);
 create index idx_ddxl05y02vs65yn5vwqhnn5rk on edu.occupancies (start_on);
