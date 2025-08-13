@@ -29,6 +29,8 @@ import scala.collection.mutable
 /** 课程执教信息
  */
 class CourseTask extends LongId {
+  /** 同课程不同任务的顺序号 */
+  var idx: Short = 1
   /** 课程 */
   var course: Course = _
   /** 开课院系 */

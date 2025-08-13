@@ -138,3 +138,17 @@ StdCreditStat.repeatCount=重修数量
 
 ScheduleSuggest=排课建议
 ScheduleSuggestActivity=排课建议活动
+
+MiniClazz=小课
+MiniClazz.crn=课程序号
+MiniClazz.teacher=授课教师
+MiniClazz.advisors=小课辅导老师
+MiniClazz.stds=小课学生名单
+
+MiniClazzActivity=小课上课安排
+MiniClazzActivity.time=上课时间
+MiniClazzActivity.beginUnit=开始节次
+MiniClazzActivity.endUnit=结束节次
+MiniClazzActivity.teacher=授课教师
+MiniClazzActivity.advisor1=辅导老师1
+MiniClazzActivity.advisor2=辅导老师2

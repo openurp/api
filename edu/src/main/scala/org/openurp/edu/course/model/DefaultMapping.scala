@@ -91,7 +91,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[CourseTask] declare { e =>
-      index("", true, e.semester, e.course, e.department)
+      index("", true, e.semester, e.course, e.idx)
     }
 
     bind[ClazzPlan] declare { e =>

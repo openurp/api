@@ -110,5 +110,10 @@ class DefaultMapping extends MappingModule {
       index("", true, e.clazz)
     }
     bind[ScheduleSuggestActivity]
+
+    bind[MiniClazz] declare { e =>
+      e.activities is depends("miniclazz")
+    }
+    bind[MiniClazzActivity]
   }
 }
