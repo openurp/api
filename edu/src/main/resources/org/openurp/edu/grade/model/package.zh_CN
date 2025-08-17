@@ -171,11 +171,12 @@ RegularGradeState.status=状态
 RegularGradeState.excellentRateLimit=优秀率上限
 RegularGradeState.excellentRate=优秀率
 
-RegularGradeStateItem=平时成绩百分比
-RegularGradeStateItem.scorePercent=百分比
+RegularTestGradeState=平时成绩百分比
+RegularTestGradeState.scorePercent=百分比
 
-RegularGradeItem=平时测试成绩
-RegularGradeItem.score=分数
-RegularGradeItem.scorePercent=百分比
+RegularTestGrade=平时测试成绩
+RegularTestGrade.score=分数
+RegularTestGrade.scorePercent=百分比
+RegularTestGrade.details=明细
 
 RegularComponent=平时测试类型

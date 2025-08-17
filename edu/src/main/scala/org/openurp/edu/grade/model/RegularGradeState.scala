@@ -33,7 +33,7 @@ class RegularGradeState extends LongId, Updated {
   var clazz: Clazz = _
 
   /** 各个成绩类型的百分比 */
-  var items: mutable.Buffer[RegularGradeStateItem] = Collections.newBuffer[RegularGradeStateItem]
+  var tests: mutable.Buffer[RegularTestGradeState] = Collections.newBuffer[RegularTestGradeState]
 
   /** 成绩状态 */
   var status: Int = _

@@ -36,11 +36,11 @@ class RegularGrade extends LongId, Updated {
 
   var score: Float = _
 
-  var items: mutable.Buffer[RegularGradeItem] = Collections.newBuffer[RegularGradeItem]
+  var tests: mutable.Buffer[RegularTestGrade] = Collections.newBuffer[RegularTestGrade]
 
   var status: Int = _
 
-  def getComponent(gt: RegularComponent): Option[RegularGradeItem] = {
-    items.find(_.component == gt)
+  def getTestGrade(gt: RegularComponent): Option[RegularTestGrade] = {
+    tests.find(_.component == gt)
   }
 }

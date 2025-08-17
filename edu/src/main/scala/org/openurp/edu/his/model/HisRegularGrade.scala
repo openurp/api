@@ -40,10 +40,8 @@ class HisRegularGrade extends LongId, Updated, ArchivedByYear {
   var score: Float = _
   /** 测试成绩 */
   var tests: mutable.Buffer[HisRegularTestGrade] = Collections.newBuffer[HisRegularTestGrade]
-  /** 状态 */
-  var status: Int = _
 
   def getTestGrade(gt: RegularComponent): Option[HisRegularTestGrade] = {
-    tests.find(_.testType == gt)
+    tests.find(_.component == gt)
   }
 }

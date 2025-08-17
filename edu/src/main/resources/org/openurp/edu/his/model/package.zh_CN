@@ -42,6 +42,7 @@ HisRegularGrade.score=分数
 HisRegularTestGrade=历史平时测试成绩
 HisRegularTestGrade.score=分数
 HisRegularTestGrade.scorePercent=百分比
+HisRegularTestGrade.details=明细
 
 HisExamTaker=历史应考学生
 HisExamTaker.clazz=教学任务

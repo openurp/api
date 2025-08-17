@@ -19,11 +19,23 @@ package org.openurp.edu.grade.model
 
 import org.beangle.data.model.LongId
 
-class RegularGradeStateItem extends LongId {
+/** 平时测验成绩
+ *
+ */
+class RegularTestGrade extends LongId {
 
-  var state: RegularGradeState = _
+  /** 平时总评 */
+  var grade: RegularGrade = _
 
+  /** 测验类型 */
+  var component: RegularComponent = _
+
+  /** 百分比 */
   var scorePercent: Int = _
 
-  var component: RegularComponent = _
+  /** 分数 */
+  var score: Float = _
+
+  /** 过程明细 */
+  var details: Option[String] = None
 }

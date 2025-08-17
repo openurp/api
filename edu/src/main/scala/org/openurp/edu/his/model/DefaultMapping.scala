@@ -60,6 +60,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[HisRegularTestGrade].declare { e =>
+      e.details is length(100)
     }
 
     bind[HisCourseTaker].declare { e =>

@@ -28,9 +28,11 @@ class HisRegularTestGrade extends LongId, ArchivedByYear {
   /** 平时成绩 */
   var regularGrade: HisRegularGrade = _
   /** 测验类型 */
-  var testType: RegularComponent = _
+  var component: RegularComponent = _
   /** 百分比 */
   var scorePercent: Int = _
   /** 分数 */
-  var score: Int = _
+  var score: Float = _
+  /** 过程明细 */
+  var details: Option[String] = None
 }
