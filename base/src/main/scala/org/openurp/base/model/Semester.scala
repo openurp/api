@@ -52,6 +52,19 @@ class Calendar extends IntId, Coded, Named, TemporalOn, Updated {
   }
 }
 
+/** 学年度
+ */
+class SchoolYear extends IntId, Named {
+  /** 日历 */
+  var calendar: Calendar = _
+
+  /** 起始年份 */
+  var startYear: Int = _
+
+  /** 是否已经存档 */
+  var archived: Boolean = _
+}
+
 /**
  * 学年学期 </p> 代表的是具体学年度的 学期设置，每个学期的起始日期（起始日期beginOn第一天）和结束日期。
  */
@@ -60,24 +73,23 @@ class Semester extends IntId, Coded, Named, DateRange, Remark {
   /** 日历 */
   var calendar: Calendar = _
 
-  /** 学年度,一般为yyyy-yyyy或者yyyy的格式 */
-  var schoolYear: String = _
-
-  /** 是否已经存档 */
-  var archived: Boolean = _
+  /** 学年度 */
+  var year: SchoolYear = _
 
   /** 学期中的阶段 */
   var stages: mutable.Buffer[SemesterStage] = Collections.newBuffer[SemesterStage]
 
-  def this(id: Int, code: String, schoolYear: String, name: String, beginOn: LocalDate, endOn: LocalDate) = {
+  def this(id: Int, code: String, year: SchoolYear, name: String, beginOn: LocalDate, endOn: LocalDate) = {
     this()
     this.id = id
     this.code = code
-    this.schoolYear = schoolYear
+    this.year = year
     this.name = name
     this.beginOn = beginOn
     this.endOn = endOn
   }
+
+  def schoolYear: String = year.name
 
   def startWeek(): Int = {
     val gc = new GregorianCalendar();
@@ -90,11 +102,11 @@ class Semester extends IntId, Coded, Named, DateRange, Remark {
     Math.ceil(beginOn.until(endOn.plusDays(1), ChronoUnit.DAYS) / 7.0).intValue()
   }
 
-  def this(id: Int, code: String, schoolYear: String, name: String) = {
+  def this(id: Int, code: String, year: SchoolYear, name: String) = {
     this()
     this.id = id
     this.code = code
-    this.schoolYear = schoolYear
+    this.year = year
     this.name = name
   }
 

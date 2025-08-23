@@ -17,20 +17,20 @@
 
 package org.openurp.edu.his.model
 
-import org.beangle.commons.collection.Collections
+import org.beangle.commons.json.{JsonArray, JsonObject}
+import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.ArchivedByYear
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.edu.grade.model.RegularComponent
-
-import scala.collection.mutable
+import org.openurp.edu.grade.model.RegularGrade
 
 /** 归档平时成绩
  */
 @archive
+@beta
 class HisRegularGrade extends LongId, Updated, ArchivedByYear {
   /** 教学班 */
   var clazz: Clazz = _
@@ -39,9 +39,24 @@ class HisRegularGrade extends LongId, Updated, ArchivedByYear {
   /** 分数 */
   var score: Float = _
   /** 测试成绩 */
-  var tests: mutable.Buffer[HisRegularTestGrade] = Collections.newBuffer[HisRegularTestGrade]
+  var testsJson: JsonArray = new JsonArray
 
-  def getTestGrade(gt: RegularComponent): Option[HisRegularTestGrade] = {
-    tests.find(_.component == gt)
+  def tests: Map[String, RegularGrade.Test] = {
+    testsJson.map { t =>
+      val test = RegularGrade.fromJson(t.asInstanceOf[JsonObject])
+      (test.name, test)
+    }.toMap
   }
+
+  def getTest(name: String): Option[RegularGrade.Test] = {
+    findTestJson(name).map(x => RegularGrade.fromJson(x))
+  }
+
+  private def findTestJson(name: String): Option[JsonObject] = {
+    tests.find { t =>
+      val g = t.asInstanceOf[JsonObject]
+      g.getString("name") == name
+    }.asInstanceOf[Option[JsonObject]]
+  }
+
 }

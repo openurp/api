@@ -53,14 +53,10 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[HisRegularGrade].declare { e =>
-      e.tests is depends("regularGrade")
+      e.testsJson is length(500)
 
       index("", false, e.std)
       index("", false, e.clazz)
-    }
-
-    bind[HisRegularTestGrade].declare { e =>
-      e.details is length(100)
     }
 
     bind[HisCourseTaker].declare { e =>

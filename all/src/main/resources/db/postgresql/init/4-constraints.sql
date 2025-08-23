@@ -145,6 +145,7 @@ alter table base.school_lengths add constraint fk_87mhgodwqfrpxle8d86utpq7f fore
 alter table base.school_lengths add constraint fk_j1yagjj51c2c0kawbwj0id46w foreign key (to_grade_id) references base.grades (id);
 alter table base.school_lengths add constraint fk_lff6u1b9psve5syx6ptggugl5 foreign key (major_id) references base.majors (id);
 alter table base.school_lengths add constraint fk_ny033y7pameoqo6j69sw3xguk foreign key (from_grade_id) references base.grades (id);
+alter table base.school_years add constraint fk_985wpou25j9ln7eqhx78pkkxr foreign key (calendar_id) references base.calendars (id);
 alter table base.schools add constraint fk_ewpo25xxpkxlls6vv52k62vi8 foreign key (category_id) references code.institution_categories (id);
 alter table base.schools add constraint fk_g91v3wtr0hm2wnlhslybilkph foreign key (institution_id) references code.institutions (id);
 alter table base.schools add constraint fk_i0amwk9vd4lhgjtb2c943edtf foreign key (division_id) references code.divisions (id);
@@ -154,6 +155,7 @@ alter table base.secretaries_projects add constraint fk_gcpfs8f8p5i6d24j2wl0vvn3
 alter table base.semester_stages add constraint fk_jl04jvpom0k6wop7nh1eh3fse foreign key (semester_id) references base.semesters (id);
 alter table base.semester_stages add constraint fk_ngksdip5d5pfa6ucc660pc4fa foreign key (stage_id) references base.calendar_stages (id);
 alter table base.semesters add constraint fk_96a1r6k5ai5b4h27k6h5jqo08 foreign key (calendar_id) references base.calendars (id);
+alter table base.semesters add constraint fk_rctbi42phvs26hbnar00a3d02 foreign key (year_id) references base.school_years (id);
 alter table base.squads add constraint fk_1e72cwfhqwicrnon6fvxxqgao foreign key (direction_id) references base.directions (id);
 alter table base.squads add constraint fk_2gqdloedvlxm4cl6xvj0ev220 foreign key (master_id) references base.staffs (id);
 alter table base.squads add constraint fk_4nkh1bjskjmir3iv08n49avbb foreign key (edu_type_id) references code.education_types (id);
@@ -714,10 +716,6 @@ alter table edu.programs_degree_courses add constraint fk_868yayysj30xwtd1rywo70
 alter table edu.programs_degree_courses add constraint fk_sut51axvsnyf8sqrqt894pu07 foreign key (program_id) references edu.programs (id);
 alter table edu.programs_std_types add constraint fk_79kom1hj1l5m30fmg3y85seyy foreign key (program_id) references edu.programs (id);
 alter table edu.programs_std_types add constraint fk_8xvgc6vx56yspcomgcyyf5h2f foreign key (std_type_id) references code.std_types (id);
-alter table edu.regular_grade_items add constraint fk_7lpsuggyy1w71kyxblmibw5uo foreign key (grade_id) references edu.regular_grades (id);
-alter table edu.regular_grade_items add constraint fk_r2yycgfww3wreia8ef6s7ocdm foreign key (component_id) references edu.regular_components (id);
-alter table edu.regular_grade_state_items add constraint fk_4s3kgsruvn6b28stf9hj6mrx3 foreign key (state_id) references edu.regular_grade_states (id);
-alter table edu.regular_grade_state_items add constraint fk_e3xonkpsyvu7i3lg3gyxqbf5w foreign key (component_id) references edu.regular_components (id);
 alter table edu.regular_grade_states add constraint fk_j5ace0mxflctid23oeqqhaq8q foreign key (clazz_id) references edu.clazzes (id);
 alter table edu.regular_grades add constraint fk_2oruj40kqq3brkq6rpiswt02n foreign key (std_id) references base.students (id);
 alter table edu.regular_grades add constraint fk_kahcmptsyckx2c6rsh0c88e8q foreign key (clazz_id) references edu.clazzes (id);

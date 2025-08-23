@@ -147,7 +147,9 @@ class DefaultMapping extends MappingModule {
       index("", true, e.course, e.beginOn)
     }
 
-    bind[CourseJournalHour]
+    bind[CourseJournalHour].declare { e =>
+      index("", true, e.journal, e.nature)
+    }
 
     bind[Experiment].declare { e =>
       e.name is length(300)

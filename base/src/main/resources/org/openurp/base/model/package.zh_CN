@@ -100,10 +100,12 @@ Calendar.semesters=包含学期
 Calendar.school=学校
 
 Semester=学年学期
-Semester.schoolYear=学年度,格式2005-2006
 Semester.calendar=教学日历方案类别
-Semester.archived=是否归档
 Semester.stages=阶段列表
+
+SchoolYear=学年度
+SchoolYear.archived=是否归档
+SchoolYear.startYear=起始年份
 
 CalendarStage=日历阶段
 CalendarStage.vacation=是否假期

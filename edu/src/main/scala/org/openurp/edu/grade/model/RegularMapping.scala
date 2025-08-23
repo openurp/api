@@ -23,27 +23,16 @@ class RegularMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[RegularGradeState].declare { e =>
-      e.tests is depends("state")
+      e.componentsJson is length(200)
       index("", true, e.clazz)
     }
 
-    bind[RegularTestGradeState]
-
     bind[RegularGrade].declare { e =>
-      e.tests is depends("grade")
+      e.testsJson is length(500)
 
       index("", true, e.std, e.clazz)
       index("", false, e.std)
       index("", false, e.clazz)
-    }
-
-    bind[RegularTestGrade].declare { e =>
-      e.details is length(100)
-      index("", true, e.grade, e.component)
-    }
-
-    bind[RegularComponent].declare { e =>
-      index("", true, e.name)
     }
   }
 }

@@ -16,6 +16,7 @@ alter table base.course_directors add constraint uk_e3nnjcbf3esj437l6tj2tqt5r un
 alter table base.course_hours add constraint pk_euy5bifeg4jalgolkkxa21w3f primary key (id);
 alter table base.course_hours add constraint uk_q38fksieo0xpcfye7etmfd6rj unique (course_id,nature_id);
 alter table base.course_journal_hours add constraint pk_s8496i9wb7uknu72vs44i8dx7 primary key (id);
+alter table base.course_journal_hours add constraint uk_ke2wt12wi4g02ypp3i7med47s unique (journal_id,nature_id);
 alter table base.course_journals add constraint pk_do83gjyf4jjoo7724iwkd5thn primary key (id);
 alter table base.course_journals add constraint uk_16iu8nblky3qtm9ani5pu7vcs unique (course_id,begin_on);
 alter table base.course_journals_tags add constraint pk_oc31bgxn1cvhvmk0qm0ggi2xx primary key (course_journal_id,course_tag_id);
@@ -77,6 +78,7 @@ alter table base.projects_std_types add constraint pk_8rp3u9k569jpshgo6y2unauns 
 alter table base.rooms add constraint pk_nsj160cru1j6fbgp9le397om7 primary key (id);
 alter table base.rooms add constraint uk_b5l9ebt0gr0vn3qv9qtl0ii71 unique (school_id,code);
 alter table base.school_lengths add constraint pk_dy2p1op9w9eh33o0jks159fxe primary key (id);
+alter table base.school_years add constraint pk_r2s3qxwae2iuu16m6foo51mci primary key (id);
 alter table base.schools add constraint pk_rb90lq0thr3gqpksvhme60v6r primary key (id);
 alter table base.schools add constraint uk_m5x8j64nhdcprk9ghc6622swx unique (code);
 alter table base.secretaries add constraint pk_odcqp0n1ah7oa1cwl4qtwvn9a primary key (id);
@@ -583,11 +585,6 @@ alter table edu.programs add constraint pk_9osl20jg9o3ywqs65190pgm9v primary key
 alter table edu.programs_degree_certificates add constraint pk_4coy86rddcbvfyvyoxdone26l primary key (program_id,certificate_id);
 alter table edu.programs_degree_courses add constraint pk_c56n0ogp63uo4vcl3pp16l842 primary key (program_id,course_id);
 alter table edu.programs_std_types add constraint pk_9ehq0f2rhqjce1anhhw5bcf4b primary key (program_id,std_type_id);
-alter table edu.regular_components add constraint pk_tgvg8q95c32arfjwhvab0e9jl primary key (id);
-alter table edu.regular_components add constraint uk_fer6poij5pu1faeesmobjgrd6 unique (name);
-alter table edu.regular_grade_items add constraint pk_rtv7ycykiee2ps0qiw0qqkveo primary key (id);
-alter table edu.regular_grade_items add constraint uk_lwhulox2yu8sphb2o3nv0a29k unique (grade_id,component_id);
-alter table edu.regular_grade_state_items add constraint pk_5xpxhr1ltbqfxiqgmhpmnmh7a primary key (id);
 alter table edu.regular_grade_states add constraint pk_hnj9nkhhqpuj7yg9v7efhigo6 primary key (id);
 alter table edu.regular_grade_states add constraint uk_nv0dulh1dhs6ddpd0clg8tvac unique (clazz_id);
 alter table edu.regular_grades add constraint pk_83v4fybspmj863btsicnyux6h primary key (id);
@@ -668,7 +665,6 @@ alter table his.edu_exam_grades add constraint pk_51dkrdiskm07r9s0g0r5mv1ei prim
 alter table his.edu_exam_takers add constraint pk_s7u6opjyel7xwlqxxavdnikq3 primary key (id,school_year);
 alter table his.edu_ga_grades add constraint pk_jmcwmshd9usxt264y2pyj8wt4 primary key (id,school_year);
 alter table his.edu_regular_grades add constraint pk_lliu205c73xio4nmhoawmok7t primary key (id,school_year);
-alter table his.edu_regular_test_grades add constraint pk_bafso9a1qa1fb98sjcgaaohkq primary key (id,school_year);
 alter table lab.lab_experiments add constraint pk_cluasve2mn5lsm6jvfxqs77v8 primary key (id);
 alter table lab.lab_experiments add constraint uk_eopmlqm6bmh71p4qw6wdxrfoo unique (task_id,idx);
 alter table lab.lab_tasks add constraint pk_pobmn5lqgf0ngijre9cvc3id9 primary key (id);

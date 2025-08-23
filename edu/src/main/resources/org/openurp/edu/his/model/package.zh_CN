@@ -36,13 +36,8 @@ HisExamGrade.operator=操作者
 HisExamGrade.scorePercent=百分比描述
 
 HisRegularGrade=历史平时过程总评成绩
-HisRegularGrade.status=状态
 HisRegularGrade.score=分数
-
-HisRegularTestGrade=历史平时测试成绩
-HisRegularTestGrade.score=分数
-HisRegularTestGrade.scorePercent=百分比
-HisRegularTestGrade.details=明细
+HisRegularGrade.testsJson=测试分数详情
 
 HisExamTaker=历史应考学生
 HisExamTaker.clazz=教学任务

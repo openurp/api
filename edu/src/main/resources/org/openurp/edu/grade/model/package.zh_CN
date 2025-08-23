@@ -165,18 +165,10 @@ AuditStat.takingCount=正在修读门数
 RegularGrade=平时过程总评成绩
 RegularGrade.status=状态
 RegularGrade.score=分数
+RegularGrade.testsJson=测试分数详情
 
 RegularGradeState=平时总评成绩状态
 RegularGradeState.status=状态
+RegularGradeState.componentsJson=百分比设置
 RegularGradeState.excellentRateLimit=优秀率上限
 RegularGradeState.excellentRate=优秀率
-
-RegularTestGradeState=平时成绩百分比
-RegularTestGradeState.scorePercent=百分比
-
-RegularTestGrade=平时测试成绩
-RegularTestGrade.score=分数
-RegularTestGrade.scorePercent=百分比
-RegularTestGrade.details=明细
-
-RegularComponent=平时测试类型

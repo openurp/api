@@ -222,6 +222,10 @@ class CourseGrade extends LongId, ProjectBased, Grade, Remark {
     this.passed = passed
     this
   }
+
+  def exempt: Boolean = {
+    this.courseTakeType.id == CourseTakeType.Exemption
+  }
 }
 
 object CourseGrade {

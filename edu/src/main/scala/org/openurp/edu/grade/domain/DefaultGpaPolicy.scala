@@ -24,7 +24,7 @@ import org.openurp.base.std.model.Student
 import org.openurp.edu.grade.model.{CourseGrade, StdGpa, StdSemesterGpa, StdYearGpa}
 
 import java.time.Instant
-import scala.collection.mutable.Buffer
+import scala.collection.mutable
 
 class DefaultGpaPolicy extends GpaPolicy {
 
@@ -39,13 +39,13 @@ class DefaultGpaPolicy extends GpaPolicy {
   def calc(std: Student, grades: Iterable[CourseGrade], statDetail: Boolean): StdGpa = {
     val stdGpa = new StdGpa(std)
     if (statDetail) {
-      val gradesMap = Collections.newMap[Semester, Buffer[CourseGrade]]
+      val gradesMap = Collections.newMap[Semester, mutable.Buffer[CourseGrade]]
       for (grade <- grades) {
         val semesterGrades = gradesMap.getOrElseUpdate(grade.semester, Collections.newBuffer)
         semesterGrades += grade
       }
 
-      val yearGradeMap = Collections.newMap[String, Buffer[CourseGrade]]
+      val yearGradeMap = Collections.newMap[String, mutable.Buffer[CourseGrade]]
       gradesMap foreach {
         case (semester, semesterGrades) =>
           val stdTermGpa = new StdSemesterGpa()

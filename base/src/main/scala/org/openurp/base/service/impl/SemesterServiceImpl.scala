@@ -52,7 +52,7 @@ class SemesterServiceImpl extends SemesterService {
   override def getActives(project: Project): Seq[Semester] = {
     val builder = OqlBuilder.from(classOf[Semester], "semester")
       .where("semester.calendar =:calendar", project.calendar)
-    builder.where("semester.archived=false")
+    builder.where("semester.year.archived=false")
     builder.orderBy("semester.beginOn")
     builder.cacheable()
     entityDao.search(builder)
@@ -66,7 +66,7 @@ class SemesterServiceImpl extends SemesterService {
     builder.orderBy("semester.beginOn")
     builder.cacheable()
     val semesters = entityDao.search(builder)
-    semesters.partition(_.archived)
+    semesters.partition(_.year.archived)
   }
 
   /**

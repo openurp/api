@@ -67,7 +67,7 @@ class DefaultCourseGradeProvider extends CourseGradeProvider {
   private def get(std: Student, status: Option[Int], semesters: Iterable[Semester]): Seq[CourseGrade] = {
     val terms =
       if semesters.isEmpty then semesterService.get(std.project, std.beginOn, std.endOn)
-      else semesters.partition(_.archived)
+      else semesters.partition(_.year.archived)
 
     if (terms._2.isEmpty) {
       getHisGrades(std, status, semesters, terms._1.map(_.schoolYear.substring(0, 4).toInt).toSet)
