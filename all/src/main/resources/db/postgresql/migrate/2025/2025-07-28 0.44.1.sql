@@ -33,7 +33,7 @@ alter table base.experiments add constraint fk_qdjbtewk6kkhmrrlcxkrr6h6 foreign 
 create table public.tmp_experiments as
 select s.course_id,se.name,se.experiment_type_id,se.online,se.idx,se.credit_hours,min(sm.begin_on) begin_on,max(s.updated_at) updated_at from edu.syllabus_experiments se,edu.syllabuses s,base.semesters sm
 where s.id=se.syllabus_id and s.semester_id=sm.id
-group by s.course_id,se.name,se.experiment_type_id,se.online,se.idx,se.credit_hours
+group by s.course_id,se.name,se.experiment_type_id,se.online,se.idx,se.credit_hours;
 
 insert into base.experiments(id,name,experiment_type_id,online,credit_hours,course_id,begin_on,updated_at,group_std_count,code)
 select datetime_id(),name,experiment_type_id,online,credit_hours,course_id,begin_on,updated_at,0,idx::varchar from public.tmp_experiments;

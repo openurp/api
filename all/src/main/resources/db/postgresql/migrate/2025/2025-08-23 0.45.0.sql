@@ -1,3 +1,5 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'0.45.0',now(),'增加学年度，重构平时成绩');
 
 alter table base.course_journal_hours add constraint uk_ke2wt12wi4g02ypp3i7med47s unique (journal_id,nature_id);
 
