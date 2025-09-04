@@ -360,7 +360,7 @@ object Syllabus {
       val na = new SyllabusAssessment(newer, a.gradeType, a.component)
       na.idx = a.idx
       na.description = a.description
-      na.scorePercent = a.scorePercent
+      na.weight = a.weight
       na.scoreTable = a.scoreTable
       na.assessCount = a.assessCount
       na.objectivePercents = a.objectivePercents

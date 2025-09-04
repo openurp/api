@@ -34,6 +34,10 @@ class TimeSetting extends IntId, Named, TemporalOn {
   var minutesPerUnit: Short = _
   var units: Buffer[CourseUnit] = new collection.mutable.ListBuffer[CourseUnit]
 
+  def getUnit(indexno: Int): Option[CourseUnit] = {
+    units.find(_.indexno == indexno)
+  }
+
   def getUnitSpan(first: HourMinute, second: HourMinute): (Int, Int) = {
     var startUnit = 100
     var endUnit = 0

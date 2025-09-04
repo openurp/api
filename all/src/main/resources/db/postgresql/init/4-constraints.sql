@@ -191,15 +191,15 @@ alter table base.student_states add constraint fk_j1gq4ujv7im6c5u87f565w7ec fore
 alter table base.student_states add constraint fk_jjg4851d7q2vlnh5hekqk2j7p foreign key (department_id) references base.departments (id);
 alter table base.student_states add constraint fk_r61kwh7jc5qcqmgpe2hcuwehr foreign key (campus_id) references base.campuses (id);
 alter table base.student_states add constraint fk_r7mo41ef1b8jijc798wqqgu8n foreign key (grade_id) references base.grades (id);
+alter table base.student_tutors add constraint fk_4i4sx6r8cxr1rmk7iy3v3b2ma foreign key (std_id) references base.students (id);
+alter table base.student_tutors add constraint fk_9ghft00b7yskfgjjqqsdwathl foreign key (tutor_id) references base.teachers (id);
 alter table base.students add constraint fk_6d9gurs0fdamr1cdg06sekvge foreign key (gender_id) references code.genders (id);
 alter table base.students add constraint fk_9x7brwurtag62dg4e4eugfaf0 foreign key (person_id) references base.people (id);
 alter table base.students add constraint fk_ckx8nxa2wus0fx409kf9yxml1 foreign key (std_type_id) references code.std_types (id);
 alter table base.students add constraint fk_dt1cjx5ve5bdabmuuf3ibrwaq foreign key (user_id) references base.users (id);
-alter table base.students add constraint fk_f9btqdhvos27xdp2qk113lovf foreign key (advisor_id) references base.teachers (id);
 alter table base.students add constraint fk_fpvosmoocxrxvxmr4pc4jd5nd foreign key (edu_type_id) references code.education_types (id);
 alter table base.students add constraint fk_iwt6av1g9bak73nt4sdnyy2t4 foreign key (state_id) references base.student_states (id);
 alter table base.students add constraint fk_lgxtshwn0g0yrwutfpdkfmmgx foreign key (level_id) references code.education_levels (id);
-alter table base.students add constraint fk_mtaqs2mevx0pfdk73hx2incfw foreign key (tutor_id) references base.teachers (id);
 alter table base.students add constraint fk_seph3g6kdeo8x7l5nrtr7c2el foreign key (project_id) references base.projects (id);
 alter table base.students add constraint fk_tfbg32pgto2ksy4nws646hyo2 foreign key (study_type_id) references code.study_types (id);
 alter table base.students_labels add constraint fk_2v43w44u5u61untk5urgkct01 foreign key (std_label_id) references code.std_labels (id);
@@ -667,6 +667,7 @@ alter table edu.mini_clazz_activities add constraint fk_2ud09ne4h8n8j2ds3hhajp5a
 alter table edu.mini_clazz_activities add constraint fk_lyrbqkvrq062g0qkwffp8tnrv foreign key (mini_clazz_id) references edu.mini_clazzes (id);
 alter table edu.mini_clazz_activities add constraint fk_ocss8b1rk38m8rupwrvyysv1g foreign key (advisor2_id) references base.users (id);
 alter table edu.mini_clazz_activities add constraint fk_qgqcs7mn2kbspko6hinps92ts foreign key (teacher_id) references base.teachers (id);
+alter table edu.mini_clazzes add constraint fk_9gat5afvu6t3oi9owwebbvmoe foreign key (semester_id) references base.semesters (id);
 alter table edu.mini_clazzes add constraint fk_fmhlll73mqj7xkjrk87vd263t foreign key (project_id) references base.projects (id);
 alter table edu.mini_clazzes add constraint fk_g54qg0i9hm1nbmg2m6a7n839i foreign key (teacher_id) references base.teachers (id);
 alter table edu.mini_clazzes add constraint fk_hnrgbw7etthlww63oc1ryxuhn foreign key (course_id) references base.courses (id);

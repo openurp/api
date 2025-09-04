@@ -83,11 +83,8 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updated, Remark, Date
   /** 学习形式 全日制/业余/函授 */
   var studyType: StudyType = _
 
-  /** 专业导师 */
-  var tutor: Option[Teacher] = None
-
-  /** 学位论文指导教师 */
-  var advisor: Option[Teacher] = None
+  /** 导师 */
+  var tutors: mutable.Buffer[StudentTutor] = Collections.newBuffer[StudentTutor]
 
   /** 是否延期毕业 */
   var graduationDeferred: Boolean = _
@@ -145,17 +142,38 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updated, Remark, Date
 
   def description: String = s"$code $name ${department.shortName.getOrElse(department.name)}"
 
-  /** 入学时的学科专业代码
-   *
-   * @return
-   */
+  /** 入学时的学科专业代码 */
   def disciplineCode: String = state.get.major.getDisciplineCode(beginOn)
 
-  /** 入学时的学科专业名称
-   *
-   * @return
-   */
+  /** 入学时的学科专业名称 */
   def disciplineName: String = state.get.major.getDisciplineName(beginOn)
+
+  def updateTutors(teachers: Iterable[Teacher], ship: Tutorship): Unit = {
+    val newTutors = teachers.toSet
+    newTutors foreach { t =>
+      if (!this.tutors.exists(x => x.tutor == t && x.tutorship == ship)) {
+        val nt = new StudentTutor(this, t, ship)
+        this.tutors.addOne(nt)
+      }
+    }
+    val removed = this.tutors.filter(x => x.tutorship == ship && !newTutors.contains(x.tutor))
+    this.tutors.subtractAll(removed)
+  }
+
+  /** 专业导师 */
+  def majorTutors: collection.Seq[Teacher] = {
+    tutors.filter(_.tutorship == Tutorship.Major).map(_.tutor)
+  }
+
+  /** 论文指导老师 */
+  def thesisTutor: Option[Teacher] = {
+    tutors.find(_.tutorship == Tutorship.Thesis).map(_.tutor)
+  }
+
+  /** 导师姓名 */
+  def majorTutorNames: String = {
+    tutors.filter(_.tutorship == Tutorship.Major).map(_.tutor.name).mkString(",")
+  }
 }
 
 /**

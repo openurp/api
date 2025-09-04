@@ -23,9 +23,10 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
-import org.openurp.base.model.{ProjectBased, User}
+import org.openurp.base.model.{Project, ProjectBased, Semester, User}
 import org.openurp.base.std.model.Student
 
+import java.time.Instant
 import scala.collection.mutable
 
 @beta
@@ -37,8 +38,15 @@ class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
   /** 课程 */
   var course: Course = _
 
+  /** 学年学期 */
+  var semester: Semester = _
+
   /** 授课教师 */
   var teacher: Option[Teacher] = None
+
+  def scheduleHours: Int = {
+    activities.map(x => (x.endUnit - x.beginUnit + 1) * x.time.weekstate.size).sum
+  }
 
   /** 辅导老师 */
   def advisors: Set[User] = {
@@ -54,4 +62,12 @@ class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
   /** 具体排课结果 */
   var activities: mutable.Set[MiniClazzActivity] = Collections.newSet[MiniClazzActivity]
 
+  def this(crn: String, project: Project, semester: Semester, course: Course) = {
+    this()
+    this.crn = crn
+    this.project = project
+    this.course = course
+    this.semester = semester
+    this.updatedAt = Instant.now
+  }
 }

@@ -58,10 +58,10 @@ class StdAlterApply extends LongId, Remark {
   /** 负责人/受理人账户 */
   var assignees: Option[String] = None
 
-  def newStep(name: String, assignees: Option[String]): StdAlterApplyStep = {
+  def newStep(name: String, idx: Int, assignees: Option[String]): StdAlterApplyStep = {
     steps find (_.name == name) match
       case None =>
-        val step = new StdAlterApplyStep(this, this.steps.size, name)
+        val step = new StdAlterApplyStep(this, idx, name)
         this.steps.addOne(step)
         this.status = name
         this.assignees = assignees

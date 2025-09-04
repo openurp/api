@@ -52,20 +52,20 @@ class RegularGrade extends LongId, Updated {
   }
 
   private def findTestJson(name: String): Option[JsonObject] = {
-    tests.find { t =>
+    testsJson.find { t =>
       val g = t.asInstanceOf[JsonObject]
       g.getString("name") == name
     }.asInstanceOf[Option[JsonObject]]
   }
 
-  def updateTest(name: String, score: Float, percent: Int, details: Option[String] = None): Unit = {
+  def updateTest(name: String, score: Float, weight: Int, details: Option[String] = None): Unit = {
     findTestJson(name) match {
       case None =>
-        testsJson.add(Test(name, score, percent, details).toJson)
+        testsJson.add(Test(name, score, weight, details).toJson)
       case Some(t) =>
         t.add("name", name)
         t.add("score", score)
-        t.add("percent", percent)
+        t.add("weight", weight)
         t.add("details", details.orNull)
     }
   }
@@ -88,17 +88,17 @@ object RegularGrade {
   def fromJson(g: JsonObject): Test = {
     val name = g.getString("name")
     val score = g.getDouble("score").floatValue
-    val percent = g.getInt("percent")
+    val weight = g.getInt("weight")
     val details = Option(g.getString("details", null))
-    Test(name, score, percent, details)
+    Test(name, score, weight, details)
   }
 
-  case class Test(name: String, score: Float, percent: Int, details: Option[String] = None) {
+  case class Test(name: String, score: Float, weight: Int, details: Option[String] = None) {
     def toJson: JsonObject = {
       val j = new JsonObject()
       j.add("name", name)
       j.add("score", score)
-      j.add("percent", percent)
+      j.add("weight", weight)
       j.add("details", details)
     }
   }

@@ -53,7 +53,7 @@ class HisRegularGrade extends LongId, Updated, ArchivedByYear {
   }
 
   private def findTestJson(name: String): Option[JsonObject] = {
-    tests.find { t =>
+    testsJson.find { t =>
       val g = t.asInstanceOf[JsonObject]
       g.getString("name") == name
     }.asInstanceOf[Option[JsonObject]]

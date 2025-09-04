@@ -67,7 +67,7 @@ SyllabusOutcome.title=标题
 SyllabusOutcome.courseObjectives=对应的课程目标
 
 SyllabusAssessment=教学大纲-评估方式比例
-SyllabusAssessment.scorePercent=百分比
+SyllabusAssessment.weight=百分比
 SyllabusAssessment.objectives=对应的课程目标
 SyllabusAssessment.component=小项
 SyllabusAssessment.assessCount=考核次数

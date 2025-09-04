@@ -47,7 +47,7 @@ class HisExamGrade extends LongId, Grade, ArchivedByYear {
   /** 考试情况 */
   var examStatus: ExamStatus = _
   /** 百分比 */
-  var scorePercent: Option[Short] = None
+  var weight: Option[Short] = None
 
   def std: Student = courseGrade.std
 
@@ -61,7 +61,7 @@ class HisExamGrade extends LongId, Grade, ArchivedByYear {
     eg.passed = passed
     eg.operator = operator
     eg.examStatus = examStatus
-    eg.scorePercent = scorePercent
+    eg.weight = weight
     eg
   }
 

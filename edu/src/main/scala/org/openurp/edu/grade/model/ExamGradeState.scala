@@ -19,7 +19,6 @@ package org.openurp.edu.grade.model
 
 import org.beangle.data.model.pojo.Remark
 import org.openurp.code.edu.model.GradeType
-import org.openurp.edu.grade.model.AbstractGradeState
 
 /**
  * 考试成绩状态
@@ -42,5 +41,5 @@ class ExamGradeState extends AbstractGradeState, Remark {
    * 百分比描述 <br>
    * 10% 就是 10， 20% 就是 20<br>
    */
-  var scorePercent: Option[Short] = None
+  var weight: Option[Short] = None
 }

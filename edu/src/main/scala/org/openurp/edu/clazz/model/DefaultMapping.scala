@@ -114,6 +114,8 @@ class DefaultMapping extends MappingModule {
     bind[MiniClazz] declare { e =>
       e.activities is depends("miniClazz")
     }
-    bind[MiniClazzActivity]
+    bind[MiniClazzActivity] declare { e =>
+      e.places is length(200)
+    }
   }
 }

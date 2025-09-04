@@ -40,7 +40,7 @@ class SyllabusAssessment extends LongId {
   var assessCount: Int = _
 
   /** 百分比 */
-  var scorePercent: Int = _
+  var weight: Int = _
 
   /** 对应课程目标的支撑比例 */
   var objectivePercents: Option[String] = None

@@ -147,6 +147,7 @@ MiniClazz.stds=小课学生名单
 
 MiniClazzActivity=小课上课安排
 MiniClazzActivity.time=上课时间
+MiniClazzActivity.places=上课地点
 MiniClazzActivity.beginUnit=开始节次
 MiniClazzActivity.endUnit=结束节次
 MiniClazzActivity.teacher=授课教师

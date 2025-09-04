@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.45.0">
+<db engine="PostgreSQL" version="0.46.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -1365,10 +1365,25 @@
             <index name="idx_5i9qeuhvlwhad4vd9bqi64gqg" columns="squad_id"/>
           </indexes>
         </table>
+        <table name="student_tutors" comment="学生导师@std">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="tutor_id" type="bigint" nullable="false" comment="教师信息ID"/>
+            <column name="tutorship" type="integer" nullable="false" comment="指导关系"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_660n5gg3o56ge0nyioh2nu33i" columns="id"/>
+            <foreign-key name="fk_4i4sx6r8cxr1rmk7iy3v3b2ma" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_9ghft00b7yskfgjjqqsdwathl" column="tutor_id" referenced-table="base.teachers" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_csl0e7vpvsg0kscrmohr9iidu" columns="std_id"/>
+          </indexes>
+        </table>
         <table name="students" comment="学生@std">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="advisor_id" type="bigint" comment="教师信息ID"/>
             <column name="begin_on" type="date" nullable="false" comment="入学日期"/>
             <column name="code" type="varchar(15)" nullable="false" comment="学号"/>
             <column name="duration" type="float4" nullable="false" defaultValue="0" comment="学制/学习年限"/>
@@ -1387,7 +1402,6 @@
             <column name="state_id" type="bigint" comment="学籍状态ID"/>
             <column name="std_type_id" type="integer" nullable="false" comment="学生类别ID"/>
             <column name="study_type_id" type="integer" nullable="false" comment="学习形式ID"/>
-            <column name="tutor_id" type="bigint" comment="导师ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="user_id" type="bigint" nullable="false" comment="账户信息ID"/>
           </columns>
@@ -1396,11 +1410,9 @@
             <foreign-key name="fk_fpvosmoocxrxvxmr4pc4jd5nd" column="edu_type_id" referenced-table="code.education_types" referenced-column="id"/>
             <foreign-key name="fk_6d9gurs0fdamr1cdg06sekvge" column="gender_id" referenced-table="code.genders" referenced-column="id"/>
             <foreign-key name="fk_seph3g6kdeo8x7l5nrtr7c2el" column="project_id" referenced-table="base.projects" referenced-column="id"/>
-            <foreign-key name="fk_f9btqdhvos27xdp2qk113lovf" column="advisor_id" referenced-table="base.teachers" referenced-column="id"/>
             <foreign-key name="fk_tfbg32pgto2ksy4nws646hyo2" column="study_type_id" referenced-table="code.study_types" referenced-column="id"/>
             <foreign-key name="fk_iwt6av1g9bak73nt4sdnyy2t4" column="state_id" referenced-table="base.student_states" referenced-column="id"/>
             <foreign-key name="fk_lgxtshwn0g0yrwutfpdkfmmgx" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
-            <foreign-key name="fk_mtaqs2mevx0pfdk73hx2incfw" column="tutor_id" referenced-table="base.teachers" referenced-column="id"/>
             <foreign-key name="fk_9x7brwurtag62dg4e4eugfaf0" column="person_id" referenced-table="base.people" referenced-column="id"/>
             <foreign-key name="fk_ckx8nxa2wus0fx409kf9yxml1" column="std_type_id" referenced-table="code.std_types" referenced-column="id"/>
             <foreign-key name="fk_dt1cjx5ve5bdabmuuf3ibrwaq" column="user_id" referenced-table="base.users" referenced-column="id"/>
@@ -5955,9 +5967,9 @@
             <column name="grading_mode_id" type="integer" nullable="false" comment="成绩记录方式ID"/>
             <column name="operator" type="varchar(100)" nullable="false" comment="操作者"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="score_percent" type="smallint" comment="百分比描述"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="weight" type="smallint" comment="百分比"/>
           </columns>
           <constraints>
             <primary-key name="pk_4wy4ksg5gx6h85tb11hphty4b" columns="id"/>
@@ -5981,10 +5993,10 @@
             <column name="operator" type="varchar(100)" comment="操作者"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="score" type="float4" comment="得分"/>
-            <column name="score_percent" type="smallint" comment="百分比描述"/>
             <column name="score_text" type="varchar(10)" comment="得分字面值"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="weight" type="smallint" comment="百分比"/>
           </columns>
           <constraints>
             <primary-key name="pk_kgkg3a3map061ka3c7kevp21e" columns="id"/>
@@ -6593,7 +6605,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="credit_hours" type="integer" nullable="false" defaultValue="0" comment="学时"/>
             <column name="file_path" type="varchar(255)" comment="附件路径"/>
-            <column name="homework" type="varchar(1000)" comment="作业"/>
+            <column name="homework" type="varchar(2000)" comment="作业"/>
             <column name="idx" type="integer" nullable="false" defaultValue="0" comment="序号"/>
             <column name="lesson_on" type="date" nullable="false" comment="上课日期"/>
             <column name="program_id" type="bigint" nullable="false" comment="教案ID"/>
@@ -6776,6 +6788,7 @@
             <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="end_unit" type="smallint" nullable="false" defaultValue="0" comment="结束节次"/>
             <column name="mini_clazz_id" type="bigint" nullable="false" comment="小课ID"/>
+            <column name="places" type="varchar(200)" comment="上课地点"/>
             <column name="start_on" type="date" nullable="false" comment="开始日期"/>
             <column name="teacher_id" type="bigint" comment="授课教师ID"/>
             <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
@@ -6798,6 +6811,7 @@
             <column name="crn" type="varchar(255)" nullable="false" comment="课程序号"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="teacher_id" type="bigint" comment="授课教师ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
@@ -6806,6 +6820,7 @@
             <foreign-key name="fk_g54qg0i9hm1nbmg2m6a7n839i" column="teacher_id" referenced-table="base.teachers" referenced-column="id"/>
             <foreign-key name="fk_hnrgbw7etthlww63oc1ryxuhn" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_fmhlll73mqj7xkjrk87vd263t" column="project_id" referenced-table="base.projects" referenced-column="id"/>
+            <foreign-key name="fk_9gat5afvu6t3oi9owwebbvmoe" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
           </constraints>
         </table>
         <table name="mini_clazzes_stds" comment="小课学生名单@clazz">
@@ -7661,9 +7676,9 @@
             <column name="grade_type_id" type="integer" nullable="false" comment="成绩类型ID"/>
             <column name="idx" type="integer" nullable="false" defaultValue="0" comment="序号"/>
             <column name="objective_percents" type="varchar(255)" comment="对应课程目标的支撑比例"/>
-            <column name="score_percent" type="integer" nullable="false" defaultValue="0" comment="百分比"/>
             <column name="score_table" type="varchar(10000)" comment="评分表"/>
             <column name="syllabus_id" type="bigint" nullable="false" comment="课程教学大纲ID"/>
+            <column name="weight" type="integer" nullable="false" defaultValue="0" comment="百分比"/>
           </columns>
           <constraints>
             <primary-key name="pk_kkqki8ddvk7onx4uuooy2utc6" columns="id"/>
@@ -7848,6 +7863,7 @@
             <primary-key name="pk_gvfpeyn4hpqvnncfuqj8uymtt" columns="id"/>
             <foreign-key name="fk_sell6w4dvnuyx1w7861rrwtxo" column="nature_id" referenced-table="code.teaching_natures" referenced-column="id"/>
             <foreign-key name="fk_8r4ui8xa3dcu5w1deaknx8603" column="topic_id" referenced-table="edu.syllabus_topics" referenced-column="id"/>
+            <unique-key name="uk_gnlcnb1b2bc4egpay5tjm8qyo" columns="topic_id,nature_id"/>
           </constraints>
           <indexes>
             <index name="idx_bvfnvma9c5es1u33pagskn816" columns="topic_id"/>
@@ -8403,10 +8419,10 @@
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="score" type="float4" comment="得分"/>
-            <column name="score_percent" type="smallint" comment="百分比描述"/>
             <column name="score_text" type="varchar(10)" comment="得分字面值"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="weight" type="smallint" comment="百分比"/>
           </columns>
           <constraints>
             <primary-key name="pk_51dkrdiskm07r9s0g0r5mv1ei" columns="id,school_year"/>

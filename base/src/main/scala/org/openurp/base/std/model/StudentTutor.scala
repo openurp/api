@@ -15,38 +15,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.base.std.model
 
-import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.openurp.base.hr.model.Teacher
-import org.openurp.base.model.User
 
-/** 小课上课安排
+/** 学生导师
  */
-class MiniClazzActivity extends LongId {
+class StudentTutor extends LongId {
 
-  /** 教学任务 */
-  var miniClazz: MiniClazz = _
+  var std: Student = _
 
-  /** 上课时间 */
-  var time: WeekTime = _
+  var tutor: Teacher = _
 
-  /** 上课地点 */
-  var places: Option[String] = None
+  var tutorship: Tutorship = Tutorship.Major
 
-  /** 开始节次 */
-  var beginUnit: Short = _
+  def this(std: Student, tutor: Teacher, tutorship: Tutorship) = {
+    this()
+    this.std = std
+    this.tutor = tutor
+    this.tutorship = tutorship
+  }
 
-  /** 结束节次 */
-  var endUnit: Short = _
+  def name: String = {
+    tutor.name
+  }
+}
 
-  /** 授课教师 */
-  var teacher: Option[Teacher] = None
-
-  /** 辅导老师1 */
-  var advisor1: Option[User] = None
-
-  /** 辅导老师2 */
-  var advisor2: Option[User] = None
+enum Tutorship(val id: Int, val name: String) {
+  case Major extends Tutorship(1, "学业导师")
+  case Thesis extends Tutorship(2, "论文指导导师")
 }

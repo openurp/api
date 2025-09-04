@@ -6,7 +6,6 @@ HisCourseGrade.clazz=教学任务
 HisCourseGrade.gradingMode=成绩记录方式
 HisCourseGrade.operator=操作者
 HisCourseGrade.passed=是否通过
-HisCourseGrade.personPercent=个人百分比
 HisCourseGrade.published=是否发布
 HisCourseGrade.score=得分
 HisCourseGrade.scoreText=得分字面值
@@ -33,7 +32,7 @@ HisExamGrade.courseGrade=对应的课程成绩
 HisExamGrade.status=成绩状态
 HisExamGrade.passed=是否通过
 HisExamGrade.operator=操作者
-HisExamGrade.scorePercent=百分比描述
+HisExamGrade.weight=百分比
 
 HisRegularGrade=历史平时过程总评成绩
 HisRegularGrade.score=分数

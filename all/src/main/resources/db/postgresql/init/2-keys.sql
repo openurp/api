@@ -94,6 +94,7 @@ alter table base.staff_titles add constraint pk_c3kp7wxy16bvr5wxt7qo0nk2d primar
 alter table base.staffs add constraint pk_qi7hj56hag2uu4e5eu4egoxrl primary key (id);
 alter table base.staffs add constraint uk_ksaq070k32jb6aey065dd9xv0 unique (school_id,code);
 alter table base.student_states add constraint pk_4qvivd9quhlhb7ft0dsewhsnt primary key (id);
+alter table base.student_tutors add constraint pk_660n5gg3o56ge0nyioh2nu33i primary key (id);
 alter table base.students add constraint pk_dp1c3lp7694lu2ri6rfh6n7g8 primary key (id);
 alter table base.students add constraint uk_50fnp38f8oyhuolhke7nu920t unique (code,project_id);
 alter table base.students_labels add constraint pk_ramuktutb3f32cwgsbe0apovk primary key (student_id,std_label_id,std_label_type_id);
@@ -632,6 +633,7 @@ alter table edu.syllabus_outcomes add constraint pk_fkpwvl02mv1b3t242nvjdhc7y pr
 alter table edu.syllabus_texts add constraint pk_2rachttiq9lrns6e7hg27u4qi primary key (id);
 alter table edu.syllabus_topic_elements add constraint pk_96jmnw2djmc7krs2lmajwimmu primary key (id);
 alter table edu.syllabus_topic_hours add constraint pk_gvfpeyn4hpqvnncfuqj8uymtt primary key (id);
+alter table edu.syllabus_topic_hours add constraint uk_gnlcnb1b2bc4egpay5tjm8qyo unique (topic_id,nature_id);
 alter table edu.syllabus_topics add constraint pk_gw33mmc7iikocb980jda9ma31 primary key (id);
 alter table edu.syllabuses add constraint pk_djhmwl2mslpebwr381gmwjina primary key (id);
 alter table edu.syllabuses add constraint uk_53qtlhikj7jd9epqcxw2cqlm unique (semester_id,course_id,writer_id,doc_locale);

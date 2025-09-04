@@ -108,7 +108,7 @@ class CourseGradeState extends AbstractGradeState {
 
   def getPercent(gradeType: GradeType): Option[Short] = {
     examStates.find(_.gradeType.id == gradeType.id) match {
-      case Some(es) => es.scorePercent
+      case Some(es) => es.weight
       case None => None
     }
   }

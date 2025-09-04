@@ -79,6 +79,7 @@ begin
   return rs;
 end;
 $BODY$;
+
 CREATE OR REPLACE FUNCTION public.bitand(
 	bigint,
 	bigint)
@@ -93,7 +94,6 @@ begin
   return rs;
 end;
 $BODY$;
-
 
 CREATE OR REPLACE FUNCTION public.instr(
 	character varying,
@@ -152,7 +152,6 @@ BEGIN
     END IF;
 END;
 $BODY$;
-
 
 CREATE OR REPLACE FUNCTION public.instr(
 	string character varying,
@@ -236,7 +235,6 @@ begin
 end;
 $BODY$;
 
-
 CREATE OR REPLACE FUNCTION public.minutes(
 	integer)
     RETURNS integer
@@ -259,18 +257,6 @@ begin
 end;
 $BODY$;
 
-CREATE OR REPLACE FUNCTION public.bitand(
-  bigint,bigint)
-RETURNS bigint
-    LANGUAGE 'plpgsql'
-    COST 100
-    VOLATILE
-AS $BODY$
-begin
-  return $1 &  $2 ;
-end;
-$BODY$;
-
 CREATE OR REPLACE FUNCTION abs (
     p                           interval
 ) RETURNS interval
@@ -279,6 +265,7 @@ CREATE OR REPLACE FUNCTION abs (
 AS $$
 SELECT GREATEST (p, -p)
 $$;
+
 CREATE SEQUENCE public.seq_date
     CYCLE
     INCREMENT 1
@@ -349,4 +336,3 @@ begin
 end;
 
 $BODY$;
-

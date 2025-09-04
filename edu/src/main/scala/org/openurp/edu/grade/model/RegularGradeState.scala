@@ -66,16 +66,16 @@ object RegularGradeState {
   def fromJson(g: JsonObject): Component = {
     val id = g.getInt("id")
     val name = g.getString("name")
-    val percent = g.getInt("percent")
-    Component(id, name, percent)
+    val weight = g.getInt("weight")
+    Component(id, name, weight)
   }
 
-  case class Component(id: Int, name: String, percent: Int) {
+  case class Component(id: Int, name: String, weight: Int) {
     def toJson: JsonObject = {
       val j = new JsonObject()
-      j.add("name", id)
+      j.add("id", id)
       j.add("name", name)
-      j.add("percent", percent)
+      j.add("weight", weight)
     }
   }
 }
