@@ -4,7 +4,7 @@ values(next_id('base.versions'),'0.46.0',now(),'增加双导师支持');
 --score_percent to weight
 alter table edu.exam_grade_states rename score_percent to weight;
 alter table edu.exam_grades rename score_percent to weight;
-alter table edu.edu_exam_grades rename score_percent to weight;
+alter table his.edu_exam_grades rename score_percent to weight;
 alter table edu.syllabus_assessments rename score_percent to weight;
 
 update edu.regular_grades
