@@ -9,13 +9,30 @@ alter table edu.syllabus_assessments rename score_percent to weight;
 
 update edu.regular_grades
 SET tests_json =
-  tests_json - 'percent' || jsonb_build_object('weight', tests_json->'percent')
-WHERE tests_json ? 'percent';
+ (
+  SELECT jsonb_agg(
+    -- 对数组中的每个对象进行处理
+    jsonb_build_object(
+      'name', elem->'name',
+      'score', elem->'score',
+      'weight', elem->'percent'  -- 将percent的值赋给weight
+    )
+  )
+  FROM jsonb_array_elements(tests_json) AS elem  -- 展开数组
+);
 
 update edu.regular_grade_states
 SET components_json =
-  components_json - 'percent' || jsonb_build_object('weight', components_json->'percent')
-WHERE components_json ? 'percent';
+ (
+  SELECT jsonb_agg(
+    -- 对数组中的每个对象进行处理
+    jsonb_build_object(
+      'name', elem->'name',
+      'weight', elem->'percent'  -- 将percent的值赋给weight
+    )
+  )
+  FROM jsonb_array_elements(components_json) AS elem  -- 展开数组
+);
 
 --mini clazz
 alter table edu.mini_clazzes add semester_id int4;
