@@ -20,7 +20,7 @@ package org.openurp.edu.program.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
-import org.openurp.base.edu.model.{Course, Direction, Major}
+import org.openurp.base.edu.model.{Course, Major, MajorDirection}
 import org.openurp.base.model.{AuditStatus, Campus, Department, EduLevelBased}
 import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.*
@@ -29,8 +29,7 @@ import org.openurp.code.std.model.StdType
 import java.time.Instant
 import scala.collection.mutable
 
-/**
- * 专业培养方案
+/** 专业培养方案
  *
  * @author chaostone
  *
@@ -47,7 +46,7 @@ class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBase
   var major: Major = _
 
   /** 专业方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
 
   /** 学生类别 */
   var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]

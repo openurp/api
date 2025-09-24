@@ -19,7 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.model.{Direction, Terms}
+import org.openurp.base.edu.model.{MajorDirection, Terms}
 
 import java.time.Instant
 
@@ -58,7 +58,7 @@ class MajorPlan extends AbstractCoursePlan {
 class MajorCourseGroup extends AbstractCourseGroup {
 
   /** 该组针对的专业方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
 
   /** 开课院系 */
   var departments: Option[String] = None

@@ -20,7 +20,7 @@ package org.openurp.std.transfer.config
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.edu.model.{Major, MajorDirection}
 import org.openurp.base.model.{Department, User}
 
 import java.time.LocalDate
@@ -40,7 +40,7 @@ class TransferOption extends LongId, Remark {
   var major: Major = _
 
   /** 方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
 
   /** 计划人数 */
   var planCount: Int = _

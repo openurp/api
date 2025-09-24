@@ -135,7 +135,7 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updated, Remark, Date
   def major: Major = state.get.major
 
   /** 所在专业方向 */
-  def direction: Option[Direction] = state.get.direction
+  def direction: Option[MajorDirection] = state.get.direction
 
   /** 学生所在班级 */
   def squad: Option[Squad] = state.get.squad
@@ -199,7 +199,7 @@ class StudentState extends LongId, StdEnrollment, DateRange, Remark {
   var major: Major = _
 
   /** 专业方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
 
   /** 行政班级 */
   var squad: Option[Squad] = None
@@ -231,7 +231,7 @@ class StudentScope extends Component {
   /** 专业集合 */
   var majors: mutable.Set[Major] = Collections.newSet[Major]
   /** 专业方向集合 */
-  var directions: mutable.Set[Direction] = Collections.newSet[Direction]
+  var directions: mutable.Set[MajorDirection] = Collections.newSet[MajorDirection]
 }
 
 /**
@@ -239,17 +239,17 @@ class StudentScope extends Component {
  */
 trait StdEnrollment {
 
-  /** 年级 表示现在年级，不同于入学时间 */
+  /** 年级 */
   def grade: Grade
 
-  /** 管理院系 行政管理院系 */
+  /** 管理院系 */
   def department: Department
 
-  /** 专业 当前修读专业 */
+  /** 专业 */
   def major: Major
 
-  /** 方向 当前修读方向 */
-  def direction: Option[Direction]
+  /** 专业方向 */
+  def direction: Option[MajorDirection]
 
   /** 行政班级 */
   def squad: Option[Squad]

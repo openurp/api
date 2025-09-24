@@ -20,7 +20,7 @@ package org.openurp.std.fee.config
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.edu.model.{Major, MajorDirection}
 import org.openurp.base.model.{Department, Project}
 import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.EducationLevel
@@ -53,7 +53,7 @@ class TuitionConfig extends IntId, Remark {
   var major: Option[Major] = None
 
   /** 所属的专业方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
 
   /** 收费类型 */
   var feeType: FeeType = _

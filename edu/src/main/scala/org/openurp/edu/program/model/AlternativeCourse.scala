@@ -88,7 +88,7 @@ class MajorAlternativeCourse extends AlternativeCourse, Remark {
   /**
    * 适用方向.
    */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
 
   /**
    * 学生类别

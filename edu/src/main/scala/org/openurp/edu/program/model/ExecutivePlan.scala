@@ -18,7 +18,7 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.model.Direction
+import org.openurp.base.edu.model.MajorDirection
 import org.openurp.base.model.Department
 
 import java.time.Instant
@@ -54,7 +54,7 @@ class ExecutivePlan extends AbstractCoursePlan, CoursePlan {
 class ExecutiveCourseGroup extends AbstractCourseGroup {
 
   /** 该组针对的专业方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
 
   def this(plan: ExecutivePlan, group: AbstractCourseGroup) = {
     this()

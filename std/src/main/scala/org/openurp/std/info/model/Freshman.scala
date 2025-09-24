@@ -19,7 +19,7 @@ package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named}
-import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.edu.model.{Major, MajorDirection}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, EduLevelBased}
 import org.openurp.base.std.model.{Grade, Squad}
@@ -85,7 +85,7 @@ class Freshman extends LongId, Coded, Named, EduLevelBased {
   var major: Major = _
 
   /** 专业方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
 
   /** 行政班级 */
   var squad: Option[Squad] = None

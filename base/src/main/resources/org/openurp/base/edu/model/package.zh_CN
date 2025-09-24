@@ -49,20 +49,20 @@ CourseJournalHour.weeks=周数
 CourseLevel=课程分层次要求
 CourseLevel.credits=学分
 
-Direction=方向信息 专业领域
-Direction.code=专业方向编码
-Direction.name=专业方向名称
-Direction.enName=专业方向英文名
-Direction.major=所属专业
-Direction.journals=部门
-Direction.project=项目
+MajorDirection=方向信息 专业领域
+MajorDirection.code=专业方向编码
+MajorDirection.name=专业方向名称
+MajorDirection.enName=专业方向英文名
+MajorDirection.major=所属专业
+MajorDirection.journals=部门
+MajorDirection.project=项目
 
-DirectionJournal=专业方向建设过程
-DirectionJournal.direction=专业方向
-DirectionJournal.education=培养层次
-DirectionJournal.depart=部门
-DirectionJournal.effectiveAt=生效时间
-DirectionJournal.invalidAt=失效时间
+MajorDirectionJournal=专业方向建设过程
+MajorDirectionJournal.direction=专业方向
+MajorDirectionJournal.education=培养层次
+MajorDirectionJournal.depart=部门
+MajorDirectionJournal.effectiveAt=生效时间
+MajorDirectionJournal.invalidAt=失效时间
 
 Major=专业
 Major.code=专业编码

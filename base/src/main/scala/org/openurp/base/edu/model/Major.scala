@@ -37,7 +37,7 @@ class Major extends LongId, ProjectBased, TemporalOn, Updated, Coded, Named, EnN
   var shortName: Option[String] = None
 
   /** 专业方向 */
-  var directions = Collections.newSet[Direction]
+  var directions = Collections.newSet[MajorDirection]
 
   /** 学科信息 */
   var disciplines = Collections.newBuffer[MajorDiscipline]

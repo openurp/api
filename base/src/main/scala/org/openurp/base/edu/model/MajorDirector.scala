@@ -30,7 +30,7 @@ class MajorDirector extends LongId, TemporalOn {
   /** 专业 */
   var major: Major = _
   /** 专业方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
   /** 负责人 */
   var director: Option[Teacher] = None
 

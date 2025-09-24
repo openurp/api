@@ -32,6 +32,7 @@ import org.openurp.code.hr.model.UserCategory
 
 import java.time.{Instant, LocalDate}
 import javax.sql.DataSource
+import scala.util.Random
 
 /** URP 用户同步服务
  *
@@ -215,12 +216,21 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     createAccount(findEmsUserId(user), user, defaultPassword(user.code), user.category.id)
   }
 
+  /** 默认证件后六位，如果没有证件则是一个随机的默认密码
+   *
+   * @param idNumber
+   * @return
+   */
   private def defaultPassword(idNumber: String): String = {
-    if Strings.isEmpty(idNumber) then "123456"
+    if Strings.isEmpty(idNumber) then generatePassword()
     else {
       if idNumber.length > 6 then Strings.substring(idNumber, idNumber.length - 6, idNumber.length)
       else idNumber
     }
+  }
+
+  private def generatePassword(): String = {
+    (0 until 10).map(i => Random.nextPrintableChar).mkString
   }
 
   private def findEmsUserId(code: String): Option[Long] = {

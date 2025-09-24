@@ -20,7 +20,8 @@ package org.openurp.base.hr.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
-import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.edu.model.{Major, MajorDirection}
+import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.{EducationLevel, EducationType}
 
 import scala.collection.mutable
@@ -32,6 +33,9 @@ class TutorMajor extends LongId, Remark {
   /** 导师 */
   var staff: Staff = _
 
+  /** 年级 */
+  var grade: Grade = _
+
   /** 培养类型 */
   var eduType: EducationType = _
 
@@ -42,5 +46,7 @@ class TutorMajor extends LongId, Remark {
   var major: Major = _
 
   /** 方向 */
-  var directions: mutable.Set[Direction] = Collections.newSet[Direction]
+  var directions: mutable.Set[MajorDirection] = Collections.newSet[MajorDirection]
+
+
 }

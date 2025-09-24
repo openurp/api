@@ -27,7 +27,7 @@ class CourseMajor extends LongId {
   /** 专业 */
   var major: Major = _
   /** 专业方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirectionJournal] = None
   /** 是否包含 */
   var included: Boolean = _
 }

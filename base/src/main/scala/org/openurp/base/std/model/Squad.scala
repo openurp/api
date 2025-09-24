@@ -20,7 +20,7 @@ package org.openurp.base.std.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
-import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.edu.model.{Major, MajorDirection}
 import org.openurp.base.hr.model.Staff
 import org.openurp.base.model.*
 import org.openurp.code.std.model.StdType
@@ -35,7 +35,7 @@ import scala.collection.mutable
  */
 class Squad extends LongId, EduLevelBased, Coded, Named, EnNamed, DateRange, Updated, Remark {
 
-  /** 年级,形式为yyyy-p */
+  /** 年级 */
   var grade: Grade = _
   /** 简称 */
   var shortName: Option[String] = None
@@ -44,7 +44,7 @@ class Squad extends LongId, EduLevelBased, Coded, Named, EnNamed, DateRange, Upd
   /** 专业 */
   var major: Option[Major] = None
   /** 方向 */
-  var direction: Option[Direction] = None
+  var direction: Option[MajorDirection] = None
   /** 学生类别 */
   var stdType: Option[StdType] = None
   /** 计划人数 */

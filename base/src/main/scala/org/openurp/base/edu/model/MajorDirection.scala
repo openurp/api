@@ -22,25 +22,25 @@ import org.beangle.data.model.pojo.*
 import org.openurp.base.model.{Department, Project}
 import org.openurp.code.edu.model.EducationLevel
 
-import scala.collection.mutable.Buffer
+import scala.collection.mutable
 
 /**
  * 方向信息 专业领域.
  *
  * @author chaostone
  */
-class Direction extends LongId, TemporalOn, Coded, Named, EnNamed, Updated, Remark {
+class MajorDirection extends LongId, TemporalOn, Coded, Named, EnNamed, Updated, Remark {
 
   var project: Project = _
   /** 所属专业 */
   var major: Major = _
   /** 部门 */
-  var journals: Buffer[DirectionJournal] = new collection.mutable.ListBuffer[DirectionJournal]
+  var journals: mutable.Buffer[MajorDirectionJournal] = new mutable.ListBuffer[MajorDirectionJournal]
 }
 
-class DirectionJournal extends LongId, TemporalOn, Remark {
+class MajorDirectionJournal extends LongId, TemporalOn, Remark {
   /** 专业方向 */
-  var direction: Direction = _
+  var direction: MajorDirection = _
   /** 培养层次 */
   var level: EducationLevel = _
   /** 部门 */

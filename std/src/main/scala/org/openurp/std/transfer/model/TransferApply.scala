@@ -19,7 +19,7 @@ package org.openurp.std.transfer.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.edu.model.{Major, MajorDirection}
 import org.openurp.base.model.{AuditStatus, Department}
 import org.openurp.base.std.model.{Grade, Squad, Student}
 import org.openurp.std.transfer.config.TransferOption
@@ -40,7 +40,7 @@ class TransferApply extends LongId, Updated {
   var fromMajor: Major = _
 
   /** 转出专业方向 */
-  var fromDirection: Option[Direction] = None
+  var fromDirection: Option[MajorDirection] = None
 
   /** 转出班级 */
   var fromSquad: Option[Squad] = None
@@ -58,7 +58,7 @@ class TransferApply extends LongId, Updated {
   var toMajor: Major = _
 
   /** 转入方向 */
-  var toDirection: Option[Direction] = None
+  var toDirection: Option[MajorDirection] = None
 
   /** 转入班级 */
   var toSquad: Option[Squad] = None

@@ -18,7 +18,7 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.Entity
-import org.openurp.base.edu.model.{Direction, Major}
+import org.openurp.base.edu.model.{Major, MajorDirection}
 import org.openurp.base.model.Department
 import org.openurp.base.std.model.Squad
 import org.openurp.code.edu.model.{EducationLevel, EducationType}
@@ -39,7 +39,7 @@ enum ClazzRestrictionMeta(val id: Int, contentType: Class[_]) {
 
   case Major extends ClazzRestrictionMeta(5, classOf[Major])
 
-  case Direction extends ClazzRestrictionMeta(6, classOf[Direction])
+  case Direction extends ClazzRestrictionMeta(6, classOf[MajorDirection])
 
   case Squad extends ClazzRestrictionMeta(7, classOf[Squad])
 

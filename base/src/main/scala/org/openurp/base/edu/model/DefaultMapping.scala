@@ -55,7 +55,7 @@ class DefaultMapping extends MappingModule {
       index("", true, e.course, e.level)
     }
 
-    bind[Direction].declare { e =>
+    bind[MajorDirection].declare { e =>
       e.code is length(32)
       e.name is length(100)
       e.enName is length(255)
@@ -65,7 +65,7 @@ class DefaultMapping extends MappingModule {
       index("", false, e.major)
     }
 
-    bind[DirectionJournal] declare { e =>
+    bind[MajorDirectionJournal] declare { e =>
       e.remark is length(200)
       index("", false, e.direction)
     }
