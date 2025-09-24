@@ -117,7 +117,7 @@ class DefaultPlanAuditor extends PlanAuditor {
         if (sibling.contains(gr)) {
           siblingConverted += (if rest > 0 then rest else 0f)
         } else if (gr.parent.isEmpty) {
-          otherConverted += (if rest > 0 then rest else 0f)
+          otherConverted += calcSpareCredits(gr)
         }
       }
     }
@@ -125,6 +125,29 @@ class DefaultPlanAuditor extends PlanAuditor {
     for (r <- parents) r.convertedCredits = otherConverted
     target.stat()
     result.stat(false)
+  }
+
+  /** 计算一个组的多出学分
+   *
+   * @param gr group result
+   * @return
+   */
+  private def calcSpareCredits(gr: AuditGroupResult): Float = {
+    //叶子组直接对比完成和要求学分
+    if (gr.children.isEmpty) {
+      val overflow = gr.passedCredits - gr.requiredCredits
+      if overflow > 0 then overflow else 0f
+    } else {
+      //如果是自动汇总
+      val autoAddup = java.lang.Float.compare(gr.requiredCredits, gr.children.map(_.requiredCredits).sum) == 0
+      if (autoAddup) {
+        gr.children.map(calcSpareCredits).sum
+      } else {
+        val overflow = gr.passedCredits - gr.requiredCredits
+        if overflow > 0 then overflow else 0f
+      }
+    }
+
   }
 
   /** 清除空的不及格的选修课

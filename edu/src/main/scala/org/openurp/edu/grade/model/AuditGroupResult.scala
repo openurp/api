@@ -24,6 +24,7 @@ import org.openurp.base.edu.model.Course
 import org.openurp.code.edu.model.{CourseRank, CourseType}
 import org.openurp.edu.program.model.CourseGroup
 
+import scala.collection.mutable
 import scala.collection.mutable.Buffer
 
 /** 课程组审核结果
@@ -59,7 +60,7 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
     this.courseType = courseType
   }
   /** 课程审核结果 */
-  var courseResults: Buffer[AuditCourseResult] = new collection.mutable.ListBuffer[AuditCourseResult]
+  var courseResults: mutable.Buffer[AuditCourseResult] = new mutable.ListBuffer[AuditCourseResult]
 
   /** 课程属性 */
   var rank: Option[CourseRank] = None
