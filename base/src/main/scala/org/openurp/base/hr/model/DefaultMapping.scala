@@ -74,6 +74,8 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[TutorJournal]
-    bind[TutorMajor]
+    bind[TutorMajor] declare { e =>
+      e.directions is eleColumn("direction_id")
+    }
   }
 }

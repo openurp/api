@@ -35,9 +35,6 @@ alter table base.departments add constraint pk_njmudssqklm265fj3qxrl6v4i primary
 alter table base.departments add constraint uk_blem78dvbmeuekoy0jg6px6j7 unique (school_id,code);
 alter table base.departments_campuses add constraint pk_hayeukvl4wxa5t4wj8u012cvy primary key (department_id,campus_id);
 alter table base.devices add constraint pk_q34m206q6wm6qh5d14b281wo9 primary key (id);
-alter table base.direction_journals add constraint pk_rvbr7ldfxrsat8i1nhedoinwk primary key (id);
-alter table base.directions add constraint pk_j2qwo6upqlwqexl7chxnno9mw primary key (id);
-alter table base.directions add constraint uk_ry4fda3w2fdnnsfl7yrnpha1 unique (project_id,code);
 alter table base.experiments add constraint pk_9bocam72pq84nbf7q7r1jn5py primary key (id);
 alter table base.experiments add constraint uk_4t6s3rhpyuivur62lwcyy7ul5 unique (course_id,code);
 alter table base.extern_schools add constraint pk_nj2mnlh45jh2wagd9heuq58dl primary key (id);
@@ -51,6 +48,9 @@ alter table base.graduates add constraint uk_fjm29o037eumvq25eojdp797r unique (s
 alter table base.holidays add constraint pk_o7r9qruakt8wxjndgnml60u7r primary key (id);
 alter table base.laboratories add constraint pk_217f1ui65li444828qnn85h1d primary key (id);
 alter table base.laboratories add constraint uk_2quxs44337ol9rk7t7g6x5pha unique (school_id,code);
+alter table base.major_direction_journals add constraint pk_epr9yial7hpq4n2yy22rml1lo primary key (id);
+alter table base.major_directions add constraint pk_8ycvdrneuxk41hltfovvqwjk7 primary key (id);
+alter table base.major_directions add constraint uk_7e936erdiet32yvrdfrgwfpyj unique (project_id,code);
 alter table base.major_directors add constraint pk_skyonycb55y9ngjieh4fek3ny primary key (id);
 alter table base.major_disciplines add constraint pk_oifn3upq6ylafj81hb805ut1l primary key (id);
 alter table base.major_graduate_objectives add constraint pk_9vsi3kqu370binsnsslgg2us5 primary key (id);

@@ -4,6 +4,9 @@ LabTask.stdCount=实验人数
 LabTask.clazzCount=班级数
 LabTask.expCount=实验数
 LabTask.required=是否要求填写实验
+LabTask.practiceHours=实践学时
+LabTask.theoryHours=理论学时
+LabTask.validated=验证通过
 
 LabExperiment=每学期实验任务
 LabExperiment.idx=顺序号

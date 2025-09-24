@@ -45,8 +45,8 @@ class MiniClazzActivity extends LongId {
   var teacher: Option[Teacher] = None
 
   /** 辅导老师1 */
-  var advisor1: Option[User] = None
+  var coach1: Option[User] = None
 
   /** 辅导老师2 */
-  var advisor2: Option[User] = None
+  var coach2: Option[User] = None
 }

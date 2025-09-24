@@ -64,10 +64,10 @@ class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
 
 
   /** 辅导老师 */
-  def advisors: Set[User] = {
+  def coachs: Set[User] = {
     val users = Collections.newSet[User]
-    users.addAll(activities.flatMap(_.advisor1))
-    users.addAll(activities.flatMap(_.advisor2))
+    users.addAll(activities.flatMap(_.coach1))
+    users.addAll(activities.flatMap(_.coach2))
     users.toSet
   }
 

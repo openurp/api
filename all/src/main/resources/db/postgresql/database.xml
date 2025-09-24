@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.46.0">
+<db engine="PostgreSQL" version="0.47.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -271,7 +271,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
-            <column name="direction_id" type="bigint" comment="方向信息 专业领域ID"/>
+            <column name="direction_id" type="bigint" comment="专业方向建设过程ID"/>
             <column name="included" type="boolean" nullable="false" defaultValue="false" comment="是否包含"/>
             <column name="major_id" type="bigint" nullable="false" comment="专业ID"/>
           </columns>
@@ -279,7 +279,7 @@
             <primary-key name="pk_j74gmuqwk6c6jtwhsb95k65mg" columns="id"/>
             <foreign-key name="fk_5ijsyf1kknr9n30rpna270ajp" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_jluiaqhjrjdu4ie57mry0lufc" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_pko53wn8tmk8cq8rdr8k2yrjk" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_flh07lfw46cnd98rmjnr3xfll" column="direction_id" referenced-table="base.major_direction_journals" referenced-column="id"/>
           </constraints>
         </table>
         <table name="course_profiles" comment="课程简介@edu">
@@ -513,49 +513,6 @@
             <index name="idx_ovshoc5u1nrmelxy454pix0gm" columns="room_id"/>
           </indexes>
         </table>
-        <table name="direction_journals" comment="专业方向建设过程@edu">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
-            <column name="depart_id" type="integer" nullable="false" comment="部门ID"/>
-            <column name="direction_id" type="bigint" nullable="false" comment="专业方向ID"/>
-            <column name="end_on" type="date" comment="失效日期"/>
-            <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
-            <column name="remark" type="varchar(200)" comment="备注"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_rvbr7ldfxrsat8i1nhedoinwk" columns="id"/>
-            <foreign-key name="fk_o3qcpdyy1nbbg3wj10hu61ovf" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
-            <foreign-key name="fk_kmw2ffdpem1fh5qahqu17e9yl" column="depart_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_2ogkktnypr1u24fcrlarun2e3" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_1r68feb85enylfu5hhehp92vj" columns="direction_id"/>
-          </indexes>
-        </table>
-        <table name="directions" comment="方向信息 专业领域@edu">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
-            <column name="code" type="varchar(32)" nullable="false" comment="专业方向编码"/>
-            <column name="en_name" type="varchar(255)" comment="专业方向英文名"/>
-            <column name="end_on" type="date" comment="失效日期"/>
-            <column name="major_id" type="bigint" nullable="false" comment="所属专业ID"/>
-            <column name="name" type="varchar(100)" nullable="false" comment="专业方向名称"/>
-            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
-            <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_j2qwo6upqlwqexl7chxnno9mw" columns="id"/>
-            <foreign-key name="fk_819u659ke96emd17vve1870k0" column="project_id" referenced-table="base.projects" referenced-column="id"/>
-            <foreign-key name="fk_68y3kulyfxhqmaw3h61kwtfhp" column="major_id" referenced-table="base.majors" referenced-column="id"/>
-            <unique-key name="uk_ry4fda3w2fdnnsfl7yrnpha1" columns="project_id,code"/>
-          </constraints>
-          <indexes>
-            <index name="idx_7389oy88qypl4v9gudyudoi07" columns="major_id"/>
-          </indexes>
-        </table>
         <table name="experiments" comment="实验项目@edu">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -708,6 +665,49 @@
             <unique-key name="uk_2quxs44337ol9rk7t7g6x5pha" columns="school_id,code"/>
           </constraints>
         </table>
+        <table name="major_direction_journals" comment="专业方向建设过程@edu">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="depart_id" type="integer" nullable="false" comment="部门ID"/>
+            <column name="direction_id" type="bigint" nullable="false" comment="专业方向ID"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_epr9yial7hpq4n2yy22rml1lo" columns="id"/>
+            <foreign-key name="fk_kb75htk9sv6my09hymyi5xikm" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
+            <foreign-key name="fk_if24icvx7jdugfwtcgjam9bsd" column="depart_id" referenced-table="base.departments" referenced-column="id"/>
+            <foreign-key name="fk_9d8mhnt04to391tmk3985v4xl" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_42jbv72p0881vpjadj705qryj" columns="direction_id"/>
+          </indexes>
+        </table>
+        <table name="major_directions" comment="方向信息 专业领域@edu">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(32)" nullable="false" comment="专业方向编码"/>
+            <column name="en_name" type="varchar(255)" comment="专业方向英文名"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="major_id" type="bigint" nullable="false" comment="所属专业ID"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="专业方向名称"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_8ycvdrneuxk41hltfovvqwjk7" columns="id"/>
+            <foreign-key name="fk_itrjxecsvxwe67csfiow545gd" column="project_id" referenced-table="base.projects" referenced-column="id"/>
+            <foreign-key name="fk_mnbnx3fpg2h0v1qhf6he1iwmv" column="major_id" referenced-table="base.majors" referenced-column="id"/>
+            <unique-key name="uk_7e936erdiet32yvrdfrgwfpyj" columns="project_id,code"/>
+          </constraints>
+          <indexes>
+            <index name="idx_aygbi1xghmyg51wtokm2bd883" columns="major_id"/>
+          </indexes>
+        </table>
         <table name="major_directors" comment="专业负责人@edu">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -723,7 +723,7 @@
             <foreign-key name="fk_i5iiis1fbmi3kg9n8m71syp1y" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_lcjjujsk43xp8ah7qht7sd1dh" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
             <foreign-key name="fk_br49mrm9gwp4ktx7hb4e753x7" column="director_id" referenced-table="base.teachers" referenced-column="id"/>
-            <foreign-key name="fk_pwg3twehfy8a4c35dy8jnnku5" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_msjlnav2yh332hh5k8xs68axb" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
           </constraints>
         </table>
         <table name="major_disciplines" comment="专业学科信息@edu">
@@ -1233,7 +1233,7 @@
             <foreign-key name="fk_mthg4d2ylm6grwnnmuuqmn99e" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_q689ly0bsktcs9d2e27uwljoj" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_cbc7gyc1oytyxlifio1otlutw" column="department_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_1e72cwfhqwicrnon6fvxxqgao" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_sd0ee7oskskwk32u6blvt392c" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
             <foreign-key name="fk_pk1nvace8ivpnnkj0c9papdkk" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
             <foreign-key name="fk_lux1v41xj08wgxp5cywf8as9v" column="campus_id" referenced-table="base.campuses" referenced-column="id"/>
             <foreign-key name="fk_2gqdloedvlxm4cl6xvj0ev220" column="master_id" referenced-table="base.staffs" referenced-column="id"/>
@@ -1355,7 +1355,7 @@
             <foreign-key name="fk_gjt9vh64u68nfesi42w6ql7tl" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_r7mo41ef1b8jijc798wqqgu8n" column="grade_id" referenced-table="base.grades" referenced-column="id"/>
             <foreign-key name="fk_jjg4851d7q2vlnh5hekqk2j7p" column="department_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_4xyuqv6knu4cg4vjhqxkv4jhd" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_k341af534dyyjsy3g1md3kdcn" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
             <foreign-key name="fk_bt2cdywb7xkjao5qvlrhfor6g" column="status_id" referenced-table="code.student_statuses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -1609,6 +1609,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="edu_type_id" type="integer" nullable="false" comment="培养类型ID"/>
+            <column name="grade_id" type="bigint" nullable="false" comment="年级ID"/>
             <column name="level_id" type="integer" nullable="false" comment="培养层次ID"/>
             <column name="major_id" type="bigint" nullable="false" comment="专业ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
@@ -1619,6 +1620,7 @@
             <foreign-key name="fk_qk49ybofykqdejd70ynqnsxp5" column="edu_type_id" referenced-table="code.education_types" referenced-column="id"/>
             <foreign-key name="fk_o03mqi9gghvymej67sqa3lmn9" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_3la34qsb7vinn23ls3v2aw3kd" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
+            <foreign-key name="fk_ahfteyvf8kfsph07oa5efi225" column="grade_id" referenced-table="base.grades" referenced-column="id"/>
             <foreign-key name="fk_r8chc8ye8heuxuoyx7gunhghg" column="staff_id" referenced-table="base.staffs" referenced-column="id"/>
           </constraints>
         </table>
@@ -1630,7 +1632,7 @@
           <constraints>
             <primary-key name="pk_6pqyqlrugulyv0it8b4txbyap" columns="tutor_major_id,direction_id"/>
             <foreign-key name="fk_ca7s2ggg6iad9yq9hv2k815eq" column="tutor_major_id" referenced-table="base.tutor_majors" referenced-column="id"/>
-            <foreign-key name="fk_kbn9pgxumminghp19n839yorn" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_jv1yddxc5oejh7vb9ssjpohe8" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_xwp64q9jqda0yiypgwq9mw5n" columns="tutor_major_id"/>
@@ -2363,7 +2365,7 @@
             <foreign-key name="fk_8stidn7n3x6sb1btl5lsoiemi" column="manager_id" referenced-table="base.users" referenced-column="id"/>
             <foreign-key name="fk_2v73mp725t74g3csvwwjc8xy0" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_8npryunke215hmw672f2otrcq" column="depart_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_ouomahytjaiimvjnakmn8bpdk" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_lf810xhh00521b1vtyxsqbfkm" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_35f6ka7arp3j75onw142dn7cr" columns="scheme_id"/>
@@ -2458,7 +2460,7 @@
             <foreign-key name="fk_hxlg5on74qg7manposlrjny5y" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_dwu1k2bsqcb4ea13idcypn32s" column="from_grade_id" referenced-table="base.grades" referenced-column="id"/>
             <foreign-key name="fk_c8tgk2xfhwhhu63qq40n379hp" column="department_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_f42nt5cafte5p6l9bkfm3p2a2" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_l155d8839s6pwc90st13vl3iq" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
           </constraints>
         </table>
       </tables>
@@ -6239,7 +6241,7 @@
             <foreign-key name="fk_6mh987hal1axohw2uqqpb6n6b" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
             <foreign-key name="fk_qws3d63si4v6xhjnqrkjq7dq7" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
             <foreign-key name="fk_8sryyotbjk7ax803pbug4iu71" column="plan_id" referenced-table="edu.executive_plans" referenced-column="id"/>
-            <foreign-key name="fk_77ekapj66u96x3imgngeial0m" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_e3u16a7tqmsg4lxcxhmltrnav" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_ktdcfjdpse8b04tpfwisrj4w6" columns="plan_id"/>
@@ -6666,7 +6668,7 @@
             <foreign-key name="fk_hsr4tkheko9jr7u1um9lmnm0y" column="from_grade_id" referenced-table="base.grades" referenced-column="id"/>
             <foreign-key name="fk_uj8i0ugwdd0rgy9cdyasb916" column="std_type_id" referenced-table="code.std_types" referenced-column="id"/>
             <foreign-key name="fk_kw8nn4ka6l7bjwhe0585d13ri" column="department_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_is1a5f0kxxrdh825rdi2vxvcb" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_nm6mgwq1qvgh4aslmjnv25nsn" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_hnm0j0sfpkc5gqn2s07ln80th" columns="project_id"/>
@@ -6729,7 +6731,7 @@
             <foreign-key name="fk_436wsxxoka11ym0dysdeeg4ip" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
             <foreign-key name="fk_er4c5awycvn4b3so4q9mfx52k" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
             <foreign-key name="fk_9g2r0wmg6d6q20b2tuxs4iupb" column="plan_id" referenced-table="edu.major_plans" referenced-column="id"/>
-            <foreign-key name="fk_kod0hb5pnmeiqrr7jgq3shctv" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_a35kim5625k61npq75jsskqcy" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_h0ysdj9584dxm8l728cffxrrl" columns="plan_id"/>
@@ -6781,10 +6783,10 @@
         <table name="mini_clazz_activities" comment="小课上课安排@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="advisor1_id" type="bigint" comment="辅导老师1ID"/>
-            <column name="advisor2_id" type="bigint" comment="辅导老师2ID"/>
             <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
             <column name="begin_unit" type="smallint" nullable="false" defaultValue="0" comment="开始节次"/>
+            <column name="coach1_id" type="bigint" comment="辅导老师1ID"/>
+            <column name="coach2_id" type="bigint" comment="辅导老师2ID"/>
             <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="end_unit" type="smallint" nullable="false" defaultValue="0" comment="结束节次"/>
             <column name="mini_clazz_id" type="bigint" nullable="false" comment="小课ID"/>
@@ -6795,10 +6797,10 @@
           </columns>
           <constraints>
             <primary-key name="pk_6km9ontbm925da7x6y1d0jxh6" columns="id"/>
+            <foreign-key name="fk_o62drwgl6u05laqk6p851t94h" column="coach2_id" referenced-table="base.users" referenced-column="id"/>
             <foreign-key name="fk_qgqcs7mn2kbspko6hinps92ts" column="teacher_id" referenced-table="base.teachers" referenced-column="id"/>
-            <foreign-key name="fk_ocss8b1rk38m8rupwrvyysv1g" column="advisor2_id" referenced-table="base.users" referenced-column="id"/>
             <foreign-key name="fk_lyrbqkvrq062g0qkwffp8tnrv" column="mini_clazz_id" referenced-table="edu.mini_clazzes" referenced-column="id"/>
-            <foreign-key name="fk_2ud09ne4h8n8j2ds3hhajp5a9" column="advisor1_id" referenced-table="base.users" referenced-column="id"/>
+            <foreign-key name="fk_gv07ppihhg0ta78r09nfy8x1g" column="coach1_id" referenced-table="base.users" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_q821i08k5uk8aef9ku718jnhw" columns="mini_clazz_id"/>
@@ -6807,20 +6809,24 @@
         <table name="mini_clazzes" comment="小课@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="coach_hours" type="integer" nullable="false" defaultValue="0" comment="辅导课时"/>
+            <column name="course_hours" type="integer" nullable="false" defaultValue="0" comment="上课课时"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
             <column name="crn" type="varchar(255)" nullable="false" comment="课程序号"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
+            <column name="teach_depart_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="teacher_id" type="bigint" comment="授课教师ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
             <primary-key name="pk_6b9ghfkpxs4254cqx2ta74dmx" columns="id"/>
+            <foreign-key name="fk_fmhlll73mqj7xkjrk87vd263t" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_g54qg0i9hm1nbmg2m6a7n839i" column="teacher_id" referenced-table="base.teachers" referenced-column="id"/>
             <foreign-key name="fk_hnrgbw7etthlww63oc1ryxuhn" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_fmhlll73mqj7xkjrk87vd263t" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_9gat5afvu6t3oi9owwebbvmoe" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
+            <foreign-key name="fk_sh3lhhuphg0obentx2h5ywqup" column="teach_depart_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
         </table>
         <table name="mini_clazzes_stds" comment="小课学生名单@clazz">
@@ -7126,7 +7132,7 @@
             <foreign-key name="fk_fpvvja6nue3bxvc5rxxcxjlwb" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_m0amu5fwiyr2y3m11jdfgarir" column="study_type_id" referenced-table="code.study_types" referenced-column="id"/>
             <foreign-key name="fk_7xrusj91mbbujeaxtrrdowj7e" column="department_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_lgbdfiw5fkc6aqvy7hacfxi32" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_g50vaxdjois92fmuc6ir14nub" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
             <foreign-key name="fk_ne9yofos5qm2hyxt3j6u86pra" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
             <foreign-key name="fk_tbmrgc18tswwmth3afhou96ws" column="degree_id" referenced-table="code.degrees" referenced-column="id"/>
             <foreign-key name="fk_repdcuryw948uhentmshwj8c0" column="grade_id" referenced-table="base.grades" referenced-column="id"/>
@@ -8525,14 +8531,22 @@
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="director_id" type="bigint" comment="教师信息ID"/>
             <column name="exp_count" type="integer" nullable="false" defaultValue="0" comment="实验数"/>
+            <column name="nature_id" type="integer" nullable="false" comment="课程性质ID"/>
+            <column name="office_id" type="bigint" comment="教研室ID"/>
+            <column name="practice_hours" type="integer" nullable="false" defaultValue="0" comment="实践学时"/>
             <column name="rank_id" type="integer" nullable="false" comment="课程属性ID"/>
-            <column name="required" type="boolean" comment="是否要求填写实验"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="required" type="boolean" nullable="false" defaultValue="true" comment="是否要求填写实验"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_count" type="integer" nullable="false" defaultValue="0" comment="实验人数"/>
+            <column name="theory_hours" type="integer" nullable="false" defaultValue="0" comment="理论学时"/>
+            <column name="validated" type="boolean" nullable="false" defaultValue="false" comment="验证通过"/>
           </columns>
           <constraints>
             <primary-key name="pk_pobmn5lqgf0ngijre9cvc3id9" columns="id"/>
+            <foreign-key name="fk_800je7ssvdnpq03gdpmwrfis9" column="nature_id" referenced-table="code.course_natures" referenced-column="id"/>
             <foreign-key name="fk_rtm2nghx8jx980pvos7l3qoic" column="director_id" referenced-table="base.teachers" referenced-column="id"/>
+            <foreign-key name="fk_tmy9jpcngk5k3at5luqdvp8i2" column="office_id" referenced-table="base.teaching_offices" referenced-column="id"/>
             <foreign-key name="fk_o2mk6oai9b2e3naujyiik6o2w" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_nlctcagnfkpkgvms7e4y3j6vf" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
             <foreign-key name="fk_fo8who9que0f2ihy9o155emae" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
@@ -9952,7 +9966,7 @@
             <foreign-key name="fk_g5s0gkf335sohor3dgd4o52st" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_1udl9cfjup34peemkros8j4ww" column="study_type_id" referenced-table="code.study_types" referenced-column="id"/>
             <foreign-key name="fk_6nvjp9xdpou7a7ir6pwy4j926" column="department_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_6bsifub9t2qrjgi7s496ns26m" column="direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_a45mi6dqvvnoq209afgwha7iw" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
             <foreign-key name="fk_27th0rt0neox2qok0b5hpkm4u" column="id_type_id" referenced-table="code.id_types" referenced-column="id"/>
             <foreign-key name="fk_ahhn6oub9wnte6ofxxyex62pv" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
             <foreign-key name="fk_a5hrpbhyuie2fsw905xkunrwy" column="political_status_id" referenced-table="code.political_statuses" referenced-column="id"/>
@@ -10559,11 +10573,11 @@
             <primary-key name="pk_1636v9ke8tssygsebwc8he7ex" columns="id"/>
             <foreign-key name="fk_l6gnyhfhva8jor8wmrmn2els5" column="to_grade_id" referenced-table="base.grades" referenced-column="id"/>
             <foreign-key name="fk_a1srslcfco8wsi7x1l5l3fjjv" column="from_depart_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_d66gn3cgc0od8vlttun7gkjbs" column="to_direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_31v1gc0b4ntg6aua5uhg5cy1r" column="to_direction_id" referenced-table="base.major_directions" referenced-column="id"/>
             <foreign-key name="fk_a5xnl2hb05tibcbkvnlbtq5e1" column="from_squad_id" referenced-table="base.squads" referenced-column="id"/>
             <foreign-key name="fk_nlm2aprs590optbk9jg8jqupm" column="to_major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_nw4ufpanqlfnctqieusola9xp" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_3a0dphqg8pby5ygg5do9jl88g" column="from_direction_id" referenced-table="base.directions" referenced-column="id"/>
+            <foreign-key name="fk_c2r85bhsmqrjsqh6cya1bladw" column="from_direction_id" referenced-table="base.major_directions" referenced-column="id"/>
             <foreign-key name="fk_8ggtvvyf7bonjd0m5bw8dbjob" column="to_depart_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_ebwakf7n9paro4583bj7gfeys" column="from_major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_ia2lww4yn37qo57xd6766b7se" column="from_grade_id" referenced-table="base.grades" referenced-column="id"/>

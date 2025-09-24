@@ -47,6 +47,4 @@ class TutorMajor extends LongId, Remark {
 
   /** 方向 */
   var directions: mutable.Set[MajorDirection] = Collections.newSet[MajorDirection]
-
-
 }
