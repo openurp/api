@@ -130,7 +130,7 @@ class CourseTakeType extends CodeBean {
     this.id = id
     this.code = code
     this.name = name
-    this.enName = Some(enName)
+    this.enName = Option(enName)
   }
 }
 

@@ -19,7 +19,7 @@ package org.openurp.edu.grade.domain
 
 import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.EducationLevel
+import org.openurp.code.edu.model.{CourseTakeType, EducationLevel}
 import org.openurp.edu.grade.model.CourseGrade
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
@@ -40,19 +40,24 @@ class WeightedMeanTest extends AnyFunSpec, Matchers {
   val c3 = new Course()
   c3.defaultCredits = 3.0f
 
+  val normal = new CourseTakeType(CourseTakeType.Normal,"1","正常",null)
+
   val g1 = new CourseGrade
+  g1.courseTakeType = normal
   g1.course = c1
   g1.score = Some(82f)
   g1.gp = Some(3.3f)
   g1.std = std
 
   val g2 = new CourseGrade
+  g2.courseTakeType = normal
   g2.course = c2
   g2.score = Some(88f)
   g2.gp = Some(3.7f)
   g2.std = std
 
   val g3 = new CourseGrade
+  g3.courseTakeType = normal
   g3.course = c3
   g3.score = Some(100f)
   g3.gp = Some(4.0f)
@@ -63,11 +68,11 @@ class WeightedMeanTest extends AnyFunSpec, Matchers {
   describe("WeightedMean") {
     it("calc ga") {
       val format = DecimalFormat("##0.##")
-      val ga = WeightedMean.calcGa(grades).setScale(2, RoundingMode.HALF_UP)
+      val ga = MeanScoreMethod.WeightedMean.calcScore(grades).setScale(2, RoundingMode.HALF_UP)
       assert(format.format(ga) == "94")
     }
     it("calc gpa") {
-      assert(WeightedMean.calcGpa(grades).setScale(2, RoundingMode.HALF_UP).toString() == "3.83")
+      assert(MeanScoreMethod.WeightedMean.calcGpa(grades).setScale(2, RoundingMode.HALF_UP).toString() == "3.83")
     }
   }
 
