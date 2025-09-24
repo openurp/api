@@ -34,7 +34,6 @@ class DefaultMapping extends MappingModule {
       e.crn is length(32)
       e.teachers is ordered
       e.clazzName is length(500)
-      e.teachers is ordered
       e.enrollment.grades is length(40)
       e.enrollment.stdCount is immutable
       e.enrollment.courseTakers & e.enrollment.restrictions & e.enrollment.subclazzes &

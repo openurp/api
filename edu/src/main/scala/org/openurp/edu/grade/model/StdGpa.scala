@@ -25,29 +25,22 @@ import org.openurp.base.std.model.Student
 import scala.collection.mutable
 
 trait GpaStat {
-  /**
-   * 总平均绩点 gp/totalCredits
-   */
+  /** 总平均绩点 */
   var gpa: Double = _
 
-  /**
-   * 平均分
-   */
-  var ga: Double = _
+  /** 加权平均分 weighted mean score */
+  var wms: Double = _
 
-  /**
-   * 修读总学分
-   */
+  /** 算术平均分 arithmetic mean score */
+  var ams: Double = _
+
+  /** 修读总学分 */
   var totalCredits: Float = _
 
-  /**
-   * 获得总学分
-   */
+  /** 获得总学分 */
   var credits: Float = _
 
-  /**
-   * 成绩的门数
-   */
+  /** 成绩的门数 */
   var gradeCount: Int = _
 }
 
@@ -91,7 +84,8 @@ class StdGpa extends LongId, Updated, ProjectBased, GpaStat {
     this.yearGpas = new collection.mutable.ListBuffer[StdYearGpa]
     this.credits = 0f
     this.gradeCount = 0
-    this.ga = 0d
+    this.wms = 0d
+    this.ams = 0d
     this.gpa = 0d
   }
 

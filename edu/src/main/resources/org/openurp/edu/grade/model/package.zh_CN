@@ -90,7 +90,8 @@ CourseGradeState.scorePrecision=保留小数位
 
 GpaStat.gpa=总平均绩点
 GpaStat.gp=总绩点
-GpaStat.ga=平均分
+GpaStat.wms=加权平均分
+GpaStat.ams=算术平均分
 GpaStat.credits=获得学分
 GpaStat.totalCredits=总学分
 GpaStat.gradeCount=门数

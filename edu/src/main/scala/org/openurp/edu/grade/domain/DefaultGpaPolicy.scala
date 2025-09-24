@@ -28,15 +28,19 @@ import scala.collection.mutable
 
 class DefaultGpaPolicy extends GpaPolicy {
 
-  def calcGa(grades: Iterable[CourseGrade]): BigDecimal = {
-    WeightedMean.calcGa(grades)
+  override def calcWms(grades: Iterable[CourseGrade]): BigDecimal = {
+    MeanScoreMethod.WeightedMean.calcScore(grades)
   }
 
-  def calcGpa(grades: Iterable[CourseGrade]): BigDecimal = {
-    WeightedMean.calcGpa(grades)
+  override def calcAms(grades: Iterable[CourseGrade]): BigDecimal = {
+    MeanScoreMethod.ArithmeticMean.calcScore(grades)
   }
 
-  def calc(std: Student, grades: Iterable[CourseGrade], statDetail: Boolean): StdGpa = {
+  override def calcGpa(grades: Iterable[CourseGrade]): BigDecimal = {
+    MeanScoreMethod.WeightedMean.calcGpa(grades)
+  }
+
+  override def calc(std: Student, grades: Iterable[CourseGrade], statDetail: Boolean): StdGpa = {
     val stdGpa = new StdGpa(std)
     if (statDetail) {
       val gradesMap = Collections.newMap[Semester, mutable.Buffer[CourseGrade]]
@@ -55,7 +59,8 @@ class DefaultGpaPolicy extends GpaPolicy {
           yearGrades ++= semesterGrades
 
           stdTermGpa.gpa = this.calcGpa(semesterGrades).doubleValue
-          stdTermGpa.ga = this.calcGa(semesterGrades).doubleValue
+          stdTermGpa.wms = this.calcWms(semesterGrades).doubleValue
+          stdTermGpa.ams = this.calcAms(semesterGrades).doubleValue
           stdTermGpa.gradeCount = semesterGrades.size
           val stats = statCredits(semesterGrades)
           stdTermGpa.totalCredits = stats(0)
@@ -67,7 +72,8 @@ class DefaultGpaPolicy extends GpaPolicy {
           stdYearGpa.schoolYear = year
           stdGpa.add(stdYearGpa)
           stdYearGpa.gpa = this.calcGpa(yearGrades).doubleValue
-          stdYearGpa.ga = this.calcGa(yearGrades).doubleValue
+          stdYearGpa.wms = this.calcWms(yearGrades).doubleValue
+          stdYearGpa.ams = this.calcAms(yearGrades).doubleValue
           stdYearGpa.gradeCount = yearGrades.size
           val stats = statCredits(yearGrades)
           stdYearGpa.totalCredits = stats(0)
@@ -75,7 +81,8 @@ class DefaultGpaPolicy extends GpaPolicy {
       }
     }
     stdGpa.gpa = this.calcGpa(grades).doubleValue
-    stdGpa.ga = this.calcGa(grades).doubleValue
+    stdGpa.wms = this.calcWms(grades).doubleValue
+    stdGpa.ams = this.calcAms(grades).doubleValue
 
     val courseMap = Collections.newMap[Course, CourseGrade]
     for (grade <- grades) {

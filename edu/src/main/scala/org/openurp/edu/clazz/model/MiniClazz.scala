@@ -62,7 +62,6 @@ class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
     activities.map(x => (x.endUnit - x.beginUnit + 1) * x.time.weekstate.size).sum
   }
 
-
   /** 辅导老师 */
   def coachs: Set[User] = {
     val users = Collections.newSet[User]

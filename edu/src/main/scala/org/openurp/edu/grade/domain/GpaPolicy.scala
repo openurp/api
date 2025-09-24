@@ -18,32 +18,35 @@
 package org.openurp.edu.grade.domain
 
 import org.openurp.base.std.model.Student
-import org.openurp.edu.grade.model.CourseGrade
-import org.openurp.edu.grade.model.StdGpa
+import org.openurp.edu.grade.model.{CourseGrade, StdGpa}
 
 /**
  * 平均绩点计算策略
  */
 trait GpaPolicy {
 
-  /**
-   * 计算平均绩点
+  /** 计算平均绩点
    *
    * @param grades
    * @return
    */
   def calcGpa(grades: Iterable[CourseGrade]): BigDecimal
 
-  /**
-   * 计算平均分
+  /** 计算加权平均分
    *
    * @param grades
    * @return
    */
-  def calcGa(grades: Iterable[CourseGrade]): BigDecimal
+  def calcWms(grades: Iterable[CourseGrade]): BigDecimal
 
-  /**
-   * 计算平均绩点
+  /** 计算算术平均分
+   *
+   * @param grades
+   * @return
+   */
+  def calcAms(grades: Iterable[CourseGrade]): BigDecimal
+
+  /** 计算平均绩点
    *
    * @param grades
    * @return

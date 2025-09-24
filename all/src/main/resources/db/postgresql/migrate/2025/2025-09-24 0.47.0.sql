@@ -32,26 +32,16 @@ alter table lab.lab_tasks alter validated set not null;
 alter table lab.lab_tasks alter required set default true;
 alter table lab.lab_tasks alter required set not null;
 
+-- gpa
+alter table edu.std_gpas rename column ga to wms;
+alter table edu.std_semester_gpas rename column ga to wms;
+alter table edu.std_year_gpas rename column ga to wms;
+
+alter table edu.std_gpas add column ams float8 default 0;
+alter table edu.std_semester_gpas add column ams float8 default 0;
+alter table edu.std_year_gpas add column ams float8 default 0;
+
 -- comments
-comment on table base.major_direction_journals is '专业方向建设过程@edu';
-comment on column base.major_direction_journals.id is '非业务主键:datetime';
-comment on column base.major_direction_journals.begin_on is '生效日期';
-comment on column base.major_direction_journals.depart_id is '部门ID';
-comment on column base.major_direction_journals.direction_id is '专业方向ID';
-comment on column base.major_direction_journals.end_on is '失效日期';
-comment on column base.major_direction_journals.level_id is '培养层次ID';
-comment on column base.major_direction_journals.remark is '备注';
-comment on table base.major_directions is '方向信息 专业领域@edu';
-comment on column base.major_directions.id is '非业务主键:datetime';
-comment on column base.major_directions.begin_on is '生效日期';
-comment on column base.major_directions.code is '专业方向编码';
-comment on column base.major_directions.en_name is '专业方向英文名';
-comment on column base.major_directions.end_on is '失效日期';
-comment on column base.major_directions.major_id is '所属专业ID';
-comment on column base.major_directions.name is '专业方向名称';
-comment on column base.major_directions.project_id is '项目ID';
-comment on column base.major_directions.remark is '备注';
-comment on column base.major_directions.updated_at is '更新时间';
 comment on column base.tutor_majors.grade_id is '年级ID';
 comment on column edu.mini_clazzes.coach_hours is '辅导课时';
 comment on column edu.mini_clazzes.course_hours is '上课课时';
@@ -62,4 +52,3 @@ comment on column lab.lab_tasks.practice_hours is '实践学时';
 comment on column lab.lab_tasks.remark is '备注';
 comment on column lab.lab_tasks.theory_hours is '理论学时';
 comment on column lab.lab_tasks.validated is '验证通过';
-

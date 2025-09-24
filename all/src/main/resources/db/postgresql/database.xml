@@ -7532,14 +7532,15 @@
         <table name="std_gpas" comment="学生成绩绩点统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="ams" type="float8" nullable="false" defaultValue="0" comment="算术平均分"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
-            <column name="ga" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
             <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
           </columns>
           <constraints>
             <primary-key name="pk_d8hmmf1mnbxhuj1fi91q1n9rj" columns="id"/>
@@ -7619,13 +7620,14 @@
         <table name="std_semester_gpas" comment="学生成绩每学期统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="ams" type="float8" nullable="false" defaultValue="0" comment="算术平均分"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
-            <column name="ga" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
             <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
             <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
+            <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
           </columns>
           <constraints>
             <primary-key name="pk_fqb6mob02oox7m3qiy43y5g3f" columns="id"/>
@@ -7640,13 +7642,14 @@
         <table name="std_year_gpas" comment="学生成绩每学期统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="ams" type="float8" nullable="false" defaultValue="0" comment="算术平均分"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
-            <column name="ga" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
             <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
             <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="school_year" type="varchar(10)" nullable="false" comment="学年"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
             <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
+            <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
           </columns>
           <constraints>
             <primary-key name="pk_3ad0t5p7c2vmp6ktrbtgiwbwb" columns="id"/>
