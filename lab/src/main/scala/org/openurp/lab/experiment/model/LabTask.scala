@@ -20,28 +20,37 @@ package org.openurp.lab.experiment.model
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.openurp.base.edu.model.{Course, Experiment}
+import org.beangle.data.model.pojo.Remark
+import org.openurp.base.edu.model.{Course, Experiment, TeachingOffice}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Semester}
 import org.openurp.base.resource.model.Laboratory
-import org.openurp.code.edu.model.CourseRank
+import org.openurp.code.edu.model.{CourseNature, CourseRank}
 
 import scala.collection.mutable
 
 /** 实验任务
  */
 @beta
-class LabTask extends LongId {
+class LabTask extends LongId, Remark {
   /** 课程 */
   var course: Course = _
-  /** 开课院系 */
-  var department: Department = _
+  /** 理论学时* */
+  var theoryHours: Int = _
+  /** 实践学时 */
+  var practiceHours: Int = _
+  /** 课程性质 */
+  var nature: CourseNature = _
   /** 学年学期 */
   var semester: Semester = _
+  /** 开课院系 */
+  var department: Department = _
+  /** 教研室 */
+  var office: Option[TeachingOffice] = None
   /** 负责人 */
   var director: Option[Teacher] = None
   /** 是否要求填写实验项目 */
-  var required: Option[Boolean] = None
+  var required: Boolean = true
   /** 填写实验项目数 */
   var expCount: Int = _
   /** 实验人数 */
@@ -54,6 +63,8 @@ class LabTask extends LongId {
   var clazzCount: Int = _
   /** 实验列表 */
   var experiments: mutable.Buffer[LabExperiment] = Collections.newBuffer[LabExperiment]
+  /** 数据是否完整 */
+  var validated: Boolean = false
 
   def this(course: Course, semester: Semester, department: Department) = {
     this()
@@ -67,5 +78,17 @@ class LabTask extends LongId {
     this.experiments.subtractAll(removed)
     this.expCount = this.experiments.size
     removed.nonEmpty
+  }
+
+  def checkValidated(): Unit = {
+    if (required) {
+      if (experiments.isEmpty) {
+        this.validated = false
+      } else {
+        this.validated = !this.experiments.exists(_.experiment.discipline.isEmpty)
+      }
+    } else {
+      this.validated = this.remark.nonEmpty
+    }
   }
 }

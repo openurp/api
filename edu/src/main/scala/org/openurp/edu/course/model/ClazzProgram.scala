@@ -18,7 +18,6 @@
 package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.{Semester, User}
@@ -29,7 +28,6 @@ import scala.collection.mutable
 
 /** 教案
  */
-@beta
 class ClazzProgram extends LongId, Updated {
 
   /** 教学任务 */

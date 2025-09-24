@@ -17,15 +17,11 @@
 
 package org.openurp.edu.course.model
 
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Named
 import org.openurp.base.edu.model.Experiment
-import org.openurp.code.edu.model.{ExperimentCategory, ExperimentType, Level1Discipline}
 
 /** 课程大纲中的实验
  */
-@beta
 class SyllabusExperiment extends LongId {
 
   var syllabus: Syllabus = _

@@ -17,12 +17,10 @@
 
 package org.openurp.edu.course.model
 
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 
 /** 课程设计教学环节
  */
-@beta
 class LessonDesignSection extends LongId {
 
   /** 序号(从1开始) */

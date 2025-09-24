@@ -17,13 +17,11 @@
 
 package org.openurp.edu.course.model
 
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 
 /** 课程设计文本内容
  */
-@beta
 class LessonDesignText extends LongId, Named {
 
   var design: LessonDesign = _

@@ -18,7 +18,6 @@
 package org.openurp.edu.his.model
 
 import org.beangle.commons.json.{JsonArray, JsonObject}
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
 import org.beangle.data.model.pojo.Updated
@@ -30,7 +29,6 @@ import org.openurp.edu.grade.model.RegularGrade
 /** 归档平时成绩
  */
 @archive
-@beta
 class HisRegularGrade extends LongId, Updated, ArchivedByYear {
   /** 教学班 */
   var clazz: Clazz = _

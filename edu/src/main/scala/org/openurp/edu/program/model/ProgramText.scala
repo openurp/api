@@ -17,13 +17,11 @@
 
 package org.openurp.edu.program.model
 
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 
 /** 大纲内容
  */
-@beta
 class ProgramText extends LongId, Named {
 
   var doc: ProgramDoc = _

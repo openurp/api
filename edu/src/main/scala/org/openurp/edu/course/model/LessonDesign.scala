@@ -18,7 +18,6 @@
 package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.annotation.beta
 import org.beangle.commons.lang.math.SmallInterval
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
@@ -28,7 +27,6 @@ import java.time.LocalDate
 /**
  * 具体授课内容和方法设计
  */
-@beta
 class LessonDesign extends LongId, Remark {
 
   def this(program: ClazzProgram, idx: Int) = {
