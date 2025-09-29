@@ -78,6 +78,9 @@ object Features {
 
     /** 毕业审核规则 */
     val AutoAuditPlan = Feature(this, "auto_audit_plan", "是否自动进行计划完成审核", true)
+
+    /** 加权平均成绩过滤器 */
+    val GpaFilters = Feature(this, "gpa_filters", "加权平均成绩过滤器", "")
   }
 
   object Exam extends FeatureScope {
