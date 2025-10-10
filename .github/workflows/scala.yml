@@ -19,6 +19,8 @@ jobs:
 
       - name: Cache SBT dependencies
         uses: coursier/cache-action@v6
+      - name: Setup sbt launcher
+        uses: sbt/setup-sbt@v1
 
       - name: Run SBT tasks
         run: sbt clean compile test
