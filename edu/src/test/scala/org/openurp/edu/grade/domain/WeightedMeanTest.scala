@@ -68,11 +68,11 @@ class WeightedMeanTest extends AnyFunSpec, Matchers {
   describe("WeightedMean") {
     it("calc ga") {
       val format = DecimalFormat("##0.##")
-      val ga = MeanScoreMethod.WeightedMean.calcScore(grades).setScale(2, RoundingMode.HALF_UP)
+      val ga = GpaCalculator.WeightedMean.calcScore(grades).setScale(2, RoundingMode.HALF_UP)
       assert(format.format(ga) == "94")
     }
     it("calc gpa") {
-      assert(MeanScoreMethod.WeightedMean.calcGpa(grades).setScale(2, RoundingMode.HALF_UP).toString() == "3.83")
+      assert(GpaCalculator.WeightedMean.calcGpa(grades).setScale(2, RoundingMode.HALF_UP).toString() == "3.83")
     }
   }
 

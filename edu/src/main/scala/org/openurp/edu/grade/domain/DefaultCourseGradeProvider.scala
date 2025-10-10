@@ -31,12 +31,8 @@ class DefaultCourseGradeProvider extends CourseGradeProvider {
 
   var semesterService: SemesterService = _
 
-  override def getPublished(std: Student, semesters: Iterable[Semester]): Seq[CourseGrade] = {
+  override def get(std: Student, semesters: Iterable[Semester]): Seq[CourseGrade] = {
     get(std, Some(Grade.Status.Published), semesters)
-  }
-
-  override def getAll(std: Student, semesters: Iterable[Semester]): Seq[CourseGrade] = {
-    get(std, None, semesters)
   }
 
   override def getPassedStatus(std: Student): collection.Map[Long, Boolean] = {

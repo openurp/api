@@ -29,8 +29,8 @@ trait CourseGradeProvider {
    * @param semesters
    * @return
    */
-  final def getPublished(std: Student): collection.Seq[CourseGrade] = {
-    getPublished(std, List.empty)
+  final def get(std: Student): collection.Seq[CourseGrade] = {
+    get(std, List.empty)
   }
 
   /**
@@ -40,27 +40,8 @@ trait CourseGradeProvider {
    * @param semesters
    * @return
    */
-  def getPublished(std: Student, semesters: Iterable[Semester]): collection.Seq[CourseGrade]
+  def get(std: Student, semesters: Iterable[Semester]): collection.Seq[CourseGrade]
 
-  /**
-   * 查询学生所有成绩
-   *
-   * @param std
-   * @param semesters
-   * @return
-   */
-  final def getAll(std: Student): collection.Seq[CourseGrade] = {
-    getAll(std, List.empty)
-  }
-
-  /**
-   * 查询学生所有成绩
-   *
-   * @param std
-   * @param semesters
-   * @return
-   */
-  def getAll(std: Student, semesters: Iterable[Semester]): collection.Seq[CourseGrade]
 
   /**
    * 查看学生各个课程的通过状态

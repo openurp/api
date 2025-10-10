@@ -29,10 +29,10 @@ class Experiment extends LongId, Coded, Named, EnNamed, Updated, TemporalOn, Rem
   var course: Course = _
 
   /** 实验类别 */
-  var category: Option[ExperimentCategory] = None
+  var category: ExperimentCategory = _
 
   /** 一级学科 */
-  var discipline: Option[Level1Discipline] = None
+  var discipline: Level1Discipline = _
 
   /** 是否在线实验 */
   var online: Boolean = _

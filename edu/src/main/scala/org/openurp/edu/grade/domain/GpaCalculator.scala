@@ -18,6 +18,7 @@
 package org.openurp.edu.grade.domain
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.annotation.beta
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
@@ -26,21 +27,82 @@ import org.openurp.edu.grade.model.{CourseGrade, StdGpa, StdSemesterGpa, StdYear
 import java.time.Instant
 import scala.collection.mutable
 
-class DefaultGpaPolicy extends GpaPolicy {
+@beta
+object GpaCalculator {
+  /** 加权平均值 */
+  object WeightedMean {
 
-  override def calcWms(grades: Iterable[CourseGrade]): BigDecimal = {
-    MeanScoreMethod.WeightedMean.calcScore(grades)
+    def calcScore(grades: collection.Iterable[CourseGrade]): BigDecimal = {
+      if grades.isEmpty then BigDecimal(0)
+      else
+        var credits: Int = 0
+        var creditGas: Long = 0L
+        val level = grades.head.std.level
+        for (grade <- grades) {
+          if (grade.score.isDefined || !grade.passed) {
+            val score = (grade.score.getOrElse(0f) * 1000).toLong
+            val credit = (grade.course.getCredits(level) * 100).toInt
+            credits += credit
+            creditGas += credit * score
+          }
+        }
+        if (credits == 0) BigDecimal(0) else BigDecimal(creditGas) / BigDecimal(credits * 1000)
+    }
+
+    def calcGpa(grades: collection.Iterable[CourseGrade]): BigDecimal = {
+      if grades.isEmpty then 0f
+      else
+        var credits = 0
+        var creditGps = 0L
+        val level = grades.head.std.level
+        for (grade <- grades if grade.gp.isDefined) {
+          val credit = (grade.course.getCredits(level) * 100).toInt
+          credits += credit
+          creditGps += credit * (grade.gp.get * 100).toInt
+        }
+        if (credits == 0) BigDecimal(0) else BigDecimal(creditGps) / BigDecimal(credits * 100)
+    }
+
   }
 
-  override def calcAms(grades: Iterable[CourseGrade]): BigDecimal = {
-    MeanScoreMethod.ArithmeticMean.calcScore(grades)
+  /** 算术平均值 */
+  object ArithmeticMean {
+
+    def calcScore(grades: collection.Iterable[CourseGrade]): BigDecimal = {
+      if grades.isEmpty then BigDecimal(0)
+      else
+        var credits: Int = 0
+        var creditGas: Long = 0L
+        for (grade <- grades) {
+          if (grade.score.isDefined || !grade.passed) {
+            val score = (grade.score.getOrElse(0f) * 1000).toLong
+            credits += 1
+            creditGas += score
+          }
+        }
+        if (credits == 0) BigDecimal(0) else BigDecimal(creditGas) / BigDecimal(credits * 1000)
+    }
+
+  }
+}
+
+import org.openurp.edu.grade.domain.GpaCalculator.*
+
+class GpaCalculator {
+
+  def calcWms(grades: Iterable[CourseGrade]): BigDecimal = {
+    WeightedMean.calcScore(grades)
   }
 
-  override def calcGpa(grades: Iterable[CourseGrade]): BigDecimal = {
-    MeanScoreMethod.WeightedMean.calcGpa(grades)
+  def calcAms(grades: Iterable[CourseGrade]): BigDecimal = {
+    ArithmeticMean.calcScore(grades)
   }
 
-  override def calc(std: Student, grades: Iterable[CourseGrade], statDetail: Boolean): StdGpa = {
+  def calcGpa(grades: Iterable[CourseGrade]): BigDecimal = {
+    WeightedMean.calcGpa(grades)
+  }
+
+  def calc(std: Student, grades: Iterable[CourseGrade], statDetail: Boolean): StdGpa = {
     val stdGpa = new StdGpa(std)
     if (statDetail) {
       val gradesMap = Collections.newMap[Semester, mutable.Buffer[CourseGrade]]

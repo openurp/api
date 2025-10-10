@@ -65,13 +65,6 @@ class StdGpa extends LongId, Updated, ProjectBased, GpaStat {
    */
   var yearGpas: mutable.Buffer[StdYearGpa] = new mutable.ListBuffer[StdYearGpa]
 
-  /**
-   * 查询类缓存
-   */
-  @transient private var semesterGpaCache: Map[Semester, StdSemesterGpa] = _
-
-  @transient private var yearGpaCache: Map[String, StdYearGpa] = _
-
   def this(id: Long) = {
     this()
     this.id = id
@@ -80,6 +73,7 @@ class StdGpa extends LongId, Updated, ProjectBased, GpaStat {
   def this(std: Student) = {
     this()
     this.std = std
+    this.project = std.project
     this.semesterGpas = new collection.mutable.ListBuffer[StdSemesterGpa]
     this.yearGpas = new collection.mutable.ListBuffer[StdYearGpa]
     this.credits = 0f
@@ -90,22 +84,16 @@ class StdGpa extends LongId, Updated, ProjectBased, GpaStat {
   }
 
   def getGpa(semester: Semester): Double = {
-    val gpterm = getStdTermGpa(semester)
+    val gpterm = getSemesterGpa(semester)
     if (null == gpterm) 0 else gpterm.gpa
   }
 
-  def getStdTermGpa(semester: Semester): StdSemesterGpa = {
-    if (null == semesterGpaCache || semesterGpaCache.size != semesterGpas.size) {
-      semesterGpaCache = semesterGpas.map(f => (f.semester, f)).toMap
-    }
-    semesterGpaCache.get(semester).orNull
+  def getSemesterGpa(semester: Semester): StdSemesterGpa = {
+    semesterGpas.find(_.semester == semester).orNull
   }
 
   def getYearGpa(schoolYear: String): StdYearGpa = {
-    if (null == yearGpaCache || yearGpaCache.size != yearGpas.size) {
-      yearGpaCache = yearGpas.map(f => (f.schoolYear, f)).toMap
-    }
-    yearGpaCache.get(schoolYear).orNull
+    yearGpas.find(_.schoolYear == schoolYear).orNull
   }
 
   def add(stdTermGpa: StdSemesterGpa): Unit = {
