@@ -85,10 +85,14 @@ class LabTask extends LongId, Remark {
       if (experiments.isEmpty) {
         this.validated = false
       } else {
-        this.validated = !this.experiments.exists(_.experiment.discipline.isEmpty)
+        this.validated = this.experiments.forall(x => isExpValidated(x.experiment))
       }
     } else {
       this.validated = this.remark.nonEmpty
     }
+  }
+
+  private def isExpValidated(exp: Experiment): Boolean = {
+    exp.discipline.name != "无" && exp.category.name != "无" && exp.groupStdCount > 0
   }
 }
