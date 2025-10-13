@@ -78,6 +78,9 @@ class User extends LongId, Coded, Named, Updated, Remark, TemporalOn {
       if gs.size > 1 then gs.tail foreach { x => this.addGroup(x) }
     }
     this.group foreach { g => this.removeGroup(g) } //从附加用户组删除主组
+
+    val removed = this.groups.filter(x => !gs.contains(x.group))
+    this.groups.subtractAll(removed)
   }
 
   def addGroups(gs: collection.Seq[UserGroup]): Unit = {

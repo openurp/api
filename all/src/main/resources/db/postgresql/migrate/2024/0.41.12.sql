@@ -16,5 +16,3 @@ update degree.writers w set research_field=(select p.research_field from degree.
 update degree.writers w set research_field=
 	(select s.research_field from degree.subject_applies p,degree.subjects s where p.writer_id=w.id and p.last_id=s.id)
 where research_field is null;
-
-
