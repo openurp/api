@@ -2,24 +2,25 @@
 <orm>
   <mapping class="org.openurp.std.alter.model.DefaultMapping" name="alter"/>
   <mapping class="org.openurp.std.alter.config.DefaultMapping" name="alter.config"/>
-  <mapping class="org.openurp.std.fee.model.DefaultMapping" name="fee"/>
-  <mapping class="org.openurp.std.fee.config.DefaultMapping" name="fee.config"/>
-  <mapping class="org.openurp.std.info.model.DefaultMapping" name="info"/>
-  <mapping class="org.openurp.std.award.code.DefaultMapping" name="award.code"/>
-  <mapping class="org.openurp.std.award.model.DefaultMapping" name="award"/>
-  <mapping class="org.openurp.std.register.model.DefaultMapping" name="register"/>
-  <mapping class="org.openurp.std.register.config.DefaultMapping" name="register.config"/>
-  <mapping class="org.openurp.std.transfer.model.DefaultMapping" name="transfer"/>
-  <mapping class="org.openurp.std.transfer.config.DefaultMapping" name="transfer.config"/>
-  <mapping class="org.openurp.std.transfer.log.DefaultMapping" name="transfer.log"/>
-  <mapping class="org.openurp.std.graduation.model.DefaultMapping" name="graduation"/>
-  <mapping class="org.openurp.std.graduation.config.DefaultMapping" name="graduation.config"/>
-  <mapping class="org.openurp.std.exchange.model.DefaultMapping" name="exchange"/>
   <mapping class="org.openurp.std.archive.model.DefaultMapping" name="archive"/>
   <mapping class="org.openurp.std.archive.config.DefaultMapping" name="archive.config"/>
+  <mapping class="org.openurp.std.award.code.DefaultMapping" name="award.code"/>
+  <mapping class="org.openurp.std.award.model.DefaultMapping" name="award"/>
+  <mapping class="org.openurp.std.exchange.model.DefaultMapping" name="exchange"/>
+  <mapping class="org.openurp.std.fee.model.DefaultMapping" name="fee"/>
+  <mapping class="org.openurp.std.fee.config.DefaultMapping" name="fee.config"/>
+  <mapping class="org.openurp.std.graduation.model.DefaultMapping" name="graduation"/>
+  <mapping class="org.openurp.std.graduation.config.DefaultMapping" name="graduation.config"/>
+  <mapping class="org.openurp.std.info.model.DefaultMapping" name="info"/>
+  <mapping class="org.openurp.std.minor.model.DefaultMapping" name="minor"/>
+  <mapping class="org.openurp.std.register.model.DefaultMapping" name="register"/>
+  <mapping class="org.openurp.std.register.config.DefaultMapping" name="register.config"/>
   <mapping class="org.openurp.std.spa.model.DefaultMapping" name="spa"/>
   <mapping class="org.openurp.std.spa.config.DefaultMapping" name="spa.config"/>
   <mapping class="org.openurp.std.spa.log.DefaultMapping" name="spa.log"/>
+  <mapping class="org.openurp.std.transfer.model.DefaultMapping" name="transfer"/>
+  <mapping class="org.openurp.std.transfer.config.DefaultMapping" name="transfer.config"/>
+  <mapping class="org.openurp.std.transfer.log.DefaultMapping" name="transfer.log"/>
   <naming>
     <profile package="org.openurp.std" pluralize="true" schema="std">
       <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="std_"/>

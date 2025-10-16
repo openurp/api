@@ -15,30 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.edu.model
+package org.openurp.std.minor.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, EnNamed, Named, TemporalOn}
-import org.openurp.base.model.{Department, Project}
-import org.openurp.code.edu.model.{DisciplineCategory, Institution}
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.IntId
+import org.beangle.data.model.pojo.{Named, TemporalAt, Updated}
+import org.openurp.base.model.Project
 
 /**
- * 辅修/微专业
+ * 辅修专业报名设置
  */
-class MinorMajor extends LongId, Coded, Named, EnNamed, TemporalOn {
+class MinorSignupSetting extends IntId, TemporalAt, Named, Updated {
+
+  /** 年级 */
+  var grade: String = _
 
   /** 项目 */
   var project: Project = _
 
-  /** 教育机构 */
-  var institution: Institution = _
+  /** 可报专业 */
+  var options = Collections.newBuffer[MinorSignupOption]
 
-  /** 学科门类 */
-  var category: DisciplineCategory = _
-
-  /** 对应本校的专业 */
-  var major: Option[Major] = None
-
-  /** 所在院系 */
-  var department: Option[Department] = None
 }
