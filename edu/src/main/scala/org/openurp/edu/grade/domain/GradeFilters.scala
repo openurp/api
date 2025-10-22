@@ -63,4 +63,11 @@ object GradeFilters {
     }
   }
 
+  /** 只要计算绩点的 */
+  object CalcGP extends GradeFilter {
+    override def filter(grades: Iterable[CourseGrade]): Iterable[CourseGrade] = {
+      grades.filter(_.course.calgp)
+    }
+  }
+
 }

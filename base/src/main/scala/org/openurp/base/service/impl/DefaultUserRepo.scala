@@ -249,7 +249,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     emsJdbcExecutor.unique[Int]("select id from ems.usr_departs where org_id=" + d.school.id + " and code=? ", d.code)
   }
 
-  private def createAccount(existId: Option[Long], user: User, password: String, categoryId: Int): Unit = {
+  private def createAccount(existId: Option[Long], user: User, defaultPassword: String, categoryId: Int): Unit = {
     val code = user.code
     val name = user.name
     val groupId = user.group.flatMap(findEmsGroupId)
@@ -288,7 +288,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         emsJdbcExecutor.update("insert into ems.usr_users(id,code,name,org_id,category_id,mobile,email,password,group_id,depart_id," +
           "begin_on,end_on,passwd_expired_on,updated_at,enabled,locked)"
           + "values(?,?,?,?,?,?,?,?,?,?,?,?,current_date+180,now(),true,false);", userId, code, name, orgId,
-          categoryId, user.mobile.orNull, user.email.orNull, "{MD5}" + Digests.md5Hex(password), groupId.orNull, departId.orNull,
+          categoryId, user.mobile.orNull, user.email.orNull, "{MD5}" + Digests.md5Hex(defaultPassword), groupId.orNull, departId.orNull,
           user.beginOn, user.endOn.orNull
         )
         logger.info(s"create user $code $name")

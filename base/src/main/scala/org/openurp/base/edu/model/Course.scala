@@ -66,9 +66,9 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   /** 成绩记录方式 */
   var gradingMode: GradingMode = _
   /** 是否计算绩点 * */
-  var calgp: Boolean = _
+  var calgp: Boolean = true
   /** 是否有补考 */
-  var hasMakeup: Boolean = _
+  var hasMakeup: Boolean = true
 
   /** 课程分类 */
   var categories = Collections.newSet[CourseCategory]
