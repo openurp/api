@@ -22,7 +22,7 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp.qos.evaluation", "read-write")
+    defaultCache("openurp-qos", "read-write")
 
     bind[StdEvaluateSwitch]
     bind[FeedbackSwitch]

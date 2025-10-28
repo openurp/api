@@ -350,7 +350,7 @@ object CourseNature {
 }
 
 /**
- * 授课性质(课时分类)
+ * 课时分类(授课性质)
  */
 @code("industry")
 class TeachingNature extends CodeBean {
@@ -369,7 +369,7 @@ object TeachingNature {
   val Practice = 9 //实践
 }
 
-/** 授课性质分类 */
+/** 课时分类大类 */
 enum TeachingNatureCategory(val id: Int, val title: String) {
   case Theory extends TeachingNatureCategory(1, "理论")
   case Experiment extends TeachingNatureCategory(2, "实验")

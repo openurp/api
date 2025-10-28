@@ -21,7 +21,7 @@ import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
   def binding(): Unit = {
-    defaultCache("openurp.edu.evaluation", "read-write")
+    defaultCache("openurp-qos", "read-write")
 
     bind[AssessCriteria].declare { e =>
       e.name is length(100)

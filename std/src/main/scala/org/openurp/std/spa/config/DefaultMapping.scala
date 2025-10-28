@@ -22,7 +22,7 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp.spa", "read-write")
+    defaultCache("openurp-std", "read-write")
     bind[SpaDocSetting] declare { e =>
       e.notice is length(3000)
     }

@@ -22,7 +22,7 @@ import org.beangle.data.orm.MappingModule
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp.innovation", "read-write")
+    defaultCache("openurp-innovation", "read-write")
 
     bind[Member] declare { e =>
       index("", true, e.project, e.std)

@@ -40,7 +40,7 @@ abstract class AbstractPlanCourse extends LongId, PlanCourse, Cloneable {
   /** 开课学期 */
   var terms: Terms = _
 
-  /** 序号 */
+  /** 序号(从1开始) */
   var idx: Short = _
 
   def matchTerm(t: Terms): Boolean = {

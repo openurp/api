@@ -178,11 +178,11 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
     newHours foreach { h =>
       cshours.get(h._1) match {
         case None => this.addHour(h._1, h._2)
-        case Some(h) => h.creditHours = h.creditHours
+        case Some(o) => o.creditHours = h._2
       }
     }
     val newNatures = newHours.keys.toSet
-    val abandoned = this.hours.find(x => newNatures.contains(x.nature))
+    val abandoned = this.hours.find(x => !newNatures.contains(x.nature))
     this.hours.subtractAll(abandoned)
   }
 

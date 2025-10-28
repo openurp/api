@@ -24,7 +24,7 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator(classOf[String], "code")
-    defaultCache("openurp.code", "read-write")
+    defaultCache("openurp-code", "read-write")
 
     bind[CodeBean].declare { e =>
       e.code.is(length(20), unique)

@@ -22,7 +22,7 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp.base", "read-write")
+    defaultCache("openurp-base", "read-write")
 
     bind[Squad] declare { e =>
       e.code is length(20)
