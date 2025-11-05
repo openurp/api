@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beangle>
+  <orm>
+    <mapping class="org.openurp.edu.clazz.model.DefaultMapping" name="clazz"/>
+    <mapping class="org.openurp.edu.clazz.config.DefaultMapping" name="clazz.config"/>
+    <mapping class="org.openurp.edu.course.model.DefaultMapping" name="course"/>
+    <mapping class="org.openurp.edu.course.flow.DefaultMapping" name="course.flow"/>
+    <mapping class="org.openurp.edu.exam.model.DefaultMapping" name="exam"/>
+    <mapping class="org.openurp.edu.exam.config.DefaultMapping" name="exam.config"/>
+    <mapping class="org.openurp.edu.exam.flow.DefaultMapping" name="exam.flow"/>
+    <mapping class="org.openurp.edu.extern.model.DefaultMapping" name="extern"/>
+    <mapping class="org.openurp.edu.extern.config.DefaultMapping" name="extern.config"/>
+    <mapping class="org.openurp.edu.grade.config.DefaultMapping" name="grade.config"/>
+    <mapping class="org.openurp.edu.grade.model.DefaultMapping" name="grade.course"/>
+    <mapping class="org.openurp.edu.grade.model.MoralMapping" name="grade.moral"/>
+    <mapping class="org.openurp.edu.grade.model.RegularMapping" name="grade.regular"/>
+    <mapping class="org.openurp.edu.grade.model.AuditMapping" name="grade.audit"/>
+    <mapping class="org.openurp.edu.grade.log.DefaultMapping" name="grade.log"/>
+    <mapping class="org.openurp.edu.program.model.DefaultMapping" name="program"/>
+    <mapping class="org.openurp.edu.program.flow.DefaultMapping" name="program.flow"/>
+    <mapping class="org.openurp.edu.exempt.model.DefaultMapping" name="exempt"/>
+    <mapping class="org.openurp.edu.exempt.flow.DefaultMapping" name="exempt.flow"/>
+    <mapping class="org.openurp.edu.exempt.config.DefaultMapping" name="exempt.config"/>
+    <mapping class="org.openurp.edu.room.model.DefaultMapping" name="room"/>
+    <mapping class="org.openurp.edu.room.config.DefaultMapping" name="room.config"/>
+    <mapping class="org.openurp.edu.room.log.DefaultMapping" name="room.log"/>
+    <mapping class="org.openurp.edu.textbook.model.DefaultMapping" name="textbook"/>
+    <mapping class="org.openurp.edu.workload.model.DefaultMapping" name="workload"/>
+    <mapping class="org.openurp.edu.workload.config.DefaultMapping" name="workload.config"/>
+    <mapping class="org.openurp.edu.attendance.model.DefaultMapping" name="attendance"/>
+    <mapping class="org.openurp.edu.his.model.DefaultMapping" name="his"/>
+    <naming>
+      <profile package="org.openurp.edu" pluralize="true" schema="edu" abbrs="Alternative=Alt">
+        <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="edu_"/>
+        <annotation class="org.beangle.data.model.annotation.log" schema="log" prefix="edu_"/>
+        <annotation class="org.beangle.data.model.annotation.flow" schema="flow" prefix="edu_"/>
+        <profile package="his" pluralize="true" schema="his" abbrs="His=" prefix="edu_"/>
+      </profile>
+    </naming>
+  </orm>
+</beangle>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beangle>
+  <orm>
+    <mapping class="org.openurp.base.model.DefaultMapping" name="common"/>
+    <mapping class="org.openurp.base.edu.model.DefaultMapping" name="edu"/>
+    <mapping class="org.openurp.base.std.model.DefaultMapping" name="std"/>
+    <mapping class="org.openurp.base.hr.model.DefaultMapping" name="hr"/>
+    <mapping class="org.openurp.base.resource.model.DefaultMapping" name="resource"/>
+    <mapping class="org.openurp.base.flow.model.DefaultMapping" name="flow"/>
+    <naming>
+      <profile package="org.openurp.base" pluralize="true" schema="base"/>
+      <profile package="org.openurp.base.flow.model"  pluralize="true" schema="flow"/>
+      <profile package="org.openurp.base.config.model"  pluralize="true" schema="cfg"/>
+    </naming>
+  </orm>
+</beangle>

@@ -768,6 +768,11 @@ alter table std.honor_levels add constraint pk_l53d6eu3akfl5s2gq3o74wqa9 primary
 alter table std.honor_types add constraint pk_c1tngwju5h6efg1jlicg9tvtj primary key (id);
 alter table std.major_students add constraint pk_ge7r9q9q5db7ne2cfjul9pnm5 primary key (id);
 alter table std.major_students add constraint uk_sp5y2w7s2e9uwp4okyf64ag63 unique (std_id);
+alter table std.minor_signup_options add constraint pk_bjytbcxuwc4h61ffiqgvo0ytq primary key (id);
+alter table std.minor_signup_settings add constraint pk_lbdv0iilu1f78dkfta76ob83p primary key (id);
+alter table std.minor_signup_std_majors add constraint pk_4mc1rl2t3d6ficldtdl901qou primary key (id);
+alter table std.minor_signup_stds add constraint pk_531wskv253921k4m6949sn2ir primary key (id);
+alter table std.minor_signup_stds add constraint uk_mcjo5arixiaveju23pqxqx6aa unique (setting_id,idcard);
 alter table std.orders add constraint pk_26gf4ikas867gkkiyjur6i708 primary key (id);
 alter table std.orders add constraint uk_5rbs2yuu4l5occesk8783g2sh unique (bill_id);
 alter table std.orders add constraint uk_gt3o4a5bqj59e9y6wakgk926t unique (code);

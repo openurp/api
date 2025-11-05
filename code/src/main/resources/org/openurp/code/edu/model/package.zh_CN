@@ -56,7 +56,7 @@ GradingMode.numerical=是否为数字类型
 
 TeachLangType=授课语言类型
 TeachingNature=课时分类
-TeachingNature.category课时分类大类
+TeachingNature.category=课时分类大类
 TeachingMethod=授课方式方法
 
 DayPart=时段

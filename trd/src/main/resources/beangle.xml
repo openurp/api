@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beangle>
+  <orm>
+    <mapping class="org.openurp.trd.project.model.DefaultMapping" name="project"/>
+    <mapping class="org.openurp.trd.project.code.DefaultMapping" name="project"/>
+    <mapping class="org.openurp.trd.achievement.model.DefaultMapping" name="achievement"/>
+    <mapping class="org.openurp.trd.achievement.code.DefaultMapping" name="achievement.code"/>
+    <mapping class="org.openurp.trd.team.model.DefaultMapping" name="team"/>
+    <naming>
+      <profile package="org.openurp.trd" pluralize="true" schema="trd">
+        <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="trd_"/>
+        <annotation class="org.beangle.data.model.annotation.log" schema="log" prefix="trd_"/>
+      </profile>
+    </naming>
+  </orm>
+</beangle>
