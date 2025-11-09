@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beangle>
+<beangle xmlns="http://beangle.github.io/schema/framework"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
   <orm>
     <mapping class="org.openurp.base.model.DefaultMapping" name="common"/>
     <mapping class="org.openurp.base.edu.model.DefaultMapping" name="edu"/>
@@ -9,8 +11,8 @@
     <mapping class="org.openurp.base.flow.model.DefaultMapping" name="flow"/>
     <naming>
       <profile package="org.openurp.base" pluralize="true" schema="base"/>
-      <profile package="org.openurp.base.flow.model"  pluralize="true" schema="flow"/>
-      <profile package="org.openurp.base.config.model"  pluralize="true" schema="cfg"/>
+      <profile package="org.openurp.base.flow.model" pluralize="true" schema="flow"/>
+      <profile package="org.openurp.base.config.model" pluralize="true" schema="cfg"/>
     </naming>
   </orm>
 </beangle>

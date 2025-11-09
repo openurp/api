@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beangle>
+<beangle xmlns="http://beangle.github.io/schema/framework"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
   <orm>
     <mapping class="org.openurp.lab.experiment.model.DefaultMapping" name="lab"/>
     <naming>
