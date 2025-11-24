@@ -1,1 +1,1 @@
-addSbtPlugin("org.openurp" % "sbt-openurp-parent" % "0.10.1")
+addSbtPlugin("org.openurp" % "sbt-openurp-parent" % "0.10.3")
