@@ -70,7 +70,15 @@ class DefaultMapping extends MappingModule {
       index("", false, e.examRoom)
     }
 
-    bind[HisCourseProfile]
+    bind[HisCourseProfile] declare { e =>
+      e.description is length(800)
+      e.enDescription is length(2000)
+      e.bibliography is length(2000)
+      e.textbooks is length(500)
+      e.materials is length(1000)
+      e.majors is length(200)
+      index("", false, e.course)
+    }
   }
 
 }

@@ -124,7 +124,7 @@ class DefaultMapping extends MappingModule {
 
     bind[CourseProfile] declare { e =>
       e.description is length(800)
-      e.enDescription is length(800)
+      e.enDescription is length(2000)
       e.bibliography is length(2000)
       e.textbooks is length(500)
       e.materials is length(1000)

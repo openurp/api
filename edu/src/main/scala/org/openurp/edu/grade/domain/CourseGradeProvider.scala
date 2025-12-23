@@ -42,7 +42,6 @@ trait CourseGradeProvider {
    */
   def get(std: Student, semesters: Iterable[Semester]): collection.Seq[CourseGrade]
 
-
   /**
    * 查看学生各个课程的通过状态
    *

@@ -162,7 +162,7 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updated, Remark, Date
 
   /** 专业导师 */
   def majorTutors: collection.Seq[Teacher] = {
-    tutors.filter(_.tutorship == Tutorship.Major).map(_.tutor)
+    tutors.filter(_.tutorship == Tutorship.Major).map(_.tutor).sortBy(_.code)
   }
 
   /** 论文指导老师 */
@@ -172,7 +172,7 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updated, Remark, Date
 
   /** 导师姓名 */
   def majorTutorNames: String = {
-    tutors.filter(_.tutorship == Tutorship.Major).map(_.tutor.name).mkString(",")
+    majorTutors.map(_.name).mkString(",")
   }
 }
 

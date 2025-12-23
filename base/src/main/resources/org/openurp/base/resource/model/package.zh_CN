@@ -38,3 +38,7 @@ Device.uuid=UUID
 Laboratory=实验室
 Laboratory.roomNo=房间号
 Laboratory.shortName=简称
+
+LabCenter=实验中心
+LabCenter.departs=实验中心-关联学院
+LabCenter.shortName=简称

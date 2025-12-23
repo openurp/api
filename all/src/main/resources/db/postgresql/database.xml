@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.48.0">
+<db engine="PostgreSQL" version="0.49.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -144,8 +144,7 @@
           <constraints>
             <primary-key name="pk_cmuxxfg5u142t0vjm3gvex2w3" columns="id"/>
             <foreign-key name="fk_ax7vg55h5crfmeuxvknyl6pgy" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_e6hhmt1rl0hcrgff6jn3wg48w" column="award_type_id" referenced-table="code.course_award_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_e6hhmt1rl0hcrgff6jn3wg48w" column="award_type_id" referenced-table="code.course_award_types" referenced-column="id"/>
           </constraints>
         </table>
         <table name="course_clusters" comment="课程群组@edu">
@@ -244,8 +243,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_oc31bgxn1cvhvmk0qm0ggi2xx" columns="course_journal_id,course_tag_id"/>
-            <foreign-key name="fk_r2phyx0i8jsm70swiqwdkqp76" column="course_journal_id" referenced-table="base.course_journals"
-                         referenced-column="id"/>
+            <foreign-key name="fk_r2phyx0i8jsm70swiqwdkqp76" column="course_journal_id" referenced-table="base.course_journals" referenced-column="id"/>
             <foreign-key name="fk_6f95s2i987nm7hqwj2nqdwxih" column="course_tag_id" referenced-table="code.course_tags" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -281,8 +279,7 @@
             <primary-key name="pk_j74gmuqwk6c6jtwhsb95k65mg" columns="id"/>
             <foreign-key name="fk_5ijsyf1kknr9n30rpna270ajp" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_jluiaqhjrjdu4ie57mry0lufc" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_flh07lfw46cnd98rmjnr3xfll" column="direction_id" referenced-table="base.major_direction_journals"
-                         referenced-column="id"/>
+            <foreign-key name="fk_flh07lfw46cnd98rmjnr3xfll" column="direction_id" referenced-table="base.major_direction_journals" referenced-column="id"/>
           </constraints>
         </table>
         <table name="course_profiles" comment="课程简介@edu">
@@ -298,7 +295,7 @@
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
             <column name="description" type="varchar(800)" nullable="false" comment="简介"/>
             <column name="director_id" type="bigint" comment="教师信息ID"/>
-            <column name="en_description" type="varchar(800)" comment="英文简介"/>
+            <column name="en_description" type="varchar(2000)" comment="英文简介"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="majors" type="varchar(200)" comment="适用专业"/>
             <column name="materials" type="varchar(1000)" comment="辅助资料"/>
@@ -333,8 +330,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_mi2bbaqlh7saryv4xvnugl2du" columns="course_profile_id,textbook_id"/>
-            <foreign-key name="fk_ec8h93pedbvuk37imgo1q4r02" column="course_profile_id" referenced-table="base.course_profiles"
-                         referenced-column="id"/>
+            <foreign-key name="fk_ec8h93pedbvuk37imgo1q4r02" column="course_profile_id" referenced-table="base.course_profiles" referenced-column="id"/>
             <foreign-key name="fk_cj7moo3jd8hjihwqaw8p3nfdi" column="textbook_id" referenced-table="base.textbooks" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -429,8 +425,7 @@
           <constraints>
             <primary-key name="pk_6yk45p39vdpsewkckbdykwte0" columns="course_id,course_category_id"/>
             <foreign-key name="fk_3b0bydvq4epcc03soryfs3ny2" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_4424ctb42s6tah056jxicxjte" column="course_category_id" referenced-table="code.course_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_4424ctb42s6tah056jxicxjte" column="course_category_id" referenced-table="code.course_categories" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_fx0k2hychuov557bedalysbex" columns="course_id"/>
@@ -472,8 +467,7 @@
             <primary-key name="pk_njmudssqklm265fj3qxrl6v4i" columns="id"/>
             <foreign-key name="fk_63q917a0aq92i7gcw6h7f1jrv" column="parent_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_9fwvupr4xfhftlrl40k0ga8u5" column="school_id" referenced-table="base.schools" referenced-column="id"/>
-            <foreign-key name="fk_8ouv4m3l92m888dhiwaoqesb0" column="category_id" referenced-table="code.department_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_8ouv4m3l92m888dhiwaoqesb0" column="category_id" referenced-table="code.department_categories" referenced-column="id"/>
             <unique-key name="uk_blem78dvbmeuekoy0jg6px6j7" columns="school_id,code"/>
           </constraints>
           <indexes>
@@ -539,13 +533,10 @@
           </columns>
           <constraints>
             <primary-key name="pk_9bocam72pq84nbf7q7r1jn5py" columns="id"/>
-            <foreign-key name="fk_syicnxr0u0po3ou1cf9l1n1so" column="discipline_id" referenced-table="code.level1_disciplines"
-                         referenced-column="id"/>
-            <foreign-key name="fk_bsj5luxworu1ale3fq4bv5m7h" column="experiment_type_id" referenced-table="code.experiment_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_syicnxr0u0po3ou1cf9l1n1so" column="discipline_id" referenced-table="code.level1_disciplines" referenced-column="id"/>
+            <foreign-key name="fk_bsj5luxworu1ale3fq4bv5m7h" column="experiment_type_id" referenced-table="code.experiment_types" referenced-column="id"/>
             <foreign-key name="fk_cnbo41vj9grh5xljkjie3jiw5" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_qdjbtewk6kkhmrrlcxkrr6h6" column="category_id" referenced-table="code.experiment_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_qdjbtewk6kkhmrrlcxkrr6h6" column="category_id" referenced-table="code.experiment_categories" referenced-column="id"/>
             <unique-key name="uk_4t6s3rhpyuivur62lwcyy7ul5" columns="course_id,code"/>
           </constraints>
         </table>
@@ -655,6 +646,34 @@
             <foreign-key name="fk_gm32jevhgjqqdwyyh5y45g3ww" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
         </table>
+        <table name="lab_centers" comment="实验中心@resource">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(200)" nullable="false" comment="名称"/>
+            <column name="school_id" type="integer" nullable="false" comment="学校信息ID"/>
+            <column name="short_name" type="varchar(255)" comment="简称"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_nayypwvu5gso83w6ayoe7evdh" columns="id"/>
+            <foreign-key name="fk_4gehni8ckjboarc3jb5drcnsr" column="school_id" referenced-table="base.schools" referenced-column="id"/>
+          </constraints>
+        </table>
+        <table name="lab_centers_departs" comment="实验中心-关联学院@resource">
+          <columns>
+            <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
+            <column name="lab_center_id" type="bigint" nullable="false" comment="实验中心ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_h83hwmcma7e7r5uvxrj1jq9te" columns="lab_center_id,department_id"/>
+            <foreign-key name="fk_1lxpxbd5dlhuv0jy2jj52tlpa" column="lab_center_id" referenced-table="base.lab_centers" referenced-column="id"/>
+            <foreign-key name="fk_mdfbmfmy1kb83j3j83e6cqbse" column="department_id" referenced-table="base.departments" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_a0kvh8ahjb7bcpl1r0bm04x0w" columns="lab_center_id"/>
+          </indexes>
+        </table>
         <table name="laboratories" comment="实验室@resource">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -748,8 +767,7 @@
           <constraints>
             <primary-key name="pk_oifn3upq6ylafj81hb805ut1l" columns="id"/>
             <foreign-key name="fk_1ns1dxwd79d48v5qljk2nd6d1" column="major_id" referenced-table="base.majors" referenced-column="id"/>
-            <foreign-key name="fk_b4yhoqxpu0fanq9eyy8f682vt" column="category_id" referenced-table="code.discipline_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_b4yhoqxpu0fanq9eyy8f682vt" column="category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_3d8mbewqjbirn81bfhk47iwf5" columns="major_id"/>
@@ -766,8 +784,7 @@
           <constraints>
             <primary-key name="pk_9vsi3kqu370binsnsslgg2us5" columns="id"/>
             <foreign-key name="fk_nghtoiohu7n6rh2xtxk1i3x5d" column="major_id" referenced-table="base.majors" referenced-column="id"/>
-            <foreign-key name="fk_g3axxejhfrl2khedqe6n6f2ns" column="objective_id" referenced-table="code.graduate_objectives"
-                         referenced-column="id"/>
+            <foreign-key name="fk_g3axxejhfrl2khedqe6n6f2ns" column="objective_id" referenced-table="code.graduate_objectives" referenced-column="id"/>
           </constraints>
         </table>
         <table name="major_journals" comment="专业建设历程@edu">
@@ -856,8 +873,7 @@
             <foreign-key name="fk_ke4umnne27kyiri86a5xh8cao" column="institution_id" referenced-table="code.institutions" referenced-column="id"/>
             <foreign-key name="fk_dpl4nixoo7au7l7cn8trnyov1" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_7nykr3h6yq9l7larsbsil1lbi" column="project_id" referenced-table="base.projects" referenced-column="id"/>
-            <foreign-key name="fk_scxbu2r3m4h8enodix43iqufy" column="category_id" referenced-table="code.discipline_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_scxbu2r3m4h8enodix43iqufy" column="category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
             <foreign-key name="fk_3k2i9viyjisal7ne8ukvbigur" column="department_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
         </table>
@@ -903,12 +919,10 @@
             <foreign-key name="fk_o17jeffphuaspavcmd1ad0bhb" column="id_type_id" referenced-table="code.id_types" referenced-column="id"/>
             <foreign-key name="fk_oc3i2nyu6m10t9mhggo3q23h1" column="gender_id" referenced-table="code.genders" referenced-column="id"/>
             <foreign-key name="fk_lv7iiaio9f3q8d76ljoi1t8r9" column="nation_id" referenced-table="code.nations" referenced-column="id"/>
-            <foreign-key name="fk_kop4wnexs8li6lquv4n12le69" column="political_status_id" referenced-table="code.political_statuses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_kop4wnexs8li6lquv4n12le69" column="political_status_id" referenced-table="code.political_statuses" referenced-column="id"/>
             <foreign-key name="fk_qu9yxc8l50o3wk80guysv2glg" column="language_id" referenced-table="code.languages" referenced-column="id"/>
             <foreign-key name="fk_13h9b1i9rv6nbgtmur8l48nt8" column="religion_id" referenced-table="code.religions" referenced-column="id"/>
-            <foreign-key name="fk_r8r7svcudbl3vg24u40ifx94a" column="compatriot_type_id" referenced-table="code.compatriot_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_r8r7svcudbl3vg24u40ifx94a" column="compatriot_type_id" referenced-table="code.compatriot_types" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_ajflqx9dbuh26q7nfapkr0rkh" columns="code"/>
@@ -1015,8 +1029,7 @@
           <constraints>
             <primary-key name="pk_dbq66x3eva45j6uofa2qrre3n" columns="project_id,education_type_id"/>
             <foreign-key name="fk_enkev9tonpxja5hipw919c0wt" column="project_id" referenced-table="base.projects" referenced-column="id"/>
-            <foreign-key name="fk_14ndt207p000hklq16klfv95" column="education_type_id" referenced-table="code.education_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_14ndt207p000hklq16klfv95" column="education_type_id" referenced-table="code.education_types" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_59q82b4p5aojkd254d4wy0u4f" columns="project_id"/>
@@ -1030,8 +1043,7 @@
           <constraints>
             <primary-key name="pk_f8wpx8th02k4kus25oq36p79n" columns="project_id,education_level_id"/>
             <foreign-key name="fk_o5yqmhaha9wev6gdpiax57p0c" column="project_id" referenced-table="base.projects" referenced-column="id"/>
-            <foreign-key name="fk_qjrpjhqmguwb8j88llgnaqlnj" column="education_level_id" referenced-table="code.education_levels"
-                         referenced-column="id"/>
+            <foreign-key name="fk_qjrpjhqmguwb8j88llgnaqlnj" column="education_level_id" referenced-table="code.education_levels" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_4ipswvqq8c1i50hh9cr762l61" columns="project_id"/>
@@ -1147,8 +1159,7 @@
             <primary-key name="pk_rb90lq0thr3gqpksvhme60v6r" columns="id"/>
             <foreign-key name="fk_i0amwk9vd4lhgjtb2c943edtf" column="division_id" referenced-table="code.divisions" referenced-column="id"/>
             <foreign-key name="fk_g91v3wtr0hm2wnlhslybilkph" column="institution_id" referenced-table="code.institutions" referenced-column="id"/>
-            <foreign-key name="fk_ewpo25xxpkxlls6vv52k62vi8" column="category_id" referenced-table="code.institution_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_ewpo25xxpkxlls6vv52k62vi8" column="category_id" referenced-table="code.institution_categories" referenced-column="id"/>
             <unique-key name="uk_m5x8j64nhdcprk9ghc6622swx" columns="code"/>
           </constraints>
         </table>
@@ -1341,13 +1352,11 @@
             <foreign-key name="fk_7fi8qjxmgmkp1ideqkdpvfsxy" column="school_id" referenced-table="base.schools" referenced-column="id"/>
             <foreign-key name="fk_1fvbesq01b23ayv2ksysfhf6j" column="department_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_eule2gkjbra9etfa0tm7qcsxd" column="id_type_id" referenced-table="code.id_types" referenced-column="id"/>
-            <foreign-key name="fk_mk2ysra7xf1kxck41linp1pc" column="political_status_id" referenced-table="code.political_statuses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_mk2ysra7xf1kxck41linp1pc" column="political_status_id" referenced-table="code.political_statuses" referenced-column="id"/>
             <foreign-key name="fk_420icw78jj3rsu1i16hgkxsry" column="degree_id" referenced-table="code.degrees" referenced-column="id"/>
             <foreign-key name="fk_ipkufpinodstkxuyxrirqo8bk" column="staff_type_id" referenced-table="code.staff_types" referenced-column="id"/>
             <foreign-key name="fk_rswm63aod14l5g97k66xlnlo0" column="degree_level_id" referenced-table="code.degree_levels" referenced-column="id"/>
-            <foreign-key name="fk_e3cvddfl42pgisf9vt4wjanji" column="education_degree_id" referenced-table="code.education_degrees"
-                         referenced-column="id"/>
+            <foreign-key name="fk_e3cvddfl42pgisf9vt4wjanji" column="education_degree_id" referenced-table="code.education_degrees" referenced-column="id"/>
             <foreign-key name="fk_kcmhcp000r933mi2jk9wm6ns" column="status_id" referenced-table="code.work_statuses" referenced-column="id"/>
             <unique-key name="uk_ksaq070k32jb6aey065dd9xv0" columns="school_id,code"/>
           </constraints>
@@ -1564,10 +1573,8 @@
             <foreign-key name="fk_4lfclnxxs1r2tdedwgnvlrq20" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_qdcxrp51l0xy98kkhmut4prx7" column="press_id" referenced-table="code.presses" referenced-column="id"/>
             <foreign-key name="fk_l4j33r7sd6r0j9w6aryo7k117" column="creator_id" referenced-table="base.users" referenced-column="id"/>
-            <foreign-key name="fk_h33rngxx01ex7ea8tb4xysiiy" column="foreign_book_type_id" referenced-table="code.foreign_book_types"
-                         referenced-column="id"/>
-            <foreign-key name="fk_kcen97hvqclls3daxbs8gwd03" column="discipline_category_id" referenced-table="code.discipline_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_h33rngxx01ex7ea8tb4xysiiy" column="foreign_book_type_id" referenced-table="code.foreign_book_types" referenced-column="id"/>
+            <foreign-key name="fk_kcen97hvqclls3daxbs8gwd03" column="discipline_category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
             <foreign-key name="fk_4mqbsq2ipe8go0rxhpgvjpgqc" column="book_form_id" referenced-table="code.textbook_forms" referenced-column="id"/>
             <foreign-key name="fk_aftif3qqoxsrlj8mhemyeyy7c" column="category_id" referenced-table="code.book_categories" referenced-column="id"/>
             <foreign-key name="fk_7y6ogoixp5nlmhc0wnytv1voa" column="award_type_id" referenced-table="code.book_award_types" referenced-column="id"/>
@@ -1779,10 +1786,8 @@
           </columns>
           <constraints>
             <primary-key name="pk_tf2xqvguag0l8xh1e8khnwgux" columns="cert_exempt_config_id,education_level_id"/>
-            <foreign-key name="fk_hskk72xjk64g1vyv98ncdpl5" column="cert_exempt_config_id" referenced-table="cfg.edu_cert_exempt_configs"
-                         referenced-column="id"/>
-            <foreign-key name="fk_9l4k70sid7r5y919hdv3mkr24" column="education_level_id" referenced-table="code.education_levels"
-                         referenced-column="id"/>
+            <foreign-key name="fk_hskk72xjk64g1vyv98ncdpl5" column="cert_exempt_config_id" referenced-table="cfg.edu_cert_exempt_configs" referenced-column="id"/>
+            <foreign-key name="fk_9l4k70sid7r5y919hdv3mkr24" column="education_level_id" referenced-table="code.education_levels" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_hcbg5wtcik11yo0iqe4do7w5u" columns="cert_exempt_config_id"/>
@@ -1795,8 +1800,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_8vtdq21yu199uqukr5u4qgr2n" columns="cert_exempt_setting_id,course_id"/>
-            <foreign-key name="fk_3qnuh67mw6r2eb8m295jqny5t" column="cert_exempt_setting_id" referenced-table="cfg.edu_cert_exempt_settings"
-                         referenced-column="id"/>
+            <foreign-key name="fk_3qnuh67mw6r2eb8m295jqny5t" column="cert_exempt_setting_id" referenced-table="cfg.edu_cert_exempt_settings" referenced-column="id"/>
             <foreign-key name="fk_aok4oggm22xaigaujqpm4bglu" column="course_id" referenced-table="base.courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -1820,8 +1824,7 @@
             <primary-key name="pk_bvnsnltdgqpnel6hg2wa8bl6s" columns="id"/>
             <foreign-key name="fk_73hwfytqrj7yva6f3s81rmf64" column="audit_depart_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_mf6bjngevpx36qeuk4x24bn81" column="certificate_id" referenced-table="code.certificates" referenced-column="id"/>
-            <foreign-key name="fk_1uj25k9nqyyrd5u9rrko4i670" column="config_id" referenced-table="cfg.edu_cert_exempt_configs"
-                         referenced-column="id"/>
+            <foreign-key name="fk_1uj25k9nqyyrd5u9rrko4i670" column="config_id" referenced-table="cfg.edu_cert_exempt_configs" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_4w8nuo8e80kd8hdgticua1pik" columns="config_id"/>
@@ -1852,8 +1855,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_t5s02uj9t8c9q7kxg7itbqam5" columns="cert_signup_setting_id,certificate_id"/>
-            <foreign-key name="fk_ggpucvhvgjx1dukhe5k8csuju" column="cert_signup_setting_id" referenced-table="cfg.edu_cert_signup_settings"
-                         referenced-column="id"/>
+            <foreign-key name="fk_ggpucvhvgjx1dukhe5k8csuju" column="cert_signup_setting_id" referenced-table="cfg.edu_cert_signup_settings" referenced-column="id"/>
             <foreign-key name="fk_hd0m27wydbl7ywwrypoci9hoj" column="certificate_id" referenced-table="code.certificates" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -1872,8 +1874,7 @@
           <constraints>
             <primary-key name="pk_78sh49aebqqecr73d449nj7fa" columns="id"/>
             <foreign-key name="fk_cmh7apk9xmdmtxn9jvntbmy14" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
-            <foreign-key name="fk_lrfxclfdfeuosif2f85oqetp9" column="setting_id" referenced-table="cfg.edu_cert_signup_settings"
-                         referenced-column="id"/>
+            <foreign-key name="fk_lrfxclfdfeuosif2f85oqetp9" column="setting_id" referenced-table="cfg.edu_cert_signup_settings" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_wushq0sduboxx4itrnvjbnvh" columns="setting_id"/>
@@ -1898,8 +1899,7 @@
             <primary-key name="pk_cakh1me82ck12w2beinktj169" columns="id"/>
             <foreign-key name="fk_gy22styse7af96p3vtqfvm5ph" column="depends_on_id" referenced-table="code.certificates" referenced-column="id"/>
             <foreign-key name="fk_c0glaqioqa5ivlrkwskc8i99p" column="certificate_id" referenced-table="code.certificates" referenced-column="id"/>
-            <foreign-key name="fk_53onvig2c8k02kycslv0i5d1k" column="config_id" referenced-table="cfg.edu_cert_signup_configs"
-                         referenced-column="id"/>
+            <foreign-key name="fk_53onvig2c8k02kycslv0i5d1k" column="config_id" referenced-table="cfg.edu_cert_signup_configs" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_rkfwkuxhdb0ex6yxqy8784q9k" columns="config_id"/>
@@ -1975,8 +1975,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ha7tebsm4ds67bcc3pd4vjuv2" columns="grade_input_switch_id,grade_type_id"/>
-            <foreign-key name="fk_i806yyepjg389evukxn00k15o" column="grade_input_switch_id" referenced-table="cfg.edu_grade_input_switches"
-                         referenced-column="id"/>
+            <foreign-key name="fk_i806yyepjg389evukxn00k15o" column="grade_input_switch_id" referenced-table="cfg.edu_grade_input_switches" referenced-column="id"/>
             <foreign-key name="fk_rro4mivrh3od03b11d0wm53sv" column="grade_type_id" referenced-table="code.grade_types" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -2021,8 +2020,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_qipdsh9c69rotfatomryk6tpb" columns="room_apply_depart_scope_id,classroom_id"/>
-            <foreign-key name="fk_olpxcjtmw6i8lukr4d2og4tfi" column="room_apply_depart_scope_id" referenced-table="cfg.edu_room_apply_depart_scopes"
-                         referenced-column="id"/>
+            <foreign-key name="fk_olpxcjtmw6i8lukr4d2og4tfi" column="room_apply_depart_scope_id" referenced-table="cfg.edu_room_apply_depart_scopes" referenced-column="id"/>
             <foreign-key name="fk_9o3tyk2s08h179hnfc40u8fwh" column="classroom_id" referenced-table="base.classrooms" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -2151,10 +2149,8 @@
           </columns>
           <constraints>
             <primary-key name="pk_phhxtljaprkioq86sfhc5ltto" columns="ability_credit_config_id,education_level_id"/>
-            <foreign-key name="fk_1pivofma8ptl9lnue2qwq5ih1" column="ability_credit_config_id" referenced-table="cfg.prac_ability_credit_configs"
-                         referenced-column="id"/>
-            <foreign-key name="fk_5nc52csjldidonqquope830e5" column="education_level_id" referenced-table="code.education_levels"
-                         referenced-column="id"/>
+            <foreign-key name="fk_1pivofma8ptl9lnue2qwq5ih1" column="ability_credit_config_id" referenced-table="cfg.prac_ability_credit_configs" referenced-column="id"/>
+            <foreign-key name="fk_5nc52csjldidonqquope830e5" column="education_level_id" referenced-table="code.education_levels" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_cb33h6q49capyl5oofab3glxh" columns="ability_credit_config_id"/>
@@ -2176,8 +2172,7 @@
             <primary-key name="pk_nmkfo90wlehg370nok9dlyeln" columns="id"/>
             <foreign-key name="fk_dsjnwjx5y4t8dautxnmcvy5p5" column="audit_depart_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_tgj49l6vv9e45bxc4l0c7jxfb" column="certificate_id" referenced-table="code.certificates" referenced-column="id"/>
-            <foreign-key name="fk_80ramn6un2kwnkg8cg6p0gsj8" column="config_id" referenced-table="cfg.prac_ability_credit_configs"
-                         referenced-column="id"/>
+            <foreign-key name="fk_80ramn6un2kwnkg8cg6p0gsj8" column="config_id" referenced-table="cfg.prac_ability_credit_configs" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_9ewta2bpdnt3idfdodnbgm27v" columns="config_id"/>
@@ -2190,8 +2185,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_rrijg4or8b4gim6fnogh8q4vj" columns="ability_credit_setting_id,department_id"/>
-            <foreign-key name="fk_8j1jy8s227hghchm381xi9kaq" column="ability_credit_setting_id" referenced-table="cfg.prac_ability_credit_settings"
-                         referenced-column="id"/>
+            <foreign-key name="fk_8j1jy8s227hghchm381xi9kaq" column="ability_credit_setting_id" referenced-table="cfg.prac_ability_credit_settings" referenced-column="id"/>
             <foreign-key name="fk_rccu5dxn6oot4d88c3y2fes8h" column="department_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -2205,8 +2199,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_sulshfuifdasduxm70lnvxx1r" columns="ability_credit_setting_id,major_id"/>
-            <foreign-key name="fk_2xoby5glg4f362igy1nb7m53s" column="ability_credit_setting_id" referenced-table="cfg.prac_ability_credit_settings"
-                         referenced-column="id"/>
+            <foreign-key name="fk_2xoby5glg4f362igy1nb7m53s" column="ability_credit_setting_id" referenced-table="cfg.prac_ability_credit_settings" referenced-column="id"/>
             <foreign-key name="fk_2t94hfdckgc022x658hrwto3b" column="major_id" referenced-table="base.majors" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -2298,10 +2291,8 @@
           </columns>
           <constraints>
             <primary-key name="pk_dy465bk4jkltlc3rxdeupjame" columns="audit_setting_id,education_level_id"/>
-            <foreign-key name="fk_9wmc3gpjfs94ip7a3g6ethpkf" column="audit_setting_id" referenced-table="cfg.std_audit_settings"
-                         referenced-column="id"/>
-            <foreign-key name="fk_phmalq0nr1btsvy9c6rwsrcyx" column="education_level_id" referenced-table="code.education_levels"
-                         referenced-column="id"/>
+            <foreign-key name="fk_9wmc3gpjfs94ip7a3g6ethpkf" column="audit_setting_id" referenced-table="cfg.std_audit_settings" referenced-column="id"/>
+            <foreign-key name="fk_phmalq0nr1btsvy9c6rwsrcyx" column="education_level_id" referenced-table="code.education_levels" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_3j4odlyj9di9w4pv7uxhcjxk4" columns="audit_setting_id"/>
@@ -2455,8 +2446,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_8em7ugqxysbj9ftc3tn2wwfvn" columns="transfer_scope_id,value_"/>
-            <foreign-key name="fk_gn25joaupiuw7p15uq30528uj" column="transfer_scope_id" referenced-table="cfg.std_transfer_scopes"
-                         referenced-column="id"/>
+            <foreign-key name="fk_gn25joaupiuw7p15uq30528uj" column="transfer_scope_id" referenced-table="cfg.std_transfer_scopes" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_eijut5ihl52n15i4j2akr6cfe" columns="transfer_scope_id"/>
@@ -2469,8 +2459,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ens0r0ptm7qgcdo1hkkkkoded" columns="transfer_scope_id,major_id"/>
-            <foreign-key name="fk_adrfxyttj736urgbngpxq5r6a" column="transfer_scope_id" referenced-table="cfg.std_transfer_scopes"
-                         referenced-column="id"/>
+            <foreign-key name="fk_adrfxyttj736urgbngpxq5r6a" column="transfer_scope_id" referenced-table="cfg.std_transfer_scopes" referenced-column="id"/>
             <foreign-key name="fk_muk85jom2dqvcfdd0pmje30iy" column="major_id" referenced-table="base.majors" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -2669,8 +2658,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_72jvjm56lmlxv2bscp1j4opmj" columns="id"/>
-            <foreign-key name="fk_esh5jna9bcsijcdbupw12wocx" column="category_id" referenced-table="code.certificate_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_esh5jna9bcsijcdbupw12wocx" column="category_id" referenced-table="code.certificate_categories" referenced-column="id"/>
             <unique-key name="uk_mkx2966u5d4brh13s2rh5qubj" columns="code"/>
           </constraints>
         </table>
@@ -2773,8 +2761,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ixp9hq9d3g6ggc30g8py4poq5" columns="id"/>
-            <foreign-key name="fk_71dwis01s95gd1p5lu1h76737" column="subject_id" referenced-table="code.course_ability_subjects"
-                         referenced-column="id"/>
+            <foreign-key name="fk_71dwis01s95gd1p5lu1h76737" column="subject_id" referenced-table="code.course_ability_subjects" referenced-column="id"/>
             <unique-key name="uk_ihcloqdo5h0okf4jchujnfilv" columns="code"/>
           </constraints>
         </table>
@@ -2824,8 +2811,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_m0n8wfi3rt5detkp55foa7nxp" columns="id"/>
-            <foreign-key name="fk_p1i1dn7gojnu8mf3v9di6fypj" column="category_id" referenced-table="code.course_award_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_p1i1dn7gojnu8mf3v9di6fypj" column="category_id" referenced-table="code.course_award_categories" referenced-column="id"/>
             <unique-key name="uk_brsg073sqnh28tt27cfoke6jy" columns="code"/>
           </constraints>
         </table>
@@ -2847,8 +2833,7 @@
           <constraints>
             <primary-key name="pk_oqysoxcp8dqo4wmygpdpatqu4" columns="id"/>
             <foreign-key name="fk_c5k6uw6byn2wdwqo5in0bi5rf" column="parent_id" referenced-table="code.course_categories" referenced-column="id"/>
-            <foreign-key name="fk_dcguulpdpunq4d9j3eofi6i2w" column="dimension_id" referenced-table="code.course_category_dimensions"
-                         referenced-column="id"/>
+            <foreign-key name="fk_dcguulpdpunq4d9j3eofi6i2w" column="dimension_id" referenced-table="code.course_category_dimensions" referenced-column="id"/>
             <unique-key name="uk_2f852vsgkix9h35aukbasxq0x" columns="code"/>
           </constraints>
           <indexes>
@@ -3148,8 +3133,7 @@
           <constraints>
             <primary-key name="pk_dxv54dx9an08euovln6cd5s4x" columns="id"/>
             <foreign-key name="fk_450f1pic65rbe7fdobqnlesvu" column="catalog_id" referenced-table="code.discipline_catalogs" referenced-column="id"/>
-            <foreign-key name="fk_ppqr5tdr0ugyeacn692j1tpsh" column="category_id" referenced-table="code.discipline_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_ppqr5tdr0ugyeacn692j1tpsh" column="category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
             <unique-key name="uk_osah0lag5rsel21i6uu1gqixb" columns="code"/>
           </constraints>
         </table>
@@ -3798,8 +3782,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_6kymaieloxnmdimt05r4bie0q" columns="id"/>
-            <foreign-key name="fk_pf209fc8t60gdq3omladrg0br" column="category_id" referenced-table="code.discipline_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_pf209fc8t60gdq3omladrg0br" column="category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
             <unique-key name="uk_oc1wjadmqun61ry6dba697cwm" columns="code"/>
           </constraints>
         </table>
@@ -4290,8 +4273,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_gjdq9tpb799gj5hgk7aqw2c48" columns="id"/>
-            <foreign-key name="fk_iq0202kvmg12e4g8in8uyq3wo" column="category_id" referenced-table="code.std_practice_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_iq0202kvmg12e4g8in8uyq3wo" column="category_id" referenced-table="code.std_practice_categories" referenced-column="id"/>
             <unique-key name="uk_nu2056990u2cwn9i884wcnr7m" columns="code"/>
           </constraints>
         </table>
@@ -5210,11 +5192,9 @@
           </columns>
           <constraints>
             <primary-key name="pk_pmutuonqxs4khwic666oq6yh" columns="id"/>
-            <foreign-key name="fk_jiv4484xisjxcpbscerv13tgi" column="defense_info_id" referenced-table="degree.defense_infoes"
-                         referenced-column="id"/>
+            <foreign-key name="fk_jiv4484xisjxcpbscerv13tgi" column="defense_info_id" referenced-table="degree.defense_infoes" referenced-column="id"/>
             <foreign-key name="fk_1wwg73wddv3smikygormq9oac" column="cross_reviewer_id" referenced-table="base.teachers" referenced-column="id"/>
-            <foreign-key name="fk_p4cwkm8clkna9hce1b74yym12" column="cross_review_manager_id" referenced-table="base.teachers"
-                         referenced-column="id"/>
+            <foreign-key name="fk_p4cwkm8clkna9hce1b74yym12" column="cross_review_manager_id" referenced-table="base.teachers" referenced-column="id"/>
             <foreign-key name="fk_fm35iv8s0vrddq2abc0jnpt4" column="writer_id" referenced-table="degree.writers" referenced-column="id"/>
             <unique-key name="uk_c5o3hq18aynpl1cvaqd0bsxbl" columns="writer_id"/>
           </constraints>
@@ -5283,8 +5263,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_9p21ojbfpsddsa1snrmjwg301" columns="id"/>
-            <foreign-key name="fk_klucok7xe6txt0fuwn8c0dmw2" column="group_result_id" referenced-table="edu.audit_group_results"
-                         referenced-column="id"/>
+            <foreign-key name="fk_klucok7xe6txt0fuwn8c0dmw2" column="group_result_id" referenced-table="edu.audit_group_results" referenced-column="id"/>
             <foreign-key name="fk_7h4mhuqxlovmwuklnie24ces5" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <unique-key name="uk_l15jy8rdu4luc06vmaa8xx7ct" columns="group_result_id,course_id"/>
           </constraints>
@@ -5315,8 +5294,7 @@
             <primary-key name="pk_1gbmaroenosd2ni5ercinp1yo" columns="id"/>
             <foreign-key name="fk_o5t4yave4tu5dxcnpm2fiby3d" column="parent_id" referenced-table="edu.audit_group_results" referenced-column="id"/>
             <foreign-key name="fk_9s1c6lthsrdj3p9pp7c16don5" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
-            <foreign-key name="fk_iyi6xmtlaay2h1ffxj538htam" column="plan_result_id" referenced-table="edu.audit_plan_results"
-                         referenced-column="id"/>
+            <foreign-key name="fk_iyi6xmtlaay2h1ffxj538htam" column="plan_result_id" referenced-table="edu.audit_plan_results" referenced-column="id"/>
             <foreign-key name="fk_d3cyoyo0nubvnqix4i5b6wetq" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -5405,8 +5383,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_nbymota90h5p6y4yvufp7nmea" columns="certificate_grade_id,course_id"/>
-            <foreign-key name="fk_gam2oe68gq0asabsto04nb9ni" column="certificate_grade_id" referenced-table="edu.certificate_grades"
-                         referenced-column="id"/>
+            <foreign-key name="fk_gam2oe68gq0asabsto04nb9ni" column="certificate_grade_id" referenced-table="edu.certificate_grades" referenced-column="id"/>
             <foreign-key name="fk_ik2tabqiufoqowx0ge4sha5rk" column="course_id" referenced-table="base.courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -5658,8 +5635,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_rtknsmxggkox9vw5lwm4m18us" columns="id"/>
-            <foreign-key name="fk_eekyqw15so4fi3t740wqi95hc" column="restriction_id" referenced-table="edu.clazz_restrictions"
-                         referenced-column="id"/>
+            <foreign-key name="fk_eekyqw15so4fi3t740wqi95hc" column="restriction_id" referenced-table="edu.clazz_restrictions" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_tarm0ae4yoy7g95d7dlndehcj" columns="restriction_id"/>
@@ -5762,8 +5738,7 @@
           <constraints>
             <primary-key name="pk_kx0jp80tganm39yvlc4lewj74" columns="clazz_id,course_ability_rate_id"/>
             <foreign-key name="fk_b8unl65rdwbtkvgou7sf2s58r" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
-            <foreign-key name="fk_9x9tus6jwmygbpg7he75889wl" column="course_ability_rate_id" referenced-table="code.course_ability_rates"
-                         referenced-column="id"/>
+            <foreign-key name="fk_9x9tus6jwmygbpg7he75889wl" column="course_ability_rate_id" referenced-table="code.course_ability_rates" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_dtwnr7ysxuukruvulscomb6on" columns="clazz_id"/>
@@ -5867,8 +5842,7 @@
             <foreign-key name="fk_nfy88swiyqnn7g2tqy8j9ikw9" column="exam_mode_id" referenced-table="code.exam_modes" referenced-column="id"/>
             <foreign-key name="fk_609wisyl64aolpni3i7jjkpu2" column="grading_mode_id" referenced-table="code.grading_modes" referenced-column="id"/>
             <foreign-key name="fk_gwuis19phdhrfhsbirfrjg6c8" column="course_id" referenced-table="base.courses" referenced-column="id"/>
-            <foreign-key name="fk_hiltid295la5cxrm3o4dfdmsr" column="course_take_type_id" referenced-table="code.course_take_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_hiltid295la5cxrm3o4dfdmsr" column="course_take_type_id" referenced-table="code.course_take_types" referenced-column="id"/>
             <foreign-key name="fk_bfriycu9ape05xou5hmrd47in" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_iqjgumy62st0ab2rstwps1kv6" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <foreign-key name="fk_bsq1vt0u09li5db217joowltu" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
@@ -6031,8 +6005,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_4wy4ksg5gx6h85tb11hphty4b" columns="id"/>
-            <foreign-key name="fk_gguqm48tut90x9xfdj754dujj" column="grade_state_id" referenced-table="edu.course_grade_states"
-                         referenced-column="id"/>
+            <foreign-key name="fk_gguqm48tut90x9xfdj754dujj" column="grade_state_id" referenced-table="edu.course_grade_states" referenced-column="id"/>
             <foreign-key name="fk_ivx09k5phb544j9cqrt4unadp" column="grade_type_id" referenced-table="code.grade_types" referenced-column="id"/>
             <foreign-key name="fk_todj5tm0wtrvgwkr61bfemtq" column="grading_mode_id" referenced-table="code.grading_modes" referenced-column="id"/>
             <unique-key name="uk_hbbjtria5w2yv76athjignsdk" columns="grade_state_id,grade_type_id"/>
@@ -6087,8 +6060,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_sibrdqqr0ie2m6sa4x21twlpa" columns="id"/>
-            <foreign-key name="fk_9paixyr8guphi7p37hpplqr8q" column="alloc_setting_id" referenced-table="cfg.edu_exam_alloc_settings"
-                         referenced-column="id"/>
+            <foreign-key name="fk_9paixyr8guphi7p37hpplqr8q" column="alloc_setting_id" referenced-table="cfg.edu_exam_alloc_settings" referenced-column="id"/>
             <foreign-key name="fk_2qi232puueusje5sa83157c0u" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_fisp6n4qhnde5fx4ohub8gmo" column="exam_type_id" referenced-table="code.exam_types" referenced-column="id"/>
             <foreign-key name="fk_ntugt7yl8tmqd5xcl0pgdsxio" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
@@ -6143,8 +6115,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_jxldkkl8o0nyifobrb87n1gj2" columns="exam_room_group_id,classroom_id"/>
-            <foreign-key name="fk_co90ax8bfbc4rssrkoegj0pxo" column="exam_room_group_id" referenced-table="edu.exam_room_groups"
-                         referenced-column="id"/>
+            <foreign-key name="fk_co90ax8bfbc4rssrkoegj0pxo" column="exam_room_group_id" referenced-table="edu.exam_room_groups" referenced-column="id"/>
             <foreign-key name="fk_6u9pxpnfrkh6bwfiu8vs2nb10" column="classroom_id" referenced-table="base.classrooms" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -6295,8 +6266,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_1youdaxcg42qn6nhvwcbwad9g" columns="id"/>
-            <foreign-key name="fk_56dhnv2u0mj39lg7utkuwegmg" column="parent_id" referenced-table="edu.executive_course_groups"
-                         referenced-column="id"/>
+            <foreign-key name="fk_56dhnv2u0mj39lg7utkuwegmg" column="parent_id" referenced-table="edu.executive_course_groups" referenced-column="id"/>
             <foreign-key name="fk_a0ab8elp15ghrbghqqxu0x0rn" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
             <foreign-key name="fk_6mh987hal1axohw2uqqpb6n6b" column="stage_id" referenced-table="base.calendar_stages" referenced-column="id"/>
             <foreign-key name="fk_qws3d63si4v6xhjnqrkjq7dq7" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
@@ -6418,8 +6388,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_c6lgnfjsyt425c90aek6a4cba" columns="id"/>
-            <foreign-key name="fk_9cgka8cip9d1rh15y38wrvqef" column="extern_student_id" referenced-table="base.extern_students"
-                         referenced-column="id"/>
+            <foreign-key name="fk_9cgka8cip9d1rh15y38wrvqef" column="extern_student_id" referenced-table="base.extern_students" referenced-column="id"/>
           </constraints>
         </table>
         <table name="extern_grades_exempts" comment="校外成绩免修课程@extern">
@@ -6465,8 +6434,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ksgdtf4d0hu23dxxc2e6t0bl6" columns="final_makeup_course_id,squad_id"/>
-            <foreign-key name="fk_bqn0v2ovb74kaoiri9exhb1cw" column="final_makeup_course_id" referenced-table="edu.final_makeup_courses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_bqn0v2ovb74kaoiri9exhb1cw" column="final_makeup_course_id" referenced-table="edu.final_makeup_courses" referenced-column="id"/>
             <foreign-key name="fk_i84kxtw6ygeqmimbodv7m9onm" column="squad_id" referenced-table="base.squads" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -6487,8 +6455,7 @@
             <primary-key name="pk_eh01n7uwcd4vicj1mwrn7on3s" columns="id"/>
             <foreign-key name="fk_ik2scl92fgay4ncc539w5064w" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
             <foreign-key name="fk_5e4n642vhctedomk6hhpsxf5i" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_9ef6gqa1pjpp47tfiheocwak0" column="makeup_course_id" referenced-table="edu.final_makeup_courses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_9ef6gqa1pjpp47tfiheocwak0" column="makeup_course_id" referenced-table="edu.final_makeup_courses" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_tmijebsy2v1l6otedsmxu6q4q" columns="std_id"/>
@@ -6510,8 +6477,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_14dswddj9gfs9i2v6ep2m05ku" columns="id"/>
-            <foreign-key name="fk_hvkysjl2gagay3w0nhcu8fqre" column="grade_state_id" referenced-table="edu.course_grade_states"
-                         referenced-column="id"/>
+            <foreign-key name="fk_hvkysjl2gagay3w0nhcu8fqre" column="grade_state_id" referenced-table="edu.course_grade_states" referenced-column="id"/>
             <foreign-key name="fk_ti39wcgmvipx0m7ktnl1wfu9r" column="grade_type_id" referenced-table="code.grade_types" referenced-column="id"/>
             <foreign-key name="fk_4akjhgw8yqn0iep1r9y5a6vpr" column="grading_mode_id" referenced-table="code.grading_modes" referenced-column="id"/>
             <unique-key name="uk_55c7tsme8v49y1o7tjn1r8vpe" columns="grade_state_id,grade_type_id"/>
@@ -6606,8 +6572,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_i04mllgl8dh4whufiq0sw5smj" columns="invigilation_quota_id,exclude_on"/>
-            <foreign-key name="fk_t9egfdso6aja69am0rtqa8dcq" column="invigilation_quota_id" referenced-table="edu.invigilation_quotas"
-                         referenced-column="id"/>
+            <foreign-key name="fk_t9egfdso6aja69am0rtqa8dcq" column="invigilation_quota_id" referenced-table="edu.invigilation_quotas" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_t403dhky0rxdpfyt54q7rq0kq" columns="invigilation_quota_id"/>
@@ -6746,8 +6711,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_q055pvumg14plkk3p3dyb4v5o" columns="major_alt_course_id,course_id"/>
-            <foreign-key name="fk_q74bnkaxqtuleop0lyw1w1xeg" column="major_alt_course_id" referenced-table="edu.major_alt_courses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_q74bnkaxqtuleop0lyw1w1xeg" column="major_alt_course_id" referenced-table="edu.major_alt_courses" referenced-column="id"/>
             <foreign-key name="fk_lddjfdvlcwthx2y8gis5rbp5i" column="course_id" referenced-table="base.courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -6761,8 +6725,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_tfl42phv9abi60dnauh3cgtx5" columns="major_alt_course_id,course_id"/>
-            <foreign-key name="fk_f488kjk8bfxelb3ob2m081k5r" column="major_alt_course_id" referenced-table="edu.major_alt_courses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_f488kjk8bfxelb3ob2m081k5r" column="major_alt_course_id" referenced-table="edu.major_alt_courses" referenced-column="id"/>
             <foreign-key name="fk_q89c5jynwnebdsl47nk45nkfx" column="course_id" referenced-table="base.courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -7001,8 +6964,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_rt39x9dho1u8xtaov9jms7p94" columns="id"/>
-            <foreign-key name="fk_m1vrqjy2yfp0tncdk6y0wdi5m" column="template_id" referenced-table="edu.program_doc_templates"
-                         referenced-column="id"/>
+            <foreign-key name="fk_m1vrqjy2yfp0tncdk6y0wdi5m" column="template_id" referenced-table="edu.program_doc_templates" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_d69hctw0adiwc375iducsqovm" columns="template_id"/>
@@ -7055,8 +7017,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_lwfg2w960gakch3fo4djc31d7" columns="program_doc_template_id,std_type_id"/>
-            <foreign-key name="fk_jedlxpuxehpy3ji0yfhm2a0q7" column="program_doc_template_id" referenced-table="edu.program_doc_templates"
-                         referenced-column="id"/>
+            <foreign-key name="fk_jedlxpuxehpy3ji0yfhm2a0q7" column="program_doc_template_id" referenced-table="edu.program_doc_templates" referenced-column="id"/>
             <foreign-key name="fk_fuww87g53wh0qmo8fdws3xuh" column="std_type_id" referenced-table="code.std_types" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -7426,8 +7387,7 @@
             <primary-key name="pk_45hb6362voxm23n8sxy3fgo3b" columns="id"/>
             <foreign-key name="fk_29itujl04g1d0tewu4euvwxch" column="parent_id" referenced-table="edu.share_course_groups" referenced-column="id"/>
             <foreign-key name="fk_sugmy66goqyn0fg09os9n6x3g" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
-            <foreign-key name="fk_te39uk0s4fei49vb4338fwo1b" column="course_ability_rate_id" referenced-table="code.course_ability_rates"
-                         referenced-column="id"/>
+            <foreign-key name="fk_te39uk0s4fei49vb4338fwo1b" column="course_ability_rate_id" referenced-table="code.course_ability_rates" referenced-column="id"/>
             <foreign-key name="fk_doly7nd7pa0vvd6ujij91csk0" column="language_id" referenced-table="code.languages" referenced-column="id"/>
             <foreign-key name="fk_fnm7tvjc6yxwbt3akuumkylv1" column="plan_id" referenced-table="edu.share_plans" referenced-column="id"/>
           </constraints>
@@ -7499,8 +7459,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ff9ka4gw208d53tn5bmg8v3yo" columns="std_alt_course_id,course_id"/>
-            <foreign-key name="fk_kf2ddu7dt808aivpblhcrxrmy" column="std_alt_course_id" referenced-table="edu.std_alt_courses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_kf2ddu7dt808aivpblhcrxrmy" column="std_alt_course_id" referenced-table="edu.std_alt_courses" referenced-column="id"/>
             <foreign-key name="fk_6s622s9lgh94dxm8rdts3uacy" column="course_id" referenced-table="base.courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -7514,8 +7473,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_9lvrx45u53eynsj63a4c345rl" columns="std_alt_course_id,course_id"/>
-            <foreign-key name="fk_n7rxknr6pcsfqb2yxr1krt01h" column="std_alt_course_id" referenced-table="edu.std_alt_courses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_n7rxknr6pcsfqb2yxr1krt01h" column="std_alt_course_id" referenced-table="edu.std_alt_courses" referenced-column="id"/>
             <foreign-key name="fk_17lwdqgird951v1427i4bgj36" column="course_id" referenced-table="base.courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -8034,8 +7992,7 @@
           <constraints>
             <primary-key name="pk_n185xcaot9m60564kxp5ohyn1" columns="syllabus_id,education_level_id"/>
             <foreign-key name="fk_sumq6lrqf9elwn3b0t5qgg016" column="syllabus_id" referenced-table="edu.syllabuses" referenced-column="id"/>
-            <foreign-key name="fk_bt5e3t2ggduawe6keccg4vbuw" column="education_level_id" referenced-table="code.education_levels"
-                         referenced-column="id"/>
+            <foreign-key name="fk_bt5e3t2ggduawe6keccg4vbuw" column="education_level_id" referenced-table="code.education_levels" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_qex7k49m7ujh56q2m44ge0l2n" columns="syllabus_id"/>
@@ -8089,10 +8046,8 @@
             <foreign-key name="fk_3957dj4fgo2f15wswkvgxaq6q" column="teacher_id" referenced-table="base.teachers" referenced-column="id"/>
             <foreign-key name="fk_ad45v21pyxd3b2ib37wvwo9u1" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_dlplkf7xv9qsjbf9o64jbbi13" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
-            <foreign-key name="fk_io9no4a75usey7a0f1vkrtomo" column="teacher_title_id" referenced-table="code.professional_titles"
-                         referenced-column="id"/>
-            <foreign-key name="fk_sovkmy71gktymlbsm1gmkm6u5" column="capacity_factor_id" referenced-table="cfg.edu_capacity_factors"
-                         referenced-column="id"/>
+            <foreign-key name="fk_io9no4a75usey7a0f1vkrtomo" column="teacher_title_id" referenced-table="code.professional_titles" referenced-column="id"/>
+            <foreign-key name="fk_sovkmy71gktymlbsm1gmkm6u5" column="capacity_factor_id" referenced-table="cfg.edu_capacity_factors" referenced-column="id"/>
           </constraints>
         </table>
         <table name="term_campuses" comment="专业所在校区@program">
@@ -8149,8 +8104,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_m5mfjxqjwukvr0bgbo5tdgckh" columns="cert_exempt_apply_id,course_id"/>
-            <foreign-key name="fk_4ge8qhxcfstfjd48g2yda2lj3" column="cert_exempt_apply_id" referenced-table="flow.edu_cert_exempt_applies"
-                         referenced-column="id"/>
+            <foreign-key name="fk_4ge8qhxcfstfjd48g2yda2lj3" column="cert_exempt_apply_id" referenced-table="flow.edu_cert_exempt_applies" referenced-column="id"/>
             <foreign-key name="fk_s1fsg2h352cv0aepex09145qw" column="course_id" referenced-table="base.courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -8184,8 +8138,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_gqnomm9viapyih10a80bbtnlb" columns="course_alt_apply_id,course_id"/>
-            <foreign-key name="fk_ia40an2405hdyw08esqqag4uv" column="course_alt_apply_id" referenced-table="flow.edu_course_alt_applies"
-                         referenced-column="id"/>
+            <foreign-key name="fk_ia40an2405hdyw08esqqag4uv" column="course_alt_apply_id" referenced-table="flow.edu_course_alt_applies" referenced-column="id"/>
             <foreign-key name="fk_kicigtwmvym88vhpx4m0x3m3g" column="course_id" referenced-table="base.courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -8199,8 +8152,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_g6txw6v9s6cf0y2j61x1yrlor" columns="course_alt_apply_id,course_id"/>
-            <foreign-key name="fk_bdcd8ua12xinkksxnafmh1dyn" column="course_alt_apply_id" referenced-table="flow.edu_course_alt_applies"
-                         referenced-column="id"/>
+            <foreign-key name="fk_bdcd8ua12xinkksxnafmh1dyn" column="course_alt_apply_id" referenced-table="flow.edu_course_alt_applies" referenced-column="id"/>
             <foreign-key name="fk_2h33krs7kk67gqmjnbje4ay4h" column="course_id" referenced-table="base.courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -8270,8 +8222,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_myj9vd8b658rfxdkn7gjontk1" columns="id"/>
-            <foreign-key name="fk_cmax47872oxk8unugt9l8fx0p" column="extern_student_id" referenced-table="base.extern_students"
-                         referenced-column="id"/>
+            <foreign-key name="fk_cmax47872oxk8unugt9l8fx0p" column="extern_student_id" referenced-table="base.extern_students" referenced-column="id"/>
             <foreign-key name="fk_ffl3de69p916fkvwvrv3yxbsi" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <unique-key name="uk_ewl3g4qnuueaav63fnu8x9mtn" columns="extern_student_id"/>
           </constraints>
@@ -8310,8 +8261,7 @@
             <foreign-key name="fk_em5mh2clty1avltli9m0hfins" column="nature_id" referenced-table="code.course_natures" referenced-column="id"/>
             <foreign-key name="fk_tj7ujf1r03hg4y6crjtw1dyir" column="module_id" referenced-table="code.course_modules" referenced-column="id"/>
             <foreign-key name="fk_21at3bdoub5eqiyc2eula4d05" column="applicant_id" referenced-table="base.users" referenced-column="id"/>
-            <foreign-key name="fk_387g9ljivru3jxdgxsocc0tcy" column="category_id" referenced-table="flow.edu_new_course_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_387g9ljivru3jxdgxsocc0tcy" column="category_id" referenced-table="flow.edu_new_course_categories" referenced-column="id"/>
           </constraints>
         </table>
         <table name="edu_new_course_applies_tags" comment="标签@course.flow">
@@ -8321,8 +8271,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_6n9cq37up5f509auhglv3lqqk" columns="new_course_apply_id,course_tag_id"/>
-            <foreign-key name="fk_eomhr7dsfvsxkl31jkr8xohxb" column="new_course_apply_id" referenced-table="flow.edu_new_course_applies"
-                         referenced-column="id"/>
+            <foreign-key name="fk_eomhr7dsfvsxkl31jkr8xohxb" column="new_course_apply_id" referenced-table="flow.edu_new_course_applies" referenced-column="id"/>
             <foreign-key name="fk_e337xxmu3xn8dytgblifdwpjx" column="course_tag_id" referenced-table="code.course_tags" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -8340,8 +8289,7 @@
           <constraints>
             <primary-key name="pk_9o8bhp7vs4pxwkcyeluduysai" columns="id"/>
             <foreign-key name="fk_tovmuehvajioljjit4b4673fa" column="nature_id" referenced-table="code.teaching_natures" referenced-column="id"/>
-            <foreign-key name="fk_l7wcmtqtes34hk7qe97j2fco6" column="course_apply_id" referenced-table="flow.edu_new_course_applies"
-                         referenced-column="id"/>
+            <foreign-key name="fk_l7wcmtqtes34hk7qe97j2fco6" column="course_apply_id" referenced-table="flow.edu_new_course_applies" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_pfxpk2do32b5txki4hkw2jnxn" columns="course_apply_id"/>
@@ -8450,21 +8398,21 @@
             <column name="audit_at" type="timestamptz" comment="审核时间"/>
             <column name="auditor_id" type="bigint" comment="审核人ID"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
-            <column name="bibliography" type="varchar(255)" comment="参考书目"/>
+            <column name="bibliography" type="varchar(2000)" comment="参考书目"/>
             <column name="category_id" type="integer" comment="课程分类ID"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
             <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
-            <column name="description" type="varchar(255)" nullable="false" comment="简介"/>
+            <column name="description" type="varchar(800)" nullable="false" comment="简介"/>
             <column name="director_id" type="bigint" comment="教师信息ID"/>
-            <column name="en_description" type="varchar(255)" comment="英文简介"/>
+            <column name="en_description" type="varchar(2000)" comment="英文简介"/>
             <column name="end_on" type="date" comment="失效日期"/>
-            <column name="majors" type="varchar(255)" comment="适用专业"/>
-            <column name="materials" type="varchar(255)" comment="辅助资料"/>
+            <column name="majors" type="varchar(200)" comment="适用专业"/>
+            <column name="materials" type="varchar(1000)" comment="辅助资料"/>
             <column name="prerequisites" type="varchar(255)" comment="先修课程"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="status" type="integer" nullable="false" comment="状态"/>
-            <column name="textbooks" type="varchar(255)" comment="教材和参考书目"/>
+            <column name="textbooks" type="varchar(500)" comment="教材和参考书目"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="website" type="varchar(255)" comment="课程网站"/>
             <column name="writer_id" type="bigint" comment="通用人员信息ID"/>
@@ -8472,6 +8420,9 @@
           <constraints>
             <primary-key name="pk_bp6we1odwfrduqd0w2dbcmm5x" columns="id"/>
           </constraints>
+          <indexes>
+            <index name="idx_xaiterx8ciy41f5pv3pg53c4" columns="course_id"/>
+          </indexes>
         </table>
         <table name="edu_course_takers" comment="历史学生修读课程信息@his">
           <columns>
@@ -8840,8 +8791,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_8ul02gtuobjohhs8hbfqh5b2i" columns="closure_review_group_id,expert_id"/>
-            <foreign-key name="fk_kryxfb3rda5to3uxjmocvl952" column="closure_review_group_id" referenced-table="prac.inv_closure_review_groups"
-                         referenced-column="id"/>
+            <foreign-key name="fk_kryxfb3rda5to3uxjmocvl952" column="closure_review_group_id" referenced-table="prac.inv_closure_review_groups" referenced-column="id"/>
             <foreign-key name="fk_h2qumq1ewav6us6l8v4skqyti" column="expert_id" referenced-table="prac.inv_experts" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -8858,8 +8808,7 @@
           <constraints>
             <primary-key name="pk_c86a40ptsd4av8ra1ctcutent" columns="id"/>
             <foreign-key name="fk_453biu8w15qgm23pn1k3l0htt" column="project_id" referenced-table="prac.inv_projects" referenced-column="id"/>
-            <foreign-key name="fk_9k9ncwequc7jyl0h7ulxbmck9" column="group_id" referenced-table="prac.inv_closure_review_groups"
-                         referenced-column="id"/>
+            <foreign-key name="fk_9k9ncwequc7jyl0h7ulxbmck9" column="group_id" referenced-table="prac.inv_closure_review_groups" referenced-column="id"/>
           </constraints>
         </table>
         <table name="inv_closures" comment="结项@innovation">
@@ -8932,8 +8881,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_i3cm734r0fyam45ukbs5kdscb" columns="init_review_group_id,expert_id"/>
-            <foreign-key name="fk_ixmcc3s264hf1edxkhd2p3uy9" column="init_review_group_id" referenced-table="prac.inv_init_review_groups"
-                         referenced-column="id"/>
+            <foreign-key name="fk_ixmcc3s264hf1edxkhd2p3uy9" column="init_review_group_id" referenced-table="prac.inv_init_review_groups" referenced-column="id"/>
             <foreign-key name="fk_e5bsd1990f9l9ya46em4pjnig" column="expert_id" referenced-table="prac.inv_experts" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -9080,8 +9028,7 @@
             <foreign-key name="fk_pehvbrx0tb660335yjpf8r2qs" column="discipline_id" referenced-table="code.disciplines" referenced-column="id"/>
             <foreign-key name="fk_mt83f3yff6d6wdyray1lefc58" column="intro_id" referenced-table="prac.inv_introes" referenced-column="id"/>
             <foreign-key name="fk_o0jf964sh6nmm4m9pjgo4asph" column="state_id" referenced-table="prac.inv_project_states" referenced-column="id"/>
-            <foreign-key name="fk_m48wmqcdgnxcddjs54f09cq1r" column="category_id" referenced-table="prac.inv_project_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_m48wmqcdgnxcddjs54f09cq1r" column="category_id" referenced-table="prac.inv_project_categories" referenced-column="id"/>
             <foreign-key name="fk_sgudf377rbi36gv7wo7n9rvjp" column="department_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
         </table>
@@ -9127,8 +9074,7 @@
           <constraints>
             <primary-key name="pk_b4nhltmsnowel3c1ogfvdnt7d" columns="id"/>
             <foreign-key name="fk_sh7gkxgum9ean06dmamngquan" column="project_id" referenced-table="prac.inv_projects" referenced-column="id"/>
-            <foreign-key name="fk_i0264dwyp2s8j2sjnw8r0duwi" column="group_id" referenced-table="prac.inv_promotion_defense_groups"
-                         referenced-column="id"/>
+            <foreign-key name="fk_i0264dwyp2s8j2sjnw8r0duwi" column="group_id" referenced-table="prac.inv_promotion_defense_groups" referenced-column="id"/>
             <unique-key name="uk_gouy23rxmvq3qpcbyfdphdthj" columns="group_id,idx"/>
           </constraints>
           <indexes>
@@ -9190,8 +9136,7 @@
             <foreign-key name="fk_c4bsxhdo0jtabw57h2ird9qqu" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_4pg9jxejy64vv9mjrv1bsxesu" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <foreign-key name="fk_ng2g7iqmxh7j49h3rnr1hh50p" column="department_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_isv2ox2hb768emrxjrmlccu8u" column="activity_type_id" referenced-table="code.prac_activity_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_isv2ox2hb768emrxjrmlccu8u" column="activity_type_id" referenced-table="code.prac_activity_types" referenced-column="id"/>
           </constraints>
         </table>
         <table name="prac_activities_teachers" comment="授课教师@activity">
@@ -9201,8 +9146,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_m6rcxc6wq5ladivqpne64hrg9" columns="prac_activity_id,user_id"/>
-            <foreign-key name="fk_sbrmcefo1k7ge040byomyurxu" column="prac_activity_id" referenced-table="prac.prac_activities"
-                         referenced-column="id"/>
+            <foreign-key name="fk_sbrmcefo1k7ge040byomyurxu" column="prac_activity_id" referenced-table="prac.prac_activities" referenced-column="id"/>
             <foreign-key name="fk_r19n18fgti2v2kcax3vf397qf" column="user_id" referenced-table="base.users" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -9229,8 +9173,7 @@
           <constraints>
             <primary-key name="pk_en5y6abajte148s2vp97tbye7" columns="id"/>
             <foreign-key name="fk_ehfpf868ykup0ua4k2f3xk71h" column="activity_id" referenced-table="prac.prac_activities" referenced-column="id"/>
-            <foreign-key name="fk_mpvvellaugmncxcu7l906l73j" column="teaching_method_id" referenced-table="code.teaching_methods"
-                         referenced-column="id"/>
+            <foreign-key name="fk_mpvvellaugmncxcu7l906l73j" column="teaching_method_id" referenced-table="code.teaching_methods" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_6xg4w1hyp21v6abxcgpoioql8" columns="activity_id"/>
@@ -9243,8 +9186,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_6sbuukfwaggk7mw12rhcvkh3m" columns="prac_activity_schedule_id,user_id"/>
-            <foreign-key name="fk_et0ft6qvkgursin02xcd582do" column="prac_activity_schedule_id" referenced-table="prac.prac_activity_schedules"
-                         referenced-column="id"/>
+            <foreign-key name="fk_et0ft6qvkgursin02xcd582do" column="prac_activity_schedule_id" referenced-table="prac.prac_activity_schedules" referenced-column="id"/>
             <foreign-key name="fk_kn8meyebu2xv6ffc1alwpgi9m" column="user_id" referenced-table="base.users" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -9271,8 +9213,7 @@
           <constraints>
             <primary-key name="pk_ths47bln2u831lk23ws7lqux3" columns="id"/>
             <foreign-key name="fk_4trjfdfsffrmxjm5lsi5iso9l" column="activity_id" referenced-table="prac.prac_clazzes" referenced-column="id"/>
-            <foreign-key name="fk_6828lk3f80ecupmsynewxnavo" column="teaching_method_id" referenced-table="code.teaching_methods"
-                         referenced-column="id"/>
+            <foreign-key name="fk_6828lk3f80ecupmsynewxnavo" column="teaching_method_id" referenced-table="code.teaching_methods" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_4gesjj1pmtwcuc3np7c5ldjsv" columns="activity_id"/>
@@ -9285,8 +9226,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_4efp5dstwyj6rb2a05gtg6211" columns="prac_clazz_schedule_id,user_id"/>
-            <foreign-key name="fk_c87nuj5ni77hscromf0ootkjw" column="prac_clazz_schedule_id" referenced-table="prac.prac_clazz_schedules"
-                         referenced-column="id"/>
+            <foreign-key name="fk_c87nuj5ni77hscromf0ootkjw" column="prac_clazz_schedule_id" referenced-table="prac.prac_clazz_schedules" referenced-column="id"/>
             <foreign-key name="fk_8d5mu8w5tyhw8id11oxvuhkf7" column="user_id" referenced-table="base.users" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -9345,8 +9285,7 @@
           <constraints>
             <primary-key name="pk_re8dtd5sef7xvesjfjhfgayhw" columns="id"/>
             <foreign-key name="fk_j3hpd9ija7mcq8ibrgiwk7co3" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_opk7pt9ku3etujtwalom6nove" column="category_id" referenced-table="code.std_practice_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_opk7pt9ku3etujtwalom6nove" column="category_id" referenced-table="code.std_practice_categories" referenced-column="id"/>
             <unique-key name="uk_iy7h2lrkq2jd9misuc1ovhmir" columns="std_id,category_id"/>
           </constraints>
         </table>
@@ -9366,10 +9305,8 @@
           <constraints>
             <primary-key name="pk_18vfbtkmyahbpya2j6hc90go5" columns="id"/>
             <foreign-key name="fk_gcpstqnkqrl3st6f1liodc1t5" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_1y9bnfpxtfrev6ww154jorf9v" column="category_id" referenced-table="code.std_practice_categories"
-                         referenced-column="id"/>
-            <foreign-key name="fk_r9n8db2kkmxyq7oe1xpuwmig9" column="practice_type_id" referenced-table="code.std_practice_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_1y9bnfpxtfrev6ww154jorf9v" column="category_id" referenced-table="code.std_practice_categories" referenced-column="id"/>
+            <foreign-key name="fk_r9n8db2kkmxyq7oe1xpuwmig9" column="practice_type_id" referenced-table="code.std_practice_types" referenced-column="id"/>
           </constraints>
         </table>
       </tables>
@@ -9522,8 +9459,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_otrkkbyi100meit14vwi9ecqt" columns="id"/>
-            <foreign-key name="fk_s4bf8g5qts1r52yh8i3d4sr5w" column="question_stat_id" referenced-table="qos.course_question_stats"
-                         referenced-column="id"/>
+            <foreign-key name="fk_s4bf8g5qts1r52yh8i3d4sr5w" column="question_stat_id" referenced-table="qos.course_question_stats" referenced-column="id"/>
             <foreign-key name="fk_8uo4tm99ey30ijp51qlpl7xm0" column="option_id" referenced-table="qos.options" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -9968,8 +9904,7 @@
           <constraints>
             <primary-key name="pk_1e8il6rh29256vdjtbwh1y0fe" columns="id"/>
             <foreign-key name="fk_3wg4b6cmq6p78epdcvaqtjs9p" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_qkvgf74yg71uom0fv2fmlcq6b" column="education_mode_id" referenced-table="code.education_modes"
-                         referenced-column="id"/>
+            <foreign-key name="fk_qkvgf74yg71uom0fv2fmlcq6b" column="education_mode_id" referenced-table="code.education_modes" referenced-column="id"/>
             <foreign-key name="fk_93owp5k002dba0ep2ik9xdj5x" column="origin_division_id" referenced-table="code.divisions" referenced-column="id"/>
             <foreign-key name="fk_6e33icgq0qssekehpga9n77pr" column="major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_pmvt794yxsrbdf2asttcagv0j" column="enroll_mode_id" referenced-table="code.enroll_modes" referenced-column="id"/>
@@ -9996,8 +9931,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_da8usceea51yrhkys93r6wcgw" columns="exchange_program_id,extern_school_id"/>
-            <foreign-key name="fk_5t7s1x3fvpnlo91ugo0qcp4u3" column="exchange_program_id" referenced-table="std.exchange_programs"
-                         referenced-column="id"/>
+            <foreign-key name="fk_5t7s1x3fvpnlo91ugo0qcp4u3" column="exchange_program_id" referenced-table="std.exchange_programs" referenced-column="id"/>
             <foreign-key name="fk_fc6hj8pr1rmq0oyfuaocumded" column="extern_school_id" referenced-table="base.extern_schools" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -10071,18 +10005,14 @@
             <foreign-key name="fk_a45mi6dqvvnoq209afgwha7iw" column="direction_id" referenced-table="base.major_directions" referenced-column="id"/>
             <foreign-key name="fk_27th0rt0neox2qok0b5hpkm4u" column="id_type_id" referenced-table="code.id_types" referenced-column="id"/>
             <foreign-key name="fk_ahhn6oub9wnte6ofxxyex62pv" column="level_id" referenced-table="code.education_levels" referenced-column="id"/>
-            <foreign-key name="fk_a5hrpbhyuie2fsw905xkunrwy" column="political_status_id" referenced-table="code.political_statuses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_a5hrpbhyuie2fsw905xkunrwy" column="political_status_id" referenced-table="code.political_statuses" referenced-column="id"/>
             <foreign-key name="fk_2xlf5f1ypf7w6ji93vv6337tf" column="tutor_id" referenced-table="base.teachers" referenced-column="id"/>
-            <foreign-key name="fk_nfq6v4efsgpgthfusri3x4vwg" column="last_edu_degree_id" referenced-table="code.education_degrees"
-                         referenced-column="id"/>
-            <foreign-key name="fk_e1tgfyryon9c5hknvugw71c38" column="education_mode_id" referenced-table="code.education_modes"
-                         referenced-column="id"/>
+            <foreign-key name="fk_nfq6v4efsgpgthfusri3x4vwg" column="last_edu_degree_id" referenced-table="code.education_degrees" referenced-column="id"/>
+            <foreign-key name="fk_e1tgfyryon9c5hknvugw71c38" column="education_mode_id" referenced-table="code.education_modes" referenced-column="id"/>
             <foreign-key name="fk_t1rsfiwxjvx3i6mv0v4davg1k" column="squad_id" referenced-table="base.squads" referenced-column="id"/>
             <foreign-key name="fk_h2d5o6pnycdc1ha5i66rok7i5" column="grade_id" referenced-table="base.grades" referenced-column="id"/>
             <foreign-key name="fk_ejb6tvo25w9b5k0mywnuuta27" column="std_type_id" referenced-table="code.std_types" referenced-column="id"/>
-            <foreign-key name="fk_jmqk5s31u86ij18e8h8rl8ix0" column="marital_status_id" referenced-table="code.marital_statuses"
-                         referenced-column="id"/>
+            <foreign-key name="fk_jmqk5s31u86ij18e8h8rl8ix0" column="marital_status_id" referenced-table="code.marital_statuses" referenced-column="id"/>
           </constraints>
         </table>
         <table name="graduate_batches" comment="毕业批次@graduation">
@@ -10121,8 +10051,7 @@
             <primary-key name="pk_pwaqdnrn36ry8ef21e1k1kmu5" columns="id"/>
             <foreign-key name="fk_60tarsb0wps3cmsumt4fmx7ki" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_hbuho60rwd7cp7n9jd316qqk1" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
-            <foreign-key name="fk_aw2crvlxuwnxsbyexehnmhbnj" column="education_result_id" referenced-table="code.education_results"
-                         referenced-column="id"/>
+            <foreign-key name="fk_aw2crvlxuwnxsbyexehnmhbnj" column="education_result_id" referenced-table="code.education_results" referenced-column="id"/>
             <unique-key name="uk_6xobo8150fh0351vpgl7apacm" columns="batch_id,std_id"/>
           </constraints>
         </table>
@@ -10157,8 +10086,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_ry45w9bb9c30yransxedxfoop" columns="id"/>
-            <foreign-key name="fk_2jfv7xmyr6h8ck7yuqts1u19l" column="railway_station_id" referenced-table="code.railway_stations"
-                         referenced-column="id"/>
+            <foreign-key name="fk_2jfv7xmyr6h8ck7yuqts1u19l" column="railway_station_id" referenced-table="code.railway_stations" referenced-column="id"/>
             <foreign-key name="fk_5v07xkxvnikjfgqbnwlipolem" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <unique-key name="uk_t42cafsv2e1s4k9l1rxdixf2x" columns="std_id"/>
           </constraints>
@@ -10240,8 +10168,7 @@
             <primary-key name="pk_ge7r9q9q5db7ne2cfjul9pnm5" columns="id"/>
             <foreign-key name="fk_bjendbfhimlwy2g07kal9it67" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_1lx0tl1prjs7ly8cgr5lncoua" column="school_id" referenced-table="code.institutions" referenced-column="id"/>
-            <foreign-key name="fk_qjcwhjswcs0oq4j5oyxntmy8d" column="major_category_id" referenced-table="code.discipline_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_qjcwhjswcs0oq4j5oyxntmy8d" column="major_category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
             <unique-key name="uk_sp5y2w7s2e9uwp4okyf64ag63" columns="std_id"/>
           </constraints>
         </table>
@@ -10321,8 +10248,7 @@
             <foreign-key name="fk_llys1ya5u6mbnflrrmoarbobj" column="gender_id" referenced-table="code.genders" referenced-column="id"/>
             <foreign-key name="fk_9qgk9thlvafo1f6i0rv1idqt1" column="setting_id" referenced-table="std.minor_signup_settings" referenced-column="id"/>
             <foreign-key name="fk_ggee3uuam9r91bpfjcrh05d98" column="institution_id" referenced-table="code.institutions" referenced-column="id"/>
-            <foreign-key name="fk_52nhs8fsp9uqvecbhgxn0emnl" column="category_id" referenced-table="code.discipline_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_52nhs8fsp9uqvecbhgxn0emnl" column="category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
             <unique-key name="uk_mcjo5arixiaveju23pqxqx6aa" columns="setting_id,idcard"/>
           </constraints>
           <indexes>
@@ -10421,8 +10347,7 @@
           <constraints>
             <primary-key name="pk_n9h4mdiiwcc2512hqfwdu3w3" columns="id"/>
             <foreign-key name="fk_mtkduknxkugka6i94ij538d70" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_hidl8et9oewgb463jg2hg9ar7" column="publishment_type_id" referenced-table="code.std_punishment_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_hidl8et9oewgb463jg2hg9ar7" column="publishment_type_id" referenced-table="code.std_punishment_types" referenced-column="id"/>
             <foreign-key name="fk_8nk8fjmdj5ha71jlp1auqk5j8" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <foreign-key name="fk_itujqw0pkp4j6qlcqpanlf9a" column="depart_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
@@ -10444,11 +10369,9 @@
           </columns>
           <constraints>
             <primary-key name="pk_6x7adbm1t7y079qhsobs4n9il" columns="id"/>
-            <foreign-key name="fk_n9ui5oxynn62fmyur5ub98hag" column="uncheckin_reason_id" referenced-table="code.uncheckin_reasons"
-                         referenced-column="id"/>
+            <foreign-key name="fk_n9ui5oxynn62fmyur5ub98hag" column="uncheckin_reason_id" referenced-table="code.uncheckin_reasons" referenced-column="id"/>
             <foreign-key name="fk_prenu0jhgioorobiioof0wvre" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_io7r4boti2t4wbqonoiw8fmn5" column="unregistered_reason_id" referenced-table="code.unregistered_reasons"
-                         referenced-column="id"/>
+            <foreign-key name="fk_io7r4boti2t4wbqonoiw8fmn5" column="unregistered_reason_id" referenced-table="code.unregistered_reasons" referenced-column="id"/>
             <foreign-key name="fk_f075dqxnn8v595dbjljhee4kc" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
           </constraints>
         </table>
@@ -10467,8 +10390,7 @@
             <foreign-key name="fk_5p9wb4s3iif6n5j4fth5w4un5" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_a44si7c40yj4viuugt2jfcun4" column="level_id" referenced-table="std.scholarship_levels" referenced-column="id"/>
             <foreign-key name="fk_o7v1m9gkq9pl5x3mp6llmciyn" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
-            <foreign-key name="fk_sn7r7s6rpxdd0o8vm1h9vfrm0" column="category_id" referenced-table="std.scholarship_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_sn7r7s6rpxdd0o8vm1h9vfrm0" column="category_id" referenced-table="std.scholarship_categories" referenced-column="id"/>
           </constraints>
         </table>
         <table name="scholarship_categories" comment="奖学金种类@award.code">
@@ -10487,8 +10409,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_mq52nlda4709qvl5frjenasyv" columns="id"/>
-            <foreign-key name="fk_3s1i0adnxwmyt8dlj66g4hu18" column="scholarship_type_id" referenced-table="std.scholarship_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_3s1i0adnxwmyt8dlj66g4hu18" column="scholarship_type_id" referenced-table="std.scholarship_types" referenced-column="id"/>
           </constraints>
         </table>
         <table name="scholarship_levels" comment="奖学金等级@award.code">
@@ -10503,8 +10424,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_e1wrr4oa17lgng47f5rp1r862" columns="id"/>
-            <foreign-key name="fk_q2tcpqcih68owdqkev3wo09w9" column="category_id" referenced-table="std.scholarship_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_q2tcpqcih68owdqkev3wo09w9" column="category_id" referenced-table="std.scholarship_categories" referenced-column="id"/>
           </constraints>
         </table>
         <table name="scholarship_types" comment="奖学金类型@award.code">
@@ -10534,8 +10454,7 @@
             <primary-key name="pk_kqm1n06eaj1ydahbybcgtgqn2" columns="id"/>
             <foreign-key name="fk_bm1jgjtls0uyr8ust9q6p95l7" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_4y95e8ow9ijrr7443wy3inkjj" column="id_type_id" referenced-table="code.id_types" referenced-column="id"/>
-            <foreign-key name="fk_bkj2udhihdk4dx9ixwcrb0gh2" column="relationship_id" referenced-table="code.family_relationships"
-                         referenced-column="id"/>
+            <foreign-key name="fk_bkj2udhihdk4dx9ixwcrb0gh2" column="relationship_id" referenced-table="code.family_relationships" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_tu5uubg7w074d5n7aoudd13r" columns="std_id"/>
@@ -10773,13 +10692,11 @@
             <primary-key name="pk_1636v9ke8tssygsebwc8he7ex" columns="id"/>
             <foreign-key name="fk_l6gnyhfhva8jor8wmrmn2els5" column="to_grade_id" referenced-table="base.grades" referenced-column="id"/>
             <foreign-key name="fk_a1srslcfco8wsi7x1l5l3fjjv" column="from_depart_id" referenced-table="base.departments" referenced-column="id"/>
-            <foreign-key name="fk_31v1gc0b4ntg6aua5uhg5cy1r" column="to_direction_id" referenced-table="base.major_directions"
-                         referenced-column="id"/>
+            <foreign-key name="fk_31v1gc0b4ntg6aua5uhg5cy1r" column="to_direction_id" referenced-table="base.major_directions" referenced-column="id"/>
             <foreign-key name="fk_a5xnl2hb05tibcbkvnlbtq5e1" column="from_squad_id" referenced-table="base.squads" referenced-column="id"/>
             <foreign-key name="fk_nlm2aprs590optbk9jg8jqupm" column="to_major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_nw4ufpanqlfnctqieusola9xp" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_c2r85bhsmqrjsqh6cya1bladw" column="from_direction_id" referenced-table="base.major_directions"
-                         referenced-column="id"/>
+            <foreign-key name="fk_c2r85bhsmqrjsqh6cya1bladw" column="from_direction_id" referenced-table="base.major_directions" referenced-column="id"/>
             <foreign-key name="fk_8ggtvvyf7bonjd0m5bw8dbjob" column="to_depart_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_ebwakf7n9paro4583bj7gfeys" column="from_major_id" referenced-table="base.majors" referenced-column="id"/>
             <foreign-key name="fk_ia2lww4yn37qo57xd6766b7se" column="from_grade_id" referenced-table="base.grades" referenced-column="id"/>
@@ -10860,8 +10777,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_kcqw8m7fdba9xh17q6sm4kxtd" columns="id"/>
-            <foreign-key name="fk_sgffqts7wdj8k2vrtrpvlq0d1" column="achievement_type_id" referenced-table="trd.rd_achievement_types"
-                         referenced-column="id"/>
+            <foreign-key name="fk_sgffqts7wdj8k2vrtrpvlq0d1" column="achievement_type_id" referenced-table="trd.rd_achievement_types" referenced-column="id"/>
           </constraints>
         </table>
         <table name="rd_project_categories" comment="项目类别@project">
@@ -10934,8 +10850,7 @@
           <constraints>
             <primary-key name="pk_sn8pn1wp0f8awmjy42hcmnmoc" columns="id"/>
             <foreign-key name="fk_3n41csujj883di3pustjmihnd" column="level_id" referenced-table="code.rd_levels" referenced-column="id"/>
-            <foreign-key name="fk_k2vcs9vy3431k0tuf1nhn0ubu" column="category_id" referenced-table="trd.rd_project_categories"
-                         referenced-column="id"/>
+            <foreign-key name="fk_k2vcs9vy3431k0tuf1nhn0ubu" column="category_id" referenced-table="trd.rd_project_categories" referenced-column="id"/>
             <foreign-key name="fk_ekyb4syr9shdr4mvio1h07pf6" column="department_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_oicmoe4lx8mjag53ba812vs2s" column="status_id" referenced-table="trd.rd_project_statuses" referenced-column="id"/>
           </constraints>
@@ -11028,8 +10943,7 @@
           <constraints>
             <primary-key name="pk_mf7o4jj1qfw8k0d3akw2g95s7" columns="id"/>
             <foreign-key name="fk_isow2pp9x9uso60iam7mn7npj" column="level_id" referenced-table="code.rd_levels" referenced-column="id"/>
-            <foreign-key name="fk_h46np6gm06l99bci0qv2ntath" column="achievement_id" referenced-table="trd.textbook_achievements"
-                         referenced-column="id"/>
+            <foreign-key name="fk_h46np6gm06l99bci0qv2ntath" column="achievement_id" referenced-table="trd.textbook_achievements" referenced-column="id"/>
             <foreign-key name="fk_bqljtra85ba4yhal05n5o58b6" column="grade_id" referenced-table="code.rd_award_grades" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -11047,8 +10961,7 @@
           </columns>
           <constraints>
             <primary-key name="pk_6l1cf8pefv3kvorgvxyk7qrm8" columns="id"/>
-            <foreign-key name="fk_flsg7iul201ccuoxp8c1l6bt4" column="achievement_id" referenced-table="trd.textbook_achievements"
-                         referenced-column="id"/>
+            <foreign-key name="fk_flsg7iul201ccuoxp8c1l6bt4" column="achievement_id" referenced-table="trd.textbook_achievements" referenced-column="id"/>
             <foreign-key name="fk_h1v8t8wt85nke81m3roa78437" column="user_id" referenced-table="base.users" referenced-column="id"/>
           </constraints>
           <indexes>

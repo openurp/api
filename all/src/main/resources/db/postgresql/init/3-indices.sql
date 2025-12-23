@@ -15,6 +15,7 @@ create index idx_b33k2icegejva3ino103aa5eb on base.courses_tags (course_id);
 create index idx_lloboi12ir2a1q541ntsr7kao on base.departments (parent_id);
 create index idx_4tia0kw51tgg3ruidjnm1q02k on base.departments_campuses (department_id);
 create index idx_ovshoc5u1nrmelxy454pix0gm on base.devices (room_id);
+create index idx_a0kvh8ahjb7bcpl1r0bm04x0w on base.lab_centers_departs (lab_center_id);
 create index idx_42jbv72p0881vpjadj705qryj on base.major_direction_journals (direction_id);
 create index idx_aygbi1xghmyg51wtokm2bd883 on base.major_directions (major_id);
 create index idx_3d8mbewqjbirn81bfhk47iwf5 on base.major_disciplines (major_id);
@@ -222,6 +223,7 @@ create index idx_8f6pd4rrn6otdrimouy7sb65i on flow.process_logs (flow_type_id, e
 create index idx_4qtd3v5e09e2i9bck3oakp4yr on his.edu_course_grades (clazz_id);
 create index idx_5jetp4mnl4e0wv0xf65xpolo7 on his.edu_course_grades (std_id);
 create index idx_mhoqx05hw4fqqupyfa3wf6sb2 on his.edu_course_grades (project_id);
+create index idx_xaiterx8ciy41f5pv3pg53c4 on his.edu_course_profiles (course_id);
 create index idx_3pvbkxqc36l8ngt03321vf1hy on his.edu_course_takers (clazz_id);
 create index idx_senti97jh80q5xhh9q5rkvknd on his.edu_course_takers (semester_id);
 create index idx_6qs3494fnm7ifknq96a1b8r89 on his.edu_exam_grades (course_grade_id);

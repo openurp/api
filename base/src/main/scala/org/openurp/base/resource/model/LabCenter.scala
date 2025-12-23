@@ -15,35 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.model
+package org.openurp.base.resource.model
 
-import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.*
-import org.openurp.code.hr.model.DepartmentCategory
+import org.beangle.commons.collection.Collections
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Named, TemporalOn}
+import org.openurp.base.model.{Department, School}
 
 import scala.collection.mutable
 
-/**
- * 部门
+/** 实验中心
+ * 囊括了部分院系和实验室
  */
-class Department extends IntId, Coded, Named, EnNamed, Hierarchical[Department]
-  , TemporalOn, Updated, Remark {
+class LabCenter extends LongId, Named, TemporalOn {
+  /** 所属学校 */
   var school: School = _
-  /** 简称 */
+  /** 关联部门 */
+  var departs: mutable.Set[Department] = Collections.newSet[Department]
+  /**简称*/
   var shortName: Option[String] = None
-  var category: Option[DepartmentCategory] = None
-  var teaching: Boolean = _
-  var research: Boolean = _
-  /** 校区列表 */
-  var campuses: mutable.Buffer[Campus] = new mutable.ListBuffer[Campus]
-
-  def topDepartName: String = {
-    parent match {
-      case None => name
-      case Some(p) =>
-        //不能和学校同名
-        if (p.name == school.name) name else p.topDepartName
-    }
-  }
-
 }

@@ -55,6 +55,10 @@ class DefaultMapping extends MappingModule {
       index("", true, e.school, e.code)
     }
 
+    bind[LabCenter] declare { e =>
+      e.name is length(200)
+    }
+
     bind[Device] declare { e =>
       e.name is length(40)
       e.remark is length(100)

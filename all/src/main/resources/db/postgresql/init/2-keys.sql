@@ -46,6 +46,8 @@ alter table base.graduate_seasons add constraint uk_q1npfkscf2dd26j0ie8sdlvl uni
 alter table base.graduates add constraint pk_861dttwawbactk5wx2pb5sfg1 primary key (id);
 alter table base.graduates add constraint uk_fjm29o037eumvq25eojdp797r unique (std_id);
 alter table base.holidays add constraint pk_o7r9qruakt8wxjndgnml60u7r primary key (id);
+alter table base.lab_centers add constraint pk_nayypwvu5gso83w6ayoe7evdh primary key (id);
+alter table base.lab_centers_departs add constraint pk_h83hwmcma7e7r5uvxrj1jq9te primary key (lab_center_id,department_id);
 alter table base.laboratories add constraint pk_217f1ui65li444828qnn85h1d primary key (id);
 alter table base.laboratories add constraint uk_2quxs44337ol9rk7t7g6x5pha unique (school_id,code);
 alter table base.major_direction_journals add constraint pk_epr9yial7hpq4n2yy22rml1lo primary key (id);
