@@ -19,7 +19,7 @@ package org.openurp.prac.ability.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.{AuditStatus, Department, Semester}
+import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Certificate
 
@@ -48,6 +48,8 @@ class AbilityCreditApply extends LongId, Updated {
   var acquiredIn: YearMonth = _
   /** 申请理由 */
   var reasons: Option[String] = None
+  /** 审核人 */
+  var auditor: Option[User] = None
   /** 审核意见 */
   var auditOpinion: Option[String] = None
   /** 成绩单附件路径 */
