@@ -29,7 +29,7 @@ import java.time.LocalDate
 class StaffServiceImpl extends Logging, StaffService {
 
   var entityDao: EntityDao = _
-  var userRepo: UserRepo = _
+  private var userRepo: UserRepo = _
 
   override def createActiveUsers(): Unit = {
     //创建所有的部门

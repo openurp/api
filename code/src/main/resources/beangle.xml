@@ -2,7 +2,7 @@
 <beangle xmlns="http://beangle.github.io/schema/framework"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
-  <orm>
+  <jpa>
     <mapping class="org.openurp.code.DefaultMapping" name="common"/>
     <mapping class="org.openurp.code.asset.model.DefaultMapping" name="asset"/>
     <mapping class="org.openurp.code.edu.model.DefaultMapping" name="edu"/>
@@ -17,5 +17,5 @@
     <naming>
       <profile package="org.openurp.code" pluralize="true" schema="code"/>
     </naming>
-  </orm>
+  </jpa>
 </beangle>

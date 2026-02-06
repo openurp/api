@@ -2,7 +2,7 @@
 <beangle xmlns="http://beangle.github.io/schema/framework"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
-  <orm>
+  <jpa>
     <mapping class="org.openurp.std.alter.model.DefaultMapping" name="alter"/>
     <mapping class="org.openurp.std.alter.config.DefaultMapping" name="alter.config"/>
     <mapping class="org.openurp.std.archive.model.DefaultMapping" name="archive"/>
@@ -30,5 +30,5 @@
         <annotation class="org.beangle.data.model.annotation.log" schema="log" prefix="std_"/>
       </profile>
     </naming>
-  </orm>
+  </jpa>
 </beangle>

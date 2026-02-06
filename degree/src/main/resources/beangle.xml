@@ -2,10 +2,10 @@
 <beangle xmlns="http://beangle.github.io/schema/framework"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
-  <orm>
+  <jpa>
     <mapping class="org.openurp.degree.thesis.model.DefaultMapping" name="thesis"/>
     <naming>
       <profile package="org.openurp.degree.thesis" pluralize="true" schema="degree"/>
     </naming>
-  </orm>
+  </jpa>
 </beangle>

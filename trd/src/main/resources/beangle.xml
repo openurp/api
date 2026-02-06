@@ -2,7 +2,7 @@
 <beangle xmlns="http://beangle.github.io/schema/framework"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
-  <orm>
+  <jpa>
     <mapping class="org.openurp.trd.project.model.DefaultMapping" name="project"/>
     <mapping class="org.openurp.trd.project.code.DefaultMapping" name="project"/>
     <mapping class="org.openurp.trd.achievement.model.DefaultMapping" name="achievement"/>
@@ -14,5 +14,5 @@
         <annotation class="org.beangle.data.model.annotation.log" schema="log" prefix="trd_"/>
       </profile>
     </naming>
-  </orm>
+  </jpa>
 </beangle>

@@ -2,7 +2,7 @@
 <beangle xmlns="http://beangle.github.io/schema/framework"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
-  <orm>
+  <jpa>
     <mapping class="org.openurp.edu.clazz.model.DefaultMapping" name="clazz"/>
     <mapping class="org.openurp.edu.clazz.config.DefaultMapping" name="clazz.config"/>
     <mapping class="org.openurp.edu.course.model.DefaultMapping" name="course"/>
@@ -39,5 +39,5 @@
         <profile package="his" pluralize="true" schema="his" abbrs="His=" prefix="edu_"/>
       </profile>
     </naming>
-  </orm>
+  </jpa>
 </beangle>
