@@ -901,6 +901,7 @@ alter table prac.ability_credit_applies add constraint fk_32fokldnldp8y1koiqkyf2
 alter table prac.ability_credit_applies add constraint fk_573nmlny5j6v2dbuwr2gbysxn foreign key (semester_id) references base.semesters (id);
 alter table prac.ability_credit_applies add constraint fk_dllpy0vrhasggn9qfmj5scb78 foreign key (certificate_id) references code.certificates (id);
 alter table prac.ability_credit_applies add constraint fk_fkudkyhtsh2vhpv3xd63u3283 foreign key (std_id) references base.students (id);
+alter table prac.ability_credit_applies add constraint fk_pttvj13irpux8tbfvsnrgh6bb foreign key (auditor_id) references base.users (id);
 alter table prac.ability_credits add constraint fk_5g7yxjgu459avs4u0oi0q6wvy foreign key (std_id) references base.students (id);
 alter table prac.inv_batches add constraint fk_rbblek4ak8rgxsyk0g6ex3d foreign key (school_id) references base.schools (id);
 alter table prac.inv_closure_review_details add constraint fk_138363cb9cbwhx43o5qami1nt foreign key (level_id) references prac.inv_project_levels (id);

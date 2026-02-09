@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<db engine="PostgreSQL" version="0.49.0">
+<?xml version="1.0" encoding="UTF-8" ?>
+<db engine="PostgreSQL" version="0.49.4">
   <schemas>
     <schema name="base">
       <tables>
@@ -5257,7 +5257,7 @@
             <column name="passed_way" type="integer" comment="通过方式"/>
             <column name="predicted" type="boolean" nullable="false" defaultValue="false" comment="预计是否通过"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="scores" type="varchar(50)" nullable="false" defaultValue="'--'" comment="分数"/>
+            <column name="scores" type="varchar(50)" nullable="false" defaultValue="&apos;--&apos;" comment="分数"/>
             <column name="taking" type="boolean" nullable="false" defaultValue="false" comment="是否正在修读"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
           </columns>
@@ -8702,6 +8702,7 @@
             <column name="attachment_path" type="varchar(100)" nullable="false" comment="成绩单附件路径"/>
             <column name="audit_depart_id" type="integer" nullable="false" comment="审核部门ID"/>
             <column name="audit_opinion" type="varchar(255)" comment="审核意见"/>
+            <column name="auditor_id" type="bigint" comment="通用人员信息ID"/>
             <column name="certificate_id" type="integer" nullable="false" comment="校外证书ID"/>
             <column name="certificate_no" type="varchar(80)" comment="证书编号"/>
             <column name="credits" type="float4" comment="认定的学分数"/>
@@ -8718,6 +8719,7 @@
             <primary-key name="pk_jrx2ap3o6wenlo8879ife098j" columns="id"/>
             <foreign-key name="fk_32fokldnldp8y1koiqkyf2qpb" column="audit_depart_id" referenced-table="base.departments" referenced-column="id"/>
             <foreign-key name="fk_fkudkyhtsh2vhpv3xd63u3283" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_pttvj13irpux8tbfvsnrgh6bb" column="auditor_id" referenced-table="base.users" referenced-column="id"/>
             <foreign-key name="fk_dllpy0vrhasggn9qfmj5scb78" column="certificate_id" referenced-table="code.certificates" referenced-column="id"/>
             <foreign-key name="fk_573nmlny5j6v2dbuwr2gbysxn" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
           </constraints>
@@ -9736,6 +9738,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
+            <column name="file_ext" type="varchar(10)" nullable="false" comment="文件扩展名"/>
             <column name="file_path" type="varchar(200)" nullable="false" comment="归档路径"/>
             <column name="file_size" type="integer" nullable="false" defaultValue="0" comment="文件大小"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
