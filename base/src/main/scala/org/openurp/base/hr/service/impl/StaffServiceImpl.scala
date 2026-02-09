@@ -17,7 +17,6 @@
 
 package org.openurp.base.hr.service.impl
 
-import org.beangle.commons.logging.Logging
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.hr.model.{Staff, Teacher}
 import org.openurp.base.hr.service.StaffService
@@ -26,10 +25,7 @@ import org.openurp.base.service.UserRepo
 
 import java.time.LocalDate
 
-class StaffServiceImpl extends Logging, StaffService {
-
-  var entityDao: EntityDao = _
-  private var userRepo: UserRepo = _
+class StaffServiceImpl(entityDao: EntityDao, userRepo: UserRepo) extends StaffService {
 
   override def createActiveUsers(): Unit = {
     //创建所有的部门

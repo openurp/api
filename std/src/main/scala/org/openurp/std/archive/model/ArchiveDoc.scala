@@ -36,4 +36,7 @@ class ArchiveDoc extends LongId, Updated, Remark {
 
   /** 文件大小 */
   var fileSize: Int = _
+
+  /** 文件扩展名 */
+  var fileExt: String = _
 }

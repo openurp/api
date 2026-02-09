@@ -24,6 +24,7 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     bind[ArchiveDoc] declare { e =>
       e.filePath is length(200)
+      e.fileExt is length(10)
     }
   }
 }
