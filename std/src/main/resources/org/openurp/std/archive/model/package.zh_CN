@@ -2,3 +2,5 @@ ArchiveDoc=学生文档归档记录
 ArchiveDoc.filePath=归档路径
 ArchiveDoc.fileSize=文件大小
 ArchiveDoc.fileExt=文件扩展名
+ArchiveDoc.signedFilePath=签名过的文件路径
+ArchiveDoc.signedAt=签名时间

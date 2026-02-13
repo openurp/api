@@ -15,36 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.archive.model
+package org.openurp.std.archive.log
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.std.model.Student
-import org.openurp.code.std.model.StdDocType
+import org.beangle.data.orm.MappingModule
 
-import java.time.Instant
+class DefaultMapping extends MappingModule {
 
-/** 学生文档归档记录
- */
-class ArchiveDoc extends LongId, Updated, Remark {
-
-  var std: Student = _
-
-  /** 文档类型 */
-  var docType: StdDocType = _
-
-  /** 文件存储路径 */
-  var filePath: String = _
-
-  /** 文件大小 */
-  var fileSize: Int = _
-
-  /** 文件扩展名 */
-  var fileExt: String = _
-
-  /** 签名过的文件路径 */
-  var signedFilePath: Option[String] = None
-
-  /** 签名时间 */
-  var signedAt: Option[Instant] = None
+  def binding(): Unit = {
+    bind[ArchiveDownload]
+  }
 }

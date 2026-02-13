@@ -892,6 +892,8 @@ alter table log.edu_grade_changes add constraint fk_dhtwpadqf2mrrs4q669g69fdv fo
 alter table log.edu_grade_changes add constraint fk_mhydxpk49ayt92b9qj04i0dlm foreign key (grade_type_id) references code.grade_types (id);
 alter table log.edu_grade_changes add constraint fk_mq4k6fykdvubeknsumes38xaj foreign key (course_id) references base.courses (id);
 alter table log.edu_room_apply_audit_logs add constraint fk_ocnnm4633lkwtpmkaceygx6rr foreign key (room_apply_id) references edu.room_applies (id);
+alter table log.std_archive_downloads add constraint fk_fleorml2xhh7w493rvwp0ptoj foreign key (user_id) references base.users (id);
+alter table log.std_archive_downloads add constraint fk_pjbi78smvfbmim4mjr257o8t9 foreign key (doc_type_id) references code.std_doc_types (id);
 alter table log.std_spa_downloads add constraint fk_2acwwn5dui0u3m2owmvoi6goy foreign key (doc_type_id) references code.std_doc_types (id);
 alter table log.std_spa_downloads add constraint fk_mvpc8eu1o4bbwmmfcapnf1y5g foreign key (user_id) references base.users (id);
 alter table log.std_spa_prints add constraint fk_6vt0ncl1pwau74i7p0pu5vuf3 foreign key (doc_type_id) references code.std_doc_types (id);

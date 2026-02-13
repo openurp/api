@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="0.49.4">
+<db engine="PostgreSQL" version="0.49.5">
   <schemas>
     <schema name="base">
       <tables>
@@ -8646,6 +8646,20 @@
             <foreign-key name="fk_ocnnm4633lkwtpmkaceygx6rr" column="room_apply_id" referenced-table="edu.room_applies" referenced-column="id"/>
           </constraints>
         </table>
+        <table name="std_archive_downloads" comment="学生归档文件下载日志@archive.log">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
+            <column name="ip" type="varchar(255)" nullable="false" comment="下载IP"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="user_id" type="bigint" nullable="false" comment="通用人员信息ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_f3ws4of2immxg2ugrlnjbrq9j" columns="id"/>
+            <foreign-key name="fk_pjbi78smvfbmim4mjr257o8t9" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
+            <foreign-key name="fk_fleorml2xhh7w493rvwp0ptoj" column="user_id" referenced-table="base.users" referenced-column="id"/>
+          </constraints>
+        </table>
         <table name="std_spa_downloads" comment="下载流水@spa.log">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -9742,6 +9756,8 @@
             <column name="file_path" type="varchar(200)" nullable="false" comment="归档路径"/>
             <column name="file_size" type="integer" nullable="false" defaultValue="0" comment="文件大小"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="signed_at" type="timestamptz" comment="签名时间"/>
+            <column name="signed_file_path" type="varchar(255)" comment="签名过的文件路径"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>

@@ -7,6 +7,7 @@
     <mapping class="org.openurp.std.alter.config.DefaultMapping" name="alter.config"/>
     <mapping class="org.openurp.std.archive.model.DefaultMapping" name="archive"/>
     <mapping class="org.openurp.std.archive.config.DefaultMapping" name="archive.config"/>
+    <mapping class="org.openurp.std.archive.log.DefaultMapping" name="archive.log"/>
     <mapping class="org.openurp.std.award.code.DefaultMapping" name="award.code"/>
     <mapping class="org.openurp.std.award.model.DefaultMapping" name="award"/>
     <mapping class="org.openurp.std.exchange.model.DefaultMapping" name="exchange"/>

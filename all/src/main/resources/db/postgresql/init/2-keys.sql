@@ -675,6 +675,7 @@ alter table lab.lab_tasks add constraint pk_pobmn5lqgf0ngijre9cvc3id9 primary ke
 alter table lab.lab_tasks_labs add constraint pk_m055on3ewsrwn869g19w0fixo primary key (lab_task_id,laboratory_id);
 alter table log.edu_grade_changes add constraint pk_avwxfilyf3q6wgc4oepc6up77 primary key (id);
 alter table log.edu_room_apply_audit_logs add constraint pk_ocfq5rdpfs7hbgaukwe3r0a3x primary key (id);
+alter table log.std_archive_downloads add constraint pk_f3ws4of2immxg2ugrlnjbrq9j primary key (id);
 alter table log.std_spa_downloads add constraint pk_lvpw649482hrcwssqe7126o0x primary key (id);
 alter table log.std_spa_prints add constraint pk_6x1bwsiwfd5jdcats3mnjovex primary key (id);
 alter table log.std_transfer_apply_logs add constraint pk_je8lknq8ke5qe3u8vjyxrbqlo primary key (id);
