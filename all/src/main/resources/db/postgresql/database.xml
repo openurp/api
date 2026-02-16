@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="0.49.5">
+<db engine="PostgreSQL" version="0.49.6">
   <schemas>
     <schema name="base">
       <tables>
@@ -8651,6 +8651,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
             <column name="ip" type="varchar(255)" nullable="false" comment="下载IP"/>
+            <column name="mobile" type="varchar(255)" nullable="false" comment="下载手机号"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="user_id" type="bigint" nullable="false" comment="通用人员信息ID"/>
           </columns>

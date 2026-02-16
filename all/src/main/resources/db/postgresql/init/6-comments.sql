@@ -3643,6 +3643,7 @@ comment on column log.edu_room_apply_audit_logs.room_apply_id is '教室借用ID
 comment on column log.std_archive_downloads.doc_type_id is '学生文档类型ID';
 comment on column log.std_archive_downloads.id is '非业务主键:datetime';
 comment on column log.std_archive_downloads.ip is '下载IP';
+comment on column log.std_archive_downloads.mobile is '下载手机号';
 comment on column log.std_archive_downloads.updated_at is '更新时间';
 comment on column log.std_archive_downloads.user_id is '通用人员信息ID';
 comment on column log.std_spa_downloads.doc_type_id is '学生文档类型ID';

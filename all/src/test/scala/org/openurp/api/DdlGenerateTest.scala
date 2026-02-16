@@ -18,7 +18,7 @@
 package org.openurp.api
 
 import org.beangle.commons.lang.SystemInfo
-import org.beangle.data.orm.tool.DdlGenerator
+import org.beangle.data.orm.DdlGenerator
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
