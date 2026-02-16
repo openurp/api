@@ -34,4 +34,7 @@ class ArchiveDownload extends LongId, Updated {
   /** 打印ip */
   var ip: String = _
 
+  /** 下载手机号 */
+  var mobile: String = _
+
 }
