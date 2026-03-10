@@ -15,26 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.model
+package org.openurp.base.config.model
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, EnNamed, Named, YearMonthRange}
-import org.openurp.base.model.Project
+import org.beangle.data.orm.MappingModule
+import org.openurp.base.config.model.BusinessSetting
 
-/** 学生入学年级
- * */
-class Grade extends LongId, Coded, Named, EnNamed, YearMonthRange {
+class DefaultMapping extends MappingModule {
 
-  var project: Project = _
+  def binding(): Unit = {
+    defaultCache("openurp-base", "read-write")
 
-  def this(id: Long, code: String, name: String) = {
-    this()
-    this.id = id
-    this.code = code
-    this.name = name
-  }
+    bind[BusinessSetting].declare { e =>
+      e.settings is length(5000)
+    }
 
-  override def toString: String = {
-    name
+    all.cacheable()
   }
 }

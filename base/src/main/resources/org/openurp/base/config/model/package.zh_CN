@@ -1,0 +1,4 @@
+BusinessSetting=业务设置
+BusinessSetting.business=业务类型
+BusinessSetting.profileId=业务设置ID
+BusinessSetting.settings=设置JSON

@@ -15,26 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.model
+package org.openurp.base.config.model
 
+import org.beangle.commons.json.JsonObject
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, EnNamed, Named, YearMonthRange}
-import org.openurp.base.model.Project
+import org.beangle.data.model.annotation.config
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.ProjectBased
 
-/** 学生入学年级
- * */
-class Grade extends LongId, Coded, Named, EnNamed, YearMonthRange {
+/** 业务设置 */
+@config
+class BusinessSetting extends LongId, ProjectBased, Updated {
 
-  var project: Project = _
+  /** 业务类型 */
+  var business: String = _
 
-  def this(id: Long, code: String, name: String) = {
-    this()
-    this.id = id
-    this.code = code
-    this.name = name
-  }
+  /** 业务配置ID */
+  var profileId: String = "default"
 
-  override def toString: String = {
-    name
-  }
+  /** 设置JSON */
+  var settings: JsonObject = _
+
 }

@@ -178,9 +178,9 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         newUser.category = category
         newUser.email = Option(newUser.code + "@unknown.com")
         newUser.beginOn = std.beginOn
-        newUser.endOn = Option(std.maxEndOn.plusDays(idleDays)) //初始为结束日期+idleDays天
         newUser
     }
+    user.endOn = Option(std.endOn.plusDays(idleDays)) //初始为结束日期+idleDays天
     if (user.group.isEmpty) {
       user.group = getGroups(school, Seq(s"student.${std.project.id}", "student")).headOption
     }

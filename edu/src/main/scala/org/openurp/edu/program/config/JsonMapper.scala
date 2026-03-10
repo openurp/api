@@ -15,26 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.base.std.model
+package org.openurp.edu.program.config
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, EnNamed, Named, YearMonthRange}
-import org.openurp.base.model.Project
+import org.beangle.commons.json.JsonObject
 
-/** 学生入学年级
- * */
-class Grade extends LongId, Coded, Named, EnNamed, YearMonthRange {
+trait JsonMapper[T] {
 
-  var project: Project = _
+  def toJson(obj: T): JsonObject
 
-  def this(id: Long, code: String, name: String) = {
-    this()
-    this.id = id
-    this.code = code
-    this.name = name
-  }
-
-  override def toString: String = {
-    name
-  }
+  def fromJson(obj: JsonObject): T
 }
