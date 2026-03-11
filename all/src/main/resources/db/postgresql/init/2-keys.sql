@@ -120,6 +120,7 @@ alter table base.user_groups add constraint uk_n3w9nvii9wui5ldmpdvtyooe1 unique 
 alter table base.users add constraint pk_i4mlr3lp5ixml05sx2wuk8kp8 primary key (id);
 alter table base.users add constraint uk_rtwk6iqyuv8d7se1gkkumd948 unique (school_id,code);
 alter table base.versions add constraint pk_kn37tnh6h9broruk4q2gsyyip primary key (id);
+alter table cfg.business_settings add constraint pk_72fx0qbym3hwpnuubjt6id68f primary key (id);
 alter table cfg.edu_capacity_factors add constraint pk_svrnfofl3ds355csgefiyf0s8 primary key (id);
 alter table cfg.edu_cert_exempt_configs add constraint pk_25ogrkq3scobs3rr6jvtx7j01 primary key (id);
 alter table cfg.edu_cert_exempt_configs_levels add constraint pk_tf2xqvguag0l8xh1e8khnwgux primary key (cert_exempt_config_id,education_level_id);

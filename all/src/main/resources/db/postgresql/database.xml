@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="0.49.6">
+<db engine="PostgreSQL" version="0.49.7">
   <schemas>
     <schema name="base">
       <tables>
@@ -1751,6 +1751,20 @@
     </schema>
     <schema name="cfg">
       <tables>
+        <table name="business_settings" comment="业务设置@config">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="business" type="varchar(255)" nullable="false" comment="业务类型"/>
+            <column name="profile_id" type="varchar(255)" nullable="false" comment="业务设置ID"/>
+            <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
+            <column name="settings" type="jsonb" nullable="false" comment="设置JSON"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_72fx0qbym3hwpnuubjt6id68f" columns="id"/>
+            <foreign-key name="fk_3m0pwxtvp16jv1n47mhgtrsxs" column="project_id" referenced-table="base.projects" referenced-column="id"/>
+          </constraints>
+        </table>
         <table name="edu_capacity_factors" comment="教学工作量系数@workload.config">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>

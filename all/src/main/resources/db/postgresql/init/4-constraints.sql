@@ -252,6 +252,7 @@ alter table base.users add constraint fk_3gj5j7vnsoxf1wp9n5hsqdiq3 foreign key (
 alter table base.users add constraint fk_6a5j932mtf9sqiiythm0ey6a2 foreign key (category_id) references code.user_categories (id);
 alter table base.users add constraint fk_sbg59w8q63i0oo53rlgvlcnjq foreign key (department_id) references base.departments (id);
 alter table base.users add constraint fk_tjqd54krxpiam3m1xb1mdp64f foreign key (gender_id) references code.genders (id);
+alter table cfg.business_settings add constraint fk_3m0pwxtvp16jv1n47mhgtrsxs foreign key (project_id) references base.projects (id);
 alter table cfg.edu_cert_exempt_configs add constraint fk_l16k0x0yvca16wc1w09h8lcj foreign key (edu_type_id) references code.education_types (id);
 alter table cfg.edu_cert_exempt_configs add constraint fk_n1x6fgny77oixcpqafim56c58 foreign key (project_id) references base.projects (id);
 alter table cfg.edu_cert_exempt_configs_levels add constraint fk_9l4k70sid7r5y919hdv3mkr24 foreign key (education_level_id) references code.education_levels (id);
