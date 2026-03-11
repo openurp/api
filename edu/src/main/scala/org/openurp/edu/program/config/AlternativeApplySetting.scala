@@ -18,7 +18,7 @@
 package org.openurp.edu.program.config
 
 import org.beangle.commons.collection.Properties
-import org.beangle.commons.json.JsonObject
+import org.beangle.commons.json.{JsonMapper, JsonObject}
 import org.beangle.data.model.pojo.InstantRange
 import org.openurp.base.std.model.Grade
 
