@@ -18,7 +18,7 @@
 package org.openurp.base.hr.service.impl
 
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
-import org.openurp.base.hr.model.{Staff, Teacher}
+import org.openurp.base.hr.model.Staff
 import org.openurp.base.hr.service.StaffService
 import org.openurp.base.model.Department
 import org.openurp.base.service.UserRepo
@@ -35,7 +35,7 @@ class StaffServiceImpl(entityDao: EntityDao, userRepo: UserRepo) extends StaffSe
 
     val query2 = OqlBuilder.from(classOf[Staff], "staff")
     query2.where("staff.endOn is null or staff.endOn >=:now", LocalDate.now)
-    query2.where(s"not exists(from ${classOf[Teacher].getName} t where t.staff=staff)")
+    query2.where(s"staff.school.id=:schoolId", userRepo.orgId)
     val staffs = entityDao.search(query2)
     staffs.foreach { staff =>
       userRepo.createUser(staff, None)

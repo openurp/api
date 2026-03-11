@@ -23,6 +23,8 @@ import org.openurp.base.std.model.Student
 
 trait UserRepo {
 
+  def orgId: Int
+
   def createDepart(depart: Department): Unit
 
   def createUser(staff: Staff, oldCode: Option[String]): User

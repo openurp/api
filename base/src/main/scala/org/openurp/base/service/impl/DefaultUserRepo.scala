@@ -42,7 +42,7 @@ import scala.util.Random
  */
 class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, hostname: String) extends UserRepo, Logging, Initializing {
 
-  private var orgId: Int = _
+  var orgId: Int = _
   private var domainId: Int = _
   private var dimensionProjectId: Int = _
   private var dimensionDepartmentId: Int = _
@@ -58,14 +58,18 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
   if (null != platformDataSource) {
     emsJdbcExecutor = new JdbcExecutor(platformDataSource)
-    val datas = emsJdbcExecutor.query("select id,org_id from ems.cfg_domains where hostname=?", hostname)
-    if (datas.nonEmpty) {
-      val first = datas.head
-      domainId = first(0).asInstanceOf[Number].intValue
-      orgId = first(1).asInstanceOf[Number].intValue
-      dimensionProjectId = emsJdbcExecutor.unique[Int]("select id from ems.usr_dimensions where domain_id=? and name=?", domainId, "project").getOrElse(0)
-      dimensionDepartmentId = emsJdbcExecutor.unique[Int]("select id from ems.usr_dimensions where domain_id=? and name=?", domainId, "department").getOrElse(0)
+    var datas = emsJdbcExecutor.query("select id,org_id from ems.cfg_domains where hostname=?", hostname)
+    if (datas.isEmpty) {
+      datas = emsJdbcExecutor.query("select id,org_id from ems.cfg_domains")
+      if (datas.size != 1) {
+        throw new RuntimeException(s"Cannot find ems.cfg_domains by hostname ${hostname}")
+      }
     }
+    val first = datas.head
+    domainId = first(0).asInstanceOf[Number].intValue
+    orgId = first(1).asInstanceOf[Number].intValue
+    dimensionProjectId = emsJdbcExecutor.unique[Int]("select id from ems.usr_dimensions where domain_id=? and name=?", domainId, "project").getOrElse(0)
+    dimensionDepartmentId = emsJdbcExecutor.unique[Int]("select id from ems.usr_dimensions where domain_id=? and name=?", domainId, "department").getOrElse(0)
   }
 
   override def createDepart(depart: Department): Unit = {
@@ -178,17 +182,31 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
         newUser.category = category
         newUser.email = Option(newUser.code + "@unknown.com")
         newUser.beginOn = std.beginOn
+        newUser.endOn = Option(std.endOn.plusDays(idleDays)) //初始为结束日期+idleDays天
         newUser
     }
-    user.endOn = Option(std.endOn.plusDays(idleDays)) //初始为结束日期+idleDays天
-    if (user.group.isEmpty) {
-      user.group = getGroups(school, Seq(s"student.${std.project.id}", "student")).headOption
+
+    //查找该学生名下的其他所有学籍
+    val stds = Collections.newSet[Student]
+    stds.addOne(std)
+    if (user.persisted) {
+      stds.addAll(entityDao.findBy(classOf[Student], "user", user))
     }
-    user.department = std.state.get.department
+    //汇总最大的过期日期
+    user.endOn = Some(stds.map(_.endOn).max.plusDays(idleDays))
+    user.group = getGroups(school, stds.map(x => s"student.${x.project.id}").addOne("student")).headOption
+
+    stds.flatMap(_.state).toBuffer.sortBy(_.endOn).lastOption foreach { s =>
+      user.department = s.department
+    }
+
     user.name = std.name
     user.gender = std.gender
-    if !user.persisted then user.updatedAt = Instant.now()
-    entityDao.saveOrUpdate(user)
+
+    if (entityDao.isDirty(user)) {
+      user.updatedAt = Instant.now()
+      entityDao.saveOrUpdate(user)
+    }
 
     createAccount(findEmsUserId(oldCode.getOrElse(userCode)), user, defaultPassword(std.person.code), UserCategories.Student)
     std.user = user
