@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="0.49.7">
+<db engine="PostgreSQL" version="0.49.9">
   <schemas>
     <schema name="base">
       <tables>
@@ -395,6 +395,8 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="rank_id" type="integer" comment="课程属性ID"/>
             <column name="remark" type="varchar(500)" comment="备注"/>
+            <column name="sub_course_id" type="bigint" comment="子课程ID"/>
+            <column name="terms" type="integer" nullable="false" defaultValue="0" comment="开课学期数"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="week_hours" type="integer" nullable="false" defaultValue="0" comment="周课时"/>
             <column name="weeks" type="integer" comment="周数"/>
@@ -404,6 +406,7 @@
             <foreign-key name="fk_b3oqgd1pw427cuyrtoi5c3794" column="cluster_id" referenced-table="base.course_clusters" referenced-column="id"/>
             <foreign-key name="fk_4f3etk0ltox5d1s1fwcrvqw9f" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
             <foreign-key name="fk_dn65sxi9lag9qquiqhxbyy96h" column="project_id" referenced-table="base.projects" referenced-column="id"/>
+            <foreign-key name="fk_1vt6w3pyso2t60vtyw49y0fuo" column="sub_course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_ookm209qceyacbwgkhs83iubj" column="exam_mode_id" referenced-table="code.exam_modes" referenced-column="id"/>
             <foreign-key name="fk_hkxhoxmx3qlj6b794cpd2qygl" column="grading_mode_id" referenced-table="code.grading_modes" referenced-column="id"/>
             <foreign-key name="fk_fc5thepipnuxwrkelcyiteyr" column="rank_id" referenced-table="code.course_ranks" referenced-column="id"/>
