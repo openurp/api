@@ -24,6 +24,7 @@ import org.beangle.data.model.pojo.Remark
 import org.openurp.base.edu.model.{Course, Terms}
 import org.openurp.code.edu.model.CourseTakeType
 import org.openurp.edu.grade.domain.GradeRemarkDigester
+import org.openurp.edu.grade.domain.StdGrade.GradeList
 import org.openurp.edu.program.model.{PlanCourse, SharePlanCourse}
 
 /** 课程审核结果
@@ -60,29 +61,30 @@ class AuditCourseResult extends LongId, Remark {
   /** 若通过，通过的途径 */
   var passedWay: Option[CoursePassedWay] = None
 
-  def updatePassed(grades: Iterable[CourseGrade]): AuditCourseResult = {
+  def updatePassed(gradeList: Option[GradeList]): AuditCourseResult = {
     hasGrade = false
-    if (Collections.isEmpty(grades)) {
+    if (Collections.isEmpty(gradeList)) {
       scores = "--"
     } else {
       hasGrade = true
+      val best = gradeList.get.best
       val sb = new StringBuilder
-      for (grade <- grades) {
+      for (grade <- gradeList.get.all) {
         sb.append(getScoreText(grade)).append(" ")
         if (!passed) passed = grade.passed
       }
       scores = sb.toString
       if passed then
-        val isRepeat = grades.head.courseTakeType.id == CourseTakeType.Repeat
+        val isRepeat = best.courseTakeType.id == CourseTakeType.Repeat
         updatePassedWay(if isRepeat then CoursePassedWay.ByGrade else CoursePassedWay.ByRepeat)
-      else if !passed && grades.nonEmpty then
-        remark = Some(GradeRemarkDigester.digest(grades, false))
+      else
+        remark = Some(GradeRemarkDigester.digest(List(best), false))
     }
     this
   }
 
-  def updatePassed(grades: Iterable[CourseGrade], substituteGrades: Iterable[CourseGrade]): AuditCourseResult = {
-    updatePassed(grades)
+  def updatePassed(gradeList: Option[GradeList], substituteGrades: Iterable[CourseGrade]): AuditCourseResult = {
+    updatePassed(gradeList)
     if passed then updatePassedWay(CoursePassedWay.ByGrade)
     if (!passed && substituteGrades.nonEmpty) {
       if substituteGrades.head.passed then

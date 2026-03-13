@@ -20,15 +20,18 @@ package org.openurp.edu.grade.domain
 import org.beangle.commons.bean.orderings.PropertyOrdering
 import org.beangle.commons.collection.Collections
 import org.openurp.base.edu.model.Course
+import org.openurp.edu.grade.domain.StdGrade.GradeList
 import org.openurp.edu.grade.model.CourseGrade
 
 object StdGrade {
-  def filterGrades(grades: collection.Seq[CourseGrade]): Map[Course, CourseGrade] = {
+  def filterGrades(grades: collection.Seq[CourseGrade]): Map[Course, GradeList] = {
     grades.sorted(PropertyOrdering.by("course,score desc")).groupBy(g => g.course) map { case (c, glist) =>
-      if (glist.head.passed) (c, glist.head)
-      else (c, glist.find(_.passed).getOrElse(glist.head))
+      val best = if (glist.head.passed) glist.head else glist.find(_.passed).getOrElse(glist.head)
+      (c, GradeList(glist.exists(_.passed), best, glist.toSeq))
     }
   }
+
+  case class GradeList(passed: Boolean, best: CourseGrade, all: Seq[CourseGrade])
 }
 
 class StdGrade(grades: collection.Seq[CourseGrade]) {
@@ -39,7 +42,12 @@ class StdGrade(grades: collection.Seq[CourseGrade]) {
 
   /** 查询课程对应的成绩，不会被标记为usedCourses
    */
-  def getGrade(course: Course): Option[CourseGrade] = {
+  def best(course: Course): CourseGrade = {
+    if used.contains(course) then throw IllegalArgumentException(s"Course ${course.code} grade was consumed")
+    else gradeMap.get(course).map(_.best).get
+  }
+
+  def getGrades(course: Course): Option[GradeList] = {
     if used.contains(course) then None else gradeMap.get(course)
   }
 
@@ -49,7 +57,7 @@ class StdGrade(grades: collection.Seq[CourseGrade]) {
 
   /** 使用课程课程拿成绩之后，会被标记为usedCourses
    */
-  def useGrade(course: Course): Option[CourseGrade] = {
+  def consume(course: Course): Option[GradeList] = {
     if (used.contains(course)) {
       None
     } else {

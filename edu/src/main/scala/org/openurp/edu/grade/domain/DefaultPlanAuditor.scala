@@ -18,8 +18,9 @@
 package org.openurp.edu.grade.domain
 
 import org.beangle.commons.collection.Collections
+import org.openurp.base.edu.model.Course
 import org.openurp.edu.grade.model.*
-import org.openurp.edu.program.model.CourseGroup
+import org.openurp.edu.program.model.{CourseGroup, PlanCourse}
 
 import java.time.Instant
 
@@ -69,14 +70,33 @@ class DefaultPlanAuditor extends PlanAuditor {
     }
   }
 
+  private def getSubcourse(pc: PlanCourse): Option[Course] = {
+    val course = pc.course
+    if (course.subCourse.nonEmpty && course.terms > 0) {
+      //这里不要判断子课程的学分是否时0,有可能时0.25学分这种。
+      course.subCourse
+    } else {
+      None
+    }
+  }
+
   private def auditGroup(context: AuditPlanContext, courseGroup: CourseGroup, gr: AuditGroupResult): Unit = {
     val result = context.result
     //先组内课程，然后再审核审核子组
     courseGroup.planCourses foreach { pc =>
       val cr = new AuditCourseResult(pc)
-      val courseGrades = context.stdGrade.useGrade(pc.course)
+      val grades = context.stdGrade.consume(pc.course)
       //不要过滤计划内的课程，对于选修组内的选修课，无成绩的情况下，事后在删除
-      cr.updatePassed(courseGrades)
+      cr.updatePassed(grades)
+      //处理多学期课程
+      getSubcourse(pc) foreach { subc =>
+        val subGrades = context.stdGrade.consume(subc)
+        if (!cr.passed && subGrades.nonEmpty) {
+          val sg = subGrades.get
+          val passed = sg.all.count(_.passed) >= pc.course.terms
+          cr.updatePassed(Some(StdGrade.GradeList(passed, sg.best, sg.all)))
+        }
+      }
       gr.addCourseResult(cr)
     }
 
