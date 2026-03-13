@@ -79,6 +79,11 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn,
   /** 课程标签 */
   var tags = Collections.newSet[CourseTag]
 
+  /** 每学期需要完成的子课程 */
+  var subCourse: Option[Course] = None
+  /** 要求完成的学期数 */
+  var terms: Int = _
+
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
   }

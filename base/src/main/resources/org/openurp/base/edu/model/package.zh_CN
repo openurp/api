@@ -30,6 +30,8 @@ Course.project=项目
 Course.levels=学历层次列表
 Course.tags=课程标签
 Course.categories=课程分类
+Course.terms=开课学期数
+Course.subCourse=子课程
 
 CourseHour=课程分类课时信息
 CourseHour.creditHours=学时/总课时
