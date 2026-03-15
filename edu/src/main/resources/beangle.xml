@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
   <jpa>
+    <mapping class="org.openurp.edu.attendance.model.DefaultMapping" name="attendance"/>
     <mapping class="org.openurp.edu.clazz.model.DefaultMapping" name="clazz"/>
     <mapping class="org.openurp.edu.clazz.config.DefaultMapping" name="clazz.config"/>
     <mapping class="org.openurp.edu.course.model.DefaultMapping" name="course"/>
@@ -18,6 +19,8 @@
     <mapping class="org.openurp.edu.grade.model.RegularMapping" name="grade.regular"/>
     <mapping class="org.openurp.edu.grade.model.AuditMapping" name="grade.audit"/>
     <mapping class="org.openurp.edu.grade.log.DefaultMapping" name="grade.log"/>
+    <mapping class="org.openurp.edu.his.model.DefaultMapping" name="his"/>
+    <mapping class="org.openurp.edu.miniclazz.model.DefaultMapping" name="miniclazz"/>
     <mapping class="org.openurp.edu.program.model.DefaultMapping" name="program"/>
     <mapping class="org.openurp.edu.program.flow.DefaultMapping" name="program.flow"/>
     <mapping class="org.openurp.edu.exempt.model.DefaultMapping" name="exempt"/>
@@ -29,8 +32,6 @@
     <mapping class="org.openurp.edu.textbook.model.DefaultMapping" name="textbook"/>
     <mapping class="org.openurp.edu.workload.model.DefaultMapping" name="workload"/>
     <mapping class="org.openurp.edu.workload.config.DefaultMapping" name="workload.config"/>
-    <mapping class="org.openurp.edu.attendance.model.DefaultMapping" name="attendance"/>
-    <mapping class="org.openurp.edu.his.model.DefaultMapping" name="his"/>
     <naming>
       <profile package="org.openurp.edu" pluralize="true" schema="edu" abbrs="Alternative=Alt">
         <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="edu_"/>

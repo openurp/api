@@ -40,6 +40,9 @@ object Features {
 
     /** 课程是否支持不同层次学分不同 */
     val CourseLevelCreditSupported = Feature(this, "course_level_credit_supported", "课程是否支持不同层次学分不同", false)
+
+    /** 多学期开课支持 */
+    val CourseMultiTermSupported = Feature(this, "course_multi_term_supported", "课程是否支持不同层次学分不同", false)
   }
 
   object Hr extends FeatureScope {

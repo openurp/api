@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.edu.miniclazz.model
 
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId

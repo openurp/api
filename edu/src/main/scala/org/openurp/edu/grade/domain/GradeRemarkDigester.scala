@@ -18,65 +18,67 @@
 package org.openurp.edu.grade.domain
 
 import org.beangle.commons.lang.Strings
+import org.openurp.base.edu.model.Course
 import org.openurp.code.edu.model.{ExamStatus, GradeType}
-import org.openurp.edu.grade.model.{CourseGrade, ExamGrade}
+import org.openurp.edu.grade.model.{CourseGrade, ExamGrade, Grade}
 
 object GradeRemarkDigester {
-  def digest(grades: Iterable[CourseGrade], hasCourse: Boolean): String = {
-    val newGrades = grades.toBuffer.sortBy(_.semester.beginOn)
-    val remarkSB = new StringBuilder
-    var brString: String = ""
-    for (grade <- newGrades) {
-      remarkSB.append(brString)
-      remarkSB.append(grade.semester.schoolYear).append(grade.semester.name).append(" ")
-      if (hasCourse) {
-        remarkSB.append(grade.course.name).append(" ")
-      }
-      if (grade.passed) {
-        append(remarkSB, grade.scoreText)
-      } else {
-        val ga = grade.getGaGrade(new GradeType(GradeType.EndGa)).orNull
-        remarkSB.append("期末")
-        if (null == ga || ga.scoreText.isEmpty) {
-          remarkSB.append(disgetExamGrade(grade.getExamGrade(new GradeType(GradeType.End)).orNull))
-        } else {
-          append(remarkSB, ga.scoreText)
+  def digest(course: Course, grades: Iterable[CourseGrade], hasCourse: Boolean): String = {
+    if (course.subCourse.nonEmpty && course.terms > 0) {
+      ""
+    } else {
+      val newGrades = grades.toBuffer.sortBy(_.semester.beginOn)
+      val remarkSB = new StringBuilder
+      var brString: String = ""
+      for (grade <- newGrades) {
+        remarkSB.append(brString)
+        remarkSB.append(grade.semester.schoolYear).append(grade.semester.name).append(" ")
+        if (hasCourse) {
+          remarkSB.append(course.name).append(" ")
         }
-        val delay = grade.getGaGrade(new GradeType(GradeType.DelayGa)).orNull
-        if (null == delay) {
-          remarkSB.append("  补考")
-          val makeup = grade.getGaGrade(new GradeType(GradeType.MakeupGa)).orNull
-          if (null == makeup || makeup.scoreText.isEmpty) {
-            remarkSB.append(disgetExamGrade(grade.getExamGrade(new GradeType(GradeType.Makeup)).orNull))
-          } else {
-            append(remarkSB, makeup.scoreText)
-          }
+        if (grade.passed) {
+          grade.scoreText foreach { s => remarkSB.append(s) }
         } else {
-          remarkSB.append("  缓考")
-          if (delay.scoreText.isEmpty) {
-            remarkSB.append(disgetExamGrade(grade.getExamGrade(new GradeType(GradeType.Delay)).orNull))
+          appendGaAndExam(remarkSB, grade, "期末", GradeType.EndGa, GradeType.End)
+          val delay = grade.getGaGrade(new GradeType(GradeType.DelayGa)).orNull
+          if (null == delay) {
+            appendGaAndExam(remarkSB, grade, " 补考", GradeType.MakeupGa, GradeType.Makeup)
           } else {
-            append(remarkSB, delay.scoreText)
+            appendGaAndExam(remarkSB, grade, " 缓考", GradeType.DelayGa, GradeType.Delay)
           }
         }
+        brString = "\n"
       }
-      brString = "\n"
+      remarkSB.toString
     }
-    remarkSB.toString
   }
 
-  private def append(sb: StringBuilder, str: Option[String]): Unit = {
-    str foreach { s => sb.append(s) }
+  private def appendGaAndExam(sb: StringBuilder, grade: CourseGrade, name: String, ggTypeId: Int, egTypeId: Int): Unit = {
+    val ga = grade.getGaGrade(new GradeType(ggTypeId)).orNull
+    sb.append(name)
+    if (null == ga || ga.scoreText.isEmpty) {
+      sb.append(disgetExamGrade(grade.getExamGrade(new GradeType(egTypeId)).orNull))
+    } else {
+      if (ga.status == Grade.Status.Published) {
+        ga.scoreText foreach { s => sb.append(s) }
+      } else {
+        sb.append("未发布")
+      }
+    }
   }
 
   def disgetExamGrade(eg: ExamGrade): String = {
     if (null == eg) {
       "--"
     } else {
-      if (Strings.isNotBlank(eg.scoreText.orNull) && eg.examStatus.id == ExamStatus.Normal) {
-        eg.scoreText.getOrElse("")
+      if (eg.status == Grade.Status.Published) {
+        if (Strings.isNotBlank(eg.scoreText.orNull) && eg.examStatus.id == ExamStatus.Normal) {
+          eg.scoreText.getOrElse("")
+        } else {
+          eg.examStatus.name
+        }
       } else {
-        eg.examStatus.name
+        "未发布"
       }
     }
   }

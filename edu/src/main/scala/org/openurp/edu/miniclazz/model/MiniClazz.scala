@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.clazz.model
+package org.openurp.edu.miniclazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.beta
@@ -53,6 +53,9 @@ class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
   /** 指导学时 */
   var coachHours: Int = _
 
+  /** 成绩已登记 */
+  var gradeEntered: Boolean = _
+
   def calcHours(): Unit = {
     this.courseHours = activities.filter(_.teacher.nonEmpty).map(x => (x.endUnit - x.beginUnit + 1) * x.time.weekstate.size).sum
     this.coachHours = activities.filter(_.teacher.isEmpty).map(x => (x.endUnit - x.beginUnit + 1) * x.time.weekstate.size).sum
@@ -70,8 +73,8 @@ class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
     users.toSet
   }
 
-  /** 学生名单 */
-  var stds: mutable.Set[Student] = Collections.newSet[Student]
+  /** 上课名单 */
+  var clazzTakers: mutable.Buffer[MiniClazzTaker] = Collections.newBuffer[MiniClazzTaker]
 
   /** 具体排课结果 */
   var activities: mutable.Set[MiniClazzActivity] = Collections.newSet[MiniClazzActivity]
@@ -83,5 +86,23 @@ class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
     this.course = course
     this.semester = semester
     this.updatedAt = Instant.now
+  }
+
+  def addStudent(std: Student): MiniClazzTaker = {
+    clazzTakers.find(_.std == std) match {
+      case None =>
+        val nt = new MiniClazzTaker(this, std)
+        clazzTakers.addOne(nt)
+        nt
+      case Some(t) => t
+    }
+  }
+
+  def stdCodes: String = {
+    clazzTakers.map(_.std).sortBy(_.code).map(_.code).mkString(",")
+  }
+
+  def stdNames: String = {
+    clazzTakers.map(_.std).sortBy(_.code).map(_.name).mkString(",")
   }
 }

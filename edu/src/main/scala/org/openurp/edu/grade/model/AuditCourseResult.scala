@@ -67,18 +67,19 @@ class AuditCourseResult extends LongId, Remark {
       scores = "--"
     } else {
       hasGrade = true
-      val best = gradeList.get.best
+      val grades = gradeList.get
+      val best = grades.best
       val sb = new StringBuilder
       for (grade <- gradeList.get.all) {
         sb.append(getScoreText(grade)).append(" ")
-        if (!passed) passed = grade.passed
       }
+      passed = grades.passed
       scores = sb.toString
       if passed then
         val isRepeat = best.courseTakeType.id == CourseTakeType.Repeat
         updatePassedWay(if isRepeat then CoursePassedWay.ByGrade else CoursePassedWay.ByRepeat)
       else
-        remark = Some(GradeRemarkDigester.digest(List(best), false))
+        remark = Some(GradeRemarkDigester.digest(course,List(best), false))
     }
     this
   }

@@ -18,6 +18,7 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.edu.miniclazz.model.{MiniClazz, MiniClazzActivity, MiniClazzTaker}
 
 class DefaultMapping extends MappingModule {
 
@@ -109,12 +110,5 @@ class DefaultMapping extends MappingModule {
       index("", true, e.clazz)
     }
     bind[ScheduleSuggestActivity]
-
-    bind[MiniClazz] declare { e =>
-      e.activities is depends("miniClazz")
-    }
-    bind[MiniClazzActivity] declare { e =>
-      e.places is length(200)
-    }
   }
 }
