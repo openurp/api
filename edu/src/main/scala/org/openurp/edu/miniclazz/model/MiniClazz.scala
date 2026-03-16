@@ -77,7 +77,7 @@ class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
   var clazzTakers: mutable.Buffer[MiniClazzTaker] = Collections.newBuffer[MiniClazzTaker]
 
   /** 具体排课结果 */
-  var activities: mutable.Set[MiniClazzActivity] = Collections.newSet[MiniClazzActivity]
+  var activities: mutable.Buffer[MiniClazzActivity] = Collections.newBuffer[MiniClazzActivity]
 
   def this(crn: String, project: Project, semester: Semester, course: Course) = {
     this()
