@@ -150,7 +150,7 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updated, Remark, Date
 
   def updateTutors(teachers: Iterable[Teacher], ship: Tutorship): Unit = {
     val newTutors = teachers.toSet
-    newTutors foreach { t =>
+    teachers foreach { t =>
       if (!this.tutors.exists(x => x.tutor == t && x.tutorship == ship)) {
         val nt = new StudentTutor(this, t, ship)
         this.tutors.addOne(nt)
@@ -158,11 +158,14 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updated, Remark, Date
     }
     val removed = this.tutors.filter(x => x.tutorship == ship && !newTutors.contains(x.tutor))
     this.tutors.subtractAll(removed)
+    teachers.zipWithIndex foreach { t =>
+      this.tutors.find(_.tutor == t._1) foreach { st => st.idx = t._2 }
+    }
   }
 
   /** 专业导师 */
   def majorTutors: collection.Seq[Teacher] = {
-    tutors.filter(_.tutorship == Tutorship.Major).map(_.tutor).sortBy(_.code)
+    tutors.filter(_.tutorship == Tutorship.Major).sortBy(_.idx).map(_.tutor)
   }
 
   /** 论文指导老师 */

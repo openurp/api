@@ -568,8 +568,9 @@ alter table edu.major_plan_courses add constraint pk_3wd4vyblbfks1j2lwty25qnbu p
 alter table edu.major_plan_courses add constraint uk_bmxrewotma5nd0dxovv1m77cw unique (group_id,course_id);
 alter table edu.major_plans add constraint pk_ohol0jsnb6did1juitfw0awos primary key (id);
 alter table edu.mini_clazz_activities add constraint pk_6km9ontbm925da7x6y1d0jxh6 primary key (id);
+alter table edu.mini_clazz_takers add constraint pk_7l9n185stj7vx6ybr57qjj6dw primary key (id);
+alter table edu.mini_clazz_takers add constraint uk_4pvs6v9h4cx4lrh0y3x25b0rt unique (std_id,semester_id,course_id);
 alter table edu.mini_clazzes add constraint pk_6b9ghfkpxs4254cqx2ta74dmx primary key (id);
-alter table edu.mini_clazzes_stds add constraint pk_gf6ecj0anc2bodb5uq0f2jtx0 primary key (mini_clazz_id,student_id);
 alter table edu.moral_grades add constraint pk_t3qyjinvsnfy0y84um9prvcmq primary key (id);
 alter table edu.occupancies add constraint pk_cv4gsidr885aanuscffivwbb7 primary key (id);
 alter table edu.program_course_labels add constraint pk_aejk5w39nv0dg8818jwpg67bq primary key (id);

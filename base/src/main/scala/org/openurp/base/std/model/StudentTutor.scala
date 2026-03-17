@@ -28,6 +28,8 @@ class StudentTutor extends LongId {
 
   var tutor: Teacher = _
 
+  var idx: Int = 0
+
   var tutorship: Tutorship = Tutorship.Major
 
   def this(std: Student, tutor: Teacher, tutorship: Tutorship) = {

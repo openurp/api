@@ -26,7 +26,7 @@ import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.*
 import org.openurp.base.std.model.Student
 
-import java.time.Instant
+import java.time.{Instant, LocalDate}
 import scala.collection.mutable
 
 @beta
@@ -104,5 +104,10 @@ class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
 
   def stdNames: String = {
     clazzTakers.map(_.std).sortBy(_.code).map(_.name).mkString(",")
+  }
+
+  def firstDay: Option[LocalDate] = {
+    val days = activities.map(_.time.firstDay)
+    if (days.isEmpty) None else Some(days.min)
   }
 }

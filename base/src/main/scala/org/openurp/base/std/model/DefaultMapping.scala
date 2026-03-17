@@ -41,7 +41,7 @@ class DefaultMapping extends MappingModule {
       e.code is length(15)
       e.name is length(100)
       e.states is(depends("std"), orderby("endOn"))
-      e.tutors is depends("std")
+      e.tutors is(depends("std"), orderby("idx"))
       e.remark is length(200)
 
       index("", true, e.code, e.project)

@@ -71,8 +71,8 @@ object WeekTimeBuilder {
     new WeekTimeBuilder(semester.beginOn, semester.calendar.firstWeekday)
   }
 
-  def digest(time: WeekTime, semester: Semester): String = {
-    if (null == time) return ""
+  def weeksOf(time: WeekTime, semester: Semester): List[Int] = {
+    if (null == time) return List.empty
     val dayofWeek = DayOfWeek.of(time.weekday.id)
     val firstDay = DayOfWeek.of(semester.calendar.firstWeekday.id)
     val beginOn = toDay(firstDay, semester.beginOn, dayofWeek)
@@ -81,8 +81,12 @@ object WeekTimeBuilder {
     var weekstate = time.weekstate.value
     if (weeksDistance < 0) weekstate >>= (0 - weeksDistance)
     else weekstate <<= weeksDistance
+    new WeekState(weekstate).weeks
+  }
 
-    digest(new WeekState(weekstate))
+  def digest(time: WeekTime, semester: Semester): String = {
+    val weeks = weeksOf(time, semester)
+    if (weeks.isEmpty) "" else IntSeg.digest(weeks.toArray, "-", " ")
   }
 
   def digest(weekstate: WeekState): String = {

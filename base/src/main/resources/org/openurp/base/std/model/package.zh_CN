@@ -53,6 +53,7 @@ Student.graduationDeferred=是否延期毕业
 
 StudentTutor=学生导师
 StudentTutor.tutorship=指导关系
+StudentTutor.idx=顺序号
 
 StudentState=学籍状态日志
 StudentState.std=学生

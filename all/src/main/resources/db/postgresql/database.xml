@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="0.49.9">
+<db engine="PostgreSQL" version="0.49.11">
   <schemas>
     <schema name="base">
       <tables>
@@ -1401,6 +1401,7 @@
         <table name="student_tutors" comment="学生导师@std">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="idx" type="integer" nullable="false" defaultValue="0" comment="顺序号"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="tutor_id" type="bigint" nullable="false" comment="教师信息ID"/>
             <column name="tutorship" type="integer" nullable="false" comment="指导关系"/>
@@ -6827,7 +6828,7 @@
             <index name="idx_5kjqjfeqltk9lomhga2doccnh" columns="program_id"/>
           </indexes>
         </table>
-        <table name="mini_clazz_activities" comment="小课上课安排@clazz">
+        <table name="mini_clazz_activities" comment="小课上课安排@miniclazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
@@ -6836,7 +6837,7 @@
             <column name="coach2_id" type="bigint" comment="辅导老师2ID"/>
             <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="end_unit" type="smallint" nullable="false" defaultValue="0" comment="结束节次"/>
-            <column name="mini_clazz_id" type="bigint" nullable="false" comment="小课ID"/>
+            <column name="mini_clazz_id" type="bigint" nullable="false" comment="专业小课ID"/>
             <column name="places" type="varchar(200)" comment="上课地点"/>
             <column name="start_on" type="date" nullable="false" comment="开始日期"/>
             <column name="teacher_id" type="bigint" comment="授课教师ID"/>
@@ -6853,13 +6854,36 @@
             <index name="idx_q821i08k5uk8aef9ku718jnhw" columns="mini_clazz_id"/>
           </indexes>
         </table>
-        <table name="mini_clazzes" comment="小课@clazz">
+        <table name="mini_clazz_takers" comment="小课学生名单@miniclazz">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
+            <column name="mini_clazz_id" type="bigint" nullable="false" comment="专业小课ID"/>
+            <column name="score_text" type="varchar(255)" comment="成绩"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_7l9n185stj7vx6ybr57qjj6dw" columns="id"/>
+            <foreign-key name="fk_eja7wb3oyra0rem634u4j4fj8" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_px9bk9ar5gvebvew89pgdv1nd" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_pphsjoahl774an2reh5uvo3tg" column="mini_clazz_id" referenced-table="edu.mini_clazzes" referenced-column="id"/>
+            <foreign-key name="fk_4uu492i2h0qo3v18onvmcne0a" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
+            <unique-key name="uk_4pvs6v9h4cx4lrh0y3x25b0rt" columns="std_id,semester_id,course_id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_jyf942v3xclwe8si3dhn2gkbk" columns="mini_clazz_id"/>
+          </indexes>
+        </table>
+        <table name="mini_clazzes" comment="专业小课@miniclazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="coach_hours" type="integer" nullable="false" defaultValue="0" comment="辅导课时"/>
             <column name="course_hours" type="integer" nullable="false" defaultValue="0" comment="上课课时"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
             <column name="crn" type="varchar(255)" nullable="false" comment="课程序号"/>
+            <column name="grade_entered" type="boolean" nullable="false" defaultValue="false" comment="成绩是否登记"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
@@ -6875,20 +6899,6 @@
             <foreign-key name="fk_9gat5afvu6t3oi9owwebbvmoe" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <foreign-key name="fk_sh3lhhuphg0obentx2h5ywqup" column="teach_depart_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
-        </table>
-        <table name="mini_clazzes_stds" comment="小课学生名单@clazz">
-          <columns>
-            <column name="mini_clazz_id" type="bigint" nullable="false" comment="小课ID"/>
-            <column name="student_id" type="bigint" nullable="false" comment="学生ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_gf6ecj0anc2bodb5uq0f2jtx0" columns="mini_clazz_id,student_id"/>
-            <foreign-key name="fk_daujuml3i7o557awedjldp7wv" column="mini_clazz_id" referenced-table="edu.mini_clazzes" referenced-column="id"/>
-            <foreign-key name="fk_j7dorxuc3wd616p5c69d12lsq" column="student_id" referenced-table="base.students" referenced-column="id"/>
-          </constraints>
-          <indexes>
-            <index name="idx_jdfyocb0rx7cybidywsoje2ge" columns="mini_clazz_id"/>
-          </indexes>
         </table>
         <table name="moral_grades" comment="德育成绩@grade.moral">
           <columns>

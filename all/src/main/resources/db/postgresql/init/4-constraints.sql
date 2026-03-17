@@ -45,6 +45,7 @@ alter table base.course_textbooks add constraint fk_4stnq1rke2gsqq6ltx8k0n5yl fo
 alter table base.course_textbooks add constraint fk_qh2cf5dfbnaqunjflbooxg5e foreign key (course_id) references base.courses (id);
 alter table base.course_units add constraint fk_pnnr46j0pw0nwn4w1ub9w63xg foreign key (part_id) references code.day_parts (id);
 alter table base.course_units add constraint fk_qeu4ttiib1mtio9e3lkfnu7om foreign key (setting_id) references base.time_settings (id);
+alter table base.courses add constraint fk_1vt6w3pyso2t60vtyw49y0fuo foreign key (sub_course_id) references base.courses (id);
 alter table base.courses add constraint fk_4f3etk0ltox5d1s1fwcrvqw9f foreign key (course_type_id) references code.course_types (id);
 alter table base.courses add constraint fk_6iin27c8tr78rl3ea1ybw0fai foreign key (nature_id) references code.course_natures (id);
 alter table base.courses add constraint fk_b3oqgd1pw427cuyrtoi5c3794 foreign key (cluster_id) references base.course_clusters (id);
@@ -673,13 +674,15 @@ alter table edu.mini_clazz_activities add constraint fk_gv07ppihhg0ta78r09nfy8x1
 alter table edu.mini_clazz_activities add constraint fk_lyrbqkvrq062g0qkwffp8tnrv foreign key (mini_clazz_id) references edu.mini_clazzes (id);
 alter table edu.mini_clazz_activities add constraint fk_o62drwgl6u05laqk6p851t94h foreign key (coach2_id) references base.users (id);
 alter table edu.mini_clazz_activities add constraint fk_qgqcs7mn2kbspko6hinps92ts foreign key (teacher_id) references base.teachers (id);
+alter table edu.mini_clazz_takers add constraint fk_4uu492i2h0qo3v18onvmcne0a foreign key (semester_id) references base.semesters (id);
+alter table edu.mini_clazz_takers add constraint fk_eja7wb3oyra0rem634u4j4fj8 foreign key (std_id) references base.students (id);
+alter table edu.mini_clazz_takers add constraint fk_pphsjoahl774an2reh5uvo3tg foreign key (mini_clazz_id) references edu.mini_clazzes (id);
+alter table edu.mini_clazz_takers add constraint fk_px9bk9ar5gvebvew89pgdv1nd foreign key (course_id) references base.courses (id);
 alter table edu.mini_clazzes add constraint fk_9gat5afvu6t3oi9owwebbvmoe foreign key (semester_id) references base.semesters (id);
 alter table edu.mini_clazzes add constraint fk_fmhlll73mqj7xkjrk87vd263t foreign key (project_id) references base.projects (id);
 alter table edu.mini_clazzes add constraint fk_g54qg0i9hm1nbmg2m6a7n839i foreign key (teacher_id) references base.teachers (id);
 alter table edu.mini_clazzes add constraint fk_hnrgbw7etthlww63oc1ryxuhn foreign key (course_id) references base.courses (id);
 alter table edu.mini_clazzes add constraint fk_sh3lhhuphg0obentx2h5ywqup foreign key (teach_depart_id) references base.departments (id);
-alter table edu.mini_clazzes_stds add constraint fk_daujuml3i7o557awedjldp7wv foreign key (mini_clazz_id) references edu.mini_clazzes (id);
-alter table edu.mini_clazzes_stds add constraint fk_j7dorxuc3wd616p5c69d12lsq foreign key (student_id) references base.students (id);
 alter table edu.moral_grades add constraint fk_ajmpi0vpnwedkblj97agkampw foreign key (std_id) references base.students (id);
 alter table edu.moral_grades add constraint fk_d5ao36odp5nxtmtlcvklnb0ug foreign key (semester_id) references base.semesters (id);
 alter table edu.moral_grades add constraint fk_rstufccmh1773bqit1b9v8cat foreign key (grading_mode_id) references code.grading_modes (id);
