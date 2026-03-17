@@ -71,7 +71,7 @@ trait CoursePlan extends LongIdEntity, Cloneable {
 
   def planCourses: collection.Seq[PlanCourse] = {
     val rs = Collections.newBuffer[PlanCourse]
-    CoursePlan.addPlanCourse(this.groups, rs)
+    CoursePlan.addPlanCourse(this.topGroups, rs)
     rs
   }
 
