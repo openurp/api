@@ -5,8 +5,15 @@ values(next_id('base.versions'),'1.0.0',now(),'重构干部任职信息');
 create table code.cadre_post_ranks (id integer not null, begin_on date not null, code varchar(20) not null, en_name varchar(300), end_on date, name varchar(100) not null, remark varchar(200), updated_at timestamptz default current_timestamp not null);
 alter table code.cadre_post_ranks add constraint pk_nmwkwestutkos99bg4ty0l3y9 primary key (id);
 alter table code.cadre_post_ranks add constraint uk_jp9686016eo4drvgciol91150 unique (code);
+insert into code.cadre_post_ranks(id,code,name,begin_on,updated_at) values(112,'112','副部级',current_date-1,now());
+insert into code.cadre_post_ranks(id,code,name,begin_on,updated_at) values(121,'121','正局级',current_date-1,now());
+insert into code.cadre_post_ranks(id,code,name,begin_on,updated_at) values(122,'122','副局级',current_date-1,now());
 insert into code.cadre_post_ranks(id,code,name,begin_on,updated_at) values(131,'131','正处级',current_date-1,now());
 insert into code.cadre_post_ranks(id,code,name,begin_on,updated_at) values(132,'132','副处级',current_date-1,now());
+insert into code.cadre_post_ranks(id,code,name,begin_on,updated_at) values(211,'211','相当于正处级',current_date-1,now());
+insert into code.cadre_post_ranks(id,code,name,begin_on,updated_at) values(222,'222','相当于副处级',current_date-1,now());
+insert into code.cadre_post_ranks(id,code,name,begin_on,updated_at) values(141,'141','正科级',current_date-1,now());
+insert into code.cadre_post_ranks(id,code,name,begin_on,updated_at) values(142,'142','副科级',current_date-1,now());
 
 alter table base.officials rename to cadre_assignments;
 alter table base.cadre_assignments add column rank_id integer;
