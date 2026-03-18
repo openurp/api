@@ -37,6 +37,7 @@ class DefaultMapping extends MappingModule {
     bind[DepartmentCategory].declare { e =>
       e.children is depends("parent")
     }
+    bind[CadrePostRank]
     all.cacheAll()
   }
 }

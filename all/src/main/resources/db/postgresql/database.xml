@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="0.49.11">
+<db engine="PostgreSQL" version="1.0.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -24,6 +24,25 @@
             <foreign-key name="fk_mehen8uiocff8432w8cosbbp3" column="school_id" referenced-table="base.schools" referenced-column="id"/>
             <foreign-key name="fk_bufwfmj5qrhyqg47g4rf5xlw4" column="building_type_id" referenced-table="code.building_types" referenced-column="id"/>
             <unique-key name="uk_57bnctn8fdawxdyp9lpaxbgjt" columns="school_id,code"/>
+          </constraints>
+        </table>
+        <table name="cadre_assignments" comment="领导干部任职信息@hr">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="concurrent" type="boolean" nullable="false" defaultValue="false" comment="是否兼职"/>
+            <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="post" type="varchar(100)" nullable="false" comment="行政职务"/>
+            <column name="principal" type="boolean" nullable="false" defaultValue="false" comment="是否正职"/>
+            <column name="rank_id" type="integer" nullable="false" comment="领导干部职级ID"/>
+            <column name="staff_id" type="bigint" nullable="false" comment="教职工信息ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_seb5o8b7e3ljx1kjy0rry7m5d" columns="id"/>
+            <foreign-key name="fk_gjs08li01300sjc99tpj2nwfc" column="rank_id" referenced-table="code.cadre_post_ranks" referenced-column="id"/>
+            <foreign-key name="fk_dpa7ewd8vn2vn61av30jjmmfy" column="staff_id" referenced-table="base.staffs" referenced-column="id"/>
+            <foreign-key name="fk_hov45vuu4riyskpuirivwmuf7" column="department_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
         </table>
         <table name="calendar_stages" comment="日历阶段@common">
@@ -878,22 +897,6 @@
             <foreign-key name="fk_7nykr3h6yq9l7larsbsil1lbi" column="project_id" referenced-table="base.projects" referenced-column="id"/>
             <foreign-key name="fk_scxbu2r3m4h8enodix43iqufy" column="category_id" referenced-table="code.discipline_categories" referenced-column="id"/>
             <foreign-key name="fk_3k2i9viyjisal7ne8ukvbigur" column="department_id" referenced-table="base.departments" referenced-column="id"/>
-          </constraints>
-        </table>
-        <table name="officials" comment="领导干部@hr">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
-            <column name="department_id" type="integer" nullable="false" comment="部门组织机构信息ID"/>
-            <column name="duty" type="varchar(100)" nullable="false" comment="行政职务"/>
-            <column name="end_on" type="date" comment="失效日期"/>
-            <column name="parttime" type="boolean" nullable="false" defaultValue="false" comment="是否兼职"/>
-            <column name="staff_id" type="bigint" nullable="false" comment="教职工信息ID"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_qvktne4gnlja38gqv0dh07sgx" columns="id"/>
-            <foreign-key name="fk_ehtnbb858qli3rh3c3vklahci" column="staff_id" referenced-table="base.staffs" referenced-column="id"/>
-            <foreign-key name="fk_aj2by4og6cnn9vkvffmngr77g" column="department_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
         </table>
         <table name="people" comment="人员信息@common">
@@ -2641,6 +2644,22 @@
           <constraints>
             <primary-key name="pk_9fv09o2b3rsbo9ynt7ik8coj1" columns="id"/>
             <unique-key name="uk_68npuqi7xnxjvprta4p402413" columns="code"/>
+          </constraints>
+        </table>
+        <table name="cadre_post_ranks" comment="领导干部职级@hr">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_nmwkwestutkos99bg4ty0l3y9" columns="id"/>
+            <unique-key name="uk_jp9686016eo4drvgciol91150" columns="code"/>
           </constraints>
         </table>
         <table name="certificate_categories" comment="校外证书类型@edu">

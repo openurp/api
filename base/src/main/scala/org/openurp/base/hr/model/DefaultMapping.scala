@@ -35,8 +35,8 @@ class DefaultMapping extends MappingModule {
 
     bind[StaffTitle]
 
-    bind[Official] declare { e =>
-      e.duty is length(100)
+    bind[CadreAssignment] declare { e =>
+      e.post is length(100)
     }
 
     bind[Secretary] declare { e =>

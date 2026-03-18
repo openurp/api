@@ -1,5 +1,6 @@
 alter table base.buildings add constraint pk_isptetvkhnkbsd7qqyed4vjy6 primary key (id);
 alter table base.buildings add constraint uk_57bnctn8fdawxdyp9lpaxbgjt unique (school_id,code);
+alter table base.cadre_assignments add constraint pk_seb5o8b7e3ljx1kjy0rry7m5d primary key (id);
 alter table base.calendar_stages add constraint pk_bwq0g3d1exgmi6u4ss0me8y3m primary key (id);
 alter table base.calendars add constraint pk_b2bvaskon8lysbk1srdwtml4f primary key (id);
 alter table base.calendars add constraint uk_9k89gny3vqpqyk7mkhuxg16fi unique (school_id,code);
@@ -63,7 +64,6 @@ alter table base.mentors add constraint pk_b2barjxncjg1kb2ilm8dw1r3s primary key
 alter table base.mentors add constraint uk_4n9545nrhwav5b96nw9k2di1t unique (staff_id);
 alter table base.mentors_projects add constraint pk_p14hk70e30r9eyqy9ol7jn5xm primary key (mentor_id,project_id);
 alter table base.minor_majors add constraint pk_puyx3wltdpl9vv77rj77l9txc primary key (id);
-alter table base.officials add constraint pk_qvktne4gnlja38gqv0dh07sgx primary key (id);
 alter table base.people add constraint pk_25uwl12dj9en3iflug9w23r1q primary key (id);
 alter table base.presidents add constraint pk_cbv4hxj91u02s00no22yukttx primary key (id);
 alter table base.project_codes add constraint pk_h8pb4rkgymaq67flwfvm8mdvg primary key (id);
@@ -181,6 +181,8 @@ alter table code.book_types add constraint pk_fw4f43brmqed51jhonpo6kc1r primary 
 alter table code.book_types add constraint uk_bu6h6nn9hx6ns9ujc99of3rmb unique (code);
 alter table code.building_types add constraint pk_9fv09o2b3rsbo9ynt7ik8coj1 primary key (id);
 alter table code.building_types add constraint uk_68npuqi7xnxjvprta4p402413 unique (code);
+alter table code.cadre_post_ranks add constraint pk_nmwkwestutkos99bg4ty0l3y9 primary key (id);
+alter table code.cadre_post_ranks add constraint uk_jp9686016eo4drvgciol91150 unique (code);
 alter table code.certificate_categories add constraint pk_qhwrswgo8sbr37lfry41n9vn6 primary key (id);
 alter table code.certificate_categories add constraint uk_oh5vjbhf5wqjqj56dk0gb4h0p unique (code);
 alter table code.certificates add constraint pk_72jvjm56lmlxv2bscp1j4opmj primary key (id);

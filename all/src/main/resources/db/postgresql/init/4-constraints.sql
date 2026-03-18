@@ -1,6 +1,9 @@
 alter table base.buildings add constraint fk_3mh9ywb7pw1runo1h79893bbi foreign key (campus_id) references base.campuses (id);
 alter table base.buildings add constraint fk_bufwfmj5qrhyqg47g4rf5xlw4 foreign key (building_type_id) references code.building_types (id);
 alter table base.buildings add constraint fk_mehen8uiocff8432w8cosbbp3 foreign key (school_id) references base.schools (id);
+alter table base.cadre_assignments add constraint fk_dpa7ewd8vn2vn61av30jjmmfy foreign key (staff_id) references base.staffs (id);
+alter table base.cadre_assignments add constraint fk_gjs08li01300sjc99tpj2nwfc foreign key (rank_id) references code.cadre_post_ranks (id);
+alter table base.cadre_assignments add constraint fk_hov45vuu4riyskpuirivwmuf7 foreign key (department_id) references base.departments (id);
 alter table base.calendar_stages add constraint fk_o5ac0xh0gtvplxkpqf514kik9 foreign key (school_id) references base.schools (id);
 alter table base.calendars add constraint fk_25rh396ddxflawfrfvv8qh0yc foreign key (school_id) references base.schools (id);
 alter table base.campuses add constraint fk_ibhhhrrl31o4bsji3p9w6ux5o foreign key (school_id) references base.schools (id);
@@ -113,8 +116,6 @@ alter table base.minor_majors add constraint fk_7nykr3h6yq9l7larsbsil1lbi foreig
 alter table base.minor_majors add constraint fk_dpl4nixoo7au7l7cn8trnyov1 foreign key (major_id) references base.majors (id);
 alter table base.minor_majors add constraint fk_ke4umnne27kyiri86a5xh8cao foreign key (institution_id) references code.institutions (id);
 alter table base.minor_majors add constraint fk_scxbu2r3m4h8enodix43iqufy foreign key (category_id) references code.discipline_categories (id);
-alter table base.officials add constraint fk_aj2by4og6cnn9vkvffmngr77g foreign key (department_id) references base.departments (id);
-alter table base.officials add constraint fk_ehtnbb858qli3rh3c3vklahci foreign key (staff_id) references base.staffs (id);
 alter table base.people add constraint fk_13h9b1i9rv6nbgtmur8l48nt8 foreign key (religion_id) references code.religions (id);
 alter table base.people add constraint fk_90csifbkadfg0r9i15ja4i564 foreign key (country_id) references code.countries (id);
 alter table base.people add constraint fk_kop4wnexs8li6lquv4n12le69 foreign key (political_status_id) references code.political_statuses (id);

@@ -20,10 +20,12 @@ package org.openurp.base.hr.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.model.Department
+import org.openurp.code.hr.model.CadrePostRank
 
-/** 领导干部
+/** 干部任职信息
  */
-class Official extends LongId, TemporalOn {
+class CadreAssignment extends LongId, TemporalOn {
+
   /** 教职工 */
   var staff: Staff = _
 
@@ -31,8 +33,15 @@ class Official extends LongId, TemporalOn {
   var department: Department = _
 
   /** 是否兼职 */
-  var parttime: Boolean = _
+  var concurrent: Boolean = _
+
+  /** 是否正职 */
+  var principal: Boolean = _
+
+  /** 职级 */
+  var rank: CadrePostRank = _
 
   /** 行政职务 */
-  var duty: String = _
+  var post: String = _
+
 }

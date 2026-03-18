@@ -69,3 +69,10 @@ object UserCategory {
  */
 @code("industry")
 class DepartmentCategory extends CodeBean, Hierarchical[DepartmentCategory]
+
+/**
+ * 领导干部职级
+ * 参考GB/T 12407-2008
+ */
+@code("industry")
+class CadrePostRank extends CodeBean
