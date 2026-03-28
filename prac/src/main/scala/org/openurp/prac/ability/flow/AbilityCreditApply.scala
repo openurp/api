@@ -15,9 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.prac.ability.model
+package org.openurp.prac.ability.flow
 
 import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 import org.openurp.base.std.model.Student
@@ -27,6 +28,7 @@ import java.time.YearMonth
 
 /** 学生能力证书学分申请
  */
+@flow
 class AbilityCreditApply extends LongId, Updated {
   /** 学生 */
   var std: Student = _

@@ -4,12 +4,15 @@
          xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
   <jpa>
     <mapping class="org.openurp.prac.ability.model.DefaultMapping" name="ability"/>
+    <mapping class="org.openurp.prac.ability.flow.DefaultMapping" name="ability.flow"/>
     <mapping class="org.openurp.prac.ability.config.DefaultMapping" name="ability.config"/>
+
     <mapping class="org.openurp.prac.activity.model.DefaultMapping" name="activity"/>
     <mapping class="org.openurp.prac.innovation.model.DefaultMapping" name="innovation"/>
     <naming>
       <profile package="org.openurp.prac" pluralize="true" schema="prac">
         <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="prac_"/>
+        <annotation class="org.beangle.data.model.annotation.flow" schema="flow" prefix="prac_"/>
         <profile package="innovation" pluralize="true" schema="prac" prefix="inv_"/>
       </profile>
     </naming>

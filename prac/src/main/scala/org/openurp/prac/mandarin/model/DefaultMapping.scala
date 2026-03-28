@@ -15,26 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.prac.ability.model
+package org.openurp.prac.mandarin.model
 
 import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-
-    bind[AbilityCredit] declare { e =>
-      e.certificateNo is length(80)
-      e.subjects is length(200)
-      e.remark is length(200)
-      index("", true, e.std, e.certificate, e.certificateNo, e.acquiredIn, e.subjects)
+    bind[MandarinGrade] declare { e =>
       index("", false, e.std)
     }
-
-    bind[AbilityCreditStat].declare { e =>
-      e.remark is length(500)
-      index("", true, e.std)
-    }
-
   }
 }

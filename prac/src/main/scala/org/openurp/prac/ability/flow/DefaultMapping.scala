@@ -15,26 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.prac.ability.model
+package org.openurp.prac.ability.flow
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.prac.ability.flow.AbilityCreditApply
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-
-    bind[AbilityCredit] declare { e =>
+    bind[AbilityCreditApply] declare { e =>
       e.certificateNo is length(80)
+      e.attachmentPath is length(100)
       e.subjects is length(200)
-      e.remark is length(200)
-      index("", true, e.std, e.certificate, e.certificateNo, e.acquiredIn, e.subjects)
-      index("", false, e.std)
+      e.reasons is length(500)
     }
-
-    bind[AbilityCreditStat].declare { e =>
-      e.remark is length(500)
-      index("", true, e.std)
-    }
-
   }
 }

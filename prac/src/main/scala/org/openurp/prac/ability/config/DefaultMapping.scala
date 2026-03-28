@@ -18,7 +18,6 @@
 package org.openurp.prac.ability.config
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.prac.ability.model.{AbilityCredit, AbilityCreditApply}
 
 class DefaultMapping extends MappingModule {
 

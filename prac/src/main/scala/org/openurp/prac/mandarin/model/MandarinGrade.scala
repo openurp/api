@@ -15,36 +15,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.prac.ability.model
+package org.openurp.prac.mandarin.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.model.Semester
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.model.{AuditStatus, Semester}
 import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.Certificate
 
 import java.time.YearMonth
 
-/** 学生能力素质能力证书
+/** 学生普通话测试的成绩
  */
-class AbilityCredit extends LongId, Updated, Remark {
-  /** 学生 */
-  var std: Student = _
-  /** 申请学期 */
-  var semester: Semester = _
-  /** 证书类型 */
-  var certificate: Certificate = _
-  /** 证书内课程 */
-  var subjects: String = _
-  /** 证书编号 */
-  var certificateNo: String = _
-  /** 获得年月 */
-  var acquiredIn: YearMonth = _
-  /** 认定的学分数 */
-  var credits: Float = _
+class MandarinGrade extends LongId, Updated {
 
   def this(std: Student) = {
     this()
     this.std = std
   }
+
+  /** 学生 */
+  var std: Student = _
+  /** 学年学期 */
+  var semester: Semester = _
+  /** 分数 */
+  var score: Float = _
+  /** 证书号 */
+  var certificateNo: Option[String] = None
+  /** 获得年月 */
+  var acquiredIn: YearMonth = _
+  /** 课程成绩ID */
+  var courseGradeId: Option[Long] = None
+  /** 是否通过 */
+  var passed: Boolean = _
 }

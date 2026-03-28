@@ -17,24 +17,24 @@
 
 package org.openurp.prac.ability.model
 
-import org.beangle.data.orm.MappingModule
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.std.model.Student
 
-class DefaultMapping extends MappingModule {
+/** 学生能力素质能力认定学分
+ */
+class AbilityCreditStat extends LongId, Updated, Remark {
 
-  def binding(): Unit = {
+  var std: Student = _
 
-    bind[AbilityCredit] declare { e =>
-      e.certificateNo is length(80)
-      e.subjects is length(200)
-      e.remark is length(200)
-      index("", true, e.std, e.certificate, e.certificateNo, e.acquiredIn, e.subjects)
-      index("", false, e.std)
-    }
+  /** 学分 */
+  var credits: Float = _
 
-    bind[AbilityCreditStat].declare { e =>
-      e.remark is length(500)
-      index("", true, e.std)
-    }
+  /** 认定的成绩ID */
+  var courseGradeId: Option[Long] = None
 
+  def this(std: Student) = {
+    this()
+    this.std = std
   }
 }
