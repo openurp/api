@@ -25,6 +25,7 @@ import org.openurp.base.hr.model.Staff
 import org.openurp.base.model.*
 import org.openurp.code.std.model.StdType
 
+import java.time.LocalDate
 import scala.collection.mutable
 
 /**
@@ -59,4 +60,8 @@ class Squad extends LongId, EduLevelBased, Coded, Named, EnNamed, DateRange, Upd
   var stdStates: mutable.Buffer[StudentState] = Collections.newBuffer[StudentState]
   /** 固定校区 */
   var campus: Option[Campus] = None
+
+  def getStudents(date: LocalDate): Set[Student] = {
+    stdStates.filter(_.within(date)).map(_.std).toSet
+  }
 }

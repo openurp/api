@@ -19,6 +19,7 @@ package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.CourseType
 
@@ -30,7 +31,10 @@ import java.time.Instant
 class FinalMakeupTaker extends LongId, Updated, Remark {
 
   /** 清考任务 */
-  var makeupCourse: FinalMakeupCourse = _
+  var makeupCourse: Option[FinalMakeupCourse] = None
+
+  /** 课程 */
+  var course: Course = _
 
   /** 学生 */
   var std: Student = _
@@ -43,7 +47,7 @@ class FinalMakeupTaker extends LongId, Updated, Remark {
 
   def this(c: FinalMakeupCourse, std: Student, courseType: CourseType) = {
     this()
-    this.makeupCourse = c
+    this.makeupCourse = Some(c)
     this.std = std
     this.courseType = courseType
     this.updatedAt = Instant.now

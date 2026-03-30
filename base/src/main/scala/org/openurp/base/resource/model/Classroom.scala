@@ -72,4 +72,9 @@ class Classroom extends LongId, Named, EnNamed, Coded, Updated, TemporalOn {
   def activeDevices(semester: Semester): Iterable[Device] = {
     devices.filter(_.within(semester.beginOn))
   }
+
+  def examDescription: String = {
+    campus.name + " " + name + " " + roomType.name + "(" + examCapacity + ")"
+  }
+
 }

@@ -21,23 +21,20 @@ import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.Course
-import org.openurp.base.model.{Department, Semester}
+import org.openurp.base.model.*
 import org.openurp.base.resource.model.Classroom
 import org.openurp.code.edu.model.ExamType
 import org.openurp.edu.clazz.model.Clazz
 
 import java.time.LocalDate
-import scala.collection.mutable.Buffer
+import scala.collection.mutable
 
 /**
  * 考场
  *
  * @author chaostone
  */
-class ExamRoom extends LongId {
-
-  /** 考试学期 */
-  var semester: Semester = _
+class ExamRoom extends LongId, SemesterBased {
 
   /** 开课院系 */
   var teachDepart: Department = _
@@ -61,27 +58,56 @@ class ExamRoom extends LongId {
   var stdCount: Int = _
 
   /** 考试活动 */
-  var activities = Collections.newBuffer[ExamActivity]
+  var activities: mutable.Buffer[ExamActivity] = Collections.newBuffer[ExamActivity]
 
   /** 监考信息 */
-  var invigilations = Collections.newSet[Invigilation]
+  var invigilations: mutable.Set[Invigilation] = Collections.newSet[Invigilation]
 
   /** 应考学生 */
-  var examTakers = Collections.newSet[ExamTaker]
+  var examTakers: mutable.Set[ExamTaker] = Collections.newSet[ExamTaker]
 
-  def clazzs: Set[Clazz] = {
+  def clazzes: Set[Clazz] = {
     activities.map(a => a.clazz).toSet
+  }
+
+  def courses: Seq[Course] = {
+    activities.map(a => a.clazz.course).toSet.toSeq.sortBy(_.code)
+  }
+
+  /** 各个课程的考生人数
+   *
+   * @return
+   */
+  def courseStdCounts: Map[Course, Int] = {
+    examTakers.map(x => (x.clazz.course, 1)).groupBy(_._1).map(x => (x._1, x._2.size))
   }
 
   def this(activity: ExamActivity, classroom: Classroom) = {
     this()
     this.room = classroom
     this.activities += activity
-    activity.rooms.asInstanceOf[Buffer[ExamRoom]] += this
+    activity.rooms += this
   }
 
   def courseExamTakers: collection.Map[Course, collection.Set[ExamTaker]] = {
     examTakers.groupBy(_.clazz.course)
   }
 
+  def addExamTaker(taker: ExamTaker): Unit = {
+    taker.examRoom = Some(this)
+    examTakers.addOne(taker)
+  }
+
+  /**
+   * 把所有的信息克隆一遍<br>
+   * 不包括examTakers
+   */
+  override def clone: AnyRef = {
+    val activity = new ExamRoom
+    activity.examOn = this.examOn
+    activity.beginAt = this.beginAt
+    activity.endAt = this.endAt
+    activity.semester = this.semester
+    activity
+  }
 }

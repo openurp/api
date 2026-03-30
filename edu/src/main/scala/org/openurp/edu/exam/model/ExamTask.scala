@@ -21,10 +21,12 @@ import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Remark}
+import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{Department, SemesterBased}
 import org.openurp.base.resource.model.{Building, Classroom}
 import org.openurp.code.asset.model.ClassroomType
 import org.openurp.code.edu.model.ExamType
+import org.openurp.edu.clazz.model.Clazz
 
 import java.time.LocalDate
 
@@ -87,4 +89,33 @@ class ExamTask extends LongId, Coded, SemesterBased, Remark {
   /** 与上课冲突上限 */
   var maxCourseConflictRatio: Option[Float] = None
 
+  def clazzes: Seq[Clazz] = {
+    activities.map(_.clazz).toSeq
+  }
+
+  def courses: Seq[Course] = {
+    activities.map(_.clazz.course).distinct.sortBy(_.code).toSeq
+  }
+
+  def courseCodes: String = {
+    val cs = courses
+    if (cs.isEmpty) "" else cs.map(_.code).mkString(",")
+  }
+
+  def courseNames: String = {
+    val cs = courses
+    if (cs.isEmpty) "" else cs.map(_.name).mkString(",")
+  }
+
+  def isEmptyTime: Boolean = (null == beginAt && null == endAt) || (beginAt.value == 0 && endAt.value == 0)
+
+  def calcStdCount(): Unit = {
+    this.stdCount = activities.map(_.stdCount).sum
+  }
+
+  def buildCode(): Unit = {
+    var c = courseCodes
+    if (c.length > 50) c = c.substring(0, 50)
+    this.code = c
+  }
 }

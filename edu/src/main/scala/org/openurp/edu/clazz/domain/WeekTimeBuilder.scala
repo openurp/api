@@ -142,6 +142,22 @@ object WeekTimeBuilder {
       else throw new RuntimeException("Cannot accept first day " + firstDay)
     }
   }
+
+  def getDateRange(semester: Semester, fromWeek: Int): (LocalDate, LocalDate) = {
+    val wk = math.min(math.max(fromWeek, 1), math.max(semester.weeks, 1))
+    val start = semester.beginOn.plusDays((wk - 1) * 7L)
+    val end = start.plusDays(6)
+    (start, end)
+  }
+
+  def getDate(semester: Semester, examWeek: Int, day: WeekDay): LocalDate = {
+    val weekStart = getDateRange(semester, examWeek)._1
+    val first =
+      if (semester.calendar != null) semester.calendar.firstWeekday
+      else WeekDay.Mon
+    val delta = (day.index - first.index + 7) % 7
+    weekStart.plusDays(delta)
+  }
 }
 
 class WeekTimeBuilder(val startOn: LocalDate, firstDay: WeekDay) {

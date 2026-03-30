@@ -33,6 +33,14 @@ class AdmissionType extends CodeBean
 @code("industry")
 class ActivityType extends CodeBean
 
+object ActivityType {
+  /** 排课 */
+  val Course = 1
+
+  /** 排考 */
+  val Exam = 2
+}
+
 /**
  * 学科目录
  *
@@ -125,6 +133,11 @@ class InstitutionCategory extends CodeBean
  */
 @code("industry")
 class CourseTakeType extends CodeBean {
+  def this(id: Int) = {
+    this()
+    this.id = id
+  }
+
   def this(id: Int, code: String, name: String, enName: String) = {
     this()
     this.id = id
@@ -141,7 +154,7 @@ object CourseTakeType {
   val Repeat = 3
   /** 免修 */
   val Exemption = 5
-  /** 旁听 * */
+  /** 旁听 *     */
   val Auditor = 6
 }
 
@@ -172,10 +185,16 @@ class ExamStatus extends CodeBean {
 object ExamStatus {
 
   /** 正常 */
-  val Normal = 1;
+  val Normal = 1
+
+  /** 缓考 */
+  val Delay = 2
 
   /** 缺考 */
-  val Absent = 3;
+  val Absent = 3
+
+  /** 无资格 */
+  val Unqualified = 6
 }
 
 /**

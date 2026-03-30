@@ -15,13 +15,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exam.model
+package org.openurp.edu.exam.domain
 
-enum PublishState(val id: Int, val name: String, val timePublished: Boolean, val roomPublished: Boolean) {
+import org.openurp.base.edu.model.Course
+import org.openurp.base.hr.model.Teacher
+import org.openurp.base.model.{Campus, Department}
+import org.openurp.base.resource.model.{Building, Classroom}
+import org.openurp.code.asset.model.ClassroomType
 
-  case None extends PublishState(0, "未发布", false, false)
-  case TimeOnly extends PublishState(1, "仅发布时间", true, false)
-  case TimeAndRoom extends PublishState(2, "发布时间地点", true, true)
+/** 教室分配时的「占用方」抽象：提供校区、楼栋、教室类型、候选教室集合与人数等约束。 */
+trait RoomOccupier {
 
-  override def toString: String = name
+  def occupier: AnyRef
+
+  def campus: Campus
+
+  def building: Building
+
+  def roomType: ClassroomType
+
+  def rooms: Set[Classroom]
+
+  def depart: Department
+
+  def courses: Iterable[Course]
+
+  def teachers: Iterable[Teacher]
+
+  def stdCount: Int
+
+  def name: String
 }

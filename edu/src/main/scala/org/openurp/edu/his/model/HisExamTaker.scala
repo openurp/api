@@ -44,6 +44,6 @@ class HisExamTaker extends LongId, Remark, ArchivedByYear {
   var activity: Option[ExamActivity] = None
   /** 考试情况 */
   var examStatus: ExamStatus = _
-  /** 作为号 */
+  /** 座位号 */
   var seatNo: Short = _
 }

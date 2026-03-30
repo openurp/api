@@ -66,13 +66,13 @@ class ExamActivity extends LongId, Remark {
   var stdCount: Int = _
 
   /** 考场列表 */
-  var rooms: collection.mutable.Buffer[ExamRoom] = _
+  var rooms: mutable.Buffer[ExamRoom] = Collections.newBuffer[ExamRoom]
 
   /** 应考学生 */
   var examTakers: mutable.Set[ExamTaker] = Collections.newSet[ExamTaker]
 
   /** 考试周 */
-  var examWeek: Option[Int] = None
+  var examWeek: Option[Short] = None
 
   /** 是否集中安排 */
   var centralized: Option[Boolean] = None

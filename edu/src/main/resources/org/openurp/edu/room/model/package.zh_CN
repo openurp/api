@@ -5,6 +5,7 @@ Occupancy.activityType=活动类型
 Occupancy.activityId=活动Id
 Occupancy.userApp=用户系统
 Occupancy.comments=说明
+Occupancy.shared=是否可以共享占用
 
 RoomOccupyApp=房间占用用户系统
 RoomOccupyApp.name=名称

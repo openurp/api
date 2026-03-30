@@ -15,13 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exam.model
+package org.openurp.edu.exam.domain
 
-enum PublishState(val id: Int, val name: String, val timePublished: Boolean, val roomPublished: Boolean) {
+/** 监考分配行为开关：是否只排首席、是否跨院系/跨校区同日、是否偏好同一天密集排监考等。 */
+class InvigilatorAllocateSetting {
 
-  case None extends PublishState(0, "未发布", false, false)
-  case TimeOnly extends PublishState(1, "仅发布时间", true, false)
-  case TimeAndRoom extends PublishState(2, "发布时间地点", true, true)
+  var onlyChief: Boolean = true
 
-  override def toString: String = name
+  var acrossDepart: Boolean = true
+
+  var acrossCampusOneDay: Boolean = false
+
+  /** 是否禁用校区的配额限制，指按照总数进行分配 */
+  var disableCampusQuota: Boolean = false
+
+  /** 是否偏向于进行监考密集型的 */
+  var preferCrowded: Boolean = true
 }

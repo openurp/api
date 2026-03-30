@@ -57,6 +57,12 @@ class Schedule extends Component, Serializable, Cloneable {
     }.toBuffer.sorted.headOption
   }
 
+  def lastDateTime: Option[LocalDateTime] = {
+    activities.map { x =>
+      x.time.startOn.plusWeeks(x.time.weekstate.first - 1).atTime(x.time.beginAt.toLocalTime)
+    }.toBuffer.sorted.lastOption
+  }
+
   /** 起始周 */
   def firstWeek: Int = {
     if (null != weekstate) weekstate.first else 0

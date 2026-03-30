@@ -79,7 +79,7 @@ class DefaultMapping extends MappingModule {
     bind[ExamRoomGroup]
 
     bind[FinalMakeupCourse].declare { e =>
-      e.takers is depends("makeupCourse")
+      e.takers is one2many("makeupCourse")
     }
 
     bind[FinalMakeupTaker] declare { e =>

@@ -22,7 +22,7 @@ import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{ExamStatus, ExamType}
-import org.openurp.edu.clazz.model.Clazz
+import org.openurp.edu.clazz.model.{Clazz, CourseTaker}
 
 /**
  * 应考学生
@@ -50,7 +50,15 @@ class ExamTaker extends LongId, Remark {
   /** 考试情况 */
   var examStatus: ExamStatus = _
 
-  /** 作为号 */
+  /** 座位号 */
   var seatNo: Short = _
 
+  def this(taker: CourseTaker, examType: ExamType) = {
+    this()
+    this.examStatus = new ExamStatus(ExamStatus.Normal)
+    this.examType = examType
+    this.std = taker.std
+    this.clazz = taker.clazz
+    this.semester = taker.clazz.semester
+  }
 }

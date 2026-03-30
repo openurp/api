@@ -15,13 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exam.model
+package org.openurp.edu.exam.domain
 
-enum PublishState(val id: Int, val name: String, val timePublished: Boolean, val roomPublished: Boolean) {
+trait ExamScheduler {
 
-  case None extends PublishState(0, "未发布", false, false)
-  case TimeOnly extends PublishState(1, "仅发布时间", true, false)
-  case TimeAndRoom extends PublishState(2, "发布时间地点", true, true)
-
-  override def toString: String = name
+  /** 生成场次方案并完成教室（及调度器职责范围内的后续步骤）分配。 */
+  def schedule(problem: ExamSchedProblem): ExamSchedSolution
 }

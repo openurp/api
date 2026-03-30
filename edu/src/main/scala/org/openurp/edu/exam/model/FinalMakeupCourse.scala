@@ -17,16 +17,17 @@
 
 package org.openurp.edu.exam.model
 
-import java.time.Instant
-
-import scala.collection.mutable.Buffer
-
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.openurp.base.model.{Department, Project, Semester}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
+import org.openurp.base.model.*
+import org.openurp.base.resource.model.Classroom
 import org.openurp.base.std.model.Squad
+
+import java.time.{Instant, LocalDate}
+import scala.collection.mutable
 
 /**
  * 毕业补考任务
@@ -46,11 +47,14 @@ class FinalMakeupCourse extends LongId {
   /** 课程 */
   var course: Course = _
 
+  /** 校区 */
+  var campus: Campus = _
+
   /** 开课院系 */
   var depart: Department = _
 
   /** 清考名单 */
-  var takers: Buffer[FinalMakeupTaker] = Collections.newBuffer[FinalMakeupTaker]
+  var takers: mutable.Buffer[FinalMakeupTaker] = Collections.newBuffer[FinalMakeupTaker]
 
   /** 行政班列表 */
   var squads: collection.mutable.Set[Squad] = Collections.newSet[Squad]
@@ -66,6 +70,24 @@ class FinalMakeupCourse extends LongId {
 
   /** 成绩录入时间 */
   var inputAt: Option[Instant] = None
+
+  /** 考试日期 */
+  var examOn: Option[LocalDate] = None
+
+  /** 开始时间 */
+  var beginAt: HourMinute = HourMinute.Zero
+
+  /** 结束时间 */
+  var endAt: HourMinute = HourMinute.Zero
+
+  /** 教室 */
+  var room: Option[Classroom] = None
+
+  /** 监考人1 */
+  var invigilator1: Option[User] = None
+
+  /** 监考人2 */
+  var invigilator2: Option[User] = None
 
   def mergeWith(makeupClazz: FinalMakeupCourse): Unit = {
     stdCount += makeupClazz.stdCount

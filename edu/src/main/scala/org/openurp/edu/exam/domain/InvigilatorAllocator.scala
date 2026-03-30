@@ -15,13 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exam.model
+package org.openurp.edu.exam.domain
 
-enum PublishState(val id: Int, val name: String, val timePublished: Boolean, val roomPublished: Boolean) {
+import org.openurp.base.model.Project
+import org.openurp.edu.exam.model.ExamRoom
 
-  case None extends PublishState(0, "未发布", false, false)
-  case TimeOnly extends PublishState(1, "仅发布时间", true, false)
-  case TimeAndRoom extends PublishState(2, "发布时间地点", true, true)
+import scala.collection.Seq
 
-  override def toString: String = name
+/** 为一批 ExamRoom 自动写入监考安排（依实现可能只处理首席或双监考）。 */
+trait InvigilatorAllocator {
+
+  /** 在 `project`/`semester` 上下文中为 `examRooms` 分配监考并写回模型。 */
+  def allocate(project: Project, examRooms: Seq[ExamRoom], setting: InvigilatorAllocateSetting): Unit
 }

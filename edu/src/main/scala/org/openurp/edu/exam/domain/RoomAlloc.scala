@@ -15,13 +15,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exam.model
+package org.openurp.edu.exam.domain
 
-enum PublishState(val id: Int, val name: String, val timePublished: Boolean, val roomPublished: Boolean) {
+import org.openurp.base.resource.model.Classroom
 
-  case None extends PublishState(0, "未发布", false, false)
-  case TimeOnly extends PublishState(1, "仅发布时间", true, false)
-  case TimeAndRoom extends PublishState(2, "发布时间地点", true, true)
+/** 教室分配结果
+ *
+ * @param occupier 占用人
+ * @param room     教室
+ * @param capacity 总容量
+ * @param alloc    分配多少容量
+ */
+class RoomAlloc(val occupier: RoomOccupier, val room: Classroom, val capacity: Int, var alloc: Int) {
 
-  override def toString: String = name
+  override def toString: String = s"${room.name} $alloc"
 }

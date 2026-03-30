@@ -45,4 +45,7 @@ class Occupancy extends LongId, Updated {
 
   /** 说明 */
   var comments: String = _
+
+  /** 是否可以共享占用 */
+  var shared: Boolean = _
 }

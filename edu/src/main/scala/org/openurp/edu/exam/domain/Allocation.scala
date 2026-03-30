@@ -15,13 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.exam.model
+package org.openurp.edu.exam.domain
 
-enum PublishState(val id: Int, val name: String, val timePublished: Boolean, val roomPublished: Boolean) {
+import org.openurp.base.resource.model.Classroom
+import org.openurp.edu.exam.domain.Turn
 
-  case None extends PublishState(0, "未发布", false, false)
-  case TimeOnly extends PublishState(1, "仅发布时间", true, false)
-  case TimeAndRoom extends PublishState(2, "发布时间地点", true, true)
+class Allocation(val occupier: RoomOccupier, val turn: Turn, val rooms: Seq[RoomAlloc]) {
 
-  override def toString: String = name
+  def totalAlloc: Int = rooms.map(x => x.alloc).sum
+
+  def allocCount(room: Classroom): Int = {
+    rooms.find(_.room == room).map(_.alloc).getOrElse(0)
+  }
 }

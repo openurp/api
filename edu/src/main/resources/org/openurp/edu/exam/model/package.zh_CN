@@ -94,7 +94,6 @@ Invigilation.published=是否发布
 Invigilation.chief=是否第一监考
 Invigilation.invigilatorName=监考姓名
 
-
 FinalMakeupCourse=毕业补考任务
 FinalMakeupCourse.crn=序号
 FinalMakeupCourse.project=项目
@@ -104,11 +103,15 @@ FinalMakeupCourse.depart=开课院系
 FinalMakeupCourse.takers=清考名单
 FinalMakeupCourse.squads=行政班列表
 FinalMakeupCourse.stdCount=学生人数
-FinalMakeupCourse.confirmed=是否提交成绩
-FinalMakeupCourse.published=是否发布成绩
 FinalMakeupCourse.teacher=阅卷老师
 FinalMakeupCourse.inputAt=成绩录入时间
 FinalMakeupCourse.status=成绩录入状态
+FinalMakeupCourse.examOn=考试日期
+FinalMakeupCourse.beginAt=考试开始时间
+FinalMakeupCourse.endAt=考试结束时间
+FinalMakeupCourse.room=考试教室
+FinalMakeupCourse.invigilator1=监考人1
+FinalMakeupCourse.invigilator2=监考人2
 
 FinalMakeupTaker=清考名单
 FinalMakeupTaker.makeupCourse=清考任务

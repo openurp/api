@@ -18,6 +18,7 @@
 package org.openurp.edu.exam.model
 
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Updated}
 import org.openurp.base.model.SemesterBased
@@ -26,6 +27,7 @@ import org.openurp.code.edu.model.ExamType
 import org.openurp.edu.exam.config.ExamAllocSetting
 
 import java.time.LocalDate
+import scala.collection.mutable
 
 /** 排考组 */
 class ExamGroup extends LongId, Named, SemesterBased, Updated {
@@ -40,7 +42,7 @@ class ExamGroup extends LongId, Named, SemesterBased, Updated {
   var endOn: LocalDate = _
 
   /** 场次列表 */
-  var turns = Collections.newBuffer[ExamTurn]
+  var turns: mutable.Buffer[ExamTurn] = Collections.newBuffer[ExamTurn]
 
   /** 允许随堂考试 */
   var allowInClass: Boolean = _
@@ -62,4 +64,8 @@ class ExamGroup extends LongId, Named, SemesterBased, Updated {
 
   /** 教室分配设置 */
   var allocSetting: ExamAllocSetting = _
+
+  def getTurn(examOn: LocalDate, beginAt: HourMinute): ExamTurn = {
+    this.turns.find(et => (et.examOn == examOn) && (et.beginAt == beginAt)).get
+  }
 }
