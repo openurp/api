@@ -17,8 +17,10 @@ create index idx_oe22t4o0pgpw8ig651ulvxs2v on prac.ability_credits (std_id);
 
 insert into prac.ability_credits(id,semester_id,certificate_id,certificate_no,subjects,credits,acquired_in,std_id,updated_at)
 select id,semester_id,certificate_id,case when certificate_no is null then '--' else certificate_no end,subjects,credits,
-       acquired_in,std_id,updated_at from flow.prac_ability_credit_applies
-where credits is not null and status=100;
+       acquired_in,std_id,updated_at from flow.prac_ability_credit_applies a
+where credits is not null and status=100
+and not exists(select * from prac.ability_credits ac where ac.std_id=a.std_id and ac.certificate_id =a.certificate_id
+                                                     and ac.acquired_in=a.acquired_in and ac.subjects = a.subjects);
 
 alter table prac.ability_credits add constraint uk_sc0b8eiegl0n7npyyaet4ja6y unique (std_id,certificate_id,certificate_no,acquired_in,subjects);
 
