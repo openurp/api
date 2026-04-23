@@ -116,6 +116,10 @@ class CourseGrade extends LongId, ProjectBased, Grade, Remark {
     gaGrades.find(eg => eg.gradeType == gt)
   }
 
+  def hasGaGrade(gradeTypeId: Int): Boolean = {
+    gaGrades.exists(_.gradeType.id == gradeTypeId)
+  }
+
   def getScoreText(gt: GradeType): Option[String] = {
     getGrade(gt) match {
       case None => None

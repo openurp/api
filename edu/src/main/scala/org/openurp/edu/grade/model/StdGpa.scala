@@ -24,6 +24,11 @@ import org.openurp.base.std.model.Student
 
 import scala.collection.mutable
 
+/**
+ * 学分统计结构
+ * 如果按照课程不重复计算：
+ * 总学分totalCredits = 实修学分takenCredits + 在修学分pendingCredits + 免修或清考学分
+ */
 trait GpaStat {
   /** 总平均绩点 */
   var gpa: Double = _
@@ -34,14 +39,31 @@ trait GpaStat {
   /** 算术平均分 arithmetic mean score */
   var ams: Double = _
 
-  /** 修读总学分 */
-  var totalCredits: Float = _
-
-  /** 获得总学分 */
+  /** 获得成绩总学分 */
   var credits: Float = _
 
-  /** 成绩的门数 */
-  var gradeCount: Int = _
+  /** 课程总学分（课程去重） */
+  var totalCredits: Float = _
+
+  /** 课程门数（课程去重、不是门次数） */
+  var totalCount: Int = _
+
+  /** 实修学分 */
+  var takenCredits: Float = _
+
+  /** 在修学分（未出成绩） */
+  var pendingCredits: Float = _
+
+  /** 添加在修学分
+   *
+   * @param c
+   */
+  def addPending(c: Float): Unit = {
+    this.pendingCredits += c
+    this.takenCredits += c
+    this.totalCredits += c
+    this.totalCount += 1
+  }
 }
 
 /**
@@ -77,7 +99,7 @@ class StdGpa extends LongId, Updated, ProjectBased, GpaStat {
     this.semesterGpas = new collection.mutable.ListBuffer[StdSemesterGpa]
     this.yearGpas = new collection.mutable.ListBuffer[StdYearGpa]
     this.credits = 0f
-    this.gradeCount = 0
+    this.totalCount = 0
     this.wms = 0d
     this.ams = 0d
     this.gpa = 0d

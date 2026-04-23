@@ -96,6 +96,12 @@ object Features {
     val DeferApplyEnabled = Feature(this, "defer_apply_enabled", "是否允许网上申请缓考", false)
   }
 
+  object Finalmakeup extends FeatureScope {
+    override def namespace: String = "edu.finalmakeup"
+
+    val scope = Feature(this, "scope", "毕业补考的范围", "next2last no-retake without-clazz")
+  }
+
   object Exempt extends FeatureScope {
     override def namespace: String = "edu.exempt"
 

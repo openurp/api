@@ -97,4 +97,3 @@ class ExamSchedProblem(val examGroup: ExamGroup, val examTasks: Iterable[ExamTas
   }
 
 }
-

@@ -93,8 +93,8 @@ class FinalMakeupCourse extends LongId {
     stdCount += makeupClazz.stdCount
     squads ++= makeupClazz.squads
     for (taker2 <- makeupClazz.takers) {
-      val make = new FinalMakeupTaker(this, taker2.std, taker2.courseType)
-      this.takers += make
+      taker2.makeupCourse = Some(this)
+      this.takers += taker2
     }
   }
 }

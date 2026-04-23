@@ -94,7 +94,9 @@ GpaStat.wms=加权平均分
 GpaStat.ams=算术平均分
 GpaStat.credits=获得学分
 GpaStat.totalCredits=总学分
-GpaStat.gradeCount=门数
+GpaStat.totalCount=门数
+GpaStat.takenCredits=实修学分
+GpaStat.pendingCredits=在修学分
 
 StdGpa=学生成绩绩点统计
 StdGpa.std=学生

@@ -24,7 +24,7 @@ import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{ArchivedByYear, Semester}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{CourseTakeType, CourseType, ElectionMode}
-import org.openurp.edu.clazz.model.{Clazz, Subclazz}
+import org.openurp.edu.clazz.model.{Clazz, CourseTaker, Subclazz}
 
 /** 归档上课记录
  */
@@ -46,8 +46,26 @@ class HisCourseTaker extends LongId, Updated, Remark, ArchivedByYear {
   var freeListening: Boolean = false
   /** 是否替代 */
   var alternative: Boolean = false
-  /** 选课方式 * */
+  /** 选课方式 *   */
   var electionMode: ElectionMode = _
   /** 上课小班 */
   var subclazz: Option[Subclazz] = None
+
+  def convert(): CourseTaker = {
+    val ct = new CourseTaker
+    ct.id = this.id
+    ct.std = std
+    ct.course = course
+    ct.semester = semester
+    ct.takeType = takeType
+    ct.clazz = clazz
+    ct.courseType = courseType
+    ct.freeListening = freeListening
+    ct.alternative = alternative
+    ct.electionMode = electionMode
+    ct.subclazz = subclazz
+    ct.remark = remark
+    ct.updatedAt = updatedAt
+    ct
+  }
 }

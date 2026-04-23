@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.1.0">
+<db engine="PostgreSQL" version="1.2.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -6499,14 +6499,18 @@
             <column name="makeup_course_id" type="bigint" comment="清考任务ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="scores" type="varchar(255)" nullable="false" comment="分数"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="teacher_id" type="bigint" comment="教师信息ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
             <primary-key name="pk_eh01n7uwcd4vicj1mwrn7on3s" columns="id"/>
             <foreign-key name="fk_ik2scl92fgay4ncc539w5064w" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
             <foreign-key name="fk_5e4n642vhctedomk6hhpsxf5i" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_myr1vnk7i594uty9rsiag7ql6" column="teacher_id" referenced-table="base.teachers" referenced-column="id"/>
             <foreign-key name="fk_lkd4ymif569369snadf60d53" column="course_id" referenced-table="base.courses" referenced-column="id"/>
+            <foreign-key name="fk_pwefa6uwn0883tqnfdp3wp2oo" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
             <foreign-key name="fk_9ef6gqa1pjpp47tfiheocwak0" column="makeup_course_id" referenced-table="edu.final_makeup_courses" referenced-column="id"/>
           </constraints>
           <indexes>
@@ -7627,9 +7631,11 @@
             <column name="ams" type="float8" nullable="false" defaultValue="0" comment="算术平均分"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
             <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
-            <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
+            <column name="pending_credits" type="float4" nullable="false" defaultValue="0" comment="在修学分"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="taken_credits" type="float4" nullable="false" defaultValue="0" comment="实修学分"/>
+            <column name="total_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
@@ -7715,9 +7721,11 @@
             <column name="ams" type="float8" nullable="false" defaultValue="0" comment="算术平均分"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
             <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
-            <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
+            <column name="pending_credits" type="float4" nullable="false" defaultValue="0" comment="在修学分"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
+            <column name="taken_credits" type="float4" nullable="false" defaultValue="0" comment="实修学分"/>
+            <column name="total_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
             <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
           </columns>
@@ -7737,9 +7745,11 @@
             <column name="ams" type="float8" nullable="false" defaultValue="0" comment="算术平均分"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
             <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
-            <column name="grade_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
+            <column name="pending_credits" type="float4" nullable="false" defaultValue="0" comment="在修学分"/>
             <column name="school_year" type="varchar(10)" nullable="false" comment="学年"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
+            <column name="taken_credits" type="float4" nullable="false" defaultValue="0" comment="实修学分"/>
+            <column name="total_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
             <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
           </columns>

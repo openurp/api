@@ -27,6 +27,9 @@ alter table prac.ability_credits add constraint uk_sc0b8eiegl0n7npyyaet4ja6y uni
 -- exam room and activities
 alter table edu.exam_activities alter exam_week type smallint;
 alter table edu.exam_rooms add column project_id integer;
+update edu.exam_rooms er set project_id=(select distinct clz.project_id
+                                         from edu.exam_activities_rooms ear ,edu.exam_activities ea,edu.clazzes clz where er.id=ear.exam_room_id
+                                         and ear.exam_activity_id=ea.id and ea.clazz_id=clz.id);
 alter table edu.exam_rooms alter project_id set not null;
 alter table edu.exam_rooms add constraint fk_6a45hjatfkcu09bdf6yn6abhe foreign key (project_id) references base.projects (id);
 

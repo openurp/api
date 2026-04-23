@@ -75,6 +75,7 @@ class HisCourseGrade extends LongId, ProjectBased, Grade, Remark, ArchivedByYear
 
   def convert(): CourseGrade = {
     val cg = new CourseGrade
+    cg.id = this.id
     cg.std = std
     cg.course = course
     cg.courseTakeType = courseTakeType
