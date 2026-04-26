@@ -19,6 +19,7 @@ package org.openurp.edu.his.model
 
 import org.beangle.data.orm.{IdGenerator, MappingModule}
 import org.openurp.base.model.ArchivedByYear
+import org.openurp.edu.room.model.Occupancy
 
 class DefaultMapping extends MappingModule {
 
@@ -78,6 +79,13 @@ class DefaultMapping extends MappingModule {
       e.materials is length(1000)
       e.majors is length(200)
       index("", false, e.course)
+    }
+
+    bind[HisOccupancy] declare { e =>
+      e.subject is length(500)
+      index("", false, e.room)
+      index("", false, e.activityId)
+      index("", false, e.time.startOn)
     }
   }
 

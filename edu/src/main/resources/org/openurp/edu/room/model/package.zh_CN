@@ -3,9 +3,11 @@ Occupancy.room=房间
 Occupancy.time=时间
 Occupancy.activityType=活动类型
 Occupancy.activityId=活动Id
-Occupancy.userApp=用户系统
-Occupancy.comments=说明
+Occupancy.app=用户系统
+Occupancy.subject=活动主题
 Occupancy.shared=是否可以共享占用
+Occupancy.stdCount=学生人数
+Occupancy.depart=占用院系
 
 RoomOccupyApp=房间占用用户系统
 RoomOccupyApp.name=名称

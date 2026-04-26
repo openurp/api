@@ -86,3 +86,14 @@ HisCourseProfile.bibliography=参考书目
 HisCourseProfile.status=状态
 HisCourseProfile.auditAt=审核时间
 HisCourseProfile.auditor=审核人
+
+HisOccupancy=房间占用情况
+HisOccupancy.room=房间
+HisOccupancy.time=时间
+HisOccupancy.activityType=活动类型
+HisOccupancy.activityId=活动Id
+HisOccupancy.app=用户系统
+HisOccupancy.subject=活动主题
+HisOccupancy.shared=是否可以共享占用
+HisOccupancy.stdCount=学生人数
+HisOccupancy.depart=占用院系

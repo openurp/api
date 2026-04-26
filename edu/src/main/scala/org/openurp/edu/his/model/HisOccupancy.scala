@@ -15,19 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.room.model
+package org.openurp.edu.his.model
 
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
-import org.openurp.base.model.Department
+import org.openurp.base.model.{ArchivedByYear, Department}
 import org.openurp.base.resource.model.Classroom
 import org.openurp.code.edu.model.ActivityType
+import org.openurp.edu.room.model.{Occupancy, RoomOccupyApp}
 
 /**
  * 房间占用情况
  */
-class Occupancy extends LongId, Updated {
+class HisOccupancy extends LongId, Updated, ArchivedByYear {
 
   /** 房间 */
   var room: Classroom = _
@@ -55,4 +56,20 @@ class Occupancy extends LongId, Updated {
 
   /** 学生人数 */
   var stdCount: Int = _
+
+  def convert(): Occupancy = {
+    val o = new Occupancy
+    o.id = this.id
+    o.updatedAt = this.updatedAt
+    o.room = this.room
+    o.time = WeekTime(this.time)
+    o.activityType = this.activityType
+    o.app = this.app
+    o.activityId = this.activityId
+    o.subject = this.subject
+    o.depart = this.depart
+    o.shared = this.shared
+    o.stdCount = this.stdCount
+    o
+  }
 }

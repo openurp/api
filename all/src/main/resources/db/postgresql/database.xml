@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.2.0">
+<db engine="PostgreSQL" version="1.3.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -6962,21 +6962,24 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="activity_id" type="bigint" nullable="false" defaultValue="0" comment="活动Id"/>
             <column name="activity_type_id" type="integer" nullable="false" comment="活动类型ID"/>
-            <column name="app_id" type="bigint" nullable="false" comment="房间占用用户系统ID"/>
+            <column name="app_id" type="bigint" nullable="false" comment="用户系统ID"/>
             <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
-            <column name="comments" type="varchar(400)" nullable="false" comment="说明"/>
+            <column name="depart_id" type="integer" nullable="false" comment="占用院系ID"/>
             <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="room_id" type="bigint" nullable="false" comment="房间ID"/>
             <column name="shared" type="boolean" nullable="false" defaultValue="false" comment="是否可以共享占用"/>
             <column name="start_on" type="date" nullable="false" comment="开始日期"/>
+            <column name="std_count" type="integer" nullable="false" defaultValue="0" comment="学生人数"/>
+            <column name="subject" type="varchar(500)" nullable="false" comment="活动主题"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
           </columns>
           <constraints>
             <primary-key name="pk_cv4gsidr885aanuscffivwbb7" columns="id"/>
             <foreign-key name="fk_k0q49iwr2wn7rxtwo844r7rai" column="app_id" referenced-table="edu.room_occupy_apps" referenced-column="id"/>
-            <foreign-key name="fk_s1fwddmde81ci845s5lwu69vx" column="activity_type_id" referenced-table="code.activity_types" referenced-column="id"/>
             <foreign-key name="fk_cxcnxdgl2tss3ved9eqe00oq9" column="room_id" referenced-table="base.classrooms" referenced-column="id"/>
+            <foreign-key name="fk_2fgymnnikfutk9trnrswdq104" column="depart_id" referenced-table="base.departments" referenced-column="id"/>
+            <foreign-key name="fk_s1fwddmde81ci845s5lwu69vx" column="activity_type_id" referenced-table="code.activity_types" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_5c8y9mjfcmi8qfg5ktnfmhq8e" columns="room_id"/>
@@ -8619,6 +8622,37 @@
           </constraints>
           <indexes>
             <index name="idx_7jjbv89v7xsd97ul68dg75q48" columns="course_grade_id"/>
+          </indexes>
+        </table>
+        <table name="edu_occupancies" comment="房间占用情况@his">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:assigned"/>
+            <column name="activity_id" type="bigint" nullable="false" defaultValue="0" comment="活动Id"/>
+            <column name="activity_type_id" type="integer" nullable="false" comment="活动类型ID"/>
+            <column name="app_id" type="bigint" nullable="false" comment="用户系统ID"/>
+            <column name="begin_at" type="smallint" nullable="false" comment="开始时间"/>
+            <column name="depart_id" type="integer" nullable="false" comment="占用院系ID"/>
+            <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
+            <column name="room_id" type="bigint" nullable="false" comment="房间ID"/>
+            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
+            <column name="shared" type="boolean" nullable="false" defaultValue="false" comment="是否可以共享占用"/>
+            <column name="start_on" type="date" nullable="false" comment="开始日期"/>
+            <column name="std_count" type="integer" nullable="false" defaultValue="0" comment="学生人数"/>
+            <column name="subject" type="varchar(500)" nullable="false" comment="活动主题"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="weekstate" type="bigint" nullable="false" comment="周状态"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_7xyb65adr1lhgohe9729eeo1h" columns="id,school_year"/>
+            <foreign-key name="fk_ta3v5y0rlw5p2mjii6998wmxw" column="app_id" referenced-table="edu.room_occupy_apps" referenced-column="id"/>
+            <foreign-key name="fk_ipk4ah12sab6uwiqdk9og90kg" column="room_id" referenced-table="base.classrooms" referenced-column="id"/>
+            <foreign-key name="fk_3tkyhkrhaof56x5h3josgbpoe" column="depart_id" referenced-table="base.departments" referenced-column="id"/>
+            <foreign-key name="fk_ehgk4rrncqpqe5lt62wm9ha7j" column="activity_type_id" referenced-table="code.activity_types" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_nrrdkdb47amqyor3ia51aaqbq" columns="room_id"/>
+            <index name="idx_4m1o28u47wl0uxr6r929a12tt" columns="activity_id"/>
+            <index name="idx_pr55fhe4vls9geopr8vtqnnv5" columns="start_on"/>
           </indexes>
         </table>
         <table name="edu_regular_grades" comment="历史平时过程总评成绩@his">

@@ -18,13 +18,12 @@
 package org.openurp.edu.room.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.room.config.{RoomApplyDepartScope, RoomApplySetting}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     bind[Occupancy] declare { e =>
-      e.comments is length(400)
+      e.subject is length(500)
       index("", false, e.room)
       index("", false, e.activityId)
       index("", false, e.time.startOn)
