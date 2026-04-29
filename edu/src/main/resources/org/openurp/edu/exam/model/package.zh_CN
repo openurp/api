@@ -100,7 +100,7 @@ FinalMakeupCourse.project=项目
 FinalMakeupCourse.semester=学年学期
 FinalMakeupCourse.course=课程
 FinalMakeupCourse.depart=开课院系
-FinalMakeupCourse.takers=清考名单
+FinalMakeupCourse.takers=毕业补考名单
 FinalMakeupCourse.squads=行政班列表
 FinalMakeupCourse.stdCount=学生人数
 FinalMakeupCourse.teacher=阅卷老师
@@ -113,11 +113,12 @@ FinalMakeupCourse.room=考试教室
 FinalMakeupCourse.invigilator1=监考人1
 FinalMakeupCourse.invigilator2=监考人2
 
-FinalMakeupTaker=清考名单
-FinalMakeupTaker.makeupCourse=清考任务
+FinalMakeupTaker=毕业补考名单
+FinalMakeupTaker.makeupCourse=毕业补考任务
 FinalMakeupTaker.std=学生
 FinalMakeupTaker.courseType=课程类型
-FinalMakeupTaker.scores=分数
+FinalMakeupTaker.failScores=之前的成绩
+FinalMakeupTaker.score=本次补考分数
 
 ExamNotice=考试通知
 ExamNotice.studentNotice=学生通知

@@ -31,7 +31,12 @@ class AdmissionType extends CodeBean
  * 参考教育部标准JY/T 1001 4.3.4（教室占用情况）
  */
 @code("industry")
-class ActivityType extends CodeBean
+class ActivityType extends CodeBean {
+  def this(id: Int) = {
+    this()
+    this.id = id
+  }
+}
 
 object ActivityType {
   /** 排课 */
@@ -154,7 +159,7 @@ object CourseTakeType {
   val Repeat = 3
   /** 免修 */
   val Exemption = 5
-  /** 旁听 *     */
+  /** 旁听 *       */
   val Auditor = 6
 }
 

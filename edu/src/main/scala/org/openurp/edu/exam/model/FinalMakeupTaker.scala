@@ -47,8 +47,11 @@ class FinalMakeupTaker extends LongId, Updated, Remark {
   /** 课程类型 */
   var courseType: CourseType = _
 
-  /** 最好成绩 */
-  var scores: String = _
+  /** 之前的成绩 */
+  var failScores: String = _
+
+  /** 本次补考成绩 */
+  var score: Option[Float] = None
 
   /** 任课教室 */
   var teacher: Option[Teacher] = None

@@ -38,4 +38,5 @@ object RoomOccupyApp {
   val CourseAppId: Long = 1
   val ExamAppId: Long = 2
   val RoomAppId: Long = 3
+  val FinalMakeupAppId: Long = 4
 }

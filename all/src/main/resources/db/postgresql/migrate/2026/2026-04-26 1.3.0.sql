@@ -1,3 +1,6 @@
+insert into base.versions(id,version,updated_at,description)
+values(next_id('base.versions'),'1.3.0',now(),'扩展教室占用结构');
+
 create table his.edu_occupancies (id bigint not null, activity_id bigint default 0 not null, activity_type_id integer not null, app_id bigint not null, begin_at smallint not null, depart_id integer not null, end_at smallint not null, room_id bigint not null, school_year integer not null, shared boolean default false not null, start_on date not null, std_count integer default 0 not null, subject varchar(500) not null, updated_at timestamptz default current_timestamp not null, weekstate bigint not null);
 alter table his.edu_occupancies add constraint pk_7xyb65adr1lhgohe9729eeo1h primary key (id,school_year);
 create index idx_4m1o28u47wl0uxr6r929a12tt on his.edu_occupancies (activity_id);

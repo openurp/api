@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.3.0">
+<db engine="PostgreSQL" version="1.3.1">
   <schemas>
     <schema name="base">
       <tables>
@@ -6491,14 +6491,15 @@
             <index name="idx_kn96mnwxflrwspmtwlq970vhr" columns="final_makeup_course_id"/>
           </indexes>
         </table>
-        <table name="final_makeup_takers" comment="清考名单@exam">
+        <table name="final_makeup_takers" comment="毕业补考名单@exam">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
             <column name="course_type_id" type="integer" nullable="false" comment="课程类型ID"/>
-            <column name="makeup_course_id" type="bigint" comment="清考任务ID"/>
+            <column name="fail_scores" type="varchar(255)" nullable="false" comment="之前的成绩"/>
+            <column name="makeup_course_id" type="bigint" comment="毕业补考任务ID"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="scores" type="varchar(255)" nullable="false" comment="分数"/>
+            <column name="score" type="float4" comment="本次补考分数"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="teacher_id" type="bigint" comment="教师信息ID"/>
@@ -6508,10 +6509,10 @@
             <primary-key name="pk_eh01n7uwcd4vicj1mwrn7on3s" columns="id"/>
             <foreign-key name="fk_ik2scl92fgay4ncc539w5064w" column="course_type_id" referenced-table="code.course_types" referenced-column="id"/>
             <foreign-key name="fk_5e4n642vhctedomk6hhpsxf5i" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_9ef6gqa1pjpp47tfiheocwak0" column="makeup_course_id" referenced-table="edu.final_makeup_courses" referenced-column="id"/>
             <foreign-key name="fk_myr1vnk7i594uty9rsiag7ql6" column="teacher_id" referenced-table="base.teachers" referenced-column="id"/>
             <foreign-key name="fk_lkd4ymif569369snadf60d53" column="course_id" referenced-table="base.courses" referenced-column="id"/>
             <foreign-key name="fk_pwefa6uwn0883tqnfdp3wp2oo" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
-            <foreign-key name="fk_9ef6gqa1pjpp47tfiheocwak0" column="makeup_course_id" referenced-table="edu.final_makeup_courses" referenced-column="id"/>
           </constraints>
           <indexes>
             <index name="idx_tmijebsy2v1l6otedsmxu6q4q" columns="std_id"/>
