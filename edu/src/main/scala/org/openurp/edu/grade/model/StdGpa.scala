@@ -54,15 +54,17 @@ trait GpaStat {
   /** 在修学分（未出成绩） */
   var pendingCredits: Float = _
 
-  /** 添加在修学分
+  /** 大于0的学分计入添加在修学分
    *
-   * @param c
+   * @param c 学分
    */
   def addPending(c: Float): Unit = {
-    this.pendingCredits += c
-    this.takenCredits += c
-    this.totalCredits += c
-    this.totalCount += 1
+    if (c > 1e-6f) {
+      this.pendingCredits += c
+      this.takenCredits += c
+      this.totalCredits += c
+      this.totalCount += 1
+    }
   }
 }
 

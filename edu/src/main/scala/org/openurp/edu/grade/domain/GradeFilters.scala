@@ -22,10 +22,6 @@ import org.openurp.edu.grade.model.CourseGrade
 
 object GradeFilters {
 
-  def defaults: List[GradeFilter] = {
-    List(GradeFilters.CalcGP, GradeFilters.NotExemption)
-  }
-
   def chain(filters: GradeFilter*): Chain = {
     new Chain(filters)
   }
