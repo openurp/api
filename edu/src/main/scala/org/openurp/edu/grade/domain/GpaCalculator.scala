@@ -56,6 +56,7 @@ object GpaCalculator {
         var credits = 0
         var creditGps = 0L
         val level = grades.head.std.level
+        //过滤没有绩点的记录
         for (grade <- grades if grade.gp.isDefined) {
           val credit = (grade.course.getCredits(level) * 100).toInt
           credits += credit
@@ -154,7 +155,7 @@ class GpaCalculator {
     stdGpa.ams = this.calcAms(filted).doubleValue
 
     val courseMap = Collections.newMap[Course, CourseGrade]
-    for (grade <- grades) {
+    for (grade <- filted) {
       val add = courseMap.get(grade.course) match {
         case None => true
         case Some(exist) => !exist.passed
