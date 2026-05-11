@@ -43,6 +43,8 @@ object Features {
     /** 是否允许申请课程替代时选择多对一替代 */
     val AlternativeApplyMultipleEnabled = Feature(this, "alternative_apply_multiple_enabled", "是否允许申请课程替代时选择多对一替代", false)
 
+    /** 是否支持OBE培养方案编辑模式 */
+    val OBESupported = Feature(this, "obe_supported", "是否支持OBE培养方案编辑模式", false)
   }
 
   object Clazz extends FeatureScope {
