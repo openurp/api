@@ -17,9 +17,11 @@
 
 package org.openurp.base.service
 
-import org.openurp.base.model.School
+import org.openurp.base.model.{Department, School}
 
 trait DepartmentService {
 
   def reindex(school: School): Unit
+
+  def getCompatibleDeparts(depart: Department): collection.Set[Department]
 }

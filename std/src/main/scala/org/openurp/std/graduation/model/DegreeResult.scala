@@ -33,10 +33,10 @@ class DegreeResult extends LongId, Updated, Remark {
   var std: Student = _
 
   /** GPA */
-  var gpa: Option[Float] = None
+  var gpa: Option[Double] = None
 
   /** 平均分 */
-  var ga: Option[Float] = None
+  var wms: Option[Double] = None
 
   /** 是否通过学位审核 */
   var passed: Option[Boolean] = None

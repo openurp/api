@@ -28,7 +28,7 @@ class HonorCategory extends IntId, Coded, Named {
   var honorType: HonorType = _
 
   /** 荣誉描述 */
-  var discription: Option[String] = None
+  var description: Option[String] = None
 
   /** 评定周期 */
   var assessPeriod: String = _
@@ -57,7 +57,7 @@ class HonorLevel extends IntId, Coded, Named {
   var enabled: Boolean = _
 
   /** 描述 */
-  var discription: Option[String] = None
+  var description: Option[String] = None
 }
 
 @code("school")

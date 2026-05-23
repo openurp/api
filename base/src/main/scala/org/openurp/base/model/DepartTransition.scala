@@ -15,15 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.program.domain
+package org.openurp.base.model
 
-import org.openurp.base.model.Department
-import org.openurp.base.std.model.{Squad, StudentState}
-import org.openurp.edu.program.model.Program
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.{Remark, Updated}
 
-trait ProgramMatcher {
+import java.time.LocalDate
 
-  def isMatched(program: Program, compatibleDeparts: collection.Set[Department], state: StudentState): Boolean
+/** 部门变迁记录
+ */
+class DepartTransition extends LongId, Updated, Remark {
 
-  def isMatched(program: Program, compatibleDeparts: collection.Set[Department], squad: Squad): Boolean
+  var from: Department = _
+
+  var to: Department = _
+
+  var effectiveOn: LocalDate = _
 }

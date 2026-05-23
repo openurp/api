@@ -19,12 +19,15 @@ package org.openurp.edu.program.domain
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
-import org.openurp.base.model.Department
+import org.openurp.base.model.{DepartTransition, Department}
+import org.openurp.base.service.DepartmentService
 import org.openurp.base.std.model.{Student, StudentState}
 import org.openurp.edu.program.model.{Program, StdProgramBinding}
 
 class DefaultProgramProvider extends ProgramProvider {
   var entityDao: EntityDao = _
+
+  var departmentService: DepartmentService = _
 
   override def getProgram(std: Student): Option[Program] = {
     if (std.persisted) {
@@ -45,29 +48,28 @@ class DefaultProgramProvider extends ProgramProvider {
   }
 
   override def getProgram(state: StudentState): Option[Program] = {
-    val departs = Collections.newSet[Department]
-    var depart = state.department
-    while (null != depart && !departs.contains(depart)) {
-      departs += depart
-      depart = depart.parent.orNull
-    }
-
+    //找到相关的兼容的部门，比如说历史部门，上级部门
+    val departs = departmentService.getCompatibleDeparts(state.department)
     val query = OqlBuilder.from(classOf[Program], "p")
     query.where("p.grade=:grade", state.grade)
     query.where("p.department in (:departments)", departs)
     query.where("p.major=:major", state.major)
     query.where("p.level=:level", state.std.level)
     val ps = entityDao.search(query)
-
-    state.direction match {
-      case Some(d) =>
-        val firstTry = ps.filter(_.direction.contains(d)).find(DefaultProgramMatcher.isMatched(_, state))
-        firstTry match {
-          case rs@Some(_) => rs
-          case None => ps.filter(_.direction.isEmpty).find(DefaultProgramMatcher.isMatched(_, state))
-        }
-      case None =>
-        ps.filter(_.direction.isEmpty).find(DefaultProgramMatcher.isMatched(_, state))
+    if (ps.isEmpty) {
+      None
+    } else if (ps.size == 1) {
+      ps.headOption
+    } else {
+      var matches: collection.Seq[Program] = Seq.empty
+      if (state.direction.nonEmpty) {
+        matches = ps.filter(_.direction.contains(state.direction.get)).filter(DefaultProgramMatcher.isMatched(_, departs, state))
+      }
+      if (matches.isEmpty) {
+        matches = ps.filter(_.direction.isEmpty).filter(DefaultProgramMatcher.isMatched(_, departs, state))
+      }
+      //优先本部门的
+      matches.find(_.department == state.department).orElse(matches.headOption)
     }
   }
 }

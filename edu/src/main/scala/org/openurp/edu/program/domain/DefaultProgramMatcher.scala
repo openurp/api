@@ -24,10 +24,10 @@ import org.openurp.edu.program.model.Program
 
 object DefaultProgramMatcher extends ProgramMatcher {
 
-  override def isMatched(program: Program, state: StudentState): Boolean = {
+  override def isMatched(program: Program, compatibleDeparts: collection.Set[Department], state: StudentState): Boolean = {
     val std = state.std
     if (program.grade != state.grade ||
-      !departMatched(program.department, state.department) ||
+      !compatibleDeparts.contains(state.department) ||
       program.major != state.major ||
       program.level != std.level) {
       false
@@ -39,9 +39,9 @@ object DefaultProgramMatcher extends ProgramMatcher {
     }
   }
 
-  override def isMatched(program: Program, squad: Squad): Boolean = {
+  override def isMatched(program: Program, compatibleDeparts: collection.Set[Department], squad: Squad): Boolean = {
     if (program.grade != squad.grade ||
-      !departMatched(program.department, squad.department) ||
+      !compatibleDeparts.contains(squad.department) ||
       program.level != squad.level) {
       false
     } else {
@@ -53,18 +53,5 @@ object DefaultProgramMatcher extends ProgramMatcher {
         matched = program.stdTypes.isEmpty || program.stdTypes.contains(squad.stdType.get)
       matched
     }
-  }
-
-  def departMatched(programDepart: Department, userDepart: Department): Boolean = {
-    if programDepart == userDepart then
-      true
-    else
-      val departs = Collections.newSet[Department]
-      var depart = userDepart
-      while (null != depart && !departs.contains(depart)) {
-        departs += depart
-        depart = depart.parent.orNull
-      }
-      departs.contains(programDepart)
   }
 }

@@ -53,12 +53,13 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
   @transient var predictedCourses = Collections.newSet[Course]
   @transient var takingCourses = Collections.newSet[Course]
 
-  def this(indexno:String,name:String,courseType:CourseType)={
+  def this(indexno: String, name: String, courseType: CourseType) = {
     this()
     this.indexno = indexno
     this.name = name
     this.courseType = courseType
   }
+
   /** 课程审核结果 */
   var courseResults: mutable.Buffer[AuditCourseResult] = new mutable.ListBuffer[AuditCourseResult]
 
@@ -186,7 +187,8 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
 
     //计算必修部分(compulsory part)的欠分、欠分2
     val cp = courseResults.filter(_.compulsory)
-    val cpOwedCredits = cp.filter(!_.passed).map(_.course.getCredits(eduLevel)).sum
+    val cpCourseResults = cp.filter(!_.passed)
+    val cpOwedCredits = cpCourseResults.map(_.course.getCredits(eduLevel)).sum
     val cpOwedCredits2 = cp.filter(x => !x.passed && !x.predicted).map(_.course.getCredits(eduLevel)).sum
     val cpOwedCredits3 = cp.filter(x => !x.passed && !x.predicted && !x.taking).map(_.course.getCredits(eduLevel)).sum
 
@@ -198,7 +200,7 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
     this.owedCredits = cpOwedCredits + sonOwedCredits + (if (totalOwed < 0) 0 else totalOwed)
     this.owedCredits2 = cpOwedCredits2 + sonOwedCredits2 + (if (totalOwed2 < 0) 0 else totalOwed2)
     this.owedCredits3 = cpOwedCredits3 + sonOwedCredits3 + (if (totalOwed3 < 0) 0 else totalOwed3)
-    this.passed = sonPassed && this.owedCredits <= 0
+    this.passed = sonPassed && cpCourseResults.isEmpty && this.owedCredits <= 0
   }
 
   /** 未完成的组

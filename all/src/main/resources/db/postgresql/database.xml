@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.3.1">
+<db engine="PostgreSQL" version="1.4.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -466,6 +466,21 @@
           <indexes>
             <index name="idx_b33k2icegejva3ino103aa5eb" columns="course_id"/>
           </indexes>
+        </table>
+        <table name="depart_transitions" comment="部门变迁记录@common">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="effective_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="from_id" type="integer" nullable="false" comment="原部门ID"/>
+            <column name="remark" type="varchar(100)" comment="备注"/>
+            <column name="to_id" type="integer" nullable="false" comment="变更后部门ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_mmw501gva47u49d1v46b9eikx" columns="id"/>
+            <foreign-key name="fk_thh402c04iutg10u78f360t6r" column="from_id" referenced-table="base.departments" referenced-column="id"/>
+            <foreign-key name="fk_k8vw90xvcnbjsle99sxd3xmfj" column="to_id" referenced-table="base.departments" referenced-column="id"/>
+          </constraints>
         </table>
         <table name="departments" comment="部门组织机构信息@common">
           <columns>
@@ -2227,7 +2242,7 @@
             <index name="idx_2p44n79uehye5l8lpkn0xluiv" columns="ability_credit_setting_id"/>
           </indexes>
         </table>
-        <table name="qos_feedback_switches" comment="开放式文字评教开关@qos.clazz.config">
+        <table name="qos_feedback_switches" comment="开放式文字评教开关@clazz.config">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="begin_at" type="timestamptz" nullable="false" comment="开始时间"/>
@@ -2241,7 +2256,7 @@
             <foreign-key name="fk_j10004lbbmux3o8h3d2yqdv7y" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="qos_std_evaluate_switches" comment="期末学生评教开关@qos.clazz.config">
+        <table name="qos_std_evaluate_switches" comment="期末学生评教开关@clazz.config">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="begin_at" type="timestamptz" nullable="false" comment="开始时间"/>
@@ -8458,6 +8473,91 @@
             <index name="idx_8f6pd4rrn6otdrimouy7sb65i" columns="flow_type_id,entity_id"/>
           </indexes>
         </table>
+        <table name="std_grad_bachelor2nd_applies" comment="毕业学生二学位申请@graduation.flow">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
+            <column name="gpa" type="float4" nullable="false" defaultValue="0" comment="平均绩点"/>
+            <column name="grade_detail" type="varchar(3000)" nullable="false" comment="成绩明细"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_10ftvtv9d898ix5bwew7jrcwq" columns="id"/>
+            <foreign-key name="fk_iu44fnlctgrpifigkamxq1ir7" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_m5jy7qhmblw4bw1ujpbksfrv0" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
+          </constraints>
+        </table>
+        <table name="std_grad_complete_applies" comment="结业申请@graduation.flow">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
+            <column name="college_opinion" type="varchar(255)" comment="院系意见"/>
+            <column name="college_passed" type="boolean" comment="院系是否通过"/>
+            <column name="datas" type="jsonb" nullable="false" comment="其他申请数据"/>
+            <column name="mobile" type="varchar(15)" comment="联系手机"/>
+            <column name="passed" type="boolean" comment="是否通过"/>
+            <column name="reason" type="varchar(255)" comment="申请理由"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="std_sign_url" type="varchar(255)" comment="个人签名url"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_sbn2jo3vksi0os7sw90rfps3y" columns="id"/>
+            <foreign-key name="fk_p4cty7a91aha3ta4bev89t5x8" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_ti0am21st51t7dhce9gav8hdj" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
+            <unique-key name="uk_ngk5gkm4resrf5lqrltl7o7ls" columns="batch_id,std_id"/>
+          </constraints>
+        </table>
+        <table name="std_grad_defer_applies" comment="延期申请@graduation.flow">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
+            <column name="college_opinion" type="varchar(255)" comment="院系意见"/>
+            <column name="college_passed" type="boolean" comment="院系是否通过"/>
+            <column name="datas" type="jsonb" nullable="false" comment="其他申请数据"/>
+            <column name="defer_grad_date" type="date" nullable="false" comment="申请延期到"/>
+            <column name="mobile" type="varchar(15)" comment="联系手机"/>
+            <column name="passed" type="boolean" comment="是否通过"/>
+            <column name="plan_grad_date" type="date" nullable="false" comment="计划毕业日期"/>
+            <column name="reason" type="varchar(255)" comment="申请理由"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="std_sign_url" type="varchar(255)" comment="个人签名url"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_3e8khwunnbc8jray8c32nvnm9" columns="id"/>
+            <foreign-key name="fk_q3am4ln4ajsribsdplqyrigh2" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_kbumb95yunkyrchftofoalpsk" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
+            <unique-key name="uk_9ljuxmekeywd7euvl1n99cl0i" columns="batch_id,std_id"/>
+          </constraints>
+        </table>
+        <table name="std_grad_degree_applies" comment="学位申请@graduation.flow">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
+            <column name="college_opinion" type="varchar(255)" comment="院系意见"/>
+            <column name="college_passed" type="boolean" comment="院系是否通过"/>
+            <column name="datas" type="jsonb" nullable="false" comment="其他申请数据"/>
+            <column name="degree_id" type="integer" nullable="false" comment="学位ID"/>
+            <column name="email" type="varchar(100)" comment="Email"/>
+            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="GPA"/>
+            <column name="mobile" type="varchar(15)" comment="联系手机"/>
+            <column name="passed" type="boolean" comment="是否通过"/>
+            <column name="reason" type="varchar(255)" comment="申请理由"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="std_sign_url" type="varchar(255)" comment="个人签名url"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_59hdgly7ivu6cng5q56nts6en" columns="id"/>
+            <foreign-key name="fk_dy1guj81jfanhg5mls7taaic2" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_el9rqng9nw3uca012y033x2w3" column="degree_id" referenced-table="code.degrees" referenced-column="id"/>
+            <foreign-key name="fk_6try0sitofle5lq1ulpoohh3t" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
+            <unique-key name="uk_o494jv59hx5tr80l6rl8snqqy" columns="batch_id,std_id"/>
+          </constraints>
+        </table>
       </tables>
     </schema>
     <schema name="his">
@@ -9267,6 +9367,27 @@
             <index name="idx_ntjvah3rh2kfhrn2my4c2ye37" columns="batch_id"/>
           </indexes>
         </table>
+        <table name="mandarin_grades" comment="普通话水平测试成绩@mandarin">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="acquired_in" type="date" nullable="false" comment="获得年月"/>
+            <column name="certificate_no" type="varchar(255)" comment="证书号"/>
+            <column name="course_grade_id" type="bigint" comment="课程成绩ID"/>
+            <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
+            <column name="score" type="float4" nullable="false" defaultValue="0" comment="分数"/>
+            <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_q202q46nm3jj3f7smndxpu6x4" columns="id"/>
+            <foreign-key name="fk_f3vpwb63rsw9xwbac0dg01n82" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_7w5bd1mhpxj8gvayyae0uq6x2" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
+          </constraints>
+          <indexes>
+            <index name="idx_5gweufhuqx3myklfoetf5wqo5" columns="std_id"/>
+          </indexes>
+        </table>
         <table name="prac_activities" comment="校外实践活动@activity">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -9462,7 +9583,7 @@
     </schema>
     <schema name="qos">
       <tables>
-        <table name="assess_criterias" comment="评教对照标准@qos.base">
+        <table name="assess_criterias" comment="评教对照标准@base">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
@@ -9475,7 +9596,7 @@
             <foreign-key name="fk_gx0bhttyftiq3c5fr0db2sa7b" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="assess_grades" comment="评价名称对应项@qos.base">
+        <table name="assess_grades" comment="评价名称对应项@base">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
             <column name="criteria_id" type="bigint" nullable="false" comment="评教对照标准ID"/>
@@ -9493,7 +9614,7 @@
             <index name="idx_g3sayvuiofpvq3mn3ng2e1yvy" columns="criteria_id"/>
           </indexes>
         </table>
-        <table name="category_eval_stats" comment="分类统计@qos.clazz">
+        <table name="category_eval_stats" comment="分类统计@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="category_id" type="integer" nullable="false" comment="课程分类ID"/>
@@ -9509,7 +9630,7 @@
             <foreign-key name="fk_3fh0ch9fbc8fs0wwko8us5ht0" column="category_id" referenced-table="code.course_categories" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="category_stat_grades" comment="分类统计-指标级别@qos.clazz">
+        <table name="category_stat_grades" comment="分类统计-指标级别@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="avg_score" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
@@ -9530,7 +9651,7 @@
             <index name="idx_mi7ww5l00nl6fs4iutwvt7rvx" columns="stat_id"/>
           </indexes>
         </table>
-        <table name="category_stat_ranges" comment="分类统计-分段@qos.clazz">
+        <table name="category_stat_ranges" comment="分类统计-分段@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="course_count" type="integer" nullable="false" defaultValue="0" comment="课程数量"/>
@@ -9548,7 +9669,7 @@
             <index name="idx_r7swvtnb56g4gghc15grhhu0h" columns="stat_id"/>
           </indexes>
         </table>
-        <table name="course_eval_stats" comment="评教问卷统计结果@qos.clazz">
+        <table name="course_eval_stats" comment="评教问卷统计结果@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="category_id" type="integer" nullable="false" comment="课程分类ID"/>
@@ -9580,7 +9701,7 @@
             <foreign-key name="fk_h2mi0yjlg23x4xsk2yncesr2h" column="category_id" referenced-table="code.course_categories" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="course_indicator_stats" comment="评教问题类别统计结果@qos.clazz">
+        <table name="course_indicator_stats" comment="评教问题类别统计结果@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="category_rank" type="integer" nullable="false" defaultValue="0" comment="分类排名"/>
@@ -9599,7 +9720,7 @@
             <index name="idx_qg7n56vxh2knmj2tarp3k3mmp" columns="stat_id"/>
           </indexes>
         </table>
-        <table name="course_option_stats" comment="评教选项统计结果@qos.clazz">
+        <table name="course_option_stats" comment="评教选项统计结果@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="amount" type="integer" nullable="false" defaultValue="0" comment="人数"/>
@@ -9615,7 +9736,7 @@
             <index name="idx_ge1xy7c75yebe89psnbqqnmmf" columns="question_stat_id"/>
           </indexes>
         </table>
-        <table name="course_question_stats" comment="评教问题统计结果@qos.clazz">
+        <table name="course_question_stats" comment="评教问题统计结果@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="question_id" type="bigint" nullable="false" comment="具体问题ID"/>
@@ -9631,7 +9752,7 @@
             <index name="idx_gll1inanpvdrco57654f2t0kr" columns="stat_id"/>
           </indexes>
         </table>
-        <table name="depart_eval_stats" comment="开课院系评教问卷统计结果@qos.clazz">
+        <table name="depart_eval_stats" comment="开课院系评教问卷统计结果@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="avg_score" type="float8" nullable="false" defaultValue="0" comment="平均得分"/>
@@ -9648,7 +9769,7 @@
             <foreign-key name="fk_gb75kx2jvlj0ql138gl08yse4" column="department_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="evaluate_results" comment="问卷评教结果@qos.clazz">
+        <table name="evaluate_results" comment="问卷评教结果@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
@@ -9669,7 +9790,7 @@
             <foreign-key name="fk_ipd6qsb0kx9kh1ifviamq2qim" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="feedbacks" comment="开放式文字评教@qos.clazz">
+        <table name="feedbacks" comment="开放式文字评教@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="contents" type="varchar(500)" nullable="false" comment="内容"/>
@@ -9695,7 +9816,7 @@
             <index name="idx_l8aq1ny8y75hpngyciaa5s7a6" columns="semester_id,teach_depart_id"/>
           </indexes>
         </table>
-        <table name="final_comments" comment="期末评价@qos.clazz">
+        <table name="final_comments" comment="期末评价@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="contents" type="varchar(500)" nullable="false" comment="内容"/>
@@ -9717,7 +9838,7 @@
             <foreign-key name="fk_62lr6mox7gdluwtfxnjjomwxw" column="teach_depart_id" referenced-table="base.departments" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="final_teacher_scores" comment="教师评教总分@qos.clazz">
+        <table name="final_teacher_scores" comment="教师评教总分@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="depart_rank" type="integer" nullable="false" defaultValue="0" comment="院系排名"/>
@@ -9735,7 +9856,7 @@
             <foreign-key name="fk_d1dixthi7qop55q4bugwvec4m" column="semester_id" referenced-table="base.semesters" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="indicators" comment="问题类型@qos.base">
+        <table name="indicators" comment="问题类型@base">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="生效时间"/>
@@ -9752,7 +9873,7 @@
             <foreign-key name="fk_t8ndgaj2djs97kxvb7njf3mff" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="option_groups" comment="选项组@qos.base">
+        <table name="option_groups" comment="选项组@base">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="name" type="varchar(50)" nullable="false" comment="名称"/>
@@ -9763,7 +9884,7 @@
             <foreign-key name="fk_hcs902jiv6l0c7f45jfvrktyg" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="options" comment="选项@qos.base">
+        <table name="options" comment="选项@base">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="group_id" type="bigint" nullable="false" comment="选项组ID"/>
@@ -9778,7 +9899,7 @@
             <index name="idx_bdmhluql4kminsm39jio58lhb" columns="group_id"/>
           </indexes>
         </table>
-        <table name="question_results" comment="问题评教结果@qos.clazz">
+        <table name="question_results" comment="问题评教结果@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="indicator_id" type="bigint" nullable="false" comment="问题类别ID"/>
@@ -9798,7 +9919,7 @@
             <index name="idx_8bhmm2vgbinad1w0aylpxt4n7" columns="result_id"/>
           </indexes>
         </table>
-        <table name="questionnaire_clazzes" comment="教学任务问卷配置@qos.clazz">
+        <table name="questionnaire_clazzes" comment="教学任务问卷配置@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="任务ID"/>
@@ -9811,7 +9932,7 @@
             <foreign-key name="fk_6b1buq5hdn0idm47506ltm1kx" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="questionnaires" comment="评教问卷@qos.base">
+        <table name="questionnaires" comment="评教问卷@base">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="生效时间"/>
@@ -9827,7 +9948,7 @@
             <foreign-key name="fk_ti2wlqn9y5ufjsmjsefhy0x9f" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="questionnaires_questions" comment="相关联的问题@qos.base">
+        <table name="questionnaires_questions" comment="相关联的问题@base">
           <columns>
             <column name="question_id" type="bigint" nullable="false" comment="评教问题ID"/>
             <column name="questionnaire_id" type="bigint" nullable="false" comment="评教问卷ID"/>
@@ -9841,7 +9962,7 @@
             <index name="idx_1mhhdaxdan0vekgoofvqin7hk" columns="questionnaire_id"/>
           </indexes>
         </table>
-        <table name="questions" comment="评教问题@qos.base">
+        <table name="questions" comment="评教问题@base">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="addition" type="boolean" nullable="false" defaultValue="false" comment="是否附加题"/>
@@ -9862,7 +9983,7 @@
             <foreign-key name="fk_sawvciw2vf51vpswv49odfo6k" column="project_id" referenced-table="base.projects" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="school_eval_stats" comment="学校评教问卷统计结果@qos.clazz">
+        <table name="school_eval_stats" comment="学校评教问卷统计结果@clazz">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="avg_score" type="float8" nullable="false" defaultValue="0" comment="平均得分"/>
@@ -9898,21 +10019,6 @@
             <primary-key name="pk_8m2rjy6rh2l0le6vij6nuin0e" columns="id"/>
             <foreign-key name="fk_cudju8jp9f2a5h8a6fb11rk59" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_rglcljk9d35lj7jhm4xxfd5m9" column="doc_type_id" referenced-table="code.std_doc_types" referenced-column="id"/>
-          </constraints>
-        </table>
-        <table name="bachelor2nd_applies" comment="毕业学生二学位申请@graduation">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0" comment="平均绩点"/>
-            <column name="grade_detail" type="varchar(3000)" nullable="false" comment="成绩明细"/>
-            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_jn9sk0bv4n0roh3prtjkt4h9i" columns="id"/>
-            <foreign-key name="fk_andud56x2l3iml18sbwnfo5uc" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_t1u7i0rbj9f9vkvdknv560oc" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
           </constraints>
         </table>
         <table name="bills" comment="账单@fee">
@@ -9975,24 +10081,6 @@
             <index name="idx_o6kjrquuoijirhvpeytmy2fxx" columns="std_id"/>
           </indexes>
         </table>
-        <table name="degree_applies" comment="学位申请@graduation">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
-            <column name="degree_id" type="integer" nullable="false" comment="学位ID"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0" comment="GPA"/>
-            <column name="passed" type="boolean" comment="是否通过"/>
-            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_85xktk94x3o87fc7wwtbo07i5" columns="id"/>
-            <foreign-key name="fk_jwffbl6dn2b3apgq2mb8wk8g5" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <foreign-key name="fk_cvxrhulaor1altau9ouvsa1ol" column="degree_id" referenced-table="code.degrees" referenced-column="id"/>
-            <foreign-key name="fk_hmmawn8r4uvvxtuvwjh0qbxtu" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
-            <unique-key name="uk_7pjmosme1tvk266r1b5ca6kds" columns="std_id"/>
-          </constraints>
-        </table>
         <table name="degree_results" comment="学位审核结果@graduation">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -10000,8 +10088,7 @@
             <column name="degree_id" type="integer" comment="学位ID"/>
             <column name="failed_items" type="varchar(500)" comment="不通过的项目"/>
             <column name="foreign_lang_passed_on" type="date" comment="外语通过年月"/>
-            <column name="ga" type="float4" comment="平均分"/>
-            <column name="gpa" type="float4" comment="GPA"/>
+            <column name="gpa" type="float8" comment="GPA"/>
             <column name="locked" type="boolean" nullable="false" defaultValue="false" comment="锁定毕业审核结果"/>
             <column name="passed" type="boolean" comment="是否通过学位审核"/>
             <column name="passed_items" type="varchar(500)" comment="通过的项目"/>
@@ -10009,6 +10096,7 @@
             <column name="remark" type="varchar(255)" comment="备注"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+            <column name="wms" type="float8" comment="平均分"/>
           </columns>
           <constraints>
             <primary-key name="pk_juk8stxairvjh8aqqgmus1vx2" columns="id"/>
@@ -10167,21 +10255,42 @@
             <foreign-key name="fk_jmqk5s31u86ij18e8h8rl8ix0" column="marital_status_id" referenced-table="code.marital_statuses" referenced-column="id"/>
           </constraints>
         </table>
+        <table name="grad_plan_result_checks" comment="计划完成情况确认@graduation">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="contents" type="varchar(3000)" nullable="false" comment="各个类别完成情况"/>
+            <column name="owed_credits" type="float4" nullable="false" defaultValue="0" comment="欠学分"/>
+            <column name="owed_credits2" type="float4" nullable="false" defaultValue="0" comment="预计通过后所欠学分"/>
+            <column name="owed_credits3" type="float4" nullable="false" defaultValue="0" comment="在读通过后所欠学分"/>
+            <column name="passed_credits" type="float4" nullable="false" defaultValue="0" comment="通过学分"/>
+            <column name="required_credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_mni6l7r5c077341q1l6pb2rwy" columns="id"/>
+            <foreign-key name="fk_eau3p0nvxopxuhors5ykh7b59" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <unique-key name="uk_972w0f0qttrqqnw8f0ergwvek" columns="std_id"/>
+          </constraints>
+        </table>
         <table name="graduate_batches" comment="毕业批次@graduation">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="apply_begin_at" type="timestamptz" comment="申请起始时间"/>
+            <column name="apply_end_at" type="timestamptz" comment="申请结束时间"/>
             <column name="degree_offered" type="boolean" nullable="false" defaultValue="false" comment="是否授学位"/>
             <column name="enable_progress_confirm" type="boolean" nullable="false" defaultValue="false" comment="是否启用计划完成情况确认"/>
             <column name="graduate_on" type="date" nullable="false" comment="毕业日期"/>
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="season_id" type="bigint" nullable="false" comment="毕业界别ID"/>
+            <column name="settings" type="jsonb" nullable="false" comment="其他设置"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
             <primary-key name="pk_kb2t7xdi7imcxukogahdjojtq" columns="id"/>
-            <foreign-key name="fk_agc5vvljc0k1jfh5ds42uw0m9" column="season_id" referenced-table="base.graduate_seasons" referenced-column="id"/>
             <foreign-key name="fk_s9tvq5nvr755rhonwaw7ru6fl" column="project_id" referenced-table="base.projects" referenced-column="id"/>
+            <foreign-key name="fk_agc5vvljc0k1jfh5ds42uw0m9" column="season_id" referenced-table="base.graduate_seasons" referenced-column="id"/>
           </constraints>
         </table>
         <table name="graduate_results" comment="毕业审核结果@graduation">
@@ -10211,13 +10320,22 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
+            <column name="degree_id" type="integer" comment="学位ID"/>
+            <column name="degree_passed" type="boolean" comment="学位审核是否通过"/>
+            <column name="email" type="varchar(100)" comment="Email"/>
+            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="平均绩点"/>
+            <column name="grad_passed" type="boolean" comment="毕业审核是否通过"/>
             <column name="graduate_type_id" type="integer" nullable="false" comment="毕业生类型ID"/>
-            <column name="has_degree" type="boolean" nullable="false" defaultValue="false" comment="是否审核学位"/>
+            <column name="mobile" type="varchar(15)" comment="联系手机"/>
+            <column name="mobile_verified" type="boolean" nullable="false" defaultValue="false" comment="手机号码是否已经验证"/>
+            <column name="plan_passed" type="boolean" nullable="false" defaultValue="false" comment="是否能完成学业"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="wms" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
           </columns>
           <constraints>
             <primary-key name="pk_fvuvju96x5h9aw82xbep1a63v" columns="id"/>
             <foreign-key name="fk_g3b2w9le8nidh58ljm8no5thx" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_l3piq3pc6icvkvonx4ahb5hn6" column="degree_id" referenced-table="code.degrees" referenced-column="id"/>
             <foreign-key name="fk_r259rmkgu60ftfgiv39y4vbqd" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
             <foreign-key name="fk_q24s55av6uspu1tfc0y03nfpx" column="graduate_type_id" referenced-table="code.graduate_types" referenced-column="id"/>
             <unique-key name="uk_l54olf776vfr1sk99qp9vbjfh" columns="batch_id,std_id"/>
@@ -10267,7 +10385,7 @@
             <column name="assess_period" type="varchar(255)" nullable="false" comment="评定周期"/>
             <column name="award_unit" type="varchar(255)" nullable="false" comment="颁奖单位"/>
             <column name="code" type="varchar(255)" nullable="false" comment="荣誉称号代码"/>
-            <column name="discription" type="varchar(255)" comment="荣誉称号描述"/>
+            <column name="description" type="varchar(255)" comment="荣誉称号描述"/>
             <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="使用状态"/>
             <column name="honor_type_id" type="integer" nullable="false" comment="荣誉称号类型ID"/>
             <column name="name" type="varchar(255)" nullable="false" comment="荣誉称号名称"/>
@@ -10284,7 +10402,7 @@
             <column name="amount" type="integer" nullable="false" defaultValue="0" comment="奖励金额"/>
             <column name="category_id" type="integer" nullable="false" comment="荣誉称号种类ID"/>
             <column name="code" type="varchar(255)" nullable="false" comment="等级代码"/>
-            <column name="discription" type="varchar(255)" comment="等级描述"/>
+            <column name="description" type="varchar(255)" comment="等级描述"/>
             <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="使用状态"/>
             <column name="name" type="varchar(255)" nullable="false" comment="等级名称"/>
           </columns>
@@ -10464,24 +10582,6 @@
             <foreign-key name="fk_vx8kslxe9v9ehbpp7b5dttaf" column="std_id" referenced-table="base.students" referenced-column="id"/>
           </constraints>
         </table>
-        <table name="plan_result_checks" comment="计划完成情况确认@graduation">
-          <columns>
-            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="contents" type="varchar(3000)" nullable="false" comment="各个类别完成情况"/>
-            <column name="owed_credits" type="float4" nullable="false" defaultValue="0" comment="欠学分"/>
-            <column name="owed_credits2" type="float4" nullable="false" defaultValue="0" comment="预计通过后所欠学分"/>
-            <column name="owed_credits3" type="float4" nullable="false" defaultValue="0" comment="在读通过后所欠学分"/>
-            <column name="passed_credits" type="float4" nullable="false" defaultValue="0" comment="通过学分"/>
-            <column name="required_credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
-            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
-            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
-          </columns>
-          <constraints>
-            <primary-key name="pk_iqh5lytwg28f79dfp31to2sx8" columns="id"/>
-            <foreign-key name="fk_jo1ysavmd3v0y8f2odeo17sb2" column="std_id" referenced-table="base.students" referenced-column="id"/>
-            <unique-key name="uk_s6njlmsdy80cd3jfn7mcakm3e" columns="std_id"/>
-          </constraints>
-        </table>
         <table name="punishments" comment="处分@award">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -10552,7 +10652,7 @@
             <column name="award_unit" type="varchar(255)" nullable="false" comment="颁奖单位"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
             <column name="code" type="varchar(255)" nullable="false" comment="奖学金代码"/>
-            <column name="discription" type="varchar(255)" comment="奖学金描述"/>
+            <column name="description" type="varchar(255)" comment="奖学金描述"/>
             <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="使用状态"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(255)" nullable="false" comment="奖学金名称"/>
@@ -10570,7 +10670,7 @@
             <column name="amount" type="integer" nullable="false" defaultValue="0" comment="奖励金额"/>
             <column name="category_id" type="integer" nullable="false" comment="奖学金种类ID"/>
             <column name="code" type="varchar(255)" nullable="false" comment="等级代码"/>
-            <column name="discription" type="varchar(255)" comment="等级描述"/>
+            <column name="description" type="varchar(255)" comment="等级描述"/>
             <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="使用状态"/>
             <column name="name" type="varchar(255)" nullable="false" comment="等级名称"/>
           </columns>
@@ -10735,7 +10835,7 @@
             <column name="award_unit" type="varchar(255)" nullable="false" comment="颁奖单位"/>
             <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
             <column name="code" type="varchar(255)" nullable="false" comment="助学金代码"/>
-            <column name="discription" type="varchar(255)" comment="助学金描述"/>
+            <column name="description" type="varchar(255)" comment="助学金描述"/>
             <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="使用状态"/>
             <column name="end_on" type="date" comment="失效日期"/>
             <column name="name" type="varchar(255)" nullable="false" comment="助学金名称"/>
@@ -10751,7 +10851,7 @@
             <column name="amount" type="integer" nullable="false" defaultValue="0" comment="奖励金额"/>
             <column name="category_id" type="integer" nullable="false" comment="助学金种类ID"/>
             <column name="code" type="varchar(255)" nullable="false" comment="等级代码"/>
-            <column name="discription" type="varchar(255)" comment="等级描述"/>
+            <column name="description" type="varchar(255)" comment="等级描述"/>
             <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="使用状态"/>
             <column name="name" type="varchar(255)" nullable="false" comment="等级名称"/>
           </columns>
@@ -10784,7 +10884,7 @@
             <column name="assess_period" type="varchar(255)" nullable="false" comment="评定周期"/>
             <column name="award_unit" type="varchar(255)" nullable="false" comment="颁奖单位"/>
             <column name="code" type="varchar(255)" nullable="false" comment="困难补助代码"/>
-            <column name="discription" type="varchar(255)" comment="困难补助描述"/>
+            <column name="description" type="varchar(255)" comment="困难补助描述"/>
             <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="使用状态"/>
             <column name="name" type="varchar(255)" nullable="false" comment="困难补助名称"/>
             <column name="rated" type="boolean" nullable="false" defaultValue="false" comment="是否分等级"/>
@@ -10799,7 +10899,7 @@
             <column name="amount" type="integer" nullable="false" defaultValue="0" comment="奖励金额"/>
             <column name="category_id" type="integer" nullable="false" comment="困难补助种类ID"/>
             <column name="code" type="varchar(255)" nullable="false" comment="等级代码"/>
-            <column name="discription" type="varchar(255)" comment="等级描述"/>
+            <column name="description" type="varchar(255)" comment="等级描述"/>
             <column name="enabled" type="boolean" nullable="false" defaultValue="false" comment="使用状态"/>
             <column name="name" type="varchar(255)" nullable="false" comment="等级名称"/>
           </columns>

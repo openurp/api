@@ -230,10 +230,14 @@ create index idx_6qs3494fnm7ifknq96a1b8r89 on his.edu_exam_grades (course_grade_
 create index idx_bqer3r9thk2y3grmr8xalkp9u on his.edu_exam_takers (exam_room_id);
 create index idx_peop4o043mp7t9vik78bkwnnc on his.edu_exam_takers (clazz_id);
 create index idx_7jjbv89v7xsd97ul68dg75q48 on his.edu_ga_grades (course_grade_id);
+create index idx_4m1o28u47wl0uxr6r929a12tt on his.edu_occupancies (activity_id);
+create index idx_nrrdkdb47amqyor3ia51aaqbq on his.edu_occupancies (room_id);
+create index idx_pr55fhe4vls9geopr8vtqnnv5 on his.edu_occupancies (start_on);
 create index idx_ge26c8oiqt7qus9se6lhkm1lm on his.edu_regular_grades (clazz_id);
 create index idx_qveyhipxc0xk5wlfghb0ypuoe on his.edu_regular_grades (std_id);
 create index idx_5pdh9qryix36eaw5nrncfwlji on lab.lab_experiments (task_id);
 create index idx_375h8err64n0ull44fwcu8pw9 on lab.lab_tasks_labs (lab_task_id);
+create index idx_oe22t4o0pgpw8ig651ulvxs2v on prac.ability_credits (std_id);
 create index idx_685qcltuowforqswdtamn9twj on prac.inv_closure_review_details (review_id);
 create index idx_m2t7iuwlel6emr4vx22n4qehv on prac.inv_closure_review_groups_experts (closure_review_group_id);
 create index idx_jt69c02pxw1fluu7c5bcjoj36 on prac.inv_init_review_details (review_id);
@@ -245,6 +249,7 @@ create index idx_frrxd4jd7ukujwlkkhfixewsk on prac.inv_projects_instructors (pro
 create index idx_b7p23pjlvtc8tseu6kp1vw66h on prac.inv_promotion_defense_members (group_id);
 create index idx_48xavf7sfkprspggdrro5we82 on prac.inv_stage_types (parent_id);
 create index idx_ntjvah3rh2kfhrn2my4c2ye37 on prac.inv_stages (batch_id);
+create index idx_5gweufhuqx3myklfoetf5wqo5 on prac.mandarin_grades (std_id);
 create index idx_aj85q6ks4a0y457njlmqs09vm on prac.prac_activities_teachers (prac_activity_id);
 create index idx_6xg4w1hyp21v6abxcgpoioql8 on prac.prac_activity_schedules (activity_id);
 create index idx_48qfgq86msw43c7kfajdpc41v on prac.prac_activity_schedules_teachers (prac_activity_schedule_id);

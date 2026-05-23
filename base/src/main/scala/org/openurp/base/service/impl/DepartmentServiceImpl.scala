@@ -17,14 +17,36 @@
 
 package org.openurp.base.service.impl
 
+import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Strings
-import org.beangle.data.dao.EntityDao
-import org.openurp.base.model.{Department, School}
+import org.beangle.data.dao.{EntityDao, OqlBuilder}
+import org.openurp.base.model.{DepartTransition, Department, School}
 import org.openurp.base.service.DepartmentService
 
 class DepartmentServiceImpl extends DepartmentService {
 
   var entityDao: EntityDao = _
+
+  /** 查询到可用的部门，在语义上等同于该部门
+   *
+   * @return
+   */
+  override def getCompatibleDeparts(depart: Department): collection.Set[Department] = {
+    val departs = Collections.newSet[Department]
+    var d = depart
+    while (null != d && !departs.contains(d)) {
+      departs += d
+      d = d.parent.orNull
+    }
+    val q = OqlBuilder.from(classOf[DepartTransition], "dt")
+    q.where("dt.from=:me or dt.to=:me", depart)
+    q.cacheable(true)
+    entityDao.search(q) foreach { dt =>
+      departs.add(dt.from)
+      departs.add(dt.to)
+    }
+    departs
+  }
 
   def reindex(school: School): Unit = {
     val departs = entityDao.findBy(classOf[Department], "school", school)

@@ -34,4 +34,11 @@ class TermCampus extends LongId {
   /** 校区信息 */
   var campus: Campus = _
 
+  def this(program: Program, tc: TermCampus) = {
+    this()
+    this.program = program
+    this.terms = tc.terms
+    this.campus = tc.campus
+  }
+
 }

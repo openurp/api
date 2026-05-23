@@ -1,0 +1,6 @@
+MandarinGrade=普通话水平测试成绩
+MandarinGrade.score=分数
+MandarinGrade.certificateNo=证书号
+MandarinGrade.acquiredIn=获得年月
+MandarinGrade.courseGradeId=课程成绩ID
+MandarinGrade.passed=是否通过

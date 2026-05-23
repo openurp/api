@@ -15,25 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.graduation.model
+package org.openurp.std.graduation.flow
 
-import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.annotation.flow
 import org.openurp.base.std.model.Student
+import org.openurp.std.graduation.flow.AbstractGradApply
+import org.openurp.std.graduation.model.GraduateBatch
 
-/** 本科学生第二学士学位学位申请
+import java.time.{Instant, LocalDate}
+
+/** 延期申请
  */
-class Bachelor2ndApply extends LongId, Updated {
+@flow
+class GradDeferApply extends AbstractGradApply {
 
-  /** 毕业批次 */
-  var batch: GraduateBatch = _
+  /** 计划毕业日期 */
+  var planGradDate: LocalDate = _
 
-  /** 学生 */
-  var std: Student = _
+  /** 申请延期到 */
+  var deferGradDate: LocalDate = _
 
-  /** 平均绩点 */
-  var gpa: Float = _
-
-  /** 成绩明细 */
-  var gradeDetail: String = _
+  def this(batch: GraduateBatch, std: Student) = {
+    this()
+    this.batch = batch
+    this.std = std
+    this.updatedAt = Instant.now
+  }
 }

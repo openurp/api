@@ -15,39 +15,40 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.graduation.model
+package org.openurp.std.graduation.flow
 
+import org.beangle.commons.json.{Json, JsonObject}
 import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.Degree
+import org.openurp.std.graduation.flow.AbstractGradApply
+import org.openurp.std.graduation.model.GraduateBatch
 
-/** 计划完成情况确认
+import java.time.Instant
+
+/** 学位申请数据
  */
-class PlanResultCheck extends LongId, Updated {
+@flow
+class GradDegreeApply extends AbstractGradApply {
 
-  /** 学生 */
-  var std: Student = _
+  /** 平均绩点 */
+  var gpa: Double = _
 
-  /** 各个类别完成情况 */
-  var contents: String = _
+  /** 平均分 */
+  var wms: Double = _
 
-  /** 要求学分 */
-  var requiredCredits: Float = _
+  /** 学位类型 */
+  var degree: Degree = _
 
-  /** 通过学分 */
-  var passedCredits: Float = _
+  /** 联系邮箱 */
+  var email: Option[String] = None
 
-  /** 欠学分 */
-  var owedCredits: Float = _
-
-  /** 预计通过后所欠学分 */
-  var owedCredits2: Float = _
-
-  /** 在读通过后所欠学分 */
-  var owedCredits3: Float = _
-
-  def this(std: Student) = {
+  def this(batch: GraduateBatch, std: Student) = {
     this()
+    this.batch = batch
     this.std = std
+    this.updatedAt = Instant.now
   }
 }

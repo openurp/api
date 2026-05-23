@@ -43,6 +43,10 @@ class DefaultMapping extends MappingModule {
       index("", true, e.school, e.code)
     }
 
+    bind[DepartTransition] declare { e =>
+      e.remark is length(100)
+    }
+
     bind[Campus] declare { e =>
       e.code is length(10)
       e.name is length(80)

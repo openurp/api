@@ -17,10 +17,12 @@
 
 package org.openurp.edu.program.domain
 
+import org.openurp.base.model.Department
 import org.openurp.base.std.model.{Student, StudentState}
 import org.openurp.edu.program.model.Program
 
 trait ProgramProvider {
+
   def getProgram(std: Student): Option[Program]
 
   def getProgram(state: StudentState): Option[Program]

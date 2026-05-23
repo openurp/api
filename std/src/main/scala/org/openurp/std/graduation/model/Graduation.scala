@@ -19,6 +19,7 @@ package org.openurp.std.graduation.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.std.model.Student
+import org.openurp.code.edu.model.Degree
 import org.openurp.code.std.model.GraduateType
 
 /** 预毕业信息
@@ -31,9 +32,34 @@ class Graduation extends LongId {
   /** 批次 */
   var batch: GraduateBatch = _
 
+  /** 平均绩点 */
+  var gpa: Double = _
+
+  /** 平均分 */
+  var wms: Double = _
+
+  /** 是否能完成计划 */
+  var planPassed: Boolean = _
+
+  /** 毕业审核是否通过 */
+  var gradPassed: Option[Boolean] = None
+
+  /** 学位审核是否通过 */
+  var degreePassed: Option[Boolean] = None
+
+  /** 对应学位类型 */
+  var degree: Option[Degree] = None
+
   /** 毕业生类型 */
   var graduateType: GraduateType = _
 
-  /** 是否审核学位 */
-  var hasDegree: Boolean = _
+  /** 联系手机 */
+  var mobile: Option[String] = None
+
+  /** 联系邮箱 */
+  var email: Option[String] = None
+
+  /** 手机号码是否已经验证 */
+  var mobileVerified: Boolean = _
+
 }

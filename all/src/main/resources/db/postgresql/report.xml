@@ -7,7 +7,7 @@
     <page name="index"/>
   </pages>
   <!--
-   <pages template="jekyll" extension=".md">
+   <pages extension=".md">
      <page name="index" />
      <page name="group" iterable="true"/>
    </pages>

@@ -28,7 +28,7 @@ import org.beangle.data.model.pojo.{Coded, Named}
 class SubsidyCategory extends IntId, Coded, Named {
 
   /** 困难补助描述 */
-  var discription: Option[String] = None
+  var description: Option[String] = None
 
   /** 评定周期 */
   var assessPeriod: String = _
@@ -57,5 +57,5 @@ class SubsidyLevel extends IntId, Coded, Named {
   var enabled: Boolean = _
 
   /** 描述 */
-  var discription: Option[String] = None
+  var description: Option[String] = None
 }

@@ -17,12 +17,13 @@
 
 package org.openurp.std.graduation.model
 
+import org.beangle.commons.json.{Json, JsonObject}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updated
 import org.openurp.base.model.Project
 import org.openurp.base.std.model.GraduateSeason
 
-import java.time.LocalDate
+import java.time.{Instant, LocalDate}
 
 /** 毕业批次
  */
@@ -44,4 +45,27 @@ class GraduateBatch extends LongId, Updated {
 
   /** 是否启用计划完成情况确认 */
   var enableProgressConfirm: Boolean = false
+
+  /** 申请起始时间 */
+  var applyBeginAt: Option[Instant] = None
+
+  /** 申请结束时间 */
+  var applyEndAt: Option[Instant] = None
+
+  /** 设置 */
+  var settings: JsonObject = Json.emptyObject
+
+  /**
+   * 是否在该时间内开放
+   *
+   * @param now
+   * @return
+   */
+  def applyWithin(now: Instant): Boolean = {
+    if (applyBeginAt.nonEmpty && applyEndAt.nonEmpty) {
+      !(applyBeginAt.get.isAfter(now) || applyEndAt.get.isBefore(now))
+    } else {
+      false
+    }
+  }
 }

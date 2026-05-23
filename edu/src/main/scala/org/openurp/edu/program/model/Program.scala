@@ -27,6 +27,7 @@ import org.openurp.code.edu.model.*
 import org.openurp.code.std.model.StdType
 
 import java.time.Instant
+import java.time.temporal.ChronoUnit
 import scala.collection.mutable
 
 /** 专业培养方案
@@ -97,12 +98,18 @@ class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBase
   /** 审核意见 */
   var opinions: Option[String] = None
 
+  def changeGrade(ng: Grade): Unit = {
+    val yearGap = ng.beginIn.getYear - this.grade.beginIn.getYear
+    this.grade = ng
+    this.beginOn = this.beginOn.plus(yearGap, ChronoUnit.YEARS)
+    this.endOn = this.endOn.plus(yearGap, ChronoUnit.YEARS)
+  }
+
   def this(p: Program) = {
     this()
     this.name = p.name
-    this.beginOn = p.beginOn
-    this.endOn = p.endOn
 
+    this.project = p.project
     this.grade = p.grade
     this.eduType = p.eduType
     this.level = p.level
@@ -110,21 +117,26 @@ class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBase
     this.major = p.major
     this.direction = p.direction
     this.stdTypes.addAll(p.stdTypes)
-    this.duration = p.duration
     this.studyType = p.studyType
-    this.credits = p.credits
+
+    this.beginOn = p.beginOn
+    this.endOn = p.endOn
+    this.duration = p.duration
     this.startTerm = p.startTerm
     this.endTerm = p.endTerm
+
+    this.credits = p.credits
     this.offsetType = p.offsetType
+
     this.degree = p.degree
     this.degreeGpa = p.degreeGpa
     this.degreeCourses.addAll(p.degreeCourses)
-    p.labels foreach { l =>
-      this.labels.addOne(new ProgramCourseLabel(this, l.course, l.tag))
-    }
-    p.prerequisites foreach { p =>
-      this.prerequisites.addOne(new ProgramPrerequisite(this, p.course, p.prerequisite))
-    }
+    this.degreeCertificates.addAll(p.degreeCertificates)
+
+    p.termCampuses foreach { tc => this.termCampuses.addOne(new TermCampus(this, tc)) }
+    p.labels foreach { l => this.labels.addOne(new ProgramCourseLabel(this, l.course, l.tag)) }
+    p.prerequisites foreach { p => this.prerequisites.addOne(new ProgramPrerequisite(this, p.course, p.prerequisite)) }
+
     this.remark = p.remark
     this.updatedAt = Instant.now
   }
@@ -149,5 +161,31 @@ class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBase
 
   def stdTypeNames(sep: String): String = {
     stdTypes.map(_.name).mkString(sep)
+  }
+
+  /** 添加先修课程
+   *
+   * @param course
+   * @param prerequisite
+   * @return
+   */
+  def addPrerequisite(course: Course, prerequisite: Course): ProgramPrerequisite = {
+    this.prerequisites.find(p => p.course == course && p.prerequisite == prerequisite) match {
+      case None =>
+        val pp = new ProgramPrerequisite(this, course, prerequisite)
+        this.prerequisites.addOne(pp)
+        pp
+      case Some(p) => p
+    }
+  }
+
+  def addLabel(course: Course, tag: ProgramCourseTag): ProgramCourseLabel = {
+    this.labels.find(l => l.course == course && l.tag == tag) match {
+      case None =>
+        val l = new ProgramCourseLabel(this, course, tag)
+        this.labels.addOne(l)
+        l
+      case Some(l) => l
+    }
   }
 }

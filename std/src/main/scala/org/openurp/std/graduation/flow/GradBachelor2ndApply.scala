@@ -15,15 +15,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.program.domain
+package org.openurp.std.graduation.flow
 
-import org.openurp.base.model.Department
-import org.openurp.base.std.model.{Squad, StudentState}
-import org.openurp.edu.program.model.Program
+import org.beangle.data.model.LongId
+import org.beangle.data.model.annotation.flow
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.std.model.Student
+import org.openurp.std.graduation.model.GraduateBatch
 
-trait ProgramMatcher {
+/** 本科学生第二学士学位学位申请
+ */
+@flow
+class GradBachelor2ndApply extends LongId, Updated {
 
-  def isMatched(program: Program, compatibleDeparts: collection.Set[Department], state: StudentState): Boolean
+  /** 毕业批次 */
+  var batch: GraduateBatch = _
 
-  def isMatched(program: Program, compatibleDeparts: collection.Set[Department], squad: Squad): Boolean
+  /** 学生 */
+  var std: Student = _
+
+  /** 平均绩点 */
+  var gpa: Float = _
+
+  /** 成绩明细 */
+  var gradeDetail: String = _
 }

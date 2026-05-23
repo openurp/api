@@ -27,7 +27,7 @@ import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
 class StipendCategory extends IntId, Coded, Named, TemporalOn {
 
   /** 助学金描述 */
-  var discription: Option[String] = None
+  var description: Option[String] = None
 
   /** 评定周期 */
   var assessPeriod: String = _
@@ -56,5 +56,5 @@ class StipendLevel extends IntId, Coded, Named {
   var enabled: Boolean = _
 
   /** 描述 */
-  var discription: Option[String] = None
+  var description: Option[String] = None
 }

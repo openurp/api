@@ -15,35 +15,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.graduation.model
+package org.openurp.std.graduation.flow
 
 import org.beangle.data.orm.MappingModule
+import org.openurp.std.graduation.flow.{GradBachelor2ndApply, GradCompleteApply, GradDeferApply, GradDegreeApply}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[GraduateBatch].declare { e =>
-      e.name is length(100)
+
+    bind[GradBachelor2ndApply] declare { e =>
+      e.gradeDetail is length(3000)
     }
-    bind[Graduation] declare { e =>
+
+    bind[GradDegreeApply] declare { e =>
       e.email is length(100)
       e.mobile is length(15)
       index("", true, e.batch, e.std)
     }
 
-    bind[GraduateResult].declare { e =>
-      e.passedItems & e.failedItems are length(500)
+    bind[GradDeferApply] declare { e =>
+      e.mobile is length(15)
       index("", true, e.batch, e.std)
     }
 
-    bind[DegreeResult].declare { e =>
-      e.passedItems & e.failedItems are length(500)
-      index("", false, e.std)
-    }
-
-    bind[GradPlanResultCheck] declare { e =>
-      e.contents is length(3000)
-      index("", true, e.std)
+    bind[GradCompleteApply] declare { e =>
+      e.mobile is length(15)
+      index("", true, e.batch, e.std)
     }
   }
 }

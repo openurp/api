@@ -9,6 +9,7 @@
 
     <mapping class="org.openurp.prac.activity.model.DefaultMapping" name="activity"/>
     <mapping class="org.openurp.prac.innovation.model.DefaultMapping" name="innovation"/>
+    <mapping class="org.openurp.prac.mandarin.model.DefaultMapping" name="mandarin"/>
     <naming>
       <profile package="org.openurp.prac" pluralize="true" schema="prac">
         <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="prac_"/>

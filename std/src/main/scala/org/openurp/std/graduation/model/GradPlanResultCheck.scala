@@ -15,15 +15,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.edu.program.domain
+package org.openurp.std.graduation.model
 
-import org.openurp.base.model.Department
-import org.openurp.base.std.model.{Squad, StudentState}
-import org.openurp.edu.program.model.Program
+import org.beangle.data.model.LongId
+import org.beangle.data.model.pojo.Updated
+import org.openurp.base.std.model.Student
 
-trait ProgramMatcher {
+/** 计划完成情况确认
+ */
+class GradPlanResultCheck extends LongId, Updated {
 
-  def isMatched(program: Program, compatibleDeparts: collection.Set[Department], state: StudentState): Boolean
+  /** 学生 */
+  var std: Student = _
 
-  def isMatched(program: Program, compatibleDeparts: collection.Set[Department], squad: Squad): Boolean
+  /** 各个类别完成情况 */
+  var contents: String = _
+
+  /** 要求学分 */
+  var requiredCredits: Float = _
+
+  /** 通过学分 */
+  var passedCredits: Float = _
+
+  /** 欠学分 */
+  var owedCredits: Float = _
+
+  /** 预计通过后所欠学分 */
+  var owedCredits2: Float = _
+
+  /** 在读通过后所欠学分 */
+  var owedCredits3: Float = _
+
+  def this(std: Student) = {
+    this()
+    this.std = std
+  }
 }

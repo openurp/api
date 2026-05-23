@@ -3,9 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://beangle.github.io/schema/framework http://beangle.github.io/schema/framework-1.0.xsd">
   <jpa>
-    <mapping class="org.openurp.qos.evaluation.clazz.model.DefaultMapping" name="qos.clazz"/>
-    <mapping class="org.openurp.qos.evaluation.base.model.DefaultMapping" name="qos.base"/>
-    <mapping class="org.openurp.qos.evaluation.clazz.config.DefaultMapping" name="qos.clazz.config"/>
+    <mapping class="org.openurp.qos.evaluation.clazz.model.DefaultMapping" name="clazz"/>
+    <mapping class="org.openurp.qos.evaluation.base.model.DefaultMapping" name="base"/>
+    <mapping class="org.openurp.qos.evaluation.clazz.config.DefaultMapping" name="clazz.config"/>
     <naming>
       <profile package="org.openurp.qos" pluralize="true" schema="qos">
         <annotation class="org.beangle.data.model.annotation.config" schema="cfg" prefix="qos_"/>
