@@ -78,6 +78,16 @@ alter table std.stipend_levels rename column discription to description;
 alter table std.subsidy_categories rename column discription to description;
 alter table std.subsidy_levels rename column discription to description;
 
+insert into code.graduate_types(id,code,name,begin_on,updated_at)
+values(1,'1','应届',current_date,now());
+insert into code.graduate_types(id,code,name,begin_on,updated_at)
+values(2,'2','延期',current_date,now());
+
+insert into std.graduations(id,std_id,batch_id,plan_passed,gpa,wms,graduate_type_id,mobile_verified)
+select gr.id,gr.std_id,gr.batch_id,gr.passed,0,0,case when std.graduation_deferred =true then 2 else 1 end,false
+    from std.graduate_results gr,base.students std
+    where std.id=gr.std_id and not exists(select * from std.graduations g where g.std_id=gr.std_id and g.batch_id=gr.batch_id);
+
 comment on table base.depart_transitions is '部门变迁记录@common';
 comment on column base.depart_transitions.id is '非业务主键:datetime';
 comment on column base.depart_transitions.effective_on is '生效日期';
