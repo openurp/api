@@ -25,6 +25,7 @@ class UnregisteredReason extends CodeBean
 
 @code("industry")
 class UncheckinReason extends CodeBean
+
 /**
  * 学籍异动类别
  * 参见教育部标准JY/T 1001 4.2.39
@@ -44,7 +45,7 @@ class StdAlterReason extends CodeBean
  * 参见教育部标准JY/T 1001 4.2.3
  */
 @code("industry")
-class StdPunishmentType extends CodeBean{
+class StdPunishmentType extends CodeBean {
   /**
    * 处分等级值
    * 级别越小越严重
@@ -90,6 +91,23 @@ class UeeSubjectType extends CodeBean
 @code("industry")
 class FeeOrigin extends CodeBean
 
-/**毕业去向*/
+/** 毕业去向 */
 @code("industry")
 class WheretoGo extends CodeBean
+
+/** 毕业状态 */
+class GraduationStatus extends CodeBean {
+  /** 是否毕业 */
+  var graduated: Boolean = _
+}
+
+object GraduationStatus {
+  //毕业
+  val Normal = 1
+  //结业
+  val Completed = 2
+  //肄业
+  val Withdrawn = 3
+  //延期
+  val Deferred = 4
+}

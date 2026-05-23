@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.4.0">
+<db engine="PostgreSQL" version="1.4.1">
   <schemas>
     <schema name="base">
       <tables>
@@ -3673,6 +3673,23 @@
           <constraints>
             <primary-key name="pk_dy4s401v9m865dryabd1fxtn0" columns="id"/>
             <unique-key name="uk_9die6co9800of7rw2vh6a63cr" columns="code"/>
+          </constraints>
+        </table>
+        <table name="graduation_statuses" comment="毕业状态@std">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="graduated" type="boolean" nullable="false" defaultValue="false" comment="是否毕业"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_oqxaqc8aho71r25xm6jyjq6aq" columns="id"/>
+            <unique-key name="uk_1i9o25vr5905g7qt3f90tme0d" columns="code"/>
           </constraints>
         </table>
         <table name="health_statuses" comment="健康状况@person">
@@ -10319,7 +10336,9 @@
         <table name="graduations" comment="预毕业信息@graduation">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="apply_status_id" type="integer" comment="毕业状态ID"/>
             <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
+            <column name="degree_applied" type="boolean" comment="是否已申请学位"/>
             <column name="degree_id" type="integer" comment="学位ID"/>
             <column name="degree_passed" type="boolean" comment="学位审核是否通过"/>
             <column name="email" type="varchar(100)" comment="Email"/>
@@ -10329,6 +10348,7 @@
             <column name="mobile" type="varchar(15)" comment="联系手机"/>
             <column name="mobile_verified" type="boolean" nullable="false" defaultValue="false" comment="手机号码是否已经验证"/>
             <column name="plan_passed" type="boolean" nullable="false" defaultValue="false" comment="是否能完成学业"/>
+            <column name="status_id" type="integer" comment="毕业状态ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="wms" type="float8" nullable="false" defaultValue="0" comment="平均分"/>
           </columns>
@@ -10338,6 +10358,8 @@
             <foreign-key name="fk_l3piq3pc6icvkvonx4ahb5hn6" column="degree_id" referenced-table="code.degrees" referenced-column="id"/>
             <foreign-key name="fk_r259rmkgu60ftfgiv39y4vbqd" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
             <foreign-key name="fk_q24s55av6uspu1tfc0y03nfpx" column="graduate_type_id" referenced-table="code.graduate_types" referenced-column="id"/>
+            <foreign-key name="fk_67l8l1qabwxmn9uuji8771280" column="apply_status_id" referenced-table="code.graduation_statuses" referenced-column="id"/>
+            <foreign-key name="fk_c2m50yq32rniyfar3mfypowjq" column="status_id" referenced-table="code.graduation_statuses" referenced-column="id"/>
             <unique-key name="uk_l54olf776vfr1sk99qp9vbjfh" columns="batch_id,std_id"/>
           </constraints>
         </table>

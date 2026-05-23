@@ -300,6 +300,8 @@ alter table code.graduate_objectives add constraint pk_i5c9grb12fgyo5n3uo30bcs7c
 alter table code.graduate_objectives add constraint uk_ipru1n0o561cuwyc6o0ogd3p6 unique (code);
 alter table code.graduate_types add constraint pk_dy4s401v9m865dryabd1fxtn0 primary key (id);
 alter table code.graduate_types add constraint uk_9die6co9800of7rw2vh6a63cr unique (code);
+alter table code.graduation_statuses add constraint pk_oqxaqc8aho71r25xm6jyjq6aq primary key (id);
+alter table code.graduation_statuses add constraint uk_1i9o25vr5905g7qt3f90tme0d unique (code);
 alter table code.health_statuses add constraint pk_ewtk7l63wlk6ptj855tfj5dfj primary key (id);
 alter table code.health_statuses add constraint uk_styg2klnvn0k1w4s864ifol19 unique (code);
 alter table code.household_types add constraint pk_s7op8qppo9yfud198nlanf1pi primary key (id);

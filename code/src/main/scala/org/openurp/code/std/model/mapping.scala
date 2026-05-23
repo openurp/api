@@ -41,6 +41,7 @@ class DefaultMapping extends MappingModule {
     bind[GraduateType]
     bind[DifficultyCause]
     bind[DifficultyDegree]
+    bind[GraduationStatus]
 
     all.cacheAll()
   }

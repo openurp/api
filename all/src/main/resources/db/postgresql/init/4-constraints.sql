@@ -1117,6 +1117,8 @@ alter table std.graduate_batches add constraint fk_s9tvq5nvr755rhonwaw7ru6fl for
 alter table std.graduate_results add constraint fk_60tarsb0wps3cmsumt4fmx7ki foreign key (std_id) references base.students (id);
 alter table std.graduate_results add constraint fk_aw2crvlxuwnxsbyexehnmhbnj foreign key (education_result_id) references code.education_results (id);
 alter table std.graduate_results add constraint fk_hbuho60rwd7cp7n9jd316qqk1 foreign key (batch_id) references std.graduate_batches (id);
+alter table std.graduations add constraint fk_67l8l1qabwxmn9uuji8771280 foreign key (apply_status_id) references code.graduation_statuses (id);
+alter table std.graduations add constraint fk_c2m50yq32rniyfar3mfypowjq foreign key (status_id) references code.graduation_statuses (id);
 alter table std.graduations add constraint fk_g3b2w9le8nidh58ljm8no5thx foreign key (std_id) references base.students (id);
 alter table std.graduations add constraint fk_l3piq3pc6icvkvonx4ahb5hn6 foreign key (degree_id) references code.degrees (id);
 alter table std.graduations add constraint fk_q24s55av6uspu1tfc0y03nfpx foreign key (graduate_type_id) references code.graduate_types (id);

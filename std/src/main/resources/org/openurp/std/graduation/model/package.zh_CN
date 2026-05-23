@@ -43,6 +43,7 @@ Graduation.degreePassed=学位审核是否通过
 Graduation.mobile=联系手机
 Graduation.email=Email
 Graduation.mobileVerified=手机号码是否已经验证
+Graduation.degreeApplied=是否已申请学位
 
 GradPlanResultCheck=计划完成情况确认
 GradPlanResultCheck.contents=各个类别完成情况
