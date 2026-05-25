@@ -51,7 +51,7 @@ class Graduation extends LongId {
   var degree: Option[Degree] = None
 
   /** 是否申请了学位 */
-  var degreeApplied: Option[Boolean] = None
+  var degreeApplied: Boolean = _
 
   /** 申请的毕业状态 */
   var applyStatus: Option[GraduationStatus] = None

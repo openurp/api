@@ -52,10 +52,7 @@ alter table prac.mandarin_grades add constraint fk_f3vpwb63rsw9xwbac0dg01n82 for
 alter table prac.mandarin_grades add constraint fk_7w5bd1mhpxj8gvayyae0uq6x2 foreign key (semester_id) references base.semesters (id);
 
 alter table std.bachelor2nd_applies rename to grad_bachelor2nd_applies;
-alter table std.plan_result_checks rename to std.grad_plan_result_checks;
-
-alter table std.grad_bachelor2nd_applies rename to std_grad_bachelor2nd_applies;
-alter table std.std_grad_bachelor2nd_applies set schema flow;
+alter table std.plan_result_checks rename to grad_plan_result_checks;
 
 alter table std.grad_bachelor2nd_applies rename to std_grad_bachelor2nd_applies;
 alter table std.std_grad_bachelor2nd_applies set schema flow;
