@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.4.1">
+<db engine="PostgreSQL" version="1.4.3">
   <schemas>
     <schema name="base">
       <tables>
@@ -5349,7 +5349,6 @@
             <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
             <column name="owed_credits" type="float4" nullable="false" defaultValue="0" comment="不足学分"/>
             <column name="owed_credits2" type="float4" nullable="false" defaultValue="0" comment="预计完成不足学分"/>
-            <column name="owed_credits3" type="float4" nullable="false" defaultValue="0" comment="考虑在读情况下不足学分"/>
             <column name="parent_id" type="bigint" comment="组审核结果ID"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="passed_credits" type="float4" nullable="false" defaultValue="0" comment="完成学分"/>
@@ -5377,7 +5376,6 @@
             <column name="archived" type="boolean" nullable="false" defaultValue="false" comment="是否归档"/>
             <column name="owed_credits" type="float4" nullable="false" defaultValue="0" comment="不足学分"/>
             <column name="owed_credits2" type="float4" nullable="false" defaultValue="0" comment="预计完成不足学分"/>
-            <column name="owed_credits3" type="float4" nullable="false" defaultValue="0" comment="考虑在读情况下不足学分"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="passed_credits" type="float4" nullable="false" defaultValue="0" comment="完成学分"/>
             <column name="predicted" type="boolean" nullable="false" defaultValue="false" comment="预计是否通过"/>
@@ -10338,7 +10336,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="apply_status_id" type="integer" comment="毕业状态ID"/>
             <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
-            <column name="degree_applied" type="boolean" comment="是否已申请学位"/>
+            <column name="degree_applied" type="boolean" nullable="false" defaultValue="false" comment="是否已申请学位"/>
             <column name="degree_id" type="integer" comment="学位ID"/>
             <column name="degree_passed" type="boolean" comment="学位审核是否通过"/>
             <column name="email" type="varchar(100)" comment="Email"/>

@@ -104,7 +104,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     } else if (mentors.nonEmpty) {
       mentors foreach { m =>
         groups.addAll(getGroups(school, m.projects.map(p => s"mentor.${p.id}")))
-        groups.addAll(getGroups(school, List("mentor")))
+        groups.addAll(getGroups(school, List("mentor", "teacher")))//辅导员也给老师权限
       }
     } else {
       if (staff.tutorType.nonEmpty) groups.addAll(getGroups(school, List("tutor")))

@@ -49,9 +49,6 @@ class AuditPlanResult extends LongId, Updated, Remark {
   /** 预计通过后所欠学分 */
   var owedCredits2: Float = _
 
-  /** 在读通过后所欠学分 */
-  var owedCredits3: Float = _
-
   /** 和上次比较的更新内容 */
   var updates: Option[String] = None
 
@@ -112,7 +109,6 @@ class AuditPlanResult extends LongId, Updated, Remark {
     if (cascade) tops.foreach(_.stat())
     this.owedCredits = tops.map(_.owedCredits).sum
     this.owedCredits2 = tops.map(_.owedCredits2).sum
-    this.owedCredits3 = tops.map(_.owedCredits3).sum
     val inplanTops = tops.filter(_.name != "计划外")
     this.passedCredits = inplanTops.flatMap(_.passedCourses).map(x => x.getCredits(std.level)).sum
     this.passed = inplanTops.count(_.passed) == inplanTops.size && this.owedCredits <= 0.00000001f
@@ -135,7 +131,6 @@ class AuditPlanResult extends LongId, Updated, Remark {
     val passed = category match
       case 1 => g.passed
       case 2 => g.predicted
-      case 3 => g.owedCredits3 <= 0
       case _ => false
 
     if (!passed) {
@@ -144,7 +139,6 @@ class AuditPlanResult extends LongId, Updated, Remark {
         val owed = category match
           case 1 => g.owedCredits - g.children.map(_.owedCredits).sum
           case 2 => g.owedCredits2 - g.children.map(_.owedCredits2).sum
-          case 3 => g.owedCredits3 - g.children.map(_.owedCredits3).sum
           case _ => 1
 
         if (Math.abs(owed) < 0.01) {

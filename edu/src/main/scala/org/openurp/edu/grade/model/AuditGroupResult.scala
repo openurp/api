@@ -43,9 +43,6 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
   /** 预计通过后所欠学分 */
   var owedCredits2: Float = _
 
-  /** 在读通过后所欠学分 */
-  var owedCredits3: Float = _
-
   /** 转换学分 */
   var convertedCredits: Float = _
 
@@ -153,7 +150,6 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
     var sonOwedCredits3: Float = 0f
     var childOwedList = Collections.newBuffer[AuditGroupResult]
     var childOwedList2 = Collections.newBuffer[AuditGroupResult]
-    var childOwedList3 = Collections.newBuffer[AuditGroupResult]
     if (this.children.nonEmpty) {
       //每个子节点也进行统计
       this.children.foreach(_.stat())
@@ -165,18 +161,15 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
         if (requiredNum > 0 && childResult.requiredCredits > 0) { //忽略没有完成的组
           childOwedList.addOne(childResult)
           childOwedList2.addOne(childResult)
-          childOwedList3.addOne(childResult)
         }
       }
       //取欠分最小的前requiredNum个组
       childOwedList = childOwedList.sortBy(_.owedCredits).take(requiredNum)
       childOwedList2 = childOwedList2.sortBy(_.owedCredits2).take(requiredNum)
-      childOwedList3 = childOwedList3.sortBy(_.owedCredits3).take(requiredNum)
       sonPassed = passedCnt >= requiredNum
 
       sonOwedCredits = childOwedList.map(_.owedCredits).sum
       sonOwedCredits2 = childOwedList2.map(_.owedCredits2).sum
-      sonOwedCredits3 = childOwedList3.map(_.owedCredits3).sum
     }
 
     //统计完成学分
@@ -190,16 +183,13 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
     val cpCourseResults = cp.filter(!_.passed)
     val cpOwedCredits = cpCourseResults.map(_.course.getCredits(eduLevel)).sum
     val cpOwedCredits2 = cp.filter(x => !x.passed && !x.predicted).map(_.course.getCredits(eduLevel)).sum
-    val cpOwedCredits3 = cp.filter(x => !x.passed && !x.predicted && !x.taking).map(_.course.getCredits(eduLevel)).sum
 
     //计算剩余的欠分
     val totalOwed = requiredCredits - convertedCredits - (cpOwedCredits + sonOwedCredits + passedCredits)
     val totalOwed2 = requiredCredits - convertedCredits - (cpOwedCredits2 + sonOwedCredits2 + passedCredits + passedCredits2)
-    val totalOwed3 = requiredCredits - convertedCredits - (cpOwedCredits3 + sonOwedCredits3 + passedCredits + passedCredits2 + passedCredits3)
 
     this.owedCredits = cpOwedCredits + sonOwedCredits + (if (totalOwed < 0) 0 else totalOwed)
     this.owedCredits2 = cpOwedCredits2 + sonOwedCredits2 + (if (totalOwed2 < 0) 0 else totalOwed2)
-    this.owedCredits3 = cpOwedCredits3 + sonOwedCredits3 + (if (totalOwed3 < 0) 0 else totalOwed3)
     this.passed = sonPassed && cpCourseResults.isEmpty && this.owedCredits <= 0
   }
 
