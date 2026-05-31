@@ -24,7 +24,7 @@ import org.openurp.base.model.{ArchivedByYear, Semester}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{ExamStatus, ExamType}
 import org.openurp.edu.clazz.model.Clazz
-import org.openurp.edu.exam.model.{ExamActivity, ExamRoom}
+import org.openurp.edu.exam.model.{ExamActivity, ExamRoom, ExamTaker}
 
 /** 归档应考学生
  */
@@ -46,4 +46,19 @@ class HisExamTaker extends LongId, Remark, ArchivedByYear {
   var examStatus: ExamStatus = _
   /** 座位号 */
   var seatNo: Short = _
+
+  def convert(): ExamTaker = {
+    val t = new ExamTaker
+    t.id = this.id
+    t.std = this.std
+    t.clazz = this.clazz
+    t.semester = this.semester
+    t.examRoom = this.examRoom
+    t.examType = this.examType
+    t.examStatus = this.examStatus
+    t.activity = this.activity
+    t.seatNo = this.seatNo
+    t.remark = this.remark
+    t
+  }
 }

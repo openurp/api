@@ -21,6 +21,9 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
   def binding(): Unit = {
+
+    defaultCache("openurp-base", "read-write")
+
     bind[Staff].declare { e =>
       e.idNumber is length(20) //container wrong number
       e.mobile is length(20)
@@ -54,7 +57,7 @@ class DefaultMapping extends MappingModule {
       e.oqc is length(200)
       e.name is length(100)
       index("", true, e.staff)
-    }.generator(IdGenerator.Assigned)
+    }.generator(IdGenerator.Assigned).cacheable()
 
     bind[StaffProfile] declare { e =>
       e.intro is length(60000)

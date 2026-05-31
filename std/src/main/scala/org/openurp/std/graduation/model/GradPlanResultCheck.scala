@@ -43,9 +43,6 @@ class GradPlanResultCheck extends LongId, Updated {
   /** 预计通过后所欠学分 */
   var owedCredits2: Float = _
 
-  /** 在读通过后所欠学分 */
-  var owedCredits3: Float = _
-
   def this(std: Student) = {
     this()
     this.std = std

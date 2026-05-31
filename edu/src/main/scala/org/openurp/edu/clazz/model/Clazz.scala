@@ -104,4 +104,8 @@ class Clazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
       case Some(s) => s"${course.name}($s)"
     }
   }
+
+  def activities: Iterable[ClazzActivity] = {
+    schedule.activities
+  }
 }

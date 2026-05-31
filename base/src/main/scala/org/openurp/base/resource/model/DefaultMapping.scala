@@ -64,5 +64,7 @@ class DefaultMapping extends MappingModule {
       e.remark is length(100)
       e.ip is length(40)
     }
+
+    all.cacheAll()
   }
 }

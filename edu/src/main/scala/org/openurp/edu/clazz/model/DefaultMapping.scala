@@ -18,11 +18,11 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.orm.MappingModule
-import org.openurp.edu.miniclazz.model.{MiniClazz, MiniClazzActivity, MiniClazzTaker}
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
+    defaultCache("openurp-edu", "read-write")
     //course
     bind[CourseTaker].declare { e =>
       e.remark is length(100)
@@ -33,15 +33,17 @@ class DefaultMapping extends MappingModule {
 
     bind[Clazz].declare { e =>
       e.crn is length(32)
-      e.teachers is ordered
+      e.teachers is(ordered, cacheable)
       e.clazzName is length(500)
       e.enrollment.grades is length(40)
       e.enrollment.stdCount is immutable
       e.enrollment.courseTakers & e.enrollment.restrictions & e.enrollment.subclazzes &
         e.schedule.activities are depends("clazz")
+
+      e.schedule.activities is cacheable
       index("", true, e.project, e.semester, e.crn)
       index("", false, e.project, e.semester, e.teachDepart)
-    }
+    }.cacheable()
 
     bind[ClazzFinalExam].declare { e =>
       e.clazz is unique
@@ -64,7 +66,7 @@ class DefaultMapping extends MappingModule {
       e.teachers is joinColumn("activity_id")
       e.rooms is joinColumn("activity_id")
       index("", false, e.clazz)
-    }
+    }.cacheAll()
 
     bind[ClazzGroup].declare { e =>
       e.clazzes is one2many("group")
@@ -105,6 +107,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[StdCreditStat]
+
     bind[ScheduleSuggest] declare { e =>
       e.activities is depends("suggest")
       index("", true, e.clazz)

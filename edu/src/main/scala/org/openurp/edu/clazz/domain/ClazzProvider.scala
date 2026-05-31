@@ -20,11 +20,13 @@ package org.openurp.edu.clazz.domain
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Project, Semester}
+import org.openurp.base.service.SemesterService
 import org.openurp.base.std.model.{Squad, Student}
-import org.openurp.edu.clazz.model.{Clazz, CourseTaker, ClazzRestrictionMeta}
+import org.openurp.edu.clazz.model.{Clazz, ClazzRestrictionMeta, CourseTaker}
+import org.openurp.edu.his.model.HisCourseTaker
 
 trait ClazzProvider {
-  def getClazzes(semester: Semester, std: Student): Seq[CourseTaker]
+  def getClazzes(semester: Semester, std: Student): Seq[Clazz]
 
   def getClazzes(semester: Semester, squad: Squad): Seq[Clazz]
 
@@ -33,6 +35,7 @@ trait ClazzProvider {
 
 class DefaultClazzProvider extends ClazzProvider {
   var entityDao: EntityDao = _
+  var semesterService: SemesterService = _
 
   override def getClazzes(semester: Semester, squad: Squad): Seq[Clazz] = {
     val builder = OqlBuilder.from(classOf[Clazz], "clazz")
@@ -44,10 +47,16 @@ class DefaultClazzProvider extends ClazzProvider {
     entityDao.search(builder)
   }
 
-  override def getClazzes(semester: Semester, std: Student): Seq[CourseTaker] = {
-    val query = OqlBuilder.from(classOf[CourseTaker], "ct")
-    query.where("ct.clazz.project=:project and ct.semester=:semester and ct.std = :std", std.project, semester, std)
-    entityDao.search(query)
+  override def getClazzes(semester: Semester, std: Student): Seq[Clazz] = {
+    if (semester.year.archived) {
+      val query = OqlBuilder.from(classOf[HisCourseTaker], "ct")
+      query.where("ct.clazz.project=:project and ct.semester=:semester and ct.std = :std", std.project, semester, std)
+      entityDao.search(query).map(_.clazz)
+    } else {
+      val query = OqlBuilder.from(classOf[CourseTaker], "ct")
+      query.where("ct.clazz.project=:project and ct.semester=:semester and ct.std = :std", std.project, semester, std)
+      entityDao.search(query).map(_.clazz)
+    }
   }
 
   override def getClazzes(semester: Semester, teacher: Teacher, project: Project): Seq[Clazz] = {

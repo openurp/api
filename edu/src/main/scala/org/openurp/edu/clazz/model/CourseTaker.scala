@@ -53,10 +53,13 @@ class CourseTaker extends LongId, Updated, Cloneable, Remark {
   /** 是否替代 */
   var alternative: Boolean = false
 
-  /** 选课方式 * */
+  /** 选课方式 *  */
   var electionMode: ElectionMode = _
 
   /** 上课小班 */
   var subclazz: Option[Subclazz] = None
 
+  def credits: Float = {
+    course.getCredits(std.level)
+  }
 }

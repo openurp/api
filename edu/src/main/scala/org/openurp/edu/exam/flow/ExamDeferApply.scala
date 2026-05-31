@@ -17,9 +17,11 @@
 
 package org.openurp.edu.exam.flow
 
+import org.beangle.commons.json.{Json, JsonArray}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.{Remark, Updated}
+import org.openurp.base.model.AuditStatus
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{ExamDeferReason, ExamType}
 import org.openurp.edu.clazz.model.Clazz
@@ -45,5 +47,7 @@ class ExamDeferApply extends LongId, Updated, Remark {
 
   var passed: Option[Boolean] = None
 
-  var status: String = _
+  var status: AuditStatus = _
+
+  var attachments: JsonArray = Json.emptyArray
 }

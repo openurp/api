@@ -61,4 +61,8 @@ class ExamTaker extends LongId, Remark {
     this.clazz = taker.clazz
     this.semester = taker.clazz.semester
   }
+
+  def credits: Float = {
+    clazz.course.getCredits(std.level)
+  }
 }

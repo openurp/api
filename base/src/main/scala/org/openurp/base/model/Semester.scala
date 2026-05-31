@@ -91,6 +91,8 @@ class Semester extends IntId, Coded, Named, DateRange, Remark {
 
   def schoolYear: String = year.name
 
+  def archived:Boolean = year.archived
+
   def startWeek(): Int = {
     val gc = new GregorianCalendar();
     gc.setFirstDayOfWeek(calendar.firstWeekday.index)
