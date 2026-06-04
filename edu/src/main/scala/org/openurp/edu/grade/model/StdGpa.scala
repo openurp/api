@@ -18,7 +18,7 @@
 package org.openurp.edu.grade.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{ProjectBased, Semester}
 import org.openurp.base.std.model.Student
 
@@ -71,7 +71,7 @@ trait GpaStat {
 /**
  * 学生成绩绩点统计
  */
-class StdGpa extends LongId, Updated, ProjectBased, GpaStat {
+class StdGpa extends LongId, Updatable, ProjectBased, GpaStat {
   /**
    * 学生
    */

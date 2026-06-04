@@ -18,7 +18,7 @@
 package org.openurp.base.std.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.beangle.data.model.pojo.{DateRange, Updatable}
 import org.openurp.base.model.ExternSchool
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{EduCategory, EducationLevel}
@@ -26,7 +26,7 @@ import org.openurp.code.edu.model.{EduCategory, EducationLevel}
 /**
  * 外部学习经历
  */
-class ExternStudent extends LongId, Updated, DateRange {
+class ExternStudent extends LongId, Updatable, DateRange {
   var std: Student = null
   var school: ExternSchool = null
   var majorName: Option[String] = None

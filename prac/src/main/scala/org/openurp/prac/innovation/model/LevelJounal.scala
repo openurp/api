@@ -18,14 +18,14 @@
 package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 
 import java.time.Instant
 
 /** 项目的等级记录
  *
  */
-class LevelJounal extends LongId, Updated {
+class LevelJounal extends LongId, Updatable {
 
   /** 年度 */
   var awardYear: Int = _

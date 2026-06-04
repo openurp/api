@@ -19,12 +19,12 @@ package org.openurp.std.archive.log
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.log
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.User
 import org.openurp.code.std.model.StdDocType
 
 @log
-class ArchiveDownload extends LongId, Updated {
+class ArchiveDownload extends LongId, Updatable {
   /** 学生 */
   var user: User = _
 

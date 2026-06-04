@@ -18,11 +18,11 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 
 /** 论文提交信息
  */
-class PaperSubmission extends LongId, Updated, Remark {
+class PaperSubmission extends LongId, Updatable, Remark {
   var writer: Writer = _
 
   /** 题目 */

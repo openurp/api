@@ -18,7 +18,7 @@
 package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.edu.model.Major
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{EducationMode, EnrollMode}
@@ -29,7 +29,7 @@ import java.time.LocalDate
 /**
  * 考生信息
  */
-class Examinee extends LongId, Updated {
+class Examinee extends LongId, Updatable {
 
   /** 学生 */
   var std: Student = _

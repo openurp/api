@@ -17,7 +17,7 @@
 
 package org.openurp.base.model
 
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updatable}
 import org.beangle.data.model.{IntId, LongId}
 import org.openurp.code.edu.model.{EduCategory, EducationLevel, EducationType}
 import org.openurp.code.std.model.{StdLabel, StdType}
@@ -35,7 +35,7 @@ import scala.collection.mutable
  * @author chaostone
  * @since 3.0.0
  */
-class Project extends IntId, Coded, TemporalOn, Updated, Named {
+class Project extends IntId, Coded, TemporalOn, Updatable, Named {
   /** 适用学校 */
   var school: School = _
   /** 校区列表 */

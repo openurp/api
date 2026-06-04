@@ -19,7 +19,7 @@ package org.openurp.std.minor.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, Updatable}
 import org.openurp.base.edu.model.MinorMajor
 import org.openurp.code.edu.model.{DisciplineCategory, Institution}
 import org.openurp.code.person.model.Gender
@@ -29,7 +29,7 @@ import scala.collection.mutable
 
 /** 报名信息
  */
-class MinorSignupStd extends LongId, Coded, Named, Updated {
+class MinorSignupStd extends LongId, Coded, Named, Updatable {
   /** 设置 */
   var setting: MinorSignupSetting = _
   /** 性别 */

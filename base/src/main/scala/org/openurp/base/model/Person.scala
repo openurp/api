@@ -18,7 +18,7 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, Updatable}
 import org.openurp.code.geo.model.Country
 import org.openurp.code.person.model.*
 
@@ -27,7 +27,7 @@ import java.time.LocalDate
 /**
  * 通用自然人信息
  */
-class Person extends LongId, Named, Updated, Coded {
+class Person extends LongId, Named, Updatable, Coded {
 
   /** 身份证件类型 */
   var idType: IdType = _

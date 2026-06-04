@@ -18,11 +18,11 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 
 /** 学位论文相关文档
  */
-class ThesisDoc extends LongId, Updated {
+class ThesisDoc extends LongId, Updatable {
   /** 所处阶段 */
   var stage: Stage = _
 

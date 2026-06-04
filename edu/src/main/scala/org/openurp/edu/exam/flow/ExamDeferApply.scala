@@ -17,11 +17,10 @@
 
 package org.openurp.edu.exam.flow
 
-import org.beangle.commons.json.{Json, JsonArray}
+import org.beangle.commons.json.{Json, JsonArray, JsonObject}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.{Remark, Updated}
-import org.openurp.base.model.AuditStatus
+import org.beangle.data.model.pojo.{Creatable, Remark, Updatable}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{ExamDeferReason, ExamType}
 import org.openurp.edu.clazz.model.Clazz
@@ -31,7 +30,7 @@ import java.time.Instant
 /** 考试缓考申请
  */
 @flow
-class ExamDeferApply extends LongId, Updated, Remark {
+class ExamDeferApply extends LongId, Creatable, Updatable, Remark {
 
   var clazz: Clazz = _
 
@@ -43,11 +42,20 @@ class ExamDeferApply extends LongId, Updated, Remark {
 
   var mobile: Option[String] = None
 
-  var reason: Option[ExamDeferReason] = None
+  var reason: ExamDeferReason = _
+
+  var teacherReviewed: Option[Boolean] = None
+
+  var collegeApproved: Option[Boolean] = None
 
   var passed: Option[Boolean] = None
 
-  var status: AuditStatus = _
+  /** 个人签名url */
+  var stdSignUrl: Option[String] = None
+
+  var status: String = _
 
   var attachments: JsonArray = Json.emptyArray
+
+  var opinions: JsonObject = Json.emptyObject
 }

@@ -17,7 +17,7 @@
 
 package org.openurp.code
 
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.beangle.data.orm.{IdGenerator, MappingModule}
 
 class DefaultMapping extends MappingModule {
@@ -33,7 +33,7 @@ class DefaultMapping extends MappingModule {
       e.remark is length(200)
     }.cacheable().generator(IdGenerator.Code)
 
-    bind[Updated].declare { e =>
+    bind[Updatable].declare { e =>
       e.updatedAt is default("current")
     }
   }

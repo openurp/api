@@ -20,14 +20,14 @@ package org.openurp.std.graduation.flow
 import org.beangle.commons.json.{Json, JsonObject}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.std.graduation.model.GraduateBatch
 
 /** 毕业申请抽象类
  */
 @flow
-abstract class AbstractGradApply extends LongId, Updated {
+abstract class AbstractGradApply extends LongId, Updatable {
 
   var batch: GraduateBatch = _
 

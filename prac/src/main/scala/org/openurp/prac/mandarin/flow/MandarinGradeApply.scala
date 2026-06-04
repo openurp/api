@@ -18,13 +18,13 @@
 package org.openurp.prac.mandarin.flow
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{AuditStatus, Semester}
 import org.openurp.base.std.model.Student
 
 import java.time.YearMonth
 
-class MandarinGradeApply extends LongId, Updated {
+class MandarinGradeApply extends LongId, Updatable {
 
   def this(std: Student) = {
     this()

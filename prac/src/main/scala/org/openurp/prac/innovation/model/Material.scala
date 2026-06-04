@@ -18,11 +18,11 @@
 package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Named, Updated}
+import org.beangle.data.model.pojo.{Named, Updatable}
 
 /** 项目材料
  */
-class Material extends LongId, Updated {
+class Material extends LongId, Updatable {
   var project: Project = _
   var stageType: StageType = _
   /** 文件名 */

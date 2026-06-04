@@ -18,13 +18,13 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Remark, TemporalOn, Updatable}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.CourseAbilityRate
 
 /** * 学生课程能力等级
  */
-class StdCourseAbility extends LongId, Updated, TemporalOn, Remark {
+class StdCourseAbility extends LongId, Updatable, TemporalOn, Remark {
 
   /** 学生 */
   var std: Student = _

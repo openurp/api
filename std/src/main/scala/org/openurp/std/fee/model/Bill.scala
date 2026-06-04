@@ -18,7 +18,7 @@
 package org.openurp.std.fee.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.model.{Department, Semester}
 import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.FeeType
@@ -26,7 +26,7 @@ import org.openurp.code.std.model.FeeType
 import java.time.Instant
 
 /** 账单 */
-class Bill extends LongId, Updated, Remark {
+class Bill extends LongId, Updatable, Remark {
 
   /** 用户 */
   var std: Student = _

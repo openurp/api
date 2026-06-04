@@ -92,6 +92,13 @@ class DefaultMapping extends MappingModule {
       e.managerNotice is length(1000)
     }
 
+    bind[RegularAssessStd] declare { e =>
+      index("", true, e.clazz, e.std)
+    }
+
+    bind[RegularAssessStat] declare { e =>
+      index("", true, e.clazz)
+    }
     cache().add(classOf[ExamNotice])
   }
 }

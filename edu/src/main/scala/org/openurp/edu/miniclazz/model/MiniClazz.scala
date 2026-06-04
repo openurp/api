@@ -20,7 +20,7 @@ package org.openurp.edu.miniclazz.model
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.*
@@ -30,7 +30,7 @@ import java.time.{Instant, LocalDate}
 import scala.collection.mutable
 
 @beta
-class MiniClazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
+class MiniClazz extends LongId, ProjectBased, Updatable, Cloneable, Remark {
 
   /** 课程序号 */
   var crn: String = _

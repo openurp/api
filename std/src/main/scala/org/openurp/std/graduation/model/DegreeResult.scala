@@ -18,13 +18,13 @@
 package org.openurp.std.graduation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Degree
 
 import java.time.{Instant, LocalDate}
 
-class DegreeResult extends LongId, Updated, Remark {
+class DegreeResult extends LongId, Updatable, Remark {
 
   /** 所属的毕业审核批次 */
   var batch: GraduateBatch = _

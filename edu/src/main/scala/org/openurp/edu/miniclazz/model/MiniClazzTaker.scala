@@ -18,7 +18,7 @@
 package org.openurp.edu.miniclazz.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
@@ -27,7 +27,7 @@ import java.time.Instant
 
 /** 专业小课选课名单
  */
-class MiniClazzTaker extends LongId, Updated {
+class MiniClazzTaker extends LongId, Updatable {
 
   def this(clazz: MiniClazz, std: Student) = {
     this()

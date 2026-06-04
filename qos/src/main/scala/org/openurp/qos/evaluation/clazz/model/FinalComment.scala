@@ -18,7 +18,7 @@
 package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Semester}
@@ -27,7 +27,7 @@ import org.openurp.base.std.model.Student
 /** 期末文字评价
  *
  */
-class FinalComment extends LongId, Updated {
+class FinalComment extends LongId, Updatable {
 
   var std: Student = _
 

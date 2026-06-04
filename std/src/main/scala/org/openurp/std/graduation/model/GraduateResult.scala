@@ -18,7 +18,7 @@
 package org.openurp.std.graduation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.EducationResult
 
@@ -27,7 +27,7 @@ import java.time.Instant
 /**
  * 毕业审核结果
  */
-class GraduateResult extends LongId, Updated, Remark {
+class GraduateResult extends LongId, Updatable, Remark {
 
   /** 所属的毕业审核批次 */
   var batch: GraduateBatch = _

@@ -19,7 +19,7 @@ package org.openurp.edu.his.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.model.ArchivedByYear
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{GradeType, GradingMode}
@@ -28,7 +28,7 @@ import org.openurp.edu.grade.model.{GaGrade, Grade}
 /** 归档总评成绩
  */
 @archive
-class HisGaGrade extends LongId, Grade, Updated, Remark, ArchivedByYear {
+class HisGaGrade extends LongId, Grade, Updatable, Remark, ArchivedByYear {
   /** 成绩类型 */
   var gradeType: GradeType = _
   /** 成绩记录方式 */

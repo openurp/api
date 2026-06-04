@@ -18,13 +18,13 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.IntId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 
 object Version {
   val Latest = "0.20.4"
 }
 
-class Version extends IntId, Updated {
+class Version extends IntId, Updatable {
 
   var version: String = _
 

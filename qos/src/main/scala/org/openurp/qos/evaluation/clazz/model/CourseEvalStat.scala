@@ -18,7 +18,7 @@
 package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.beangle.data.model.{LongId, LongIdEntity}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
@@ -39,7 +39,7 @@ trait Rank {
   var schoolRank: Int = _
 }
 
-class CourseEvalStat extends LongId, Updated, Rank {
+class CourseEvalStat extends LongId, Updatable, Rank {
   /** 课程序号 */
   var crn: scala.Option[String] = None
   /** 项目 */

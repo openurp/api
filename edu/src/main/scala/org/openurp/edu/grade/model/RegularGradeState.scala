@@ -19,7 +19,7 @@ package org.openurp.edu.grade.model
 
 import org.beangle.commons.json.{JsonArray, JsonObject}
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.RegularGradeState.Component
 
@@ -27,7 +27,7 @@ import java.time.Instant
 
 /** 平时成绩状态
  */
-class RegularGradeState extends LongId, Updated {
+class RegularGradeState extends LongId, Updatable {
 
   /** 教学任务 */
   var clazz: Clazz = _

@@ -19,7 +19,7 @@ package org.openurp.base.edu.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Remark, TemporalOn, Updatable}
 import org.openurp.base.edu.model.BookAdoption.UseTextBook
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{AuditStatus, Department, Semester, User}
@@ -31,7 +31,7 @@ import scala.collection.mutable
 /** 课程简介
  *
  */
-class CourseProfile extends LongId, Updated, TemporalOn, Remark {
+class CourseProfile extends LongId, Updatable, TemporalOn, Remark {
 
   /** 修订学期 */
   var semester: Semester = _

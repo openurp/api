@@ -19,7 +19,7 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.{Course, Textbook}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.*
@@ -36,7 +36,7 @@ import scala.collection.mutable
  * <li>5、任务要求（教室要求、课程要求（教材、参考书、案例）、是否挂牌、是否双语）</li>
  * <li>6、创建时间、修改时间、备注</li>
  */
-class Clazz extends LongId, ProjectBased, Updated, Cloneable, Remark {
+class Clazz extends LongId, ProjectBased, Updatable, Cloneable, Remark {
 
   /** 课程序号 */
   var crn: String = _

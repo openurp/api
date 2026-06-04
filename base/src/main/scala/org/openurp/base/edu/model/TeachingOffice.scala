@@ -18,12 +18,12 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updatable}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Project}
 
 /** 教研室 */
-class TeachingOffice extends LongId, Coded, Named, Updated, TemporalOn {
+class TeachingOffice extends LongId, Coded, Named, Updatable, TemporalOn {
 
   /** 项目 */
   var project: Project = _

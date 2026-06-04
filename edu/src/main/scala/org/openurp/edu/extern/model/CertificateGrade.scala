@@ -19,7 +19,7 @@ package org.openurp.edu.extern.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
@@ -31,7 +31,7 @@ import scala.collection.mutable
 /**
  * 校外证书成绩
  */
-class CertificateGrade extends LongId, Updated {
+class CertificateGrade extends LongId, Updatable {
 
   var std: Student = _
 

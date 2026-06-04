@@ -35,7 +35,7 @@ import scala.collection.mutable.ListBuffer
  *
  * @author chaostone
  */
-class SharePlan extends LongId, EduLevelBased, Named, Updated, TemporalOn, Remark, Cloneable {
+class SharePlan extends LongId, EduLevelBased, Named, Updatable, TemporalOn, Remark, Cloneable {
 
   /** 起始年级 */
   var fromGrade: Grade = _

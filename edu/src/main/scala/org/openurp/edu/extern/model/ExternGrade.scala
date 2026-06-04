@@ -19,7 +19,7 @@ package org.openurp.edu.extern.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.AuditStatus
 import org.openurp.base.std.model.ExternStudent
@@ -30,7 +30,7 @@ import scala.collection.mutable
 /**
  * 外校学习成绩
  */
-class ExternGrade extends LongId, Remark, Updated {
+class ExternGrade extends LongId, Remark, Updatable {
 
   var externStudent: ExternStudent = _
 

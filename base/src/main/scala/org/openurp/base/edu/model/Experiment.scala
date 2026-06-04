@@ -23,7 +23,7 @@ import org.openurp.code.edu.model.{ExperimentCategory, ExperimentType, Level1Dis
 
 /** 课程实验库
  */
-class Experiment extends LongId, Coded, Named, EnNamed, Updated, TemporalOn, Remark {
+class Experiment extends LongId, Coded, Named, EnNamed, Updatable, TemporalOn, Remark {
 
   /** 课程 */
   var course: Course = _

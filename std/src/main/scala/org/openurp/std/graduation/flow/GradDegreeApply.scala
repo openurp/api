@@ -20,7 +20,7 @@ package org.openurp.std.graduation.flow
 import org.beangle.commons.json.{Json, JsonObject}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Degree
 import org.openurp.std.graduation.flow.AbstractGradApply

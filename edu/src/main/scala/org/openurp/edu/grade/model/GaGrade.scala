@@ -18,7 +18,7 @@
 package org.openurp.edu.grade.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{GradeType, GradingMode}
 import org.openurp.edu.grade.model.Grade
@@ -31,7 +31,7 @@ import org.openurp.edu.grade.model.Grade
  * @author chaostone
  * @since 2005
  */
-class GaGrade extends LongId, Grade, Updated, Remark {
+class GaGrade extends LongId, Grade, Updatable, Remark {
   /** 成绩类型 */
   var gradeType: GradeType = _
   /** 成绩记录方式 */

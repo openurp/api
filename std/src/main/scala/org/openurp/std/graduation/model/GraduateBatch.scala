@@ -19,7 +19,7 @@ package org.openurp.std.graduation.model
 
 import org.beangle.commons.json.{Json, JsonObject}
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.Project
 import org.openurp.base.std.model.GraduateSeason
 
@@ -27,7 +27,7 @@ import java.time.{Instant, LocalDate}
 
 /** 毕业批次
  */
-class GraduateBatch extends LongId, Updated {
+class GraduateBatch extends LongId, Updatable {
 
   var project: Project = _
 

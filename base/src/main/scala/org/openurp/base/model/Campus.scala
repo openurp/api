@@ -22,7 +22,7 @@ import org.beangle.data.model.pojo.*
 
 /** 校区
  */
-class Campus extends IntId, Cloneable, Coded, Named, EnNamed, TemporalOn, Updated, Remark {
+class Campus extends IntId, Cloneable, Coded, Named, EnNamed, TemporalOn, Updatable, Remark {
   var school: School = _
   var shortName: Option[String] = None
 }

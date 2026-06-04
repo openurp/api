@@ -18,7 +18,7 @@
 package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{TemporalOn, Updated}
+import org.beangle.data.model.pojo.{TemporalOn, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 
@@ -28,7 +28,7 @@ import java.util.Locale
 /**
  * 课程教学大纲文档
  */
-class SyllabusDoc extends LongId, Updated, TemporalOn {
+class SyllabusDoc extends LongId, Updatable, TemporalOn {
   /** 课程 */
   var course: Course = _
 

@@ -18,12 +18,12 @@
 package org.openurp.base.resource.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updatable}
 import org.openurp.base.model.School
 
 /** 实验室
  */
-class Laboratory extends LongId, Named, Coded, Updated, TemporalOn {
+class Laboratory extends LongId, Named, Coded, Updatable, TemporalOn {
   /** 学校 */
   var school: School = _
   /** 房间号 */

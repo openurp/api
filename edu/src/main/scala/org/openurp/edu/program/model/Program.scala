@@ -19,7 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updated}
+import org.beangle.data.model.pojo.{DateRange, Named, Remark, Updatable}
 import org.openurp.base.edu.model.{Course, Major, MajorDirection}
 import org.openurp.base.model.{AuditStatus, Campus, Department, EduLevelBased}
 import org.openurp.base.std.model.Grade
@@ -35,7 +35,7 @@ import scala.collection.mutable
  * @author chaostone
  *
  */
-class Program extends LongId, Updated, Named, Cloneable, DateRange, EduLevelBased, Remark {
+class Program extends LongId, Updatable, Named, Cloneable, DateRange, EduLevelBased, Remark {
 
   /** 年级 */
   var grade: Grade = _

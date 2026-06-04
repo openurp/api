@@ -18,13 +18,13 @@
 package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{Department, Project, Semester}
 
 /** 按照开课院系统计
  *
  */
-class DepartEvalStat extends LongId, Updated {
+class DepartEvalStat extends LongId, Updatable {
 
   /** 项目 */
   var project: Project = _

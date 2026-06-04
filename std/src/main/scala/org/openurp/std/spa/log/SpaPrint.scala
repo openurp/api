@@ -19,7 +19,7 @@ package org.openurp.std.spa.log
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.log
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.model.User
 import org.openurp.code.std.model.StdDocType
 
@@ -27,7 +27,7 @@ import org.openurp.code.std.model.StdDocType
  * 记录每次打印文档的流水
  */
 @log
-class SpaPrint extends LongId, Updated, Remark {
+class SpaPrint extends LongId, Updatable, Remark {
   /** 学生 */
   var user: User = _
 

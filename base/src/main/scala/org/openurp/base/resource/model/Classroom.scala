@@ -28,7 +28,7 @@ import scala.collection.mutable
 /**
  * 教室
  */
-class Classroom extends LongId, Named, EnNamed, Coded, Updated, TemporalOn {
+class Classroom extends LongId, Named, EnNamed, Coded, Updatable, TemporalOn {
 
   /** 学校 */
   var school: School = _

@@ -19,7 +19,7 @@ package org.openurp.qos.evaluation.base.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Remark, TemporalOn, Updatable}
 import org.openurp.base.model.{Department, Project}
 
 /**
@@ -27,7 +27,7 @@ import org.openurp.base.model.{Department, Project}
  *
  * @author chaostone
  */
-class Question extends LongId, Updated, TemporalOn {
+class Question extends LongId, Updatable, TemporalOn {
   var project: Project = _
   /** 问题内容 */
   var contents: String = _

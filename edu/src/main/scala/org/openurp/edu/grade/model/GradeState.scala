@@ -18,7 +18,7 @@
 package org.openurp.edu.grade.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{TemporalOn, Updated}
+import org.beangle.data.model.pojo.{TemporalOn, Updatable}
 import org.openurp.code.edu.model.{GradeType, GradingMode}
 
 /**
@@ -34,7 +34,7 @@ import org.openurp.code.edu.model.{GradeType, GradingMode}
  *
  * @author 塞外狂人,chaostone
  */
-trait GradeState extends LongId, Updated {
+trait GradeState extends LongId, Updatable {
 
   /**
    * 成绩类型

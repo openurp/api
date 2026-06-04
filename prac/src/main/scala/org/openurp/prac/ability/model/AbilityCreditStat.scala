@@ -18,12 +18,12 @@
 package org.openurp.prac.ability.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.std.model.Student
 
 /** 学生能力素质能力认定学分
  */
-class AbilityCreditStat extends LongId, Updated, Remark {
+class AbilityCreditStat extends LongId, Updatable, Remark {
 
   var std: Student = _
 

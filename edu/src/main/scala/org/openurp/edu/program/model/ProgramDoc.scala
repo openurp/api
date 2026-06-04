@@ -18,7 +18,7 @@
 package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.data.model.pojo.{Hierarchical, Named, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Hierarchical, Named, TemporalOn, Updatable}
 import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.model.{Department, EduLevelBased}
 import org.openurp.code.std.model.StdType
@@ -30,7 +30,7 @@ import scala.collection.mutable
 /** 培养方案文档
  * 该文档与培养方案一对一
  */
-class ProgramDoc extends LongId, Updated {
+class ProgramDoc extends LongId, Updatable {
   /** 语言 */
   var docLocale: Locale = _
   /** 方案 */
@@ -120,7 +120,7 @@ class ProgramDocSection extends LongId, Named, Hierarchical[ProgramDocSection] {
 /** 培养方案文档模板
  * 限定在某个层次的,某个部门的文档模板，部门可选
  */
-class ProgramDocTemplate extends IntId, Named, EduLevelBased, TemporalOn, Updated {
+class ProgramDocTemplate extends IntId, Named, EduLevelBased, TemporalOn, Updatable {
   /** 部门 */
   var department: Option[Department] = None
   /** 语言 */

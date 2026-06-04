@@ -18,11 +18,11 @@
 package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 
 /** 推优答辩项目
  */
-class PromotionDefenseMember extends LongId, Updated {
+class PromotionDefenseMember extends LongId, Updatable {
 
   var group: PromotionDefenseGroup = _
 

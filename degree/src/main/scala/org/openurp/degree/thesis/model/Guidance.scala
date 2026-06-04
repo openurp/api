@@ -18,9 +18,9 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 
-class Guidance extends LongId, Updated {
+class Guidance extends LongId, Updatable {
 
   var writer: Writer = _
 

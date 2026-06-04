@@ -19,7 +19,7 @@ package org.openurp.edu.room.model
 
 import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.Department
 import org.openurp.base.resource.model.Classroom
 import org.openurp.code.edu.model.ActivityType
@@ -27,7 +27,7 @@ import org.openurp.code.edu.model.ActivityType
 /**
  * 房间占用情况
  */
-class Occupancy extends LongId, Updated {
+class Occupancy extends LongId, Updatable {
 
   /** 房间 */
   var room: Classroom = _

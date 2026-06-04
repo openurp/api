@@ -18,7 +18,7 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.AuditStatus
 
 import java.time.Instant

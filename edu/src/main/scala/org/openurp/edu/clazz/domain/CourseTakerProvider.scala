@@ -21,7 +21,7 @@ import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.model.Semester
 import org.openurp.base.service.SemesterService
 import org.openurp.base.std.model.Student
-import org.openurp.edu.clazz.model.CourseTaker
+import org.openurp.edu.clazz.model.{Clazz, CourseTaker}
 import org.openurp.edu.his.model.HisCourseTaker
 
 trait CourseTakerProvider {
@@ -29,6 +29,8 @@ trait CourseTakerProvider {
   def get(std: Student): Seq[CourseTaker]
 
   def get(std: Student, semester: Semester): Seq[CourseTaker]
+
+  def get(clazz: Clazz): Seq[CourseTaker]
 }
 
 class DefaultCourseTakerProvider extends CourseTakerProvider {
@@ -56,6 +58,20 @@ class DefaultCourseTakerProvider extends CourseTakerProvider {
     } else {
       val query = OqlBuilder.from(classOf[CourseTaker], "ct")
       query.where("ct.std = :std and ct.semester=:semester", std, semester)
+      entityDao.search(query)
+    }
+  }
+
+  override def get(clazz: Clazz): Seq[CourseTaker] = {
+    val semester = clazz.semester
+    if (semester.archived) {
+      val query = OqlBuilder.from(classOf[HisCourseTaker], "ct")
+      query.where("ct.clazz = :clazz", clazz, semester)
+      query.where("ct.schoolYear=:schoolYear", semester.year.startYear)
+      entityDao.search(query).map(_.convert())
+    } else {
+      val query = OqlBuilder.from(classOf[CourseTaker], "ct")
+      query.where("ct.clazz = :clazz", clazz)
       entityDao.search(query)
     }
   }

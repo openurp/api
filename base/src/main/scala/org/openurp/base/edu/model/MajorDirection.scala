@@ -29,7 +29,7 @@ import scala.collection.mutable
  *
  * @author chaostone
  */
-class MajorDirection extends LongId, TemporalOn, Coded, Named, EnNamed, Updated, Remark {
+class MajorDirection extends LongId, TemporalOn, Coded, Named, EnNamed, Updatable, Remark {
 
   var project: Project = _
   /** 所属专业 */

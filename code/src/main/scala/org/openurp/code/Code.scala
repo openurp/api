@@ -33,7 +33,7 @@ object CodeCategory {
   val School = "school"
 }
 
-abstract class CodeBean extends IntId, Code, TemporalOn, Updated, Remark {
+abstract class CodeBean extends IntId, Code, TemporalOn, Updatable, Remark {
   def codeName: String = s"$code $name"
 
   def enName2: String = {

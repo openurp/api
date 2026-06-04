@@ -22,12 +22,12 @@ import org.openurp.edu.clazz.model.Clazz
 
 import java.time.Instant
 
-/** 课程考勤统计 */
-class AttendClazzStat extends LongId {
+/** 单词课程考勤统计 */
+class LessonAttendance extends LongId {
 
   var clazz: Clazz = _
 
-  /** 考勤次数 */
+  /** 第几次考勤 */
   var idx: Int = _
 
   /** 上课开始时间 */

@@ -18,7 +18,7 @@
 package org.openurp.std.archive.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.StdDocType
 
@@ -26,7 +26,7 @@ import java.time.Instant
 
 /** 学生文档归档记录
  */
-class ArchiveDoc extends LongId, Updated, Remark {
+class ArchiveDoc extends LongId, Updatable, Remark {
 
   var std: Student = _
 

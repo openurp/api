@@ -19,7 +19,7 @@ package org.openurp.base.edu.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{EnNamed, Named, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{EnNamed, Named, TemporalOn, Updatable}
 import org.openurp.base.model.Department
 import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.{CourseTag, ExamMode, TeachingNature}
@@ -28,7 +28,7 @@ import java.time.{Instant, LocalDate}
 
 /** 课程变化日志
  */
-class CourseJournal extends LongId, Named, EnNamed, Updated, TemporalOn {
+class CourseJournal extends LongId, Named, EnNamed, Updatable, TemporalOn {
   /** 课程 */
   var course: Course = _
   /** 开课部门 */

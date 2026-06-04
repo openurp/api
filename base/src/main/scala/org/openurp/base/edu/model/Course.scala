@@ -36,7 +36,7 @@ import java.time.LocalDate
  * @author chaostone
  * @since 2008-09-24
  */
-class Course extends LongId, ProjectBased, Ordered[Course], Updated, TemporalOn, Coded, Named, EnNamed, Remark {
+class Course extends LongId, ProjectBased, Ordered[Course], Updatable, TemporalOn, Coded, Named, EnNamed, Remark {
   /** 培养层次要求 */
   var levels = Collections.newBuffer[CourseLevel]
   /** 院系 */

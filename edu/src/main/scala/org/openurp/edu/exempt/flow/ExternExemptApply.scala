@@ -19,14 +19,14 @@ package org.openurp.edu.exempt.flow
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{AuditStatus, Semester}
 import org.openurp.base.std.model.ExternStudent
 
 /** 外校成绩免修申请
  */
 @flow
-class ExternExemptApply extends LongId, Updated {
+class ExternExemptApply extends LongId, Updatable {
 
   /** 学年学期 */
   var semester: Semester = _

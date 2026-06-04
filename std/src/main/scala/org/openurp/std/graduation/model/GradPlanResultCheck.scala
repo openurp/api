@@ -18,12 +18,12 @@
 package org.openurp.std.graduation.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 
 /** 计划完成情况确认
  */
-class GradPlanResultCheck extends LongId, Updated {
+class GradPlanResultCheck extends LongId, Updatable {
 
   /** 学生 */
   var std: Student = _

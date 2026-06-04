@@ -18,11 +18,11 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 
 import java.time.Instant
 
-class Deadline extends LongId, Updated {
+class Deadline extends LongId, Updatable {
 
   def this(stage: Stage, writer: Writer) = {
     this()

@@ -91,6 +91,8 @@ class DefaultMapping extends MappingModule {
     bind[CourseTag]
     bind[ProgramCourseTag]
     bind[ClazzArchiveDoc]
+    bind[ExamBannedReason]
+    bind[AttendanceMode]
     all.cacheAll()
   }
 }

@@ -18,11 +18,11 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 
 import java.time.LocalDate
 
-class DefenseInfo extends LongId, Updated {
+class DefenseInfo extends LongId, Updatable {
 
   /** 学生 */
   var writer: Writer = _

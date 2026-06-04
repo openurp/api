@@ -19,7 +19,7 @@ package org.openurp.edu.program.flow
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.User
 import org.openurp.base.std.model.Student
@@ -30,7 +30,7 @@ import java.time.Instant
 /** 课程类别转换申请
  */
 @flow
-class CourseTypeChangeApply extends LongId, Updated, Remark {
+class CourseTypeChangeApply extends LongId, Updatable, Remark {
 
   /** 学生 */
   var std: Student = _

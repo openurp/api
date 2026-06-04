@@ -18,11 +18,11 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 
 /** 盲审名单
  */
-class BlindPeerReview extends LongId, Updated, Remark {
+class BlindPeerReview extends LongId, Updatable, Remark {
 
   /** 作者 */
   var writer: Writer = _

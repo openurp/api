@@ -23,6 +23,6 @@ import org.beangle.data.model.pojo.*
 /** 其他培训机构
  *
  */
-class ExternSchool extends IntId, Named, Updated, TemporalOn, Coded {
+class ExternSchool extends IntId, Named, Updatable, TemporalOn, Coded {
 
 }

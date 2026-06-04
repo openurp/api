@@ -19,7 +19,7 @@ package org.openurp.edu.grade.model
 
 import org.beangle.commons.lang.Objects
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{GradeType, GradingMode}
 
@@ -45,7 +45,7 @@ object Grade {
  * @author chaostone
  * @since 2006
  */
-trait Grade extends LongId, Ordered[Grade], Updated {
+trait Grade extends LongId, Ordered[Grade], Updatable {
 
   var createdAt: Instant = _
 

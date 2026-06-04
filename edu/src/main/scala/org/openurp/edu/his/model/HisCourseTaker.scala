@@ -19,7 +19,7 @@ package org.openurp.edu.his.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{ArchivedByYear, Semester}
 import org.openurp.base.std.model.Student
@@ -29,7 +29,7 @@ import org.openurp.edu.clazz.model.{Clazz, CourseTaker, Subclazz}
 /** 归档上课记录
  */
 @archive
-class HisCourseTaker extends LongId, Updated, Remark, ArchivedByYear {
+class HisCourseTaker extends LongId, Updatable, Remark, ArchivedByYear {
   /** 教学任务 */
   var clazz: Clazz = _
   /** 课程 */

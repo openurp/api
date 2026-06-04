@@ -18,13 +18,13 @@
 package org.openurp.prac.activity.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.code.prac.model.StdPracticeCategory
 
 /** 学生实践学时
  */
-class StdPracticeHour extends LongId, Updated {
+class StdPracticeHour extends LongId, Updatable {
 
   var std: Student = _
   /** 实践课程大类 */

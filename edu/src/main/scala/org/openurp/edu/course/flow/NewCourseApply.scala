@@ -20,14 +20,14 @@ package org.openurp.edu.course.flow
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.{EnNamed, Named, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{EnNamed, Named, TemporalOn, Updatable}
 import org.openurp.base.model.{AuditStatus, Department, ProjectBased, User}
 import org.openurp.code.edu.model.*
 
 /** 新开课程申请
  */
 @flow
-class NewCourseApply extends LongId, ProjectBased, Updated, TemporalOn, Named, EnNamed {
+class NewCourseApply extends LongId, ProjectBased, Updatable, TemporalOn, Named, EnNamed {
   var code: Option[String] = None
   /** 院系 */
   var department: Department = _

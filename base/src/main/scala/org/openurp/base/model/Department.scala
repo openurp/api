@@ -27,7 +27,7 @@ import scala.collection.mutable
  * 部门
  */
 class Department extends IntId, Coded, Named, EnNamed, Hierarchical[Department]
-  , TemporalOn, Updated, Remark {
+  , TemporalOn, Updatable, Remark {
   var school: School = _
   /** 简称 */
   var shortName: Option[String] = None

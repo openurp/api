@@ -19,7 +19,7 @@ package org.openurp.prac.ability.flow
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Certificate
@@ -29,7 +29,7 @@ import java.time.YearMonth
 /** 学生能力证书学分申请
  */
 @flow
-class AbilityCreditApply extends LongId, Updated {
+class AbilityCreditApply extends LongId, Updatable {
   /** 学生 */
   var std: Student = _
   /** 申请学期 */

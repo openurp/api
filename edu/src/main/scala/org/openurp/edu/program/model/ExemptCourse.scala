@@ -19,7 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.EduLevelBased
 import org.openurp.base.std.model.Grade
@@ -31,7 +31,7 @@ import scala.collection.mutable
 /** 免修课程
  * 规定课程在哪些学生范围中，可以免修
  */
-class ExemptCourse extends LongId, EduLevelBased, Updated, Remark {
+class ExemptCourse extends LongId, EduLevelBased, Updatable, Remark {
   /** 起始年级 */
   var fromGrade: Grade = _
   /** 截止年级 */

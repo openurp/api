@@ -20,12 +20,12 @@ package org.openurp.base.config.model
 import org.beangle.commons.json.JsonObject
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.ProjectBased
 
 /** 业务设置 */
 @config
-class BusinessSetting extends LongId, ProjectBased, Updated {
+class BusinessSetting extends LongId, ProjectBased, Updatable {
 
   /** 业务类型 */
   var business: String = _

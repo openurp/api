@@ -20,7 +20,7 @@ package org.openurp.edu.program.flow
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.User
 import org.openurp.base.std.model.Student
@@ -30,7 +30,7 @@ import java.time.Instant
 /** 学生个人替代课程申请
  */
 @flow
-class CourseAlternativeApply extends LongId, Updated, Remark {
+class CourseAlternativeApply extends LongId, Updatable, Remark {
 
   /** 学生 */
   var std: Student = _

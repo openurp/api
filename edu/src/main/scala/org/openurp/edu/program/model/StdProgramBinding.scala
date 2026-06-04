@@ -18,12 +18,12 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 
 /** 学生个人培养计划绑定
  */
-class StdProgramBinding extends LongId, Updated {
+class StdProgramBinding extends LongId, Updatable {
 
   /** 学生 */
   var std: Student = _

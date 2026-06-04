@@ -26,7 +26,7 @@ import org.openurp.code.asset.model.{BuildingType, RoomType}
 /**
  * 房间
  */
-class Room extends IntId, Coded, Named, TemporalOn, Updated, Remark {
+class Room extends IntId, Coded, Named, TemporalOn, Updatable, Remark {
 
   /** 所属学校 */
   var school: School = _

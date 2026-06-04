@@ -20,12 +20,12 @@ package org.openurp.qos.evaluation.base.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Remark, TemporalOn, Updatable}
 import org.openurp.base.model.{Department, Project}
 
 /** 评教问卷
  */
-class Questionnaire extends LongId, Updated, TemporalOn, Remark {
+class Questionnaire extends LongId, Updatable, TemporalOn, Remark {
   var project: Project = _
   /** 问卷标题 */
   var title: String = _

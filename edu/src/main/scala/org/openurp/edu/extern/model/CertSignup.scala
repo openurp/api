@@ -18,7 +18,7 @@
 package org.openurp.edu.extern.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Certificate
@@ -28,7 +28,7 @@ import org.openurp.code.edu.model.Certificate
  *
  * @author chaostone
  */
-class CertSignup extends LongId, Updated {
+class CertSignup extends LongId, Updatable {
   /** 学生 */
   var std: Student = _
   /** 学年学期 */

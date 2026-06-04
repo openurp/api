@@ -25,7 +25,7 @@ import org.openurp.code.asset.model.BuildingType
 /**
  * 建筑
  */
-class Building extends IntId, Coded, Named, EnNamed, TemporalOn, Updated, Remark {
+class Building extends IntId, Coded, Named, EnNamed, TemporalOn, Updatable, Remark {
   var school: School = _
   /** 所属校区 */
   var campus: Campus = _

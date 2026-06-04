@@ -18,7 +18,7 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.GraduateSeason
 import org.openurp.code.person.model.Language
 
@@ -26,7 +26,7 @@ import java.time.YearMonth
 
 /** 论文抽检
  */
-class ThesisCheck extends LongId, Updated {
+class ThesisCheck extends LongId, Updatable {
   /** 毕业季 */
   var season: GraduateSeason = _
 

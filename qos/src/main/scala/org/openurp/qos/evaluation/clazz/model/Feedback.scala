@@ -19,7 +19,7 @@ package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Semester}
@@ -31,7 +31,7 @@ import java.time.Instant
 /**
  * 开放式文字评教
  */
-class Feedback extends LongId, Updated {
+class Feedback extends LongId, Updatable {
   /** 课程序号 */
   var crn: String = _
   /** 教学任务 */

@@ -18,14 +18,14 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.User
 import org.openurp.edu.clazz.model.Clazz
 
 /**
  * 教学班文件资料
  */
-class ClazzDoc extends LongId, Updated {
+class ClazzDoc extends LongId, Updatable {
 
   var clazz: Clazz = _
 

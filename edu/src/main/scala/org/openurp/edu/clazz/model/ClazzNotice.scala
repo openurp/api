@@ -19,7 +19,7 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.User
 import org.openurp.edu.clazz.model.Clazz
 
@@ -28,7 +28,7 @@ import scala.collection.mutable
 /**
  * 教学班通知
  */
-class ClazzNotice extends LongId, Updated {
+class ClazzNotice extends LongId, Updatable {
 
   var clazz: Clazz = _
 

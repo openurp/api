@@ -20,7 +20,7 @@ package org.openurp.edu.exam.model
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Named, Updated}
+import org.beangle.data.model.pojo.{Named, Updatable}
 import org.openurp.base.model.SemesterBased
 import org.openurp.base.resource.model.Classroom
 import org.openurp.code.edu.model.ExamType
@@ -30,7 +30,7 @@ import java.time.LocalDate
 import scala.collection.mutable
 
 /** 排考组 */
-class ExamGroup extends LongId, Named, SemesterBased, Updated {
+class ExamGroup extends LongId, Named, SemesterBased, Updatable {
 
   /** 考试类型 */
   var examType: ExamType = _

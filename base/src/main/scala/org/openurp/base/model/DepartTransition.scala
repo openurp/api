@@ -18,13 +18,13 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 
 import java.time.LocalDate
 
 /** 部门变迁记录
  */
-class DepartTransition extends LongId, Updated, Remark {
+class DepartTransition extends LongId, Updatable, Remark {
 
   var from: Department = _
 

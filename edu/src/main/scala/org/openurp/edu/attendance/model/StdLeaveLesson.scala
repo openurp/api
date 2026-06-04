@@ -17,7 +17,6 @@
 
 package org.openurp.edu.attendance.model
 
-import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student

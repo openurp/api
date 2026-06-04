@@ -19,7 +19,7 @@ package org.openurp.edu.grade.config
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{Coded, Named, Remark, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, Remark, Updatable}
 import org.openurp.base.model.Project
 
 /**
@@ -35,7 +35,7 @@ import org.openurp.base.model.Project
  * 项目和代码 联合唯一
  */
 @config
-class TranscriptTemplate extends LongId, Updated, Remark, Coded, Named {
+class TranscriptTemplate extends LongId, Updatable, Remark, Coded, Named {
 
   /** 项目 */
   var project: Project = _

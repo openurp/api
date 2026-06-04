@@ -19,7 +19,7 @@ package org.openurp.trd.achievement.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Named, Updated}
+import org.beangle.data.model.pojo.{Named, Updatable}
 import org.openurp.base.edu.model.Textbook
 import org.openurp.code.sin.model.Press
 
@@ -28,7 +28,7 @@ import scala.collection.mutable
 
 /** 教材获奖信息
  */
-class TextbookAchievement extends LongId, Named, Updated {
+class TextbookAchievement extends LongId, Named, Updatable {
 
   /** 教材 */
   var isbn: String = _

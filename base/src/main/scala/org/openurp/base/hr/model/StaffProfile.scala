@@ -18,7 +18,7 @@
 package org.openurp.base.hr.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.hr.model.Staff
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.{Degree, DegreeLevel, EducationDegree}
@@ -31,7 +31,7 @@ import java.time.LocalDate
 /**
  * 教师基本情况
  */
-class StaffProfile extends LongId, Updated {
+class StaffProfile extends LongId, Updatable {
   /** 教师 */
   var staff: Staff = _
 

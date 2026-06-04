@@ -18,7 +18,7 @@
 package org.openurp.prac.ability.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Certificate
@@ -27,7 +27,7 @@ import java.time.YearMonth
 
 /** 学生能力素质能力证书
  */
-class AbilityCredit extends LongId, Updated, Remark {
+class AbilityCredit extends LongId, Updatable, Remark {
   /** 学生 */
   var std: Student = _
   /** 申请学期 */

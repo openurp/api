@@ -18,7 +18,7 @@
 package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.Semester
@@ -30,7 +30,7 @@ import java.time.Instant
 /**
  * 毕业清考名单
  */
-class FinalMakeupTaker extends LongId, Updated, Remark {
+class FinalMakeupTaker extends LongId, Updatable, Remark {
 
   /** 考试学期 */
   var semester: Semester = _

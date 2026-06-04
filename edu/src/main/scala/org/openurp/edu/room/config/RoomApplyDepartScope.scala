@@ -20,14 +20,14 @@ package org.openurp.edu.room.config
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{InstantRange, Remark, Updated}
+import org.beangle.data.model.pojo.{InstantRange, Remark, Updatable}
 import org.openurp.base.model.Department
 import org.openurp.base.resource.model.Classroom
 
 import scala.collection.mutable
 
 @config
-class RoomApplyDepartScope extends LongId, InstantRange, Remark, Updated {
+class RoomApplyDepartScope extends LongId, InstantRange, Remark, Updatable {
 
   var depart: Department = _
 

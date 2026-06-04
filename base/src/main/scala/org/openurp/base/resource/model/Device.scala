@@ -24,7 +24,7 @@ import org.openurp.code.asset.model.DeviceType
 
 /** 房间内的设备
  */
-class Device extends LongId, Coded, Named, Updated, Remark, TemporalOn {
+class Device extends LongId, Coded, Named, Updatable, Remark, TemporalOn {
 
   /** 学校 */
   var school: School = _

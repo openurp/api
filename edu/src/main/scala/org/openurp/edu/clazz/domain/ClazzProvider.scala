@@ -31,6 +31,8 @@ trait ClazzProvider {
   def getClazzes(semester: Semester, squad: Squad): Seq[Clazz]
 
   def getClazzes(semester: Semester, teacher: Teacher, project: Project): Seq[Clazz]
+
+  def getClazzes(semester: Semester, teacher: Teacher): Seq[Clazz]
 }
 
 class DefaultClazzProvider extends ClazzProvider {
@@ -62,6 +64,13 @@ class DefaultClazzProvider extends ClazzProvider {
   override def getClazzes(semester: Semester, teacher: Teacher, project: Project): Seq[Clazz] = {
     val query = OqlBuilder.from(classOf[Clazz], "clazz")
     query.where("clazz.project=:project and clazz.semester=:semester", project, semester)
+    query.where(":teacher in elements(clazz.teachers)", teacher)
+    entityDao.search(query)
+  }
+
+  override def getClazzes(semester: Semester, teacher: Teacher): Seq[Clazz] = {
+    val query = OqlBuilder.from(classOf[Clazz], "clazz")
+    query.where("clazz.semester=:semester", semester)
     query.where(":teacher in elements(clazz.teachers)", teacher)
     entityDao.search(query)
   }

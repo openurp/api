@@ -19,14 +19,14 @@ package org.openurp.std.graduation.flow
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.std.graduation.model.GraduateBatch
 
 /** 本科学生第二学士学位学位申请
  */
 @flow
-class GradBachelor2ndApply extends LongId, Updated {
+class GradBachelor2ndApply extends LongId, Updatable {
 
   /** 毕业批次 */
   var batch: GraduateBatch = _

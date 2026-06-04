@@ -31,7 +31,7 @@ import java.time.LocalDate
  *
  * @author hs
  */
-class Major extends LongId, ProjectBased, TemporalOn, Updated, Coded, Named, EnNamed, Remark {
+class Major extends LongId, ProjectBased, TemporalOn, Updatable, Coded, Named, EnNamed, Remark {
 
   /** 简称 */
   var shortName: Option[String] = None

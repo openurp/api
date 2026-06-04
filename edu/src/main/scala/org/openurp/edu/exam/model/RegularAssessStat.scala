@@ -15,32 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.std.info.model
+package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
-import org.openurp.base.std.model.Student
-import org.openurp.code.edu.model.{DisciplineCategory, Institution}
+import org.openurp.code.edu.model.AttendanceMode
+import org.openurp.edu.clazz.model.Clazz
 
-/** 学生的主修信息
+/**
+ * 日常考核评估统计
  */
-class MajorStudent extends LongId, Updatable {
+class RegularAssessStat extends LongId, Updatable {
+  var clazz: Clazz = _
+  var attendanceMode: AttendanceMode = _
+  var disqualifiedCount: Int = _
+  var assignmentExceedCount: Int = _
+  var absenceExceedCount: Int = _
+  var collegeReviewed: Option[Boolean] = None
 
-  /** 主修学号 */
-  var code: String = _
-
-  /** 学生 */
-  var std: Student = _
-
-  /** 主修学校 */
-  var school: Institution = _
-
-  /** 主修专业 */
-  var majorName: String = _
-
-  /** 主修专业英文名 */
-  var enMajorName: Option[String] = None
-
-  /** 主修专业学科门类 */
-  var majorCategory: DisciplineCategory = _
+  def this(clazz: Clazz) = {
+    this()
+    this.clazz = clazz
+  }
 }

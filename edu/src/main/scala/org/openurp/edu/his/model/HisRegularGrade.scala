@@ -20,7 +20,7 @@ package org.openurp.edu.his.model
 import org.beangle.commons.json.{JsonArray, JsonObject}
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.ArchivedByYear
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
@@ -29,7 +29,7 @@ import org.openurp.edu.grade.model.RegularGrade
 /** 归档平时成绩
  */
 @archive
-class HisRegularGrade extends LongId, Updated, ArchivedByYear {
+class HisRegularGrade extends LongId, Updatable, ArchivedByYear {
   /** 教学班 */
   var clazz: Clazz = _
   /** 学生 */

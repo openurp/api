@@ -18,11 +18,11 @@
 package org.openurp.base.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 
 /** 用户组成员
  */
-class UserGroupMember extends LongId, Updated {
+class UserGroupMember extends LongId, Updatable {
 
   var group: UserGroup = _
 

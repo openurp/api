@@ -27,7 +27,7 @@ import org.openurp.base.model.Project
  *
  * @author chaostone
  */
-class Indicator extends LongId, Coded, Named, Updated, TemporalOn, Remark, Ordered[Indicator] {
+class Indicator extends LongId, Coded, Named, Updatable, TemporalOn, Remark, Ordered[Indicator] {
   var project: Project = _
   /** 英文名称 */
   var enName: scala.Option[String] = None

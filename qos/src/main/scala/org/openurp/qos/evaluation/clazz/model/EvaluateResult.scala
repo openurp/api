@@ -19,7 +19,7 @@ package org.openurp.qos.evaluation.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.Department
 import org.openurp.base.std.model.Student
@@ -33,7 +33,7 @@ import java.time.Instant
  *
  * @author chaostone
  */
-class EvaluateResult extends LongId, Updated {
+class EvaluateResult extends LongId, Updatable {
   /** 教学任务 */
   var clazz: Clazz = _
   /** 教师 */

@@ -18,7 +18,7 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 
@@ -26,7 +26,7 @@ import java.time.Instant
 
 /** 学生个人免修课程
  */
-class StdExemptCourse extends LongId, Remark, Updated {
+class StdExemptCourse extends LongId, Remark, Updatable {
   /** 学生 */
   var std: Student = _
   /** 免修课程 */

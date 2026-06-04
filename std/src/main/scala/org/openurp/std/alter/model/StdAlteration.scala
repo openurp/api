@@ -19,7 +19,7 @@ package org.openurp.std.alter.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.{StdAlterReason, StdAlterType}
@@ -31,7 +31,7 @@ import scala.collection.mutable.Buffer
 /**
  * 学籍异动
  */
-class StdAlteration extends LongId, Updated, Remark {
+class StdAlteration extends LongId, Updatable, Remark {
   /** 变动学生 */
   var std: Student = _
   /** 学年学期 */

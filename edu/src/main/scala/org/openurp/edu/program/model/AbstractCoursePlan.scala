@@ -18,7 +18,7 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.edu.model.Course
 import org.openurp.code.edu.model.{CourseType, EducationLevel, TeachingNature}
 
@@ -31,7 +31,7 @@ import scala.collection.mutable.ListBuffer
  * @author chaostone
  * @since 2009
  */
-trait AbstractCoursePlan extends LongId, CoursePlan, Updated {
+trait AbstractCoursePlan extends LongId, CoursePlan, Updatable {
   /** 培养方案 */
   var program: Program = _
   /** 课程组 */

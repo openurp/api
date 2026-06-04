@@ -18,14 +18,14 @@
 package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.code.geo.model.RailwayStation
 
 /**
  * 家庭信息
  */
-class Home extends LongId, Updated {
+class Home extends LongId, Updatable {
 
   /** 学生 */
   var std: Student = _

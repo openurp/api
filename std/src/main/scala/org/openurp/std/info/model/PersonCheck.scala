@@ -20,11 +20,11 @@ package org.openurp.std.info.model
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Objects
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 
 /** 学生信息确认 */
-class PersonCheck extends LongId, Updated {
+class PersonCheck extends LongId, Updatable {
 
   var std: Student = _
 

@@ -18,13 +18,13 @@
 package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 
 /**
  * 联系信息
  */
-class Contact extends LongId , Updated{
+class Contact extends LongId , Updatable{
 
   /**学生*/
   var std: Student = _

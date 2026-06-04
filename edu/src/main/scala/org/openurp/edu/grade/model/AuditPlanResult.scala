@@ -19,13 +19,13 @@ package org.openurp.edu.grade.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 
 import scala.collection.mutable
 
-class AuditPlanResult extends LongId, Updated, Remark {
+class AuditPlanResult extends LongId, Updatable, Remark {
 
   var std: Student = _
 

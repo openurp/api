@@ -18,14 +18,14 @@
 package org.openurp.std.transfer.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.edu.model.{Major, MajorDirection}
 import org.openurp.base.model.{AuditStatus, Department}
 import org.openurp.base.std.model.{Grade, Squad, Student}
 import org.openurp.std.transfer.config.TransferOption
 
 /** 转专业申请 */
-class TransferApply extends LongId, Updated {
+class TransferApply extends LongId, Updatable {
 
   /** 学生 */
   var std: Student = _

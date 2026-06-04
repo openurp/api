@@ -19,7 +19,7 @@ package org.openurp.std.spa.config
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{DateRange, Updated}
+import org.beangle.data.model.pojo.{DateRange, Updatable}
 import org.openurp.base.model.Project
 import org.openurp.code.std.model.StdDocType
 
@@ -29,7 +29,7 @@ import java.time.{Instant, ZoneId}
  * 优惠券
  */
 @config
-class SpaCoupon extends IntId, Updated, DateRange {
+class SpaCoupon extends IntId, Updatable, DateRange {
 
   /** 项目 */
   var project: Project = _

@@ -19,7 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.*
 import org.openurp.base.model.{Department, Project}
 import org.openurp.base.std.model.{Grade, Student}
@@ -32,7 +32,7 @@ import java.time.Instant
  *
  * @author new
  */
-trait AlternativeCourse extends LongId, Updated {
+trait AlternativeCourse extends LongId, Updatable {
 
   /** 原课程 */
   var olds = Collections.newSet[Course]

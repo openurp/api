@@ -159,7 +159,7 @@ object CourseTakeType {
   val Repeat = 3
   /** 免修 */
   val Exemption = 5
-  /** 旁听 *       */
+  /** 旁听 *        */
   val Auditor = 6
 }
 
@@ -198,8 +198,8 @@ object ExamStatus {
   /** 缺考 */
   val Absent = 3
 
-  /** 无资格 */
-  val Unqualified = 6
+  /** 取消考试资格 */
+  val Disqualified = 6
 }
 
 /**
@@ -444,3 +444,12 @@ class ExperimentType extends CodeBean
  */
 @code("industry")
 class ExperimentCategory extends CodeBean
+
+/** 取消考试资格的原因
+ */
+@code("industry")
+class ExamBannedReason extends CodeBean
+
+/**考勤方式*/
+@code("industry")
+class AttendanceMode extends CodeBean

@@ -20,7 +20,7 @@ package org.openurp.std.transfer.config
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
-import org.beangle.data.model.pojo.{Named, Updated}
+import org.beangle.data.model.pojo.{Named, Updatable}
 import org.openurp.base.model.{Project, Semester}
 import org.openurp.base.std.model.Grade
 
@@ -30,7 +30,7 @@ import scala.collection.mutable
 /** 转专业招生计划
  */
 @config
-class TransferScheme extends LongId, Named, Updated {
+class TransferScheme extends LongId, Named, Updatable {
   /** 项目 */
   var project: Project = _
   /** 学年学期 */

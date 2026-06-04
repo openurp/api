@@ -19,7 +19,7 @@ package org.openurp.trd.team.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Coded, Named, Remark, Updated}
+import org.beangle.data.model.pojo.{Coded, Named, Remark, Updatable}
 import org.openurp.base.model.{Department, User}
 import org.openurp.code.trd.model.RdLevel
 
@@ -29,7 +29,7 @@ import scala.collection.mutable
 /** 教学团队
  *
  */
-class TeachingTeam extends LongId, Coded, Named, Updated, Remark {
+class TeachingTeam extends LongId, Coded, Named, Updatable, Remark {
 
   /** 所在学院 */
   var department: Department = _

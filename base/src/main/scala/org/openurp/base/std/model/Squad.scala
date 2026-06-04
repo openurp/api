@@ -34,7 +34,7 @@ import scala.collection.mutable
  * @author chaostone
  * @since 2005-9-12
  */
-class Squad extends LongId, EduLevelBased, Coded, Named, EnNamed, DateRange, Updated, Remark {
+class Squad extends LongId, EduLevelBased, Coded, Named, EnNamed, DateRange, Updatable, Remark {
 
   /** 年级 */
   var grade: Grade = _

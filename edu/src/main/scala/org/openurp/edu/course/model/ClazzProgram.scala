@@ -19,7 +19,7 @@ package org.openurp.edu.course.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{Semester, User}
 import org.openurp.edu.clazz.model.Clazz
 
@@ -28,7 +28,7 @@ import scala.collection.mutable
 
 /** 教案
  */
-class ClazzProgram extends LongId, Updated {
+class ClazzProgram extends LongId, Updatable {
 
   /** 教学任务 */
   var clazz: Clazz = _

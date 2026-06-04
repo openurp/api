@@ -18,11 +18,11 @@
 package org.openurp.base.flow.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{AuditStatus, User}
 
 /** 流程审核日志 */
-class ProcessLog extends LongId, Updated {
+class ProcessLog extends LongId, Updatable {
 
   var flowType: FlowType = _
 

@@ -18,7 +18,7 @@
 package org.openurp.edu.exam.model;
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Updated
+import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{Department, User}
 
 import java.time.Instant
@@ -26,7 +26,7 @@ import java.time.Instant
 /**
  * 监考任务
  */
-class Invigilation extends LongId, Updated {
+class Invigilation extends LongId, Updatable {
 
   /** 考场 */
   var examRoom: ExamRoom = _

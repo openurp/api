@@ -19,7 +19,7 @@ package org.openurp.edu.his.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.archive
-import org.beangle.data.model.pojo.{Remark, TemporalOn, Updated}
+import org.beangle.data.model.pojo.{Remark, TemporalOn, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{AuditStatus, Department, Semester, User}
@@ -28,7 +28,7 @@ import org.openurp.code.edu.model.CourseCategory
 import java.time.Instant
 
 @archive
-class HisCourseProfile extends LongId, Updated, TemporalOn, Remark {
+class HisCourseProfile extends LongId, Updatable, TemporalOn, Remark {
 
   /** 课程 */
   var course: Course = _

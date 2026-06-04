@@ -18,7 +18,7 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.{Remark, Updated}
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
@@ -27,7 +27,7 @@ import org.openurp.code.edu.model.{CourseTakeType, CourseType, ElectionMode}
 /**
  * 上课名单
  */
-class CourseTaker extends LongId, Updated, Cloneable, Remark {
+class CourseTaker extends LongId, Updatable, Cloneable, Remark {
 
   /** 教学任务 */
   var clazz: Clazz = _
