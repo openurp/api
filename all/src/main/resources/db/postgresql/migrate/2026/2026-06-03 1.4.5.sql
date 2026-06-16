@@ -21,3 +21,5 @@ create table edu.regular_assess_stds (id bigint not null, absence_exceeded boole
 
 insert into code.attendance_modes(id,code,name,begin_on,updated_at) values(1,'1','全程考勤',current_date,now());
 insert into code.attendance_modes(id,code,name,begin_on,updated_at) values(2,'2','抽查考勤',current_date,now());
+
+alter table std.degree_results add wms float8;

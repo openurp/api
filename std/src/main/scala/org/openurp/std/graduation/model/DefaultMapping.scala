@@ -45,5 +45,9 @@ class DefaultMapping extends MappingModule {
       e.contents is length(3000)
       index("", true, e.std)
     }
+
+    bind[NotOnTimeGraduate] declare { e =>
+      e.stdSignUrl is length(200)
+    }
   }
 }

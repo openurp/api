@@ -18,6 +18,7 @@
 package org.openurp.base.edu.service.impl
 
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
+import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.edu.model.{Course, CourseJournal}
 import org.openurp.base.edu.service.CourseService
 
@@ -31,36 +32,36 @@ class CourseServiceImpl extends CourseService {
     val jq = OqlBuilder.from(classOf[CourseJournal], "j")
     jq.where("j.course=:course", course)
     jq.orderBy("j.beginOn")
-    val journals = entityDao.search(jq)
-    if (journals.size > 1) {
-      var i = 0
-      while (i < journals.length - 1) { //最后一个不处理
-        val j = journals(i)
-        val jNext = journals(i + 1)
-        j.endOn = Some(jNext.beginOn.minusMonths(1))
-        i += 1
-      }
-      entityDao.saveOrUpdate(journals)
+    val origin =entityDao.search(jq)
+    origin.foreach{ o=>
+      origin.find( i=> i.id!=o.id )
     }
+    val journals = TemporalOn.calcEndOn(origin)
+
+    entityDao.saveOrUpdate(journals)
+
     //last one
     val last = journals.last
     if (last.endOn.isEmpty) {
       //复制基本信息
-      if (last.enName.nonEmpty) {
-        course.enName = last.enName
-      }
+      if last.enName.nonEmpty then course.enName = last.enName
       course.name = last.name
-
       //复制课时和周数
       course.creditHours = last.creditHours
       course.weekHours = last.weekHours
       course.weeks = last.weeks
-      val newHours = last.hours.map(x => (x.nature, x.creditHours)).toMap
-      course.updateHours(newHours)
-
       course.examMode = last.examMode
       course.department = last.department
+      course.updateHours(last.hours.map(x => (x.nature, x.creditHours)).toMap)
       entityDao.saveOrUpdate(course)
+    }
+    if (journals.nonEmpty) {
+      course.beginOn = journals.map(_.beginOn).min
+      if (journals.exists(_.endOn.isEmpty)) {
+        course.endOn = None
+      } else {
+        course.endOn = Some(journals.map(_.endOn.get).max)
+      }
     }
   }
 
