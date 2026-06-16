@@ -131,3 +131,7 @@ ProgramCourseTag=专业课程标签
 ProgramCourseTag.shortName=简称
 ProgramCourseTag.sign=注记符号
 ClazzArchiveDoc=课程规章资料文档类型
+
+AttendanceMode=考勤方式
+ExamBannedReason=取消考试资格原因
+

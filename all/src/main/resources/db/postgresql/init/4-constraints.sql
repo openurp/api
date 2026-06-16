@@ -739,6 +739,10 @@ alter table edu.programs_degree_courses add constraint fk_868yayysj30xwtd1rywo70
 alter table edu.programs_degree_courses add constraint fk_sut51axvsnyf8sqrqt894pu07 foreign key (program_id) references edu.programs (id);
 alter table edu.programs_std_types add constraint fk_79kom1hj1l5m30fmg3y85seyy foreign key (program_id) references edu.programs (id);
 alter table edu.programs_std_types add constraint fk_8xvgc6vx56yspcomgcyyf5h2f foreign key (std_type_id) references code.std_types (id);
+alter table edu.regular_assess_stats add constraint fk_73hxn1c8o20p1bst8do1uv3ej foreign key (clazz_id) references edu.clazzes (id);
+alter table edu.regular_assess_stats add constraint fk_92f56pnmdm38oo3m6ouen503j foreign key (attendance_mode_id) references code.attendance_modes (id);
+alter table edu.regular_assess_stds add constraint fk_3lk7uinrjqg7tm860946k53ra foreign key (std_id) references base.students (id);
+alter table edu.regular_assess_stds add constraint fk_4kk71jbud6t831kcr2pj5t3k8 foreign key (clazz_id) references edu.clazzes (id);
 alter table edu.regular_grade_states add constraint fk_j5ace0mxflctid23oeqqhaq8q foreign key (clazz_id) references edu.clazzes (id);
 alter table edu.regular_grades add constraint fk_2oruj40kqq3brkq6rpiswt02n foreign key (std_id) references base.students (id);
 alter table edu.regular_grades add constraint fk_kahcmptsyckx2c6rsh0c88e8q foreign key (clazz_id) references edu.clazzes (id);
@@ -1082,6 +1086,8 @@ alter table std.debts add constraint fk_flmg2dl07o1dk9ns23avj676m foreign key (s
 alter table std.degree_results add constraint fk_2ghqqolc47bcajyassvpxyxi2 foreign key (std_id) references base.students (id);
 alter table std.degree_results add constraint fk_4fu7o1vjyh4fy4vubu6extnm foreign key (batch_id) references std.graduate_batches (id);
 alter table std.degree_results add constraint fk_hygf53m9m6lh0jn026nlj2rae foreign key (degree_id) references code.degrees (id);
+alter table std.delayed_graduates add constraint fk_3q5sdbsrb0rf9b4i8itt1nf6q foreign key (std_id) references base.students (id);
+alter table std.delayed_graduates add constraint fk_cq7cgor6j4pgrl05qgadebxbn foreign key (season_id) references base.graduate_seasons (id);
 alter table std.edu_work_records add constraint fk_jy7pengfusx1lbwfbh0l2k6is foreign key (std_id) references base.students (id);
 alter table std.examinees add constraint fk_3wg4b6cmq6p78epdcvaqtjs9p foreign key (std_id) references base.students (id);
 alter table std.examinees add constraint fk_6e33icgq0qssekehpga9n77pr foreign key (major_id) references base.majors (id);

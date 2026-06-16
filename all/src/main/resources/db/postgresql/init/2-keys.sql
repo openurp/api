@@ -172,6 +172,8 @@ alter table code.activity_types add constraint pk_cmb1g96s43erp3tu63b3t5c3r prim
 alter table code.activity_types add constraint uk_40dp7vraisnxtj04mahsegm5f unique (code);
 alter table code.admission_types add constraint pk_a6q355jjrx7gsqp1gfus8kc09 primary key (id);
 alter table code.admission_types add constraint uk_s7tnd3ykp7egjddmrhm6hgkdv unique (code);
+alter table code.attendance_modes add constraint pk_64nurmvo67lu5htvfq2m3b128 primary key (id);
+alter table code.attendance_modes add constraint uk_nodotkyudsruswoxpa5ct8v5r unique (code);
 alter table code.blood_types add constraint pk_s815d9t06dbnd8qc42j9cmbiy primary key (id);
 alter table code.blood_types add constraint uk_cw185pu60enlogx4catcnx4x4 unique (code);
 alter table code.book_award_types add constraint pk_sp9cov5mhwsjgxa1vqprr1opx primary key (id);
@@ -266,6 +268,8 @@ alter table code.employ_types add constraint pk_9cdwwv62b6hnp2ci6f3os4eoo primar
 alter table code.employ_types add constraint uk_q0rd5okmcshdcors7iu8b46tp unique (code);
 alter table code.enroll_modes add constraint pk_obbn5syxqvad6epidl17icyh9 primary key (id);
 alter table code.enroll_modes add constraint uk_j3e78icm5cskq84oufww3hnyk unique (code);
+alter table code.exam_banned_reasons add constraint pk_g76v7aot0bddd4fsvhs20ejwc primary key (id);
+alter table code.exam_banned_reasons add constraint uk_9o3d4m39i98k450o59qreotau unique (code);
 alter table code.exam_defer_reasons add constraint pk_kamdjbmhxhefplh32bbslqbei primary key (id);
 alter table code.exam_defer_reasons add constraint uk_a163soi3n0flqmw3idgohok2g unique (code);
 alter table code.exam_forms add constraint pk_4o5nmb6jnnouf32b3fc53ts8n primary key (id);
@@ -595,6 +599,10 @@ alter table edu.programs add constraint pk_9osl20jg9o3ywqs65190pgm9v primary key
 alter table edu.programs_degree_certificates add constraint pk_4coy86rddcbvfyvyoxdone26l primary key (program_id,certificate_id);
 alter table edu.programs_degree_courses add constraint pk_c56n0ogp63uo4vcl3pp16l842 primary key (program_id,course_id);
 alter table edu.programs_std_types add constraint pk_9ehq0f2rhqjce1anhhw5bcf4b primary key (program_id,std_type_id);
+alter table edu.regular_assess_stats add constraint pk_1297903897vmi7sciuapsk5kq primary key (id);
+alter table edu.regular_assess_stats add constraint uk_e72495vd64k80w187ca91mbk6 unique (clazz_id);
+alter table edu.regular_assess_stds add constraint pk_9cnbfaakbs1he5yw8wbca9b16 primary key (id);
+alter table edu.regular_assess_stds add constraint uk_14x085pv4gbtvsty0c2ol51vi unique (clazz_id,std_id);
 alter table edu.regular_grade_states add constraint pk_hnj9nkhhqpuj7yg9v7efhigo6 primary key (id);
 alter table edu.regular_grade_states add constraint uk_nv0dulh1dhs6ddpd0clg8tvac unique (clazz_id);
 alter table edu.regular_grades add constraint pk_83v4fybspmj863btsicnyux6h primary key (id);
@@ -766,6 +774,7 @@ alter table std.contacts add constraint pk_7ko2w4r57qng8yfiyi7n9snh4 primary key
 alter table std.contacts add constraint uk_qopxi21m45bqtuemmwurk7dkl unique (std_id);
 alter table std.debts add constraint pk_hv6munekg3kbg6qh7yodxld9l primary key (id);
 alter table std.degree_results add constraint pk_juk8stxairvjh8aqqgmus1vx2 primary key (id);
+alter table std.delayed_graduates add constraint pk_ducjfgf86a8sowv3t2pl91lw4 primary key (id);
 alter table std.edu_work_records add constraint pk_ow2kjrrf2ckemfeaucvejvy7u primary key (id);
 alter table std.examinees add constraint pk_1e8il6rh29256vdjtbwh1y0fe primary key (id);
 alter table std.examinees add constraint uk_2bqu9xw63m537f7cby311u7vr unique (std_id);

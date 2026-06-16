@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.4.3">
+<db engine="PostgreSQL" version="1.4.5">
   <schemas>
     <schema name="base">
       <tables>
@@ -2581,6 +2581,22 @@
             <unique-key name="uk_s7tnd3ykp7egjddmrhm6hgkdv" columns="code"/>
           </constraints>
         </table>
+        <table name="attendance_modes" comment="考勤方式@edu">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_64nurmvo67lu5htvfq2m3b128" columns="id"/>
+            <unique-key name="uk_nodotkyudsruswoxpa5ct8v5r" columns="code"/>
+          </constraints>
+        </table>
         <table name="blood_types" comment="血型@person">
           <columns>
             <column name="id" type="integer" nullable="false" comment="非业务主键:auto_increment"/>
@@ -3394,6 +3410,22 @@
           <constraints>
             <primary-key name="pk_obbn5syxqvad6epidl17icyh9" columns="id"/>
             <unique-key name="uk_j3e78icm5cskq84oufww3hnyk" columns="code"/>
+          </constraints>
+        </table>
+        <table name="exam_banned_reasons" comment="取消考试资格原因@edu">
+          <columns>
+            <column name="id" type="integer" nullable="false" comment="非业务主键:code"/>
+            <column name="begin_on" type="date" nullable="false" comment="生效日期"/>
+            <column name="code" type="varchar(20)" nullable="false" unique="true" comment="代码"/>
+            <column name="en_name" type="varchar(300)" comment="英文名称"/>
+            <column name="end_on" type="date" comment="失效日期"/>
+            <column name="name" type="varchar(100)" nullable="false" comment="名称"/>
+            <column name="remark" type="varchar(200)" comment="备注"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="修改时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_g76v7aot0bddd4fsvhs20ejwc" columns="id"/>
+            <unique-key name="uk_9o3d4m39i98k450o59qreotau" columns="code"/>
           </constraints>
         </table>
         <table name="exam_defer_reasons" comment="缓考原因@edu">
@@ -7310,6 +7342,41 @@
             <index name="idx_5u4gknostdmf16gyfurc2u6eq" columns="program_id"/>
           </indexes>
         </table>
+        <table name="regular_assess_stats" comment="日常考核评估统计@exam">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="absence_exceed_count" type="integer" nullable="false" defaultValue="0" comment="缺勤超标人数"/>
+            <column name="assignment_exceed_count" type="integer" nullable="false" defaultValue="0" comment="作业超标人数"/>
+            <column name="attendance_mode_id" type="integer" nullable="false" comment="考勤方式ID"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="college_reviewed" type="boolean" comment="学院是否审核"/>
+            <column name="disqualified_count" type="integer" nullable="false" defaultValue="0" comment="取消考试资格人数"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_1297903897vmi7sciuapsk5kq" columns="id"/>
+            <foreign-key name="fk_92f56pnmdm38oo3m6ouen503j" column="attendance_mode_id" referenced-table="code.attendance_modes" referenced-column="id"/>
+            <foreign-key name="fk_73hxn1c8o20p1bst8do1uv3ej" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
+            <unique-key name="uk_e72495vd64k80w187ca91mbk6" columns="clazz_id"/>
+          </constraints>
+        </table>
+        <table name="regular_assess_stds" comment="日常考勤/作业学生情况记录@exam">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="absence_exceeded" type="boolean" nullable="false" defaultValue="false" comment="缺勤是否超标"/>
+            <column name="assignment_exceeded" type="boolean" nullable="false" defaultValue="false" comment="作业是否超标"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="disqualified" type="boolean" nullable="false" defaultValue="false" comment="是否取消考试资格"/>
+            <column name="remark" type="varchar(255)" comment="备注"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_9cnbfaakbs1he5yw8wbca9b16" columns="id"/>
+            <foreign-key name="fk_3lk7uinrjqg7tm860946k53ra" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_4kk71jbud6t831kcr2pj5t3k8" column="clazz_id" referenced-table="edu.clazzes" referenced-column="id"/>
+            <unique-key name="uk_14x085pv4gbtvsty0c2ol51vi" columns="clazz_id,std_id"/>
+          </constraints>
+        </table>
         <table name="regular_grade_states" comment="平时总评成绩状态@grade.regular">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -8291,18 +8358,24 @@
             <index name="idx_dekf0w4tvano8kx1nyx9414it" columns="std_id"/>
           </indexes>
         </table>
-        <table name="edu_exam_defer_applies" comment="考试延期申请@exam.flow">
+        <table name="edu_exam_defer_applies" comment="考试缓考申请@exam.flow">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="attachments" type="jsonb" nullable="false" comment="附件"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
+            <column name="college_approved" type="boolean" comment="院系是否通过"/>
+            <column name="created_at" type="timestamptz" nullable="false" comment="创建时间"/>
             <column name="exam_begin_at" type="timestamptz" comment="考试开始时间"/>
             <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
             <column name="mobile" type="varchar(255)" comment="移动电话"/>
+            <column name="opinions" type="jsonb" nullable="false" comment="意见"/>
             <column name="passed" type="boolean" comment="是否通过"/>
-            <column name="reason_id" type="integer" comment="申请原因ID"/>
+            <column name="reason_id" type="integer" nullable="false" comment="申请原因ID"/>
             <column name="remark" type="varchar(300)" comment="备注"/>
             <column name="status" type="varchar(50)" nullable="false" comment="状态"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="std_sign_url" type="varchar(255)" comment="个人签名url"/>
+            <column name="teacher_reviewed" type="boolean" comment="教师是否审核"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
@@ -10123,6 +10196,23 @@
             <index name="idx_h6txa38ww6xmjierqkvw1u4d7" columns="std_id"/>
           </indexes>
         </table>
+        <table name="delayed_graduates" comment="不能毕业的应届毕业生@graduation">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="acknowledged" type="boolean" comment="是否知晓"/>
+            <column name="acknowledged_at" type="timestamptz" comment="知晓时间"/>
+            <column name="inform_details" type="jsonb" nullable="false" comment="告知详情"/>
+            <column name="informed" type="boolean" comment="是否告知"/>
+            <column name="season_id" type="bigint" nullable="false" comment="毕业界别ID"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="std_sign_url" type="varchar(200)" comment="个人签名url"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_ducjfgf86a8sowv3t2pl91lw4" columns="id"/>
+            <foreign-key name="fk_3q5sdbsrb0rf9b4i8itt1nf6q" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_cq7cgor6j4pgrl05qgadebxbn" column="season_id" referenced-table="base.graduate_seasons" referenced-column="id"/>
+          </constraints>
+        </table>
         <table name="edu_work_records" comment="学习工作经历@info">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
@@ -10276,7 +10366,6 @@
             <column name="contents" type="varchar(3000)" nullable="false" comment="各个类别完成情况"/>
             <column name="owed_credits" type="float4" nullable="false" defaultValue="0" comment="欠学分"/>
             <column name="owed_credits2" type="float4" nullable="false" defaultValue="0" comment="预计通过后所欠学分"/>
-            <column name="owed_credits3" type="float4" nullable="false" defaultValue="0" comment="在读通过后所欠学分"/>
             <column name="passed_credits" type="float4" nullable="false" defaultValue="0" comment="通过学分"/>
             <column name="required_credits" type="float4" nullable="false" defaultValue="0" comment="要求学分"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
