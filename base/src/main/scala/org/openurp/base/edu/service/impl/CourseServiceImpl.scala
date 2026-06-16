@@ -32,11 +32,27 @@ class CourseServiceImpl extends CourseService {
     val jq = OqlBuilder.from(classOf[CourseJournal], "j")
     jq.where("j.course=:course", course)
     jq.orderBy("j.beginOn")
-    val origin =entityDao.search(jq)
-    origin.foreach{ o=>
-      origin.find( i=> i.id!=o.id )
-    }
-    val journals = TemporalOn.calcEndOn(origin)
+    val origin = entityDao.search(jq)
+    // 删除重复的journals
+    val toRemove = scala.collection.mutable.ListBuffer.empty[CourseJournal]
+    val deduped =
+      if origin.isEmpty then origin
+      else
+        val kept = scala.collection.mutable.ListBuffer.empty[CourseJournal]
+        var current = origin.head
+        kept += current
+        origin.tail foreach { j =>
+          if current.isDuplicated(j) then
+            current.tags.addAll(j.tags)
+            toRemove += j
+          else
+            current = j
+            kept += j
+        }
+        kept.toSeq
+    if toRemove.nonEmpty then entityDao.remove(toRemove)
+
+    val journals = TemporalOn.calcEndOn(deduped)
 
     entityDao.saveOrUpdate(journals)
 

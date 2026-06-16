@@ -124,3 +124,15 @@ ExamNotice=考试通知
 ExamNotice.studentNotice=学生通知
 ExamNotice.managerNotice=管理人员通知
 
+RegularAssessStat=日常考核评估统计
+RegularAssessStat.clazz=教学任务
+RegularAssessStat.disqualifiedCount=取消考试资格人数
+RegularAssessStat.assignmentExceedCount=作业超标人数
+RegularAssessStat.absenceExceedCount=缺勤超标人数
+RegularAssessStat.collegeReviewed=学院是否审核
+
+RegularAssessStd=日常考勤/作业学生情况记录
+RegularAssessStd.assignmentExceeded=作业是否超标
+RegularAssessStd.absenceExceeded=缺勤是否超标
+RegularAssessStd.disqualified=是否取消考试资格
+

@@ -46,7 +46,7 @@ class DefaultMapping extends MappingModule {
       index("", true, e.std)
     }
 
-    bind[NotOnTimeGraduate] declare { e =>
+    bind[DelayedGraduate] declare { e =>
       e.stdSignUrl is length(200)
     }
   }

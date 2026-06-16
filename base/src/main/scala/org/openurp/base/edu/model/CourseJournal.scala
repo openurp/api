@@ -64,10 +64,18 @@ class CourseJournal extends LongId, Named, EnNamed, Updatable, TemporalOn {
     this.updatedAt = Instant.now
   }
 
-
-  def isDuplicated(other:CourseJournal):Boolean={
-
+  def isDuplicated(other: CourseJournal): Boolean = {
+    this.course == other.course &&
+      this.name == other.name &&
+      this.enName == other.enName &&
+      this.department == other.department &&
+      this.examMode == other.examMode &&
+      this.creditHours == other.creditHours &&
+      this.weeks == other.weeks &&
+      this.weekHours == other.weekHours &&
+      this.hours.map(h => h.nature -> h.creditHours).toMap == other.hours.map(h => h.nature -> h.creditHours).toMap
   }
+
   def getHour(nature: TeachingNature): Option[Int] = {
     hours.find(_.nature == nature).map(_.creditHours)
   }
