@@ -24,11 +24,18 @@ ThisBuild / description := "OpenURP API"
 ThisBuild / homepage := Some(url("http://openurp.github.io/api/index.html"))
 ThisBuild / resolvers += Resolver.mavenLocal
 
+val ojdbc11 = "com.oracle.database.jdbc" % "ojdbc11" % "23.26.2.0.0"
+val orai18n = "com.oracle.database.nls" % "orai18n" % "23.26.2.0.0"
+
+val startLibs = Seq(beangle_commons, beangle_ems_app, beangle_data_hibernate, beangle_cdi, beangle_jdbc, beangle_config,
+  logback_classic, caffeine_jcache, ojdbc11, orai18n)
+
+
 lazy val root = (project in file("."))
   .settings(
     name := "openurp-api",
     common)
-  .aggregate(code, base, edu, prac, qos, trd, std, degree, lab, all)
+  .aggregate(code, base, edu, prac, qos, trd, std, degree, lab, starter_task, starter_web, starter_ws, all)
 
 lazy val code = (project in file("code"))
   .settings(
@@ -102,5 +109,33 @@ lazy val all = (project in file("all"))
     libraryDependencies ++= Seq(scalatest, logback_classic),
     publish / skip := true
   ).dependsOn(code, base, edu, prac, qos, trd, std, degree, lab)
+
+lazy val starter_web = (project in file("starter/web"))
+  .settings(
+    organization := "org.openurp.starter",
+    name := "openurp-starter-web",
+    common,
+    libraryDependencies ++= startLibs,
+    libraryDependencies ++= Seq(beangle_bui_bootstrap),
+    libraryDependencies ++= Seq(beangle_she, beangle_transfer, beangle_webmvc),
+    libraryDependencies ++= Seq(protobuf, beangle_cron)
+  ).dependsOn(base)
+
+lazy val starter_ws = (project in file("starter/ws"))
+  .settings(
+    organization := "org.openurp.starter",
+    name := "openurp-starter-ws",
+    common,
+    libraryDependencies ++= startLibs,
+    libraryDependencies ++= Seq(beangle_she, beangle_webmvc, beangle_cron)
+  ).dependsOn(base)
+
+lazy val starter_task = (project in file("starter/task"))
+  .settings(
+    organization := "org.openurp.starter",
+    name := "openurp-starter-task",
+    common,
+    libraryDependencies ++= startLibs
+  ).dependsOn(base)
 
 publish / skip := true

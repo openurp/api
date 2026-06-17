@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="false">
+  <property name="LOG_PATTERN" value="%-8.8d{HH:mm:ss} %highlight(%-5level) %-30.30logger{29} : %msg%n%ex{full}" />
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>${LOG_PATTERN}</pattern>
+    </encoder>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="CONSOLE" />
+  </root>
+</configuration>
