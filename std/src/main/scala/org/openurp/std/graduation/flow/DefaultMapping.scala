@@ -25,12 +25,14 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
 
     bind[GradBachelor2ndApply] declare { e =>
+      e.gpa is number(10, 5)
       e.gradeDetail is length(3000)
     }
 
     bind[GradDegreeApply] declare { e =>
       e.email is length(100)
       e.mobile is length(15)
+      e.gpa is number(10, 5)
       index("", true, e.batch, e.std)
     }
 

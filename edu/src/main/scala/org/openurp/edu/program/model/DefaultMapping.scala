@@ -29,6 +29,7 @@ class DefaultMapping extends MappingModule {
       e.labels is depends("program")
       e.prerequisites is depends("program")
       e.opinions is length(200)
+      e.degreeGpa is number(10, 5)
       e.remark is length(500)
     }
 

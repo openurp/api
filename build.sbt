@@ -35,7 +35,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "openurp-api",
     common)
-  .aggregate(code, base, edu, prac, qos, trd, std, degree, lab, starter_task, starter_web, starter_ws, all)
+  .aggregate(code, base, edu, prac, qos, trd, std, degree, lab, starter_task, starter_web, all)
 
 lazy val code = (project in file("code"))
   .settings(
@@ -119,15 +119,6 @@ lazy val starter_web = (project in file("starter/web"))
     libraryDependencies ++= Seq(beangle_bui_bootstrap),
     libraryDependencies ++= Seq(beangle_she, beangle_transfer, beangle_webmvc),
     libraryDependencies ++= Seq(protobuf, beangle_cron)
-  ).dependsOn(base)
-
-lazy val starter_ws = (project in file("starter/ws"))
-  .settings(
-    organization := "org.openurp.starter",
-    name := "openurp-starter-ws",
-    common,
-    libraryDependencies ++= startLibs,
-    libraryDependencies ++= Seq(beangle_she, beangle_webmvc, beangle_cron)
   ).dependsOn(base)
 
 lazy val starter_task = (project in file("starter/task"))

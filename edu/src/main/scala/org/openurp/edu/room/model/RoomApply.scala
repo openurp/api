@@ -18,7 +18,7 @@
 package org.openurp.edu.room.model
 
 import org.beangle.commons.collection.Collections
-import org.beangle.commons.lang.time.{CycleTimeDigest, WeekTime}
+import org.beangle.commons.lang.time.{CycleTimeDigester, WeekTime}
 import org.beangle.data.model.pojo.{DateRange, Named}
 import org.beangle.data.model.{Component, LongId}
 import org.openurp.base.model.{Campus, Department, School, User}
@@ -122,7 +122,7 @@ class TimeRequest extends Component, DateRange {
     }
   }
 
-  override def toString: String = CycleTimeDigest.digest(times, "<br>")
+  override def toString: String = CycleTimeDigester.digest(times, "<br>")
 }
 
 /** 教室要求 */

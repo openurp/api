@@ -22,6 +22,7 @@ import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{ProjectBased, Semester}
 import org.openurp.base.std.model.Student
 
+import java.math.BigDecimal as JBigDecimal
 import scala.collection.mutable
 
 /**
@@ -31,13 +32,13 @@ import scala.collection.mutable
  */
 trait GpaStat {
   /** 总平均绩点 */
-  var gpa: Double = _
+  var gpa: Double = 0d
 
   /** 加权平均分 weighted mean score */
-  var wms: Double = _
+  var wms: Double = 0d
 
   /** 算术平均分 arithmetic mean score */
-  var ams: Double = _
+  var ams: Double = 0d
 
   /** 获得成绩总学分 */
   var credits: Float = _
@@ -109,7 +110,7 @@ class StdGpa extends LongId, Updatable, ProjectBased, GpaStat {
 
   def getGpa(semester: Semester): Double = {
     val gpterm = getSemesterGpa(semester)
-    if (null == gpterm) 0 else gpterm.gpa
+    if (null == gpterm) 0d else gpterm.gpa
   }
 
   def getSemesterGpa(semester: Semester): StdSemesterGpa = {

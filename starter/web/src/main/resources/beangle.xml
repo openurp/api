@@ -13,12 +13,20 @@
     <module class="org.beangle.ems.app.event.EventModule"/>
 
     <module class="org.openurp.starter.service.ServiceModule"/>
+    <module class="org.openurp.starter.web.ws.ConfigModule"/>
     <module class="org.beangle.webmvc.view.freemarker.DefaultModule"/>
   </cdi>
 
   <mvc>
     <profile package="org.openurp.starter.web.action">
       <url path="/" suffix="" style="seo"/>
+      <interceptor name="web.Interceptor.security"/>
+      <interceptor name="web.Interceptor.hibernate"/>
+    </profile>
+    <profile package="org.openurp.starter.web.ws">
+      <action suffix="WS" defaultMethod="index"/>
+      <url path="/" suffix="" style="seo"/>
+      <interceptor name="web.Interceptor.cors"/>
       <interceptor name="web.Interceptor.security"/>
       <interceptor name="web.Interceptor.hibernate"/>
     </profile>

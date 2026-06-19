@@ -78,7 +78,7 @@ class Program extends LongId, Updatable, Named, Cloneable, DateRange, EduLevelBa
   var degree: Option[Degree] = None
 
   /** 学位绩点 */
-  var degreeGpa: Option[Float] = None
+  var degreeGpa: Option[Double] = None
 
   /** 学位课程 */
   var degreeCourses = Collections.newSet[Course]

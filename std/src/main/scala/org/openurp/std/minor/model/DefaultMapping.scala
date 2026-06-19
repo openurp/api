@@ -25,6 +25,7 @@ class DefaultMapping extends MappingModule {
 
     bind[MinorSignupStd] declare { e =>
       e.majors is depends("std")
+      e.gpa is number(10, 5)
       index("", false, e.setting)
       index("", true, e.setting, e.idcard)
     }

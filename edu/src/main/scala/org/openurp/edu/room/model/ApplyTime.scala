@@ -18,7 +18,7 @@
 package org.openurp.edu.room.model
 
 import org.beangle.commons.lang.time.CycleTime.CycleTimeType
-import org.beangle.commons.lang.time.{CycleTime, CycleTimeDigest, HourMinute, WeekTime}
+import org.beangle.commons.lang.time.{CycleTime, CycleTimeDigester, HourMinute, WeekTime}
 
 import java.time.LocalDate
 
@@ -59,6 +59,6 @@ class ApplyTime {
   }
 
   override def toString: String = {
-    CycleTimeDigest.digest(toWeektimes(), "<br>")
+    CycleTimeDigester.digest(toWeektimes(), "<br>")
   }
 }

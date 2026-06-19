@@ -26,6 +26,7 @@ class DefaultMapping extends MappingModule {
       e.name is length(100)
     }
     bind[Graduation] declare { e =>
+      e.gpa is number(10, 5)
       e.email is length(100)
       e.mobile is length(15)
       index("", true, e.batch, e.std)
@@ -37,6 +38,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[DegreeResult].declare { e =>
+      e.gpa is number(10, 5)
       e.passedItems & e.failedItems are length(500)
       index("", false, e.std)
     }

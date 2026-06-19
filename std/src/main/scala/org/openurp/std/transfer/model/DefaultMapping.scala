@@ -17,12 +17,16 @@
 
 package org.openurp.std.transfer.model
 
-import org.beangle.data.orm.{IdGenerator, MappingModule}
-import org.openurp.std.transfer.config.{TransferOption, TransferScope}
+import org.beangle.data.orm.MappingModule
 
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    bind[TransferApply]
+    bind[TransferApply] declare { e =>
+      e.majorGpa is number(10, 5)
+      e.otherGpa is number(10, 5)
+      e.gpa is number(10, 5)
+      e.transferGpa is number(10, 5)
+    }
   }
 }

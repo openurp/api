@@ -18,7 +18,7 @@
 package org.openurp.edu.room.model
 
 import org.beangle.commons.lang.time.CycleTime.CycleTimeType
-import org.beangle.commons.lang.time.{CycleTime, CycleTimeDigest, HourMinute}
+import org.beangle.commons.lang.time.{CycleTime, CycleTimeDigester, HourMinute}
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -28,7 +28,7 @@ class CycleTimeTest extends AnyFunSpec, Matchers {
   describe("CycleTime") {
     it("digest every day") {
       val ct = CycleTime(LocalDate.parse("2023-07-04"), LocalDate.parse("2023-07-09"), HourMinute("08:00"), HourMinute("21:00"))
-      val content = CycleTimeDigest.digest(ct.convert(), "\n")
+      val content = CycleTimeDigester.digest(ct.convert(), "\n")
       assert(content == "2023-07-04~07-09 每天 08:00~21:00")
     }
 
@@ -36,20 +36,20 @@ class CycleTimeTest extends AnyFunSpec, Matchers {
       val ct = CycleTime(LocalDate.parse("2023-07-04"), LocalDate.parse("2023-07-05"), HourMinute("08:00"), HourMinute("21:00"))
       val ct2 = CycleTime(LocalDate.parse("2023-07-11"), LocalDate.parse("2023-07-12"), HourMinute("08:00"), HourMinute("21:00"))
       val rs = ct.convert()
-      val content = CycleTimeDigest.digest(rs ++ ct2.convert(), ",")
+      val content = CycleTimeDigester.digest(rs ++ ct2.convert(), ",")
       assert(content == "2023-07-04~07-11 每周二 08:00~21:00,2023-07-05~07-12 每周三 08:00~21:00")
     }
 
     it("digest every week") {
       val ct = CycleTime(LocalDate.parse("2023-07-04"), LocalDate.parse("2023-08-01"),
         HourMinute("08:00"), HourMinute("21:00"), 1, CycleTimeType.Week)
-      val content = CycleTimeDigest.digest(ct.convert(), ",")
+      val content = CycleTimeDigester.digest(ct.convert(), ",")
       assert(content == "2023-07-04~08-01 每周二 08:00~21:00")
     }
     it("digest every 3 days week") {
       val ct = CycleTime(LocalDate.parse("2023-07-04"), LocalDate.parse("2023-08-01"),
         HourMinute("08:00"), HourMinute("21:00"), 3, CycleTimeType.Day)
-      val content = CycleTimeDigest.digest(ct.convert(), ",")
+      val content = CycleTimeDigester.digest(ct.convert(), ",")
       assert(content == "2023-07-04~07-31 每3天 08:00~21:00")
     }
   }

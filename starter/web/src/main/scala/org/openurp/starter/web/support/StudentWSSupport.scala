@@ -20,35 +20,33 @@ package org.openurp.starter.web.support
 import org.beangle.data.dao.EntityDao
 import org.beangle.security.Securities
 import org.beangle.webmvc.support.{ActionSupport, ServletSupport}
-import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Project, User}
 import org.openurp.base.service.{Feature, ProjectConfigService, SemesterService}
+import org.openurp.base.std.model.Student
 import org.openurp.code.Code
 import org.openurp.code.service.CodeService
 
-abstract class TeacherSupport extends ActionSupport, ServletSupport {
+abstract class StudentWSSupport extends ActionSupport, ServletSupport {
 
   var entityDao: EntityDao = _
-  var codeService: CodeService = _
+
   var semesterService: SemesterService = _
+
+  var codeService: CodeService = _
+
   var configService: ProjectConfigService = _
 
-  protected final def getTeacher: Teacher = {
-    val teacher = request.getAttribute("teacher")
-    if (null != teacher) teacher.asInstanceOf[Teacher]
-    else {
-      val teachers = entityDao.findBy(classOf[Teacher], "staff.code" -> Securities.user)
-      teachers.foreach { t => request.setAttribute("teacher", t) }
-      teachers.headOption.orNull
-    }
-  }
-
-  protected final def getProject: Project = {
-    val project = entityDao.get(classOf[Project], getIntId("project"))
-    if(null==project){
-      error("wrong project id")
-    }else{
-      project
+  protected final def getStudent: Student = {
+    val stdId = getLongId("student")
+    if (stdId == 0) {
+      throw new IllegalArgumentException("cannot find valid std.id param")
+    } else {
+      val std = entityDao.get(classOf[Student], stdId)
+      if (std.user.code != Securities.user) {
+        throw new IllegalArgumentException("Invalid std.id params")
+      } else {
+        std
+      }
     }
   }
 

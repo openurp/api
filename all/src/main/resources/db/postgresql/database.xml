@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.4.5">
+<db engine="PostgreSQL" version="1.4.6">
   <schemas>
     <schema name="base">
       <tables>
@@ -7265,7 +7265,7 @@
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="begin_on" type="date" nullable="false" comment="开始日期"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="学分"/>
-            <column name="degree_gpa" type="float4" comment="学位绩点"/>
+            <column name="degree_gpa" type="numeric(10,5)" comment="学位绩点"/>
             <column name="degree_id" type="integer" comment="毕业授予学位ID"/>
             <column name="department_id" type="integer" nullable="false" comment="部门ID"/>
             <column name="direction_id" type="bigint" comment="专业方向ID"/>
@@ -7729,9 +7729,9 @@
         <table name="std_gpas" comment="学生成绩绩点统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="ams" type="float8" nullable="false" defaultValue="0" comment="算术平均分"/>
+            <column name="ams" type="numeric(10,5)" nullable="false" defaultValue="0" comment="算术平均分"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
-            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
+            <column name="gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="总平均绩点"/>
             <column name="pending_credits" type="float4" nullable="false" defaultValue="0" comment="在修学分"/>
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
@@ -7739,7 +7739,7 @@
             <column name="total_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
-            <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
+            <column name="wms" type="numeric(10,5)" nullable="false" defaultValue="0" comment="加权平均分"/>
           </columns>
           <constraints>
             <primary-key name="pk_d8hmmf1mnbxhuj1fi91q1n9rj" columns="id"/>
@@ -7819,16 +7819,16 @@
         <table name="std_semester_gpas" comment="学生成绩每学期统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="ams" type="float8" nullable="false" defaultValue="0" comment="算术平均分"/>
+            <column name="ams" type="numeric(10,5)" nullable="false" defaultValue="0" comment="算术平均分"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
-            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
+            <column name="gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="总平均绩点"/>
             <column name="pending_credits" type="float4" nullable="false" defaultValue="0" comment="在修学分"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
             <column name="taken_credits" type="float4" nullable="false" defaultValue="0" comment="实修学分"/>
             <column name="total_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
-            <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
+            <column name="wms" type="numeric(10,5)" nullable="false" defaultValue="0" comment="加权平均分"/>
           </columns>
           <constraints>
             <primary-key name="pk_fqb6mob02oox7m3qiy43y5g3f" columns="id"/>
@@ -7843,16 +7843,16 @@
         <table name="std_year_gpas" comment="学生成绩每学期统计@grade.course">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
-            <column name="ams" type="float8" nullable="false" defaultValue="0" comment="算术平均分"/>
+            <column name="ams" type="numeric(10,5)" nullable="false" defaultValue="0" comment="算术平均分"/>
             <column name="credits" type="float4" nullable="false" defaultValue="0" comment="获得学分"/>
-            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="总平均绩点"/>
+            <column name="gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="总平均绩点"/>
             <column name="pending_credits" type="float4" nullable="false" defaultValue="0" comment="在修学分"/>
             <column name="school_year" type="varchar(10)" nullable="false" comment="学年"/>
             <column name="std_gpa_id" type="bigint" nullable="false" comment="总体统计ID"/>
             <column name="taken_credits" type="float4" nullable="false" defaultValue="0" comment="实修学分"/>
             <column name="total_count" type="integer" nullable="false" defaultValue="0" comment="门数"/>
             <column name="total_credits" type="float4" nullable="false" defaultValue="0" comment="总学分"/>
-            <column name="wms" type="float8" nullable="false" defaultValue="0" comment="加权平均分"/>
+            <column name="wms" type="numeric(10,5)" nullable="false" defaultValue="0" comment="加权平均分"/>
           </columns>
           <constraints>
             <primary-key name="pk_3ad0t5p7c2vmp6ktrbtgiwbwb" columns="id"/>
@@ -8565,7 +8565,7 @@
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0" comment="平均绩点"/>
+            <column name="gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="平均绩点"/>
             <column name="grade_detail" type="varchar(3000)" nullable="false" comment="成绩明细"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
@@ -8629,7 +8629,7 @@
             <column name="datas" type="jsonb" nullable="false" comment="其他申请数据"/>
             <column name="degree_id" type="integer" nullable="false" comment="学位ID"/>
             <column name="email" type="varchar(100)" comment="Email"/>
-            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="GPA"/>
+            <column name="gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="GPA"/>
             <column name="mobile" type="varchar(15)" comment="联系手机"/>
             <column name="passed" type="boolean" comment="是否通过"/>
             <column name="reason" type="varchar(255)" comment="申请理由"/>
@@ -10176,7 +10176,7 @@
             <column name="degree_id" type="integer" comment="学位ID"/>
             <column name="failed_items" type="varchar(500)" comment="不通过的项目"/>
             <column name="foreign_lang_passed_on" type="date" comment="外语通过年月"/>
-            <column name="gpa" type="float8" comment="GPA"/>
+            <column name="gpa" type="numeric(10,5)" comment="GPA"/>
             <column name="locked" type="boolean" nullable="false" defaultValue="false" comment="锁定毕业审核结果"/>
             <column name="passed" type="boolean" comment="是否通过学位审核"/>
             <column name="passed_items" type="varchar(500)" comment="通过的项目"/>
@@ -10429,7 +10429,7 @@
             <column name="degree_id" type="integer" comment="学位ID"/>
             <column name="degree_passed" type="boolean" comment="学位审核是否通过"/>
             <column name="email" type="varchar(100)" comment="Email"/>
-            <column name="gpa" type="float8" nullable="false" defaultValue="0" comment="平均绩点"/>
+            <column name="gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="平均绩点"/>
             <column name="grad_passed" type="boolean" comment="毕业审核是否通过"/>
             <column name="graduate_type_id" type="integer" nullable="false" comment="毕业生类型ID"/>
             <column name="mobile" type="varchar(15)" comment="联系手机"/>
@@ -10610,7 +10610,7 @@
             <column name="from_org" type="varchar(255)" comment="所在单位"/>
             <column name="from_social" type="boolean" nullable="false" defaultValue="false" comment="是否社会学院"/>
             <column name="gender_id" type="integer" nullable="false" comment="性别ID"/>
-            <column name="gpa" type="float4" comment="绩点"/>
+            <column name="gpa" type="numeric(10,5)" comment="绩点"/>
             <column name="idcard" type="varchar(255)" nullable="false" comment="身份证号"/>
             <column name="inside" type="boolean" nullable="false" defaultValue="false" comment="是否校内学生"/>
             <column name="institution_id" type="integer" nullable="false" comment="学校ID"/>
@@ -11029,12 +11029,12 @@
             <column name="from_grade_id" type="bigint" nullable="false" comment="转出年级ID"/>
             <column name="from_major_id" type="bigint" nullable="false" comment="转出专业ID"/>
             <column name="from_squad_id" type="bigint" comment="转出班级ID"/>
-            <column name="gpa" type="float4" nullable="false" defaultValue="0" comment="平均绩点"/>
+            <column name="gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="平均绩点"/>
             <column name="has_fail" type="boolean" nullable="false" defaultValue="false" comment="是否有不及格课程"/>
-            <column name="major_gpa" type="float4" nullable="false" defaultValue="0" comment="专业课GPA"/>
+            <column name="major_gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="专业课GPA"/>
             <column name="mobile" type="varchar(255)" nullable="false" comment="联系电话"/>
             <column name="option_id" type="bigint" nullable="false" comment="选择的招生专业ID"/>
-            <column name="other_gpa" type="float4" nullable="false" defaultValue="0" comment="专业课外GPA"/>
+            <column name="other_gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="专业课外GPA"/>
             <column name="passed" type="boolean" comment="是否通过"/>
             <column name="reason" type="varchar(255)" nullable="false" comment="申请理由"/>
             <column name="score" type="float4" comment="考核分数"/>
@@ -11045,7 +11045,7 @@
             <column name="to_grade_id" type="bigint" nullable="false" comment="转入年级ID"/>
             <column name="to_major_id" type="bigint" nullable="false" comment="转入专业ID"/>
             <column name="to_squad_id" type="bigint" comment="转入班级ID"/>
-            <column name="transfer_gpa" type="float4" nullable="false" defaultValue="0" comment="转专业GPA"/>
+            <column name="transfer_gpa" type="numeric(10,5)" nullable="false" defaultValue="0" comment="转专业GPA"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
             <column name="written_score" type="float4" comment="笔试分数"/>
           </columns>

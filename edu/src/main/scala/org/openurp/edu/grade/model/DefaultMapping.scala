@@ -73,6 +73,12 @@ class DefaultMapping extends MappingModule {
       index("", true, e.gradeState, e.gradeType)
     }
 
+    bind[GpaStat].declare { e =>
+      e.gpa is number(10, 5)
+      e.wms is number(10, 5)
+      e.ams is number(10, 5)
+    }
+
     bind[StdGpa].declare { e =>
       e.semesterGpas is depends("stdGpa")
       e.yearGpas is depends("stdGpa")
