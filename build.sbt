@@ -30,7 +30,6 @@ val orai18n = "com.oracle.database.nls" % "orai18n" % "23.26.2.0.0"
 val startLibs = Seq(beangle_commons, beangle_ems_app, beangle_data_hibernate, beangle_cdi, beangle_jdbc, beangle_config,
   logback_classic, caffeine_jcache, ojdbc11, orai18n)
 
-
 lazy val root = (project in file("."))
   .settings(
     name := "openurp-api",
