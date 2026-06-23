@@ -17,13 +17,26 @@
 
 package org.openurp.starter.web.ws
 
-import org.beangle.commons.cdi.BindModule
+import org.beangle.commons.collection.Collections
+import org.beangle.security.Securities
+import org.beangle.security.authc.Account
+import org.beangle.webmvc.annotation.response
+import org.beangle.webmvc.support.ActionSupport
+import org.beangle.webmvc.view.View
 
-class ConfigModule extends BindModule {
+class ProfileWS extends ActionSupport {
 
-  override def binding(): Unit = {
-    bind(classOf[ConfigWS])
-    bind(classOf[StudentWS])
+  @response
+  def index(): View = {
+    val account = Securities.session.get.principal.asInstanceOf[Account]
+    if (null == account.profiles) {
+      raw("[]")
+    } else {
+      val sb = Collections.newBuffer[String]
+      account.profiles foreach { profile =>
+        sb += profile.toJson
+      }
+      raw("[" + sb.mkString(",") + "]")
+    }
   }
-
 }

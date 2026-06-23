@@ -15,17 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.starter.web
+package org.openurp.starter.web.config
 
-import org.beangle.commons.cdi.BindModule
-import org.openurp.starter.web.action.IndexAction
-import org.openurp.starter.web.ws.{ProfileWS, StudentWS}
+import org.beangle.commons.json.{Json, JsonObject}
+import org.beangle.ems.app.Ems
+import org.beangle.webmvc.annotation.response
+import org.beangle.webmvc.support.ActionSupport
 
-class ProjectModule extends BindModule {
+class ConfigWS extends ActionSupport {
 
-  override def binding(): Unit = {
-    bind(classOf[IndexAction])
-    bind(classOf[StudentWS])
-    bind(classOf[ProfileWS])
+  @response
+  def index(): Json = {
+    val json = new JsonObject()
+    json.add("ems_base", Ems.base)
+    json
   }
 }
