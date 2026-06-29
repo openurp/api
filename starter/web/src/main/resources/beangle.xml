@@ -25,14 +25,14 @@
 
     <profile package="org.openurp.starter.web.config">
       <action suffix="WS" defaultMethod="index"/>
-      <url path="/" suffix="" style="seo"/>
+      <url path="/" suffix="" style="plur-seo"/>
       <interceptor name="web.Interceptor.cors"/>
       <interceptor name="web.Interceptor.hibernate"/>
     </profile>
 
     <profile package="org.openurp.starter.web.ws">
       <action suffix="WS" defaultMethod="index"/>
-      <url path="/" suffix="" style="seo"/>
+      <url path="/" suffix="" style="plur-seo"/>
       <interceptor name="web.Interceptor.cors"/>
       <interceptor name="web.Interceptor.security"/>
       <interceptor name="web.Interceptor.hibernate"/>

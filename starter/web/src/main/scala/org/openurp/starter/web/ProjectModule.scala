@@ -19,13 +19,14 @@ package org.openurp.starter.web
 
 import org.beangle.commons.cdi.BindModule
 import org.openurp.starter.web.action.IndexAction
-import org.openurp.starter.web.ws.{ProfileWS, StudentWS}
+import org.openurp.starter.web.config.ConfigWS
+import org.openurp.starter.web.ws.StudentWS
 
 class ProjectModule extends BindModule {
 
   override def binding(): Unit = {
     bind(classOf[IndexAction])
     bind(classOf[StudentWS])
-    bind(classOf[ProfileWS])
+    bind(classOf[ConfigWS])
   }
 }
