@@ -77,9 +77,9 @@ class AuditCourseResult extends LongId, Remark {
       scores = sb.toString
       if passed then
         val isRepeat = best.courseTakeType.id == CourseTakeType.Repeat
-        updatePassedWay(if isRepeat then CoursePassedWay.ByGrade else CoursePassedWay.ByRepeat)
+        updatePassedWay(if isRepeat then CoursePassedWay.ByRepeat else CoursePassedWay.ByGrade)
       else
-        remark = Some(GradeRemarkDigester.digest(course,List(best), false))
+        remark = Some(GradeRemarkDigester.digest(course, List(best), false))
     }
     this
   }
@@ -100,9 +100,7 @@ class AuditCourseResult extends LongId, Remark {
   }
 
   private def getScoreText(grade: CourseGrade): String = {
-    grade.scoreText match
-      case None => if grade.courseTakeType.id == CourseTakeType.Exemption then grade.courseTakeType.name else "--"
-      case Some(s) => s
+    if grade.courseTakeType.id == CourseTakeType.Exemption then grade.courseTakeType.name else grade.scoreText.getOrElse("--")
   }
 
   def updatePassedWay(way: CoursePassedWay): Unit = {
