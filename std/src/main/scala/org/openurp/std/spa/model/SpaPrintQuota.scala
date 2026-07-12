@@ -44,7 +44,7 @@ class SpaPrintQuota extends LongId {
   var frees: Int = _
 
   /** 最后打印时间 */
-  var lastPrintAt: Instant = _
+  var lastPrintAt: Option[Instant] = None
 
   def this(user: User, docType: StdDocType) = {
     this()
