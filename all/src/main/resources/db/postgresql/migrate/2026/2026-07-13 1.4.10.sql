@@ -9,6 +9,9 @@ alter table flow.std_grad_dropout_applies add constraint fk_kwe9csr1p17bodsf159r
 alter table std.delayed_graduates add constraint fk_q9bcyd2thhetfcbm7v61k15u8 foreign key (status_id) references code.graduation_statuses (id);
 alter table flow.std_grad_dropout_applies add constraint uk_q4aasvdekb3r0i1r4sofhwedo unique (batch_id,std_id);
 alter table std.delayed_graduates add constraint uk_2v11mxy80kn0u3k8bnqwd1ji5 unique (std_id,season_id);
+
+alter table std.spa_print_quotas alter last_print_at drop not null;
+
 comment on table flow.std_grad_dropout_applies is '肄业申请@graduation.flow';
 comment on column flow.std_grad_dropout_applies.id is '非业务主键:datetime';
 comment on column flow.std_grad_dropout_applies.batch_id is '毕业批次ID';

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.4.9">
+<db engine="PostgreSQL" version="1.4.10">
   <schemas>
     <schema name="base">
       <tables>
@@ -10851,7 +10851,7 @@
             <column name="doc_type_id" type="integer" nullable="false" comment="学生文档类型ID"/>
             <column name="free_cnt" type="integer" nullable="false" defaultValue="0" comment="免支付打印张数"/>
             <column name="frees" type="integer" nullable="false" defaultValue="0" comment="剩余免支付的张数"/>
-            <column name="last_print_at" type="timestamptz" nullable="false" comment="最后打印时间"/>
+            <column name="last_print_at" type="timestamptz" comment="最后打印时间"/>
             <column name="print_cnt" type="integer" nullable="false" defaultValue="0" comment="打印张数"/>
             <column name="user_id" type="bigint" nullable="false" comment="学生ID"/>
           </columns>
