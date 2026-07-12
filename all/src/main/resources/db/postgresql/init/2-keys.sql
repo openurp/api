@@ -685,6 +685,8 @@ alter table flow.std_grad_defer_applies add constraint pk_3e8khwunnbc8jray8c32nv
 alter table flow.std_grad_defer_applies add constraint uk_9ljuxmekeywd7euvl1n99cl0i unique (batch_id,std_id);
 alter table flow.std_grad_degree_applies add constraint pk_59hdgly7ivu6cng5q56nts6en primary key (id);
 alter table flow.std_grad_degree_applies add constraint uk_o494jv59hx5tr80l6rl8snqqy unique (batch_id,std_id);
+alter table flow.std_grad_dropout_applies add constraint pk_2frjotu1n08jskusup2xaf5tf primary key (id);
+alter table flow.std_grad_dropout_applies add constraint uk_q4aasvdekb3r0i1r4sofhwedo unique (batch_id,std_id);
 alter table his.edu_course_grades add constraint pk_chti3605ct02gr38n41fa3w2r primary key (id,school_year);
 alter table his.edu_course_profiles add constraint pk_bp6we1odwfrduqd0w2dbcmm5x primary key (id);
 alter table his.edu_course_takers add constraint pk_ft65qhx6or053wtcbkflg9kuw primary key (id,school_year);
@@ -775,6 +777,7 @@ alter table std.contacts add constraint uk_qopxi21m45bqtuemmwurk7dkl unique (std
 alter table std.debts add constraint pk_hv6munekg3kbg6qh7yodxld9l primary key (id);
 alter table std.degree_results add constraint pk_juk8stxairvjh8aqqgmus1vx2 primary key (id);
 alter table std.delayed_graduates add constraint pk_ducjfgf86a8sowv3t2pl91lw4 primary key (id);
+alter table std.delayed_graduates add constraint uk_2v11mxy80kn0u3k8bnqwd1ji5 unique (std_id,season_id);
 alter table std.edu_work_records add constraint pk_ow2kjrrf2ckemfeaucvejvy7u primary key (id);
 alter table std.examinees add constraint pk_1e8il6rh29256vdjtbwh1y0fe primary key (id);
 alter table std.examinees add constraint uk_2bqu9xw63m537f7cby311u7vr unique (std_id);

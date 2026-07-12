@@ -107,7 +107,7 @@ object GraduationStatus {
   //结业
   val Completed = 2
   //肄业
-  val Withdrawn = 3
+  val Dropout = 3
   //延期
   val Deferred = 4
 }

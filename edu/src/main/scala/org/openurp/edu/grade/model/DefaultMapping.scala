@@ -74,9 +74,9 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[GpaStat].declare { e =>
-      e.gpa is number(10, 5)
-      e.wms is number(10, 5)
-      e.ams is number(10, 5)
+      e.gpa is(number(10, 5), default("0"))
+      e.wms is(number(10, 5), default("0"))
+      e.ams is(number(10, 5), default("0"))
     }
 
     bind[StdGpa].declare { e =>

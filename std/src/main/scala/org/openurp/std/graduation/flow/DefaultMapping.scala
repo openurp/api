@@ -45,5 +45,10 @@ class DefaultMapping extends MappingModule {
       e.mobile is length(15)
       index("", true, e.batch, e.std)
     }
+
+    bind[GradDropoutApply] declare { e =>
+      e.mobile is length(15)
+      index("", true, e.batch, e.std)
+    }
   }
 }

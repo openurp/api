@@ -5,9 +5,12 @@ GradDegreeApply.wms=加权平均分
 GradDegreeApply.email=Email
 
 GradCompleteApply=结业申请
+
 GradDeferApply=延期申请
 GradDeferApply.planGradDate=计划毕业日期
 GradDeferApply.deferGradDate=申请延期到
+
+GradDropoutApply=肄业申请
 
 AbstractGradApply=毕业申请
 AbstractGradApply.reason=申请理由

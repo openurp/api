@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.4.6">
+<db engine="PostgreSQL" version="1.4.9">
   <schemas>
     <schema name="base">
       <tables>
@@ -8646,6 +8646,27 @@
             <unique-key name="uk_o494jv59hx5tr80l6rl8snqqy" columns="batch_id,std_id"/>
           </constraints>
         </table>
+        <table name="std_grad_dropout_applies" comment="肄业申请@graduation.flow">
+          <columns>
+            <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
+            <column name="batch_id" type="bigint" nullable="false" comment="毕业批次ID"/>
+            <column name="college_opinion" type="varchar(255)" comment="院系意见"/>
+            <column name="college_passed" type="boolean" comment="院系是否通过"/>
+            <column name="datas" type="jsonb" nullable="false" comment="其他申请数据"/>
+            <column name="mobile" type="varchar(15)" comment="联系手机"/>
+            <column name="passed" type="boolean" comment="是否通过"/>
+            <column name="reason" type="varchar(255)" comment="申请理由"/>
+            <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
+            <column name="std_sign_url" type="varchar(255)" comment="个人签名url"/>
+            <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
+          </columns>
+          <constraints>
+            <primary-key name="pk_2frjotu1n08jskusup2xaf5tf" columns="id"/>
+            <foreign-key name="fk_qxy394pmhwl201bx04s0skbx4" column="std_id" referenced-table="base.students" referenced-column="id"/>
+            <foreign-key name="fk_kwe9csr1p17bodsf159rpirqs" column="batch_id" referenced-table="std.graduate_batches" referenced-column="id"/>
+            <unique-key name="uk_q4aasvdekb3r0i1r4sofhwedo" columns="batch_id,std_id"/>
+          </constraints>
+        </table>
       </tables>
     </schema>
     <schema name="his">
@@ -10196,7 +10217,7 @@
             <index name="idx_h6txa38ww6xmjierqkvw1u4d7" columns="std_id"/>
           </indexes>
         </table>
-        <table name="delayed_graduates" comment="不能毕业的应届毕业生@graduation">
+        <table name="delayed_graduates" comment="不予正常毕业的毕业生@graduation">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:datetime"/>
             <column name="acknowledged" type="boolean" comment="是否知晓"/>
@@ -10204,6 +10225,7 @@
             <column name="inform_details" type="jsonb" nullable="false" comment="告知详情"/>
             <column name="informed" type="boolean" comment="是否告知"/>
             <column name="season_id" type="bigint" nullable="false" comment="毕业界别ID"/>
+            <column name="status_id" type="integer" comment="毕业状态ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="std_sign_url" type="varchar(200)" comment="个人签名url"/>
           </columns>
@@ -10211,6 +10233,8 @@
             <primary-key name="pk_ducjfgf86a8sowv3t2pl91lw4" columns="id"/>
             <foreign-key name="fk_3q5sdbsrb0rf9b4i8itt1nf6q" column="std_id" referenced-table="base.students" referenced-column="id"/>
             <foreign-key name="fk_cq7cgor6j4pgrl05qgadebxbn" column="season_id" referenced-table="base.graduate_seasons" referenced-column="id"/>
+            <foreign-key name="fk_q9bcyd2thhetfcbm7v61k15u8" column="status_id" referenced-table="code.graduation_statuses" referenced-column="id"/>
+            <unique-key name="uk_2v11mxy80kn0u3k8bnqwd1ji5" columns="std_id,season_id"/>
           </constraints>
         </table>
         <table name="edu_work_records" comment="学习工作经历@info">

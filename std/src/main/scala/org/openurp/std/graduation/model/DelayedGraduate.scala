@@ -20,11 +20,12 @@ package org.openurp.std.graduation.model
 import org.beangle.commons.json.JsonObject
 import org.beangle.data.model.LongId
 import org.openurp.base.std.model.{GraduateSeason, Student}
+import org.openurp.code.std.model.GraduationStatus
 
 import java.time.Instant
 
 /**
- * 正常毕业的毕业生
+ * 不予正常毕业的毕业生
  */
 class DelayedGraduate extends LongId {
 
@@ -48,4 +49,7 @@ class DelayedGraduate extends LongId {
 
   /** 个人签名url */
   var stdSignUrl: Option[String] = None
+
+  /** 毕业状态 */
+  var status: Option[GraduationStatus] = None
 }

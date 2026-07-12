@@ -53,7 +53,7 @@ GradPlanResultCheck.owedCredits=欠学分
 GradPlanResultCheck.owedCredits2=预计通过后所欠学分
 GradPlanResultCheck.owedCredits3=在读通过后所欠学分
 
-DelayedGraduate=不能毕业的应届毕业生
+DelayedGraduate=不予正常毕业的毕业生
 DelayedGraduate.informed=是否告知
 DelayedGraduate.inform_details=告知详情
 DelayedGraduate.acknowledged=是否知晓
