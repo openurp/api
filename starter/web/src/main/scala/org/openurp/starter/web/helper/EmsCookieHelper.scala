@@ -23,9 +23,16 @@ import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.beangle.ems.app.web.EmsCookie
 import org.beangle.security.Securities
 import org.beangle.security.authc.{DefaultAccount, Profile}
+import org.beangle.security.context.SecurityContext
 import org.openurp.base.model.{Project, School}
 
 import java.time.LocalDate
+
+object EmsCookieHelper {
+  def getProfile(req: HttpServletRequest, res: HttpServletResponse): Option[Profile] = {
+    SecurityContext.get.profile
+  }
+}
 
 class EmsCookieHelper(entityDao: EntityDao) {
 
@@ -36,34 +43,22 @@ class EmsCookieHelper(entityDao: EntityDao) {
         val cookie = EmsCookie.get(req, res)
         Securities.session match {
           case Some(s) =>
-            val account = s.principal.asInstanceOf[DefaultAccount]
-            var profile: Profile = null
-            if (null != account.profiles && account.profiles.length > 0) {
-              if (cookie.profile == 0L) {
-                profile = account.profiles(0)
-              } else {
-                profile = account.profiles.find(p => p.id == cookie.profile).getOrElse(account.profiles(0))
-              }
-              if (profile.id != cookie.profile) {
-                cookie.profile = profile.id
-                EmsCookie.update(req, res, cookie, true)
-              }
-            }
-            if (null == profile) {
-              getFirstSchool()
-            } else {
-              val pstr = profile.getProperty("school").orNull
-              if (null != pstr) {
-                if (pstr == "*") {
-                  getFirstSchool()
-                } else if (Numbers.isDigits(pstr)) {
-                  entityDao.get(classOf[School], pstr.toInt)
+            val profile = SecurityContext.get.profile
+            profile match {
+              case None => getFirstSchool()
+              case Some(p) =>
+                val pstr = p.getProperty("school").orNull
+                if (null != pstr) {
+                  if (pstr == "*") {
+                    getFirstSchool()
+                  } else if (Numbers.isDigits(pstr)) {
+                    entityDao.get(classOf[School], pstr.toInt)
+                  } else {
+                    null
+                  }
                 } else {
-                  null
+                  getFirstSchool()
                 }
-              } else {
-                getFirstSchool()
-              }
             }
           case None => null
         }
@@ -84,7 +79,7 @@ class EmsCookieHelper(entityDao: EntityDao) {
   }
 
   def getProject(req: HttpServletRequest, res: HttpServletResponse): Project = {
-    getProfile(req, res) match {
+    SecurityContext.get.profile match {
       case Some(p) =>
         val pstr = p.getProperty("project").orNull
         if (null != pstr) {
@@ -104,28 +99,6 @@ class EmsCookieHelper(entityDao: EntityDao) {
         } else {
           null
         }
-    }
-  }
-
-  def getProfile(req: HttpServletRequest, res: HttpServletResponse): Option[Profile] = {
-    Securities.session match {
-      case Some(s) =>
-        val account = s.principal.asInstanceOf[DefaultAccount]
-        var profile: Profile = null
-        if (null != account.profiles && account.profiles.length > 0) {
-          val cookie = EmsCookie.get(req, res)
-          if (cookie.profile == 0L) {
-            profile = account.profiles(0)
-          } else {
-            profile = account.profiles.find(p => p.id == cookie.profile).getOrElse(account.profiles(0))
-          }
-          if (profile.id != cookie.profile) {
-            cookie.profile = profile.id
-            EmsCookie.update(req, res, cookie, true)
-          }
-        }
-        Option(profile)
-      case None => None
     }
   }
 

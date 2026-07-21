@@ -180,14 +180,14 @@ trait ProjectSupport extends ParamSupport with ServletSupport {
   }
 
   private def getProfileDepartIds: Option[String] = {
-    new EmsCookieHelper(entityDao).getProfile(request, response) match {
+    EmsCookieHelper.getProfile(request, response) match {
       case None => None
       case Some(p) => p.getProperty("department")
     }
   }
 
   private def getProfileStdTypeIds: Option[String] = {
-    new EmsCookieHelper(entityDao).getProfile(request, response) match {
+    EmsCookieHelper.getProfile(request, response) match {
       case None => None
       case Some(p) => p.getProperty("stdType")
     }

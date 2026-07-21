@@ -32,13 +32,13 @@ object SemesterHelper {
     val cookie = EmsCookie.get(request, response)
     Params.getInt("semester.id") match {
       case None =>
-        cookie.data.get("semester") match
+        cookie.get("semester") match
           case None => semesterService.get(project, LocalDate.now)
           case Some(semesterId) => entityDao.get(classOf[Semester], semesterId.toInt)
       case Some(id) =>
         val semester = entityDao.get(classOf[Semester], id)
-        if (!cookie.data.contains("semester") || semester.id != cookie.data("semester").toInt) {
-          cookie.data.put("semester", semester.id.toString)
+        if (!cookie.contains("semester") || semester.id != cookie("semester").toInt) {
+          cookie.put("semester", semester.id.toString)
           EmsCookie.update(request, response, cookie, true)
         }
         semester
