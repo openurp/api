@@ -22,7 +22,7 @@ import org.beangle.commons.lang.Numbers
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.beangle.ems.app.web.EmsCookie
 import org.beangle.security.Securities
-import org.beangle.security.authc.{DefaultAccount, Profile}
+import org.beangle.security.authc.Profile
 import org.beangle.security.context.SecurityContext
 import org.openurp.base.model.{Project, School}
 

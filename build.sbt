@@ -1,31 +1,31 @@
 import org.openurp.parent.Dependencies.*
 import org.openurp.parent.Settings.*
 
-ThisBuild / organization := "org.openurp"
-ThisBuild / version := "1.4.12-SNAPSHOT"
+organization := "org.openurp"
+version := "1.4.12-SNAPSHOT"
 
-ThisBuild / scmInfo := Some(
+scmInfo := Some(
   ScmInfo(
-    url("https://github.com/openurp/api"),
+    uri("https://github.com/openurp/api"),
     "scm:git@github.com:openurp/api.git"
   )
 )
 
-ThisBuild / developers := List(
+developers := List(
   Developer(
     id = "chaostone",
     name = "Tihua Duan",
     email = "duantihua@gmail.com",
-    url = url("http://github.com/duantihua")
+    url = uri("http://github.com/duantihua")
   )
 )
 
-ThisBuild / description := "OpenURP API"
-ThisBuild / homepage := Some(url("http://openurp.github.io/api/index.html"))
-ThisBuild / resolvers += Resolver.mavenLocal
+description := "OpenURP API"
+homepage := Some(uri("http://openurp.github.io/api/index.html"))
+resolvers += Resolver.mavenLocal
 
-val ojdbc11 = "com.oracle.database.jdbc" % "ojdbc11" % "23.26.2.0.0"
-val orai18n = "com.oracle.database.nls" % "orai18n" % "23.26.2.0.0"
+val ojdbc11 = "com.oracle.database.jdbc" % "ojdbc11" % "23.26.3.0.0"
+val orai18n = "com.oracle.database.nls" % "orai18n" % "23.26.3.0.0"
 
 val startLibs = Seq(beangle_commons, beangle_ems_app, beangle_data_hibernate, beangle_cdi, beangle_jdbc, beangle_config,
   logback_classic, caffeine_jcache, ojdbc11, orai18n)
@@ -33,7 +33,8 @@ val startLibs = Seq(beangle_commons, beangle_ems_app, beangle_data_hibernate, be
 lazy val root = (project in file("."))
   .settings(
     name := "openurp-api",
-    common)
+    common,
+    publish / skip := true)
   .aggregate(code, base, edu, prac, qos, trd, std, degree, lab, starter_task, starter_web, all)
 
 lazy val code = (project in file("code"))
@@ -127,5 +128,3 @@ lazy val starter_task = (project in file("starter/task"))
     common,
     libraryDependencies ++= startLibs
   ).dependsOn(base)
-
-publish / skip := true

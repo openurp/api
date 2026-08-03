@@ -18,10 +18,11 @@
 package org.openurp.starter.web.ws
 
 import org.beangle.commons.json.JsonObject
-import org.beangle.data.dao.EntityDao
+import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.beangle.data.json.JsonAPI
 import org.beangle.data.json.JsonAPI.Context
 import org.beangle.security.Securities
+import org.beangle.security.context.SecurityContext
 import org.beangle.webmvc.annotation.response
 import org.beangle.webmvc.context.ActionContext
 import org.beangle.webmvc.support.ActionSupport
@@ -36,7 +37,12 @@ class StudentWS extends ActionSupport {
 
   @response
   def index(): JsonObject = {
-    val stds = entityDao.findBy(classOf[Student], "user.code", Securities.user)
+    val q = OqlBuilder.from(classOf[Student], "std")
+    q.where("std.user.code=:code", Securities.user)
+    SecurityContext.get.profile foreach { p =>
+      q.where("std.project.id=:projectId", p.id.intValue())
+    }
+    val stds = entityDao.search(q)
 
     given context: Context = JsonAPI.context(ActionContext.current.params)
 

@@ -28,6 +28,7 @@ class ConfigWS extends ActionSupport {
   def index(): Json = {
     val json = new JsonObject()
     json.add("ems_base", Ems.base)
+    json.add("logoUrl", s"${Ems.base}/api/platform/config/domains/logo")
     json
   }
 }

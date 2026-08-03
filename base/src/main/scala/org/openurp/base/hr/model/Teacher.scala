@@ -23,7 +23,7 @@ import org.beangle.data.model.pojo.*
 import org.openurp.base.edu.model.TeachingOffice
 import org.openurp.base.hr.model.Staff
 import org.openurp.base.model.*
-import org.openurp.code.job.model.{ProfessionalTitle, TutorType}
+import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.code.person.model.Gender
 
 import scala.collection.mutable
@@ -53,6 +53,10 @@ class Teacher extends LongId, TemporalOn, Named, Remark {
 
   /** 所在教研室 */
   var office: Option[TeachingOffice] = None
+
+  def enName: Option[String] = {
+    staff.enName
+  }
 
   /** 工号 */
   def code: String = staff.code
