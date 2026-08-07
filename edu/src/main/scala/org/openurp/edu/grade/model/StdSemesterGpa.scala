@@ -17,6 +17,7 @@
 
 package org.openurp.edu.grade.model
 
+import org.beangle.commons.lang.math.TinyDecimal5
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 
@@ -37,9 +38,9 @@ class StdSemesterGpa extends LongId, GpaStat {
    */
   var semester: Semester = _
 
-  def this(semester: Semester, gpa: Double) = {
+  def this(semester: Semester, gpa: BigDecimal) = {
     this()
     this.semester = semester
-    this.gpa = gpa
+    this.gpa = TinyDecimal5.of(gpa.bigDecimal)
   }
 }

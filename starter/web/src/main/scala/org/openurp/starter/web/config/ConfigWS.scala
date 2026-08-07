@@ -18,7 +18,7 @@
 package org.openurp.starter.web.config
 
 import org.beangle.commons.json.{Json, JsonObject}
-import org.beangle.ems.app.Ems
+import org.beangle.ems.app.{Ems, EmsApp}
 import org.beangle.webmvc.annotation.response
 import org.beangle.webmvc.support.ActionSupport
 
@@ -28,6 +28,7 @@ class ConfigWS extends ActionSupport {
   def index(): Json = {
     val json = new JsonObject()
     json.add("ems_base", Ems.base)
+    json.add("app_name", EmsApp.name)
     json.add("logoUrl", s"${Ems.base}/api/platform/config/domains/logo")
     json
   }

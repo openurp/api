@@ -19,6 +19,7 @@ package org.openurp.edu.grade.domain
 
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.annotation.beta
+import org.beangle.commons.lang.math.TinyDecimal5
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
@@ -124,9 +125,9 @@ class GpaCalculator {
           yearGrades ++= semesterGrades
 
           val filted = chain.filter(semesterGrades)
-          stdTermGpa.gpa = this.calcGpa(filted).doubleValue
-          stdTermGpa.wms = this.calcWms(filted).doubleValue
-          stdTermGpa.ams = this.calcAms(filted).doubleValue
+          stdTermGpa.gpa = TinyDecimal5.of(calcGpa(filted).bigDecimal)
+          stdTermGpa.wms = TinyDecimal5.of(calcWms(filted).bigDecimal)
+          stdTermGpa.ams = TinyDecimal5.of(calcAms(filted).bigDecimal)
           stdTermGpa.totalCount = semesterGrades.size
           val stats = statCredits(semesterGrades)
           stdTermGpa.totalCredits = stats._1
@@ -139,9 +140,9 @@ class GpaCalculator {
           stdYearGpa.schoolYear = year
           stdGpa.add(stdYearGpa)
           val filted = chain.filter(yearGrades)
-          stdYearGpa.gpa = this.calcGpa(filted).doubleValue
-          stdYearGpa.wms = this.calcWms(filted).doubleValue
-          stdYearGpa.ams = this.calcAms(filted).doubleValue
+          stdYearGpa.gpa = TinyDecimal5.of(calcGpa(filted).bigDecimal)
+          stdYearGpa.wms = TinyDecimal5.of(calcWms(filted).bigDecimal)
+          stdYearGpa.ams = TinyDecimal5.of(calcAms(filted).bigDecimal)
           stdYearGpa.totalCount = yearGrades.size
           val stats = statCredits(yearGrades)
           stdYearGpa.totalCredits = stats._1
@@ -150,9 +151,9 @@ class GpaCalculator {
       }
     }
     val filted = chain.filter(grades)
-    stdGpa.gpa = this.calcGpa(filted).doubleValue
-    stdGpa.wms = this.calcWms(filted).doubleValue
-    stdGpa.ams = this.calcAms(filted).doubleValue
+    stdGpa.gpa = TinyDecimal5.of(calcGpa(filted).bigDecimal)
+    stdGpa.wms = TinyDecimal5.of(calcWms(filted).bigDecimal)
+    stdGpa.ams = TinyDecimal5.of(calcAms(filted).bigDecimal)
 
     val courseMap = Collections.newMap[Course, CourseGrade]
     for (grade <- filted) {

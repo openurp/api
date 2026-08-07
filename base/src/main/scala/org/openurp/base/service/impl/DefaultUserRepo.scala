@@ -248,7 +248,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
   }
 
   private def generatePassword(): String = {
-    (0 until 10).map(i => Random.nextPrintableChar).mkString
+    (0 until 10).map(i => Random.nextPrintableChar()).mkString
   }
 
   private def findEmsUserId(code: String): Option[Long] = {
