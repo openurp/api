@@ -39,6 +39,7 @@ class StudentWS extends ActionSupport {
   def index(): JsonObject = {
     val q = OqlBuilder.from(classOf[Student], "std")
     q.where("std.user.code=:code", Securities.user)
+    q.orderBy("std.endOn desc")
     SecurityContext.get.profile foreach { p =>
       q.where("std.project.id=:projectId", p.id.intValue())
     }

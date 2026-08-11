@@ -15,19 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.openurp.starter.web
+package org.openurp.starter.web.ws
 
-import org.beangle.commons.cdi.BindModule
-import org.openurp.starter.web.action.IndexAction
-import org.openurp.starter.web.config.{ConfigWS, ThemeWS}
-import org.openurp.starter.web.ws.{PermissionWS, ProfileWS, StudentWS}
+import org.beangle.ems.app.security.RemoteService
+import org.beangle.security.Securities
+import org.beangle.webmvc.annotation.response
+import org.beangle.webmvc.support.ActionSupport
+import org.beangle.webmvc.view.View
 
-class ProjectModule extends BindModule {
-
-  override def binding(): Unit = {
-    bind(classOf[IndexAction])
-    bind(classOf[StudentWS], classOf[ProfileWS], classOf[PermissionWS])
-    bind(classOf[ws.std.SemesterWS])
-    bind(classOf[ConfigWS],classOf[ThemeWS])
+class PermissionWS extends ActionSupport {
+  @response
+  def index(): View = {
+    val user = Securities.user
+    val channel = get("channel", "pc")
+    raw(RemoteService.getAppUserPermissions(user, channel))
   }
 }
