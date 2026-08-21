@@ -53,6 +53,7 @@ class HisExamGrade extends LongId, Grade, ArchivedByYear {
 
   def convert(): ExamGrade = {
     val eg = new ExamGrade()
+    eg.id = this.id
     eg.gradeType = gradeType
     eg.gradingMode = gradingMode
     eg.score = score

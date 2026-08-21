@@ -91,7 +91,7 @@ class Semester extends IntId, Coded, Named, DateRange, Remark {
 
   def schoolYear: String = year.name
 
-  def archived:Boolean = year.archived
+  def archived: Boolean = year.archived
 
   def startWeek(): Int = {
     val gc = new GregorianCalendar();
@@ -116,6 +116,10 @@ class Semester extends IntId, Coded, Named, DateRange, Remark {
    * 是否是小学期 暑期、寒假学期等(时间<=2月)
    */
   def shortTerm: Boolean = weeks <= 9
+
+  def firstWeekday: WeekDay = {
+    calendar.firstWeekday
+  }
 }
 
 /** 教学日历中的阶段 */

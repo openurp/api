@@ -54,6 +54,7 @@ class HisGaGrade extends LongId, Grade, Updatable, Remark, ArchivedByYear {
 
   def convert(): GaGrade = {
     val gg = new GaGrade()
+    gg.id = this.id
     gg.gradeType = gradeType
     gg.gradingMode = gradingMode
     gg.score = score
