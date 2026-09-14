@@ -80,7 +80,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[PersonCheckItem] declare { e =>
-      e.oldValue & e.newValue is length(200)
+      e.oldValue & e.newValue are length(200)
     }
 
     bind[PersonCheck] declare { e =>
