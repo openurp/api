@@ -102,10 +102,13 @@ lazy val lab = (project in file("lab"))
   ).dependsOn(base)
 
 lazy val all = (project in file("all"))
+  .enablePlugins(MetaPlugin)
   .settings(
     organization := "org.openurp",
     name := "openurp-api-all",
     common,
+    // 库项目不在 Compile 期生成 beanmeta.idx（避免随产物外溢），仅在测试期集中生成
+    Compile / metaIndex := Def.uncached(Option.empty[File]),
     libraryDependencies ++= Seq(scalatest, logback_classic),
     publish / skip := true
   ).dependsOn(code, base, edu, prac, qos, trd, std, degree, lab)
