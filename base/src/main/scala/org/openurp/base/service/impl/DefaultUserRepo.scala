@@ -20,6 +20,7 @@ package org.openurp.base.service.impl
 import org.beangle.commons.bean.Initializing
 import org.beangle.commons.codec.digest.Digests
 import org.beangle.commons.collection.Collections
+import org.beangle.commons.json.{Json, JsonObject}
 import org.beangle.commons.lang.Strings
 import org.beangle.commons.logging.Logging
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
@@ -43,9 +44,14 @@ import scala.util.Random
 class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, hostname: String) extends UserRepo, Logging, Initializing {
 
   var orgId: Int = _
+
+  /** 数据授权中的项目维度，在门户中对应一个业务场景(ems.cfg_envs) */
+  private val ProjectDimension = "project"
+
+  /** 数据授权中的部门维度 */
+  private val DepartmentDimension = "department"
+
   private var domainId: Int = _
-  private var dimensionProjectId: Int = _
-  private var dimensionDepartmentId: Int = _
 
   private var emsJdbcExecutor: JdbcExecutor = _
 
@@ -68,8 +74,12 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     val first = datas.head
     domainId = first(0).asInstanceOf[Number].intValue
     orgId = first(1).asInstanceOf[Number].intValue
-    dimensionProjectId = emsJdbcExecutor.unique[Int]("select id from ems.usr_dimensions where domain_id=? and name=?", domainId, "project").getOrElse(0)
-    dimensionDepartmentId = emsJdbcExecutor.unique[Int]("select id from ems.usr_dimensions where domain_id=? and name=?", domainId, "department").getOrElse(0)
+    //数据授权以维度名称为key存放在usr_env_profiles.properties中，未声明的维度会导致门户无法解析
+    val dimensionNames = emsJdbcExecutor.query("select name from ems.usr_dimensions where domain_id=?", domainId).map(x => x(0).toString)
+    val missingDimensions = Seq(ProjectDimension, DepartmentDimension).filterNot(dimensionNames.contains)
+    if (missingDimensions.nonEmpty) {
+      logger.warn(s"Cannot find ems dimensions ${missingDimensions.mkString(",")} for domain $domainId")
+    }
   }
 
   override def createDepart(depart: Department): Unit = {
@@ -236,7 +246,7 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
 
   /** 默认证件后六位，如果没有证件则是一个随机的默认密码
    *
-   * @param idNumber
+   * @param idNumber idcard
    * @return
    */
   private def defaultPassword(idNumber: String): String = {
@@ -316,44 +326,73 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
     grantGroups(userId, user.groups.flatMap(x => findEmsGroupId(x.group)))
   }
 
+  /** 创建用户的数据授权配置(ems.usr_env_profiles)
+   *
+   * 门户以业务场景(Env)作为项目的数据范围，一个用户在一个项目下只有一份配置，
+   * 维度值以维度名称作为key存放在properties(jsonb)中。
+   */
   private def createProfile(emsUserId: Long, project: Project, department: Department): Unit = {
+    val envId = findOrCreateEnv(project)
     val departId = department.id.toString
-    var missingProject = true
-    val existProfileIds = emsJdbcExecutor.query(s"select id from ems.usr_profiles where domain_id=$domainId and user_id=$emsUserId")
-    if (existProfileIds.nonEmpty) {
-      for (pid <- existProfileIds if missingProject) {
-        val profileId = pid.head.asInstanceOf[Number].longValue()
-        val projectValues = emsJdbcExecutor.query("select value_ from ems.usr_profiles_properties where profile_id=? and dimension_id=?", profileId, dimensionProjectId)
-        if (projectValues.nonEmpty) {
-          val projectValue = projectValues.head.head.toString.trim()
-          if (projectValue == "*" || projectValue == project.id.toString) {
-            missingProject = false
-            var missingDepart = true
-            var departValue: String = null
-            val departValues = emsJdbcExecutor.query("select value_ from ems.usr_profiles_properties where profile_id=? and dimension_id=?", profileId, dimensionDepartmentId)
-            if (departValues.nonEmpty) {
-              departValue = departValues.head.head.toString
-              if (departValue == "*" || Strings.split(departValue).toSet.contains(departId)) {
-                missingDepart = false
-              }
-            }
-            if (missingDepart) {
-              if (null == departValue) {
-                emsJdbcExecutor.update("insert into ems.usr_profiles_properties(profile_id,dimension_id,value_) values(?,?,?);", profileId, dimensionDepartmentId, departId)
-              } else {
-                departValue += ("," + department.id.toString)
-                emsJdbcExecutor.update("update ems.usr_profiles_properties set value_=? where profile_id=? and dimension_id=?", departValue, profileId, dimensionDepartmentId)
-              }
-            }
-          }
+    val profiles = emsJdbcExecutor.query("select id,properties from ems.usr_env_profiles where domain_id=? and user_id=? and env_id=?",
+      domainId, emsUserId, envId)
+    profiles.headOption match {
+      case None =>
+        val properties = new JsonObject()
+        properties.add(ProjectDimension, project.id.toString)
+        properties.add(DepartmentDimension, departId)
+        emsJdbcExecutor.update("insert into ems.usr_env_profiles(id,user_id,domain_id,env_id,properties) values(?,?,?,?,?)",
+          nextId(), emsUserId, domainId, envId, properties)
+        logger.info(s"create profile ${project.name} for user $emsUserId")
+      case Some(data) =>
+        val profileId = data(0).asInstanceOf[Number].longValue()
+        val properties = parseProperties(data(1))
+        val patch = new JsonObject()
+        if (null == properties.getString(ProjectDimension, null)) {
+          patch.add(ProjectDimension, project.id.toString)
         }
-      }
+        val departValue = properties.getString(DepartmentDimension, null)
+        if (null == departValue) {
+          patch.add(DepartmentDimension, departId)
+        } else if ("*" != departValue && !Strings.split(departValue).toSet.contains(departId)) {
+          patch.add(DepartmentDimension, departValue + "," + departId)
+        }
+        if (patch.nonEmpty) {
+          emsJdbcExecutor.update("update ems.usr_env_profiles set properties=properties||? where id=?", patch, profileId)
+        }
     }
-    if (missingProject) {
-      val profileId = nextId()
-      emsJdbcExecutor.update("insert into ems.usr_profiles(id,user_id,domain_id,name) values(?,?,?,?);", profileId, emsUserId, domainId, project.name)
-      emsJdbcExecutor.update("insert into ems.usr_profiles_properties(profile_id,dimension_id,value_) values(?,?,?);", profileId, dimensionProjectId, project.id.toString)
-      emsJdbcExecutor.update("insert into ems.usr_profiles_properties(profile_id,dimension_id,value_) values(?,?,?);", profileId, dimensionDepartmentId, departId)
+  }
+
+  /** 查找项目对应的业务场景,没有则创建
+   *
+   * 新建的场景使用门户一致的datetime id，不混用URP的project id
+   */
+  private def findOrCreateEnv(project: Project): Long = {
+    val envs = emsJdbcExecutor.query("select id,name from ems.cfg_envs where domain_id=? and code=?", domainId, project.code)
+    envs.headOption match {
+      case Some(data) =>
+        val envId = data(0).asInstanceOf[Number].longValue()
+        if (data(1) != project.name) {
+          emsJdbcExecutor.update("update ems.cfg_envs set name=? where id=?", project.name, envId)
+        }
+        envId
+      case None =>
+        val envId = nextId()
+        emsJdbcExecutor.update("insert into ems.cfg_envs(id,code,name,domain_id) values(?,?,?,?)", envId, project.code, project.name, domainId)
+        logger.info(s"create env ${project.code} ${project.name}")
+        envId
+    }
+  }
+
+  private def parseProperties(value: Any): JsonObject = {
+    value match {
+      case null => new JsonObject()
+      case properties: JsonObject => properties
+      case _ =>
+        Json.parse(value.toString) match {
+          case properties: JsonObject => properties
+          case _ => new JsonObject()
+        }
     }
   }
 
