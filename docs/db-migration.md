@@ -15,6 +15,20 @@
 
 任务由 beangle 的 sbt 插件提供（自动启用）：`ormDdl` 生成全量 DDL，`ddlDiff` 生成增量 SQL。
 
+上面的流程已经脚本化，日常改动直接跑脚本即可（等价于 §3 的第 1–6 步 + §3.7 复核）：
+
+```bash
+scripts/db-migration.sh 1.4.10 1.6.0 "课程审核结果改用未通过后续途径"
+```
+
+- 旧快照默认取 `git HEAD` 里的 `database.xml`，要求它的 `version` 等于第一个参数；
+  HEAD 已经是新版本时用 `--old-file <文件>` 指定旧快照。
+- 已存在的 migrate 脚本不会被覆盖，新的 `ddlDiff` 结果留在 `target/.../migrate/` 下供人工合并。
+- migrate 脚本生成的是骨架：版本登记 + 按"新增 → 删除 → 注释"重排好的结构语句 + 数据回填 TODO，
+  变更说明与回填语句仍需人工补。
+- 任何一步失败都不会动 `init/` 与 `database.xml`；临时快照用完即删。
+- `scripts/db-migration.sh --verify` 只跑 §3.7 的列序复核（不生成、不改文件），适合提交前自检。
+
 ## 2. 前置条件：beanmeta.idx
 
 `ormDdl` 会 fork `org.beangle.data.orm.DdlGenerator`，它通过 `META-INF/beangle/beanmeta.idx`
@@ -203,6 +217,8 @@ sbt "all/Compile/ddlDiff 1.4.10 1.6.0"          # 4. 生成增量结构 SQL
 # 5. 整理成 migrate/<年>/<日期> <版本>.sql（补版本登记与数据迁移）
 cp db-1.6.0.xml database.xml                    # 6. 更新当前快照并删除临时文件
 ```
+
+以上六步可以直接用 `scripts/db-migration.sh 1.4.10 1.6.0 "变更说明"` 代替。
 
 ## 5. 常见问题
 
