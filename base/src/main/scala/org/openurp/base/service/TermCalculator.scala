@@ -78,7 +78,7 @@ class TermCalculator(project: Project, semester: Semester, entityDao: EntityDao)
    * @param omitSmallTerm
    * @return
    */
-  private def getTerm(beginOn: LocalDate, omitSmallTerm: Boolean): Int = {
+  def getTerm(beginOn: LocalDate, omitSmallTerm: Boolean): Int = {
     termCalcCache.get(beginOn) match {
       case Some(term) => term
       case None =>
