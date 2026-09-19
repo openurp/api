@@ -2,7 +2,7 @@ import org.openurp.parent.Dependencies.*
 import org.openurp.parent.Settings.*
 
 organization := "org.openurp"
-version := "1.5.2-SNAPSHOT"
+version := "1.6.0-SNAPSHOT"
 
 scmInfo := Some(
   ScmInfo(
@@ -107,8 +107,8 @@ lazy val all = (project in file("all"))
     organization := "org.openurp",
     name := "openurp-api-all",
     common,
-    // 库项目不在 Compile 期生成 beanmeta.idx（避免随产物外溢），仅在测试期集中生成
-    Compile / metaIndex := Def.uncached(Option.empty[File]),
+    // all 是聚合终端模块（publish/skip），Compile 期生成 beanmeta.idx 供 ormDdl 直接使用；
+    // 缺少 idx 时 DDL 生成器无法解析泛型 id，会报 Cannot find sqltype for java.lang.Object
     libraryDependencies ++= Seq(scalatest, logback_classic),
     publish / skip := true
   ).dependsOn(code, base, edu, prac, qos, trd, std, degree, lab)
