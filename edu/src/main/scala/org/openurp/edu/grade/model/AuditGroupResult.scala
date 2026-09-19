@@ -110,10 +110,9 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
   def addCourseResult(cr: AuditCourseResult): Unit = {
     cr.groupResult = this
     if !courseResults.exists(_.course == cr.course) then courseResults += cr
-    //may passed and taking are both true.
+    //may passed and pending are both true.
     if cr.passed then addCourse(this, cr.course, AuditCourseLevel.Passed)
     else if cr.predicted then addCourse(this, cr.course, AuditCourseLevel.Predicted)
-    else if cr.taking then addCourse(this, cr.course, AuditCourseLevel.Taking)
   }
 
   def getCourseResult(course: Course): Option[AuditCourseResult] = {
@@ -176,7 +175,6 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
     val eduLevel = this.planResult.std.level
     this.passedCredits = passedCourses.toSeq.map(_.getCredits(eduLevel)).sum //must toseq
     val passedCredits2 = predictedCourses.toSeq.map(_.getCredits(eduLevel)).sum
-    val passedCredits3 = takingCourses.toSeq.map(_.getCredits(eduLevel)).sum
 
     //计算必修部分(compulsory part)的欠分、欠分2
     val cp = courseResults.filter(_.compulsory)

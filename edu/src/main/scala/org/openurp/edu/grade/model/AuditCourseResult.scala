@@ -49,17 +49,17 @@ class AuditCourseResult extends LongId, Remark {
   /** 是否必修 */
   var compulsory: Boolean = _
 
-  /** 是否在读 */
-  var taking: Boolean = _
-
-  /** 是否预计能通过 */
-  var predicted: Boolean = _
+  /** 未通过时尚未出成绩的后续途径 */
+  var pendingWay: Option[CoursePendingWay] = None
 
   /** 是否修读过，产生过成绩记录 */
   var hasGrade: Boolean = _
 
   /** 若通过，通过的途径 */
   var passedWay: Option[CoursePassedWay] = None
+
+  /** 是否预计能通过, 存在未出成绩的后续途径即视为预计能通过 */
+  def predicted: Boolean = pendingWay.nonEmpty
 
   def updatePassed(gradeList: Option[GradeList]): AuditCourseResult = {
     hasGrade = false
@@ -99,10 +99,6 @@ class AuditCourseResult extends LongId, Remark {
     this
   }
 
-  private def getScoreText(grade: CourseGrade): String = {
-    if grade.courseTakeType.id == CourseTakeType.Exemption then grade.courseTakeType.name else grade.scoreText.getOrElse("--")
-  }
-
   def updatePassedWay(way: CoursePassedWay): Unit = {
     this.passed = true
     this.passedWay = Some(way)
@@ -132,5 +128,9 @@ class AuditCourseResult extends LongId, Remark {
       case Some(r) => if r.contains(remark) then Some(r) else Some(r + " " + remark)
 
     this.remark foreach { r => if (r.length > 200) then this.remark = Some(Strings.abbreviate(r, 200)) }
+  }
+
+  private def getScoreText(grade: CourseGrade): String = {
+    if grade.courseTakeType.id == CourseTakeType.Exemption then grade.courseTakeType.name else grade.scoreText.getOrElse("--")
   }
 }

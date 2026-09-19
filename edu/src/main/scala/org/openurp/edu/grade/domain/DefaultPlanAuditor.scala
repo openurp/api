@@ -176,7 +176,7 @@ class DefaultPlanAuditor extends PlanAuditor {
    */
   def cleanupElectiveCourses(result: AuditPlanResult): Unit = {
     for (gr <- result.groupResults; if gr.optional || gr.passed) {
-      val empties = gr.courseResults filter (x => !x.compulsory && !x.passed && !x.predicted && !x.taking && !x.hasGrade)
+      val empties = gr.courseResults filter (x => !x.compulsory && !x.passed && !x.predicted && !x.hasGrade)
       gr.courseResults.subtractAll(empties)
     }
   }
