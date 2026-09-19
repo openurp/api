@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.4.10">
+<db engine="PostgreSQL" version="1.6.0">
   <schemas>
     <schema name="base">
       <tables>
@@ -5356,10 +5356,9 @@
             <column name="has_grade" type="boolean" nullable="false" defaultValue="false" comment="是否有成绩"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="passed_way" type="integer" comment="通过方式"/>
-            <column name="predicted" type="boolean" nullable="false" defaultValue="false" comment="预计是否通过"/>
+            <column name="pending_way" type="integer" comment="未通过后续途径"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
             <column name="scores" type="varchar(50)" nullable="false" defaultValue="&apos;--&apos;" comment="分数"/>
-            <column name="taking" type="boolean" nullable="false" defaultValue="false" comment="是否正在修读"/>
             <column name="terms" type="integer" nullable="false" comment="开课学期"/>
           </columns>
           <constraints>
@@ -8674,6 +8673,7 @@
         <table name="edu_course_grades" comment="历史课程成绩@his">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:assigned"/>
+            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="clazz_id" type="bigint" comment="教学任务ID"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程ID"/>
             <column name="course_take_type_id" type="integer" nullable="false" comment="修读类别ID"/>
@@ -8689,7 +8689,6 @@
             <column name="project_id" type="integer" nullable="false" comment="项目ID"/>
             <column name="provider" type="varchar(80)" comment="成绩来源"/>
             <column name="remark" type="varchar(200)" comment="备注"/>
-            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="score" type="float4" comment="得分"/>
             <column name="score_text" type="varchar(10)" comment="得分字面值"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
@@ -8741,6 +8740,7 @@
         <table name="edu_course_takers" comment="历史学生修读课程信息@his">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:assigned"/>
+            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="alternative" type="boolean" nullable="false" defaultValue="false" comment="是否替代"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="course_id" type="bigint" nullable="false" comment="课程基本信息ID"/>
@@ -8748,7 +8748,6 @@
             <column name="election_mode_id" type="integer" nullable="false" comment="选课方式ID"/>
             <column name="free_listening" type="boolean" nullable="false" defaultValue="false" comment="是否免听"/>
             <column name="remark" type="varchar(100)" comment="备注"/>
-            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="semester_id" type="integer" nullable="false" comment="学年学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="subclazz_id" type="bigint" comment="教学任务小班ID"/>
@@ -8766,6 +8765,7 @@
         <table name="edu_exam_grades" comment="历史考试成绩@his">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:assigned"/>
+            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="course_grade_id" type="bigint" nullable="false" comment="对应的课程成绩ID"/>
             <column name="created_at" type="timestamptz" nullable="false" comment="创建时间"/>
             <column name="exam_status_id" type="integer" nullable="false" comment="考试情况ID"/>
@@ -8773,7 +8773,6 @@
             <column name="grading_mode_id" type="integer" nullable="false" comment="成绩记录方式ID"/>
             <column name="operator" type="varchar(100)" comment="操作者"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
-            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="score" type="float4" comment="得分"/>
             <column name="score_text" type="varchar(10)" comment="得分字面值"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
@@ -8790,13 +8789,13 @@
         <table name="edu_exam_takers" comment="历史应考学生@his">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:assigned"/>
+            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="activity_id" type="bigint" comment="排考活动ID"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="exam_room_id" type="bigint" comment="考场ID"/>
             <column name="exam_status_id" type="integer" nullable="false" comment="考试情况ID"/>
             <column name="exam_type_id" type="integer" nullable="false" comment="考试类型ID"/>
             <column name="remark" type="varchar(255)" comment="缓考申请原因/记录处分"/>
-            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="seat_no" type="smallint" nullable="false" defaultValue="0" comment="考场座位号"/>
             <column name="semester_id" type="integer" nullable="false" comment="学期ID"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
@@ -8812,6 +8811,7 @@
         <table name="edu_ga_grades" comment="历史总评成绩@his">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:assigned"/>
+            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="course_grade_id" type="bigint" nullable="false" comment="对应的课程成绩ID"/>
             <column name="created_at" type="timestamptz" nullable="false" comment="创建时间"/>
             <column name="delta" type="float4" comment="加减修正分"/>
@@ -8821,7 +8821,6 @@
             <column name="operator" type="varchar(100)" comment="操作者"/>
             <column name="passed" type="boolean" nullable="false" defaultValue="false" comment="是否通过"/>
             <column name="remark" type="varchar(255)" comment="备注"/>
-            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="score" type="float4" comment="得分"/>
             <column name="score_text" type="varchar(10)" comment="得分字面值"/>
             <column name="status" type="integer" nullable="false" defaultValue="0" comment="成绩状态"/>
@@ -8837,6 +8836,7 @@
         <table name="edu_occupancies" comment="房间占用情况@his">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:assigned"/>
+            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="activity_id" type="bigint" nullable="false" defaultValue="0" comment="活动Id"/>
             <column name="activity_type_id" type="integer" nullable="false" comment="活动类型ID"/>
             <column name="app_id" type="bigint" nullable="false" comment="用户系统ID"/>
@@ -8844,7 +8844,6 @@
             <column name="depart_id" type="integer" nullable="false" comment="占用院系ID"/>
             <column name="end_at" type="smallint" nullable="false" comment="结束时间"/>
             <column name="room_id" type="bigint" nullable="false" comment="房间ID"/>
-            <column name="school_year" type="integer" nullable="false" comment="学年度"/>
             <column name="shared" type="boolean" nullable="false" defaultValue="false" comment="是否可以共享占用"/>
             <column name="start_on" type="date" nullable="false" comment="开始日期"/>
             <column name="std_count" type="integer" nullable="false" defaultValue="0" comment="学生人数"/>
@@ -8868,8 +8867,8 @@
         <table name="edu_regular_grades" comment="历史平时过程总评成绩@his">
           <columns>
             <column name="id" type="bigint" nullable="false" comment="非业务主键:assigned"/>
-            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="school_year" type="integer" nullable="false" comment="学年度"/>
+            <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="score" type="float4" nullable="false" defaultValue="0" comment="分数"/>
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="tests_json" type="jsonb" nullable="false" comment="测试分数详情"/>
