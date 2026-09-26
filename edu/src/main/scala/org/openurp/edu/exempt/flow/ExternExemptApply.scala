@@ -22,6 +22,7 @@ import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{AuditStatus, Semester}
 import org.openurp.base.std.model.ExternStudent
+import scala.compiletime.uninitialized
 
 /** 外校成绩免修申请
  */
@@ -29,10 +30,10 @@ import org.openurp.base.std.model.ExternStudent
 class ExternExemptApply extends LongId, Updatable {
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 外部学习经历 */
-  var externStudent: ExternStudent = _
+  var externStudent: ExternStudent = uninitialized
 
   /** 成绩单附件路径 */
   var transcriptPath: Option[String] = None
@@ -44,8 +45,8 @@ class ExternExemptApply extends LongId, Updatable {
   var auditOpinion: Option[String] = None
 
   /** 申请冲抵的外校课程学分总计 */
-  var credits: Float = _
+  var credits: Float = uninitialized
 
   /** 冲抵本校课程的学分总计 */
-  var exemptionCredits: Float = _
+  var exemptionCredits: Float = uninitialized
 }

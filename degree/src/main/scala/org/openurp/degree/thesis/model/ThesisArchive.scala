@@ -21,12 +21,13 @@ import org.beangle.data.model.LongId
 import org.openurp.base.model.User
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 论文归档信息
  */
 class ThesisArchive extends LongId {
   /** 作者 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
   /** 指导老师是否确认 */
   var confirmed: Option[Boolean] = None
   /** 确认人 */

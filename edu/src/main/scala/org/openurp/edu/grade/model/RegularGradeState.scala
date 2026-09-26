@@ -24,25 +24,26 @@ import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.RegularGradeState.Component
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 平时成绩状态
  */
 class RegularGradeState extends LongId, Updatable {
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 各个成绩类型的百分比 */
   var componentsJson: JsonArray = new JsonArray()
 
   /** 成绩状态 */
-  var status: Int = _
+  var status: Int = uninitialized
 
   /** 平时成绩优秀率上限 */
-  var excellentRateLimit: Float = _
+  var excellentRateLimit: Float = uninitialized
 
   /** 优秀率 */
-  var excellentRate: Float = _
+  var excellentRate: Float = uninitialized
 
   def this(clazz: Clazz) = {
     this()

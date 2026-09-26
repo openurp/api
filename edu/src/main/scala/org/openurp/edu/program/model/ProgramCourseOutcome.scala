@@ -20,23 +20,24 @@ package org.openurp.edu.program.model
 import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.Course
+import scala.compiletime.uninitialized
 
 /** 计划课程对应的毕业要求
  */
 class ProgramCourseOutcome extends LongId {
 
-  var doc: ProgramDoc = _
+  var doc: ProgramDoc = uninitialized
 
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
-  var groupName: String = _
+  var groupName: String = uninitialized
 
-  var courseName: String = _
+  var courseName: String = uninitialized
 
   var course: Option[Course] = None
 
-  var outcomes: String = _
+  var outcomes: String = uninitialized
 
   def this(doc: ProgramDoc, idx: Int, groupName: String, courseName: String, course: Option[Course], outcomes: String) = {
     this()

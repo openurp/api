@@ -22,12 +22,13 @@ import org.beangle.data.model.annotation.log
 import org.openurp.edu.room.model.RoomApply
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 @log
 class RoomApplyAuditLog extends LongId {
-  var roomApply: RoomApply = _
-  var approved: Boolean = _
-  var auditBy: String = _
-  var auditAt: Instant = _
+  var roomApply: RoomApply = uninitialized
+  var approved: Boolean = uninitialized
+  var auditBy: String = uninitialized
+  var auditAt: Instant = uninitialized
   var opinions: Option[String] = None
 }

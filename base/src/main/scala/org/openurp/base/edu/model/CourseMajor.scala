@@ -18,16 +18,17 @@
 package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /** 课程面向专业
  */
 class CourseMajor extends LongId {
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
   /** 专业方向 */
   var direction: Option[MajorDirectionJournal] = None
   /** 是否包含 */
-  var included: Boolean = _
+  var included: Boolean = uninitialized
 }

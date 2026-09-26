@@ -23,6 +23,7 @@ import org.openurp.std.graduation.flow.AbstractGradApply
 import org.openurp.std.graduation.model.GraduateBatch
 
 import java.time.{Instant, LocalDate}
+import scala.compiletime.uninitialized
 
 /** 延期申请
  */
@@ -30,10 +31,10 @@ import java.time.{Instant, LocalDate}
 class GradDeferApply extends AbstractGradApply {
 
   /** 计划毕业日期 */
-  var planGradDate: LocalDate = _
+  var planGradDate: LocalDate = uninitialized
 
   /** 申请延期到 */
-  var deferGradDate: LocalDate = _
+  var deferGradDate: LocalDate = uninitialized
 
   def this(batch: GraduateBatch, std: Student) = {
     this()

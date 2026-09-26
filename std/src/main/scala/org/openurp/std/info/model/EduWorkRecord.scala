@@ -20,6 +20,7 @@ package org.openurp.std.info.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, YearMonthRange}
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /**
  * 学习和工作经历
@@ -27,10 +28,10 @@ import org.openurp.base.std.model.Student
 class EduWorkRecord extends LongId, Remark, YearMonthRange {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 学校或单位 */
-  var organization: String = _
+  var organization: String = uninitialized
 
   /** 职务 */
   var duty: Option[String] = None

@@ -23,18 +23,19 @@ import org.beangle.data.model.pojo.Enabled
 import org.openurp.base.doc.{Orientation, PageSize}
 import org.openurp.base.model.Project
 import org.openurp.code.std.model.StdDocType
+import scala.compiletime.uninitialized
 
 @config
 class ArchiveDocSetting extends IntId, Enabled {
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 文档类型 */
-  var docType: StdDocType = _
+  var docType: StdDocType = uninitialized
 
   /** 访问地址 */
-  var url: String = _
+  var url: String = uninitialized
 
   /** 纵向还是横向，默认纵向 */
   var orientation: Orientation = Orientation.Portrait

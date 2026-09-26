@@ -27,6 +27,7 @@ import org.openurp.base.resource.model.Classroom
 import org.openurp.code.edu.model.TeachingNature
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /** 教学活动
  * 上课对象是任务对应的教学班学生
@@ -34,25 +35,25 @@ import java.time.LocalDate
 class ClazzActivity extends LongId, Ordered[ClazzActivity], Activity, Cloneable, Remark {
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 上课时间 */
-  var time: WeekTime = _
+  var time: WeekTime = uninitialized
 
   /** 开始节次 */
-  var beginUnit: Short = _
+  var beginUnit: Short = uninitialized
 
   /** 结束节次 */
-  var endUnit: Short = _
+  var endUnit: Short = uninitialized
 
   /** 授课教师列表 */
-  var teachers: collection.mutable.Set[Teacher] = _
+  var teachers: collection.mutable.Set[Teacher] = uninitialized
 
   /** 教室列表 */
-  var rooms: collection.mutable.Set[Classroom] = _
+  var rooms: collection.mutable.Set[Classroom] = uninitialized
 
   /** 授课性质 */
-  var nature: TeachingNature = _
+  var nature: TeachingNature = uninitialized
 
   /** 针对授课小班 */
   var subclazz: Option[Subclazz] = None

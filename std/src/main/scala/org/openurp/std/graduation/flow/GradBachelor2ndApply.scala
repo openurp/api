@@ -22,6 +22,7 @@ import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.std.graduation.model.GraduateBatch
+import scala.compiletime.uninitialized
 
 /** 本科学生第二学士学位学位申请
  */
@@ -29,14 +30,14 @@ import org.openurp.std.graduation.model.GraduateBatch
 class GradBachelor2ndApply extends LongId, Updatable {
 
   /** 毕业批次 */
-  var batch: GraduateBatch = _
+  var batch: GraduateBatch = uninitialized
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 平均绩点 */
-  var gpa: Float = _
+  var gpa: Float = uninitialized
 
   /** 成绩明细 */
-  var gradeDetail: String = _
+  var gradeDetail: String = uninitialized
 }

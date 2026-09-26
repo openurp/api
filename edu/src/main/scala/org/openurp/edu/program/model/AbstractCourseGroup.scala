@@ -27,6 +27,7 @@ import org.openurp.code.edu.model.{CourseModule, CourseRank, CourseType, Teachin
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
+import scala.compiletime.uninitialized
 
 /**
  * 课程设置中的课程组 </p>
@@ -36,25 +37,25 @@ import scala.collection.mutable.ListBuffer
  */
 abstract class AbstractCourseGroup extends LongId, CourseGroup, Cloneable, Hierarchical[CourseGroup], Remark {
   /** 计划 */
-  var plan: CoursePlan = _
+  var plan: CoursePlan = uninitialized
   /** 计划课程列表 */
   var planCourses: mutable.Buffer[PlanCourse] = new ListBuffer[PlanCourse]
   /** 自定义别名 */
   var givenName: Option[String] = None
   /** 课程类别 */
-  var courseType: CourseType = _
+  var courseType: CourseType = uninitialized
   /** 要求学分 */
-  var credits: Float = _
+  var credits: Float = uninitialized
   /** 课时 */
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
   /** 周数 */
   var weeks: Option[Int] = None
   /** 课时比例 */
-  var hourRatios: String = _
+  var hourRatios: String = uninitialized
   /** 要求完成组数(默认是全部子组) */
   var subCount: Short = -1
   /** 学期学分分布 */
-  var termCredits: String = _
+  var termCredits: String = uninitialized
   /** 课程属性 */
   var rank: Option[CourseRank] = None
   /** 是否必选 */

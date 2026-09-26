@@ -20,12 +20,13 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.LongId
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.User
+import scala.compiletime.uninitialized
 
 class DefenseMember extends LongId {
 
-  var group: DefenseGroup = _
+  var group: DefenseGroup = uninitialized
 
-  var teacher: Teacher = _
+  var teacher: Teacher = uninitialized
 
-  var leader: Boolean = _
+  var leader: Boolean = uninitialized
 }

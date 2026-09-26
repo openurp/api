@@ -21,6 +21,7 @@ import java.time.LocalDate
 
 import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /***
  * 排考场次
@@ -28,16 +29,16 @@ import org.beangle.data.model.LongId
 class ExamTurn extends LongId {
 
   /**排考组*/
-  var group: ExamGroup = _
+  var group: ExamGroup = uninitialized
 
   /**考试日期*/
-  var examOn: LocalDate = _
+  var examOn: LocalDate = uninitialized
 
   /**开始时间*/
-  var beginAt: HourMinute = _
+  var beginAt: HourMinute = uninitialized
 
   /**结束时间*/
-  var endAt: HourMinute = _
+  var endAt: HourMinute = uninitialized
 
   /**最大容量*/
   var capacity: Option[Int] = None

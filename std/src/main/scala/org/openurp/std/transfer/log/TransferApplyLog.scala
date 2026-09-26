@@ -22,12 +22,13 @@ import org.beangle.data.model.annotation.log
 import org.openurp.base.std.model.Student
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 @log
 class TransferApplyLog extends LongId {
-  var std: Student = _
-  var operation: String = _
-  var contents: String = _
-  var ip: String = _
-  var operateAt: Instant = _
+  var std: Student = uninitialized
+  var operation: String = uninitialized
+  var contents: String = uninitialized
+  var ip: String = uninitialized
+  var operateAt: Instant = uninitialized
 }

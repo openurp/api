@@ -29,6 +29,7 @@ import org.openurp.code.person.model.Language
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
+import scala.compiletime.uninitialized
 
 /**
  * 公共共享计划
@@ -38,10 +39,10 @@ import scala.collection.mutable.ListBuffer
 class SharePlan extends LongId, EduLevelBased, Named, Updatable, TemporalOn, Remark, Cloneable {
 
   /** 起始年级 */
-  var fromGrade: Grade = _
+  var fromGrade: Grade = uninitialized
 
   /** 截止年级(包含) */
-  var toGrade: Grade = _
+  var toGrade: Grade = uninitialized
 
   /** 课程组 */
   var groups: mutable.Buffer[ShareCourseGroup] = new ListBuffer[ShareCourseGroup]
@@ -116,7 +117,7 @@ class ShareCourseGroup extends LongId, Hierarchical[ShareCourseGroup] {
   /**
    * 计划
    */
-  var plan: SharePlan = _
+  var plan: SharePlan = uninitialized
 
   /**
    * 计划课程列表
@@ -126,7 +127,7 @@ class ShareCourseGroup extends LongId, Hierarchical[ShareCourseGroup] {
   /**
    * 课程类别
    */
-  var courseType: CourseType = _
+  var courseType: CourseType = uninitialized
 
   def index: Int = {
     var index = Strings.substringAfterLast(indexno, ".")
@@ -144,15 +145,15 @@ class ShareCourseGroup extends LongId, Hierarchical[ShareCourseGroup] {
  */
 class SharePlanCourse extends LongId {
   /** 课程组 */
-  var group: ShareCourseGroup = _
+  var group: ShareCourseGroup = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 是否必修 */
-  var compulsory: Boolean = _
+  var compulsory: Boolean = uninitialized
 
   /** 学期 */
-  var terms: Terms = _
+  var terms: Terms = uninitialized
 
 }

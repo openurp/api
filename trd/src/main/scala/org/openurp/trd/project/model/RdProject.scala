@@ -26,6 +26,7 @@ import org.openurp.trd.project.code.{RdProjectCategory, RdProjectStatus}
 
 import java.time.YearMonth
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 研究项目
  * 包含课程建设项目、教改项目
@@ -33,7 +34,7 @@ import scala.collection.mutable
 class RdProject extends LongId, Coded, Named, Remark, Updatable, YearMonthRange {
 
   /** 是否课程建设项目 */
-  var forCourse: Boolean = _
+  var forCourse: Boolean = uninitialized
 
   /** 负责人 */
   var leaders: mutable.Buffer[User] = Collections.newBuffer[User]
@@ -42,22 +43,22 @@ class RdProject extends LongId, Coded, Named, Remark, Updatable, YearMonthRange 
   var members: mutable.Buffer[RdProjectMember] = Collections.newBuffer[RdProjectMember]
 
   /** 部门 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 级别 */
-  var level: RdLevel = _
+  var level: RdLevel = uninitialized
 
   /** 类别 */
-  var category: RdProjectCategory = _
+  var category: RdProjectCategory = uninitialized
 
   /** 资金 */
-  var funds: Int = _
+  var funds: Int = uninitialized
 
   /** 实际结项年月 */
   var finishedIn: Option[YearMonth] = None
 
   /** 状态 */
-  var status: RdProjectStatus = _
+  var status: RdProjectStatus = uninitialized
 
   def leaderNames: String = {
     leaders.map(_.name).mkString(",")
@@ -77,11 +78,11 @@ class RdProject extends LongId, Coded, Named, Remark, Updatable, YearMonthRange 
  */
 class RdProjectMember extends LongId {
   /** 排名 */
-  var idx: Int = _
+  var idx: Int = uninitialized
   /** 姓名 */
-  var name: String = _
+  var name: String = uninitialized
   /** 参与人 */
   var user: Option[User] = None
   /** 项目 */
-  var project: RdProject = _
+  var project: RdProject = uninitialized
 }

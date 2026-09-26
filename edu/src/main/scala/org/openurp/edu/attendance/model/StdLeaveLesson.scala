@@ -23,6 +23,7 @@ import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 学生课程请假记录
@@ -30,22 +31,22 @@ import java.time.LocalDate
 class StdLeaveLesson extends LongId {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 请假学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 请假的课程 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 请假类型 */
-  var leaveType: LeaveType = _
+  var leaveType: LeaveType = uninitialized
 
   /** 上课日期 */
-  var lessonOn: LocalDate = _
+  var lessonOn: LocalDate = uninitialized
 
   /** 上课时间 */
-  var lessonTime: String = _
+  var lessonTime: String = uninitialized
 
   /** 请假申请 */
   var leave: Option[StdLeave] = None

@@ -19,14 +19,15 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
+import scala.compiletime.uninitialized
 
 class DefenseNotice extends LongId, Updatable {
 
-  var title: String = _
+  var title: String = uninitialized
 
-  var group: DefenseGroup = _
+  var group: DefenseGroup = uninitialized
 
-  var contents: String = _
+  var contents: String = uninitialized
 
-  var readCount: Int = _
+  var readCount: Int = uninitialized
 }

@@ -27,19 +27,20 @@ import org.openurp.code.edu.model.CourseType
 import org.openurp.code.std.model.StdType
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 免修课程
  * 规定课程在哪些学生范围中，可以免修
  */
 class ExemptCourse extends LongId, EduLevelBased, Updatable, Remark {
   /** 起始年级 */
-  var fromGrade: Grade = _
+  var fromGrade: Grade = uninitialized
   /** 截止年级 */
   var toGrade: Option[Grade] = None
   /** 免修课程 */
   var course: Option[Course] = None
   /** 免修课程类别 */
-  var courseType: CourseType = _
+  var courseType: CourseType = uninitialized
   /** 针对学生类别 */
   var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]
 }

@@ -20,6 +20,7 @@ package org.openurp.std.award.code
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{Coded, Named}
+import scala.compiletime.uninitialized
 
 /** 困难补助类别
  *
@@ -31,16 +32,16 @@ class SubsidyCategory extends IntId, Coded, Named {
   var description: Option[String] = None
 
   /** 评定周期 */
-  var assessPeriod: String = _
+  var assessPeriod: String = uninitialized
 
   /** 颁奖单位 */
-  var awardUnit: String = _
+  var awardUnit: String = uninitialized
 
   /** 使用状态 */
-  var enabled: Boolean = _
+  var enabled: Boolean = uninitialized
 
   /** 是否分等级 */
-  var rated: Boolean = _
+  var rated: Boolean = uninitialized
 
 }
 
@@ -48,13 +49,13 @@ class SubsidyCategory extends IntId, Coded, Named {
 class SubsidyLevel extends IntId, Coded, Named {
 
   /** 困难补助种类 */
-  var category: SubsidyCategory = _
+  var category: SubsidyCategory = uninitialized
 
   /** 奖励金额 */
-  var amount: Int = _
+  var amount: Int = uninitialized
 
   /** 使用状态 */
-  var enabled: Boolean = _
+  var enabled: Boolean = uninitialized
 
   /** 描述 */
   var description: Option[String] = None

@@ -23,18 +23,19 @@ import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.std.award.code.{ScholarshipCategory, ScholarshipLevel}
+import scala.compiletime.uninitialized
 
 class ScholarshipAward extends LongId {
   /**奖学金种类*/
-  var category: ScholarshipCategory = _
+  var category: ScholarshipCategory = uninitialized
   /**学生*/
-  var std: Student = _
+  var std: Student = uninitialized
   /**获奖等级*/
-  var level: ScholarshipLevel = _
+  var level: ScholarshipLevel = uninitialized
   /**评定学期*/
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /**金额*/
-  var amount: Int = _
+  var amount: Int = uninitialized
   /**是否审核通过*/
-  var approved: Boolean = _
+  var approved: Boolean = uninitialized
 }

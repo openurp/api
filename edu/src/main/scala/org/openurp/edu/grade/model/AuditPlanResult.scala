@@ -24,37 +24,38 @@ import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 class AuditPlanResult extends LongId, Updatable, Remark {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   var groupResults: mutable.Buffer[AuditGroupResult] = Collections.newBuffer[AuditGroupResult]
 
   /** 是否通过 */
-  var passed: Boolean = _
+  var passed: Boolean = uninitialized
 
   /** 预计是否通过 */
-  var predicted: Boolean = _
+  var predicted: Boolean = uninitialized
 
   /** 要求学分 */
-  var requiredCredits: Float = _
+  var requiredCredits: Float = uninitialized
 
   /** 通过学分 */
-  var passedCredits: Float = _
+  var passedCredits: Float = uninitialized
 
   /** 欠学分 */
-  var owedCredits: Float = _
+  var owedCredits: Float = uninitialized
 
   /** 预计通过后所欠学分 */
-  var owedCredits2: Float = _
+  var owedCredits2: Float = uninitialized
 
   /** 和上次比较的更新内容 */
   var updates: Option[String] = None
 
   var archived: Boolean = false
 
-  @transient private var groupCache: Map[String, AuditGroupResult] = _
+  @transient private var groupCache: Map[String, AuditGroupResult] = uninitialized
 
   def buildGroupCache(): Unit = {
     groupCache = groupResults.map(x => x.name -> x).toMap

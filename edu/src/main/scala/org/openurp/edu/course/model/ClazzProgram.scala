@@ -25,28 +25,29 @@ import org.openurp.edu.clazz.model.Clazz
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 教案
  */
 class ClazzProgram extends LongId, Updatable {
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 授课内容 */
   var designs: mutable.Buffer[LessonDesign] = Collections.newBuffer[LessonDesign]
 
   /** 作者 */
-  var writer: User = _
+  var writer: User = uninitialized
 
   /** 已填写次数 */
-  var designCount: Short = _
+  var designCount: Short = uninitialized
 
   /** 课程次数 */
-  var lessonCount: Short = _
+  var lessonCount: Short = uninitialized
 
   def this(clazz: Clazz) = {
     this()

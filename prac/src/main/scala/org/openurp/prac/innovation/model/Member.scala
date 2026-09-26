@@ -20,6 +20,7 @@ package org.openurp.prac.innovation.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 object Member {
   def apply(project: Project, std: Student): Member = {
@@ -34,15 +35,15 @@ object Member {
 
 class Member extends LongId, Remark {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var duty: String = _
+  var duty: String = uninitialized
 
   var hobby: Option[String] = None
 
-  var phone: String = _
+  var phone: String = uninitialized
 
   var email: Option[String] = None
 }

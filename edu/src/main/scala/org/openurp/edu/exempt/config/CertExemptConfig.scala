@@ -25,6 +25,7 @@ import org.openurp.base.model.ProjectBased
 import org.openurp.code.edu.model.{EducationLevel, EducationType}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 校外考试免修设置
@@ -33,12 +34,12 @@ import scala.collection.mutable
 class CertExemptConfig extends LongId, InstantRange, ProjectBased {
 
   /** 培养类型 */
-  var eduType: EducationType = _
+  var eduType: EducationType = uninitialized
 
   /** 培养层次 */
   var levels: mutable.Set[EducationLevel] = Collections.newSet[EducationLevel]
 
   var settings: mutable.Buffer[CertExemptSetting] = new mutable.ArrayBuffer[CertExemptSetting]
 
-  var notice: String = _
+  var notice: String = uninitialized
 }

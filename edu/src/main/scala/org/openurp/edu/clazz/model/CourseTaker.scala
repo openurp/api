@@ -23,6 +23,7 @@ import org.openurp.base.edu.model.Course
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{CourseTakeType, CourseType, ElectionMode}
+import scala.compiletime.uninitialized
 
 /**
  * 上课名单
@@ -30,22 +31,22 @@ import org.openurp.code.edu.model.{CourseTakeType, CourseType, ElectionMode}
 class CourseTaker extends LongId, Updatable, Cloneable, Remark {
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 修读类别 */
-  var takeType: CourseTakeType = _
+  var takeType: CourseTakeType = uninitialized
 
   /** 课程类别 */
-  var courseType: CourseType = _
+  var courseType: CourseType = uninitialized
 
   /** 是否免听 */
   var freeListening: Boolean = false
@@ -54,7 +55,7 @@ class CourseTaker extends LongId, Updatable, Cloneable, Remark {
   var alternative: Boolean = false
 
   /** 选课方式 *  */
-  var electionMode: ElectionMode = _
+  var electionMode: ElectionMode = uninitialized
 
   /** 上课小班 */
   var subclazz: Option[Subclazz] = None

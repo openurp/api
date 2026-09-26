@@ -24,19 +24,20 @@ import org.openurp.base.model.User
 import org.openurp.edu.clazz.model.Clazz
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 教学班通知
  */
 class ClazzNotice extends LongId, Updatable {
 
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
-  var title: String = _
+  var title: String = uninitialized
 
-  var contents: String = _
+  var contents: String = uninitialized
 
   var files: mutable.Buffer[ClazzNoticeFile] = Collections.newBuffer[ClazzNoticeFile]
 
-  var updatedBy: User = _
+  var updatedBy: User = uninitialized
 }

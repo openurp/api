@@ -23,6 +23,7 @@ import org.beangle.data.model.pojo.Enabled
 import org.openurp.base.doc.{Orientation, PageSize}
 import org.openurp.base.model.Project
 import org.openurp.code.std.model.StdDocType
+import scala.compiletime.uninitialized
 
 object DocSetting {
   val TranscriptZh = "transcript_zh";
@@ -38,22 +39,22 @@ object DocSetting {
 class SpaDocSetting extends IntId, Enabled {
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 文档类型 */
-  var docType: StdDocType = _
+  var docType: StdDocType = uninitialized
 
   /** 访问地址 */
-  var url: String = _
+  var url: String = uninitialized
 
   /** 可打印的 */
-  var printable: Boolean = _
+  var printable: Boolean = uninitialized
 
   /** 可下载的 */
-  var downloadable: Boolean = _
+  var downloadable: Boolean = uninitialized
 
   /** 下载时是否启用用户密码 */
-  var enableUserPassword: Boolean = _
+  var enableUserPassword: Boolean = uninitialized
 
   /** 通知公告 */
   var notice: Option[String] = None

@@ -21,23 +21,24 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.log
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 @log
 abstract class LogEntry extends LongId {
   /** 操作人 */
-  var operator: String = _
+  var operator: String = uninitialized
   /** 操作时间 */
-  var operateAt: Instant = _
+  var operateAt: Instant = uninitialized
   /** 操作内容摘要 */
-  var summaries: String = _
+  var summaries: String = uninitialized
   /** 操作内容 */
-  var details: String = _
+  var details: String = uninitialized
   /** 对应的资源 */
-  var resources: String = _
+  var resources: String = uninitialized
   /** IP */
-  var ip: String = _
+  var ip: String = uninitialized
   /** 操作客户端代理 */
-  var agent: String = _
+  var agent: String = uninitialized
   /** 访问入口 */
-  var entry: String = _
+  var entry: String = uninitialized
 }

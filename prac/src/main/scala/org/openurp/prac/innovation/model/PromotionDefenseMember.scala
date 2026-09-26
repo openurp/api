@@ -19,15 +19,16 @@ package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
+import scala.compiletime.uninitialized
 
 /** 推优答辩项目
  */
 class PromotionDefenseMember extends LongId, Updatable {
 
-  var group: PromotionDefenseGroup = _
+  var group: PromotionDefenseGroup = uninitialized
 
-  var project: Project = _
+  var project: Project = uninitialized
 
   /**答辩次序*/
-  var idx: Int = _
+  var idx: Int = uninitialized
 }

@@ -23,6 +23,7 @@ import org.openurp.code.edu.model.{EduCategory, EducationLevel, EducationType}
 import org.openurp.code.std.model.{StdLabel, StdType}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 教学项目
@@ -37,7 +38,7 @@ import scala.collection.mutable
  */
 class Project extends IntId, Coded, TemporalOn, Updatable, Named {
   /** 适用学校 */
-  var school: School = _
+  var school: School = uninitialized
   /** 校区列表 */
   var campuses: mutable.Set[Campus] = new mutable.HashSet[Campus]
   /** 部门列表 */
@@ -52,15 +53,15 @@ class Project extends IntId, Coded, TemporalOn, Updatable, Named {
   /** 学生类别 */
   var stdTypes: mutable.Set[StdType] = new mutable.HashSet[StdType]
   /** 使用校历 */
-  var calendar: Calendar = _
+  var calendar: Calendar = uninitialized
   /** 描述 */
-  var description: String = _
+  var description: String = uninitialized
   /** 是否辅修 */
-  var minor: Boolean = _
+  var minor: Boolean = uninitialized
   /** 教育类别 */
-  var category: EduCategory = _
+  var category: EduCategory = uninitialized
   /** 主管部门 */
-  var administration: String = _
+  var administration: String = uninitialized
   /** 二级部门 */
   var administration2nd: Option[String] = None
 
@@ -81,18 +82,18 @@ class Project extends IntId, Coded, TemporalOn, Updatable, Named {
  */
 class ProjectCode extends LongId {
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
   /** 代码元 */
-  var className: String = _
+  var className: String = uninitialized
   /** 代码IDs */
-  var codeIds: String = _
+  var codeIds: String = uninitialized
 }
 
 /** 基于项目的
  */
 trait ProjectBased {
 
-  var project: Project = _
+  var project: Project = uninitialized
 }
 
 /**
@@ -107,14 +108,14 @@ trait ProjectBased {
 
 trait EduLevelBased extends ProjectBased {
   /** 培养层次 */
-  var level: EducationLevel = _
+  var level: EducationLevel = uninitialized
   /** 培养类型 */
-  var eduType: EducationType = _
+  var eduType: EducationType = uninitialized
 }
 
 class ProjectProperty extends LongId, ProjectBased {
-  var name: String = _
-  var description: String = _
-  var typeName: String = _
-  var value: String = _
+  var name: String = uninitialized
+  var description: String = uninitialized
+  var typeName: String = uninitialized
+  var value: String = uninitialized
 }

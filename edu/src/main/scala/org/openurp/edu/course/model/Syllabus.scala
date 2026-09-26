@@ -27,6 +27,7 @@ import org.openurp.code.edu.model.*
 
 import java.time.Instant
 import java.util.Locale
+import scala.compiletime.uninitialized
 
 /** 课程教学大纲
  *
@@ -34,16 +35,16 @@ import java.util.Locale
 class Syllabus extends LongId, Updatable, DateRange {
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 语种 */
-  var docLocale: Locale = _
+  var docLocale: Locale = uninitialized
 
   /** 简介 */
-  var description: String = _
+  var description: String = uninitialized
 
   /** 生效学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   //object targets
   /** 面向的培养层次 */
@@ -53,7 +54,7 @@ class Syllabus extends LongId, Updatable, DateRange {
   var majors = Collections.newSet[Major]
 
   /** 总学时 */
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
 
   /** 总实践周 */
   var weeks: Option[Int] = None
@@ -62,32 +63,32 @@ class Syllabus extends LongId, Updatable, DateRange {
   var hours = Collections.newBuffer[SyllabusHour]
 
   /** 教学方式 */
-  var methods: String = _
+  var methods: String = uninitialized
 
   /** 考核课时 */
-  var examCreditHours: Int = _
+  var examCreditHours: Int = uninitialized
 
   /** 自主学习课时 */
-  var learningHours: Float = _
+  var learningHours: Float = uninitialized
 
   //course natures
   /** 学期中的开课阶段 */
   var stage: Option[CalendarStage] = None
 
   /** 课程模块 */
-  var module: CourseModule = _
+  var module: CourseModule = uninitialized
 
   /** 必修选修 */
-  var rank: CourseRank = _
+  var rank: CourseRank = uninitialized
 
   /** 课程性质 */
-  var nature: CourseNature = _
+  var nature: CourseNature = uninitialized
 
   /** 考试方式 */
-  var examMode: ExamMode = _
+  var examMode: ExamMode = uninitialized
 
   /** 计分方式 */
-  var gradingMode: GradingMode = _
+  var gradingMode: GradingMode = uninitialized
 
   // other course relations
   /** 先修课程 */
@@ -140,7 +141,7 @@ class Syllabus extends LongId, Updatable, DateRange {
 
   //admin and audit infoes
   /** 开课院系 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 教研室 */
   var office: Option[TeachingOffice] = None
@@ -149,7 +150,7 @@ class Syllabus extends LongId, Updatable, DateRange {
   var status: AuditStatus = AuditStatus.Draft
 
   /** 作者 */
-  var writer: User = _
+  var writer: User = uninitialized
 
   /** 审核人 */
   var reviewer: Option[User] = None
@@ -164,7 +165,7 @@ class Syllabus extends LongId, Updatable, DateRange {
   var opinions: Option[String] = None
 
   /** 大纲自动检查是否完整 */
-  var complete: Boolean = _
+  var complete: Boolean = uninitialized
 
   /** 课程介绍 */
   var courseProfileId: Option[Long] = None

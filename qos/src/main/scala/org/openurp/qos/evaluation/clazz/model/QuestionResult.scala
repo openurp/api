@@ -20,6 +20,7 @@ package org.openurp.qos.evaluation.clazz.model
 import org.beangle.data.model.LongId
 import org.openurp.qos.evaluation.base.model.{Indicator, Option, Question}
 import org.openurp.qos.evaluation.clazz.model.EvaluateResult
+import scala.compiletime.uninitialized
 
 /**
  * 问题评教结果
@@ -28,14 +29,14 @@ import org.openurp.qos.evaluation.clazz.model.EvaluateResult
  */
 class QuestionResult extends LongId {
   /** 问题类别 */
-  var indicator: Indicator = _
+  var indicator: Indicator = uninitialized
   /** 问题 */
-  var question: Question = _
+  var question: Question = uninitialized
   /** 问题选项 */
-  var option: Option = _
+  var option: Option = uninitialized
   /** 得分 */
-  var score: Float = _
+  var score: Float = uninitialized
   /** 评教结果 */
-  var result: EvaluateResult = _
+  var result: EvaluateResult = uninitialized
 
 }

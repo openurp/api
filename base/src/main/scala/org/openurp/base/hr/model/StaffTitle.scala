@@ -20,14 +20,15 @@ package org.openurp.base.hr.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.job.model.ProfessionalTitle
+import scala.compiletime.uninitialized
 
 /**
  * 职称聘任信息
  */
 class StaffTitle extends LongId, TemporalOn {
 
-  var staff: Staff = _
+  var staff: Staff = uninitialized
 
   /** 职称 */
-  var title: ProfessionalTitle = _
+  var title: ProfessionalTitle = uninitialized
 }

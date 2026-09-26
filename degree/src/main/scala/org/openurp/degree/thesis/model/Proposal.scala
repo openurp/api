@@ -22,31 +22,32 @@ import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.AuditStatus
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 开题报告
  */
 class Proposal extends LongId {
 
   /** 学生 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 目的意义 */
-  var meanings: String = _
+  var meanings: String = uninitialized
 
   /** 现状 */
-  var conditions: String = _
+  var conditions: String = uninitialized
 
   /** 论文提纲 */
-  var outline: String = _
+  var outline: String = uninitialized
 
   /** 参考文献 */
-  var references: String = _
+  var references: String = uninitialized
 
   /** 研究方法 */
-  var methods: String = _
+  var methods: String = uninitialized
 
   /** 学生提交随时间 */
-  var submitAt: Instant = _
+  var submitAt: Instant = uninitialized
   /** 审查状态 */
   var status: AuditStatus = AuditStatus.Draft
   /** 教师审核意见 */

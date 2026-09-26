@@ -20,10 +20,11 @@ package org.openurp.base.hr.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, TemporalOn}
 import org.openurp.base.model.School
+import scala.compiletime.uninitialized
 
 class President extends LongId, Named, TemporalOn {
 
-  var school: School = _
+  var school: School = uninitialized
 
-  var enName: String = _
+  var enName: String = uninitialized
 }

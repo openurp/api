@@ -19,6 +19,7 @@ package org.openurp.code.geo.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /**
  * 火车站
@@ -30,8 +31,8 @@ import org.openurp.code.CodeBean
 class RailwayStation extends CodeBean {
 
   /** 简拼 */
-  var jianpin: String = _
+  var jianpin: String = uninitialized
 
   /**所属行政区划*/
-  var division: Division = _
+  var division: Division = uninitialized
 }

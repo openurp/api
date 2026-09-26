@@ -19,6 +19,7 @@ package org.openurp.edu.grade.model
 
 import org.beangle.data.model.pojo.Remark
 import org.openurp.code.edu.model.GradeType
+import scala.compiletime.uninitialized
 
 /**
  * 考试成绩状态
@@ -30,12 +31,12 @@ class ExamGradeState extends AbstractGradeState, Remark {
   /**
    * 成绩类型
    */
-  var gradeType: GradeType = _
+  var gradeType: GradeType = uninitialized
 
   /**
    * 总成绩状态
    */
-  var gradeState: CourseGradeState = _
+  var gradeState: CourseGradeState = uninitialized
 
   /**
    * 百分比描述 <br>

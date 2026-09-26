@@ -20,16 +20,17 @@ package org.openurp.base.std.model
 import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.{ThesisTopicSource, ThesisType}
 import org.openurp.code.person.model.Language
+import scala.compiletime.uninitialized
 
 /** 学生论文信息
  */
 class Thesis extends LongId {
 
   /** 学籍 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 论文题目 */
-  var title: String = _
+  var title: String = uninitialized
 
   /** 指导老师 */
   var advisor: Option[String] = None

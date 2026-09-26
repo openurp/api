@@ -21,18 +21,19 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.code.prac.model.StdPracticeCategory
+import scala.compiletime.uninitialized
 
 /** 学生实践学时
  */
 class StdPracticeHour extends LongId, Updatable {
 
-  var std: Student = _
+  var std: Student = uninitialized
   /** 实践课程大类 */
-  var category: StdPracticeCategory = _
+  var category: StdPracticeCategory = uninitialized
   /** 要求的实践学时 */
-  var requiredHours: Int = _
+  var requiredHours: Int = uninitialized
   /** 完成的实践学时 */
-  var hours: Int = _
+  var hours: Int = uninitialized
   /** 已转为课程成绩 */
   var courseGradeId: Option[Long] = None
 }

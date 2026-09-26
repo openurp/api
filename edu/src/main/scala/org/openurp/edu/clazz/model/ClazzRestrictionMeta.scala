@@ -27,7 +27,7 @@ import org.openurp.code.std.model.{StdLabel, StdType}
 
 import scala.language.implicitConversions
 
-enum ClazzRestrictionMeta(val id: Int, contentType: Class[_]) {
+enum ClazzRestrictionMeta(val id: Int, contentType: Class[?]) {
 
   case Grade extends ClazzRestrictionMeta(1, classOf[String])
 

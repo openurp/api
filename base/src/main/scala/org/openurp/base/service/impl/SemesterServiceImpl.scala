@@ -23,9 +23,10 @@ import org.openurp.base.model.{Project, Semester}
 import org.openurp.base.service.SemesterService
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 class SemesterServiceImpl extends SemesterService {
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   override def get(project: Project, date: LocalDate): Semester = {
     val builder = OqlBuilder.from(classOf[Semester], "semester")

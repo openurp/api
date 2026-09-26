@@ -22,23 +22,24 @@ import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.User
 import org.openurp.code.edu.model.ClazzArchiveDoc
 import org.openurp.edu.clazz.model.Clazz
+import scala.compiletime.uninitialized
 
 /** 课程资料归档
  */
 class ClazzArchive extends LongId, Updatable {
 
   /** 文档类型 */
-  var doc: ClazzArchiveDoc = _
+  var doc: ClazzArchiveDoc = uninitialized
 
   /** 教学班 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 归档人 */
-  var archivedBy: User = _
+  var archivedBy: User = uninitialized
 
   /** 文件大小 */
-  var docSize: Int = _
+  var docSize: Int = uninitialized
 
   /** 存储路径 */
-  var docPath: String = _
+  var docPath: String = uninitialized
 }

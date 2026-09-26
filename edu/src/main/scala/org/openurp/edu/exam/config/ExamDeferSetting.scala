@@ -21,18 +21,19 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.openurp.base.model.Project
 import org.openurp.code.edu.model.ExamType
+import scala.compiletime.uninitialized
 
 @config
 class ExamDeferSetting extends LongId {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 考试类型 */
-  var examType: ExamType = _
+  var examType: ExamType = uninitialized
 
   /** 申请提前量(天) */
-  var daysBeforeApply: Int = _
+  var daysBeforeApply: Int = uninitialized
 
   /** 是否开放申请 */
-  var applyOpened: Boolean = _
+  var applyOpened: Boolean = uninitialized
 }

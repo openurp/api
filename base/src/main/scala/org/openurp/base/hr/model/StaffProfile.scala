@@ -27,16 +27,17 @@ import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.code.person.model.{Gender, IdType, Nation, PoliticalStatus}
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 教师基本情况
  */
 class StaffProfile extends LongId, Updatable {
   /** 教师 */
-  var staff: Staff = _
+  var staff: Staff = uninitialized
 
   /** 个人简介 */
-  var intro: String = _
+  var intro: String = uninitialized
 
   /** 研究领域、方向 */
   var research: Option[String] = None

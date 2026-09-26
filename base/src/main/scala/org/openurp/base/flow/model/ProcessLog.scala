@@ -20,24 +20,25 @@ package org.openurp.base.flow.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{AuditStatus, User}
+import scala.compiletime.uninitialized
 
 /** 流程审核日志 */
 class ProcessLog extends LongId, Updatable {
 
-  var flowType: FlowType = _
+  var flowType: FlowType = uninitialized
 
   /** 实体 */
-  var entityId: Long = _
+  var entityId: Long = uninitialized
 
   /** 起始状态 */
-  var fromStatus: String = _
+  var fromStatus: String = uninitialized
 
   /** 结束状态 */
-  var toStatus: String = _
+  var toStatus: String = uninitialized
 
   /** 操作人 */
-  var operator: User = _
+  var operator: User = uninitialized
 
   /** 说明 */
-  var comments: String = _
+  var comments: String = uninitialized
 }

@@ -21,28 +21,29 @@ import org.beangle.data.model.LongId
 import org.openurp.edu.clazz.model.Clazz
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 单词课程考勤统计 */
 class LessonAttendance extends LongId {
 
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 第几次考勤 */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
   /** 上课开始时间 */
-  var beginAt: Instant = _
+  var beginAt: Instant = uninitialized
 
   /** 实到人数 */
-  var present: Short = _
+  var present: Short = uninitialized
 
   /** 缺席人数（包括旷课、请假） */
-  var absent: Short = _
+  var absent: Short = uninitialized
 
   /** 请假人数 */
-  var leave: Short = _
+  var leave: Short = uninitialized
 
   /** 迟到早退人数 */
-  var late: Short = _
+  var late: Short = uninitialized
 
 }

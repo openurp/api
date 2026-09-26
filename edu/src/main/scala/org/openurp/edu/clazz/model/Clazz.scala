@@ -26,6 +26,7 @@ import org.openurp.base.model.*
 import org.openurp.code.edu.model.{ClazzTag, CourseType, ExamMode, TeachLangType}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 教学任务 </p> 每学期开课任务，以此为开始作为排课、排考、成绩录入的依据。代表着从对上课对象和开课院系的完整的教学实际任务信息.
@@ -39,52 +40,52 @@ import scala.collection.mutable
 class Clazz extends LongId, ProjectBased, Updatable, Cloneable, Remark {
 
   /** 课程序号 */
-  var crn: String = _
+  var crn: String = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 主题 */
   var subject: Option[String] = None
 
   /** 课程类别 */
-  var courseType: CourseType = _
+  var courseType: CourseType = uninitialized
 
   /** 开课院系 */
-  var teachDepart: Department = _
+  var teachDepart: Department = uninitialized
 
   /** 授课教师 */
   var teachers: mutable.Buffer[Teacher] = Collections.newBuffer[Teacher]
 
   /** 开课校区 */
-  var campus: Campus = _
+  var campus: Campus = uninitialized
 
   /** 教学班名称 */
-  var clazzName: String = _
+  var clazzName: String = uninitialized
 
   /** 教学班 */
-  var enrollment: Enrollment = _
+  var enrollment: Enrollment = uninitialized
 
   /** 教学日历 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 课程安排 */
-  var schedule: Schedule = _
+  var schedule: Schedule = uninitialized
 
   /** 考核方式 */
-  var examMode: ExamMode = _
+  var examMode: ExamMode = uninitialized
 
   /** 是否有补考 */
-  var hasMakeup: Boolean = _
+  var hasMakeup: Boolean = uninitialized
 
   /** 授课语言类型 */
-  var langType: TeachLangType = _
+  var langType: TeachLangType = uninitialized
 
   /** 所属课程组 */
   var group: Option[ClazzGroup] = None
 
   /** 审核状态 */
-  var status: AuditStatus = _
+  var status: AuditStatus = uninitialized
 
   /** 任务标签 */
   var tags: mutable.Set[ClazzTag] = Collections.newSet[ClazzTag]

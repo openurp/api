@@ -26,6 +26,7 @@ import org.openurp.base.model.Department
 import org.openurp.code.edu.model.Certificate
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 校外证书免修科目设置
@@ -33,12 +34,12 @@ import scala.collection.mutable
 @config
 class CertExemptSetting extends LongId, Remark {
   /** 免修设置 */
-  var config: CertExemptConfig = _
+  var config: CertExemptConfig = uninitialized
   /** 证书类型 */
-  var certificate: Certificate = _
+  var certificate: Certificate = uninitialized
 
   /** 是否需要学院审核 */
-  var collegeReviewRequired: Boolean = _
+  var collegeReviewRequired: Boolean = uninitialized
   /** 审核部门 */
   var auditDepart: Option[Department] = None
 
@@ -52,5 +53,5 @@ class CertExemptSetting extends LongId, Remark {
   /** 免修课程 */
   var courses: mutable.Set[Course] = Collections.newSet[Course]
   /** 免修最大门数 */
-  var maxCount: Int = _
+  var maxCount: Int = uninitialized
 }

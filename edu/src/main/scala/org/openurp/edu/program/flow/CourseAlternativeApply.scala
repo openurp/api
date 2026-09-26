@@ -26,6 +26,7 @@ import org.openurp.base.model.User
 import org.openurp.base.std.model.Student
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 学生个人替代课程申请
  */
@@ -33,7 +34,7 @@ import java.time.Instant
 class CourseAlternativeApply extends LongId, Updatable, Remark {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 原课程 */
   var olds = Collections.newSet[Course]

@@ -25,6 +25,7 @@ import org.openurp.edu.clazz.domain.WeekTimeBuilder
 
 import java.time.LocalDateTime
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 课程安排
@@ -32,19 +33,19 @@ import scala.collection.mutable
 class Schedule extends Component, Serializable, Cloneable {
 
   /** 要求排课课时 */
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
 
   /** 周课时 */
-  var weekHours: Int = _
+  var weekHours: Int = uninitialized
 
   /** 周状态 */
-  var weekstate: WeekState = _
+  var weekstate: WeekState = uninitialized
 
   /** 具体排课结果 */
   var activities: mutable.Set[ClazzActivity] = Collections.newSet[ClazzActivity]
 
   /** 教室类型 */
-  var roomType: ClassroomType = _
+  var roomType: ClassroomType = uninitialized
 
   /** 开课院系安排 */
   var departArranged: Boolean = true

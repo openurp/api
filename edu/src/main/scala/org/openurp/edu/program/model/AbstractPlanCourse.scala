@@ -19,6 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.{Course, Terms}
+import scala.compiletime.uninitialized
 
 /**
  * 抽象计划内课程
@@ -29,19 +30,19 @@ import org.openurp.base.edu.model.{Course, Terms}
 abstract class AbstractPlanCourse extends LongId, PlanCourse, Cloneable {
 
   /** 课程组 */
-  var group: CourseGroup = _
+  var group: CourseGroup = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 是否必修 */
-  var compulsory: Boolean = _
+  var compulsory: Boolean = uninitialized
 
   /** 开课学期 */
-  var terms: Terms = _
+  var terms: Terms = uninitialized
 
   /** 序号(从1开始) */
-  var idx: Short = _
+  var idx: Short = uninitialized
 
   def matchTerm(t: Terms): Boolean = {
     this.terms.matches(t)

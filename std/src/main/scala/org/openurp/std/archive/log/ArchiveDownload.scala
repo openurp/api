@@ -22,19 +22,20 @@ import org.beangle.data.model.annotation.log
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.User
 import org.openurp.code.std.model.StdDocType
+import scala.compiletime.uninitialized
 
 @log
 class ArchiveDownload extends LongId, Updatable {
   /** 学生 */
-  var user: User = _
+  var user: User = uninitialized
 
   /** 文档类型 */
-  var docType: StdDocType = _
+  var docType: StdDocType = uninitialized
 
   /** 打印ip */
-  var ip: String = _
+  var ip: String = uninitialized
 
   /** 下载手机号 */
-  var mobile: String = _
+  var mobile: String = uninitialized
 
 }

@@ -24,12 +24,13 @@ import org.openurp.base.std.model.{GraduateSeason, Squad, Student}
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 class Writer extends LongId {
 
-  var season: GraduateSeason = _
+  var season: GraduateSeason = uninitialized
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 指导老师 */
   var advisor: Option[Advisor] = None

@@ -18,16 +18,17 @@
 package org.openurp.prac.activity.model
 
 import org.openurp.code.prac.model.PracActivityType
+import scala.compiletime.uninitialized
 
 /** 校外实践活动
  */
 class PracActivity extends AbstractPracActivity {
   /** 活动名称 */
-  var activityName: String = _
+  var activityName: String = uninitialized
   /** 活动类型 */
-  var activityType: PracActivityType = _
+  var activityType: PracActivityType = uninitialized
   /** 活动介绍 */
-  var description: String = _
+  var description: String = uninitialized
 
   def addSchedule(ns: AbstractPracSchedule): Unit = {
     this.schedules += ns

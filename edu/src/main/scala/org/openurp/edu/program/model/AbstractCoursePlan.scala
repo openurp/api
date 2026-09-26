@@ -24,6 +24,7 @@ import org.openurp.code.edu.model.{CourseType, EducationLevel, TeachingNature}
 
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
+import scala.compiletime.uninitialized
 
 /**
  * 抽象课程方案
@@ -33,15 +34,15 @@ import scala.collection.mutable.ListBuffer
  */
 trait AbstractCoursePlan extends LongId, CoursePlan, Updatable {
   /** 培养方案 */
-  var program: Program = _
+  var program: Program = uninitialized
   /** 课程组 */
   var groups: mutable.Buffer[CourseGroup] = new ListBuffer[CourseGroup]
   /** 要求学分 */
-  var credits: Float = _
+  var credits: Float = uninitialized
   /** 课时 */
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
   /** 课时比例 */
-  var hourRatios: String = _
+  var hourRatios: String = uninitialized
 
   override def level: EducationLevel = program.level
 

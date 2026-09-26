@@ -22,12 +22,13 @@ import org.beangle.data.model.pojo.Named
 import org.openurp.code.trd.model.{RdAwardGrade, RdLevel}
 
 import java.time.YearMonth
+import scala.compiletime.uninitialized
 
 /** 教材获奖 */
 class TextbookAward extends LongId, Named {
 
   /** 教材成果 */
-  var achievement: TextbookAchievement = _
+  var achievement: TextbookAchievement = uninitialized
 
   /** 获奖年月 */
   var awardOn: Option[YearMonth] = None
@@ -36,5 +37,5 @@ class TextbookAward extends LongId, Named {
   var grade: Option[RdAwardGrade] = None
 
   /** 获奖级别 */
-  var level: RdLevel = _
+  var level: RdLevel = uninitialized
 }

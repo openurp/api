@@ -24,6 +24,7 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{GradeType, GradingMode}
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 object Grade {
 
@@ -47,7 +48,7 @@ object Grade {
  */
 trait Grade extends LongId, Ordered[Grade], Updatable {
 
-  var createdAt: Instant = _
+  var createdAt: Instant = uninitialized
 
   def score: Option[Float]
 

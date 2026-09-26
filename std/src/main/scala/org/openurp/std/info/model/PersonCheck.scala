@@ -22,17 +22,18 @@ import org.beangle.commons.lang.Objects
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /** 学生信息确认 */
 class PersonCheck extends LongId, Updatable {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 变更项目 */
   var changes = Collections.newBuffer[PersonCheckItem]
 
   /** 确认信息明细 */
-  var details: String = _
+  var details: String = uninitialized
 
   /** 移动电话 */
   var mobile: Option[String] = None

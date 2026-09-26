@@ -22,12 +22,13 @@ import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{DateRange, Remark}
 import org.openurp.base.model.{Campus, School}
 import org.openurp.base.resource.model.Building
+import scala.compiletime.uninitialized
 
 /** 教室保留时间
  */
 @config
 class RoomApplyReservedTime extends LongId, DateRange, Remark {
-  var school: School = _
-  var campus: Campus = _
+  var school: School = uninitialized
+  var campus: Campus = uninitialized
   var building: Option[Building] = None
 }

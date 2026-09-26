@@ -21,19 +21,20 @@ import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
 import org.openurp.code.edu.model.{Institution, InstitutionCategory}
 import org.openurp.code.geo.model.Division
+import scala.compiletime.uninitialized
 
 /**
  * 学校
  */
 class School extends IntId, Coded, Named, EnNamed, TemporalOn {
   /** 机构 */
-  var institution: Institution = _
+  var institution: Institution = uninitialized
   /** 性质类别 */
-  var category: InstitutionCategory = _
+  var category: InstitutionCategory = uninitialized
   /** 省份 */
-  var division: Division = _
+  var division: Division = uninitialized
   /** logo 地址 */
-  var logoUrl: String = _
+  var logoUrl: String = uninitialized
   /** 简称 */
   var shortName: Option[String] = None
   /** 标识码(10位) */

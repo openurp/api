@@ -23,6 +23,7 @@ import org.beangle.data.model.Component
 import org.openurp.base.model.Department
 import org.openurp.code.edu.model.CourseAbilityRate
 import org.openurp.edu.clazz.model.Enrollment.GenderRatio
+import scala.compiletime.uninitialized
 
 class Enrollment extends Cloneable, Component {
 
@@ -33,10 +34,10 @@ class Enrollment extends Cloneable, Component {
   var grades: Option[String] = None
 
   /** 学生人数 */
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
 
   /** 最大人数 */
-  var capacity: Int = _
+  var capacity: Int = uninitialized
 
   /**
    * 是否锁定人数上限
@@ -50,7 +51,7 @@ class Enrollment extends Cloneable, Component {
    * 保留人数<br>
    * 一个任务的真实的人数上限 = capacity - reservedCount
    */
-  var reservedCount: Int = _
+  var reservedCount: Int = uninitialized
 
   /** 上课名单 */
   var courseTakers = Collections.newBuffer[CourseTaker]
@@ -65,7 +66,7 @@ class Enrollment extends Cloneable, Component {
   var subclazzes = Collections.newBuffer[Subclazz]
 
   /** 是否全校共享 */
-  var shared: Boolean = _
+  var shared: Boolean = uninitialized
 }
 
 object Enrollment {

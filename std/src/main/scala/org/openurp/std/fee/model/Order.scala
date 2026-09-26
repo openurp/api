@@ -22,16 +22,17 @@ import java.time.Instant
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Remark}
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /** 支付订单记录
  * */
 class Order extends LongId , Coded , Remark {
 
   /** 用户 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 金额（分） */
-  var amount: Int = _
+  var amount: Int = uninitialized
 
   /** 支付渠道 */
   var channel: Option[String] = None
@@ -40,22 +41,22 @@ class Order extends LongId , Coded , Remark {
   var payAt: Option[Instant] = None
 
   /** 账单 */
-  var bill: Bill = _
+  var bill: Bill = uninitialized
 
   /** 是否成功 */
-  var paid: Boolean = _
+  var paid: Boolean = uninitialized
 
   /**状态*/
-  var status: String = _
+  var status: String = uninitialized
 
   /**支付地址*/
-  var payUrl: String = _
+  var payUrl: String = uninitialized
 
   /** 创建时间点 */
-  var createdAt: Instant = _
+  var createdAt: Instant = uninitialized
 
   /** 过期时间点 */
-  var expiredAt: Instant = _
+  var expiredAt: Instant = uninitialized
 
   /** 发票地址 */
   var invoicePath: Option[String] = None

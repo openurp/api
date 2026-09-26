@@ -21,10 +21,11 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 class InitReview extends LongId {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
   var score: Option[Float] = None
 

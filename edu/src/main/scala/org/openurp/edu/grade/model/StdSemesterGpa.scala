@@ -20,6 +20,7 @@ package org.openurp.edu.grade.model
 import org.beangle.commons.lang.math.TinyDecimal5
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
+import scala.compiletime.uninitialized
 
 /**
  * 每学期绩点
@@ -31,12 +32,12 @@ class StdSemesterGpa extends LongId, GpaStat {
   /**
    * 学生绩点
    */
-  var stdGpa: StdGpa = _
+  var stdGpa: StdGpa = uninitialized
 
   /**
    * 学期
    */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   def this(semester: Semester, gpa: BigDecimal) = {
     this()

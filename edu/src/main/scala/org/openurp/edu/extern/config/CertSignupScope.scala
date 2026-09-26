@@ -24,6 +24,7 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.EducationLevel
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 校外考试报名学生范围
  *
@@ -31,13 +32,13 @@ import scala.collection.mutable
 @config
 class CertSignupScope extends LongId {
 
-  var setting: CertSignupSetting = _
+  var setting: CertSignupSetting = uninitialized
 
   var grades: Option[String] = None
 
-  var level: EducationLevel = _
+  var level: EducationLevel = uninitialized
 
-  var included: Boolean = _
+  var included: Boolean = uninitialized
 
   var codes: Option[String] = None
 

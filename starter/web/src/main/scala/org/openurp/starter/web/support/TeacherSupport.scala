@@ -27,13 +27,14 @@ import org.openurp.base.model.{Project, Semester, User}
 import org.openurp.base.service.{Feature, ProjectConfigService, SemesterService}
 import org.openurp.code.Code
 import org.openurp.code.service.CodeService
+import scala.compiletime.uninitialized
 
 abstract class TeacherSupport extends ActionSupport, ServletSupport {
 
-  var entityDao: EntityDao = _
-  var codeService: CodeService = _
-  var semesterService: SemesterService = _
-  var configService: ProjectConfigService = _
+  var entityDao: EntityDao = uninitialized
+  var codeService: CodeService = uninitialized
+  var semesterService: SemesterService = uninitialized
+  var configService: ProjectConfigService = uninitialized
 
   def index(): View = {
     val teacher = getTeacher

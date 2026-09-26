@@ -23,12 +23,13 @@ import org.beangle.data.model.pojo.Named
 import org.openurp.code.edu.model.Discipline
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 class ClosureReviewGroup extends LongId, Named {
 
-  var batch: Batch = _
+  var batch: Batch = uninitialized
 
-  var discipline: Discipline = _
+  var discipline: Discipline = uninitialized
 
   var experts: mutable.Buffer[Expert] = Collections.newBuffer[Expert]
 }

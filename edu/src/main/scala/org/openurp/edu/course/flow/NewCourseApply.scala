@@ -23,6 +23,7 @@ import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.{EnNamed, Named, TemporalOn, Updatable}
 import org.openurp.base.model.{AuditStatus, Department, ProjectBased, User}
 import org.openurp.code.edu.model.*
+import scala.compiletime.uninitialized
 
 /** 新开课程申请
  */
@@ -30,45 +31,45 @@ import org.openurp.code.edu.model.*
 class NewCourseApply extends LongId, ProjectBased, Updatable, TemporalOn, Named, EnNamed {
   var code: Option[String] = None
   /** 院系 */
-  var department: Department = _
+  var department: Department = uninitialized
   /** 学分 */
-  var defaultCredits: Float = _
+  var defaultCredits: Float = uninitialized
 
   /** 课程模块 */
   var module: Option[CourseModule] = None
   /** 必修/选修/限选 */
   var rank: Option[CourseRank] = None
   /** 课程分类 */
-  var category: NewCourseCategory = _
+  var category: NewCourseCategory = uninitialized
   /** 课程性质 (理论、实践、术科、实验) */
-  var nature: CourseNature = _
+  var nature: CourseNature = uninitialized
 
   /** 学时/总课时 */
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
   /** 分类课时 */
   var hours = Collections.newBuffer[NewCourseApplyHour]
   /** 周课时 */
-  var weekHours: Int = _
+  var weekHours: Int = uninitialized
 
   /** 考试方式 */
-  var examMode: ExamMode = _
+  var examMode: ExamMode = uninitialized
   /** 成绩记录方式 */
-  var gradingMode: GradingMode = _
+  var gradingMode: GradingMode = uninitialized
 
   /** 课程标签 */
   var tags = Collections.newSet[CourseTag]
   /** 状态 */
-  var status: AuditStatus = _
+  var status: AuditStatus = uninitialized
   /** 申请人 */
-  var applicant: User = _
+  var applicant: User = uninitialized
   /** 审核意见 */
   var opinions: Option[String] = None
 }
 
 @flow
 class NewCourseApplyHour extends LongId {
-  var courseApply: NewCourseApply = _
-  var creditHours: Int = _
-  var weeks: Int = _
-  var nature: TeachingNature = _
+  var courseApply: NewCourseApply = uninitialized
+  var creditHours: Int = uninitialized
+  var weeks: Int = uninitialized
+  var nature: TeachingNature = uninitialized
 }

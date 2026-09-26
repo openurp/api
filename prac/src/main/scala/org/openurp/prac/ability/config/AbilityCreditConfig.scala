@@ -25,6 +25,7 @@ import org.openurp.base.model.ProjectBased
 import org.openurp.code.edu.model.{EducationLevel, EducationType}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 能力拓展学分配置
  */
@@ -32,7 +33,7 @@ import scala.collection.mutable
 class AbilityCreditConfig extends LongId, InstantRange, ProjectBased {
 
   /** 培养类型 */
-  var eduType: EducationType = _
+  var eduType: EducationType = uninitialized
 
   /** 培养层次 */
   var levels: mutable.Set[EducationLevel] = Collections.newSet[EducationLevel]
@@ -41,8 +42,8 @@ class AbilityCreditConfig extends LongId, InstantRange, ProjectBased {
   var settings: mutable.Buffer[AbilityCreditSetting] = new mutable.ArrayBuffer[AbilityCreditSetting]
 
   /** 通知 */
-  var notice: String = _
+  var notice: String = uninitialized
 
   /** 认定的学分 */
-  var credits: Int = _
+  var credits: Int = uninitialized
 }

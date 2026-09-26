@@ -24,10 +24,11 @@ import org.openurp.base.config.service.BusinessSettingService
 import org.openurp.base.model.Project
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 class BusinessSettingServiceImpl extends BusinessSettingService {
 
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   override def update(project: Project, business: String, profileId: String, settings: JsonObject): Unit = {
     val setting = get(project, business, profileId).getOrElse {

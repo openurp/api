@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.openurp.base.model.Project
 import org.openurp.code.std.model.{StdAlterType, StudentStatus}
+import scala.compiletime.uninitialized
 
 /** 学籍异动配置
  *
@@ -28,17 +29,17 @@ import org.openurp.code.std.model.{StdAlterType, StudentStatus}
 @config
 class AlterConfig extends LongId {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var alterType: StdAlterType = _
+  var alterType: StdAlterType = uninitialized
 
-  var status: StudentStatus = _
+  var status: StudentStatus = uninitialized
 
-  var alterEndOn: Boolean = _
+  var alterEndOn: Boolean = uninitialized
 
-  var alterGraduateOn: Boolean = _
+  var alterGraduateOn: Boolean = uninitialized
 
-  var inschool: Boolean = _
+  var inschool: Boolean = uninitialized
 
-  var attributes: String = _
+  var attributes: String = uninitialized
 }

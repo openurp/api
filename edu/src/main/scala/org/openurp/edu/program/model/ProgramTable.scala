@@ -19,11 +19,12 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
+import scala.compiletime.uninitialized
 
 class ProgramTable extends LongId, Named {
-  var doc: ProgramDoc = _
-  var contents: String = _
-  var caption: String = _
+  var doc: ProgramDoc = uninitialized
+  var contents: String = uninitialized
+  var caption: String = uninitialized
 
   def this(doc: ProgramDoc, name: String, caption: String, contents: String) = {
     this()

@@ -20,18 +20,19 @@ package org.openurp.qos.evaluation.clazz.model
 import org.beangle.data.model.LongId
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.Semester
+import scala.compiletime.uninitialized
 
 class FinalTeacherScore extends LongId {
-  var teacher: Teacher = _
-  var semester: Semester = _
-  var stdScore: Float = _
-  var supviScore: Float = _
-  var departScore: Float = _
-  var score: Float = _
+  var teacher: Teacher = uninitialized
+  var semester: Semester = uninitialized
+  var stdScore: Float = uninitialized
+  var supviScore: Float = uninitialized
+  var departScore: Float = uninitialized
+  var score: Float = uninitialized
 
   /**部门排名*/
-  var departRank: Int = _
+  var departRank: Int = uninitialized
 
   /**全校排名*/
-  var schoolRank: Int = _
+  var schoolRank: Int = uninitialized
 }

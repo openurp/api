@@ -21,6 +21,7 @@ import org.openurp.edu.clazz.model.Clazz
 import org.beangle.data.model.LongId
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.User
+import scala.compiletime.uninitialized
 
 /**
  * 教学任务上的监考配额
@@ -28,19 +29,19 @@ import org.openurp.base.model.User
 class InvigilationClazzQuota extends LongId {
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 教师 */
-  var teacher: Teacher = _
+  var teacher: Teacher = uninitialized
 
   /** 系数 */
-  var ratio: Float = _
+  var ratio: Float = uninitialized
 
   /** 课时 */
-  var creditHours: Float = _
+  var creditHours: Float = uninitialized
 
   /** 次数 */
-  var amount: Float = _
+  var amount: Float = uninitialized
 
   def this(clazz: Clazz, teacher: Teacher) = {
     this()

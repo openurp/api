@@ -22,18 +22,19 @@ import org.beangle.data.model.pojo.*
 import org.openurp.code.hr.model.DepartmentCategory
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 部门
  */
 class Department extends IntId, Coded, Named, EnNamed, Hierarchical[Department]
   , TemporalOn, Updatable, Remark {
-  var school: School = _
+  var school: School = uninitialized
   /** 简称 */
   var shortName: Option[String] = None
   var category: Option[DepartmentCategory] = None
-  var teaching: Boolean = _
-  var research: Boolean = _
+  var teaching: Boolean = uninitialized
+  var research: Boolean = uninitialized
   /** 校区列表 */
   var campuses: mutable.Buffer[Campus] = new mutable.ListBuffer[Campus]
 

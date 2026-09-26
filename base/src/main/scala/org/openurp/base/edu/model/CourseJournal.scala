@@ -25,22 +25,23 @@ import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.{CourseTag, ExamMode, TeachingNature}
 
 import java.time.{Instant, LocalDate}
+import scala.compiletime.uninitialized
 
 /** 课程变化日志
  */
 class CourseJournal extends LongId, Named, EnNamed, Updatable, TemporalOn {
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
   /** 开课部门 */
-  var department: Department = _
+  var department: Department = uninitialized
   /** 考核方式 */
-  var examMode: ExamMode = _
+  var examMode: ExamMode = uninitialized
   /** 学时/总课时 */
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
   /** 周数 */
   var weeks: Option[Int] = None
   /** 周课时 */
-  var weekHours: Int = _
+  var weekHours: Int = uninitialized
   /** 分类课时 */
   var hours = Collections.newBuffer[CourseJournalHour]
   /** 课程标签 */
@@ -139,7 +140,7 @@ class CourseJournalHour extends LongId {
     this.creditHours = creditHours
   }
 
-  var journal: CourseJournal = _
-  var creditHours: Int = _
-  var nature: TeachingNature = _
+  var journal: CourseJournal = uninitialized
+  var creditHours: Int = uninitialized
+  var nature: TeachingNature = uninitialized
 }

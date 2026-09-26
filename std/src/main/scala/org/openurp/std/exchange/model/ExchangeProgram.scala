@@ -23,9 +23,10 @@ import org.beangle.data.model.pojo.{Named, TemporalOn}
 import org.openurp.base.model.{ExternSchool, Project}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 class ExchangeProgram extends LongId, Named, TemporalOn {
   var schools: mutable.Buffer[ExternSchool] = Collections.newBuffer[ExternSchool]
 
-  var project: Project = _
+  var project: Project = uninitialized
 }

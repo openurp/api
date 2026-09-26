@@ -22,15 +22,16 @@ import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.job.model.TutorType
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /** 导师资格聘任记录
  */
 class TutorJournal extends LongId, TemporalOn {
   /** 教职工 */
-  var staff: Staff = _
+  var staff: Staff = uninitialized
 
   /** 导师类型 */
-  var tutorType: TutorType = _
+  var tutorType: TutorType = uninitialized
 
   def this(staff: Staff, tutorType: TutorType, appointOn: LocalDate) = {
     this()

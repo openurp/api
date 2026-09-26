@@ -25,6 +25,7 @@ import org.openurp.base.model.{Department, Semester}
 import org.openurp.code.edu.model.CourseType
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 课程执教信息
  */
@@ -32,13 +33,13 @@ class CourseTask extends LongId {
   /** 同课程不同任务的顺序号 */
   var idx: Short = 1
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
   /** 开课院系 */
-  var department: Department = _
+  var department: Department = uninitialized
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 课程类型 */
-  var courseType: CourseType = _
+  var courseType: CourseType = uninitialized
   /** 任课教师 */
   var teachers: mutable.Set[Teacher] = Collections.newSet[Teacher]
   /** 教研室 */
@@ -50,7 +51,7 @@ class CourseTask extends LongId {
   /** 课外学时 */
   var extraHours: Option[Int] = None
   /** 是否确认 */
-  var confirmed: Boolean = _
+  var confirmed: Boolean = uninitialized
 
   def this(course: Course, department: Department, semester: Semester, courseType: CourseType) = {
     this()

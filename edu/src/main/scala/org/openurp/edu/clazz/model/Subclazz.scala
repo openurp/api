@@ -19,17 +19,18 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
+import scala.compiletime.uninitialized
 
 /**
  * 任务内分配的小班
  */
 class Subclazz extends LongId, Named {
 
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 最大人数 */
-  var maxCount: Int = _
+  var maxCount: Int = uninitialized
 
   /** 当前人数 */
-  var curCount: Int = _
+  var curCount: Int = uninitialized
 }

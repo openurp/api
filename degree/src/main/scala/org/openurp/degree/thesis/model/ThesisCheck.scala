@@ -23,36 +23,37 @@ import org.openurp.base.std.model.GraduateSeason
 import org.openurp.code.person.model.Language
 
 import java.time.YearMonth
+import scala.compiletime.uninitialized
 
 /** 论文抽检
  */
 class ThesisCheck extends LongId, Updatable {
   /** 毕业季 */
-  var season: GraduateSeason = _
+  var season: GraduateSeason = uninitialized
 
   /** 学生 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 学生姓名 */
-  var writerName: String = _
+  var writerName: String = uninitialized
 
   /** 入学年月 */
-  var enrollIn: YearMonth = _
+  var enrollIn: YearMonth = uninitialized
 
   /** 毕业年月 */
-  var graduateIn: YearMonth = _
+  var graduateIn: YearMonth = uninitialized
 
   /**考生号*/
   var examineeCode:Option[String]=None
 
   /** 学位专业代码 */
-  var degreeMajorCode: String = _
+  var degreeMajorCode: String = uninitialized
 
   /** 学位专业名称 */
-  var degreeMajorName: String = _
+  var degreeMajorName: String = uninitialized
 
   /** 证书专业名称 */
-  var certMajorName: String = _
+  var certMajorName: String = uninitialized
 
   /** 是否主辅修学位 */
   var majorMinorDegree: Option[Boolean] = None
@@ -79,10 +80,10 @@ class ThesisCheck extends LongId, Updatable {
   var advisor: Option[String] = None
 
   /** 题目 */
-  var title: String = _
+  var title: String = uninitialized
 
   /** 是否第一届毕业生 */
-  var firstSeason: Boolean = _
+  var firstSeason: Boolean = uninitialized
 
   /** 毕业论文类型 */
   var thesisType: Option[String] = None

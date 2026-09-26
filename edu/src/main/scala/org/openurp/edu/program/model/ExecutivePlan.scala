@@ -22,6 +22,7 @@ import org.openurp.base.edu.model.MajorDirection
 import org.openurp.base.model.Department
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 执行计划
  *
@@ -30,7 +31,7 @@ import java.time.Instant
 class ExecutivePlan extends AbstractCoursePlan, CoursePlan {
 
   /** 部门(培养方案的部门或者子部门) */
-  var department: Department = _
+  var department: Department = uninitialized
 
   def this(other: AbstractCoursePlan) = {
     this()

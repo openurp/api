@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.*
 import org.openurp.base.model.Project
+import scala.compiletime.uninitialized
 
 /**
  * 问题类型 指示器
@@ -28,7 +29,7 @@ import org.openurp.base.model.Project
  * @author chaostone
  */
 class Indicator extends LongId, Coded, Named, Updatable, TemporalOn, Remark, Ordered[Indicator] {
-  var project: Project = _
+  var project: Project = uninitialized
   /** 英文名称 */
   var enName: scala.Option[String] = None
 

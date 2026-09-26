@@ -19,16 +19,17 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.TeachingNature
+import scala.compiletime.uninitialized
 
 /** 课程大纲课时分配
  */
 class SyllabusHour extends LongId {
   /** 课程大纲 */
-  var syllabus: Syllabus = _
+  var syllabus: Syllabus = uninitialized
   /** 课时分类 */
-  var nature: TeachingNature = _
+  var nature: TeachingNature = uninitialized
   /** 学时 */
-  var creditHours: Float = _
+  var creditHours: Float = uninitialized
 
   def this(syllabus: Syllabus, nature: TeachingNature, creditHours: Float) = {
     this()

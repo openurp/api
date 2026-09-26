@@ -21,18 +21,19 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, TemporalOn, Updatable}
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.CourseAbilityRate
+import scala.compiletime.uninitialized
 
 /** * 学生课程能力等级
  */
 class StdCourseAbility extends LongId, Updatable, TemporalOn, Remark {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 分级分数 */
   var score: Option[Float] = None
 
   /** 分级名称 */
-  var rate: CourseAbilityRate = _
+  var rate: CourseAbilityRate = uninitialized
 
 }

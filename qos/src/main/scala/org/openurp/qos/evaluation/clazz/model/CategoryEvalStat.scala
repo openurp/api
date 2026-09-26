@@ -25,21 +25,22 @@ import org.openurp.code.edu.model.CourseCategory
 import org.openurp.qos.evaluation.base.model.{AssessGrade, Indicator}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 分课程大类统计
  *
  */
 class CategoryEvalStat extends LongId, Updatable {
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 教学日历 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 课程分类 */
-  var category: CourseCategory = _
+  var category: CourseCategory = uninitialized
 
   /** 课程数量 */
-  var courseCount: Int = _
+  var courseCount: Int = uninitialized
 
   /** 按照维度分段统计 */
   var ranges: mutable.Buffer[CategoryStatRange] = Collections.newBuffer[CategoryStatRange]
@@ -86,19 +87,19 @@ class CategoryEvalStat extends LongId, Updatable {
  * */
 class CategoryStatGrade extends LongId {
 
-  var indicator: Indicator = _
+  var indicator: Indicator = uninitialized
 
-  var grade: AssessGrade = _
+  var grade: AssessGrade = uninitialized
 
-  var courseCount: Int = _
+  var courseCount: Int = uninitialized
 
-  var avgScore: Double = _
+  var avgScore: Double = uninitialized
 
-  var maxScore: Double = _
+  var maxScore: Double = uninitialized
 
-  var minScore: Double = _
+  var minScore: Double = uninitialized
 
-  var stat: CategoryEvalStat = _
+  var stat: CategoryEvalStat = uninitialized
 }
 
 /**
@@ -106,15 +107,15 @@ class CategoryStatGrade extends LongId {
  */
 class CategoryStatRange extends LongId {
 
-  var stat: CategoryEvalStat = _
+  var stat: CategoryEvalStat = uninitialized
 
-  var indicator: Indicator = _
+  var indicator: Indicator = uninitialized
 
-  var fromScore: Double = _
+  var fromScore: Double = uninitialized
 
-  var toScore: Double = _
+  var toScore: Double = uninitialized
 
-  var courseCount: Int = _
+  var courseCount: Int = uninitialized
 
   def contains(v: Double): Boolean = {
     java.lang.Double.compare(fromScore, v) <= 0 && java.lang.Double.compare(v, toScore) < 0

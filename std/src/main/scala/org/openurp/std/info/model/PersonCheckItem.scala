@@ -18,18 +18,19 @@
 package org.openurp.std.info.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /** 基本信息更改项目
  */
 class PersonCheckItem extends LongId {
 
-  var check: PersonCheck = _
+  var check: PersonCheck = uninitialized
 
-  var field: PersonField = _
+  var field: PersonField = uninitialized
 
-  var oldValue: String = _
+  var oldValue: String = uninitialized
 
-  var newValue: String = _
+  var newValue: String = uninitialized
 
   def this(check: PersonCheck, field: PersonField, oldValue: String, newValue: String) = {
     this()

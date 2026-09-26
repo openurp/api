@@ -19,6 +19,7 @@ package org.openurp.base.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.Updatable
+import scala.compiletime.uninitialized
 
 object Version {
   val Latest = "0.20.4"
@@ -26,7 +27,7 @@ object Version {
 
 class Version extends IntId, Updatable {
 
-  var version: String = _
+  var version: String = uninitialized
 
-  var description: String = _
+  var description: String = uninitialized
 }

@@ -19,10 +19,11 @@ package org.openurp.trd.project.code
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /**项目类别*/
 @code("school")
 class RdProjectCategory extends CodeBean {
 
-  var forCourse: Boolean = _
+  var forCourse: Boolean = uninitialized
 }

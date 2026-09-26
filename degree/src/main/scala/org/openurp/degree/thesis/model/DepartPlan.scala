@@ -23,15 +23,16 @@ import org.openurp.base.model.Department
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 学院毕业设计工作计划
  *
  * @author duant
  */
 class DepartPlan extends LongId, Cloneable {
-  var department: Department = _
-  var status: PlanStatus = _
-  var thesisPlan: ThesisPlan = _
+  var department: Department = uninitialized
+  var status: PlanStatus = uninitialized
+  var thesisPlan: ThesisPlan = uninitialized
   var times: mutable.Buffer[StageTime] = Collections.newBuffer[StageTime]
   /** 工作计划审查意见 */
   var auditOpinion: Option[String] = None

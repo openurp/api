@@ -29,6 +29,7 @@ import org.openurp.code.std.model.{StdLabel, StdLabelType, StdType, StudentStatu
 
 import java.time.LocalDate
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 学籍信息
@@ -46,16 +47,16 @@ import scala.collection.mutable
 class Student extends LongId, Coded, Named, EduLevelBased, Updatable, Remark, DateRange {
 
   /** 用户 */
-  var user: User = _
+  var user: User = uninitialized
 
   /** 基本信息 */
-  var person: Person = _
+  var person: Person = uninitialized
 
   /** 性别 */
-  var gender: Gender = _
+  var gender: Gender = uninitialized
 
   /** 学生类别 所在项目内的学生类别 */
-  var stdType: StdType = _
+  var stdType: StdType = uninitialized
 
   /** 学籍状态 */
   var state: Option[StudentState] = None
@@ -67,27 +68,27 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updatable, Remark, Da
   var labels = Collections.newMap[StdLabelType, StdLabel]
 
   /** 学制（允许0.5年出现） */
-  var duration: Float = _
+  var duration: Float = uninitialized
 
   /** 最晚离校日期
    * 最晚日期 =入学日期 + 最长学习年限
    */
-  var maxEndOn: LocalDate = _
+  var maxEndOn: LocalDate = uninitialized
 
   /** 预计毕业日期 */
-  var graduateOn: LocalDate = _
+  var graduateOn: LocalDate = uninitialized
 
   /** 是否有学籍 */
-  var registed: Boolean = _
+  var registed: Boolean = uninitialized
 
   /** 学习形式 全日制/业余/函授 */
-  var studyType: StudyType = _
+  var studyType: StudyType = uninitialized
 
   /** 导师 */
   var tutors: mutable.Buffer[StudentTutor] = Collections.newBuffer[StudentTutor]
 
   /** 是否延期毕业 */
-  var graduationDeferred: Boolean = _
+  var graduationDeferred: Boolean = uninitialized
 
   def calcCurrentState(): Unit = {
     this.state = Some(stateOn(LocalDate.now()))
@@ -190,16 +191,16 @@ class Student extends LongId, Coded, Named, EduLevelBased, Updatable, Remark, Da
 class StudentState extends LongId, StdEnrollment, DateRange, Remark {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 年级 */
-  var grade: Grade = _
+  var grade: Grade = uninitialized
 
   /** 管理院系 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
 
   /** 专业方向 */
   var direction: Option[MajorDirection] = None
@@ -208,13 +209,13 @@ class StudentState extends LongId, StdEnrollment, DateRange, Remark {
   var squad: Option[Squad] = None
 
   /** 是否在校 */
-  var inschool: Boolean = _
+  var inschool: Boolean = uninitialized
 
   /** 学籍状态 */
-  var status: StudentStatus = _
+  var status: StudentStatus = uninitialized
 
   /** 校区 */
-  var campus: Campus = _
+  var campus: Campus = uninitialized
 }
 
 /**
@@ -222,9 +223,9 @@ class StudentState extends LongId, StdEnrollment, DateRange, Remark {
  */
 class StudentScope extends Component {
   /** 年级 */
-  var grades: String = _
+  var grades: String = uninitialized
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
   /** 培养层次集合 */
   var levels: mutable.Set[EducationLevel] = Collections.newSet[EducationLevel]
   /** 学生类别集合 */
@@ -272,5 +273,5 @@ trait StdEnrollment {
  */
 trait StudentBased {
 
-  var std: Student = _
+  var std: Student = uninitialized
 }

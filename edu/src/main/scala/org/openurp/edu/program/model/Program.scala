@@ -29,6 +29,7 @@ import org.openurp.code.std.model.StdType
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 专业培养方案
  *
@@ -38,13 +39,13 @@ import scala.collection.mutable
 class Program extends LongId, Updatable, Named, Cloneable, DateRange, EduLevelBased, Remark {
 
   /** 年级 */
-  var grade: Grade = _
+  var grade: Grade = uninitialized
 
   /** 部门 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
 
   /** 专业方向 */
   var direction: Option[MajorDirection] = None
@@ -53,19 +54,19 @@ class Program extends LongId, Updatable, Named, Cloneable, DateRange, EduLevelBa
   var stdTypes: mutable.Set[StdType] = Collections.newSet[StdType]
 
   /** 学制 */
-  var duration: Float = _
+  var duration: Float = uninitialized
 
   /** 学习形式 */
   var studyType: Option[StudyType] = None
 
   /** 要求学分 */
-  var credits: Float = _
+  var credits: Float = uninitialized
 
   /** 起始学期 */
-  var startTerm: Short = _
+  var startTerm: Short = uninitialized
 
   /** 结束学期 */
-  var endTerm: Short = _
+  var endTerm: Short = uninitialized
 
   /** 学期对应校区 */
   var termCampuses = Collections.newBuffer[TermCampus]

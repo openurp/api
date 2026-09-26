@@ -27,53 +27,54 @@ import org.openurp.code.edu.model.CourseCategory
 import org.openurp.qos.evaluation.base.model.{AssessGrade, Indicator, Option, Question, Questionnaire}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 trait Rank {
   /** 分类排名 */
-  var categoryRank: Int = _
+  var categoryRank: Int = uninitialized
 
   /** 部门排名 */
-  var departRank: Int = _
+  var departRank: Int = uninitialized
 
   /** 全校排名 */
-  var schoolRank: Int = _
+  var schoolRank: Int = uninitialized
 }
 
 class CourseEvalStat extends LongId, Updatable, Rank {
   /** 课程序号 */
   var crn: scala.Option[String] = None
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 教学日历 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 总得分 */
-  var score: Float = _
+  var score: Float = uninitialized
 
   /** 是否发布 */
-  var publishStatus: Int = _
+  var publishStatus: Int = uninitialized
 
   /** 有效票数 */
-  var tickets: Int = _
+  var tickets: Int = uninitialized
 
   /** 教师 */
-  var teacher: Teacher = _
+  var teacher: Teacher = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 开课院系 */
-  var teachDepart: Department = _
+  var teachDepart: Department = uninitialized
 
   /** 教师所属院系 */
-  var teacherDepart: Department = _
+  var teacherDepart: Department = uninitialized
 
   /** 课程所在学科 */
-  var category: CourseCategory = _
+  var category: CourseCategory = uninitialized
 
   /** 评价等级ABCDEF */
-  var grade: AssessGrade = _
+  var grade: AssessGrade = uninitialized
 
   /** 问题类别得分 */
   var indicatorStats = Collections.newBuffer[CourseIndicatorStat]
@@ -92,32 +93,32 @@ class CourseEvalStat extends LongId, Updatable, Rank {
 class CourseIndicatorStat extends LongId {
 
   /** 问题类别 */
-  var indicator: Indicator = _
+  var indicator: Indicator = uninitialized
 
   /** 问题类别统计的总分值 */
-  var score: Double = _
+  var score: Double = uninitialized
 
   /** 对应等级 */
-  var grade: AssessGrade = _
+  var grade: AssessGrade = uninitialized
 
   /** 大类中的排名 */
-  var categoryRank: Int = _
+  var categoryRank: Int = uninitialized
 
   /** 问卷评教结果 */
-  var stat: CourseEvalStat = _
+  var stat: CourseEvalStat = uninitialized
 }
 
 /** 问题统计
  */
 class CourseQuestionStat extends LongId {
 
-  var stat: CourseEvalStat = _
+  var stat: CourseEvalStat = uninitialized
 
   /** 具体问题 */
-  var question: Question = _
+  var question: Question = uninitialized
 
   /** 平均得分 */
-  var score: Double = _
+  var score: Double = uninitialized
 
   /** 具体选项 */
   var optionStats: mutable.Buffer[CourseOptionStat] = new collection.mutable.ListBuffer[CourseOptionStat]
@@ -126,11 +127,11 @@ class CourseQuestionStat extends LongId {
 class CourseOptionStat extends LongId {
 
   /** 问题统计明细 */
-  var questionStat: CourseQuestionStat = _
+  var questionStat: CourseQuestionStat = uninitialized
 
   /** 选项 */
-  var option: Option = _
+  var option: Option = uninitialized
 
   /** 人数 */
-  var amount: Int = _
+  var amount: Int = uninitialized
 }

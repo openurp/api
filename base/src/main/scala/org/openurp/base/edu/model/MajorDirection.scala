@@ -23,6 +23,7 @@ import org.openurp.base.model.{Department, Project}
 import org.openurp.code.edu.model.EducationLevel
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 方向信息 专业领域.
@@ -31,18 +32,18 @@ import scala.collection.mutable
  */
 class MajorDirection extends LongId, TemporalOn, Coded, Named, EnNamed, Updatable, Remark {
 
-  var project: Project = _
+  var project: Project = uninitialized
   /** 所属专业 */
-  var major: Major = _
+  var major: Major = uninitialized
   /** 部门 */
   var journals: mutable.Buffer[MajorDirectionJournal] = new mutable.ListBuffer[MajorDirectionJournal]
 }
 
 class MajorDirectionJournal extends LongId, TemporalOn, Remark {
   /** 专业方向 */
-  var direction: MajorDirection = _
+  var direction: MajorDirection = uninitialized
   /** 培养层次 */
-  var level: EducationLevel = _
+  var level: EducationLevel = uninitialized
   /** 部门 */
-  var depart: Department = _
+  var depart: Department = uninitialized
 }

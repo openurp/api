@@ -19,10 +19,11 @@ package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, DateRange, Named}
+import scala.compiletime.uninitialized
 
 class Expert extends LongId, Coded, Named, DateRange {
 
-  var password: String = _
+  var password: String = uninitialized
 
   var intro: Option[String] = None
 

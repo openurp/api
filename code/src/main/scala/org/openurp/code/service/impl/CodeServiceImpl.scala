@@ -22,9 +22,10 @@ import org.beangle.data.dao.OqlBuilder
 import org.openurp.code.service.CodeService
 import org.openurp.code.Code
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 class CodeServiceImpl extends CodeService {
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   def get[T <: Code](clazz: Class[T], code: String): Option[T] = {
     val builder = OqlBuilder.from(clazz, "basecode").where("basecode.code=:code", code);

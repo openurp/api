@@ -24,6 +24,7 @@ import org.beangle.data.model.pojo.InstantRange
 import org.openurp.base.model.{Project, Semester}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 课程安排设置
@@ -31,15 +32,15 @@ import scala.collection.mutable
 @config
 class ScheduleSetting extends LongId, InstantRange {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
-  var placePublished: Boolean = _
+  var placePublished: Boolean = uninitialized
 
-  var timePublished: Boolean = _
+  var timePublished: Boolean = uninitialized
 
-  var clazzEditable: Boolean = _
+  var clazzEditable: Boolean = uninitialized
 
   var departs: mutable.Buffer[ScheduleSettingDepart] = Collections.newBuffer[ScheduleSettingDepart]
 

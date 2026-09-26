@@ -20,27 +20,28 @@ package org.openurp.std.award.code
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn}
+import scala.compiletime.uninitialized
 
 @code("school")
 class ScholarshipCategory extends IntId, Coded, Named, TemporalOn {
 
   /** 奖学金类型 */
-  var scholarshipType: ScholarshipType = _
+  var scholarshipType: ScholarshipType = uninitialized
 
   /** 奖学金描述 */
   var description: Option[String] = None
 
   /** 评定周期 */
-  var assessPeriod: String = _
+  var assessPeriod: String = uninitialized
 
   /** 颁奖单位 */
-  var awardUnit: String = _
+  var awardUnit: String = uninitialized
 
   /** 使用状态 */
-  var enabled: Boolean = _
+  var enabled: Boolean = uninitialized
 
   /** 是否分等级 */
-  var rated: Boolean = _
+  var rated: Boolean = uninitialized
 
 }
 
@@ -48,13 +49,13 @@ class ScholarshipCategory extends IntId, Coded, Named, TemporalOn {
 class ScholarshipLevel extends IntId, Coded, Named {
 
   /** 奖学金种类 */
-  var category: ScholarshipCategory = _
+  var category: ScholarshipCategory = uninitialized
 
   /** 奖励金额 */
-  var amount: Int = _
+  var amount: Int = uninitialized
 
   /** 使用状态 */
-  var enabled: Boolean = _
+  var enabled: Boolean = uninitialized
 
   /** 描述 */
   var description: Option[String] = None
@@ -63,7 +64,7 @@ class ScholarshipLevel extends IntId, Coded, Named {
 @code("school")
 class ScholarshipType extends IntId , Coded , Named {
   /** 使用状态 */
-  var enabled: Boolean = _
+  var enabled: Boolean = uninitialized
   /** 排序序号 */
-  var idx: String = _
+  var idx: String = uninitialized
 }

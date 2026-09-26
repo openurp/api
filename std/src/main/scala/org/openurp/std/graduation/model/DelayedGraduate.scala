@@ -23,6 +23,7 @@ import org.openurp.base.std.model.{GraduateSeason, Student}
 import org.openurp.code.std.model.GraduationStatus
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 不予正常毕业的毕业生
@@ -30,10 +31,10 @@ import java.time.Instant
 class DelayedGraduate extends LongId {
 
   /** 毕业界别 */
-  var season: GraduateSeason = _
+  var season: GraduateSeason = uninitialized
 
   /** 学籍 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 是否告知 */
   var informed: Option[Boolean] = None

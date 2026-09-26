@@ -18,13 +18,14 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /**
  * 教学班班级公告
  */
 class ClazzBulletin extends LongId {
 
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   var contents: Option[String] = None
 

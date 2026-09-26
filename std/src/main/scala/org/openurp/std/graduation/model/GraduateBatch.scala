@@ -24,24 +24,25 @@ import org.openurp.base.model.Project
 import org.openurp.base.std.model.GraduateSeason
 
 import java.time.{Instant, LocalDate}
+import scala.compiletime.uninitialized
 
 /** 毕业批次
  */
 class GraduateBatch extends LongId, Updatable {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 毕业界别 */
-  var season: GraduateSeason = _
+  var season: GraduateSeason = uninitialized
 
   /** 名称 */
-  var name: String = _
+  var name: String = uninitialized
 
   /** 是否授学位 */
-  var degreeOffered: Boolean = _
+  var degreeOffered: Boolean = uninitialized
 
   /** 毕业日期 */
-  var graduateOn: LocalDate = _
+  var graduateOn: LocalDate = uninitialized
 
   /** 是否启用计划完成情况确认 */
   var enableProgressConfirm: Boolean = false

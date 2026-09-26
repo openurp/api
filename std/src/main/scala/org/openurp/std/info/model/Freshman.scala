@@ -29,6 +29,7 @@ import org.openurp.code.person.model.*
 import org.openurp.code.std.model.StdType
 
 import java.time.{LocalDate, YearMonth}
+import scala.compiletime.uninitialized
 
 /**
  * 新生入学信息
@@ -36,13 +37,13 @@ import java.time.{LocalDate, YearMonth}
 class Freshman extends LongId, Coded, Named, EduLevelBased {
   //----------基本信息---------------
   /** 性别 */
-  var gender: Gender = _
+  var gender: Gender = uninitialized
 
   /** 身份证件类型 */
-  var idType: IdType = _
+  var idType: IdType = uninitialized
 
   /** 证件号码 */
-  var idCode: String = _
+  var idCode: String = uninitialized
 
   /** 出生日期 */
   var birthday: Option[LocalDate] = None
@@ -76,13 +77,13 @@ class Freshman extends LongId, Coded, Named, EduLevelBased {
 
   //---------学籍信息----------
   /** 年级 */
-  var grade: Grade = _
+  var grade: Grade = uninitialized
 
   /** 院系 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
 
   /** 专业方向 */
   var direction: Option[MajorDirection] = None
@@ -91,16 +92,16 @@ class Freshman extends LongId, Coded, Named, EduLevelBased {
   var squad: Option[Squad] = None
 
   /** 学生类别 */
-  var stdType: StdType = _
+  var stdType: StdType = uninitialized
 
   /** 入学日期 */
-  var studyOn: LocalDate = _
+  var studyOn: LocalDate = uninitialized
 
   /** 学习年限 */
-  var duration: Float = _
+  var duration: Float = uninitialized
 
   /** 学习形式 全日制/业余/函授 */
-  var studyType: StudyType = _
+  var studyType: StudyType = uninitialized
 
   /** 导师 */
   var tutor: Option[Teacher] = None

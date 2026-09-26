@@ -26,19 +26,20 @@ import org.openurp.base.model.User
 import org.openurp.code.edu.model.TeachingMethod
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 实践课程安排
  */
 abstract class AbstractPracSchedule extends LongId, DateRange, Remark {
-  var weekTime: WeekTime = _
+  var weekTime: WeekTime = uninitialized
   /** 主题 */
   var topic: Option[String] = None
   /** 日期时间 */
   var times: Option[String] = None
   /** 地点 */
-  var places: String = _
+  var places: String = uninitialized
   /** 教学方法 */
-  var teachingMethod: TeachingMethod = _
+  var teachingMethod: TeachingMethod = uninitialized
   /** 授课教师 */
   var teachers: mutable.Buffer[User] = Collections.newBuffer[User]
   /** 外校教师 */
@@ -46,9 +47,9 @@ abstract class AbstractPracSchedule extends LongId, DateRange, Remark {
 
   def mergeWith(ns: AbstractPracSchedule): Unit = {
     val nwt = ns.weekTime
-    if nwt.firstDay isBefore (beginOn) then
+    if nwt.firstDay.isBefore(beginOn) then
       this.beginOn = nwt.firstDay
-    if nwt.lastDay isAfter (endOn) then
+    if nwt.lastDay.isAfter(endOn) then
       this.endOn = nwt.lastDay
     this.weekTime.weekstate |= nwt.weekstate
   }

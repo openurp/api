@@ -23,6 +23,7 @@ import org.openurp.code.edu.model.{GradeType, GradingMode}
 import org.openurp.edu.clazz.model.Clazz
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 成绩状态表
@@ -37,7 +38,7 @@ class CourseGradeState extends AbstractGradeState {
   /**
    * 教学任务
    */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /**
    * 可录入各成绩类型的状态设置
@@ -50,7 +51,7 @@ class CourseGradeState extends AbstractGradeState {
   var gaStates = Collections.newSet[GaGradeState]
 
   /** 保留小数位 */
-  var scorePrecision: Int = _
+  var scorePrecision: Int = uninitialized
 
   /** 其他录入员 */
   var inputer: Option[User] = None

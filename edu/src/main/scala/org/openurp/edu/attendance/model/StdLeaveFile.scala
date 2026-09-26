@@ -18,13 +18,14 @@
 package org.openurp.edu.attendance.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /** 学生请假附件
  */
 class StdLeaveFile extends LongId {
 
-  var leave: StdLeave = _
+  var leave: StdLeave = uninitialized
 
-  var filePath: String = _
+  var filePath: String = uninitialized
 
 }

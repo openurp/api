@@ -20,14 +20,15 @@ package org.openurp.edu.exempt.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /** 外校交流免修申请学分上限
  */
 class ExternExemptCredit extends LongId, Remark, Updatable {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
-  var exempted: Float = _
+  var exempted: Float = uninitialized
 
-  var maxValue: Float = _
+  var maxValue: Float = uninitialized
 }

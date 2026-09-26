@@ -21,6 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.{Named, TemporalAt, Updatable}
 import org.openurp.base.model.Project
+import scala.compiletime.uninitialized
 
 /**
  * 辅修专业报名设置
@@ -28,10 +29,10 @@ import org.openurp.base.model.Project
 class MinorSignupSetting extends IntId, TemporalAt, Named, Updatable {
 
   /** 年级 */
-  var grade: String = _
+  var grade: String = uninitialized
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 可报专业 */
   var options = Collections.newBuffer[MinorSignupOption]

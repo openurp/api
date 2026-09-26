@@ -19,18 +19,19 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.Experiment
+import scala.compiletime.uninitialized
 
 /** 课程大纲中的实验
  */
 class SyllabusExperiment extends LongId {
 
-  var syllabus: Syllabus = _
+  var syllabus: Syllabus = uninitialized
 
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
   /** 实验 */
-  var experiment: Experiment = _
+  var experiment: Experiment = uninitialized
 
   def this(syllabus: Syllabus, idx: Int, experiment: Experiment) = {
     this()

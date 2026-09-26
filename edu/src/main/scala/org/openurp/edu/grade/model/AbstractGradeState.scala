@@ -19,6 +19,7 @@ package org.openurp.edu.grade.model
 
 import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.GradingMode
+import scala.compiletime.uninitialized
 
 /**
  * 成绩状态抽象基类
@@ -28,13 +29,13 @@ import org.openurp.code.edu.model.GradingMode
 abstract class AbstractGradeState extends LongId, GradeState {
 
   /** 成绩记录方式 */
-  var gradingMode: GradingMode = _
+  var gradingMode: GradingMode = uninitialized
 
   /** 成绩录入状态 */
   var status: Int = Grade.Status.New
 
   /** 操作者 */
-  var operator: String = _
+  var operator: String = uninitialized
 
   /** 优秀率上限 */
   var excellentRatioLimit: Option[Float] = None

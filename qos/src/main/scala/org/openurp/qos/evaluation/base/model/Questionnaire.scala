@@ -22,15 +22,16 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{Remark, TemporalOn, Updatable}
 import org.openurp.base.model.{Department, Project}
+import scala.compiletime.uninitialized
 
 /** 评教问卷
  */
 class Questionnaire extends LongId, Updatable, TemporalOn, Remark {
-  var project: Project = _
+  var project: Project = uninitialized
   /** 问卷标题 */
-  var title: String = _
+  var title: String = uninitialized
   /** 简单描述 */
-  var description: String = _
+  var description: String = uninitialized
   /** 相关联的问题 */
   var questions = Collections.newBuffer[Question]
 

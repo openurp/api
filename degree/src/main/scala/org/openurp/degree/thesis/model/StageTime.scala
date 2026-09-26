@@ -20,14 +20,15 @@ package org.openurp.degree.thesis.model
 import org.beangle.data.model.Component
 
 import java.time.{Instant, LocalDate, ZoneId}
+import scala.compiletime.uninitialized
 
 /** 各阶段的时间安排
  *
  */
 class StageTime extends Component {
-  var stage: Stage = _
-  var beginAt: Instant = _
-  var endAt: Instant = _
+  var stage: Stage = uninitialized
+  var beginAt: Instant = uninitialized
+  var endAt: Instant = uninitialized
 
   def this(stage: Stage, beginAt: Instant, endAt: Instant) = {
     this()

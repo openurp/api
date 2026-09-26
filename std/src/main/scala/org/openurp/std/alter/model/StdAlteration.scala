@@ -27,25 +27,26 @@ import org.openurp.code.std.model.{StdAlterReason, StdAlterType}
 import java.time.{Instant, LocalDate}
 import scala.collection.mutable
 import scala.collection.mutable.Buffer
+import scala.compiletime.uninitialized
 
 /**
  * 学籍异动
  */
 class StdAlteration extends LongId, Updatable, Remark {
   /** 变动学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 变动类型 */
-  var alterType: StdAlterType = _
+  var alterType: StdAlterType = uninitialized
   /** 变动日期 */
-  var alterOn: LocalDate = _
+  var alterOn: LocalDate = uninitialized
   /** 变动原因 */
   var reason: Option[StdAlterReason] = None
   /** 变动项目 */
   var items: mutable.Buffer[StdAlterationItem] = Collections.newBuffer[StdAlterationItem]
   /** 是否生效 */
-  var effective: Boolean = _
+  var effective: Boolean = uninitialized
   /** 批准文号 */
   var docNum: Option[String] = None
 

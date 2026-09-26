@@ -62,7 +62,7 @@ trait CourseGroup extends LongIdEntity, Ordered[CourseGroup] {
 
   /** 组内排序课程 */
   def orderedPlanCourses: collection.Seq[PlanCourse] = {
-    this.planCourses.sorted(PlanCourseOrdering)
+    this.planCourses.sorted(using PlanCourseOrdering)
   }
 
   /** 获得备注 */

@@ -29,11 +29,12 @@ import org.beangle.webmvc.support.ActionSupport
 import org.openurp.base.edu.model.Major
 import org.openurp.base.model.{Project, School}
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /** 提供学生个人信息
  */
 class StudentWS extends ActionSupport {
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   @response
   def index(): JsonObject = {

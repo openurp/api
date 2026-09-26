@@ -21,10 +21,11 @@ import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.edu.model.{Course, CourseJournal}
 import org.openurp.base.edu.service.CourseService
+import scala.compiletime.uninitialized
 
 class CourseServiceImpl extends CourseService {
 
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   override def rebuild(course: Course): Unit = {
     entityDao.refresh(course)

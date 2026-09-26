@@ -22,10 +22,11 @@ import org.openurp.base.std.model.{Squad, Student}
 import org.openurp.base.std.service.SquadService
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 class SquadServiceImpl extends SquadService {
 
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   override def statStdCount(squads: Iterable[Squad]): Int = {
     var updated = 0

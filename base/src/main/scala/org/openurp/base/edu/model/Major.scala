@@ -25,6 +25,7 @@ import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.{DisciplineCategory, EducationLevel}
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 专业
@@ -81,10 +82,10 @@ class Major extends LongId, ProjectBased, TemporalOn, Updatable, Coded, Named, E
 class MajorDiscipline extends LongId, TemporalOn {
 
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
 
   /** 学科门类 */
-  var category: DisciplineCategory = _
+  var category: DisciplineCategory = uninitialized
 
   /** 教育部名称 */
   var disciplineName: Option[String] = None
@@ -110,13 +111,13 @@ class MajorDiscipline extends LongId, TemporalOn {
 class MajorJournal extends LongId, TemporalOn, Remark {
 
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
 
   /** 培养层次 */
-  var level: EducationLevel = _
+  var level: EducationLevel = uninitialized
 
   /** 部门 */
-  var depart: Department = _
+  var depart: Department = uninitialized
 
 }
 
@@ -125,24 +126,24 @@ class MajorJournal extends LongId, TemporalOn, Remark {
  */
 class SchoolLength extends LongId {
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
 
   /** 培养层次 */
-  var level: EducationLevel = _
+  var level: EducationLevel = uninitialized
 
   /** 起始年级 */
-  var fromGrade: Grade = _
+  var fromGrade: Grade = uninitialized
 
   /** 结束年级 */
   var toGrade: Option[Grade] = None
 
   /** 学制 */
-  var normal: Float = _
+  var normal: Float = uninitialized
 
   /** 最低学习年限 */
-  var minimum: Float = _
+  var minimum: Float = uninitialized
 
   /** 最长学习年限 */
-  var maximum: Float = _
+  var maximum: Float = uninitialized
 
 }

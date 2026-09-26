@@ -19,6 +19,7 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.std.model.GraduateSeason
+import scala.compiletime.uninitialized
 
 object SubjectApply {
   val Round1 = 1
@@ -38,7 +39,7 @@ class SubjectApply extends LongId {
   }
 
   /** 学生 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 当前轮次，默认是初选 */
   var currentRound: Int = 1

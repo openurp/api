@@ -23,14 +23,15 @@ import org.beangle.data.model.pojo.{DateRange, Named}
 import org.openurp.base.model.School
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 批次 */
 class Batch extends IntId, Named, DateRange {
 
-  var school: School = _
+  var school: School = uninitialized
 
   /** 是否归档 */
-  var archived: Boolean = _
+  var archived: Boolean = uninitialized
 
   /** 阶段 */
   var stages: mutable.Buffer[Stage] = Collections.newBuffer[Stage]

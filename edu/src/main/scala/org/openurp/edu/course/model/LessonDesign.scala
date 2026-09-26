@@ -23,6 +23,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 具体授课内容和方法设计
@@ -36,22 +37,22 @@ class LessonDesign extends LongId, Remark {
   }
 
   /** 教案 */
-  var program: ClazzProgram = _
+  var program: ClazzProgram = uninitialized
 
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
   /** 上课日期 */
-  var lessonOn: LocalDate = _
+  var lessonOn: LocalDate = uninitialized
 
   /** 开始和结束小节 */
-  var units: SmallInterval = _
+  var units: SmallInterval = uninitialized
 
   /** 学时 */
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
 
   /** 教学主题 */
-  var subject: String = _
+  var subject: String = uninitialized
 
   /** 课程文字说明 */
   var texts = Collections.newBuffer[LessonDesignText]

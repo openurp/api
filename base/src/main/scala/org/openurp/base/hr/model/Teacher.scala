@@ -27,6 +27,7 @@ import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.code.person.model.Gender
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 教师信息
@@ -34,10 +35,10 @@ import scala.collection.mutable
 class Teacher extends LongId, TemporalOn, Named, Remark {
 
   /** 教职工 */
-  var staff: Staff = _
+  var staff: Staff = uninitialized
 
   /** 所在教学部门 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 项目列表 */
   var projects: mutable.Set[Project] = Collections.newSet[Project]

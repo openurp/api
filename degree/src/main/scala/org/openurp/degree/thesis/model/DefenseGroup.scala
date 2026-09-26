@@ -25,17 +25,18 @@ import org.openurp.base.std.model.GraduateSeason
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 答辩组
  */
 class DefenseGroup extends LongId {
 
-  var idx: Int = _
+  var idx: Int = uninitialized
 
-  var season: GraduateSeason = _
+  var season: GraduateSeason = uninitialized
 
-  var department: Department = _
+  var department: Department = uninitialized
 
   var office: Option[TeachingOffice] = None
 
@@ -53,7 +54,7 @@ class DefenseGroup extends LongId {
 
   var notices: mutable.Buffer[DefenseNotice] = new mutable.ArrayBuffer[DefenseNotice]
 
-  var published: Boolean = _
+  var published: Boolean = uninitialized
 
   def staffCount: Int = members.size + secretary.size
 

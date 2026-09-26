@@ -19,10 +19,11 @@ package org.openurp.base.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
+import scala.compiletime.uninitialized
 
 /** 校区
  */
 class Campus extends IntId, Cloneable, Coded, Named, EnNamed, TemporalOn, Updatable, Remark {
-  var school: School = _
+  var school: School = uninitialized
   var shortName: Option[String] = None
 }

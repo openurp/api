@@ -24,12 +24,13 @@ import org.openurp.base.service.DepartmentService
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.CourseType
 import org.openurp.edu.program.model.*
+import scala.compiletime.uninitialized
 
 class DefaultCoursePlanProvider extends CoursePlanProvider {
 
-  var programProvider: ProgramProvider = _
-  var entityDao: EntityDao = _
-  var departmentService: DepartmentService = _
+  var programProvider: ProgramProvider = uninitialized
+  var entityDao: EntityDao = uninitialized
+  var departmentService: DepartmentService = uninitialized
 
   /**
    * 获得原始专业培养计划

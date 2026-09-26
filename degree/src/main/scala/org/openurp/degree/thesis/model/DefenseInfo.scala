@@ -21,11 +21,12 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 class DefenseInfo extends LongId, Updatable {
 
   /** 学生 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 答辩成绩 */
   var defenseScore: Option[Int] = None

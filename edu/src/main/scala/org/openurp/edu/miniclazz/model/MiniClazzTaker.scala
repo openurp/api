@@ -24,6 +24,7 @@ import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 专业小课选课名单
  */
@@ -39,16 +40,16 @@ class MiniClazzTaker extends LongId, Updatable {
   }
 
   /** 教学任务 */
-  var miniClazz: MiniClazz = _
+  var miniClazz: MiniClazz = uninitialized
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 成绩 */
   var scoreText: Option[String] = None

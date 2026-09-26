@@ -21,21 +21,22 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
+import scala.compiletime.uninitialized
 
 /**
  * 日常考勤/作业学生情况记录
  */
 class RegularAssessStd extends LongId, Remark {
 
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
-  var std: Student = _
+  var std: Student = uninitialized
 
-  var assignmentExceeded: Boolean = _
+  var assignmentExceeded: Boolean = uninitialized
 
-  var absenceExceeded: Boolean = _
+  var absenceExceeded: Boolean = uninitialized
 
-  var disqualified: Boolean = _
+  var disqualified: Boolean = uninitialized
 
   def this(clazz: Clazz, std: Student) = {
     this()

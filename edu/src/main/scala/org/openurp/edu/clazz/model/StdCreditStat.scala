@@ -20,28 +20,29 @@ package org.openurp.edu.clazz.model
 import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /** 学生每学期选择教学班限制和统计
  */
 class StdCreditStat extends LongId {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 已选学分 */
-  var totalCredits: Float = _
+  var totalCredits: Float = uninitialized
 
   /** 学分上限 */
-  var maxCredits: Float = _
+  var maxCredits: Float = uninitialized
 
   /** 已选新课程门数
    * 不含重修 */
-  var totalNewCount: Int = _
+  var totalNewCount: Int = uninitialized
 
   /** 最多新选课程门数 */
-  var maxNewCount: Int = _
+  var maxNewCount: Int = uninitialized
 
   /** 重修数量 */
-  var repeatCount: Int = _
+  var repeatCount: Int = uninitialized
 }

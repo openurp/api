@@ -22,6 +22,7 @@ import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{Department, User}
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 监考任务
@@ -29,10 +30,10 @@ import java.time.Instant
 class Invigilation extends LongId, Updatable {
 
   /** 考场 */
-  var examRoom: ExamRoom = _
+  var examRoom: ExamRoom = uninitialized
 
   /** 监考院系 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 监考人 */
   var invigilator: Option[User] = None
@@ -41,10 +42,10 @@ class Invigilation extends LongId, Updatable {
   var invigilatorName: Option[String] = None
 
   /** 是否是第一监考 */
-  var chief: Boolean = _
+  var chief: Boolean = uninitialized
 
   /** 是否发布 */
-  var published: Boolean = _
+  var published: Boolean = uninitialized
 
   def this(examRoom: ExamRoom, department: Department, teacher: User) = {
     this()

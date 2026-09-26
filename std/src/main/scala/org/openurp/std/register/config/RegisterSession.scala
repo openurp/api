@@ -24,6 +24,7 @@ import org.openurp.base.model.{Project, Semester}
 import org.openurp.code.edu.model.EducationLevel
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 注册批次
@@ -31,13 +32,13 @@ import java.time.Instant
 @config
 class RegisterSession extends LongId, InstantRange {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
-  var grades: String = _
+  var grades: String = uninitialized
 
-  var level: EducationLevel = _
+  var level: EducationLevel = uninitialized
 
   def canApply(): Boolean = {
     val now = Instant.now

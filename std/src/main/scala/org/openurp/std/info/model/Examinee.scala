@@ -25,6 +25,7 @@ import org.openurp.code.edu.model.{EducationMode, EnrollMode}
 import org.openurp.code.geo.model.Division
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 考生信息
@@ -32,7 +33,7 @@ import java.time.LocalDate
 class Examinee extends LongId, Updatable {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 考生号 */
   var code: Option[String] = None

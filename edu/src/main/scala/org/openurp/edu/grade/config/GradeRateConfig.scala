@@ -25,6 +25,7 @@ import org.openurp.code.edu.model.GradingMode
 
 import java.text.NumberFormat
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 成绩分级配置
@@ -35,7 +36,7 @@ class GradeRateConfig extends LongId, ProjectBased {
   /**
    * 成绩记录方式
    */
-  var gradingMode: GradingMode = _
+  var gradingMode: GradingMode = uninitialized
 
   /**
    * 成绩分级配置项
@@ -45,7 +46,7 @@ class GradeRateConfig extends LongId, ProjectBased {
   /**
    * 及格线
    */
-  var passScore: Float = _
+  var passScore: Float = uninitialized
 
   /**
    * 将字符串按照成绩记录方式转换成数字.<br>

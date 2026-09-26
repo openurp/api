@@ -27,25 +27,26 @@ import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 开放式文字评教
  */
 class Feedback extends LongId, Updatable {
   /** 课程序号 */
-  var crn: String = _
+  var crn: String = uninitialized
   /** 教学任务 */
-  var course: Course = _
+  var course: Course = uninitialized
   /** 教学日历 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 教师 */
-  var teacher: Teacher = _
+  var teacher: Teacher = uninitialized
   /** 开课院系 */
-  var teachDepart: Department = _
+  var teachDepart: Department = uninitialized
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 评教内容 */
-  var contents: String = _
+  var contents: String = uninitialized
   /** 评价等级 */
-  var grade: String = _
+  var grade: String = uninitialized
 }

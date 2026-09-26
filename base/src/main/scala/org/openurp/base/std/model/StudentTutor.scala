@@ -19,14 +19,15 @@ package org.openurp.base.std.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.hr.model.Teacher
+import scala.compiletime.uninitialized
 
 /** 学生导师
  */
 class StudentTutor extends LongId {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
-  var tutor: Teacher = _
+  var tutor: Teacher = uninitialized
 
   var idx: Int = 0
 

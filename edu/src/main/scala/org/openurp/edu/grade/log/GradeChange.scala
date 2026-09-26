@@ -26,28 +26,29 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.GradeType
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 成绩变化历史
  */
 @log
 class GradeChange extends LongId, ProjectBased, Remark {
 
-  var courseGradeId: Long = _
+  var courseGradeId: Long = uninitialized
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
-  var course: Course = _
+  var course: Course = uninitialized
 
-  var std: Student = _
+  var std: Student = uninitialized
 
-  var gradeType: GradeType = _
+  var gradeType: GradeType = uninitialized
 
   var scoreBefore: Option[String] = None
 
   var scoreAfter: Option[String] = None
 
-  var operator: User = _
+  var operator: User = uninitialized
 
-  var operateAt: Instant = _
+  var operateAt: Instant = uninitialized
 
 }

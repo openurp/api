@@ -21,15 +21,16 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.model.School
 import org.openurp.code.asset.model.DeviceType
+import scala.compiletime.uninitialized
 
 /** 房间内的设备
  */
 class Device extends LongId, Coded, Named, Updatable, Remark, TemporalOn {
 
   /** 学校 */
-  var school: School = _
+  var school: School = uninitialized
 
-  var deviceType: DeviceType = _
+  var deviceType: DeviceType = uninitialized
 
   var ip: Option[String] = None
 

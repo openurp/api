@@ -25,27 +25,28 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{ExamStatus, ExamType}
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.exam.model.{ExamActivity, ExamRoom, ExamTaker}
+import scala.compiletime.uninitialized
 
 /** 归档应考学生
  */
 @archive
 class HisExamTaker extends LongId, Remark, ArchivedByYear {
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 考场 */
   var examRoom: Option[ExamRoom] = None
   /** 考试类型 */
-  var examType: ExamType = _
+  var examType: ExamType = uninitialized
   /** 考试活动 */
   var activity: Option[ExamActivity] = None
   /** 考试情况 */
-  var examStatus: ExamStatus = _
+  var examStatus: ExamStatus = uninitialized
   /** 座位号 */
-  var seatNo: Short = _
+  var seatNo: Short = uninitialized
 
   def convert(): ExamTaker = {
     val t = new ExamTaker

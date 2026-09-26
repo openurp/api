@@ -27,20 +27,21 @@ import org.openurp.code.std.model.StdAlterType
 
 import java.time.{Instant, LocalDate}
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 学生异动申请
  */
 class StdAlterApply extends LongId, Remark {
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 变动类型 */
-  var alterType: StdAlterType = _
+  var alterType: StdAlterType = uninitialized
   /** 申请理由 */
-  var reason: String = _
+  var reason: String = uninitialized
   /** 申请时间 */
-  var applyAt: Instant = _
+  var applyAt: Instant = uninitialized
   /** 状态 */
-  var status: String = _
+  var status: String = uninitialized
   /** 变动开始日期 */
   var alterFrom: Option[LocalDate] = None
   /** 变动结束日期 */
@@ -92,7 +93,7 @@ class StdAlterApply extends LongId, Remark {
  */
 class StdAlterApplyData {
   /** 异动属性 */
-  var meta: AlterMeta = _
+  var meta: AlterMeta = uninitialized
   /** 变更前 */
   var oldvalue: Option[String] = None
   /** 变更前值 */

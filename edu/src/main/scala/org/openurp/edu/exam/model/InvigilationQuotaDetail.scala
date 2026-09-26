@@ -19,6 +19,7 @@ package org.openurp.edu.exam.model
 
 import org.openurp.base.model.{Campus, Department}
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /**
  * 监考人员配额明细
@@ -28,16 +29,16 @@ import org.beangle.data.model.LongId
 class InvigilationQuotaDetail extends LongId {
 
   /** 监考人配额 */
-  var quota: InvigilationQuota = _
+  var quota: InvigilationQuota = uninitialized
 
   /** 校区 */
-  var campus: Campus = _
+  var campus: Campus = uninitialized
 
   /** 开课部门 */
-  var depart: Department = _
+  var depart: Department = uninitialized
 
   /** 次数 */
-  var amount: Float = _
+  var amount: Float = uninitialized
 
   def this(campus: Campus, depart: Department, amount: Float) = {
     this()

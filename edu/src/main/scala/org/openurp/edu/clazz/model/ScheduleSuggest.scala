@@ -22,12 +22,13 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 排课建议
  *
  */
 class ScheduleSuggest extends LongId, Remark {
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   var activities: mutable.Buffer[ScheduleSuggestActivity] = Collections.newBuffer[ScheduleSuggestActivity]
 }

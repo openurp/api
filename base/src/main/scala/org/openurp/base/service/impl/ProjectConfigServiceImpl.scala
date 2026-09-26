@@ -22,10 +22,11 @@ import org.openurp.base.model.{Project, ProjectProperty}
 import org.openurp.base.service.{Feature, ProjectConfigService}
 
 import scala.reflect.ClassTag
+import scala.compiletime.uninitialized
 
 class ProjectConfigServiceImpl extends ProjectConfigService {
 
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   override def get[T](project: Project, name: String, defaultValue: T): T = {
     val query = OqlBuilder.from(classOf[ProjectProperty], "pp")

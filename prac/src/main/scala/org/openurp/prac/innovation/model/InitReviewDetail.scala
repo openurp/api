@@ -19,12 +19,13 @@ package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
+import scala.compiletime.uninitialized
 
 class InitReviewDetail extends LongId, Updatable {
-  var review: InitReview = _
-  var expert: Expert = _
+  var review: InitReview = uninitialized
+  var expert: Expert = uninitialized
   var score: Option[Float] = None
   var passed: Option[Boolean] = None
   var comments: Option[String] = None
-  var submited: Boolean = _
+  var submited: Boolean = uninitialized
 }

@@ -27,28 +27,29 @@ import org.openurp.code.edu.model.{Certificate, ExamStatus, GradingMode}
 
 import java.time.YearMonth
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 校外证书成绩
  */
 class CertificateGrade extends LongId, Updatable {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 数字分数 */
   var score: Option[Float] = None
 
   /** 分数 */
-  var scoreText: String = _
+  var scoreText: String = uninitialized
 
   /** 是否通过 */
-  var passed: Boolean = _
+  var passed: Boolean = uninitialized
 
   /** 证书名称 */
-  var certificate: Certificate = _
+  var certificate: Certificate = uninitialized
 
   /** 证书内课程 */
   var subject: Option[String] = None
@@ -60,17 +61,17 @@ class CertificateGrade extends LongId, Updatable {
   var examNo: Option[String] = None
 
   /** 获得年月 */
-  var acquiredIn: YearMonth = _
+  var acquiredIn: YearMonth = uninitialized
 
   /** 成绩记录方式 */
-  var gradingMode: GradingMode = _
+  var gradingMode: GradingMode = uninitialized
 
   /** 考试状态 */
-  var examStatus: ExamStatus = _
+  var examStatus: ExamStatus = uninitialized
 
   /** 免修课程 */
   var exempts: mutable.Set[Course] = Collections.newSet[Course]
 
   /** 状态 */
-  var status: Int = _
+  var status: Int = uninitialized
 }

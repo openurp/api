@@ -20,6 +20,7 @@ package org.openurp.qos.evaluation.base.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Named
+import scala.compiletime.uninitialized
 
 /** 选项
  *
@@ -27,7 +28,7 @@ import org.beangle.data.model.pojo.Named
  */
 class Option extends LongId, Named {
   /** 选项所占比重（权重） */
-  var proportion: Float = _
+  var proportion: Float = uninitialized
   /** 选项组 */
-  var group: OptionGroup = _
+  var group: OptionGroup = uninitialized
 }

@@ -20,18 +20,19 @@ package org.openurp.base.edu.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.hr.model.Teacher
+import scala.compiletime.uninitialized
 
 /** 课程负责人
  */
 class CourseDirector extends LongId, TemporalOn {
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 教研室 */
   var office: Option[TeachingOffice] = None
 
   /** 负责人 */
-  var director: Teacher = _
+  var director: Teacher = uninitialized
 
   def this(course: Course) = {
     this()

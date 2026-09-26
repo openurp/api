@@ -19,6 +19,7 @@ package org.openurp.code.job.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /**
  * 职务类别
@@ -34,7 +35,7 @@ class DutyGrade extends CodeBean {
   /**
    * 行政职务类别
    */
-  var dutyType: DutyType = _
+  var dutyType: DutyType = uninitialized
 }
 
 /**

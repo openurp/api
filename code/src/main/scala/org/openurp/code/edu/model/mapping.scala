@@ -23,6 +23,7 @@ class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
     defaultIdGenerator(classOf[Int], IdGenerator.Code)
+    defaultCache("openurp", "read-write")
     bind[AdmissionType]
     bind[ActivityType]
     bind[CourseNature]

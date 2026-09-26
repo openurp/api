@@ -22,10 +22,11 @@ import org.beangle.commons.lang.Strings
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.model.{DepartTransition, Department, School}
 import org.openurp.base.service.DepartmentService
+import scala.compiletime.uninitialized
 
 class DepartmentServiceImpl extends DepartmentService {
 
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   /** 查询到可用的部门，在语义上等同于该部门
    *

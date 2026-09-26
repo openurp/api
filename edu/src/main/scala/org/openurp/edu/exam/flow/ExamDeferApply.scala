@@ -26,6 +26,7 @@ import org.openurp.code.edu.model.{ExamDeferReason, ExamType}
 import org.openurp.edu.clazz.model.Clazz
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 考试缓考申请
  */
@@ -33,13 +34,13 @@ import java.time.Instant
 class ExamDeferApply extends LongId, Creatable, Updatable, Remark {
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 考试类型 */
-  var examType: ExamType = _
+  var examType: ExamType = uninitialized
 
   /** 考试开始时间 */
   var examBeginAt: Option[Instant] = None
@@ -48,7 +49,7 @@ class ExamDeferApply extends LongId, Creatable, Updatable, Remark {
   var mobile: Option[String] = None
 
   /** 申请原因 */
-  var reason: ExamDeferReason = _
+  var reason: ExamDeferReason = uninitialized
 
   /** 教师是否审核 */
   var teacherReviewed: Option[Boolean] = None
@@ -63,7 +64,7 @@ class ExamDeferApply extends LongId, Creatable, Updatable, Remark {
   var stdSignUrl: Option[String] = None
 
   /** 状态 */
-  var status: String = _
+  var status: String = uninitialized
 
   /** 附件 */
   var attachments: JsonArray = Json.emptyArray

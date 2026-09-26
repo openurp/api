@@ -19,13 +19,14 @@ package org.openurp.std.minor.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.MinorMajor
+import scala.compiletime.uninitialized
 
 /** 报名志愿和专业
  */
 class MinorSignupStdMajor extends LongId {
-  var idx: Int = _
-  var std: MinorSignupStd = _
-  var major: MinorMajor = _
+  var idx: Int = uninitialized
+  var std: MinorSignupStd = uninitialized
+  var major: MinorMajor = uninitialized
 
   def this(idx: Int, std: MinorSignupStd, major: MinorMajor) = {
     this()

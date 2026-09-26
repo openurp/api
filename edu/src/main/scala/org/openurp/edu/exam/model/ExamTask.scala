@@ -29,6 +29,7 @@ import org.openurp.code.edu.model.ExamType
 import org.openurp.edu.clazz.model.Clazz
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 排考任务
@@ -36,10 +37,10 @@ import java.time.LocalDate
 class ExamTask extends LongId, Coded, SemesterBased, Remark {
 
   /** 考试类型 */
-  var examType: ExamType = _
+  var examType: ExamType = uninitialized
 
   /** 开课院系 */
-  var teachDepart: Department = _
+  var teachDepart: Department = uninitialized
 
   /** 排考组 */
   var group: Option[ExamGroup] = None
@@ -48,16 +49,16 @@ class ExamTask extends LongId, Coded, SemesterBased, Remark {
   var activities = Collections.newBuffer[ExamActivity]
 
   /** 考生人数 */
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
 
   /** 考试日期 */
   var examOn: Option[LocalDate] = None
 
   /** 开始时间 */
-  var beginAt: HourMinute = _
+  var beginAt: HourMinute = uninitialized
 
   /** 结束时间 */
-  var endAt: HourMinute = _
+  var endAt: HourMinute = uninitialized
 
   /** 时间已经指定 */
   var timeAllotted: Boolean = false
@@ -75,7 +76,7 @@ class ExamTask extends LongId, Coded, SemesterBased, Remark {
   var roomType: Option[ClassroomType] = None
 
   /** 考试时长 */
-  var duration: Short = _
+  var duration: Short = uninitialized
 
   /** 考试周 */
   var examWeek: Option[Short] = None
@@ -84,7 +85,7 @@ class ExamTask extends LongId, Coded, SemesterBased, Remark {
   var minExamOn: Option[LocalDate] = None
 
   /** 是否集中安排 */
-  var centralized: Boolean = _
+  var centralized: Boolean = uninitialized
 
   /** 与上课冲突上限 */
   var maxCourseConflictRatio: Option[Float] = None

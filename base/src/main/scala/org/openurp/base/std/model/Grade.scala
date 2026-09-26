@@ -20,12 +20,13 @@ package org.openurp.base.std.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, EnNamed, Named, YearMonthRange}
 import org.openurp.base.model.Project
+import scala.compiletime.uninitialized
 
 /** 学生入学年级
  * */
 class Grade extends LongId, Coded, Named, EnNamed, YearMonthRange {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
   def this(id: Long, code: String, name: String) = {
     this()

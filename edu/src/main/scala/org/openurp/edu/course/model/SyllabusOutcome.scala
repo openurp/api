@@ -19,25 +19,26 @@ package org.openurp.edu.course.model
 
 import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /** 教学大纲-毕业要求
  *
  */
 class SyllabusOutcome extends LongId {
 
-  var syllabus: Syllabus = _
+  var syllabus: Syllabus = uninitialized
 
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
   /** 毕业要求 */
-  var title: String = _
+  var title: String = uninitialized
 
   /** 内容 */
-  var contents: String = _
+  var contents: String = uninitialized
 
   /** 对应课程目标 */
-  var courseObjectives: String = _
+  var courseObjectives: String = uninitialized
 
   def this(syllabus: Syllabus, idx: Int, title: String, contents: String, courseObjectives: String) = {
     this()

@@ -22,12 +22,13 @@ import org.beangle.data.model.pojo.{Coded, Named}
 import org.openurp.base.model.Project
 
 import java.time.YearMonth
+import scala.compiletime.uninitialized
 
 /** 毕业界别
  */
 class GraduateSeason extends LongId, Coded, Named {
   /** 毕业年月 */
-  var graduateIn: YearMonth = _
+  var graduateIn: YearMonth = uninitialized
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 }

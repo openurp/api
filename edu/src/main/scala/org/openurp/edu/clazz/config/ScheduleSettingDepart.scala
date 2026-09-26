@@ -21,9 +21,10 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.InstantRange
 import org.openurp.base.model.Department
+import scala.compiletime.uninitialized
 
 @config
 class ScheduleSettingDepart extends LongId, InstantRange {
-  var setting: ScheduleSetting = _
-  var depart: Department = _
+  var setting: ScheduleSetting = uninitialized
+  var depart: Department = uninitialized
 }

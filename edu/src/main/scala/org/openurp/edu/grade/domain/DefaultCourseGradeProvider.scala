@@ -24,12 +24,13 @@ import org.openurp.base.service.SemesterService
 import org.openurp.base.std.model.Student
 import org.openurp.edu.grade.model.{CourseGrade, Grade}
 import org.openurp.edu.his.model.HisCourseGrade
+import scala.compiletime.uninitialized
 
 class DefaultCourseGradeProvider extends CourseGradeProvider {
 
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
-  var semesterService: SemesterService = _
+  var semesterService: SemesterService = uninitialized
 
   override def get(std: Student, semesters: Iterable[Semester]): Seq[CourseGrade] = {
     get(std, Some(Grade.Status.Published), semesters)

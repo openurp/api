@@ -23,6 +23,7 @@ import org.beangle.data.model.pojo.{Coded, Named, Updatable, YearMonthRange}
 import org.openurp.trd.achievement.code.RdAchievementType
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 教学成果
  * <p> 科类代码
@@ -37,13 +38,13 @@ import scala.collection.mutable
 class RdAchievement extends LongId, Coded, Named, Updatable, YearMonthRange {
 
   /** 成果类型 */
-  var achievementType: RdAchievementType = _
+  var achievementType: RdAchievementType = uninitialized
 
   /** 完成人 */
   var members: mutable.Buffer[RdAchievementMember] = Collections.newBuffer[RdAchievementMember]
 
   /** 完成单位 */
-  var orgName: String = _
+  var orgName: String = uninitialized
 
   /** 获奖情况 */
   var awards: mutable.Buffer[RdAchievementAward] = Collections.newBuffer[RdAchievementAward]

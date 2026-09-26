@@ -23,7 +23,7 @@ import org.openurp.base.config.model.BusinessSetting
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp-base", "read-write")
+    defaultCache("openurp", "read-write")
 
     bind[BusinessSetting].declare { e =>
       e.settings is length(5000)

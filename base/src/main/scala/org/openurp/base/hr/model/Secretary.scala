@@ -23,13 +23,14 @@ import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.model.Project
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 教学秘书
  */
 class Secretary extends LongId, TemporalOn {
 
   /** 教职工 */
-  var staff: Staff = _
+  var staff: Staff = uninitialized
 
   /** 办公电话 */
   var officePhone: Option[String] = None

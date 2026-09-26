@@ -19,12 +19,13 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
+import scala.compiletime.uninitialized
 
 class ClazzSectionHour extends LongId, Named {
 
-  var plan: ClazzPlan = _
+  var plan: ClazzPlan = uninitialized
 
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
 
   def this(plan: ClazzPlan, name: String, creditHours: Int) = {
     this()

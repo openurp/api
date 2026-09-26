@@ -26,6 +26,7 @@ import java.time.temporal.ChronoUnit
 import java.time.{LocalDate, ZoneId}
 import java.util.GregorianCalendar
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 教学日历方案
@@ -33,12 +34,12 @@ import scala.collection.mutable
  */
 class Calendar extends IntId, Coded, Named, TemporalOn, Updatable {
 
-  var school: School = _
+  var school: School = uninitialized
 
   var semesters: mutable.Buffer[Semester] = new collection.mutable.ListBuffer[Semester]
 
   /** 一周中的第一天是周几 */
-  var firstWeekday: WeekDay = _
+  var firstWeekday: WeekDay = uninitialized
 
   def weekdays: List[WeekDay] = {
     val wds = Collections.newBuffer[WeekDay]
@@ -56,13 +57,13 @@ class Calendar extends IntId, Coded, Named, TemporalOn, Updatable {
  */
 class SchoolYear extends IntId, Named {
   /** 日历 */
-  var calendar: Calendar = _
+  var calendar: Calendar = uninitialized
 
   /** 起始年份 */
-  var startYear: Int = _
+  var startYear: Int = uninitialized
 
   /** 是否已经存档 */
-  var archived: Boolean = _
+  var archived: Boolean = uninitialized
 }
 
 /**
@@ -71,10 +72,10 @@ class SchoolYear extends IntId, Named {
 class Semester extends IntId, Coded, Named, DateRange, Remark {
 
   /** 日历 */
-  var calendar: Calendar = _
+  var calendar: Calendar = uninitialized
 
   /** 学年度 */
-  var year: SchoolYear = _
+  var year: SchoolYear = uninitialized
 
   /** 学期中的阶段 */
   var stages: mutable.Buffer[SemesterStage] = Collections.newBuffer[SemesterStage]
@@ -124,22 +125,22 @@ class Semester extends IntId, Coded, Named, DateRange, Remark {
 
 /** 教学日历中的阶段 */
 class CalendarStage extends IntId, Named, EnNamed {
-  var school: School = _
-  var startWeek: Int = _
-  var endWeek: Int = _
-  var vacation: Boolean = _
+  var school: School = uninitialized
+  var startWeek: Int = uninitialized
+  var endWeek: Int = uninitialized
+  var vacation: Boolean = uninitialized
 }
 
 /** 学期中的阶段 */
 class SemesterStage extends IntId, DateRange, Remark {
-  var semester: Semester = _
-  var stage: CalendarStage = _
+  var semester: Semester = uninitialized
+  var stage: CalendarStage = uninitialized
 }
 
 trait SemesterBased {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
 }

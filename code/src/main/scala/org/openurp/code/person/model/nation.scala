@@ -19,6 +19,7 @@ package org.openurp.code.person.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /** 港澳台侨
  * 参见国家标准 GB_T 14946.1-2009 A2
@@ -74,7 +75,7 @@ class MaritalStatus extends CodeBean
  */
 @code("nation")
 class Nation extends CodeBean {
-  var alphaCode: String = _
+  var alphaCode: String = uninitialized
 }
 
 /** 政治面貌

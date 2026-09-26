@@ -19,18 +19,19 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.{Coded, Named, Remark, TemporalOn}
+import scala.compiletime.uninitialized
 
 /** 论文材料归档类型
  */
 class ThesisDocType extends IntId, Coded, Named, TemporalOn, Remark {
   /** 排序 */
-  var idx: Int = _
+  var idx: Int = uninitialized
   /** 阶段 */
-  var stage: Stage = _
+  var stage: Stage = uninitialized
   /** 最大以MB为单位 */
-  var maxSize: Int = _
+  var maxSize: Int = uninitialized
   /** 扩展名 */
-  var extensions: String = _
+  var extensions: String = uninitialized
 
   def this(idx: Int, stage: Stage, code: String, name: String) = {
     this()

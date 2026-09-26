@@ -20,13 +20,14 @@ package org.openurp.base.edu.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.code.edu.model.GraduateObjective
+import scala.compiletime.uninitialized
 
 /** 专业培养目标
  */
 class MajorGraduateObjective extends LongId, TemporalOn {
 
-  var major: Major = _
+  var major: Major = uninitialized
 
-  var objective: GraduateObjective = _
+  var objective: GraduateObjective = uninitialized
 
 }

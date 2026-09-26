@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{Coded, Named, Remark, Updatable}
 import org.openurp.base.model.Project
+import scala.compiletime.uninitialized
 
 /**
  * 系统报表模板定义<br>
@@ -38,16 +39,16 @@ import org.openurp.base.model.Project
 class TranscriptTemplate extends LongId, Updatable, Remark, Coded, Named {
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 类别 */
-  var category: String = _
+  var category: String = uninitialized
 
   /** 模板路径 */
-  var template: String = _
+  var template: String = uninitialized
 
   /** 选项 */
-  var options: String = _
+  var options: String = uninitialized
 
   /** 纸张大小 */
   var pageSize: String = "A4"

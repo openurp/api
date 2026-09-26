@@ -23,6 +23,7 @@ import org.openurp.code.geo.model.Country
 import org.openurp.code.person.model.*
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 通用自然人信息
@@ -30,7 +31,7 @@ import java.time.LocalDate
 class Person extends LongId, Named, Updatable, Coded {
 
   /** 身份证件类型 */
-  var idType: IdType = _
+  var idType: IdType = uninitialized
 
   /** 姓名拼音 */
   var phoneticName: Option[String] = None
@@ -39,7 +40,7 @@ class Person extends LongId, Named, Updatable, Coded {
   var formerName: Option[String] = None
 
   /** 性别 */
-  var gender: Gender = _
+  var gender: Gender = uninitialized
 
   /** 出生日期 */
   var birthday: Option[LocalDate] = None

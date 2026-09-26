@@ -27,6 +27,7 @@ import org.openurp.code.std.model.StdType
 
 import java.time.LocalDate
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 学生行政班级信息
@@ -37,11 +38,11 @@ import scala.collection.mutable
 class Squad extends LongId, EduLevelBased, Coded, Named, EnNamed, DateRange, Updatable, Remark {
 
   /** 年级 */
-  var grade: Grade = _
+  var grade: Grade = uninitialized
   /** 简称 */
   var shortName: Option[String] = None
   /** 院系 */
-  var department: Department = _
+  var department: Department = uninitialized
   /** 专业 */
   var major: Option[Major] = None
   /** 方向 */
@@ -49,9 +50,9 @@ class Squad extends LongId, EduLevelBased, Coded, Named, EnNamed, DateRange, Upd
   /** 学生类别 */
   var stdType: Option[StdType] = None
   /** 计划人数 */
-  var planCount: Int = _
+  var planCount: Int = uninitialized
   /** 学籍有效人数 */
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
   /** 辅导员 */
   var mentor: Option[Staff] = None
   /** 班主任 */

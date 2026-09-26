@@ -21,12 +21,13 @@ import org.beangle.data.model.LongId
 import org.openurp.base.std.model.Student
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /** 留学生信息
  */
 class Foreigner extends LongId {
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 护照编号 */
   var passportNo: Option[String] = None

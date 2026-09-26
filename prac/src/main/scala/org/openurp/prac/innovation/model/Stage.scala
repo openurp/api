@@ -21,12 +21,13 @@ import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.{DateRange, InstantRange, Named, Remark}
 
 import java.time.{Instant, LocalDate}
+import scala.compiletime.uninitialized
 
 class Stage extends IntId, InstantRange, Remark {
 
-  var stageType: StageType = _
+  var stageType: StageType = uninitialized
 
-  var batch: Batch = _
+  var batch: Batch = uninitialized
 
   var noticeHref: Option[String] = None
 

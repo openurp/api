@@ -20,19 +20,20 @@ package org.openurp.edu.program.model
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.Terms
 import org.openurp.base.model.Campus
+import scala.compiletime.uninitialized
 
 /**
  * 专业培养方案每学期对应校区
  */
 class TermCampus extends LongId {
 
-  var program: Program = _
+  var program: Program = uninitialized
 
   /** 对应学期 */
-  var terms: Terms = _
+  var terms: Terms = uninitialized
 
   /** 校区信息 */
-  var campus: Campus = _
+  var campus: Campus = uninitialized
 
   def this(program: Program, tc: TermCampus) = {
     this()

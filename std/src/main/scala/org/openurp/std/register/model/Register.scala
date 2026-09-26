@@ -24,12 +24,13 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.{UncheckinReason, UnregisteredReason}
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 class Register extends LongId, Remark {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   var registerAt: Option[Instant] = None
 
@@ -47,9 +48,9 @@ class Register extends LongId, Remark {
   var uncheckinReason: Option[UncheckinReason] = None
 
   /** 操作人 */
-  var operateBy: String = _
+  var operateBy: String = uninitialized
 
   /** 操作ip */
-  var operateIp: String = _
+  var operateIp: String = uninitialized
 
 }

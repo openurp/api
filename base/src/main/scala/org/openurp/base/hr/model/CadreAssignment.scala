@@ -21,27 +21,28 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.model.Department
 import org.openurp.code.hr.model.CadrePostRank
+import scala.compiletime.uninitialized
 
 /** 干部任职信息
  */
 class CadreAssignment extends LongId, TemporalOn {
 
   /** 教职工 */
-  var staff: Staff = _
+  var staff: Staff = uninitialized
 
   /** 部门 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 是否兼职 */
-  var concurrent: Boolean = _
+  var concurrent: Boolean = uninitialized
 
   /** 是否正职 */
-  var principal: Boolean = _
+  var principal: Boolean = uninitialized
 
   /** 职级 */
-  var rank: CadrePostRank = _
+  var rank: CadrePostRank = uninitialized
 
   /** 行政职务 */
-  var post: String = _
+  var post: String = uninitialized
 
 }

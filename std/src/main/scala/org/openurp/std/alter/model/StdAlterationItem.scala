@@ -19,15 +19,16 @@ package org.openurp.std.alter.model
 
 import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /**
  * 学籍异动项目
  */
 class StdAlterationItem extends LongId {
   /** 学籍异动 */
-  var alteration: StdAlteration = _
+  var alteration: StdAlteration = uninitialized
   /** 异动属性 */
-  var meta: AlterMeta = _
+  var meta: AlterMeta = uninitialized
   /** 变更前 */
   var oldvalue: Option[String] = None
   /** 变更前值 */

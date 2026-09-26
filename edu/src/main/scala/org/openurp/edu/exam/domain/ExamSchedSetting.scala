@@ -24,6 +24,7 @@ import org.openurp.edu.exam.model.ExamTask
 
 import java.time.Duration
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 考场分配策略参数（来自考试配置中的策略与容量约束）。 */
 class ExamSchedSetting(setting: ExamAllocSetting, val courseConflictRatio: Float, val examConflictRatio: Float) {
@@ -47,7 +48,7 @@ class ExamSchedSetting(setting: ExamAllocSetting, val courseConflictRatio: Float
   /** 是否允许多个占用方共享同一教室：仅当未同时要求同院系、同课程且同任务时才为 `true`。 */
   def canShare: Boolean = !(sameDepart && sameCourse && sameTask)
 
-  var minCourseConflictCount: Int = _
+  var minCourseConflictCount: Int = uninitialized
 
   var turnRule: TurnRule = new DefaultTurnRule()
 

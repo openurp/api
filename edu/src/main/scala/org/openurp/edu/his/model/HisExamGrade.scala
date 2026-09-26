@@ -23,29 +23,30 @@ import org.openurp.base.model.ArchivedByYear
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{ExamStatus, GradeType, GradingMode}
 import org.openurp.edu.grade.model.{ExamGrade, Grade}
+import scala.compiletime.uninitialized
 
 /** 归档考试成绩
  */
 @archive
 class HisExamGrade extends LongId, Grade, ArchivedByYear {
   /** 成绩类型 */
-  var gradeType: GradeType = _
+  var gradeType: GradeType = uninitialized
   /** 成绩记录方式 */
-  var gradingMode: GradingMode = _
+  var gradingMode: GradingMode = uninitialized
   /** 得分 */
   var score: Option[Float] = None
   /** 得分字面值 */
   var scoreText: Option[String] = None
   /** 对应的课程成绩 */
-  var courseGrade: HisCourseGrade = _
+  var courseGrade: HisCourseGrade = uninitialized
   /** 成绩状态 */
-  var status: Int = _
+  var status: Int = uninitialized
   /** 是否通过 */
-  var passed: Boolean = _
+  var passed: Boolean = uninitialized
   /** 操作者 */
   var operator: Option[String] = None
   /** 考试情况 */
-  var examStatus: ExamStatus = _
+  var examStatus: ExamStatus = uninitialized
   /** 百分比 */
   var weight: Option[Short] = None
 

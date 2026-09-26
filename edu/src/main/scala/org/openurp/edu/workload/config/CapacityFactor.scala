@@ -21,11 +21,12 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{Named, Remark, TemporalOn}
+import scala.compiletime.uninitialized
 
 @config
 class CapacityFactor extends LongId, Named, Remark, TemporalOn {
 
-  var conditionExp: String = _
+  var conditionExp: String = uninitialized
 
   var segments = Collections.newBuffer[FactorSegment]
 
@@ -34,11 +35,11 @@ class CapacityFactor extends LongId, Named, Remark, TemporalOn {
 @config
 class FactorSegment extends LongId {
 
-  var factor: CapacityFactor = _
+  var factor: CapacityFactor = uninitialized
 
-  var minCapacity: Int = _
+  var minCapacity: Int = uninitialized
 
-  var maxCapacity: Int = _
+  var maxCapacity: Int = uninitialized
 
-  var factorExp: String = _
+  var factorExp: String = uninitialized
 }

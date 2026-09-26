@@ -21,14 +21,15 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
 import org.openurp.base.hr.model.Teacher
 import org.openurp.code.edu.model.EducationLevel
+import scala.compiletime.uninitialized
 
 /** 专业负责人
  */
 class MajorDirector extends LongId, TemporalOn {
   /** 培养层次 */
-  var level: EducationLevel = _
+  var level: EducationLevel = uninitialized
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
   /** 专业方向 */
   var direction: Option[MajorDirection] = None
   /** 负责人 */

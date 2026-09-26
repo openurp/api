@@ -19,23 +19,24 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updatable}
+import scala.compiletime.uninitialized
 
 /** 论文提交信息
  */
 class PaperSubmission extends LongId, Updatable, Remark {
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 题目 */
-  var title: String = _
+  var title: String = uninitialized
 
   /** 附件路径 */
-  var filePath: String = _
+  var filePath: String = uninitialized
 
   /** 文件sha1摘要 */
-  var sha1sum: String = _
+  var sha1sum: String = uninitialized
 
   /** 是否定稿 */
-  var finalized: Boolean = _
+  var finalized: Boolean = uninitialized
 
   /** 导师是否通过 */
   var advisorPassed: Option[Boolean] = None

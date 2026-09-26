@@ -23,6 +23,7 @@ import org.openurp.base.model.{AuditStatus, Semester}
 import org.openurp.base.std.model.Student
 
 import java.time.YearMonth
+import scala.compiletime.uninitialized
 
 class MandarinGradeApply extends LongId, Updatable {
 
@@ -32,21 +33,21 @@ class MandarinGradeApply extends LongId, Updatable {
   }
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 分数 */
-  var score: Float = _
+  var score: Float = uninitialized
   /** 证书名称 */
   var certificateName: Option[String] = None
   /** 证书编号 */
-  var certificateNo: String = _
+  var certificateNo: String = uninitialized
   /** 获得年月 */
-  var acquiredIn: YearMonth = _
+  var acquiredIn: YearMonth = uninitialized
   /** 审核意见 */
   var auditOpinion: Option[String] = None
   /** 成绩单附件路径 */
-  var attachmentPath: String = _
+  var attachmentPath: String = uninitialized
   /** 申请状态 */
   var status: AuditStatus = AuditStatus.Draft
   /** 申请理由 */

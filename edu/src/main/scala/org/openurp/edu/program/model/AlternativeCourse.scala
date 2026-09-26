@@ -26,6 +26,7 @@ import org.openurp.base.std.model.{Grade, Student}
 import org.openurp.code.std.model.StdType
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 课程替代关系.
@@ -66,14 +67,14 @@ class MajorAlternativeCourse extends AlternativeCourse, Remark {
   /**
    * 项目
    */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /**
    * 起始年级.
    */
-  var fromGrade: Grade = _
+  var fromGrade: Grade = uninitialized
   /** 截至年级 */
-  var toGrade: Grade = _
+  var toGrade: Grade = uninitialized
 
   /**
    * 院系
@@ -102,7 +103,7 @@ class MajorAlternativeCourse extends AlternativeCourse, Remark {
 class StdAlternativeCourse extends AlternativeCourse, Remark {
 
   /** 获取学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   def this(std: Student) = {
     this()

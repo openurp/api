@@ -22,12 +22,13 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{Named, TemporalOn}
 import org.openurp.base.model.{Department, Project}
+import scala.compiletime.uninitialized
 
 /** 评价档次体系
  *
  */
 class AssessCriteria extends LongId, Named, TemporalOn {
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 具体分值对照项 */
   var grades = Collections.newBuffer[AssessGrade]

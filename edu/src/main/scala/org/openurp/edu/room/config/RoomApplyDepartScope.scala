@@ -25,11 +25,12 @@ import org.openurp.base.model.Department
 import org.openurp.base.resource.model.Classroom
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 @config
 class RoomApplyDepartScope extends LongId, InstantRange, Remark, Updatable {
 
-  var depart: Department = _
+  var depart: Department = uninitialized
 
   var rooms: mutable.Set[Classroom] = Collections.newSet[Classroom]
 }

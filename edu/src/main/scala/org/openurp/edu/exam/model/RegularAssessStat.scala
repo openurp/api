@@ -21,16 +21,17 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.code.edu.model.AttendanceMode
 import org.openurp.edu.clazz.model.Clazz
+import scala.compiletime.uninitialized
 
 /**
  * 日常考核评估统计
  */
 class RegularAssessStat extends LongId, Updatable {
-  var clazz: Clazz = _
-  var attendanceMode: AttendanceMode = _
-  var disqualifiedCount: Int = _
-  var assignmentExceedCount: Int = _
-  var absenceExceedCount: Int = _
+  var clazz: Clazz = uninitialized
+  var attendanceMode: AttendanceMode = uninitialized
+  var disqualifiedCount: Int = uninitialized
+  var assignmentExceedCount: Int = uninitialized
+  var absenceExceedCount: Int = uninitialized
   var collegeReviewed: Option[Boolean] = None
 
   def this(clazz: Clazz) = {

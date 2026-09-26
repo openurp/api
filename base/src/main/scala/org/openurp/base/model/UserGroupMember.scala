@@ -19,13 +19,14 @@ package org.openurp.base.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
+import scala.compiletime.uninitialized
 
 /** 用户组成员
  */
 class UserGroupMember extends LongId, Updatable {
 
-  var group: UserGroup = _
+  var group: UserGroup = uninitialized
 
-  var user: User = _
+  var user: User = uninitialized
 
 }

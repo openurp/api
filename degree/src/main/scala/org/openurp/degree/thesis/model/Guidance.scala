@@ -19,15 +19,16 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
+import scala.compiletime.uninitialized
 
 class Guidance extends LongId, Updatable {
 
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   var stage: Stage = Stage.Guidance
 
-  var idx: Short = _
+  var idx: Short = uninitialized
 
-  var contents: String = _
+  var contents: String = uninitialized
 
 }

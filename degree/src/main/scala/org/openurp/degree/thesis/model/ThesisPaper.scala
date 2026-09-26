@@ -23,18 +23,19 @@ import org.openurp.base.model.AuditStatus
 import org.openurp.code.person.model.Language
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 毕业论文信息
  */
 class ThesisPaper extends LongId, Named {
 
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 题目 */
-  var title: String = _
+  var title: String = uninitialized
 
   /** 状态 */
-  var status: AuditStatus = _
+  var status: AuditStatus = uninitialized
 
   /** 论文关键词 */
   var keywords: Option[String] = None
@@ -52,16 +53,16 @@ class ThesisPaper extends LongId, Named {
   var draftPath: Option[String] = None
 
   /** 附件路径 */
-  var filePath: String = _
+  var filePath: String = uninitialized
 
   /** 是否定稿 */
-  var finalized: Boolean = _
+  var finalized: Boolean = uninitialized
 
   /** sha1sum */
-  var sha1sum: String = _
+  var sha1sum: String = uninitialized
 
   /** 提交时间 */
-  var submitAt: Instant = _
+  var submitAt: Instant = uninitialized
 
   /** 导师是否通过 */
   var advisorPassed: Option[Boolean] = None
@@ -76,5 +77,5 @@ class ThesisPaper extends LongId, Named {
   var recheck: Option[CopyCheck] = None
 
   /** 优秀论文 */
-  var excellent: Boolean = _
+  var excellent: Boolean = uninitialized
 }

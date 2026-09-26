@@ -22,6 +22,7 @@ import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{TemporalOn, Updatable}
 import org.openurp.base.model.Project
 import org.openurp.code.std.model.StdDocType
+import scala.compiletime.uninitialized
 
 /** 打印配置
  * 针对每种类型的文档配置单价和打印的上限
@@ -30,14 +31,14 @@ import org.openurp.code.std.model.StdDocType
 class SpaPrintConfig extends IntId, Updatable, TemporalOn {
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 文档类型 */
-  var docType: StdDocType = _
+  var docType: StdDocType = uninitialized
 
   /** 单价，以分为单位，免费设置为0 */
-  var price: Int = _
+  var price: Int = uninitialized
 
   /** 最多打印次数 */
-  var maxLimit: Int = _
+  var maxLimit: Int = uninitialized
 }

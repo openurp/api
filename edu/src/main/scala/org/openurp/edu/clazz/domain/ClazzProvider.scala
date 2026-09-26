@@ -24,6 +24,7 @@ import org.openurp.base.service.SemesterService
 import org.openurp.base.std.model.{Squad, Student}
 import org.openurp.edu.clazz.model.{Clazz, ClazzRestrictionMeta, CourseTaker}
 import org.openurp.edu.his.model.HisCourseTaker
+import scala.compiletime.uninitialized
 
 trait ClazzProvider {
   def getClazzes(semester: Semester, std: Student): Seq[Clazz]
@@ -36,8 +37,8 @@ trait ClazzProvider {
 }
 
 class DefaultClazzProvider extends ClazzProvider {
-  var entityDao: EntityDao = _
-  var semesterService: SemesterService = _
+  var entityDao: EntityDao = uninitialized
+  var semesterService: SemesterService = uninitialized
 
   override def getClazzes(semester: Semester, squad: Squad): Seq[Clazz] = {
     val builder = OqlBuilder.from(classOf[Clazz], "clazz")

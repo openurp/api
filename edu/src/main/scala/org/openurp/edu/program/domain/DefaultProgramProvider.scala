@@ -23,11 +23,12 @@ import org.openurp.base.model.{DepartTransition, Department}
 import org.openurp.base.service.DepartmentService
 import org.openurp.base.std.model.{Student, StudentState}
 import org.openurp.edu.program.model.{Program, StdProgramBinding}
+import scala.compiletime.uninitialized
 
 class DefaultProgramProvider extends ProgramProvider {
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
-  var departmentService: DepartmentService = _
+  var departmentService: DepartmentService = uninitialized
 
   override def getProgram(std: Student): Option[Program] = {
     if (std.persisted) {

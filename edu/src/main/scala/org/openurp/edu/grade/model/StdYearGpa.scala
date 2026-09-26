@@ -18,6 +18,7 @@
 package org.openurp.edu.grade.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /**
  * 学生学年绩点
@@ -29,11 +30,11 @@ class StdYearGpa extends LongId, GpaStat {
   /**
    * 学生绩点
    */
-  var stdGpa: StdGpa = _
+  var stdGpa: StdGpa = uninitialized
 
   /**
    * 学年度
    */
-  var schoolYear: String = _
+  var schoolYear: String = uninitialized
 
 }

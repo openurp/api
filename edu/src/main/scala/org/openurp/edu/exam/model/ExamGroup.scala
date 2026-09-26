@@ -28,33 +28,34 @@ import org.openurp.edu.exam.config.ExamAllocSetting
 
 import java.time.LocalDate
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 排考组 */
 class ExamGroup extends LongId, Named, SemesterBased, Updatable {
 
   /** 考试类型 */
-  var examType: ExamType = _
+  var examType: ExamType = uninitialized
 
   /** 开始日期 */
-  var beginOn: LocalDate = _
+  var beginOn: LocalDate = uninitialized
 
   /** 结束日期 */
-  var endOn: LocalDate = _
+  var endOn: LocalDate = uninitialized
 
   /** 场次列表 */
   var turns: mutable.Buffer[ExamTurn] = Collections.newBuffer[ExamTurn]
 
   /** 允许随堂考试 */
-  var allowInClass: Boolean = _
+  var allowInClass: Boolean = uninitialized
 
   /** 最小学生上课冲突人数 */
-  var minCourseConflictCount: Int = _
+  var minCourseConflictCount: Int = uninitialized
 
   /** 最大学生上课冲突比率 */
-  var maxCourseConflictRatio: Float = _
+  var maxCourseConflictRatio: Float = uninitialized
 
   /** 发布状态 */
-  var publishState: PublishState = _
+  var publishState: PublishState = uninitialized
 
   /** 排考任务列表 */
   var tasks = Collections.newBuffer[ExamTask]
@@ -63,7 +64,7 @@ class ExamGroup extends LongId, Named, SemesterBased, Updatable {
   var rooms = Collections.newBuffer[Classroom]
 
   /** 教室分配设置 */
-  var allocSetting: ExamAllocSetting = _
+  var allocSetting: ExamAllocSetting = uninitialized
 
   def getTurn(examOn: LocalDate, beginAt: HourMinute): ExamTurn = {
     this.turns.find(et => (et.examOn == examOn) && (et.beginAt == beginAt)).get

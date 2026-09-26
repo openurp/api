@@ -21,14 +21,15 @@ import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
 import org.openurp.base.model.{Campus, School}
 import org.openurp.code.asset.model.BuildingType
+import scala.compiletime.uninitialized
 
 /**
  * 建筑
  */
 class Building extends IntId, Coded, Named, EnNamed, TemporalOn, Updatable, Remark {
-  var school: School = _
+  var school: School = uninitialized
   /** 所属校区 */
-  var campus: Campus = _
+  var campus: Campus = uninitialized
   var shortName: Option[String] = None
   var buildingType: Option[BuildingType] = None
 }

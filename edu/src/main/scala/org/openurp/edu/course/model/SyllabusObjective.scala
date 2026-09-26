@@ -19,12 +19,13 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named}
+import scala.compiletime.uninitialized
 
 class SyllabusObjective extends LongId, Coded, Named {
 
-  var syllabus: Syllabus = _
+  var syllabus: Syllabus = uninitialized
 
-  var contents: String = _
+  var contents: String = uninitialized
 
   def this(syllabus: Syllabus, code: String, name: String, contents: String) = {
     this()

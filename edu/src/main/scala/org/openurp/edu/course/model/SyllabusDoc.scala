@@ -24,31 +24,32 @@ import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 
 import java.time.Instant
 import java.util.Locale
+import scala.compiletime.uninitialized
 
 /**
  * 课程教学大纲文档
  */
 class SyllabusDoc extends LongId, Updatable, TemporalOn {
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 修订时的学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 开课院系 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 文件语言 */
-  var docLocale: Locale = _
+  var docLocale: Locale = uninitialized
 
   /** 文件大小 */
-  var docSize: Int = _
+  var docSize: Int = uninitialized
 
   /** 存储路径 */
-  var docPath: String = _
+  var docPath: String = uninitialized
 
   /** 作者 */
-  var writer: User = _
+  var writer: User = uninitialized
 
   /** 状态 */
   var status: AuditStatus = AuditStatus.Draft

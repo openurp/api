@@ -22,7 +22,7 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
   def binding(): Unit = {
 
-    defaultCache("openurp-base", "read-write")
+    defaultCache("openurp", "read-write")
 
     bind[Staff].declare { e =>
       e.idNumber is length(20) //container wrong number

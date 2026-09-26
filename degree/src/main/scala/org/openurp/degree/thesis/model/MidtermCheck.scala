@@ -22,6 +22,7 @@ import org.openurp.base.model.AuditStatus
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 中期检查
  *
@@ -29,22 +30,22 @@ import scala.collection.mutable
 class MidtermCheck extends LongId {
 
   /** 作者 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 论文写作进度 */
-  var proceeding: String = _
+  var proceeding: String = uninitialized
 
   /** 检查细节 */
   var details: mutable.Buffer[MidtermCheckDetail] = new mutable.ArrayBuffer[MidtermCheckDetail]
 
   /** 审核状态 */
-  var status: AuditStatus = _
+  var status: AuditStatus = uninitialized
 
   /** 审查结论 */
   var conclusion: Option[String] = None
 
   /** 提交时间 */
-  var submitAt: Instant = _
+  var submitAt: Instant = uninitialized
 
   def getDetail(item: MidtermCheckItem): Option[MidtermCheckDetail] = {
     details.find(x => x.item == item)

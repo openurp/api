@@ -22,14 +22,15 @@ import org.beangle.data.model.LongId
 import org.openurp.base.model.{AuditStep, User}
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 学籍异动提交和审核记录
  */
 class StdAlterApplyStep extends LongId, AuditStep {
   /** 审核顺序 */
-  var idx: Int = _
+  var idx: Int = uninitialized
   /** 申请记录 */
-  var alterApply: StdAlterApply = _
+  var alterApply: StdAlterApply = uninitialized
 
   def this(apply: StdAlterApply, idx: Int, name: String) = {
     this()

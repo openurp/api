@@ -20,6 +20,7 @@ package org.openurp.code.geo.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /** 国家地区
  * 参见国家推荐标准 GB/T 2659-2000
@@ -29,9 +30,9 @@ import org.openurp.code.CodeBean
  */
 @code("nation")
 class Country extends CodeBean {
-  var alpha3Code: String = _
-  var alpha2Code: String = _
-  var shortName: String = _
+  var alpha3Code: String = uninitialized
+  var alpha2Code: String = uninitialized
+  var shortName: String = uninitialized
 }
 
 /** 行政区划

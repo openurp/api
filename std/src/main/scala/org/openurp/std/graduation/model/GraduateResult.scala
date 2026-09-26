@@ -23,6 +23,7 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.EducationResult
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 毕业审核结果
@@ -30,22 +31,22 @@ import java.time.Instant
 class GraduateResult extends LongId, Updatable, Remark {
 
   /** 所属的毕业审核批次 */
-  var batch: GraduateBatch = _
+  var batch: GraduateBatch = uninitialized
 
   /** 批次 */
-  var batchNo: Int = _
+  var batchNo: Int = uninitialized
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 是否通过毕业审核 */
   var passed: Option[Boolean] = None
 
   /** 锁定毕业审核结果 */
-  var locked: Boolean = _
+  var locked: Boolean = uninitialized
 
   /** 是否已发布 */
-  var published: Boolean = _
+  var published: Boolean = uninitialized
 
   /** 毕结业情况 */
   var educationResult: Option[EducationResult] = None

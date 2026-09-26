@@ -19,15 +19,16 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
+import scala.compiletime.uninitialized
 
 /** 课程大纲中的案例
  */
 class SyllabusCase extends LongId, Named {
 
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
-  var syllabus: Syllabus = _
+  var syllabus: Syllabus = uninitialized
 
   def this(syllabus: Syllabus, idx: Int, name: String) = {
     this()

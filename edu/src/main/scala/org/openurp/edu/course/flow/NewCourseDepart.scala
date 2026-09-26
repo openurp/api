@@ -21,13 +21,14 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.Coded
 import org.openurp.base.model.{Department, School}
+import scala.compiletime.uninitialized
 
 @flow
 /** 新开课程院系编码
  */
 class NewCourseDepart extends LongId, Coded {
 
-  var school: School = _
+  var school: School = uninitialized
 
-  var depart: Department = _
+  var depart: Department = uninitialized
 }

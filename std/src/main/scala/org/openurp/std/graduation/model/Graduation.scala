@@ -21,25 +21,26 @@ import org.beangle.data.model.LongId
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Degree
 import org.openurp.code.std.model.{GraduateType, GraduationStatus}
+import scala.compiletime.uninitialized
 
 /** 预毕业信息
  */
 class Graduation extends LongId {
 
   /** 学籍 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 批次 */
-  var batch: GraduateBatch = _
+  var batch: GraduateBatch = uninitialized
 
   /** 平均绩点 */
-  var gpa: Double = _
+  var gpa: Double = uninitialized
 
   /** 平均分 */
-  var wms: Double = _
+  var wms: Double = uninitialized
 
   /** 是否能完成计划 */
-  var planPassed: Boolean = _
+  var planPassed: Boolean = uninitialized
 
   /** 毕业审核是否通过 */
   var gradPassed: Option[Boolean] = None
@@ -51,13 +52,13 @@ class Graduation extends LongId {
   var degree: Option[Degree] = None
 
   /** 是否申请了学位 */
-  var degreeApplied: Boolean = _
+  var degreeApplied: Boolean = uninitialized
 
   /** 申请的毕业状态 */
   var applyStatus: Option[GraduationStatus] = None
 
   /** 毕业生类型 */
-  var graduateType: GraduateType = _
+  var graduateType: GraduateType = uninitialized
 
   /** 联系手机 */
   var mobile: Option[String] = None
@@ -66,7 +67,7 @@ class Graduation extends LongId {
   var email: Option[String] = None
 
   /** 手机号码是否已经验证 */
-  var mobileVerified: Boolean = _
+  var mobileVerified: Boolean = uninitialized
 
   /** 毕业状态 */
   var status: Option[GraduationStatus] = None

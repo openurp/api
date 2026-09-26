@@ -24,14 +24,15 @@ import org.openurp.base.model.{Campus, Project}
 import org.openurp.code.edu.model.DayPart
 
 import scala.collection.mutable.Buffer
+import scala.compiletime.uninitialized
 
 /**
  * 时间设置
  */
 class TimeSetting extends IntId, Named, TemporalOn {
-  var project: Project = _
+  var project: Project = uninitialized
   var campus: Option[Campus] = None
-  var minutesPerUnit: Short = _
+  var minutesPerUnit: Short = uninitialized
   var units: Buffer[CourseUnit] = new collection.mutable.ListBuffer[CourseUnit]
 
   def getUnit(indexno: Int): Option[CourseUnit] = {
@@ -56,12 +57,12 @@ class TimeSetting extends IntId, Named, TemporalOn {
  * 课程小节
  */
 class CourseUnit extends IntId, Named {
-  var indexno: Int = _
-  var beginAt: HourMinute = _
-  var endAt: HourMinute = _
-  var setting: TimeSetting = _
-  var part: DayPart = _
-  var enName: String = _
+  var indexno: Int = uninitialized
+  var beginAt: HourMinute = uninitialized
+  var endAt: HourMinute = uninitialized
+  var setting: TimeSetting = uninitialized
+  var part: DayPart = uninitialized
+  var enName: String = uninitialized
 
   def this(beginAt: HourMinute, endAt: HourMinute) = {
     this()

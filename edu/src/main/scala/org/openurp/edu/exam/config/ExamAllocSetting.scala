@@ -22,18 +22,19 @@ import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.ProjectBased
 import org.openurp.code.edu.model.ExamType
+import scala.compiletime.uninitialized
 
 /** 考试分配设定
  */
 @config
 class ExamAllocSetting extends LongId, Named, ProjectBased {
-  var examType: ExamType = _
+  var examType: ExamType = uninitialized
   /** 考场分配人数占容量的最小比例 */
-  var minOccupyRatio: Float = _
+  var minOccupyRatio: Float = uninitialized
   /** 考场容量的下限 */
-  var minCapacity: Int = _
+  var minCapacity: Int = uninitialized
   /** 考场分配策略 */
-  var allocPolicy: RoomAllocPolicy = _
+  var allocPolicy: RoomAllocPolicy = uninitialized
   /** 考生连续考试的最小间隔(按小时计算) */
-  var minStdExamInterval: Int = _
+  var minStdExamInterval: Int = uninitialized
 }

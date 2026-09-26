@@ -20,6 +20,7 @@ package org.openurp.edu.course.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.edu.clazz.model.Subclazz
+import scala.compiletime.uninitialized
 
 /**
  * 具体授课内容
@@ -33,19 +34,19 @@ class Lesson extends LongId, Remark {
   }
 
   /** 授课计划 */
-  var plan: ClazzPlan = _
+  var plan: ClazzPlan = uninitialized
 
   /** 针对授课小班 */
   var subclazz: Option[Subclazz] = None
 
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
   /** 学时 */
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
 
   /** 内容 */
-  var contents: String = _
+  var contents: String = uninitialized
 
   /** 上课形式 */
   var forms: Option[String] = None
@@ -57,8 +58,8 @@ class Lesson extends LongId, Remark {
   var learning: Option[String] = None
 
   /** 自主学习课时 */
-  var learningHours: Float = _
+  var learningHours: Float = uninitialized
 
   /** 是否是考核 */
-  var exam: Boolean = _
+  var exam: Boolean = uninitialized
 }

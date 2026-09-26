@@ -28,29 +28,30 @@ import org.openurp.code.edu.model.ActivityType
 import java.time.temporal.ChronoUnit
 import java.time.{Instant, LocalDate}
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 class RoomApply extends LongId {
 
   /** 学校 */
-  var school: School = _
+  var school: School = uninitialized
 
   /** 借用人 */
-  var applicant: Applicant = _
+  var applicant: Applicant = uninitialized
 
   /** 时间要求 */
-  var time: TimeRequest = _
+  var time: TimeRequest = uninitialized
 
   /** 教室要求 */
-  var space: SpaceRequest = _
+  var space: SpaceRequest = uninitialized
 
   /** 活动 */
-  var activity: Activity = _
+  var activity: Activity = uninitialized
 
   /** 申请时间 */
-  var applyAt: Instant = _
+  var applyAt: Instant = uninitialized
 
   /** 操作人 */
-  var applyBy: User = _
+  var applyBy: User = uninitialized
 
   /** 部门审核是否通过 */
   var departApproved: Option[Boolean] = None
@@ -68,28 +69,28 @@ class RoomApply extends LongId {
 
 class Activity extends Component, Named {
   /** 主讲人 */
-  var speaker: String = _
+  var speaker: String = uninitialized
 
   /** 活动类型 */
-  var activityType: ActivityType = _
+  var activityType: ActivityType = uninitialized
 
   /** 出席对象 */
   var attendance: Option[String] = None
 
   /** 出席人数 */
-  var attendanceNum: Int = _
+  var attendanceNum: Int = uninitialized
 }
 
 /** 借用人 */
 class Applicant extends Cloneable, Component {
   /** 借用人 */
-  var user: User = _
+  var user: User = uninitialized
 
   /** 归口部门 */
-  var auditDepart: Department = _
+  var auditDepart: Department = uninitialized
 
   /** 移动电话 */
-  var mobile: String = _
+  var mobile: String = uninitialized
 
   /** 电子邮件 */
   var email: Option[String] = None
@@ -128,7 +129,7 @@ class TimeRequest extends Component, DateRange {
 /** 教室要求 */
 class SpaceRequest extends Component {
   /** 借用校区 */
-  var campus: Campus = _
+  var campus: Campus = uninitialized
   /** 每个教室单元需要的座位数 */
   var unitAttendance: Int = 0
   /** 是否使用多媒体设备 */

@@ -26,26 +26,27 @@ import org.openurp.base.std.model.Grade
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 转专业招生计划
  */
 @config
 class TransferScheme extends LongId, Named, Updatable {
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 转入年级 */
-  var grade: Grade = _
+  var grade: Grade = uninitialized
   /** 申请开始时间 */
-  var applyBeginAt: Instant = _
+  var applyBeginAt: Instant = uninitialized
   /** 申请结束时间 */
-  var applyEndAt: Instant = _
+  var applyEndAt: Instant = uninitialized
 
   /** 院系编辑计划开始时间 */
-  var editBeginAt: Instant = _
+  var editBeginAt: Instant = uninitialized
   /** 院系编辑计划结束时间 */
-  var editEndAt: Instant = _
+  var editEndAt: Instant = uninitialized
 
   /** 院系审核申请开始时间 */
   var auditBeginAt: Option[Instant] = None
@@ -62,7 +63,7 @@ class TransferScheme extends LongId, Named, Updatable {
   var noticePath: Option[String] = None
 
   /** 发布招生方案 */
-  var published: Boolean = _
+  var published: Boolean = uninitialized
 
   def canApply(): Boolean = {
     val now = Instant.now

@@ -22,7 +22,7 @@ import org.beangle.data.orm.{IdGenerator, MappingModule}
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp-base", "read-write")
+    defaultCache("openurp", "read-write")
 
     bind[TimeSetting] declare { e =>
       e.name is length(20)
@@ -120,7 +120,7 @@ class DefaultMapping extends MappingModule {
 
     bind[MajorDirector]
 
-    bind[MinorMajor] generator IdGenerator.AutoIncrement
+    bind[MinorMajor].generator(IdGenerator.AutoIncrement)
 
     bind[CourseProfile] declare { e =>
       e.description is length(800)

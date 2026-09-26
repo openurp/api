@@ -26,22 +26,23 @@ import org.openurp.base.std.model.ExternStudent
 
 import java.time.{LocalDate, YearMonth}
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 外校学习成绩
  */
 class ExternGrade extends LongId, Remark, Updatable {
 
-  var externStudent: ExternStudent = _
+  var externStudent: ExternStudent = uninitialized
 
-  var courseName: String = _
+  var courseName: String = uninitialized
 
-  var credits: Float = _
+  var credits: Float = uninitialized
 
   /** 获得年月 */
-  var acquiredIn: YearMonth = _
+  var acquiredIn: YearMonth = uninitialized
 
-  var scoreText: String = _
+  var scoreText: String = uninitialized
 
   var exempts: mutable.Set[Course] = Collections.newSet[Course]
 

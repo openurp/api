@@ -23,14 +23,15 @@ import org.openurp.base.edu.model.Course
 import org.openurp.base.std.model.Student
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 学生个人免修课程
  */
 class StdExemptCourse extends LongId, Remark, Updatable {
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 免修课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   def this(std: Student, course: Course) = {
     this()

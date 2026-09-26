@@ -21,13 +21,14 @@ import org.beangle.commons.lang.time.CycleTime.CycleTimeType
 import org.beangle.commons.lang.time.{CycleTime, CycleTimeDigester, HourMinute, WeekTime}
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 class ApplyTime {
-  var beginOn: LocalDate = _
-  var endOn: LocalDate = _
+  var beginOn: LocalDate = uninitialized
+  var endOn: LocalDate = uninitialized
 
-  var beginAt: HourMinute = _
-  var endAt: HourMinute = _
+  var beginAt: HourMinute = uninitialized
+  var endAt: HourMinute = uninitialized
   var cycle: Int = 1
 
   def toWeektimes(): List[WeekTime] = {

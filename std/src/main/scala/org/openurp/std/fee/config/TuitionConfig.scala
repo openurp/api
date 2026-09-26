@@ -25,6 +25,7 @@ import org.openurp.base.model.{Department, Project}
 import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.EducationLevel
 import org.openurp.code.std.model.FeeType
+import scala.compiletime.uninitialized
 
 /**
  * 收费缺省值
@@ -32,19 +33,19 @@ import org.openurp.code.std.model.FeeType
 @config
 class TuitionConfig extends IntId, Remark {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 起始年级 */
-  var fromGrade: Grade = _
+  var fromGrade: Grade = uninitialized
 
   /** 截止年级 */
   var toGrade: Option[Grade] = None
 
   /** 学制 */
-  var duration: Float = _
+  var duration: Float = uninitialized
 
   /** 学历层次 */
-  var level: EducationLevel = _
+  var level: EducationLevel = uninitialized
 
   /** 院系 */
   var department: Option[Department] = None
@@ -56,9 +57,9 @@ class TuitionConfig extends IntId, Remark {
   var direction: Option[MajorDirection] = None
 
   /** 收费类型 */
-  var feeType: FeeType = _
+  var feeType: FeeType = uninitialized
 
   /** 对应的值 */
-  var amount: Int = _
+  var amount: Int = uninitialized
 
 }

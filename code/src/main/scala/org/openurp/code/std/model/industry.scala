@@ -19,6 +19,7 @@ package org.openurp.code.std.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 @code("industry")
 class UnregisteredReason extends CodeBean
@@ -50,7 +51,7 @@ class StdPunishmentType extends CodeBean {
    * 处分等级值
    * 级别越小越严重
    */
-  var grade: Integer = _
+  var grade: Integer = uninitialized
 
   def isSeriousThan(other: StdPunishmentType): Boolean = {
     grade < other.grade
@@ -98,7 +99,7 @@ class WheretoGo extends CodeBean
 /** 毕业状态 */
 class GraduationStatus extends CodeBean {
   /** 是否毕业 */
-  var graduated: Boolean = _
+  var graduated: Boolean = uninitialized
 }
 
 object GraduationStatus {

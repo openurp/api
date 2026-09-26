@@ -24,11 +24,12 @@ import org.openurp.base.model.{AuditStatus, Department}
 import org.openurp.base.std.model.GraduateSeason
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 论文开题题目
  */
 class Subject extends LongId, Named {
-  var season: GraduateSeason = _
+  var season: GraduateSeason = uninitialized
   /** 研究领域 */
   var researchField: Option[String] = None
   /** 面向专业 */
@@ -44,9 +45,9 @@ class Subject extends LongId, Named {
   /** 审查意见 */
   var auditOpinion: Option[String] = None
   /** 指导教师 */
-  var advisor: Advisor = _
+  var advisor: Advisor = uninitialized
   /** 院系 */
-  var depart: Department = _
+  var depart: Department = uninitialized
 
   def majorNames: String = {
     majors.map(_.name).mkString(",")

@@ -25,7 +25,7 @@ import org.openurp.edu.grade.model.CourseGrade
 
 object StdGrade {
   def filterGrades(grades: collection.Seq[CourseGrade]): Map[Course, GradeList] = {
-    grades.sorted(PropertyOrdering.by("course,score desc")).groupBy(g => g.course) map { case (c, glist) =>
+    grades.sorted(using PropertyOrdering.by("course,score desc")).groupBy(g => g.course) map { case (c, glist) =>
       val best = if (glist.head.passed) glist.head else glist.find(_.passed).getOrElse(glist.head)
       (c, GradeList(glist.exists(_.passed), best, glist.toSeq))
     }

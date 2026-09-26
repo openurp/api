@@ -24,36 +24,37 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.FeeType
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 账单 */
 class Bill extends LongId, Updatable, Remark {
 
   /** 用户 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 收费部门 */
-  var depart: Department = _
+  var depart: Department = uninitialized
 
   /** 交费类型 */
-  var feeType: FeeType = _
+  var feeType: FeeType = uninitialized
 
   /** 应缴费用(分) */
-  var amount: Int = _
+  var amount: Int = uninitialized
 
   /** 实收金额(分) */
-  var payed: Int = _
+  var payed: Int = uninitialized
 
   /** 学年度学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 实缴时间 */
   var payAt: Option[Instant] = None
 
   /** 创建时间 */
-  var createdAt: Instant = _
+  var createdAt: Instant = uninitialized
 
   /** 修改人 */
-  var updatedBy: String = _
+  var updatedBy: String = uninitialized
 
   /** 应缴费用(元)
    *

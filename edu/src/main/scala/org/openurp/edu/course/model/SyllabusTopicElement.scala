@@ -19,16 +19,17 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.SyllabusTopicLabel
+import scala.compiletime.uninitialized
 
 /** 教学主题的内容要素
  */
 class SyllabusTopicElement extends LongId {
 
-  var topic: SyllabusTopic = _
+  var topic: SyllabusTopic = uninitialized
 
-  var label: SyllabusTopicLabel = _
+  var label: SyllabusTopicLabel = uninitialized
 
-  var contents: String = _
+  var contents: String = uninitialized
 
   def this(topic: SyllabusTopic, label: SyllabusTopicLabel, contents: String) = {
     this()

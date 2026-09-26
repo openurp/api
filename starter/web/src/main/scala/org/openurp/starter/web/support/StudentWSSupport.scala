@@ -25,16 +25,17 @@ import org.openurp.base.service.{Feature, ProjectConfigService, SemesterService}
 import org.openurp.base.std.model.Student
 import org.openurp.code.Code
 import org.openurp.code.service.CodeService
+import scala.compiletime.uninitialized
 
 abstract class StudentWSSupport extends ActionSupport, ServletSupport {
 
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
-  var semesterService: SemesterService = _
+  var semesterService: SemesterService = uninitialized
 
-  var codeService: CodeService = _
+  var codeService: CodeService = uninitialized
 
-  var configService: ProjectConfigService = _
+  var configService: ProjectConfigService = uninitialized
 
   protected final def getStudent: Student = {
     val stdId = getLongId("student")

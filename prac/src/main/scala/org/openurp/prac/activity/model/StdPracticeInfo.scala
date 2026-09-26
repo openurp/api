@@ -21,21 +21,22 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Remark, Updatable}
 import org.openurp.base.std.model.Student
 import org.openurp.code.prac.model.{StdPracticeCategory, StdPracticeType}
+import scala.compiletime.uninitialized
 
 /** 学生实践活动
  */
 class StdPracticeInfo extends LongId, Named, Updatable, Remark {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 实践课程大类 */
-  var category: StdPracticeCategory = _
+  var category: StdPracticeCategory = uninitialized
 
   /** 实践课程类型 */
-  var practiceType: StdPracticeType = _
+  var practiceType: StdPracticeType = uninitialized
 
   /** 学时数 */
-  var hours: Int = _
+  var hours: Int = uninitialized
 
   /** 地点 */
   var place: Option[String] = None

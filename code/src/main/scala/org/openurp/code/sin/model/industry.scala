@@ -19,6 +19,7 @@ package org.openurp.code.sin.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /**
  * 刊物
@@ -26,7 +27,7 @@ import org.openurp.code.CodeBean
 @code("industry")
 class Publication extends CodeBean {
 
-  var grade: PublicationGrade = _
+  var grade: PublicationGrade = uninitialized
 }
 
 /**
@@ -42,7 +43,7 @@ class PublicationGrade extends CodeBean {
  */
 @code("industry")
 class Press extends CodeBean {
-  var grade: PressGrade = _
+  var grade: PressGrade = uninitialized
 }
 
 object PressGrade {

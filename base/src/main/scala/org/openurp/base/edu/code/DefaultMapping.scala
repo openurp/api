@@ -23,7 +23,7 @@ import org.openurp.code.edu.model.{BookAwardType, BookType, CourseAbilityRate, C
 class DefaultMapping extends MappingModule {
 
   def binding(): Unit = {
-    defaultCache("openurp-base", "read-write")
+    defaultCache("openurp", "read-write")
 
     all.cacheAll()
   }

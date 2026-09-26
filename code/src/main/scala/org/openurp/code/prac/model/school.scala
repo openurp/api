@@ -19,6 +19,7 @@ package org.openurp.code.prac.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /** 学生实践课程大类 */
 @code("school")
@@ -28,7 +29,7 @@ class StdPracticeCategory extends CodeBean
  */
 @code("school")
 class StdPracticeType extends CodeBean {
-  var category: StdPracticeCategory = _
+  var category: StdPracticeCategory = uninitialized
 }
 
 /** 实践课程类型 */

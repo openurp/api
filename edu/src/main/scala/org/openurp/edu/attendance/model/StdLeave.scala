@@ -24,28 +24,29 @@ import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 学生请假申请
  */
 class StdLeave extends LongId, InstantRange {
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 请假类型 */
-  var leaveType: LeaveType = _
+  var leaveType: LeaveType = uninitialized
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 请假事由 */
-  var reason: String = _
+  var reason: String = uninitialized
 
   /** 影响上课次数 */
-  var lessons: Int = _
+  var lessons: Int = uninitialized
 
   /** 请假天数 */
-  var days: Int = _
+  var days: Int = uninitialized
 
   /** 请假附件 */
   var files: mutable.Buffer[StdLeaveFile] = Collections.newBuffer[StdLeaveFile]

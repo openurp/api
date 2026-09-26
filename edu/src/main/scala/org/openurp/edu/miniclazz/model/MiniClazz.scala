@@ -28,33 +28,34 @@ import org.openurp.base.std.model.Student
 
 import java.time.{Instant, LocalDate}
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 @beta
 class MiniClazz extends LongId, ProjectBased, Updatable, Cloneable, Remark {
 
   /** 课程序号 */
-  var crn: String = _
+  var crn: String = uninitialized
 
   /** 开课院系 */
-  var teachDepart: Department = _
+  var teachDepart: Department = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 授课教师 */
   var teacher: Option[Teacher] = None
 
   /** 授课学时 */
-  var courseHours: Int = _
+  var courseHours: Int = uninitialized
 
   /** 指导学时 */
-  var coachHours: Int = _
+  var coachHours: Int = uninitialized
 
   /** 成绩已登记 */
-  var gradeEntered: Boolean = _
+  var gradeEntered: Boolean = uninitialized
 
   def calcHours(): Unit = {
     this.courseHours = activities.filter(_.teacher.nonEmpty).map(x => (x.endUnit - x.beginUnit + 1) * x.time.weekstate.size).sum

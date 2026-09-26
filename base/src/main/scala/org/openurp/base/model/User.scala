@@ -25,6 +25,7 @@ import org.openurp.code.person.model.Gender
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 通用人员信息
@@ -32,7 +33,7 @@ import scala.collection.mutable
 class User extends LongId, Coded, Named, Updatable, Remark, TemporalOn {
 
   /** 学校 */
-  var school: School = _
+  var school: School = uninitialized
 
   /** 主用户组 */
   var group: Option[UserGroup] = None
@@ -41,13 +42,13 @@ class User extends LongId, Coded, Named, Updatable, Remark, TemporalOn {
   var groups: mutable.Set[UserGroupMember] = Collections.newSet[UserGroupMember]
 
   /** 性别 */
-  var gender: Gender = _
+  var gender: Gender = uninitialized
 
   /** 部门 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 类别 */
-  var category: UserCategory = _
+  var category: UserCategory = uninitialized
 
   /** 电子邮件 */
   var email: Option[String] = None

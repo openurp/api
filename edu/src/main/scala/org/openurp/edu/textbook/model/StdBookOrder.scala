@@ -25,6 +25,7 @@ import org.openurp.base.model.{Department, Project, Semester}
 import java.time.Instant
 import org.openurp.base.model.Department
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /**
  * 学生教材订单
@@ -32,34 +33,34 @@ import org.openurp.base.std.model.Student
  */
 class StdBookOrder extends LongId {
   /**项目*/
-  var project: Project = _
+  var project: Project = uninitialized
 
   /**学年学期*/
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /**学生*/
-  var std: Student = _
+  var std: Student = uninitialized
 
   /**课程*/
-  var course: Course = _
+  var course: Course = uninitialized
 
   /**课程序号*/
-  var crn: String = _
+  var crn: String = uninitialized
 
   /**教材*/
-  var textbook: Textbook = _
+  var textbook: Textbook = uninitialized
 
   /**开课院系*/
-  var teachDepart: Department = _
+  var teachDepart: Department = uninitialized
 
   /**教师姓名*/
   var teacherNames: Option[String] = None
 
   /**创建时间*/
-  var createdAt: Instant = _
+  var createdAt: Instant = uninitialized
 
   /**是否退订*/
-  var withdrawed: Boolean = _
+  var withdrawed: Boolean = uninitialized
 
   /**退订时间*/
   var withdrawAt: Option[Instant] = None

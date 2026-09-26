@@ -24,6 +24,7 @@ import org.openurp.base.model.*
 import org.openurp.code.person.model.Gender
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 学生辅导员
@@ -31,7 +32,7 @@ import scala.collection.mutable
 class Mentor extends LongId, Named, TemporalOn {
 
   /** 教职工 */
-  var staff: Staff = _
+  var staff: Staff = uninitialized
 
   /** 部门 */
   def department: Department = staff.department

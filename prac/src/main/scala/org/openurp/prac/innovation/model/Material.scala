@@ -19,20 +19,21 @@ package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Named, Updatable}
+import scala.compiletime.uninitialized
 
 /** 项目材料
  */
 class Material extends LongId, Updatable {
-  var project: Project = _
-  var stageType: StageType = _
+  var project: Project = uninitialized
+  var stageType: StageType = uninitialized
   /** 文件名 */
-  var fileName: String = _
+  var fileName: String = uninitialized
   /** 大小 */
-  var fileSize: Int = _
+  var fileSize: Int = uninitialized
   /** sha */
-  var sha: String = _
+  var sha: String = uninitialized
   /** 路径 */
-  var filePath: String = _
+  var filePath: String = uninitialized
 
   def this(project: Project, stageType: StageType) = {
     this()

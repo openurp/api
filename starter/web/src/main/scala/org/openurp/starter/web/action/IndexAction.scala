@@ -27,14 +27,15 @@ import org.beangle.webmvc.annotation.action
 import org.beangle.webmvc.context.ActionContext
 import org.beangle.webmvc.support.{ActionSupport, ServletSupport}
 import org.beangle.webmvc.view.{Status, View}
+import scala.compiletime.uninitialized
 
 /**
  * @author chaostone
  */
 @action("")
 class IndexAction extends ActionSupport, ServletSupport {
-  var casConfig: CasConfig = _
-  var sessionRepo: CacheSessionRepo = _
+  var casConfig: CasConfig = uninitialized
+  var sessionRepo: CacheSessionRepo = uninitialized
 
   def index(): View = {
     put("nav", NavContext.get(request))

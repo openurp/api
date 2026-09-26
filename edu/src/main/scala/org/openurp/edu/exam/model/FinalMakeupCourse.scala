@@ -28,6 +28,7 @@ import org.openurp.base.std.model.Squad
 
 import java.time.{Instant, LocalDate}
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 毕业补考任务
@@ -36,22 +37,22 @@ import scala.collection.mutable
 class FinalMakeupCourse extends LongId {
 
   /** 补考序号 */
-  var crn: String = _
+  var crn: String = uninitialized
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 校区 */
-  var campus: Campus = _
+  var campus: Campus = uninitialized
 
   /** 开课院系 */
-  var depart: Department = _
+  var depart: Department = uninitialized
 
   /** 清考名单 */
   var takers: mutable.Buffer[FinalMakeupTaker] = Collections.newBuffer[FinalMakeupTaker]
@@ -60,10 +61,10 @@ class FinalMakeupCourse extends LongId {
   var squads: collection.mutable.Set[Squad] = Collections.newSet[Squad]
 
   /** 学生人数 */
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
 
   /** 是否提交成绩 */
-  var status: Int = _
+  var status: Int = uninitialized
 
   /** 阅卷老师 */
   var teacher: Option[Teacher] = None

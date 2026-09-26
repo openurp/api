@@ -23,16 +23,17 @@ import org.beangle.data.model.annotation.config
 import org.openurp.base.edu.model.Major
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 招生学生范围
  */
 @config
 class TransferScope extends LongId {
 
-  var scheme: TransferScheme = _
+  var scheme: TransferScheme = uninitialized
 
   /** 包含还是禁止   */
-  var included: Boolean = _
+  var included: Boolean = uninitialized
 
   /**专业列表*/
   var majors: mutable.Buffer[Major] = Collections.newBuffer[Major]

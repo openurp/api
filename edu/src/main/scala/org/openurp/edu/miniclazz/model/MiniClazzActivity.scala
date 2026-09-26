@@ -21,25 +21,26 @@ import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.User
+import scala.compiletime.uninitialized
 
 /** 小课上课安排
  */
 class MiniClazzActivity extends LongId {
 
   /** 教学任务 */
-  var miniClazz: MiniClazz = _
+  var miniClazz: MiniClazz = uninitialized
 
   /** 上课时间 */
-  var time: WeekTime = _
+  var time: WeekTime = uninitialized
 
   /** 上课地点 */
   var places: Option[String] = None
 
   /** 开始节次 */
-  var beginUnit: Short = _
+  var beginUnit: Short = uninitialized
 
   /** 结束节次 */
-  var endUnit: Short = _
+  var endUnit: Short = uninitialized
 
   /** 授课教师 */
   var teacher: Option[Teacher] = None

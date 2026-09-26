@@ -23,15 +23,16 @@ import org.beangle.data.model.annotation.flow
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.std.graduation.model.GraduateBatch
+import scala.compiletime.uninitialized
 
 /** 毕业申请抽象类
  */
 @flow
 abstract class AbstractGradApply extends LongId, Updatable {
 
-  var batch: GraduateBatch = _
+  var batch: GraduateBatch = uninitialized
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 申请理由 */
   var reason: Option[String] = None

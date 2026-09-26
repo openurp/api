@@ -28,21 +28,22 @@ import org.openurp.edu.clazz.model.Clazz
 
 import java.time.LocalDate
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 考试活动
  */
 class ExamActivity extends LongId, Remark {
   /** 考试类型 */
-  var examType: ExamType = _
+  var examType: ExamType = uninitialized
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 排考任务 */
-  var task: Option[ExamTask] = _
+  var task: Option[ExamTask] = uninitialized
 
   /** 考试学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 考试日期 */
   var examOn: Option[LocalDate] = None
@@ -57,13 +58,13 @@ class ExamActivity extends LongId, Remark {
   var examForm: Option[ExamForm] = None
 
   /** 考试时长 */
-  var examDuration: Short = _
+  var examDuration: Short = uninitialized
 
   /** 考试教室类型 */
   var roomType: Option[ClassroomType] = None
 
   /** 学生人数 */
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
 
   /** 考场列表 */
   var rooms: mutable.Buffer[ExamRoom] = Collections.newBuffer[ExamRoom]
@@ -81,5 +82,5 @@ class ExamActivity extends LongId, Remark {
   var examPaperNo: Option[String] = None
 
   /** 发布状态 */
-  var publishState: PublishState = _
+  var publishState: PublishState = uninitialized
 }

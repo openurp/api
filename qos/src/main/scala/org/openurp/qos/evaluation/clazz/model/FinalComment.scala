@@ -23,32 +23,33 @@ import org.openurp.base.edu.model.Course
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Semester}
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /** 期末文字评价
  *
  */
 class FinalComment extends LongId, Updatable {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 课程序号 */
-  var crn: String = _
+  var crn: String = uninitialized
 
   /** 教学日历 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 任课教师 */
-  var teacher: Teacher = _
+  var teacher: Teacher = uninitialized
 
   /** 开课院系 */
-  var teachDepart: Department = _
+  var teachDepart: Department = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 评价等级 */
-  var grade: String = _
+  var grade: String = uninitialized
 
   /** 内容 */
-  var contents: String = _
+  var contents: String = uninitialized
 }

@@ -24,17 +24,18 @@ import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.Department
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 指导教师 */
 class Advisor extends LongId, TemporalOn {
   /** 教师 */
-  var teacher: Teacher = _
+  var teacher: Teacher = uninitialized
 
   /** 指导院系 */
   var departs: mutable.Buffer[Department] = Collections.newBuffer[Department]
 
   /** 所带学生数 */
-  var maxWriters: Long = _
+  var maxWriters: Long = uninitialized
 
   /** 手机 */
   var mobile: Option[String] = None

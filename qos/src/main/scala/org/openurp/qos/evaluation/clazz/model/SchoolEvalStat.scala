@@ -20,6 +20,7 @@ package org.openurp.qos.evaluation.clazz.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.{Department, Project, Semester}
+import scala.compiletime.uninitialized
 
 /** 全校统计
  *
@@ -27,15 +28,15 @@ import org.openurp.base.model.{Department, Project, Semester}
 class SchoolEvalStat extends LongId, Updatable {
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 平均分 */
-  var avgScore: Double = _
+  var avgScore: Double = uninitialized
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 课程数量 */
-  var courseCount: Int = _
+  var courseCount: Int = uninitialized
 
 }

@@ -19,17 +19,18 @@ package org.openurp.trd.achievement.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.model.User
+import scala.compiletime.uninitialized
 
 /** 项目成员
  *
  */
 class RdAchievementMember extends LongId {
   /** 排名 */
-  var idx: Int = _
+  var idx: Int = uninitialized
   /** 姓名 */
-  var name: String = _
+  var name: String = uninitialized
   /** 参与人 */
   var user: Option[User] = None
   /** 项目 */
-  var achievement: RdAchievement = _
+  var achievement: RdAchievement = uninitialized
 }

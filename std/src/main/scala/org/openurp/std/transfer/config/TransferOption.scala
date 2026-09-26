@@ -24,6 +24,7 @@ import org.openurp.base.edu.model.{Major, MajorDirection}
 import org.openurp.base.model.{Department, User}
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /** 转专业招收专业
  */
@@ -31,22 +32,22 @@ import java.time.LocalDate
 class TransferOption extends LongId, Remark {
 
   /** 转专业招生方案 */
-  var scheme: TransferScheme = _
+  var scheme: TransferScheme = uninitialized
 
   /** 院系 */
-  var depart: Department = _
+  var depart: Department = uninitialized
 
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
 
   /** 方向 */
   var direction: Option[MajorDirection] = None
 
   /** 计划人数 */
-  var planCount: Int = _
+  var planCount: Int = uninitialized
 
   /** 报名人数 */
-  var currentCount: Int = _
+  var currentCount: Int = uninitialized
 
   /** 负责联络的老师 */
   var manager: Option[User] = None
@@ -73,8 +74,8 @@ class TransferOption extends LongId, Remark {
   var writtenContent: Option[String] = None
 
   /** 面试分数占总分比例 */
-  var auditionPercent: Int = _
+  var auditionPercent: Int = uninitialized
 
   /** 笔试分数占总分比例 */
-  var writtenPercent: Int = _
+  var writtenPercent: Int = uninitialized
 }

@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 class Deadline extends LongId, Updatable {
 
@@ -38,9 +39,9 @@ class Deadline extends LongId, Updatable {
     }
   }
 
-  var stage: Stage = _
-  var writer: Writer = _
+  var stage: Stage = uninitialized
+  var writer: Writer = uninitialized
   var submitAt: Option[Instant] = None
   var endAt: Option[Instant] = None
-  var delayCount: Int = _
+  var delayCount: Int = uninitialized
 }

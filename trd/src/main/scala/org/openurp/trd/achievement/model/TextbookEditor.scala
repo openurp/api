@@ -20,19 +20,20 @@ package org.openurp.trd.achievement.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.User
+import scala.compiletime.uninitialized
 
 /** 教材作者 */
 class TextbookEditor extends LongId, Named {
 
   /** 教材成果 */
-  var achievement: TextbookAchievement = _
+  var achievement: TextbookAchievement = uninitialized
 
   /** 是否主编 */
-  var chief: Boolean = _
+  var chief: Boolean = uninitialized
 
   /** 对应校内用户 */
-  var user: Option[User] = _
+  var user: Option[User] = uninitialized
 
   /** 主编或者参编排序 */
-  var idx: Int = _
+  var idx: Int = uninitialized
 }

@@ -18,6 +18,7 @@
 package org.openurp.edu.clazz.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /**
  * 选课限制条件项
@@ -25,16 +26,16 @@ import org.beangle.data.model.LongId
 class ClazzRestrictionItem extends LongId, Cloneable {
 
   /** 限制具体项目 */
-  var meta: ClazzRestrictionMeta = _
+  var meta: ClazzRestrictionMeta = uninitialized
 
   /** 所在限制组 */
-  var restriction: ClazzRestriction = _
+  var restriction: ClazzRestriction = uninitialized
 
   /** 是否包含限定内容
    * 不包含exclusive情况下，为排除限定内容
    */
-  var included: Boolean = _
+  var included: Boolean = uninitialized
 
   /** 限制内容 */
-  var contents: String = _
+  var contents: String = uninitialized
 }

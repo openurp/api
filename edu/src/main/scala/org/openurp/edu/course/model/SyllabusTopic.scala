@@ -22,25 +22,26 @@ import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.code.edu.model.{SyllabusTopicLabel, TeachingNature}
+import scala.compiletime.uninitialized
 
 /** 教学大纲-教学主题
  */
 class SyllabusTopic extends LongId, Named {
 
   /** 教学大纲 */
-  var syllabus: Syllabus = _
+  var syllabus: Syllabus = uninitialized
 
   /** 大纲内顺序 */
-  var idx: Short = _
+  var idx: Short = uninitialized
 
   /** 是否是考核 */
-  var exam: Boolean = _
+  var exam: Boolean = uninitialized
 
   /** 教学内容 */
-  var contents: String = _
+  var contents: String = uninitialized
 
   /** 自主学习学时 */
-  var learningHours: Float = _
+  var learningHours: Float = uninitialized
 
   /** 其他要素 */
   var elements = Collections.newBuffer[SyllabusTopicElement]

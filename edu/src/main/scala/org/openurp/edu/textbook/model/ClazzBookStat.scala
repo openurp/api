@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.base.edu.model.Textbook
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 教学任务教材统计
@@ -28,17 +29,17 @@ import java.time.Instant
 class ClazzBookStat extends LongId {
 
   /**教学任务*/
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /**教材*/
-  var textbook: Textbook = _
+  var textbook: Textbook = uninitialized
 
   /**学生用户量*/
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
 
   /**教师用户量*/
-  var teacherCount: Int = _
+  var teacherCount: Int = uninitialized
 
   /**统计时间*/
-  var statAt: Instant = _
+  var statAt: Instant = uninitialized
 }

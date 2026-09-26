@@ -34,6 +34,7 @@ import org.openurp.code.hr.model.UserCategory
 import java.time.{Instant, LocalDate}
 import javax.sql.DataSource
 import scala.util.Random
+import scala.compiletime.uninitialized
 
 /** URP 用户同步服务
  *
@@ -43,7 +44,7 @@ import scala.util.Random
  */
 class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, hostname: String) extends UserRepo, Logging, Initializing {
 
-  var orgId: Int = _
+  var orgId: Int = uninitialized
 
   /** 数据授权中的项目维度，在门户中对应一个业务场景(ems.cfg_envs) */
   private val ProjectDimension = "project"
@@ -51,9 +52,9 @@ class DefaultUserRepo(entityDao: EntityDao, platformDataSource: DataSource, host
   /** 数据授权中的部门维度 */
   private val DepartmentDimension = "department"
 
-  private var domainId: Int = _
+  private var domainId: Int = uninitialized
 
-  private var emsJdbcExecutor: JdbcExecutor = _
+  private var emsJdbcExecutor: JdbcExecutor = uninitialized
 
   /** 用户过期后，账户仍然可用的天数 */
   var idleDays: Int = 90

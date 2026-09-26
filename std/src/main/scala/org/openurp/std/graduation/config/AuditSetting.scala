@@ -25,6 +25,7 @@ import org.openurp.base.model.ProjectBased
 import org.openurp.code.edu.model.EducationLevel
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 毕业审核配置
@@ -34,7 +35,7 @@ class AuditSetting extends LongId, ProjectBased, TemporalOn, Remark, Named {
   /** 培养层次集合 */
   var levels: mutable.Set[EducationLevel] = Collections.newSet[EducationLevel]
   /** 毕业审核规则 */
-  var gruleIds: String = _
+  var gruleIds: String = uninitialized
   /** 学位审核规则 */
   var druleIds: Option[String] = None
 }

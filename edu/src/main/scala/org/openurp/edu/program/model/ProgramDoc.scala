@@ -26,15 +26,16 @@ import org.openurp.code.std.model.StdType
 import java.time.Instant
 import java.util.Locale
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 培养方案文档
  * 该文档与培养方案一对一
  */
 class ProgramDoc extends LongId, Updatable {
   /** 语言 */
-  var docLocale: Locale = _
+  var docLocale: Locale = uninitialized
   /** 方案 */
-  var program: Program = _
+  var program: Program = uninitialized
   /** 培养目标 */
   var objectives = Collections.newBuffer[ProgramObjective]
   /** 毕业要求对培养目标的支撑 */
@@ -103,10 +104,10 @@ class ProgramDoc extends LongId, Updatable {
 class ProgramDocSection extends LongId, Named, Hierarchical[ProgramDocSection] {
 
   /** 内容 */
-  var contents: String = _
+  var contents: String = uninitialized
 
   /** 文档 */
-  var doc: ProgramDoc = _
+  var doc: ProgramDoc = uninitialized
 
   def this(doc: ProgramDoc, indexno: String, name: String, contents: String) = {
     this()
@@ -124,7 +125,7 @@ class ProgramDocTemplate extends IntId, Named, EduLevelBased, TemporalOn, Updata
   /** 部门 */
   var department: Option[Department] = None
   /** 语言 */
-  var docLocale: Locale = _
+  var docLocale: Locale = uninitialized
   /** 针对学生类别 */
   var types: mutable.Set[StdType] = Collections.newSet[StdType]
   /** 章节元数据 */
@@ -136,12 +137,12 @@ class ProgramDocTemplate extends IntId, Named, EduLevelBased, TemporalOn, Updata
 class ProgramDocMeta extends IntId, Named {
 
   /** 章节编号 */
-  var indexno: String = _
+  var indexno: String = uninitialized
 
   /** 模板 */
-  var template: ProgramDocTemplate = _
+  var template: ProgramDocTemplate = uninitialized
 
   /** 最大长度 */
-  var maxlength: Int = _
+  var maxlength: Int = uninitialized
 
 }

@@ -25,6 +25,7 @@ import org.openurp.base.model.Department
 import org.openurp.code.edu.model.Discipline
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 项目
@@ -32,13 +33,13 @@ import scala.collection.mutable
 class Project extends LongId, TemporalOn, Remark {
 
   /** 项目编号 */
-  var code: Option[String] = _
+  var code: Option[String] = uninitialized
 
   /** 批次 */
-  var batch: Batch = _
+  var batch: Batch = uninitialized
 
   /** 项目名称 */
-  var title: String = _
+  var title: String = uninitialized
 
   /** 成员 */
   var members = Collections.newBuffer[Member]
@@ -47,34 +48,34 @@ class Project extends LongId, TemporalOn, Remark {
   var materials = Collections.newBuffer[Material]
 
   /** 院系 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 申请人 */
   var manager: Option[Member] = None
 
   /** 项目级别 */
-  var level: ProjectLevel = _
+  var level: ProjectLevel = uninitialized
 
   /** 等级记录 */
   var levels: mutable.Buffer[LevelJounal] = Collections.newBuffer[LevelJounal]
 
   /** 项目类型 */
-  var category: ProjectCategory = _
+  var category: ProjectCategory = uninitialized
 
   /** 学科 */
-  var discipline: Discipline = _
+  var discipline: Discipline = uninitialized
 
   /** 指导老师 */
   var instructors = Collections.newBuffer[Teacher]
 
   /** 状态 */
-  var state: ProjectState = _
+  var state: ProjectState = uninitialized
 
   /** 简介 */
   var intro: Option[Intro] = None
 
   /** 经费 */
-  var funds: Int = _
+  var funds: Int = uninitialized
 
   def closureMaterial: Option[Material] = {
     materials.find(_.stageType.id == StageType.Closure)

@@ -26,25 +26,26 @@ import org.openurp.edu.program.model.CourseGroup
 
 import scala.collection.mutable
 import scala.collection.mutable.Buffer
+import scala.compiletime.uninitialized
 
 /** 课程组审核结果
  */
 class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Remark {
 
   /** 要求学分 */
-  var requiredCredits: Float = _
+  var requiredCredits: Float = uninitialized
 
   /** 通过学分 */
-  var passedCredits: Float = _
+  var passedCredits: Float = uninitialized
 
   /** 欠学分 */
-  var owedCredits: Float = _
+  var owedCredits: Float = uninitialized
 
   /** 预计通过后所欠学分 */
-  var owedCredits2: Float = _
+  var owedCredits2: Float = uninitialized
 
   /** 转换学分 */
-  var convertedCredits: Float = _
+  var convertedCredits: Float = uninitialized
 
   @transient var passedCourses = Collections.newSet[Course]
   @transient var predictedCourses = Collections.newSet[Course]
@@ -64,16 +65,16 @@ class AuditGroupResult extends LongId, Named, Hierarchical[AuditGroupResult], Re
   var rank: Option[CourseRank] = None
 
   /** 课程类型 */
-  var courseType: CourseType = _
+  var courseType: CourseType = uninitialized
 
   /** 是否通过 */
-  var passed: Boolean = _
+  var passed: Boolean = uninitialized
 
   /** 子组数量 */
-  var subCount: Short = _
+  var subCount: Short = uninitialized
 
   /** 计划审核结果 */
-  var planResult: AuditPlanResult = _
+  var planResult: AuditPlanResult = uninitialized
 
   def attachTo(pl: AuditPlanResult): Unit = {
     planResult = pl

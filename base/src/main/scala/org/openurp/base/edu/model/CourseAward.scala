@@ -19,11 +19,12 @@ package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.CourseAwardType
+import scala.compiletime.uninitialized
 
 /** 课程获奖信息
  */
 class CourseAward extends LongId {
-  var course: Course = _
-  var awardType: CourseAwardType = _
-  var schoolYear: Int = _
+  var course: Course = uninitialized
+  var awardType: CourseAwardType = uninitialized
+  var schoolYear: Int = uninitialized
 }

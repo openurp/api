@@ -27,6 +27,7 @@ import org.openurp.std.graduation.flow.AbstractGradApply
 import org.openurp.std.graduation.model.GraduateBatch
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 学位申请数据
  */
@@ -34,13 +35,13 @@ import java.time.Instant
 class GradDegreeApply extends AbstractGradApply {
 
   /** 平均绩点 */
-  var gpa: Double = _
+  var gpa: Double = uninitialized
 
   /** 平均分 */
-  var wms: Double = _
+  var wms: Double = uninitialized
 
   /** 学位类型 */
-  var degree: Degree = _
+  var degree: Degree = uninitialized
 
   /** 联系邮箱 */
   var email: Option[String] = None

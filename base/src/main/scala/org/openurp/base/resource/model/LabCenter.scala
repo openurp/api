@@ -23,13 +23,14 @@ import org.beangle.data.model.pojo.{Named, TemporalOn}
 import org.openurp.base.model.{Department, School}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 实验中心
  * 囊括了部分院系和实验室
  */
 class LabCenter extends LongId, Named, TemporalOn {
   /** 所属学校 */
-  var school: School = _
+  var school: School = uninitialized
   /** 关联部门 */
   var departs: mutable.Set[Department] = Collections.newSet[Department]
   /**简称*/

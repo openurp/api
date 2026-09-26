@@ -22,18 +22,19 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.ProjectBased
+import scala.compiletime.uninitialized
 
 /** 业务设置 */
 @config
 class BusinessSetting extends LongId, ProjectBased, Updatable {
 
   /** 业务类型 */
-  var business: String = _
+  var business: String = uninitialized
 
   /** 业务配置ID */
   var profileId: String = "default"
 
   /** 设置JSON */
-  var settings: JsonObject = _
+  var settings: JsonObject = uninitialized
 
 }

@@ -18,19 +18,20 @@
 package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 class Intro extends LongId {
 
   /**项目*/
-  var project: Project = _
+  var project: Project = uninitialized
 
   /**项目简介*/
-  var summaries: String = _
+  var summaries: String = uninitialized
 
   /**创新点和难点*/
-  var innovations: String = _
+  var innovations: String = uninitialized
 
   /**预期成果*/
-  var products: String = _
+  var products: String = uninitialized
 
 }

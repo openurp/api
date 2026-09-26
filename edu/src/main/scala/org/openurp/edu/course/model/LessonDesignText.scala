@@ -19,14 +19,15 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
+import scala.compiletime.uninitialized
 
 /** 课程设计文本内容
  */
 class LessonDesignText extends LongId, Named {
 
-  var design: LessonDesign = _
+  var design: LessonDesign = uninitialized
 
-  var contents: String = _
+  var contents: String = uninitialized
 
   def this(design: LessonDesign, name: String, contents: String) = {
     this()

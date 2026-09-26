@@ -24,24 +24,25 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Certificate
 
 import java.time.YearMonth
+import scala.compiletime.uninitialized
 
 /** 学生能力素质能力证书
  */
 class AbilityCredit extends LongId, Updatable, Remark {
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 申请学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 证书类型 */
-  var certificate: Certificate = _
+  var certificate: Certificate = uninitialized
   /** 证书内课程 */
-  var subjects: String = _
+  var subjects: String = uninitialized
   /** 证书编号 */
-  var certificateNo: String = _
+  var certificateNo: String = uninitialized
   /** 获得年月 */
-  var acquiredIn: YearMonth = _
+  var acquiredIn: YearMonth = uninitialized
   /** 认定的学分数 */
-  var credits: Float = _
+  var credits: Float = uninitialized
 
   def this(std: Student) = {
     this()

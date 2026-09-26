@@ -24,6 +24,7 @@ import org.openurp.base.model.Project
 import org.openurp.code.std.model.StdDocType
 
 import java.time.{Instant, ZoneId}
+import scala.compiletime.uninitialized
 
 /**
  * 优惠券
@@ -32,7 +33,7 @@ import java.time.{Instant, ZoneId}
 class SpaCoupon extends IntId, Updatable, DateRange {
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   def validAt(updatedAt: Instant): Boolean = {
     val updatedOn = updatedAt.atZone(ZoneId.systemDefault()).toLocalDate
@@ -40,9 +41,9 @@ class SpaCoupon extends IntId, Updatable, DateRange {
   }
 
   /** 适合文档 */
-  var docType: StdDocType = _
+  var docType: StdDocType = uninitialized
 
   /** 每个人可以领取的数量 */
-  var countPerStd: Int = _
+  var countPerStd: Int = uninitialized
 
 }

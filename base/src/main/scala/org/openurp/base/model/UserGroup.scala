@@ -20,12 +20,13 @@ package org.openurp.base.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.*
+import scala.compiletime.uninitialized
 
 /** 用户组
  */
 class UserGroup extends IntId, Named, Coded, Enabled, Hierarchical[UserGroup], Remark {
 
-  var school: School = _
+  var school: School = uninitialized
 
   var manager: Option[User] = None
 
@@ -40,5 +41,5 @@ class UserGroup extends IntId, Named, Coded, Enabled, Hierarchical[UserGroup], R
   }
 
   /** 自动管理，无需手动增加成员 */
-  var autoManage: Boolean = _
+  var autoManage: Boolean = uninitialized
 }

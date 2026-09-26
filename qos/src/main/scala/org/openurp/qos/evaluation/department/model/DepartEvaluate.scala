@@ -24,6 +24,7 @@ import org.openurp.base.hr.model.Teacher
 import org.openurp.qos.evaluation.base.model.Questionnaire
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 院系问卷评教结果
@@ -33,21 +34,21 @@ import java.time.Instant
 class DepartEvaluate extends LongId {
 
   /**学年学期*/
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 教师 */
-  var teacher: Teacher = _
+  var teacher: Teacher = uninitialized
   /** 开课院系 */
-  var department: Department = _
+  var department: Department = uninitialized
   /** 问卷信息 */
-  var questionnaire: Questionnaire = _
+  var questionnaire: Questionnaire = uninitialized
   /** 问题评教结果 */
   var questionResults = Collections.newSet[DepartQuestion]
   /** 评教时间 */
-  var evaluateAt: Instant = _
+  var evaluateAt: Instant = uninitialized
   /**备注*/
-  var remark: String = _
+  var remark: String = uninitialized
 
-  var totalScore: java.lang.Float = _
+  var totalScore: java.lang.Float = uninitialized
 
   def calTotalScore(): Unit = {
     this.totalScore = this.questionResults.foldLeft(0f)(_ + _.score)

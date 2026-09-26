@@ -23,6 +23,7 @@ import org.openurp.code.asset.model.ClassroomType
 import org.openurp.code.edu.model.{ExamForm, ExamMode}
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 期末考试安排
@@ -31,7 +32,7 @@ import java.time.LocalDate
 class ClazzFinalExam extends LongId {
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 考试日期 */
   var examOn: Option[LocalDate] = None
@@ -46,7 +47,7 @@ class ClazzFinalExam extends LongId {
   var examForm: Option[ExamForm] = None
 
   /** 考试时长 */
-  var examDuration: Short = _
+  var examDuration: Short = uninitialized
 
   /** 考试教室类型 */
   var roomType: Option[ClassroomType] = None

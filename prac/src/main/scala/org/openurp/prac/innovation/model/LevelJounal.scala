@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 项目的等级记录
  *
@@ -28,11 +29,11 @@ import java.time.Instant
 class LevelJounal extends LongId, Updatable {
 
   /** 年度 */
-  var awardYear: Int = _
+  var awardYear: Int = uninitialized
 
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var level: ProjectLevel = _
+  var level: ProjectLevel = uninitialized
 
   def this(year: Int, project: Project, level: ProjectLevel) = {
     this()

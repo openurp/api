@@ -22,15 +22,16 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.Project
 import org.openurp.base.resource.model.Classroom
+import scala.compiletime.uninitialized
 
 /** 可用时间
  * */
 class RoomAvailableTime extends LongId, Updatable {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 教室 */
-  var room: Classroom = _
+  var room: Classroom = uninitialized
 
   /** 时间 */
   var time = new WeekTime

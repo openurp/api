@@ -19,20 +19,21 @@ package org.openurp.base.edu.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.TemporalOn
+import scala.compiletime.uninitialized
 
 /** 课程默认教材设置
  */
 class CourseTextbook extends LongId, TemporalOn {
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 教材 */
-  var textbook: Textbook = _
+  var textbook: Textbook = uninitialized
 
   /** 是否必选教材 */
-  var required: Boolean = _
+  var required: Boolean = uninitialized
 
   /** 是否默认教材 */
-  var recommended: Boolean = _
+  var recommended: Boolean = uninitialized
 }

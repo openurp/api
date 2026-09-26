@@ -21,11 +21,12 @@ import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.InstantRange
 import org.openurp.base.model.{ProjectBased, Semester}
+import scala.compiletime.uninitialized
 
 @config
 class StdEvaluateSwitch extends IntId, ProjectBased, InstantRange {
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   def isOpenedAt(d: java.time.Instant): Boolean = {
     within(d)

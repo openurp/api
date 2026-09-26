@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.code.geo.model.RailwayStation
+import scala.compiletime.uninitialized
 
 /**
  * 家庭信息
@@ -28,7 +29,7 @@ import org.openurp.code.geo.model.RailwayStation
 class Home extends LongId, Updatable {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 家庭电话 */
   var phone: Option[String] = None

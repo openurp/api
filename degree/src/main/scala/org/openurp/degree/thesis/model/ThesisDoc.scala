@@ -19,23 +19,24 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
+import scala.compiletime.uninitialized
 
 /** 学位论文相关文档
  */
 class ThesisDoc extends LongId, Updatable {
   /** 所处阶段 */
-  var stage: Stage = _
+  var stage: Stage = uninitialized
 
   /** 学生 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 附件路径 */
-  var filePath: String = _
+  var filePath: String = uninitialized
 
   /** 附件类型 */
-  var fileExt: String = _
+  var fileExt: String = uninitialized
 
   /** 文档类型 */
-  var docType: ThesisDocType = _
+  var docType: ThesisDocType = uninitialized
 
 }

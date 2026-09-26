@@ -19,6 +19,7 @@ package org.openurp.code.edu.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 /**
  * 学位
  * 参见国家推荐标准 GB/T 6864
@@ -27,7 +28,7 @@ import org.openurp.code.CodeBean
  */
 @code("nation")
 class Degree extends CodeBean {
-  var level: DegreeLevel = _
+  var level: DegreeLevel = uninitialized
 }
 
 /**
@@ -54,8 +55,8 @@ class DisciplineCategory extends CodeBean
  */
 @code("nation")
 class EducationDegree extends CodeBean {
-  var level: AcademicLevel = _
-  var result: EducationResult = _
+  var level: AcademicLevel = uninitialized
+  var result: EducationResult = uninitialized
 }
 
 /**

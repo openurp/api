@@ -26,24 +26,25 @@ import org.openurp.code.person.model.Gender
 
 import java.time.LocalDate
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 报名信息
  */
 class MinorSignupStd extends LongId, Coded, Named, Updatable {
   /** 设置 */
-  var setting: MinorSignupSetting = _
+  var setting: MinorSignupSetting = uninitialized
   /** 性别 */
-  var gender: Gender = _
+  var gender: Gender = uninitialized
   /** 出生日期 */
-  var birthday: LocalDate = _
+  var birthday: LocalDate = uninitialized
   /** 身份证号 */
-  var idcard: String = _
+  var idcard: String = uninitialized
   /** 电话 */
-  var mobile: String = _
+  var mobile: String = uninitialized
   /** 院系 */
-  var department: String = _
+  var department: String = uninitialized
   /** 主修专业 */
-  var major: String = _
+  var major: String = uninitialized
   /** 班级 */
   var squad: Option[String] = None
   /** 地址 */
@@ -53,7 +54,7 @@ class MinorSignupStd extends LongId, Coded, Named, Updatable {
   /** 学科门类 */
   var category: Option[DisciplineCategory] = None
   /** 学校 */
-  var institution: Institution = _
+  var institution: Institution = uninitialized
   /** 报名志愿 */
   var majors: mutable.Buffer[MinorSignupStdMajor] = Collections.newBuffer[MinorSignupStdMajor]
   /** 是否社会学院 */
@@ -61,7 +62,7 @@ class MinorSignupStd extends LongId, Coded, Named, Updatable {
   /** 所在单位 */
   var fromOrg: Option[String] = None
   /** 是否校内学生 */
-  var inside: Boolean = _
+  var inside: Boolean = uninitialized
   /** 照片路径 */
   var photoPath: Option[String] = None
 

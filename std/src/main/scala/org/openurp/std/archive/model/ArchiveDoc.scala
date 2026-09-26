@@ -23,24 +23,25 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.StdDocType
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 学生文档归档记录
  */
 class ArchiveDoc extends LongId, Updatable, Remark {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 文档类型 */
-  var docType: StdDocType = _
+  var docType: StdDocType = uninitialized
 
   /** 文件存储路径 */
-  var filePath: String = _
+  var filePath: String = uninitialized
 
   /** 文件大小 */
-  var fileSize: Int = _
+  var fileSize: Int = uninitialized
 
   /** 文件扩展名 */
-  var fileExt: String = _
+  var fileExt: String = uninitialized
 
   /** 签名过的文件路径 */
   var signedFilePath: Option[String] = None

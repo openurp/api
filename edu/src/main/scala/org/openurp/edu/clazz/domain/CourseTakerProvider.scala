@@ -23,6 +23,7 @@ import org.openurp.base.service.SemesterService
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.{Clazz, CourseTaker}
 import org.openurp.edu.his.model.HisCourseTaker
+import scala.compiletime.uninitialized
 
 trait CourseTakerProvider {
 
@@ -34,9 +35,9 @@ trait CourseTakerProvider {
 }
 
 class DefaultCourseTakerProvider extends CourseTakerProvider {
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
-  var semesterService: SemesterService = _
+  var semesterService: SemesterService = uninitialized
 
   override def get(std: Student): Seq[CourseTaker] = {
     val terms = semesterService.get(std.project, std.beginOn, std.endOn)

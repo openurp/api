@@ -20,9 +20,10 @@ package org.openurp.edu.program.domain
 import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.std.model.Student
 import org.openurp.edu.program.model.{AlternativeCourse, MajorAlternativeCourse, StdAlternativeCourse}
+import scala.compiletime.uninitialized
 
 class DefaultAlternativeCourseProvider extends AlternativeCourseProvider {
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   /**
    * 得到该学生指定专业类型的所有的替代课程

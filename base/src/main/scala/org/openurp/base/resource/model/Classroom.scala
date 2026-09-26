@@ -24,6 +24,7 @@ import org.openurp.base.model.*
 import org.openurp.code.asset.model.ClassroomType
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 教室
@@ -31,7 +32,7 @@ import scala.collection.mutable
 class Classroom extends LongId, Named, EnNamed, Coded, Updatable, TemporalOn {
 
   /** 学校 */
-  var school: School = _
+  var school: School = uninitialized
 
   /** 项目列表 */
   var projects: mutable.Set[Project] = Collections.newSet[Project]
@@ -40,7 +41,7 @@ class Classroom extends LongId, Named, EnNamed, Coded, Updatable, TemporalOn {
   var roomNo: Option[String] = None
 
   /** 所属校区 */
-  var campus: Campus = _
+  var campus: Campus = uninitialized
 
   /** 所属建筑 */
   var building: Option[Building] = None
@@ -49,19 +50,19 @@ class Classroom extends LongId, Named, EnNamed, Coded, Updatable, TemporalOn {
   var shortName: Option[String] = None
 
   /** 教室类型 */
-  var roomType: ClassroomType = _
+  var roomType: ClassroomType = uninitialized
 
   /** 楼层 */
-  var floorNo: Int = _
+  var floorNo: Int = uninitialized
 
   /** 容量 */
-  var capacity: Int = _
+  var capacity: Int = uninitialized
 
   /** 上课容量 */
-  var courseCapacity: Int = _
+  var courseCapacity: Int = uninitialized
 
   /** 考试容量 */
-  var examCapacity: Int = _
+  var examCapacity: Int = uninitialized
 
   /** 使用部门 */
   var departs: mutable.Set[Department] = Collections.newSet[Department]

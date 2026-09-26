@@ -25,6 +25,7 @@ import org.openurp.base.std.model.Student
 
 import java.math.BigDecimal as JBigDecimal
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 学分统计结构
@@ -42,19 +43,19 @@ trait GpaStat {
   var ams: TinyDecimal5 = TinyDecimal5.Zero
 
   /** 获得成绩总学分 */
-  var credits: Float = _
+  var credits: Float = uninitialized
 
   /** 课程总学分（课程去重） */
-  var totalCredits: Float = _
+  var totalCredits: Float = uninitialized
 
   /** 课程门数（课程去重、不是门次数） */
-  var totalCount: Int = _
+  var totalCount: Int = uninitialized
 
   /** 实修学分 */
-  var takenCredits: Float = _
+  var takenCredits: Float = uninitialized
 
   /** 在修学分（未出成绩） */
-  var pendingCredits: Float = _
+  var pendingCredits: Float = uninitialized
 
   /** 大于0的学分计入添加在修学分
    *
@@ -77,7 +78,7 @@ class StdGpa extends LongId, Updatable, ProjectBased, GpaStat {
   /**
    * 学生
    */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /**
    * 每学期平均绩点

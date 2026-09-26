@@ -19,6 +19,7 @@ package org.openurp.edu.clazz.model
 
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /**
  * 教学任务限制条件组
@@ -26,19 +27,19 @@ import org.beangle.data.model.LongId
 class ClazzRestriction extends LongId, Cloneable {
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 是否主要开课对象 */
-  var prime: Boolean = _
+  var prime: Boolean = uninitialized
 
   /** 条件列表 */
   var items = Collections.newBuffer[ClazzRestrictionItem]
 
   /** 最大人数 */
-  var maxCount: Int = _
+  var maxCount: Int = uninitialized
 
   /** 当前人数 */
-  var curCount: Int = _
+  var curCount: Int = uninitialized
 
   /** 父级菜单 */
   var parent: Option[ClazzRestriction] = None

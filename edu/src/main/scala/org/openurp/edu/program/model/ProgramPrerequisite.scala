@@ -19,6 +19,7 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.Course
+import scala.compiletime.uninitialized
 
 /** 培养方案先修课程
  */
@@ -31,9 +32,9 @@ class ProgramPrerequisite extends LongId {
     this.prerequisite = prerequisite
   }
 
-  var program: Program = _
+  var program: Program = uninitialized
 
-  var course: Course = _
+  var course: Course = uninitialized
 
-  var prerequisite: Course = _
+  var prerequisite: Course = uninitialized
 }

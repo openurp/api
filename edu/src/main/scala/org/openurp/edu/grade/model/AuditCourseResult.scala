@@ -26,34 +26,35 @@ import org.openurp.code.edu.model.CourseTakeType
 import org.openurp.edu.grade.domain.GradeRemarkDigester
 import org.openurp.edu.grade.domain.StdGrade.GradeList
 import org.openurp.edu.program.model.{PlanCourse, SharePlanCourse}
+import scala.compiletime.uninitialized
 
 /** 课程审核结果
  */
 class AuditCourseResult extends LongId, Remark {
 
   /** 课程组审核结果 */
-  var groupResult: AuditGroupResult = _
+  var groupResult: AuditGroupResult = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 成绩 */
-  var scores: String = _
+  var scores: String = uninitialized
 
   /** 是否通过 */
-  var passed: Boolean = _
+  var passed: Boolean = uninitialized
 
   /** 计划就读学期 */
   var terms: Terms = Terms.empty
 
   /** 是否必修 */
-  var compulsory: Boolean = _
+  var compulsory: Boolean = uninitialized
 
   /** 未通过时尚未出成绩的后续途径 */
   var pendingWay: Option[CoursePendingWay] = None
 
   /** 是否修读过，产生过成绩记录 */
-  var hasGrade: Boolean = _
+  var hasGrade: Boolean = uninitialized
 
   /** 若通过，通过的途径 */
   var passedWay: Option[CoursePassedWay] = None

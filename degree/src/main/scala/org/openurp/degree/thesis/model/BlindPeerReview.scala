@@ -19,13 +19,14 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updatable}
+import scala.compiletime.uninitialized
 
 /** 盲审名单
  */
 class BlindPeerReview extends LongId, Updatable, Remark {
 
   /** 作者 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 分数 */
   var score: Option[Int] = None

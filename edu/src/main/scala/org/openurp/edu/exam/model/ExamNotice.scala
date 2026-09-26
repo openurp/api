@@ -21,17 +21,18 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.openurp.base.model.{Project, Semester}
 import org.openurp.code.edu.model.ExamType
+import scala.compiletime.uninitialized
 
 /** 考试通知 */
 class ExamNotice extends LongId {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
-  var examType: ExamType = _
+  var examType: ExamType = uninitialized
 
-  var studentNotice: String = _
+  var studentNotice: String = uninitialized
 
-  var managerNotice: String = _
+  var managerNotice: String = uninitialized
 }

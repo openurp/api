@@ -22,12 +22,13 @@ import org.beangle.data.model.pojo.Remark
 import org.openurp.base.hr.model.Teacher
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 论文评分 */
 class ThesisReview extends LongId, Remark {
 
   /** 学生 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 选题得分 */
   var subjectScore: Option[Int] = None
@@ -87,5 +88,5 @@ class ThesisReview extends LongId, Remark {
   var defenseInfo: Option[DefenseInfo] = None
 
   /** 成绩是否同步到课程成绩 */
-  var courseGradeSynced: Boolean = _
+  var courseGradeSynced: Boolean = uninitialized
 }

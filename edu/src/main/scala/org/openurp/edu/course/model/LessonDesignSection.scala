@@ -18,28 +18,29 @@
 package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /** 课程设计教学环节
  */
 class LessonDesignSection extends LongId {
 
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
   /** 授课内容 */
-  var design: LessonDesign = _
+  var design: LessonDesign = uninitialized
 
   /** 标题 */
-  var title: String = _
+  var title: String = uninitialized
 
   /** 教学内容提要 */
-  var summary: String = _
+  var summary: String = uninitialized
 
   /** 分钟 */
-  var duration: Int = _
+  var duration: Int = uninitialized
 
   /** 教学过程设计 */
-  var details: String = _
+  var details: String = uninitialized
 
   def this(design: LessonDesign, idx: Int, title: String, duration: Int, summary: String, details: String) = {
     this()

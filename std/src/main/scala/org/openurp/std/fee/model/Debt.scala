@@ -21,16 +21,17 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.FeeType
+import scala.compiletime.uninitialized
 
 class Debt extends LongId, Updatable {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 交费类型 */
-  var feeType: FeeType = _
+  var feeType: FeeType = uninitialized
 
-  var amount: Int = _
+  var amount: Int = uninitialized
 
-  var ignored: Boolean = _
+  var ignored: Boolean = uninitialized
 
 }

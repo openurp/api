@@ -20,11 +20,12 @@ package org.openurp.code.edu.model
 import org.beangle.data.model.annotation.code
 import org.beangle.data.model.pojo.Hierarchical
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /** 校外考试证书 */
 @code("school")
 class Certificate extends CodeBean {
-  var category: CertificateCategory = _
+  var category: CertificateCategory = uninitialized
   var institutionCode: Option[String] = None
   var institutionName: Option[String] = None
   /** 证书内课程 */
@@ -42,7 +43,7 @@ class CertificateCategory extends CodeBean
  */
 @code("school")
 class ClazzTag extends CodeBean {
-  var color: String = _
+  var color: String = uninitialized
 }
 
 object ClazzTag {
@@ -73,8 +74,8 @@ object CourseModule {
  */
 @code("school")
 class CourseModule extends CodeBean {
-  var major: Boolean = _
-  var practical: Boolean = _
+  var major: Boolean = uninitialized
+  var practical: Boolean = uninitialized
 
   /** 是否是通识课程或者公共课
    *
@@ -136,7 +137,7 @@ class CourseCategoryDimension extends CodeBean {
  */
 @code("school")
 class CourseCategory extends CodeBean, Hierarchical[CourseCategory] {
-  var dimension: CourseCategoryDimension = _
+  var dimension: CourseCategoryDimension = uninitialized
   var color: Option[String] = None
 }
 
@@ -145,8 +146,8 @@ class CourseCategory extends CodeBean, Hierarchical[CourseCategory] {
  */
 @code("school")
 class CourseAbilityRate extends CodeBean {
-  var rate: Int = _
-  var subject: CourseAbilitySubject = _
+  var rate: Int = uninitialized
+  var subject: CourseAbilitySubject = uninitialized
 }
 
 /**
@@ -203,7 +204,7 @@ class GraduateObjective extends CodeBean
  */
 @code("school")
 class CourseAwardType extends CodeBean {
-  var category: CourseAwardCategory = _
+  var category: CourseAwardCategory = uninitialized
 }
 
 /** 课程获奖分类

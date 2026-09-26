@@ -20,17 +20,18 @@ package org.openurp.edu.program.model
 import org.beangle.commons.lang.Strings
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named}
+import scala.compiletime.uninitialized
 
 /** 培养目标
  */
 class ProgramObjective extends LongId, Coded {
 
-  var doc: ProgramDoc = _
+  var doc: ProgramDoc = uninitialized
 
-  var contents: String = _
+  var contents: String = uninitialized
 
   /** 对应毕业要求 */
-  var outcomes: String = _
+  var outcomes: String = uninitialized
 
   def this(doc: ProgramDoc, code: String, contents: String) = {
     this()

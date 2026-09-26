@@ -33,16 +33,17 @@ import org.openurp.code.service.CodeService
 import org.openurp.starter.web.helper.EmsCookieHelper
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 trait ProjectSupport extends ParamSupport with ServletSupport {
 
   def entityDao: EntityDao
 
-  var codeService: CodeService = _
+  var codeService: CodeService = uninitialized
 
-  var configService: ProjectConfigService = _
+  var configService: ProjectConfigService = uninitialized
 
-  var semesterService: SemesterService = _
+  var semesterService: SemesterService = uninitialized
 
   protected def getConfig[T](name: String, defaultValue: T)(using project: Project): T = {
     configService.get(project, name, defaultValue)
@@ -56,7 +57,7 @@ trait ProjectSupport extends ParamSupport with ServletSupport {
     codeService.get(clazz)
   }
 
-  protected def findInSchool[T <: Entity[_]](clazz: Class[T])(using project: Project): Seq[T] = {
+  protected def findInSchool[T <: Entity[?]](clazz: Class[T])(using project: Project): Seq[T] = {
     val query = OqlBuilder.from(clazz, "aa")
     query.where("aa.school=:school", project.school)
     query.orderBy("code")
@@ -93,7 +94,7 @@ trait ProjectSupport extends ParamSupport with ServletSupport {
 
   }
 
-  protected def findInProject[T <: Entity[_]](clazz: Class[T], orderBy: String = "code")(using project: Project): Seq[T] = {
+  protected def findInProject[T <: Entity[?]](clazz: Class[T], orderBy: String = "code")(using project: Project): Seq[T] = {
     val query = OqlBuilder.from(clazz, "aa")
     query.where("aa.project=:project", project)
     query.orderBy(orderBy)

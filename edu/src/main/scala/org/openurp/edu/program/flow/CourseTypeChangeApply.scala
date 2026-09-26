@@ -26,6 +26,7 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.CourseType
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 课程类别转换申请
  */
@@ -33,15 +34,15 @@ import java.time.Instant
 class CourseTypeChangeApply extends LongId, Updatable, Remark {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 原类型 */
-  var oldType: CourseType = _
+  var oldType: CourseType = uninitialized
 
   /** 新类型 */
-  var newType: CourseType = _
+  var newType: CourseType = uninitialized
 
   /** 是否审批通过 */
   var approved: Option[Boolean] = None

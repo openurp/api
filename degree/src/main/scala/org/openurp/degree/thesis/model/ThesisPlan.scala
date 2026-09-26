@@ -24,12 +24,13 @@ import org.openurp.base.model.Project
 import org.openurp.base.std.model.GraduateSeason
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 class ThesisPlan extends LongId, DateRange {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var season: GraduateSeason = _
+  var season: GraduateSeason = uninitialized
 
   var times: mutable.Buffer[StageTime] = Collections.newBuffer[StageTime]
 

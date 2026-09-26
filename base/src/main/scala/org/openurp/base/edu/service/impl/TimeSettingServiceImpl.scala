@@ -21,9 +21,10 @@ import org.beangle.data.dao.{EntityDao, OqlBuilder}
 import org.openurp.base.edu.model.TimeSetting
 import org.openurp.base.edu.service.TimeSettingService
 import org.openurp.base.model.{Campus, Project, Semester}
+import scala.compiletime.uninitialized
 
 class TimeSettingServiceImpl extends TimeSettingService {
-  var entityDao: EntityDao = _
+  var entityDao: EntityDao = uninitialized
 
   def get(project: Project, semester: Semester, campus: Option[Campus]): TimeSetting = {
     var setting: Option[TimeSetting] = None

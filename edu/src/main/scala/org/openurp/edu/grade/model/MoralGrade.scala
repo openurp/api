@@ -21,18 +21,19 @@ import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.GradingMode
+import scala.compiletime.uninitialized
 
 /**
  * 德育成绩
  */
 class MoralGrade extends LongId  {
 
-  var std: Student=_
-  var semester: Semester=_
+  var std: Student= uninitialized
+  var semester: Semester= uninitialized
   var score: Option[Float]=None
-  var scoreText: String=_
-  var passed: Boolean=_
-  var status: Int=_
-  var gradingMode: GradingMode=_
-  var operator: String=_
+  var scoreText: String= uninitialized
+  var passed: Boolean= uninitialized
+  var status: Int= uninitialized
+  var gradingMode: GradingMode= uninitialized
+  var operator: String= uninitialized
 }

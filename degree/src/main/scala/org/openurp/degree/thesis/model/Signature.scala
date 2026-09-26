@@ -18,6 +18,7 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /** 签名信息
  */
@@ -29,7 +30,7 @@ class Signature extends LongId {
   }
 
   /** 作者 */
-  var writer: Writer = _
+  var writer: Writer = uninitialized
   /** 学生签名 */
   var writerUrl: Option[String] = None
   /** 指导老师签名 */

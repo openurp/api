@@ -24,22 +24,23 @@ import org.openurp.code.edu.model.{BookAwardType, BookType, DisciplineCategory}
 import org.openurp.code.sin.model.{BookCategory, ForeignBookType, Press, TextbookForm}
 
 import java.time.{LocalDate, YearMonth}
+import scala.compiletime.uninitialized
 
 /**
  * 教材基本信息
  */
 class Textbook extends LongId, TemporalOn, Named, Remark {
-  var project: Project = _
+  var project: Project = uninitialized
   /** ISBN */
   var isbn: Option[String] = None
   /** 编著者 */
-  var author: String = _
+  var author: String = uninitialized
   /** 译作者 */
   var translator: Option[String] = None
   /** 出版社 */
   var press: Option[Press] = None
   /** 版次 */
-  var edition: String = _
+  var edition: String = uninitialized
   /** 价格 */
   var price: Option[Float] = None
   /** 简介 */
@@ -49,7 +50,7 @@ class Textbook extends LongId, TemporalOn, Named, Remark {
   /** 图书分类 */
   var category: Option[BookCategory] = None
   /** 出版日期 */
-  var publishedIn: YearMonth = _
+  var publishedIn: YearMonth = uninitialized
   /** 获奖类型 */
   var awardType: Option[BookAwardType] = None
   /** 颁发单位 */

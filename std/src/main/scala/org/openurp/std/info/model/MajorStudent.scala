@@ -21,26 +21,27 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{DisciplineCategory, Institution}
+import scala.compiletime.uninitialized
 
 /** 学生的主修信息
  */
 class MajorStudent extends LongId, Updatable {
 
   /** 主修学号 */
-  var code: String = _
+  var code: String = uninitialized
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 主修学校 */
-  var school: Institution = _
+  var school: Institution = uninitialized
 
   /** 主修专业 */
-  var majorName: String = _
+  var majorName: String = uninitialized
 
   /** 主修专业英文名 */
   var enMajorName: Option[String] = None
 
   /** 主修专业学科门类 */
-  var majorCategory: DisciplineCategory = _
+  var majorCategory: DisciplineCategory = uninitialized
 }

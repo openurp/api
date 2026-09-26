@@ -20,28 +20,29 @@ package org.openurp.std.graduation.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /** 计划完成情况确认
  */
 class GradPlanResultCheck extends LongId, Updatable {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 各个类别完成情况 */
-  var contents: String = _
+  var contents: String = uninitialized
 
   /** 要求学分 */
-  var requiredCredits: Float = _
+  var requiredCredits: Float = uninitialized
 
   /** 通过学分 */
-  var passedCredits: Float = _
+  var passedCredits: Float = uninitialized
 
   /** 欠学分 */
-  var owedCredits: Float = _
+  var owedCredits: Float = uninitialized
 
   /** 预计通过后所欠学分 */
-  var owedCredits2: Float = _
+  var owedCredits2: Float = uninitialized
 
   def this(std: Student) = {
     this()

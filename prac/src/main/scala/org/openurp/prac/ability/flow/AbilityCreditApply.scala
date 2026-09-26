@@ -25,29 +25,30 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Certificate
 
 import java.time.YearMonth
+import scala.compiletime.uninitialized
 
 /** 学生能力证书学分申请
  */
 @flow
 class AbilityCreditApply extends LongId, Updatable {
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 申请学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 证书类型 */
-  var certificate: Certificate = _
+  var certificate: Certificate = uninitialized
   /** 审核部门 */
-  var auditDepart: Department = _
+  var auditDepart: Department = uninitialized
   /** 通过门数，-1表示全部通过 */
   var subjectCnt: Option[Int] = None
   /** 证书内课程 */
-  var subjects: String = _
+  var subjects: String = uninitialized
   /** 是否完成证书所有课程 */
-  var finished: Boolean = _
+  var finished: Boolean = uninitialized
   /** 证书编号 */
   var certificateNo: Option[String] = None
   /** 获得年月 */
-  var acquiredIn: YearMonth = _
+  var acquiredIn: YearMonth = uninitialized
   /** 申请理由 */
   var reasons: Option[String] = None
   /** 审核人 */
@@ -55,7 +56,7 @@ class AbilityCreditApply extends LongId, Updatable {
   /** 审核意见 */
   var auditOpinion: Option[String] = None
   /** 成绩单附件路径 */
-  var attachmentPath: String = _
+  var attachmentPath: String = uninitialized
   /** 申请状态 */
   var status: AuditStatus = AuditStatus.Draft
   /** 认定的学分数 */

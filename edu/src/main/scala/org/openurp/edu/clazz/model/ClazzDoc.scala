@@ -21,20 +21,21 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.User
 import org.openurp.edu.clazz.model.Clazz
+import scala.compiletime.uninitialized
 
 /**
  * 教学班文件资料
  */
 class ClazzDoc extends LongId, Updatable {
 
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
-  var name: String = _
+  var name: String = uninitialized
 
   var filePath: Option[String] = None
 
   var url: Option[String] = None
 
-  var updatedBy: User = _
+  var updatedBy: User = uninitialized
 
 }

@@ -27,6 +27,7 @@ import org.openurp.edu.clazz.model.Clazz
 import org.openurp.qos.evaluation.base.model.Questionnaire
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 问卷评教结果
@@ -35,15 +36,15 @@ import java.time.Instant
  */
 class EvaluateResult extends LongId, Updatable {
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
   /** 教师 */
-  var teacher: Teacher = _
+  var teacher: Teacher = uninitialized
   /** 学生 */
-  var student: Student = _
+  var student: Student = uninitialized
   /** 开课院系 */
-  var department: Department = _
+  var department: Department = uninitialized
   /** 问卷信息 */
-  var questionnaire: Questionnaire = _
+  var questionnaire: Questionnaire = uninitialized
   /** 问题评教结果 */
   var questionResults = Collections.newSet[QuestionResult]
 
@@ -52,7 +53,7 @@ class EvaluateResult extends LongId, Updatable {
    * 1正常 2 无效 3异常(互斥)
    * 总数=有效问卷+无效问卷+异常问卷        无效问卷=无效比例*(总数-异常问卷)
    */
-  var statType: Int = _
+  var statType: Int = uninitialized
   /** 总分 */
-  var score: Float = _
+  var score: Float = uninitialized
 }

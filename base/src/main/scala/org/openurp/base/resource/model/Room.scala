@@ -22,6 +22,7 @@ import org.beangle.data.model.pojo.*
 import org.openurp.base.model.{Campus, Department, School}
 import org.openurp.base.resource.model.Building
 import org.openurp.code.asset.model.{BuildingType, RoomType}
+import scala.compiletime.uninitialized
 
 /**
  * 房间
@@ -29,10 +30,10 @@ import org.openurp.code.asset.model.{BuildingType, RoomType}
 class Room extends IntId, Coded, Named, TemporalOn, Updatable, Remark {
 
   /** 所属学校 */
-  var school: School = _
+  var school: School = uninitialized
 
   /** 所属校区 */
-  var campus: Campus = _
+  var campus: Campus = uninitialized
 
   /** 管理部门 */
   var department: Option[Department] = None
@@ -41,9 +42,9 @@ class Room extends IntId, Coded, Named, TemporalOn, Updatable, Remark {
   var building: Option[Building] = None
 
   /** 房间类型 */
-  var roomType: RoomType = _
+  var roomType: RoomType = uninitialized
 
   /** 楼层 */
-  var floorNo: Int = _
+  var floorNo: Int = uninitialized
 
 }

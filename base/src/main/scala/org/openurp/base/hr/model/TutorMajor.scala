@@ -25,25 +25,26 @@ import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.{EducationLevel, EducationType}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 导师研究领域
  */
 class TutorMajor extends LongId, Remark {
 
   /** 导师 */
-  var staff: Staff = _
+  var staff: Staff = uninitialized
 
   /** 年级 */
-  var grade: Grade = _
+  var grade: Grade = uninitialized
 
   /** 培养类型 */
-  var eduType: EducationType = _
+  var eduType: EducationType = uninitialized
 
   /** 培养层次 */
-  var level: EducationLevel = _
+  var level: EducationLevel = uninitialized
 
   /** 专业 */
-  var major: Major = _
+  var major: Major = uninitialized
 
   /** 方向 */
   var directions: mutable.Set[MajorDirection] = Collections.newSet[MajorDirection]

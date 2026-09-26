@@ -25,17 +25,18 @@ import org.openurp.base.model.ArchivedByYear
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.RegularGrade
+import scala.compiletime.uninitialized
 
 /** 归档平时成绩
  */
 @archive
 class HisRegularGrade extends LongId, Updatable, ArchivedByYear {
   /** 教学班 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 分数 */
-  var score: Float = _
+  var score: Float = uninitialized
   /** 测试成绩 */
   var testsJson: JsonArray = new JsonArray
 

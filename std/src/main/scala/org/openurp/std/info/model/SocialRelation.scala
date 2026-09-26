@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.std.model.Student
 import org.openurp.code.person.model.{FamilyRelationship, IdType}
+import scala.compiletime.uninitialized
 
 /**
  * 社会关系
@@ -28,10 +29,10 @@ import org.openurp.code.person.model.{FamilyRelationship, IdType}
 class SocialRelation extends LongId, Named {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 关系 */
-  var relationship: FamilyRelationship = _
+  var relationship: FamilyRelationship = uninitialized
 
   /** 单位、职务 */
   var duty: Option[String] = None

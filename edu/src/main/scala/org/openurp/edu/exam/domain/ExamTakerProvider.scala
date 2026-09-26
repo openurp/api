@@ -26,6 +26,7 @@ import org.openurp.code.edu.model.ExamType
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.exam.model.ExamTaker
 import org.openurp.edu.his.model.HisExamTaker
+import scala.compiletime.uninitialized
 
 trait ExamTakerProvider {
   def get(std: Student): Seq[ExamTaker]
@@ -39,8 +40,8 @@ trait ExamTakerProvider {
 }
 
 class DefaultExamTakerProvider extends ExamTakerProvider {
-  var entityDao: EntityDao = _
-  var semesterService: SemesterService = _
+  var entityDao: EntityDao = uninitialized
+  var semesterService: SemesterService = uninitialized
 
   override def get(std: Student): Seq[ExamTaker] = {
     val terms = semesterService.get(std.project, std.beginOn, std.endOn)

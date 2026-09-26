@@ -22,6 +22,7 @@ import org.beangle.data.model.pojo.{DateRange, Updatable}
 import org.openurp.base.model.ExternSchool
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.{EduCategory, EducationLevel}
+import scala.compiletime.uninitialized
 
 /**
  * 外部学习经历
@@ -32,5 +33,5 @@ class ExternStudent extends LongId, Updatable, DateRange {
   var majorName: Option[String] = None
   var level: EducationLevel = null
   var category: EduCategory = null
-  var exchange: Boolean = _
+  var exchange: Boolean = uninitialized
 }

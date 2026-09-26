@@ -19,6 +19,7 @@ package org.openurp.edu.grade.config
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
+import scala.compiletime.uninitialized
 
 /**
  * 成绩分级配置项
@@ -27,13 +28,13 @@ import org.beangle.data.model.annotation.config
 class GradeRateItem extends LongId {
 
   /** 成绩配置 */
-  var config: GradeRateConfig = _
+  var config: GradeRateConfig = uninitialized
 
   /** 最低分 */
-  var minScore: Float = _
+  var minScore: Float = uninitialized
 
   /** 最高分 */
-  var maxScore: Float = _
+  var maxScore: Float = uninitialized
 
   /** 绩点表达式 */
   var gpExp: Option[String] = None

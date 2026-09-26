@@ -20,14 +20,15 @@ package org.openurp.edu.program.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /** 学生个人培养计划绑定
  */
 class StdProgramBinding extends LongId, Updatable {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 培养方案 */
-  var program: Program = _
+  var program: Program = uninitialized
 }

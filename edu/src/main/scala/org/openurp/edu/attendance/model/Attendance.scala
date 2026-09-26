@@ -21,31 +21,32 @@ import org.beangle.data.model.LongId
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
+import scala.compiletime.uninitialized
 
 /** 学生出勤统计
  */
 class Attendance extends LongId {
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 课程 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 实到次数 */
-  var present: Short = _
+  var present: Short = uninitialized
 
   /** 缺席次数（包括旷课、请假） */
-  var absent: Short = _
+  var absent: Short = uninitialized
 
   /** 请假次数 */
-  var leave: Short = _
+  var leave: Short = uninitialized
 
   /** 迟到早退次数 */
-  var late: Short = _
+  var late: Short = uninitialized
 
   /** 出勤状态 */
   var states: AttendStates = AttendStates.Empty

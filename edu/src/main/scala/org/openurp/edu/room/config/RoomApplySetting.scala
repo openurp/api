@@ -21,16 +21,17 @@ import org.beangle.commons.lang.time.HourMinute
 import org.beangle.data.model.IntId
 import org.beangle.data.model.annotation.config
 import org.openurp.base.model.School
+import scala.compiletime.uninitialized
 
 /** 教室借用设置
  */
 @config
 class RoomApplySetting extends IntId {
 
-  var school: School = _
+  var school: School = uninitialized
 
   /** 申请提前量 */
-  var daysBeforeApply: Int = _
+  var daysBeforeApply: Int = uninitialized
 
   /** 借用须知 */
   var notice: Option[String] = None
@@ -42,5 +43,5 @@ class RoomApplySetting extends IntId {
   var endAt: HourMinute = HourMinute.Zero
 
   /** 是否开放 */
-  var opened: Boolean = _
+  var opened: Boolean = uninitialized
 }

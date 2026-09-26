@@ -21,14 +21,15 @@ import org.beangle.data.model.LongId
 import org.openurp.edu.clazz.model.Clazz
 import org.beangle.data.model.LongId
 import org.openurp.qos.evaluation.base.model.Questionnaire
+import scala.compiletime.uninitialized
 
 class QuestionnaireClazz extends LongId {
   /**教学任务*/
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /**问卷*/
-  var questionnaire: Questionnaire = _
+  var questionnaire: Questionnaire = uninitialized
 
   /** 是否教师评教 */
-  var evaluateByTeacher: Boolean = _
+  var evaluateByTeacher: Boolean = uninitialized
 }

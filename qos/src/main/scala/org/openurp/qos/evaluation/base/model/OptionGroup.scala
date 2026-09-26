@@ -22,13 +22,14 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.model.Project
+import scala.compiletime.uninitialized
 
 /** 选项组
  *
  * @author chaostone
  */
 class OptionGroup extends LongId, Named {
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 各类选项 */
   var options = Collections.newSet[Option]

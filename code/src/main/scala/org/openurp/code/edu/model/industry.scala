@@ -19,6 +19,7 @@ package org.openurp.code.edu.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /** 录取类别
  * 参见教育部标准JY/T 1001 4.2.28.3
@@ -63,15 +64,15 @@ class DisciplineCatalog extends CodeBean
  */
 @code("industry")
 class Discipline extends CodeBean {
-  var category: DisciplineCategory = _
-  var catalog: DisciplineCatalog = _
+  var category: DisciplineCategory = uninitialized
+  var catalog: DisciplineCatalog = uninitialized
 }
 
 /** 一级学科
  */
 @code("industry")
 class Level1Discipline extends CodeBean {
-  var category: DisciplineCategory = _
+  var category: DisciplineCategory = uninitialized
 }
 
 /**
@@ -93,8 +94,8 @@ class EducationMode extends CodeBean
  */
 @code("industry")
 class EducationLevel extends CodeBean {
-  var fromLevel: AcademicLevel = _
-  var toLevel: AcademicLevel = _
+  var fromLevel: AcademicLevel = uninitialized
+  var toLevel: AcademicLevel = uninitialized
 }
 
 /**
@@ -111,7 +112,7 @@ class EduCategory extends CodeBean {
  */
 @code("industry")
 class HskLevel extends CodeBean {
-  var grade: Int = _
+  var grade: Int = uninitialized
 }
 
 /**
@@ -171,15 +172,15 @@ class ExamStatus extends CodeBean {
   /**
    * 是否参加考试
    */
-  var attended: Boolean = _
+  var attended: Boolean = uninitialized
   /**
    * 是否需要参加下一次缓考
    */
-  var hasDeferred: Boolean = _
+  var hasDeferred: Boolean = uninitialized
   /**
    * 是否有作弊行为
    */
-  var cheating: Boolean = _
+  var cheating: Boolean = uninitialized
 
   def this(id: Int) = {
     this()
@@ -208,7 +209,7 @@ object ExamStatus {
 @code("industry")
 class GradingMode extends CodeBean {
 
-  var numerical: Boolean = _
+  var numerical: Boolean = uninitialized
 
   def this(id: Int) = {
     this()
@@ -236,7 +237,7 @@ object GradingMode {
  */
 @code("industry")
 class DayPart extends CodeBean {
-  var color: String = _
+  var color: String = uninitialized
 }
 
 /**
@@ -306,7 +307,7 @@ object ExamType {
 class ExamType extends CodeBean {
 
   /** 是否是缓考 */
-  var forDeferred: Boolean = _
+  var forDeferred: Boolean = uninitialized
 
   def this(id: Int) = {
     this()
@@ -366,7 +367,7 @@ class TeachLangType extends CodeBean
 @code("industry")
 class CourseNature extends CodeBean {
   /** 是否实践课程 */
-  var practical: Boolean = _
+  var practical: Boolean = uninitialized
 }
 
 object CourseNature {
@@ -384,7 +385,7 @@ class TeachingNature extends CodeBean {
   }
 
   /** 性质分类 */
-  var category: TeachingNatureCategory = _
+  var category: TeachingNatureCategory = uninitialized
 }
 
 object TeachingNature {

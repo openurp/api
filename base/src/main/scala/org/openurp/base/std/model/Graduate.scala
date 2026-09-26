@@ -23,6 +23,7 @@ import org.openurp.code.edu.model.{Degree, EducationResult}
 import org.openurp.code.std.model.WheretoGo
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /** 毕业生信息
  *
@@ -30,13 +31,13 @@ import java.time.LocalDate
 class Graduate extends LongId, Updatable {
 
   /** 界别 */
-  var season: GraduateSeason = _
+  var season: GraduateSeason = uninitialized
 
   /** 学籍 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 毕结业情况 */
-  var result: EducationResult = _
+  var result: EducationResult = uninitialized
 
   /** 结业日期 */
   var finishOn: Option[LocalDate] = None
@@ -66,5 +67,5 @@ class Graduate extends LongId, Updatable {
   var wheretoGo: Option[WheretoGo] = None
 
   /** 毕结业批次 */
-  var batchNo: Int = _
+  var batchNo: Int = uninitialized
 }

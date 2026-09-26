@@ -21,14 +21,15 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updatable}
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /** 部门变迁记录
  */
 class DepartTransition extends LongId, Updatable, Remark {
 
-  var from: Department = _
+  var from: Department = uninitialized
 
-  var to: Department = _
+  var to: Department = uninitialized
 
-  var effectiveOn: LocalDate = _
+  var effectiveOn: LocalDate = uninitialized
 }

@@ -22,15 +22,16 @@ import org.beangle.data.model.pojo.{Named, Updatable}
 import org.openurp.base.model.Project
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /** 假日课程调整
  */
 class Holiday extends LongId, Updatable, Named {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 起始日期 */
-  var startOn: LocalDate = _
+  var startOn: LocalDate = uninitialized
 
   /** 排课调整到 */
   var switchTo: Option[LocalDate] = None

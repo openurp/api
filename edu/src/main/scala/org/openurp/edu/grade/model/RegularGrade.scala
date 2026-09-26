@@ -23,20 +23,21 @@ import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.grade.model.RegularGrade.{Test, fromJson}
+import scala.compiletime.uninitialized
 
 /** 平时总评成绩
  */
 class RegularGrade extends LongId, Updatable {
 
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
-  var std: Student = _
+  var std: Student = uninitialized
 
-  var score: Float = _
+  var score: Float = uninitialized
 
   var testsJson: JsonArray = new JsonArray
 
-  var status: Int = _
+  var status: Int = uninitialized
 
   def tests: Map[String, RegularGrade.Test] = {
     testsJson.map { t =>

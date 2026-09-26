@@ -28,23 +28,24 @@ import org.openurp.base.resource.model.Laboratory
 import org.openurp.code.edu.model.{CourseNature, CourseRank}
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 实验任务
  */
 @beta
 class LabTask extends LongId, Remark {
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
   /** 理论学时* */
-  var theoryHours: Int = _
+  var theoryHours: Int = uninitialized
   /** 实践学时 */
-  var practiceHours: Int = _
+  var practiceHours: Int = uninitialized
   /** 课程性质 */
-  var nature: CourseNature = _
+  var nature: CourseNature = uninitialized
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 开课院系 */
-  var department: Department = _
+  var department: Department = uninitialized
   /** 教研室 */
   var office: Option[TeachingOffice] = None
   /** 负责人 */
@@ -52,15 +53,15 @@ class LabTask extends LongId, Remark {
   /** 是否要求填写实验项目 */
   var required: Boolean = true
   /** 填写实验项目数 */
-  var expCount: Int = _
+  var expCount: Int = uninitialized
   /** 实验人数 */
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
   /** 实验室列表 */
   var labs: mutable.Set[Laboratory] = Collections.newSet[Laboratory]
   /** 必选修 */
-  var rank: CourseRank = _
+  var rank: CourseRank = uninitialized
   /** 班级数 */
-  var clazzCount: Int = _
+  var clazzCount: Int = uninitialized
   /** 实验列表 */
   var experiments: mutable.Buffer[LabExperiment] = Collections.newBuffer[LabExperiment]
   /** 数据是否完整 */

@@ -18,18 +18,19 @@
 package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 /** 培养方案毕业要求
  */
 class ProgramOutcome extends LongId {
 
-  var doc: ProgramDoc = _
+  var doc: ProgramDoc = uninitialized
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
   /** 毕业要求 */
-  var title: String = _
+  var title: String = uninitialized
   /** 内容 */
-  var contents: String = _
+  var contents: String = uninitialized
 
   def this(doc: ProgramDoc, idx: Int, title: String, contents: String) = {
     this()

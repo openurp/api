@@ -30,6 +30,7 @@ import org.openurp.edu.clazz.model.{Clazz, CourseTaker}
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 课程成绩
@@ -43,17 +44,17 @@ import scala.collection.mutable
  */
 class CourseGrade extends LongId, ProjectBased, Grade, Remark {
   /** 设置学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 设置课程 */
-  var course: Course = _
+  var course: Course = uninitialized
   /** 获得修读类别 */
-  var courseTakeType: CourseTakeType = _
+  var courseTakeType: CourseTakeType = uninitialized
   /** 学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 任务序号 */
-  var crn: String = _
+  var crn: String = uninitialized
   /** 课程类别 */
-  var courseType: CourseType = _
+  var courseType: CourseType = uninitialized
   /** 设置绩点 */
   var gp: Option[Float] = None
   /** 是否免听 */
@@ -63,17 +64,17 @@ class CourseGrade extends LongId, ProjectBased, Grade, Remark {
   /** 考核成绩 */
   var examGrades: mutable.Buffer[ExamGrade] = Collections.newBuffer[ExamGrade]
   /** 考核方式 */
-  var examMode: ExamMode = _
+  var examMode: ExamMode = uninitialized
   /** 得分 */
   var score: Option[Float] = None
   /** 成绩 */
   var scoreText: Option[String] = None
   /** 是否通过 */
-  var passed: Boolean = _
+  var passed: Boolean = uninitialized
   /** 状态 */
-  var status: Int = _
+  var status: Int = uninitialized
   /** 记录方式 */
-  var gradingMode: GradingMode = _
+  var gradingMode: GradingMode = uninitialized
   /** 操作者 */
   var operator: Option[String] = None
   /** 教学班 */

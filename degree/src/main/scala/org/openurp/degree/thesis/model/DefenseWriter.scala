@@ -18,12 +18,13 @@
 package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
+import scala.compiletime.uninitialized
 
 class DefenseWriter extends LongId {
 
-  var group: DefenseGroup = _
+  var group: DefenseGroup = uninitialized
 
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   def this(group: DefenseGroup, writer: Writer) = {
     this()

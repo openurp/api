@@ -19,18 +19,19 @@ package org.openurp.edu.program.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
+import scala.compiletime.uninitialized
 
 /** 大纲内容
  */
 class ProgramText extends LongId, Named {
 
-  var doc: ProgramDoc = _
+  var doc: ProgramDoc = uninitialized
 
   /** 标题 */
-  var title: String = _
+  var title: String = uninitialized
 
   /** 内容 */
-  var contents: String = _
+  var contents: String = uninitialized
 
   /** 链接表格的名称 */
   var linkTable: Option[String] = None

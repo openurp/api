@@ -26,6 +26,7 @@ import org.openurp.code.job.model.{ProfessionalTitle, TutorType}
 import org.openurp.code.person.model.{Gender, IdType, Nation, PoliticalStatus}
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 教职工信息
@@ -33,10 +34,10 @@ import java.time.LocalDate
 class Staff extends LongId, Coded, Named, EnNamed, Updatable, TemporalOn {
 
   /** 学校 */
-  var school: School = _
+  var school: School = uninitialized
 
   /** 性别 */
-  var gender: Gender = _
+  var gender: Gender = uninitialized
 
   /** 身份证件类型 */
   var idType: Option[IdType] = None
@@ -60,16 +61,16 @@ class Staff extends LongId, Coded, Named, EnNamed, Updatable, TemporalOn {
   var mobile: Option[String] = None
 
   /** 部门 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 教职工类别 */
-  var staffType: StaffType = _
+  var staffType: StaffType = uninitialized
 
   /** 导师类型 */
   var tutorType: Option[TutorType] = None
 
   /** 是否在编 */
-  var formalHr: Boolean = _
+  var formalHr: Boolean = uninitialized
 
   /** 最高职称 */
   var title: Option[ProfessionalTitle] = None
@@ -87,7 +88,7 @@ class Staff extends LongId, Coded, Named, EnNamed, Updatable, TemporalOn {
   var degreeAwardBy: Option[String] = None
 
   /** 在职状态 */
-  var status: WorkStatus = _
+  var status: WorkStatus = uninitialized
 
   /** 全职工作单位 */
   var organization: Option[String] = None
@@ -96,10 +97,10 @@ class Staff extends LongId, Coded, Named, EnNamed, Updatable, TemporalOn {
   var homepage: Option[String] = None
 
   /** 是否兼职 */
-  var parttime: Boolean = _
+  var parttime: Boolean = uninitialized
 
   /** 是否外聘 */
-  var external: Boolean = _
+  var external: Boolean = uninitialized
 
   def description: String = {
     s"$code $name ${department.shortName.getOrElse(department.name)}"

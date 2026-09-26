@@ -17,8 +17,10 @@
 
 package org.openurp.base.model
 
+import scala.compiletime.uninitialized
+
 /** 按年归档的模型
  */
 trait ArchivedByYear {
-  var schoolYear: Int = _
+  var schoolYear: Int = uninitialized
 }

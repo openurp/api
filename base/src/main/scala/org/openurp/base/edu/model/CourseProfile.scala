@@ -27,6 +27,7 @@ import org.openurp.code.edu.model.CourseCategory
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 课程简介
  *
@@ -34,13 +35,13 @@ import scala.collection.mutable
 class CourseProfile extends LongId, Updatable, TemporalOn, Remark {
 
   /** 修订学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 简介 */
-  var description: String = _
+  var description: String = uninitialized
 
   /** 英文简介 */
   var enDescription: Option[String] = None
@@ -79,7 +80,7 @@ class CourseProfile extends LongId, Updatable, TemporalOn, Remark {
   var status: AuditStatus = AuditStatus.Draft
 
   /** 开课院系 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 负责人 */
   var director: Option[Teacher] = None

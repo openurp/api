@@ -27,25 +27,26 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Certificate
 
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 能力拓展学分证书配置
  */
 @config
 class AbilityCreditSetting extends LongId, Remark {
   /** 认定设置 */
-  var config: AbilityCreditConfig = _
+  var config: AbilityCreditConfig = uninitialized
   /** 证书类型 */
-  var certificate: Certificate = _
+  var certificate: Certificate = uninitialized
   /** 审核学院 */
   var auditDepart: Option[Department] = None
   /** 是否需要学院审核 */
-  var collegeReviewRequired: Boolean = _
+  var collegeReviewRequired: Boolean = uninitialized
   /** 有效期长度，以月为单位 */
   var validMonths: Option[Int] = None
   /** 学分数 */
-  var credits: Float = _
+  var credits: Float = uninitialized
   /** 学科专业特定还是全校通用 */
-  var special: Boolean = _
+  var special: Boolean = uninitialized
   /** 面向学院 */
   var departs: mutable.Set[Department] = Collections.newSet[Department]
   /** 面向专业 */

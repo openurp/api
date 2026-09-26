@@ -20,31 +20,32 @@ package org.openurp.base.edu.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.*
 import org.openurp.code.edu.model.{ExperimentCategory, ExperimentType, Level1Discipline}
+import scala.compiletime.uninitialized
 
 /** 课程实验库
  */
 class Experiment extends LongId, Coded, Named, EnNamed, Updatable, TemporalOn, Remark {
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 实验类别 */
-  var category: ExperimentCategory = _
+  var category: ExperimentCategory = uninitialized
 
   /** 一级学科 */
-  var discipline: Level1Discipline = _
+  var discipline: Level1Discipline = uninitialized
 
   /** 是否在线实验 */
-  var online: Boolean = _
+  var online: Boolean = uninitialized
 
   /** 学时 */
-  var creditHours: Float = _
+  var creditHours: Float = uninitialized
 
   /** 实验类型 */
-  var experimentType: ExperimentType = _
+  var experimentType: ExperimentType = uninitialized
 
   /** 每组人数 */
-  var groupStdCount: Int = _
+  var groupStdCount: Int = uninitialized
 
   def this(course: Course) = {
     this()

@@ -25,6 +25,7 @@ import org.openurp.base.model.{Project, Semester}
 import org.openurp.code.edu.model.GradeType
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 成绩录入开关
@@ -32,9 +33,9 @@ import java.time.Instant
 @config
 class GradeInputSwitch extends LongId, InstantRange, Remark {
 
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 允许录入成绩类型 */
   var types = Collections.newSet[GradeType]

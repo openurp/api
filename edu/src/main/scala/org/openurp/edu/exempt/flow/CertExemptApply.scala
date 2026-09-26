@@ -28,6 +28,7 @@ import org.openurp.code.edu.model.{Certificate, GradingMode}
 
 import java.time.YearMonth
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 校外证书成绩免修课程申请
  * 申请同意后，会落地到证书成绩和课程免修记录
@@ -35,23 +36,23 @@ import scala.collection.mutable
 @flow
 class CertExemptApply extends LongId, Updatable {
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 申请学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 成绩 */
-  var scoreText: String = _
+  var scoreText: String = uninitialized
   /** 成绩记录方式 */
-  var gradingMode: GradingMode = _
+  var gradingMode: GradingMode = uninitialized
   /** 审核部门 */
-  var auditDepart: Department = _
+  var auditDepart: Department = uninitialized
   /** 证书类型 */
-  var certificate: Certificate = _
+  var certificate: Certificate = uninitialized
   /** 证书内课程 */
   var subject: Option[String] = None
   /** 证书编号 */
   var certificateNo: Option[String] = None
   /** 获得年月 */
-  var acquiredIn: YearMonth = _
+  var acquiredIn: YearMonth = uninitialized
   /** 免修课程 */
   var courses: mutable.Set[Course] = Collections.newSet[Course]
   /** 申请理由 */
@@ -59,7 +60,7 @@ class CertExemptApply extends LongId, Updatable {
   /** 审核意见 */
   var auditOpinion: Option[String] = None
   /** 成绩单附件路径 */
-  var attachmentPath: String = _
+  var attachmentPath: String = uninitialized
   /** 申请状态 */
   var status: AuditStatus = AuditStatus.Draft
 }

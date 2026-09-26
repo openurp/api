@@ -25,6 +25,7 @@ import org.openurp.base.std.model.Grade
 import org.openurp.code.edu.model.*
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 课程基本信息 </p>
@@ -40,9 +41,9 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updatable, TemporalO
   /** 培养层次要求 */
   var levels = Collections.newBuffer[CourseLevel]
   /** 院系 */
-  var department: Department = _
+  var department: Department = uninitialized
   /** 默认学分 */
-  var defaultCredits: Float = _
+  var defaultCredits: Float = uninitialized
 
   /** 课程模块 */
   var module: Option[CourseModule] = None
@@ -51,20 +52,20 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updatable, TemporalO
   /** 课程类别 */
   var courseType: Option[CourseType] = None
   /** 课程性质 (理论、实践、术科、实验) */
-  var nature: CourseNature = _
+  var nature: CourseNature = uninitialized
 
   /** 学时/总课时 */
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
   /** 分类课时 */
   var hours = Collections.newBuffer[CourseHour]
   /** 实践周 */
   var weeks: Option[Int] = None
   /** 周课时 */
-  var weekHours: Int = _
+  var weekHours: Int = uninitialized
   /** 考试方式 */
-  var examMode: ExamMode = _
+  var examMode: ExamMode = uninitialized
   /** 成绩记录方式 */
-  var gradingMode: GradingMode = _
+  var gradingMode: GradingMode = uninitialized
   /** 是否计算绩点 * */
   var calgp: Boolean = true
   /** 是否有补考 */
@@ -82,7 +83,7 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updatable, TemporalO
   /** 每学期需要完成的子课程 */
   var subCourse: Option[Course] = None
   /** 要求完成的学期数 */
-  var terms: Int = _
+  var terms: Int = uninitialized
 
   override def compare(other: Course): Int = {
     code.compareTo(other.code)
@@ -226,9 +227,9 @@ class Course extends LongId, ProjectBased, Ordered[Course], Updatable, TemporalO
  * @author chaostone
  */
 class CourseHour extends LongId {
-  var course: Course = _
-  var creditHours: Int = _
-  var nature: TeachingNature = _
+  var course: Course = uninitialized
+  var creditHours: Int = uninitialized
+  var nature: TeachingNature = uninitialized
 
   def this(course: Course, nature: TeachingNature, hours: Int) = {
     this()
@@ -242,9 +243,9 @@ class CourseHour extends LongId {
  * 课程层次要求
  */
 class CourseLevel extends LongId {
-  var course: Course = _
-  var level: EducationLevel = _
-  var credits: Option[Float] = _
+  var course: Course = uninitialized
+  var level: EducationLevel = uninitialized
+  var credits: Option[Float] = uninitialized
 
   def this(c: Course, l: EducationLevel) = {
     this()

@@ -19,11 +19,12 @@ package org.openurp.edu.course.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Hierarchical, Named}
+import scala.compiletime.uninitialized
 
 class SyllabusText extends LongId, Named, Hierarchical[SyllabusText] {
-  var syllabus: Syllabus = _
+  var syllabus: Syllabus = uninitialized
   /** 内容 */
-  var contents: String = _
+  var contents: String = uninitialized
 
   def this(syllabus: Syllabus, indexno: String, name: String, contents: String) = {
     this()

@@ -21,17 +21,18 @@ import org.beangle.commons.lang.annotation.beta
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Coded
 import org.openurp.base.edu.model.Experiment
+import scala.compiletime.uninitialized
 
 /** 实验项目对应的课程
  */
 @beta
 class LabExperiment extends LongId {
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
   /** 修订任务 */
-  var task: LabTask = _
+  var task: LabTask = uninitialized
   /** 实验 */
-  var experiment: Experiment = _
+  var experiment: Experiment = uninitialized
 
   def this(idx: Int, task: LabTask, experiment: Experiment) = {
     this()

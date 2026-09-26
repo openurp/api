@@ -22,6 +22,7 @@ import org.beangle.data.model.annotation.log
 import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.model.User
 import org.openurp.code.std.model.StdDocType
+import scala.compiletime.uninitialized
 
 /** 打印流水
  * 记录每次打印文档的流水
@@ -29,15 +30,15 @@ import org.openurp.code.std.model.StdDocType
 @log
 class SpaPrint extends LongId, Updatable, Remark {
   /** 学生 */
-  var user: User = _
+  var user: User = uninitialized
 
   /** 文档类型 */
-  var docType: StdDocType = _
+  var docType: StdDocType = uninitialized
 
   /** 支付费用 */
-  var payed: Int = _
+  var payed: Int = uninitialized
 
   /** 打印ip */
-  var ip: String = _
+  var ip: String = uninitialized
 
 }

@@ -19,6 +19,7 @@ package org.openurp.qos.evaluation.department.model
 
 import org.beangle.data.model.LongId
 import org.openurp.qos.evaluation.base.model.Question
+import scala.compiletime.uninitialized
 
 /**
  * 院系问题评教结果
@@ -27,9 +28,9 @@ import org.openurp.qos.evaluation.base.model.Question
  */
 class DepartQuestion extends LongId {
   /** 问题 */
-  var question: Question = _
+  var question: Question = uninitialized
   /** 得分 */
-  var score: Float = _
+  var score: Float = uninitialized
   /** 评教结果 */
-  var result: DepartEvaluate = _
+  var result: DepartEvaluate = uninitialized
 }

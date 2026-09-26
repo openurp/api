@@ -17,8 +17,10 @@
 
 package org.openurp.prac.activity.model
 
+import scala.compiletime.uninitialized
+
 /** 校内实践课程安排
  */
 class PracClazzSchedule extends AbstractPracSchedule {
-  var activity: PracClazz = _
+  var activity: PracClazz = uninitialized
 }

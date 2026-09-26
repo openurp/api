@@ -21,10 +21,11 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 class Commitment extends LongId, Updatable {
 
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
-  var confirmed: Boolean = _
+  var confirmed: Boolean = uninitialized
 }

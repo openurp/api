@@ -20,12 +20,13 @@ package org.openurp.base.resource.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updatable}
 import org.openurp.base.model.School
+import scala.compiletime.uninitialized
 
 /** 实验室
  */
 class Laboratory extends LongId, Named, Coded, Updatable, TemporalOn {
   /** 学校 */
-  var school: School = _
+  var school: School = uninitialized
   /** 房间号 */
   var room: Option[Classroom] = None
   /** 简称 */

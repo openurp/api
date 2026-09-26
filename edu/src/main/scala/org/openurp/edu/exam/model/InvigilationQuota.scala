@@ -23,6 +23,7 @@ import org.beangle.data.model.pojo.Remark
 import org.openurp.base.model.*
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 监考人员
@@ -33,16 +34,16 @@ import java.time.LocalDate
 class InvigilationQuota extends LongId, Remark {
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 教师 */
-  var invigilator: User = _
+  var invigilator: User = uninitialized
 
   /** 次数 */
-  var amount: Int = _
+  var amount: Int = uninitialized
 
   /** 监考明细 */
   var details = Collections.newBuffer[InvigilationQuotaDetail]

@@ -25,16 +25,17 @@ import org.openurp.base.model.{Department, Project, Semester, User}
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 实践活动
  */
 abstract class AbstractPracActivity extends LongId {
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
   /** 学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 开课院系 */
-  var department: Department = _
+  var department: Department = uninitialized
   /** 学分 */
   var credits: Option[Float] = None
   /** 授课教师 */
@@ -42,7 +43,7 @@ abstract class AbstractPracActivity extends LongId {
   /** 外校教师 */
   var externTeacher: Option[String] = None
   /** 实际人数 */
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
 
   /** 会话列表 */
   var schedules: mutable.Buffer[AbstractPracSchedule] = Collections.newBuffer[AbstractPracSchedule]
@@ -98,13 +99,13 @@ class PracSession(var beginOn: LocalDate, var endOn: LocalDate) {
 
   var dates = Collections.newSet[LocalDate]
 
-  var beginAt: HourMinute = _
+  var beginAt: HourMinute = uninitialized
 
-  var endAt: HourMinute = _
+  var endAt: HourMinute = uninitialized
 
   var times: Option[String] = None
 
-  var places: String = _
+  var places: String = uninitialized
 
   def add(wt: WeekTime): Unit = {
     if (wt.weekstate.value != 0) {

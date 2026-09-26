@@ -19,14 +19,15 @@ package org.openurp.degree.thesis.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.model.AuditStatus
+import scala.compiletime.uninitialized
 
 class MidtermCheckDetail extends LongId {
 
-  var item: MidtermCheckItem = _
+  var item: MidtermCheckItem = uninitialized
 
-  var check: MidtermCheck = _
+  var check: MidtermCheck = uninitialized
 
-  var passed: Boolean = _
+  var passed: Boolean = uninitialized
 
   var auditOpinion: Option[String] = None
 

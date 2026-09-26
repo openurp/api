@@ -25,6 +25,7 @@ import org.openurp.code.edu.model.Certificate
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 资格考试报名设置（期号）
@@ -34,17 +35,17 @@ import scala.collection.mutable
 @config
 class CertSignupConfig extends LongId, Named, InstantRange {
   /** 教学项目 */
-  var project: Project = _
+  var project: Project = uninitialized
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 报名科目设置 */
   var settings: mutable.Buffer[CertSignupSetting] = new mutable.ArrayBuffer[CertSignupSetting]
   /** 通知 */
-  var notice: String = _
+  var notice: String = uninitialized
   /** 是否预报名 */
-  var prediction: Boolean = _
+  var prediction: Boolean = uninitialized
   /** 允许报名的最大门数 */
-  var maxOptions: Int = _
+  var maxOptions: Int = uninitialized
 
   def isTimeSuitable: Boolean = {
     within(Instant.now)

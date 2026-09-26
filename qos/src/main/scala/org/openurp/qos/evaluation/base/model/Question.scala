@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.{Remark, TemporalOn, Updatable}
 import org.openurp.base.model.{Department, Project}
+import scala.compiletime.uninitialized
 
 /**
  * 评教问题
@@ -28,17 +29,17 @@ import org.openurp.base.model.{Department, Project}
  * @author chaostone
  */
 class Question extends LongId, Updatable, TemporalOn {
-  var project: Project = _
+  var project: Project = uninitialized
   /** 问题内容 */
-  var contents: String = _
+  var contents: String = uninitialized
   /** 问题类型 */
-  var indicator: Indicator = _
+  var indicator: Indicator = uninitialized
   /** 分值 */
-  var score: Float = _
+  var score: Float = uninitialized
   /** 优先级 */
-  var priority: Int = _
+  var priority: Int = uninitialized
   /** 是否附加题 */
   var addition: Boolean = false
   /** 选项组 */
-  var optionGroup: OptionGroup = _
+  var optionGroup: OptionGroup = uninitialized
 }

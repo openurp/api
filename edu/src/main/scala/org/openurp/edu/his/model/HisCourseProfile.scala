@@ -26,18 +26,19 @@ import org.openurp.base.model.{AuditStatus, Department, Semester, User}
 import org.openurp.code.edu.model.CourseCategory
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 @archive
 class HisCourseProfile extends LongId, Updatable, TemporalOn, Remark {
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 简介 */
-  var description: String = _
+  var description: String = uninitialized
 
   /** 英文简介 */
   var enDescription: Option[String] = None
@@ -70,7 +71,7 @@ class HisCourseProfile extends LongId, Updatable, TemporalOn, Remark {
   var status: AuditStatus = AuditStatus.Draft
 
   /** 开课院系 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 负责人 */
   var director: Option[Teacher] = None

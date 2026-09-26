@@ -30,13 +30,14 @@ import org.openurp.code.Code
 import org.openurp.code.service.CodeService
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 abstract class MentorSupport extends ActionSupport, ServletSupport {
 
-  var entityDao: EntityDao = _
-  var codeService: CodeService = _
-  var semesterService: SemesterService = _
-  var configService: ProjectConfigService = _
+  var entityDao: EntityDao = uninitialized
+  var codeService: CodeService = uninitialized
+  var semesterService: SemesterService = uninitialized
+  var configService: ProjectConfigService = uninitialized
 
   def index(): View = {
     val mentor = getMentor

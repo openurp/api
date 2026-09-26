@@ -19,21 +19,22 @@ package org.openurp.prac.activity.model
 
 import org.openurp.base.edu.model.Course
 import org.openurp.code.edu.model.{CourseType, TeachLangType}
+import scala.compiletime.uninitialized
 
 /**
  * 校内实践课程
  */
 class PracClazz extends AbstractPracActivity {
   /** 课程名称 */
-  var courseName: String = _
+  var courseName: String = uninitialized
   /** 对应课程 */
   var course: Option[Course] = None
   /** 课程类别 */
   var courseType: Option[CourseType] = None
   /** 班级名称 */
-  var clazzName: String = _
+  var clazzName: String = uninitialized
   /** 授课语言 */
-  var langType: TeachLangType = _
+  var langType: TeachLangType = uninitialized
 
   def addSchedule(ns: AbstractPracSchedule): Unit = {
     this.schedules += ns

@@ -19,14 +19,15 @@ package org.openurp.prac.innovation.model
 
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
+import scala.compiletime.uninitialized
 
 /**
  * 项目结项
  */
 class Closure extends LongId, Updatable {
-  var project: Project = _
+  var project: Project = uninitialized
 
-  var applyExemptionReply: Boolean = _
+  var applyExemptionReply: Boolean = uninitialized
 
   var exemptionReason: Option[String] = None
 

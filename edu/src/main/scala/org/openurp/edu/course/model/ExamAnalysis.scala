@@ -20,12 +20,13 @@ package org.openurp.edu.course.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.edu.clazz.model.Clazz
+import scala.compiletime.uninitialized
 
 /** 考试试卷分析表
  */
 class ExamAnalysis extends LongId, Updatable {
 
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
-  var contents: String = _
+  var contents: String = uninitialized
 }

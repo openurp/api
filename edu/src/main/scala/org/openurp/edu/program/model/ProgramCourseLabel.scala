@@ -20,16 +20,17 @@ package org.openurp.edu.program.model
 import org.beangle.data.model.LongId
 import org.openurp.base.edu.model.Course
 import org.openurp.code.edu.model.ProgramCourseTag
+import scala.compiletime.uninitialized
 
 /** 培养方案课程标签
  */
 class ProgramCourseLabel extends LongId {
 
-  var program: Program = _
+  var program: Program = uninitialized
 
-  var tag: ProgramCourseTag = _
+  var tag: ProgramCourseTag = uninitialized
 
-  var course: Course = _
+  var course: Course = uninitialized
 
   def this(program: Program, course: Course, tag: ProgramCourseTag) = {
     this()

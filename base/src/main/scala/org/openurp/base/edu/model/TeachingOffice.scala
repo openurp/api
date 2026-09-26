@@ -21,15 +21,16 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, Named, TemporalOn, Updatable}
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.{Department, Project}
+import scala.compiletime.uninitialized
 
 /** 教研室 */
 class TeachingOffice extends LongId, Coded, Named, Updatable, TemporalOn {
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 部门 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 负责人 */
   var director: Option[Teacher] = None

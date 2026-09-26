@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Coded, EnNamed, Named, TemporalOn}
 import org.openurp.base.model.{Department, Project}
 import org.openurp.code.edu.model.{DisciplineCategory, Institution}
+import scala.compiletime.uninitialized
 
 /**
  * 辅修/微专业
@@ -28,13 +29,13 @@ import org.openurp.code.edu.model.{DisciplineCategory, Institution}
 class MinorMajor extends LongId, Coded, Named, EnNamed, TemporalOn {
 
   /** 项目 */
-  var project: Project = _
+  var project: Project = uninitialized
 
   /** 教育机构 */
-  var institution: Institution = _
+  var institution: Institution = uninitialized
 
   /** 学科门类 */
-  var category: DisciplineCategory = _
+  var category: DisciplineCategory = uninitialized
 
   /** 对应本校的专业 */
   var major: Option[Major] = None

@@ -24,6 +24,7 @@ import org.openurp.code.edu.model.Certificate
 
 import java.time.LocalDate
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /**
  * 资格考试报名科目设置
@@ -33,17 +34,17 @@ import scala.collection.mutable
 @config
 class CertSignupSetting extends LongId {
   /** 报名科目 */
-  var certificate: Certificate = _
+  var certificate: Certificate = uninitialized
   /** 报名设置(期号) */
-  var config: CertSignupConfig = _
+  var config: CertSignupConfig = uninitialized
   /** 要求报名费 */
-  var feeOfSignup: Int = _
+  var feeOfSignup: Int = uninitialized
   /** 要求材料费 */
-  var feeOfMaterial: Int = _
+  var feeOfMaterial: Int = uninitialized
   /** 要求考纲费 */
-  var feeOfOutline: Int = _
+  var feeOfOutline: Int = uninitialized
   /** 最大学生数(0或者null表示不限制) */
-  var maxStd: Int = _
+  var maxStd: Int = uninitialized
   /** 报名时要求通过的科目 */
   var dependsOn: Option[Certificate] = None
   /** 有冲突的科目 */

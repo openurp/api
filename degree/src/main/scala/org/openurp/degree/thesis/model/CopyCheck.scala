@@ -21,16 +21,17 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updatable}
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /** 拷贝检测
  *
  */
 class CopyCheck extends LongId, Remark {
 
-  var writer: Writer = _
+  var writer: Writer = uninitialized
 
   /** 是否通过 */
-  var passed: Boolean = _
+  var passed: Boolean = uninitialized
 
   /** 去除引用文献复制比 */
   var copyRatio: Option[Float] = None
@@ -45,5 +46,5 @@ class CopyCheck extends LongId, Remark {
   var checkOn: Option[LocalDate] = None
 
   /** 是否为复检结果 */
-  var recheck: Boolean = _
+  var recheck: Boolean = uninitialized
 }

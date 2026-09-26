@@ -23,11 +23,12 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.CourseType
 import org.openurp.edu.grade.model.AuditPlanResult
 import org.openurp.edu.program.model.{CourseGroup, CoursePlan, SharePlan}
+import scala.compiletime.uninitialized
 
 class AuditPlanContext(val std: Student, val coursePlan: CoursePlan, val sharePlan: Option[SharePlan],
                        val stdGrade: StdGrade, val listeners: collection.Seq[AuditPlanListener]) {
 
-  var result: AuditPlanResult = _
+  var result: AuditPlanResult = uninitialized
 
   var typeMatchPolicy: AuditTypeMatchPolicy = DefaultAuditTypeMatchPolicy
 

@@ -24,6 +24,7 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.std.model.StdPunishmentType
 
 import java.time.LocalDate
+import scala.compiletime.uninitialized
 
 /**
  * 处分记录
@@ -31,25 +32,25 @@ import java.time.LocalDate
 class Punishment extends LongId, Named, Remark {
 
   /** 处分文号 */
-  var docSeq: String = _
+  var docSeq: String = uninitialized
 
   /** 处分类别 */
-  var publishmentType: StdPunishmentType = _
+  var publishmentType: StdPunishmentType = uninitialized
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 教学日历 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 日期 */
-  var issueOn: LocalDate = _
+  var issueOn: LocalDate = uninitialized
 
   /** 撤销日期 */
   var withdrawOn: Option[LocalDate] = None
 
   /** 部门 */
-  var depart: Department = _
+  var depart: Department = uninitialized
 
   /** 处分原因 */
   var reason: Option[String] = None

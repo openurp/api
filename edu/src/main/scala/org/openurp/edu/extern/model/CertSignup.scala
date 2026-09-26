@@ -22,6 +22,7 @@ import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.Certificate
+import scala.compiletime.uninitialized
 
 /**
  * 资格考试报名记录
@@ -30,19 +31,19 @@ import org.openurp.code.edu.model.Certificate
  */
 class CertSignup extends LongId, Updatable {
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 学年学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 报名证书 */
-  var certificate: Certificate = _
+  var certificate: Certificate = uninitialized
   /** 报名费 */
-  var fee: Int = _
+  var fee: Int = uninitialized
   /** 准考证号码 */
   var examNo: Option[String] = None
   /** 考场 */
   var examRoom: Option[String] = None
   /** 座位号 */
-  var seatNo: Int = _
+  var seatNo: Int = uninitialized
   /** 报名IP */
-  var ip: String = _
+  var ip: String = uninitialized
 }

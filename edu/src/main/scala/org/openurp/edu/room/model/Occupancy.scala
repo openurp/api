@@ -23,6 +23,7 @@ import org.beangle.data.model.pojo.Updatable
 import org.openurp.base.model.Department
 import org.openurp.base.resource.model.Classroom
 import org.openurp.code.edu.model.ActivityType
+import scala.compiletime.uninitialized
 
 /**
  * 房间占用情况
@@ -30,29 +31,29 @@ import org.openurp.code.edu.model.ActivityType
 class Occupancy extends LongId, Updatable {
 
   /** 房间 */
-  var room: Classroom = _
+  var room: Classroom = uninitialized
 
   /** 时间 */
   var time = new WeekTime
 
   /** 活动类型 */
-  var activityType: ActivityType = _
+  var activityType: ActivityType = uninitialized
 
   /** 用户系统 */
-  var app: RoomOccupyApp = _
+  var app: RoomOccupyApp = uninitialized
 
   /** 活动ID */
-  var activityId: Long = _
+  var activityId: Long = uninitialized
 
   /** 活动主题 */
-  var subject: String = _
+  var subject: String = uninitialized
 
   /** 占用院系 */
-  var depart: Department = _
+  var depart: Department = uninitialized
 
   /** 是否可以共享占用 */
-  var shared: Boolean = _
+  var shared: Boolean = uninitialized
 
   /** 学生人数 */
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
 }

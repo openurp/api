@@ -26,6 +26,7 @@ import org.openurp.edu.clazz.model.Clazz
 
 import java.time.Instant
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 授课计划(教学进度表）
  * 每个任务唯一
@@ -33,22 +34,22 @@ import scala.collection.mutable
 class ClazzPlan extends LongId, Updatable {
 
   /** 教学任务 */
-  var clazz: Clazz = _
+  var clazz: Clazz = uninitialized
 
   /** 学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 分环节课时 */
   var hours = Collections.newBuffer[ClazzSectionHour]
 
   /** 课堂学时 */
-  var lessonHours: Int = _
+  var lessonHours: Int = uninitialized
 
   /** 课外学时 */
-  var extraHours: Int=_
+  var extraHours: Int= uninitialized
 
   /** 考核课时 */
-  var examHours: Int = _
+  var examHours: Int = uninitialized
 
   /** 授课内容 */
   var lessons: mutable.Buffer[Lesson] = Collections.newBuffer[Lesson]
@@ -63,7 +64,7 @@ class ClazzPlan extends LongId, Updatable {
   var status: AuditStatus = AuditStatus.Draft
 
   /** 作者 */
-  var writer: User = _
+  var writer: User = uninitialized
 
   /** 审核人 */
   var reviewer: Option[User] = None

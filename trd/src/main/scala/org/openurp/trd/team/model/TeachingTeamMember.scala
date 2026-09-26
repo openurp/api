@@ -19,18 +19,19 @@ package org.openurp.trd.team.model
 
 import org.beangle.data.model.LongId
 import org.openurp.base.model.User
+import scala.compiletime.uninitialized
 
 /** 教学团队成员
  *
  */
 class TeachingTeamMember extends LongId {
 
-  var team: TeachingTeam = _
+  var team: TeachingTeam = uninitialized
 
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
   /** 成员账户 */
-  var user: User = _
+  var user: User = uninitialized
 
 }

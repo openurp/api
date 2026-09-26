@@ -21,6 +21,7 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Named
 import org.openurp.base.edu.model.Course
 import org.openurp.base.model.{Department, ProjectBased, Semester}
+import scala.compiletime.uninitialized
 
 /**
  * 教学任务课程组
@@ -28,7 +29,7 @@ import org.openurp.base.model.{Department, ProjectBased, Semester}
 class ClazzGroup extends LongId, ProjectBased, Named {
 
   /** 学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 开课部门 */
   var teachDepart: Option[Department] = None
@@ -37,6 +38,6 @@ class ClazzGroup extends LongId, ProjectBased, Named {
   var course: Option[Course] = None
 
   /** 任务集合 */
-  var clazzes: collection.mutable.Set[Clazz] = _
+  var clazzes: collection.mutable.Set[Clazz] = uninitialized
 
 }

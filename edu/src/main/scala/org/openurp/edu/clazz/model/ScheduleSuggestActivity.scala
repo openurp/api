@@ -21,14 +21,15 @@ import org.beangle.commons.lang.time.WeekTime
 import org.beangle.data.model.LongId
 import org.openurp.base.hr.model.Teacher
 import org.openurp.base.resource.model.Classroom
+import scala.compiletime.uninitialized
 
 /** 建议排课活动
  *
  */
 class ScheduleSuggestActivity extends LongId {
-  var suggest: ScheduleSuggest = _
+  var suggest: ScheduleSuggest = uninitialized
 
-  var time: WeekTime = _
+  var time: WeekTime = uninitialized
 
   var room: Option[Classroom] = None
 

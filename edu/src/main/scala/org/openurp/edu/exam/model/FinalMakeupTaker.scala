@@ -26,6 +26,7 @@ import org.openurp.base.std.model.Student
 import org.openurp.code.edu.model.CourseType
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /**
  * 毕业清考名单
@@ -33,22 +34,22 @@ import java.time.Instant
 class FinalMakeupTaker extends LongId, Updatable, Remark {
 
   /** 考试学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
   /** 清考任务 */
   var makeupCourse: Option[FinalMakeupCourse] = None
 
   /** 课程 */
-  var course: Course = _
+  var course: Course = uninitialized
 
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 课程类型 */
-  var courseType: CourseType = _
+  var courseType: CourseType = uninitialized
 
   /** 之前的成绩 */
-  var failScores: String = _
+  var failScores: String = uninitialized
 
   /** 本次补考成绩 */
   var score: Option[Float] = None

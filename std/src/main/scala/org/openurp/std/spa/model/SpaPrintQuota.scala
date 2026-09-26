@@ -22,6 +22,7 @@ import org.openurp.base.model.User
 import org.openurp.code.std.model.StdDocType
 
 import java.time.Instant
+import scala.compiletime.uninitialized
 
 /** 打印配额
  *
@@ -29,19 +30,19 @@ import java.time.Instant
 class SpaPrintQuota extends LongId {
 
   /** 学生 */
-  var user: User = _
+  var user: User = uninitialized
 
   /** 文档类型 */
-  var docType: StdDocType = _
+  var docType: StdDocType = uninitialized
 
   /** 免支付打印张数 */
-  var freeCnt: Int = _
+  var freeCnt: Int = uninitialized
 
   /** 打印张数 */
-  var printCnt: Int = _
+  var printCnt: Int = uninitialized
 
   /** 剩余免支付的张数 */
-  var frees: Int = _
+  var frees: Int = uninitialized
 
   /** 最后打印时间 */
   var lastPrintAt: Option[Instant] = None

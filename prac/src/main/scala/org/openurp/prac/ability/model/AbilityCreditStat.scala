@@ -20,15 +20,16 @@ package org.openurp.prac.ability.model
 import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.std.model.Student
+import scala.compiletime.uninitialized
 
 /** 学生能力素质能力认定学分
  */
 class AbilityCreditStat extends LongId, Updatable, Remark {
 
-  var std: Student = _
+  var std: Student = uninitialized
 
   /** 学分 */
-  var credits: Float = _
+  var credits: Float = uninitialized
 
   /** 认定的成绩ID */
   var courseGradeId: Option[Long] = None

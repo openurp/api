@@ -20,27 +20,28 @@ package org.openurp.edu.course.model
 import org.beangle.commons.collection.Collections
 import org.beangle.data.model.LongId
 import org.openurp.code.edu.model.GradeType
+import scala.compiletime.uninitialized
 
 /** 教学大纲-成绩评分比例
  */
 class SyllabusAssessment extends LongId {
 
-  var syllabus: Syllabus = _
+  var syllabus: Syllabus = uninitialized
 
   /** 序号(从1开始) */
-  var idx: Int = _
+  var idx: Int = uninitialized
 
   /** 成绩类型 */
-  var gradeType: GradeType = _
+  var gradeType: GradeType = uninitialized
 
   /** 小项 */
   var component: Option[String] = None
 
   /** 考核次数 */
-  var assessCount: Int = _
+  var assessCount: Int = uninitialized
 
   /** 百分比 */
-  var weight: Int = _
+  var weight: Int = uninitialized
 
   /** 对应课程目标的支撑比例 */
   var objectivePercents: Option[String] = None

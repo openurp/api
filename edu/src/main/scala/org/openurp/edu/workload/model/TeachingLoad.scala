@@ -23,31 +23,32 @@ import org.openurp.base.hr.model.Teacher
 import org.openurp.base.model.Semester
 import org.openurp.code.job.model.ProfessionalTitle
 import org.openurp.edu.workload.config.CapacityFactor
+import scala.compiletime.uninitialized
 
 /** 教学工作量
  */
 class TeachingLoad extends LongId {
 
-  var crn: String = _
+  var crn: String = uninitialized
 
-  var course: Course = _
+  var course: Course = uninitialized
 
-  var teacher: Teacher = _
+  var teacher: Teacher = uninitialized
 
-  var semester: Semester = _
+  var semester: Semester = uninitialized
 
-  var teacherTitle: ProfessionalTitle = _
+  var teacherTitle: ProfessionalTitle = uninitialized
 
-  var capacityFactor: CapacityFactor = _
+  var capacityFactor: CapacityFactor = uninitialized
 
-  var clazzTags: String = _
+  var clazzTags: String = uninitialized
 
-  var factor: Float = _
+  var factor: Float = uninitialized
 
-  var creditHours: Int = _
+  var creditHours: Int = uninitialized
 
-  var stdCount: Int = _
+  var stdCount: Int = uninitialized
 
-  var loadHours: Float = _
+  var loadHours: Float = uninitialized
 
 }

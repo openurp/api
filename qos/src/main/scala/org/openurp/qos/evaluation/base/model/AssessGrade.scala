@@ -21,25 +21,26 @@ import org.beangle.data.model.annotation.config
 import org.beangle.data.model.pojo.Named
 import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.model.Project
+import scala.compiletime.uninitialized
 
 /** 评价等级
  *
  */
 class AssessGrade extends IntId, Named, Ordered[AssessGrade] {
   /** 最小分值 */
-  var minScore: Float = _
+  var minScore: Float = uninitialized
 
   /** 最大分值 */
-  var maxScore: Float = _
+  var maxScore: Float = uninitialized
 
   /** 等级数字值 */
-  var grade: Int = _
+  var grade: Int = uninitialized
 
   /** 描述 */
-  var description: String = _
+  var description: String = uninitialized
 
   /** 评价 */
-  var criteria: AssessCriteria = _
+  var criteria: AssessCriteria = uninitialized
 
   override def compare(that: AssessGrade): Int = {
     grade - that.grade

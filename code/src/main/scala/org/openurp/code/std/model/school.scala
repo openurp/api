@@ -19,6 +19,7 @@ package org.openurp.code.std.model
 
 import org.beangle.data.model.annotation.code
 import org.openurp.code.CodeBean
+import scala.compiletime.uninitialized
 
 /**
  * 学生类别
@@ -32,7 +33,7 @@ class StdType extends CodeBean
  */
 @code("school")
 class StdLabel extends CodeBean {
-  var labelType: StdLabelType = _
+  var labelType: StdLabelType = uninitialized
 }
 
 /**

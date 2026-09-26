@@ -24,27 +24,28 @@ import org.beangle.data.model.pojo.Named
 
 import java.time.LocalDate
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 推优答辩组
  */
 class PromotionDefenseGroup extends LongId, Named {
 
-  var batch: Batch = _
+  var batch: Batch = uninitialized
 
   /** 计划人数 */
-  var capacity: Int = _
+  var capacity: Int = uninitialized
 
   /** 答辩日期 */
-  var defenseOn: LocalDate = _
+  var defenseOn: LocalDate = uninitialized
 
   /** 答辩开始时间 */
-  var beginAt: HourMinute = _
+  var beginAt: HourMinute = uninitialized
 
   /** 答辩结束时间 */
-  var endAt: HourMinute = _
+  var endAt: HourMinute = uninitialized
 
   /** 答辩地点 */
-  var location: String = _
+  var location: String = uninitialized
 
   /** 答辩成员 */
   var members: mutable.Buffer[PromotionDefenseMember] = Collections.newBuffer[PromotionDefenseMember]

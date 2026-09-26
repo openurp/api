@@ -23,21 +23,22 @@ import org.beangle.data.model.{IntId, LongId}
 import org.openurp.base.model.Semester
 import org.openurp.base.std.model.Student
 import org.openurp.std.award.code.{StipendCategory, StipendLevel}
+import scala.compiletime.uninitialized
 
 /** 助学金
  *
  */
 class StipendAward extends LongId {
   /** 助学金种类 */
-  var category: StipendCategory = _
+  var category: StipendCategory = uninitialized
   /** 学生 */
-  var std: Student = _
+  var std: Student = uninitialized
   /** 获奖等级 */
-  var level: StipendLevel = _
+  var level: StipendLevel = uninitialized
   /** 评定学期 */
-  var semester: Semester = _
+  var semester: Semester = uninitialized
   /** 金额 */
-  var amount: Int = _
+  var amount: Int = uninitialized
   /** 是否审核通过 */
-  var approved: Boolean = _
+  var approved: Boolean = uninitialized
 }

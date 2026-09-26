@@ -25,6 +25,7 @@ import org.openurp.code.trd.model.RdLevel
 
 import java.time.YearMonth
 import scala.collection.mutable
+import scala.compiletime.uninitialized
 
 /** 教学团队
  *
@@ -32,10 +33,10 @@ import scala.collection.mutable
 class TeachingTeam extends LongId, Coded, Named, Updatable, Remark {
 
   /** 所在学院 */
-  var department: Department = _
+  var department: Department = uninitialized
 
   /** 级别 */
-  var level: RdLevel = _
+  var level: RdLevel = uninitialized
 
   /** 带头人 */
   var leaders: mutable.Buffer[User] = Collections.newBuffer[User]
@@ -47,7 +48,7 @@ class TeachingTeam extends LongId, Coded, Named, Updatable, Remark {
   var awardTitle: Option[String] = None
 
   /** 立项年月 */
-  var beginIn: YearMonth = _
+  var beginIn: YearMonth = uninitialized
 
   def leaderNames: String = {
     leaders.map(_.name).mkString(",")
