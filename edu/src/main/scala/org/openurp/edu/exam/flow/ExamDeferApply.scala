@@ -63,6 +63,9 @@ class ExamDeferApply extends LongId, Creatable, Updatable, Remark {
   /** 个人签名url */
   var stdSignUrl: Option[String] = None
 
+  /** 任课教师审核签名url */
+  var teacherSignUrl: Option[String] = None
+
   /** 状态 */
   var status: String = uninitialized
 

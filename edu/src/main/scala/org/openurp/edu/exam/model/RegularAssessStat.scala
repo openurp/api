@@ -21,6 +21,8 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Updatable
 import org.openurp.code.edu.model.AttendanceMode
 import org.openurp.edu.clazz.model.Clazz
+
+import java.time.Instant
 import scala.compiletime.uninitialized
 
 /**
@@ -33,6 +35,12 @@ class RegularAssessStat extends LongId, Updatable {
   var assignmentExceedCount: Int = uninitialized
   var absenceExceedCount: Int = uninitialized
   var collegeReviewed: Option[Boolean] = None
+
+  /** 教师签名存储路径 */
+  var teacherSignaturePath: Option[String] = None
+
+  /** 教师提交名单时间 */
+  var teacherSubmittedAt: Option[Instant] = None
 
   def this(clazz: Clazz) = {
     this()

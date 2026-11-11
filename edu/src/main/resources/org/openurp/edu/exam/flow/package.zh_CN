@@ -9,6 +9,7 @@ ExamDeferApply.teacherReviewed=教师是否审核
 ExamDeferApply.collegeApproved=院系是否通过
 ExamDeferApply.passed=是否通过
 ExamDeferApply.stdSignUrl=个人签名url
+ExamDeferApply.teacherSignUrl=任课教师审核签名url
 ExamDeferApply.status=状态
 ExamDeferApply.attachments=附件
 ExamDeferApply.opinions=意见

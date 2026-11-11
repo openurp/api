@@ -25,6 +25,7 @@ class DefaultMapping extends MappingModule {
     bind[ExamDeferApply].declare { e =>
       e.remark is length(300)
       e.status is length(50)
+      e.teacherSignUrl is length(400)
       index("", true, e.std, e.clazz, e.examType)
     }
   }

@@ -97,6 +97,7 @@ class DefaultMapping extends MappingModule {
     }
 
     bind[RegularAssessStat] declare { e =>
+      e.teacherSignaturePath is length(400)
       index("", true, e.clazz)
     }
     cache().add(classOf[ExamNotice])

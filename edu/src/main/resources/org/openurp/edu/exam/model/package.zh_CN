@@ -130,9 +130,10 @@ RegularAssessStat.disqualifiedCount=取消考试资格人数
 RegularAssessStat.assignmentExceedCount=作业超标人数
 RegularAssessStat.absenceExceedCount=缺勤超标人数
 RegularAssessStat.collegeReviewed=学院是否审核
+RegularAssessStat.teacherSignaturePath=教师签名存储路径
+RegularAssessStat.teacherSubmittedAt=教师提交时间
 
 RegularAssessStd=日常考勤/作业学生情况记录
 RegularAssessStd.assignmentExceeded=作业是否超标
 RegularAssessStd.absenceExceeded=缺勤是否超标
 RegularAssessStd.disqualified=是否取消考试资格
-

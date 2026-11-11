@@ -7350,6 +7350,8 @@
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
             <column name="college_reviewed" type="boolean" comment="学院是否审核"/>
             <column name="disqualified_count" type="integer" nullable="false" defaultValue="0" comment="取消考试资格人数"/>
+            <column name="teacher_signature_path" type="varchar(400)" comment="教师签名存储路径"/>
+            <column name="teacher_submitted_at" type="timestamptz" comment="教师提交时间"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
@@ -8375,6 +8377,7 @@
             <column name="std_id" type="bigint" nullable="false" comment="学生ID"/>
             <column name="std_sign_url" type="varchar(255)" comment="个人签名url"/>
             <column name="teacher_reviewed" type="boolean" comment="教师是否审核"/>
+            <column name="teacher_sign_url" type="varchar(400)" comment="任课教师审核签名url"/>
             <column name="updated_at" type="timestamptz" nullable="false" defaultValue="current_timestamp" comment="更新时间"/>
           </columns>
           <constraints>
