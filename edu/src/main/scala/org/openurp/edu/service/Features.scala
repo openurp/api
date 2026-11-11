@@ -54,7 +54,10 @@ object Features {
     val TableStyle = Feature(this, "tablestyle", "课表样式", List("WEEK_TABLE", "UNIT_COLUMN", "LIST"))
 
     /** 是否显示单个教学任务的index页面 */
-    val IndexSupported = Feature(this, "show_index", "是否显示单个教学任务的index页面", false)
+    val IndexSupported = Feature(this, "show_index", "是否显示单个教学任务的index页面", true)
+
+    /**是否允许老师上传课程通知和资料附件*/
+    val ElearningSupported = Feature(this, "elearning_supported", "是否允许老师上传课程通知和资料附件", true)
   }
 
   object Grade extends FeatureScope {
