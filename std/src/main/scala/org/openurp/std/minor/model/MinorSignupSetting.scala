@@ -21,6 +21,7 @@ import org.beangle.commons.collection.Collections
 import org.beangle.data.model.IntId
 import org.beangle.data.model.pojo.{Named, TemporalAt, Updatable}
 import org.openurp.base.model.Project
+
 import scala.compiletime.uninitialized
 
 /**
@@ -37,4 +38,6 @@ class MinorSignupSetting extends IntId, TemporalAt, Named, Updatable {
   /** 可报专业 */
   var options = Collections.newBuffer[MinorSignupOption]
 
+  /** 是否要求上传照片 */
+  var photoNeeded: Boolean = false
 }

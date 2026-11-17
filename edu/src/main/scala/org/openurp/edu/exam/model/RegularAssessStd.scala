@@ -18,7 +18,7 @@
 package org.openurp.edu.exam.model
 
 import org.beangle.data.model.LongId
-import org.beangle.data.model.pojo.Remark
+import org.beangle.data.model.pojo.{Remark, Updatable}
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
 
