@@ -21,12 +21,13 @@ import org.beangle.data.model.LongId
 import org.beangle.data.model.pojo.Remark
 import org.openurp.base.std.model.Student
 import org.openurp.edu.clazz.model.Clazz
+
 import scala.compiletime.uninitialized
 
 /**
  * 日常考勤/作业学生情况记录
  */
-class RegularAssessStd extends LongId, Remark {
+class RegularAssessStd extends LongId, Remark, Updatable {
 
   var clazz: Clazz = uninitialized
 
