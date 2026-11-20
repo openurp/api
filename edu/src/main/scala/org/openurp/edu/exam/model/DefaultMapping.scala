@@ -98,6 +98,7 @@ class DefaultMapping extends MappingModule {
 
     bind[RegularAssessStat] declare { e =>
       e.teacherSignaturePath is length(400)
+      e.collegeReview is default("'{}'::jsonb")
       index("", true, e.clazz)
     }
     cache().add(classOf[ExamNotice])

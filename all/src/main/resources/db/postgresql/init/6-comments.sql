@@ -3135,6 +3135,7 @@ comment on column edu.regular_assess_stats.absence_exceed_count is '缺勤超标
 comment on column edu.regular_assess_stats.assignment_exceed_count is '作业超标人数';
 comment on column edu.regular_assess_stats.attendance_mode_id is '考勤方式ID';
 comment on column edu.regular_assess_stats.clazz_id is '教学任务ID';
+comment on column edu.regular_assess_stats.college_review is '学院复核信息';
 comment on column edu.regular_assess_stats.college_reviewed is '学院是否审核';
 comment on column edu.regular_assess_stats.disqualified_count is '取消考试资格人数';
 comment on column edu.regular_assess_stats.id is '非业务主键:datetime';
@@ -3148,6 +3149,7 @@ comment on column edu.regular_assess_stds.disqualified is '是否取消考试资
 comment on column edu.regular_assess_stds.id is '非业务主键:datetime';
 comment on column edu.regular_assess_stds.remark is '备注';
 comment on column edu.regular_assess_stds.std_id is '学生ID';
+comment on column edu.regular_assess_stds.updated_at is '取消日期';
 comment on column edu.regular_grade_states.clazz_id is '教学任务ID';
 comment on column edu.regular_grade_states.components_json is '百分比设置';
 comment on column edu.regular_grade_states.excellent_rate is '优秀率';
