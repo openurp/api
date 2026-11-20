@@ -22,3 +22,4 @@ MinorSignupOption.maxCount=最大人数
 
 MinorSignupSetting=学生报名设置
 MinorSignupSetting.grade=年级
+MinorSignupSetting.photoNeeded=是否要求上传照片
