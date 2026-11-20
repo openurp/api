@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<db engine="PostgreSQL" version="1.6.6">
+<db engine="PostgreSQL" version="1.6.3">
   <schemas>
     <schema name="base">
       <tables>
@@ -7348,8 +7348,8 @@
             <column name="assignment_exceed_count" type="integer" nullable="false" defaultValue="0" comment="作业超标人数"/>
             <column name="attendance_mode_id" type="integer" nullable="false" comment="考勤方式ID"/>
             <column name="clazz_id" type="bigint" nullable="false" comment="教学任务ID"/>
-            <column name="college_reviewed" type="boolean" comment="学院是否审核"/>
             <column name="college_review" type="jsonb" nullable="false" defaultValue="'{}'::jsonb" comment="学院复核信息"/>
+            <column name="college_reviewed" type="boolean" comment="学院是否审核"/>
             <column name="disqualified_count" type="integer" nullable="false" defaultValue="0" comment="取消考试资格人数"/>
             <column name="teacher_signature_path" type="varchar(400)" comment="教师签名存储路径"/>
             <column name="teacher_submitted_at" type="timestamptz" comment="教师提交时间"/>
