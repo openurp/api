@@ -23,10 +23,13 @@ import org.openurp.base.resource.model.Classroom
 import org.openurp.edu.exam.domain.ExamSchedProblem.*
 import org.openurp.edu.exam.model.{ExamGroup, ExamTask}
 
-import java.text.SimpleDateFormat
+import java.time.{LocalDateTime, ZoneId}
+import java.time.format.DateTimeFormatter
 import scala.collection.{Seq, mutable}
 
 object ExamSchedProblem {
+
+  private val IdTimeFormat: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
   private def collectRooms(examGroup: ExamGroup, examTasks: Iterable[ExamTask]): Set[Classroom] = {
     val rooms = Collections.newSet[Classroom]
@@ -86,7 +89,10 @@ object ExamSchedProblem {
  */
 class ExamSchedProblem(val examGroup: ExamGroup, val examTasks: Iterable[ExamTask], val setting: ExamSchedSetting) {
 
-  val id: String = s"${examGroup.id}_${new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(examGroup.updatedAt)}"
+  /** 与 Java `ExamProblem` 一致：从排考组写入课程冲突人数阈值。 */
+  setting.minCourseConflictCount = examGroup.minCourseConflictCount
+
+  val id: String = s"${examGroup.id}_${LocalDateTime.ofInstant(examGroup.updatedAt, ZoneId.systemDefault()).format(ExamSchedProblem.IdTimeFormat)}"
   val turns: List[Turn] = buildTurns(examGroup)
   val taskRooms: Map[ExamTask, Set[Classroom]] = collectTaskRooms(examGroup, examTasks)
   val rooms: Set[Classroom] = collectRooms(examGroup, examTasks)

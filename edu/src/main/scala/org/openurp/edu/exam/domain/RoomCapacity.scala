@@ -41,10 +41,17 @@ class RoomCapacity(val room: Classroom, initialFree: Int) {
   }
 
   def release(occupier: RoomOccupier, cnt: Int): Unit = {
-    require(remaind + cnt <= capacity)
+    require(cnt >= 0, "cnt must be non-negative")
+    require(remaind + cnt <= capacity, s"release $cnt exceeds capacity")
     if (occupierSet.remove(occupier)) {
       remaind += cnt
     }
+  }
+
+  /** 非共享策略：整间恢复满容量并移除占用方（对齐 Java `free = capacity`）。 */
+  def releaseRoom(occupier: RoomOccupier): Unit = {
+    occupierSet.remove(occupier)
+    remaind = capacity
   }
 
   def free: Int = remaind
@@ -54,11 +61,11 @@ class RoomCapacity(val room: Classroom, initialFree: Int) {
   }
 
   def isSameCourse(occupier: RoomOccupier): Boolean = {
-    occupiers.forall(_.courses == occupier.courses)
+    occupiers.forall(_.courses.toSet == occupier.courses.toSet)
   }
 
   def isSameTeacher(occupier: RoomOccupier): Boolean = {
-    occupiers.forall(_.teachers == occupier.teachers)
+    occupiers.forall(_.teachers.toSet == occupier.teachers.toSet)
   }
 
   override def toString: String = s"${room.name} $capacity $free"

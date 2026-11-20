@@ -24,7 +24,6 @@ import org.openurp.edu.exam.model.ExamTask
 
 import java.time.Duration
 import scala.collection.mutable
-import scala.compiletime.uninitialized
 
 /** 考场分配策略参数（来自考试配置中的策略与容量约束）。 */
 class ExamSchedSetting(setting: ExamAllocSetting, val courseConflictRatio: Float, val examConflictRatio: Float) {
@@ -48,7 +47,8 @@ class ExamSchedSetting(setting: ExamAllocSetting, val courseConflictRatio: Float
   /** 是否允许多个占用方共享同一教室：仅当未同时要求同院系、同课程且同任务时才为 `true`。 */
   def canShare: Boolean = !(sameDepart && sameCourse && sameTask)
 
-  var minCourseConflictCount: Int = uninitialized
+  /** 同一学生连续考试冲突人数下限（由 `ExamSchedProblem` 从 `ExamGroup` 写入；默认 0）。 */
+  var minCourseConflictCount: Int = 0
 
   var turnRule: TurnRule = new DefaultTurnRule()
 
@@ -82,19 +82,15 @@ object ExamSchedSetting {
     private val excludes = Collections.newMap[ExamTask, mutable.Set[Turn]]
 
     override def isAllowed(turn: Turn, task: ExamTask): Boolean = {
-      if task.examOn != null && turn.examOn != task.examOn then return false
+      if !task.examOn.isEmpty && turn.examOn != task.examOn.get then return false
       if task.beginAt != null && task.endAt != null && !task.isEmptyTime then {
         if turn.beginAt.value >= task.endAt.value || task.beginAt.value >= turn.endAt.value then return false
       }
       if task.minExamOn.exists(d => turn.examOn.isBefore(d)) then return false
-      excludes.get(task) match {
-        case Some(s) => return !s.contains(turn)
-        case None =>
-      }
-      includes.get(task) match {
-        case Some(s) => s.contains(turn)
-        case None => true
-      }
+      val excluded = excludes.get(task)
+      if excluded.nonEmpty && excluded.get.contains(turn) then return false
+      val included = includes.get(task)
+      if included.nonEmpty then included.get.contains(turn) else true
     }
 
     def include(task: ExamTask, turn: Turn): Unit = {

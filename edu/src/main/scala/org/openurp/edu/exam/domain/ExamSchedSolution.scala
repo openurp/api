@@ -25,7 +25,8 @@ import org.openurp.edu.exam.model.ExamTask
 
 import java.time.LocalDate
 
-class ExamSchedSolution(val allocations: collection.Seq[Allocation],
+class ExamSchedSolution(val problem: ExamSchedProblem,
+                        val allocations: collection.Seq[Allocation],
                         val fails: collection.Seq[ExamTask],
                         val turnAreas: collection.Map[Turn, Iterable[RoomCapacity]]) {
 
@@ -35,6 +36,12 @@ class ExamSchedSolution(val allocations: collection.Seq[Allocation],
     allocations
       .filter(_.turn.equalsIgnoreEndAt(testTurn))
       .sorted(using allocationByOccupierName)
+  }
+
+  /** 对应 Java `ExamSolution.getAreas`：返回该时段教室容量快照（API 不依赖 `AllocateArea`）。 */
+  def getAreas(examOn: LocalDate, beginAt: HourMinute, endAt: HourMinute): Iterable[RoomCapacity] = {
+    val testTurn = Turn(examOn, beginAt, endAt)
+    turnAreas.collectFirst { case (t, rcs) if t.equalsIgnoreEndAt(testTurn) => rcs }.getOrElse(Iterable.empty)
   }
 
   /** 汇总该时段各校区教室容量、空闲与实考占用等统计（用于报表）。 */
